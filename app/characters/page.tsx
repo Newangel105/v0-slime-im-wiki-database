@@ -10,10 +10,9 @@ import { Search, Star, Sword, Shield, Gamepad2 } from "lucide-react"
 interface Character {
   id: string
   name: string
-  element: "fire" | "water" | "earth" | "space" | "wind" | "dark" | "light"
+  element: "fire" | "water" | "earth" | "air" | "wind" | "dark" | "holy"
   stars: 3 | 4 | 5 | 6
   weapon: "sword" | "katana" | "hammer" | "spear" | "greatsword" | "book" | "fists"
-  prot_element: "fire" | "water" | "earth" | "space" | "wind" | "dark" | "light"
   awakening: number
   skills: string[]
   traits: string[]
@@ -39,34 +38,149 @@ const characters: Character[] = [
     traits: ["Slime", "Demon Lord"],
     force: "Tempest",
     town: "Rimuru City",
-    prot_element: "fire",
     image: "/placeholder.svg?height=80&width=80",
     attack: 2500,
     health: 3000,
     defense: 2000,
     existence: 95,
     rarity: 100,
-  }
+  },
+  {
+    id: "2",
+    name: "Shuna",
+    element: "holy",
+    stars: 5,
+    weapon: "book",
+    awakening: 2,
+    skills: ["Healing", "Barrier"],
+    traits: ["Ogre", "Princess"],
+    force: "Tempest",
+    town: "Rimuru City",
+    image: "/placeholder.svg?height=80&width=80",
+    attack: 1800,
+    health: 2200,
+    defense: 1600,
+    existence: 85,
+    rarity: 80,
+  },
+  {
+    id: "3",
+    name: "Benimaru",
+    element: "fire",
+    stars: 5,
+    weapon: "katana",
+    awakening: 3,
+    skills: ["Hell Flare", "Flame Blade"],
+    traits: ["Kijin", "General"],
+    force: "Tempest",
+    town: "Rimuru City",
+    image: "/placeholder.svg?height=80&width=80",
+    attack: 2300,
+    health: 2500,
+    defense: 1800,
+    existence: 90,
+    rarity: 85,
+  },
+  {
+    id: "4",
+    name: "Shion",
+    element: "earth",
+    stars: 5,
+    weapon: "greatsword",
+    awakening: 2,
+    skills: ["Cook", "Strength"],
+    traits: ["Ogre", "Secretary"],
+    force: "Tempest",
+    town: "Rimuru City",
+    image: "/placeholder.svg?height=80&width=80",
+    attack: 2100,
+    health: 2800,
+    defense: 2200,
+    existence: 88,
+    rarity: 82,
+  },
+  {
+    id: "5",
+    name: "Hakurou",
+    element: "wind",
+    stars: 4,
+    weapon: "katana",
+    awakening: 1,
+    skills: ["Swordsmanship", "Teaching"],
+    traits: ["Kijin", "Master"],
+    force: "Tempest",
+    town: "Rimuru City",
+    image: "/placeholder.svg?height=80&width=80",
+    attack: 1900,
+    health: 2000,
+    defense: 1700,
+    existence: 75,
+    rarity: 70,
+  },
+  {
+    id: "6",
+    name: "Souei",
+    element: "dark",
+    stars: 5,
+    weapon: "spear",
+    awakening: 2,
+    skills: ["Shadow Step", "Assassination"],
+    traits: ["Kijin", "Spy"],
+    force: "Tempest",
+    town: "Rimuru City",
+    image: "/placeholder.svg?height=80&width=80",
+    attack: 2000,
+    health: 1800,
+    defense: 1500,
+    existence: 82,
+    rarity: 78,
+  },
+  {
+    id: "7",
+    name: "Gobta",
+    element: "earth",
+    stars: 3,
+    weapon: "spear",
+    awakening: 1,
+    skills: ["Archery", "Luck"],
+    traits: ["Hobgoblin", "Scout"],
+    force: "Tempest",
+    town: "Rimuru City",
+    image: "/placeholder.svg?height=80&width=80",
+    attack: 1200,
+    health: 1400,
+    defense: 1000,
+    existence: 60,
+    rarity: 45,
+  },
+  {
+    id: "8",
+    name: "Diablo",
+    element: "dark",
+    stars: 6,
+    weapon: "fists",
+    awakening: 3,
+    skills: ["Death Streak", "Nuclear Magic"],
+    traits: ["Demon", "Butler"],
+    force: "Tempest",
+    town: "Rimuru City",
+    image: "/placeholder.svg?height=80&width=80",
+    attack: 2800,
+    health: 2600,
+    defense: 2100,
+    existence: 98,
+    rarity: 95,
+  },
 ]
 
 const elementIcons = {
   fire: "/elements/icElementFire.png",
   water: "/elements/icElementWater.png",
   earth: "/elements/icElementEarth.png",
-  space: "/elements/icElementspace.png",
+  air: "/elements/icElementAir.png",
   wind: "/elements/icElementWind.png",
   dark: "/elements/icElementDark.png",
-  light: "/elements/icElementlight.png",
-}
-
-const protelementIcons = {
-  fire: "/protector_elements/fire.png",
-  water: "/protector_elements/water.png",
-  earth: "/protector_elements/earth.png",
-  space: "/protector_elements/space.png",
-  wind: "/protector_elements/wind.png",
-  dark: "/protector_elements/dark.png",
-  light: "/protector_elements/light.png",
+  holy: "/elements/icElementHoly.png",
 }
 
 const weaponIcons = {
@@ -85,7 +199,6 @@ export default function CharactersPage() {
   const [selectedElements, setSelectedElements] = useState<string[]>([])
   const [selectedWeapons, setSelectedWeapons] = useState<string[]>([])
   const [selectedStars, setSelectedStars] = useState<number[]>([])
-  const [selectedProtElements, setselectedProtElements] = useState<number[]>([])
   const [selectedAwakening, setSelectedAwakening] = useState<number[]>([])
   const [skillsFilter, setSkillsFilter] = useState("")
   const [traitsFilter, setTraitsFilter] = useState("")
@@ -130,10 +243,6 @@ export default function CharactersPage() {
         return false
       }
 
-      if (selectedProtElements.length > 0 && !selectedProtElements.includes(character.prot_element)) {
-        return false
-      }
-
       // Awakening filter
       if (selectedAwakening.length > 0 && !selectedAwakening.includes(character.awakening)) {
         return false
@@ -141,7 +250,7 @@ export default function CharactersPage() {
 
       return true
     })
-  }, [searchTerm, searchSkills, selectedElements, selectedWeapons, selectedStars, selectedProtElements, selectedAwakening])
+  }, [searchTerm, searchSkills, selectedElements, selectedWeapons, selectedStars, selectedAwakening])
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -211,24 +320,6 @@ export default function CharactersPage() {
                   <button
                     key={element}
                     onClick={() => toggleFilter(element, selectedElements, setSelectedElements)}
-                    className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
-                      selectedElements.includes(element)
-                        ? "opacity-100 ring-2 ring-white"
-                        : "opacity-50 hover:opacity-75"
-                    }`}
-                  >
-                    <img src={iconPath || "/placeholder.svg"} alt={element} className="w-8 h-8 object-contain" />
-                  </button>
-                ))}
-              </div>
-
-            {/* Prot Element Filters */}
-            <div className="mb-6">
-              <div className="flex flex-wrap gap-2 mb-4">
-                {Object.entries(protelementIcons).map(([element, iconPath]) => (
-                  <button
-                    key={element}
-                    onClick={() => toggleFilter(element, selectedProtElements, setselectedProtElements)}
                     className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
                       selectedElements.includes(element)
                         ? "opacity-100 ring-2 ring-white"
