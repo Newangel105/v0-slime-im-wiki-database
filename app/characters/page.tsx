@@ -40,7 +40,7 @@ const characters: Character[] = [
     traits: ["Slime", "Demon Lord"],
     force: "Tempest",
     town: "Rimuru City",
-    image: "/placeholder.svg?height=80&width=80",
+    image: "/charimage/1.png",
     attack: 2500,
     health: 3000,
     defense: 2000,
@@ -486,7 +486,7 @@ export default function CharactersPage() {
                         alt={character.name}
                         className="w-full h-20 object-cover rounded"
                       />
-                      <div className="absolute top-1 left-1 w-6 h-6 rounded flex items-center justify-center">
+                      <div className="absolute top-1 right-1 w-6 h-6 rounded flex items-center justify-center">
                         <img
                           src={
                             character.type === "attacker"
@@ -496,9 +496,6 @@ export default function CharactersPage() {
                           alt={character.element}
                           className="w-6 h-6 object-contain"
                         />
-                      </div>
-                      <div className="absolute top-1 right-1 text-xs bg-black bg-opacity-50 px-1 rounded">
-                        {character.awakening}
                       </div>
                     </div>
                   </div>
