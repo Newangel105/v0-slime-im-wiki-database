@@ -10,7 +10,8 @@ import { Search, Star, Sword, Shield, Gamepad2 } from "lucide-react"
 interface Character {
   id: string
   name: string
-  element: "fire" | "water" | "earth" | "air" | "wind" | "dark" | "holy"
+  type: string
+  element: "fire" | "water" | "earth" | "space" | "wind" | "dark" | "light"
   stars: 3 | 4 | 5 | 6
   weapon: "sword" | "katana" | "hammer" | "spear" | "greatsword" | "book" | "fists"
   awakening: number
@@ -31,6 +32,7 @@ const characters: Character[] = [
     id: "1",
     name: "Rimuru",
     element: "water",
+    type: "attacker",
     stars: 6,
     weapon: "sword",
     awakening: 3,
@@ -48,8 +50,9 @@ const characters: Character[] = [
   {
     id: "2",
     name: "Shuna",
-    element: "holy",
+    element: "light",
     stars: 5,
+    type: "attacker",
     weapon: "book",
     awakening: 2,
     skills: ["Healing", "Barrier"],
@@ -69,6 +72,7 @@ const characters: Character[] = [
     element: "fire",
     stars: 5,
     weapon: "katana",
+    type: "attacker",
     awakening: 3,
     skills: ["Hell Flare", "Flame Blade"],
     traits: ["Kijin", "General"],
@@ -87,6 +91,7 @@ const characters: Character[] = [
     element: "earth",
     stars: 5,
     weapon: "greatsword",
+    type: "attacker",
     awakening: 2,
     skills: ["Cook", "Strength"],
     traits: ["Ogre", "Secretary"],
@@ -106,6 +111,7 @@ const characters: Character[] = [
     stars: 4,
     weapon: "katana",
     awakening: 1,
+    type: "attacker",
     skills: ["Swordsmanship", "Teaching"],
     traits: ["Kijin", "Master"],
     force: "Tempest",
@@ -124,6 +130,7 @@ const characters: Character[] = [
     stars: 5,
     weapon: "spear",
     awakening: 2,
+    type: "attacker",
     skills: ["Shadow Step", "Assassination"],
     traits: ["Kijin", "Spy"],
     force: "Tempest",
@@ -141,6 +148,7 @@ const characters: Character[] = [
     element: "earth",
     stars: 3,
     weapon: "spear",
+    type: "attacker",
     awakening: 1,
     skills: ["Archery", "Luck"],
     traits: ["Hobgoblin", "Scout"],
@@ -159,6 +167,7 @@ const characters: Character[] = [
     element: "dark",
     stars: 6,
     weapon: "fists",
+    type: "protector",
     awakening: 3,
     skills: ["Death Streak", "Nuclear Magic"],
     traits: ["Demon", "Butler"],
@@ -177,10 +186,20 @@ const elementIcons = {
   fire: "/elements/icElementFire.png",
   water: "/elements/icElementWater.png",
   earth: "/elements/icElementEarth.png",
-  air: "/elements/icElementAir.png",
+  space: "/elements/icElementspace.png",
   wind: "/elements/icElementWind.png",
   dark: "/elements/icElementDark.png",
-  holy: "/elements/icElementHoly.png",
+  light: "/elements/icElementlight.png",
+}
+
+const protelementIcons = {
+  fire: "/protector_elements/fire.png",
+  water: "/protector_elements/water.png",
+  earth: "/protector_elements/earth.png",
+  space: "/protector_elements/space.png",
+  wind: "/protector_elements/wind.png",
+  dark: "/protector_elements/dark.png",
+  light: "/protector_elements/light.png",
 }
 
 const weaponIcons = {
@@ -469,7 +488,11 @@ export default function CharactersPage() {
                       />
                       <div className="absolute top-1 left-1 w-6 h-6 rounded flex items-center justify-center">
                         <img
-                          src={elementIcons[character.element] || "/placeholder.svg"}
+                          src={
+                            character.type === "attacker"
+                              ? (elementIcons[character.element] || "/placeholder.svg")
+                              : (protelementIcons[character.element] || "/placeholder.svg")
+                          }
                           alt={character.element}
                           className="w-6 h-6 object-contain"
                         />
