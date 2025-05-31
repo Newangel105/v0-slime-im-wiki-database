@@ -501,29 +501,6 @@ export default function CharactersPage() {
                         {character.awakening}
                       </div>
                     </div>
-
-                    {/* Stars */}
-                    <div className="flex justify-center mb-1">
-                      {Array.from({ length: character.stars }).map((_, i) => (
-                        <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-
-                    {/* Character Name */}
-                    <div className="text-center text-xs font-medium text-white mb-2">{character.name}</div>
-
-                    {/* Stats Icons */}
-                    <div className="flex justify-center space-x-1">
-                      <div className="w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
-                        <span className="text-xs">⚔️</span>
-                      </div>
-                      <div className="w-4 h-4 bg-green-500 rounded-full flex items-center justify-center">
-                        <span className="text-xs">❤️</span>
-                      </div>
-                      <div className="w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
-                        <span className="text-xs">🛡️</span>
-                      </div>
-                    </div>
                   </div>
                 )
               })}
