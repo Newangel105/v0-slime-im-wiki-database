@@ -476,50 +476,47 @@ export default function CharactersPage() {
 
             {/* Character Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
-              {filteredCharacters.map((character) => (
-                <div
-                  key={character.id}
-                  className="relative w-full aspect-[3/4] overflow-hidden rounded"
-                >
-                  {/* Image + Frame Container */}
-                  <div className="absolute inset-0">
-                    {/* Character Image */}
-                    <img
-                      src={character.image || "/placeholder.svg"}
-                      alt={character.name}
-                      className="w-full h-full object-cover"
-                    />
+            {filteredCharacters.map((character) => (
+              <div
+                key={character.id}
+                className="relative w-full h-32 overflow-hidden rounded" // fixed height to match frame
+              >
+                {/* Character Image */}
+                <img
+                  src={character.image || "/placeholder.svg"}
+                  alt={character.name}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
 
-                    {/* Frame Overlay */}
-                    <img
-                      src="/frame/frameMemberM5up.png"
-                      alt="Frame"
-                      className="absolute inset-0 w-full h-full object-contain pointer-events-none"
-                    />
-                  </div>
+                {/* Frame Overlay */}
+                <img
+                  src="/frame/frameMemberM5up.png"
+                  alt="Frame"
+                  className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                />
 
-                  {/* Stars (bottom-left) */}
+                {/* Stars (bottom-left) */}
+                <img
+                  src="/stars/starCharaL5A.png"
+                  alt="stars"
+                  className="absolute bottom-1 left-1 h-6 object-contain z-10"
+                />
+
+                {/* Element Icon (top-right) */}
+                <div className="absolute top-1 right-1 w-6 h-6 rounded flex items-center justify-center z-20">
                   <img
-                    src="/stars/starCharaL5A.png"
-                    alt="stars"
-                    className="absolute bottom-1 left-1 h-6 object-contain z-10"
+                    src={
+                      character.type === "attacker"
+                        ? (elementIcons[character.element] || "/placeholder.svg")
+                        : (protelementIcons[character.element] || "/placeholder.svg")
+                    }
+                    alt={character.element}
+                    className="w-6 h-6 object-contain"
                   />
-
-                  {/* Element Icon (top-right) */}
-                  <div className="absolute top-1 right-1 w-6 h-6 rounded flex items-center justify-center z-20">
-                    <img
-                      src={
-                        character.type === "attacker"
-                          ? (elementIcons[character.element] || "/placeholder.svg")
-                          : (protelementIcons[character.element] || "/placeholder.svg")
-                      }
-                      alt={character.element}
-                      className="w-6 h-6 object-contain"
-                    />
-                  </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
+          </div>
 
 
             {filteredCharacters.length === 0 && (
