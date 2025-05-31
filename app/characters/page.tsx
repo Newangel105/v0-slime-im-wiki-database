@@ -503,7 +503,7 @@ export default function CharactersPage() {
                 />
 
                 {/* Element Icon (top-right) */}
-                <div className="absolute top-1 right-1 w-6 h-6 rounded flex items-center justify-center z-20">
+                <div className="absolute top-1 right-1 flex flex-col items-center z-20 space-y-1">
                   <img
                     src={
                       character.type === "attacker"
@@ -511,6 +511,11 @@ export default function CharactersPage() {
                         : (protelementIcons[character.element] || "/placeholder.svg")
                     }
                     alt={character.element}
+                    className="w-6 h-6 object-contain"
+                  />
+                  <img
+                    src="/type_dmg/icAttackTypePhysics.png"
+                    alt="Dmg"
                     className="w-6 h-6 object-contain"
                   />
                 </div>
