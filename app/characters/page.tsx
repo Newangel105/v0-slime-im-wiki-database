@@ -478,26 +478,46 @@ export default function CharactersPage() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
               {filteredCharacters.map((character) => {
                 return (
-                  <div key={character.id} className="bg-gray-700 rounded-lg p-3 hover:bg-gray-600 transition-colors">
-                    {/* Character Image */}
-                    <div className="relative mb-2">
-                      <img
-                        src={character.image || "/placeholder.svg"}
-                        alt={character.name}
-                        className="w-full h-20 object-cover rounded"
-                      />
-                      <div className="absolute top-1 right-1 w-6 h-6 rounded flex items-center justify-center">
-                        <img
-                          src={
-                            character.type === "attacker"
-                              ? (elementIcons[character.element] || "/placeholder.svg")
-                              : (protelementIcons[character.element] || "/placeholder.svg")
-                          }
-                          alt={character.element}
-                          className="w-6 h-6 object-contain"
-                        />
-                      </div>
-                    </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
+                    {filteredCharacters.map((character) => {
+                      return (
+                        <div key={character.id} className="relative w-full h-24 group"> {/* height adjustable */}
+                          {/* Character Image (fills the card) */}
+                          <img
+                            src={character.image || "/placeholder.svg"}
+                            alt={character.name}
+                            className="w-full h-full object-cover rounded"
+                          />
+
+                          {/* Frame Overlay */}
+                          <img
+                            src="/frame/frameMemberM5up.png"
+                            alt="Frame"
+                            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                          />
+
+                          {/* Stars (bottom-left) */}
+                          <img
+                            src="/stars/starCharaL5A.png"
+                            alt="stars"
+                            className="absolute bottom-1 left-1 w-12 h-4 object-contain"
+                          />
+
+                          {/* Element Icon (top-right) */}
+                          <div className="absolute top-1 right-1 w-6 h-6 rounded flex items-center justify-center z-10">
+                            <img
+                              src={
+                                character.type === "attacker"
+                                  ? (elementIcons[character.element] || "/placeholder.svg")
+                                  : (protelementIcons[character.element] || "/placeholder.svg")
+                              }
+                              alt={character.element}
+                              className="w-6 h-6 object-contain"
+                            />
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 )
               })}
