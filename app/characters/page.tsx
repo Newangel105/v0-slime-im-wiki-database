@@ -1,0 +1,517 @@
+"use client"
+
+import { useState, useMemo } from "react"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Search, Star, Sword, Shield, Gamepad2 } from "lucide-react"
+
+interface Character {
+  id: string
+  name: string
+  element: "fire" | "water" | "earth" | "air" | "wind" | "dark" | "holy"
+  stars: 3 | 4 | 5 | 6
+  weapon: "sword" | "katana" | "hammer" | "spear" | "greatsword" | "book" | "fists"
+  awakening: number
+  skills: string[]
+  traits: string[]
+  force: string
+  town: string
+  image: string
+  attack: number
+  health: number
+  defense: number
+  existence: number
+  rarity: number
+}
+
+const characters: Character[] = [
+  {
+    id: "1",
+    name: "Rimuru",
+    element: "water",
+    stars: 6,
+    weapon: "sword",
+    awakening: 3,
+    skills: ["Predator", "Great Sage"],
+    traits: ["Slime", "Demon Lord"],
+    force: "Tempest",
+    town: "Rimuru City",
+    image: "/placeholder.svg?height=80&width=80",
+    attack: 2500,
+    health: 3000,
+    defense: 2000,
+    existence: 95,
+    rarity: 100,
+  },
+  {
+    id: "2",
+    name: "Shuna",
+    element: "holy",
+    stars: 5,
+    weapon: "book",
+    awakening: 2,
+    skills: ["Healing", "Barrier"],
+    traits: ["Ogre", "Princess"],
+    force: "Tempest",
+    town: "Rimuru City",
+    image: "/placeholder.svg?height=80&width=80",
+    attack: 1800,
+    health: 2200,
+    defense: 1600,
+    existence: 85,
+    rarity: 80,
+  },
+  {
+    id: "3",
+    name: "Benimaru",
+    element: "fire",
+    stars: 5,
+    weapon: "katana",
+    awakening: 3,
+    skills: ["Hell Flare", "Flame Blade"],
+    traits: ["Kijin", "General"],
+    force: "Tempest",
+    town: "Rimuru City",
+    image: "/placeholder.svg?height=80&width=80",
+    attack: 2300,
+    health: 2500,
+    defense: 1800,
+    existence: 90,
+    rarity: 85,
+  },
+  {
+    id: "4",
+    name: "Shion",
+    element: "earth",
+    stars: 5,
+    weapon: "greatsword",
+    awakening: 2,
+    skills: ["Cook", "Strength"],
+    traits: ["Ogre", "Secretary"],
+    force: "Tempest",
+    town: "Rimuru City",
+    image: "/placeholder.svg?height=80&width=80",
+    attack: 2100,
+    health: 2800,
+    defense: 2200,
+    existence: 88,
+    rarity: 82,
+  },
+  {
+    id: "5",
+    name: "Hakurou",
+    element: "wind",
+    stars: 4,
+    weapon: "katana",
+    awakening: 1,
+    skills: ["Swordsmanship", "Teaching"],
+    traits: ["Kijin", "Master"],
+    force: "Tempest",
+    town: "Rimuru City",
+    image: "/placeholder.svg?height=80&width=80",
+    attack: 1900,
+    health: 2000,
+    defense: 1700,
+    existence: 75,
+    rarity: 70,
+  },
+  {
+    id: "6",
+    name: "Souei",
+    element: "dark",
+    stars: 5,
+    weapon: "spear",
+    awakening: 2,
+    skills: ["Shadow Step", "Assassination"],
+    traits: ["Kijin", "Spy"],
+    force: "Tempest",
+    town: "Rimuru City",
+    image: "/placeholder.svg?height=80&width=80",
+    attack: 2000,
+    health: 1800,
+    defense: 1500,
+    existence: 82,
+    rarity: 78,
+  },
+  {
+    id: "7",
+    name: "Gobta",
+    element: "earth",
+    stars: 3,
+    weapon: "spear",
+    awakening: 1,
+    skills: ["Archery", "Luck"],
+    traits: ["Hobgoblin", "Scout"],
+    force: "Tempest",
+    town: "Rimuru City",
+    image: "/placeholder.svg?height=80&width=80",
+    attack: 1200,
+    health: 1400,
+    defense: 1000,
+    existence: 60,
+    rarity: 45,
+  },
+  {
+    id: "8",
+    name: "Diablo",
+    element: "dark",
+    stars: 6,
+    weapon: "fists",
+    awakening: 3,
+    skills: ["Death Streak", "Nuclear Magic"],
+    traits: ["Demon", "Butler"],
+    force: "Tempest",
+    town: "Rimuru City",
+    image: "/placeholder.svg?height=80&width=80",
+    attack: 2800,
+    health: 2600,
+    defense: 2100,
+    existence: 98,
+    rarity: 95,
+  },
+]
+
+const elementIcons = {
+  fire: "/elements/icElementFire.png",
+  water: "/elements/icElementWater.png",
+  earth: "/elements/icElementEarth.png",
+  air: "/elements/icElementAir.png",
+  wind: "/elements/icElementWind.png",
+  dark: "/elements/icElementDark.png",
+  holy: "/elements/icElementHoly.png",
+}
+
+const weaponIcons = {
+  sword: "/weapons/sword.png",
+  katana: "/weapons/katana.png",
+  hammer: "/weapons/hammer.png",
+  spear: "/weapons/spear.png",
+  greatsword: "/weapons/greatsword.png",
+  book: "/weapons/book.png",
+  fists: "/weapons/fists.png",
+}
+
+export default function CharactersPage() {
+  const [searchTerm, setSearchTerm] = useState("")
+  const [searchSkills, setSearchSkills] = useState(false)
+  const [selectedElements, setSelectedElements] = useState<string[]>([])
+  const [selectedWeapons, setSelectedWeapons] = useState<string[]>([])
+  const [selectedStars, setSelectedStars] = useState<number[]>([])
+  const [selectedAwakening, setSelectedAwakening] = useState<number[]>([])
+  const [skillsFilter, setSkillsFilter] = useState("")
+  const [traitsFilter, setTraitsFilter] = useState("")
+  const [forceFilter, setForceFilter] = useState("")
+  const [townFilter, setTownFilter] = useState("")
+  const [sortBy, setSortBy] = useState("release")
+
+  const toggleFilter = (
+    value: string | number,
+    currentFilters: (string | number)[],
+    setFilters: (filters: (string | number)[]) => void,
+  ) => {
+    if (currentFilters.includes(value)) {
+      setFilters(currentFilters.filter((f) => f !== value))
+    } else {
+      setFilters([...currentFilters, value])
+    }
+  }
+
+  const filteredCharacters = useMemo(() => {
+    return characters.filter((character) => {
+      // Search filter
+      if (searchTerm) {
+        const searchTarget = searchSkills ? character.skills.join(" ") : character.name
+        if (!searchTarget.toLowerCase().includes(searchTerm.toLowerCase())) {
+          return false
+        }
+      }
+
+      // Element filter
+      if (selectedElements.length > 0 && !selectedElements.includes(character.element)) {
+        return false
+      }
+
+      // Weapon filter
+      if (selectedWeapons.length > 0 && !selectedWeapons.includes(character.weapon)) {
+        return false
+      }
+
+      // Stars filter
+      if (selectedStars.length > 0 && !selectedStars.includes(character.stars)) {
+        return false
+      }
+
+      // Awakening filter
+      if (selectedAwakening.length > 0 && !selectedAwakening.includes(character.awakening)) {
+        return false
+      }
+
+      return true
+    })
+  }, [searchTerm, searchSkills, selectedElements, selectedWeapons, selectedStars, selectedAwakening])
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-white">
+      {/* Header */}
+      <header className="bg-gray-800 border-b border-gray-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center space-x-8">
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                  <Gamepad2 className="w-5 h-5" />
+                </div>
+                <span className="text-xl font-bold">SLIME.WIKI</span>
+              </div>
+              <nav className="hidden md:flex space-x-6">
+                <a href="#" className="text-white font-medium">
+                  Characters
+                </a>
+                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  Forces
+                </a>
+                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  Events
+                </a>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Warning Banner */}
+        <div className="bg-red-600 text-white p-4 rounded mb-6">
+          Please be aware that not all characters have been assigned their appropriate <strong>weapons</strong>.
+        </div>
+
+        {/* Filters */}
+        <Card className="bg-gray-800 border-gray-700 mb-8">
+          <CardContent className="p-6">
+            <h2 className="text-lg font-semibold mb-4 text-gray-300">FILTERS</h2>
+
+            {/* Search */}
+            <div className="flex items-center space-x-4 mb-6">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                <Input
+                  placeholder="Search..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10 bg-gray-700 border-gray-600 text-white"
+                />
+              </div>
+              <Button
+                variant={searchSkills ? "default" : "outline"}
+                size="sm"
+                onClick={() => setSearchSkills(!searchSkills)}
+                className={searchSkills ? "bg-red-600 hover:bg-red-700" : "border-gray-600 text-gray-300"}
+              >
+                Search Skills
+              </Button>
+            </div>
+
+            {/* Element Filters */}
+            <div className="mb-6">
+              <div className="flex flex-wrap gap-2 mb-4">
+                {Object.entries(elementIcons).map(([element, iconPath]) => (
+                  <button
+                    key={element}
+                    onClick={() => toggleFilter(element, selectedElements, setSelectedElements)}
+                    className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
+                      selectedElements.includes(element)
+                        ? "opacity-100 ring-2 ring-white"
+                        : "opacity-50 hover:opacity-75"
+                    }`}
+                  >
+                    <img src={iconPath || "/placeholder.svg"} alt={element} className="w-8 h-8 object-contain" />
+                  </button>
+                ))}
+              </div>
+
+              {/* Weapon Filters */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {Object.entries(weaponIcons).map(([weapon, iconPath]) => (
+                  <button
+                    key={weapon}
+                    onClick={() => toggleFilter(weapon, selectedWeapons, setSelectedWeapons)}
+                    className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
+                      selectedWeapons.includes(weapon) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
+                    }`}
+                  >
+                    <img src={iconPath || "/placeholder.svg"} alt={weapon} className="w-8 h-8 object-contain" />
+                  </button>
+                ))}
+              </div>
+
+              {/* Star Filters */}
+              <div className="flex gap-2 mb-4">
+                {[3, 4, 5, 6].map((stars) => (
+                  <button
+                    key={stars}
+                    onClick={() => toggleFilter(stars, selectedStars, setSelectedStars)}
+                    className={`flex items-center space-x-1 px-3 py-1 rounded transition-opacity ${
+                      selectedStars.includes(stars)
+                        ? "bg-yellow-600 opacity-100"
+                        : "bg-gray-600 opacity-50 hover:opacity-75"
+                    }`}
+                  >
+                    {Array.from({ length: stars }).map((_, i) => (
+                      <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </button>
+                ))}
+              </div>
+
+              {/* Awakening Filters */}
+              <div className="flex gap-2 mb-6">
+                {[1, 2, 3].map((awakening) => (
+                  <button
+                    key={awakening}
+                    onClick={() => toggleFilter(awakening, selectedAwakening, setSelectedAwakening)}
+                    className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm transition-opacity ${
+                      selectedAwakening.includes(awakening)
+                        ? "border-cyan-400 bg-cyan-400 text-black opacity-100"
+                        : "border-gray-500 text-gray-400 opacity-50 hover:opacity-75"
+                    }`}
+                  >
+                    {awakening}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Dropdown Filters */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <Select value={skillsFilter} onValueChange={setSkillsFilter}>
+                <SelectTrigger className="bg-gray-700 border-gray-600">
+                  <SelectValue placeholder="SKILLS" />
+                </SelectTrigger>
+                <SelectContent className="bg-gray-700 border-gray-600">
+                  <SelectItem value="all">All Skills</SelectItem>
+                  <SelectItem value="predator">Predator</SelectItem>
+                  <SelectItem value="healing">Healing</SelectItem>
+                </SelectContent>
+              </Select>
+
+              <Select value={traitsFilter} onValueChange={setTraitsFilter}>
+                <SelectTrigger className="bg-gray-700 border-gray-600">
+                  <SelectValue placeholder="TRAITS" />
+                </SelectTrigger>
+                <SelectContent className="bg-gray-700 border-gray-600">
+                  <SelectItem value="all">All Traits</SelectItem>
+                  <SelectItem value="slime">Slime</SelectItem>
+                  <SelectItem value="ogre">Ogre</SelectItem>
+                </SelectContent>
+              </Select>
+
+              <Select value={forceFilter} onValueChange={setForceFilter}>
+                <SelectTrigger className="bg-gray-700 border-gray-600">
+                  <SelectValue placeholder="FORCES" />
+                </SelectTrigger>
+                <SelectContent className="bg-gray-700 border-gray-600">
+                  <SelectItem value="all">All Forces</SelectItem>
+                  <SelectItem value="tempest">Tempest</SelectItem>
+                </SelectContent>
+              </Select>
+
+              <Select value={townFilter} onValueChange={setTownFilter}>
+                <SelectTrigger className="bg-gray-700 border-gray-600">
+                  <SelectValue placeholder="TOWN" />
+                </SelectTrigger>
+                <SelectContent className="bg-gray-700 border-gray-600">
+                  <SelectItem value="all">All Towns</SelectItem>
+                  <SelectItem value="rimuru-city">Rimuru City</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Characters Section */}
+        <Card className="bg-gray-800 border-gray-700">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-lg font-semibold text-gray-300">CHARACTERS</h2>
+              <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-2 text-sm text-gray-400">
+                  <Shield className="w-4 h-4" />
+                  <span>Release</span>
+                  <Sword className="w-4 h-4" />
+                  <span>Attack</span>
+                  <span>❤️</span>
+                  <span>Health</span>
+                  <Shield className="w-4 h-4" />
+                  <span>Defense</span>
+                  <span>⚡</span>
+                  <span>Existence</span>
+                  <span>🌟</span>
+                  <span>Rarity</span>
+                  <span>📛</span>
+                  <span>Name</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Character Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
+              {filteredCharacters.map((character) => {
+                return (
+                  <div key={character.id} className="bg-gray-700 rounded-lg p-3 hover:bg-gray-600 transition-colors">
+                    {/* Character Image */}
+                    <div className="relative mb-2">
+                      <img
+                        src={character.image || "/placeholder.svg"}
+                        alt={character.name}
+                        className="w-full h-20 object-cover rounded"
+                      />
+                      <div className="absolute top-1 left-1 w-6 h-6 rounded flex items-center justify-center">
+                        <img
+                          src={elementIcons[character.element] || "/placeholder.svg"}
+                          alt={character.element}
+                          className="w-6 h-6 object-contain"
+                        />
+                      </div>
+                      <div className="absolute top-1 right-1 text-xs bg-black bg-opacity-50 px-1 rounded">
+                        {character.awakening}
+                      </div>
+                    </div>
+
+                    {/* Stars */}
+                    <div className="flex justify-center mb-1">
+                      {Array.from({ length: character.stars }).map((_, i) => (
+                        <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+
+                    {/* Character Name */}
+                    <div className="text-center text-xs font-medium text-white mb-2">{character.name}</div>
+
+                    {/* Stats Icons */}
+                    <div className="flex justify-center space-x-1">
+                      <div className="w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
+                        <span className="text-xs">⚔️</span>
+                      </div>
+                      <div className="w-4 h-4 bg-green-500 rounded-full flex items-center justify-center">
+                        <span className="text-xs">❤️</span>
+                      </div>
+                      <div className="w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                        <span className="text-xs">🛡️</span>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+
+            {filteredCharacters.length === 0 && (
+              <div className="text-center text-gray-400 py-8">No characters found matching the current filters.</div>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  )
+}
