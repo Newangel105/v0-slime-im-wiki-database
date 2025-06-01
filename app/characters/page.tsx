@@ -11,6 +11,7 @@ interface Character {
   id: string
   name: string
   type: string
+  dmg_type: string
   element: "fire" | "water" | "earth" | "space" | "wind" | "dark" | "light"
   stars: 3 | 4 | 5 | 6
   weapon: "sword" | "katana" | "hammer" | "spear" | "greatsword" | "book" | "fists"
@@ -33,6 +34,7 @@ const characters: Character[] = [
     name: "Rimuru",
     element: "water",
     type: "attacker",
+    dmg_type: "phys",
     stars: 6,
     weapon: "sword",
     awakening: 3,
@@ -54,6 +56,7 @@ const characters: Character[] = [
     stars: 5,
     type: "attacker",
     weapon: "book",
+    dmg_type: "phys",
     awakening: 2,
     skills: ["Healing", "Barrier"],
     traits: ["Ogre", "Princess"],
@@ -74,6 +77,7 @@ const characters: Character[] = [
     weapon: "katana",
     type: "attacker",
     awakening: 3,
+    dmg_type: "phys",
     skills: ["Hell Flare", "Flame Blade"],
     traits: ["Kijin", "General"],
     force: "Tempest",
@@ -93,6 +97,7 @@ const characters: Character[] = [
     weapon: "greatsword",
     type: "attacker",
     awakening: 2,
+    dmg_type: "phys",
     skills: ["Cook", "Strength"],
     traits: ["Ogre", "Secretary"],
     force: "Tempest",
@@ -111,6 +116,7 @@ const characters: Character[] = [
     stars: 4,
     weapon: "katana",
     awakening: 1,
+    dmg_type: "phys",
     type: "attacker",
     skills: ["Swordsmanship", "Teaching"],
     traits: ["Kijin", "Master"],
@@ -130,6 +136,7 @@ const characters: Character[] = [
     stars: 5,
     weapon: "spear",
     awakening: 2,
+    dmg_type: "phys",
     type: "attacker",
     skills: ["Shadow Step", "Assassination"],
     traits: ["Kijin", "Spy"],
@@ -148,6 +155,7 @@ const characters: Character[] = [
     element: "earth",
     stars: 3,
     weapon: "spear",
+    dmg_type: "phys",
     type: "attacker",
     awakening: 1,
     skills: ["Archery", "Luck"],
@@ -167,6 +175,7 @@ const characters: Character[] = [
     element: "dark",
     stars: 6,
     weapon: "fists",
+    dmg_type: "magic",
     type: "protector",
     awakening: 3,
     skills: ["Death Streak", "Nuclear Magic"],
@@ -212,12 +221,18 @@ const weaponIcons = {
   fists: "/weapons/fists.png",
 }
 
+const dmg_typeIcons = {
+  magic: "/type_dmg/icAttackTypeMagic.png",
+  phys: "/type_dmg/icAttackTypePhysics.png"
+}
+
 export default function CharactersPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [searchSkills, setSearchSkills] = useState(false)
   const [selectedElements, setSelectedElements] = useState<string[]>([])
   const [selectedWeapons, setSelectedWeapons] = useState<string[]>([])
   const [selectedStars, setSelectedStars] = useState<number[]>([])
+  const [selectedDMGType, setSelectedDMGType] = useState<number[]>([])
   const [selectedAwakening, setSelectedAwakening] = useState<number[]>([])
   const [skillsFilter, setSkillsFilter] = useState("")
   const [traitsFilter, setTraitsFilter] = useState("")
@@ -261,7 +276,9 @@ export default function CharactersPage() {
       if (selectedStars.length > 0 && !selectedStars.includes(character.stars)) {
         return false
       }
-
+      if (selectedDMGType.length > 0 && !selectedDMGType.includes(character.dmg_type)) {
+        return false
+      }
       // Awakening filter
       if (selectedAwakening.length > 0 && !selectedAwakening.includes(character.awakening)) {
         return false
@@ -269,7 +286,7 @@ export default function CharactersPage() {
 
       return true
     })
-  }, [searchTerm, searchSkills, selectedElements, selectedWeapons, selectedStars, selectedAwakening])
+  }, [searchTerm, searchSkills, selectedElements, selectedWeapons, selectedStars, selectedDMGType , selectedAwakening])
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -382,22 +399,21 @@ export default function CharactersPage() {
                 ))}
               </div>
 
-              {/* Awakening Filters */}
-              <div className="flex gap-2 mb-6">
-                {[1, 2, 3].map((awakening) => (
+              {/* Type DMG */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {Object.entries(dmg_typeIcons).map(([type, iconPath]) => (
                   <button
-                    key={awakening}
-                    onClick={() => toggleFilter(awakening, selectedAwakening, setSelectedAwakening)}
-                    className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm transition-opacity ${
-                      selectedAwakening.includes(awakening)
-                        ? "border-cyan-400 bg-cyan-400 text-black opacity-100"
-                        : "border-gray-500 text-gray-400 opacity-50 hover:opacity-75"
+                    key={type}
+                    onClick={() => toggleFilter(weapon, selectedDMGType, setSelectedDMGType)}
+                    className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
+                      selectedDMGType.includes(type) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
                     }`}
                   >
-                    {awakening}
+                    <img src={iconPath || "/placeholder.svg"} alt={weapon} className="w-8 h-8 object-contain" />
                   </button>
                 ))}
               </div>
+
             </div>
 
             {/* Dropdown Filters */}
