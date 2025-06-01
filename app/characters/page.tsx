@@ -241,8 +241,8 @@ const typeIcons = {
 }
 
 const ultiIcons = {
-  attacker: "/ulti_type/aoe.png",
-  protector: "/ulti_type/single.png"
+  aoe: "/ulti_type/aoe.png",
+  single: "/ulti_type/single.png"
 }
 
 export default function CharactersPage() {
