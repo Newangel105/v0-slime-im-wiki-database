@@ -17,6 +17,7 @@ interface Character {
   stars: 3 | 4 | 5 | 6
   weapon: "sword" | "katana" | "hammer" | "spear" | "greatsword" | "book" | "fists"
   awakening: number
+  char_type: string
   skills: string[]
   traits: string[]
   force: string
@@ -34,6 +35,7 @@ const characters: Character[] = [
     id: "1",
     name: "Rimuru",
     element: "water",
+    char_type: "attack",
     type: "attacker",
     dmg_type: "phys",
     stars: 6,
@@ -59,6 +61,7 @@ const characters: Character[] = [
     type: "attacker",
     weapon: "book",
     dmg_type: "phys",
+    char_type: "attack",
     ulti: "aoe",
     awakening: 2,
     skills: ["Healing", "Barrier"],
@@ -78,6 +81,7 @@ const characters: Character[] = [
     element: "fire",
     stars: 5,
     weapon: "katana",
+    char_type: "attack",
     type: "attacker",
     awakening: 3,
     dmg_type: "phys",
@@ -100,6 +104,7 @@ const characters: Character[] = [
     stars: 5,
     weapon: "greatsword",
     type: "attacker",
+    char_type: "balance",
     awakening: 2,
     dmg_type: "phys",
     ulti: "aoe",
@@ -122,6 +127,7 @@ const characters: Character[] = [
     weapon: "katana",
     awakening: 1,
     dmg_type: "phys",
+    char_type: "defense",
     type: "attacker",
     ulti: "aoe",
     skills: ["Swordsmanship", "Teaching"],
@@ -144,6 +150,7 @@ const characters: Character[] = [
     awakening: 2,
     dmg_type: "phys",
     type: "attacker",
+    char_type: "attack",
     ulti: "aoe",
     skills: ["Shadow Step", "Assassination"],
     traits: ["Kijin", "Spy"],
@@ -164,6 +171,7 @@ const characters: Character[] = [
     weapon: "spear",
     dmg_type: "phys",
     type: "attacker",
+    char_type: "attack",
     awakening: 1,
     ulti: "aoe",
     skills: ["Archery", "Luck"],
@@ -185,6 +193,7 @@ const characters: Character[] = [
     weapon: "fists",
     dmg_type: "magic",
     type: "protector",
+    char_type: "attack",
     awakening: 3,
     ulti: "single",
     skills: ["Death Streak", "Nuclear Magic"],
@@ -245,6 +254,12 @@ const ultiIcons = {
   single: "/ulti_type/single.png"
 }
 
+const chartypeIcons = {
+  attack: "/char_type/attack.png",
+  balance: "/char_type/balance.png",
+  defense: "/char_type/defense.png"
+}
+
 export default function CharactersPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [searchSkills, setSearchSkills] = useState(false)
@@ -254,6 +269,7 @@ export default function CharactersPage() {
   const [selectedDMGType, setSelectedDMGType] = useState<number[]>([])
   const [selectedType, setSelectedType] = useState<number[]>([])
   const [selectedUlti, setSelectedUlti] = useState<number[]>([])
+  const [selectedCharType, setSelectedCharType] = useState<number[]>([])
   const [selectedAwakening, setSelectedAwakening] = useState<number[]>([])
   const [skillsFilter, setSkillsFilter] = useState("")
   const [traitsFilter, setTraitsFilter] = useState("")
@@ -306,6 +322,9 @@ export default function CharactersPage() {
       if (selectedUlti.length > 0 && !selectedUlti.includes(character.ulti)) {
         return false
       }
+      if (selectedCharType.length > 0 && !selectedCharType.includes(character.ulti)) {
+        return false
+      }
       // Awakening filter
       if (selectedAwakening.length > 0 && !selectedAwakening.includes(character.awakening)) {
         return false
@@ -313,7 +332,7 @@ export default function CharactersPage() {
 
       return true
     })
-  }, [searchTerm, searchSkills, selectedElements, selectedWeapons, selectedStars, selectedDMGType , selectedType, selectedUlti , selectedAwakening])
+  }, [searchTerm, searchSkills, selectedElements, selectedWeapons, selectedStars, selectedDMGType , selectedType, selectedUlti , selectedCharType , selectedAwakening])
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -467,6 +486,21 @@ export default function CharactersPage() {
                     }`}
                   >
                     <img src={iconPath || "/placeholder.svg"} alt={ulti_type} className="w-8 h-8 object-contain" />
+                  </button>
+                ))}
+              </div>
+
+              {/* Char Type */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {Object.entries(chartypeIcons).map(([char_type, iconPath]) => (
+                  <button
+                    key={char_type}
+                    onClick={() => toggleFilter(char_type, selectedCharType, setSelectedCharType)}
+                    className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
+                      selectedCharType.includes(char_type) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
+                    }`}
+                  >
+                    <img src={iconPath || "/placeholder.svg"} alt={char_type} className="w-8 h-8 object-contain" />
                   </button>
                 ))}
               </div>
