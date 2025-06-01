@@ -404,7 +404,7 @@ export default function CharactersPage() {
                 {Object.entries(dmg_typeIcons).map(([type, iconPath]) => (
                   <button
                     key={type}
-                    onClick={() => toggleFilter(weapon, selectedDMGType, setSelectedDMGType)}
+                    onClick={() => toggleFilter(type, selectedDMGType, setSelectedDMGType)}
                     className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
                       selectedDMGType.includes(type) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
                     }`}
