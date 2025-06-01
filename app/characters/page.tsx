@@ -11,6 +11,7 @@ interface Character {
   id: string
   name: string
   type: string
+  ulti: string
   dmg_type: string
   element: "fire" | "water" | "earth" | "space" | "wind" | "dark" | "light"
   stars: 3 | 4 | 5 | 6
@@ -38,6 +39,7 @@ const characters: Character[] = [
     stars: 6,
     weapon: "sword",
     awakening: 3,
+    ulti: "aoe",
     skills: ["Predator", "Great Sage"],
     traits: ["Slime", "Demon Lord"],
     force: "Tempest",
@@ -57,6 +59,7 @@ const characters: Character[] = [
     type: "attacker",
     weapon: "book",
     dmg_type: "phys",
+    ulti: "aoe",
     awakening: 2,
     skills: ["Healing", "Barrier"],
     traits: ["Ogre", "Princess"],
@@ -78,6 +81,7 @@ const characters: Character[] = [
     type: "attacker",
     awakening: 3,
     dmg_type: "phys",
+    ulti: "aoe",
     skills: ["Hell Flare", "Flame Blade"],
     traits: ["Kijin", "General"],
     force: "Tempest",
@@ -98,6 +102,7 @@ const characters: Character[] = [
     type: "attacker",
     awakening: 2,
     dmg_type: "phys",
+    ulti: "aoe",
     skills: ["Cook", "Strength"],
     traits: ["Ogre", "Secretary"],
     force: "Tempest",
@@ -118,6 +123,7 @@ const characters: Character[] = [
     awakening: 1,
     dmg_type: "phys",
     type: "attacker",
+    ulti: "aoe",
     skills: ["Swordsmanship", "Teaching"],
     traits: ["Kijin", "Master"],
     force: "Tempest",
@@ -138,6 +144,7 @@ const characters: Character[] = [
     awakening: 2,
     dmg_type: "phys",
     type: "attacker",
+    ulti: "aoe",
     skills: ["Shadow Step", "Assassination"],
     traits: ["Kijin", "Spy"],
     force: "Tempest",
@@ -158,6 +165,7 @@ const characters: Character[] = [
     dmg_type: "phys",
     type: "attacker",
     awakening: 1,
+    ulti: "aoe",
     skills: ["Archery", "Luck"],
     traits: ["Hobgoblin", "Scout"],
     force: "Tempest",
@@ -178,6 +186,7 @@ const characters: Character[] = [
     dmg_type: "magic",
     type: "protector",
     awakening: 3,
+    ulti: "single",
     skills: ["Death Streak", "Nuclear Magic"],
     traits: ["Demon", "Butler"],
     force: "Tempest",
@@ -231,6 +240,11 @@ const typeIcons = {
   protector: "/type/protector.png"
 }
 
+const ultiIcons = {
+  attacker: "/ulti_type/aoe.png",
+  protector: "/ulti_type/single.png"
+}
+
 export default function CharactersPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [searchSkills, setSearchSkills] = useState(false)
@@ -239,6 +253,7 @@ export default function CharactersPage() {
   const [selectedStars, setSelectedStars] = useState<number[]>([])
   const [selectedDMGType, setSelectedDMGType] = useState<number[]>([])
   const [selectedType, setSelectedType] = useState<number[]>([])
+  const [selectedUlti, setSelectedUlti] = useState<number[]>([])
   const [selectedAwakening, setSelectedAwakening] = useState<number[]>([])
   const [skillsFilter, setSkillsFilter] = useState("")
   const [traitsFilter, setTraitsFilter] = useState("")
@@ -288,6 +303,9 @@ export default function CharactersPage() {
       if (selectedType.length > 0 && !selectedType.includes(character.type)) {
         return false
       }
+      if (selectedUlti.length > 0 && !selectedUlti.includes(character.ulti)) {
+        return false
+      }
       // Awakening filter
       if (selectedAwakening.length > 0 && !selectedAwakening.includes(character.awakening)) {
         return false
@@ -295,7 +313,7 @@ export default function CharactersPage() {
 
       return true
     })
-  }, [searchTerm, searchSkills, selectedElements, selectedWeapons, selectedStars, selectedDMGType , selectedType, selectedAwakening])
+  }, [searchTerm, searchSkills, selectedElements, selectedWeapons, selectedStars, selectedDMGType , selectedType, selectedUlti , selectedAwakening])
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -434,6 +452,21 @@ export default function CharactersPage() {
                     }`}
                   >
                     <img src={iconPath || "/placeholder.svg"} alt={type_char} className="w-8 h-8 object-contain" />
+                  </button>
+                ))}
+              </div>
+
+              {/* Ulti */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {Object.entries(ultiIcons).map(([ulti_type, iconPath]) => (
+                  <button
+                    key={ulti_type}
+                    onClick={() => toggleFilter(ulti_type, selectedUlti, setSelectedUlti)}
+                    className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
+                      selectedType.includes(ulti_type) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
+                    }`}
+                  >
+                    <img src={iconPath || "/placeholder.svg"} alt={ulti_type} className="w-8 h-8 object-contain" />
                   </button>
                 ))}
               </div>
