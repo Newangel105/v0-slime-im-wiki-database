@@ -371,15 +371,17 @@ export default function CharactersPage() {
                   <button
                     key={stars}
                     onClick={() => toggleFilter(stars, selectedStars, setSelectedStars)}
-                    className={`flex items-center space-x-1 px-3 py-1 rounded transition-opacity ${
+                    className={`p-1 rounded transition-opacity ${
                       selectedStars.includes(stars)
                         ? "bg-yellow-600 opacity-100"
                         : "bg-gray-600 opacity-50 hover:opacity-75"
                     }`}
                   >
-                    {Array.from({ length: stars }).map((_, i) => (
-                      <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                    ))}
+                    <img
+                      src={`/stars/starCharaL${stars}A.png`} // Customize path if different
+                      alt={`${stars} Stars`}
+                      className="h-6 object-contain"
+                    />
                   </button>
                 ))}
               </div>
