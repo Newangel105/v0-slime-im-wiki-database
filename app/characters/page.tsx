@@ -226,6 +226,11 @@ const dmg_typeIcons = {
   phys: "/type_dmg/icAttackTypePhysics.png"
 }
 
+const typeIcons = {
+  attacker: "/type/attacker.png",
+  protector: "/type/protector.png"
+}
+
 export default function CharactersPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [searchSkills, setSearchSkills] = useState(false)
@@ -233,6 +238,7 @@ export default function CharactersPage() {
   const [selectedWeapons, setSelectedWeapons] = useState<string[]>([])
   const [selectedStars, setSelectedStars] = useState<number[]>([])
   const [selectedDMGType, setSelectedDMGType] = useState<number[]>([])
+  const [selectedType, setSelectedType] = useState<number[]>([])
   const [selectedAwakening, setSelectedAwakening] = useState<number[]>([])
   const [skillsFilter, setSkillsFilter] = useState("")
   const [traitsFilter, setTraitsFilter] = useState("")
@@ -279,6 +285,9 @@ export default function CharactersPage() {
       if (selectedDMGType.length > 0 && !selectedDMGType.includes(character.dmg_type)) {
         return false
       }
+      if (selectedType.length > 0 && !selectedType.includes(character.type)) {
+        return false
+      }
       // Awakening filter
       if (selectedAwakening.length > 0 && !selectedAwakening.includes(character.awakening)) {
         return false
@@ -286,7 +295,7 @@ export default function CharactersPage() {
 
       return true
     })
-  }, [searchTerm, searchSkills, selectedElements, selectedWeapons, selectedStars, selectedDMGType , selectedAwakening])
+  }, [searchTerm, searchSkills, selectedElements, selectedWeapons, selectedStars, selectedDMGType , selectedType, selectedAwakening])
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -410,6 +419,21 @@ export default function CharactersPage() {
                     }`}
                   >
                     <img src={iconPath || "/placeholder.svg"} alt={type} className="w-8 h-8 object-contain" />
+                  </button>
+                ))}
+              </div>
+
+              {/* Type */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {Object.entries(typeIcons).map(([type_char, iconPath]) => (
+                  <button
+                    key={type_char}
+                    onClick={() => toggleFilter(type_char, selectedType, setSelectedType)}
+                    className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
+                      selectedType.includes(type_char) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
+                    }`}
+                  >
+                    <img src={iconPath || "/placeholder.svg"} alt={type_char} className="w-8 h-8 object-contain" />
                   </button>
                 ))}
               </div>
