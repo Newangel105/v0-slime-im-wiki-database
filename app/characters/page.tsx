@@ -409,7 +409,7 @@ export default function CharactersPage() {
                       selectedDMGType.includes(type) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
                     }`}
                   >
-                    <img src={iconPath || "/placeholder.svg"} alt={weapon} className="w-8 h-8 object-contain" />
+                    <img src={iconPath || "/placeholder.svg"} alt={type} className="w-8 h-8 object-contain" />
                   </button>
                 ))}
               </div>
