@@ -322,7 +322,7 @@ export default function CharactersPage() {
       if (selectedUlti.length > 0 && !selectedUlti.includes(character.ulti)) {
         return false
       }
-      if (selectedCharType.length > 0 && !selectedCharType.includes(character.ulti)) {
+      if (selectedCharType.length > 0 && !selectedCharType.includes(character.char_type)) {
         return false
       }
       // Awakening filter
