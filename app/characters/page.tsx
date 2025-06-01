@@ -463,7 +463,7 @@ export default function CharactersPage() {
                     key={ulti_type}
                     onClick={() => toggleFilter(ulti_type, selectedUlti, setSelectedUlti)}
                     className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
-                      selectedType.includes(ulti_type) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
+                      selectedUlti.includes(ulti_type) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
                     }`}
                   >
                     <img src={iconPath || "/placeholder.svg"} alt={ulti_type} className="w-8 h-8 object-contain" />
