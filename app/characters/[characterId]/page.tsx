@@ -20,10 +20,14 @@ interface Character {
   force: string
   town: string
   image: string
-  attack: number
-  health: number
-  defense: number
-  existence: number
+  initial_attack: number,
+  initial_health: number,
+  initial_defense: number,
+  final_attack: number,
+  final_health: number,
+  final_defense: number,
+  output_initial: number,
+  output_final: number,
   rarity: number
 }
 
@@ -149,8 +153,8 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     <span className="text-gray-300 text-sm">Health</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <span className="text-white font-medium">{character.health.toLocaleString()}</span>
-                    <span className="text-gray-500 text-sm">8233</span>
+                    <span className="text-white font-medium">{character.initial_health.toLocaleString()}</span>
+                    <span className="text-gray-500 text-sm">{character.final_health.toLocaleString()}</span>
                   </div>
                 </div>
                 <div className="w-full bg-gray-700 rounded-full h-2">
@@ -163,8 +167,8 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     <span className="text-gray-300 text-sm">Attack</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <span className="text-white font-medium">{character.attack.toLocaleString()}</span>
-                    <span className="text-gray-500 text-sm">4024</span>
+                    <span className="text-white font-medium">{character.initial_attack.toLocaleString()}</span>
+                    <span className="text-gray-500 text-sm">{character.final_attack.toLocaleString()}</span>
                   </div>
                 </div>
                 <div className="w-full bg-gray-700 rounded-full h-2">
@@ -177,8 +181,8 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     <span className="text-gray-300 text-sm">Defense</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <span className="text-white font-medium">{character.defense.toLocaleString()}</span>
-                    <span className="text-gray-500 text-sm">2864</span>
+                    <span className="text-white font-medium">{character.initial_defense.toLocaleString()}</span>
+                    <span className="text-gray-500 text-sm">{character.final_defense.toLocaleString()}</span>
                   </div>
                 </div>
                 <div className="w-full bg-gray-700 rounded-full h-2">
@@ -191,8 +195,18 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     <span className="text-gray-300 text-sm">Existence</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <span className="text-white font-medium">{character.existence.toLocaleString()}</span>
-                    <span className="text-gray-500 text-sm">3513</span>
+                    <span className="text-white font-medium">{(
+                      character.initial_health +
+                      character.initial_attack * 5 +
+                      character.initial_defense * 2.5
+                    ).toLocaleString()}
+                    </span>
+                    <span className="text-gray-500 text-sm">{(
+                      character.final_health +
+                      character.final_attack * 5 +
+                      character.final_defense * 2.5
+                    ).toLocaleString()}
+                    </span>
                   </div>
                 </div>
                 <div className="w-full bg-gray-700 rounded-full h-2">
@@ -205,8 +219,8 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     <span className="text-gray-300 text-sm">Output</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <span className="text-white font-medium">80</span>
-                    <span className="text-gray-500 text-sm">150</span>
+                    <span className="text-white font-medium">{character.output_initial.toLocaleString()}</span>
+                    <span className="text-gray-500 text-sm">{character.output_final.toLocaleString()}</span>
                   </div>
                 </div>
                 <div className="w-full bg-gray-700 rounded-full h-2">
