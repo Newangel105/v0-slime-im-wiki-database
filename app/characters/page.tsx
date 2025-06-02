@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Search, Star, Sword, Shield, Gamepad2 } from "lucide-react"
+import Link from "next/link"
 
 interface Character {
   id: string
@@ -587,50 +588,51 @@ export default function CharactersPage() {
 
             {/* Character Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
-            {filteredCharacters.map((character) => (
-              <div
-                key={character.id}
-                className="relative w-full h-32 overflow-hidden rounded" // fixed height to match frame
-              >
-                {/* Character Image */}
-                <img
-                  src={character.image || "/placeholder.svg"}
-                  alt={character.name}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
+              {filteredCharacters.map((character) => (
+                <Link href={`/characters/${character.id}`} key={character.id}>
+                  <div className="relative w-full h-32 overflow-hidden rounded cursor-pointer hover:scale-105 transition-transform">
+                    {/* Character Image */}
+                    <img
+                      src={character.image || "/placeholder.svg"}
+                      alt={character.name}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
 
-                {/* Frame Overlay */}
-                <img
-                  src="/frame/frameMemberM5up.png"
-                  alt="Frame"
-                  className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                />
+                    {/* Frame Overlay */}
+                    <img
+                      src="/frame/frameMemberM5up.png"
+                      alt="Frame"
+                      className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                    />
 
-                {/* Stars (bottom-left) */}
-                <img
-                  src="/stars/starCharaL5A.png"
-                  alt="stars"
-                  className="absolute bottom-1 left-1 h-6 object-contain z-10"
-                />
+                    {/* Stars (bottom-left) */}
+                    <img
+                      src="/stars/starCharaL5A.png"
+                      alt="stars"
+                      className="absolute bottom-1 left-1 h-6 object-contain z-10"
+                    />
 
-                {/* Element Icon (top-right) */}
-                <div className="absolute top-1 right-1 flex flex-col items-center z-20 space-y-1">
-                  <img
-                    src={
-                      character.type === "attacker"
-                        ? (elementIcons[character.element] || "/placeholder.svg")
-                        : (protelementIcons[character.element] || "/placeholder.svg")
-                    }
-                    alt={character.element}
-                    className="w-6 h-6 object-contain"
-                  />
-                  <img
-                    src="/type_dmg/icAttackTypePhysics.png"
-                    alt="Dmg"
-                    className="w-6 h-6 object-contain"
-                  />
-                </div>
-              </div>
+                    {/* Element Icon (top-right) */}
+                    <div className="absolute top-1 right-1 flex flex-col items-center z-20 space-y-1">
+                      <img
+                        src={
+                          character.type === "attacker"
+                            ? elementIcons[character.element] || "/placeholder.svg"
+                            : protelementIcons[character.element] || "/placeholder.svg"
+                        }
+                        alt={character.element}
+                        className="w-6 h-6 object-contain"
+                      />
+                      <img
+                        src="/type_dmg/icAttackTypePhysics.png"
+                        alt="Dmg"
+                        className="w-6 h-6 object-contain"
+                      />
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
             ))}
           </div>
 
