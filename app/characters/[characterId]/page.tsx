@@ -4,33 +4,6 @@ import { Star, Heart, Sword, Shield, Zap, Target, Gamepad2, ArrowLeft } from "lu
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
-interface Character {
-  id: number
-  name: string
-  element: string
-  stars: number
-  weapon: string
-  awakening: number
-  dmg_type: string
-  type: string
-  char_type: string
-  ulti: string
-  skills: string
-  traits: string
-  force: string
-  town: string
-  image: string
-  initial_attack: number,
-  initial_health: number,
-  initial_defense: number,
-  final_attack: number,
-  final_health: number,
-  final_defense: number,
-  output_initial: number,
-  output_final: number,
-  rarity: number
-}
-
 const elementIcons = {
   fire: "/elements/icElementFire.png",
   water: "/elements/icElementWater.png",

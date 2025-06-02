@@ -16,10 +16,14 @@ export type Character = {
   force: string[]
   town: string
   image: string
-  attack: number
-  health: number
-  defense: number
-  existence: number
+  initial_attack: number
+  initial_health: number
+  initial_defense: number
+  final_attack: number
+  final_health: number
+  final_defense: number
+  output_initial: number
+  output_final: number
   rarity: number
 }
 
