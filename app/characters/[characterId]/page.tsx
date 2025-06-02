@@ -23,7 +23,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             return (
               <span
                 key={`${lineIndex}-${index}`}
-                className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#141414] text-white text-xs font-medium mx-1"
+                className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#909090] text-white text-xs font-medium mx-1"
               >
                 <img
                   src={statIconMap[part]}
@@ -386,7 +386,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     />
 
                     {/* Character image clipped inside smaller circle */}
-                    <div className="absolute top-1/2 left-1/2 w-[20px] h-[20px] rounded-full overflow-hidden -translate-x-1/2 -translate-y-1/2 z-10">
+                    <div className="absolute top-1/2 left-1/2 w-[30px] h-[30px] rounded-full overflow-hidden -translate-x-1/2 -translate-y-1/2 z-10">
                       <img
                         src={character.image}
                         alt={character.name}
