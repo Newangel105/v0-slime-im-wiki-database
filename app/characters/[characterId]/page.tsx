@@ -135,7 +135,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         <div className="flex items-center space-x-4 mb-8">
           <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-800">
             <img
-              src={`/char_image_full/${character.id}.png`}
+              src={`/charimage/${character.id}.png`}
               alt={character.name}
               className="w-full h-full object-cover"
             />
