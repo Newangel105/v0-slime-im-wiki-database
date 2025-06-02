@@ -373,7 +373,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             {character.secret_skills.map((skill, index) => (
               <div key={index} className="bg-gray-900 rounded-lg p-4">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="relative w-[96px] h-[98px]">
+                  <div className="relative w-[48px] h-[48px]">
                     {/* Skill Frame (background) */}
                     <img
                       src={`/skills/${skill.imageName}`}
@@ -382,7 +382,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     />
 
                     {/* Character image clipped inside smaller circle */}
-                    <div className="absolute top-1/2 left-1/2 w-[45px] h-[45px] rounded-full overflow-hidden -translate-x-1/2 -translate-y-1/2 z-10">
+                    <div className="absolute top-1/2 left-1/2 w-[24px] h-[24px] rounded-full overflow-hidden -translate-x-1/2 -translate-y-1/2 z-10">
                       <img
                         src={character.image}
                         alt={character.name}
