@@ -18,12 +18,16 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     return text.split(/(HP|ATK|DEF)/g).map((part, index) => {
       if (statIconMap[part]) {
         const iconSize = part === "ATK" ? "w-3 h-4" : "w-4 h-4";
+
         return (
-          <span key={index} className="inline-flex items-center mx-1">
+          <span
+            key={index}
+            className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#141414] text-white text-xs font-medium mx-1"
+          >
             <img
               src={statIconMap[part]}
               alt={part}
-              className={`inline ${iconSize} mr-1 align-text-bottom`}
+              className={`${iconSize} mr-1 object-contain`}
             />
             {part}
           </span>
@@ -32,7 +36,6 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
       return <span key={index}>{part}</span>;
     });
   }
-
 
   if (!character) {
     return (
