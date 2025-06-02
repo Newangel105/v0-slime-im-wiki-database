@@ -17,18 +17,22 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   function replaceStatTextWithIcons(text: string) {
     return text.split(/(HP|ATK|DEF)/g).map((part, index) => {
       if (statIconMap[part]) {
+        const iconSize = part === "ATK" ? "w-3.5 h-3.5" : "w-4 h-4";
         return (
-          <img
-            key={index}
-            src={statIconMap[part]}
-            alt={part}
-            className="inline w-4 h-4 mx-1 align-text-bottom"
-          />
+          <span key={index} className="inline-flex items-center mx-1">
+            <img
+              src={statIconMap[part]}
+              alt={part}
+              className={`inline ${iconSize} mr-1 align-text-bottom`}
+            />
+            {part}
+          </span>
         );
       }
       return <span key={index}>{part}</span>;
     });
   }
+
 
   if (!character) {
     return (
@@ -366,12 +370,12 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             {character.secret_skills.map((skill, index) => (
               <div key={index} className="bg-gray-900 rounded-lg p-4">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-12 h-12 relative rounded-lg overflow-hidden">
+                  <div className="w-12 h-12 relative rounded-lg overflow-hidden flex items-center justify-center">
                   {/* Background character image */}
                   <img
                     src={character.image}
                     alt={character.name}
-                    className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
+                    className="absolute w-10 h-10 object-contain opacity-30"
                   />
 
                   {/* Foreground skill image */}
@@ -379,7 +383,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     <img
                       src={`/skills/${skill.imageName}`}
                       alt={skill.attackName}
-                      className="absolute top-0 left-0 w-full h-full object-contain"
+                      className="relative w-10 h-10 object-contain z-10"
                     />
                   )}
                 </div>
