@@ -20,7 +20,7 @@ interface Character {
   char_type: string
   skills: string[]
   traits: string[]
-  force: string
+  force: string[]
   town: string
   image: string
   attack: number
@@ -44,7 +44,7 @@ const characters: Character[] = [
     ulti: "aoe",
     skills: ["Predator", "Great Sage"],
     traits: ["Slime", "Demon Lord"],
-    force: "Tempest",
+    force: ["Tempest"],
     town: "Rimuru City",
     image: "/charimage/1.png",
     attack: 2500,
@@ -66,7 +66,7 @@ const characters: Character[] = [
     awakening: 2,
     skills: ["Healing", "Barrier"],
     traits: ["Ogre", "Princess"],
-    force: "Tempest",
+    force: ["Tempest"],
     town: "Rimuru City",
     image: "/placeholder.svg?height=80&width=80",
     attack: 1800,
@@ -88,7 +88,7 @@ const characters: Character[] = [
     ulti: "aoe",
     skills: ["Hell Flare", "Flame Blade"],
     traits: ["Kijin", "General"],
-    force: "Tempest",
+    force: ["Tempest","Stuff"],
     town: "Rimuru City",
     image: "/placeholder.svg?height=80&width=80",
     attack: 2300,
@@ -110,7 +110,7 @@ const characters: Character[] = [
     ulti: "aoe",
     skills: ["Cook", "Strength"],
     traits: ["Ogre", "Secretary"],
-    force: "Tempest",
+    force: ["Tempest"],
     town: "Rimuru City",
     image: "/placeholder.svg?height=80&width=80",
     attack: 2100,
@@ -132,7 +132,7 @@ const characters: Character[] = [
     ulti: "aoe",
     skills: ["Swordsmanship", "Teaching"],
     traits: ["Kijin", "Master"],
-    force: "Tempest",
+    force: ["Tempest"],
     town: "Rimuru City",
     image: "/placeholder.svg?height=80&width=80",
     attack: 1900,
@@ -154,7 +154,7 @@ const characters: Character[] = [
     ulti: "aoe",
     skills: ["Shadow Step", "Assassination"],
     traits: ["Kijin", "Spy"],
-    force: "Tempest",
+    force: ["Tempest"],
     town: "Rimuru City",
     image: "/placeholder.svg?height=80&width=80",
     attack: 2000,
@@ -176,7 +176,7 @@ const characters: Character[] = [
     ulti: "aoe",
     skills: ["Archery", "Luck"],
     traits: ["Hobgoblin", "Scout"],
-    force: "Tempest",
+    force: ["Tempest"],
     town: "Rimuru City",
     image: "/placeholder.svg?height=80&width=80",
     attack: 1200,
@@ -198,7 +198,7 @@ const characters: Character[] = [
     ulti: "single",
     skills: ["Death Streak", "Nuclear Magic"],
     traits: ["Demon", "Butler"],
-    force: "Tempest",
+    force: ["Tempest"],
     town: "Rimuru City",
     image: "/placeholder.svg?height=80&width=80",
     attack: 2800,
@@ -537,7 +537,8 @@ export default function CharactersPage() {
                 </SelectTrigger>
                 <SelectContent className="bg-gray-700 border-gray-600">
                   <SelectItem value="all">All Forces</SelectItem>
-                  <SelectItem value="tempest">Tempest</SelectItem>
+                  <SelectItem value="Tempest">Tempest</SelectItem>
+                  <SelectItem value="Stuff">Tempest</SelectItem>
                 </SelectContent>
               </Select>
 
