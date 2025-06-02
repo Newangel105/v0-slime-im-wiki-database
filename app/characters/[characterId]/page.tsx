@@ -406,17 +406,15 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             {character.ex_abilities.map((skill, index) => (
               <div key={index} className="bg-gray-900 rounded-lg p-4">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-12 h-12  rounded-lg flex items-center justify-center overflow-hidden">
-                    {skill.imageName ? (
+                  {skill.imageName && (
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
                       <img
                         src={`/skills/${skill.imageName}`}
                         alt={skill.attackName}
                         className="w-10 h-10 object-contain"
                       />
-                    ) : (
-                      <span className="text-white text-xs">No Img</span>
-                    )}
-                  </div>
+                    </div>
+                  )}
                   <div>
                     <h3 className="text-white font-medium">{skill.attackName}</h3>
                     {skill.extraText && (
