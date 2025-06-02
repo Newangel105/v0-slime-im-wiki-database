@@ -337,7 +337,7 @@ export default function CharactersPage() {
 
       return true
     })
-  }, [searchTerm, searchSkills, selectedElements, selectedWeapons, selectedStars, selectedDMGType , selectedType, selectedUlti , selectedCharType , selectedAwakening])
+  }, [searchTerm, searchSkills, selectedElements, selectedWeapons, selectedStars, selectedDMGType , selectedType, selectedUlti , selectedCharType , selectedAwakening, forceFilter])
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
