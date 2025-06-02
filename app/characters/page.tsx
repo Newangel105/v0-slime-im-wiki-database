@@ -440,7 +440,7 @@ export default function CharactersPage() {
 
             {/* Character Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
-              {filteredCharacters.map((character) => (
+              {filteredCharacters.map((character) => {
                 return (
                   <Link key={character.id} href={`/characters/${character.id}`}>
                     <div className="relative w-full h-32 overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white">
@@ -485,8 +485,8 @@ export default function CharactersPage() {
                     </div>
                   </Link>
                 )
-              ))}
-          </div>
+              })}
+            </div>
             {filteredCharacters.length === 0 && (
               <div className="text-center text-gray-400 py-8">No characters found matching the current filters.</div>
             )}
