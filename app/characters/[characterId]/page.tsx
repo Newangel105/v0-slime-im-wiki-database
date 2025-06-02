@@ -373,23 +373,23 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             {character.secret_skills.map((skill, index) => (
               <div key={index} className="bg-gray-900 rounded-lg p-4">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="relative w-[192px] h-[196px]">
-                  {/* Skill Frame (background) */}
-                  <img
-                    src={`/skills/${skill.imageName}`}
-                    alt={skill.attackName}
-                    className="absolute top-0 left-0 w-full h-full object-contain z-0"
-                  />
-
-                  {/* Character image clipped inside circle */}
-                  <div className="absolute top-1/2 left-1/2 w-[100px] h-[100px] rounded-full overflow-hidden -translate-x-1/2 -translate-y-1/2 z-10">
+                  <div className="relative w-[96px] h-[98px]">
+                    {/* Skill Frame (background) */}
                     <img
-                      src={character.image}
-                      alt={character.name}
-                      className="w-full h-full object-cover"
+                      src={`/skills/${skill.imageName}`}
+                      alt={skill.attackName}
+                      className="absolute top-0 left-0 w-full h-full object-contain z-0"
                     />
+
+                    {/* Character image clipped inside smaller circle */}
+                    <div className="absolute top-1/2 left-1/2 w-[45px] h-[45px] rounded-full overflow-hidden -translate-x-1/2 -translate-y-1/2 z-10">
+                      <img
+                        src={character.image}
+                        alt={character.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   </div>
-                </div>
                   <div>
                     <h3 className="text-white font-medium">{skill.attackName}</h3>
                     {skill.extraText && (
