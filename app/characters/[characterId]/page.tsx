@@ -4,16 +4,6 @@ import { Star, Heart, Sword, Shield, Zap, Target, Gamepad2, ArrowLeft } from "lu
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
-const elementIcons = {
-  fire: "/elements/icElementFire.png",
-  water: "/elements/icElementWater.png",
-  earth: "/elements/icElementEarth.png",
-  air: "/elements/icElementAir.png",
-  wind: "/elements/icElementWind.png",
-  dark: "/elements/icElementDark.png",
-  light: "/elements/icElementlight.png",
-}
-
 export default function CharacterDetailPage({ params }: { params: { characterId: string } }) {
   const characterId = Number(params.characterId)
   const character = characters.find((char) => char.id === characterId)
@@ -34,6 +24,32 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
       </div>
     )
   }
+
+  // Calculate max stats across all characters
+  const maxFinalAttack = Math.max(...characters.map(c => c.final_attack))
+  const maxFinalDefense = Math.max(...characters.map(c => c.final_defense))
+  const maxFinalHealth = Math.max(...characters.map(c => c.final_health))
+  const maxOutput = Math.max(...characters.map(c => c.output_final))
+
+  // Calculate percentages for this character, fallback to 0 if max is 0
+  const attackPercent = maxFinalAttack ? (character.final_attack / maxFinalAttack) * 100 : 0
+  const defensePercent = maxFinalDefense ? (character.final_defense / maxFinalDefense) * 100 : 0
+  const healthPercent = maxFinalHealth ? (character.final_health / maxFinalHealth) * 100 : 0
+  const outputPercent = maxOutput ? (character.output_final / maxOutput) * 100 : 0
+
+  const maxExistence = Math.max(
+    ...characters.map(
+      (c) =>
+        c.final_health + c.final_attack * 5 + c.final_defense * 2.5
+    )
+  )
+
+  // Calculate this character's existence
+  const charExistence =
+    character.final_health + character.final_attack * 5 + character.final_defense * 2.5
+
+  // Calculate existence percentage relative to max
+  const existencePercent = maxExistence ? (charExistence / maxExistence) * 100 : 0
 
   // Parse pipe-separated values
   const skillsList = character.skills.split("|").filter((skill) => skill.trim())
@@ -131,7 +147,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                   </div>
                 </div>
                 <div className="w-full bg-gray-700 rounded-full h-2">
-                  <div className="bg-green-500 h-2 rounded-full" style={{ width: "75%" }}></div>
+                  <div className="bg-green-500 h-2 rounded-full" style={{ width: `${healthPercent}%` }}></div>
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -145,7 +161,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                   </div>
                 </div>
                 <div className="w-full bg-gray-700 rounded-full h-2">
-                  <div className="bg-yellow-500 h-2 rounded-full" style={{ width: "60%" }}></div>
+                  <div className="bg-yellow-500 h-2 rounded-full" style={{ width: `${attackPercent}%` }}></div>
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -159,7 +175,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                   </div>
                 </div>
                 <div className="w-full bg-gray-700 rounded-full h-2">
-                  <div className="bg-blue-500 h-2 rounded-full" style={{ width: "45%" }}></div>
+                  <div className="bg-blue-500 h-2 rounded-full" style={{ width: `${defensePercent}%` }}></div>
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -183,7 +199,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                   </div>
                 </div>
                 <div className="w-full bg-gray-700 rounded-full h-2">
-                  <div className="bg-purple-500 h-2 rounded-full" style={{ width: "85%" }}></div>
+                  <div className="bg-purple-500 h-2 rounded-full" style={{ width: `${existencePercent}%` }}></div>
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -197,7 +213,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                   </div>
                 </div>
                 <div className="w-full bg-gray-700 rounded-full h-2">
-                  <div className="bg-gray-500 h-2 rounded-full" style={{ width: "53%" }}></div>
+                  <div className="bg-gray-500 h-2 rounded-full" style={{ width: `${outputPercent}%` }}></div>
                 </div>
 
                 <div className="mt-4 pt-4 border-t border-gray-700">
