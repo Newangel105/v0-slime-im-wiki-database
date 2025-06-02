@@ -7,22 +7,21 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Search, Star, Sword, Shield, Gamepad2 } from "lucide-react"
 import Link from 'next/link'
-import { getAllCharacters } from '@/lib/getCharacters'
 
 interface Character {
-  id: string
+  id: number
   name: string
-  type: string
-  ulti: string
-  dmg_type: string
-  element: "fire" | "water" | "earth" | "space" | "wind" | "dark" | "light"
-  stars: 3 | 4 | 5 | 6
-  weapon: "sword" | "katana" | "hammer" | "spear" | "greatsword" | "book" | "fists"
+  element: string
+  stars: number
+  weapon: string
   awakening: number
+  dmg_type: string
+  type: string
   char_type: string
-  skills: string[]
-  traits: string[]
-  force: string[]
+  ulti: string
+  skills: string
+  traits: string
+  force: string
   town: string
   image: string
   attack: number
@@ -31,8 +30,6 @@ interface Character {
   existence: number
   rarity: number
 }
-
-const characters = getAllCharacters()
 
 const elementIcons = {
   fire: "/elements/icElementFire.png",
@@ -86,6 +83,8 @@ const chartypeIcons = {
 }
 
 export default function CharactersPage() {
+  const [characters, setCharacters] = useState<Character[]>([])
+  const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState("")
   const [searchSkills, setSearchSkills] = useState(false)
   const [selectedElements, setSelectedElements] = useState<string[]>([])
@@ -101,6 +100,25 @@ export default function CharactersPage() {
   const [forceFilter, setForceFilter] = useState("")
   const [townFilter, setTownFilter] = useState("")
   const [sortBy, setSortBy] = useState("release")
+
+  useEffect(() => {
+    const fetchCharacters = async () => {
+      try {
+        const response = await fetch("/data/characters.json")
+        if (!response.ok) {
+          throw new Error("Failed to fetch characters")
+        }
+        const data: Character[] = await response.json()
+        setCharacters(data)
+      } catch (error) {
+        console.error("Error fetching characters:", error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+      fetchCharacters()
+  }, [])
 
   const toggleFilter = (
     value: string | number,
@@ -159,11 +177,21 @@ export default function CharactersPage() {
         return false
       }
 
-
       return true
     })
   }, [searchTerm, searchSkills, selectedElements, selectedWeapons, selectedStars, selectedDMGType , selectedType, selectedUlti , selectedCharType , selectedAwakening, forceFilter])
-
+  
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-white"></div>
+          <p className="mt-4">Loading characters...</p>
+        </div>
+      </div>
+    )
+  }
+  
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Header */}
@@ -412,50 +440,52 @@ export default function CharactersPage() {
 
             {/* Character Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
-            {filteredCharacters.map((character) => (
-              <Link key={character.id} href={`/characters/${character.id}`}>
-                <div className="relative w-full h-32 overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white">
-                  {/* Character Image */}
-                  <img
-                    src={character.image || "/placeholder.svg"}
-                    alt={character.name}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
+              {filteredCharacters.map((character) => (
+                return (
+                  <Link key={character.id} href={`/characters/${character.id}`}>
+                    <div className="relative w-full h-32 overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white">
+                      {/* Character Image */}
+                      <img
+                        src={character.image || "/placeholder.svg"}
+                        alt={character.name}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
 
-                  {/* Frame Overlay */}
-                  <img
-                    src="/frame/frameMemberM5up.png"
-                    alt="Frame"
-                    className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                  />
+                      {/* Frame Overlay */}
+                      <img
+                        src="/frame/frameMemberM5up.png"
+                        alt="Frame"
+                        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                      />
 
-                  {/* Stars (bottom-left) */}
-                  <img
-                    src="/stars/starCharaL5A.png"
-                    alt="stars"
-                    className="absolute bottom-1 left-1 h-6 object-contain z-10"
-                  />
+                      {/* Stars (bottom-left) */}
+                      <img
+                        src="/stars/starCharaL5A.png"
+                        alt="stars"
+                        className="absolute bottom-1 left-1 h-6 object-contain z-10"
+                      />
 
-                  {/* Element Icon (top-right) */}
-                  <div className="absolute top-1 right-1 flex flex-col items-center z-20 space-y-1">
-                    <img
-                      src={
-                        character.type === "attacker"
-                          ? (elementIcons[character.element] || "/placeholder.svg")
-                          : (protelementIcons[character.element] || "/placeholder.svg")
-                      }
-                      alt={character.element}
-                      className="w-6 h-6 object-contain"
-                    />
-                    <img
-                      src="/type_dmg/icAttackTypePhysics.png"
-                      alt="Dmg"
-                      className="w-6 h-6 object-contain"
-                    />
-                  </div>
-                </div>
-              </Link>
-            ))}
+                      {/* Element Icon (top-right) */}
+                      <div className="absolute top-1 right-1 flex flex-col items-center z-20 space-y-1">
+                        <img
+                          src={
+                            character.type === "attacker"
+                              ? (elementIcons[character.element] || "/placeholder.svg")
+                              : (protelementIcons[character.element] || "/placeholder.svg")
+                          }
+                          alt={character.element}
+                          className="w-6 h-6 object-contain"
+                        />
+                        <img
+                          src="/type_dmg/icAttackTypePhysics.png"
+                          alt="Dmg"
+                          className="w-6 h-6 object-contain"
+                        />
+                      </div>
+                    </div>
+                  </Link>
+                )
+              ))}
           </div>
             {filteredCharacters.length === 0 && (
               <div className="text-center text-gray-400 py-8">No characters found matching the current filters.</div>
