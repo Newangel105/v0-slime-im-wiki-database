@@ -1,0 +1,9 @@
+id,name,element,stars,weapon,awakening,dmg_type,type,char_type,ulti,skills,traits,force,town,image,attack,health,defense,existence,rarity
+1,Rimuru,water,6,sword,3,phys,attacker,attack,aoe,"Predator|Great Sage","Slime|Demon Lord","Tempest",Rimuru City,/charimage/1.png,2500,3000,2000,95,100
+2,Shuna,light,5,book,2,phys,attacker,attack,aoe,"Healing|Barrier","Ogre|Princess","Tempest",Rimuru City,/placeholder.svg?height=80&width=80,1800,2200,1600,85,80
+3,Benimaru,fire,5,katana,3,phys,attacker,attack,aoe,"Hell Flare|Flame Blade","Kijin|General","Tempest|Stuff",Rimuru City,/placeholder.svg?height=80&width=80,2300,2500,1800,90,85
+4,Shion,earth,5,greatsword,2,phys,attacker,balance,aoe,"Cook|Strength","Ogre|Secretary","Tempest",Rimuru City,/placeholder.svg?height=80&width=80,2100,2800,2200,88,82
+5,Hakurou,wind,4,katana,1,phys,attacker,defense,aoe,"Swordsmanship|Teaching","Kijin|Master","Tempest",Rimuru City,/placeholder.svg?height=80&width=80,1900,2000,1700,75,70
+6,Souei,dark,5,spear,2,phys,attacker,attack,aoe,"Shadow Step|Assassination","Kijin|Spy","Tempest",Rimuru City,/placeholder.svg?height=80&width=80,2000,1800,1500,82,78
+7,Gobta,earth,3,spear,1,phys,attacker,attack,aoe,"Archery|Luck","Hobgoblin|Scout","Tempest",Rimuru City,/placeholder.svg?height=80&width=80,1200,1400,1000,60,45
+8,Diablo,dark,6,fists,3,magic,protector,attack,single,"Death Streak|Nuclear Magic","Demon|Butler","Tempest",Rimuru City,/placeholder.svg?height=80&width=80,2800,2600,2100,98,95
