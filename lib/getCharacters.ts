@@ -16,6 +16,7 @@ export type Trait = {
 export type Character = {
   id: string
   name: string
+  sub_name: string
   element: string
   stars: number
   weapon: string

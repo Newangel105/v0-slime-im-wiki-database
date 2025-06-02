@@ -131,26 +131,20 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           </Button>
         </Link>
 
-        {/* Character Header */}
-        <div className="flex items-center space-x-4 mb-8">
-          <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-800">
-            <img
-              src={`/charimage/${character.id}.png`}
-              alt={character.name}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div>
-            <h1 className="text-2xl font-bold text-white">{character.name}</h1>
-            <div className="flex items-center space-x-2">
-              <div className="flex items-center space-x-1">
-                {Array.from({ length: character.stars }).map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-            </div>
-          </div>
+      {/* Character Header */}
+      <div className="flex items-center space-x-4 mb-8">
+        <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-800">
+          <img
+            src={`/charimage/${character.id}.png`}
+            alt={character.name}
+            className="w-full h-full object-cover"
+          />
         </div>
+        <div>
+          <h2 className="text-sm text-[#d9d9d9] font-medium">{character.sub_name}</h2>
+          <h1 className="text-2xl font-bold text-white">{character.name}</h1>
+        </div>
+      </div>
 
         {/* Main Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
