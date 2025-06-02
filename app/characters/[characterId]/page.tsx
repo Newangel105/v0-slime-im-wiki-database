@@ -64,7 +64,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   const forcesList = character.force.split("|").filter((force) => force.trim())
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-gray-900 text-white">
       {/* Header */}
       <header className="bg-gray-900 border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
