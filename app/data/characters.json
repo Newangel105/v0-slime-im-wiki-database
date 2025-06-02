@@ -43,7 +43,7 @@
         "description": "Unleashes an all-target attack for 300% normal damage.Decreases all targets'DEF by 5% Turns 2"
       },
       {
-        "imageName": "s2_1.png",
+        "imageName": "s1_1.png",
         "attackName": "EX Infinity Wisdom",
         "extraText": "35/25 Skill Points",
         "description": "Unleashes an all-target attack for 600% normal damage.Decreases all targets'DEF by 5% Turns 2"

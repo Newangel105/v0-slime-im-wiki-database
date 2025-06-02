@@ -338,121 +338,95 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
 
 
         {/* Secret Skills Section */}
-        <div className="mt-6 bg-gray-800 rounded-lg p-6 border border-gray-700">
-          <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">SECRET SKILLS</h2>
+        <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
+          <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">BATTLE SKILLS</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gray-900 rounded-lg p-4">
-              <div className="flex items-center space-x-3 mb-3">
-                <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
-                  <img src="/placeholder.svg?height=24&width=24" alt="Skill icon" className="w-6 h-6" />
+            {character.secret_skills.map((skill, index) => (
+              <div key={index} className="bg-gray-900 rounded-lg p-4">
+                <div className="flex items-center space-x-3 mb-3">
+                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center overflow-hidden">
+                    {skill.imageName ? (
+                      <img
+                        src={`/skills/${skill.imageName}`}
+                        alt={skill.attackName}
+                        className="w-10 h-10 object-contain"
+                      />
+                    ) : (
+                      <span className="text-white text-xs">No Img</span>
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="text-white font-medium">{skill.attackName}</h3>
+                    {skill.extraText && (
+                      <p className="text-blue-400 text-sm">{skill.extraText}</p>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-white font-medium">Anthem of Rim</h3>
-                  <p className="text-purple-400 text-sm">Soul Secret Damage</p>
-                </div>
+                <p className="text-gray-300 text-sm">{skill.description}</p>
               </div>
-              <p className="text-gray-300 text-sm">
-                Unleashes a single-target <span className="text-blue-400">Water</span>{" "}
-                <span className="text-gray-400">Physical</span> attack for <span className="text-orange-400">400%</span>{" "}
-                normal damage.
-              </p>
-            </div>
-
-            <div className="bg-gray-900 rounded-lg p-4">
-              <div className="flex items-center space-x-3 mb-3">
-                <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
-                  <img src="/placeholder.svg?height=24&width=24" alt="Skill icon" className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-white font-medium">EX Anthem of Rim</h3>
-                  <p className="text-purple-400 text-sm">200% Secret Damage</p>
-                </div>
-              </div>
-              <p className="text-gray-300 text-sm">
-                Unleashes a single-target <span className="text-blue-400">Water</span>{" "}
-                <span className="text-gray-400">Physical</span> attack for <span className="text-orange-400">735%</span>{" "}
-                normal damage.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
 
         {/* Traits Section */}
-        <div className="mt-6 bg-gray-800 rounded-lg p-6 border border-gray-700">
-          <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">TRAITS</h2>
+        <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
+          <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">BATTLE SKILLS</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gray-900 rounded-lg p-4">
-              <div className="flex items-center space-x-3 mb-3">
-                <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
-                  <img src="/placeholder.svg?height=24&width=24" alt="Trait icon" className="w-6 h-6" />
+            {character.skill_traits.map((skill, index) => (
+              <div key={index} className="bg-gray-900 rounded-lg p-4">
+                <div className="flex items-center space-x-3 mb-3">
+                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center overflow-hidden">
+                    {skill.imageName ? (
+                      <img
+                        src={`/skills/${skill.imageName}`}
+                        alt={skill.attackName}
+                        className="w-10 h-10 object-contain"
+                      />
+                    ) : (
+                      <span className="text-white text-xs">No Img</span>
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="text-white font-medium">{skill.attackName}</h3>
+                    {skill.extraText && (
+                      <p className="text-blue-400 text-sm">{skill.extraText}</p>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-white font-medium">Troop - Protection UP</h3>
-                  <p className="text-green-400 text-sm">Awaken 1st</p>
-                </div>
+                <p className="text-gray-300 text-sm">{skill.description}</p>
               </div>
-              <p className="text-gray-300 text-sm">
-                When your troop contains <span className="text-orange-400">3</span> or more battle characters, increases
-                protection gauge by <span className="text-green-400">5</span> every{" "}
-                <span className="text-blue-400">3</span> turns.
-              </p>
-            </div>
-
-            <div className="bg-gray-900 rounded-lg p-4">
-              <div className="flex items-center space-x-3 mb-3">
-                <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
-                  <img src="/placeholder.svg?height=24&width=24" alt="Trait icon" className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-white font-medium">Troop - Protection UP</h3>
-                  <p className="text-green-400 text-sm">Awaken 1st</p>
-                </div>
-              </div>
-              <p className="text-gray-300 text-sm">
-                When your troop contains <span className="text-orange-400">3</span> or more battle characters, increases
-                protection gauge by <span className="text-green-400">7</span> every{" "}
-                <span className="text-blue-400">3</span> turns.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
 
         {/* EX Abilities Section */}
-        <div className="mt-6 bg-gray-800 rounded-lg p-6 border border-gray-700">
-          <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">EX ABILITIES</h2>
+        <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
+          <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">BATTLE SKILLS</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gray-900 rounded-lg p-4">
-              <div className="flex items-center space-x-3 mb-3">
-                <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center">
-                  <img src="/placeholder.svg?height=24&width=24" alt="EX Ability icon" className="w-6 h-6" />
+            {character.ex_abilities.map((skill, index) => (
+              <div key={index} className="bg-gray-900 rounded-lg p-4">
+                <div className="flex items-center space-x-3 mb-3">
+                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center overflow-hidden">
+                    {skill.imageName ? (
+                      <img
+                        src={`/skills/${skill.imageName}`}
+                        alt={skill.attackName}
+                        className="w-10 h-10 object-contain"
+                      />
+                    ) : (
+                      <span className="text-white text-xs">No Img</span>
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="text-white font-medium">{skill.attackName}</h3>
+                    {skill.extraText && (
+                      <p className="text-blue-400 text-sm">{skill.extraText}</p>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-white font-medium">Individual Mercy</h3>
-                </div>
+                <p className="text-gray-300 text-sm">{skill.description}</p>
               </div>
-              <p className="text-gray-300 text-sm">
-                Increases own following status when Rimuru Tempest is assigned to a battle slot. Increases critical
-                damage by <span className="text-orange-400">8%</span>.
-              </p>
-            </div>
-
-            <div className="bg-gray-900 rounded-lg p-4">
-              <div className="flex items-center space-x-3 mb-3">
-                <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center">
-                  <img src="/placeholder.svg?height=24&width=24" alt="EX Ability icon" className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-white font-medium">Physical Mercy</h3>
-                </div>
-              </div>
-              <p className="text-gray-300 text-sm">
-                Increases own following status in accordance with the number of{" "}
-                <span className="text-gray-400">Physical</span> attack characters assigned to battle slots. Increases{" "}
-                <span className="text-blue-400">ATK</span> by <span className="text-orange-400">350</span>
-                Increases <span className="text-green-400">HP</span> by <span className="text-orange-400">180</span>
-                Increases <span className="text-purple-400">EX</span> by <span className="text-orange-400">104</span>
-              </p>
-            </div>
+            ))}
           </div>
         </div>
 
