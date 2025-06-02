@@ -9,9 +9,9 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   const character = characters.find((char) => char.id === characterId)
 
   const statIconMap: { [key: string]: string } = {
-    HP: "/icons/hp.png",
-    ATK: "/icons/atk.png",
-    DEF: "/icons/def.png",
+    HP: "/icons/HP.png",
+    ATK: "/icons/ATK.png",
+    DEF: "/icons/DEF.png",
   };
 
   function replaceStatTextWithIcons(text: string) {
@@ -366,27 +366,23 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             {character.secret_skills.map((skill, index) => (
               <div key={index} className="bg-gray-900 rounded-lg p-4">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-12 h-12  rounded-lg flex items-center justify-center overflow-hidden">
-                    {skill.imageName ? (
-                      <img
-                        src={`/skills/${skill.imageName}`}
-                        alt={skill.attackName}
-                        className="w-10 h-10 object-contain"
-                      />
-                    ) : (
-                      <span className="text-white text-xs">No Img</span>
-                    )}
-                  </div>
-                  {/* Skill Image (below) */}
+                  <div className="w-12 h-12 relative rounded-lg overflow-hidden">
+                  {/* Background character image */}
+                  <img
+                    src={character.image}
+                    alt={character.name}
+                    className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
+                  />
+
+                  {/* Foreground skill image */}
                   {skill.imageName && (
-                    <div className="w-10 h-10 rounded-lg overflow-hidden">
-                      <img
-                        src={`/skills/${skill.imageName}`}
-                        alt={skill.attackName}
-                        className="w-10 h-10 object-contain"
-                      />
-                    </div>
+                    <img
+                      src={`/skills/${skill.imageName}`}
+                      alt={skill.attackName}
+                      className="absolute top-0 left-0 w-full h-full object-contain"
+                    />
                   )}
+                </div>
                   <div>
                     <h3 className="text-white font-medium">{skill.attackName}</h3>
                     {skill.extraText && (
