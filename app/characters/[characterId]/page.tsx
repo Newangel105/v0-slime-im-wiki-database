@@ -312,7 +312,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             {character.battle_skills.map((skill, index) => (
               <div key={index} className="bg-gray-900 rounded-lg p-4">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center overflow-hidden">
+                  <div className="w-12 h-12  rounded-lg flex items-center justify-center overflow-hidden">
                     {skill.imageName ? (
                       <img
                         src={`/skills/${skill.imageName}`}
@@ -344,7 +344,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             {character.secret_skills.map((skill, index) => (
               <div key={index} className="bg-gray-900 rounded-lg p-4">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center overflow-hidden">
+                  <div className="w-12 h-12  rounded-lg flex items-center justify-center overflow-hidden">
                     {skill.imageName ? (
                       <img
                         src={`/skills/${skill.imageName}`}
@@ -375,7 +375,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             {character.skill_traits.map((skill, index) => (
               <div key={index} className="bg-gray-900 rounded-lg p-4">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center overflow-hidden">
+                  <div className="w-12 h-12  rounded-lg flex items-center justify-center overflow-hidden">
                     {skill.imageName ? (
                       <img
                         src={`/skills/${skill.imageName}`}
@@ -406,7 +406,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             {character.ex_abilities.map((skill, index) => (
               <div key={index} className="bg-gray-900 rounded-lg p-4">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center overflow-hidden">
+                  <div className="w-12 h-12  rounded-lg flex items-center justify-center overflow-hidden">
                     {skill.imageName ? (
                       <img
                         src={`/skills/${skill.imageName}`}
