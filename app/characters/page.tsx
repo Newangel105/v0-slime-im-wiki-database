@@ -538,7 +538,7 @@ export default function CharactersPage() {
                 <SelectContent className="bg-gray-700 border-gray-600">
                   <SelectItem value="all">All Forces</SelectItem>
                   <SelectItem value="Tempest">Tempest</SelectItem>
-                  <SelectItem value="Stuff">Tempest</SelectItem>
+                  <SelectItem value="Stuff">Stuff</SelectItem>
                 </SelectContent>
               </Select>
 
