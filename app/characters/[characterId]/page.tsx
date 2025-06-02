@@ -104,58 +104,6 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-8">
-          {/* Left Column - Character Card */}
-          <div className="lg:col-span-1">
-            <Card className="bg-gray-800 border-gray-700">
-              <CardContent className="p-6">
-                <div className="text-center">
-                  <p className="text-sm text-gray-400 mb-2">
-                    {character.char_type.charAt(0).toUpperCase() + character.char_type.slice(1)} Type
-                  </p>
-                  <h1 className="text-2xl font-bold mb-4">{character.name}</h1>
-
-                  {/* Character Image */}
-                  <div className="relative mb-4">
-                    <img
-                      src={character.image || '/placeholder.svg'}
-                      alt={character.name}
-                      className="w-24 h-24 mx-auto rounded-lg"
-                    />
-                    <div className="absolute top-0 left-0 w-6 h-6">
-                      <img
-                        src={elementIcons[character.element as keyof typeof elementIcons] || '/placeholder.svg'}
-                        alt={character.element}
-                        className="w-6 h-6 object-contain"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Stars */}
-                  <div className="flex justify-center mb-4">
-                    {Array.from({ length: character.stars }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-
-                  {/* Character Type Badges */}
-                  <div className="space-y-2">
-                    <Badge variant="outline" className="border-blue-500 text-blue-400">
-                      {character.dmg_type.toUpperCase()} DMG
-                    </Badge>
-                    <Badge variant="outline" className="border-green-500 text-green-400 ml-2">
-                      {character.type.toUpperCase()}
-                    </Badge>
-                    <div className="mt-2">
-                      <Badge variant="outline" className="border-purple-500 text-purple-400">
-                        {character.ulti.toUpperCase()} ULTI
-                      </Badge>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
           {/* Center Column - Character Artwork */}
           <div className="lg:col-span-1">
             <Card className="bg-gray-800 border-gray-700 h-full">
