@@ -374,22 +374,24 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
               <div key={index} className="bg-gray-900 rounded-lg p-4">
                 <div className="flex items-center space-x-3 mb-3">
                   <div className="w-12 h-12 relative rounded-lg overflow-hidden flex items-center justify-center">
-                  {/* Background character image */}
-                  <img
-                    src={character.image}
-                    alt={character.name}
-                    className="absolute w-10 h-10 object-contain opacity-30"
-                  />
+                    {/* Background character image (same size, full clarity) */}
+                    {character.image && (
+                      <img
+                        src={character.image}
+                        alt={character.name}
+                        className="absolute top-0 left-0 w-full h-full object-contain"
+                      />
+                    )}
 
-                  {/* Foreground skill image */}
-                  {skill.imageName && (
-                    <img
-                      src={`/skills/${skill.imageName}`}
-                      alt={skill.attackName}
-                      className="relative w-10 h-10 object-contain z-10"
-                    />
-                  )}
-                </div>
+                    {/* Foreground skill image */}
+                    {skill.imageName && (
+                      <img
+                        src={`/skills/${skill.imageName}`}
+                        alt={skill.attackName}
+                        className="relative w-full h-full object-contain z-10"
+                      />
+                    )}
+                  </div>
                   <div>
                     <h3 className="text-white font-medium">{skill.attackName}</h3>
                     {skill.extraText && (
