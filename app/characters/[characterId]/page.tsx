@@ -66,7 +66,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Header */}
-      <header className="bg-gray-900 border-b border-gray-800">
+      <header className="bg-gray-800 border-b border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-8">
@@ -126,7 +126,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Left Column - Character Image */}
           <div className="lg:col-span-1">
-            <div className="bg-gray-900 rounded-lg p-6 border border-gray-800">
+            <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
               <div className="relative">
                 <img
                   src={`/char_image_full/${character.id}.png`}
@@ -140,7 +140,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           {/* Right Column - Stats and Info */}
           <div className="lg:col-span-2 space-y-6">
             {/* Stats Section */}
-            <div className="bg-gray-900 rounded-lg p-6 border border-gray-800">
+            <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
               <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">STATS</h2>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
@@ -223,26 +223,27 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             </div>
 
             {/* Forces Section */}
-            <div className="bg-gray-900 rounded-lg p-6 border border-gray-800">
-              <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">FORCES</h2>
-              <div className="flex flex-wrap gap-2">
-                <Badge className="bg-gray-700 text-white border-gray-600">
-                  <span className="w-4 h-4 bg-blue-500 rounded-full mr-2"></span>
-                  Protector of Peace
-                </Badge>
-                <Badge className="bg-gray-700 text-white border-gray-600">
-                  <span className="w-4 h-4 bg-orange-500 rounded-full mr-2"></span>
-                  Determination to Prosper
-                </Badge>
-                <Badge className="bg-gray-700 text-white border-gray-600">
-                  <span className="w-4 h-4 bg-red-500 rounded-full mr-2"></span>
-                  Pretty Sparkle
-                </Badge>
-              </div>
+            <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
+                <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">FORCES</h2>
+                <div className="flex flex-wrap gap-2">
+                    {forcesList.map((force, index) => (
+                    <Badge
+                        key={index}
+                        className="bg-gray-700 text-white border-gray-600 flex items-center space-x-2"
+                    >
+                        <img
+                        src={`/forces/${force}.png`}
+                        alt={force}
+                        className="w-5 h-5 object-contain"
+                        />
+                        <span>{force}</span>
+                    </Badge>
+                    ))}
+                </div>
             </div>
 
             {/* Tags Section */}
-            <div className="bg-gray-900 rounded-lg p-6 border border-gray-800">
+            <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
               <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">TAGS</h2>
               <div className="flex flex-wrap gap-2">
                 <Badge variant="outline" className="border-blue-500 text-blue-400">
@@ -302,10 +303,10 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         </div>
 
         {/* Battle Skills Section */}
-        <div className="mt-8 bg-gray-900 rounded-lg p-6 border border-gray-800">
+        <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
           <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">BATTLE SKILLS</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gray-800 rounded-lg p-4">
+            <div className="bg-gray-900 rounded-lg p-4">
               <div className="flex items-center space-x-3 mb-3">
                 <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
                   <img src="/placeholder.svg?height=24&width=24" alt="Skill icon" className="w-6 h-6" />
@@ -321,7 +322,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
               </p>
             </div>
 
-            <div className="bg-gray-800 rounded-lg p-4">
+            <div className="bg-gray-900 rounded-lg p-4">
               <div className="flex items-center space-x-3 mb-3">
                 <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
                   <img src="/placeholder.svg?height=24&width=24" alt="Skill icon" className="w-6 h-6" />
@@ -339,10 +340,10 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         </div>
 
         {/* Secret Skills Section */}
-        <div className="mt-6 bg-gray-900 rounded-lg p-6 border border-gray-800">
+        <div className="mt-6 bg-gray-800 rounded-lg p-6 border border-gray-700">
           <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">SECRET SKILLS</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gray-800 rounded-lg p-4">
+            <div className="bg-gray-900 rounded-lg p-4">
               <div className="flex items-center space-x-3 mb-3">
                 <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
                   <img src="/placeholder.svg?height=24&width=24" alt="Skill icon" className="w-6 h-6" />
@@ -359,7 +360,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
               </p>
             </div>
 
-            <div className="bg-gray-800 rounded-lg p-4">
+            <div className="bg-gray-900 rounded-lg p-4">
               <div className="flex items-center space-x-3 mb-3">
                 <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
                   <img src="/placeholder.svg?height=24&width=24" alt="Skill icon" className="w-6 h-6" />
@@ -379,10 +380,10 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         </div>
 
         {/* Traits Section */}
-        <div className="mt-6 bg-gray-900 rounded-lg p-6 border border-gray-800">
+        <div className="mt-6 bg-gray-800 rounded-lg p-6 border border-gray-700">
           <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">TRAITS</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gray-800 rounded-lg p-4">
+            <div className="bg-gray-900 rounded-lg p-4">
               <div className="flex items-center space-x-3 mb-3">
                 <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
                   <img src="/placeholder.svg?height=24&width=24" alt="Trait icon" className="w-6 h-6" />
@@ -399,7 +400,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
               </p>
             </div>
 
-            <div className="bg-gray-800 rounded-lg p-4">
+            <div className="bg-gray-900 rounded-lg p-4">
               <div className="flex items-center space-x-3 mb-3">
                 <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
                   <img src="/placeholder.svg?height=24&width=24" alt="Trait icon" className="w-6 h-6" />
@@ -419,10 +420,10 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         </div>
 
         {/* EX Abilities Section */}
-        <div className="mt-6 bg-gray-900 rounded-lg p-6 border border-gray-800">
+        <div className="mt-6 bg-gray-800 rounded-lg p-6 border border-gray-700">
           <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">EX ABILITIES</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gray-800 rounded-lg p-4">
+            <div className="bg-gray-900 rounded-lg p-4">
               <div className="flex items-center space-x-3 mb-3">
                 <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center">
                   <img src="/placeholder.svg?height=24&width=24" alt="EX Ability icon" className="w-6 h-6" />
@@ -437,7 +438,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
               </p>
             </div>
 
-            <div className="bg-gray-800 rounded-lg p-4">
+            <div className="bg-gray-900 rounded-lg p-4">
               <div className="flex items-center space-x-3 mb-3">
                 <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center">
                   <img src="/placeholder.svg?height=24&width=24" alt="EX Ability icon" className="w-6 h-6" />
@@ -458,7 +459,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         </div>
 
         {/* Character Gallery */}
-        <div className="mt-6 bg-gray-900 rounded-lg p-6 border border-gray-800">
+        <div className="mt-6 bg-gray-800 rounded-lg p-6 border border-gray-700">
           <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">SHION</h2>
           <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 gap-3">
             {Array.from({ length: 12 }).map((_, index) => (
