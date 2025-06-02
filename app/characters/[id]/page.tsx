@@ -13,7 +13,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
 
   useEffect(() => {
     // Find character by id in imported JSON data
-    const foundCharacter = characters.find((c: any) => c.id === params.characterId)
+    const foundCharacter = characters.find((c: any) => c.id === Number(params.characterId))
     setCharacter(foundCharacter ?? null)
   }, [params.characterId])
 
