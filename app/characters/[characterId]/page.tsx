@@ -110,7 +110,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
               <CardContent className="p-6 flex items-center justify-center">
                 <div className="relative">
                   <img
-                    src={character.image || '/placeholder.svg'}
+                    src={`/char_image_full/${character.id}.png`}
                     alt={`${character.name} artwork`}
                     className="max-w-full max-h-96 object-contain"
                   />
