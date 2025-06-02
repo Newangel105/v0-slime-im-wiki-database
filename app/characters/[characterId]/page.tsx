@@ -22,7 +22,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         return (
           <span
             key={index}
-            className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#141414] text-white text-xs font-medium mx-1"
+            className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#909090] text-white text-xs font-medium mx-1"
           >
             <img
               src={statIconMap[part]}
@@ -376,7 +376,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                   <div className="w-12 h-12 relative rounded-lg overflow-hidden flex items-center justify-center">
                   {/* Background character image */}
                   <img
-                    src="/skill_char_icon/1.png"
+                    src={character.image}
                     alt={character.name}
                     className="absolute w-10 h-10 object-contain opacity-30"
                   />
