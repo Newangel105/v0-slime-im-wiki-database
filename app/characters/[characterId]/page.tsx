@@ -64,7 +64,9 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   const maxFinalHealth = Math.max(...characters.map(c => c.final_health))
   const maxOutput = Math.max(...characters.map(c => c.output_final))
 
-  const variants = characters.filter(c => c.name === character.name)
+  const variants = characters.filter(
+    (c) => c.name === character.name && c.id !== characterId
+  )
 
   // Calculate percentages for this character, fallback to 0 if max is 0
   const attackPercent = maxFinalAttack ? (character.final_attack / maxFinalAttack) * 100 : 0
@@ -471,25 +473,20 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
 
         {/* Character Gallery */}
         <div className="mt-6 bg-gray-800 rounded-lg p-6 border border-gray-700">
-          <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">{character.name}</h2>
+          <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">
+            {character.name} Variants
+          </h2>
           <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-9 gap-3">
-            {variants.map((variant, index) => (
-              <div key={variant.id} className="relative">
-                <div className="aspect-square bg-gray-800 rounded-lg overflow-hidden border border-gray-700">
+            {variants.map((variant) => (
+              <Link key={variant.id} href={`/characters/${variant.id}`}>
+                <div className="aspect-square bg-gray-800 rounded-lg overflow-hidden border border-gray-700 hover:scale-105 transition-transform duration-200">
                   <img
                     src={`/charimage/${variant.id}.png`}
                     alt={`${variant.name} variant`}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-1">
-                  <div className="flex justify-center">
-                    {Array.from({ length: variant.stars }).map((_, i) => (
-                      <Star key={i} className="w-2 h-2 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
