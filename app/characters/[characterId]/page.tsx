@@ -8,6 +8,28 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   const characterId = Number(params.characterId)
   const character = characters.find((char) => char.id === characterId)
 
+  const statIconMap: { [key: string]: string } = {
+    HP: "/icons/hp.png",
+    ATK: "/icons/atk.png",
+    DEF: "/icons/def.png",
+  };
+
+  function replaceStatTextWithIcons(text: string) {
+    return text.split(/(HP|ATK|DEF)/g).map((part, index) => {
+      if (statIconMap[part]) {
+        return (
+          <img
+            key={index}
+            src={statIconMap[part]}
+            alt={part}
+            className="inline w-4 h-4 mx-1 align-text-bottom"
+          />
+        );
+      }
+      return <span key={index}>{part}</span>;
+    });
+  }
+
   if (!character) {
     return (
       <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
@@ -330,7 +352,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     )}
                   </div>
                 </div>
-                <p className="text-gray-300 text-sm">{skill.description}</p>
+                <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
               </div>
             ))}
           </div>
@@ -372,7 +394,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     )}
                   </div>
                 </div>
-                <p className="text-gray-300 text-sm">{skill.description}</p>
+                <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
               </div>
             ))}
           </div>
@@ -403,7 +425,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     )}
                   </div>
                 </div>
-                <p className="text-gray-300 text-sm">{skill.description}</p>
+                <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
               </div>
             ))}
           </div>
@@ -432,7 +454,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     )}
                   </div>
                 </div>
-                <p className="text-gray-300 text-sm">{skill.description}</p>
+                <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
               </div>
             ))}
           </div>
