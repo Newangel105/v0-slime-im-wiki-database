@@ -329,6 +329,11 @@ export default function CharactersPage() {
       if (selectedAwakening.length > 0 && !selectedAwakening.includes(character.awakening)) {
         return false
       }
+      // Force filter
+      if (forceFilter && forceFilter !== "all" && !character.force.includes(forceFilter)) {
+        return false
+      }
+
 
       return true
     })
