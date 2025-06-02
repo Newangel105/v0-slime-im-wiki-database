@@ -309,38 +309,33 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
           <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">BATTLE SKILLS</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gray-900 rounded-lg p-4">
-              <div className="flex items-center space-x-3 mb-3">
-                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <img src="/placeholder.svg?height=24&width=24" alt="Skill icon" className="w-6 h-6" />
+            {character.battle_skills.map((skill, index) => (
+              <div key={index} className="bg-gray-900 rounded-lg p-4">
+                <div className="flex items-center space-x-3 mb-3">
+                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center overflow-hidden">
+                    {skill.imageName ? (
+                      <img
+                        src={`/skills/${skill.imageName}`}
+                        alt={skill.attackName}
+                        className="w-10 h-10 object-contain"
+                      />
+                    ) : (
+                      <span className="text-white text-xs">No Img</span>
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="text-white font-medium">{skill.attackName}</h3>
+                    {skill.extraText && (
+                      <p className="text-blue-400 text-sm">{skill.extraText}</p>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-white font-medium">Melody of Lurking Dusk</h3>
-                  <p className="text-blue-400 text-sm">All Skill Damage</p>
-                </div>
+                <p className="text-gray-300 text-sm">{skill.description}</p>
               </div>
-              <p className="text-gray-300 text-sm">
-                Decreases all targets' secret skill damage resistance by <span className="text-orange-400">80%</span>{" "}
-                for <span className="text-blue-400">3</span> turns.
-              </p>
-            </div>
-
-            <div className="bg-gray-900 rounded-lg p-4">
-              <div className="flex items-center space-x-3 mb-3">
-                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <img src="/placeholder.svg?height=24&width=24" alt="Skill icon" className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-white font-medium">Melody of Refinement</h3>
-                  <p className="text-blue-400 text-sm">All Skill Damage</p>
-                </div>
-              </div>
-              <p className="text-gray-300 text-sm">
-                Causes Soul of Skills to generate <span className="text-blue-400">Water</span> Seeking Souls.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
+
 
         {/* Secret Skills Section */}
         <div className="mt-6 bg-gray-800 rounded-lg p-6 border border-gray-700">
