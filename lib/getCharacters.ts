@@ -1,4 +1,4 @@
-import characters from '../app/data/characters.json'
+import characters from '/data/characters.json'
 
 export type Character = {
   id: string
