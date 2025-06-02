@@ -386,9 +386,9 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     />
 
                     {/* Character image clipped inside smaller circle */}
-                    <div className="absolute top-1/2 left-1/2 w-[30px] h-[30px] rounded-full overflow-hidden -translate-x-1/2 -translate-y-1/2 z-10">
+                    <div className="absolute top-1/2 left-1/2 w-[27px] h-[27px] rounded-full overflow-hidden -translate-x-1/2 -translate-y-1/2 z-10">
                       <img
-                        src={character.image}
+                        src={`/charimage/${character.id}.png`}
                         alt={character.name}
                         className="w-full h-full object-cover"
                       />
