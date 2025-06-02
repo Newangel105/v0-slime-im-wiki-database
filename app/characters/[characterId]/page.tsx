@@ -15,27 +15,31 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   };
 
   function replaceStatTextWithIcons(text: string) {
-    return text.split(/(HP|ATK|DEF)/g).map((part, index) => {
-      if (statIconMap[part]) {
-        const iconSize = part === "ATK" ? "w-3 h-4" : "w-4 h-4";
-
-        return (
-          <span
-            key={index}
-            className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#909090] text-white text-xs font-medium mx-1"
-          >
-            <img
-              src={statIconMap[part]}
-              alt={part}
-              className={`${iconSize} mr-1 object-contain`}
-            />
-            {part}
-          </span>
-        );
-      }
-      return <span key={index}>{part}</span>;
-    });
+    return text.split('\n').map((line, lineIndex) => (
+      <p key={lineIndex} className="text-gray-300 text-sm mb-1">
+        {line.split(/(HP|ATK|DEF)/g).map((part, index) => {
+          if (statIconMap[part]) {
+            const iconSize = part === "ATK" ? "w-3 h-4" : "w-4 h-4";
+            return (
+              <span
+                key={`${lineIndex}-${index}`}
+                className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#141414] text-white text-xs font-medium mx-1"
+              >
+                <img
+                  src={statIconMap[part]}
+                  alt={part}
+                  className={`${iconSize} mr-1 object-contain`}
+                />
+                {part}
+              </span>
+            );
+          }
+          return <span key={`${lineIndex}-${index}`}>{part}</span>;
+        })}
+      </p>
+    ));
   }
+
 
   if (!character) {
     return (
@@ -376,13 +380,13 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                   <div className="relative w-[48px] h-[48px]">
                     {/* Skill Frame (background) */}
                     <img
-                      src={`/skills/${skill.imageName}`}
+                      src={`/skills/${skill.imageName}.png`}
                       alt={skill.attackName}
                       className="absolute top-0 left-0 w-full h-full object-contain z-0"
                     />
 
                     {/* Character image clipped inside smaller circle */}
-                    <div className="absolute top-1/2 left-1/2 w-[24px] h-[24px] rounded-full overflow-hidden -translate-x-1/2 -translate-y-1/2 z-10">
+                    <div className="absolute top-1/2 left-1/2 w-[20px] h-[20px] rounded-full overflow-hidden -translate-x-1/2 -translate-y-1/2 z-10">
                       <img
                         src={character.image}
                         alt={character.name}
@@ -413,7 +417,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                   <div className="w-12 h-12  rounded-lg flex items-center justify-center overflow-hidden">
                     {skill.imageName ? (
                       <img
-                        src={`/skills/${skill.imageName}`}
+                        src={`/skills/${skill.imageName}.png`}
                         alt={skill.attackName}
                         className="w-10 h-10 object-contain"
                       />
@@ -444,7 +448,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                   {skill.imageName && (
                     <div className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
                       <img
-                        src={`/skills/${skill.imageName}`}
+                        src={`/skills/${skill.imageName}.png`}
                         alt={skill.attackName}
                         className="w-10 h-10 object-contain"
                       />

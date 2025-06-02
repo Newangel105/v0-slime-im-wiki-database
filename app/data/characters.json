@@ -37,40 +37,40 @@
     ],
     "secret_skills": [
       {
-        "imageName": "s1_1.png",
+        "imageName": "atk",
         "attackName": "Infinity Wisdom",
         "extraText": "100% Secret Gauge",
         "description": "Unleashes an all-target attack for 300% normal damage.Decreases all targets'DEF by 5% Turns 2"
       },
       {
-        "imageName": "s1_1.png",
+        "imageName": "supp",
         "attackName": "EX Infinity Wisdom",
-        "extraText": "35/25 Skill Points",
+        "extraText": "200% Secret Gauge",
         "description": "Unleashes an all-target attack for 600% normal damage.Decreases all targets'DEF by 5% Turns 2"
       }
     ],
     "skill_traits": [
       {
-        "imageName": "t1.png",
+        "imageName": "t1",
         "attackName": "Soul Combo - Critical Damage UP",
         "description": "When you unleash a 6 combo attack with Soul of Divine Protection, increases own critical damage by 6% for the next turn available in support formation"
       },
       {
-        "imageName": "t2.png",
+        "imageName": "t2",
         "attackName": "Switch - Skill Seal",
         "description": "When you switch this character to the vanguard and activate souls, all enemies' magic-changing battle skills are sealed Turns 1 Uses by this character per battle: 2"
       }
     ],
     "ex_abilities": [
       {
-        "imageName": "e1.png",
+        "imageName": "e1",
         "attackName": "Individual Mercy",
         "description": "When you unleash a 6 combo attack with Soul of Divine Protection, increases own critical damage by 6% for the next turn available in support formation"
       },
       {
         "imageName": "",
         "attackName": "Physical Blessing",
-        "description": "Increases other troop members' following status in accordance with the number of attack characters assigned to battle slots. Increases HP by 90 Increases ATK by 40 Increases DEF by 24"
+        "description": "Increases other troop members' following status in accordance with the number of attack characters assigned to battle slots.\n Increases HP by 90\n Increases ATK by 40\n Increases DEF by 24"
       }
     ],
     "initial_attack": 553,
