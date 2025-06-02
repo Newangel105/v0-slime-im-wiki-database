@@ -1,99 +1,30 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import characters from "@/app/data/characters.json"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Star, Heart, Sword, Shield, Zap, Target, Gamepad2, ArrowLeft } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
-interface CharacterDetail {
-  id: string
-  name: string
-  title: string
-  element: string
-  stars: number
-  image: string
-  artwork: string
-  stats: {
-    health: { base: number; max: number }
-    attack: { base: number; max: number }
-    defense: { base: number; max: number }
-    existence: { base: number; max: number }
-    output: { base: number; max: number }
-  }
-  releaseDate: string
-  forces: string[]
-  tags: {
-    equipment: string[]
-    protectionCharacters: string[]
-    abilities: string[]
-    skills: string[]
-  }
-  divineProtections: {
-    primary: {
-      name: string
-      type: string
-      description: string
-    }
-    support: {
-      name: string
-      type: string
-      description: string
-    }
-    awaken: {
-      name: string
-      type: string
-      description: string
-    }
-  }
-}
-
-// Mock character data - in a real app this would come from an API or database
-const characterData: CharacterDetail = {
-  id: "emils1",
-  name: "Emils",
-  title: "Mad City Lord",
-  element: "dark",
-  stars: 5,
-  image: "/placeholder.svg?height=80&width=80",
-  artwork: "/placeholder.svg?height=400&width=400",
-  stats: {
-    health: { base: 377, max: 3553 },
-    attack: { base: 266, max: 1705 },
-    defense: { base: 151, max: 1457 },
-    existence: { base: 2084, max: 15720 },
-    output: { base: 100, max: 220 },
-  },
-  releaseDate: "9/27/2024",
-  forces: ["Antagonist", "Exalted Champions"],
-  tags: {
-    equipment: ["Dark Magic Device +200%", "Symbol of Protection +100%"],
-    protectionCharacters: ["Protection Characters", "Anti-Dark", "Magic"],
-    abilities: ["5", "Skills", "Soul Armour", "x2"],
-    skills: ["Skills", "To Soul", "Soul of Secrets", "Skills", "Grunge", "Skill Points", "Skills", "Buff All", "Damage", "Skills", "Buff All", "Pierce Rate"],
-  },
-  divineProtections: {
-    primary: {
-      name: "Resplendent soul",
-      type: "Primary",
-      description: "Increases damage done by Antagonist and Exalted Champions Force characters to Dark attribute enemies by 60%. Increases magic characters' Buff All and Buff All by 20%",
-    },
-    support: {
-      name: "Resplendent soul",
-      type: "Support",
-      description: "Increases Antagonist Force characters' Buff All by 7%",
-    },
-    awaken: {
-      name: "Enhanced Guidance",
-      type: "Awaken Skill",
-      description: "Increases Divine Protection Buff All and Buff All effect by 5% and Supporting Divine Protection Buff All effect by 5%",
-    },
-  },
-}
-
 export default function CharacterDetailPage({ params }: { params: { characterId: string } }) {
-  const character = characterData // In real app, fetch based on params.characterId
+  const [character, setCharacter] = useState<any>(null)
+
+  useEffect(() => {
+    // Find character by id in imported JSON data
+    const foundCharacter = characters.find((c: any) => c.id === params.characterId)
+    setCharacter(foundCharacter ?? null)
+  }, [params.characterId])
+
+  if (!character) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white bg-gray-900">
+        <p>Character not found.</p>
+        <Link href="/characters" className="ml-4 underline text-blue-400">Back to Characters</Link>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
