@@ -104,24 +104,26 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-8">
-          {/* Center Column - Character Artwork */}
-          <div className="lg:col-span-1">
-            <Card className="bg-gray-800 border-gray-700 h-full">
-              <CardContent className="p-6 flex items-center justify-center">
-                <div className="relative">
-                  <img
-                    src={`/char_image_full/${character.id}.png`}
-                    alt={`${character.name} artwork`}
-                    className="max-w-full max-h-96 object-contain"
-                  />
-                  {/* Magical effects - decorative */}
-                  <div className="absolute top-4 left-4 text-purple-400 text-2xl">✦</div>
-                  <div className="absolute top-12 right-8 text-purple-400 text-xl">✦</div>
-                  <div className="absolute bottom-8 left-8 text-purple-400 text-xl">✦</div>
-                  <div className="absolute bottom-4 right-4 text-purple-400 text-2xl">✦</div>
-                </div>
-              </CardContent>
-            </Card>
+          <div className="grid grid-cols-2 lg:grid-cols-1">
+            {/* Center Column - Character Artwork */}
+            <div className="lg:col-span-1">
+              <Card className="bg-gray-800 border-gray-700 h-full">
+                <CardContent className="p-6 flex items-center justify-center">
+                  <div className="relative">
+                    <img
+                      src={`/char_image_full/${character.id}.png`}
+                      alt={`${character.name} artwork`}
+                      className="max-w-full max-h-96 object-contain"
+                    />
+                    {/* Magical effects - decorative */}
+                    <div className="absolute top-4 left-4 text-purple-400 text-2xl">✦</div>
+                    <div className="absolute top-12 right-8 text-purple-400 text-xl">✦</div>
+                    <div className="absolute bottom-8 left-8 text-purple-400 text-xl">✦</div>
+                    <div className="absolute bottom-4 right-4 text-purple-400 text-2xl">✦</div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
 
           {/* Right Column - Stats and Details */}
