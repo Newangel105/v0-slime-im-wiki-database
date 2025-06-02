@@ -17,7 +17,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   function replaceStatTextWithIcons(text: string) {
     return text.split(/(HP|ATK|DEF)/g).map((part, index) => {
       if (statIconMap[part]) {
-        const iconSize = part === "ATK" ? "w-3.5 h-3.5" : "w-4 h-4";
+        const iconSize = part === "ATK" ? "w-3 h-4" : "w-4 h-4";
         return (
           <span key={index} className="inline-flex items-center mx-1">
             <img
