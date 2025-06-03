@@ -42,7 +42,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         href={`/characters?${type}=${encodeURIComponent(value)}`}
         className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#1f1f1f] text-white text-xs font-medium mx-1 hover:bg-[#333]"
       >
-        {type === "element" && statIconMap[value] && (
+        {statIconMap[value] && (
           <img
             src={statIconMap[value.replace(/\s+/g, "")]}
             alt={value}

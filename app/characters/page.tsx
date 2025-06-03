@@ -384,7 +384,7 @@ export default function CharactersPage() {
                 </SelectTrigger>
                 <SelectContent className="bg-gray-700 border-gray-600">
                   <SelectItem value="all">All Forces</SelectItem>
-                  <SelectItem value="Tempest">Tempest</SelectItem>
+                  <SelectItem value="Protector of Peace">Protector of Peace</SelectItem>
                   <SelectItem value="Stuff">Stuff</SelectItem>
                 </SelectContent>
               </Select>
