@@ -88,7 +88,7 @@
     "stars": 6,
     "weapon": "sword",
     "dmg_type": "phys",
-    "type": "attacker",
+    "type": "protector",
     "char_type": "attack",
     "ulti": "aoe",
     "tag": "prot_water|Restaurant +30%",
