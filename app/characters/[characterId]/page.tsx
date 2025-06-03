@@ -149,6 +149,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   const skillsList = character.skills.split("|").filter((skill) => skill.trim())
   const traitsList = character.traits.split("|").filter((trait) => trait.trim())
   const forcesList = character.force.split("|").filter((force) => force.trim())
+  const tagsList = character.tag.split("|").filter((tag) => tag.trim())
 
   function SkillCard({
     skill,
@@ -368,61 +369,13 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
 
             {/* Tags Section */}
             <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-              <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">TAGS</h2>
-              <div className="flex flex-wrap gap-2">
-                <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(character.element)}</p>
-                <Badge variant="outline" className="border-green-500 text-green-400">
-                  Eligible for Defense Magicema +10%
-                </Badge>
-                <Badge variant="outline" className="border-red-500 text-red-400">
-                  Battle Characters
-                </Badge>
-                <Badge variant="outline" className="border-gray-500 text-gray-400">
-                  Single
-                </Badge>
-                <Badge variant="outline" className="border-blue-500 text-blue-400">
-                  Water
-                </Badge>
-                <Badge variant="outline" className="border-purple-500 text-purple-400">
-                  Physical
-                </Badge>
-                <Badge variant="outline" className="border-yellow-500 text-yellow-400">
-                  ★★★★★ 5
-                </Badge>
-                <Badge variant="outline" className="border-gray-500 text-gray-400">
-                  Skills
-                </Badge>
-                <Badge variant="outline" className="border-red-500 text-red-400">
-                  Critical Damage
-                </Badge>
-                <Badge variant="outline" className="border-gray-500 text-gray-400">
-                  Skills
-                </Badge>
-                <Badge variant="outline" className="border-blue-500 text-blue-400">
-                  Water ATK
-                </Badge>
-                <Badge variant="outline" className="border-gray-500 text-gray-400">
-                  Traits
-                </Badge>
-                <Badge variant="outline" className="border-blue-500 text-blue-400">
-                  Soul Skill
-                </Badge>
-                <Badge variant="outline" className="border-gray-500 text-gray-400">
-                  Soul of Secrets Damage
-                </Badge>
-                <Badge variant="outline" className="border-gray-500 text-gray-400">
-                  Traits
-                </Badge>
-                <Badge variant="outline" className="border-gray-500 text-gray-400">
-                  Gauge
-                </Badge>
-                <Badge variant="outline" className="border-gray-500 text-gray-400">
-                  Protection Gauge
-                </Badge>
-              </div>
+                <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">TAGS</h2>
+                <div className="flex flex-wrap gap-2">
+                    {tagsList.map((tags, index) => (
+                      <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(tags)}</p>
+                    ))}
+                </div>
             </div>
-          </div>
-        </div>
 
         {/* Battle Skills Section */}
         <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
