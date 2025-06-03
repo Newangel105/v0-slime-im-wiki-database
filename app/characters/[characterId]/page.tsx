@@ -60,16 +60,37 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     return text.split('\n').map((line, lineIndex) => (
       <p key={lineIndex} className="text-gray-300 text-sm mb-1">
         {line.split(/(HP|ATK|DEF|fire|water|earth|wind|space|dark|light|Protector of Peace|Goblin Rider|Ogre|Tempest|Saint|Octagram)/g).map((part, index) => {
-          if (statIconMap[part.replace(/\s+/g, "")]) {
+          const cleanKey = part.replace(/\s+/g, "")
+
+          // Show as filter tag (link) for known types
+          if (["fire", "water", "earth", "wind", "space", "light", "dark", "Protector of Peace", "Goblin Rider", "Ogre", "Tempest", "Saint", "Octagram"].includes(part)) {
             return <span key={`${lineIndex}-${index}`}>{renderFilterTag(part)}</span>
           }
 
+          // Show as icon-only tag (no link) for things like HP/ATK/DEF
+          if (statIconMap[cleanKey]) {
+            const iconSize = part === "ATK" ? "w-3 h-4" : "w-4 h-4"
+            return (
+              <span
+                key={`${lineIndex}-${index}`}
+                className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#909090] text-white text-xs font-medium mx-1"
+              >
+                <img
+                  src={statIconMap[cleanKey]}
+                  alt={part}
+                  className={`${iconSize} mr-1 object-contain`}
+                />
+                {part}
+              </span>
+            )
+          }
+
+          // Fallback: plain text
           return <span key={`${lineIndex}-${index}`}>{part}</span>
         })}
       </p>
     ))
   }
-
 
   if (!character) {
     return (
