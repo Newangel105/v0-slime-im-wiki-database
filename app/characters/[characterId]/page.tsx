@@ -371,11 +371,13 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
                 <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">TAGS</h2>
                 <div className="flex flex-wrap gap-2">
-                    {tagsList.map((tags, index) => (
-                      <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(tags)}</p>
+                    {tagsList.map((tag, index) => (
+                      <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(tag)}</p>
                     ))}
                 </div>
             </div>
+          </div>
+        </div>
 
         {/* Battle Skills Section */}
         <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
