@@ -65,7 +65,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   function replaceStatTextWithIcons(text: string) {
     return text.split('\n').map((line, lineIndex) => (
       <p key={lineIndex} className="text-gray-300 text-sm mb-1">
-        {line.split(/(HP|ATK|DEF|fire|water|earth|wind|space|dark|light|Protector of Peace|Goblin Rider|Ogre|Tempest|Saint|Octagram)/g).map((part, index) => {
+        {line.split(/(HP|ATK|DEF|fire|prot_water|water|earth|wind|space|dark|light|Protector of Peace|Goblin Rider|Ogre|Tempest|Saint|Octagram)/g).map((part, index) => {
           const cleanKey = part.replace(/\s+/g, "")
 
           // Show as filter tag (link) for known types
