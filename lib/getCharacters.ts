@@ -7,16 +7,16 @@ export type Skill = {
   description: string
 }
 
+export type Trait = {
+  imageName: string
+  attackName: string
+  description: string
+}
+
 export type divine = {
   imageName: string
   attackName: string
   extraText?: string
-  description: string
-}
-
-export type Trait = {
-  imageName: string
-  attackName: string
   description: string
 }
 
@@ -77,17 +77,17 @@ export function getAllCharacters(): Character[] {
       output_final: Number(char.output_final),
       existence,
 
-      // Parse string to array if needed
       force: typeof char.force === 'string' ? char.force.split('|') : char.force,
       tag: typeof char.force === 'string' ? char.tag.split('|') : char.tag,
 
-      // Ensure skills arrays are present and valid
-      battle_skills: char.battle_skills ?? [],
-      secret_skills: char.secret_skills ?? [],
-      skill_traits: char.skill_traits ?? [],
-      unbound: char.unbound ?? [],
-      ex_abilities: char.ex_abilities ?? [],
-      divine_skills: char.divine_skills ?? [],
+      // Only assign if present
+      ...(char.battle_skills && { battle_skills: char.battle_skills }),
+      ...(char.secret_skills && { secret_skills: char.secret_skills }),
+      ...(char.skill_traits && { skill_traits: char.skill_traits }),
+      ...(char.unbound && { unbound: char.unbound }),
+      ...(char.ex_abilities && { ex_abilities: char.ex_abilities }),
+      ...(char.divine_skills && { divine_skills: char.divine_skills }),
     }
+
   })
 }
