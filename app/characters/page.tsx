@@ -566,7 +566,7 @@ export default function CharactersPage() {
 
                   {/* Frame Overlay */}
                   <img
-                    src="/frame/frameMemberM5up.png"
+                    src={`/frame/frameBlessM${character.stars}.png`}
                     alt="Frame"
                     className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                   />
