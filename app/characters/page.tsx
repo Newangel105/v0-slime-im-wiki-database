@@ -125,20 +125,24 @@ export default function CharactersPage() {
     }
   }
 
-  function renderSortableHeader(key: typeof sortKey, label: React.ReactNode) {
+  function renderSortableHeader(
+    key: typeof sortKey,
+    iconSrc: string,
+    label: string
+  ) {
     const isActive = sortKey === key;
     const directionIcon = isActive
       ? sortOrder === "asc"
         ? "↑"
         : "↓"
-      : "↕"; // default
+      : "↕";
 
     const toggleSort = () => {
       if (sortKey === key) {
         setSortOrder(sortOrder === "asc" ? "desc" : "asc");
       } else {
         setSortKey(key);
-        setSortOrder("asc"); // default to asc on new key
+        setSortOrder("asc");
       }
     };
 
@@ -149,13 +153,12 @@ export default function CharactersPage() {
           isActive ? "text-white font-semibold" : ""
         }`}
       >
-        {label}
+        <img src={iconSrc} alt={label} className="w-4 h-4" />
+        <span>{label}</span>
         <span className="text-xs">{directionIcon}</span>
       </button>
     );
   }
-
-
   
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -535,13 +538,13 @@ export default function CharactersPage() {
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-gray-300">CHARACTERS</h2>
               <div className="flex items-center space-x-4 text-sm text-gray-400">
-                {renderSortableHeader("release", "📅 Release")}
-                {renderSortableHeader("attack", <Sword className="w-4 h-4 inline" />)}
-                {renderSortableHeader("health", "❤️ Health")}
-                {renderSortableHeader("defense", <Shield className="w-4 h-4 inline" />)}
-                {renderSortableHeader("existence", "⚡ Existence")}
-                {renderSortableHeader("stars", "🌟 Rarity")}
-                {renderSortableHeader("name", "📛 Name")}
+                {renderSortableHeader("release", "/icons/release.png", "Release")}
+                {renderSortableHeader("attack", "/icons/ATK.png", "Attack")}
+                {renderSortableHeader("health", "/icons/HP.png", "Health")}
+                {renderSortableHeader("defense", "/icons/DEF.png", "Defense")}
+                {renderSortableHeader("existence", "/icons/existence.png", "Existence")}
+                {renderSortableHeader("stars", "/icons/rarity.png", "Rarity")}
+                {renderSortableHeader("name", "/icons/name.png", "Name")}
               </div>
             </div>
 
