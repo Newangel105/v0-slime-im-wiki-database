@@ -411,15 +411,11 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                 <div key={index} className="bg-gray-900 rounded-lg p-4">
                   <div className="flex items-center space-x-3 mb-3">
                     <div className="w-12 h-12  rounded-lg flex items-center justify-center overflow-hidden">
-                      {skill.imageName ? (
-                        <img
-                          src={`/icons/${skill.imageName}.png`}
-                          alt={skill.attackName}
-                          className="w-10 h-10 object-contain"
-                        />
-                      ) : (
-                        <span className="text-white text-xs">No Img</span>
-                      )}
+                      <img
+                        src="/icons/divine.png"
+                        alt={skill.attackName}
+                        className="w-10 h-10 object-contain"
+                      />
                     </div>
                     <div>
                       <h3 className="text-white font-medium">{skill.attackName}</h3>
@@ -487,6 +483,34 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                         alt="unbound"
                         className="w-10 h-10 object-contain"
                       />
+                    </div>
+                  </div>
+                  <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {character.type === 'protector' && character.protection_skill && (
+          <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">DIVINE PROTECTION</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {character.protection_skill.map((skill, index) => (
+                <div key={index} className="bg-gray-900 rounded-lg p-4">
+                  <div className="flex items-center space-x-3 mb-3">
+                    <div className="w-12 h-12  rounded-lg flex items-center justify-center overflow-hidden">
+                      <img
+                        src={`/chars/${character.id}/prot.png`}
+                        alt={skill.attackName}
+                        className="w-10 h-10 object-contain"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-medium">{skill.attackName}</h3>
+                      {skill.extraText && (
+                        <p className="text-blue-400 text-sm">{skill.extraText}</p>
+                      )}
                     </div>
                   </div>
                   <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>

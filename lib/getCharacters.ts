@@ -7,6 +7,12 @@ export type Skill = {
   description: string
 }
 
+export type Skillprot = {
+  attackName: string
+  extraText?: string
+  description: string
+}
+
 export type Trait = {
   imageName: string
   attackName: string
@@ -14,7 +20,6 @@ export type Trait = {
 }
 
 export type divine = {
-  imageName: string
   attackName: string
   extraText?: string
   description: string
@@ -50,6 +55,7 @@ export type Character = {
   output_final: number
   rarity: number
   battle_skills?: Skill[]
+  protection_skill?: Skillprot[]
   secret_skills?: Skill[]
   skill_traits: Trait[]
   divine_skills?: divine[]
@@ -82,6 +88,7 @@ export function getAllCharacters(): Character[] {
 
       // Only assign if present
       ...(char.battle_skills && { battle_skills: char.battle_skills }),
+      ...(char.protection_skill && { protection_skill: char.protection_skill }),
       ...(char.secret_skills && { secret_skills: char.secret_skills }),
       ...(char.skill_traits && { skill_traits: char.skill_traits }),
       ...(char.unbound && { unbound: char.unbound }),

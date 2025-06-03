@@ -103,16 +103,21 @@
     "town": "Rimuru City",
     "divine_skills": [
       {
-        "imageName": "divine.png",
         "attackName": "Shadow Infiltration",
         "extraText": "Primary",
         "description": "Increases all allies'ATK by 55/65% Turns 1. Decreases all targets' attack resistance by 20% Turns 1. Increases Aegis Rate by 100%."
       },
       {
-        "imageName": "",
         "attackName": "Supporting Divine Protection",
         "extraText": "Support",
         "description": "Changes Soul of Secrets x2 into Soul of Divine Protection. Increases all Soul of Divine Protection gauges' increase by 5/10% Turns 1"
+      }
+    ],
+    "protection_skill": [
+      {
+        "attackName": "Threadbind Field",
+        "extraText": "100% Protection Gauge",
+        "description": "Increases all allies'ATK by 55/65% Turns 1. Decreases all targets' attack resistance by 20% Turns 1. Increases Aegis Rate by 100%."
       }
     ],
     "skill_traits": [
