@@ -12,6 +12,7 @@
     "ulti": "aoe",
     "tag": "water|Restaurant +30%",
     "force": "Protector of Peace|Pretty Sparkle",
+    "release": "9/27/2024",
     "town": "Rimuru City",
     "battle_skills": [
       {
@@ -90,6 +91,7 @@
     "dmg_type": "prot_phys",
     "type": "protector",
     "char_type": "attack",
+    "release": "03/06/2025",
     "ulti": "aoe",
     "tag": "prot_water|Restaurant +30%",
     "force": "Protector of Peace|Pretty Sparkle",

@@ -137,77 +137,85 @@ export default function CharactersPage() {
     // add similar conditions for others if needed
   }, [])
 
+  const [sortKey, setSortKey] = useState<"name" | "attack" | "health" | "defense" | "stars" | "release" | "existence" | null>(null);
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 
   const filteredCharacters = useMemo(() => {
     const search = searchTerm.toLowerCase();
-    return characters.filter((character) => {
-      // SEARCH FILTER
+
+    // First, apply filtering
+    let filtered = characters.filter((character) => {
       if (search) {
         if (!searchSkills) {
-          // Search by character name
-          if (!character.name.toLowerCase().includes(search)) {
-            return false;
-          }
+          if (!character.name.toLowerCase().includes(search)) return false;
         } else {
-          // Search inside skills arrays
           const combinedSkillsText = [
             ...character.battle_skills.map((s) => s.description),
             ...character.secret_skills.map((s) => s.description),
             ...character.skill_traits.map((s) => s.description),
             ...character.ex_abilities.map((s) => s.description),
-          ]
-            .join(" ")
-            .toLowerCase();
+          ].join(" ").toLowerCase();
 
-          if (!combinedSkillsText.includes(search)) {
-            return false;
-          }
+          if (!combinedSkillsText.includes(search)) return false;
         }
       }
 
-      // Element filter
-      if (selectedElements.length > 0 && !selectedElements.includes(character.element)) {
-        return false
-      }
+      if (selectedElements.length > 0 && !selectedElements.includes(character.element)) return false;
+      if (selectedWeapons.length > 0 && !selectedWeapons.includes(character.weapon)) return false;
+      if (selectedStars.length > 0 && !selectedStars.includes(character.stars)) return false;
 
-      // Weapon filter
-      if (selectedWeapons.length > 0 && !selectedWeapons.includes(character.weapon)) {
-        return false
-      }
-
-      // Stars filter
-      if (selectedStars.length > 0 && !selectedStars.includes(character.stars)) {
-        return false
-      }
       const baseDmgType = character.dmg_type.startsWith("prot_")
         ? character.dmg_type.slice(5)
         : character.dmg_type;
 
-      if (selectedDMGType.length > 0 && !selectedDMGType.includes(baseDmgType)) {
-        return false;
-      }
-      if (selectedType.length > 0 && !selectedType.includes(character.type)) {
-        return false
-      }
-      if (selectedUlti.length > 0 && !selectedUlti.includes(character.ulti)) {
-        return false
-      }
-      if (selectedCharType.length > 0 && !selectedCharType.includes(character.char_type)) {
-        return false
-      }
-      // Awakening filter
-      if (selectedAwakening.length > 0 && !selectedAwakening.includes(character.awakening)) {
-        return false
-      }
-      // Force filter
-      if (forceFilter && forceFilter !== "all" && !character.force.includes(forceFilter)) {
-        return false
-      }
+      if (selectedDMGType.length > 0 && !selectedDMGType.includes(baseDmgType)) return false;
+      if (selectedType.length > 0 && !selectedType.includes(character.type)) return false;
+      if (selectedUlti.length > 0 && !selectedUlti.includes(character.ulti)) return false;
+      if (selectedCharType.length > 0 && !selectedCharType.includes(character.char_type)) return false;
+      if (selectedAwakening.length > 0 && !selectedAwakening.includes(character.awakening)) return false;
+      if (forceFilter && forceFilter !== "all" && !character.force.includes(forceFilter)) return false;
 
+      return true;
+    });
 
-      return true
-    })
-  }, [searchTerm, searchSkills, selectedElements, selectedWeapons, selectedStars, selectedDMGType , selectedType, selectedUlti , selectedCharType , selectedAwakening, forceFilter])
+    // Then, apply sorting
+    if (sortKey) {
+      filtered.sort((a, b) => {
+        let aValue = a[sortKey];
+        let bValue = b[sortKey];
+
+        if (sortKey === "release") {
+          // Convert to dates
+          aValue = new Date(a.release);
+          bValue = new Date(b.release);
+        }
+
+        if (typeof aValue === "string") aValue = aValue.toLowerCase();
+        if (typeof bValue === "string") bValue = bValue.toLowerCase();
+
+        if (aValue < bValue) return sortOrder === "asc" ? -1 : 1;
+        if (aValue > bValue) return sortOrder === "asc" ? 1 : -1;
+        return 0;
+      });
+    }
+
+    return filtered;
+  }, [
+    characters,
+    searchTerm,
+    searchSkills,
+    selectedElements,
+    selectedWeapons,
+    selectedStars,
+    selectedDMGType,
+    selectedType,
+    selectedUlti,
+    selectedCharType,
+    selectedAwakening,
+    forceFilter,
+    sortKey,
+    sortOrder
+  ]);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
