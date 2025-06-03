@@ -171,7 +171,7 @@ export default function CharactersPage() {
     // add similar conditions for others if needed
   }, [])
 
-  const [sortKey, setSortKey] = useState<"name" | "attack" | "health" | "defense" | "stars" | "release" | "existence" | null>(null);
+  const [sortKey, setSortKey] = useState<"name" | "final_attack" | "final_health" | "final_defense" | "stars" | "release" | "existence" | null>(null);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 
   const filteredCharacters = useMemo(() => {
@@ -539,9 +539,9 @@ export default function CharactersPage() {
               <h2 className="text-lg font-semibold text-gray-300">CHARACTERS</h2>
               <div className="flex items-center space-x-4 text-sm text-gray-400">
                 {renderSortableHeader("release", "/icons/release.png", "Release")}
-                {renderSortableHeader("attack", "/icons/ATK.png", "Attack")}
-                {renderSortableHeader("health", "/icons/HP.png", "Health")}
-                {renderSortableHeader("defense", "/icons/DEF.png", "Defense")}
+                {renderSortableHeader("final_attack", "/icons/ATK.png", "Attack")}
+                {renderSortableHeader("final_health", "/icons/HP.png", "Health")}
+                {renderSortableHeader("final_defense", "/icons/DEF.png", "Defense")}
                 {renderSortableHeader("existence", "/icons/existence.png", "Existence")}
                 {renderSortableHeader("stars", "/icons/rarity.png", "Rarity")}
                 {renderSortableHeader("name", "/icons/name.png", "Name")}
