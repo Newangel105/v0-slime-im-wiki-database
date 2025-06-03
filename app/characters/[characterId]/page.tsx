@@ -150,6 +150,44 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   const traitsList = character.traits.split("|").filter((trait) => trait.trim())
   const forcesList = character.force.split("|").filter((force) => force.trim())
 
+  function getSkillByPrefix(skills, prefix) {
+    return skills.find(skill => skill.imageName?.startsWith(prefix));
+  }
+
+  const skill1 = getSkillByPrefix(character.battle_skills, "b1_");
+  const skill2 = getSkillByPrefix(character.battle_skills, "b2_");
+  const evolution1 = getSkillByPrefix(character.battle_skills, "b3_");
+  const evolution2 = getSkillByPrefix(character.battle_skills, "b4_");
+
+  function SkillCard({ skill, isEvolution = false }: { skill: any; isEvolution?: boolean }) {
+    return (
+      <div>
+        <div className="flex items-center space-x-3 mb-3">
+          <div className="relative w-12 h-12 flex items-center justify-center overflow-visible">
+            {isEvolution && (
+              <img
+                src="/path/to/circle-background.png"
+                alt="evolution bg"
+                className="absolute -top-2 -left-2 w-16 h-16 object-contain z-0"
+              />
+            )}
+            <img
+              src={`/skills/${skill.imageName}`}
+              alt={skill.attackName}
+              className="w-10 h-10 object-contain relative z-10"
+            />
+          </div>
+          <div>
+            <h3 className="text-white font-medium">{skill.attackName}</h3>
+            {skill.extraText && <p className="text-blue-400 text-sm">{skill.extraText}</p>}
+          </div>
+        </div>
+        <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
+      </div>
+    );
+  }
+
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Header */}
@@ -385,32 +423,21 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
           <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">BATTLE SKILLS</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {character.battle_skills.map((skill, index) => (
-              <div key={index} className="bg-gray-900 rounded-lg p-4">
-                <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-12 h-12  rounded-lg flex items-center justify-center overflow-hidden">
-                    {skill.imageName ? (
-                      <img
-                        src={`/skills/${skill.imageName}`}
-                        alt={skill.attackName}
-                        className="w-10 h-10 object-contain"
-                      />
-                    ) : (
-                      <span className="text-white text-xs">No Img</span>
-                    )}
-                  </div>
-                  <div>
-                    <h3 className="text-white font-medium">{skill.attackName}</h3>
-                    {skill.extraText && (
-                      <p className="text-blue-400 text-sm">{skill.extraText}</p>
-                    )}
-                  </div>
+            {[{ skill: skill1, evolution: evolution1 }, { skill: skill2, evolution: evolution2 }].map(
+              ({ skill, evolution }, i) => (
+                <div key={i} className="bg-gray-900 rounded-lg p-4">
+                  {skill && <SkillCard skill={skill} />}
+                  {evolution && (
+                    <div className="mt-4 ml-6 border-l-2 border-gray-600 pl-4">
+                      <SkillCard skill={evolution} isEvolution />
+                    </div>
+                  )}
                 </div>
-                <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
-              </div>
-            ))}
+              )
+            )}
           </div>
         </div>
+
 
 
         {/* Secret Skills Section */}

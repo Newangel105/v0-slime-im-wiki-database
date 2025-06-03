@@ -29,10 +29,10 @@
         "description": "Changes Soul of Secrets x2 into Soul of Divine Protection. Increases all Soul of Divine Protection gauges' increase by 5/10% Turns 1"
       },
       {
-        "imageName": "b3_1.png",
+        "imageName": "b2_1.png",
         "attackName": "Collective Observation",
         "extraText": "35 Skill Points",
-        "description": "A flurry of slashes that hit multiple enemies."
+        "description": "Changes non-Divine Protection soul x2 into Soul of Divine Protection.\nIncreases all Soul of Divine Protection gauges' increase by 5% Turns 1"
       }
     ],
     "secret_skills": [
