@@ -211,9 +211,22 @@ export default function CharactersPage() {
         }
       }
 
-      const baseElement = character.element.replace(/^(prot_)?(ex_)?/, '');
+      const stripPrefixes = (element) => element.replace(/^(prot_)?(ex_)?/, '');
 
-      if (selectedElements.length > 0 && !selectedElements.includes(baseElement)) return false;
+      const baseElement = stripPrefixes(character.element);
+
+      const isMatch = selectedElements.some(sel => {
+        if (sel.startsWith('prot_') || sel.startsWith('ex_')) {
+          // Exact match required when selector is prefixed
+          return sel === character.element;
+        } else {
+          // Loose match: strip prefixes from character.element
+          return sel === baseElement;
+        }
+      });
+
+      if (selectedElements.length > 0 && !isMatch) return false;
+
       if (selectedWeapons.length > 0 && !selectedWeapons.includes(character.weapon)) return false;
       if (selectedStars.length > 0 && !selectedStars.includes(character.stars)) return false;
 
