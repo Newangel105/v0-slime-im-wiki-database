@@ -19,7 +19,14 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     wind: "/elements/icElementWind.png",
     dark: "/elements/icElementDark.png",
     light: "/elements/icElementlight.png",
-    ProtectorofPeace: "/forces/ProtectorofPeace.png"
+    ProtectorofPeace: "/forces/ProtectorofPeace.png",
+    prot_fire: "/protector_elements/fire.png",
+    prot_water: "/protector_elements/water.png",
+    prot_earth: "/protector_elements/earth.png",
+    prot_space: "/protector_elements/space.png",
+    prot_wind: "/protector_elements/wind.png",
+    prot_dark: "/protector_elements/dark.png",
+    prot_light: "/protector_elements/light.png"
   };
 
   function renderFilterTag(value: string) {
