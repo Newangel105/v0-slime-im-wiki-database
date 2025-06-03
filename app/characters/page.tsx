@@ -43,13 +43,13 @@ const elementIcons = {
   wind: "/elements/icElementWind.png",
   dark: "/elements/icElementDark.png",
   light: "/elements/icElementlight.png",
-  ex_fire: "/elements/icElementEnhancedfire.png",
-  ex_water: "/elements/icElementEnhancedwater.png",
-  ex_earth: "/elements/icElementEnhancedearth.png",
-  ex_space: "/elements/icElementEnhancedspace.png",
-  ex_wind: "/elements/icElementEnhancedwind.png",
-  ex_dark: "/elements/icElementEnhanceddark.png",
-  ex_light: "/elements/icElementEnhancedlight.png"
+  ex_fire: "/elements/Enhancedfire.png",
+  ex_water: "/elements/Enhancedwater.png",
+  ex_earth: "/elements/Enhancedearth.png",
+  ex_space: "/elements/Enhancedspace.png",
+  ex_wind: "/elements/Enhancedwind.png",
+  ex_dark: "/elements/Enhanceddark.png",
+  ex_light: "/elements/Enhancedlight.png"
 }
 
 const protelementIcons = {
