@@ -260,6 +260,28 @@ export default function CharactersPage() {
                 <div className="border-r border-white opacity-30 h-6 mx-1"></div>
               </div>
 
+              {/* Protector Element Filters */}
+              <div className="flex items-center space-x-2">
+                <div className="flex flex-wrap gap-1">
+                  {Object.entries(protelementIcons).map(([element, iconPath]) => (
+                    <button
+                      key={element}
+                      onClick={() => toggleFilter(element, selectedElements, setSelectedElements)}
+                      className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
+                        selectedElements.includes(element)
+                          ? "opacity-100 ring-2 ring-white"
+                          : "opacity-50 hover:opacity-75"
+                      }`}
+                    >
+                      <img src={iconPath || "/placeholder.svg"} alt={element} className="w-8 h-8 object-contain" />
+                    </button>
+                  ))}
+                </div>
+
+                {/* Vertical Splitter */}
+                <div className="border-r border-white opacity-30 h-6 mx-1"></div>
+              </div>
+
               {/* Weapon Filters */}
               <div className="flex items-center space-x-1">
                 <div className="flex flex-wrap gap-1">
