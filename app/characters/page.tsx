@@ -65,6 +65,11 @@ const weaponIcons = {
   fists: "/weapons/fists.png",
 }
 
+const dmg_typeIcons_1 = {
+  magic: "/type_dmg/icAttackTypeMagic.png",
+  phys: "/type_dmg/icAttackTypePhysics.png",
+}
+
 const dmg_typeIcons = {
   magic: "/type_dmg/icAttackTypeMagic.png",
   phys: "/type_dmg/icAttackTypePhysics.png",
@@ -328,7 +333,7 @@ export default function CharactersPage() {
               {/* Type DMG */}
               <div className="flex items-center space-x-1">
                 <div className="flex flex-wrap gap-1">
-                  {Object.entries(dmg_typeIcons).map(([type, iconPath]) => (
+                  {Object.entries(dmg_typeIcons_1).map(([type, iconPath]) => (
                     <button
                       key={type}
                       onClick={() => toggleFilter(type, selectedDMGType, setSelectedDMGType)}
