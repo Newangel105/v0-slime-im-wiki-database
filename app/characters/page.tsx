@@ -125,6 +125,37 @@ export default function CharactersPage() {
     }
   }
 
+  function renderSortableHeader(key: typeof sortKey, label: React.ReactNode) {
+    const isActive = sortKey === key;
+    const directionIcon = isActive
+      ? sortOrder === "asc"
+        ? "↑"
+        : "↓"
+      : "↕"; // default
+
+    const toggleSort = () => {
+      if (sortKey === key) {
+        setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+      } else {
+        setSortKey(key);
+        setSortOrder("asc"); // default to asc on new key
+      }
+    };
+
+    return (
+      <button
+        onClick={toggleSort}
+        className={`flex items-center gap-1 hover:text-white transition ${
+          isActive ? "text-white font-semibold" : ""
+        }`}
+      >
+        {label}
+        <span className="text-xs">{directionIcon}</span>
+      </button>
+    );
+  }
+
+
   
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -503,25 +534,17 @@ export default function CharactersPage() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-gray-300">CHARACTERS</h2>
-              <div className="flex items-center space-x-4">
-                <div className="flex items-center space-x-2 text-sm text-gray-400">
-                  <Shield className="w-4 h-4" />
-                  <span>Release</span>
-                  <Sword className="w-4 h-4" />
-                  <span>Attack</span>
-                  <span>❤️</span>
-                  <span>Health</span>
-                  <Shield className="w-4 h-4" />
-                  <span>Defense</span>
-                  <span>⚡</span>
-                  <span>Existence</span>
-                  <span>🌟</span>
-                  <span>Rarity</span>
-                  <span>📛</span>
-                  <span>Name</span>
-                </div>
+              <div className="flex items-center space-x-4 text-sm text-gray-400">
+                {renderSortableHeader("release", "📅 Release")}
+                {renderSortableHeader("attack", <Sword className="w-4 h-4 inline" />)}
+                {renderSortableHeader("health", "❤️ Health")}
+                {renderSortableHeader("defense", <Shield className="w-4 h-4 inline" />)}
+                {renderSortableHeader("existence", "⚡ Existence")}
+                {renderSortableHeader("stars", "🌟 Rarity")}
+                {renderSortableHeader("name", "📛 Name")}
               </div>
             </div>
+
 
             {/* Character Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
