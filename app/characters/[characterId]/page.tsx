@@ -63,7 +63,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             className={`${iconSize} mr-2 object-contain`}
           />
         )}
-        {value}
+        {value.replace(/^prot_/, '')}
       </Link>
     )
   }
