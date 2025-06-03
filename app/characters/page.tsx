@@ -131,20 +131,22 @@ export default function CharactersPage() {
     label: string
   ) {
     const isActive = sortKey === key;
-    const directionIcon = isActive
-      ? sortOrder === "asc"
-        ? "↑"
-        : "↓"
-      : "↕";
 
     const toggleSort = () => {
-      if (sortKey === key) {
-        setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+      if (isActive) {
+        setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
       } else {
         setSortKey(key);
         setSortOrder("asc");
       }
     };
+
+    const directionIcon =
+      isActive && sortOrder === "asc"
+        ? "↑"
+        : isActive && sortOrder === "desc"
+        ? "↓"
+        : ""; // nothing when inactive
 
     return (
       <button
@@ -159,6 +161,7 @@ export default function CharactersPage() {
       </button>
     );
   }
+
   
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)

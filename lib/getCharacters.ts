@@ -46,20 +46,17 @@ export type Character = {
 
 export function getAllCharacters(): Character[] {
   return characters.map((char: any) => {
-    const initial_attack = Number(char.initial_attack)
-    const initial_health = Number(char.initial_health)
-    const initial_defense = Number(char.initial_defense)
+    const final_attack = Number(char.final_attack)
+    const final_health = Number(char.final_health)
+    const final_defense = Number(char.final_defense)
 
-    const existence = initial_health + initial_attack * 5 + initial_defense * 2.5
+    const existence = final_health + final_attack * 5 + final_defense * 2.5
 
     return {
       ...char,
       id: Number(char.id),
       stars: Number(char.stars),
       rarity: Number(char.rarity),
-      initial_attack,
-      initial_health,
-      initial_defense,
       final_attack: Number(char.final_attack),
       final_health: Number(char.final_health),
       final_defense: Number(char.final_defense),
