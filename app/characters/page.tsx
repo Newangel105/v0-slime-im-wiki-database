@@ -244,33 +244,35 @@ export default function CharactersPage() {
           <CardContent className="p-6">
             <h2 className="text-lg font-semibold mb-4 text-gray-300">FILTERS</h2>
 
-            {/* Search */}
-            <div className="flex items-center space-x-4 mb-6">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                <Input
-                  placeholder="Search..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-gray-700 border-gray-600 text-white"
-                />
-              </div>
+        {/* Search */}
+        <div className="flex items-center space-x-4 mb-6">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <Input
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10 bg-gray-700 border-gray-600 text-white"
+            />
+          </div>
 
-              <label className="flex items-center cursor-pointer select-none">
-                <input
-                  type="checkbox"
-                  checked={searchSkills}
-                  onChange={() => setSearchSkills(!searchSkills)}
-                  className="hidden"
-                />
-                <div className="w-10 h-5 bg-gray-600 rounded-full relative transition-colors duration-300 ease-in-out
-                                after:absolute after:top-0.5 after:left-0.5 after:bg-white after:w-4 after:h-4 after:rounded-full after:transition-transform
-                                after:duration-300 after:ease-in-out
-                                peer-checked:bg-red-600 peer-checked:after:translate-x-5"
-                ></div>
-                <span className="ml-3 text-sm text-gray-300 select-none">Search Skills</span>
-              </label>
-            </div>
+          <label className="flex items-center cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={searchSkills}
+              onChange={() => setSearchSkills(!searchSkills)}
+              className="hidden peer"  // <-- Add 'peer' here
+            />
+            <div
+              className="w-10 h-5 bg-gray-600 rounded-full relative transition-colors duration-300 ease-in-out
+                        after:absolute after:top-0.5 after:left-0.5 after:bg-white after:w-4 after:h-4 after:rounded-full after:transition-transform
+                        after:duration-300 after:ease-in-out
+                        peer-checked:bg-red-600 peer-checked:after:translate-x-5"
+            ></div>
+            <span className="ml-3 text-sm text-gray-300 select-none">Search Skills</span>
+          </label>
+        </div>
+
 
             <div className="flex items-center space-x-2 flex-wrap">
               {/* Element Filters */}
