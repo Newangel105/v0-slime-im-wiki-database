@@ -237,7 +237,7 @@ export default function CharactersPage() {
               </Button>
             </div>
 
-            <div className="flex items-center space-x-4 flex-wrap">
+            <div className="flex items-center space-x-2 flex-wrap">
               {/* Element Filters */}
               <div className="flex items-center space-x-2">
                 <div className="flex flex-wrap gap-1">
@@ -262,7 +262,7 @@ export default function CharactersPage() {
 
               {/* Weapon Filters */}
               <div className="flex items-center space-x-1">
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1">
                   {Object.entries(weaponIcons).map(([weapon, iconPath]) => (
                     <button
                       key={weapon}
@@ -282,7 +282,7 @@ export default function CharactersPage() {
 
               {/* Star Filters */}
               <div className="flex items-center space-x-1">
-                <div className="flex gap-2">
+                <div className="flex gap-1">
                   {[3, 4, 5, 6].map((stars) => (
                     <button
                       key={stars}
@@ -302,7 +302,7 @@ export default function CharactersPage() {
 
               {/* Type DMG */}
               <div className="flex items-center space-x-1">
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1">
                   {Object.entries(dmg_typeIcons).map(([type, iconPath]) => (
                     <button
                       key={type}
@@ -322,7 +322,7 @@ export default function CharactersPage() {
 
               {/* Type */}
               <div className="flex items-center space-x-1">
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1">
                   {Object.entries(typeIcons).map(([type_char, iconPath]) => (
                     <button
                       key={type_char}
@@ -342,7 +342,7 @@ export default function CharactersPage() {
 
               {/* Ulti */}
               <div className="flex items-center space-x-1">
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1">
                   {Object.entries(ultiIcons).map(([ulti_type, iconPath]) => (
                     <button
                       key={ulti_type}
@@ -362,7 +362,7 @@ export default function CharactersPage() {
 
               {/* Char Type */}
               <div className="flex items-center space-x-1">
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1">
                   {Object.entries(chartypeIcons).map(([char_type, iconPath]) => (
                     <button
                       key={char_type}
@@ -383,7 +383,7 @@ export default function CharactersPage() {
 
 
             {/* Dropdown Filters */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
               <Select value={skillsFilter} onValueChange={setSkillsFilter}>
                 <SelectTrigger className="bg-gray-700 border-gray-600">
                   <SelectValue placeholder="SKILLS" />
