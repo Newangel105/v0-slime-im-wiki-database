@@ -87,7 +87,7 @@ export function getAllCharacters(): Character[] {
       skill_traits: char.skill_traits ?? [],
       unbound: char.unbound ?? [],
       ex_abilities: char.ex_abilities ?? [],
-      divine_protection: char.divine_skills ?? [],
+      divine_skills: char.divine_skills ?? [],
     }
   })
 }
