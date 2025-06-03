@@ -562,7 +562,6 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
               </div>
             ))}
           </div>
-
         </div>
 
         {/* EX Abilities Section */}
