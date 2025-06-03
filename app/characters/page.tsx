@@ -257,7 +257,7 @@ export default function CharactersPage() {
                 </div>
 
                 {/* Vertical Splitter */}
-                <div className="border-r border-white opacity-30 h-8 mx-4"></div>
+                <div className="border-r border-white opacity-30 h-4 mx-1"></div>
               </div>
 
               {/* Weapon Filters */}
@@ -277,7 +277,7 @@ export default function CharactersPage() {
                     </button>
                   ))}
                 </div>
-                <div className="border-r border-white opacity-30 h-8 mx-4"></div>
+                <div className="border-r border-white opacity-30 h-4 mx-1"></div>
               </div>
 
               {/* Star Filters */}
@@ -297,7 +297,7 @@ export default function CharactersPage() {
                     </button>
                   ))}
                 </div>
-                <div className="border-r border-white opacity-30 h-8 mx-4"></div>
+                <div className="border-r border-white opacity-30 h-4 mx-1"></div>
               </div>
 
               {/* Type DMG */}
@@ -317,7 +317,7 @@ export default function CharactersPage() {
                     </button>
                   ))}
                 </div>
-                <div className="border-r border-white opacity-30 h-8 mx-4"></div>
+                <div className="border-r border-white opacity-30 h-4 mx-1"></div>
               </div>
 
               {/* Type */}
@@ -337,7 +337,7 @@ export default function CharactersPage() {
                     </button>
                   ))}
                 </div>
-                <div className="border-r border-white opacity-30 h-8 mx-4"></div>
+                <div className="border-r border-white opacity-30 h-4 mx-1"></div>
               </div>
 
               {/* Ulti */}
@@ -357,7 +357,7 @@ export default function CharactersPage() {
                     </button>
                   ))}
                 </div>
-                <div className="border-r border-white opacity-30 h-8 mx-4"></div>
+                <div className="border-r border-white opacity-30 h-4 mx-1"></div>
               </div>
 
               {/* Char Type */}
