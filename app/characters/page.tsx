@@ -518,7 +518,7 @@ export default function CharactersPage() {
                       className="w-6 h-6 object-contain"
                     />
                     <img
-                      src="/type_dmg/icAttackTypePhysics.png"
+                      src={dmg_typeIcons[character.dmg_type]}
                       alt="Dmg"
                       className="w-6 h-6 object-contain"
                     />
