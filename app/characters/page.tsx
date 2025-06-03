@@ -162,8 +162,12 @@ export default function CharactersPage() {
       if (selectedStars.length > 0 && !selectedStars.includes(character.stars)) {
         return false
       }
-      if (selectedDMGType.length > 0 && !selectedDMGType.includes(character.dmg_type)) {
-        return false
+      if (
+        selectedDMGType.length > 0 &&
+        !selectedDMGType.includes(character.dmg_type) &&
+        !selectedDMGType.includes(`prot_${character.dmg_type}`)
+      ) {
+        return false;
       }
       if (selectedType.length > 0 && !selectedType.includes(character.type)) {
         return false
