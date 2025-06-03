@@ -101,38 +101,18 @@
     "tag": "prot_water|Restaurant +30%",
     "force": "Protector of Peace|Pretty Sparkle",
     "town": "Rimuru City",
-    "battle_skills": [
+    "divine_skills": [
       {
-        "imageName": "b1.png",
-        "attackName": "Winning Operation",
-        "extraText": "90/80 Skill Points",
+        "imageName": "divine.png",
+        "attackName": "Shadow Infiltration",
+        "extraText": "Primary",
         "description": "Increases all allies'ATK by 55/65% Turns 1. Decreases all targets' attack resistance by 20% Turns 1. Increases Aegis Rate by 100%."
       },
       {
-        "imageName": "b2.png",
-        "attackName": "Collective Observation",
-        "extraText": "35/25 Skill Points",
+        "imageName": "",
+        "attackName": "Supporting Divine Protection",
+        "extraText": "Support",
         "description": "Changes Soul of Secrets x2 into Soul of Divine Protection. Increases all Soul of Divine Protection gauges' increase by 5/10% Turns 1"
-      },
-      {
-        "imageName": "b4.png",
-        "attackName": "Collective Observation",
-        "extraText": "35 Skill Points",
-        "description": "Changes non-Divine Protection soul x2 into Soul of Divine Protection.\nIncreases all Soul of Divine Protection gauges' increase by 5% Turns 1"
-      }
-    ],
-    "secret_skills": [
-      {
-        "imageName": "atk",
-        "attackName": "Infinity Wisdom",
-        "extraText": "100% Secret Gauge",
-        "description": "Unleashes an all-target attack for 300% normal damage.Decreases all targets'DEF by 5% Turns 2"
-      },
-      {
-        "imageName": "supp",
-        "attackName": "EX Infinity Wisdom",
-        "extraText": "200% Secret Gauge",
-        "description": "Unleashes an all-target attack for 600% normal damage.Decreases all targets'DEF by 5% Turns 2"
       }
     ],
     "skill_traits": [
@@ -145,18 +125,6 @@
         "imageName": "t2",
         "attackName": "Switch - Skill Seal",
         "description": "When you switch this character to the vanguard and activate souls, all enemies' magic-changing battle skills are sealed Turns 1 Uses by this character per battle: 2"
-      }
-    ],
-    "ex_abilities": [
-      {
-        "imageName": "e1",
-        "attackName": "Individual Mercy",
-        "description": "When you unleash a 6 combo attack with Soul of Divine Protection, increases own critical damage by 6% for the next turn available in support formation"
-      },
-      {
-        "imageName": "",
-        "attackName": "Physical Blessing",
-        "description": "Increases other troop members' following status in accordance with the number of attack characters assigned to battle slots.\n Increases HP by 90\n Increases ATK by 40\n Increases DEF by 24"
       }
     ],
     "initial_attack": 553,

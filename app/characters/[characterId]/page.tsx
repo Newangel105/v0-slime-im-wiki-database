@@ -385,61 +385,97 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         </div>
 
         {/* Battle Skills Section */}
-        <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
-          <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">BATTLE SKILLS</h2>
-          <div className="grid grid-cols-2 gap-6">
-            {/* Column 1 */}
-            <div className="flex flex-col space-y-6">
-              {base1 && <SkillCard skill={base1} />}
-              {evo1 ? <SkillCard skill={evo1} isEvolution baseImage="b1.png" /> : <div className="h-full" />}
-            </div>
+        {character.type === 'attacker' && (
+          <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">BATTLE SKILLS</h2>
+            <div className="grid grid-cols-2 gap-6">
+              {/* Column 1 */}
+              <div className="flex flex-col space-y-6">
+                {base1 && <SkillCard skill={base1} />}
+                {evo1 ? <SkillCard skill={evo1} isEvolution baseImage="b1.png" /> : <div className="h-full" />}
+              </div>
 
-            {/* Column 2 */}
-            <div className="flex flex-col space-y-6">
-              {base2 && <SkillCard skill={base2} />}
-              {evo2 ? <SkillCard skill={evo2} isEvolution baseImage="b2.png" /> : <div className="h-full" />}
+              {/* Column 2 */}
+              <div className="flex flex-col space-y-6">
+                {base2 && <SkillCard skill={base2} />}
+                {evo2 ? <SkillCard skill={evo2} isEvolution baseImage="b2.png" /> : <div className="h-full" />}
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
-        {/* Secret Skills Section */}
-        <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
-          <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">SECRET SKILLS</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {character.secret_skills.map((skill, index) => (
-              <div key={index} className="bg-gray-900 rounded-lg p-4">
-                <div className="flex items-center space-x-3 mb-3">
-                  <div className="relative w-[48px] h-[48px]">
-                    {/* Skill Frame (background) */}
-                    <img
-                      src={`/skills/${skill.imageName}.png`}
-                      alt={skill.attackName}
-                      className="absolute top-0 left-0 w-full h-full object-contain z-0"
-                    />
-
-                    {/* Character image clipped inside smaller circle */}
-                    <div className="absolute top-1/2 left-1/2 w-[28px] h-[28px] rounded-full overflow-hidden -translate-x-1/2 -translate-y-1/2 z-10">
-                      <img
-                        src={`/chars/${character.id}/image.png`}
-                        alt={character.name}
-                        className="w-full h-full object-cover"
-                      />
+        {character.type === 'protector' && (
+          <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">DIVINE PROTECTION</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {character.divine_protection.map((skill, index) => (
+                <div key={index} className="bg-gray-900 rounded-lg p-4">
+                  <div className="flex items-center space-x-3 mb-3">
+                    <div className="w-12 h-12  rounded-lg flex items-center justify-center overflow-hidden">
+                      {skill.imageName ? (
+                        <img
+                          src={`/icons/${skill.imageName}.png`}
+                          alt={skill.attackName}
+                          className="w-10 h-10 object-contain"
+                        />
+                      ) : (
+                        <span className="text-white text-xs">No Img</span>
+                      )}
+                    </div>
+                    <div>
+                      <h3 className="text-white font-medium">{skill.attackName}</h3>
+                      {skill.extraText && (
+                        <p className="text-blue-400 text-sm">{skill.extraText}</p>
+                      )}
                     </div>
                   </div>
-                  <div>
-                    <h3 className="text-white font-medium">{skill.attackName}</h3>
-                    {skill.extraText && (
-                      <p className="text-blue-400 text-sm">{skill.extraText}</p>
-                    )}
-                  </div>
+                  <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
                 </div>
-                <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
-        {character.element.includes('ex') && (
+        {/* Secret Skills Section */}
+        {character.type === 'attacker' && (
+          <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">SECRET SKILLS</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {character.secret_skills.map((skill, index) => (
+                <div key={index} className="bg-gray-900 rounded-lg p-4">
+                  <div className="flex items-center space-x-3 mb-3">
+                    <div className="relative w-[48px] h-[48px]">
+                      {/* Skill Frame (background) */}
+                      <img
+                        src={`/skills/${skill.imageName}.png`}
+                        alt={skill.attackName}
+                        className="absolute top-0 left-0 w-full h-full object-contain z-0"
+                      />
+
+                      {/* Character image clipped inside smaller circle */}
+                      <div className="absolute top-1/2 left-1/2 w-[28px] h-[28px] rounded-full overflow-hidden -translate-x-1/2 -translate-y-1/2 z-10">
+                        <img
+                          src={`/chars/${character.id}/image.png`}
+                          alt={character.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-white font-medium">{skill.attackName}</h3>
+                      {skill.extraText && (
+                        <p className="text-blue-400 text-sm">{skill.extraText}</p>
+                      )}
+                    </div>
+                  </div>
+                  <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {character.element.includes('ex') && character.type === 'attacker' && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">True Attribute Unbound</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -460,7 +496,6 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             </div>
           </div>
         )}
-
 
         {/* Traits Section */}
         <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
@@ -493,34 +528,37 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           </div>
         </div>
 
-        {/* EX Abilities Section */}
-        <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
-          <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">EX ABILITIES</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {character.ex_abilities.map((skill, index) => (
-              <div key={index} className="bg-gray-900 rounded-lg p-4">
-                <div className="flex items-center space-x-3 mb-3">
-                  {skill.imageName && (
-                    <div className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
-                      <img
-                        src={`/skills/${skill.imageName}.png`}
-                        alt={skill.attackName}
-                        className="w-10 h-10 object-contain"
-                      />
-                    </div>
-                  )}
-                  <div>
-                    <h3 className="text-white font-medium">{skill.attackName}</h3>
-                    {skill.extraText && (
-                      <p className="text-blue-400 text-sm">{skill.extraText}</p>
+        
+          {/* EX Abilities Section */}
+        {character.type === 'attacker' && (
+          <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">EX ABILITIES</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {character.ex_abilities.map((skill, index) => (
+                <div key={index} className="bg-gray-900 rounded-lg p-4">
+                  <div className="flex items-center space-x-3 mb-3">
+                    {skill.imageName && (
+                      <div className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img
+                          src={`/skills/${skill.imageName}.png`}
+                          alt={skill.attackName}
+                          className="w-10 h-10 object-contain"
+                        />
+                      </div>
                     )}
+                    <div>
+                      <h3 className="text-white font-medium">{skill.attackName}</h3>
+                      {skill.extraText && (
+                        <p className="text-blue-400 text-sm">{skill.extraText}</p>
+                      )}
+                    </div>
                   </div>
+                  <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
                 </div>
-                <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Character Gallery */}
         <div className="mt-6 bg-gray-800 rounded-lg p-6 border border-gray-700">
