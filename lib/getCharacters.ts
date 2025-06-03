@@ -20,6 +20,7 @@ export type Trait = {
 }
 
 export type divine = {
+  imageName?: string
   attackName: string
   extraText?: string
   description: string
