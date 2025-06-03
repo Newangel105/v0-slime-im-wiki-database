@@ -578,7 +578,7 @@ export default function CharactersPage() {
 
                   {/* Stars (bottom-left) */}
                   <img
-                    src="/stars/starCharaL5A.png"
+                    src={`/stars/starCharaL${character.stars}A.png`}
                     alt="stars"
                     className="absolute bottom-1 left-1 h-6 object-contain z-10"
                   />
