@@ -257,11 +257,11 @@ export default function CharactersPage() {
                 </div>
 
                 {/* Vertical Splitter */}
-                <div className="border-r border-white opacity-30 h-4 mx-1"></div>
+                <div className="border-r border-white opacity-30 h-6 mx-1"></div>
               </div>
 
               {/* Weapon Filters */}
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-1">
                 <div className="flex flex-wrap gap-2">
                   {Object.entries(weaponIcons).map(([weapon, iconPath]) => (
                     <button
@@ -277,11 +277,11 @@ export default function CharactersPage() {
                     </button>
                   ))}
                 </div>
-                <div className="border-r border-white opacity-30 h-4 mx-1"></div>
+                <div className="border-r border-white opacity-30 h-6 mx-1"></div>
               </div>
 
               {/* Star Filters */}
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-1">
                 <div className="flex gap-2">
                   {[3, 4, 5, 6].map((stars) => (
                     <button
@@ -297,11 +297,11 @@ export default function CharactersPage() {
                     </button>
                   ))}
                 </div>
-                <div className="border-r border-white opacity-30 h-4 mx-1"></div>
+                <div className="border-r border-white opacity-30 h-6 mx-1"></div>
               </div>
 
               {/* Type DMG */}
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-1">
                 <div className="flex flex-wrap gap-2">
                   {Object.entries(dmg_typeIcons).map(([type, iconPath]) => (
                     <button
@@ -317,11 +317,11 @@ export default function CharactersPage() {
                     </button>
                   ))}
                 </div>
-                <div className="border-r border-white opacity-30 h-4 mx-1"></div>
+                <div className="border-r border-white opacity-30 h-6 mx-1"></div>
               </div>
 
               {/* Type */}
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-1">
                 <div className="flex flex-wrap gap-2">
                   {Object.entries(typeIcons).map(([type_char, iconPath]) => (
                     <button
@@ -337,11 +337,11 @@ export default function CharactersPage() {
                     </button>
                   ))}
                 </div>
-                <div className="border-r border-white opacity-30 h-4 mx-1"></div>
+                <div className="border-r border-white opacity-30 h-6 mx-1"></div>
               </div>
 
               {/* Ulti */}
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-1">
                 <div className="flex flex-wrap gap-2">
                   {Object.entries(ultiIcons).map(([ulti_type, iconPath]) => (
                     <button
@@ -357,11 +357,11 @@ export default function CharactersPage() {
                     </button>
                   ))}
                 </div>
-                <div className="border-r border-white opacity-30 h-4 mx-1"></div>
+                <div className="border-r border-white opacity-30 h-6 mx-1"></div>
               </div>
 
               {/* Char Type */}
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-1">
                 <div className="flex flex-wrap gap-2">
                   {Object.entries(chartypeIcons).map(([char_type, iconPath]) => (
                     <button
