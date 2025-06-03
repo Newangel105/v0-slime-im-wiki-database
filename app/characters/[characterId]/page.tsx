@@ -38,16 +38,22 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
 
     if (!type) return value // fallback to plain text if unrecognized
 
+    // Adjust icon size and font size here:
+    const iconSize = "w-5 h-5" // slightly bigger icons
+    const fontSize = "text-sm" // bigger font size
+    const paddingX = "px-3"
+    const paddingY = "py-1"
+
     return (
       <Link
         href={`/characters?${type}=${encodeURIComponent(value)}`}
-        className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#1f1f1f] text-white text-xs font-medium mx-1 hover:bg-[#333]"
+        className={`inline-flex items-center ${paddingX} ${paddingY} rounded-full bg-[#111827] text-white ${fontSize} font-medium mx-1 hover:bg-[#909090]`}
       >
         {(type === "element" || type === "force") && statIconMap[cleanValue] && (
           <img
             src={statIconMap[cleanValue]}
             alt={value}
-            className="w-4 h-4 mr-1 object-contain"
+            className={`${iconSize} mr-2 object-contain`}
           />
         )}
         {value}
