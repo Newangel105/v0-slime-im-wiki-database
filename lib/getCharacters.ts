@@ -13,6 +13,10 @@ export type Trait = {
   description: string
 }
 
+export type unbound = {
+  description: string
+}
+
 export type Character = {
   id: string
   name: string
@@ -41,6 +45,7 @@ export type Character = {
   battle_skills: Skill[]
   secret_skills: Skill[]
   skill_traits: Trait[]
+  unbound: unbound[]
   ex_abilities: Trait[]
 }
 
@@ -72,7 +77,7 @@ export function getAllCharacters(): Character[] {
       battle_skills: char.battle_skills ?? [],
       secret_skills: char.secret_skills ?? [],
       skill_traits: char.skill_traits ?? [],
-      unbound: char.skill_traits ?? [],
+      unbound: char.unbound ?? [],
       ex_abilities: char.ex_abilities ?? [],
     }
   })
