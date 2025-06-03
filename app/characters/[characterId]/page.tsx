@@ -150,31 +150,30 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   const traitsList = character.traits.split("|").filter((trait) => trait.trim())
   const forcesList = character.force.split("|").filter((force) => force.trim())
 
-  function getSkillByPrefix(skills, prefix) {
-    return skills.find(skill => skill.imageName?.startsWith(prefix));
-  }
-
-  const skill1 = getSkillByPrefix(character.battle_skills, "b1_");
-  const skill2 = getSkillByPrefix(character.battle_skills, "b2_");
-  const evolution1 = getSkillByPrefix(character.battle_skills, "b3_");
-  const evolution2 = getSkillByPrefix(character.battle_skills, "b4_");
-
-  function SkillCard({ skill, isEvolution = false }: { skill: any; isEvolution?: boolean }) {
+  function SkillCard({
+    skill,
+    isEvolution = false,
+    baseImage
+  }: {
+    skill: any;
+    isEvolution?: boolean;
+    baseImage?: string;
+  }) {
     return (
-      <div>
+      <div className="bg-gray-900 rounded-lg p-4 h-full">
         <div className="flex items-center space-x-3 mb-3">
           <div className="relative w-12 h-12 flex items-center justify-center overflow-visible">
             {isEvolution && (
               <img
-                src="/path/to/circle-background.png"
-                alt="evolution bg"
-                className="absolute -top-2 -left-2 w-16 h-16 object-contain z-0"
+                src="/path/to/evolution-circle.png"
+                alt="Evolution Circle"
+                className="absolute -top-2 -left-2 w-16 h-16 z-0 object-contain"
               />
             )}
             <img
-              src={`/skills/${skill.imageName}`}
+              src={`/skills/${isEvolution && baseImage ? baseImage : skill.imageName}`}
               alt={skill.attackName}
-              className="w-10 h-10 object-contain relative z-10"
+              className="w-10 h-10 z-10 object-contain relative"
             />
           </div>
           <div>
@@ -186,6 +185,12 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
       </div>
     );
   }
+
+  // ---- In your render section ----
+  const base1 = character.battle_skills.find(s => s.imageName === "b1_1.png");
+  const base2 = character.battle_skills.find(s => s.imageName === "b2_1.png");
+  const evo1 = character.battle_skills.find(s => s.imageName === "b3_1.png");
+  const evo2 = character.battle_skills.find(s => s.imageName === "b4_1.png");
 
 
   return (
@@ -422,23 +427,20 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         {/* Battle Skills Section */}
         <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
           <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">BATTLE SKILLS</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[{ skill: skill1, evolution: evolution1 }, { skill: skill2, evolution: evolution2 }].map(
-              ({ skill, evolution }, i) => (
-                <div key={i} className="bg-gray-900 rounded-lg p-4">
-                  {skill && <SkillCard skill={skill} />}
-                  {evolution && (
-                    <div className="mt-4 ml-6 border-l-2 border-gray-600 pl-4">
-                      <SkillCard skill={evolution} isEvolution />
-                    </div>
-                  )}
-                </div>
-              )
-            )}
+          <div className="grid grid-cols-2 gap-6">
+            {/* Column 1 */}
+            <div className="flex flex-col space-y-6">
+              {base1 && <SkillCard skill={base1} />}
+              {evo1 ? <SkillCard skill={evo1} isEvolution baseImage="b1_1.png" /> : <div className="h-full" />}
+            </div>
+
+            {/* Column 2 */}
+            <div className="flex flex-col space-y-6">
+              {base2 && <SkillCard skill={base2} />}
+              {evo2 ? <SkillCard skill={evo2} isEvolution baseImage="b2_1.png" /> : <div className="h-full" />}
+            </div>
           </div>
         </div>
-
-
 
         {/* Secret Skills Section */}
         <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
