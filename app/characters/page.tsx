@@ -259,6 +259,7 @@ export default function CharactersPage() {
                 {/* Vertical Splitter */}
                 <div className="border-r border-white opacity-30 h-6 mx-1"></div>
               </div>
+              
 
               {/* Protector Element Filters */}
               <div className="flex items-center space-x-2">
