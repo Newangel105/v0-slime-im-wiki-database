@@ -237,11 +237,10 @@ export default function CharactersPage() {
               </Button>
             </div>
 
-            <div className="flex space-x-6 flex-wrap">
-
+            <div className="flex items-center space-x-6 flex-wrap">
               {/* Element Filters */}
-              <div className="mb-6">
-                <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex items-center space-x-4">
+                <div className="flex flex-wrap gap-2">
                   {Object.entries(elementIcons).map(([element, iconPath]) => (
                     <button
                       key={element}
@@ -257,23 +256,33 @@ export default function CharactersPage() {
                   ))}
                 </div>
 
-                {/* Weapon Filters */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                {/* Vertical Splitter */}
+                <div className="border-r border-white opacity-30 h-8 mx-4"></div>
+              </div>
+
+              {/* Weapon Filters */}
+              <div className="flex items-center space-x-4">
+                <div className="flex flex-wrap gap-2">
                   {Object.entries(weaponIcons).map(([weapon, iconPath]) => (
                     <button
                       key={weapon}
                       onClick={() => toggleFilter(weapon, selectedWeapons, setSelectedWeapons)}
                       className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
-                        selectedWeapons.includes(weapon) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
+                        selectedWeapons.includes(weapon)
+                          ? "opacity-100 ring-2 ring-white"
+                          : "opacity-50 hover:opacity-75"
                       }`}
                     >
                       <img src={iconPath || "/placeholder.svg"} alt={weapon} className="w-8 h-8 object-contain" />
                     </button>
                   ))}
                 </div>
+                <div className="border-r border-white opacity-30 h-8 mx-4"></div>
+              </div>
 
-                {/* Star Filters */}
-                <div className="flex gap-2 mb-4">
+              {/* Star Filters */}
+              <div className="flex items-center space-x-4">
+                <div className="flex gap-2">
                   {[3, 4, 5, 6].map((stars) => (
                     <button
                       key={stars}
@@ -281,75 +290,97 @@ export default function CharactersPage() {
                       className="p-1"
                     >
                       <img
-                        src={`/stars/starCharaL${stars}A.png`} // Customize path if different
+                        src={`/stars/starCharaL${stars}A.png`}
                         alt={`${stars} Stars`}
                         className="h-6 object-contain"
                       />
                     </button>
                   ))}
                 </div>
+                <div className="border-r border-white opacity-30 h-8 mx-4"></div>
+              </div>
 
-                {/* Type DMG */}
-                <div className="flex flex-wrap gap-2 mb-4">
+              {/* Type DMG */}
+              <div className="flex items-center space-x-4">
+                <div className="flex flex-wrap gap-2">
                   {Object.entries(dmg_typeIcons).map(([type, iconPath]) => (
                     <button
                       key={type}
                       onClick={() => toggleFilter(type, selectedDMGType, setSelectedDMGType)}
                       className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
-                        selectedDMGType.includes(type) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
+                        selectedDMGType.includes(type)
+                          ? "opacity-100 ring-2 ring-white"
+                          : "opacity-50 hover:opacity-75"
                       }`}
                     >
                       <img src={iconPath || "/placeholder.svg"} alt={type} className="w-8 h-8 object-contain" />
                     </button>
                   ))}
                 </div>
+                <div className="border-r border-white opacity-30 h-8 mx-4"></div>
+              </div>
 
-                {/* Type */}
-                <div className="flex flex-wrap gap-2 mb-4">
+              {/* Type */}
+              <div className="flex items-center space-x-4">
+                <div className="flex flex-wrap gap-2">
                   {Object.entries(typeIcons).map(([type_char, iconPath]) => (
                     <button
                       key={type_char}
                       onClick={() => toggleFilter(type_char, selectedType, setSelectedType)}
                       className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
-                        selectedType.includes(type_char) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
+                        selectedType.includes(type_char)
+                          ? "opacity-100 ring-2 ring-white"
+                          : "opacity-50 hover:opacity-75"
                       }`}
                     >
                       <img src={iconPath || "/placeholder.svg"} alt={type_char} className="w-8 h-8 object-contain" />
                     </button>
                   ))}
                 </div>
+                <div className="border-r border-white opacity-30 h-8 mx-4"></div>
+              </div>
 
-                {/* Ulti */}
-                <div className="flex flex-wrap gap-2 mb-4">
+              {/* Ulti */}
+              <div className="flex items-center space-x-4">
+                <div className="flex flex-wrap gap-2">
                   {Object.entries(ultiIcons).map(([ulti_type, iconPath]) => (
                     <button
                       key={ulti_type}
                       onClick={() => toggleFilter(ulti_type, selectedUlti, setSelectedUlti)}
                       className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
-                        selectedUlti.includes(ulti_type) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
+                        selectedUlti.includes(ulti_type)
+                          ? "opacity-100 ring-2 ring-white"
+                          : "opacity-50 hover:opacity-75"
                       }`}
                     >
                       <img src={iconPath || "/placeholder.svg"} alt={ulti_type} className="w-8 h-8 object-contain" />
                     </button>
                   ))}
                 </div>
+                <div className="border-r border-white opacity-30 h-8 mx-4"></div>
+              </div>
 
-                {/* Char Type */}
-                <div className="flex flex-wrap gap-2 mb-4">
+              {/* Char Type */}
+              <div className="flex items-center space-x-4">
+                <div className="flex flex-wrap gap-2">
                   {Object.entries(chartypeIcons).map(([char_type, iconPath]) => (
                     <button
                       key={char_type}
                       onClick={() => toggleFilter(char_type, selectedCharType, setSelectedCharType)}
                       className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
-                        selectedCharType.includes(char_type) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
+                        selectedCharType.includes(char_type)
+                          ? "opacity-100 ring-2 ring-white"
+                          : "opacity-50 hover:opacity-75"
                       }`}
                     >
                       <img src={iconPath || "/placeholder.svg"} alt={char_type} className="w-8 h-8 object-contain" />
                     </button>
                   ))}
                 </div>
+                {/* No splitter after last group */}
               </div>
             </div>
+
 
             {/* Dropdown Filters */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
