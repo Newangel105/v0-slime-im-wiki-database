@@ -146,7 +146,7 @@ export default function CharactersPage() {
         ? "↑"
         : isActive && sortOrder === "desc"
         ? "↓"
-        : ""; // nothing when inactive
+        : "↕"; // nothing when inactive
 
     return (
       <button
@@ -570,6 +570,11 @@ export default function CharactersPage() {
                     alt="Frame"
                     className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                   />
+
+                  {/* Name (top-left) */}
+                  <div className="absolute top-1 left-1 bg-black bg-opacity-80 text-white text-[10px] px-1 py-0.5 rounded z-10">
+                    {character.name}
+                  </div>
 
                   {/* Stars (bottom-left) */}
                   <img
