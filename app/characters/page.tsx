@@ -46,13 +46,13 @@ const elementIcons = {
 }
 
 const protelementIcons = {
-  fire: "/protector_elements/fire.png",
-  water: "/protector_elements/water.png",
-  earth: "/protector_elements/earth.png",
-  space: "/protector_elements/space.png",
-  wind: "/protector_elements/wind.png",
-  dark: "/protector_elements/dark.png",
-  light: "/protector_elements/light.png",
+  prot_fire: "/protector_elements/fire.png",
+  prot_water: "/protector_elements/water.png",
+  prot_earth: "/protector_elements/earth.png",
+  prot_space: "/protector_elements/space.png",
+  prot_wind: "/protector_elements/wind.png",
+  prot_dark: "/protector_elements/dark.png",
+  prot_light: "/protector_elements/light.png",
 }
 
 const weaponIcons = {
