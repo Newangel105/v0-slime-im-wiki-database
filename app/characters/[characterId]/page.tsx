@@ -146,8 +146,6 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   const existencePercent = maxExistence ? (charExistence / maxExistence) * 100 : 0
 
   // Parse pipe-separated values
-  const skillsList = character.skills.split("|").filter((skill) => skill.trim())
-  const traitsList = character.traits.split("|").filter((trait) => trait.trim())
   const forcesList = character.force.split("|").filter((force) => force.trim())
   const tagsList = character.tag.split("|").filter((tag) => tag.trim())
 
