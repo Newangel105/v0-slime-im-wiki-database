@@ -448,7 +448,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                   <div className="flex items-center space-x-3 mb-3">
                     <div className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
                       <img
-                        src={`/elements/anti_${character.element}_attribute_unbound.png`}
+                        src={`/elements/anti_${character.element.replace(/^(ex_|prot_)+/, '')}_attribute_unbound.png`}
                         alt="unbound"
                         className="w-10 h-10 object-contain"
                       />
