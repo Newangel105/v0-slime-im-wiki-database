@@ -211,15 +211,15 @@ export default function CharactersPage() {
         }
       }
 
-      if (selectedElements.length > 0 && !selectedElements.includes(character.element)) return false;
+      const baseElement = character.element.replace(/^(prot_)?(ex_)?/, '');
+
+      if (selectedElements.length > 0 && !selectedElements.includes(baseElement)) return false;
       if (selectedWeapons.length > 0 && !selectedWeapons.includes(character.weapon)) return false;
       if (selectedStars.length > 0 && !selectedStars.includes(character.stars)) return false;
 
       const baseDmgType = character.dmg_type.startsWith("prot_")
         ? character.dmg_type.slice(5)
-        : character.dmg_type.startsWith("ex_")
-          ? character.dmg_type.slice(3)
-          : character.dmg_type;
+        : character.dmg_type;
 
 
       if (selectedDMGType.length > 0 && !selectedDMGType.includes(baseDmgType)) return false;
