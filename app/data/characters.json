@@ -83,7 +83,7 @@
   {
     "id": 2,
     "name": "Rimuru",
-    "element": "water",
+    "element": "prot_water",
     "sub_name": "Youthful Pupil",
     "stars": 6,
     "weapon": "sword",
@@ -91,7 +91,7 @@
     "type": "attacker",
     "char_type": "attack",
     "ulti": "aoe",
-    "tag": "water|Restaurant +30%",
+    "tag": "prot_water|Restaurant +30%",
     "force": "Protector of Peace|Pretty Sparkle",
     "town": "Rimuru City",
     "battle_skills": [
