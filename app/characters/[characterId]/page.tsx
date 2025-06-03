@@ -565,26 +565,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
 
         </div>
 
-        {character.type === 'protector' && character.guidance_trait && (
-          <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
-            <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">GUIDANCE ENHANCEMENT TRAIT</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {character.guidance_trait.map((skill, index) => (
-                <div key={index} className="bg-gray-900 rounded-lg p-4">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <div>
-                      <h3 className="text-white font-medium">Enchance Guidance</h3>
-                    </div>
-                  </div>
-                  <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        
-          {/* EX Abilities Section */}
+        {/* EX Abilities Section */}
         {character.type === 'attacker' && character.ex_abilities && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">EX ABILITIES</h2>
