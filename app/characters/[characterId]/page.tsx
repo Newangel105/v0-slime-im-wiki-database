@@ -165,7 +165,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           <div className="relative w-12 h-12 flex items-center justify-center overflow-visible">
             {isEvolution && (
               <img
-                src="/path/to/evolution-circle.png"
+                src="/skills/evolution.png"
                 alt="Evolution Circle"
                 className="absolute -top-2 -left-2 w-16 h-16 z-0 object-contain"
               />
