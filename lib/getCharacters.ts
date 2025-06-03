@@ -49,8 +49,6 @@ export type Character = {
   output_initial: number
   output_final: number
   rarity: number
-
-  // Make these optional
   battle_skills?: Skill[]
   secret_skills?: Skill[]
   skill_traits: Trait[]
@@ -58,7 +56,6 @@ export type Character = {
   unbound?: unbound[]
   ex_abilities?: Trait[]
 }
-
 
 export function getAllCharacters(): Character[] {
   return characters.map((char: any) => {
@@ -80,17 +77,17 @@ export function getAllCharacters(): Character[] {
       output_final: Number(char.output_final),
       existence,
 
+      // Parse string to array if needed
       force: typeof char.force === 'string' ? char.force.split('|') : char.force,
       tag: typeof char.force === 'string' ? char.tag.split('|') : char.tag,
 
-      // Only assign if present
-      ...(char.battle_skills && { battle_skills: char.battle_skills }),
-      ...(char.secret_skills && { secret_skills: char.secret_skills }),
-      ...(char.skill_traits && { skill_traits: char.skill_traits }),
-      ...(char.unbound && { unbound: char.unbound }),
-      ...(char.ex_abilities && { ex_abilities: char.ex_abilities }),
-      ...(char.divine_skills && { divine_skills: char.divine_skills }),
+      // Ensure skills arrays are present and valid
+      battle_skills: char.battle_skills ?? [],
+      secret_skills: char.secret_skills ?? [],
+      skill_traits: char.skill_traits ?? [],
+      unbound: char.unbound ?? [],
+      ex_abilities: char.ex_abilities ?? [],
+      divine_skills: char.divine_skills ?? [],
     }
-
   })
 }
