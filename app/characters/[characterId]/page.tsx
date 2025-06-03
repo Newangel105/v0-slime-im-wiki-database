@@ -59,7 +59,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     return text.split('\n').map((line, lineIndex) => (
       <p key={lineIndex} className="text-gray-300 text-sm mb-1">
         {line.split(/(HP|ATK|DEF|fire|water|earth|wind|space|dark|light|Protector of Peace|Goblin Rider|Ogre|Tempest|Saint|Octagram)/g).map((part, index) => {
-          if (statIconMap[part]) {
+          if (statIconMap[part.replace(/\s+/g, "")]) {
             return <span key={`${lineIndex}-${index}`}>{renderFilterTag(part)}</span>
           }
 
