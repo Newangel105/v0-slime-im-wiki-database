@@ -388,7 +388,7 @@ export default function CharactersPage() {
               {/* Star Filters */}
               <div className="flex items-center space-x-1">
                 <div className="flex gap-1">
-                  {[3, 4, 5, 6].map((stars) => (
+                  {[3, 4, 5, 6, 7].map((stars) => (
                     <button
                       key={stars}
                       onClick={() => toggleFilter(stars, selectedStars, setSelectedStars)}
@@ -566,7 +566,7 @@ export default function CharactersPage() {
 
                   {/* Frame Overlay */}
                   <img
-                    src={`/frame/frameBlessM${character.stars}.png`}
+                    src={`/frame/frameMemberM${character.stars}.png`}
                     alt="Frame"
                     className="absolute inset-0 w-full h-full object-cover pointer-events-none"
                   />
