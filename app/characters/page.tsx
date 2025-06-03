@@ -237,10 +237,10 @@ export default function CharactersPage() {
               </Button>
             </div>
 
-            <div className="flex items-center space-x-6 flex-wrap">
+            <div className="flex items-center space-x-4 flex-wrap">
               {/* Element Filters */}
-              <div className="flex items-center space-x-4">
-                <div className="flex flex-wrap gap-2">
+              <div className="flex items-center space-x-2">
+                <div className="flex flex-wrap gap-1">
                   {Object.entries(elementIcons).map(([element, iconPath]) => (
                     <button
                       key={element}
