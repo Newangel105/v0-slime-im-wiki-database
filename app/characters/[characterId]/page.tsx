@@ -173,7 +173,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             <img
               src={`/skills/${isEvolution && baseImage ? baseImage : skill.imageName}`}
               alt={skill.attackName}
-              className="w-10 h-10 z-10 object-contain relative -left-1"
+              className="w-10 h-10 z-10 object-contain relative -left-2"
             />
           </div>
           <div>
