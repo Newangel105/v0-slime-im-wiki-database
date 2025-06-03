@@ -87,6 +87,9 @@ const chartypeIcons = {
 }
 
 export default function CharactersPage() {
+  const searchParams = useSearchParams()
+  const elementQuery = searchParams.get("element")
+
   const [searchTerm, setSearchTerm] = useState("")
   const [searchSkills, setSearchSkills] = useState(false)
   const [selectedElements, setSelectedElements] = useState<string[]>([])
@@ -115,16 +118,12 @@ export default function CharactersPage() {
     }
   }
 
-  export default function CharactersPage() {
-    const searchParams = useSearchParams()
-    const elementQuery = searchParams.get("element")
-
-    useEffect(() => {
-      if (elementQuery) {
-        // Auto-select the element filter
-        setSelectedElements([elementQuery.toLowerCase()])
-      }
-    }, [elementQuery])
+  
+  useEffect(() => {
+    if (elementQuery) {
+      setSelectedElements([elementQuery.toLowerCase()])
+    }
+  }, [elementQuery])
 
   const filteredCharacters = useMemo(() => {
     return characters.filter((character) => {
