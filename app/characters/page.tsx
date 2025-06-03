@@ -67,7 +67,9 @@ const weaponIcons = {
 
 const dmg_typeIcons = {
   magic: "/type_dmg/icAttackTypeMagic.png",
-  phys: "/type_dmg/icAttackTypePhysics.png"
+  phys: "/type_dmg/icAttackTypePhysics.png",
+  prot_phys: "/type_dmg/prot_phys.png",
+  prot_magic: "/type_dmg/prot_magic.png"
 }
 
 const typeIcons = {

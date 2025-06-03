@@ -87,7 +87,7 @@
     "sub_name": "Youthful Pupil",
     "stars": 6,
     "weapon": "sword",
-    "dmg_type": "phys",
+    "dmg_type": "prot_phys",
     "type": "protector",
     "char_type": "attack",
     "ulti": "aoe",
