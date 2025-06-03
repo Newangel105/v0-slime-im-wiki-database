@@ -76,7 +76,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           const cleanKey = part.replace(/\s+/g, "")
 
           // Show as filter tag (link) for known types
-          if (["fire", "water", "earth", "wind", "space", "light", "dark", "Protector of Peace", "Goblin Rider", "Ogre", "Tempest", "Saint", "Octagram"].includes(part)) {
+          if (["fire", "prot_water","water", "earth", "wind", "space", "light", "dark", "Protector of Peace", "Goblin Rider", "Ogre", "Tempest", "Saint", "Octagram"].includes(part)) {
             return <span key={`${lineIndex}-${index}`}>{renderFilterTag(part)}</span>
           }
 
