@@ -60,13 +60,13 @@ const protelementIcons = {
   prot_wind: "/protector_elements/wind.png",
   prot_dark: "/protector_elements/dark.png",
   prot_light: "/protector_elements/light.png",
-  ex_water: "/elements/anti_water_attribute_unbound.png",
-  ex_fire: "/elements/anti_fire_attribute_unbound.png",
-  ex_earth: "/elements/anti_earth_attribute_unbound.png",
-  ex_space: "/elements/anti_space_attribute_unbound.png",
-  ex_wind: "/elements/anti_wind_attribute_unbound.png",
-  ex_dark: "/elements/anti_dark_attribute_unbound.png",
-  ex_light: "/elements/anti_light_attribute_unbound.png"
+  prot_ex_water: "/elements/anti_water_attribute_unbound.png",
+  prot_ex_fire: "/elements/anti_fire_attribute_unbound.png",
+  prot_ex_earth: "/elements/anti_earth_attribute_unbound.png",
+  prot_ex_space: "/elements/anti_space_attribute_unbound.png",
+  prot_ex_wind: "/elements/anti_wind_attribute_unbound.png",
+  prot_ex_dark: "/elements/anti_dark_attribute_unbound.png",
+  prot_ex_light: "/elements/anti_light_attribute_unbound.png"
 }
 
 const weaponIcons = {
