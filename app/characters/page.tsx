@@ -43,7 +43,13 @@ const elementIcons = {
   wind: "/elements/icElementWind.png",
   dark: "/elements/icElementDark.png",
   light: "/elements/icElementlight.png",
-  ex_water: "/elements/icElementEnhancedWater.png"
+  ex_water: "/elements/icElementEnhancedWater.png",
+  ex_fire: "/elements/icElementEnhancedFire.png",
+  ex_earth: "/elements/icElementEnhancedEarth.png",
+  ex_space: "/elements/icElementEnhancedAir.png",
+  ex_wind: "/elements/icElementEnhancedWind.png",
+  ex_dark: "/elements/icElementEnhancedDark.png",
+  ex_light: "/elements/icElementEnhancedEarth.png"
 }
 
 const protelementIcons = {
@@ -54,6 +60,13 @@ const protelementIcons = {
   prot_wind: "/protector_elements/wind.png",
   prot_dark: "/protector_elements/dark.png",
   prot_light: "/protector_elements/light.png",
+  ex_water: "/elements/anti_water_attribute_unbound.png",
+  ex_fire: "/elements/anti_fire_attribute_unbound.png",
+  ex_earth: "/elements/anti_earth_attribute_unbound.png",
+  ex_space: "/elements/anti_space_attribute_unbound.png",
+  ex_wind: "/elements/anti_wind_attribute_unbound.png",
+  ex_dark: "/elements/anti_dark_attribute_unbound.png",
+  ex_light: "/elements/anti_light_attribute_unbound.png"
 }
 
 const weaponIcons = {
@@ -204,7 +217,10 @@ export default function CharactersPage() {
 
       const baseDmgType = character.dmg_type.startsWith("prot_")
         ? character.dmg_type.slice(5)
-        : character.dmg_type;
+        : character.dmg_type.startsWith("ex_")
+          ? character.dmg_type.slice(3)
+          : character.dmg_type;
+
 
       if (selectedDMGType.length > 0 && !selectedDMGType.includes(baseDmgType)) return false;
       if (selectedType.length > 0 && !selectedType.includes(character.type)) return false;
