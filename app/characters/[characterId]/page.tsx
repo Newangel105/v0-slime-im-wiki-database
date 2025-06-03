@@ -12,9 +12,6 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     HP: "/icons/HP.png",
     ATK: "/icons/ATK.png",
     DEF: "/icons/DEF.png",
-  };
-
-  const elementIcons = {
     fire: "/elements/icElementFire.png",
     water: "/elements/icElementWater.png",
     earth: "/elements/icElementEarth.png",
@@ -22,14 +19,48 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     wind: "/elements/icElementWind.png",
     dark: "/elements/icElementDark.png",
     light: "/elements/icElementlight.png",
+    ProtectorofPeace: "/forces/Protector of Peace.png"
+  };
+
+  function renderFilterTag(value: string) {
+
+    // Detect type by value (you can extend this easily)
+    let type: string | null = null
+
+    if (["fire", "water", "earth", "wind", "space", "light", "dark"].includes(value)) {
+      type = "element"
+    } else if (
+      ["Protector of Peace", "Goblin Rider", "Ogre", "Tempest", "Saint", "Octagram"].includes(value)
+    ) {
+      type = "force"
+    }
+
+    if (!type) return value // fallback to plain text if unrecognized
+
+    return (
+      <Link
+        href={`/characters?${type}=${encodeURIComponent(value)}`}
+        className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#1f1f1f] text-white text-xs font-medium mx-1 hover:bg-[#333]"
+      >
+        {type === "element" && statIconMap[value] && (
+          <img
+            src={statIconMap[value.replace(/\s+/g, "")]}
+            alt={value}
+            className="w-4 h-4 mr-1 object-contain"
+          />
+        )}
+        {value}
+      </Link>
+    )
   }
+
 
   function replaceStatTextWithIcons(text: string) {
     return text.split('\n').map((line, lineIndex) => (
       <p key={lineIndex} className="text-gray-300 text-sm mb-1">
-        {line.split(/(HP|ATK|DEF)/g).map((part, index) => {
+        {line.split(/(HP|ATK|DEF|fire|water|earth|wind|space|dark|light|Protector of Peace|Goblin Rider|Ogre|Tempest|Saint|Octagram)/g).map((part, index) => {
           if (statIconMap[part]) {
-            const iconSize = part === "ATK" ? "w-3 h-4" : "w-4 h-4";
+            const iconSize = part === "ATK" ? "w-3 h-4" : "w-4 h-4"
             return (
               <span
                 key={`${lineIndex}-${index}`}
@@ -42,13 +73,16 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                 />
                 {part}
               </span>
-            );
+            )
           }
-          return <span key={`${lineIndex}-${index}`}>{part}</span>;
+
+          // Use tag rendering for known filters
+          return <span key={`${lineIndex}-${index}`}>{renderFilterTag(part)}</span>
         })}
       </p>
-    ));
+    ))
   }
+
 
 
   if (!character) {
@@ -290,17 +324,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
               <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">TAGS</h2>
               <div className="flex flex-wrap gap-2">
-                <Link
-                  href={`/characters?element=${character.element}`}
-                  className="inline-flex items-center px-2 py-1 text-sm font-medium bg-[#1f1f1f] text-white rounded-full hover:bg-[#333]"
-                >
-                  <img
-                    src={elementIcons[character.element]}
-                    alt={character.element}
-                    className="w-4 h-4 mr-1"
-                  />
-                  {character.element.charAt(0).toUpperCase() + character.element.slice(1)}
-                </Link>
+                <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(character.element)}</p>
                 <Badge variant="outline" className="border-green-500 text-green-400">
                   Eligible for Defense Magicema +10%
                 </Badge>

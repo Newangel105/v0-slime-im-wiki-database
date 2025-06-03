@@ -120,10 +120,16 @@ export default function CharactersPage() {
 
   
   useEffect(() => {
-    if (elementQuery) {
-      setSelectedElements([elementQuery.toLowerCase()])
+    const params = new URLSearchParams(window.location.search)
+
+    if (params.has("element")) {
+      setSelectedElements([params.get("element")!.toLowerCase()])
+    } else if (params.has("force")) {
+      setForceFilter(params.get("force")!)
     }
-  }, [elementQuery])
+    // add similar conditions for others if needed
+  }, [])
+
 
   const filteredCharacters = useMemo(() => {
     return characters.filter((character) => {
