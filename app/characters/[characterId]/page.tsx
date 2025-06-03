@@ -14,6 +14,16 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     DEF: "/icons/DEF.png",
   };
 
+  const elementIcons = {
+    fire: "/elements/icElementFire.png",
+    water: "/elements/icElementWater.png",
+    earth: "/elements/icElementEarth.png",
+    space: "/elements/icElementspace.png",
+    wind: "/elements/icElementWind.png",
+    dark: "/elements/icElementDark.png",
+    light: "/elements/icElementlight.png",
+  }
+
   function replaceStatTextWithIcons(text: string) {
     return text.split('\n').map((line, lineIndex) => (
       <p key={lineIndex} className="text-gray-300 text-sm mb-1">
@@ -280,9 +290,17 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
               <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">TAGS</h2>
               <div className="flex flex-wrap gap-2">
-                <Badge variant="outline" className="border-blue-500 text-blue-400">
-                  Shieldclub Skill +30%
-                </Badge>
+                <Link
+                  href={`/characters?element=${character.element}`}
+                  className="inline-flex items-center px-2 py-1 text-sm font-medium bg-[#1f1f1f] text-white rounded-full hover:bg-[#333]"
+                >
+                  <img
+                    src={elementIcons[character.element]}
+                    alt={character.element}
+                    className="w-4 h-4 mr-1"
+                  />
+                  {character.element.charAt(0).toUpperCase() + character.element.slice(1)}
+                </Link>
                 <Badge variant="outline" className="border-green-500 text-green-400">
                   Eligible for Defense Magicema +10%
                 </Badge>

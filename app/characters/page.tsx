@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Search, Star, Sword, Shield, Gamepad2 } from "lucide-react"
 import Link from 'next/link'
 import { getAllCharacters } from '@/lib/getCharacters'
+import { useSearchParams } from "next/navigation"
 
 interface Character {
   id: string
@@ -113,6 +114,17 @@ export default function CharactersPage() {
       setFilters([...currentFilters, value])
     }
   }
+
+  export default function CharactersPage() {
+    const searchParams = useSearchParams()
+    const elementQuery = searchParams.get("element")
+
+    useEffect(() => {
+      if (elementQuery) {
+        // Auto-select the element filter
+        setSelectedElements([elementQuery.toLowerCase()])
+      }
+    }, [elementQuery])
 
   const filteredCharacters = useMemo(() => {
     return characters.filter((character) => {
