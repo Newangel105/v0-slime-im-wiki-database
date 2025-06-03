@@ -439,6 +439,29 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           </div>
         </div>
 
+        {character.element.includes('ex') && (
+          <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">True Attribute Unbound</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {character.unbound.map((skill, index) => (
+                <div key={index} className="bg-gray-900 rounded-lg p-4">
+                  <div className="flex items-center space-x-3 mb-3">
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
+                      <img
+                        src={`/elements/anti_fire${character.element}_attribute_unbound.png`}
+                        alt="unbound"
+                        className="w-10 h-10 object-contain"
+                      />
+                    </div>
+                  </div>
+                  <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+
         {/* Traits Section */}
         <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
           <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">TRAITS</h2>
