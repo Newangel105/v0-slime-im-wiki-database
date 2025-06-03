@@ -23,6 +23,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   };
 
   function renderFilterTag(value: string) {
+    const cleanValue = value.replace(/\s+/g, "")
 
     // Detect type by value (you can extend this easily)
     let type: string | null = null
@@ -42,9 +43,9 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         href={`/characters?${type}=${encodeURIComponent(value)}`}
         className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#1f1f1f] text-white text-xs font-medium mx-1 hover:bg-[#333]"
       >
-        {type === "element" || type === "force" && statIconMap[value] && (
+        {(type === "element" || type === "force") && statIconMap[cleanValue] && (
           <img
-            src={statIconMap[value.replace(/\s+/g, "")]}
+            src={statIconMap[cleanValue]}
             alt={value}
             className="w-4 h-4 mr-1 object-contain"
           />
