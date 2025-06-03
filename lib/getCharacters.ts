@@ -28,6 +28,7 @@ export type Character = {
   skills: string[]
   traits: string[]
   force: string[]
+  tag: string[]
   town: string
   image: string
   initial_attack: number
@@ -73,6 +74,7 @@ export function getAllCharacters(): Character[] {
       skills: typeof char.skills === 'string' ? char.skills.split('|') : char.skills,
       traits: typeof char.traits === 'string' ? char.traits.split('|') : char.traits,
       force: typeof char.force === 'string' ? char.force.split('|') : char.force,
+      tag: typeof char.force === 'string' ? char.tag.split('|') : char.tag,
 
       // Ensure skills arrays are present and valid
       battle_skills: char.battle_skills ?? [],
