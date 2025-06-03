@@ -290,17 +290,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                 <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">FORCES</h2>
                 <div className="flex flex-wrap gap-2">
                     {forcesList.map((force, index) => (
-                    <Badge
-                        key={index}
-                        className="bg-gray-700 text-white border-gray-600 flex items-center space-x-2"
-                    >
-                        <img
-                        src={`/forces/${force}.png`}
-                        alt={force}
-                        className="w-5 h-5 object-contain"
-                        />
-                        <span>{force}</span>
-                    </Badge>
+                      <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(force)}</p>
                     ))}
                 </div>
             </div>
