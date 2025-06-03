@@ -139,12 +139,29 @@ export default function CharactersPage() {
 
 
   const filteredCharacters = useMemo(() => {
+    const search = searchTerm.toLowerCase();
     return characters.filter((character) => {
-      // Search filter
-      if (searchTerm) {
-        const searchTarget = searchSkills ? character.skills.join(" ") : character.name
-        if (!searchTarget.toLowerCase().includes(searchTerm.toLowerCase())) {
-          return false
+      // SEARCH FILTER
+      if (search) {
+        if (!searchSkills) {
+          // Search by character name
+          if (!character.name.toLowerCase().includes(search)) {
+            return false;
+          }
+        } else {
+          // Search inside skills arrays
+          const combinedSkillsText = [
+            ...character.battle_skills.map((s) => s.description),
+            ...character.secret_skills.map((s) => s.description),
+            ...character.skill_traits.map((s) => s.description),
+            ...character.ex_abilities.map((s) => s.description),
+          ]
+            .join(" ")
+            .toLowerCase();
+
+          if (!combinedSkillsText.includes(search)) {
+            return false;
+          }
         }
       }
 
@@ -238,14 +255,21 @@ export default function CharactersPage() {
                   className="pl-10 bg-gray-700 border-gray-600 text-white"
                 />
               </div>
-              <Button
-                variant={searchSkills ? "default" : "outline"}
-                size="sm"
-                onClick={() => setSearchSkills(!searchSkills)}
-                className={searchSkills ? "bg-red-600 hover:bg-red-700" : "border-gray-600 text-gray-300"}
-              >
-                Search Skills
-              </Button>
+
+              <label className="flex items-center cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={searchSkills}
+                  onChange={() => setSearchSkills(!searchSkills)}
+                  className="hidden"
+                />
+                <div className="w-10 h-5 bg-gray-600 rounded-full relative transition-colors duration-300 ease-in-out
+                                after:absolute after:top-0.5 after:left-0.5 after:bg-white after:w-4 after:h-4 after:rounded-full after:transition-transform
+                                after:duration-300 after:ease-in-out
+                                peer-checked:bg-red-600 peer-checked:after:translate-x-5"
+                ></div>
+                <span className="ml-3 text-sm text-gray-300 select-none">Search Skills</span>
+              </label>
             </div>
 
             <div className="flex items-center space-x-2 flex-wrap">

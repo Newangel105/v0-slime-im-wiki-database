@@ -82,7 +82,7 @@
   },
   {
     "id": 2,
-    "name": "Rimuru",
+    "name": "Hinata",
     "element": "prot_water",
     "sub_name": "Youthful Pupil",
     "stars": 6,
@@ -99,7 +99,7 @@
         "imageName": "b1.png",
         "attackName": "Winning Operation",
         "extraText": "90/80 Skill Points",
-        "description": "Increases all allies'ATK by 55/65% Turns 1. Decreases all targets' attack resistance by 20% Turns 1"
+        "description": "Increases all allies'ATK by 55/65% Turns 1. Decreases all targets' attack resistance by 20% Turns 1. Increases Aegis Rate by 100%."
       },
       {
         "imageName": "b2.png",
