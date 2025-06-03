@@ -193,11 +193,10 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   }
 
   // ---- In your render section ----
-  const base1 = character.battle_skills.find(s => s.imageName === "b1.png");
-  const base2 = character.battle_skills.find(s => s.imageName === "b2.png");
-  const evo1 = character.battle_skills.find(s => s.imageName === "b3.png");
-  const evo2 = character.battle_skills.find(s => s.imageName === "b4.png");
-
+  const base1 = character.battle_skills?.find(s => s.imageName === "b1.png");
+  const base2 = character.battle_skills?.find(s => s.imageName === "b2.png");
+  const evo1 = character.battle_skills?.find(s => s.imageName === "b3.png");
+  const evo2 = character.battle_skills?.find(s => s.imageName === "b4.png");
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -404,7 +403,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           </div>
         )}
 
-        {character.type === 'protector' && (
+        {character.type === 'protector' && character.divine_skills && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">DIVINE PROTECTION</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -437,7 +436,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         )}
 
         {/* Secret Skills Section */}
-        {character.type === 'attacker' && (
+        {character.type === 'attacker' && character.secret_skills && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">SECRET SKILLS</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -475,7 +474,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           </div>
         )}
 
-        {character.element.includes('ex') && character.type === 'attacker' && (
+        {character.element.includes('ex') && character.type === 'attacker' && character.unbound && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">True Attribute Unbound</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -530,7 +529,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
 
         
           {/* EX Abilities Section */}
-        {character.type === 'attacker' && (
+        {character.type === 'attacker' && character.ex_abilities && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">EX ABILITIES</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
