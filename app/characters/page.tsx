@@ -49,7 +49,7 @@ const elementIcons = {
   ex_space: "/elements/icElementEnhancedspace.png",
   ex_wind: "/elements/icElementEnhancedwind.png",
   ex_dark: "/elements/icElementEnhanceddark.png",
-  ex_light: "/elements/icElementEnhancedearth.png"
+  ex_light: "/elements/icElementEnhancedlight.png"
 }
 
 const protelementIcons = {
