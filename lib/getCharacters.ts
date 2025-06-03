@@ -7,6 +7,13 @@ export type Skill = {
   description: string
 }
 
+export type divine = {
+  imageName: string
+  attackName: string
+  extraText?: string
+  description: string
+}
+
 export type Trait = {
   imageName: string
   attackName: string
@@ -45,6 +52,7 @@ export type Character = {
   battle_skills: Skill[]
   secret_skills: Skill[]
   skill_traits: Trait[]
+  divine_skills: divine[]
   unbound: unbound[]
   ex_abilities: Trait[]
 }
