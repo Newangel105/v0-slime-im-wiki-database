@@ -411,11 +411,13 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                 <div key={index} className="bg-gray-900 rounded-lg p-4">
                   <div className="flex items-center space-x-3 mb-3">
                     <div className="w-12 h-12  rounded-lg flex items-center justify-center overflow-hidden">
-                      <img
-                        src={skill.imageName}
-                        alt={skill.attackName}
-                        className="w-10 h-10 object-contain"
-                      />
+                      {skill.imageName && (
+                        <img
+                          src={skill.imageName}
+                          alt={skill.attackName}
+                          className="w-10 h-10 object-contain"
+                        />
+                      )}
                     </div>
                     <div>
                       <h3 className="text-white font-medium">{skill.attackName}</h3>
@@ -525,9 +527,9 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">TRAITS</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {character.skill_traits.map((skill, index) => (
-              <div key={index} className="bg-gray-900 rounded-lg p-4">
+              <div key={`trait-${index}`} className="bg-gray-900 rounded-lg p-4">
                 <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-12 h-12  rounded-lg flex items-center justify-center overflow-hidden">
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
                     {skill.imageName ? (
                       <img
                         src={`/skills/${skill.imageName}.png`}
@@ -548,7 +550,19 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                 <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
               </div>
             ))}
+
+            {character.type === 'protector' && character.guidance_trait?.map((skill, index) => (
+              <div key={`guidance-${index}`} className="bg-gray-900 rounded-lg p-4">
+                <div className="flex items-center space-x-3 mb-3">
+                  <div>
+                    <h3 className="text-white font-medium">Enhance Guidance</h3>
+                  </div>
+                </div>
+                <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
+              </div>
+            ))}
           </div>
+
         </div>
 
         {character.type === 'protector' && character.guidance_trait && (
