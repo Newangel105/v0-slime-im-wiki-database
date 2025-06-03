@@ -211,11 +211,6 @@ export default function CharactersPage() {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Warning Banner */}
-        <div className="bg-red-600 text-white p-4 rounded mb-6">
-          Please be aware that not all characters have been assigned their appropriate <strong>weapons</strong>.
-        </div>
-
         {/* Filters */}
         <Card className="bg-gray-800 border-gray-700 mb-8">
           <CardContent className="p-6">
@@ -242,116 +237,118 @@ export default function CharactersPage() {
               </Button>
             </div>
 
-            {/* Element Filters */}
-            <div className="mb-6">
-              <div className="flex flex-wrap gap-2 mb-4">
-                {Object.entries(elementIcons).map(([element, iconPath]) => (
-                  <button
-                    key={element}
-                    onClick={() => toggleFilter(element, selectedElements, setSelectedElements)}
-                    className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
-                      selectedElements.includes(element)
-                        ? "opacity-100 ring-2 ring-white"
-                        : "opacity-50 hover:opacity-75"
-                    }`}
-                  >
-                    <img src={iconPath || "/placeholder.svg"} alt={element} className="w-8 h-8 object-contain" />
-                  </button>
-                ))}
-              </div>
+            <div className="flex space-x-6 flex-wrap">
 
-              {/* Weapon Filters */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {Object.entries(weaponIcons).map(([weapon, iconPath]) => (
-                  <button
-                    key={weapon}
-                    onClick={() => toggleFilter(weapon, selectedWeapons, setSelectedWeapons)}
-                    className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
-                      selectedWeapons.includes(weapon) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
-                    }`}
-                  >
-                    <img src={iconPath || "/placeholder.svg"} alt={weapon} className="w-8 h-8 object-contain" />
-                  </button>
-                ))}
-              </div>
+              {/* Element Filters */}
+              <div className="mb-6">
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {Object.entries(elementIcons).map(([element, iconPath]) => (
+                    <button
+                      key={element}
+                      onClick={() => toggleFilter(element, selectedElements, setSelectedElements)}
+                      className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
+                        selectedElements.includes(element)
+                          ? "opacity-100 ring-2 ring-white"
+                          : "opacity-50 hover:opacity-75"
+                      }`}
+                    >
+                      <img src={iconPath || "/placeholder.svg"} alt={element} className="w-8 h-8 object-contain" />
+                    </button>
+                  ))}
+                </div>
 
-              {/* Star Filters */}
-              <div className="flex gap-2 mb-4">
-                {[3, 4, 5, 6].map((stars) => (
-                  <button
-                    key={stars}
-                    onClick={() => toggleFilter(stars, selectedStars, setSelectedStars)}
-                    className="p-1"
-                  >
-                    <img
-                      src={`/stars/starCharaL${stars}A.png`} // Customize path if different
-                      alt={`${stars} Stars`}
-                      className="h-6 object-contain"
-                    />
-                  </button>
-                ))}
-              </div>
+                {/* Weapon Filters */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {Object.entries(weaponIcons).map(([weapon, iconPath]) => (
+                    <button
+                      key={weapon}
+                      onClick={() => toggleFilter(weapon, selectedWeapons, setSelectedWeapons)}
+                      className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
+                        selectedWeapons.includes(weapon) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
+                      }`}
+                    >
+                      <img src={iconPath || "/placeholder.svg"} alt={weapon} className="w-8 h-8 object-contain" />
+                    </button>
+                  ))}
+                </div>
 
-              {/* Type DMG */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {Object.entries(dmg_typeIcons).map(([type, iconPath]) => (
-                  <button
-                    key={type}
-                    onClick={() => toggleFilter(type, selectedDMGType, setSelectedDMGType)}
-                    className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
-                      selectedDMGType.includes(type) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
-                    }`}
-                  >
-                    <img src={iconPath || "/placeholder.svg"} alt={type} className="w-8 h-8 object-contain" />
-                  </button>
-                ))}
-              </div>
+                {/* Star Filters */}
+                <div className="flex gap-2 mb-4">
+                  {[3, 4, 5, 6].map((stars) => (
+                    <button
+                      key={stars}
+                      onClick={() => toggleFilter(stars, selectedStars, setSelectedStars)}
+                      className="p-1"
+                    >
+                      <img
+                        src={`/stars/starCharaL${stars}A.png`} // Customize path if different
+                        alt={`${stars} Stars`}
+                        className="h-6 object-contain"
+                      />
+                    </button>
+                  ))}
+                </div>
 
-              {/* Type */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {Object.entries(typeIcons).map(([type_char, iconPath]) => (
-                  <button
-                    key={type_char}
-                    onClick={() => toggleFilter(type_char, selectedType, setSelectedType)}
-                    className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
-                      selectedType.includes(type_char) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
-                    }`}
-                  >
-                    <img src={iconPath || "/placeholder.svg"} alt={type_char} className="w-8 h-8 object-contain" />
-                  </button>
-                ))}
-              </div>
+                {/* Type DMG */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {Object.entries(dmg_typeIcons).map(([type, iconPath]) => (
+                    <button
+                      key={type}
+                      onClick={() => toggleFilter(type, selectedDMGType, setSelectedDMGType)}
+                      className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
+                        selectedDMGType.includes(type) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
+                      }`}
+                    >
+                      <img src={iconPath || "/placeholder.svg"} alt={type} className="w-8 h-8 object-contain" />
+                    </button>
+                  ))}
+                </div>
 
-              {/* Ulti */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {Object.entries(ultiIcons).map(([ulti_type, iconPath]) => (
-                  <button
-                    key={ulti_type}
-                    onClick={() => toggleFilter(ulti_type, selectedUlti, setSelectedUlti)}
-                    className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
-                      selectedUlti.includes(ulti_type) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
-                    }`}
-                  >
-                    <img src={iconPath || "/placeholder.svg"} alt={ulti_type} className="w-8 h-8 object-contain" />
-                  </button>
-                ))}
-              </div>
+                {/* Type */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {Object.entries(typeIcons).map(([type_char, iconPath]) => (
+                    <button
+                      key={type_char}
+                      onClick={() => toggleFilter(type_char, selectedType, setSelectedType)}
+                      className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
+                        selectedType.includes(type_char) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
+                      }`}
+                    >
+                      <img src={iconPath || "/placeholder.svg"} alt={type_char} className="w-8 h-8 object-contain" />
+                    </button>
+                  ))}
+                </div>
 
-              {/* Char Type */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {Object.entries(chartypeIcons).map(([char_type, iconPath]) => (
-                  <button
-                    key={char_type}
-                    onClick={() => toggleFilter(char_type, selectedCharType, setSelectedCharType)}
-                    className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
-                      selectedCharType.includes(char_type) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
-                    }`}
-                  >
-                    <img src={iconPath || "/placeholder.svg"} alt={char_type} className="w-8 h-8 object-contain" />
-                  </button>
-                ))}
-              </div>
+                {/* Ulti */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {Object.entries(ultiIcons).map(([ulti_type, iconPath]) => (
+                    <button
+                      key={ulti_type}
+                      onClick={() => toggleFilter(ulti_type, selectedUlti, setSelectedUlti)}
+                      className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
+                        selectedUlti.includes(ulti_type) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
+                      }`}
+                    >
+                      <img src={iconPath || "/placeholder.svg"} alt={ulti_type} className="w-8 h-8 object-contain" />
+                    </button>
+                  ))}
+                </div>
 
+                {/* Char Type */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {Object.entries(chartypeIcons).map(([char_type, iconPath]) => (
+                    <button
+                      key={char_type}
+                      onClick={() => toggleFilter(char_type, selectedCharType, setSelectedCharType)}
+                      className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
+                        selectedCharType.includes(char_type) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
+                      }`}
+                    >
+                      <img src={iconPath || "/placeholder.svg"} alt={char_type} className="w-8 h-8 object-contain" />
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Dropdown Filters */}
