@@ -28,7 +28,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     // Detect type by value (you can extend this easily)
     let type: string | null = null
 
-    if (["fire", "water", "earth", "wind", "space", "light", "dark"].includes(value)) {
+    if (["fire", "prot_water","water", "earth", "wind", "space", "light", "dark"].includes(value)) {
       type = "element"
     } else if (
       ["Protector of Peace", "Goblin Rider", "Ogre", "Tempest", "Saint", "Octagram"].includes(value)
