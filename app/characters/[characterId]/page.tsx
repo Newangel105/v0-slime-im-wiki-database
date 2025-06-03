@@ -188,10 +188,10 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   }
 
   // ---- In your render section ----
-  const base1 = character.battle_skills.find(s => s.imageName === "b1_1.png");
-  const base2 = character.battle_skills.find(s => s.imageName === "b2_1.png");
-  const evo1 = character.battle_skills.find(s => s.imageName === "b3_1.png");
-  const evo2 = character.battle_skills.find(s => s.imageName === "b4_1.png");
+  const base1 = character.battle_skills.find(s => s.imageName === "b1.png");
+  const base2 = character.battle_skills.find(s => s.imageName === "b2.png");
+  const evo1 = character.battle_skills.find(s => s.imageName === "b3.png");
+  const evo2 = character.battle_skills.find(s => s.imageName === "b4.png");
 
 
   return (
@@ -236,7 +236,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
       <div className="flex items-center space-x-4 mb-8">
         <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-800">
           <img
-            src={`/charimage/${character.id}.png`}
+            src={`/chars/${character.id}/image.png`}
             alt={character.name}
             className="w-full h-full object-cover"
           />
@@ -254,7 +254,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
               <div className="relative">
                 <img
-                  src={`/char_image_full/${character.id}.png`}
+                  src={`/chars/${character.id}/image_full.png`}
                   alt={`${character.name} artwork`}
                   className="w-full h-auto object-contain"
                 />
@@ -415,7 +415,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     {/* Character image clipped inside smaller circle */}
                     <div className="absolute top-1/2 left-1/2 w-[28px] h-[28px] rounded-full overflow-hidden -translate-x-1/2 -translate-y-1/2 z-10">
                       <img
-                        src={`/charimage/${character.id}.png`}
+                        src={`/chars/${character.id}/image.png`}
                         alt={character.name}
                         className="w-full h-full object-cover"
                       />
@@ -504,7 +504,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
               <Link key={variant.id} href={`/characters/${variant.id}`}>
                 <div className="aspect-square bg-gray-800 rounded-lg overflow-hidden border border-gray-700 hover:scale-105 transition-transform duration-200">
                   <img
-                    src={`/charimage/${variant.id}.png`}
+                    src={`/chars/${variant.id}/image.png`}
                     alt={`${variant.name} variant`}
                     className="w-full h-full object-cover"
                   />

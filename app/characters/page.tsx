@@ -434,7 +434,7 @@ export default function CharactersPage() {
                 <div className="relative w-full h-32 overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white">
                   {/* Character Image */}
                   <img
-                    src={`/charimage/${character.id}.png`}
+                    src={`/chars/${character.id}/image.png`}
                     alt={character.name}
                     className="absolute inset-0 w-full h-full object-cover"
                   />

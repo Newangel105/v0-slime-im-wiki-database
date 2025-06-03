@@ -20,13 +20,10 @@ export type Character = {
   element: string
   stars: number
   weapon: string
-  awakening: number
   dmg_type: string
   type: string
   char_type: string
   ulti: string
-  skills: string[]
-  traits: string[]
   force: string[]
   tag: string[]
   town: string
@@ -58,7 +55,6 @@ export function getAllCharacters(): Character[] {
       ...char,
       id: Number(char.id),
       stars: Number(char.stars),
-      awakening: Number(char.awakening),
       rarity: Number(char.rarity),
       initial_attack,
       initial_health,
@@ -71,8 +67,6 @@ export function getAllCharacters(): Character[] {
       existence,
 
       // Parse string to array if needed
-      skills: typeof char.skills === 'string' ? char.skills.split('|') : char.skills,
-      traits: typeof char.traits === 'string' ? char.traits.split('|') : char.traits,
       force: typeof char.force === 'string' ? char.force.split('|') : char.force,
       tag: typeof char.force === 'string' ? char.tag.split('|') : char.tag,
 
