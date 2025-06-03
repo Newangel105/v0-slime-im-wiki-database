@@ -61,6 +61,7 @@ export type Character = {
   divine_skills?: divine[]
   unbound?: unbound[]
   ex_abilities?: Trait[]
+  guidance_trait?: unbound[]
 }
 
 export function getAllCharacters(): Character[] {
@@ -94,6 +95,7 @@ export function getAllCharacters(): Character[] {
       ...(char.unbound && { unbound: char.unbound }),
       ...(char.ex_abilities && { ex_abilities: char.ex_abilities }),
       ...(char.divine_skills && { divine_skills: char.divine_skills }),
+      ...(char.guidance_trait && { guidance_trait: char.guidance_trait })
     }
 
   })

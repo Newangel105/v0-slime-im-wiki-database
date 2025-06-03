@@ -132,6 +132,11 @@
         "description": "When you switch this character to the vanguard and activate souls, all enemies' magic-changing battle skills are sealed Turns 1 Uses by this character per battle: 2"
       }
     ],
+    "guidance_trait": [
+      {
+        "description": "Bla bla bla"
+      }
+    ],
     "initial_attack": 553,
     "initial_health": 943,
     "initial_defense": 438,
