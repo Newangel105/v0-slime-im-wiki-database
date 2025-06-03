@@ -19,7 +19,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     wind: "/elements/icElementWind.png",
     dark: "/elements/icElementDark.png",
     light: "/elements/icElementlight.png",
-    ProtectorofPeace: "/forces/Protector of Peace.png"
+    ProtectorofPeace: "/forces/ProtectorofPeace.png"
   };
 
   function renderFilterTag(value: string) {
@@ -42,7 +42,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         href={`/characters?${type}=${encodeURIComponent(value)}`}
         className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#1f1f1f] text-white text-xs font-medium mx-1 hover:bg-[#333]"
       >
-        {statIconMap[value] && (
+        {type === "element" || type === "force" && statIconMap[value] && (
           <img
             src={statIconMap[value.replace(/\s+/g, "")]}
             alt={value}
