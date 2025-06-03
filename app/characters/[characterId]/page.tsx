@@ -384,13 +384,13 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             {/* Column 1 */}
             <div className="flex flex-col space-y-6">
               {base1 && <SkillCard skill={base1} />}
-              {evo1 ? <SkillCard skill={evo1} isEvolution baseImage="b1_1.png" /> : <div className="h-full" />}
+              {evo1 ? <SkillCard skill={evo1} isEvolution baseImage="b1.png" /> : <div className="h-full" />}
             </div>
 
             {/* Column 2 */}
             <div className="flex flex-col space-y-6">
               {base2 && <SkillCard skill={base2} />}
-              {evo2 ? <SkillCard skill={evo2} isEvolution baseImage="b2_1.png" /> : <div className="h-full" />}
+              {evo2 ? <SkillCard skill={evo2} isEvolution baseImage="b2.png" /> : <div className="h-full" />}
             </div>
           </div>
         </div>
