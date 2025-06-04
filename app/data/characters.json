@@ -97,11 +97,13 @@
         "ulti": "aoe",
         "battle_skills": [
             {
+                "imageName": "b1.png",
                 "attackName": "Jail Execution",
                 "extraText": "60 Skill Points",
                 "description": "Increases Light and Dark characters' Soul of Combos damage by 80% Turns 1Decreases all targets' pierce resistance by 60% Turns 1"
             },
             {
+                "imageName": "b2.png",
                 "attackName": "Dragon Roar Command",
                 "extraText": "45 Skill Points",
                 "description": "Changes all Antagonist Force characters' souls into Soul of Secrets. Increases all Soul of Secrets gauges' increase by 5% Turns 1"
@@ -185,11 +187,13 @@
         "battle_skills": [
             {
                 "attackName": "Autonomous Arithmetic",
+                "imageName": "b1.png",
                 "extraText": "35 Skill Points",
                 "description": "Changes Soul of Skills and Soul of Divine Protection x1 each into Soul of Secrets. Increases Soul of Secrets' protection gauge increase by 10% Turns 1"
             },
             {
                 "attackName": "Snatch Bites",
+                "imageName": "b2.png",
                 "extraText": "25 Skill Points",
                 "description": "Changes Light characters' Soul of Combos x1 into Soul of Secrets for this turn only. Increases all allies' pierce power until the end of battle by 3% Unlimited"
             }
@@ -322,11 +326,13 @@
         "battle_skills": [
             {
                 "attackName": "Melody of Luring Dusk",
+                "imageName": "b1.png",
                 "extraText": "90 Skill Points",
                 "description": "Decreases all targets' secret skill damage resistance by 80% Turns 1Increases own Water ATK by 10% Turns 1; Effect increases by 5% each time allies use battle skills from the start of battle to the end of Turn 8 Max 70%"
             },
             {
                 "attackName": "Melody of Refinement",
+                "imageName": "b2.png",
                 "extraText": "25 Skill Points",
                 "description": "Causes Soul of Skills to generate Water Seeking Souls Turns 1 Damage Scaling: Soul 50%Increases own critical damage until the end of battle by 5% Unlimited"
             }
@@ -484,11 +490,13 @@
         "battle_skills": [
             {
                 "attackName": "Scourge-Warding Lordship",
+                "imageName": "b1.png",
                 "extraText": "90 Skill Points",
                 "description": "Increases all allies' critical rate by 80% Turns 1Increases own Soul of Combos damage by 150% Turns 1"
             },
             {
                 "attackName": "Path to Prosperity",
+                "imageName": "b2.png",
                 "extraText": "25 Skill Points",
                 "description": "Changes non-Skills soul x1 into Soul of Skills. Increases own weakness strike until the end of battle by 5% Unlimited"
             }
@@ -573,11 +581,13 @@
             {
                 "attackName": "Dance of Blessing",
                 "extraText": "90 Skill Points",
+                "imageName": "b1.png",
                 "description": "Increases all allies' P- ATK by 60% Turns 1Decreases all targets' critical resistance by 50% Turns 1 If more than 300 skill points have been used during this turn, critical resistance effect is doubled"
             },
             {
                 "attackName": "Ethereal Barrage",
                 "extraText": "35 Skill Points",
+                "imageName": "b2.png",
                 "description": "Applies Multi-hit State to Soul of Skills souls, adding 2 attacks of a fixed percentage damage based on the soul Turns 1Increases Soul of Combos damage until the end of battle by 5% Unlimited"
             }
         ],
