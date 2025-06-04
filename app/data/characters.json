@@ -81,126 +81,310 @@
         "output_initial": 60,
         "output_final": 150,
         "battle_skills": [
-        {
-            "imageName": "b1.png",
-            "attackName": "Jail Execution",
-            "extraText": "60 Skill Points",
-            "description": "Increases light and dark characters' Soul of Combos damage by 80% Turns 1\nDecreases all targets' pierce resistance by 60% Turns 1"
-        },
-        {
-            "imageName": "b2.png",
-            "attackName": "Dragon Roar Command",
-            "extraText": "45 Skill Points",
-            "description": "Changes all Antagonist Force characters' souls into Soul of Secrets.\nIncreases all Soul of Secrets gauges' increase by 5% Turns 1"
-        }
+            {
+                "imageName": "b1.png",
+                "attackName": "Jail Execution",
+                "extraText": "60 Skill Points",
+                "description": "Increases light and dark characters' Soul of Combos damage by 80% Turns 1\nDecreases all targets' pierce resistance by 60% Turns 1"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Dragon Roar Command",
+                "extraText": "45 Skill Points",
+                "description": "Changes all Antagonist Force characters' souls into Soul of Secrets.\nIncreases all Soul of Secrets gauges' increase by 5% Turns 1"
+            }
         ],
         "secret_skills": [
-        {
-            "imageName": "normal",
-            "attackName": "Predator Bloom",
-            "extraText": "100% Secret Gauge",
-            "description": "Unleashes an all-target light magic attack for 300% normal damage.\nDecreases all targets' magic attack resistance by 15% Turns 1"
-        },
-        {
-            "imageName": "normal",
-            "attackName": "EX Predator Bloom",
-            "extraText": "200% Secret Gauge",
-            "description": "Unleashes an all-target light magic attack for 600% normal damage.\nDecreases all targets' magic attack resistance by 15% Turns 1"
-        }
+            {
+                "imageName": "normal",
+                "attackName": "Predator Bloom",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes an all-target light magic attack for 300% normal damage.\nDecreases all targets' magic attack resistance by 15% Turns 1"
+            },
+            {
+                "imageName": "normal",
+                "attackName": "EX Predator Bloom",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes an all-target light magic attack for 600% normal damage.\nDecreases all targets' magic attack resistance by 15% Turns 1"
+            }
         ],
         "skill_traits": [
-        {
-            "imageName": "t1",
-            "attackName": "Soul Combo - ATK DOWN",
-            "description": "When you unleash a 6 combo attack with Soul of Secrets, decreases all targets'ATK by 8% for the next turn available in support formation"
-        },
-        {
-            "imageName": "t2",
-            "attackName": "Switch - Skill Seal",
-            "description": "When you switch this character to the vanguard and activate souls, all enemies' attack-changing battle skills are sealed Turns 1 Uses by this character per battle: 2"
-        }
+            {
+                "imageName": "t1",
+                "attackName": "Soul Combo - ATK DOWN",
+                "description": "When you unleash a 6 combo attack with Soul of Secrets, decreases all targets'ATK by 8% for the next turn available in support formation"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Switch - Skill Seal",
+                "description": "When you switch this character to the vanguard and activate souls, all enemies' attack-changing battle skills are sealed Turns 1 Uses by this character per battle: 2"
+            }
         ],
         "ex_abilities": [
-        {
-            "imageName": "e1",
-            "attackName": "Individual Mercy",
-            "description": "Increases own following status when Cliche is assigned to a battle slot.\nIncreases pierce power by 8%"
-        },
-        {
-            "imageName": "",
-            "attackName": "Magic Mercy",
-            "description": "Increases own following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 360\nIncreases ATK by 180\nIncreases DEF by 104"
-        }
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Cliche is assigned to a battle slot.\nIncreases pierce power by 8%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magic Mercy",
+                "description": "Increases own following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 360\nIncreases ATK by 180\nIncreases DEF by 104"
+            }
         ]
-  },
-  {
-      "id": 3,
-      "name": "Cliche",
-      "element": "fire",
-      "sub_name": "Fascinator Elf",
-      "stars": 5,
-      "weapon": "fists",
-      "dmg_type": "magic",
-      "type": "attacker",
-      "tactics_type": "Neutral",
-      "char_type": "defense",
-      "ulti": "single",
-      "tag": "Hot Dog Stall +30%|Gift Shop +10%|attacker|single|fire|magic|from soul of skills|from soul of divine protection|to soul of secrets|gauge protection soul of secrets|from soul of combos|to soul of secrets|debuff guard penetration",
-      "force": "Antagonist|Flashback Beatdown Emissary|Wielder of Magic",
-      "release": "9/27/2024",
-      "initial_health": 486,
-      "final_health": 8079,
-      "initial_attack": 263,
-      "final_attack": 2426,
-      "initial_defense": 283,
-      "final_defense": 3243,
-      "output_initial": 120,
-      "output_final": 300,
-      "battle_skills": [
-      {
-          "imageName": "b1.png",
-          "attackName": "Autonomous Arithmetic",
-          "extraText": "35 Skill Points",
-          "description": "Changes Soul of Skills and Soul of Divine Protection x1 each into Soul of Secrets.\nIncreases Soul of Secrets' protection gauge increase by 10% Turns 1"
-      },
-      {
-          "imageName": "b2.png",
-          "attackName": "Snatch Bites",
-          "extraText": "25 Skill Points",
-          "description": "Changes light characters' Soul of Combos x1 into Soul of Secrets for this turn only.\nIncreases all allies' pierce power until the end of battle by 3% Unlimited"
-      }
-      ],
-      "secret_skills": [
-      {
-          "imageName": "normal",
-          "attackName": "Tachyon Paradox",
-          "extraText": "100% Secret Gauge",
-          "description": "Unleashes a single-target fire magic attack for 470% normal damage.Decreases all targets' guard penetration by 10% Turns 2"
-      }
-      ],
-      "skill_traits": [
-      {
-          "imageName": "t1",
-          "attackName": "HP - Pierce Power UP",
-          "description": "When you have 50% or more HP, increases own pierce power by 8% at start of turn available in support formation"
-      },
-      {
-          "imageName": "t2",
-          "attackName": "Soul Combo - Skill DOWN",
-          "description": "When you unleash a 2 combo, all of the enemy's Soul of Skills gauge increases are decreased by 10% Turns 1 Uses by this character per battle: 1"
-      }
-      ],
-      "ex_abilities": [
-      {
-          "imageName": "e1",
-          "attackName": "Individual Mercy",
-          "description": "Increases own following status when Shinsha is assigned to a battle slot.\nIncreases guard power by 8%"
-      },
-      {
-          "imageName": "",
-          "attackName": "Magic Mercy",
-          "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 54\nIncreases ATK by 14\nIncreases DEF by 30"
-      }
-      ]
-  }
+    },
+    {
+        "id": 3,
+        "name": "Cliche",
+        "element": "fire",
+        "sub_name": "Fascinator Elf",
+        "stars": 5,
+        "weapon": "fists",
+        "dmg_type": "magic",
+        "type": "attacker",
+        "tactics_type": "Neutral",
+        "char_type": "defense",
+        "ulti": "single",
+        "tag": "Hot Dog Stall +30%|Gift Shop +10%|attacker|single|fire|magic|from soul of skills|from soul of divine protection|to soul of secrets|gauge protection soul of secrets|from soul of combos|to soul of secrets|debuff guard penetration",
+        "force": "Antagonist|Flashback Beatdown Emissary|Wielder of Magic",
+        "release": "9/27/2024",
+        "initial_health": 486,
+        "final_health": 8079,
+        "initial_attack": 263,
+        "final_attack": 2426,
+        "initial_defense": 283,
+        "final_defense": 3243,
+        "output_initial": 120,
+        "output_final": 300,
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Autonomous Arithmetic",
+                "extraText": "35 Skill Points",
+                "description": "Changes Soul of Skills and Soul of Divine Protection x1 each into Soul of Secrets.\nIncreases Soul of Secrets' protection gauge increase by 10% Turns 1"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Snatch Bites",
+                "extraText": "25 Skill Points",
+                "description": "Changes light characters' Soul of Combos x1 into Soul of Secrets for this turn only.\nIncreases all allies' pierce power until the end of battle by 3% Unlimited"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "normal",
+                "attackName": "Tachyon Paradox",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes a single-target fire magic attack for 470% normal damage.Decreases all targets' guard penetration by 10% Turns 2"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "HP - Pierce Power UP",
+                "description": "When you have 50% or more HP, increases own pierce power by 8% at start of turn available in support formation"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - Skill DOWN",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Skills gauge increases are decreased by 10% Turns 1 Uses by this character per battle: 1"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Shinsha is assigned to a battle slot.\nIncreases guard power by 8%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magic Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 54\nIncreases ATK by 14\nIncreases DEF by 30"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "type": "protector",
+        "stars": 4,
+        "element": "prot_dark",
+        "dmg_type": "Flashback Beatdown Emissary",
+        "tactics_type": "",
+        "force": "Antagonist|Flashback Beatdown Emissary",
+        "release": "9/27/2024",
+        "name": "Izis",
+        "sub_name": "Momentary Bliss",
+        "initial_attack": 97,
+        "initial_health": 189,
+        "initial_defense": 96,
+        "final_attack": 1206,
+        "final_health": 2824,
+        "final_defense": 1205,
+        "output_initial": 100,
+        "output_final": 220,
+        "divine_skills": [
+            {
+                "imageName": "/icons/divine.png",
+                "attackName": "Mirror Queen's Respite",
+                "extraText": "Primary",
+                "description": "Increases damage done by Antagonist Force characters to attribute enemies by 30%; increases Antagonist Force characters'ATK by 12%"
+            },
+            {
+                "attackName": "Supporting Divine Protection",
+                "extraText": "Support",
+                "description": "Increases Antagonist Force characters'ATK by 4%"
+            }
+        ],
+        "protection_skill": [
+            {
+                "attackName": "Portfolio",
+                "extraText": "100% Protection Gauge",
+                "description": "Changes Soul of Skills into Soul of Secrets.\nIncreases all allies' pierce rate by 80% Turns 2\nIncreases skill points by 10"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Effect - DEF DOWN",
+                "description": "When 1 or more enemies are affected by ATK UP, decreases all targets'DEF by 6% at start of turn available in support formation"
+            }
+        ],
+        "tag": "Dark Magic Device +200%|Symbol of Protection +100%|protector|to soul of secrets|from soul of skills|buff pierce rate"
+    },
+    {
+        "id": 5,
+        "type": "attacker",
+        "stars": 6,
+        "element": "water",
+        "dmg_type": "phys",
+        "tactics_type": "",
+        "force": "Protector of Peace|Determination to Prosper|Pretty Sparkle",
+        "release": "9/13/2024",
+        "name": "Shion",
+        "sub_name": "Purple Ogre Virtuoso",
+        "initial_attack": 591,
+        "initial_health": 966,
+        "initial_defense": 438,
+        "final_attack": 4024,
+        "final_health": 8233,
+        "final_defense": 2864,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "single",
+        "char_type": "attack",
+        "weapon": "fists",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Melody of Luring Dusk",
+                "extraText": "90 Skill Points",
+                "description": "Decreases all targets' secret skill damage resistance by 80% Turns 1\nIncreases own water ATK by 10% Turns 1; Effect increases by 5% each time allies use battle skills from the start of battle to the end of Turn 8 Max 70%"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Melody of Refinement",
+                "extraText": "25 Skill Points",
+                "description": "Causes Soul of Skills to generate water Seeking Souls Turns 1 Damage Scaling: Soul 50%\nIncreases own critical damage until the end of battle by 5% Unlimited"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "normal",
+                "attackName": "Anthem of Rim",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes a single-target water phys attack for 490% normal damage"
+            },
+            {
+                "imageName": "normal",
+                "attackName": "EX Anthem of Rim",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes a single-target water phys attack for 735% normal damage"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Troop - Protection UP",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns available in support formation"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - Secret Soul Damage DOWN",
+                "description": "When you unleash a 2 combo, the enemy's Soul of Secrets damage is decreased by 20% Turns 1 Uses by this character per battle: 1"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Rimuru Tempest is assigned to a battle slot.\nIncreases critical damage by 8%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Physical Blessing",
+                "description": "Increases own following status in accordance with the number of phys attack characters assigned to battle slots.\nIncreases HP by 360\nIncreases ATK by 180\nIncreases DEF by 104"
+            }
+        ],
+        "tag": "Shishkabob Stall +30%|Digsite for Defense Magigems +10%|attacker|single|water|phys|buff critical damage|seeking souls|debuff secret skill damage resistance|water atk"
+    },
+    {
+        "id": 6,
+        "type": "protector",
+        "stars": 6,
+        "element": "prot_fire",
+        "dmg_type": "phys",
+        "tactics_type": "",
+        "force": "Protector of Peace",
+        "release": "8/30/2024",
+        "name": "Masayuki Honjo",
+        "sub_name": "Lightspeed Hero",
+        "initial_attack": 265,
+        "initial_health": 377,
+        "initial_defense": 161,
+        "final_attack": 1704,
+        "final_health": 3553,
+        "final_defense": 1467,
+        "output_initial": 100,
+        "output_final": 220,
+        "ulti": "",
+        "char_type": "",
+        "divine_skills": [
+            {
+                "imageName": "/icons/divine.png",
+                "attackName": "Chosen One",
+                "extraText": "Primary",
+                "description": "Increases damage done by Protector of Peace Force characters to fire attribute enemies by 60%; increases phys characters'ATK and DEF by 20%\nAt the beginning of each turn from turn 2 onward, increases skill cost limit by 50 until the end of battle Max 999"
+            },
+            {
+                "attackName": "Supporting Divine Protection",
+                "extraText": "Support",
+                "description": "Increases Protector of Peace Force characters'ATK by 7%"
+            }
+        ],
+        "protection_skill": [
+            {
+                "attackName": "Brave Majesty",
+                "extraText": "100% Protection Gauge",
+                "description": "Chance to Inspire all phys allies: 80% Turns 2; When the enemy's turn ends, increases ATK by 4% for every 3 times an ally attacked Max Up to 40% per turn Unlimited\nFor this turn, battle skills can be activated an unlimited number of times.\nDecreases the skill cost by 20 for vanguard allies Cannot go below each skill's initial cost Cannot exceed the max activation limit during battle"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "HP - P-ATK UP",
+                "description": "When 3 vanguard have 75% or more HP, increases all allies' phys ATK by 8% at start of turn available in support formation"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Charge - Concentrate",
+                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 2"
+            }
+        ],
+        "guidance_trait": [
+            {
+                "description": "Increases Protector of Peace Force characters'ATK by 7%"
+            }
+        ],
+        "tag": "Symbol of Protection +100%|Fire Magic Device +200%|inspire|unlimited skills"
+    }
 ]
