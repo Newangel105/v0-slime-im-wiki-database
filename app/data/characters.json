@@ -24,12 +24,12 @@
                 "imageName": "/icons/divine.png",
                 "attackName": "Resplendent Soul",
                 "extraText": "Primary",
-                "description": "Increases damage done by and Force characters to attribute enemies by 60%; increases magic characters'ATK and DEF by 20%\nAt the beginning of each turn from turn 2 onward, increases skill points by 30 Max 4 times can exceed cost limit"
+                "description": "Increases damage done by Antagonist and Exalted Champions Force characters to dark attribute enemies by 60%; increases magic characters'ATK and DEF by 20%\nAt the beginning of each turn from turn 2 onward, increases skill points by 30 Max 4 times can exceed cost limit"
             },
             {
                 "attackName": "Supporting Divine Protection",
                 "extraText": "Support",
-                "description": "Increases Force characters'ATK by 7%"
+                "description": "Increases Antagonist Force characters'ATK by 7%"
             }
         ],
         "protection_skill": [
@@ -84,13 +84,13 @@
             "imageName": "b1.png",
             "attackName": "Jail Execution",
             "extraText": "60 Skill Points",
-            "description": "Increases and characters' Soul of Combos damage by 80% Turns 1\nDecreases all targets' pierce resistance by 60% Turns 1"
+            "description": "Increases light and dark characters' Soul of Combos damage by 80% Turns 1\nDecreases all targets' pierce resistance by 60% Turns 1"
         },
         {
             "imageName": "b2.png",
             "attackName": "Dragon Roar Command",
             "extraText": "45 Skill Points",
-            "description": "Changes all Force characters' souls into Soul of Secrets.\nIncreases all Soul of Secrets gauges' increase by 5% Turns 1"
+            "description": "Changes all Antagonist Force characters' souls into Soul of Secrets.\nIncreases all Soul of Secrets gauges' increase by 5% Turns 1"
         }
         ],
         "secret_skills": [
@@ -98,13 +98,13 @@
             "imageName": "normal",
             "attackName": "Predator Bloom",
             "extraText": "100% Secret Gauge",
-            "description": "Unleashes an all-target magic attack for 300% normal damage.\nDecreases all targets' magic attack resistance by 15% Turns 1"
+            "description": "Unleashes an all-target light magic attack for 300% normal damage.\nDecreases all targets' magic attack resistance by 15% Turns 1"
         },
         {
             "imageName": "normal",
             "attackName": "EX Predator Bloom",
             "extraText": "200% Secret Gauge",
-            "description": "Unleashes an all-target magic attack for 600% normal damage.\nDecreases all targets' magic attack resistance by 15% Turns 1"
+            "description": "Unleashes an all-target light magic attack for 600% normal damage.\nDecreases all targets' magic attack resistance by 15% Turns 1"
         }
         ],
         "skill_traits": [
