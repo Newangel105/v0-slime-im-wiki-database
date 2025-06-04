@@ -462,5 +462,81 @@
             }
         ],
         "tag": "Savory Pancake Stall +30%|Digsite for Attack Magigems +10%|attacker|aoe|water|phys|buff critical rate|buff soul of combos|to soul of skills|buff weakness strike|debuff phys attack resistance"
+    },
+    {
+        "id": 8,
+        "type": "attacker",
+        "stars": 6,
+        "element": "dark",
+        "dmg_type": "phys",
+        "tactics_type": "",
+        "force": "Protector of Peace|Shizu's Will|Commander",
+        "release": "9/9/2024",
+        "name": "Hinata Sakaguchi",
+        "sub_name": "Ballroom Knight",
+        "initial_attack": 584,
+        "initial_health": 971,
+        "initial_defense": 450,
+        "final_attack": 4017,
+        "final_health": 8238,
+        "final_defense": 2876,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "single",
+        "char_type": "attack",
+        "weapon": "fists",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Dance of Blessing",
+                "extraText": "90 Skill Points",
+                "description": "Increases all allies' ATK by 60% Turns 1"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Ethereal Barrage",
+                "extraText": "35 Skill Points",
+                "description": "Applies Multi-hit State to Soul of Skills souls, adding 2 attacks of a fixed percentage damage based on the soul Turns 1\nIncreases Soul of Combos damage until the end of battle by 5% Unlimited"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "normal",
+                "attackName": "Ruberios Rondo",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes a single-target dark phys attack for 490% normal damage"
+            },
+            {
+                "imageName": "normal",
+                "attackName": "EX Ruberios Rondo",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes a single-target dark phys attack for 735% normal damage"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Troop - Protection UP",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns available in support formation"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - Protection DOWN",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Divine Protection gauge increases are decreased by 20% Turns 1 Uses by this character per battle: 1"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Rimuru Tempest is assigned to a battle slot.\nIncreases critical damage by 8%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Physical Blessing",
+                "description": "Increases other troop members' following status in accordance with the number of  phys attack characters assigned to battle slots.\nIncreases HP by 90\nIncreases ATK by 40\nIncreases DEF by 24"
+            }
+        ],
+        "tag": "Ramen Shop +30%|Hamburger Stall +10%|attacker|single|dark|phys|buff phys attack|debuff critical resistance|multi-hit|buff soul of combos"
     }
 ]
