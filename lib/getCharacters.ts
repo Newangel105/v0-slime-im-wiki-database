@@ -47,7 +47,7 @@ export type Character = {
   force: string[]
   tag: string[]
   release: string
-  image: string
+  image?: string
   initial_attack: number
   initial_health: number
   initial_defense: number
