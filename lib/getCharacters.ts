@@ -17,6 +17,7 @@ export type Trait = {
   imageName: string
   attackName: string
   description: string
+  extraText?: string
 }
 
 export type divine = {
@@ -27,6 +28,8 @@ export type divine = {
 }
 
 export type unbound = {
+  attackName?: string
+  extraText?: string
   description: string
 }
 
