@@ -1,151 +1,135 @@
 [
-  {
-    "id": 1,
-    "name": "Rimuru",
-    "element": "ex_water",
-    "sub_name": "Youthful Pupil",
-    "stars": 6,
-    "weapon": "sword",
-    "dmg_type": "phys",
-    "type": "attacker",
-    "char_type": "attack",
-    "ulti": "aoe",
-    "tag": "water|Restaurant +30%",
-    "force": "Protector of Peace|Pretty Sparkle",
-    "release": "9/27/2024",
-    "town": "Rimuru City",
-    "battle_skills": [
-      {
-        "imageName": "b1.png",
-        "attackName": "Winning Operation",
-        "extraText": "90/80 Skill Points",
-        "description": "Increases all allies'ATK by 55/65% Turns 1. Decreases all targets' attack resistance by 20% Turns 1"
-      },
-      {
-        "imageName": "b2.png",
-        "attackName": "Collective Observation",
-        "extraText": "35/25 Skill Points",
-        "description": "Changes Soul of Secrets x2 into Soul of Divine Protection. Increases all Soul of Divine Protection gauges' increase by 5/10% Turns 1"
-      },
-      {
-        "imageName": "b4.png",
-        "attackName": "Collective Observation",
-        "extraText": "35 Skill Points",
-        "description": "Changes non-Divine Protection soul x2 into Soul of Divine Protection.\nIncreases all Soul of Divine Protection gauges' increase by 5% Turns 1"
-      }
-    ],
-    "secret_skills": [
-      {
-        "imageName": "atk",
-        "attackName": "Infinity Wisdom",
-        "extraText": "100% Secret Gauge",
-        "description": "Unleashes an all-target attack for 300% normal damage.Decreases all targets'DEF by 5% Turns 2"
-      },
-      {
-        "imageName": "supp",
-        "attackName": "EX Infinity Wisdom",
-        "extraText": "200% Secret Gauge",
-        "description": "Unleashes an all-target attack for 600% normal damage.Decreases all targets'DEF by 5% Turns 2"
-      }
-    ],
-    "skill_traits": [
-      {
-        "imageName": "t1",
-        "attackName": "Soul Combo - Critical Damage UP",
-        "description": "When you unleash a 6 combo attack with Soul of Divine Protection, increases own critical damage by 6% for the next turn available in support formation"
-      },
-      {
-        "imageName": "t2",
-        "attackName": "Switch - Skill Seal",
-        "description": "When you switch this character to the vanguard and activate souls, all enemies' magic-changing battle skills are sealed Turns 1 Uses by this character per battle: 2"
-      }
-    ],
-    "unbound": [
-      {
-        "description": "When you unleash a 6 combo attack with Soul of Divine Protection, increases own critical damage by 6% for the next turn available in support formation"
-      }
-    ],
-    "ex_abilities": [
-      {
-        "imageName": "e1",
-        "attackName": "Individual Mercy",
-        "description": "When you unleash a 6 combo attack with Soul of Divine Protection, increases own critical damage by 6% for the next turn available in support formation"
-      },
-      {
-        "imageName": "",
-        "attackName": "Physical Blessing",
-        "description": "Increases other troop members' following status in accordance with the number of attack characters assigned to battle slots.\n Increases HP by 90\n Increases ATK by 40\n Increases DEF by 24"
-      }
-    ],
-    "initial_attack": 553,
-    "initial_health": 943,
-    "initial_defense": 438,
-    "final_attack": 3986,
-    "final_health": 8210,
-    "final_defense": 2864,
-    "output_initial": 60,
-    "output_final": 150
-  },
-  {
-    "id": 2,
-    "name": "Hinata",
-    "element": "prot_space",
-    "sub_name": "Youthful Pupil",
-    "stars": 7,
-    "weapon": "sword",
-    "dmg_type": "prot_phys",
-    "type": "protector",
-    "char_type": "attack",
-    "release": "03/06/2025",
-    "ulti": "aoe",
-    "tag": "prot_water|Restaurant +30%",
-    "force": "Protector of Peace|Pretty Sparkle",
-    "town": "Rimuru City",
-    "divine_skills": [
-      {
-        "imageName": "/icons/divine.png",
-        "attackName": "Shadow Infiltration",
-        "extraText": "Primary",
-        "description": "Increases all allies'ATK by 55/65% Turns 1. Decreases all targets' attack resistance by 20% Turns 1. Increases Aegis Rate by 100%."
-      },
-      {
-        
-        "attackName": "Supporting Divine Protection",
-        "extraText": "Support",
-        "description": "Changes Soul of Secrets x2 into Soul of Divine Protection. Increases all Soul of Divine Protection gauges' increase by 5/10% Turns 1"
-      }
-    ],
-    "protection_skill": [
-      {
-        "attackName": "Threadbind Field",
-        "extraText": "100% Protection Gauge",
-        "description": "Increases all allies'ATK by 55/65% Turns 1. Decreases all targets' attack resistance by 20% Turns 1. Increases Aegis Rate by 100%."
-      }
-    ],
-    "skill_traits": [
-      {
-        "imageName": "t1",
-        "attackName": "Soul Combo - Critical Damage UP",
-        "description": "When you unleash a 6 combo attack with Soul of Divine Protection, increases own critical damage by 6% for the next turn available in support formation"
-      },
-      {
-        "imageName": "t2",
-        "attackName": "Switch - Skill Seal",
-        "description": "When you switch this character to the vanguard and activate souls, all enemies' magic-changing battle skills are sealed Turns 1 Uses by this character per battle: 2"
-      }
-    ],
-    "guidance_trait": [
-      {
-        "description": "Bla bla bla"
-      }
-    ],
-    "initial_attack": 553,
-    "initial_health": 943,
-    "initial_defense": 438,
-    "final_attack": 3986,
-    "final_health": 8210,
-    "final_defense": 3264,
-    "output_initial": 60,
-    "output_final": 150
+    {
+        "id": 1,
+        "type": "protector",
+        "stars": 6,
+        "element": "prot_dark",
+        "dmg_type": "magic",
+        "tactics_type": "",
+        "force": "Antagonist|Exalted Champions",
+        "release": "9/27/2024",
+        "tag": "Dark Magic Device +200%|Symbol of Protection +100%|prot_dark|protector|magic|to soul of secrets|buff pierce rate|gauge skill point",
+        "name": "Emils",
+        "sub_name": "Mad City Lord",
+        "initial_attack": 266,
+        "initial_health": 377,
+        "initial_defense": 151,
+        "final_attack": 1705,
+        "final_health": 3553,
+        "final_defense": 1457,
+        "output_initial": 100,
+        "output_final": 220,
+        "divine_skills": [
+            {
+                "imageName": "/icons/divine.png",
+                "attackName": "Resplendent Soul",
+                "extraText": "Primary",
+                "description": "Increases damage done by and Force characters to attribute enemies by 60%; increases magic characters'ATK and DEF by 20%\nAt the beginning of each turn from turn 2 onward, increases skill points by 30 Max 4 times can exceed cost limit"
+            },
+            {
+                "attackName": "Supporting Divine Protection",
+                "extraText": "Support",
+                "description": "Increases Force characters'ATK by 7%"
+            }
+        ],
+        "protection_skill": [
+            {
+                "attackName": "Blood Fortress",
+                "extraText": "100% Protection Gauge",
+                "description": "Changes all souls into Soul of Secrets, then changes Soul of Secrets x2 into Soul of Unity.\nIncreases all allies' pierce rate by 90% Turns 2\nIncreases Soul of Secrets' skill point increase by 50% Turns 2"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "HP - M-ATK UP",
+                "description": "When 3 vanguard have 75% or more HP, increases all allies' magic ATK by 8% at start of turn available in support formation"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Charge - Concentrate",
+                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 2"
+            }
+        ],
+        "guidance_trait": [
+            {
+                "description": "Increases Divine Protection ATK and DEF effect by 5% and Supporting Divine Protection ATK effect by 5%"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Shinsha",
+        "element": "ex_light",
+        "sub_name": "Serpent Zinnia Slime",
+        "stars": 6,
+        "weapon": "fists",
+        "dmg_type": "magic",
+        "type": "attacker",
+        "char_type": "attack",
+        "ulti": "aoe",
+        "tag": "Souvenir Shop +30%|Mini Coaster +10%",
+        "force": "Antagonist|Dragon Haki",
+        "release": "9/27/2024",
+        "initial_health": 968,
+        "final_health": 8235,
+        "initial_attack": 588,
+        "final_attack": 4021,
+        "initial_defense": 443,
+        "final_defense": 2869,
+        "output_initial": 60,
+        "output_final": 150,
+        "battle_skills": [
+        {
+            "imageName": "b1.png",
+            "attackName": "Jail Execution",
+            "extraText": "60 Skill Points",
+            "description": "Increases and characters' Soul of Combos damage by 80% Turns 1\nDecreases all targets' pierce resistance by 60% Turns 1"
+        },
+        {
+            "imageName": "b2.png",
+            "attackName": "Dragon Roar Command",
+            "extraText": "45 Skill Points",
+            "description": "Changes all Force characters' souls into Soul of Secrets.\nIncreases all Soul of Secrets gauges' increase by 5% Turns 1"
+        }
+        ],
+        "secret_skills": [
+        {
+            "imageName": "normal",
+            "attackName": "Predator Bloom",
+            "extraText": "100% Secret Gauge",
+            "description": "Unleashes an all-target magic attack for 300% normal damage.\nDecreases all targets' magic attack resistance by 15% Turns 1"
+        },
+        {
+            "imageName": "normal",
+            "attackName": "EX Predator Bloom",
+            "extraText": "200% Secret Gauge",
+            "description": "Unleashes an all-target magic attack for 600% normal damage.\nDecreases all targets' magic attack resistance by 15% Turns 1"
+        }
+        ],
+        "skill_traits": [
+        {
+            "imageName": "t1",
+            "attackName": "Soul Combo - ATK DOWN",
+            "description": "When you unleash a 6 combo attack with Soul of Secrets, decreases all targets'ATK by 8% for the next turn available in support formation"
+        },
+        {
+            "imageName": "t2",
+            "attackName": "Switch - Skill Seal",
+            "description": "When you switch this character to the vanguard and activate souls, all enemies' attack-changing battle skills are sealed Turns 1 Uses by this character per battle: 2"
+        }
+        ],
+        "ex_abilities": [
+        {
+            "imageName": "e1",
+            "attackName": "Individual Mercy",
+            "description": "Increases own following status when Cliche is assigned to a battle slot.\nIncreases pierce power by 8%"
+        },
+        {
+            "imageName": "",
+            "attackName": "Magic Mercy",
+            "description": "Increases own following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 360\nIncreases ATK by 180\nIncreases DEF by 104"
+        }
+        ]
   }
 ]
