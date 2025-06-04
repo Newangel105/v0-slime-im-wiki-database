@@ -1,542 +1,620 @@
 [
     {
-        "id": 1,
-        "type": "protector",
-        "stars": 6,
-        "element": "prot_dark",
-        "dmg_type": "magic",
-        "tactics_type": "",
-        "force": "Antagonist|Exalted Champions",
-        "release": "9/27/2024",
-        "tag": "Dark Magic Device +200%|Symbol of Protection +100%|prot_dark|protector|magic|to soul of secrets|buff pierce rate|gauge skill point soul of secrets",
-        "name": "Emils",
         "sub_name": "Mad City Lord",
+        "name": "Emils",
+        "type": "protector",
+        "element": "prot_dark",
         "initial_attack": 266,
-        "initial_health": 377,
-        "initial_defense": 151,
         "final_attack": 1705,
+        "initial_health": 377,
         "final_health": 3553,
+        "initial_defense": 151,
         "final_defense": 1457,
         "output_initial": 100,
         "output_final": 220,
-        "divine_skills": [
+        "release_date": "9/27/2024",
+        "tactics_type": "",
+        "force": "Antagonist|Exalted Champions",
+        "tags": "Dark Magic Device +200%|Symbol of Protection +100%|Protection Characters|Anti-Dark|Magic|5|Skills Soul Amount x2|Skills To Soul Soul of Secrets|Skills Gauge Skill Points|Skills Buff All Damage|Skills Buff All Pierce Rate",
+        "dmg_type": "magic",
+        "skill_traits": [
             {
-                "imageName": "/icons/divine.png",
-                "attackName": "Resplendent Soul",
-                "extraText": "Primary",
-                "description": "Increases damage done by Antagonist and Exalted Champions Force characters to dark attribute enemies by 60%; increases magic characters'ATK and DEF by 20%\nAt the beginning of each turn from turn 2 onward, increases skill points by 30 Max 4 times can exceed cost limit"
+                "attackName": "HP - M-ATK UP",
+                "extraText": "Awaken 1/5",
+                "description": "When 3 vanguard have 75% or more HP, increases all allies' magic ATK by 5% at start of turn available in support formation",
+                "imageName": "t1"
             },
             {
-                "attackName": "Supporting Divine Protection",
+                "attackName": "HP - M-ATK UP",
+                "extraText": "Awaken 3/5",
+                "description": "When 3 vanguard have 75% or more HP, increases all allies' magic ATK by 8% at start of turn available in support formation",
+                "imageName": "t1"
+            },
+            {
+                "attackName": "Charge - Concentrate Initial Conditions",
+                "extraText": "Initial Conditions",
+                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 1",
+                "imageName": "t1"
+            },
+            {
+                "attackName": "Charge - Concentrate",
+                "extraText": "Awaken 2/5",
+                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 2",
+                "imageName": "t1"
+            }
+        ],
+        "divine_skills": [
+            {
+                "attackName": "Resplendent Soul",
+                "extraText": "Primary",
+                "description": "Increases damage done by Antagonist and Exalted Champions Force characters to Dark attribute enemies by 60%; increases magic characters' ATK and DEF by 20%At the beginning of each turn from turn 2 onward, increases skill points by 30 Max 4 times can exceed cost limit",
+                "imageName": "/icons/divine.png"
+            },
+            {
+                "attackName": "Resplendent Soul",
                 "extraText": "Support",
-                "description": "Increases Antagonist Force characters'ATK by 7%"
+                "description": "Increases Antagonist Force characters' ATK by 7%"
             }
         ],
         "protection_skill": [
             {
                 "attackName": "Blood Fortress",
                 "extraText": "100% Protection Gauge",
-                "description": "Changes all souls into Soul of Secrets, then changes Soul of Secrets x2 into Soul of Unity.\nIncreases all allies' pierce rate by 90% Turns 2\nIncreases Soul of Secrets' skill point increase by 50% Turns 2"
-            }
-        ],
-        "skill_traits": [
-            {
-                "imageName": "t1",
-                "attackName": "HP - M-ATK UP",
-                "description": "When 3 vanguard have 75% or more HP, increases all allies' magic ATK by 8% at start of turn available in support formation"
-            },
-            {
-                "imageName": "t2",
-                "attackName": "Charge - Concentrate",
-                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 2"
+                "description": "Changes all souls into Soul of Secrets, then changes Soul of Secrets x2 into Soul of Unity. Increases all allies' pierce rate by 90% Turns 2Increases Soul of Secrets' skill point increase by 50% Turns 2"
             }
         ],
         "guidance_trait": [
             {
+                "attackName": "Enhanced Guidance",
+                "extraText": "Awaken 5/6",
                 "description": "Increases Divine Protection ATK and DEF effect by 5% and Supporting Divine Protection ATK effect by 5%"
             }
-        ]
+        ],
+        "id": 1
     },
     {
-        "id": 2,
-        "name": "Shinsha",
-        "element": "light",
         "sub_name": "Serpent Zinnia Slime",
-        "stars": 6,
-        "weapon": "fists",
-        "dmg_type": "magic",
-        "tactics_type": "",
+        "name": "Shinsha",
         "type": "attacker",
-        "char_type": "attack",
-        "ulti": "aoe",
-        "tag": "Souvenir Shop +30%|Mini Coaster +10%|attacker|aoe|light|magic|to soul of secrets|debuff pierce resistance|buff soul of combos|gauge all soul of secrets|debuff magic attack resistance",
-        "force": "Antagonist|Dragon Haki|Warrior's Mind",
-        "release": "9/27/2024",
-        "initial_health": 968,
-        "final_health": 8235,
+        "element": "light",
         "initial_attack": 588,
         "final_attack": 4021,
+        "initial_health": 968,
+        "final_health": 8235,
         "initial_defense": 443,
         "final_defense": 2869,
         "output_initial": 60,
         "output_final": 150,
+        "release_date": "9/27/2024",
+        "tactics_type": "",
+        "force": "Antagonist|Dragon Haki|Warrior's Mind",
+        "tags": "Souvenir Shop +30%|Mini Coaster +10%|Battle Characters|All|Light|Magic|5|Skills To Soul Soul of Secrets|Skills Soul Buff Soul of Secrets Gauge|Skills Debuff All Pierce Resistance|Traits Debuff All ATK",
+        "weapon": "",
+        "char_type": "",
+        "dmg_type": "magic",
+        "ulti": "aoe",
         "battle_skills": [
             {
-                "imageName": "b1.png",
                 "attackName": "Jail Execution",
                 "extraText": "60 Skill Points",
-                "description": "Increases light and dark characters' Soul of Combos damage by 80% Turns 1\nDecreases all targets' pierce resistance by 60% Turns 1"
+                "description": "Increases Light and Dark characters' Soul of Combos damage by 80% Turns 1Decreases all targets' pierce resistance by 60% Turns 1"
             },
             {
-                "imageName": "b2.png",
                 "attackName": "Dragon Roar Command",
                 "extraText": "45 Skill Points",
-                "description": "Changes all Antagonist Force characters' souls into Soul of Secrets.\nIncreases all Soul of Secrets gauges' increase by 5% Turns 1"
+                "description": "Changes all Antagonist Force characters' souls into Soul of Secrets. Increases all Soul of Secrets gauges' increase by 5% Turns 1"
             }
         ],
         "secret_skills": [
             {
-                "imageName": "normal",
                 "attackName": "Predator Bloom",
                 "extraText": "100% Secret Gauge",
-                "description": "Unleashes an all-target light magic attack for 300% normal damage.\nDecreases all targets' magic attack resistance by 15% Turns 1"
+                "description": "Unleashes an all-target Light magic attack for 300% normal damage. Decreases all targets' magic attack resistance by 15% Turns 1"
             },
             {
-                "imageName": "normal",
                 "attackName": "EX Predator Bloom",
                 "extraText": "200% Secret Gauge",
-                "description": "Unleashes an all-target light magic attack for 600% normal damage.\nDecreases all targets' magic attack resistance by 15% Turns 1"
+                "description": "Unleashes an all-target Light magic attack for 600% normal damage. Decreases all targets' magic attack resistance by 15% Turns 1"
             }
         ],
         "skill_traits": [
             {
-                "imageName": "t1",
                 "attackName": "Soul Combo - ATK DOWN",
-                "description": "When you unleash a 6 combo attack with Soul of Secrets, decreases all targets'ATK by 8% for the next turn available in support formation"
+                "extraText": "Awaken 1/5",
+                "description": "When you unleash a 6 combo attack with Soul of Secrets, decreases all targets' ATK by 5% for the next turn available in support formation",
+                "imageName": "t1"
             },
             {
-                "imageName": "t2",
+                "attackName": "Soul Combo - ATK DOWN",
+                "extraText": "Awaken 3/5",
+                "description": "When you unleash a 6 combo attack with Soul of Secrets, decreases all targets' ATK by 8% for the next turn available in support formation",
+                "imageName": "t1"
+            },
+            {
+                "attackName": "Switch - Skill Seal Initial Conditions",
+                "extraText": "Initial Conditions",
+                "description": "When you switch this character to the vanguard and activate souls, all enemies' attack-changing battle skills are sealed Turns 1 Uses by this character per battle: 1",
+                "imageName": "t1"
+            },
+            {
                 "attackName": "Switch - Skill Seal",
-                "description": "When you switch this character to the vanguard and activate souls, all enemies' attack-changing battle skills are sealed Turns 1 Uses by this character per battle: 2"
+                "extraText": "Awaken 2/5",
+                "description": "When you switch this character to the vanguard and activate souls, all enemies' attack-changing battle skills are sealed Turns 1 Uses by this character per battle: 2",
+                "imageName": "t1"
             }
         ],
         "ex_abilities": [
             {
                 "imageName": "e1",
                 "attackName": "Individual Mercy",
-                "description": "Increases own following status when Cliche is assigned to a battle slot.\nIncreases pierce power by 8%"
+                "description": "Increases own following status when Cliche is assigned to a battle slot.Increases pierce power by 8%"
             },
             {
-                "imageName": "",
                 "attackName": "Magic Mercy",
                 "description": "Increases own following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 360\nIncreases ATK by 180\nIncreases DEF by 104"
             }
-        ]
+        ],
+        "id": 2
     },
     {
-        "id": 3,
-        "name": "Cliche",
-        "element": "fire",
         "sub_name": "Fascinator Elf",
-        "stars": 5,
-        "weapon": "fists",
-        "dmg_type": "magic",
+        "name": "Cliche",
         "type": "attacker",
-        "tactics_type": "Neutral",
-        "char_type": "defense",
-        "ulti": "single",
-        "tag": "Hot Dog Stall +30%|Gift Shop +10%|attacker|single|fire|magic|from soul of skills|from soul of divine protection|to soul of secrets|gauge protection soul of secrets|from soul of combos|to soul of secrets|debuff guard penetration",
-        "force": "Antagonist|Flashback Beatdown Emissary|Wielder of Magic",
-        "release": "9/27/2024",
-        "initial_health": 486,
-        "final_health": 8079,
+        "element": "fire",
         "initial_attack": 263,
         "final_attack": 2426,
+        "initial_health": 486,
+        "final_health": 8079,
         "initial_defense": 283,
         "final_defense": 3243,
         "output_initial": 120,
         "output_final": 300,
+        "release_date": "9/27/2024",
+        "tactics_type": "",
+        "force": "Antagonist|Wielder of Magic|Flashback Beatdown Emissary",
+        "tags": "Hot Dog Stall +30%|Gift Shop +10%|Battle Characters|Single|Fire|Magic|5|Skills From Soul Soul of Divine Protection|Skills From Soul Soul of Skills|Skills Soul Amount x1|Skills To Soul Soul of Secrets|Skills Buff All Pierce Power|Traits Buff Self Pierce Power",
+        "weapon": "",
+        "char_type": "",
+        "dmg_type": "magic",
+        "ulti": "single",
         "battle_skills": [
             {
-                "imageName": "b1.png",
                 "attackName": "Autonomous Arithmetic",
                 "extraText": "35 Skill Points",
-                "description": "Changes Soul of Skills and Soul of Divine Protection x1 each into Soul of Secrets.\nIncreases Soul of Secrets' protection gauge increase by 10% Turns 1"
+                "description": "Changes Soul of Skills and Soul of Divine Protection x1 each into Soul of Secrets. Increases Soul of Secrets' protection gauge increase by 10% Turns 1"
             },
             {
-                "imageName": "b2.png",
                 "attackName": "Snatch Bites",
                 "extraText": "25 Skill Points",
-                "description": "Changes light characters' Soul of Combos x1 into Soul of Secrets for this turn only.\nIncreases all allies' pierce power until the end of battle by 3% Unlimited"
+                "description": "Changes Light characters' Soul of Combos x1 into Soul of Secrets for this turn only. Increases all allies' pierce power until the end of battle by 3% Unlimited"
             }
         ],
         "secret_skills": [
             {
-                "imageName": "normal",
                 "attackName": "Tachyon Paradox",
                 "extraText": "100% Secret Gauge",
-                "description": "Unleashes a single-target fire magic attack for 470% normal damage.Decreases all targets' guard penetration by 10% Turns 2"
+                "description": "Unleashes a single-target Fire magic attack for 470% normal damage. Decreases all targets' guard penetration by 10% Turns 2"
             }
         ],
         "skill_traits": [
             {
-                "imageName": "t1",
                 "attackName": "HP - Pierce Power UP",
-                "description": "When you have 50% or more HP, increases own pierce power by 8% at start of turn available in support formation"
+                "extraText": "Awaken 1/5",
+                "description": "When you have 50% or more HP, increases own pierce power by 5% at start of turn available in support formation",
+                "imageName": "t1"
             },
             {
-                "imageName": "t2",
+                "attackName": "HP - Pierce Power UP",
+                "extraText": "Awaken 3/5",
+                "description": "When you have 50% or more HP, increases own pierce power by 8% at start of turn available in support formation",
+                "imageName": "t1"
+            },
+            {
+                "attackName": "Soul Combo - Skill DOWN Initial Conditions",
+                "extraText": "Initial Conditions",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Skills gauge increases are decreased by 5% Turns 1 Uses by this character per battle: 1",
+                "imageName": "t1"
+            },
+            {
                 "attackName": "Soul Combo - Skill DOWN",
-                "description": "When you unleash a 2 combo, all of the enemy's Soul of Skills gauge increases are decreased by 10% Turns 1 Uses by this character per battle: 1"
+                "extraText": "Awaken 2/5",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Skills gauge increases are decreased by 10% Turns 1 Uses by this character per battle: 1",
+                "imageName": "t1"
             }
         ],
         "ex_abilities": [
             {
-                "imageName": "e1",
                 "attackName": "Individual Mercy",
-                "description": "Increases own following status when Shinsha is assigned to a battle slot.\nIncreases guard power by 8%"
+                "imageName": "e1",
+                "description": "Increases own following status when Shinsha is assigned to a battle slot.Increases guard power by 8%"
             },
             {
+                "attackName": "Magic Blessing",
                 "imageName": "",
-                "attackName": "Magic Mercy",
                 "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 54\nIncreases ATK by 14\nIncreases DEF by 30"
             }
-        ]
+        ],
+        "id": 3
     },
     {
-        "id": 4,
-        "type": "protector",
-        "stars": 4,
-        "element": "prot_dark",
-        "dmg_type": "Flashback Beatdown Emissary",
-        "tactics_type": "",
-        "force": "Antagonist|Flashback Beatdown Emissary",
-        "release": "9/27/2024",
-        "name": "Izis",
         "sub_name": "Momentary Bliss",
+        "name": "Izis",
+        "type": "protector",
+        "element": "prot_dark",
         "initial_attack": 97,
-        "initial_health": 189,
-        "initial_defense": 96,
         "final_attack": 1206,
+        "initial_health": 189,
         "final_health": 2824,
+        "initial_defense": 96,
         "final_defense": 1205,
         "output_initial": 100,
         "output_final": 220,
-        "divine_skills": [
+        "release_date": "9/27/2024",
+        "tactics_type": "",
+        "force": "Antagonist|Flashback Beatdown Emissary",
+        "tags": "Dark Magic Device +200%|Symbol of Protection +100%|Protection Characters|Anti-Dark|4|Skills From Soul Soul of Skills|Skills Soul Amount All|Skills To Soul Soul of Secrets|Skills Buff All Damage|Skills Buff All Pierce Rate|Traits Debuff All DEF",
+        "skill_traits": [
             {
-                "imageName": "/icons/divine.png",
-                "attackName": "Mirror Queen's Respite",
-                "extraText": "Primary",
-                "description": "Increases damage done by Antagonist Force characters to attribute enemies by 30%; increases Antagonist Force characters'ATK by 12%"
+                "attackName": "Effect - DEF DOWN",
+                "extraText": "Awaken 1/5",
+                "description": "When 1 or more enemies are affected by ATK UP, decreases all targets' DEF by 4% at start of turn available in support formation",
+                "imageName": "t1"
             },
             {
-                "attackName": "Supporting Divine Protection",
+                "attackName": "Effect - DEF DOWN",
+                "extraText": "Awaken 3/5",
+                "description": "When 1 or more enemies are affected by ATK UP, decreases all targets' DEF by 6% at start of turn available in support formation",
+                "imageName": "t1"
+            }
+        ],
+        "divine_skills": [
+            {
+                "attackName": "Mirror Queen's Respite",
+                "extraText": "Primary",
+                "description": "Increases damage done by Antagonist Force characters to Dark attribute enemies by 30%; increases Antagonist Force characters' ATK by 12%",
+                "imageName": "/icons/divine.png"
+            },
+            {
+                "attackName": "Mirror Queen's Respite",
                 "extraText": "Support",
-                "description": "Increases Antagonist Force characters'ATK by 4%"
+                "description": "Increases Antagonist Force characters' ATK by 4%"
             }
         ],
         "protection_skill": [
             {
                 "attackName": "Portfolio",
                 "extraText": "100% Protection Gauge",
-                "description": "Changes Soul of Skills into Soul of Secrets.\nIncreases all allies' pierce rate by 80% Turns 2\nIncreases skill points by 10"
+                "description": "Changes Soul of Skills into Soul of Secrets. Increases all allies' pierce rate by 80% Turns 2Increases skill points by 10"
             }
         ],
-        "skill_traits": [
-            {
-                "imageName": "t1",
-                "attackName": "Effect - DEF DOWN",
-                "description": "When 1 or more enemies are affected by ATK UP, decreases all targets'DEF by 6% at start of turn available in support formation"
-            }
-        ],
-        "tag": "Dark Magic Device +200%|Symbol of Protection +100%|protector|to soul of secrets|from soul of skills|buff pierce rate"
+        "id": 4
     },
     {
-        "id": 5,
-        "type": "attacker",
-        "stars": 6,
-        "element": "water",
-        "dmg_type": "phys",
-        "tactics_type": "",
-        "force": "Protector of Peace|Determination to Prosper|Pretty Sparkle",
-        "release": "9/13/2024",
-        "name": "Shion",
         "sub_name": "Purple Ogre Virtuoso",
+        "name": "Shion",
+        "type": "attacker",
+        "element": "water",
         "initial_attack": 591,
-        "initial_health": 966,
-        "initial_defense": 438,
         "final_attack": 4024,
+        "initial_health": 966,
         "final_health": 8233,
+        "initial_defense": 438,
         "final_defense": 2864,
         "output_initial": 60,
         "output_final": 150,
+        "release_date": "9/13/2024",
+        "tactics_type": "",
+        "force": "Protector of Peace|Determination to Prosper|Pretty Sparkle",
+        "tags": "Shishkabob Stall +30%|Digsite for Defense Magigems +10%|Battle Characters|Single|Water|Physical|5|Skills Buff Self Critical Damage|Skills Buff Self Water ATK|Traits Soul Buff Soul of Secrets Damage|Traits Gauge Protection Gauge",
+        "weapon": "",
+        "char_type": "",
+        "dmg_type": "phys",
         "ulti": "single",
-        "char_type": "attack",
-        "weapon": "fists",
         "battle_skills": [
             {
-                "imageName": "b1.png",
                 "attackName": "Melody of Luring Dusk",
                 "extraText": "90 Skill Points",
-                "description": "Decreases all targets' secret skill damage resistance by 80% Turns 1\nIncreases own water ATK by 10% Turns 1; Effect increases by 5% each time allies use battle skills from the start of battle to the end of Turn 8 Max 70%"
+                "description": "Decreases all targets' secret skill damage resistance by 80% Turns 1Increases own Water ATK by 10% Turns 1; Effect increases by 5% each time allies use battle skills from the start of battle to the end of Turn 8 Max 70%"
             },
             {
-                "imageName": "b2.png",
                 "attackName": "Melody of Refinement",
                 "extraText": "25 Skill Points",
-                "description": "Causes Soul of Skills to generate water Seeking Souls Turns 1 Damage Scaling: Soul 50%\nIncreases own critical damage until the end of battle by 5% Unlimited"
+                "description": "Causes Soul of Skills to generate Water Seeking Souls Turns 1 Damage Scaling: Soul 50%Increases own critical damage until the end of battle by 5% Unlimited"
             }
         ],
         "secret_skills": [
             {
-                "imageName": "normal",
                 "attackName": "Anthem of Rim",
                 "extraText": "100% Secret Gauge",
-                "description": "Unleashes a single-target water phys attack for 490% normal damage"
+                "description": "Unleashes a single-target Water Physical attack for 490% normal damage"
             },
             {
-                "imageName": "normal",
                 "attackName": "EX Anthem of Rim",
                 "extraText": "200% Secret Gauge",
-                "description": "Unleashes a single-target water phys attack for 735% normal damage"
+                "description": "Unleashes a single-target Water Physical attack for 735% normal damage"
             }
         ],
         "skill_traits": [
             {
-                "imageName": "t1",
                 "attackName": "Troop - Protection UP",
-                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns available in support formation"
+                "extraText": "Awaken 1/5",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 5 every 3 turns available in support formation",
+                "imageName": "t1"
             },
             {
-                "imageName": "t2",
+                "attackName": "Troop - Protection UP",
+                "extraText": "Awaken 3/5",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns available in support formation",
+                "imageName": "t1"
+            },
+            {
+                "attackName": "Soul Combo - Secret Soul Damage DOWN Initial Conditions",
+                "extraText": "Initial Conditions",
+                "description": "When you unleash a 2 combo, the enemy's Soul of Secrets damage is decreased by 10% Turns 1 Uses by this character per battle: 1",
+                "imageName": "t1"
+            },
+            {
                 "attackName": "Soul Combo - Secret Soul Damage DOWN",
-                "description": "When you unleash a 2 combo, the enemy's Soul of Secrets damage is decreased by 20% Turns 1 Uses by this character per battle: 1"
+                "extraText": "Awaken 2/5",
+                "description": "When you unleash a 2 combo, the enemy's Soul of Secrets damage is decreased by 20% Turns 1 Uses by this character per battle: 1",
+                "imageName": "t1"
             }
         ],
         "ex_abilities": [
             {
-                "imageName": "e1",
                 "attackName": "Individual Mercy",
-                "description": "Increases own following status when Rimuru Tempest is assigned to a battle slot.\nIncreases critical damage by 8%"
+                "description": "Increases own following status when Rimuru Tempest is assigned to a battle slot.Increases critical damage by 8%",
+                "imageName": "e1"
             },
             {
+                "attackName": "Physical Mercy",
                 "imageName": "",
-                "attackName": "Physical Blessing",
-                "description": "Increases own following status in accordance with the number of phys attack characters assigned to battle slots.\nIncreases HP by 360\nIncreases ATK by 180\nIncreases DEF by 104"
+                "description": "Increases own following status in accordance with the number of Physical attack characters assigned to battle slots\n.Increases HP by 360\nIncreases ATK by 180\nIncreases DEF by 104"
             }
         ],
-        "tag": "Shishkabob Stall +30%|Digsite for Defense Magigems +10%|attacker|single|water|phys|buff critical damage|seeking souls|debuff secret skill damage resistance|water atk"
+        "id": 5
     },
     {
-        "id": 6,
-        "type": "protector",
-        "stars": 6,
-        "element": "prot_fire",
-        "dmg_type": "phys",
-        "tactics_type": "",
-        "force": "Protector of Peace",
-        "release": "8/30/2024",
-        "name": "Masayuki Honjo",
         "sub_name": "Lightspeed Hero",
+        "name": "Masayuki Honjo",
+        "type": "protector",
+        "element": "prot_fire",
         "initial_attack": 265,
-        "initial_health": 377,
-        "initial_defense": 161,
         "final_attack": 1704,
+        "initial_health": 377,
         "final_health": 3553,
+        "initial_defense": 161,
         "final_defense": 1467,
         "output_initial": 100,
         "output_final": 220,
-        "ulti": "",
-        "char_type": "",
-        "divine_skills": [
+        "release_date": "8/30/2024",
+        "tactics_type": "",
+        "force": "Protector of Peace",
+        "tags": "Symbol of Protection +100%|Fire Magic Device +200%|Protection Characters|Anti-Fire|Physical|5|Skills Special Skill Cost Reset|Skills Buff All Damage|Traits Buff All P-ATK",
+        "dmg_type": "phys",
+        "skill_traits": [
             {
-                "imageName": "/icons/divine.png",
-                "attackName": "Chosen One",
-                "extraText": "Primary",
-                "description": "Increases damage done by Protector of Peace Force characters to fire attribute enemies by 60%; increases phys characters'ATK and DEF by 20%\nAt the beginning of each turn from turn 2 onward, increases skill cost limit by 50 until the end of battle Max 999"
+                "attackName": "HP - P-ATK UP",
+                "extraText": "Awaken 1/5",
+                "description": "When 3 vanguard have 75% or more HP, increases all allies' P- ATK by 5% at start of turn available in support formation",
+                "imageName": "t1"
             },
             {
-                "attackName": "Supporting Divine Protection",
+                "attackName": "HP - P-ATK UP",
+                "extraText": "Awaken 3/5",
+                "description": "When 3 vanguard have 75% or more HP, increases all allies' P- ATK by 8% at start of turn available in support formation",
+                "imageName": "t1"
+            },
+            {
+                "attackName": "Charge - Concentrate Initial Conditions",
+                "extraText": "Initial Conditions",
+                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 1",
+                "imageName": "t1"
+            },
+            {
+                "attackName": "Charge - Concentrate",
+                "extraText": "Awaken 2/5",
+                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 2",
+                "imageName": "t1"
+            }
+        ],
+        "divine_skills": [
+            {
+                "attackName": "Chosen One",
+                "extraText": "Primary",
+                "description": "Increases damage done by Protector of Peace Force characters to Fire attribute enemies by 60%; increases Physical characters' ATK and DEF by 20%At the beginning of each turn from turn 2 onward, increases skill cost limit by 50 until the end of battle Max 999",
+                "imageName": "/icons/divine.png"
+            },
+            {
+                "attackName": "Chosen One",
                 "extraText": "Support",
-                "description": "Increases Protector of Peace Force characters'ATK by 7%"
+                "description": "Increases Protector of Peace Force characters' ATK by 7%"
             }
         ],
         "protection_skill": [
             {
                 "attackName": "Brave Majesty",
                 "extraText": "100% Protection Gauge",
-                "description": "Chance to Inspire all phys allies: 80% Turns 2; When the enemy's turn ends, increases ATK by 4% for every 3 times an ally attacked Max Up to 40% per turn Unlimited\nFor this turn, battle skills can be activated an unlimited number of times.\nDecreases the skill cost by 20 for vanguard allies Cannot go below each skill's initial cost Cannot exceed the max activation limit during battle"
-            }
-        ],
-        "skill_traits": [
-            {
-                "imageName": "t1",
-                "attackName": "HP - P-ATK UP",
-                "description": "When 3 vanguard have 75% or more HP, increases all allies' phys ATK by 8% at start of turn available in support formation"
-            },
-            {
-                "imageName": "t2",
-                "attackName": "Charge - Concentrate",
-                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 2"
+                "description": "Chance to Inspire all Physical allies: 80% Turns 2; When the enemy's turn ends, increases ATK by 4% for every 3 times an ally attacked Max Up to 40% per turn UnlimitedFor this turn, battle skills can be activated an unlimited number of times. Decreases the skill cost by 20 for vanguard allies Cannot go below each skill's initial costCannot exceed the max activation limit during battle"
             }
         ],
         "guidance_trait": [
             {
-                "description": "Increases Protector of Peace Force characters'ATK by 7%"
+                "attackName": "Enhanced Guidance",
+                "extraText": "Awaken 5/6",
+                "description": "Increases Divine Protection ATK and DEF effect by 5% and Supporting Divine Protection ATK effect by 5%"
             }
         ],
-        "tag": "Symbol of Protection +100%|Fire Magic Device +200%|inspire|unlimited skills"
+        "id": 6
     },
     {
-        "id": 7,
-        "type": "attacker",
-        "stars": 6,
-        "element": "water",
-        "dmg_type": "phys",
-        "tactics_type": "",
-        "force": "Protector of Peace|Shizu's Will|Octagram Demon Lord|Determination to Prosper",
-        "release": "8/30/2024",
-        "name": "Rimuru Tempest",
         "sub_name": "Welcoming Chancellor",
+        "name": "Rimuru Tempest",
+        "type": "attacker",
+        "element": "water",
         "initial_attack": 588,
-        "initial_health": 971,
-        "initial_defense": 442,
         "final_attack": 4021,
+        "initial_health": 971,
         "final_health": 8238,
+        "initial_defense": 442,
         "final_defense": 2868,
         "output_initial": 60,
         "output_final": 150,
+        "release_date": "8/30/2024",
+        "tactics_type": "",
+        "force": "Protector of Peace|Shizu's Will|Octagram Demon Lord|Determination to Prosper",
+        "tags": "Savory Pancake Stall +30%|Digsite for Attack Magigems +10%|Battle Characters|All|Water|Physical|5|Skills Soul Amount x1|Skills To Soul Soul of Skills|Skills Buff All Critical Rate|Skills Buff Self Soul of Combos|Traits Debuff All DEF",
+        "weapon": "",
+        "char_type": "",
+        "dmg_type": "phys",
         "ulti": "aoe",
-        "char_type": "attack",
-        "weapon": "sword",
         "battle_skills": [
             {
-                "imageName": "b1.png",
                 "attackName": "Scourge-Warding Lordship",
                 "extraText": "90 Skill Points",
-                "description": "Increases all allies' critical rate by 80% Turns 1\nIncreases own Soul of Combos damage by 150% Turns 1"
+                "description": "Increases all allies' critical rate by 80% Turns 1Increases own Soul of Combos damage by 150% Turns 1"
             },
             {
-                "imageName": "b2.png",
                 "attackName": "Path to Prosperity",
-                "extraText": " 25 Skill Points",
-                "description": "Changes non-Skills soul x1 into Soul of Skills.\nIncreases own weakness strike until the end of battle by 5% Unlimited"
+                "extraText": "25 Skill Points",
+                "description": "Changes non-Skills soul x1 into Soul of Skills. Increases own weakness strike until the end of battle by 5% Unlimited"
             }
         ],
         "secret_skills": [
             {
-                "imageName": "atk",
                 "attackName": "Festive Bombardment",
                 "extraText": "100% Secret Gauge",
-                "description": "Unleashes an all-target water phys attack for 300% normal damage.\nDecreases all targets' phys attack resistance by 15% Turns 1"
+                "description": "Unleashes an all-target Water Physical attack for 300% normal damage. Decreases all targets' Physical attack resistance by 15% Turns 1"
             },
             {
-                "imageName": "supp",
                 "attackName": "EX Festive Bombardment",
                 "extraText": "200% Secret Gauge",
-                "description": "Unleashes an all-target water phys attack for 600% normal damage.\nDecreases all targets' phys attack resistance by 15% Turns 1"
+                "description": "Unleashes an all-target Water Physical attack for 600% normal damage. Decreases all targets' Physical attack resistance by 15% Turns 1"
             }
         ],
         "skill_traits": [
             {
-                "imageName": "t1",
                 "attackName": "Soul Combo - DEF DOWN",
-                "description": "When you unleash a 6 combo attack with Soul of Skills, decreases all targets' DEF by 5% for the next turn available in support formation"
+                "extraText": "Awaken 1/5",
+                "description": "When you unleash a 6 combo attack with Soul of Skills, decreases all targets' DEF by 3% for the next turn available in support formation",
+                "imageName": "t1"
             },
             {
-                "imageName": "t2",
+                "attackName": "Soul Combo - DEF DOWN",
+                "extraText": "Awaken 3/5",
+                "description": "When you unleash a 6 combo attack with Soul of Skills, decreases all targets' DEF by 5% for the next turn available in support formation",
+                "imageName": "t1"
+            },
+            {
+                "attackName": "Switch - Skill Seal Initial Conditions",
+                "extraText": "Initial Conditions",
+                "description": "When you switch this character to the vanguard and activate souls, all enemies' defense-changing battle skills are sealed Turns 1 Uses by this character per battle: 1",
+                "imageName": "t1"
+            },
+            {
                 "attackName": "Switch - Skill Seal",
-                "description": "When you switch this character to the vanguard and activate souls, all enemies' defense-changing battle skills are sealed Turns 1 Uses by this character per battle: 2"
+                "extraText": "Awaken 2/5",
+                "description": "When you switch this character to the vanguard and activate souls, all enemies' defense-changing battle skills are sealed Turns 1 Uses by this character per battle: 2",
+                "imageName": "t1"
             }
         ],
         "ex_abilities": [
             {
-                "imageName": "e1",
                 "attackName": "Individual Mercy",
-                "description": "Increases own following status when Geld is assigned to a battle slot.\nIncreases critical damage by 8%"
+                "description": "Increases own following status when Geld is assigned to a battle slot.Increases critical damage by 8%",
+                "imageName": "e1"
             },
             {
-                "imageName": "",
-                "attackName": "Physical Blessing",
-                "description": "Increases own following status in accordance with the number of phys attack characters assigned to battle slots.\nIncreases HP by 360\nIncreases ATK by 180\nIncreases DEF by 104"
+                "attackName": "Physical Mercy",
+                "description": "Increases own following status in accordance with the number of Physical attack characters assigned to battle slots\n.Increases HP by 360\nIncreases ATK by 180\nIncreases DEF by 104",
+                "imageName": ""
             }
         ],
-        "tag": "Savory Pancake Stall +30%|Digsite for Attack Magigems +10%|attacker|aoe|water|phys|buff critical rate|buff soul of combos|to soul of skills|buff weakness strike|debuff phys attack resistance"
+        "id": 7
     },
     {
-        "id": 8,
-        "type": "attacker",
-        "stars": 6,
-        "element": "dark",
-        "dmg_type": "phys",
-        "tactics_type": "",
-        "force": "Protector of Peace|Shizu's Will|Commander",
-        "release": "9/9/2024",
-        "name": "Hinata Sakaguchi",
         "sub_name": "Ballroom Knight",
+        "name": "Hinata Sakaguchi",
+        "type": "attacker",
+        "element": "dark",
         "initial_attack": 584,
-        "initial_health": 971,
-        "initial_defense": 450,
         "final_attack": 4017,
+        "initial_health": 971,
         "final_health": 8238,
+        "initial_defense": 450,
         "final_defense": 2876,
         "output_initial": 60,
         "output_final": 150,
+        "release_date": "9/9/2024",
+        "tactics_type": "",
+        "force": "Protector of Peace|Shizu's Will|Commander",
+        "tags": "Ramen Shop +30%|Hamburger Stall +10%|Battle Characters|Single|Dark|Physical|5|Skills To Soul Soul of Skills|Skills Buff All Soul of Combos|Skills Buff All P-ATK|Skills Debuff All Critical Resistance|Traits Soul Buff Soul of Divine Protection Gauge|Traits Gauge Protection Gauge",
+        "weapon": "",
+        "char_type": "",
+        "dmg_type": "phys",
         "ulti": "single",
-        "char_type": "attack",
-        "weapon": "fists",
         "battle_skills": [
             {
-                "imageName": "b1.png",
                 "attackName": "Dance of Blessing",
                 "extraText": "90 Skill Points",
-                "description": "Increases all allies' ATK by 60% Turns 1"
+                "description": "Increases all allies' P- ATK by 60% Turns 1Decreases all targets' critical resistance by 50% Turns 1 If more than 300 skill points have been used during this turn, critical resistance effect is doubled"
             },
             {
-                "imageName": "b2.png",
                 "attackName": "Ethereal Barrage",
                 "extraText": "35 Skill Points",
-                "description": "Applies Multi-hit State to Soul of Skills souls, adding 2 attacks of a fixed percentage damage based on the soul Turns 1\nIncreases Soul of Combos damage until the end of battle by 5% Unlimited"
+                "description": "Applies Multi-hit State to Soul of Skills souls, adding 2 attacks of a fixed percentage damage based on the soul Turns 1Increases Soul of Combos damage until the end of battle by 5% Unlimited"
             }
         ],
         "secret_skills": [
             {
-                "imageName": "normal",
                 "attackName": "Ruberios Rondo",
                 "extraText": "100% Secret Gauge",
-                "description": "Unleashes a single-target dark phys attack for 490% normal damage"
+                "description": "Unleashes a single-target Dark Physical attack for 490% normal damage"
             },
             {
-                "imageName": "normal",
                 "attackName": "EX Ruberios Rondo",
                 "extraText": "200% Secret Gauge",
-                "description": "Unleashes a single-target dark phys attack for 735% normal damage"
+                "description": "Unleashes a single-target Dark Physical attack for 735% normal damage"
             }
         ],
         "skill_traits": [
             {
-                "imageName": "t1",
                 "attackName": "Troop - Protection UP",
-                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns available in support formation"
+                "extraText": "Awaken 1/5",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 4 every 2 turns available in support formation",
+                "imageName": "t1"
             },
             {
-                "imageName": "t2",
+                "attackName": "Troop - Protection UP",
+                "extraText": "Awaken 3/5",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns available in support formation",
+                "imageName": "t1"
+            },
+            {
+                "attackName": "Soul Combo - Protection DOWN Initial Conditions",
+                "extraText": "Initial Conditions",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Divine Protection gauge increases are decreased by 10% Turns 1 Uses by this character per battle: 1",
+                "imageName": "t1"
+            },
+            {
                 "attackName": "Soul Combo - Protection DOWN",
-                "description": "When you unleash a 2 combo, all of the enemy's Soul of Divine Protection gauge increases are decreased by 20% Turns 1 Uses by this character per battle: 1"
+                "extraText": "Awaken 2/5",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Divine Protection gauge increases are decreased by 20% Turns 1 Uses by this character per battle: 1",
+                "imageName": "t1"
             }
         ],
         "ex_abilities": [
             {
-                "imageName": "e1",
                 "attackName": "Individual Mercy",
-                "description": "Increases own following status when Rimuru Tempest is assigned to a battle slot.\nIncreases critical damage by 8%"
+                "description": "Increases own following status when Rimuru Tempest is assigned to a battle slot.Increases critical damage by 8%",
+                "imageName": "e1"
             },
             {
-                "imageName": "",
-                "attackName": "Physical Blessing",
-                "description": "Increases other troop members' following status in accordance with the number of  phys attack characters assigned to battle slots.\nIncreases HP by 90\nIncreases ATK by 40\nIncreases DEF by 24"
+                "attackName": "Physical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of Physical attack characters assigned to battle slots\n.Increases HP by 90\nIncreases ATK by 40\nIncreases DEF by 24",
+                "imageName": ""
             }
         ],
-        "tag": "Ramen Shop +30%|Hamburger Stall +10%|attacker|single|dark|phys|buff phys attack|debuff critical resistance|multi-hit|buff soul of combos"
+        "id": 8
     }
 ]
