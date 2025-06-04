@@ -39,15 +39,14 @@ export type Character = {
   sub_name: string
   element: string
   stars: number
-  weapon: string
+  weapon?: string
   dmg_type: string
   type: string
   char_type: string
-  ulti: string
+  ulti?: string
   force: string[]
   tag: string[]
   release: string
-  town: string
   image: string
   initial_attack: number
   initial_health: number
@@ -57,7 +56,6 @@ export type Character = {
   final_defense: number
   output_initial: number
   output_final: number
-  rarity: number
   battle_skills?: Skill[]
   protection_skill?: Skillprot[]
   secret_skills?: Skill[]
@@ -80,7 +78,6 @@ export function getAllCharacters(): Character[] {
       ...char,
       id: Number(char.id),
       stars: Number(char.stars),
-      rarity: Number(char.rarity),
       final_attack: Number(char.final_attack),
       final_health: Number(char.final_health),
       final_defense: Number(char.final_defense),
