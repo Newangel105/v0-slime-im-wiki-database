@@ -42,7 +42,7 @@ export type Character = {
   weapon?: string
   dmg_type: string
   type: string
-  char_type: string
+  char_type?: string
   ulti?: string
   force: string[]
   tag: string[]
