@@ -16,7 +16,7 @@
         "release_date": "9/27/2024",
         "tactics_type": "",
         "force": "Antagonist|Exalted Champions",
-        "tags": "Dark Magic Device +200%|Symbol of Protection +100%|Protection Characters|Anti-Dark|Magic|5|Skills Soul Amount x2|Skills To Soul Soul of Secrets|Skills Gauge Skill Points|Skills Buff All Damage|Skills Buff All Pierce Rate",
+        "tag": "Dark Magic Device +200%|Symbol of Protection +100%|Protection Characters|Anti-Dark|Magic|5|Skills Soul Amount x2|Skills To Soul Soul of Secrets|Skills Gauge Skill Points|Skills Buff All Damage|Skills Buff All Pierce Rate",
         "dmg_type": "magic",
         "skill_traits": [
             {
@@ -90,7 +90,7 @@
         "release_date": "9/27/2024",
         "tactics_type": "",
         "force": "Antagonist|Dragon Haki|Warrior's Mind",
-        "tags": "Souvenir Shop +30%|Mini Coaster +10%|Battle Characters|All|Light|Magic|5|Skills To Soul Soul of Secrets|Skills Soul Buff Soul of Secrets Gauge|Skills Debuff All Pierce Resistance|Traits Debuff All ATK",
+        "tag": "Souvenir Shop +30%|Mini Coaster +10%|Battle Characters|All|Light|Magic|5|Skills To Soul Soul of Secrets|Skills Soul Buff Soul of Secrets Gauge|Skills Debuff All Pierce Resistance|Traits Debuff All ATK",
         "weapon": "",
         "char_type": "",
         "dmg_type": "magic",
@@ -175,7 +175,7 @@
         "release_date": "9/27/2024",
         "tactics_type": "",
         "force": "Antagonist|Wielder of Magic|Flashback Beatdown Emissary",
-        "tags": "Hot Dog Stall +30%|Gift Shop +10%|Battle Characters|Single|Fire|Magic|5|Skills From Soul Soul of Divine Protection|Skills From Soul Soul of Skills|Skills Soul Amount x1|Skills To Soul Soul of Secrets|Skills Buff All Pierce Power|Traits Buff Self Pierce Power",
+        "tag": "Hot Dog Stall +30%|Gift Shop +10%|Battle Characters|Single|Fire|Magic|5|Skills From Soul Soul of Divine Protection|Skills From Soul Soul of Skills|Skills Soul Amount x1|Skills To Soul Soul of Secrets|Skills Buff All Pierce Power|Traits Buff Self Pierce Power",
         "weapon": "",
         "char_type": "",
         "dmg_type": "magic",
@@ -257,7 +257,7 @@
         "tactics_type": "",
         "dmg_type": "Flashback Beatdown Emissary",
         "force": "Antagonist|Flashback Beatdown Emissary",
-        "tags": "Dark Magic Device +200%|Symbol of Protection +100%|Protection Characters|Anti-Dark|4|Skills From Soul Soul of Skills|Skills Soul Amount All|Skills To Soul Soul of Secrets|Skills Buff All Damage|Skills Buff All Pierce Rate|Traits Debuff All DEF",
+        "tag": "Dark Magic Device +200%|Symbol of Protection +100%|Protection Characters|Anti-Dark|4|Skills From Soul Soul of Skills|Skills Soul Amount All|Skills To Soul Soul of Secrets|Skills Buff All Damage|Skills Buff All Pierce Rate|Traits Debuff All DEF",
         "skill_traits": [
             {
                 "attackName": "Effect - DEF DOWN",
@@ -311,7 +311,7 @@
         "release_date": "9/13/2024",
         "tactics_type": "",
         "force": "Protector of Peace|Determination to Prosper|Pretty Sparkle",
-        "tags": "Shishkabob Stall +30%|Digsite for Defense Magigems +10%|Battle Characters|Single|Water|Physical|5|Skills Buff Self Critical Damage|Skills Buff Self Water ATK|Traits Soul Buff Soul of Secrets Damage|Traits Gauge Protection Gauge",
+        "tag": "Shishkabob Stall +30%|Digsite for Defense Magigems +10%|Battle Characters|Single|Water|Physical|5|Skills Buff Self Critical Damage|Skills Buff Self Water ATK|Traits Soul Buff Soul of Secrets Damage|Traits Gauge Protection Gauge",
         "weapon": "",
         "char_type": "",
         "dmg_type": "phys",
@@ -397,7 +397,7 @@
         "release_date": "8/30/2024",
         "tactics_type": "",
         "force": "Protector of Peace",
-        "tags": "Symbol of Protection +100%|Fire Magic Device +200%|Protection Characters|Anti-Fire|Physical|5|Skills Special Skill Cost Reset|Skills Buff All Damage|Traits Buff All P-ATK",
+        "tag": "Symbol of Protection +100%|Fire Magic Device +200%|Protection Characters|Anti-Fire|Physical|5|Skills Special Skill Cost Reset|Skills Buff All Damage|Traits Buff All P-ATK",
         "dmg_type": "phys",
         "skill_traits": [
             {
@@ -471,7 +471,7 @@
         "release_date": "8/30/2024",
         "tactics_type": "",
         "force": "Protector of Peace|Shizu's Will|Octagram Demon Lord|Determination to Prosper",
-        "tags": "Savory Pancake Stall +30%|Digsite for Attack Magigems +10%|Battle Characters|All|Water|Physical|5|Skills Soul Amount x1|Skills To Soul Soul of Skills|Skills Buff All Critical Rate|Skills Buff Self Soul of Combos|Traits Debuff All DEF",
+        "tag": "Savory Pancake Stall +30%|Digsite for Attack Magigems +10%|Battle Characters|All|Water|Physical|5|Skills Soul Amount x1|Skills To Soul Soul of Skills|Skills Buff All Critical Rate|Skills Buff Self Soul of Combos|Traits Debuff All DEF",
         "weapon": "",
         "char_type": "",
         "dmg_type": "phys",
@@ -557,7 +557,7 @@
         "release_date": "9/9/2024",
         "tactics_type": "",
         "force": "Protector of Peace|Shizu's Will|Commander",
-        "tags": "Ramen Shop +30%|Hamburger Stall +10%|Battle Characters|Single|Dark|Physical|5|Skills To Soul Soul of Skills|Skills Buff All Soul of Combos|Skills Buff All P-ATK|Skills Debuff All Critical Resistance|Traits Soul Buff Soul of Divine Protection Gauge|Traits Gauge Protection Gauge",
+        "tag": "Ramen Shop +30%|Hamburger Stall +10%|Battle Characters|Single|Dark|Physical|5|Skills To Soul Soul of Skills|Skills Buff All Soul of Combos|Skills Buff All P-ATK|Skills Debuff All Critical Resistance|Traits Soul Buff Soul of Divine Protection Gauge|Traits Gauge Protection Gauge",
         "weapon": "",
         "char_type": "",
         "dmg_type": "phys",
