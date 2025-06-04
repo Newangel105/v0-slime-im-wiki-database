@@ -111,11 +111,13 @@
             {
                 "attackName": "Predator Bloom",
                 "extraText": "100% Secret Gauge",
+                "imageName": "normal",
                 "description": "Unleashes an all-target Light magic attack for 300% normal damage. Decreases all targets' magic attack resistance by 15% Turns 1"
             },
             {
                 "attackName": "EX Predator Bloom",
                 "extraText": "200% Secret Gauge",
+                "imageName": "normal",
                 "description": "Unleashes an all-target Light magic attack for 600% normal damage. Decreases all targets' magic attack resistance by 15% Turns 1"
             }
         ],
@@ -196,6 +198,7 @@
             {
                 "attackName": "Tachyon Paradox",
                 "extraText": "100% Secret Gauge",
+                "imageName": "normal",
                 "description": "Unleashes a single-target Fire magic attack for 470% normal damage. Decreases all targets' guard penetration by 10% Turns 2"
             }
         ],
@@ -332,11 +335,13 @@
             {
                 "attackName": "Anthem of Rim",
                 "extraText": "100% Secret Gauge",
+                "imageName": "normal",
                 "description": "Unleashes a single-target Water Physical attack for 490% normal damage"
             },
             {
                 "attackName": "EX Anthem of Rim",
                 "extraText": "200% Secret Gauge",
+                "imageName": "normal",
                 "description": "Unleashes a single-target Water Physical attack for 735% normal damage"
             }
         ],
@@ -491,11 +496,13 @@
         "secret_skills": [
             {
                 "attackName": "Festive Bombardment",
+                "imageName": "normal",
                 "extraText": "100% Secret Gauge",
                 "description": "Unleashes an all-target Water Physical attack for 300% normal damage. Decreases all targets' Physical attack resistance by 15% Turns 1"
             },
             {
                 "attackName": "EX Festive Bombardment",
+                "imageName": "normal",
                 "extraText": "200% Secret Gauge",
                 "description": "Unleashes an all-target Water Physical attack for 600% normal damage. Decreases all targets' Physical attack resistance by 15% Turns 1"
             }
@@ -578,11 +585,13 @@
             {
                 "attackName": "Ruberios Rondo",
                 "extraText": "100% Secret Gauge",
+                "imageName": "normal",
                 "description": "Unleashes a single-target Dark Physical attack for 490% normal damage"
             },
             {
                 "attackName": "EX Ruberios Rondo",
                 "extraText": "200% Secret Gauge",
+                "imageName": "normal",
                 "description": "Unleashes a single-target Dark Physical attack for 735% normal damage"
             }
         ],
