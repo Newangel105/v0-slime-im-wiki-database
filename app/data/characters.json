@@ -8,7 +8,7 @@
         "tactics_type": "",
         "force": "Antagonist|Exalted Champions",
         "release": "9/27/2024",
-        "tag": "Dark Magic Device +200%|Symbol of Protection +100%|prot_dark|protector|magic|to soul of secrets|buff pierce rate|gauge skill point",
+        "tag": "Dark Magic Device +200%|Symbol of Protection +100%|prot_dark|protector|magic|to soul of secrets|buff pierce rate|gauge skill point soul of secrets",
         "name": "Emils",
         "sub_name": "Mad City Lord",
         "initial_attack": 266,
@@ -60,16 +60,17 @@
     {
         "id": 2,
         "name": "Shinsha",
-        "element": "ex_light",
+        "element": "light",
         "sub_name": "Serpent Zinnia Slime",
         "stars": 6,
         "weapon": "fists",
         "dmg_type": "magic",
+        "tactics_type": "",
         "type": "attacker",
         "char_type": "attack",
         "ulti": "aoe",
-        "tag": "Souvenir Shop +30%|Mini Coaster +10%",
-        "force": "Antagonist|Dragon Haki",
+        "tag": "Souvenir Shop +30%|Mini Coaster +10%|attacker|aoe|light|magic|to soul of secrets|debuff pierce resistance|buff soul of combos|gauge all soul of secrets|debuff magic attack resistance",
+        "force": "Antagonist|Dragon Haki|Warrior's Mind",
         "release": "9/27/2024",
         "initial_health": 968,
         "final_health": 8235,
@@ -131,5 +132,75 @@
             "description": "Increases own following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 360\nIncreases ATK by 180\nIncreases DEF by 104"
         }
         ]
+  },
+  {
+      "id": 3,
+      "name": "Cliche",
+      "element": "fire",
+      "sub_name": "Fascinator Elf",
+      "stars": 5,
+      "weapon": "fists",
+      "dmg_type": "magic",
+      "type": "attacker",
+      "tactics_type": "Neutral",
+      "char_type": "defense",
+      "ulti": "single",
+      "tag": "Hot Dog Stall +30%|Gift Shop +10%|attacker|single|fire|magic|from soul of skills|from soul of divine protection|to soul of secrets|gauge protection soul of secrets|from soul of combos|to soul of secrets|debuff guard penetration",
+      "force": "Antagonist|Flashback Beatdown Emissary|Wielder of Magic",
+      "release": "9/27/2024",
+      "initial_health": 486,
+      "final_health": 8079,
+      "initial_attack": 263,
+      "final_attack": 2426,
+      "initial_defense": 283,
+      "final_defense": 3243,
+      "output_initial": 120,
+      "output_final": 300,
+      "battle_skills": [
+      {
+          "imageName": "b1.png",
+          "attackName": "Autonomous Arithmetic",
+          "extraText": "35 Skill Points",
+          "description": "Changes Soul of Skills and Soul of Divine Protection x1 each into Soul of Secrets.\nIncreases Soul of Secrets' protection gauge increase by 10% Turns 1"
+      },
+      {
+          "imageName": "b2.png",
+          "attackName": "Snatch Bites",
+          "extraText": "25 Skill Points",
+          "description": "Changes light characters' Soul of Combos x1 into Soul of Secrets for this turn only.\nIncreases all allies' pierce power until the end of battle by 3% Unlimited"
+      }
+      ],
+      "secret_skills": [
+      {
+          "imageName": "normal",
+          "attackName": "Tachyon Paradox",
+          "extraText": "100% Secret Gauge",
+          "description": "Unleashes a single-target fire magic attack for 470% normal damage.Decreases all targets' guard penetration by 10% Turns 2"
+      }
+      ],
+      "skill_traits": [
+      {
+          "imageName": "t1",
+          "attackName": "HP - Pierce Power UP",
+          "description": "When you have 50% or more HP, increases own pierce power by 8% at start of turn available in support formation"
+      },
+      {
+          "imageName": "t2",
+          "attackName": "Soul Combo - Skill DOWN",
+          "description": "When you unleash a 2 combo, all of the enemy's Soul of Skills gauge increases are decreased by 10% Turns 1 Uses by this character per battle: 1"
+      }
+      ],
+      "ex_abilities": [
+      {
+          "imageName": "e1",
+          "attackName": "Individual Mercy",
+          "description": "Increases own following status when Shinsha is assigned to a battle slot.\nIncreases guard power by 8%"
+      },
+      {
+          "imageName": "",
+          "attackName": "Magic Mercy",
+          "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 54\nIncreases ATK by 14\nIncreases DEF by 30"
+      }
+      ]
   }
 ]
