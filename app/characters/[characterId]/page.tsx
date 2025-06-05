@@ -305,7 +305,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
 
     // Build regex pattern
     const pattern = sortedTexts.map(escapeRegex).join("|")
-    const regex = new RegExp(`\\b(${pattern})\\b`, "gi")
+    const regex = new RegExp(`(^|\\s|\\W)(${pattern})(?=\\s|\\W|$)`, "gi")
 
     const result: React.ReactNode[] = []
     let lastIndex = 0
