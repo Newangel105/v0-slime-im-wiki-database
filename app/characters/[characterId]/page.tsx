@@ -275,54 +275,52 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   };
 
   function renderTextWithLineBreaks(text: string) {
-    const lines = text.split('\\n');
+    const lines = text.split('\\n'); // Split on literal backslash + n
 
-    return lines.map((line, idx) => (
-      <>
-        {replaceStatTextWithIcons(line)}
-        {idx < lines.length - 1 && <br />}
-      </>
-    ));
+    return lines.flatMap((line, idx) => {
+      const content = replaceStatTextWithIcons(line.trim());
+
+      // Insert <br /> after every line except the last
+      return idx < lines.length - 1 ? [content, <br key={idx} />] : [content];
+    });
   }
+
 
   function replaceTextWithLinksAndOptionalIcons(
     text: string,
     customTextToKeyMap: { [key: string]: string },
-    customStatIconMap: { [key: string]: string }
-  ): React.ReactNode[] {
-    const allKeys = [...Object.keys(customTextToKeyMap), ...Object.keys(customStatIconMap)];
-    const sortedKeys = allKeys.sort((a, b) => b.length - a.length);
-    const regex = new RegExp(`(${sortedKeys.map(escapeRegex).join('|')})`, 'gi');
+    statIconMap: { [key: string]: string }
+  ) {
+    // Split by '|', trim each segment
+    const parts = text.split('|').map((part) => part.trim());
 
-    return text.split(regex).map((part, i) => {
-      if (!part) return null;
+    return parts.map((part, idx) => {
+      // Use the custom map or fallback to replacing spaces/dashes with underscores
+      const key = customTextToKeyMap[part] || part.replace(/[\s-]+/g, '_');
 
-      const mappedKey = customTextToKeyMap[part] || part.replace(/[\s-]+/g, '_');
-      const icon = customStatIconMap[mappedKey];
+      const icon = statIconMap[key];
 
+      // If icon exists, render a link with icon
       if (icon) {
-        // Has icon → render with icon and link
         return (
-          <Link
-            key={i}
-            href={`/characters?tag=${encodeURIComponent(part)}`}
-            className="inline-flex items-center px-3 py-1 rounded-full bg-[#111827] text-white text-sm font-medium mx-1 hover:bg-[#909090]"
-          >
-            <img src={icon} alt={part} className="w-5 h-5 mr-2 object-contain" />
-            {part}
-          </Link>
+          <span key={idx} className="inline-flex items-center mr-2 mb-1">
+            <img src={icon} alt={part} className="w-5 h-5 mr-1 object-contain" />
+            <a href={`/characters?tag=${encodeURIComponent(part)}`} className="text-blue-400 hover:underline">
+              {part}
+            </a>
+          </span>
         );
       }
 
-      // No icon → still create a link, no icon inside
+      // No icon: still create a link but without an icon
       return (
-        <Link
-          key={i}
+        <a
+          key={idx}
           href={`/characters?tag=${encodeURIComponent(part)}`}
-          className="inline-flex items-center px-3 py-1 rounded-full bg-[#444] text-white text-sm font-medium mx-1 hover:bg-[#666]"
+          className="inline-block mr-2 mb-1 text-blue-400 hover:underline"
         >
           {part}
-        </Link>
+        </a>
       );
     });
   }
