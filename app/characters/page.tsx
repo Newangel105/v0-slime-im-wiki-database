@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo, useEffect } from "react"
+import React,{ useState, useMemo, useEffect } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -294,7 +294,7 @@ export default function CharactersPage() {
   const [selectedUlti, setSelectedUlti] = useState<number[]>([])
   const [selectedCharType, setSelectedCharType] = useState<number[]>([])
   const [selectedAwakening, setSelectedAwakening] = useState<number[]>([])
-  const [skillsFilter, setSkillsFilter] = useState("")
+  const [skillsFilter, setSkillsFilter] = useState<string[]>([]);
   const [traitsFilter, setTraitsFilter] = useState("")
   const [forceFilter, setForceFilter] = useState("")
   const [townFilter, setTownFilter] = useState("")
@@ -745,22 +745,38 @@ export default function CharactersPage() {
                 <SelectContent className="bg-gray-700 border-gray-600">
                   <SelectItem value="all" className="text-white hover:bg-gray-600">All Skills</SelectItem>
                   {Object.entries(skillsData).map(([section, items]) => (
-                    <div key={section} className="bg-[#121212] text-white px-2 py-1 rounded mb-2">
-                      <div className="text-xs uppercase">{section}</div>
-                      {[...items].map(item => (
-                        <SelectItem
-                          key={`${section}-${item}`}
-                          value={`${section}|${item}`}
-                          className="text-white hover:bg-gray-600"
-                        >
-                          {item}
-                        </SelectItem>
-                      ))}
+                    <div key={section}>
+                      <div
+                        className="w-full bg-[#121212] text-white px-2 py-1 text-xs uppercase select-none"
+                        style={{ position: 'sticky', top: 0, zIndex: 10 }}
+                      >
+                        {section}
+                      </div>
+                      {[...items].map(item => {
+                        const value = `${section}|${item}`;
+                        const isSelected = skillsFilter.includes(value);
+                        return (
+                          <SelectItem
+                            key={value}
+                            value={value}
+                            className={`hover:bg-gray-600 ${isSelected ? 'bg-gray-600 text-white' : ''}`}
+                            onClick={(e) => {
+                              e.preventDefault(); // prevent closing dropdown if needed
+                              if (isSelected) {
+                                setSkillsFilter(prev => prev.filter(v => v !== value));
+                              } else {
+                                setSkillsFilter(prev => [...prev, value]);
+                              }
+                            }}
+                          >
+                            {item}
+                          </SelectItem>
+                        );
+                      })}
                     </div>
                   ))}
                 </SelectContent>
               </Select>
-
 
               <Select value={traitsFilter} onValueChange={setTraitsFilter}>
                 <SelectTrigger className="bg-gray-700 border-gray-600">
