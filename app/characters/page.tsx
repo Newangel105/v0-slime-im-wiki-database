@@ -10,7 +10,6 @@ import Link from 'next/link'
 import { getAllCharacters } from '@/lib/getCharacters'
 import { useSearchParams } from "next/navigation"
 
-
 interface Character {
   id: string
   name: string
@@ -54,7 +53,7 @@ const elementIcons = {
 }
 
 const forcesMap = {
-  Adventurer: "/protector_elements/Adventurer.png",
+    Adventurer: "/protector_elements/Adventurer.png",
   Antagonist: "/protector_elements/Antagonist.png",
   Axiom_of_Haze: "/protector_elements/Axiom_of_Haze.png",
   Clan_Chief: "/protector_elements/Clan_Chief.png",
@@ -366,57 +365,49 @@ export default function CharactersPage() {
     "special", "from soul", "soul amount", "to soul", "soul buff", "gauge",
     "buff all", "buff self", "debuff all", "debuff single", "heal"
   ];
+  const traitSections = [...skillSections]; // Same as skill sections
 
-  const traitSections = [...skillSections];
+  const skillsData: Record<string, Set<string>> = {};
+  const traitsData: Record<string, Set<string>> = {};
+  const townData: Set<string> = new Set();
 
-  type GroupedTags = {
-    skills: Record<string, Set<string>>;
-    traits: Record<string, Set<string>>;
-    towns: Set<string>;
-  };
+  characters.forEach((char) => {
+    const tags = char.force
 
-  function extractGroupedTags(characters: Character[]): GroupedTags {
-    const skills: Record<string, Set<string>> = {};
-    const traits: Record<string, Set<string>> = {};
-    const towns: Set<string> = new Set();
+    tags.forEach((tag: string) => {
+      const tagLower = tag.toLowerCase().trim();
 
-    characters.forEach((char) => {
-      const tags = char.tag;
-
-      tags.forEach((rawTag) => {
-        const tag = rawTag.toLowerCase().trim();
-
-        // Skills
-        const skillSection = skillSections.find((section) => tag.startsWith(section));
-        if (skillSection) {
-          const rest = rawTag.slice(skillSection.length).trim(); // preserve casing
-          if (!skills[skillSection]) skills[skillSection] = new Set();
-          if (rest) skills[skillSection].add(rest);
-          return; // important to skip if matched
+      // Skills
+      if (skillSections.some(section => tagLower.startsWith(section))) {
+        const section = skillSections.find(section => tagLower.startsWith(section));
+        if (section) {
+          if (!skillsData[section]) skillsData[section] = new Set();
+          const subTag = tag.slice(section.length).trim();
+          if (subTag) skillsData[section].add(subTag);
         }
+      }
 
-        // Traits
-        if (tag.startsWith("trait")) {
-          const rest = tag.replace(/^trait\s*/, "");
-          const traitSection = traitSections.find((section) => rest.startsWith(section));
-          if (traitSection) {
-            const value = rawTag.split(/\s+/).slice(2).join(" "); // preserves capital casing
-            if (!traits[traitSection]) traits[traitSection] = new Set();
-            if (value) traits[traitSection].add(value);
-          }
-          return;
+      // Traits
+      if (tagLower.startsWith("trait")) {
+        const rest = tagLower.replace(/^trait\s*/, '');
+        const section = traitSections.find(section => rest.startsWith(section));
+        if (section) {
+          if (!traitsData[section]) traitsData[section] = new Set();
+          const subTag = rest.slice(section.length).trim();
+          if (subTag) traitsData[section].add(subTag);
         }
+      }
 
-        // Town bonus
-        const townMatch = rawTag.match(/^(.*?)\s\+\d+%$/);
-        if (townMatch) {
-          towns.add(townMatch[1].trim());
+      // Town
+      if (/\+\d+%$/.test(tag)) {
+        const match = tag.match(/^(.*)\s\+\d+%$/);
+        if (match) {
+          townData.add(match[1].trim());
         }
-      });
+      }
     });
+  });
 
-    return { skills, traits, towns };
-  }
 
   const [sortKey, setSortKey] = useState<"name" | "final_attack" | "final_health" | "final_defense" | "stars" | "release" | "existence" | null>(null);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
@@ -753,14 +744,14 @@ export default function CharactersPage() {
                 <SelectTrigger className="bg-gray-700 border-gray-600">
                   <SelectValue placeholder="SKILLS" />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-700 border-gray-600 max-h-80 overflow-y-auto">
+                <SelectContent className="bg-gray-700 border-gray-600">
                   <SelectItem value="all">All Skills</SelectItem>
-                  {Object.entries(groupedTags.skills).map(([section, values]) => (
+                  {Object.entries(skillsData).map(([section, items]) => (
                     <div key={section}>
-                      <div className="px-3 py-1 text-xs text-gray-400 uppercase">{section}</div>
-                      {[...values].map((value) => (
-                        <SelectItem key={`${section}-${value}`} value={`${section}|${value}`}>
-                          {value}
+                      <div className="px-2 py-1 text-xs text-gray-400 uppercase">{section}</div>
+                      {[...items].map(item => (
+                        <SelectItem key={`${section}-${item}`} value={`${section}|${item}`}>
+                          {item}
                         </SelectItem>
                       ))}
                     </div>
@@ -768,19 +759,18 @@ export default function CharactersPage() {
                 </SelectContent>
               </Select>
 
-
               <Select value={traitsFilter} onValueChange={setTraitsFilter}>
                 <SelectTrigger className="bg-gray-700 border-gray-600">
                   <SelectValue placeholder="TRAITS" />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-700 border-gray-600 max-h-80 overflow-y-auto">
+                <SelectContent className="bg-gray-700 border-gray-600">
                   <SelectItem value="all">All Traits</SelectItem>
-                  {Object.entries(groupedTags.traits).map(([section, values]) => (
+                  {Object.entries(traitsData).map(([section, items]) => (
                     <div key={section}>
-                      <div className="px-3 py-1 text-xs text-gray-400 uppercase">{section}</div>
-                      {[...values].map((value) => (
-                        <SelectItem key={`${section}-${value}`} value={`${section}|${value}`}>
-                          {value}
+                      <div className="px-2 py-1 text-xs text-gray-400 uppercase">{section}</div>
+                      {[...items].map(item => (
+                        <SelectItem key={`${section}-${item}`} value={`${section}|${item}`}>
+                          {item}
                         </SelectItem>
                       ))}
                     </div>
@@ -811,7 +801,7 @@ export default function CharactersPage() {
                 </SelectTrigger>
                 <SelectContent className="bg-gray-700 border-gray-600">
                   <SelectItem value="all">All Towns</SelectItem>
-                  {[...groupedTags.towns].sort().map((town) => (
+                  {[...townData].map((town) => (
                     <SelectItem key={town} value={town}>
                       {town}
                     </SelectItem>

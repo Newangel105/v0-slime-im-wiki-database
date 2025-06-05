@@ -86,7 +86,7 @@ export function getAllCharacters(): Character[] {
       existence,
 
       force: typeof char.force === 'string' ? char.force.split('|') : char.force,
-      tag: typeof char.force === 'string' ? char.tag.split('|') : char.tag,
+      tag: typeof char.tag === 'string' ? char.tag.split('|') : char.tag,
 
       // Only assign if present
       ...(char.battle_skills && { battle_skills: char.battle_skills }),
