@@ -969,7 +969,11 @@ export default function CharactersPage() {
                     <button
                       key={stars}
                       onClick={() => toggleFilter(stars, selectedStars, setSelectedStars)}
-                      className="p-1"
+                      className={`p-1 rounded transition-opacity ${
+                        selectedStars.includes(stars)
+                          ? "opacity-100 ring-2 ring-white"
+                          : "opacity-50 hover:opacity-75"
+                      }`}
                     >
                       <img
                         src={`/stars/starCharaL${stars}A.png`}
