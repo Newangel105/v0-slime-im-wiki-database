@@ -103,7 +103,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     Octagram: "/protector_elements/Octagram.png",
     Octagram_Bazaar: "/protector_elements/Octagram_Bazaar.png",
     Octagram_Demon_Lord: "/protector_elements/Octagram_Demon_Lord.png",
-    Ogres_Pride: "/protector_elements/Ogres_Pride.png",
+    Ogres_Pride: "/protector_elements/Ogre's_Pride.png",
     Otherworlder: "/protector_elements/Otherworlder.png",
     Otherworld_Legend: "/protector_elements/Otherworld_Legend.png",
     Pariah: "/protector_elements/Pariah.png",
@@ -146,7 +146,13 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
 
   // Create a mapping from original text to normalized keys
   const textToKeyMap: { [key: string]: string } = {
-    // Special cases for P- and M-
+    // Special cases for P- ATK and M- ATK (with space)
+    "P- ATK": "P_",
+    "M- ATK": "M_ATK",
+    // Also handle without space versions
+    "P-ATK": "P_",
+    "M-ATK": "M_ATK",
+    // Just P- and M- alone
     "P-": "P_",
     "M-": "M_ATK",
 
@@ -229,11 +235,11 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     Pariah: "Pariah",
     Schemer: "Schemer",
     Valentine: "Valentine",
-    // All: "All",
-    // Single: "Single",
-    // "3": "3",
-    // "4": "4",
-    // "5": "5",
+    All: "All",
+    Single: "Single",
+    "3": "3",
+    "4": "4",
+    "5": "5",
   }
 
   function renderFilterTag(value: string) {
@@ -303,9 +309,18 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     // Sort by length (longest first) to prevent substring issues
     const sortedTexts = Object.keys(textToKeyMap).sort((a, b) => b.length - a.length)
 
-    // Build regex pattern
-    const pattern = sortedTexts.map(escapeRegex).join("|")
-    const regex = new RegExp(`(^|\\s|\\W)(${pattern})(?=\\s|\\W|$)`, "gi")
+    // Build regex pattern - use word boundaries only for alphanumeric patterns
+    const patterns = sortedTexts.map((key) => {
+      // For patterns with special characters like "P- ATK", don't use word boundaries
+      if (/[^a-zA-Z0-9\s]/.test(key)) {
+        return escapeRegex(key)
+      } else {
+        // For normal words, use word boundaries
+        return `\\b${escapeRegex(key)}\\b`
+      }
+    })
+
+    const regex = new RegExp(`(${patterns.join("|")})`, "gi")
 
     const result: React.ReactNode[] = []
     let lastIndex = 0
