@@ -1,16 +1,16 @@
 "use client"
 
-import React,{ useState, useMemo, useEffect } from "react"
+import type React from "react"
+import { useState, useMemo, useEffect } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Search, Star, Sword, Shield, Gamepad2,X, ChevronDown } from "lucide-react"
-import Link from 'next/link'
-import { getAllCharacters } from '@/lib/getCharacters'
+import { Search, Gamepad2, X, ChevronDown } from "lucide-react"
+import Link from "next/link"
+import { getAllCharacters } from "@/lib/getCharacters"
 import { useSearchParams } from "next/navigation"
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover"
-
+import { Checkbox } from "@/components/ui/checkbox"
 
 interface Character {
   id: string
@@ -33,6 +33,15 @@ interface Character {
   defense: number
   existence: number
   rarity: number
+  tag: string[]
+  battle_skills: Array<{ description: string }>
+  secret_skills: Array<{ description: string }>
+  skill_traits: Array<{ description: string }>
+  ex_abilities: Array<{ description: string }>
+  release: string
+  final_attack: number
+  final_health: number
+  final_defense: number
 }
 
 const characters = getAllCharacters()
@@ -51,11 +60,11 @@ const elementIcons = {
   ex_space: "/elements/Enhancedspace.png",
   ex_wind: "/elements/Enhancedwind.png",
   ex_dark: "/elements/Enhanceddark.png",
-  ex_light: "/elements/Enhancedlight.png"
+  ex_light: "/elements/Enhancedlight.png",
 }
 
 const forcesMap = {
-    Adventurer: "/protector_elements/Adventurer.png",
+  Adventurer: "/protector_elements/Adventurer.png",
   Antagonist: "/protector_elements/Antagonist.png",
   Axiom_of_Haze: "/protector_elements/Axiom_of_Haze.png",
   Clan_Chief: "/protector_elements/Clan_Chief.png",
@@ -99,7 +108,7 @@ const forcesMap = {
   Warriors_Mind: "/protector_elements/Warrior's_Mind.png",
   Wholehearted_Devotion: "/protector_elements/Wholehearted_Devotion.png",
   Wielder_of_Magic: "/protector_elements/Wielder_of_Magic.png",
-  World_of_Fantasy: "/protector_elements/World_of_Fantasy.png"
+  World_of_Fantasy: "/protector_elements/World_of_Fantasy.png",
 }
 
 const protelementIcons2 = {
@@ -172,7 +181,7 @@ const protelementIcons2 = {
   Warriors_Mind: "/protector_elements/Warrior's_Mind.png",
   Wholehearted_Devotion: "/protector_elements/Wholehearted_Devotion.png",
   Wielder_of_Magic: "/protector_elements/Wielder_of_Magic.png",
-  World_of_Fantasy: "/protector_elements/World_of_Fantasy.png"
+  World_of_Fantasy: "/protector_elements/World_of_Fantasy.png",
 }
 
 const protelementIcons = {
@@ -189,7 +198,7 @@ const protelementIcons = {
   prot_ex_space: "/elements/anti_space_attribute_unbound.png",
   prot_ex_wind: "/elements/anti_wind_attribute_unbound.png",
   prot_ex_dark: "/elements/anti_dark_attribute_unbound.png",
-  prot_ex_light: "/elements/anti_light_attribute_unbound.png"
+  prot_ex_light: "/elements/anti_light_attribute_unbound.png",
 }
 
 const weaponIcons = {
@@ -263,23 +272,91 @@ const dmg_typeIcons = {
   Warriors_Mind: "/protector_elements/Warrior's_Mind.png",
   Wholehearted_Devotion: "/protector_elements/Wholehearted_Devotion.png",
   Wielder_of_Magic: "/protector_elements/Wielder_of_Magic.png",
-  World_of_Fantasy: "/protector_elements/World_of_Fantasy.png"
+  World_of_Fantasy: "/protector_elements/World_of_Fantasy.png",
 }
 
 const typeIcons = {
   attacker: "/type/attacker.png",
-  protector: "/type/protector.png"
+  protector: "/type/protector.png",
 }
 
 const ultiIcons = {
   aoe: "/ulti_type/aoe.png",
-  single: "/ulti_type/single.png"
+  single: "/ulti_type/single.png",
 }
 
 const chartypeIcons = {
   attack: "/char_type/attack.png",
   balance: "/char_type/balance.png",
-  defense: "/char_type/defense.png"
+  defense: "/char_type/defense.png",
+}
+
+// Multi-select dropdown component
+function MultiSelectDropdown({
+  placeholder,
+  options,
+  selectedValues,
+  onSelectionChange,
+  renderOption,
+}: {
+  placeholder: string
+  options: Array<{ value: string; label: string; icon?: string }>
+  selectedValues: string[]
+  onSelectionChange: (values: string[]) => void
+  renderOption?: (option: { value: string; label: string; icon?: string }) => React.ReactNode
+}) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleOption = (value: string) => {
+    if (selectedValues.includes(value)) {
+      onSelectionChange(selectedValues.filter((v) => v !== value))
+    } else {
+      onSelectionChange([...selectedValues, value])
+    }
+  }
+
+  return (
+    <Popover open={isOpen} onOpenChange={setIsOpen}>
+      <PopoverTrigger asChild>
+        <Button
+          variant="outline"
+          className="w-full justify-between bg-gray-700 border-gray-600 text-white hover:bg-gray-600"
+        >
+          <span className="truncate">
+            {selectedValues.length > 0 ? `${selectedValues.length} selected` : placeholder}
+          </span>
+          <ChevronDown className="h-4 w-4 opacity-50" />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-80 p-0 bg-gray-700 border-gray-600" align="start">
+        <div className="max-h-60 overflow-auto">
+          {options.map((option) => (
+            <div
+              key={option.value}
+              className="flex items-center space-x-2 px-3 py-2 hover:bg-gray-600 cursor-pointer"
+              onClick={() => toggleOption(option.value)}
+            >
+              <Checkbox checked={selectedValues.includes(option.value)} className="border-gray-400" />
+              {renderOption ? (
+                renderOption(option)
+              ) : (
+                <div className="flex items-center space-x-2">
+                  {option.icon && (
+                    <img
+                      src={option.icon || "/placeholder.svg"}
+                      alt={option.label}
+                      className="w-5 h-5 object-contain"
+                    />
+                  )}
+                  <span className="text-white text-sm">{option.label}</span>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </PopoverContent>
+    </Popover>
+  )
 }
 
 export default function CharactersPage() {
@@ -296,11 +373,14 @@ export default function CharactersPage() {
   const [selectedUlti, setSelectedUlti] = useState<number[]>([])
   const [selectedCharType, setSelectedCharType] = useState<number[]>([])
   const [selectedAwakening, setSelectedAwakening] = useState<number[]>([])
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [skillsFilter, setSkillsFilter] = useState<{ value: string; label: string; group: string }[]>([]);
-  const [traitsFilter, setTraitsFilter] = useState("")
-  const [forceFilter, setForceFilter] = useState("")
-  const [townFilter, setTownFilter] = useState("")
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+
+  // Multi-select states
+  const [selectedSkills, setSelectedSkills] = useState<string[]>([])
+  const [selectedTraits, setSelectedTraits] = useState<string[]>([])
+  const [selectedForces, setSelectedForces] = useState<string[]>([])
+  const [selectedTowns, setSelectedTowns] = useState<string[]>([])
+
   const [sortBy, setSortBy] = useState("release")
 
   const toggleFilter = (
@@ -315,216 +395,253 @@ export default function CharactersPage() {
     }
   }
 
-  function renderSortableHeader(
-    key: typeof sortKey,
-    iconSrc: string,
-    label: string
-  ) {
-    const isActive = sortKey === key;
+  function renderSortableHeader(key: typeof sortKey, iconSrc: string, label: string) {
+    const isActive = sortKey === key
 
     const toggleSort = () => {
       if (isActive) {
-        setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
+        setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"))
       } else {
-        setSortKey(key);
-        setSortOrder("asc");
+        setSortKey(key)
+        setSortOrder("asc")
       }
-    };
+    }
 
-    const directionIcon =
-      isActive && sortOrder === "asc"
-        ? "↑"
-        : isActive && sortOrder === "desc"
-        ? "↓"
-        : "↕"; // nothing when inactive
+    const directionIcon = isActive && sortOrder === "asc" ? "↑" : isActive && sortOrder === "desc" ? "↓" : "↕" // nothing when inactive
 
     return (
       <button
         onClick={toggleSort}
-        className={`flex items-center gap-1 hover:text-white transition ${
-          isActive ? "text-white font-semibold" : ""
-        }`}
+        className={`flex items-center gap-1 hover:text-white transition ${isActive ? "text-white font-semibold" : ""}`}
       >
-        <img src={iconSrc} alt={label} className="w-4 h-4" />
+        <img src={iconSrc || "/placeholder.svg"} alt={label} className="w-4 h-4" />
         <span>{label}</span>
         <span className="text-xs">{directionIcon}</span>
       </button>
-    );
+    )
   }
 
-  
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
 
     if (params.has("element")) {
       setSelectedElements([params.get("element")!.toLowerCase()])
     } else if (params.has("force")) {
-      setForceFilter(params.get("force")!)
+      setSelectedForces([params.get("force")!])
     }
     // add similar conditions for others if needed
   }, [])
 
   const skillSections = [
-    "special", "from soul", "soul amount", "to soul", "soul buff", "gauge",
-    "buff all", "buff self", "debuff all", "debuff single", "heal"
-  ];
-  const traitSections = [...skillSections]; // same structure for trait tags
+    "special",
+    "from soul",
+    "soul amount",
+    "to soul",
+    "soul buff",
+    "gauge",
+    "buff all",
+    "buff self",
+    "debuff all",
+    "debuff single",
+    "heal",
+  ]
+  const traitSections = [...skillSections] // same structure for trait tags
 
-  const skillsData: Record<string, Set<string>> = {};
-  const traitsData: Record<string, Set<string>> = {};
-  const townData: Set<string> = new Set();
+  const skillsData: Record<string, Set<string>> = {}
+  const traitsData: Record<string, Set<string>> = {}
+  const townData: Set<string> = new Set()
 
   characters.forEach((char) => {
-    const tags = char.tag;
+    const tags = char.tag
 
     tags.forEach((tag: string) => {
-      const trimmedTag = tag.trim();
-      const tagLower = trimmedTag.toLowerCase();
+      const trimmedTag = tag.trim()
+      const tagLower = trimmedTag.toLowerCase()
 
       if (tagLower.startsWith("skills")) {
-        const afterSkills = trimmedTag.slice(6).trim(); // remove "Skills"
-        const section = skillSections.find(sec => afterSkills.toLowerCase().startsWith(sec));
+        const afterSkills = trimmedTag.slice(6).trim() // remove "Skills"
+        const section = skillSections.find((sec) => afterSkills.toLowerCase().startsWith(sec))
         if (section) {
-          if (!skillsData[section]) skillsData[section] = new Set();
-          const subTag = afterSkills.slice(section.length).trim(); // remove section name
-          if (subTag) skillsData[section].add(subTag);
+          if (!skillsData[section]) skillsData[section] = new Set()
+          const subTag = afterSkills.slice(section.length).trim() // remove section name
+          if (subTag) skillsData[section].add(subTag)
         }
-        return;
+        return
       }
 
       if (tagLower.startsWith("traits")) {
-        const afterTraits = trimmedTag.slice(6).trim(); // remove "Traits"
-        const section = traitSections.find(sec => afterTraits.toLowerCase().startsWith(sec));
+        const afterTraits = trimmedTag.slice(6).trim() // remove "Traits"
+        const section = traitSections.find((sec) => afterTraits.toLowerCase().startsWith(sec))
         if (section) {
-          if (!traitsData[section]) traitsData[section] = new Set();
-          const subTag = afterTraits.slice(section.length).trim(); // remove section name
-          if (subTag) traitsData[section].add(subTag);
+          if (!traitsData[section]) traitsData[section] = new Set()
+          const subTag = afterTraits.slice(section.length).trim() // remove section name
+          if (subTag) traitsData[section].add(subTag)
         }
-        return;
+        return
       }
 
       if (/\+\d+%$/.test(tag)) {
-        townData.add(tag.trim());
+        townData.add(tag.trim())
       }
-    });
-  });
+    })
+  })
 
-  const options = Object.entries(skillsData).map(([section, items]) => ({
-    label: section,
-    options: Array.from(items).map(item => ({
+  // Prepare options for dropdowns
+  const skillOptions = Object.entries(skillsData).flatMap(([section, items]) =>
+    Array.from(items).map((item) => ({
       value: `${section}|${item}`,
-      label: item,
-      group: section, // ← ADD THIS
+      label: `${section}: ${item}`,
     })),
-  }));
+  )
 
-  const customStyles = {
-    control: (base) => ({
-      ...base,
-      backgroundColor: '#374151', // gray-700
-      borderColor: '#4B5563',      // gray-600
-      color: 'white',
-    }),
-    menu: (base) => ({
-      ...base,
-      backgroundColor: '#374151',
-      color: 'white',
-    }),
-    multiValue: (base) => ({
-      ...base,
-      backgroundColor: '#1F2937', // darker gray
-    }),
-    option: (base, state) => ({
-      ...base,
-      backgroundColor: state.isFocused ? '#4B5563' : 'transparent',
-      color: 'white',
-    }),
-  };
+  const traitOptions = Object.entries(traitsData).flatMap(([section, items]) =>
+    Array.from(items).map((item) => ({
+      value: `${section}|${item}`,
+      label: `${section}: ${item}`,
+    })),
+  )
 
+  const forceOptions = Object.entries(forcesMap).map(([forceName, imgPath]) => ({
+    value: forceName,
+    label: forceName.replace(/_/g, " "),
+    icon: imgPath,
+  }))
 
-  const handleSkillsChange = (selectedOptions) => {
-    setSkillsFilter(selectedOptions || []);
-  };
+  const townOptions = Array.from(townData).map((town) => ({
+    value: town,
+    label: town,
+  }))
 
-  const [sortKey, setSortKey] = useState<"name" | "final_attack" | "final_health" | "final_defense" | "stars" | "release" | "existence" | null>(null);
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
+  // Remove selected item function
+  const removeSelectedItem = (type: "skills" | "traits" | "forces" | "towns", value: string) => {
+    switch (type) {
+      case "skills":
+        setSelectedSkills((prev) => prev.filter((item) => item !== value))
+        break
+      case "traits":
+        setSelectedTraits((prev) => prev.filter((item) => item !== value))
+        break
+      case "forces":
+        setSelectedForces((prev) => prev.filter((item) => item !== value))
+        break
+      case "towns":
+        setSelectedTowns((prev) => prev.filter((item) => item !== value))
+        break
+    }
+  }
+
+  const [sortKey, setSortKey] = useState<
+    "name" | "final_attack" | "final_health" | "final_defense" | "stars" | "release" | "existence" | null
+  >(null)
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc")
 
   const filteredCharacters = useMemo(() => {
-    const search = searchTerm.toLowerCase();
+    const search = searchTerm.toLowerCase()
 
     // First, apply filtering
-    let filtered = characters.filter((character) => {
+    const filtered = characters.filter((character) => {
       if (search) {
         if (!searchSkills) {
-          if (!character.name.toLowerCase().includes(search)) return false;
+          if (!character.name.toLowerCase().includes(search)) return false
         } else {
           const combinedSkillsText = [
             ...character.battle_skills.map((s) => s.description),
             ...character.secret_skills.map((s) => s.description),
             ...character.skill_traits.map((s) => s.description),
             ...character.ex_abilities.map((s) => s.description),
-          ].join(" ").toLowerCase();
+          ]
+            .join(" ")
+            .toLowerCase()
 
-          if (!combinedSkillsText.includes(search)) return false;
+          if (!combinedSkillsText.includes(search)) return false
         }
       }
 
-      const stripPrefixes = (element) => element.replace(/^(prot_)?(ex_)?/, '');
+      const stripPrefixes = (element) => element.replace(/^(prot_)?(ex_)?/, "")
 
-      const baseElement = stripPrefixes(character.element);
+      const baseElement = stripPrefixes(character.element)
 
-      const isMatch = selectedElements.some(sel => {
-        if (sel.startsWith('prot_') || sel.startsWith('ex_')) {
+      const isMatch = selectedElements.some((sel) => {
+        if (sel.startsWith("prot_") || sel.startsWith("ex_")) {
           // Exact match required when selector is prefixed
-          return sel === character.element;
+          return sel === character.element
         } else {
           // Loose match: strip prefixes from character.element
-          return sel === baseElement;
+          return sel === baseElement
         }
-      });
+      })
 
-      if (selectedElements.length > 0 && !isMatch) return false;
+      if (selectedElements.length > 0 && !isMatch) return false
 
-      if (selectedWeapons.length > 0 && !selectedWeapons.includes(character.weapon)) return false;
-      if (selectedStars.length > 0 && !selectedStars.includes(character.stars)) return false;
+      if (selectedWeapons.length > 0 && !selectedWeapons.includes(character.weapon)) return false
+      if (selectedStars.length > 0 && !selectedStars.includes(character.stars)) return false
 
-      const baseDmgType = character.dmg_type.startsWith("prot_")
-        ? character.dmg_type.slice(5)
-        : character.dmg_type;
+      const baseDmgType = character.dmg_type.startsWith("prot_") ? character.dmg_type.slice(5) : character.dmg_type
 
+      if (selectedDMGType.length > 0 && !selectedDMGType.includes(baseDmgType)) return false
+      if (selectedType.length > 0 && !selectedType.includes(character.type)) return false
+      if (selectedUlti.length > 0 && !selectedUlti.includes(character.ulti)) return false
+      if (selectedCharType.length > 0 && !selectedCharType.includes(character.char_type)) return false
+      if (selectedAwakening.length > 0 && !selectedAwakening.includes(character.awakening)) return false
 
-      if (selectedDMGType.length > 0 && !selectedDMGType.includes(baseDmgType)) return false;
-      if (selectedType.length > 0 && !selectedType.includes(character.type)) return false;
-      if (selectedUlti.length > 0 && !selectedUlti.includes(character.ulti)) return false;
-      if (selectedCharType.length > 0 && !selectedCharType.includes(character.char_type)) return false;
-      if (selectedAwakening.length > 0 && !selectedAwakening.includes(character.awakening)) return false;
-      if (forceFilter && forceFilter !== "all" && !character.force.includes(forceFilter)) return false;
+      // Multi-select filters
+      if (selectedForces.length > 0 && !selectedForces.some((force) => character.force.includes(force))) return false
+      if (selectedSkills.length > 0) {
+        // Check if character has any of the selected skills
+        const hasSkill = selectedSkills.some((skill) => {
+          const [section, item] = skill.split("|")
+          return character.tag.some(
+            (tag) =>
+              tag.toLowerCase().includes("skills") &&
+              tag.toLowerCase().includes(section.toLowerCase()) &&
+              tag.toLowerCase().includes(item.toLowerCase()),
+          )
+        })
+        if (!hasSkill) return false
+      }
+      if (selectedTraits.length > 0) {
+        // Check if character has any of the selected traits
+        const hasTrait = selectedTraits.some((trait) => {
+          const [section, item] = trait.split("|")
+          return character.tag.some(
+            (tag) =>
+              tag.toLowerCase().includes("traits") &&
+              tag.toLowerCase().includes(section.toLowerCase()) &&
+              tag.toLowerCase().includes(item.toLowerCase()),
+          )
+        })
+        if (!hasTrait) return false
+      }
+      if (selectedTowns.length > 0) {
+        const hasTown = selectedTowns.some((town) => character.tag.includes(town))
+        if (!hasTown) return false
+      }
 
-      return true;
-    });
+      return true
+    })
 
     // Then, apply sorting
     if (sortKey) {
       filtered.sort((a, b) => {
-        let aValue = a[sortKey];
-        let bValue = b[sortKey];
+        let aValue = a[sortKey]
+        let bValue = b[sortKey]
 
         if (sortKey === "release") {
           // Convert to dates
-          aValue = new Date(a.release);
-          bValue = new Date(b.release);
+          aValue = new Date(a.release)
+          bValue = new Date(b.release)
         }
 
-        if (typeof aValue === "string") aValue = aValue.toLowerCase();
-        if (typeof bValue === "string") bValue = bValue.toLowerCase();
+        if (typeof aValue === "string") aValue = aValue.toLowerCase()
+        if (typeof bValue === "string") bValue = bValue.toLowerCase()
 
-        if (aValue < bValue) return sortOrder === "asc" ? -1 : 1;
-        if (aValue > bValue) return sortOrder === "asc" ? 1 : -1;
-        return 0;
-      });
+        if (aValue < bValue) return sortOrder === "asc" ? -1 : 1
+        if (aValue > bValue) return sortOrder === "asc" ? 1 : -1
+        return 0
+      })
     }
 
-    return filtered;
+    return filtered
   }, [
     characters,
     searchTerm,
@@ -537,10 +654,21 @@ export default function CharactersPage() {
     selectedUlti,
     selectedCharType,
     selectedAwakening,
-    forceFilter,
+    selectedSkills,
+    selectedTraits,
+    selectedForces,
+    selectedTowns,
     sortKey,
-    sortOrder
-  ]);
+    sortOrder,
+  ])
+
+  // Get all selected items for the common display area
+  const allSelectedItems = [
+    ...selectedSkills.map((skill) => ({ type: "skills" as const, value: skill, label: skill.split("|")[1] || skill })),
+    ...selectedTraits.map((trait) => ({ type: "traits" as const, value: trait, label: trait.split("|")[1] || trait })),
+    ...selectedForces.map((force) => ({ type: "forces" as const, value: force, label: force.replace(/_/g, " ") })),
+    ...selectedTowns.map((town) => ({ type: "towns" as const, value: town, label: town })),
+  ]
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -577,35 +705,34 @@ export default function CharactersPage() {
           <CardContent className="p-6">
             <h2 className="text-lg font-semibold mb-4 text-gray-300">FILTERS</h2>
 
-        {/* Search */}
-        <div className="flex items-center space-x-4 mb-6">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-            <Input
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 bg-gray-700 border-gray-600 text-white"
-            />
-          </div>
+            {/* Search */}
+            <div className="flex items-center space-x-4 mb-6">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                <Input
+                  placeholder="Search..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10 bg-gray-700 border-gray-600 text-white"
+                />
+              </div>
 
-          <label className="flex items-center cursor-pointer select-none">
-            <input
-              type="checkbox"
-              checked={searchSkills}
-              onChange={() => setSearchSkills(!searchSkills)}
-              className="hidden peer"  // <-- Add 'peer' here
-            />
-            <div
-              className="w-10 h-5 bg-gray-600 rounded-full relative transition-colors duration-300 ease-in-out
+              <label className="flex items-center cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={searchSkills}
+                  onChange={() => setSearchSkills(!searchSkills)}
+                  className="hidden peer" // <-- Add 'peer' here
+                />
+                <div
+                  className="w-10 h-5 bg-gray-600 rounded-full relative transition-colors duration-300 ease-in-out
                         after:absolute after:top-0.5 after:left-0.5 after:bg-white after:w-4 after:h-4 after:rounded-full after:transition-transform
                         after:duration-300 after:ease-in-out
                         peer-checked:bg-red-600 peer-checked:after:translate-x-5"
-            ></div>
-            <span className="ml-3 text-sm text-gray-300 select-none">Search Skills</span>
-          </label>
-        </div>
-
+                ></div>
+                <span className="ml-3 text-sm text-gray-300 select-none">Search Skills</span>
+              </label>
+            </div>
 
             <div className="flex items-center space-x-2 flex-wrap">
               {/* Element Filters */}
@@ -629,7 +756,6 @@ export default function CharactersPage() {
                 {/* Vertical Splitter */}
                 <div className="border-r border-white opacity-30 h-6 mx-1"></div>
               </div>
-              
 
               {/* Protector Element Filters */}
               <div className="flex items-center space-x-2">
@@ -701,9 +827,7 @@ export default function CharactersPage() {
                       key={type}
                       onClick={() => toggleFilter(type, selectedDMGType, setSelectedDMGType)}
                       className={`w-8 h-8 rounded flex items-center justify-center transition-opacity ${
-                        selectedDMGType.includes(type)
-                          ? "opacity-100 ring-2 ring-white"
-                          : "opacity-50 hover:opacity-75"
+                        selectedDMGType.includes(type) ? "opacity-100 ring-2 ring-white" : "opacity-50 hover:opacity-75"
                       }`}
                     >
                       <img src={iconPath || "/placeholder.svg"} alt={type} className="w-8 h-8 object-contain" />
@@ -774,90 +898,72 @@ export default function CharactersPage() {
               </div>
             </div>
 
-
-            {/* Dropdown Filters */}
+            {/* Multi-Select Dropdown Filters */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
-              <div className="relative col-span-1">
-                <Select
-                  isMulti
-                  options={options}
-                  value={skillsFilter}
-                  onChange={handleSkillsChange}
-                  styles={customStyles}
-                  placeholder="Select Skills"
-                />
-              </div>
+              <MultiSelectDropdown
+                placeholder="Select Skills"
+                options={skillOptions}
+                selectedValues={selectedSkills}
+                onSelectionChange={setSelectedSkills}
+              />
 
-              <div className="flex flex-wrap gap-2 mt-2">
-                {skillsFilter.map(({ value, label }) => (
-                  <div
-                    key={value}
-                    className="flex items-center bg-gray-700 text-white text-sm px-3 py-1 rounded-full"
-                  >
-                    {label}
-                    <button
-                      onClick={() =>
-                        setSkillsFilter(prev => prev.filter(opt => opt.value !== value))
-                      }
-                      className="ml-2 hover:text-red-400"
-                    >
-                      <X size={14} />
-                    </button>
+              <MultiSelectDropdown
+                placeholder="Select Traits"
+                options={traitOptions}
+                selectedValues={selectedTraits}
+                onSelectionChange={setSelectedTraits}
+              />
+
+              <MultiSelectDropdown
+                placeholder="Select Forces"
+                options={forceOptions}
+                selectedValues={selectedForces}
+                onSelectionChange={setSelectedForces}
+                renderOption={(option) => (
+                  <div className="flex items-center space-x-2">
+                    {option.icon && (
+                      <img
+                        src={option.icon || "/placeholder.svg"}
+                        alt={option.label}
+                        className="w-5 h-5 object-contain"
+                      />
+                    )}
+                    <span className="text-white text-sm">{option.label}</span>
                   </div>
-                ))}
-              </div>
+                )}
+              />
 
-              <Select value={traitsFilter} onValueChange={setTraitsFilter}>
-                <SelectTrigger className="bg-gray-700 border-gray-600">
-                  <SelectValue placeholder="TRAITS" />
-                </SelectTrigger>
-                <SelectContent className="bg-gray-700 border-gray-600">
-                  <SelectItem value="all">All Traits</SelectItem>
-                  {Object.entries(traitsData).map(([section, items]) => (
-                    <div key={section}>
-                      <div className="px-2 py-1 text-xs text-gray-400 uppercase">{section}</div>
-                      {[...items].map(item => (
-                        <SelectItem key={`${section}-${item}`} value={`${section}|${item}`}>
-                          {item}
-                        </SelectItem>
-                      ))}
+              <MultiSelectDropdown
+                placeholder="Select Towns"
+                options={townOptions}
+                selectedValues={selectedTowns}
+                onSelectionChange={setSelectedTowns}
+              />
+            </div>
+
+            {/* Selected Items Display */}
+            {allSelectedItems.length > 0 && (
+              <div className="mt-6">
+                <h3 className="text-sm font-medium text-gray-300 mb-3">Selected Filters:</h3>
+                <div className="flex flex-wrap gap-2">
+                  {allSelectedItems.map((item, index) => (
+                    <div
+                      key={`${item.type}-${item.value}-${index}`}
+                      className="flex items-center bg-gray-700 text-white text-sm px-3 py-1 rounded-full border border-gray-600"
+                    >
+                      <span className="text-xs text-gray-400 mr-1 capitalize">{item.type}:</span>
+                      <span>{item.label}</span>
+                      <button
+                        onClick={() => removeSelectedItem(item.type, item.value)}
+                        className="ml-2 hover:text-red-400 transition-colors"
+                      >
+                        <X size={14} />
+                      </button>
                     </div>
                   ))}
-                </SelectContent>
-              </Select>
-
-              <Select value={forceFilter} onValueChange={setForceFilter}>
-                <SelectTrigger className="bg-gray-700 border-gray-600">
-                  <SelectValue placeholder="FORCES" />
-                </SelectTrigger>
-                <SelectContent className="bg-gray-700 border-gray-600">
-                  <SelectItem value="all">All Forces</SelectItem>
-                  {Object.entries(forcesMap).map(([forceName, imgPath]) => (
-                    <SelectItem key={forceName} value={forceName}>
-                      <div className="flex items-center space-x-2">
-                        <img src={imgPath} alt={forceName} className="w-5 h-5 object-contain" />
-                        <span>{forceName.replace(/_/g, " ")}</span>
-                      </div>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-
-              <Select value={townFilter} onValueChange={setTownFilter}>
-                <SelectTrigger className="bg-gray-700 border-gray-600">
-                  <SelectValue placeholder="TOWN" />
-                </SelectTrigger>
-                <SelectContent className="bg-gray-700 border-gray-600">
-                  <SelectItem value="all">All Towns</SelectItem>
-                  {[...townData].map((town) => (
-                    <SelectItem key={town} value={town}>
-                      {town}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-
-            </div>
+                </div>
+              </div>
+            )}
           </CardContent>
         </Card>
 
@@ -877,78 +983,78 @@ export default function CharactersPage() {
               </div>
             </div>
 
-
             {/* Character Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
-            {filteredCharacters.map((character) => (
-              <Link key={character.id} href={`/characters/${character.id}`}>
-                <div className="relative w-full h-32 overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white">
-                  {/* Character Image */}
-                  <img
-                    src={`/chars/${character.id}/image.png`}
-                    alt={character.name}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
+              {filteredCharacters.map((character) => (
+                <Link key={character.id} href={`/characters/${character.id}`}>
+                  <div className="relative w-full h-32 overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white">
+                    {/* Character Image */}
+                    <img
+                      src={`/chars/${character.id}/image.png`}
+                      alt={character.name}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
 
-                  {/* Frame Overlay */}
-                  <img
-                    src={
-                      character.type === "attacker"
-                        ? `/frame/frameMemberM${character.stars}.png`
-                        : `/frame/frameBlessM${character.stars}.png`
-                    }
-                    alt="Frame"
-                    className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                  />
+                    {/* Frame Overlay */}
+                    <img
+                      src={
+                        character.type === "attacker"
+                          ? `/frame/frameMemberM${character.stars}.png`
+                          : `/frame/frameBlessM${character.stars}.png`
+                      }
+                      alt="Frame"
+                      className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                    />
 
-                  {/* Name (top-left) */}
-                  <div className="absolute top-1 left-1 bg-black bg-opacity-80 text-white text-[10px] px-1 py-0.5 rounded z-10">
-                    {character.name}
-                  </div>
+                    {/* Name (top-left) */}
+                    <div className="absolute top-1 left-1 bg-black bg-opacity-80 text-white text-[10px] px-1 py-0.5 rounded z-10">
+                      {character.name}
+                    </div>
 
-                  {/* Stars (bottom-left) */}
-                  <img
-                    src={`/stars/starCharaL${character.stars}A.png`}
-                    alt="stars"
-                    className="absolute bottom-1 left-1 h-6 object-contain z-10"
-                  />
+                    {/* Stars (bottom-left) */}
+                    <img
+                      src={`/stars/starCharaL${character.stars}A.png`}
+                      alt="stars"
+                      className="absolute bottom-1 left-1 h-6 object-contain z-10"
+                    />
 
-                  {/* Element Icon (top-right) */}
-                  <div className="absolute top-1 right-1 flex flex-col items-center z-20 space-y-1">
-                    {character.element !== "" && (
-                      <img
-                        src={
-                          character.type === "attacker"
-                            ? (elementIcons[character.element.replace(/\s+/g, "_").replace(/'/g, "")] || "/placeholder.svg")
-                            : (protelementIcons2[character.element.replace(/\s+/g, "_").replace(/'/g, "")] || "/placeholder.svg")
-                        }
-                        alt={character.element}
-                        className="w-6 h-6 object-contain"
-                      />
-                    )}
-
-                    {/* Only show dmg_type icon if element is NOT empty AND dmg_type is NOT empty */}
-                    {character.dmg_type !== "" && (
-                      <img
-                        src={
-                          dmg_typeIcons[
+                    {/* Element Icon (top-right) */}
+                    <div className="absolute top-1 right-1 flex flex-col items-center z-20 space-y-1">
+                      {character.element !== "" && (
+                        <img
+                          src={
                             character.type === "attacker"
-                              ? character.dmg_type.replace(/\s+/g, "_").replace(/'/g, "")
-                              : (["magic", "phys"].includes(character.dmg_type.toLowerCase())
+                              ? elementIcons[character.element.replace(/\s+/g, "_").replace(/'/g, "")] ||
+                                "/placeholder.svg"
+                              : protelementIcons2[character.element.replace(/\s+/g, "_").replace(/'/g, "")] ||
+                                "/placeholder.svg"
+                          }
+                          alt={character.element}
+                          className="w-6 h-6 object-contain"
+                        />
+                      )}
+
+                      {/* Only show dmg_type icon if element is NOT empty AND dmg_type is NOT empty */}
+                      {character.dmg_type !== "" && (
+                        <img
+                          src={
+                            dmg_typeIcons[
+                              character.type === "attacker"
+                                ? character.dmg_type.replace(/\s+/g, "_").replace(/'/g, "")
+                                : ["magic", "phys"].includes(character.dmg_type.toLowerCase())
                                   ? "prot_" + character.dmg_type.replace(/\s+/g, "_").replace(/'/g, "")
                                   : character.dmg_type.replace(/\s+/g, "_").replace(/'/g, "")
-                                )
-                          ] || "/placeholder.svg"
-                        }
-                        alt="Dmg"
-                        className="w-6 h-6 object-contain"
-                      />
-                    )}
+                            ] || "/placeholder.svg"
+                          }
+                          alt="Dmg"
+                          className="w-6 h-6 object-contain"
+                        />
+                      )}
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+                </Link>
+              ))}
+            </div>
             {filteredCharacters.length === 0 && (
               <div className="text-center text-gray-400 py-8">No characters found matching the current filters.</div>
             )}
