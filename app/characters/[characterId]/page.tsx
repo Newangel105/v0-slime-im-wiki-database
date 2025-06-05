@@ -224,20 +224,23 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
 
 
   function replaceStatTextWithIcons(text: string) {
-    const specialUnderscoreToDashKeys = ["P_", "M_ATK"];
+    const specialKeys = ["P_", "M_ATK"];
 
-    // Build regex dynamically like before:
+    // Build regex for matching text keys:
     function escapeRegex(str: string) {
       return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
+    // Convert statIconMap keys to expected text format for regex:
     const regexParts = Object.keys(statIconMap).map(key => {
-      if (specialUnderscoreToDashKeys.includes(key)) {
+      if (specialKeys.includes(key)) {
+        // For P_ and M_ATK, convert _ to - for matching in text
         return escapeRegex(key.replace(/_/g, '-'));
-      } else if (key.includes('_')) {
-        return escapeRegex(key.replace(/_/g, ' '));
       } else {
-        return escapeRegex(key);
+        // For others, convert _ to space, also remove apostrophes for matching
+        // We'll match apostrophes optionally with a character class ['’]? (apostrophe or right single quote)
+        const keyWithSpaces = key.replace(/_/g, ' ').replace(/'/g, "['’]?"); 
+        return keyWithSpaces.split(' ').map(escapeRegex).join(' ');
       }
     });
 
@@ -250,15 +253,16 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     return parts.map((part, index) => {
       if (!part) return null;
 
-      // Normalize part for icon lookup
       let normalizedKey = part;
-      if (specialUnderscoreToDashKeys.some(k => part === k.replace(/_/g, '-'))) {
+
+      // Handle special cases for P- and M-ATK:
+      if (specialKeys.some(k => part === k.replace(/_/g, '-'))) {
         normalizedKey = part.replace(/-/g, '_');
       } else {
-        normalizedKey = part.replace(/ /g, '_');
+        // For others: remove apostrophes, replace spaces with underscores
+        normalizedKey = part.replace(/['’]/g, '').replace(/ /g, '_');
       }
 
-      // If part is a key in statIconMap, render it as a clickable filter tag
       if (statIconMap[normalizedKey]) {
         return (
           <span key={index}>
@@ -267,11 +271,9 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         );
       }
 
-      // Otherwise just render plain text
       return <span key={index}>{part}</span>;
     });
   }
-
 
 
   if (!character) {
