@@ -393,7 +393,7 @@ export default function CharactersPage() {
   const [selectedForces, setSelectedForces] = useState<string[]>([])
   const [selectedTowns, setSelectedTowns] = useState<string[]>([])
 
-  const [sortBy, setSortBy] = useState("release")
+  const [sortBy, setSortBy] = useState("release_date")
 
   const toggleFilter = (
     value: string | number,
