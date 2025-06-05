@@ -9,6 +9,9 @@ import { Search, Star, Sword, Shield, Gamepad2 } from "lucide-react"
 import Link from 'next/link'
 import { getAllCharacters } from '@/lib/getCharacters'
 import { useSearchParams } from "next/navigation"
+import { X } from "lucide-react"
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover"
+
 
 interface Character {
   id: string
@@ -406,6 +409,14 @@ export default function CharactersPage() {
     });
   });
 
+  const toggleSkillFilter2 = (value: string) => {
+    setSkillsFilter(prev =>
+      prev.includes(value)
+        ? prev.filter(v => v !== value)
+        : [...prev, value]
+    );
+  };
+
   const [sortKey, setSortKey] = useState<"name" | "final_attack" | "final_health" | "final_defense" | "stars" | "release" | "existence" | null>(null);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 
@@ -737,13 +748,15 @@ export default function CharactersPage() {
 
             {/* Dropdown Filters */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
-              <Select value={skillsFilter} onValueChange={setSkillsFilter}>
+              {/* SKILLS Dropdown */}
+              <Select open={false}>
                 <SelectTrigger className="bg-gray-700 border-gray-600">
-                  <SelectValue className="text-white" placeholder="SKILLS" />
+                  <div className="text-white">
+                    {skillsFilter.length === 0 ? "Select Skills" : `${skillsFilter.length} selected`}
+                  </div>
                 </SelectTrigger>
 
                 <SelectContent className="bg-gray-700 border-gray-600">
-                  <SelectItem value="all" className="text-white hover:bg-gray-600">All Skills</SelectItem>
                   {Object.entries(skillsData).map(([section, items]) => (
                     <div key={section}>
                       <div
@@ -759,16 +772,18 @@ export default function CharactersPage() {
                           <SelectItem
                             key={value}
                             value={value}
-                            className={`hover:bg-gray-600 ${isSelected ? 'bg-gray-600 text-white' : ''}`}
+                            className={`hover:bg-gray-600 cursor-pointer ${isSelected ? 'bg-gray-600 text-white' : ''}`}
                             onClick={(e) => {
-                              e.preventDefault(); // prevent closing dropdown if needed
-                              if (isSelected) {
-                                setSkillsFilter(prev => prev.filter(v => v !== value));
-                              } else {
-                                setSkillsFilter(prev => [...prev, value]);
-                              }
+                              e.preventDefault();
+                              toggleSkillFilter2(value);
                             }}
                           >
+                            <input
+                              type="checkbox"
+                              checked={isSelected}
+                              readOnly
+                              className="mr-2"
+                            />
                             {item}
                           </SelectItem>
                         );
@@ -777,6 +792,26 @@ export default function CharactersPage() {
                   ))}
                 </SelectContent>
               </Select>
+
+              {/* Selected Tags Display */}
+              <div className="flex flex-wrap gap-2 mt-2 col-span-full">
+                {skillsFilter.map(tag => (
+                  <div
+                    key={tag}
+                    className="flex items-center bg-gray-700 text-white text-sm px-3 py-1 rounded-full"
+                  >
+                    {tag.split("|")[1]}
+                    <button
+                      onClick={() =>
+                        setSkillsFilter(prev => prev.filter(v => v !== tag))
+                      }
+                      className="ml-2 hover:text-red-400"
+                    >
+                      <X size={14} />
+                    </button>
+                  </div>
+                ))}
+              </div>
 
               <Select value={traitsFilter} onValueChange={setTraitsFilter}>
                 <SelectTrigger className="bg-gray-700 border-gray-600">
