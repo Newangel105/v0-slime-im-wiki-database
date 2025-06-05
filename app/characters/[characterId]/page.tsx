@@ -297,7 +297,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         <span key={index}>
           <Link
             href={`/characters?tag=${encodeURIComponent(part)}`}
-            className="inline-flex items-center px-3 py-1 rounded-full bg-[#111827] text-white text-sm font-medium mx-0.5 hover:bg-[#909090] shadow-sm shadow-white/20"
+            className="inline-flex items-center px-3 py-1 rounded-full bg-[#111827] text-white text-sm font-medium mx-0.5 hover:bg-[#909090] shadow-[0_0_8px_rgba(255,255,255,0.3)]"
           >
             {icon && <img src={icon || "/placeholder.svg"} alt={part} className="w-5 h-5 mr-2 object-contain" />}
             {part}
@@ -317,7 +317,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     return (
       <Link
         href={`/characters?tag=${encodeURIComponent(value)}`}
-        className={`inline-flex items-center ${paddingX} ${paddingY} rounded-full bg-[#111827] text-white ${fontSize} font-medium mx-0.5 hover:bg-[#909090] shadow-sm shadow-white/20`}
+        className={`inline-flex items-center ${paddingX} ${paddingY} rounded-full bg-[#111827] text-white ${fontSize} font-medium mx-0.5 hover:bg-[#909090] shadow-[0_0_8px_rgba(255,255,255,0.3)]`}
       >
         {icon && <img src={icon || "/placeholder.svg"} alt={value} className={`${iconSize} mr-2 object-contain`} />}
         {value}
@@ -404,54 +404,14 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     return false
   }
 
-  // 5. The main function - improved to prevent overlapping matches
+  // 5. The main function - improved to prevent overlapping matches and only replace where patterns naturally occur
   function replaceStatTextWithIcons(text: string): React.ReactNode[] {
     const result: React.ReactNode[] = []
     let remainingText = text
     let keyIndex = 0
 
-    // First, handle special patterns that need button treatment
-    const specialPatterns = [/Turns\s+\d+/gi, /Unlimited/gi, /Uses\s+by\s+this\s+character\s+per\s+battle:\s*\d+/gi]
-
-    // Process special patterns first
-    for (const pattern of specialPatterns) {
-      const matches = [...remainingText.matchAll(pattern)]
-      for (const match of matches.reverse()) {
-        // reverse to handle from end to start
-        const matchedText = match[0]
-        const startIndex = match.index!
-        const endIndex = startIndex + matchedText.length
-
-        // Replace the matched text with a placeholder
-        const placeholder = `__SPECIAL_${keyIndex}__`
-        remainingText = remainingText.slice(0, startIndex) + placeholder + remainingText.slice(endIndex)
-
-        // Store the replacement
-        result[keyIndex] = (
-          <span
-            key={keyIndex}
-            className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#909090] text-white text-xs font-medium mx-0.5 shadow-sm shadow-white/30 align-baseline"
-          >
-            {matchedText}
-          </span>
-        )
-        keyIndex++
-      }
-    }
-
-    // Now process the remaining text for regular matches
     while (remainingText.length > 0) {
       let foundMatch = false
-
-      // Check for special placeholders first
-      const placeholderMatch = remainingText.match(/^__SPECIAL_(\d+)__/)
-      if (placeholderMatch) {
-        const index = Number.parseInt(placeholderMatch[1])
-        result.push(result[index])
-        remainingText = remainingText.slice(placeholderMatch[0].length)
-        foundMatch = true
-        continue
-      }
 
       // Try to find the longest match at the beginning of remaining text
       for (const key of sortedKeys) {
@@ -465,13 +425,14 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
 
           if (icon) {
             if (shouldGetButtonTreatment(matchedText)) {
-              // Button treatment with no link
+              // Button treatment with no link - proper glow and baseline alignment
               result.push(
                 <span
                   key={keyIndex++}
-                  className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#909090] text-white text-xs font-medium mx-0.5 shadow-sm shadow-white/30 align-baseline"
+                  className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium mx-0.5 shadow-[0_0_8px_rgba(255,255,255,0.4)] align-baseline"
+                  style={{ verticalAlign: "baseline" }}
                 >
-                  <img src={icon || "/placeholder.svg"} alt={matchedText} className="w-4 h-4 mr-1 object-contain" />
+                  <img src={icon || "/placeholder.svg"} alt={matchedText} className="w-3 h-3 mr-1 object-contain" />
                   {matchedText}
                 </span>,
               )
@@ -479,11 +440,12 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
               result.push(<span key={keyIndex++}>{renderFilterTag(matchedText, mappedKey)}</span>)
             }
           } else if (statIconMap[matchedText]) {
-            const iconSize = matchedText === "ATK" ? "w-3 h-4" : "w-4 h-4"
+            const iconSize = matchedText === "ATK" ? "w-3 h-3" : "w-3 h-3"
             result.push(
               <span
                 key={keyIndex++}
-                className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#909090] text-white text-xs font-medium mx-0.5 shadow-sm shadow-white/30 align-baseline"
+                className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium mx-0.5 shadow-[0_0_8px_rgba(255,255,255,0.4)] align-baseline"
+                style={{ verticalAlign: "baseline" }}
               >
                 <img
                   src={statIconMap[matchedText] || "/placeholder.svg"}
@@ -500,6 +462,64 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           remainingText = remainingText.slice(matchedText.length)
           foundMatch = true
           break
+        }
+      }
+
+      // Check for special patterns that should get button treatment
+      if (!foundMatch) {
+        // Check for "Turns X" pattern
+        const turnsMatch = remainingText.match(/^(Turns\s+\d+)/i)
+        if (turnsMatch) {
+          const matchedText = turnsMatch[1]
+          result.push(
+            <span
+              key={keyIndex++}
+              className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium mx-0.5 shadow-[0_0_8px_rgba(255,255,255,0.4)] align-baseline"
+              style={{ verticalAlign: "baseline" }}
+            >
+              {matchedText}
+            </span>,
+          )
+          remainingText = remainingText.slice(matchedText.length)
+          foundMatch = true
+        }
+      }
+
+      if (!foundMatch) {
+        // Check for "Unlimited" pattern
+        const unlimitedMatch = remainingText.match(/^(Unlimited)/i)
+        if (unlimitedMatch) {
+          const matchedText = unlimitedMatch[1]
+          result.push(
+            <span
+              key={keyIndex++}
+              className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium mx-0.5 shadow-[0_0_8px_rgba(255,255,255,0.4)] align-baseline"
+              style={{ verticalAlign: "baseline" }}
+            >
+              {matchedText}
+            </span>,
+          )
+          remainingText = remainingText.slice(matchedText.length)
+          foundMatch = true
+        }
+      }
+
+      if (!foundMatch) {
+        // Check for "Uses by this character per battle: X" pattern
+        const usesMatch = remainingText.match(/^(Uses\s+by\s+this\s+character\s+per\s+battle:\s*\d+)/i)
+        if (usesMatch) {
+          const matchedText = usesMatch[1]
+          result.push(
+            <span
+              key={keyIndex++}
+              className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium mx-0.5 shadow-[0_0_8px_rgba(255,255,255,0.4)] align-baseline"
+              style={{ verticalAlign: "baseline" }}
+            >
+              {matchedText}
+            </span>,
+          )
+          remainingText = remainingText.slice(matchedText.length)
+          foundMatch = true
         }
       }
 
@@ -603,7 +623,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             {skill.extraText && <p className="text-blue-400 text-sm">{skill.extraText}</p>}
           </div>
         </div>
-        <p className="text-gray-300 text-sm leading-relaxed">{replaceStatTextWithIcons(skill.description)}</p>
+        <div className="text-gray-300 text-sm leading-relaxed">{replaceStatTextWithIcons(skill.description)}</div>
       </div>
     )
   }
@@ -843,7 +863,9 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                       {skill.extraText && <p className="text-blue-400 text-sm">{skill.extraText}</p>}
                     </div>
                   </div>
-                  <p className="text-gray-300 text-sm leading-relaxed">{replaceStatTextWithIcons(skill.description)}</p>
+                  <div className="text-gray-300 text-sm leading-relaxed">
+                    {replaceStatTextWithIcons(skill.description)}
+                  </div>
                 </div>
               ))}
             </div>
@@ -880,7 +902,9 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                       {skill.extraText && <p className="text-blue-400 text-sm">{skill.extraText}</p>}
                     </div>
                   </div>
-                  <p className="text-gray-300 text-sm leading-relaxed">{replaceStatTextWithIcons(skill.description)}</p>
+                  <div className="text-gray-300 text-sm leading-relaxed">
+                    {replaceStatTextWithIcons(skill.description)}
+                  </div>
                 </div>
               ))}
             </div>
@@ -905,7 +929,9 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                       />
                     </div>
                   </div>
-                  <p className="text-gray-300 text-sm leading-relaxed">{replaceStatTextWithIcons(skill.description)}</p>
+                  <div className="text-gray-300 text-sm leading-relaxed">
+                    {replaceStatTextWithIcons(skill.description)}
+                  </div>
                 </div>
               ))}
             </div>
@@ -932,7 +958,9 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                       {skill.extraText && <p className="text-blue-400 text-sm">{skill.extraText}</p>}
                     </div>
                   </div>
-                  <p className="text-gray-300 text-sm leading-relaxed">{replaceStatTextWithIcons(skill.description)}</p>
+                  <div className="text-gray-300 text-sm leading-relaxed">
+                    {replaceStatTextWithIcons(skill.description)}
+                  </div>
                 </div>
               ))}
             </div>
@@ -962,7 +990,9 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     {skill.extraText && <p className="text-blue-400 text-sm">{skill.extraText}</p>}
                   </div>
                 </div>
-                <p className="text-gray-300 text-sm leading-relaxed">{replaceStatTextWithIcons(skill.description)}</p>
+                <div className="text-gray-300 text-sm leading-relaxed">
+                  {replaceStatTextWithIcons(skill.description)}
+                </div>
               </div>
             ))}
 
@@ -974,7 +1004,9 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                       <h3 className="text-white font-medium">Enhance Guidance</h3>
                     </div>
                   </div>
-                  <p className="text-gray-300 text-sm leading-relaxed">{replaceStatTextWithIcons(skill.description)}</p>
+                  <div className="text-gray-300 text-sm leading-relaxed">
+                    {replaceStatTextWithIcons(skill.description)}
+                  </div>
                 </div>
               ))}
           </div>
