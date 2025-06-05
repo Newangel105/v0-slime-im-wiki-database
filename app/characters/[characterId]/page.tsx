@@ -1,12 +1,9 @@
+import React from "react"
 import characters from "@/app/data/characters.json"
-import { Badge } from "@/components/ui/badge"
-import { Star, Heart, Sword, Shield, Zap, Target, Gamepad2, ArrowLeft } from "lucide-react"
+import { Heart, Sword, Shield, Zap, Target, Gamepad2, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { getAllCharacters } from "@/lib/getCharacters"
-import React from "react";
-
-
 
 export default function CharacterDetailPage({ params }: { params: { characterId: string } }) {
   const characterId = Number(params.characterId)
@@ -65,7 +62,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     "EX Attack": "EX_Attack",
     "EX Balance": "EX_Balance",
     "EX Defense": "EX_Defense",
-  };
+  }
 
   const customIcons: { [key: string]: string } = {
     Fire: "/elements/icElementFire.png",
@@ -124,8 +121,8 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     Single: "/ulti_type/single.png",
     3: "/stars/starCharaL3A",
     4: "/stars/starCharaL4A",
-    5: "/stars/starCharaL5A",
     EX_5: "/stars/starCharaL6A",
+    5: "/stars/starCharaL5A",
     Battle_Characters: "/type/attacker.png",
     Protection_Characters: "/type/protector.png",
     EX_Attack: "/char_type/attack.png",
@@ -137,9 +134,15 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     Anti_Space: "/protector_elements/Anti-Space.png",
     Anti_Wind: "/protector_elements/Anti-Wind.png",
     Anti_Dark: "/protector_elements/Anti-Dark.png",
-    Anti_Light: "/protector_elements/Anti-Light.png"
-  };
-  
+    Anti_Light: "/protector_elements/Anti-Light.png",
+    Sword: "/weapons/sword.png",
+    Katana: "/weapons/katana.png",
+    Hammer: "/weapons/hammer.png",
+    Spear: "/weapons/spear.png",
+    Greatsword: "/weapons/greatsword.png",
+    Book: "/weapons/book.png",
+    Fists: "/weapons/fists.png",
+  }
 
   const statIconMap: { [key: string]: string } = {
     HP: "/icons/HP.png",
@@ -199,7 +202,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     Wholehearted_Devotion: "/protector_elements/Wholehearted_Devotion.png",
     Wielder_of_Magic: "/protector_elements/Wielder_of_Magic.png",
     World_of_Fantasy: "/protector_elements/World_of_Fantasy.png",
-  };
+  }
 
   const statIconMap2: { [key: string]: string } = {
     Fire: "/elements/icElementFire.png",
@@ -271,31 +274,22 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     Anti_Space: "/protector_elements/Anti-Space.png",
     Anti_Wind: "/protector_elements/Anti-Wind.png",
     Anti_Dark: "/protector_elements/Anti-Dark.png",
-    Anti_Light: "/protector_elements/Anti-Light.png"
-  };
-
-  function renderTextWithLineBreaks(text: string): React.ReactNode {
-    return text.split('\\n').map((line, idx, arr) => (
-      <React.Fragment key={idx}>
-        {line}
-        {idx < arr.length - 1 && <br />}
-      </React.Fragment>
-    ));
+    Anti_Light: "/protector_elements/Anti-Light.png",
   }
 
   function replaceTextWithLinksAndOptionalIcons(
     text: string,
-    customTextToKeyMap: { [key: string]: string }
+    customTextToKeyMap: { [key: string]: string },
   ): React.ReactNode[] {
     // Split input by pipe character
-    const parts = text.split('|').map(part => part.trim());
+    const parts = text.split("|").map((part) => part.trim())
 
     return parts.map((part, index) => {
       // Map part text to a key for icons
-      const mappedKey = customTextToKeyMap[part] || part.replace(/[\s-]+/g, '_');
+      const mappedKey = customTextToKeyMap[part] || part.replace(/[\s-]+/g, "_")
 
       // Get the icon if exists
-      const icon = customIcons[mappedKey];
+      const icon = customIcons[mappedKey]
 
       return (
         <span key={index}>
@@ -303,46 +297,31 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             href={`/characters?tag=${encodeURIComponent(part)}`}
             className="inline-flex items-center px-3 py-1 rounded-full bg-[#111827] text-white text-sm font-medium mx-1 hover:bg-[#909090]"
           >
-            {icon && (
-              <img
-                src={icon}
-                alt={part}
-                className="w-5 h-5 mr-2 object-contain"
-              />
-            )}
+            {icon && <img src={icon || "/placeholder.svg"} alt={part} className="w-5 h-5 mr-2 object-contain" />}
             {part}
           </Link>
         </span>
-      );
-    });
+      )
+    })
   }
 
-
-
   function renderFilterTag(value: string, key: string) {
-    const icon = statIconMap[key]; // direct use of mapped key
-    const iconSize = "w-5 h-5";
-    const fontSize = "text-sm";
-    const paddingX = "px-3";
-    const paddingY = "py-1";
+    const icon = statIconMap[key] // direct use of mapped key
+    const iconSize = "w-5 h-5"
+    const fontSize = "text-sm"
+    const paddingX = "px-3"
+    const paddingY = "py-1"
 
     return (
       <Link
         href={`/characters?tag=${encodeURIComponent(value)}`}
         className={`inline-flex items-center ${paddingX} ${paddingY} rounded-full bg-[#111827] text-white ${fontSize} font-medium mx-1 hover:bg-[#909090]`}
       >
-        {icon && (
-          <img
-            src={icon}
-            alt={value}
-            className={`${iconSize} mr-2 object-contain`}
-          />
-        )}
+        {icon && <img src={icon || "/placeholder.svg"} alt={value} className={`${iconSize} mr-2 object-contain`} />}
         {value}
       </Link>
-    );
+    )
   }
-
 
   const textToKeyMap: { [key: string]: string } = {
     "Shizu's Will": "Shizus_Will",
@@ -392,65 +371,77 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     "Battle Characters": "Battle_Characters",
     "Protection Characters": "Protection_Characters",
     "P- ATK": "P_",
-    "M-ATK": "M_ATK"
-  };
+    "M-ATK": "M_ATK",
+  }
 
   // 2. Merge direct keys for exact-match fallback
-  const allKeys = [...Object.keys(textToKeyMap), ...Object.keys(statIconMap)];
+  const allKeys = [...Object.keys(textToKeyMap), ...Object.keys(statIconMap)]
 
   // 3. Sort by length (important for greedy match)
-  const sortedKeys = allKeys.sort((a, b) => b.length - a.length);
+  const sortedKeys = allKeys.sort((a, b) => b.length - a.length)
 
   // 4. Escape for regex
   function escapeRegex(str: string) {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
   }
 
-  const regex = new RegExp(`(${sortedKeys.map(escapeRegex).join('|')})`, 'gi');
+  const regex = new RegExp(`(${sortedKeys.map(escapeRegex).join("|")})`, "gi")
 
   // 5. The main function
   function replaceStatTextWithIcons(text: string): React.ReactNode[] {
     return text.split(regex).map((part, i) => {
-      if (!part) return null;
+      if (!part) return null
 
-      const mappedKey = textToKeyMap[part] || part.replace(/[\s-]+/g, '_');
-      const icon = statIconMap[mappedKey];
+      const mappedKey = textToKeyMap[part] || part.replace(/[\s-]+/g, "_")
+      const icon = statIconMap[mappedKey]
 
       if (icon) {
         if (["ATK", "DEF", "HP"].includes(part)) {
           // Just render the plain text + icon, no link
           return (
-            <span key={i} className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#909090] text-white text-xs font-medium mx-1">
-              <img src={icon} alt={part} className="w-4 h-4 mr-1 object-contain" />
+            <span
+              key={i}
+              className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#909090] text-white text-xs font-medium mx-1"
+            >
+              <img src={icon || "/placeholder.svg"} alt={part} className="w-4 h-4 mr-1 object-contain" />
               {part}
             </span>
-          );
+          )
         }
-        return <span key={i}>{renderFilterTag(part, mappedKey)}</span>;
+        return <span key={i}>{renderFilterTag(part, mappedKey)}</span>
       }
 
       // Fallback icon-only render
       if (statIconMap[part]) {
-        const iconSize = part === "ATK" ? "w-3 h-4" : "w-4 h-4";
+        const iconSize = part === "ATK" ? "w-3 h-4" : "w-4 h-4"
         return (
           <span
             key={i}
             className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#909090] text-white text-xs font-medium mx-1"
           >
             <img
-              src={statIconMap[part]}
+              src={statIconMap[part] || "/placeholder.svg"}
               alt={part}
               className={`${iconSize} mr-1 object-contain`}
             />
             {part}
           </span>
-        );
+        )
       }
 
-      return <span key={i}>{part}</span>;
-    });
+      return <span key={i}>{part}</span>
+    })
   }
 
+  // Combined function that handles both line breaks AND icon replacement
+  function renderTextWithLineBreaksAndIcons(text: string): React.ReactNode {
+    return text.split("\\n").map((line, idx, arr) => (
+      <React.Fragment key={idx}>
+        <span className="block">{replaceStatTextWithIcons(line)}</span>
+        {idx < arr.length - 1 && <br />}
+      </React.Fragment>
+    ))
+  }
 
   if (!character) {
     return (
@@ -470,14 +461,12 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   }
 
   // Calculate max stats across all characters
-  const maxFinalAttack = Math.max(...characters.map(c => c.final_attack))
-  const maxFinalDefense = Math.max(...characters.map(c => c.final_defense))
-  const maxFinalHealth = Math.max(...characters.map(c => c.final_health))
-  const maxOutput = Math.max(...characters.map(c => c.output_final))
+  const maxFinalAttack = Math.max(...characters.map((c) => c.final_attack))
+  const maxFinalDefense = Math.max(...characters.map((c) => c.final_defense))
+  const maxFinalHealth = Math.max(...characters.map((c) => c.final_health))
+  const maxOutput = Math.max(...characters.map((c) => c.output_final))
 
-  const variants = characters.filter(
-    (c) => c.name === character.name && c.id !== characterId
-  )
+  const variants = characters.filter((c) => c.name === character.name && c.id !== characterId)
 
   // Calculate percentages for this character, fallback to 0 if max is 0
   const attackPercent = maxFinalAttack ? (character.final_attack / maxFinalAttack) * 100 : 0
@@ -485,16 +474,10 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   const healthPercent = maxFinalHealth ? (character.final_health / maxFinalHealth) * 100 : 0
   const outputPercent = maxOutput ? (character.output_final / maxOutput) * 100 : 0
 
-  const maxExistence = Math.max(
-    ...characters.map(
-      (c) =>
-        c.final_health + c.final_attack * 5 + c.final_defense * 2.5
-    )
-  )
+  const maxExistence = Math.max(...characters.map((c) => c.final_health + c.final_attack * 5 + c.final_defense * 2.5))
 
   // Calculate this character's existence
-  const charExistence =
-    character.final_health + character.final_attack * 5 + character.final_defense * 2.5
+  const charExistence = character.final_health + character.final_attack * 5 + character.final_defense * 2.5
 
   // Calculate existence percentage relative to max
   const existencePercent = maxExistence ? (charExistence / maxExistence) * 100 : 0
@@ -506,11 +489,11 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   function SkillCard({
     skill,
     isEvolution = false,
-    baseImage
+    baseImage,
   }: {
-    skill: any;
-    isEvolution?: boolean;
-    baseImage?: string;
+    skill: any
+    isEvolution?: boolean
+    baseImage?: string
   }) {
     return (
       <div className="bg-gray-900 rounded-lg p-4 h-full">
@@ -536,14 +519,14 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         </div>
         <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
       </div>
-    );
+    )
   }
 
   // ---- In your render section ----
-  const base1 = character.battle_skills?.find(s => s.imageName === "b1.png");
-  const base2 = character.battle_skills?.find(s => s.imageName === "b2.png");
-  const evo1 = character.battle_skills?.find(s => s.imageName === "b3.png");
-  const evo2 = character.battle_skills?.find(s => s.imageName === "b4.png");
+  const base1 = character.battle_skills?.find((s) => s.imageName === "b1.png")
+  const base2 = character.battle_skills?.find((s) => s.imageName === "b2.png")
+  const evo1 = character.battle_skills?.find((s) => s.imageName === "b3.png")
+  const evo2 = character.battle_skills?.find((s) => s.imageName === "b4.png")
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -583,20 +566,16 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           </Button>
         </Link>
 
-      {/* Character Header */}
-      <div className="flex items-center space-x-4 mb-8">
-        <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-800">
-          <img
-            src={`/chars/${character.id}/image.png`}
-            alt={character.name}
-            className="w-full h-full object-cover"
-          />
+        {/* Character Header */}
+        <div className="flex items-center space-x-4 mb-8">
+          <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-800">
+            <img src={`/chars/${character.id}/image.png`} alt={character.name} className="w-full h-full object-cover" />
+          </div>
+          <div>
+            <h2 className="text-sm text-[#d9d9d9] font-medium">{character.sub_name}</h2>
+            <h1 className="text-2xl font-bold text-white">{character.name}</h1>
+          </div>
         </div>
-        <div>
-          <h2 className="text-sm text-[#d9d9d9] font-medium">{character.sub_name}</h2>
-          <h1 className="text-2xl font-bold text-white">{character.name}</h1>
-        </div>
-      </div>
 
         {/* Main Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -667,17 +646,19 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     <span className="text-gray-300 text-sm">Existence</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <span className="text-white font-medium">{(
-                      character.initial_health +
-                      character.initial_attack * 5 +
-                      character.initial_defense * 2.5
-                    ).toLocaleString()}
+                    <span className="text-white font-medium">
+                      {(
+                        character.initial_health +
+                        character.initial_attack * 5 +
+                        character.initial_defense * 2.5
+                      ).toLocaleString()}
                     </span>
-                    <span className="text-gray-500 text-sm">{(
-                      character.final_health +
-                      character.final_attack * 5 +
-                      character.final_defense * 2.5
-                    ).toLocaleString()}
+                    <span className="text-gray-500 text-sm">
+                      {(
+                        character.final_health +
+                        character.final_attack * 5 +
+                        character.final_defense * 2.5
+                      ).toLocaleString()}
                     </span>
                   </div>
                 </div>
@@ -710,28 +691,32 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
 
             {/* Forces Section */}
             <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">FORCES</h2>
-                <div className="flex flex-wrap gap-2">
-                    {forcesList.map((force, index) => (
-                      <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(force)}</p>
-                    ))}
-                </div>
+              <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">FORCES</h2>
+              <div className="flex flex-wrap gap-2">
+                {forcesList.map((force, index) => (
+                  <p key={index} className="text-gray-300 text-sm">
+                    {replaceStatTextWithIcons(force)}
+                  </p>
+                ))}
+              </div>
             </div>
 
             {/* Tags Section */}
             <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">TAGS</h2>
-                <div className="flex flex-wrap gap-2">
-                    {tagsList.map((tag, index) => (
-                      <p className="text-gray-300 text-sm">{replaceTextWithLinksAndOptionalIcons(tag, customMap)}</p>
-                    ))}
-                </div>
+              <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">TAGS</h2>
+              <div className="flex flex-wrap gap-2">
+                {tagsList.map((tag, index) => (
+                  <p key={index} className="text-gray-300 text-sm">
+                    {replaceTextWithLinksAndOptionalIcons(tag, customMap)}
+                  </p>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
         {/* Battle Skills Section */}
-        {character.type === 'attacker' && (
+        {character.type === "attacker" && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">BATTLE SKILLS</h2>
             <div className="grid grid-cols-2 gap-6">
@@ -750,7 +735,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           </div>
         )}
 
-        {character.type === 'protector' && character.divine_skills && (
+        {character.type === "protector" && character.divine_skills && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">DIVINE PROTECTION</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -760,18 +745,16 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     {skill.imageName ? (
                       <div className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
                         <img
-                          src={skill.imageName}
+                          src={skill.imageName || "/placeholder.svg"}
                           alt={skill.attackName}
                           className="w-10 h-10 object-contain"
                         />
                       </div>
                     ) : null}
-                    
-                    <div className={skill.imageName ? '' : 'ml-1'}>
+
+                    <div className={skill.imageName ? "" : "ml-1"}>
                       <h3 className="text-white font-medium">{skill.attackName}</h3>
-                      {skill.extraText && (
-                        <p className="text-blue-400 text-sm">{skill.extraText}</p>
-                      )}
+                      {skill.extraText && <p className="text-blue-400 text-sm">{skill.extraText}</p>}
                     </div>
                   </div>
                   <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
@@ -782,7 +765,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         )}
 
         {/* Secret Skills Section */}
-        {character.type === 'attacker' && character.secret_skills && (
+        {character.type === "attacker" && character.secret_skills && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">SECRET SKILLS</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -808,9 +791,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     </div>
                     <div>
                       <h3 className="text-white font-medium">{skill.attackName}</h3>
-                      {skill.extraText && (
-                        <p className="text-blue-400 text-sm">{skill.extraText}</p>
-                      )}
+                      {skill.extraText && <p className="text-blue-400 text-sm">{skill.extraText}</p>}
                     </div>
                   </div>
                   <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
@@ -820,16 +801,18 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           </div>
         )}
 
-        {character.element.includes('ex') && character.type === 'attacker' && character.unbound && (
+        {character.element.includes("ex") && character.type === "attacker" && character.unbound && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
-            <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">True Attribute Unbound</h2>
+            <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">
+              True Attribute Unbound
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {character.unbound.map((skill, index) => (
                 <div key={index} className="bg-gray-900 rounded-lg p-4">
                   <div className="flex items-center space-x-3 mb-3">
                     <div className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
                       <img
-                        src={`/elements/Enhanced${character.element.replace(/^(ex_|prot_)+/, '')}.png`}
+                        src={`/elements/Enhanced${character.element.replace(/^(ex_|prot_)+/, "")}.png`}
                         alt="unbound"
                         className="w-10 h-10 object-contain"
                       />
@@ -842,7 +825,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           </div>
         )}
 
-        {character.type === 'protector' && character.protection_skill && (
+        {character.type === "protector" && character.protection_skill && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">PROTECTION SKILL</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -858,9 +841,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     </div>
                     <div>
                       <h3 className="text-white font-medium">{skill.attackName}</h3>
-                      {skill.extraText && (
-                        <p className="text-blue-400 text-sm">{skill.extraText}</p>
-                      )}
+                      {skill.extraText && <p className="text-blue-400 text-sm">{skill.extraText}</p>}
                     </div>
                   </div>
                   <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
@@ -890,30 +871,28 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                   </div>
                   <div>
                     <h3 className="text-white font-medium">{skill.attackName}</h3>
-                    {skill.extraText && (
-                      <p className="text-blue-400 text-sm">{skill.extraText}</p>
-                    )}
+                    {skill.extraText && <p className="text-blue-400 text-sm">{skill.extraText}</p>}
                   </div>
                 </div>
                 <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
               </div>
             ))}
 
-            {character.type === 'protector' && character.guidance_trait?.map((skill, index) => (
-              <div key={`guidance-${index}`} className="bg-gray-900 rounded-lg p-4">
-                <div className="flex items-center space-x-3 mb-3">
-                  <div>
-                    <h3 className="text-white font-medium">Enhance Guidance</h3>
+            {character.type === "protector" &&
+              character.guidance_trait?.map((skill, index) => (
+                <div key={`guidance-${index}`} className="bg-gray-900 rounded-lg p-4">
+                  <div className="flex items-center space-x-3 mb-3">
+                    <div>
+                      <h3 className="text-white font-medium">Enhance Guidance</h3>
+                    </div>
                   </div>
+                  <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
                 </div>
-                <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
-              </div>
-            ))}
+              ))}
           </div>
-
-        </div> 
-          {/* EX Abilities Section */}
-        {character.type === 'attacker' && character.ex_abilities && (
+        </div>
+        {/* EX Abilities Section */}
+        {character.type === "attacker" && character.ex_abilities && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">EX ABILITIES</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -931,12 +910,10 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     )}
                     <div>
                       <h3 className="text-white font-medium">{skill.attackName}</h3>
-                      {skill.extraText && (
-                        <p className="text-blue-400 text-sm">{skill.extraText}</p>
-                      )}
+                      {skill.extraText && <p className="text-blue-400 text-sm">{skill.extraText}</p>}
                     </div>
                   </div>
-                  <p className="text-gray-300 text-sm">{renderTextWithLineBreaks(skill.description)}</p>
+                  <div className="text-gray-300 text-sm">{renderTextWithLineBreaksAndIcons(skill.description)}</div>
                 </div>
               ))}
             </div>
