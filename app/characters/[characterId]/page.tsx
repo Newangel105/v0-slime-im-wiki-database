@@ -274,56 +274,49 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     Anti_Light: "/protector_elements/Anti-Light.png"
   };
 
-  function renderTextWithLineBreaks(text: string) {
-    const lines = text.split('\\n'); // Split on literal backslash + n
-
-    return lines.flatMap((line, idx) => {
-      const content = replaceStatTextWithIcons(line.trim());
-
-      // Insert <br /> after every line except the last
-      return idx < lines.length - 1 ? [content, <br key={idx} />] : [content];
-    });
+  function renderTextWithLineBreaks(text: string): React.ReactNode {
+    return text.split('\\n').map((line, idx, arr) => (
+      <React.Fragment key={idx}>
+        {line}
+        {idx < arr.length - 1 && <br />}
+      </React.Fragment>
+    ));
   }
-
 
   function replaceTextWithLinksAndOptionalIcons(
     text: string,
-    customTextToKeyMap: { [key: string]: string },
-    statIconMap: { [key: string]: string }
-  ) {
-    // Split by '|', trim each segment
-    const parts = text.split('|').map((part) => part.trim());
+    customTextToKeyMap: { [key: string]: string }
+  ): React.ReactNode[] {
+    // Split input by pipe character
+    const parts = text.split('|').map(part => part.trim());
 
-    return parts.map((part, idx) => {
-      // Use the custom map or fallback to replacing spaces/dashes with underscores
-      const key = customTextToKeyMap[part] || part.replace(/[\s-]+/g, '_');
+    return parts.map((part, index) => {
+      // Map part text to a key for icons
+      const mappedKey = customTextToKeyMap[part] || part.replace(/[\s-]+/g, '_');
 
-      const icon = statIconMap[key];
+      // Get the icon if exists
+      const icon = statIconMap[mappedKey];
 
-      // If icon exists, render a link with icon
-      if (icon) {
-        return (
-          <span key={idx} className="inline-flex items-center mr-2 mb-1">
-            <img src={icon} alt={part} className="w-5 h-5 mr-1 object-contain" />
-            <a href={`/characters?tag=${encodeURIComponent(part)}`} className="text-blue-400 hover:underline">
-              {part}
-            </a>
-          </span>
-        );
-      }
-
-      // No icon: still create a link but without an icon
       return (
-        <a
-          key={idx}
-          href={`/characters?tag=${encodeURIComponent(part)}`}
-          className="inline-block mr-2 mb-1 text-blue-400 hover:underline"
-        >
-          {part}
-        </a>
+        <span key={index}>
+          <Link
+            href={`/characters?tag=${encodeURIComponent(part)}`}
+            className="inline-flex items-center px-3 py-1 rounded-full bg-[#111827] text-white text-sm font-medium mx-1 hover:bg-[#909090]"
+          >
+            {icon && (
+              <img
+                src={icon}
+                alt={part}
+                className="w-5 h-5 mr-2 object-contain"
+              />
+            )}
+            {part}
+          </Link>
+        </span>
       );
     });
   }
+
 
 
   function renderFilterTag(value: string, key: string) {
