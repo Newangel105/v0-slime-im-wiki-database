@@ -119,10 +119,10 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     World_of_Fantasy: "/protector_elements/World_of_Fantasy.png",
     All: "/ulti_type/aoe.png",
     Single: "/ulti_type/single.png",
-    3: "/stars/starCharaL3A",
-    4: "/stars/starCharaL4A",
-    EX_5: "/stars/starCharaL6A",
-    5: "/stars/starCharaL5A",
+    3: "/stars/starCharaL3A.png",
+    4: "/stars/starCharaL4A.png",
+    EX_5: "/stars/starCharaL6A.png",
+    5: "/stars/starCharaL5A.png",
     Battle_Characters: "/type/attacker.png",
     Protection_Characters: "/type/protector.png",
     EX_Attack: "/char_type/attack.png",
@@ -142,6 +142,8 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     Greatsword: "/weapons/greatsword.png",
     Book: "/weapons/book.png",
     Fists: "/weapons/fists.png",
+    Physical: "/type_dmg/icAttackTypePhysics.png",
+    Magic: "/type_dmg/icAttackTypeMagic.png"
   }
 
   const statIconMap: { [key: string]: string } = {
