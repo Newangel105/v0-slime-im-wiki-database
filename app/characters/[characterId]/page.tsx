@@ -195,76 +195,94 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   }
 
 
-  const specialKeys = ["P_", "M_ATK"];
+    function replaceStatTextWithIcons(text: string) {
+      // 1. Build a map from normalized text form to original keys in statIconMap
+      // Normalize keys: 
+      // - For P_ and M_ATK keys, replace underscore with dash (to match text)
+      // - For others, replace _ with space and remove apostrophes
+      // All lowercased to match case-insensitive
+      
+      const specialKeys = ["P_", "M_ATK"];
 
-  // Step 1: Build a map from normalized text in the input to statIconMap keys
-  const textToKeyMap: Record<string, string> = {};
+      const textToKeyMap: Record<string, string> = {};
 
-  for (const key of Object.keys(statIconMap)) {
-    if (specialKeys.includes(key)) {
-      // For special keys, convert underscores to dashes for text matching
-      const textForm = key.replace(/_/g, '-');
-      textToKeyMap[textForm.toLowerCase()] = key;
-    } else {
-      // For others, convert underscores to spaces and remove apostrophes
-      const textForm = key
-        .replace(/_/g, ' ')
-        .replace(/'/g, '')  // remove apostrophes from key for matching text
-        .toLowerCase();
+      Object.keys(statIconMap).forEach((key) => {
+        let textForm: string;
 
-      textToKeyMap[textForm] = key;
-    }
-  }
+        if (specialKeys.includes(key)) {
+          // Replace _ with - for matching P- and M-ATK in text
+          textForm = key.replace(/_/g, '-').toLowerCase();
+        } else {
+          // Replace _ with space and remove apostrophes (both ' and ’)
+          textForm = key
+            .replace(/_/g, ' ')
+            .replace(/['’]/g, '')
+            .toLowerCase();
+        }
 
-  // Build a regex from all keys in text form (escape special regex characters)
-  const escapeRegex = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        textToKeyMap[textForm] = key;
+      });
 
-  const regexPattern = Object.keys(textToKeyMap)
-    .map(escapeRegex)
-    .sort((a, b) => b.length - a.length) // longer matches first to avoid partial matches
-    .join('|');
+      // 2. Build a regex pattern to match all possible keys in text
+      // Sort keys by length desc to prevent partial matches before full matches
+      const regexParts = Object.keys(textToKeyMap)
+        .sort((a, b) => b.length - a.length)
+        .map(escapeRegex); // escape special regex chars
 
-  const regex = new RegExp(regexPattern, 'gi');
+      const combinedPattern = `(${regexParts.join('|')})`;
+      const regex = new RegExp(combinedPattern, 'gi'); // global + case insensitive
 
-  function replaceStatTextWithIcons(text: string) {
-    const parts = [];
-    let lastIndex = 0;
+      // 3. Split text by regex, replace matched keys with icon + link
+      const parts: React.ReactNode[] = [];
+      let lastIndex = 0;
 
-    text.replace(regex, (match, offset) => {
-      // Push text before match
-      if (offset > lastIndex) {
-        parts.push(text.slice(lastIndex, offset));
+      // We use exec loop to handle overlapping matches
+      let match;
+      while ((match = regex.exec(text)) !== null) {
+        const matchText = match[0];
+        const start = match.index;
+
+        // Push preceding plain text
+        if (start > lastIndex) {
+          parts.push(text.slice(lastIndex, start));
+        }
+
+        // Normalize matched text same way as keys:
+        let normalized = matchText.toLowerCase();
+        if (specialKeys.some(k => normalized === k.replace(/_/g, '-').toLowerCase())) {
+          // For P- and M-ATK, just lowercase is enough since they have dash
+        } else {
+          normalized = normalized.replace(/['’]/g, '').replace(/\s+/g, ' ');
+        }
+
+        const key = textToKeyMap[normalized];
+        
+        if (key && statIconMap[key]) {
+          parts.push(
+            <span key={start}>
+              {renderFilterTag(matchText)}
+            </span>
+          );
+        } else {
+          parts.push(matchText);
+        }
+
+        lastIndex = start + matchText.length;
       }
 
-      const normalizedMatch = match.toLowerCase().replace(/'/g, '');
-
-      // Find original key in statIconMap
-      const key = textToKeyMap[normalizedMatch];
-
-      if (key && statIconMap[key]) {
-        // Render your clickable tag with icon here
-        parts.push(
-          <span key={offset}>
-            {renderFilterTag(match)}
-          </span>
-        );
-      } else {
-        // Fallback to plain text (shouldn't happen)
-        parts.push(match);
+      // Push remaining text after last match
+      if (lastIndex < text.length) {
+        parts.push(text.slice(lastIndex));
       }
 
-      lastIndex = offset + match.length;
-
-      return match; // Not replacing in string, just using replace for iteration
-    });
-
-    // Push remaining text
-    if (lastIndex < text.length) {
-      parts.push(text.slice(lastIndex));
-    }
-
-    return parts;
+      return parts;
   }
+
+  // Helper to escape regex special characters
+  function escapeRegex(str: string) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
 
 
 
