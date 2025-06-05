@@ -252,7 +252,7 @@ const dmg_typeIcons = {
   Octagram: "/protector_elements/Octagram.png",
   Octagram_Bazaar: "/protector_elements/Octagram_Bazaar.png",
   Octagram_Demon_Lord: "/protector_elements/Octagram_Demon_Lord.png",
-  Ogres_Pride: "/protector_elements/Ogre's_Pride.png",
+  Ogres_Pride: "/protector_elements/Ogres_Pride.png",
   Otherworlder: "/protector_elements/Otherworlder.png",
   Otherworld_Legend: "/protector_elements/Otherworld_Legend.png",
   Pariah: "/protector_elements/Pariah.png",
@@ -291,7 +291,7 @@ const chartypeIcons = {
   defense: "/char_type/defense.png",
 }
 
-// Multi-select dropdown component
+// Multi-select dropdown component with grouped options
 function MultiSelectDropdown({
   placeholder,
   options,
@@ -300,10 +300,13 @@ function MultiSelectDropdown({
   renderOption,
 }: {
   placeholder: string
-  options: Array<{ value: string; label: string; icon?: string }>
+  options: Array<{
+    label: string
+    options: Array<{ value: string; label: string; icon?: string; section?: string }>
+  }>
   selectedValues: string[]
   onSelectionChange: (values: string[]) => void
-  renderOption?: (option: { value: string; label: string; icon?: string }) => React.ReactNode
+  renderOption?: (option: { value: string; label: string; icon?: string; section?: string }) => React.ReactNode
 }) {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -330,27 +333,36 @@ function MultiSelectDropdown({
       </PopoverTrigger>
       <PopoverContent className="w-80 p-0 bg-gray-700 border-gray-600" align="start">
         <div className="max-h-60 overflow-auto">
-          {options.map((option) => (
-            <div
-              key={option.value}
-              className="flex items-center space-x-2 px-3 py-2 hover:bg-gray-600 cursor-pointer"
-              onClick={() => toggleOption(option.value)}
-            >
-              <Checkbox checked={selectedValues.includes(option.value)} className="border-gray-400" />
-              {renderOption ? (
-                renderOption(option)
-              ) : (
-                <div className="flex items-center space-x-2">
-                  {option.icon && (
-                    <img
-                      src={option.icon || "/placeholder.svg"}
-                      alt={option.label}
-                      className="w-5 h-5 object-contain"
-                    />
+          {options.map((group) => (
+            <div key={group.label}>
+              {/* Section Header */}
+              <div className="px-3 py-2 text-xs font-semibold text-gray-300 bg-gray-600 uppercase tracking-wide">
+                {group.label}
+              </div>
+              {/* Section Options */}
+              {group.options.map((option) => (
+                <div
+                  key={option.value}
+                  className="flex items-center space-x-2 px-3 py-2 hover:bg-gray-600 cursor-pointer"
+                  onClick={() => toggleOption(option.value)}
+                >
+                  <Checkbox checked={selectedValues.includes(option.value)} className="border-gray-400" />
+                  {renderOption ? (
+                    renderOption(option)
+                  ) : (
+                    <div className="flex items-center space-x-2">
+                      {option.icon && (
+                        <img
+                          src={option.icon || "/placeholder.svg"}
+                          alt={option.label}
+                          className="w-5 h-5 object-contain"
+                        />
+                      )}
+                      <span className="text-white text-sm">{option.label}</span>
+                    </div>
                   )}
-                  <span className="text-white text-sm">{option.label}</span>
                 </div>
-              )}
+              ))}
             </div>
           ))}
         </div>
@@ -486,31 +498,45 @@ export default function CharactersPage() {
     })
   })
 
-  // Prepare options for dropdowns
-  const skillOptions = Object.entries(skillsData).flatMap(([section, items]) =>
-    Array.from(items).map((item) => ({
+  // Prepare options for dropdowns with grouped structure
+  const skillOptions = Object.entries(skillsData).map(([section, items]) => ({
+    label: section,
+    options: Array.from(items).map((item) => ({
       value: `${section}|${item}`,
-      label: `${section}: ${item}`,
+      label: item, // Just the item name, not "section: item"
+      section: section,
     })),
-  )
-
-  const traitOptions = Object.entries(traitsData).flatMap(([section, items]) =>
-    Array.from(items).map((item) => ({
-      value: `${section}|${item}`,
-      label: `${section}: ${item}`,
-    })),
-  )
-
-  const forceOptions = Object.entries(forcesMap).map(([forceName, imgPath]) => ({
-    value: forceName,
-    label: forceName.replace(/_/g, " "),
-    icon: imgPath,
   }))
 
-  const townOptions = Array.from(townData).map((town) => ({
-    value: town,
-    label: town,
+  const traitOptions = Object.entries(traitsData).map(([section, items]) => ({
+    label: section,
+    options: Array.from(items).map((item) => ({
+      value: `${section}|${item}`,
+      label: item, // Just the item name, not "section: item"
+      section: section,
+    })),
   }))
+
+  const forceOptions = [
+    {
+      label: "Forces",
+      options: Object.entries(forcesMap).map(([forceName, imgPath]) => ({
+        value: forceName,
+        label: forceName.replace(/_/g, " "),
+        icon: imgPath,
+      })),
+    },
+  ]
+
+  const townOptions = [
+    {
+      label: "Towns",
+      options: Array.from(townData).map((town) => ({
+        value: town,
+        label: town,
+      })),
+    },
+  ]
 
   // Remove selected item function
   const removeSelectedItem = (type: "skills" | "traits" | "forces" | "towns", value: string) => {
@@ -664,10 +690,30 @@ export default function CharactersPage() {
 
   // Get all selected items for the common display area
   const allSelectedItems = [
-    ...selectedSkills.map((skill) => ({ type: "skills" as const, value: skill, label: skill.split("|")[1] || skill })),
-    ...selectedTraits.map((trait) => ({ type: "traits" as const, value: trait, label: trait.split("|")[1] || trait })),
-    ...selectedForces.map((force) => ({ type: "forces" as const, value: force, label: force.replace(/_/g, " ") })),
-    ...selectedTowns.map((town) => ({ type: "towns" as const, value: town, label: town })),
+    ...selectedSkills.map((skill) => ({
+      type: "skills" as const,
+      value: skill,
+      label: skill.split("|")[1] || skill, // Just show the value part
+      section: skill.split("|")[0] || "", // Keep section for context if needed
+    })),
+    ...selectedTraits.map((trait) => ({
+      type: "traits" as const,
+      value: trait,
+      label: trait.split("|")[1] || trait, // Just show the value part
+      section: trait.split("|")[0] || "",
+    })),
+    ...selectedForces.map((force) => ({
+      type: "forces" as const,
+      value: force,
+      label: force.replace(/_/g, " "),
+      section: "forces",
+    })),
+    ...selectedTowns.map((town) => ({
+      type: "towns" as const,
+      value: town,
+      label: town,
+      section: "towns",
+    })),
   ]
 
   return (
