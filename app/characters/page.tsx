@@ -297,7 +297,7 @@ export default function CharactersPage() {
   const [selectedCharType, setSelectedCharType] = useState<number[]>([])
   const [selectedAwakening, setSelectedAwakening] = useState<number[]>([])
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [skillsFilter, setSkillsFilter] = useState<string[]>([]);
+  const [skillsFilter, setSkillsFilter] = useState<{ value: string; label: string; group: string }[]>([]);
   const [traitsFilter, setTraitsFilter] = useState("")
   const [forceFilter, setForceFilter] = useState("")
   const [townFilter, setTownFilter] = useState("")
@@ -409,10 +409,41 @@ export default function CharactersPage() {
     });
   });
 
-  const toggleSkillFilter2= (value: string) => {
-    setSkillsFilter(prev =>
-      prev.includes(value) ? prev.filter(v => v !== value) : [...prev, value]
-    );
+  const options = Object.entries(skillsData).map(([section, items]) => ({
+    label: section,
+    options: Array.from(items).map(item => ({
+      value: `${section}|${item}`,
+      label: item,
+      group: section, // ← ADD THIS
+    })),
+  }));
+
+  const customStyles = {
+    control: (base) => ({
+      ...base,
+      backgroundColor: '#374151', // gray-700
+      borderColor: '#4B5563',      // gray-600
+      color: 'white',
+    }),
+    menu: (base) => ({
+      ...base,
+      backgroundColor: '#374151',
+      color: 'white',
+    }),
+    multiValue: (base) => ({
+      ...base,
+      backgroundColor: '#1F2937', // darker gray
+    }),
+    option: (base, state) => ({
+      ...base,
+      backgroundColor: state.isFocused ? '#4B5563' : 'transparent',
+      color: 'white',
+    }),
+  };
+
+
+  const handleSkillsChange = (selectedOptions) => {
+    setSkillsFilter(selectedOptions || []);
   };
 
   const [sortKey, setSortKey] = useState<"name" | "final_attack" | "final_health" | "final_defense" | "stars" | "release" | "existence" | null>(null);
@@ -746,62 +777,24 @@ export default function CharactersPage() {
 
             {/* Dropdown Filters */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
-              {/* SKILLS Dropdown */}
-              <Select>
-                <SelectTrigger className="bg-gray-700 border-gray-600">
-                  <div className="text-white">
-                    {skillsFilter.length === 0 ? "Select Skills" : `${skillsFilter.length} selected`}
-                  </div>
-                </SelectTrigger>
+              <Select
+                isMulti
+                options={options}
+                value={skillsFilter}
+                onChange={handleSkillsChange}
+                styles={customStyles}
+              />
 
-                <SelectContent className="bg-gray-700 border-gray-600">
-                  {Object.entries(skillsData).map(([section, items]) => (
-                    <div key={section}>
-                      <div
-                        className="w-full bg-[#121212] text-white px-2 py-1 text-xs uppercase select-none"
-                        style={{ position: 'sticky', top: 0, zIndex: 10 }}
-                      >
-                        {section}
-                      </div>
-                      {[...items].map(item => {
-                        const value = `${section}|${item}`;
-                        const isSelected = skillsFilter.includes(value);
-                        return (
-                          <SelectItem
-                            key={value}
-                            value={value}
-                            className={`hover:bg-gray-600 cursor-pointer ${isSelected ? 'bg-gray-600 text-white' : ''}`}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              toggleSkillFilter2(value);
-                            }}
-                          >
-                            <input
-                              type="checkbox"
-                              checked={isSelected}
-                              readOnly
-                              className="mr-2"
-                            />
-                            {item}
-                          </SelectItem>
-                        );
-                      })}
-                    </div>
-                  ))}
-                </SelectContent>
-              </Select>
-
-              {/* Selected Tags Display */}
-              <div className="flex flex-wrap gap-2 mt-2 col-span-full">
-                {skillsFilter.map(tag => (
+              <div className="flex flex-wrap gap-2 mt-2">
+                {skillsFilter.map(({ value, label }) => (
                   <div
-                    key={tag}
+                    key={value}
                     className="flex items-center bg-gray-700 text-white text-sm px-3 py-1 rounded-full"
                   >
-                    {tag.split("|")[1]}
+                    {label}
                     <button
                       onClick={() =>
-                        setSkillsFilter(prev => prev.filter(v => v !== tag))
+                        setSkillsFilter(prev => prev.filter(opt => opt.value !== value))
                       }
                       className="ml-2 hover:text-red-400"
                     >
