@@ -60,13 +60,13 @@ const protelementIcons = {
   prot_wind: "/protector_elements/Anti-Wind.png",
   prot_dark: "/protector_elements/Anti-Dark.png",
   prot_light: "/protector_elements/Anti-Light.png",
-  protect_fire: "/protector_elements/Fire.png",
-  protect_water: "/protector_elements/Water.png",
-  protect_earth: "/protector_elements/Earth.png",
-  protect_space: "/protector_elements/Space.png",
-  protect_wind: "/protector_elements/Wind.png",
-  protect_dark: "/protector_elements/Dark.png",
-  protect_light: "/protector_elements/Light.png",
+  old_fire: "/protector_elements/Fire.png",
+  old_water: "/protector_elements/Water.png",
+  old_earth: "/protector_elements/Earth.png",
+  old_space: "/protector_elements/Space.png",
+  old_wind: "/protector_elements/Wind.png",
+  old_dark: "/protector_elements/Dark.png",
+  old_light: "/protector_elements/Light.png",
   prot_ex_fire: "/elements/anti_fire_attribute_unbound.png",
   prot_ex_water: "/elements/anti_water_attribute_unbound.png",
   prot_ex_earth: "/elements/anti_earth_attribute_unbound.png",
@@ -629,8 +629,8 @@ export default function CharactersPage() {
                     <img
                       src={
                         character.type === "attacker"
-                          ? (elementIcons[character.element] || "/placeholder.svg")
-                          : (protelementIcons[character.element] || "/placeholder.svg")
+                          ? (elementIcons[re.sub(r'\s+', '_', character.element)] || "/placeholder.svg")
+                          : (protelementIcons[re.sub(r'\s+', '_', character.element)] || "/placeholder.svg")
                       }
                       alt={character.element}
                       className="w-6 h-6 object-contain"
