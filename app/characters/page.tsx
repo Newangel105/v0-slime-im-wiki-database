@@ -73,7 +73,46 @@ const protelementIcons2 = {
   prot_ex_space: "/elements/anti_space_attribute_unbound.png",
   prot_ex_wind: "/elements/anti_wind_attribute_unbound.png",
   prot_ex_dark: "/elements/anti_dark_attribute_unbound.png",
-  prot_ex_light: "/elements/anti_light_attribute_unbound.png",
+  prot_ex_light: "/elements/anti_light_attribute_unbound.png"
+}
+
+const protelementIcons = {
+  prot_fire: "/protector_elements/Anti-Fire.png",
+  prot_water: "/protector_elements/Anti-Water.png",
+  prot_earth: "/protector_elements/Anti-Earth.png",
+  prot_space: "/protector_elements/Anti-Space.png",
+  prot_wind: "/protector_elements/Anti-Wind.png",
+  prot_dark: "/protector_elements/Anti-Dark.png",
+  prot_light: "/protector_elements/Anti-Light.png",
+  prot_ex_fire: "/elements/anti_fire_attribute_unbound.png",
+  prot_ex_water: "/elements/anti_water_attribute_unbound.png",
+  prot_ex_earth: "/elements/anti_earth_attribute_unbound.png",
+  prot_ex_space: "/elements/anti_space_attribute_unbound.png",
+  prot_ex_wind: "/elements/anti_wind_attribute_unbound.png",
+  prot_ex_dark: "/elements/anti_dark_attribute_unbound.png",
+  prot_ex_light: "/elements/anti_light_attribute_unbound.png"
+}
+
+const weaponIcons = {
+  sword: "/weapons/sword.png",
+  katana: "/weapons/katana.png",
+  hammer: "/weapons/hammer.png",
+  spear: "/weapons/spear.png",
+  greatsword: "/weapons/greatsword.png",
+  book: "/weapons/book.png",
+  fists: "/weapons/fists.png",
+}
+
+const dmg_typeIcons_1 = {
+  magic: "/type_dmg/icAttackTypeMagic.png",
+  phys: "/type_dmg/icAttackTypePhysics.png",
+}
+
+const dmg_typeIcons = {
+  magic: "/type_dmg/icAttackTypeMagic.png",
+  phys: "/type_dmg/icAttackTypePhysics.png",
+  prot_phys: "/type_dmg/prot_phys.png",
+  prot_magic: "/type_dmg/prot_magic.png",
   Adventurer: "/protector_elements/Adventurer.png",
   Antagonist: "/protector_elements/Antagonist.png",
   Axiom_of_Haze: "/protector_elements/Axiom_of_Haze.png",
@@ -119,45 +158,6 @@ const protelementIcons2 = {
   Wholehearted_Devotion: "/protector_elements/Wholehearted_Devotion.png",
   Wielder_of_Magic: "/protector_elements/Wielder_of_Magic.png",
   World_of_Fantasy: "/protector_elements/World_of_Fantasy.png"
-}
-
-const protelementIcons = {
-  prot_fire: "/protector_elements/Anti-Fire.png",
-  prot_water: "/protector_elements/Anti-Water.png",
-  prot_earth: "/protector_elements/Anti-Earth.png",
-  prot_space: "/protector_elements/Anti-Space.png",
-  prot_wind: "/protector_elements/Anti-Wind.png",
-  prot_dark: "/protector_elements/Anti-Dark.png",
-  prot_light: "/protector_elements/Anti-Light.png",
-  prot_ex_fire: "/elements/anti_fire_attribute_unbound.png",
-  prot_ex_water: "/elements/anti_water_attribute_unbound.png",
-  prot_ex_earth: "/elements/anti_earth_attribute_unbound.png",
-  prot_ex_space: "/elements/anti_space_attribute_unbound.png",
-  prot_ex_wind: "/elements/anti_wind_attribute_unbound.png",
-  prot_ex_dark: "/elements/anti_dark_attribute_unbound.png",
-  prot_ex_light: "/elements/anti_light_attribute_unbound.png"
-}
-
-const weaponIcons = {
-  sword: "/weapons/sword.png",
-  katana: "/weapons/katana.png",
-  hammer: "/weapons/hammer.png",
-  spear: "/weapons/spear.png",
-  greatsword: "/weapons/greatsword.png",
-  book: "/weapons/book.png",
-  fists: "/weapons/fists.png",
-}
-
-const dmg_typeIcons_1 = {
-  magic: "/type_dmg/icAttackTypeMagic.png",
-  phys: "/type_dmg/icAttackTypePhysics.png",
-}
-
-const dmg_typeIcons = {
-  magic: "/type_dmg/icAttackTypeMagic.png",
-  phys: "/type_dmg/icAttackTypePhysics.png",
-  prot_phys: "/type_dmg/prot_phys.png",
-  prot_magic: "/type_dmg/prot_magic.png"
 }
 
 const typeIcons = {
@@ -698,7 +698,7 @@ export default function CharactersPage() {
                       className="w-6 h-6 object-contain"
                     />
                     <img
-                      src={dmg_typeIcons[character.dmg_type]}
+                      src={dmg_typeIcons[character.dmg_type.replace(/\s+/g, "_").replace(/'/g, "")]}
                       alt="Dmg"
                       className="w-6 h-6 object-contain"
                     />
