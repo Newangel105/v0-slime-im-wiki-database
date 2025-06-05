@@ -3,44 +3,170 @@ import { Badge } from "@/components/ui/badge"
 import { Star, Heart, Sword, Shield, Zap, Target, Gamepad2, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { getAllCharacters } from "@/lib/getCharacters"
+
 
 export default function CharacterDetailPage({ params }: { params: { characterId: string } }) {
   const characterId = Number(params.characterId)
   const character = characters.find((char) => char.id === characterId)
 
+  const characters_total = getAllCharacters()
+  
+
   const statIconMap: { [key: string]: string } = {
     HP: "/icons/HP.png",
     ATK: "/icons/ATK.png",
     DEF: "/icons/DEF.png",
-    fire: "/elements/icElementFire.png",
-    water: "/elements/icElementWater.png",
-    earth: "/elements/icElementEarth.png",
-    space: "/elements/icElementspace.png",
-    wind: "/elements/icElementWind.png",
-    dark: "/elements/icElementDark.png",
-    light: "/elements/icElementlight.png",
-    ProtectorofPeace: "/forces/ProtectorofPeace.png",
-    prot_fire: "/protector_elements/fire.png",
-    prot_water: "/protector_elements/water.png",
-    prot_earth: "/protector_elements/earth.png",
-    prot_space: "/protector_elements/space.png",
-    prot_wind: "/protector_elements/wind.png",
-    prot_dark: "/protector_elements/dark.png",
-    prot_light: "/protector_elements/light.png"
+    Fire: "/elements/icElementFire.png",
+    Water: "/elements/icElementWater.png",
+    Earth: "/elements/icElementEarth.png",
+    Space: "/elements/icElementspace.png",
+    Wind: "/elements/icElementWind.png",
+    Dark: "/elements/icElementDark.png",
+    Light: "/elements/icElementlight.png",
+    P_: "/type_dmg/icAttackTypePhysics.png",
+    M_ATK: "/type_dmg/icAttackTypeMagic.png",
+    Adventurer: "/protector_elements/Adventurer.png",
+    Antagonist: "/protector_elements/Antagonist.png",
+    Axiom_of_Haze: "/protector_elements/Axiom_of_Haze.png",
+    Clan_Chief: "/protector_elements/Clan_Chief.png",
+    Commander: "/protector_elements/Commander.png",
+    Demon_Lord_Invasion: "/protector_elements/Demon_Lord_Invasion.png",
+    Determination_to_Prosper: "/protector_elements/Determination_to_Prosper.png",
+    Dragon_Haki: "/protector_elements/Dragon_Haki.png",
+    Exalted_Champions: "/protector_elements/Exalted_Champions.png",
+    Festive_Memories: "/protector_elements/Festive_Memories.png",
+    Flashback_Beatdown_Emissary: "/protector_elements/Flashback_Beatdown_Emissary.png",
+    Forest_Fracas: "/protector_elements/Forest_Fracas.png",
+    Fount_of_Wisdom: "/protector_elements/Fount_of_Wisdom.png",
+    Frozen_Continent: "/protector_elements/Frozen_Continent.png",
+    Gaining_Status: "/protector_elements/Gaining_Status.png",
+    Goddess_of_Destiny: "/protector_elements/Goddess_of_Destiny.png",
+    Heart_of_a_Hero: "/protector_elements/Heart_of_a_Hero.png",
+    Hyper_Heart: "/protector_elements/Hyper_Heart.png",
+    Lycanthropes_Pride: "/protector_elements/Lycanthrope's_Pride.png",
+    Monster_and_Human_Mingling: "/protector_elements/Monster_and_Human_Mingling.png",
+    New_Years_Blessing: "/protector_elements/New_Year's_Blessing.png",
+    Octagram: "/protector_elements/Octagram.png",
+    Octagram_Bazaar: "/protector_elements/Octagram_Bazaar.png",
+    Octagram_Demon_Lord: "/protector_elements/Octagram_Demon_Lord.png",
+    Ogres_Pride: "/protector_elements/Ogre's_Pride.png",
+    Otherworlder: "/protector_elements/Otherworlder.png",
+    Otherworld_Legend: "/protector_elements/Otherworld_Legend.png",
+    Pariah: "/protector_elements/Pariah.png",
+    Pretty_Sparkle: "/protector_elements/Pretty_Sparkle.png",
+    Primal_Demon: "/protector_elements/Primal_Demon.png",
+    Protector_of_Peace: "/protector_elements/Protector_of_Peace.png",
+    Scarlet_Bond: "/protector_elements/Scarlet_Bond.png",
+    Schemer: "/protector_elements/Schemer.png",
+    Shizus_Will: "/protector_elements/Shizu's_Will.png",
+    Spirit_Master: "/protector_elements/Spirit_Master.png",
+    Stern_of_Spirit: "/protector_elements/Stern_of_Spirit.png",
+    Summer_Memories: "/protector_elements/Summer_Memories.png",
+    Tempest_Elite: "/protector_elements/Tempest_Elite.png",
+    Ten_Great_Demon_Lords: "/protector_elements/Ten_Great_Demon_Lords.png",
+    Valentine: "/protector_elements/Valentine.png",
+    Visions_of_Coleus: "/protector_elements/Visions_of_Coleus.png",
+    Warriors_Mind: "/protector_elements/Warrior's_Mind.png",
+    Wholehearted_Devotion: "/protector_elements/Wholehearted_Devotion.png",
+    Wielder_of_Magic: "/protector_elements/Wielder_of_Magic.png",
+    World_of_Fantasy: "/protector_elements/World_of_Fantasy.png",
+  };
+
+  const statIconMap2: { [key: string]: string } = {
+    Fire: "/elements/icElementFire.png",
+    Water: "/elements/icElementWater.png",
+    Earth: "/elements/icElementEarth.png",
+    Space: "/elements/icElementspace.png",
+    Wind: "/elements/icElementWind.png",
+    Dark: "/elements/icElementDark.png",
+    Light: "/elements/icElementlight.png",
+    Adventurer: "/protector_elements/Adventurer.png",
+    Antagonist: "/protector_elements/Antagonist.png",
+    Axiom_of_Haze: "/protector_elements/Axiom_of_Haze.png",
+    Clan_Chief: "/protector_elements/Clan_Chief.png",
+    Commander: "/protector_elements/Commander.png",
+    Demon_Lord_Invasion: "/protector_elements/Demon_Lord_Invasion.png",
+    Determination_to_Prosper: "/protector_elements/Determination_to_Prosper.png",
+    Dragon_Haki: "/protector_elements/Dragon_Haki.png",
+    Exalted_Champions: "/protector_elements/Exalted_Champions.png",
+    Festive_Memories: "/protector_elements/Festive_Memories.png",
+    Flashback_Beatdown_Emissary: "/protector_elements/Flashback_Beatdown_Emissary.png",
+    Forest_Fracas: "/protector_elements/Forest_Fracas.png",
+    Fount_of_Wisdom: "/protector_elements/Fount_of_Wisdom.png",
+    Frozen_Continent: "/protector_elements/Frozen_Continent.png",
+    Gaining_Status: "/protector_elements/Gaining_Status.png",
+    Goddess_of_Destiny: "/protector_elements/Goddess_of_Destiny.png",
+    Heart_of_a_Hero: "/protector_elements/Heart_of_a_Hero.png",
+    Hyper_Heart: "/protector_elements/Hyper_Heart.png",
+    Lycanthropes_Pride: "/protector_elements/Lycanthrope's_Pride.png",
+    Monster_and_Human_Mingling: "/protector_elements/Monster_and_Human_Mingling.png",
+    New_Years_Blessing: "/protector_elements/New_Year's_Blessing.png",
+    Octagram: "/protector_elements/Octagram.png",
+    Octagram_Bazaar: "/protector_elements/Octagram_Bazaar.png",
+    Octagram_Demon_Lord: "/protector_elements/Octagram_Demon_Lord.png",
+    Ogres_Pride: "/protector_elements/Ogre's_Pride.png",
+    Otherworlder: "/protector_elements/Otherworlder.png",
+    Otherworld_Legend: "/protector_elements/Otherworld_Legend.png",
+    Pariah: "/protector_elements/Pariah.png",
+    Pretty_Sparkle: "/protector_elements/Pretty_Sparkle.png",
+    Primal_Demon: "/protector_elements/Primal_Demon.png",
+    Protector_of_Peace: "/protector_elements/Protector_of_Peace.png",
+    Scarlet_Bond: "/protector_elements/Scarlet_Bond.png",
+    Schemer: "/protector_elements/Schemer.png",
+    Shizus_Will: "/protector_elements/Shizu's_Will.png",
+    Spirit_Master: "/protector_elements/Spirit_Master.png",
+    Stern_of_Spirit: "/protector_elements/Stern_of_Spirit.png",
+    Summer_Memories: "/protector_elements/Summer_Memories.png",
+    Tempest_Elite: "/protector_elements/Tempest_Elite.png",
+    Ten_Great_Demon_Lords: "/protector_elements/Ten_Great_Demon_Lords.png",
+    Valentine: "/protector_elements/Valentine.png",
+    Visions_of_Coleus: "/protector_elements/Visions_of_Coleus.png",
+    Warriors_Mind: "/protector_elements/Warrior's_Mind.png",
+    Wholehearted_Devotion: "/protector_elements/Wholehearted_Devotion.png",
+    Wielder_of_Magic: "/protector_elements/Wielder_of_Magic.png",
+    World_of_Fantasy: "/protector_elements/World_of_Fantasy.png",
+    All: "/ulti_type/aoe.png",
+    Single: "/ulti_type/single.png",
+    3: "starCharaL3A",
+    4: "starCharaL4A",
+    5: "starCharaL5A",
+    EX_5: "starCharaL6A",
+    Battle_Characters: "/type/attacker.png",
+    Protection_Characters: "/type/protector.png",
+    EX_Attack: "/char_type/attack.png",
+    EX_Balance: "/char_type/balance.png",
+    EX_Defense: "/char_type/defense.png",
+    Anti_Fire: "/protector_elements/Anti-Fire.png",
+    Anti_Water: "/protector_elements/Anti-Water.png",
+    Anti_Earth: "/protector_elements/Anti-Earth.png",
+    Anti_Space: "/protector_elements/Anti-Space.png",
+    Anti_Wind: "/protector_elements/Anti-Wind.png",
+    Anti_Dark: "/protector_elements/Anti-Dark.png",
+    Anti_Light: "/protector_elements/Anti-Light.png"
   };
 
   function renderFilterTag(value: string) {
-    const cleanValue = value.replace(/\s+/g, "")
+    const cleanValue = value.replace(/[\s-]+/g, "_")
 
     // Detect type by value (you can extend this easily)
     let type: string | null = null
 
-    if (["prot_fire","prot_water","prot_earth","prot_wind","prot_space","prot_light","prot_dark","fire","water", "earth", "wind", "space", "light", "dark"].includes(value)) {
+    if (["anti-dark","anti-earth","anti-fire","anti-light","anti-space","anti-water","anti-wind","dark","earth","fire","light","space","water","wind"].includes(value.toLowerCase())) {
       type = "element"
-    } else if (
-      ["Protector of Peace", "Goblin Rider", "Ogre", "Tempest", "Saint", "Octagram"].includes(value)
-    ) {
+    } else if (characters_total.some((char) =>char.force.includes(value))){
       type = "force"
+    } else if (characters_total.some((char) =>char.tag.includes(value))){
+        if (value.toLowerCase().startsWith("traits"))
+          type = "traits"
+        else if (value.toLowerCase().startsWith("skills"))
+          type = "skills"
+        else if (["all","single"].includes(value.toLocaleLowerCase()))
+          type = "ulti"
+    } else if (value.endsWith("%")){
+        type = "town"
+    } else if (["3","4","5","EX 5"].includes(value.toLocaleLowerCase())){
+        type = "stars"
     }
 
     if (!type) return value // fallback to plain text if unrecognized
@@ -56,54 +182,97 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         href={`/characters?${type}=${encodeURIComponent(value)}`}
         className={`inline-flex items-center ${paddingX} ${paddingY} rounded-full bg-[#111827] text-white ${fontSize} font-medium mx-1 hover:bg-[#909090]`}
       >
-        {(type === "element" || type === "force") && statIconMap[cleanValue] && (
+        {statIconMap2[cleanValue] && (
           <img
             src={statIconMap[cleanValue]}
             alt={value}
             className={`${iconSize} mr-2 object-contain`}
           />
         )}
-        {value.replace(/^prot_/, '')}
+        {value}
       </Link>
     )
   }
 
 
-  function replaceStatTextWithIcons(text: string) {
-    return text.split('\n').map((line, lineIndex) => (
-      <p key={lineIndex} className="text-gray-300 text-sm mb-1">
-        {line.split(/(HP|ATK|DEF|fire|prot_water|water|earth|wind|space|dark|light|Protector of Peace|Goblin Rider|Ogre|Tempest|Saint|Octagram)/g).map((part, index) => {
-          const cleanKey = part.replace(/\s+/g, "")
-
-          // Show as filter tag (link) for known types
-          if (["prot_fire","prot_water","prot_earth","prot_wind","prot_space","prot_light","prot_dark","fire","water", "earth", "wind", "space", "light", "dark", "Protector of Peace", "Goblin Rider", "Ogre", "Tempest", "Saint", "Octagram"].includes(part)) {
-            return <span key={`${lineIndex}-${index}`}>{renderFilterTag(part)}</span>
-          }
-
-          // Show as icon-only tag (no link) for things like HP/ATK/DEF
-          if (statIconMap[cleanKey]) {
-            const iconSize = part === "ATK" ? "w-3 h-4" : "w-4 h-4"
-            return (
-              <span
-                key={`${lineIndex}-${index}`}
-                className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#909090] text-white text-xs font-medium mx-1"
-              >
-                <img
-                  src={statIconMap[cleanKey]}
-                  alt={part}
-                  className={`${iconSize} mr-1 object-contain`}
-                />
-                {part}
-              </span>
-            )
-          }
-
-          // Fallback: plain text
-          return <span key={`${lineIndex}-${index}`}>{part}</span>
-        })}
-      </p>
-    ))
+  // Escape regex special characters in a string
+  function escapeRegex(str: string) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
+
+  const specialUnderscoreToDashKeys = ["P_", "M_ATK"];
+
+  // Generate regex parts from keys
+  const regexParts = Object.keys(statIconMap).map(key => {
+    if (specialUnderscoreToDashKeys.includes(key)) {
+      // Replace underscore with dash, escape special chars
+      return escapeRegex(key.replace(/_/g, '-'));
+    } else if (key.includes('_')) {
+      // Replace underscore with space, escape special chars
+      return escapeRegex(key.replace(/_/g, ' '));
+    } else {
+      // No underscore, just escape
+      return escapeRegex(key);
+    }
+  });
+
+  // Join all keys as alternatives
+  const combinedPattern = `(${regexParts.join('|')})`;
+
+  // Use global flag, and probably case-insensitive if needed
+  const regex = new RegExp(combinedPattern, 'g');
+
+
+  function replaceStatTextWithIcons(text: string) {
+    const specialUnderscoreToDashKeys = ["P_", "M_ATK"];
+
+    // Build regex dynamically like before:
+    function escapeRegex(str: string) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    const regexParts = Object.keys(statIconMap).map(key => {
+      if (specialUnderscoreToDashKeys.includes(key)) {
+        return escapeRegex(key.replace(/_/g, '-'));
+      } else if (key.includes('_')) {
+        return escapeRegex(key.replace(/_/g, ' '));
+      } else {
+        return escapeRegex(key);
+      }
+    });
+
+    const combinedPattern = `(${regexParts.join('|')})`;
+    const regex = new RegExp(combinedPattern, 'g');
+
+    // Split text by matched tokens
+    const parts = text.split(regex);
+
+    return parts.map((part, index) => {
+      if (!part) return null;
+
+      // Normalize part for icon lookup
+      let normalizedKey = part;
+      if (specialUnderscoreToDashKeys.some(k => part === k.replace(/_/g, '-'))) {
+        normalizedKey = part.replace(/-/g, '_');
+      } else {
+        normalizedKey = part.replace(/ /g, '_');
+      }
+
+      // If part is a key in statIconMap, render it as a clickable filter tag
+      if (statIconMap[normalizedKey]) {
+        return (
+          <span key={index}>
+            {renderFilterTag(part)}
+          </span>
+        );
+      }
+
+      // Otherwise just render plain text
+      return <span key={index}>{part}</span>;
+    });
+  }
+
+
 
   if (!character) {
     return (
