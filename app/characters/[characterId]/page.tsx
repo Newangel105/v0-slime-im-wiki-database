@@ -309,7 +309,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
 
   // Helper function to determine button type and styling
   function getButtonStyle(text: string, hasIcon: boolean) {
-    // Small buttons for stats and special patterns
+    // Small buttons for stats and special patterns with hover effects
     if (
       ["ATK", "DEF", "HP"].includes(text) ||
       /^Turns\s+\d+$/i.test(text) ||
@@ -318,7 +318,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     ) {
       return {
         className:
-          "inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)]",
+          "inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)] hover:bg-gray-500 transition-colors cursor-pointer",
         iconSize: "w-3 h-3",
         style: {
           verticalAlign: "baseline",
@@ -329,10 +329,10 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
       }
     }
 
-    // Medium buttons for elements and forces (smaller than before)
+    // Medium buttons for elements and forces with hover effects
     return {
       className:
-        "inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)]",
+        "inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)] hover:bg-gray-500 transition-colors cursor-pointer",
       iconSize: "w-3 h-3",
       style: {
         verticalAlign: "baseline",
@@ -467,7 +467,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     return (
       <Link
         href={`/characters?tag=${encodeURIComponent(value)}`}
-        className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)]"
+        className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)] hover:bg-gray-500 transition-colors"
         style={{
           verticalAlign: "baseline",
           display: "inline-flex",
@@ -828,7 +828,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
               <div className="flex flex-wrap gap-1">
                 {forcesList.map((force, index) => (
                   <div key={index} className="text-gray-300 text-sm leading-relaxed">
-                    {replaceStatTextWithIcons(force)}
+                    {replaceTextWithLinksAndOptionalIcons(force, customMap)}
                   </div>
                 ))}
               </div>
