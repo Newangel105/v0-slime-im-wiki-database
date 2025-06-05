@@ -452,31 +452,20 @@ export default function CharactersPage() {
       "World of Fantasy"
     ];
 
-    const skillAndTraitSections2 = [
-      "special",
-      "from soul",
-      "soul amount",
-      "to soul",
-      "soul buff",
-      "gauge",
-      "buff all",
-      "buff self",
-      "debuff all",
-      "debuff single",
-      "heal",
-    ];
-
-    function extractValue(tag: string, category: string, sections: string[]) {
-      let raw = tag.replace(new RegExp(`^${category}`, "i"), "").trim();
-      for (const section of sections) {
-        const regex = new RegExp(`^${section}`, "i");
-        if (regex.test(raw)) {
-          raw = raw.replace(regex, "").trim();
-          break;
-        }
-      }
-      return raw;
-    }
+      const skillSections2 = [
+        "special",
+        "from soul",
+        "soul amount",
+        "to soul",
+        "soul buff",
+        "gauge",
+        "buff all",
+        "buff self",
+        "debuff all",
+        "debuff single",
+        "heal",
+      ];
+      const traitSections2 = [...skillSections2];
 
     const weapons = ["Katana", "Hammer", "Spear", "Greatsword", "Book", "Fists"];
     const elements = ["Fire", "Dark", "Earth", "Space", "Light", "Water", "Wind"];
@@ -488,11 +477,31 @@ export default function CharactersPage() {
 
     // 🔸 Handle each tag type
     if (tag.startsWith("Skills")) {
-      const val = extractValue(tag, "Skills", skillAndTraitSections2);
-      if (val) setSelectedSkills([val]);
+      // Remove 'Skills' prefix
+      const afterSkills = tag.slice(6).trim(); // "Gauge Skill Points"
+      
+      // Find which section it starts with
+      const section = skillSections2.find(sec => afterSkills.toLowerCase().startsWith(sec));
+      if (section) {
+        // Extract the rest after the section name
+        const subTag = afterSkills.slice(section.length).trim(); // "Skill Points"
+
+        if (subTag) {
+          // Compose value in dropdown format
+          const value = `${section}|${subTag}`;
+          setSelectedSkills([value]);
+        }
+      }
     } else if (tag.startsWith("Traits")) {
-      const val = extractValue(tag, "Traits", skillAndTraitSections2);
-      if (val) setSelectedTraits([val]);
+      const afterTraits = tag.slice(6).trim();
+      const section = traitSections2.find(sec => afterTraits.toLowerCase().startsWith(sec));
+      if (section) {
+        const subTag = afterTraits.slice(section.length).trim();
+        if (subTag) {
+          const value = `${section}|${subTag}`;
+          setSelectedTraits([value]);
+        }
+      }
     } else if (tag.endsWith("%")) {
       setSelectedTowns([tag]);
     } else if (forces.includes(tag)) {
