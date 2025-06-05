@@ -749,7 +749,7 @@ export default function CharactersPage() {
             {/* Dropdown Filters */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
               {/* SKILLS Dropdown */}
-              <Select open={false}>
+              <Select>
                 <SelectTrigger className="bg-gray-700 border-gray-600">
                   <div className="text-white">
                     {skillsFilter.length === 0 ? "Select Skills" : `${skillsFilter.length} selected`}
