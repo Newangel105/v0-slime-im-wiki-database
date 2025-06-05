@@ -739,15 +739,20 @@ export default function CharactersPage() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
               <Select value={skillsFilter} onValueChange={setSkillsFilter}>
                 <SelectTrigger className="bg-gray-700 border-gray-600">
-                  <SelectValue placeholder="SKILLS" />
+                  <SelectValue className="text-white" placeholder="SKILLS" />
                 </SelectTrigger>
+
                 <SelectContent className="bg-gray-700 border-gray-600">
-                  <SelectItem value="all">All Skills</SelectItem>
+                  <SelectItem value="all" className="text-white hover:bg-gray-600">All Skills</SelectItem>
                   {Object.entries(skillsData).map(([section, items]) => (
-                    <div key={section}>
-                      <div className="px-2 py-1 text-xs text-gray-400 uppercase">{section}</div>
+                    <div key={section} className="bg-[#121212] text-white px-2 py-1 rounded mb-2">
+                      <div className="text-xs uppercase">{section}</div>
                       {[...items].map(item => (
-                        <SelectItem key={`${section}-${item}`} value={`${section}|${item}`}>
+                        <SelectItem
+                          key={`${section}-${item}`}
+                          value={`${section}|${item}`}
+                          className="text-white hover:bg-gray-600"
+                        >
                           {item}
                         </SelectItem>
                       ))}
@@ -755,6 +760,7 @@ export default function CharactersPage() {
                   ))}
                 </SelectContent>
               </Select>
+
 
               <Select value={traitsFilter} onValueChange={setTraitsFilter}>
                 <SelectTrigger className="bg-gray-700 border-gray-600">
