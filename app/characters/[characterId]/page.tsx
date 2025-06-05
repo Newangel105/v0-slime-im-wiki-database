@@ -147,42 +147,48 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   };
 
   function renderFilterTag(value: string) {
-    const cleanValue = value.replace(/[\s-]+/g, "_")
+    // Normalize value to match statIconMap keys
+    const cleanValue = value
+      .replace(/[\s-]+/g, "_")  // convert spaces and dashes to underscores
+      .replace(/['’]/g, "");    // remove apostrophes
 
-    // Detect type by value (you can extend this easily)
-    let type: string | null = null
+    // Detect type by value
+    let type: string | null = null;
 
-    if (["anti-dark","anti-earth","anti-fire","anti-light","anti-space","anti-water","anti-wind","dark","earth","fire","light","space","water","wind"].includes(value.toLowerCase())) {
-      type = "element"
-    } else if (characters_total.some((char) =>char.force.includes(value))){
-      type = "force"
-    } else if (characters_total.some((char) =>char.tag.includes(value))){
-        if (value.toLowerCase().startsWith("traits"))
-          type = "traits"
-        else if (value.toLowerCase().startsWith("skills"))
-          type = "skills"
-        else if (["all","single"].includes(value.toLocaleLowerCase()))
-          type = "ulti"
-    } else if (value.endsWith("%")){
-        type = "town"
-    } else if (["3","4","5","EX 5"].includes(value.toLocaleLowerCase())){
-        type = "stars"
+    if (
+      [
+        "anti-dark", "anti-earth", "anti-fire", "anti-light", "anti-space",
+        "anti-water", "anti-wind", "dark", "earth", "fire", "light", "space",
+        "water", "wind"
+      ].includes(value.toLowerCase())
+    ) {
+      type = "element";
+    } else if (characters_total.some((char) => char.force.includes(value))) {
+      type = "force";
+    } else if (characters_total.some((char) => char.tag.includes(value))) {
+      if (value.toLowerCase().startsWith("traits")) type = "traits";
+      else if (value.toLowerCase().startsWith("skills")) type = "skills";
+      else if (["all", "single"].includes(value.toLowerCase())) type = "ulti";
+    } else if (value.endsWith("%")) {
+      type = "town";
+    } else if (["3", "4", "5", "EX 5"].includes(value.toLowerCase())) {
+      type = "stars";
     }
 
-    if (!type) return value // fallback to plain text if unrecognized
+    if (!type) return value; // fallback if type not identified
 
-    // Adjust icon size and font size here:
-    const iconSize = "w-5 h-5" // slightly bigger icons
-    const fontSize = "text-sm" // bigger font size
-    const paddingX = "px-3"
-    const paddingY = "py-1"
+    // Styling
+    const iconSize = "w-5 h-5";
+    const fontSize = "text-sm";
+    const paddingX = "px-3";
+    const paddingY = "py-1";
 
     return (
       <Link
         href={`/characters?${type}=${encodeURIComponent(value)}`}
         className={`inline-flex items-center ${paddingX} ${paddingY} rounded-full bg-[#111827] text-white ${fontSize} font-medium mx-1 hover:bg-[#909090]`}
       >
-        {statIconMap2[cleanValue] && (
+        {statIconMap[cleanValue] && (
           <img
             src={statIconMap[cleanValue]}
             alt={value}
@@ -191,99 +197,82 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         )}
         {value}
       </Link>
-    )
+    );
   }
 
 
     function replaceStatTextWithIcons(text: string) {
-      // 1. Build a map from normalized text form to original keys in statIconMap
-      // Normalize keys: 
-      // - For P_ and M_ATK keys, replace underscore with dash (to match text)
-      // - For others, replace _ with space and remove apostrophes
-      // All lowercased to match case-insensitive
-      
       const specialKeys = ["P_", "M_ATK"];
 
-      const textToKeyMap: Record<string, string> = {};
+      // Build normalized key-to-original-key mapping
+      const normalizedToOriginalMap: Record<string, string> = {};
 
-      Object.keys(statIconMap).forEach((key) => {
-        let textForm: string;
+      for (const key of Object.keys(statIconMap)) {
+        let normalized: string;
 
         if (specialKeys.includes(key)) {
-          // Replace _ with - for matching P- and M-ATK in text
-          textForm = key.replace(/_/g, '-').toLowerCase();
+          // P_ becomes P- (as seen in text)
+          normalized = key.replace(/_/g, '-').toLowerCase();
         } else {
-          // Replace _ with space and remove apostrophes (both ' and ’)
-          textForm = key
+          // For everything else: _ → space, remove apostrophes
+          normalized = key
             .replace(/_/g, ' ')
             .replace(/['’]/g, '')
             .toLowerCase();
         }
 
-        textToKeyMap[textForm] = key;
-      });
+        normalizedToOriginalMap[normalized] = key;
+      }
 
-      // 2. Build a regex pattern to match all possible keys in text
-      // Sort keys by length desc to prevent partial matches before full matches
-      const regexParts = Object.keys(textToKeyMap)
-        .sort((a, b) => b.length - a.length)
-        .map(escapeRegex); // escape special regex chars
+      // Sort longer matches first to prevent substring issues
+      const sortedNormalizedKeys = Object.keys(normalizedToOriginalMap).sort(
+        (a, b) => b.length - a.length
+      );
 
-      const combinedPattern = `(${regexParts.join('|')})`;
-      const regex = new RegExp(combinedPattern, 'gi'); // global + case insensitive
+      // Build combined regex
+      const regex = new RegExp(`\\b(${sortedNormalizedKeys.map(escapeRegex).join('|')})\\b`, 'gi');
 
-      // 3. Split text by regex, replace matched keys with icon + link
-      const parts: React.ReactNode[] = [];
+      const result: React.ReactNode[] = [];
       let lastIndex = 0;
 
-      // We use exec loop to handle overlapping matches
-      let match;
+      let match: RegExpExecArray | null;
+
       while ((match = regex.exec(text)) !== null) {
-        const matchText = match[0];
-        const start = match.index;
+        const before = text.slice(lastIndex, match.index);
+        const matched = match[0];
 
-        // Push preceding plain text
-        if (start > lastIndex) {
-          parts.push(text.slice(lastIndex, start));
-        }
+        if (before) result.push(before);
 
-        // Normalize matched text same way as keys:
-        let normalized = matchText.toLowerCase();
-        if (specialKeys.some(k => normalized === k.replace(/_/g, '-').toLowerCase())) {
-          // For P- and M-ATK, just lowercase is enough since they have dash
-        } else {
-          normalized = normalized.replace(/['’]/g, '').replace(/\s+/g, ' ');
-        }
+        const normalized = matched
+          .toLowerCase()
+          .replace(/['’]/g, '') // remove apostrophes
+          .replace(/\s+/g, ' '); // collapse multiple spaces
 
-        const key = textToKeyMap[normalized];
-        
-        if (key && statIconMap[key]) {
-          parts.push(
-            <span key={start}>
-              {renderFilterTag(matchText)}
+        const originalKey = normalizedToOriginalMap[normalized];
+
+        if (originalKey) {
+          result.push(
+            <span key={match.index}>
+              {renderFilterTag(matched)}
             </span>
           );
         } else {
-          parts.push(matchText);
+          result.push(matched);
         }
 
-        lastIndex = start + matchText.length;
+        lastIndex = regex.lastIndex;
       }
 
-      // Push remaining text after last match
       if (lastIndex < text.length) {
-        parts.push(text.slice(lastIndex));
+        result.push(text.slice(lastIndex));
       }
 
-      return parts;
-  }
+      return result;
+    }
 
-  // Helper to escape regex special characters
-  function escapeRegex(str: string) {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  }
-
-
+    function escapeRegex(str: string) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
 
 
   if (!character) {
