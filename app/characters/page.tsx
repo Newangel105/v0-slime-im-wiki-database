@@ -158,6 +158,13 @@ const dmg_typeIcons_1 = {
 }
 
 const dmg_typeIcons = {
+  old_fire: "/protector_elements/fire.png",
+  old_water: "/protector_elements/water.png",
+  old_earth: "/protector_elements/earth.png",
+  old_space: "/protector_elements/space.png",
+  old_wind: "/protector_elements/wind.png",
+  old_dark: "/protector_elements/dark.png",
+  old_light: "/protector_elements/light.png",
   magic: "/type_dmg/icAttackTypeMagic.png",
   phys: "/type_dmg/icAttackTypePhysics.png",
   prot_phys: "/type_dmg/prot_phys.png",
