@@ -1,17 +1,15 @@
+import type React from "react"
 import characters from "@/app/data/characters.json"
-import { Badge } from "@/components/ui/badge"
-import { Star, Heart, Sword, Shield, Zap, Target, Gamepad2, ArrowLeft } from "lucide-react"
+import { Heart, Sword, Shield, Zap, Target, Gamepad2, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { getAllCharacters } from "@/lib/getCharacters"
-
 
 export default function CharacterDetailPage({ params }: { params: { characterId: string } }) {
   const characterId = Number(params.characterId)
   const character = characters.find((char) => char.id === characterId)
 
   const characters_total = getAllCharacters()
-  
 
   const statIconMap: { [key: string]: string } = {
     HP: "/icons/HP.png",
@@ -71,7 +69,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     Wholehearted_Devotion: "/protector_elements/Wholehearted_Devotion.png",
     Wielder_of_Magic: "/protector_elements/Wielder_of_Magic.png",
     World_of_Fantasy: "/protector_elements/World_of_Fantasy.png",
-  };
+  }
 
   const statIconMap2: { [key: string]: string } = {
     Fire: "/elements/icElementFire.png",
@@ -105,7 +103,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     Octagram: "/protector_elements/Octagram.png",
     Octagram_Bazaar: "/protector_elements/Octagram_Bazaar.png",
     Octagram_Demon_Lord: "/protector_elements/Octagram_Demon_Lord.png",
-    Ogres_Pride: "/protector_elements/Ogre's_Pride.png",
+    Ogres_Pride: "/protector_elements/Ogres_Pride.png",
     Otherworlder: "/protector_elements/Otherworlder.png",
     Otherworld_Legend: "/protector_elements/Otherworld_Legend.png",
     Pariah: "/protector_elements/Pariah.png",
@@ -143,137 +141,205 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     Anti_Space: "/protector_elements/Anti-Space.png",
     Anti_Wind: "/protector_elements/Anti-Wind.png",
     Anti_Dark: "/protector_elements/Anti-Dark.png",
-    Anti_Light: "/protector_elements/Anti-Light.png"
-  };
+    Anti_Light: "/protector_elements/Anti-Light.png",
+  }
+
+  // Create a mapping from original text to normalized keys
+  const textToKeyMap: { [key: string]: string } = {
+    // Special cases for P- and M-
+    "P-": "P_",
+    "M-": "M_ATK",
+    "M-ATK": "M_ATK",
+
+    // Handle apostrophes and spaces
+    "Shizu's Will": "Shizus_Will",
+    "Lycanthrope's Pride": "Lycanthropes_Pride",
+    "New Year's Blessing": "New_Years_Blessing",
+    "Ogre's Pride": "Ogres_Pride",
+    "Warrior's Mind": "Warriors_Mind",
+
+    // Handle spaces and hyphens
+    "Axiom of Haze": "Axiom_of_Haze",
+    "Clan Chief": "Clan_Chief",
+    "Demon Lord Invasion": "Demon_Lord_Invasion",
+    "Determination to Prosper": "Determination_to_Prosper",
+    "Dragon Haki": "Dragon_Haki",
+    "Exalted Champions": "Exalted_Champions",
+    "Festive Memories": "Festive_Memories",
+    "Flashback Beatdown Emissary": "Flashback_Beatdown_Emissary",
+    "Forest Fracas": "Forest_Fracas",
+    "Fount of Wisdom": "Fount_of_Wisdom",
+    "Frozen Continent": "Frozen_Continent",
+    "Gaining Status": "Gaining_Status",
+    "Goddess of Destiny": "Goddess_of_Destiny",
+    "Heart of a Hero": "Heart_of_a_Hero",
+    "Hyper Heart": "Hyper_Heart",
+    "Monster and Human Mingling": "Monster_and_Human_Mingling",
+    "Octagram Bazaar": "Octagram_Bazaar",
+    "Octagram Demon Lord": "Octagram_Demon_Lord",
+    "Otherworld Legend": "Otherworld_Legend",
+    "Pretty Sparkle": "Pretty_Sparkle",
+    "Primal Demon": "Primal_Demon",
+    "Protector of Peace": "Protector_of_Peace",
+    "Scarlet Bond": "Scarlet_Bond",
+    "Spirit Master": "Spirit_Master",
+    "Stern of Spirit": "Stern_of_Spirit",
+    "Summer Memories": "Summer_Memories",
+    "Tempest Elite": "Tempest_Elite",
+    "Ten Great Demon Lords": "Ten_Great_Demon_Lords",
+    "Visions of Coleus": "Visions_of_Coleus",
+    "Wholehearted Devotion": "Wholehearted_Devotion",
+    "Wielder of Magic": "Wielder_of_Magic",
+    "World of Fantasy": "World_of_Fantasy",
+
+    // Anti elements
+    "Anti-Fire": "Anti_Fire",
+    "Anti-Water": "Anti_Water",
+    "Anti-Earth": "Anti_Earth",
+    "Anti-Space": "Anti_Space",
+    "Anti-Wind": "Anti_Wind",
+    "Anti-Dark": "Anti_Dark",
+    "Anti-Light": "Anti_Light",
+
+    // EX types
+    "EX Attack": "EX_Attack",
+    "EX Balance": "EX_Balance",
+    "EX Defense": "EX_Defense",
+    "EX 5": "EX_5",
+
+    // Character types
+    "Battle Characters": "Battle_Characters",
+    "Protection Characters": "Protection_Characters",
+
+    // Basic stats and elements (these should match exactly)
+    HP: "HP",
+    ATK: "ATK",
+    DEF: "DEF",
+    Fire: "Fire",
+    Water: "Water",
+    Earth: "Earth",
+    Space: "Space",
+    Wind: "Wind",
+    Dark: "Dark",
+    Light: "Light",
+    Adventurer: "Adventurer",
+    Antagonist: "Antagonist",
+    Commander: "Commander",
+    Octagram: "Octagram",
+    Otherworlder: "Otherworlder",
+    Pariah: "Pariah",
+    Schemer: "Schemer",
+    Valentine: "Valentine",
+    All: "All",
+    Single: "Single",
+    "3": "3",
+    "4": "4",
+    "5": "5",
+  }
 
   function renderFilterTag(value: string) {
-    // Normalize value to match statIconMap keys
-    const cleanValue = value
-      .replace(/[\s-]+/g, "_")  // convert spaces and dashes to underscores
-      .replace(/['’]/g, "");    // remove apostrophes
+    // Get the normalized key for this text
+    const normalizedKey = textToKeyMap[value] || value
 
     // Detect type by value
-    let type: string | null = null;
+    let type: string | null = null
 
     if (
       [
-        "anti-dark", "anti-earth", "anti-fire", "anti-light", "anti-space",
-        "anti-water", "anti-wind", "dark", "earth", "fire", "light", "space",
-        "water", "wind"
+        "anti-dark",
+        "anti-earth",
+        "anti-fire",
+        "anti-light",
+        "anti-space",
+        "anti-water",
+        "anti-wind",
+        "dark",
+        "earth",
+        "fire",
+        "light",
+        "space",
+        "water",
+        "wind",
       ].includes(value.toLowerCase())
     ) {
-      type = "element";
+      type = "element"
     } else if (characters_total.some((char) => char.force.includes(value))) {
-      type = "force";
+      type = "force"
     } else if (characters_total.some((char) => char.tag.includes(value))) {
-      if (value.toLowerCase().startsWith("traits")) type = "traits";
-      else if (value.toLowerCase().startsWith("skills")) type = "skills";
-      else if (["all", "single"].includes(value.toLowerCase())) type = "ulti";
+      if (value.toLowerCase().startsWith("traits")) type = "traits"
+      else if (value.toLowerCase().startsWith("skills")) type = "skills"
+      else if (["all", "single"].includes(value.toLowerCase())) type = "ulti"
     } else if (value.endsWith("%")) {
-      type = "town";
+      type = "town"
     } else if (["3", "4", "5", "EX 5"].includes(value.toLowerCase())) {
-      type = "stars";
+      type = "stars"
     }
 
-    if (!type) return value; // fallback if type not identified
+    if (!type) return value // fallback if type not identified
 
     // Styling
-    const iconSize = "w-5 h-5";
-    const fontSize = "text-sm";
-    const paddingX = "px-3";
-    const paddingY = "py-1";
+    const iconSize = "w-5 h-5"
+    const fontSize = "text-sm"
+    const paddingX = "px-3"
+    const paddingY = "py-1"
 
     return (
       <Link
         href={`/characters?${type}=${encodeURIComponent(value)}`}
         className={`inline-flex items-center ${paddingX} ${paddingY} rounded-full bg-[#111827] text-white ${fontSize} font-medium mx-1 hover:bg-[#909090]`}
       >
-        {statIconMap[cleanValue] && (
+        {statIconMap[normalizedKey] && (
           <img
-            src={statIconMap[cleanValue]}
+            src={statIconMap[normalizedKey] || "/placeholder.svg"}
             alt={value}
             className={`${iconSize} mr-2 object-contain`}
           />
         )}
         {value}
       </Link>
-    );
+    )
   }
 
+  function replaceStatTextWithIcons(text: string) {
+    // Sort by length (longest first) to prevent substring issues
+    const sortedTexts = Object.keys(textToKeyMap).sort((a, b) => b.length - a.length)
 
-    function replaceStatTextWithIcons(text: string) {
-      const specialKeys = ["P_", "M_ATK"];
+    // Build regex pattern
+    const pattern = sortedTexts.map(escapeRegex).join("|")
+    const regex = new RegExp(`\\b(${pattern})\\b`, "gi")
 
-      // Build normalized key-to-original-key mapping
-      const normalizedToOriginalMap: Record<string, string> = {};
+    const result: React.ReactNode[] = []
+    let lastIndex = 0
 
-      for (const key of Object.keys(statIconMap)) {
-        let normalized: string;
+    let match: RegExpExecArray | null
+    while ((match = regex.exec(text)) !== null) {
+      const before = text.slice(lastIndex, match.index)
+      const matched = match[0]
 
-        if (specialKeys.includes(key)) {
-          // P_ becomes P- (as seen in text)
-          normalized = key.replace(/_/g, '-').toLowerCase();
-        } else {
-          // For everything else: _ → space, remove apostrophes
-          normalized = key
-            .replace(/_/g, ' ')
-            .replace(/['’]/g, '')
-            .toLowerCase();
-        }
+      if (before) result.push(before)
 
-        normalizedToOriginalMap[normalized] = key;
+      // Find the exact match in our mapping (case-insensitive)
+      const exactMatch = Object.keys(textToKeyMap).find((key) => key.toLowerCase() === matched.toLowerCase())
+
+      if (exactMatch) {
+        result.push(<span key={match.index}>{renderFilterTag(exactMatch)}</span>)
+      } else {
+        result.push(matched)
       }
 
-      // Sort longer matches first to prevent substring issues
-      const sortedNormalizedKeys = Object.keys(normalizedToOriginalMap).sort(
-        (a, b) => b.length - a.length
-      );
-
-      // Build combined regex
-      const regex = new RegExp(`\\b(${sortedNormalizedKeys.map(escapeRegex).join('|')})\\b`, 'gi');
-
-      const result: React.ReactNode[] = [];
-      let lastIndex = 0;
-
-      let match: RegExpExecArray | null;
-
-      while ((match = regex.exec(text)) !== null) {
-        const before = text.slice(lastIndex, match.index);
-        const matched = match[0];
-
-        if (before) result.push(before);
-
-        const normalized = matched
-          .toLowerCase()
-          .replace(/['’]/g, '') // remove apostrophes
-          .replace(/\s+/g, ' '); // collapse multiple spaces
-
-        const originalKey = normalizedToOriginalMap[normalized];
-
-        if (originalKey) {
-          result.push(
-            <span key={match.index}>
-              {renderFilterTag(matched)}
-            </span>
-          );
-        } else {
-          result.push(matched);
-        }
-
-        lastIndex = regex.lastIndex;
-      }
-
-      if (lastIndex < text.length) {
-        result.push(text.slice(lastIndex));
-      }
-
-      return result;
+      lastIndex = regex.lastIndex
     }
 
-    function escapeRegex(str: string) {
-      return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    if (lastIndex < text.length) {
+      result.push(text.slice(lastIndex))
     }
 
+    return result
+  }
+
+  function escapeRegex(str: string) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+  }
 
   if (!character) {
     return (
@@ -293,14 +359,12 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   }
 
   // Calculate max stats across all characters
-  const maxFinalAttack = Math.max(...characters.map(c => c.final_attack))
-  const maxFinalDefense = Math.max(...characters.map(c => c.final_defense))
-  const maxFinalHealth = Math.max(...characters.map(c => c.final_health))
-  const maxOutput = Math.max(...characters.map(c => c.output_final))
+  const maxFinalAttack = Math.max(...characters.map((c) => c.final_attack))
+  const maxFinalDefense = Math.max(...characters.map((c) => c.final_defense))
+  const maxFinalHealth = Math.max(...characters.map((c) => c.final_health))
+  const maxOutput = Math.max(...characters.map((c) => c.output_final))
 
-  const variants = characters.filter(
-    (c) => c.name === character.name && c.id !== characterId
-  )
+  const variants = characters.filter((c) => c.name === character.name && c.id !== characterId)
 
   // Calculate percentages for this character, fallback to 0 if max is 0
   const attackPercent = maxFinalAttack ? (character.final_attack / maxFinalAttack) * 100 : 0
@@ -308,16 +372,10 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   const healthPercent = maxFinalHealth ? (character.final_health / maxFinalHealth) * 100 : 0
   const outputPercent = maxOutput ? (character.output_final / maxOutput) * 100 : 0
 
-  const maxExistence = Math.max(
-    ...characters.map(
-      (c) =>
-        c.final_health + c.final_attack * 5 + c.final_defense * 2.5
-    )
-  )
+  const maxExistence = Math.max(...characters.map((c) => c.final_health + c.final_attack * 5 + c.final_defense * 2.5))
 
   // Calculate this character's existence
-  const charExistence =
-    character.final_health + character.final_attack * 5 + character.final_defense * 2.5
+  const charExistence = character.final_health + character.final_attack * 5 + character.final_defense * 2.5
 
   // Calculate existence percentage relative to max
   const existencePercent = maxExistence ? (charExistence / maxExistence) * 100 : 0
@@ -329,11 +387,11 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   function SkillCard({
     skill,
     isEvolution = false,
-    baseImage
+    baseImage,
   }: {
-    skill: any;
-    isEvolution?: boolean;
-    baseImage?: string;
+    skill: any
+    isEvolution?: boolean
+    baseImage?: string
   }) {
     return (
       <div className="bg-gray-900 rounded-lg p-4 h-full">
@@ -359,14 +417,14 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         </div>
         <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
       </div>
-    );
+    )
   }
 
   // ---- In your render section ----
-  const base1 = character.battle_skills?.find(s => s.imageName === "b1.png");
-  const base2 = character.battle_skills?.find(s => s.imageName === "b2.png");
-  const evo1 = character.battle_skills?.find(s => s.imageName === "b3.png");
-  const evo2 = character.battle_skills?.find(s => s.imageName === "b4.png");
+  const base1 = character.battle_skills?.find((s) => s.imageName === "b1.png")
+  const base2 = character.battle_skills?.find((s) => s.imageName === "b2.png")
+  const evo1 = character.battle_skills?.find((s) => s.imageName === "b3.png")
+  const evo2 = character.battle_skills?.find((s) => s.imageName === "b4.png")
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -406,20 +464,16 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           </Button>
         </Link>
 
-      {/* Character Header */}
-      <div className="flex items-center space-x-4 mb-8">
-        <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-800">
-          <img
-            src={`/chars/${character.id}/image.png`}
-            alt={character.name}
-            className="w-full h-full object-cover"
-          />
+        {/* Character Header */}
+        <div className="flex items-center space-x-4 mb-8">
+          <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-800">
+            <img src={`/chars/${character.id}/image.png`} alt={character.name} className="w-full h-full object-cover" />
+          </div>
+          <div>
+            <h2 className="text-sm text-[#d9d9d9] font-medium">{character.sub_name}</h2>
+            <h1 className="text-2xl font-bold text-white">{character.name}</h1>
+          </div>
         </div>
-        <div>
-          <h2 className="text-sm text-[#d9d9d9] font-medium">{character.sub_name}</h2>
-          <h1 className="text-2xl font-bold text-white">{character.name}</h1>
-        </div>
-      </div>
 
         {/* Main Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -490,17 +544,19 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     <span className="text-gray-300 text-sm">Existence</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <span className="text-white font-medium">{(
-                      character.initial_health +
-                      character.initial_attack * 5 +
-                      character.initial_defense * 2.5
-                    ).toLocaleString()}
+                    <span className="text-white font-medium">
+                      {(
+                        character.initial_health +
+                        character.initial_attack * 5 +
+                        character.initial_defense * 2.5
+                      ).toLocaleString()}
                     </span>
-                    <span className="text-gray-500 text-sm">{(
-                      character.final_health +
-                      character.final_attack * 5 +
-                      character.final_defense * 2.5
-                    ).toLocaleString()}
+                    <span className="text-gray-500 text-sm">
+                      {(
+                        character.final_health +
+                        character.final_attack * 5 +
+                        character.final_defense * 2.5
+                      ).toLocaleString()}
                     </span>
                   </div>
                 </div>
@@ -533,28 +589,32 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
 
             {/* Forces Section */}
             <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">FORCES</h2>
-                <div className="flex flex-wrap gap-2">
-                    {forcesList.map((force, index) => (
-                      <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(force)}</p>
-                    ))}
-                </div>
+              <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">FORCES</h2>
+              <div className="flex flex-wrap gap-2">
+                {forcesList.map((force, index) => (
+                  <p key={index} className="text-gray-300 text-sm">
+                    {replaceStatTextWithIcons(force)}
+                  </p>
+                ))}
+              </div>
             </div>
 
             {/* Tags Section */}
             <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-                <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">TAGS</h2>
-                <div className="flex flex-wrap gap-2">
-                    {tagsList.map((tag, index) => (
-                      <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(tag)}</p>
-                    ))}
-                </div>
+              <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">TAGS</h2>
+              <div className="flex flex-wrap gap-2">
+                {tagsList.map((tag, index) => (
+                  <p key={index} className="text-gray-300 text-sm">
+                    {replaceStatTextWithIcons(tag)}
+                  </p>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
         {/* Battle Skills Section */}
-        {character.type === 'attacker' && (
+        {character.type === "attacker" && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">BATTLE SKILLS</h2>
             <div className="grid grid-cols-2 gap-6">
@@ -573,7 +633,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           </div>
         )}
 
-        {character.type === 'protector' && character.divine_skills && (
+        {character.type === "protector" && character.divine_skills && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">DIVINE PROTECTION</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -583,18 +643,16 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     {skill.imageName ? (
                       <div className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
                         <img
-                          src={skill.imageName}
+                          src={skill.imageName || "/placeholder.svg"}
                           alt={skill.attackName}
                           className="w-10 h-10 object-contain"
                         />
                       </div>
                     ) : null}
-                    
-                    <div className={skill.imageName ? '' : 'ml-1'}>
+
+                    <div className={skill.imageName ? "" : "ml-1"}>
                       <h3 className="text-white font-medium">{skill.attackName}</h3>
-                      {skill.extraText && (
-                        <p className="text-blue-400 text-sm">{skill.extraText}</p>
-                      )}
+                      {skill.extraText && <p className="text-blue-400 text-sm">{skill.extraText}</p>}
                     </div>
                   </div>
                   <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
@@ -605,7 +663,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
         )}
 
         {/* Secret Skills Section */}
-        {character.type === 'attacker' && character.secret_skills && (
+        {character.type === "attacker" && character.secret_skills && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">SECRET SKILLS</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -631,9 +689,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     </div>
                     <div>
                       <h3 className="text-white font-medium">{skill.attackName}</h3>
-                      {skill.extraText && (
-                        <p className="text-blue-400 text-sm">{skill.extraText}</p>
-                      )}
+                      {skill.extraText && <p className="text-blue-400 text-sm">{skill.extraText}</p>}
                     </div>
                   </div>
                   <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
@@ -643,16 +699,18 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           </div>
         )}
 
-        {character.element.includes('ex') && character.type === 'attacker' && character.unbound && (
+        {character.element.includes("ex") && character.type === "attacker" && character.unbound && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
-            <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">True Attribute Unbound</h2>
+            <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">
+              True Attribute Unbound
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {character.unbound.map((skill, index) => (
                 <div key={index} className="bg-gray-900 rounded-lg p-4">
                   <div className="flex items-center space-x-3 mb-3">
                     <div className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
                       <img
-                        src={`/elements/Enhanced${character.element.replace(/^(ex_|prot_)+/, '')}.png`}
+                        src={`/elements/Enhanced${character.element.replace(/^(ex_|prot_)+/, "")}.png`}
                         alt="unbound"
                         className="w-10 h-10 object-contain"
                       />
@@ -665,7 +723,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           </div>
         )}
 
-        {character.type === 'protector' && character.protection_skill && (
+        {character.type === "protector" && character.protection_skill && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">PROTECTION SKILL</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -681,9 +739,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     </div>
                     <div>
                       <h3 className="text-white font-medium">{skill.attackName}</h3>
-                      {skill.extraText && (
-                        <p className="text-blue-400 text-sm">{skill.extraText}</p>
-                      )}
+                      {skill.extraText && <p className="text-blue-400 text-sm">{skill.extraText}</p>}
                     </div>
                   </div>
                   <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
@@ -713,30 +769,28 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                   </div>
                   <div>
                     <h3 className="text-white font-medium">{skill.attackName}</h3>
-                    {skill.extraText && (
-                      <p className="text-blue-400 text-sm">{skill.extraText}</p>
-                    )}
+                    {skill.extraText && <p className="text-blue-400 text-sm">{skill.extraText}</p>}
                   </div>
                 </div>
                 <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
               </div>
             ))}
 
-            {character.type === 'protector' && character.guidance_trait?.map((skill, index) => (
-              <div key={`guidance-${index}`} className="bg-gray-900 rounded-lg p-4">
-                <div className="flex items-center space-x-3 mb-3">
-                  <div>
-                    <h3 className="text-white font-medium">Enhance Guidance</h3>
+            {character.type === "protector" &&
+              character.guidance_trait?.map((skill, index) => (
+                <div key={`guidance-${index}`} className="bg-gray-900 rounded-lg p-4">
+                  <div className="flex items-center space-x-3 mb-3">
+                    <div>
+                      <h3 className="text-white font-medium">Enhance Guidance</h3>
+                    </div>
                   </div>
+                  <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
                 </div>
-                <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
-              </div>
-            ))}
+              ))}
           </div>
-
-        </div> 
-          {/* EX Abilities Section */}
-        {character.type === 'attacker' && character.ex_abilities && (
+        </div>
+        {/* EX Abilities Section */}
+        {character.type === "attacker" && character.ex_abilities && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">EX ABILITIES</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -754,9 +808,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     )}
                     <div>
                       <h3 className="text-white font-medium">{skill.attackName}</h3>
-                      {skill.extraText && (
-                        <p className="text-blue-400 text-sm">{skill.extraText}</p>
-                      )}
+                      {skill.extraText && <p className="text-blue-400 text-sm">{skill.extraText}</p>}
                     </div>
                   </div>
                   <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
