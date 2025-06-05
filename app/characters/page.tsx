@@ -750,7 +750,7 @@ export default function CharactersPage() {
                     )}
 
                     {/* Only show dmg_type icon if element is NOT empty AND dmg_type is NOT empty */}
-                    {character.element !== "" && character.dmg_type !== "" && (
+                    {character.dmg_type !== "" && (
                       <img
                         src={
                           dmg_typeIcons[
