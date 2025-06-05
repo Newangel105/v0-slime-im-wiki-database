@@ -38,7 +38,7 @@ interface Character {
   secret_skills: Array<{ description: string }>
   skill_traits: Array<{ description: string }>
   ex_abilities: Array<{ description: string }>
-  release: string
+  release_date: string
   final_attack: number
   final_health: number
   final_defense: number
@@ -671,7 +671,7 @@ export default function CharactersPage() {
   }
 
   const [sortKey, setSortKey] = useState<
-    "name" | "final_attack" | "final_health" | "final_defense" | "stars" | "release" | "existence" | null
+    "name" | "final_attack" | "final_health" | "final_defense" | "stars" | "release_date" | "existence" | null
   >(null)
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc")
 
@@ -769,7 +769,7 @@ export default function CharactersPage() {
         let aValue = a[sortKey]
         let bValue = b[sortKey]
 
-        if (sortKey === "release") {
+        if (sortKey === "release_date") {
           // Convert to dates
           aValue = new Date(a.release)
           bValue = new Date(b.release)
@@ -1140,7 +1140,7 @@ export default function CharactersPage() {
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-gray-300">CHARACTERS</h2>
               <div className="flex items-center space-x-4 text-sm text-gray-400">
-                {renderSortableHeader("release", "/icons/release.png", "Release")}
+                {renderSortableHeader("release_date", "/icons/release.png", "Release")}
                 {renderSortableHeader("final_attack", "/icons/ATK.png", "Attack")}
                 {renderSortableHeader("final_health", "/icons/HP.png", "Health")}
                 {renderSortableHeader("final_defense", "/icons/DEF.png", "Defense")}
