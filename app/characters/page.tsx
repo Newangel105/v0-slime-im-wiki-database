@@ -5,11 +5,10 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Search, Star, Sword, Shield, Gamepad2 } from "lucide-react"
+import { Search, Star, Sword, Shield, Gamepad2,X, ChevronDown } from "lucide-react"
 import Link from 'next/link'
 import { getAllCharacters } from '@/lib/getCharacters'
 import { useSearchParams } from "next/navigation"
-import { X } from "lucide-react"
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover"
 
 
@@ -297,6 +296,7 @@ export default function CharactersPage() {
   const [selectedUlti, setSelectedUlti] = useState<number[]>([])
   const [selectedCharType, setSelectedCharType] = useState<number[]>([])
   const [selectedAwakening, setSelectedAwakening] = useState<number[]>([])
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [skillsFilter, setSkillsFilter] = useState<string[]>([]);
   const [traitsFilter, setTraitsFilter] = useState("")
   const [forceFilter, setForceFilter] = useState("")
@@ -409,11 +409,9 @@ export default function CharactersPage() {
     });
   });
 
-  const toggleSkillFilter2 = (value: string) => {
+  const toggleSkillFilter2= (value: string) => {
     setSkillsFilter(prev =>
-      prev.includes(value)
-        ? prev.filter(v => v !== value)
-        : [...prev, value]
+      prev.includes(value) ? prev.filter(v => v !== value) : [...prev, value]
     );
   };
 
