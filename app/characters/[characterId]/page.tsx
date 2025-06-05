@@ -149,7 +149,6 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     // Special cases for P- and M-
     "P-": "P_",
     "M-": "M_ATK",
-    "M-ATK": "M_ATK",
 
     // Handle apostrophes and spaces
     "Shizu's Will": "Shizus_Will",
@@ -230,11 +229,11 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     Pariah: "Pariah",
     Schemer: "Schemer",
     Valentine: "Valentine",
-    All: "All",
-    Single: "Single",
-    "3": "3",
-    "4": "4",
-    "5": "5",
+    // All: "All",
+    // Single: "Single",
+    // "3": "3",
+    // "4": "4",
+    // "5": "5",
   }
 
   function renderFilterTag(value: string) {
