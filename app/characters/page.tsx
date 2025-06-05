@@ -777,13 +777,16 @@ export default function CharactersPage() {
 
             {/* Dropdown Filters */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
-              <Select
-                isMulti
-                options={options}
-                value={skillsFilter}
-                onChange={handleSkillsChange}
-                styles={customStyles}
-              />
+              <div className="relative col-span-1">
+                <Select
+                  isMulti
+                  options={options}
+                  value={skillsFilter}
+                  onChange={handleSkillsChange}
+                  styles={customStyles}
+                  placeholder="Select Skills"
+                />
+              </div>
 
               <div className="flex flex-wrap gap-2 mt-2">
                 {skillsFilter.map(({ value, label }) => (
