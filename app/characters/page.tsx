@@ -373,17 +373,17 @@ function MultiSelectDropdown({
 
 export default function CharactersPage() {
   const searchParams = useSearchParams()
-  const elementQuery = searchParams.get("element")
+  const query = searchParams.get("tag")
 
   const [searchTerm, setSearchTerm] = useState("")
   const [searchSkills, setSearchSkills] = useState(false)
   const [selectedElements, setSelectedElements] = useState<string[]>([])
   const [selectedWeapons, setSelectedWeapons] = useState<string[]>([])
   const [selectedStars, setSelectedStars] = useState<number[]>([])
-  const [selectedDMGType, setSelectedDMGType] = useState<number[]>([])
-  const [selectedType, setSelectedType] = useState<number[]>([])
-  const [selectedUlti, setSelectedUlti] = useState<number[]>([])
-  const [selectedCharType, setSelectedCharType] = useState<number[]>([])
+  const [selectedDMGType, setSelectedDMGType] = useState<string[]>([])
+  const [selectedType, setSelectedType] = useState<string[]>([])
+  const [selectedUlti, setSelectedUlti] = useState<string[]>([]);
+  const [selectedCharType, setSelectedCharType] = useState<string[]>([])
   const [selectedAwakening, setSelectedAwakening] = useState<number[]>([])
   const [dropdownOpen, setDropdownOpen] = useState(false)
 
@@ -436,10 +436,88 @@ export default function CharactersPage() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
 
-    if (params.has("element")) {
-      setSelectedElements([params.get("element")!.toLowerCase()])
-    } else if (params.has("force")) {
-      setSelectedForces([params.get("force")!])
+    const tag = params.get("tag");
+
+    if (!tag) return;
+
+    // 🔸 Define tag groups
+    const forces = [
+      "Shizu's Will", "Lycanthrope's Pride", "New Year's Blessing", "Ogre's Pride", "Warrior's Mind",
+      "Axiom of Haze", "Clan Chief", "Demon Lord Invasion", "Determination to Prosper", "Dragon Haki",
+      "Exalted Champions", "Festive Memories", "Flashback Beatdown Emissary", "Forest Fracas", "Fount of Wisdom",
+      "Frozen Continent", "Gaining Status", "Goddess of Destiny", "Heart of a Hero", "Hyper Heart",
+      "Monster and Human Mingling", "Octagram Bazaar", "Octagram Demon Lord", "Otherworld Legend", "Pretty Sparkle",
+      "Primal Demon", "Protector of Peace", "Scarlet Bond", "Spirit Master", "Stern of Spirit", "Summer Memories",
+      "Tempest Elite", "Ten Great Demon Lords", "Visions of Coleus", "Wholehearted Devotion", "Wielder of Magic",
+      "World of Fantasy"
+    ];
+
+    const weapons = ["Katana", "Hammer", "Spear", "Greatsword", "Book", "Fists"];
+    const elements = ["Fire", "Dark", "Earth", "Space", "Light", "Water", "Wind"];
+    const targetTypes = ["All", "Single"];
+    const damageTypes = ["Magic", "Physical"];
+    const starLevels = ["3", "4", "5", "EX 5"];
+    const characterTypes = ["Battle Characters", "Protection Characters"];
+    const exRoles = ["EX Attack", "EX Balance", "EX Defense"];
+
+    // 🔸 Handle each tag type
+    if (tag.startsWith("Skills")) {
+      // e.g. tag = "Skills - Buff"
+      setSelectedSkills([tag]); // assuming the full tag matches an option in skillOptions
+    } else if (tag.startsWith("Traits")) {
+      setSelectedTraits([tag]);
+    } else if (tag.endsWith("%")) {
+      setSelectedTowns([tag]);
+    } else if (forces.includes(tag)) {
+      setSelectedForces([tag]);
+    } else if (damageTypes.includes(tag)) {
+       if(tag == "Magic"){
+        setSelectedDMGType(["magic"]);
+      }
+      else{
+        setSelectedDMGType(["phys"])
+      }
+    } else if (targetTypes.includes(tag)) {
+      if(tag == "All"){
+        setSelectedUlti(["aoe"]);
+      }
+      if(tag == "Single"){
+        setSelectedUlti(["single"]);
+      }
+    } else if (starLevels.includes(tag)) {
+      // Handle star level
+      if (tag === "EX 5") {
+        setSelectedStars([6]); // EX 5 maps to 6-star filter
+      } else {
+        setSelectedStars([parseInt(tag)]);
+      }
+    } else if (tag.startsWith("Anti")) {
+      // Handle anti-type tags
+      setSelectedElements([tag.replace("Anti-", "").toLowerCase()]);
+    } else if (elements.includes(tag)) {
+      // Handle element tag
+      setSelectedElements([tag.toLowerCase()]);
+    } else if (characterTypes.includes(tag)) {
+      // Battle or Protection characters
+      
+      if (tag === "Battle Characters") {
+        setSelectedType(["attacker"]);
+      } else {
+        setSelectedType(["protector"]);
+      }
+    } else if (exRoles.includes(tag)) {
+      // EX Role selection
+      if (tag === "EX Attack") {
+        setSelectedCharType(["attack"]);
+      } else if(tag === "EX Balance") {
+        setSelectedCharType(["balance"]);
+      }
+      else {
+        setSelectedCharType(["defense"]);
+      }
+    } else if (weapons.includes(tag)) {
+      // Weapon filtering
+      setSelectedWeapons([tag.toLowerCase()])
     }
     // add similar conditions for others if needed
   }, [])

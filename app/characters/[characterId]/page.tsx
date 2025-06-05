@@ -308,7 +308,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   }
 
   function renderFilterTag(value: string, key: string) {
-    const icon = statIconMap[key] // direct use of mapped key
+    const icon = statIconMap[key]
     const iconSize = "w-5 h-5"
     const fontSize = "text-sm"
     const paddingX = "px-3"
@@ -318,6 +318,12 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
       <Link
         href={`/characters?tag=${encodeURIComponent(value)}`}
         className={`inline-flex items-center ${paddingX} ${paddingY} rounded-full bg-[#111827] text-white ${fontSize} font-medium mx-0.5 hover:bg-[#909090] shadow-[0_0_8px_rgba(255,255,255,0.3)]`}
+        style={{
+          verticalAlign: "baseline",
+          display: "inline-flex",
+          alignItems: "center",
+          lineHeight: "1",
+        }}
       >
         {icon && <img src={icon || "/placeholder.svg"} alt={value} className={`${iconSize} mr-2 object-contain`} />}
         {value}
@@ -429,8 +435,13 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
               result.push(
                 <span
                   key={keyIndex++}
-                  className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium mx-0.5 shadow-[0_0_8px_rgba(255,255,255,0.4)] align-baseline"
-                  style={{ verticalAlign: "baseline" }}
+                  className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)]"
+                  style={{
+                    verticalAlign: "baseline",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    lineHeight: "1",
+                  }}
                 >
                   <img src={icon || "/placeholder.svg"} alt={matchedText} className="w-3 h-3 mr-1 object-contain" />
                   {matchedText}
@@ -444,8 +455,13 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             result.push(
               <span
                 key={keyIndex++}
-                className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium mx-0.5 shadow-[0_0_8px_rgba(255,255,255,0.4)] align-baseline"
-                style={{ verticalAlign: "baseline" }}
+                className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)]"
+                style={{
+                  verticalAlign: "baseline",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  lineHeight: "1",
+                }}
               >
                 <img
                   src={statIconMap[matchedText] || "/placeholder.svg"}
@@ -474,8 +490,13 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           result.push(
             <span
               key={keyIndex++}
-              className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium mx-0.5 shadow-[0_0_8px_rgba(255,255,255,0.4)] align-baseline"
-              style={{ verticalAlign: "baseline" }}
+              className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)]"
+              style={{
+                verticalAlign: "baseline",
+                display: "inline-flex",
+                alignItems: "center",
+                lineHeight: "1",
+              }}
             >
               {matchedText}
             </span>,
@@ -493,8 +514,13 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           result.push(
             <span
               key={keyIndex++}
-              className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium mx-0.5 shadow-[0_0_8px_rgba(255,255,255,0.4)] align-baseline"
-              style={{ verticalAlign: "baseline" }}
+              className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)]"
+              style={{
+                verticalAlign: "baseline",
+                display: "inline-flex",
+                alignItems: "center",
+                lineHeight: "1",
+              }}
             >
               {matchedText}
             </span>,
@@ -512,8 +538,13 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           result.push(
             <span
               key={keyIndex++}
-              className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium mx-0.5 shadow-[0_0_8px_rgba(255,255,255,0.4)] align-baseline"
-              style={{ verticalAlign: "baseline" }}
+              className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)]"
+              style={{
+                verticalAlign: "baseline",
+                display: "inline-flex",
+                alignItems: "center",
+                lineHeight: "1",
+              }}
             >
               {matchedText}
             </span>,
