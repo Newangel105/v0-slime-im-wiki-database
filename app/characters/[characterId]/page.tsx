@@ -307,17 +307,167 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     })
   }
 
+  // Helper function to determine button type and styling
+  function getButtonStyle(text: string, hasIcon: boolean) {
+    // Small buttons for stats and special patterns
+    if (
+      ["ATK", "DEF", "HP"].includes(text) ||
+      /^Turns\s+\d+$/i.test(text) ||
+      /^Unlimited$/i.test(text) ||
+      /^Uses\s+by\s+this\s+character\s+per\s+battle:\s*\d+$/i.test(text)
+    ) {
+      return {
+        className:
+          "inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)]",
+        iconSize: "w-3 h-3",
+        style: {
+          verticalAlign: "baseline",
+          display: "inline-flex",
+          alignItems: "center",
+          lineHeight: "1",
+        },
+      }
+    }
+
+    // Medium buttons for elements and forces (smaller than before)
+    return {
+      className:
+        "inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)]",
+      iconSize: "w-3 h-3",
+      style: {
+        verticalAlign: "baseline",
+        display: "inline-flex",
+        alignItems: "center",
+        lineHeight: "1",
+      },
+    }
+  }
+
+  // 5. The main function - improved to prevent overlapping matches and only replace where patterns naturally occur
+  function replaceStatTextWithIcons(text: string): React.ReactNode[] {
+    const result: React.ReactNode[] = []
+    let remainingText = text
+    let keyIndex = 0
+
+    while (remainingText.length > 0) {
+      let foundMatch = false
+
+      // Try to find the longest match at the beginning of remaining text
+      for (const key of sortedKeys) {
+        const regex = new RegExp(`^(${escapeRegex(key)})`, "i")
+        const match = remainingText.match(regex)
+
+        if (match) {
+          const matchedText = match[1]
+          const mappedKey = textToKeyMap[matchedText] || matchedText.replace(/[\s-]+/g, "_")
+          const icon = statIconMap[mappedKey]
+
+          if (icon) {
+            const buttonStyle = getButtonStyle(matchedText, true)
+
+            if (shouldGetButtonTreatment(matchedText)) {
+              // Button treatment with no link - proper glow and baseline alignment
+              result.push(
+                <span key={keyIndex++} className={buttonStyle.className} style={buttonStyle.style}>
+                  <img
+                    src={icon || "/placeholder.svg"}
+                    alt={matchedText}
+                    className={`${buttonStyle.iconSize} mr-1 object-contain`}
+                  />
+                  {matchedText}
+                </span>,
+              )
+            } else {
+              result.push(<span key={keyIndex++}>{renderFilterTag(matchedText, mappedKey)}</span>)
+            }
+          } else if (statIconMap[matchedText]) {
+            const buttonStyle = getButtonStyle(matchedText, true)
+            result.push(
+              <span key={keyIndex++} className={buttonStyle.className} style={buttonStyle.style}>
+                <img
+                  src={statIconMap[matchedText] || "/placeholder.svg"}
+                  alt={matchedText}
+                  className={`${buttonStyle.iconSize} mr-1 object-contain`}
+                />
+                {matchedText}
+              </span>,
+            )
+          } else {
+            result.push(<span key={keyIndex++}>{matchedText}</span>)
+          }
+
+          remainingText = remainingText.slice(matchedText.length)
+          foundMatch = true
+          break
+        }
+      }
+
+      // Check for special patterns that should get button treatment
+      if (!foundMatch) {
+        // Check for "Turns X" pattern
+        const turnsMatch = remainingText.match(/^(Turns\s+\d+)/i)
+        if (turnsMatch) {
+          const matchedText = turnsMatch[1]
+          const buttonStyle = getButtonStyle(matchedText, false)
+          result.push(
+            <span key={keyIndex++} className={buttonStyle.className} style={buttonStyle.style}>
+              {matchedText}
+            </span>,
+          )
+          remainingText = remainingText.slice(matchedText.length)
+          foundMatch = true
+        }
+      }
+
+      if (!foundMatch) {
+        // Check for "Unlimited" pattern
+        const unlimitedMatch = remainingText.match(/^(Unlimited)/i)
+        if (unlimitedMatch) {
+          const matchedText = unlimitedMatch[1]
+          const buttonStyle = getButtonStyle(matchedText, false)
+          result.push(
+            <span key={keyIndex++} className={buttonStyle.className} style={buttonStyle.style}>
+              {matchedText}
+            </span>,
+          )
+          remainingText = remainingText.slice(matchedText.length)
+          foundMatch = true
+        }
+      }
+
+      if (!foundMatch) {
+        // Check for "Uses by this character per battle: X" pattern
+        const usesMatch = remainingText.match(/^(Uses\s+by\s+this\s+character\s+per\s+battle:\s*\d+)/i)
+        if (usesMatch) {
+          const matchedText = usesMatch[1]
+          const buttonStyle = getButtonStyle(matchedText, false)
+          result.push(
+            <span key={keyIndex++} className={buttonStyle.className} style={buttonStyle.style}>
+              {matchedText}
+            </span>,
+          )
+          remainingText = remainingText.slice(matchedText.length)
+          foundMatch = true
+        }
+      }
+
+      if (!foundMatch) {
+        // No match found, add the first character and continue
+        result.push(<span key={keyIndex++}>{remainingText[0]}</span>)
+        remainingText = remainingText.slice(1)
+      }
+    }
+
+    return result.filter(Boolean)
+  }
+
   function renderFilterTag(value: string, key: string) {
     const icon = statIconMap[key]
-    const iconSize = "w-5 h-5"
-    const fontSize = "text-sm"
-    const paddingX = "px-3"
-    const paddingY = "py-1"
 
     return (
       <Link
         href={`/characters?tag=${encodeURIComponent(value)}`}
-        className={`inline-flex items-center ${paddingX} ${paddingY} rounded-full bg-[#111827] text-white ${fontSize} font-medium mx-0.5 hover:bg-[#909090] shadow-[0_0_8px_rgba(255,255,255,0.3)]`}
+        className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)]"
         style={{
           verticalAlign: "baseline",
           display: "inline-flex",
@@ -325,7 +475,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           lineHeight: "1",
         }}
       >
-        {icon && <img src={icon || "/placeholder.svg"} alt={value} className={`${iconSize} mr-2 object-contain`} />}
+        {icon && <img src={icon || "/placeholder.svg"} alt={value} className="w-3 h-3 mr-1 object-contain" />}
         {value}
       </Link>
     )
@@ -408,160 +558,6 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     if (/^Uses\s+by\s+this\s+character\s+per\s+battle:\s*\d+$/i.test(text)) return true
 
     return false
-  }
-
-  // 5. The main function - improved to prevent overlapping matches and only replace where patterns naturally occur
-  function replaceStatTextWithIcons(text: string): React.ReactNode[] {
-    const result: React.ReactNode[] = []
-    let remainingText = text
-    let keyIndex = 0
-
-    while (remainingText.length > 0) {
-      let foundMatch = false
-
-      // Try to find the longest match at the beginning of remaining text
-      for (const key of sortedKeys) {
-        const regex = new RegExp(`^(${escapeRegex(key)})`, "i")
-        const match = remainingText.match(regex)
-
-        if (match) {
-          const matchedText = match[1]
-          const mappedKey = textToKeyMap[matchedText] || matchedText.replace(/[\s-]+/g, "_")
-          const icon = statIconMap[mappedKey]
-
-          if (icon) {
-            if (shouldGetButtonTreatment(matchedText)) {
-              // Button treatment with no link - proper glow and baseline alignment
-              result.push(
-                <span
-                  key={keyIndex++}
-                  className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)]"
-                  style={{
-                    verticalAlign: "baseline",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    lineHeight: "1",
-                  }}
-                >
-                  <img src={icon || "/placeholder.svg"} alt={matchedText} className="w-3 h-3 mr-1 object-contain" />
-                  {matchedText}
-                </span>,
-              )
-            } else {
-              result.push(<span key={keyIndex++}>{renderFilterTag(matchedText, mappedKey)}</span>)
-            }
-          } else if (statIconMap[matchedText]) {
-            const iconSize = matchedText === "ATK" ? "w-3 h-3" : "w-3 h-3"
-            result.push(
-              <span
-                key={keyIndex++}
-                className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)]"
-                style={{
-                  verticalAlign: "baseline",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  lineHeight: "1",
-                }}
-              >
-                <img
-                  src={statIconMap[matchedText] || "/placeholder.svg"}
-                  alt={matchedText}
-                  className={`${iconSize} mr-1 object-contain`}
-                />
-                {matchedText}
-              </span>,
-            )
-          } else {
-            result.push(<span key={keyIndex++}>{matchedText}</span>)
-          }
-
-          remainingText = remainingText.slice(matchedText.length)
-          foundMatch = true
-          break
-        }
-      }
-
-      // Check for special patterns that should get button treatment
-      if (!foundMatch) {
-        // Check for "Turns X" pattern
-        const turnsMatch = remainingText.match(/^(Turns\s+\d+)/i)
-        if (turnsMatch) {
-          const matchedText = turnsMatch[1]
-          result.push(
-            <span
-              key={keyIndex++}
-              className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)]"
-              style={{
-                verticalAlign: "baseline",
-                display: "inline-flex",
-                alignItems: "center",
-                lineHeight: "1",
-              }}
-            >
-              {matchedText}
-            </span>,
-          )
-          remainingText = remainingText.slice(matchedText.length)
-          foundMatch = true
-        }
-      }
-
-      if (!foundMatch) {
-        // Check for "Unlimited" pattern
-        const unlimitedMatch = remainingText.match(/^(Unlimited)/i)
-        if (unlimitedMatch) {
-          const matchedText = unlimitedMatch[1]
-          result.push(
-            <span
-              key={keyIndex++}
-              className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)]"
-              style={{
-                verticalAlign: "baseline",
-                display: "inline-flex",
-                alignItems: "center",
-                lineHeight: "1",
-              }}
-            >
-              {matchedText}
-            </span>,
-          )
-          remainingText = remainingText.slice(matchedText.length)
-          foundMatch = true
-        }
-      }
-
-      if (!foundMatch) {
-        // Check for "Uses by this character per battle: X" pattern
-        const usesMatch = remainingText.match(/^(Uses\s+by\s+this\s+character\s+per\s+battle:\s*\d+)/i)
-        if (usesMatch) {
-          const matchedText = usesMatch[1]
-          result.push(
-            <span
-              key={keyIndex++}
-              className="inline-flex items-center px-2 py-0.5 rounded-md bg-gray-600 text-white text-xs font-medium shadow-[0_0_8px_rgba(255,255,255,0.4)]"
-              style={{
-                verticalAlign: "baseline",
-                display: "inline-flex",
-                alignItems: "center",
-                lineHeight: "1",
-              }}
-            >
-              {matchedText}
-            </span>,
-          )
-          remainingText = remainingText.slice(matchedText.length)
-          foundMatch = true
-        }
-      }
-
-      if (!foundMatch) {
-        // No match found, add the first character and continue
-        result.push(<span key={keyIndex++}>{remainingText[0]}</span>)
-        remainingText = remainingText.slice(1)
-      }
-    }
-
-    return result.filter(Boolean)
   }
 
   // Combined function that handles both line breaks AND icon replacement
