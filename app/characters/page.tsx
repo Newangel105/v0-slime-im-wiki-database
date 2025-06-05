@@ -372,7 +372,7 @@ export default function CharactersPage() {
   const townData: Set<string> = new Set();
 
   characters.forEach((char) => {
-    const tags = char.force
+    const tags = char.tag
 
     tags.forEach((tag: string) => {
       const tagLower = tag.toLowerCase().trim();
