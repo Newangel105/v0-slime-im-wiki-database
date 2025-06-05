@@ -629,8 +629,8 @@ export default function CharactersPage() {
                     <img
                       src={
                         character.type === "attacker"
-                          ? (elementIcons[re.sub(r'\s+', '_', character.element)] || "/placeholder.svg")
-                          : (protelementIcons[re.sub(r'\s+', '_', character.element)] || "/placeholder.svg")
+                          ? (elementIcons[character.element.replace(/\s+/g, "_")] || "/placeholder.svg")
+                          : (protelementIcons[character.element.replace(/\s+/g, "_")] || "/placeholder.svg")
                       }
                       alt={character.element}
                       className="w-6 h-6 object-contain"
