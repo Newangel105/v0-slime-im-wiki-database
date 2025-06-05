@@ -195,85 +195,77 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   }
 
 
-  // Escape regex special characters in a string
-  function escapeRegex(str: string) {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const specialKeys = ["P_", "M_ATK"];
+
+  // Step 1: Build a map from normalized text in the input to statIconMap keys
+  const textToKeyMap: Record<string, string> = {};
+
+  for (const key of Object.keys(statIconMap)) {
+    if (specialKeys.includes(key)) {
+      // For special keys, convert underscores to dashes for text matching
+      const textForm = key.replace(/_/g, '-');
+      textToKeyMap[textForm.toLowerCase()] = key;
+    } else {
+      // For others, convert underscores to spaces and remove apostrophes
+      const textForm = key
+        .replace(/_/g, ' ')
+        .replace(/'/g, '')  // remove apostrophes from key for matching text
+        .toLowerCase();
+
+      textToKeyMap[textForm] = key;
+    }
   }
 
-  const specialUnderscoreToDashKeys = ["P_", "M_ATK"];
+  // Build a regex from all keys in text form (escape special regex characters)
+  const escapeRegex = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-  // Generate regex parts from keys
-  const regexParts = Object.keys(statIconMap).map(key => {
-    if (specialUnderscoreToDashKeys.includes(key)) {
-      // Replace underscore with dash, escape special chars
-      return escapeRegex(key.replace(/_/g, '-'));
-    } else if (key.includes('_')) {
-      // Replace underscore with space, escape special chars
-      return escapeRegex(key.replace(/_/g, ' '));
-    } else {
-      // No underscore, just escape
-      return escapeRegex(key);
-    }
-  });
+  const regexPattern = Object.keys(textToKeyMap)
+    .map(escapeRegex)
+    .sort((a, b) => b.length - a.length) // longer matches first to avoid partial matches
+    .join('|');
 
-  // Join all keys as alternatives
-  const combinedPattern = `(${regexParts.join('|')})`;
-
-  // Use global flag, and probably case-insensitive if needed
-  const regex = new RegExp(combinedPattern, 'g');
-
+  const regex = new RegExp(regexPattern, 'gi');
 
   function replaceStatTextWithIcons(text: string) {
-    const specialKeys = ["P_", "M_ATK"];
+    const parts = [];
+    let lastIndex = 0;
 
-    // Build regex for matching text keys:
-    function escapeRegex(str: string) {
-      return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    }
-
-    // Convert statIconMap keys to expected text format for regex:
-    const regexParts = Object.keys(statIconMap).map(key => {
-      if (specialKeys.includes(key)) {
-        // For P_ and M_ATK, convert _ to - for matching in text
-        return escapeRegex(key.replace(/_/g, '-'));
-      } else {
-        // For others, convert _ to space, also remove apostrophes for matching
-        // We'll match apostrophes optionally with a character class ['’]? (apostrophe or right single quote)
-        const keyWithSpaces = key.replace(/_/g, ' ').replace(/'/g, "['’]?"); 
-        return keyWithSpaces.split(' ').map(escapeRegex).join(' ');
-      }
-    });
-
-    const combinedPattern = `(${regexParts.join('|')})`;
-    const regex = new RegExp(combinedPattern, 'g');
-
-    // Split text by matched tokens
-    const parts = text.split(regex);
-
-    return parts.map((part, index) => {
-      if (!part) return null;
-
-      let normalizedKey = part;
-
-      // Handle special cases for P- and M-ATK:
-      if (specialKeys.some(k => part === k.replace(/_/g, '-'))) {
-        normalizedKey = part.replace(/-/g, '_');
-      } else {
-        // For others: remove apostrophes, replace spaces with underscores
-        normalizedKey = part.replace(/['’]/g, '').replace(/ /g, '_');
+    text.replace(regex, (match, offset) => {
+      // Push text before match
+      if (offset > lastIndex) {
+        parts.push(text.slice(lastIndex, offset));
       }
 
-      if (statIconMap[normalizedKey]) {
-        return (
-          <span key={index}>
-            {renderFilterTag(part)}
+      const normalizedMatch = match.toLowerCase().replace(/'/g, '');
+
+      // Find original key in statIconMap
+      const key = textToKeyMap[normalizedMatch];
+
+      if (key && statIconMap[key]) {
+        // Render your clickable tag with icon here
+        parts.push(
+          <span key={offset}>
+            {renderFilterTag(match)}
           </span>
         );
+      } else {
+        // Fallback to plain text (shouldn't happen)
+        parts.push(match);
       }
 
-      return <span key={index}>{part}</span>;
+      lastIndex = offset + match.length;
+
+      return match; // Not replacing in string, just using replace for iteration
     });
+
+    // Push remaining text
+    if (lastIndex < text.length) {
+      parts.push(text.slice(lastIndex));
+    }
+
+    return parts;
   }
+
 
 
   if (!character) {
