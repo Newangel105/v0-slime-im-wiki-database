@@ -67,7 +67,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     "EX Defense": "EX_Defense",
   };
 
-  const customIcons = {
+  const customIcons: { [key: string]: string } = {
     Fire: "/elements/icElementFire.png",
     Water: "/elements/icElementWater.png",
     Earth: "/elements/icElementEarth.png",
@@ -295,7 +295,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
       const mappedKey = customTextToKeyMap[part] || part.replace(/[\s-]+/g, '_');
 
       // Get the icon if exists
-      const icon = statIconMap[mappedKey];
+      const icon = customIcons[mappedKey];
 
       return (
         <span key={index}>
@@ -723,7 +723,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                 <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">TAGS</h2>
                 <div className="flex flex-wrap gap-2">
                     {tagsList.map((tag, index) => (
-                      <p className="text-gray-300 text-sm">{replaceTextWithLinksAndOptionalIcons(tag, customMap, customIcons)}</p>
+                      <p className="text-gray-300 text-sm">{replaceTextWithLinksAndOptionalIcons(tag, customMap)}</p>
                     ))}
                 </div>
             </div>
