@@ -771,8 +771,8 @@ export default function CharactersPage() {
 
         if (sortKey === "release_date") {
           // Convert to dates
-          aValue = new Date(a.release)
-          bValue = new Date(b.release)
+          aValue = new Date(a.release_date)
+          bValue = new Date(b.release_date)
         }
 
         if (typeof aValue === "string") aValue = aValue.toLowerCase()

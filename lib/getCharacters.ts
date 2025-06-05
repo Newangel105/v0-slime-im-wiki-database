@@ -46,7 +46,7 @@ export type Character = {
   ulti?: string
   force: string[]
   tag: string[]
-  release: string
+  release_date: string
   image?: string
   initial_attack: number
   initial_health: number
