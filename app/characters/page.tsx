@@ -60,20 +60,65 @@ const protelementIcons2 = {
   prot_wind: "/protector_elements/Anti-Wind.png",
   prot_dark: "/protector_elements/Anti-Dark.png",
   prot_light: "/protector_elements/Anti-Light.png",
-  old_fire: "/protector_elements/Fire.png",
-  old_water: "/protector_elements/Water.png",
-  old_earth: "/protector_elements/Earth.png",
-  old_space: "/protector_elements/Space.png",
-  old_wind: "/protector_elements/Wind.png",
-  old_dark: "/protector_elements/Dark.png",
-  old_light: "/protector_elements/Light.png",
+  old_fire: "/protector_elements/fire.png",
+  old_water: "/protector_elements/water.png",
+  old_earth: "/protector_elements/earth.png",
+  old_space: "/protector_elements/space.png",
+  old_wind: "/protector_elements/wind.png",
+  old_dark: "/protector_elements/dark.png",
+  old_light: "/protector_elements/light.png",
   prot_ex_fire: "/elements/anti_fire_attribute_unbound.png",
   prot_ex_water: "/elements/anti_water_attribute_unbound.png",
   prot_ex_earth: "/elements/anti_earth_attribute_unbound.png",
   prot_ex_space: "/elements/anti_space_attribute_unbound.png",
   prot_ex_wind: "/elements/anti_wind_attribute_unbound.png",
   prot_ex_dark: "/elements/anti_dark_attribute_unbound.png",
-  prot_ex_light: "/elements/anti_light_attribute_unbound.png"
+  prot_ex_light: "/elements/anti_light_attribute_unbound.png",
+  Adventurer: "/protector_elements/Adventurer.png",
+  Antagonist: "/protector_elements/Antagonist.png",
+  Axiom_of_Haze: "/protector_elements/Axiom_of_Haze.png",
+  Clan_Chief: "/protector_elements/Clan_Chief.png",
+  Commander: "/protector_elements/Commander.png",
+  Demon_Lord_Invasion: "/protector_elements/Demon_Lord_Invasion.png",
+  Determination_to_Prosper: "/protector_elements/Determination_to_Prosper.png",
+  Dragon_Haki: "/protector_elements/Dragon_Haki.png",
+  Exalted_Champions: "/protector_elements/Exalted_Champions.png",
+  Festive_Memories: "/protector_elements/Festive_Memories.png",
+  Flashback_Beatdown_Emissary: "/protector_elements/Flashback_Beatdown_Emissary.png",
+  Forest_Fracas: "/protector_elements/Forest_Fracas.png",
+  Fount_of_Wisdom: "/protector_elements/Fount_of_Wisdom.png",
+  Frozen_Continent: "/protector_elements/Frozen_Continent.png",
+  Gaining_Status: "/protector_elements/Gaining_Status.png",
+  Goddess_of_Destiny: "/protector_elements/Goddess_of_Destiny.png",
+  Heart_of_a_Hero: "/protector_elements/Heart_of_a_Hero.png",
+  Hyper_Heart: "/protector_elements/Hyper_Heart.png",
+  Lycanthropes_Pride: "/protector_elements/Lycanthrope's_Pride.png",
+  Monster_and_Human_Mingling: "/protector_elements/Monster_and_Human_Mingling.png",
+  New_Years_Blessing: "/protector_elements/New_Year's_Blessing.png",
+  Octagram: "/protector_elements/Octagram.png",
+  Octagram_Bazaar: "/protector_elements/Octagram_Bazaar.png",
+  Octagram_Demon_Lord: "/protector_elements/Octagram_Demon_Lord.png",
+  Ogres_Pride: "/protector_elements/Ogre's_Pride.png",
+  Otherworlder: "/protector_elements/Otherworlder.png",
+  Otherworld_Legend: "/protector_elements/Otherworld_Legend.png",
+  Pariah: "/protector_elements/Pariah.png",
+  Pretty_Sparkle: "/protector_elements/Pretty_Sparkle.png",
+  Primal_Demon: "/protector_elements/Primal_Demon.png",
+  Protector_of_Peace: "/protector_elements/Protector_of_Peace.png",
+  Scarlet_Bond: "/protector_elements/Scarlet_Bond.png",
+  Schemer: "/protector_elements/Schemer.png",
+  Shizus_Will: "/protector_elements/Shizu's_Will.png",
+  Spirit_Master: "/protector_elements/Spirit_Master.png",
+  Stern_of_Spirit: "/protector_elements/Stern_of_Spirit.png",
+  Summer_Memories: "/protector_elements/Summer_Memories.png",
+  Tempest_Elite: "/protector_elements/Tempest_Elite.png",
+  Ten_Great_Demon_Lords: "/protector_elements/Ten_Great_Demon_Lords.png",
+  Valentine: "/protector_elements/Valentine.png",
+  Visions_of_Coleus: "/protector_elements/Visions_of_Coleus.png",
+  Warriors_Mind: "/protector_elements/Warrior's_Mind.png",
+  Wholehearted_Devotion: "/protector_elements/Wholehearted_Devotion.png",
+  Wielder_of_Magic: "/protector_elements/Wielder_of_Magic.png",
+  World_of_Fantasy: "/protector_elements/World_of_Fantasy.png"
 }
 
 const protelementIcons = {
@@ -688,20 +733,26 @@ export default function CharactersPage() {
 
                   {/* Element Icon (top-right) */}
                   <div className="absolute top-1 right-1 flex flex-col items-center z-20 space-y-1">
-                    <img
-                      src={
-                        character.type === "attacker"
-                          ? (elementIcons[character.element.replace(/\s+/g, "_").replace(/'/g, "")] || "/placeholder.svg")
-                          : (protelementIcons2[character.element.replace(/\s+/g, "_").replace(/'/g, "")] || "/placeholder.svg")
-                      }
-                      alt={character.element}
-                      className="w-6 h-6 object-contain"
-                    />
-                    <img
-                      src={dmg_typeIcons[character.dmg_type.replace(/\s+/g, "_").replace(/'/g, "")]}
-                      alt="Dmg"
-                      className="w-6 h-6 object-contain"
-                    />
+                    {character.element !== "" && (
+                      <img
+                        src={
+                          character.type === "attacker"
+                            ? (elementIcons[character.element.replace(/\s+/g, "_").replace(/'/g, "")] || "/placeholder.svg")
+                            : (protelementIcons2[character.element.replace(/\s+/g, "_").replace(/'/g, "")] || "/placeholder.svg")
+                        }
+                        alt={character.element}
+                        className="w-6 h-6 object-contain"
+                      />
+                    )}
+
+                    {/* Only show dmg_type icon if element is NOT empty AND dmg_type is NOT empty */}
+                    {character.element !== "" && character.dmg_type !== "" && (
+                      <img
+                        src={dmg_typeIcons[character.dmg_type.replace(/\s+/g, "_").replace(/'/g, "")]}
+                        alt="Dmg"
+                        className="w-6 h-6 object-contain"
+                      />
+                    )}
                   </div>
                 </div>
               </Link>
