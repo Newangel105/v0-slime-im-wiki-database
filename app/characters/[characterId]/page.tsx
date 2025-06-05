@@ -1,4 +1,4 @@
-import React from "react"
+import type React from "react"
 import characters from "@/app/data/characters.json"
 import { Heart, Sword, Shield, Zap, Target, Gamepad2, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -387,60 +387,89 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
 
   const regex = new RegExp(`(${sortedKeys.map(escapeRegex).join("|")})`, "gi")
 
-  // 5. The main function
+  // 5. The main function - improved to prevent overlapping matches
   function replaceStatTextWithIcons(text: string): React.ReactNode[] {
-    return text.split(regex).map((part, i) => {
-      if (!part) return null
+    const result: React.ReactNode[] = []
+    let remainingText = text
+    let keyIndex = 0
 
-      const mappedKey = textToKeyMap[part] || part.replace(/[\s-]+/g, "_")
-      const icon = statIconMap[mappedKey]
+    while (remainingText.length > 0) {
+      let foundMatch = false
 
-      if (icon) {
-        if (["ATK", "DEF", "HP"].includes(part)) {
-          // Just render the plain text + icon, no link
-          return (
-            <span
-              key={i}
-              className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#909090] text-white text-xs font-medium mx-1"
-            >
-              <img src={icon || "/placeholder.svg"} alt={part} className="w-4 h-4 mr-1 object-contain" />
-              {part}
-            </span>
-          )
+      // Try to find the longest match at the beginning of remaining text
+      for (const key of sortedKeys) {
+        const regex = new RegExp(`^(${escapeRegex(key)})`, "i")
+        const match = remainingText.match(regex)
+
+        if (match) {
+          const matchedText = match[1]
+          const mappedKey = textToKeyMap[matchedText] || matchedText.replace(/[\s-]+/g, "_")
+          const icon = statIconMap[mappedKey]
+
+          if (icon) {
+            if (["ATK", "DEF", "HP"].includes(matchedText)) {
+              // Just render the plain text + icon, no link
+              result.push(
+                <span
+                  key={keyIndex++}
+                  className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#909090] text-white text-xs font-medium mx-1"
+                >
+                  <img src={icon || "/placeholder.svg"} alt={matchedText} className="w-4 h-4 mr-1 object-contain" />
+                  {matchedText}
+                </span>,
+              )
+            } else {
+              result.push(<span key={keyIndex++}>{renderFilterTag(matchedText, mappedKey)}</span>)
+            }
+          } else if (statIconMap[matchedText]) {
+            const iconSize = matchedText === "ATK" ? "w-3 h-4" : "w-4 h-4"
+            result.push(
+              <span
+                key={keyIndex++}
+                className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#909090] text-white text-xs font-medium mx-1"
+              >
+                <img
+                  src={statIconMap[matchedText] || "/placeholder.svg"}
+                  alt={matchedText}
+                  className={`${iconSize} mr-1 object-contain`}
+                />
+                {matchedText}
+              </span>,
+            )
+          } else {
+            result.push(<span key={keyIndex++}>{matchedText}</span>)
+          }
+
+          remainingText = remainingText.slice(matchedText.length)
+          foundMatch = true
+          break
         }
-        return <span key={i}>{renderFilterTag(part, mappedKey)}</span>
       }
 
-      // Fallback icon-only render
-      if (statIconMap[part]) {
-        const iconSize = part === "ATK" ? "w-3 h-4" : "w-4 h-4"
-        return (
-          <span
-            key={i}
-            className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#909090] text-white text-xs font-medium mx-1"
-          >
-            <img
-              src={statIconMap[part] || "/placeholder.svg"}
-              alt={part}
-              className={`${iconSize} mr-1 object-contain`}
-            />
-            {part}
-          </span>
-        )
+      if (!foundMatch) {
+        // No match found, add the first character and continue
+        result.push(<span key={keyIndex++}>{remainingText[0]}</span>)
+        remainingText = remainingText.slice(1)
       }
+    }
 
-      return <span key={i}>{part}</span>
-    })
+    return result.filter(Boolean)
   }
 
   // Combined function that handles both line breaks AND icon replacement
   function renderTextWithLineBreaksAndIcons(text: string): React.ReactNode {
-    return text.split("\\n").map((line, idx, arr) => (
-      <React.Fragment key={idx}>
-        <span className="block">{replaceStatTextWithIcons(line)}</span>
-        {idx < arr.length - 1 && <br />}
-      </React.Fragment>
-    ))
+    // Handle both literal \n and escaped \\n
+    const lines = text.split(/\\n|\n/)
+
+    return (
+      <div className="space-y-1">
+        {lines.map((line, idx) => (
+          <div key={idx} className="block">
+            {replaceStatTextWithIcons(line.trim())}
+          </div>
+        ))}
+      </div>
+    )
   }
 
   if (!character) {
@@ -801,6 +830,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           </div>
         )}
 
+        {/* True Attribute Unbound Section */}
         {character.element.includes("ex") && character.type === "attacker" && character.unbound && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">
@@ -825,6 +855,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
           </div>
         )}
 
+        {/* Protection Skill Section */}
         {character.type === "protector" && character.protection_skill && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
             <h2 className="text-lg font-semibold mb-6 text-gray-300 uppercase tracking-wider">PROTECTION SKILL</h2>
@@ -832,7 +863,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
               {character.protection_skill.map((skill, index) => (
                 <div key={index} className="bg-gray-900 rounded-lg p-4">
                   <div className="flex items-center space-x-3 mb-3">
-                    <div className="w-12 h-12  rounded-lg flex items-center justify-center overflow-hidden">
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
                       <img
                         src={`/chars/${character.id}/prot.png`}
                         alt={skill.attackName}
@@ -891,6 +922,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
               ))}
           </div>
         </div>
+
         {/* EX Abilities Section */}
         {character.type === "attacker" && character.ex_abilities && (
           <div className="mt-8 bg-gray-800 rounded-lg p-6 border border-gray-700">
