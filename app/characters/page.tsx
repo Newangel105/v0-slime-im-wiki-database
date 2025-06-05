@@ -365,49 +365,46 @@ export default function CharactersPage() {
     "special", "from soul", "soul amount", "to soul", "soul buff", "gauge",
     "buff all", "buff self", "debuff all", "debuff single", "heal"
   ];
-  const traitSections = [...skillSections]; // Same as skill sections
+  const traitSections = [...skillSections]; // same structure for trait tags
 
   const skillsData: Record<string, Set<string>> = {};
   const traitsData: Record<string, Set<string>> = {};
   const townData: Set<string> = new Set();
 
   characters.forEach((char) => {
-    const tags = char.tag
+    const tags = char.tag;
 
     tags.forEach((tag: string) => {
-      const tagLower = tag.toLowerCase().trim();
+      const trimmedTag = tag.trim();
+      const tagLower = trimmedTag.toLowerCase();
 
-      // Skills
-      if (skillSections.some(section => tagLower.startsWith(section))) {
-        const section = skillSections.find(section => tagLower.startsWith(section));
+      if (tagLower.startsWith("skills")) {
+        const afterSkills = trimmedTag.slice(6).trim(); // remove "Skills"
+        const section = skillSections.find(sec => afterSkills.toLowerCase().startsWith(sec));
         if (section) {
           if (!skillsData[section]) skillsData[section] = new Set();
-          const subTag = tag.slice(section.length).trim();
+          const subTag = afterSkills.slice(section.length).trim(); // remove section name
           if (subTag) skillsData[section].add(subTag);
         }
+        return;
       }
 
-      // Traits
-      if (tagLower.startsWith("trait")) {
-        const rest = tagLower.replace(/^trait\s*/, '');
-        const section = traitSections.find(section => rest.startsWith(section));
+      if (tagLower.startsWith("traits")) {
+        const afterTraits = trimmedTag.slice(6).trim(); // remove "Traits"
+        const section = traitSections.find(sec => afterTraits.toLowerCase().startsWith(sec));
         if (section) {
           if (!traitsData[section]) traitsData[section] = new Set();
-          const subTag = rest.slice(section.length).trim();
+          const subTag = afterTraits.slice(section.length).trim(); // remove section name
           if (subTag) traitsData[section].add(subTag);
         }
+        return;
       }
 
-      // Town
       if (/\+\d+%$/.test(tag)) {
-        const match = tag.match(/^(.*)\s\+\d+%$/);
-        if (match) {
-          townData.add(match[1].trim());
-        }
+        townData.add(tag.trim());
       }
     });
   });
-
 
   const [sortKey, setSortKey] = useState<"name" | "final_attack" | "final_health" | "final_defense" | "stars" | "release" | "existence" | null>(null);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
