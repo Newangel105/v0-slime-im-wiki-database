@@ -4,6 +4,8 @@ import { Star, Heart, Sword, Shield, Zap, Target, Gamepad2, ArrowLeft } from "lu
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { getAllCharacters } from "@/lib/getCharacters"
+import React from "react";
+
 
 
 export default function CharacterDetailPage({ params }: { params: { characterId: string } }) {
@@ -11,6 +13,132 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
   const character = characters.find((char) => char.id === characterId)
 
   const characters_total = getAllCharacters()
+
+  const customMap = {
+    "Shizu's Will": "Shizus_Will",
+    "Lycanthrope's Pride": "Lycanthropes_Pride",
+    "New Year's Blessing": "New_Years_Blessing",
+    "Ogre's Pride": "Ogres_Pride",
+    "Warrior's Mind": "Warriors_Mind",
+    "Axiom of Haze": "Axiom_of_Haze",
+    "Clan Chief": "Clan_Chief",
+    "Demon Lord Invasion": "Demon_Lord_Invasion",
+    "Determination to Prosper": "Determination_to_Prosper",
+    "Dragon Haki": "Dragon_Haki",
+    "Exalted Champions": "Exalted_Champions",
+    "Festive Memories": "Festive_Memories",
+    "Flashback Beatdown Emissary": "Flashback_Beatdown_Emissary",
+    "Forest Fracas": "Forest_Fracas",
+    "Fount of Wisdom": "Fount_of_Wisdom",
+    "Frozen Continent": "Frozen_Continent",
+    "Gaining Status": "Gaining_Status",
+    "Goddess of Destiny": "Goddess_of_Destiny",
+    "Heart of a Hero": "Heart_of_a_Hero",
+    "Hyper Heart": "Hyper_Heart",
+    "Monster and Human Mingling": "Monster_and_Human_Mingling",
+    "Octagram Bazaar": "Octagram_Bazaar",
+    "Octagram Demon Lord": "Octagram_Demon_Lord",
+    "Otherworld Legend": "Otherworld_Legend",
+    "Pretty Sparkle": "Pretty_Sparkle",
+    "Primal Demon": "Primal_Demon",
+    "Protector of Peace": "Protector_of_Peace",
+    "Scarlet Bond": "Scarlet_Bond",
+    "Spirit Master": "Spirit_Master",
+    "Stern of Spirit": "Stern_of_Spirit",
+    "Summer Memories": "Summer_Memories",
+    "Tempest Elite": "Tempest_Elite",
+    "Ten Great Demon Lords": "Ten_Great_Demon_Lords",
+    "Visions of Coleus": "Visions_of_Coleus",
+    "Wholehearted Devotion": "Wholehearted_Devotion",
+    "Wielder of Magic": "Wielder_of_Magic",
+    "World of Fantasy": "World_of_Fantasy",
+    "Anti-Fire": "Anti_Fire",
+    "Anti-Water": "Anti_Water",
+    "Anti-Earth": "Anti_Earth",
+    "Anti-Space": "Anti_Space",
+    "Anti-Wind": "Anti_Wind",
+    "Anti-Dark": "Anti_Dark",
+    "Anti-Light": "Anti_Light",
+    "Battle Characters": "Battle_Characters",
+    "Protection Characters": "Protection_Characters",
+    "EX 5": "EX_5",
+    "EX Attack": "EX_Attack",
+    "EX Balance": "EX_Balance",
+    "EX Defense": "EX_Defense",
+  };
+
+  const customIcons = {
+    Fire: "/elements/icElementFire.png",
+    Water: "/elements/icElementWater.png",
+    Earth: "/elements/icElementEarth.png",
+    Space: "/elements/icElementspace.png",
+    Wind: "/elements/icElementWind.png",
+    Dark: "/elements/icElementDark.png",
+    Light: "/elements/icElementlight.png",
+    Adventurer: "/protector_elements/Adventurer.png",
+    Antagonist: "/protector_elements/Antagonist.png",
+    Axiom_of_Haze: "/protector_elements/Axiom_of_Haze.png",
+    Clan_Chief: "/protector_elements/Clan_Chief.png",
+    Commander: "/protector_elements/Commander.png",
+    Demon_Lord_Invasion: "/protector_elements/Demon_Lord_Invasion.png",
+    Determination_to_Prosper: "/protector_elements/Determination_to_Prosper.png",
+    Dragon_Haki: "/protector_elements/Dragon_Haki.png",
+    Exalted_Champions: "/protector_elements/Exalted_Champions.png",
+    Festive_Memories: "/protector_elements/Festive_Memories.png",
+    Flashback_Beatdown_Emissary: "/protector_elements/Flashback_Beatdown_Emissary.png",
+    Forest_Fracas: "/protector_elements/Forest_Fracas.png",
+    Fount_of_Wisdom: "/protector_elements/Fount_of_Wisdom.png",
+    Frozen_Continent: "/protector_elements/Frozen_Continent.png",
+    Gaining_Status: "/protector_elements/Gaining_Status.png",
+    Goddess_of_Destiny: "/protector_elements/Goddess_of_Destiny.png",
+    Heart_of_a_Hero: "/protector_elements/Heart_of_a_Hero.png",
+    Hyper_Heart: "/protector_elements/Hyper_Heart.png",
+    Lycanthropes_Pride: "/protector_elements/Lycanthrope's_Pride.png",
+    Monster_and_Human_Mingling: "/protector_elements/Monster_and_Human_Mingling.png",
+    New_Years_Blessing: "/protector_elements/New_Year's_Blessing.png",
+    Octagram: "/protector_elements/Octagram.png",
+    Octagram_Bazaar: "/protector_elements/Octagram_Bazaar.png",
+    Octagram_Demon_Lord: "/protector_elements/Octagram_Demon_Lord.png",
+    Ogres_Pride: "/protector_elements/Ogre's_Pride.png",
+    Otherworlder: "/protector_elements/Otherworlder.png",
+    Otherworld_Legend: "/protector_elements/Otherworld_Legend.png",
+    Pariah: "/protector_elements/Pariah.png",
+    Pretty_Sparkle: "/protector_elements/Pretty_Sparkle.png",
+    Primal_Demon: "/protector_elements/Primal_Demon.png",
+    Protector_of_Peace: "/protector_elements/Protector_of_Peace.png",
+    Scarlet_Bond: "/protector_elements/Scarlet_Bond.png",
+    Schemer: "/protector_elements/Schemer.png",
+    Shizus_Will: "/protector_elements/Shizu's_Will.png",
+    Spirit_Master: "/protector_elements/Spirit_Master.png",
+    Stern_of_Spirit: "/protector_elements/Stern_of_Spirit.png",
+    Summer_Memories: "/protector_elements/Summer_Memories.png",
+    Tempest_Elite: "/protector_elements/Tempest_Elite.png",
+    Ten_Great_Demon_Lords: "/protector_elements/Ten_Great_Demon_Lords.png",
+    Valentine: "/protector_elements/Valentine.png",
+    Visions_of_Coleus: "/protector_elements/Visions_of_Coleus.png",
+    Warriors_Mind: "/protector_elements/Warrior's_Mind.png",
+    Wholehearted_Devotion: "/protector_elements/Wholehearted_Devotion.png",
+    Wielder_of_Magic: "/protector_elements/Wielder_of_Magic.png",
+    World_of_Fantasy: "/protector_elements/World_of_Fantasy.png",
+    All: "/ulti_type/aoe.png",
+    Single: "/ulti_type/single.png",
+    3: "/stars/starCharaL3A",
+    4: "/stars/starCharaL4A",
+    5: "/stars/starCharaL5A",
+    EX_5: "/stars/starCharaL6A",
+    Battle_Characters: "/type/attacker.png",
+    Protection_Characters: "/type/protector.png",
+    EX_Attack: "/char_type/attack.png",
+    EX_Balance: "/char_type/balance.png",
+    EX_Defense: "/char_type/defense.png",
+    Anti_Fire: "/protector_elements/Anti-Fire.png",
+    Anti_Water: "/protector_elements/Anti-Water.png",
+    Anti_Earth: "/protector_elements/Anti-Earth.png",
+    Anti_Space: "/protector_elements/Anti-Space.png",
+    Anti_Wind: "/protector_elements/Anti-Wind.png",
+    Anti_Dark: "/protector_elements/Anti-Dark.png",
+    Anti_Light: "/protector_elements/Anti-Light.png"
+  };
   
 
   const statIconMap: { [key: string]: string } = {
@@ -146,6 +274,60 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     Anti_Light: "/protector_elements/Anti-Light.png"
   };
 
+  function renderTextWithLineBreaks(text: string) {
+    const lines = text.split('\\n');
+
+    return lines.map((line, idx) => (
+      <>
+        {replaceStatTextWithIcons(line)}
+        {idx < lines.length - 1 && <br />}
+      </>
+    ));
+  }
+
+  function replaceTextWithLinksAndOptionalIcons(
+    text: string,
+    customTextToKeyMap: { [key: string]: string },
+    customStatIconMap: { [key: string]: string }
+  ): React.ReactNode[] {
+    const allKeys = [...Object.keys(customTextToKeyMap), ...Object.keys(customStatIconMap)];
+    const sortedKeys = allKeys.sort((a, b) => b.length - a.length);
+    const regex = new RegExp(`(${sortedKeys.map(escapeRegex).join('|')})`, 'gi');
+
+    return text.split(regex).map((part, i) => {
+      if (!part) return null;
+
+      const mappedKey = customTextToKeyMap[part] || part.replace(/[\s-]+/g, '_');
+      const icon = customStatIconMap[mappedKey];
+
+      if (icon) {
+        // Has icon → render with icon and link
+        return (
+          <Link
+            key={i}
+            href={`/characters?tag=${encodeURIComponent(part)}`}
+            className="inline-flex items-center px-3 py-1 rounded-full bg-[#111827] text-white text-sm font-medium mx-1 hover:bg-[#909090]"
+          >
+            <img src={icon} alt={part} className="w-5 h-5 mr-2 object-contain" />
+            {part}
+          </Link>
+        );
+      }
+
+      // No icon → still create a link, no icon inside
+      return (
+        <Link
+          key={i}
+          href={`/characters?tag=${encodeURIComponent(part)}`}
+          className="inline-flex items-center px-3 py-1 rounded-full bg-[#444] text-white text-sm font-medium mx-1 hover:bg-[#666]"
+        >
+          {part}
+        </Link>
+      );
+    });
+  }
+
+
   function renderFilterTag(value: string, key: string) {
     const icon = statIconMap[key]; // direct use of mapped key
     const iconSize = "w-5 h-5";
@@ -244,6 +426,15 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
       const icon = statIconMap[mappedKey];
 
       if (icon) {
+        if (["ATK", "DEF", "HP"].includes(part)) {
+          // Just render the plain text + icon, no link
+          return (
+            <span key={i} className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#909090] text-white text-xs font-medium mx-1">
+              <img src={icon} alt={part} className="w-4 h-4 mr-1 object-contain" />
+              {part}
+            </span>
+          );
+        }
         return <span key={i}>{renderFilterTag(part, mappedKey)}</span>;
       }
 
@@ -541,7 +732,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                 <h2 className="text-lg font-semibold mb-4 text-gray-300 uppercase tracking-wider">TAGS</h2>
                 <div className="flex flex-wrap gap-2">
                     {tagsList.map((tag, index) => (
-                      <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(tag)}</p>
+                      <p className="text-gray-300 text-sm">{replaceTextWithLinksAndOptionalIcons(tag, customMap, customIcons)}</p>
                     ))}
                 </div>
             </div>
@@ -754,7 +945,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                       )}
                     </div>
                   </div>
-                  <p className="text-gray-300 text-sm">{replaceStatTextWithIcons(skill.description)}</p>
+                  <p className="text-gray-300 text-sm">{renderTextWithLineBreaks(skill.description)}</p>
                 </div>
               ))}
             </div>
