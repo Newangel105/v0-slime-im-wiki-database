@@ -409,17 +409,18 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {character.divine_skills.map((skill, index) => (
                 <div key={index} className="bg-gray-900 rounded-lg p-4">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <div className="w-12 h-12  rounded-lg flex items-center justify-center overflow-hidden">
-                      {skill.imageName && (
+                  <div className="flex items-start space-x-3 mb-3">
+                    {skill.imageName ? (
+                      <div className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
                         <img
                           src={skill.imageName}
                           alt={skill.attackName}
                           className="w-10 h-10 object-contain"
                         />
-                      )}
-                    </div>
-                    <div>
+                      </div>
+                    ) : null}
+                    
+                    <div className={skill.imageName ? '' : 'ml-1'}>
                       <h3 className="text-white font-medium">{skill.attackName}</h3>
                       {skill.extraText && (
                         <p className="text-blue-400 text-sm">{skill.extraText}</p>
