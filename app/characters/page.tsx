@@ -452,6 +452,32 @@ export default function CharactersPage() {
       "World of Fantasy"
     ];
 
+    const skillAndTraitSections2 = [
+      "special",
+      "from soul",
+      "soul amount",
+      "to soul",
+      "soul buff",
+      "gauge",
+      "buff all",
+      "buff self",
+      "debuff all",
+      "debuff single",
+      "heal",
+    ];
+
+    function extractValue(tag: string, category: string, sections: string[]) {
+      let raw = tag.replace(new RegExp(`^${category}`, "i"), "").trim();
+      for (const section of sections) {
+        const regex = new RegExp(`^${section}`, "i");
+        if (regex.test(raw)) {
+          raw = raw.replace(regex, "").trim();
+          break;
+        }
+      }
+      return raw;
+    }
+
     const weapons = ["Katana", "Hammer", "Spear", "Greatsword", "Book", "Fists"];
     const elements = ["Fire", "Dark", "Earth", "Space", "Light", "Water", "Wind"];
     const targetTypes = ["All", "Single"];
@@ -462,10 +488,11 @@ export default function CharactersPage() {
 
     // 🔸 Handle each tag type
     if (tag.startsWith("Skills")) {
-      // e.g. tag = "Skills - Buff"
-      setSelectedSkills([tag]); // assuming the full tag matches an option in skillOptions
+      const val = extractValue(tag, "Skills", skillAndTraitSections2);
+      if (val) setSelectedSkills([val]);
     } else if (tag.startsWith("Traits")) {
-      setSelectedTraits([tag]);
+      const val = extractValue(tag, "Traits", skillAndTraitSections2);
+      if (val) setSelectedTraits([val]);
     } else if (tag.endsWith("%")) {
       setSelectedTowns([tag]);
     } else if (forces.includes(tag)) {
