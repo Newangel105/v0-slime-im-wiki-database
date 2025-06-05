@@ -682,7 +682,10 @@ export default function CharactersPage() {
     const filtered = characters.filter((character) => {
       if (search) {
         if (!searchSkills) {
-          if (!character.name.toLowerCase().includes(search)) return false
+          if (!character.name.toLowerCase().includes(search) && 
+              !character.sub_name?.toLowerCase().includes(search)) {
+            return false;
+          }
         } else {
           const combinedSkillsText = [
             ...character.battle_skills.map((s) => s.description),
