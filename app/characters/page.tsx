@@ -53,6 +53,10 @@ const elementIcons = {
 }
 
 const protelementIcons2 = {
+  magic: "/type_dmg/prot_magic.png",
+  phys: "/type_dmg/prot_phys.png",
+  prot_phys: "/type_dmg/prot_phys.png",
+  prot_magic: "/type_dmg/prot_magic.png",
   prot_fire: "/protector_elements/Anti-Fire.png",
   prot_water: "/protector_elements/Anti-Water.png",
   prot_earth: "/protector_elements/Anti-Earth.png",
@@ -748,7 +752,16 @@ export default function CharactersPage() {
                     {/* Only show dmg_type icon if element is NOT empty AND dmg_type is NOT empty */}
                     {character.element !== "" && character.dmg_type !== "" && (
                       <img
-                        src={dmg_typeIcons[character.dmg_type.replace(/\s+/g, "_").replace(/'/g, "")]}
+                        src={
+                          dmg_typeIcons[
+                            character.type === "attacker"
+                              ? character.dmg_type.replace(/\s+/g, "_").replace(/'/g, "")
+                              : (["magic", "phys"].includes(character.dmg_type.toLowerCase())
+                                  ? "prot_" + character.dmg_type.replace(/\s+/g, "_").replace(/'/g, "")
+                                  : character.dmg_type.replace(/\s+/g, "_").replace(/'/g, "")
+                                )
+                          ] || "/placeholder.svg"
+                        }
                         alt="Dmg"
                         className="w-6 h-6 object-contain"
                       />
