@@ -146,52 +146,28 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     Anti_Light: "/protector_elements/Anti-Light.png"
   };
 
-  function renderFilterTag(value: string) {
-    const cleanValue = value.replace(/[\s-]+/g, "_")
-
-    // Detect type by value (you can extend this easily)
-    let type: string | null = null
-
-    if (["anti-dark","anti-earth","anti-fire","anti-light","anti-space","anti-water","anti-wind","dark","earth","fire","light","space","water","wind"].includes(value.toLowerCase())) {
-      type = "element"
-    } else if (characters_total.some((char) =>char.force.includes(value))){
-      type = "force"
-    } else if (characters_total.some((char) =>char.tag.includes(value))){
-        if (value.toLowerCase().startsWith("traits"))
-          type = "traits"
-        else if (value.toLowerCase().startsWith("skills"))
-          type = "skills"
-        else if (["all","single"].includes(value.toLocaleLowerCase()))
-          type = "ulti"
-    } else if (value.endsWith("%")){
-        type = "town"
-    } else if (["3","4","5","EX 5"].includes(value.toLocaleLowerCase())){
-        type = "stars"
-    }
-
-    if (!type) return value // fallback to plain text if unrecognized
-
-    // Adjust icon size and font size here:
-    const iconSize = "w-5 h-5" // slightly bigger icons
-    const fontSize = "text-sm" // bigger font size
-    const paddingX = "px-3"
-    const paddingY = "py-1"
+  function renderFilterTag(value: string, key: string) {
+    const icon = statIconMap[key]; // direct use of mapped key
+    const iconSize = "w-5 h-5";
+    const fontSize = "text-sm";
+    const paddingX = "px-3";
+    const paddingY = "py-1";
 
     return (
       <Link
-        href={`/characters?${type}=${encodeURIComponent(value)}`}
+        href={`/characters?tag=${encodeURIComponent(value)}`}
         className={`inline-flex items-center ${paddingX} ${paddingY} rounded-full bg-[#111827] text-white ${fontSize} font-medium mx-1 hover:bg-[#909090]`}
       >
-        {statIconMap2[cleanValue] && (
+        {icon && (
           <img
-            src={statIconMap[cleanValue]}
+            src={icon}
             alt={value}
             className={`${iconSize} mr-2 object-contain`}
           />
         )}
         {value}
       </Link>
-    )
+    );
   }
 
 
@@ -257,7 +233,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
 
-  const regex = new RegExp(`\\b(${sortedKeys.map(escapeRegex).join('|')})\\b`, 'gi');
+  const regex = new RegExp(`(${sortedKeys.map(escapeRegex).join('|')})`, 'gi');
 
   // 5. The main function
   function replaceStatTextWithIcons(text: string): React.ReactNode[] {
@@ -265,15 +241,13 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
       if (!part) return null;
 
       const mappedKey = textToKeyMap[part] || part.replace(/[\s-]+/g, '_');
-
       const icon = statIconMap[mappedKey];
 
       if (icon) {
-        // Render tag with link if recognized as a known value
-        return <span key={i}>{renderFilterTag(part)}</span>;
+        return <span key={i}>{renderFilterTag(part, mappedKey)}</span>;
       }
 
-      // Icon-only fallback (e.g., raw "ATK", "HP")
+      // Fallback icon-only render
       if (statIconMap[part]) {
         const iconSize = part === "ATK" ? "w-3 h-4" : "w-4 h-4";
         return (
@@ -294,6 +268,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
       return <span key={i}>{part}</span>;
     });
   }
+
 
   if (!character) {
     return (
