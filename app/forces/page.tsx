@@ -246,8 +246,12 @@ export default function ForcesPage() {
             <div className="flex items-center space-x-8">
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                  <Gamepad2 className="w-5 h-5" />
-                </div>
+                    <img
+                        src="/icons/logo.png"
+                        alt="Logo"
+                        className="w-5 h-5 object-contain"
+                    />
+                    </div>
                 <span className="text-xl font-bold">SLIME.WIKI</span>
               </div>
               <nav className="hidden md:flex space-x-6">
@@ -324,13 +328,17 @@ export default function ForcesPage() {
                       <span className="text-white font-medium text-lg">{displayName}</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <span className="text-gray-400 font-medium">{forceChars.length}</span>
-                      <span className="text-gray-400">👤</span>
-                      {isExpanded ? (
-                        <ChevronUp className="w-5 h-5 text-gray-400" />
-                      ) : (
-                        <ChevronDown className="w-5 h-5 text-gray-400" />
-                      )}
+                        <span className="text-gray-400 font-medium">{forceChars.length}</span>
+                        <img
+                            src="/icons/name.png"
+                            alt="User Icon"
+                            className="w-5 h-5"
+                        />
+                        {isExpanded ? (
+                            <ChevronUp className="w-5 h-5 text-gray-400" />
+                        ) : (
+                            <ChevronDown className="w-5 h-5 text-gray-400" />
+                        )}
                     </div>
                   </button>
 
