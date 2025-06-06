@@ -22,8 +22,10 @@ export async function GET(request: Request, { params }: { params: { id: string }
     const $ = cheerio.load(html)
 
     // Extract the main content
-    const title = $("h1").first().text().trim() || $(".article-title").text().trim()
-    const content = $(".article-content").html() || $(".content").html() || "<p>Content not available</p>"
+    const title = $("h1.article-body").first().text().trim()
+
+    const content = $(".detail-main").html() || "<p>Content not available</p>"
+
 
     return NextResponse.json({
       code: 200,

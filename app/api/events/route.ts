@@ -77,6 +77,7 @@ export async function GET() {
         else if (categoryClasses.includes("is-info")) articleType = "info"
         else if (categoryClasses.includes("is-event")) articleType = "event"
         else if (categoryClasses.includes("is-recruit")) articleType = "recruit"
+        else if (categoryClasses.includes("is-scout")) articleType = "scout"
         else if (categoryClasses.includes("is-campaign")) articleType = "campaign"
         else if (categoryClasses.includes("is-issues")) articleType = "issues"
 
