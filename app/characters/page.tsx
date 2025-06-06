@@ -468,10 +468,10 @@ export default function CharactersPage() {
       const traitSections2 = [...skillSections2];
 
     const weapons = ["Katana", "Hammer", "Spear", "Greatsword", "Book", "Fists"];
-    const elements = ["Fire", "Dark", "Earth", "Space", "Light", "Water", "Wind","EX_Fire","EX_Dark","EX_Earth","EX_Space","EX_Light","EX_Water","EX_Wind","prot_ex_fire","prot_ex_water","prot_ex_earth","prot_ex_space","prot_ex_wind","prot_ex_dark","prot_ex_light"];
+    const elements = ["Fire", "Dark", "Earth", "Space", "Light", "Water", "Wind","Fire Unbound","Dark Unbound","Earth Unbound","Space Unbound","Light Unbound","Water Unbound","Wind Unbound","Anti-Fire Unbound","Anti-Water Unbound","Anti-Earth Unbound","Anti-Space Unbound","Anti-Wind Unbound","Anti-Dark Unbound","Anti-Light Unbound"];
     const targetTypes = ["All", "Single"];
     const damageTypes = ["Magic", "Physical"];
-    const starLevels = ["3", "4", "5", "EX 5","7"];
+    const starLevels = ["3", "4", "5", "EX 5","EX Unbound"];
     const characterTypes = ["Battle Characters", "Protection Characters"];
     const exRoles = ["EX Attack", "EX Balance", "EX Defense"];
 
@@ -524,14 +524,21 @@ export default function CharactersPage() {
       // Handle star level
       if (tag === "EX 5") {
         setSelectedStars([6]); // EX 5 maps to 6-star filter
+      }else if (tag === "EX Unbound") {
+        setSelectedStars([7]); // EX 5 maps to 6-star filter
       } else {
         setSelectedStars([parseInt(tag)]);
       }
     } else if (tag.startsWith("Anti")) {
-      // Handle anti-type tags
-      setSelectedElements([tag.replace("Anti-", "").toLowerCase()]);
+      if(tag.endsWith("Unbound")){
+        setSelectedElements([tag.replace("ex_prot_", "").replace("\s*Unbound","").toLowerCase()]);
+      } else {
+        setSelectedElements([tag.replace("Anti-", "").toLowerCase()]);
+      }
     } else if (elements.includes(tag)) {
-      // Handle element tag
+      if(tag.endsWith("Unbound")){
+        setSelectedElements(["ex_" + tag.replace("\s*Unbound", "").toLowerCase()]);
+      }
       setSelectedElements([tag.toLowerCase()]);
     } else if (characterTypes.includes(tag)) {
       // Battle or Protection characters
