@@ -468,10 +468,10 @@ export default function CharactersPage() {
       const traitSections2 = [...skillSections2];
 
     const weapons = ["Katana", "Hammer", "Spear", "Greatsword", "Book", "Fists"];
-    const elements = ["Fire", "Dark", "Earth", "Space", "Light", "Water", "Wind"];
+    const elements = ["Fire", "Dark", "Earth", "Space", "Light", "Water", "Wind","EX_Fire","EX_Dark","EX_Earth","EX_Space","EX_Light","EX_Water","EX_Wind","prot_ex_fire","prot_ex_water","prot_ex_earth","prot_ex_space","prot_ex_wind","prot_ex_dark","prot_ex_light"];
     const targetTypes = ["All", "Single"];
     const damageTypes = ["Magic", "Physical"];
-    const starLevels = ["3", "4", "5", "EX 5"];
+    const starLevels = ["3", "4", "5", "EX 5","7"];
     const characterTypes = ["Battle Characters", "Protection Characters"];
     const exRoles = ["EX Attack", "EX Balance", "EX Defense"];
 
