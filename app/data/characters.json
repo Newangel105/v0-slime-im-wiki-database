@@ -1851,7 +1851,7 @@
         "release_date": "6/3/2024",
         "tactics_type": "",
         "force": "Commander|Heart of a Hero|Adventurer",
-        "tag": "Feast Hot Pot +30%|Café +10%|Battle Characters|All|Fire|Physical|5|Skills From Soul Soul of Secrets|Skills Soul Amount All|Skills To Soul Soul of Divine Protection|Skills Soul Buff Soul of Divine Protection Gauge|Traits Buff Self ATK",
+        "tag": "Feast Hot Pot +30%|Caf\u00c3\u00a9 +10%|Battle Characters|All|Fire|Physical|5|Skills From Soul Soul of Secrets|Skills Soul Amount All|Skills To Soul Soul of Divine Protection|Skills Soul Buff Soul of Divine Protection Gauge|Traits Buff Self ATK",
         "weapon": "",
         "char_type": "",
         "ulti": "aoe",
@@ -5169,7 +5169,7 @@
         "release_date": "11/29/2023",
         "tactics_type": "",
         "force": "Pretty Sparkle|World of Fantasy|Flashback Beatdown Emissary",
-        "tag": "Digsite for Training Magistones +10%|Café +30%|Battle Characters|All|Light|Magic|5|Skills From Soul Soul of Secrets|Skills Soul Amount x1|Skills To Soul Soul of Skills|Skills Soul Buff Soul of Skills Skill Point|Skills Debuff All DEF|Traits Soul Buff Soul of Divine Protection Gauge",
+        "tag": "Digsite for Training Magistones +10%|Caf\u00c3\u00a9 +30%|Battle Characters|All|Light|Magic|5|Skills From Soul Soul of Secrets|Skills Soul Amount x1|Skills To Soul Soul of Skills|Skills Soul Buff Soul of Skills Skill Point|Skills Debuff All DEF|Traits Soul Buff Soul of Divine Protection Gauge",
         "weapon": "",
         "char_type": "",
         "ulti": "aoe",
@@ -7676,7 +7676,7 @@
         "release_date": "6/30/2023",
         "tactics_type": "",
         "force": "Adventurer|Wielder of Magic|Hyper Heart",
-        "tag": "Digsite for Stamina Magistones +10%|Café +30%|Battle Characters|EX Attack|Hammer|Single|Fire|Magic|EX 5|Skills From Soul Soul of Secrets|Skills From Soul Soul of Skills|Skills Soul Amount x1|Skills Soul Amount x2|Skills To Soul Soul of Divine Protection|Skills Soul Buff Soul of Divine Protection Gauge|Skills Buff All Soul of Combos|Skills Buff Self M-ATK|Traits Soul Buff Soul of Divine Protection Gauge|Traits Gauge Protection Gauge",
+        "tag": "Digsite for Stamina Magistones +10%|Caf\u00c3\u00a9 +30%|Battle Characters|EX Attack|Hammer|Single|Fire|Magic|EX 5|Skills From Soul Soul of Secrets|Skills From Soul Soul of Skills|Skills Soul Amount x1|Skills Soul Amount x2|Skills To Soul Soul of Divine Protection|Skills Soul Buff Soul of Divine Protection Gauge|Skills Buff All Soul of Combos|Skills Buff Self M-ATK|Traits Soul Buff Soul of Divine Protection Gauge|Traits Gauge Protection Gauge",
         "weapon": "",
         "char_type": "",
         "ulti": "single",
@@ -9059,7 +9059,7 @@
         "release_date": "4/18/2023",
         "tactics_type": "",
         "force": "World of Fantasy|Heart of a Hero|Fount of Wisdom|Adventurer|Protector of Peace",
-        "tag": "Café +10%|Trading Post +30%|Battle Characters|EX Attack|Greatsword|All|Wind|Physical|EX 5|Skills From Soul Soul of Secrets|Skills Soul Amount x1|Skills To Soul Soul of Skills|Skills Soul Buff Soul of Skills Gauges|Traits Gauge Skill Points",
+        "tag": "Caf\u00c3\u00a9 +10%|Trading Post +30%|Battle Characters|EX Attack|Greatsword|All|Wind|Physical|EX 5|Skills From Soul Soul of Secrets|Skills Soul Amount x1|Skills To Soul Soul of Skills|Skills Soul Buff Soul of Skills Gauges|Traits Gauge Skill Points",
         "weapon": "",
         "char_type": "",
         "ulti": "aoe",
@@ -9523,7 +9523,7 @@
         "release_date": "3/14/2023",
         "tactics_type": "",
         "force": "Fount of Wisdom|Shizu's Will|Warrior's Mind|Stern of Spirit",
-        "tag": "Clothing Store +10%|Café +30%|Battle Characters|EX Attack|Katana|Single|Wind|Physical|EX 5|Skills From Soul Soul of Secrets|Skills From Soul Soul of Skills|Skills Soul Amount x1|Skills To Soul Soul of Divine Protection|Skills Soul Buff Soul of Divine Protection Gauge|Skills Buff Self Soul of Combos|Traits Soul Buff Soul of Skills Damage|Traits Gauge Protection Gauge",
+        "tag": "Clothing Store +10%|Caf\u00c3\u00a9 +30%|Battle Characters|EX Attack|Katana|Single|Wind|Physical|EX 5|Skills From Soul Soul of Secrets|Skills From Soul Soul of Skills|Skills Soul Amount x1|Skills To Soul Soul of Divine Protection|Skills Soul Buff Soul of Divine Protection Gauge|Skills Buff Self Soul of Combos|Traits Soul Buff Soul of Skills Damage|Traits Gauge Protection Gauge",
         "weapon": "",
         "char_type": "",
         "ulti": "single",
@@ -9926,7 +9926,7 @@
         "release_date": "2/27/2023",
         "tactics_type": "",
         "force": "Wholehearted Devotion|Wielder of Magic|Schemer",
-        "tag": "Café +10%|Forest Supply Corps Base +30%|Battle Characters|EX Balance|All|Earth|Magic|EX 5|Skills From Soul Soul of Divine Protection|Skills Soul Amount x3|Skills To Soul Soul of Skills|Skills Soul Buff Soul of Skills Gauges|Skills Debuff All ATK|Traits Buff Self DEF",
+        "tag": "Caf\u00c3\u00a9 +10%|Forest Supply Corps Base +30%|Battle Characters|EX Balance|All|Earth|Magic|EX 5|Skills From Soul Soul of Divine Protection|Skills Soul Amount x3|Skills To Soul Soul of Skills|Skills Soul Buff Soul of Skills Gauges|Skills Debuff All ATK|Traits Buff Self DEF",
         "weapon": "",
         "char_type": "",
         "ulti": "aoe",
@@ -10274,7 +10274,7 @@
         "release_date": "2/6/2023",
         "tactics_type": "",
         "force": "Valentine|Goddess of Destiny|Pretty Sparkle",
-        "tag": "Digsite for Defense Magistones +10%|Café +30%|Battle Characters|Attack|Hammer|Single|Space|Magic|5|Skills Buff All Soul of Combos|Skills Debuff All Pierce Resistance|Skills Debuff All Space Resistance|Traits Soul Buff Soul of Divine Protection Gauge|Traits Gauge Skill Points",
+        "tag": "Digsite for Defense Magistones +10%|Caf\u00c3\u00a9 +30%|Battle Characters|Attack|Hammer|Single|Space|Magic|5|Skills Buff All Soul of Combos|Skills Debuff All Pierce Resistance|Skills Debuff All Space Resistance|Traits Soul Buff Soul of Divine Protection Gauge|Traits Gauge Skill Points",
         "weapon": "",
         "char_type": "",
         "ulti": "single",
@@ -10708,7 +10708,6 @@
             }
         ],
         "secret_skills": [
-
             {
                 "attackName": "Drago Destroyer",
                 "extraText": "100% Secret Gauge",
@@ -10866,7 +10865,6 @@
             }
         ],
         "secret_skills": [
-
             {
                 "attackName": "Shining Earth",
                 "extraText": "100% Secret Gauge",
@@ -10932,7 +10930,7 @@
         "release_date": "12/29/2022",
         "tactics_type": "",
         "force": "New Year's Blessing",
-        "tag": "Café +10%|Forest Supply Corps Base +30%|Battle Characters|Balance|Book|Single|Light|Magic|4|Skills From Soul Soul of Secrets|Skills From Soul Soul of Skills|Skills Soul Amount x1|Skills To Soul Soul of Divine Protection|Skills Soul Buff Soul of Divine Protection Gauge|Skills Debuff Single DEF|Traits Buff Self Counter Power",
+        "tag": "Caf\u00c3\u00a9 +10%|Forest Supply Corps Base +30%|Battle Characters|Balance|Book|Single|Light|Magic|4|Skills From Soul Soul of Secrets|Skills From Soul Soul of Skills|Skills Soul Amount x1|Skills To Soul Soul of Divine Protection|Skills Soul Buff Soul of Divine Protection Gauge|Skills Debuff Single DEF|Traits Buff Self Counter Power",
         "weapon": "",
         "char_type": "",
         "ulti": "single",
@@ -11088,7 +11086,7 @@
         "release_date": "12/12/2022",
         "tactics_type": "",
         "force": "Festive Memories|Heart of a Hero|Adventurer",
-        "tag": "Digsite for Defense Magistones +10%|Café +30%|Battle Characters|Attack|Spear|All|Fire|Physical|5|Skills Buff All Pierce Power|Skills Buff All Fire ATK|Traits Buff Self Pierce Power",
+        "tag": "Digsite for Defense Magistones +10%|Caf\u00c3\u00a9 +30%|Battle Characters|Attack|Spear|All|Fire|Physical|5|Skills Buff All Pierce Power|Skills Buff All Fire ATK|Traits Buff Self Pierce Power",
         "weapon": "",
         "char_type": "",
         "ulti": "aoe",
@@ -11102,7 +11100,7 @@
             {
                 "attackName": "Merry March",
                 "extraText": "65 Skill Points",
-                "description": "Increases all allies' Fire ATK by 50% Turns 1Decreases all targets’ Fire resistance by 20% Turns 1",
+                "description": "Increases all allies' Fire ATK by 50% Turns 1Decreases all targets\u00e2\u20ac\u2122 Fire resistance by 20% Turns 1",
                 "imageName": "b3.png"
             },
             {
@@ -11444,7 +11442,6 @@
             }
         ],
         "secret_skills": [
-
             {
                 "attackName": "Haze: Black Flame Slash",
                 "extraText": "100% Secret Gauge",
@@ -11654,7 +11651,7 @@
         "release_date": "11/11/2022",
         "tactics_type": "",
         "force": "Primal Demon|Tempest Elite",
-        "tag": "Digsite for Training Magistones +10%|Café +30%|Battle Characters|Attack|Fists|All|Dark|Physical|5|Skills From Soul Soul of Secrets|Skills Soul Amount x2|Skills To Soul Soul of Skills|Skills Gauge Secret Skill Gauge|Skills Buff Self ATK|Skills Buff Self P-ATK|Traits Buff Self Critical Damage",
+        "tag": "Digsite for Training Magistones +10%|Caf\u00c3\u00a9 +30%|Battle Characters|Attack|Fists|All|Dark|Physical|5|Skills From Soul Soul of Secrets|Skills Soul Amount x2|Skills To Soul Soul of Skills|Skills Gauge Secret Skill Gauge|Skills Buff Self ATK|Skills Buff Self P-ATK|Traits Buff Self Critical Damage",
         "weapon": "",
         "char_type": "",
         "ulti": "aoe",
@@ -12586,7 +12583,7 @@
         "release_date": "9/7/2022",
         "tactics_type": "",
         "force": "Primal Demon",
-        "tag": "Protection Magistone Digsite +10%|Café +30%|Battle Characters|Attack|All|Space|Physical|5|Skills Special Deals Damage|Skills Buff All Critical Damage|Skills Debuff All Space Resistance|Traits Buff Self ATK",
+        "tag": "Protection Magistone Digsite +10%|Caf\u00c3\u00a9 +30%|Battle Characters|Attack|All|Space|Physical|5|Skills Special Deals Damage|Skills Buff All Critical Damage|Skills Debuff All Space Resistance|Traits Buff Self ATK",
         "weapon": "",
         "char_type": "",
         "ulti": "aoe",
@@ -12887,7 +12884,7 @@
         "release_date": "8/30/2022",
         "tactics_type": "",
         "force": "Primal Demon",
-        "tag": "Digsite for Defense Magistones +10%|Café +30%|Battle Characters|Defense|Greatsword|Single|Space|Physical|4|Skills Soul Buff Soul of Skills Damage|Skills Soul Buff Soul of Skills Gauges|Skills Heal Lowest Ally Heal|Traits Buff Self Counterattack Rate",
+        "tag": "Digsite for Defense Magistones +10%|Caf\u00c3\u00a9 +30%|Battle Characters|Defense|Greatsword|Single|Space|Physical|4|Skills Soul Buff Soul of Skills Damage|Skills Soul Buff Soul of Skills Gauges|Skills Heal Lowest Ally Heal|Traits Buff Self Counterattack Rate",
         "weapon": "",
         "char_type": "",
         "ulti": "single",
@@ -13921,7 +13918,7 @@
         "release_date": "5/31/2022",
         "tactics_type": "",
         "force": "Goddess of Destiny|World of Fantasy|Ogre's Pride|Tempest Elite",
-        "tag": "Café +10%|Clothing Store +30%|Battle Characters|Attack|Spear|Single|Light|Physical|5|Skills From Soul Soul of Secrets|Skills Soul Amount x1|Skills To Soul Soul of Skills|Skills Soul Buff Soul of Skills Skill Point|Skills Buff Self ATK|Skills Buff Self Pierce Power",
+        "tag": "Caf\u00c3\u00a9 +10%|Clothing Store +30%|Battle Characters|Attack|Spear|Single|Light|Physical|5|Skills From Soul Soul of Secrets|Skills Soul Amount x1|Skills To Soul Soul of Skills|Skills Soul Buff Soul of Skills Skill Point|Skills Buff Self ATK|Skills Buff Self Pierce Power",
         "weapon": "",
         "char_type": "",
         "ulti": "single",
@@ -14575,7 +14572,7 @@
                 "extraText": "25/15 Skill Points",
                 "description": "Chance to give Drago to self: 100% Turns 1Increases own ATK by 10/20% Turns 1",
                 "imageName": "b2.png"
-            },            
+            },
             {
                 "attackName": "Dragon Call",
                 "extraText": "25 Skill Points",
@@ -14692,7 +14689,7 @@
         "release_date": "4/25/2022",
         "tactics_type": "",
         "force": "Ten Great Demon Lords",
-        "tag": "Café +10%|Mountain Supply Corps Base +30%|Battle Characters|Balance|Book|Single|Space|Magic|4|Skills From Soul Transfer Own Souls|Skills From Soul Soul of Secrets|Skills From Soul Soul of Skills|Skills Soul Amount x1|Skills Soul Amount x2|Skills To Soul Another Vanguard Character|Skills To Soul Soul of Divine Protection|Skills Soul Buff All Souls Protection Gauge|Skills Soul Buff Soul of Divine Protection Gauge|Traits Buff Self Counterattack Rate",
+        "tag": "Caf\u00c3\u00a9 +10%|Mountain Supply Corps Base +30%|Battle Characters|Balance|Book|Single|Space|Magic|4|Skills From Soul Transfer Own Souls|Skills From Soul Soul of Secrets|Skills From Soul Soul of Skills|Skills Soul Amount x1|Skills Soul Amount x2|Skills To Soul Another Vanguard Character|Skills To Soul Soul of Divine Protection|Skills Soul Buff All Souls Protection Gauge|Skills Soul Buff Soul of Divine Protection Gauge|Traits Buff Self Counterattack Rate",
         "weapon": "book",
         "char_type": "balance",
         "ulti": "single",
@@ -14848,7 +14845,7 @@
         "release_date": "4/12/2022",
         "tactics_type": "",
         "force": "Ten Great Demon Lords|Commander|Visions of Coleus|Determination to Prosper",
-        "tag": "Café +10%|Protection Magistone Digsite +30%|Battle Characters|Attack|Book|Single|Earth|Magic|5|Skills Gauge Secret Skill Gauge|Skills Buff Self M-ATK|Skills Debuff Single Magic Attack Resistance",
+        "tag": "Caf\u00c3\u00a9 +10%|Protection Magistone Digsite +30%|Battle Characters|Attack|Book|Single|Earth|Magic|5|Skills Gauge Secret Skill Gauge|Skills Buff Self M-ATK|Skills Debuff Single Magic Attack Resistance",
         "weapon": "",
         "char_type": "",
         "ulti": "single",
@@ -15816,7 +15813,7 @@
         "release_date": "1/28/2022",
         "tactics_type": "",
         "force": "Valentine|World of Fantasy|Heart of a Hero|Adventurer|Pretty Sparkle",
-        "tag": "Clothing Store +10%|Café +30%|Battle Characters|Defense|Sword|All|Light|Physical|5|Skills Buff All Guard Rate|Skills Debuff Single ATK|Skills Heal Lowest Ally Heal|Traits Buff Self DEF",
+        "tag": "Clothing Store +10%|Caf\u00c3\u00a9 +30%|Battle Characters|Defense|Sword|All|Light|Physical|5|Skills Buff All Guard Rate|Skills Debuff Single ATK|Skills Heal Lowest Ally Heal|Traits Buff Self DEF",
         "weapon": "",
         "char_type": "",
         "ulti": "aoe",
@@ -15955,7 +15952,7 @@
         "release_date": "01/28/2022",
         "tactics_type": "",
         "force": "Valentine",
-        "tag": "Café +10%|Clothing Store +30%|Battle Characters|Balance|Greatsword|All|Light|Magic|4|Skills From Soul Soul of Skills|Skills Soul Amount x2|Skills To Soul Soul of Secrets|Skills Soul Buff Soul of Secrets Gauge|Skills Debuff All Critical Damage",
+        "tag": "Caf\u00c3\u00a9 +10%|Clothing Store +30%|Battle Characters|Balance|Greatsword|All|Light|Magic|4|Skills From Soul Soul of Skills|Skills Soul Amount x2|Skills To Soul Soul of Secrets|Skills Soul Buff Soul of Secrets Gauge|Skills Debuff All Critical Damage",
         "weapon": "greatsword",
         "char_type": "balance",
         "ulti": "aoe",
@@ -16165,7 +16162,7 @@
         "release_date": "12/31/2021",
         "tactics_type": "",
         "force": "New Year's Blessing|Dragon Haki|Octagram Demon Lord",
-        "tag": "Café +30%|Forest Supply Corps Base +10%|Battle Characters|Attack|Fists|Single|Fire|Physical|5|Skills From Soul Soul of Skills|Skills Soul Amount x1|Skills To Soul Soul of Divine Protection|Skills Soul Buff Soul of Divine Protection Gauge|Skills Buff All Critical Rate|Skills Debuff All Seal Critical Resistance UP|Traits Buff Self Critical Damage",
+        "tag": "Caf\u00c3\u00a9 +30%|Forest Supply Corps Base +10%|Battle Characters|Attack|Fists|Single|Fire|Physical|5|Skills From Soul Soul of Skills|Skills Soul Amount x1|Skills To Soul Soul of Divine Protection|Skills Soul Buff Soul of Divine Protection Gauge|Skills Buff All Critical Rate|Skills Debuff All Seal Critical Resistance UP|Traits Buff Self Critical Damage",
         "weapon": "",
         "char_type": "",
         "ulti": "single",
@@ -16611,7 +16608,7 @@
         "release_date": "11/30/2021",
         "tactics_type": "",
         "force": "Festive Memories|Octagram Demon Lord|Commander",
-        "tag": "Digsite for Stamina Magistones +10%|Café +30%|Battle Characters|Balance|Spear|Single|Wind|Physical|5|Skills From Soul Soul of Divine Protection|Skills From Soul Soul of Secrets|Skills Soul Amount x1|Skills To Soul Soul of Skills|Skills Soul Buff Soul of Skills Damage|Skills Soul Buff Soul of Skills Gauges|Skills Heal All Heal|Traits Gauge Skill Points",
+        "tag": "Digsite for Stamina Magistones +10%|Caf\u00c3\u00a9 +30%|Battle Characters|Balance|Spear|Single|Wind|Physical|5|Skills From Soul Soul of Divine Protection|Skills From Soul Soul of Secrets|Skills Soul Amount x1|Skills To Soul Soul of Skills|Skills Soul Buff Soul of Skills Damage|Skills Soul Buff Soul of Skills Gauges|Skills Heal All Heal|Traits Gauge Skill Points",
         "weapon": "",
         "char_type": "",
         "ulti": "single",
@@ -17507,7 +17504,7 @@
         "release_date": "10/28/2021",
         "tactics_type": "",
         "force": "Heart of a Hero|Goddess of Destiny|Adventurer|Commander|Protector of Peace",
-        "tag": "Café +10%|Forest Supply Corps Base +30%|Battle Characters|Balance|Sword|Single|Fire|Physical|5|Skills From Soul Soul of Divine Protection|Skills Soul Amount x2|Skills To Soul Soul of Secrets|Skills Soul Buff Soul of Secrets Gauge|Skills Buff All Stun Evasion Rate|Skills Buff Self ATK|Skills Buff Self Critical Rate|Traits Buff Self Critical Damage",
+        "tag": "Caf\u00c3\u00a9 +10%|Forest Supply Corps Base +30%|Battle Characters|Balance|Sword|Single|Fire|Physical|5|Skills From Soul Soul of Divine Protection|Skills Soul Amount x2|Skills To Soul Soul of Secrets|Skills Soul Buff Soul of Secrets Gauge|Skills Buff All Stun Evasion Rate|Skills Buff Self ATK|Skills Buff Self Critical Rate|Traits Buff Self Critical Damage",
         "weapon": "",
         "char_type": "",
         "ulti": "single",
@@ -17669,7 +17666,7 @@
         "release_date": "10/28/2021",
         "tactics_type": "",
         "force": "Ogre's Pride|Tempest Elite|Determination to Prosper",
-        "tag": "Café +10%|Restaurant +30%|Battle Characters|Balance|Book|Single|Light|Magic|5|Skills From Soul Soul of Secrets|Skills Soul Amount x2|Skills To Soul Soul of Divine Protection|Skills Soul Buff Soul of Divine Protection Gauge|Skills Buff All Stun Evasion Rate|Skills Buff Self Critical Rate|Skills Debuff Single Critical Resistance|Traits Buff Self Critical Rate",
+        "tag": "Caf\u00c3\u00a9 +10%|Restaurant +30%|Battle Characters|Balance|Book|Single|Light|Magic|5|Skills From Soul Soul of Secrets|Skills Soul Amount x2|Skills To Soul Soul of Divine Protection|Skills Soul Buff Soul of Divine Protection Gauge|Skills Buff All Stun Evasion Rate|Skills Buff Self Critical Rate|Skills Debuff Single Critical Resistance|Traits Buff Self Critical Rate",
         "weapon": "",
         "char_type": "",
         "ulti": "single",
@@ -18353,7 +18350,7 @@
         "release_date": "10/28/2021",
         "tactics_type": "",
         "force": "Ten Great Demon Lords|Dragon Haki",
-        "tag": "Digsite for Attack Magistones +10%|Café +30%|Battle Characters|Attack|Fists|All|Wind|Magic|5|Skills Buff All Guard Penetration|Skills Buff All Soul of Combos|Skills Buff Self Critical Damage|Traits Gauge Protection Gauge",
+        "tag": "Digsite for Attack Magistones +10%|Caf\u00c3\u00a9 +30%|Battle Characters|Attack|Fists|All|Wind|Magic|5|Skills Buff All Guard Penetration|Skills Buff All Soul of Combos|Skills Buff Self Critical Damage|Traits Gauge Protection Gauge",
         "weapon": "",
         "char_type": "",
         "ulti": "aoe",
@@ -18491,7 +18488,7 @@
         "release_date": "10/28/2021",
         "tactics_type": "",
         "force": "Demon Lord Invasion",
-        "tag": "Field +10%|Café +30%|Battle Characters|Defense|Book|All|Earth|Magic|4|Skills From Soul Soul of Skills|Skills Soul Amount x1|Skills To Soul Soul of Divine Protection|Skills Soul Buff Soul of Divine Protection Gauge|Skills Buff All DEF|Skills Buff All Guard Rate|Traits Buff Self Pierce Rate",
+        "tag": "Field +10%|Caf\u00c3\u00a9 +30%|Battle Characters|Defense|Book|All|Earth|Magic|4|Skills From Soul Soul of Skills|Skills Soul Amount x1|Skills To Soul Soul of Divine Protection|Skills Soul Buff Soul of Divine Protection Gauge|Skills Buff All DEF|Skills Buff All Guard Rate|Traits Buff Self Pierce Rate",
         "weapon": "book",
         "char_type": "defense",
         "ulti": "aoe",
@@ -18779,7 +18776,7 @@
         "release_date": "10/28/2021",
         "tactics_type": "",
         "force": "Demon Lord Invasion",
-        "tag": "Café +10%|Clothing Store +30%|Battle Characters|Defense|Fists|Single|Light|Magic|4|Skills From Soul Soul of Skills|Skills Soul Amount x2|Skills To Soul Soul of Divine Protection|Skills Soul Buff Soul of Divine Protection Gauge|Skills Debuff Single DEF|Traits Buff Self Pierce Power",
+        "tag": "Caf\u00c3\u00a9 +10%|Clothing Store +30%|Battle Characters|Defense|Fists|Single|Light|Magic|4|Skills From Soul Soul of Skills|Skills Soul Amount x2|Skills To Soul Soul of Divine Protection|Skills Soul Buff Soul of Divine Protection Gauge|Skills Debuff Single DEF|Traits Buff Self Pierce Power",
         "weapon": "fists",
         "char_type": "defense",
         "ulti": "single",
@@ -19499,7 +19496,7 @@
         "release_date": "10/28/2021",
         "tactics_type": "",
         "force": "Demon Lord Invasion",
-        "tag": "Training Ground +10%|Café +30%|Battle Characters|Balance|Sword|Single|Dark|Magic|4|Skills Buff All ATK|Traits Buff Self Pierce Rate",
+        "tag": "Training Ground +10%|Caf\u00c3\u00a9 +30%|Battle Characters|Balance|Sword|Single|Dark|Magic|4|Skills Buff All ATK|Traits Buff Self Pierce Rate",
         "weapon": "sword",
         "char_type": "balance",
         "ulti": "single",
@@ -21735,5 +21732,88 @@
             }
         ],
         "id": 286
+    },
+    {
+        "id": 287,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_dark",
+        "dmg_type": "magic",
+        "tactics_type": "Speed",
+        "force": "Octagram Demon Lord|Dragon Haki|Exalted Champions",
+        "release": "10/18/2024",
+        "name": "Milim Nava",
+        "sub_name": "Armored Dragonoid",
+        "initial_attack": 4155,
+        "initial_health": 8407,
+        "initial_defense": 2932,
+        "final_attack": 4155,
+        "final_health": 8407,
+        "final_defense": 2932,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "single",
+        "char_type": "attack",
+        "weapon": "fists",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Dark Drago Sweep",
+                "extraText": "0 Skill Points",
+                "description": "Increases own pierce rate by 100% Turns 3\nIncreases own synergy rate by 100% Turns 3"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Drago Wing Destruction",
+                "extraText": "35 Skill Points",
+                "description": "Changes all Octagram Demon Lord Force characters' souls into Soul of Unity\nIncreases Octagram Demon Lord Force character soul's damage by 15% Turns 1 Uses per battle: 2"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "atk",
+                "attackName": "Neo Drago End Nova",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes a single-target dark magic attack for 600% normal damage"
+            },
+            {
+                "imageName": "atk",
+                "attackName": "Neo Drago End Nova",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes a single-target dark magic attack for 900% normal damage"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "extraText": "Awaken 3/5",
+                "attackName": "Troop - Protection UP",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns available in support formation"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - ATK DOWN",
+                "extraText": "Awaken 3/5",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Secrets gauge increases are decreased by 20% Turns 1 Uses by this character per battle: 1"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Rimuru Tempest is assigned to a battle slot.\nIncreases critical damage by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magical Mercy",
+                "description": "Increases own following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 360\nIncreases ATK by 180\nIncreases DEF by 104"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 3-5 turns\nEffects: Weak Point Damage x1.18\nSuper Weak Point Damage x1.28"
+            }
+        ],
+        "tag": "Tempest Wheel +30%|Churro Stand +10%|7|Magic|Battle Characters|EX_Dark|Skills Buff Self Pierce Rate|Skills Buff Self Synergy Rate|Skills To Soul Soul of Unity|Single|Traits Gauge Protection Gauge"
     }
 ]
