@@ -820,7 +820,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                 <div className="mt-4 pt-4 border-t border-gray-700">
                   <div className="flex items-center justify-between">
                     <span className="text-gray-400 text-sm">Release</span>
-                    <span className="text-gray-300 text-sm">5/19/2024</span>
+                    <span className="text-gray-300 text-sm">{character.release_date}</span>
                   </div>
                 </div>
               </div>
