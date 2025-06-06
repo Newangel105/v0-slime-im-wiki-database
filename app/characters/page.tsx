@@ -539,7 +539,9 @@ export default function CharactersPage() {
       if(tag.endsWith("Unbound")){
         setSelectedElements(["ex_" + tag.replace("\s*Unbound", "").toLowerCase()]);
       }
-      setSelectedElements([tag.toLowerCase()]);
+      else{
+        setSelectedElements([tag.toLowerCase()]);
+      }
     } else if (characterTypes.includes(tag)) {
       // Battle or Protection characters
       
