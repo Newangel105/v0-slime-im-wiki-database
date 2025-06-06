@@ -21815,5 +21815,88 @@
             }
         ],
         "tag": "Tempest Wheel +30%|Churro Stand +10%|EX Unbound|Magic|Battle Characters|Dark Unbound|Skills Buff Self Pierce Rate|Skills Buff Self Synergy Rate|Skills To Soul Soul of Unity|Single|Traits Gauge Protection Gauge"
+    },
+    {
+        "id": 288,
+        "type": "attacker",
+        "stars": 7,
+        "element": "dark",
+        "dmg_type": "phys",
+        "tactics_type": "Speed",
+        "release": "10/18/2024",
+        "name": "Kokuyo",
+        "sub_name": "Dark Chaos Oni",
+        "initial_attack": 703,
+        "initial_health": 1143,
+        "initial_defense": 519,
+        "final_attack": 4153,
+        "final_health": 8414,
+        "final_defense": 2933,
+        "output_initial": 60,
+        "output_final": 150,
+        "weapon": "fists",
+        "ulti": "aoe",
+        "force": "Antagonist|Ogre's Pride|Warrior's Mind",
+        "char_type": "attack",
+        "tag": "Traditional Brewery +30%|Digsite for Attack Magigems +10%|All|Dark Unbound|Skills Buff All Weakness Strike|Skills Buff All M-ATK|Skills Soul Buff Soul of Secrets Guage|Traits Buff Self Pierce Power",
+        "battle_skills": [
+            {
+            "imageName": "b1.png",
+            "attackName": "Rainmaker",
+            "extraText": "50 Skill Points",
+            "description": "Increases all allies' M-ATK by 40% Turns 1 (If activated within 5 turns of battle start, also increases all allies' weakness strike by 80% Turns 1"
+            },
+            {
+            "imageName": "b2.png",
+            "attackName": "Ogre Reload",
+            "extraText": "35 Skill Points",
+            "description": "Gives all allies Secret Skil Vitalization: Increases secret skill guage by 25% up to 3 times when the enemy's turn ends\nIncreases Soul of Secrets damage by 15% Turns 3"
+            }
+        ],
+        "secret_skills": [
+            {
+            "imageName": "sup",
+            "attackName": "Head Shot",
+            "extraText": "100% Secret Gauge",
+            "description": "Unleashes an all-target dark magic attack for 150% normal damage\nIncreases weakness strike of Antagonist Force characters including rearguard until the end of battle by 25% Unlimited"
+            },
+            {
+            "imageName": "sup",
+            "attackName": "Head Shot",
+            "extraText": "200% Secret Gauge",
+            "description": "Unleashes an all-target dark magic attack for 300% normal damage\nIncreases weakness strike of Antagonist Force characters including rearguard until the end of battle by 25% Unlimited"
+            }
+        ],
+        "skill_traits": [
+            {
+            "imageName": "t1",
+            "attackName": "Soul Combo - Pierce Power UP",
+            "description": "When you unleash a 6 combo attack with Soul of Secrets, increases own pierce power by 15% for the next turn (avaliable in support formation)",
+            "extraText": "Awaken 3/5"
+            },
+            {
+            "imageName": "t2",
+            "attackName": "Switch - Skill Seal",
+            "description": "When you switch this character to the vanguard and activate souls, all enemies' magic-changing battle skills are sealed Turns 1 Uses by this character per battle 2",
+            "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+            "imageName": "e1",
+            "attackName": "Individual Mercy",
+            "description": "Increases own following status when Shinsha is assigned to a battle slot.\nIncreases pierce power by 12%"
+            },
+            {
+            "imageName": "",
+            "attackName": "Magic Blessing",
+            "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 96\nIncreases ATK by 45\nIncreases DEF by 26"
+            }
+        ],
+        "unbound": [
+            {
+            "description": "Conditions: 3-5 turns\nEffects: Weak Point Damage x1.16\nSuper Weak Point Damage x1.26"
+            }
+        ]
     }
 ]
