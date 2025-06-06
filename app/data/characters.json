@@ -21736,8 +21736,8 @@
     {
         "id": 287,
         "type": "attacker",
-        "stars": "EX Unbound",
-        "element": "Dark Unbound",
+        "stars": "7",
+        "element": "ex_dark",
         "dmg_type": "magic",
         "tactics_type": "Speed",
         "force": "Octagram Demon Lord|Dragon Haki|Exalted Champions",
@@ -21814,6 +21814,6 @@
                 "description": "Conditions: 3-5 turns\nEffects: Weak Point Damage x1.18\nSuper Weak Point Damage x1.28"
             }
         ],
-        "tag": "Tempest Wheel +30%|Churro Stand +10%|7|Magic|Battle Characters|EX_Dark|Skills Buff Self Pierce Rate|Skills Buff Self Synergy Rate|Skills To Soul Soul of Unity|Single|Traits Gauge Protection Gauge"
+        "tag": "Tempest Wheel +30%|Churro Stand +10%|EX Unbound|Magic|Battle Characters|EX Dark|Skills Buff Self Pierce Rate|Skills Buff Self Synergy Rate|Skills To Soul Soul of Unity|Single|Traits Gauge Protection Gauge"
     }
 ]
