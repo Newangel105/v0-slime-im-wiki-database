@@ -21855,13 +21855,13 @@
         ],
         "secret_skills": [
             {
-            "imageName": "sup",
+            "imageName": "support",
             "attackName": "Head Shot",
             "extraText": "100% Secret Gauge",
             "description": "Unleashes an all-target dark magic attack for 150% normal damage\nIncreases weakness strike of Antagonist Force characters including rearguard until the end of battle by 25% Unlimited"
             },
             {
-            "imageName": "sup",
+            "imageName": "support",
             "attackName": "Head Shot",
             "extraText": "200% Secret Gauge",
             "description": "Unleashes an all-target dark magic attack for 300% normal damage\nIncreases weakness strike of Antagonist Force characters including rearguard until the end of battle by 25% Unlimited"
@@ -21877,7 +21877,7 @@
             {
             "imageName": "t2",
             "attackName": "Switch - Skill Seal",
-            "description": "When you switch this character to the vanguard and activate souls, all enemies' magic-changing battle skills are sealed Turns 1 Uses by this character per battle 2",
+            "description": "When you switch this character to the vanguard and activate souls, all enemies' magic-changing battle skills are sealed Turns 1 Uses by this character per battle: 2",
             "extraText": "Awaken 3/5"
             }
         ],
