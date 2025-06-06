@@ -969,7 +969,7 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                     </div>
                   </div>
                   <div className="text-gray-300 text-sm leading-relaxed">
-                    {replaceStatTextWithIcons(skill.description)}
+                    {renderTextWithLineBreaksAndIcons(skill.description)}
                   </div>
                 </div>
               ))}
