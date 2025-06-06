@@ -190,6 +190,51 @@ const dmg_typeIcons = {
   phys: "/type_dmg/icAttackTypePhysics.png",
   prot_phys: "/type_dmg/prot_phys.png",
   prot_magic: "/type_dmg/prot_magic.png",
+  Adventurer: "/protector_elements/Adventurer.png",
+  Antagonist: "/protector_elements/Antagonist.png",
+  Axiom_of_Haze: "/protector_elements/Axiom_of_Haze.png",
+  Clan_Chief: "/protector_elements/Clan_Chief.png",
+  Commander: "/protector_elements/Commander.png",
+  Demon_Lord_Invasion: "/protector_elements/Demon_Lord_Invasion.png",
+  Determination_to_Prosper: "/protector_elements/Determination_to_Prosper.png",
+  Dragon_Haki: "/protector_elements/Dragon_Haki.png",
+  Exalted_Champions: "/protector_elements/Exalted_Champions.png",
+  Festive_Memories: "/protector_elements/Festive_Memories.png",
+  Flashback_Beatdown_Emissary: "/protector_elements/Flashback_Beatdown_Emissary.png",
+  Forest_Fracas: "/protector_elements/Forest_Fracas.png",
+  Fount_of_Wisdom: "/protector_elements/Fount_of_Wisdom.png",
+  Frozen_Continent: "/protector_elements/Frozen_Continent.png",
+  Gaining_Status: "/protector_elements/Gaining_Status.png",
+  Goddess_of_Destiny: "/protector_elements/Goddess_of_Destiny.png",
+  Heart_of_a_Hero: "/protector_elements/Heart_of_a_Hero.png",
+  Hyper_Heart: "/protector_elements/Hyper_Heart.png",
+  Lycanthropes_Pride: "/protector_elements/Lycanthrope's_Pride.png",
+  Monster_and_Human_Mingling: "/protector_elements/Monster_and_Human_Mingling.png",
+  New_Years_Blessing: "/protector_elements/New_Year's_Blessing.png",
+  Octagram: "/protector_elements/Octagram.png",
+  Octagram_Bazaar: "/protector_elements/Octagram_Bazaar.png",
+  Octagram_Demon_Lord: "/protector_elements/Octagram_Demon_Lord.png",
+  Ogres_Pride: "/protector_elements/Ogre's_Pride.png",
+  Otherworlder: "/protector_elements/Otherworlder.png",
+  Otherworld_Legend: "/protector_elements/Otherworld_Legend.png",
+  Pariah: "/protector_elements/Pariah.png",
+  Pretty_Sparkle: "/protector_elements/Pretty_Sparkle.png",
+  Primal_Demon: "/protector_elements/Primal_Demon.png",
+  Protector_of_Peace: "/protector_elements/Protector_of_Peace.png",
+  Scarlet_Bond: "/protector_elements/Scarlet_Bond.png",
+  Schemer: "/protector_elements/Schemer.png",
+  Shizus_Will: "/protector_elements/Shizu's_Will.png",
+  Spirit_Master: "/protector_elements/Spirit_Master.png",
+  Stern_of_Spirit: "/protector_elements/Stern_of_Spirit.png",
+  Summer_Memories: "/protector_elements/Summer_Memories.png",
+  Tempest_Elite: "/protector_elements/Tempest_Elite.png",
+  Ten_Great_Demon_Lords: "/protector_elements/Ten_Great_Demon_Lords.png",
+  Valentine: "/protector_elements/Valentine.png",
+  Visions_of_Coleus: "/protector_elements/Visions_of_Coleus.png",
+  Warriors_Mind: "/protector_elements/Warrior's_Mind.png",
+  Wholehearted_Devotion: "/protector_elements/Wholehearted_Devotion.png",
+  Wielder_of_Magic: "/protector_elements/Wielder_of_Magic.png",
+  World_of_Fantasy: "/protector_elements/World_of_Fantasy.png",
 }
 
 export default function ForcesPage() {
@@ -245,13 +290,11 @@ export default function ForcesPage() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-8">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                    <img
-                        src="/icons/logo.png"
-                        alt="Logo"
-                        className="w-5 h-5 object-contain"
-                    />
-                    </div>
+                <img
+                    src="/icons/logo.png"
+                    alt="Logo"
+                    className="w-[67px] h-[67px] object-contain"
+                />
                 <span className="text-xl font-bold">SLIME.WIKI</span>
               </div>
               <nav className="hidden md:flex space-x-6">
@@ -332,7 +375,7 @@ export default function ForcesPage() {
                         <img
                             src="/icons/name.png"
                             alt="User Icon"
-                            className="w-5 h-5"
+                            className="w-2 h-5"
                         />
                         {isExpanded ? (
                             <ChevronUp className="w-5 h-5 text-gray-400" />
