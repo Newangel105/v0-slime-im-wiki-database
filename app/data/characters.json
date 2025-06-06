@@ -21898,5 +21898,88 @@
             "description": "Conditions: 3-5 turns\nEffects: Weak Point Damage x1.16\nSuper Weak Point Damage x1.26"
             }
         ]
+    },
+    {
+        "id": 289,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_space",
+        "force": "Antagonist|Schemer|Dragon Haki",
+        "dmg_type": "magic",
+        "tactics_type": "Speed",
+        "release": "10/18/2024",
+        "name": "Izis",
+        "sub_name": "Mirror Dragon King",
+        "initial_attack": 732,
+        "initial_health": 1214,
+        "initial_defense": 559,
+        "final_attack": 4146,
+        "final_health": 8422,
+        "final_defense": 2944,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "single",
+        "char_type": "attack",
+        "weapon": "book",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Magazine Mirror",
+                "extraText": "50 Skill Points",
+                "description": "Decreases all target's magic attack resistance by 30% Turns 1 (If activated within 5 turns of battle start, also decreases all target's secret skill damage resistance by 120% Turns 1"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Portfolio",
+                "extraText": "30 Skill Points",
+                "description": "Apply Drago to all magic character allies Turns 1\nIncreases all allies' pierce power by 30% Turns 1"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "support",
+                "attackName": "Ground Zero",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes a single-target space magic attack for 250% normal damage\nIncreases weakness strike of Antagonist Force characters including rearguard until the end of battle by 25% Unlimited"
+            },
+            {
+                "imageName": "support",
+                "attackName": "Ground Zero",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes a single-target space magic attack for 500% normal damage\nIncreases weakness strike of Antagonist Force characters including rearguard until the end of battle by 25% Unlimited"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Troop - Skill UP",
+                "description": "When your troop contains 3 or more battle characters, increases skill points by 3 every 2 turns (avaliable in support formation)",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - Protection DOWN",
+                "description": "When you unleash a 2 combo, all of the enem's Soul of Divine Protection guage increases are decreased by 20% Turns 1 Uses by this character per battle: 1",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Shinsha is assigned to a battle slot.\nIncreases pierce power by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 96\nIncreases ATK by 45\nIncreases DEF by 26"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 3-5 turns\nEffects: Weak Point Damage x1.16\nSuper Weak Point Damage x1.26"
+            }
+        ],
+        "tag": "Japanese Style Tavern +30%|Digsite for Stamina Magigems +10%|Single|Space Unbound|Skills Debuff All Magic Attack Resistance|Skills Debuff All Secret Skill Damage Resistance|Skills Buff All Drago|Skills Buff All Pierce Power|Skills Buff All Weakness Strike"
     }
 ]
