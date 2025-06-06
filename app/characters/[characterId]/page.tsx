@@ -670,7 +670,11 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
             <div className="flex items-center space-x-8">
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                  <Gamepad2 className="w-5 h-5" />
+                  <img
+                    src="/icons/logo.png"
+                    alt="Logo"
+                    className="w-[77px] h-[67px] object-contain"
+                  />
                 </div>
                 <span className="text-xl font-bold">SLIME.WIKI</span>
               </div>
@@ -678,10 +682,10 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
                 <Link href="/characters" className="text-white font-medium">
                   Characters
                 </Link>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <a href="/forces" className="text-gray-300 hover:text-white transition-colors">
                   Forces
                 </a>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <a href="/events" className="text-gray-300 hover:text-white transition-colors">
                   Events
                 </a>
               </nav>

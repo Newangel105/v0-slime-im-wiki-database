@@ -293,7 +293,7 @@ export default function ForcesPage() {
                 <img
                     src="/icons/logo.png"
                     alt="Logo"
-                    className="w-[67px] h-[67px] object-contain"
+                    className="w-[77px] h-[67px] object-contain"
                 />
                 <span className="text-xl font-bold">SLIME.WIKI</span>
               </div>
@@ -301,10 +301,10 @@ export default function ForcesPage() {
                 <Link href="/characters" className="text-gray-300 hover:text-white transition-colors">
                   Characters
                 </Link>
-                <a href="#" className="text-white font-medium">
+                <a href="/forces" className="text-white font-medium">
                   Forces
                 </a>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <a href="/events" className="text-gray-300 hover:text-white transition-colors">
                   Events
                 </a>
               </nav>
@@ -317,18 +317,6 @@ export default function ForcesPage() {
         {/* Page Title */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-300 uppercase tracking-wider">FORCES</h1>
-        </div>
-
-        {/* Navigation Tabs */}
-        <div className="flex justify-center mb-8">
-          <div className="flex bg-gray-800 rounded-lg p-1">
-            <button className="px-6 py-2 rounded-md bg-red-600 text-white font-medium">Forces</button>
-            <Link href="/characters">
-              <button className="px-6 py-2 rounded-md text-gray-300 hover:text-white transition-colors">
-                Characters
-              </button>
-            </Link>
-          </div>
         </div>
 
         {/* Search */}
@@ -375,7 +363,7 @@ export default function ForcesPage() {
                         <img
                             src="/icons/name.png"
                             alt="User Icon"
-                            className="w-2 h-5"
+                            className="w-3 h-5"
                         />
                         {isExpanded ? (
                             <ChevronUp className="w-5 h-5 text-gray-400" />
