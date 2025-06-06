@@ -850,7 +850,7 @@ export default function CharactersPage() {
                 <a href="#" className="text-white font-medium">
                   Characters
                 </a>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <a href="/forces" className="text-gray-300 hover:text-white transition-colors">
                   Forces
                 </a>
                 <a href="#" className="text-gray-300 hover:text-white transition-colors">
