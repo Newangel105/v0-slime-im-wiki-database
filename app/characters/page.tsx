@@ -252,7 +252,7 @@ const dmg_typeIcons = {
   Octagram: "/protector_elements/Octagram.png",
   Octagram_Bazaar: "/protector_elements/Octagram_Bazaar.png",
   Octagram_Demon_Lord: "/protector_elements/Octagram_Demon_Lord.png",
-  Ogres_Pride: "/protector_elements/Ogres_Pride.png",
+  Ogres_Pride: "/protector_elements/Ogre's_Pride.png",
   Otherworlder: "/protector_elements/Otherworlder.png",
   Otherworld_Legend: "/protector_elements/Otherworld_Legend.png",
   Pariah: "/protector_elements/Pariah.png",
