@@ -21736,8 +21736,8 @@
     {
         "id": 287,
         "type": "attacker",
-        "stars": 7,
-        "element": "ex_dark",
+        "stars": "EX Unbound",
+        "element": "Dark Unbound",
         "dmg_type": "magic",
         "tactics_type": "Speed",
         "force": "Octagram Demon Lord|Dragon Haki|Exalted Champions",
