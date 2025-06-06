@@ -530,16 +530,20 @@ export default function CharactersPage() {
         setSelectedStars([parseInt(tag)]);
       }
     } else if (tag.startsWith("Anti")) {
-      if(tag.endsWith("Unbound")){
-        setSelectedElements([tag.replace("ex_prot_", "").replace("\s*Unbound","").toLowerCase()]);
+      if (tag.endsWith("Unbound")) {
+        const base = tag
+          .replace(/^Anti-/, "")           // remove "Anti-"
+          .replace(/\s*Unbound$/, "")     // remove " Unbound" at end
+          .toLowerCase();
+        setSelectedElements(["ex_prot_" + base]);
       } else {
-        setSelectedElements([tag.replace("Anti-", "").toLowerCase()]);
+        setSelectedElements([tag.replace(/^Anti-/, "").toLowerCase()]);
       }
-    } else if (elements.includes(tag)) {
-      if(tag.endsWith("Unbound")){
-        setSelectedElements(["ex_" + tag.replace("\s*Unbound", "").toLowerCase()]);
-      }
-      else{
+    }else if (elements.includes(tag)) {
+      if (tag.endsWith("Unbound")) {
+        const base = tag.replace(/\s*Unbound$/, ""); // removes " Unbound" or "Unbound" at the end
+        setSelectedElements(["ex_" + base.toLowerCase()]);
+      } else {
         setSelectedElements([tag.toLowerCase()]);
       }
     } else if (characterTypes.includes(tag)) {
