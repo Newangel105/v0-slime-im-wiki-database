@@ -74,6 +74,7 @@ const forcesMap = {
   Dragon_Haki: "/protector_elements/Dragon_Haki.png",
   Exalted_Champions: "/protector_elements/Exalted_Champions.png",
   Festive_Memories: "/protector_elements/Festive_Memories.png",
+  Divine_General: "/protector_elements/divine-general.png",
   Flashback_Beatdown_Emissary: "/protector_elements/Flashback_Beatdown_Emissary.png",
   Forest_Fracas: "/protector_elements/Forest_Fracas.png",
   Fount_of_Wisdom: "/protector_elements/Fount_of_Wisdom.png",
