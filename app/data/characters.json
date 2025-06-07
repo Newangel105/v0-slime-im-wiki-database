@@ -22042,7 +22042,7 @@
         "element": "ex_dark",
         "dmg_type": "magic",
         "tactics_type": "Charge",
-        "force": "Commander/Divine General/Otherworld Legend/Primal Demon/Tempest Elite",
+        "force": "Commander|Divine General|Otherworld Legend|Primal Demon|Tempest Elite",
         "release_date": "10/28/2024",
         "name": "Diablo",
         "sub_name": "Avatar of the Underword",
@@ -22088,13 +22088,13 @@
         "skill_traits": [
             {
                 "imageName": "t1",
-                "attackName": "Troop - Protection UP",
+                "attackName": "Charge - Secret DOWN",
                 "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the secret skill gauge of all targets is decreased by 10% (Uses by this character per battle: 1)",
                 "extraText": "Awaken 3/5"
             },
             {
                 "imageName": "t2",
-                "attackName": "Soul Combo - ATK DOWN",
+                "attackName": "Soul Combo - ATK UP",
                 "description": "When you unleash a 6 combo attack with Soul of Skills, increases own ATK by 8% for the next turn (available in support formation)",
                 "extraText": "Awaken 3/5"
             }
@@ -22117,5 +22117,88 @@
             }
         ],
         "tag": "Digsite for Attack Magigems +30%|Traditional Inn +10%|All|Dark Unbound|EX Unbound|Magic|Battle Characters|Skills Buff All Synergy Rate|Skills Buff All Synergy Power|Skills Soul Buff Soul of Skills Gauges|Skills Buff All Weakness Strike|Traits Buff Self ATK"
+    },
+    {
+        "id": 292,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_space",
+        "dmg_type": "magic",
+        "tactics_type": "Charge",
+        "force": "Divine General|Otherword Legend|Commander|Fount of Wisdom|Stern of Spirit",
+        "release_date": "10/28/2024",
+        "name": "Rimuru Tempest",
+        "sub_name": "Avatar of Omnipotence",
+        "initial_attack": 591,
+        "initial_health": 961,
+        "initial_defense": 440,
+        "final_attack": 4152,
+        "final_health": 8412,
+        "final_defense": 2936,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "single",
+        "char_type": "attack",
+        "weapon": "spear",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Tempestuous Thunder",
+                "extraText": "100 Skill Points",
+                "description": "Increases space ATK for all allies including rearguard by 110% (Turns 1)\n Increases dark ATK for all allies including rearguard by 120% (Turns 1)"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Omniscient Order",
+                "extraText": "10 Skill Points",
+                "description": "Increases Synergy Power for all allies including rearguard until the end of battle by 10% (Unlimited)\nIncreases Soul of Combos damage until the end of battle by 5% (Unlimited)"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "atk",
+                "attackName": "Zeus Storm",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes a single-target space magic attack for 600% normal damage"
+            },
+            {
+                "imageName": "atk",
+                "attackName": "Zeus Storm",
+                "extraText": "200% Secret Gauge",
+                "description": " Unleashes a single-target space magic attack for 900% normal damage"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Troop - Skill UP",
+                "description": "When your troop contains 3 or more battle characters, increases skill points by 5 every 2 turns (available in support formation)",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - Soul of Divine Protection Damage DOWN",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Divine Protection damage is decreased by 20% (Turns 1; Uses by this character per battle: 1)",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": " Increases own following status when Diablo is assigned to a battle slot.\nIncreases synergy power by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 378\nIncreases ATK by 190\nIncreases DEF by 110"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.16\nSuper Weak Point Damage x1.26"
+            }
+        ],
+        "tag": "Sweets Shop +30%|Digsite for Training Magigems +10%|EX Unbound|Magic|Battle Characters|Single|Skills Buff All Synergy Power|Skills Buff All Soul of Combos|Skills Buff All Space ATK|Skills Buff All Dark ATK|Traits Gauge Skill Points"
     }
 ]
