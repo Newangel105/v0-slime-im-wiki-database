@@ -22033,7 +22033,7 @@
                 "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 2"
             }
         ],
-        "tag": "Light Magic Device +200%|Symbol of Protection +100%|Protection Characters|EX Unbound|Anti-Light Unbound|Magic|Skills Gauge Skill Points|Debuff All Weakness Resistance|Debuff All All Attribute Resistance|Skills To Soul Soul of Skills|Traits Buff All DEF|Traits Buff All Single-Target Attack Damage Resistance"
+        "tag": "Light Magic Device +200%|Symbol of Protection +100%|Protection Characters|EX Unbound|Anti-Light Unbound|Magic|Skills Gauge Skill Points|Debuff All Weakness Resistance|Debuff All All Attribute Resistance|Skills To Soul Soul of Skills|Traits Buff All DEF"
     },
     {
         "id": 291,
@@ -22249,10 +22249,10 @@
             {
                 "imageName": "t2",
                 "attackName": "Charge - Concentrate",
-                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% (Turns 1; Uses by this character per battle: 2)"
+                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30%\n (Turns 1; Uses by this character per battle: 2)"
             }
         ],
-        "tag": "Wind Magic Device +200%|Symbol of Protection +100%|Magic|Anti-Wind Unbound|EX Unbound|Protection Characters|Traits Buff All ATK|Skills Special Emperor's Enamor|Skills Debuff All Seal Critical Resistance UP|Skills Debuff All Seal Pierce Resistance UP|Skills Debuff All Seal Synergy Resistance UP|Skills Buff All Charge-Type M-ATK|Traits Buff All Single-Target Attack Damage Resistance"
+        "tag": "Wind Magic Device +200%|Symbol of Protection +100%|Magic|Anti-Wind Unbound|EX Unbound|Protection Characters|Traits Buff All ATK|Skills Debuff All Seal Critical Resistance UP|Skills Debuff All Seal Pierce Resistance UP|Skills Debuff All Seal Synergy Resistance UP|Skills Buff All Charge-Type M-ATK"
     },
     {
         "id": 294,
@@ -22287,7 +22287,7 @@
                 "imageName": "b2.png",
                 "attackName": "Crescent Bow Strike",
                 "extraText": "100 Skill Points",
-                "description": "Increases pierce rate for all allies including rearguard by 100% (Turns 1)\n Increases pierce power for all allies including rearguard by 90% (Turns 1)"
+                "description": "Increases pierce rate for all allies including rearguard by 100% Turns 1\n Increases pierce power for all allies including rearguard by 90% Turns 1"
             }
         ],
         "secret_skills": [
@@ -22295,20 +22295,20 @@
                 "imageName": "atk",
                 "attackName": "Artemis Strike",
                 "extraText": "100% Secret Gauge",
-                "description": "Unleashes an all-target light magic attack for 150% normal damage\nIncreases weakness strike of Divine General Force characters including rearguard until the end of battle by 60%(Unlimited)"
+                "description": "Unleashes an all-target light magic attack for 150% normal damage\nIncreases weakness strike of Divine General Force characters including rearguard until the end of battle by 60% Unlimited"
             },
             {
                 "imageName": "atk",
                 "attackName": "Artemis Strike",
                 "extraText": "200% Secret Gauge",
-                "description": "Unleashes an all-target light magic attack for 150% normal damage\nIncreases weakness strike of Divine General Force characters including rearguard until the end of battle by 120%(Unlimited)"
+                "description": "Unleashes an all-target light magic attack for 150% normal damage\nIncreases weakness strike of Divine General Force characters including rearguard until the end of battle by 120% Unlimited"
             }
         ],
         "skill_traits": [
             {
                 "imageName": "t1",
                 "attackName": "Switch - Skill Seal",
-                "description": "When you switch this character to the vanguard and activate souls, all enemies' body and spirit-changing battle skills are sealed (Turns 1; Uses by this character per battle: 2)",
+                "description": "When you switch this character to the vanguard and activate souls, all enemies' body and spirit-changing battle skills are sealed\n (Turns 1; Uses by this character per battle: 2)",
                 "extraText": "Awaken 3/5"
             },
             {
@@ -22364,13 +22364,13 @@
                 "imageName": "b1.png",
                 "attackName": "Beautiful End",
                 "extraText": "100 Skill Points",
-                "description": "Increases Soul of Combos damage by 140% (Turns 1)"
+                "description": "Increases Soul of Combos damage by 140% Turns 1"
             },
             {
                 "imageName": "b2.png",
                 "attackName": "White Shroud Decimation",
                 "extraText": "10 Skill Points",
-                "description": "Changes space characters' Soul of Combos x3 into Soul of Skills for this turn only\nDecreases all targets' weakness resistance until the end of battle by 10% (Unlimited)"
+                "description": "Changes space characters' Soul of Combos x3 into Soul of Skills for this turn only\nDecreases all targets' weakness resistance until the end of battle by 10% Unlimited"
             }
         ],
         "secret_skills": [
@@ -22397,7 +22397,7 @@
             {
                 "imageName": "t2",
                 "attackName": "Soul Combo - Skill DOWN",
-                "description": "When you unleash a 2 combo, all of the enemy's Soul of Skills gauge increases are decreased by 20% (Turns: 1; Uses by this character per battle: 1)",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Skills gauge increases are decreased by 20% Turns 1 Uses by this character per battle: 1",
                 "extraText": "Awaken 3/5"
             }
         ],
@@ -22419,5 +22419,58 @@
             }
         ],
         "tag": "Gift Shop +30%|Decoration Magicubeite Digsite +10%|Skills Buff All Soul of Combos|Skills To Soul Soul of Skills|Skills From Soul Soul of Combos|Skills Soul Amount x3|Traits Gauge Protection Gauge"
+    },
+    {
+        "id": 296,
+        "type": "protector",
+        "stars": 7,
+        "element": "prot_ex_earth",
+        "dmg_type": "phys",
+        "tactics_type": "Defense",
+        "force": "Festive Memories",
+        "release_date": "11/27/2024",
+        "name": "Albis",
+        "sub_name": "Alluring Love",
+        "initial_attack": 262,
+        "initial_health": 377,
+        "initial_defense": 159,
+        "final_attack": 1766,
+        "final_health": 3645,
+        "final_defense": 1499,
+        "output_initial": 100,
+        "output_final": 220,
+        "divine_skills": [
+            {
+                "imageName": "/icons/divine.png",
+                "attackName": "Enticing Snake Eye",
+                "extraText": "Primary",
+                "description": "Increases damage done by Festive Memories Force characters to earth attribute enemies by 120%; increases physical characters' ATK and DEF by 25%\nAt the beginning of each turn from turn 2 onward, decreases the skill cost by 10 for all allies including rearguard (Cannot go below each skill's initial cost)"
+            },
+            {
+                "attackName": "Supporting Divine Protection",
+                "extraText": "Support",
+                "description": "Increases defense-type physical characters' ATK by 15%"
+            }
+        ],
+        "protection_skill": [
+            {
+                "attackName": "Dearest Flash",
+                "extraText": "100% Protection Gauge",
+                "description": " Applies barrier stack x1 each to all allies Unlimited\nIncreases Soul of Combos damage until the end of battle by 30% Unlimited\nIncreases Soul of Divine Protection's skill point increase by 290% Turns 1"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "HP - P-ATK UP",
+                "description": "When 3 vanguard have 75% or more HP, increases all allies' P-ATK by 8% at start of turn (available in support formation)"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Charge - Concentrate",
+                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% (Turns 1; Uses by this character per battle: 2)"
+            }
+        ],
+        "tag": "Earth Magic Device +200%|Symbol of Protection +100%|Protection Characters|Skills Special Skill Cost Reset|Skills Special Barrier|Skills Buff All Soul of Combos|Skills Soul Buff Divine Protection Skill Point|Skills Buff All Defense-Type P-ATK"
     }
 ]
