@@ -22418,7 +22418,7 @@
                 "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.2\nSuper Weak Point Damage x1.3"
             }
         ],
-        "tag": "Gift Shop +30%|Decoration Magicubeite Digsite +10%|Skills Buff All Soul of Combos|Skills To Soul Soul of Skills|Skills From Soul Soul of Combos|Skills Soul Amount x3|Traits Gauge Protection Gauge"
+        "tag": "Gift Shop +30%|Decoration Magicubeite Digsite +10%|EX Unbound|Space Unbound|Single|Magic|Battle Characters|Skills Buff All Soul of Combos|Skills To Soul Soul of Skills|Skills From Soul Soul of Combos|Skills Soul Amount x3|Traits Gauge Protection Gauge"
     },
     {
         "id": 296,
@@ -22471,7 +22471,7 @@
                 "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% (Turns 1; Uses by this character per battle: 2)"
             }
         ],
-        "tag": "Earth Magic Device +200%|Symbol of Protection +100%|Protection Characters|Skills Special Skill Cost Reset|Skills Special Barrier|Skills Buff All Soul of Combos|Skills Soul Buff Divine Protection Skill Point|Skills Buff All Defense-Type P-ATK"
+        "tag": "Earth Magic Device +200%|Symbol of Protection +100%|Protection Characters|Anti-Earth Unbound|EX Unbound|Skills Special Skill Cost Reset|Skills Special Barrier|Skills Buff All Soul of Combos|Skills Soul Buff Divine Protection Skill Point|Skills Buff All Defense-Type P-ATK"
     },
     {
         "id": 297,
@@ -22554,7 +22554,7 @@
                 "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.2\nSuper Weak Point Damage x1.3"
             }
         ],
-        "tag": "Mini Coaster +30%|Weaving Workshop +10%|EX Unbound|Physical|Single|Skills Buff All Pierce Rate|Skills Debuff All Secret Skill Damage Resistance|Skills Buff All Weakness Strike|Skills To Soul Soul of Divine Protection|Skills From Soul Soul of Secrets|Skills Soul Buff Soul of Divine Protection Gauge|Traits Gauge Protection Gauge"
+        "tag": "Mini Coaster +30%|Weaving Workshop +10%|EX Unbound|Battle Characters|Earth Unbound|Physical|Single|Skills Buff All Pierce Rate|Skills Debuff All Secret Skill Damage Resistance|Skills Buff All Weakness Strike|Skills To Soul Soul of Divine Protection|Skills From Soul Soul of Secrets|Skills Soul Buff Soul of Divine Protection Gauge|Traits Gauge Protection Gauge"
     },
     {
         "id": 298,
@@ -22637,7 +22637,7 @@
                 "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.14\nSuper Weak Point Damage x1.24"
             }
         ],
-        "tag": "Digsite for Stamina Magigems +30%|Tempest Wheel +10%|EX Unbound|Physical|All|Skills Buff All EX Soul of Combos|Skills Buff All Weakness Strike|Skills To Soul Soul of Divine Protection|Skills From Soul Non-Divine Protection Soul|Skills Soul Amount x1|Traits Debuff All ATK"
+        "tag": "Digsite for Stamina Magigems +30%|Tempest Wheel +10%|EX Unbound|Battle Characters|Water Unbound|Physical|All|Skills Buff All EX Soul of Combos|Skills Buff All Weakness Strike|Skills To Soul Soul of Divine Protection|Skills From Soul Non-Divine Protection Soul|Skills Soul Amount x1|Traits Debuff All ATK"
     },
     {
         "id": 299,
@@ -22692,7 +22692,7 @@
                 "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 2"
             }
         ],
-        "tag": "Dark Magic Device +200%|Symbol of Protection +100%|EX Unbound|Protection Characters|Skills Buff All Charge-Type M-ATK|Skills Buff All All Attribute ATK|Skills To Soul Soul of Secrets|Skills From Soul Non-Secrets|Skills Soul Buff Soul of Secrets Skill Point|Traits Buff All ATK"
+        "tag": "Dark Magic Device +200%|Symbol of Protection +100%|EX Unbound|Anti-Dark Unbound|Protection Characters|Skills Buff All Charge-Type M-ATK|Skills Buff All All Attribute ATK|Skills To Soul Soul of Secrets|Skills From Soul Non-Secrets|Skills Soul Buff Soul of Secrets Skill Point|Traits Buff All ATK"
     },
     {
         "id": 300,
@@ -22775,7 +22775,7 @@
                 "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.2\nSuper Weak Point Damage x1.3"
             }
         ],
-        "tag": "Sweets Shop +30%|Laboratory +10%|Skills Buff Self ATK|Skills Debuff All All Atribute Resistance|Skills Buff All Synergy Rate|Skills Soul Buff Soul of Combos|Traits Gauge Protection Gauge"
+        "tag": "Sweets Shop +30%|Laboratory +10%|EX Unbound|Battle Characters|Light Unbound|All|Skills Buff Self ATK|Skills Debuff All All Atribute Resistance|Skills Buff All Synergy Rate|Skills Soul Buff Soul of Combos|Traits Gauge Protection Gauge"
     },
     {
         "id": 301,
@@ -22831,7 +22831,7 @@
             {
                 "imageName": "t1",
                 "attackName": "Switch - Skill Seal",
-                "description": "When you switch this character to the vanguard and activate souls, all enemies' magic-changing battle skills are sealed (Turns 1; Uses by this character per battle: 2)",
+                "description": "When you switch this character to the vanguard and activate souls, all enemies' magic-changing battle skills are sealed\n (Turns 1; Uses by this character per battle: 2)",
                 "extraText": "Awaken 3/5"
             },
             {
@@ -22858,6 +22858,6 @@
                 "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.14\nSuper Weak Point Damage x1.24"
             }
         ],
-        "tag": "Digsite for Stamina Magigems +10%|Decoration Magicubeite Digsite +30%|Skills Buff All ATK|Skills Debuff All Weakness Resistance|Skills From Soul Another Random Character|Skills To Soul Soul of Secrets|Skills Soulf Buff Soul of Secrets Protection Gauge|Traits Debuff All DEF"
+        "tag": "Digsite for Stamina Magigems +10%|Decoration Magicubeite Digsite +30%|EX Unbound|Battle Characters|Space Unbound|All|Skills Buff All ATK|Skills Debuff All Weakness Resistance|Skills From Soul Another Random Character|Skills To Soul Soul of Secrets|Skills Soulf Buff Soul of Secrets Protection Gauge|Traits Debuff All DEF"
     }
 ]
