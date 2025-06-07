@@ -22034,5 +22034,88 @@
             }
         ],
         "tag": "Light Magic Device +200%|Symbol of Protection +100%|Protection Characters|EX Unbound|Anti-Light Unbound|Magic|Skills Gauge Skill Points|Debuff All Weakness Resistance|Debuff All All Attribute Resistance|Skills To Soul Soul of Skills|Traits Buff All DEF|Traits Buff All Single-Target Attack Damage Resistance"
+    },
+    {
+        "id": 291,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_dark",
+        "dmg_type": "magic",
+        "tactics_type": "Charge",
+        "force": "Commander/Divine General/Otherworld Legend/Primal Demon/Tempest Elite",
+        "release_date": "10/28/2024",
+        "name": "Diablo",
+        "sub_name": "Avatar of the Underword",
+        "initial_attack": 596,
+        "initial_health": 951,
+        "initial_defense": 434,
+        "final_attack": 4157,
+        "final_health": 8402,
+        "final_defense": 2930,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "aoe",
+        "char_type": "attack",
+        "weapon": "spear",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Underworld Unleashed",
+                "extraText": "100 Skill Points",
+                "description": "Increases Synergy Rate for all allies including rearguard by 80% (Turns 1)\n Increases Synergy Power for all allies including rearguard by 100% (Turns 1)"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Underworld Seal",
+                "extraText": "10 Skill Points",
+                "description": "For this turn, all allies' battle skills can be activated an unlimited number of times (Excluding this skill)\n Increases all Soul of Skills gauges' increase by 40% (Turns 1)\n (Cannot exceed the max activation limit during battle)"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "support",
+                "attackName": "Hades Explosion",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes an all-target dark magic attack for 150% normal damage\nIncreases weakness strike of Divine General Force characters including rearguard until the end of battle by 60% (Unlimited)"
+            },
+            {
+                "imageName": "support",
+                "attackName": "Hades Explosion",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes an all-target dark magic attack for 150% normal damage\nIncreases weakness strike of Divine General Force characters including rearguard until the end of battle by 120% (Unlimited)"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Troop - Protection UP",
+                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the secret skill gauge of all targets is decreased by 10% (Uses by this character per battle: 1)",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - ATK DOWN",
+                "description": "When you unleash a 6 combo attack with Soul of Skills, increases own ATK by 8% for the next turn (available in support formation)",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Rimuru Tempest is assigned to a battle slot.\nIncreases synergy power by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 96\nIncreases ATK by 45\nIncreases DEF by 26"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.16\nSuper Weak Point Damage x1.26"
+            }
+        ],
+        "tag": "Digsite for Attack Magigems +30%|Traditional Inn +10%|All|Dark Unbound|EX Unbound|Magic|Battle Characters|Skills Buff All Synergy Rate|Skills Buff All Synergy Power|Skills Soul Buff Soul of Skills Gauges|Skills Buff All Weakness Strike|Traits Buff Self ATK"
     }
 ]
