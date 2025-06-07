@@ -21823,7 +21823,7 @@
         "element": "dark",
         "dmg_type": "phys",
         "tactics_type": "Speed",
-        "release": "10/18/2024",
+        "release_date": "10/18/2024",
         "name": "Kokuyo",
         "sub_name": "Dark Chaos Oni",
         "initial_attack": 703,
@@ -21907,7 +21907,7 @@
         "force": "Antagonist|Schemer|Dragon Haki",
         "dmg_type": "magic",
         "tactics_type": "Speed",
-        "release": "10/18/2024",
+        "release_date": "10/18/2024",
         "name": "Izis",
         "sub_name": "Mirror Dragon King",
         "initial_attack": 732,
@@ -21990,7 +21990,7 @@
         "dmg_type": "magic",
         "tactics_type": "Speed",
         "force": "Octagram Demon Lord",
-        "release": "10/18/2024",
+        "release_date": "10/18/2024",
         "name": "Guy Crimson",
         "sub_name": "Blazing Red Octagram",
         "initial_attack": 267,
@@ -22018,7 +22018,7 @@
             {
                 "attackName": "Catastrophe Rouge",
                 "extraText": "100% Protection Gauge",
-                "description": "Chance to apply Lord's Ambition state to all allies including rearguard: 80% (Turns 1; Nullify certain weakening effects; When the enemy's turn ends, decreases all targets' weakness resistance until the end of battle by 10% Unlimited)\nDecreases all targets' all attribute resistance by 100% Turns 1\nChanges all Soul of Divine Protection and Soul of Secrets into Soul of Skills"
+                "description": "Chance to apply Lord's Ambition state to all allies including rearguard: 80%\n (Turns 1; Nullify certain weakening effects; When the enemy's turn ends, decreases all targets' weakness resistance until the end of battle by 10% (Unlimited))\nDecreases all targets' all attribute resistance by 100% (Turns 1)\nChanges all Soul of Divine Protection and Soul of Secrets into Soul of Skills"
             }
         ],
         "skill_traits": [
