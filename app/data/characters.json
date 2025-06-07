@@ -22472,5 +22472,88 @@
             }
         ],
         "tag": "Earth Magic Device +200%|Symbol of Protection +100%|Protection Characters|Skills Special Skill Cost Reset|Skills Special Barrier|Skills Buff All Soul of Combos|Skills Soul Buff Divine Protection Skill Point|Skills Buff All Defense-Type P-ATK"
+    },
+    {
+        "id": 297,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_earth",
+        "dmg_type": "phys",
+        "tactics_type": "Defense",
+        "force": "Festive Memories|Ogre's Pride|Wholehearted Devotion|Commander",
+        "release_date": "11/27/2024",
+        "name": "Momiji",
+        "sub_name": "Graceful Love",
+        "initial_attack": 491,
+        "initial_health": 996,
+        "initial_defense": 626,
+        "final_attack": 4052,
+        "final_health": 8447,
+        "final_defense": 3122,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "single",
+        "char_type": "attack",
+        "weapon": "hammer",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Staunch Adoration",
+                "extraText": "100 Skill Points",
+                "description": "Increases pierce rate for all allies including rearguard by 80% Turns 1\nDecreases all targets' secret skill damage resistance by 100% Turns 1; Decreases by 10% based on number of times all allies receive Secret Skill attack (Total Max: 180%)"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Godwolf Affection",
+                "extraText": "40 Skill Points",
+                "description": "Changes Soul of Secrets into Soul of Divine Protection\n Increases all Soul of Divine Protection gauges' increase by 5% Turns 1"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "support",
+                "attackName": "Holy Night Dance",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes a single-target earth physical attack for 250% normal damage\n Increases weakness strike of Festive Memories Force characters including rearguard until the end of battle by 60% Unlimited"
+            },
+            {
+                "imageName": "support",
+                "attackName": "Holy Night Dance",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes a single-target earth physical attack for 250% normal damage\n Increases weakness strike of Festive Memories Force characters including rearguard until the end of battle by 120% Unlimited"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Troop - Protection UP",
+                "description": " When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - Secret DOWN",
+                "description": " When you unleash a 2 combo, all of the enemy's Soul of Secrets gauge increases are decreased by 20% Turns 1; Uses by this character per battle: 1",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Benimaru is assigned to a battle slot.\nIncreases pierce power by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Physical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of physical attack characters assigned to battle slots.\nIncreases HP by 96\nIncreases ATK by 45\nIncreases DEF by 26"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.2\nSuper Weak Point Damage x1.3"
+            }
+        ],
+        "tag": "Mini Coaster +30%|Weaving Workshop +10%|EX Unbound|Physical|Single|Skills Buff All Pierce Rate|Skills Debuff All Secret Skill Damage Resistance|Skills Buff All Weakness Strike|Skills To Soul Soul of Divine Protection|Skills From Soul Soul of Secrets|Skills Soul Buff Soul of Divine Protection Gauge|Traits Gauge Protection Gauge"
     }
 ]
