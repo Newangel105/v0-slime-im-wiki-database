@@ -22693,5 +22693,171 @@
             }
         ],
         "tag": "Dark Magic Device +200%|Symbol of Protection +100%|EX Unbound|Protection Characters|Skills Buff All Charge-Type M-ATK|Skills Buff All All Attribute ATK|Skills To Soul Soul of Secrets|Skills From Soul Non-Secrets|Skills Soul Buff Soul of Secrets Skill Point|Traits Buff All ATK"
+    },
+    {
+        "id": 300,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_light",
+        "dmg_type": "magic",
+        "tactics_type": "Charge",
+        "force": "Adventurer|Fount of Wisdom|Wielder of Magic",
+        "release_date": "12/20/2024",
+        "name": "Frieren",
+        "sub_name": "The Slayer",
+        "initial_attack": 4156,
+        "initial_health": 8404,
+        "initial_defense": 2939,
+        "final_attack": 4156,
+        "final_health": 8404,
+        "final_defense": 2939,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "aoe",
+        "char_type": "attack",
+        "weapon": "hammer",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Zenith of Magic",
+                "extraText": "50 Skill Points",
+                "description": "3 turns after skill activation, applies Unleash Magic state to self: Increases own ATK by 100% (Turns 1;ATK increase stacks)\n3turns after skill activation, decreases all target's all atribute resistance by 80% Turns 1 Uses per battle: 1"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Set Magic Circle",
+                "extraText": "90 Skill Points",
+                "description": "Increases Synergy Rate for all allies including rearguard by 100% Turns 1\nIncreases Soul of Combos damage by 120% Turns 1"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "atk",
+                "attackName": "Zoltraak",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes an all-target light magic attack for 375% normal damage"
+            },
+            {
+                "imageName": "atk",
+                "attackName": "Zoltraak",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes an all-target light magic attack for 750% normal damage"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Troop - Protection UP",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (avaliable in support formation)",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Charge - Secret DOWN",
+                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the secret skill gauge of all targets is decreased by 20% Uses by this character per battle: 1",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Stark is assigned to a battle slot.\nIncreases synergy by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 378\nIncreases ATK by 190\nIncreases DEF by 110"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.2\nSuper Weak Point Damage x1.3"
+            }
+        ],
+        "tag": "Sweets Shop +30%|Laboratory +10%|Skills Buff Self ATK|Skills Debuff All All Atribute Resistance|Skills Buff All Synergy Rate|Skills Soul Buff Soul of Combos|Traits Gauge Protection Gauge"
+    },
+    {
+        "id": 301,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_space",
+        "dmg_type": "magic",
+        "tactics_type": "Charge",
+        "force": "Adventurer|Stern of Spirit|Fount of Wisdom|Wielder of Magic",
+        "release_date": "12/27/2024",
+        "name": "Rimuru Tempest",
+        "sub_name": "Otherworld Sorcerer",
+        "initial_attack": 4152,
+        "initial_health": 8414,
+        "initial_defense": 2943,
+        "final_attack": 4152,
+        "final_health": 8414,
+        "final_defense": 2943,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "aoe",
+        "char_type": "attack",
+        "weapon": "hammer",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Magic of Gluttony and Destruction",
+                "extraText": "90 Skill Points",
+                "description": "Increases ATK for all allies including rearguard by 70% Turns 1\nDecreases all target's weakness resistance by 100% Turns 1;Increases by an additional 10% per own secret skill activation (Total Max: 150%)"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Magic of Raphael",
+                "extraText": "25 Skill Points",
+                "description": "Transfers another random character's soul card x3 into own Soul of Secrets\nIncreases Soul of Secret's protection gauge increase by 50% Turns 1"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "support",
+                "attackName": "Beelzebub Dimension",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes an all-target space magic attack for 150% normal damage\nIncreases weakness strike of Adventurer Force characters including rearguard until the end of battle by 60% Unlimited"
+            },
+            {
+                "imageName": "support",
+                "attackName": "Beelzebub Dimension",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes an all-target space magic attack for 150% normal damage\nIncreases weakness strike of Adventurer Force characters including rearguard until the end of battle by 120% Unlimited"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Switch - Skill Seal",
+                "description": "When you switch this character to the vanguard and activate souls, all enemies' magic-changing battle skills are sealed (Turns 1; Uses by this character per battle: 2)",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - ATK DOWN",
+                "description": "When you unleash a 6 combo attack with Soul of Secrets, decreases all targets' DEF by 5% for the next turn available in support formation",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Stark is assigned to a battle slot.\nIncreases synergy rate by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 96\nIncreases ATK by 45\nIncreases DEF by 26"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.14\nSuper Weak Point Damage x1.24"
+            }
+        ],
+        "tag": "Digsite for Stamina Magigems +10%|Decoration Magicubeite Digsite +30%|Skills Buff All ATK|Skills Debuff All Weakness Resistance|Skills From Soul Another Random Character|Skills To Soul Soul of Secrets|Skills Soulf Buff Soul of Secrets Protection Gauge|Traits Debuff All DEF"
     }
 ]
