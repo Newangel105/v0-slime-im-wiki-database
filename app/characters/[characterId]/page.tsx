@@ -346,7 +346,8 @@ export default function CharacterDetailPage({ params }: { params: { characterId:
       ["ATK", "DEF", "HP"].includes(text) ||
       /^Turns\s+\d+$/i.test(text) ||
       /^Unlimited$/i.test(text) ||
-      /^Uses\s+by\s+this\s+character\s+per\s+battle:\s*\d+$/i.test(text)
+      /^Uses\s+by\s+this\s+character\s+per\s+battle:\s*\d+$/i.test(text) ||
+      /^Uses\s+per\s+battle:\s*\d+$/i.test(text)
     ) {
       return {
         className:
