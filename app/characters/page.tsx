@@ -702,10 +702,14 @@ export default function CharactersPage() {
           }
         } else {
           const combinedSkillsText = [
-            ...character.battle_skills.map((s) => s.description),
-            ...character.secret_skills.map((s) => s.description),
-            ...character.skill_traits.map((s) => s.description),
-            ...character.ex_abilities.map((s) => s.description),
+            ...(character.battle_skills?.map((s) => s.description) ?? []),
+            ...(character.secret_skills?.map((s) => s.description) ?? []),
+            ...(character.skill_traits?.map((s) => s.description) ?? []),
+            ...(character.ex_abilities?.map((s) => s.description) ?? []),
+            ...(character.protection_skill?.map((s) => s.description) ?? []),
+            ...(character.unbound?.map((s) => s.description) ?? []),
+            ...(character.divine_skills?.map((s) => s.description) ?? []),
+            ...(character.guidance_trait?.map((s) => s.description) ?? []),
           ]
             .join(" ")
             .toLowerCase()

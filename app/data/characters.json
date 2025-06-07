@@ -22500,7 +22500,7 @@
                 "imageName": "b1.png",
                 "attackName": "Staunch Adoration",
                 "extraText": "100 Skill Points",
-                "description": "Increases pierce rate for all allies including rearguard by 80% Turns 1\nDecreases all targets' secret skill damage resistance by 100% Turns 1; Decreases by 10% based on number of times all allies receive Secret Skill attack (Total Max: 180%)"
+                "description": "Increases pierce rate for all allies including rearguard by 80% Turns 1\nDecreases all targets' secret skill damage resistance by 100% Turns 1\nDecreases by 10% based on number of times all allies receive Secret Skill attack (Total Max: 180%)"
             },
             {
                 "imageName": "b2.png",
@@ -22555,5 +22555,143 @@
             }
         ],
         "tag": "Mini Coaster +30%|Weaving Workshop +10%|EX Unbound|Physical|Single|Skills Buff All Pierce Rate|Skills Debuff All Secret Skill Damage Resistance|Skills Buff All Weakness Strike|Skills To Soul Soul of Divine Protection|Skills From Soul Soul of Secrets|Skills Soul Buff Soul of Divine Protection Gauge|Traits Gauge Protection Gauge"
+    },
+    {
+        "id": 298,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_water",
+        "dmg_type": "phys",
+        "tactics_type": "Defense",
+        "force": "Festive Memories|Schemer|Stern of Spirit",
+        "release_date": "12/2/2024",
+        "name": "Maribel Rozzo",
+        "sub_name": "Blessing of Desire",
+        "initial_attack": 586,
+        "initial_health": 993,
+        "initial_defense": 437,
+        "final_attack": 4147,
+        "final_health": 8444,
+        "final_defense": 2933,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "aoe",
+        "char_type": "attack",
+        "weapon": "hammer",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Desire Conversion",
+                "extraText": "100 Skill Points",
+                "description": "Increases EX Soul of Combos damage by 110% Turns 1\n Removes all barrier stacks from all allies, with at least barrier stack x1 or more removed from each to activate: Increases weakness strike for all allies including rearguard by 50% (Turns 1; Increases by 10% per barrier stack removed; Total Max: 150%)"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Gift of Awe",
+                "extraText": "35 Skill Points",
+                "description": "Changes non-Divine Protection soul x1 into Soul of Divine Protection\n Applies barrier stack x1 each to Festive Memories Force characters Unlimited"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "support",
+                "attackName": "Greedy Spiral",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes an all-target water physical attack for 150% normal damage\n Increases weakness strike of Festive Memories Force characters including rearguard until the end of battle by 60% Unlimited"
+            },
+            {
+                "imageName": "support",
+                "attackName": "Greedy Spiral",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes an all-target water physical attack for 150% normal damage\n Increases weakness strike of Festive Memories Force characters including rearguard until the end of battle by 120% Unlimited"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Switch - Skill Seal",
+                "description": "When you switch this character to the vanguard and activate souls, all enemies' defense-changing battle skills are sealed (Turns 1; Uses by this character per battle: 2)",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - ATK DOWN",
+                "description": "When you unleash a 6 combo attack with Soul of Divine Protection, decreases all targets' ATK by 8% for the next turn (available in support formation)",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": " Increases own following status when Rimuru Tempest is assigned to a battle slot.\nIncreases pierce power by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Physical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of physical attack characters assigned to battle slots.\nIncreases HP by 96\nIncreases ATK by 45\nIncreases DEF by 26"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.14\nSuper Weak Point Damage x1.24"
+            }
+        ],
+        "tag": "Digsite for Stamina Magigems +30%|Tempest Wheel +10%|EX Unbound|Physical|All|Skills Buff All EX Soul of Combos|Skills Buff All Weakness Strike|Skills To Soul Soul of Divine Protection|Skills From Soul Non-Divine Protection Soul|Skills Soul Amount x1|Traits Debuff All ATK"
+    },
+    {
+        "id": 299,
+        "type": "protector",
+        "stars": 7,
+        "element": "prot_ex_dark",
+        "dmg_type": "magic",
+        "tactics_type": "Charge",
+        "force": "Adventurer",
+        "release_date": "12/20/2024",
+        "name": "Himmel",
+        "sub_name": "The Hero",
+        "initial_attack": 1771,
+        "initial_health": 3653,
+        "initial_defense": 1502,
+        "final_attack": 1771,
+        "final_health": 3653,
+        "final_defense": 1502,
+        "output_initial": 100,
+        "output_final": 220,
+        "ulti": "",
+        "char_type": "",
+        "divine_skills": [
+            {
+                "imageName": "/icons/divine.png",
+                "attackName": "Demon King Vanquisher",
+                "extraText": "Primary",
+                "description": "Increases damage done by Adventurer Force characters to dark attribute enemies by 100%;increases magic character's ATK and DEF by 25%\nAt the beginning of each turn from turn 2 onward, increases skill cost limit by 50 until the end of battle(Max:999)"
+            },
+            {
+                "attackName": "Supporting Divine Protection",
+                "extraText": "Support",
+                "description": "Increases charge-type magic characters' ATK by 15%"
+            }
+        ],
+        "protection_skill": [
+            {
+                "attackName": "Era Meteor Shower",
+                "extraText": "100% Protection Gauge",
+                "description": "Increases all attribute ATK until the end of battle by 20% for all allies incuding rearguard Unlimited\nChanges non-Secrets soul x3 into Soul of Secrets(Turns 3;Activates on skill use and at the start of each turn)\nIncreases Soul of Secret's skill point increase by 500%(Turns 3)"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "HP - ATK UP",
+                "description": "When 1 or more vanguard have 70% or lower HP, increases all allies' ATK by 6% at start of turn available in support formation"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Charge - Concentrate",
+                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 2"
+            }
+        ],
+        "tag": "Dark Magic Device +200%|Symbol of Protection +100%|EX Unbound|Protection Characters|Skills Buff All Charge-Type M-ATK|Skills Buff All All Attribute ATK|Skills To Soul Soul of Secrets|Skills From Soul Non-Secrets|Skills Soul Buff Soul of Secrets Skill Point|Traits Buff All ATK"
     }
 ]
