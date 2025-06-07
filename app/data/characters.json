@@ -22336,5 +22336,88 @@
             }
         ],
         "tag": "Digsite for Defense Magigems +30%|Ice Cream Cart +10%|EX Unbound|Magic|Battle Characters|Light Unbound|All|Skills Buff All Pierce Rate|Skills Buff All Pierce Power|Skills Special Make Another Move|Skills Gauge Secret Skill Gauge|Skills Buff All Weakness Strike|Traits Buff Self Pierce Power"
+    },
+    {
+        "id": 295,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_space",
+        "dmg_type": "magic",
+        "tactics_type": "Charge",
+        "force": "Divine General|Otherworld Legend|Primal Demon|Fount of Wisdom",
+        "release_date": "11/15/2024",
+        "name": "Blanc",
+        "sub_name": "Avatar of Allure",
+        "initial_attack": 597,
+        "initial_health": 951,
+        "initial_defense": 432,
+        "final_attack": 4158,
+        "final_health": 8402,
+        "final_defense": 2928,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "single",
+        "char_type": "attack",
+        "weapon": "hammer",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Beautiful End",
+                "extraText": "100 Skill Points",
+                "description": "Increases Soul of Combos damage by 140% (Turns 1)"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "White Shroud Decimation",
+                "extraText": "10 Skill Points",
+                "description": "Changes space characters' Soul of Combos x3 into Soul of Skills for this turn only\nDecreases all targets' weakness resistance until the end of battle by 10% (Unlimited)"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "atk",
+                "attackName": "Hera End Burst",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes a single-target space magic attack for 600% normal damage"
+            },
+            {
+                "imageName": "atk",
+                "attackName": "Hera End Burst",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes a single-target space magic attack for 900% normal damage"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Troop - Protection UP",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - Skill DOWN",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Skills gauge increases are decreased by 20% (Turns: 1; Uses by this character per battle: 1)",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": " Increases own following status when Diablo is assigned to a battle slot.\nIncreases pierce power by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 378\nIncreases ATK by 190\nIncreases DEF by 110"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.2\nSuper Weak Point Damage x1.3"
+            }
+        ],
+        "tag": "Gift Shop +30%|Decoration Magicubeite Digsite +10%|Skills Buff All Soul of Combos|Skills To Soul Soul of Skills|Skills From Soul Soul of Combos|Skills Soul Amount x3|Traits Gauge Protection Gauge"
     }
 ]
