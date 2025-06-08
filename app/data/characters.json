@@ -22471,7 +22471,7 @@
                 "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% (Turns 1; Uses by this character per battle: 2)"
             }
         ],
-        "tag": "Earth Magic Device +200%|Symbol of Protection +100%|Protection Characters|Anti-Earth Unbound|EX Unbound|Skills Special Skill Cost Reset|Skills Special Barrier|Skills Buff All Soul of Combos|Skills Soul Buff Divine Protection Skill Point|Skills Buff All Defense-Type P-ATK"
+        "tag": "Earth Magic Device +200%|Symbol of Protection +100%|Protection Characters|Physical|Anti-Earth Unbound|EX Unbound|Skills Special Skill Cost Reset|Skills Special Barrier|Skills Buff All Soul of Combos|Skills Soul Buff Divine Protection Skill Point|Skills Buff All Defense-Type P-ATK"
     },
     {
         "id": 297,
@@ -22527,13 +22527,13 @@
             {
                 "imageName": "t1",
                 "attackName": "Troop - Protection UP",
-                "description": " When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)",
                 "extraText": "Awaken 3/5"
             },
             {
                 "imageName": "t2",
                 "attackName": "Soul Combo - Secret DOWN",
-                "description": " When you unleash a 2 combo, all of the enemy's Soul of Secrets gauge increases are decreased by 20% Turns 1; Uses by this character per battle: 1",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Secrets gauge increases are decreased by 20% Turns 1; Uses by this character per battle: 1",
                 "extraText": "Awaken 3/5"
             }
         ],
@@ -22692,7 +22692,7 @@
                 "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 2"
             }
         ],
-        "tag": "Dark Magic Device +200%|Symbol of Protection +100%|EX Unbound|Anti-Dark Unbound|Protection Characters|Skills Buff All Charge-Type M-ATK|Skills Buff All All Attribute ATK|Skills To Soul Soul of Secrets|Skills From Soul Non-Secrets|Skills Soul Buff Soul of Secrets Skill Point|Traits Buff All ATK"
+        "tag": "Dark Magic Device +200%|Symbol of Protection +100%|EX Unbound|Magic|Anti-Dark Unbound|Protection Characters|Skills Buff All Charge-Type M-ATK|Skills Buff All All Attribute ATK|Skills To Soul Soul of Secrets|Skills From Soul Non-Secrets|Skills Soul Buff Soul of Secrets Skill Point|Traits Buff All ATK"
     },
     {
         "id": 300,
@@ -22775,7 +22775,7 @@
                 "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.2\nSuper Weak Point Damage x1.3"
             }
         ],
-        "tag": "Sweets Shop +30%|Laboratory +10%|EX Unbound|Battle Characters|Light Unbound|All|Skills Buff Self ATK|Skills Debuff All All Atribute Resistance|Skills Buff All Synergy Rate|Skills Soul Buff Soul of Combos|Traits Gauge Protection Gauge"
+        "tag": "Sweets Shop +30%|Laboratory +10%|EX Unbound|Battle Characters|Magic|Light Unbound|All|Skills Buff Self ATK|Skills Debuff All All Atribute Resistance|Skills Buff All Synergy Rate|Skills Soul Buff Soul of Combos|Traits Gauge Protection Gauge"
     },
     {
         "id": 301,
@@ -22858,6 +22858,311 @@
                 "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.14\nSuper Weak Point Damage x1.24"
             }
         ],
-        "tag": "Digsite for Stamina Magigems +10%|Decoration Magicubeite Digsite +30%|EX Unbound|Battle Characters|Space Unbound|All|Skills Buff All ATK|Skills Debuff All Weakness Resistance|Skills From Soul Another Random Character|Skills To Soul Soul of Secrets|Skills Soulf Buff Soul of Secrets Protection Gauge|Traits Debuff All DEF"
+        "tag": "Digsite for Stamina Magigems +10%|Decoration Magicubeite Digsite +30%|EX Unbound|Magic|Battle Characters|Space Unbound|All|Skills Buff All ATK|Skills Debuff All Weakness Resistance|Skills From Soul Another Random Character|Skills To Soul Soul of Secrets|Skills Soulf Buff Soul of Secrets Protection Gauge|Traits Debuff All DEF"
+    },
+    {
+        "id": 302,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_light",
+        "dmg_type": "magic",
+        "tactics_type": "Charge",
+        "force": "Adventurer|Stern of Spirit|Wielder of Magic",
+        "release_date": "1/6/2025",
+        "name": "Fern",
+        "sub_name": "First-class Mage",
+        "initial_attack": 4156,
+        "initial_health": 8417,
+        "initial_defense": 2934,
+        "final_attack": 4156,
+        "final_health": 8417,
+        "final_defense": 2934,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "single",
+        "char_type": "attack",
+        "weapon": "hammer",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Sniping Magic",
+                "extraText": "90 Skill Points",
+                "description": "Decreases all targets' secret skill damage resistance by 100% Turns 1\nIncreases EX Soul of Combos damage by 100% Turns 1"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Rapid Shot Magic",
+                "extraText": "90 Skill Points",
+                "description": "Increases synergy power for all allies including rearguard by 100% Turns 1\nIncreases own M-ATK by 100% Turns 1"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "atk",
+                "attackName": "Zoltraak",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes a single-target light magic attack for 600% normal damage"
+            },
+            {
+                "imageName": "atk",
+                "attackName": "Zooltraak",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes a single-target light magic attack for 900% normal damage"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Troop - Protection UP",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - Protection DOWN",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Divine Protection gauge increases are decreased by 20% Turns 1 Uses by this character per battle: 1",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Stark is assigned to a battle slot.\nIncreases synergy power by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 378\nIncreases ATK by 190\nIncreases DEF by 110"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.2\nSuper Weak Point Damage x1.3"
+            }
+        ],
+        "tag": "Fruit Stall +30%|Sweets Shop +10%|Single|EX Unbound|Light Unbound|Battle Characters|Skills Debuff All Secret Skill Damage Resistance|Skills Buff All EX Soul of Combos|Skills Buff All Synergy Power|Skills Buff Self M-ATK|Traits Gauge Protection Gauge"
+    },
+    {
+        "id": 302,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_light",
+        "dmg_type": "magic",
+        "tactics_type": "Charge",
+        "force": "Adventurer|Stern of Spirit|Wielder of Magic",
+        "release_date": "1/6/2025",
+        "name": "Fern",
+        "sub_name": "First-class Mage",
+        "initial_attack": 4156,
+        "initial_health": 8417,
+        "initial_defense": 2934,
+        "final_attack": 4156,
+        "final_health": 8417,
+        "final_defense": 2934,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "single",
+        "char_type": "attack",
+        "weapon": "hammer",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Sniping Magic",
+                "extraText": "90 Skill Points",
+                "description": "Decreases all targets' secret skill damage resistance by 100% Turns 1\nIncreases EX Soul of Combos damage by 100% Turns 1"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Rapid Shot Magic",
+                "extraText": "90 Skill Points",
+                "description": "Increases synergy power for all allies including rearguard by 100% Turns 1\nIncreases own M-ATK by 100% Turns 1"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "atk",
+                "attackName": "Zoltraak",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes a single-target light magic attack for 600% normal damage"
+            },
+            {
+                "imageName": "atk",
+                "attackName": "Zooltraak",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes a single-target light magic attack for 900% normal damage"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Troop - Protection UP",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - Protection DOWN",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Divine Protection gauge increases are decreased by 20% Turns 1 Uses by this character per battle: 1",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Stark is assigned to a battle slot.\nIncreases synergy power by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 378\nIncreases ATK by 190\nIncreases DEF by 110"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.2\nSuper Weak Point Damage x1.3"
+            }
+        ],
+        "tag": "Fruit Stall +30%|Sweets Shop +10%|Single|EX Unbound|Light Unbound|Battle Characters|Skills Debuff All Secret Skill Damage Resistance|Skills Buff All EX Soul of Combos|Skills Buff All Synergy Power|Skills Buff Self M-ATK|Traits Gauge Protection Gauge"
+    },
+    {
+        "id": 303,
+        "type": "protector",
+        "stars": 7,
+        "element": "prot_ex_water",
+        "dmg_type": "phys",
+        "tactics_type": "Speed",
+        "force": "Tournament Stalwart",
+        "release_date": "1/20/2025",
+        "name": "Veldora Tempest",
+        "sub_name": "Wild Storm Dragon",
+        "initial_attack": 1770,
+        "initial_health": 3645,
+        "initial_defense": 1491,
+        "final_attack": 1770,
+        "final_health": 3645,
+        "final_defense": 1491,
+        "output_initial": 100,
+        "output_final": 220,
+        "ulti": "",
+        "char_type": "",
+        "divine_skills": [
+            {
+                "imageName": "/icons/divine.png",
+                "attackName": "Storm of Fury",
+                "extraText": "Primary",
+                "description": "Increases damage done by Tournament Stalwart Force characters to water attribute enemies by 120%; increases magic characters' ATK and DEF by 20%At the beginning of each turn from turn 2 onward, increases skill points by 30 Max 4 times can exceed cost limit"
+            },
+            {
+                "attackName": "Supporting Divine Protection",
+                "extraText": "Support",
+                "description": "Increases ATK of physical Speed-Type characters by 15%"
+            }
+        ],
+        "protection_skill": [
+            {
+                "attackName": "Disaster Hurricane",
+                "extraText": "100% Protection Gauge",
+                "description": "Increases wind and water character's secret skill gauge by 100%\nIncreases ATK for all allies including rearguard by 30%(Turns 1; If activated within 5 turns of battle start, effect amount x2: 60%)\nChanges all souls newly added to hand to Soul of Divine Protection Turns 1"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "HP - P-ATK UP",
+                "description": "When 3 vanguard have 75% or more HP, increases all allies' P- ATK by 8% at start of turn available in support formation"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Charge - Concentrate",
+                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 2"
+            }
+        ],
+        "tag": "Water Magic Device +200%|Symbol of Protection +100%|Skills Buff All Speed-Type P-ATK|Skills Gauge Secret Skill Gauge|Skills Buff All ATK"
+    },
+    {
+        "id": 304,
+        "type": "attacker",
+        "stars": 5,
+        "element": "ex_wind",
+        "dmg_type": "physical",
+        "tactics_type": "Speed",
+        "force": "Tournament Stalwart Force|Octagram Demon Lord|Commander|Warrior's Mind",
+        "release_date": "1/20/2025",
+        "name": "Luminus Valentine",
+        "sub_name": "Transcendent Vampiress",
+        "initial_attack": 4150,
+        "initial_health": 8417,
+        "initial_defense": 2938,
+        "final_attack": 4150,
+        "final_health": 8417,
+        "final_defense": 2938,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "aoe",
+        "char_type": "attack",
+        "weapon": "fists",
+        "battle_skills": [
+            {
+            "imageName": "b1.png",
+            "attackName": "Soul Embrace",
+            "extraText": "25 Skill Points",
+            "description": "Increases own P-ATK by 80% Turns 1\nIncreases own physical attack damage by 100% Turns 1"
+            },
+            {
+            "imageName": "b2.png",
+            "attackName": "Curse of the Damned",
+            "extraText": "25 Skill Points",
+            "description": "Transfers another random character's soul card x3 to self\nIncreases all gauges' increase of all souls by 20% Turns 2"
+            }
+        ],
+        "secret_skills": [
+            {
+            "imageName": "atk",
+            "attackName": "Embrace Vanisher",
+            "extraText": "100% Secret Gauge",
+            "description": "Unleashes an all-target wind physical attack for 375% normal damage"
+            },
+            {
+            "imageName": "atk",
+            "attackName": "Embrace Vanisher",
+            "extraText": "200% Secret Gauge",
+            "description": "Unleashes an all-target wind physical attack for 750% normal damage"
+            }
+        ],
+        "skill_traits": [
+            {
+            "imageName": "t1",
+            "attackName": "Soul Combo - ATK UP",
+            "description": "When you unleash a 6 combo attack with Soul of Divine Protection, increases own ATK by 8% for the next turn available in support formation",
+            "extraText": "Awaken 3/5"
+            },
+            {
+            "imageName": "t2",
+            "attackName": "Switch - Skill Seal",
+            "description": "When you switch this character to the vanguard and activate souls, all enemies' attack-changing battle skills are sealed\n (Turns 1; Uses by this character per battle: 2)",
+            "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+            "imageName": "e1",
+            "attackName": "Individual Mercy",
+            "description": "Increases own following status when Rimuru is assigned to a battle slot.\nIncreases critical rate by 12%"
+            },
+            {
+            "imageName": "e2",
+            "attackName": "Physical Mercy",
+            "description": "Increases other troop members' following status in accordance with the number of physical attack characters assigned to battle slots.\nIncreases HP by 378\nIncreases ATK by 190\nIncreases DEF by 110"
+            }
+        ],
+        "unbound": [
+            {
+            "description": "Conditions: 3-5 turns\nEffects: Weak Point Damage x1.14\nSuper Weak Point Damage x1.24"
+            }
+        ],
+        "tag": "All|EX Unbound|Wind Unbound|Battle Characters|Skills Buff Self P-ATK|Skills Buff Self Physical Damage|Skills Soul Amount x3|Skills From Soul Another Random Character|Skills Soul Buff All Souls Gauges|Traits Buff Self ATK"
     }
+
 ]
