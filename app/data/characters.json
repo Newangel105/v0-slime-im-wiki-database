@@ -23812,6 +23812,164 @@
             }
         ],
         "tag": "Digsite for Defense Magigems +30%|Traditional Snack Shop +10%|Skills Buff All Pierce Rate|Skills Debuff All Pierce Resistance|Skills Debuff Single All Attribute Resistance|Skills Debuff Single Weakness Resistance|EX Unbound|Dark Unbound|Single|Battle Characters"
+    },
+    {
+        "id": 314,
+        "type": "protector",
+        "stars": 7,
+        "element": "prot_ex_light",
+        "dmg_type": "Warrior's Mind",
+        "tactics_type": "Speed",
+        "force": "Warrior's Mind",
+        "release_date": "3/27/2025",
+        "name": "Shuna",
+        "sub_name": "Oracle Commander",
+        "initial_attack": 264,
+        "initial_health": 390,
+        "initial_defense": 166,
+        "final_attack": 1768,
+        "final_health": 3658,
+        "final_defense": 1506,
+        "output_initial": 100,
+        "output_final": 220,
+        "divine_skills": [
+            {
+                "imageName": "/icons/divine.png",
+                "attackName": "Luminous Lead",
+                "extraText": "Primary",
+                "description": "Increases damage done by Warrior's Mind Force characters to light attribute enemies by 120%; increases physical characters' ATK and DEF by 25%\n At the beginning of each turn from turn 2 onward, increases skill points by 30 (Max 4 times; can exceed cost limit)"
+            },
+            {
+                "attackName": "Supporting Divine Protection",
+                "extraText": "Support",
+                "description": "Increases speed-type physical characters' ATK by 15%"
+            }
+        ],
+        "protection_skill": [
+            {
+                "attackName": "Path to Victory",
+                "extraText": "100% Protection Gauge",
+                "description": "Changes all souls into Soul of Secrets, then changes Soul of Secrets x2 into Soul of Unity\n Inflicts dread on all targets Turns 2; increases weakening effects by 1.4 times\n Decreases all targets' physical attack damage resistance by 90% Turns 2"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "HP - ATK UP",
+                "description": " When 3 vanguard have 75% or more HP, increases all allies' ATK by 6% at start of turn (available in support formation)"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Charge - Concentrate",
+                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 2"
+            }
+        ],
+        "tag": "Light Magic Device +200%|Symbol of Protection +100%|EX Unbound|Anti-Light Unbound|Protection Characters|Skills Gauge Skill Points|Skills Buff All Speed-Type P-ATK|Skills To Soul Soul of Secrets|Skills to Soul Soul of Unity|Skills Soul Amount All|Skills Debuff All Physical Attack Damage Resistance|Traits Buff All ATK"
+    },
+    {
+        "id": 315,
+        "type": "protector",
+        "stars": 7,
+        "element": "prot_ex_space",
+        "dmg_type": "Spirit Master",
+        "tactics_type": "Charge",
+        "force": "Spirit Master|Heart of a Hero",
+        "release_date": "4/25/2025",
+        "name": "Masked Hero",
+        "sub_name": "Veiled Armaments",
+        "initial_attack": 1775,
+        "initial_health": 3655,
+        "initial_defense": 1501,
+        "final_attack": 1775,
+        "final_health": 3655,
+        "final_defense": 1501,
+        "output_initial": 100,
+        "output_final": 220,
+        "divine_skills": [
+            {
+                "imageName": "/icons/divine.png",
+                "attackName": "Luminous Lead",
+                "extraText": "Primary",
+                "description": "Increases damage done by Spirit Master and Heart of a Hero Force characters to space attribute enemies by 120%; increases magic characters' ATK and DEF by 25%\n At the beginning of each turn from turn 2 onward, increases skill points by 50 until the end of battle (Max:999)"
+            },
+            {
+                "attackName": "Supporting Divine Protection",
+                "extraText": "Support",
+                "description": "Increases charge-type magic characters' ATK by 15% and DEF by 3%"
+            }
+        ],
+        "protection_skill": [
+            {
+                "attackName": "Path to Victory",
+                "extraText": "100% Protection Gauge",
+                "description": "Increases P-ATK/M-ATK for all allies including rearguard until the end of battle by 20% Unlimited\nApplies Spirit Blessing to charge-type characters Turns 1\n(Continuos Heal:30%;Secret Skill Vitalization: 50%)\nIncreases Soul of Devine Protection skill point increase until the end of battle by 100%(Max: 500%)"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "HP - ATK UP",
+                "description": " When 3 vanguard have 75% or more HP, increases all allies' ATK by 6% at start of turn (available in support formation)"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Charge - Concentrate",
+                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 2"
+            }
+        ],
+        "tag": "Space Magic Device +200%|Symbol of Protection +100%|EX Unbound|Anti-Space Unbound|Protection Characters|Skills Gauge Skill Points|Skills Buff All P-ATK|Skills Buff All M-ATK|Skills Soul Buff Soul of Divine Protection Skill Point|Skills Heal Traits Buff All ATK|Skills Heal All Heal|Skills Buff All Charge-Type M-ATK"
+    },
+    {
+        "id": 316,
+        "type": "protector",
+        "stars": 7,
+        "element": "prot_ex_wind",
+        "dmg_type": "Schemer",
+        "tactics_type": "Speed",
+        "force": "Schemer",
+        "release_date": "5/30/2025",
+        "name": "Souei",
+        "sub_name": "Azure Moon Phantom",
+        "initial_attack": 1776,
+        "initial_health": 3648,
+        "initial_defense": 1502,
+        "final_attack": 1776,
+        "final_health": 3648,
+        "final_defense": 1502,
+        "output_initial": 100,
+        "output_final": 220,
+        "divine_skills": [
+            {
+                "imageName": "/icons/divine.png",
+                "attackName": "Shadow Infiltration",
+                "extraText": "Primary",
+                "description": "Increases damage done by Schemer Force characters to wind attribute enemies by 120%; increases physical characters' ATK and DEF by 25%\n At the beginning of each turn from turn 2 onward, increases skill points by 30 (Max 4 times; can exceed cost limit)"
+            },
+            {
+                "attackName": "Supporting Divine Protection",
+                "extraText": "Support",
+                "description": "Increases speed-type physical characters' ATK by 15% and DEF by 3%"
+            }
+        ],
+        "protection_skill": [
+            {
+                "attackName": "Threadbind Field",
+                "extraText": "100% Protection Gauge",
+                "description": "Changes all souls into Soul of Skills, then changes Soul of Skills x1 into Soul of Unity\nChance to Inspire all physical allies:100% Turns 2;When the enemy's turn ends, increases ATK by 5% for every 2 times an ally attacked(Max:Up to 60% per turn;Unlimited)\nIncreases EX Soul of Combos damage by 20%(Turns 1; If activated within 5 turns of battle start, effect ammount x5:100%)"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "HP - ATK UP",
+                "description": "When 3 vanguard have 75% or more HP, increases all allies' ATK by 6% at start of turn (available in support formation)"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Charge - Concentrate",
+                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 2"
+            }
+        ],
+        "tag": "Wind Magic Device +200%|Symbol of Protection +100%|EX Unbound|Anti-Wind Unbound|Protection Characters|Skills Gauge Skill Points|Skills Buff All Speed-Type P-ATK|Skills To Soul Soul of Skills|Skills Soul Amount All|Skills to Soul Soul of Unity|Skills Buff All ATK|Skills Buff All EX Soul of Combos|Traits Buff All ATK"
     }
-
 ]
