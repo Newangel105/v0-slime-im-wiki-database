@@ -23645,7 +23645,90 @@
                 "description": "Increases other troop members' following status in accordance with the number of physical attack characters assigned to battle slots.\nIncreases HP by 96\nIncreases ATK by 45\nIncreases DEF by 26"
             }
         ],
-        "tag": "Encampment +30%|Armor Magicubeite Digsite +10%|Skills Buff All Weakness Strike|Skills Debuff All Secret Skill Damage Resistance|Skills To Soul Soul of Unity|Skills Soul Buff All Souls Protection Gauge"
+        "tag": "Encampment +30%|Armor Magicubeite Digsite +10%|EX Unbound|Fire Unbound|All|Battle Characters|Skills Buff All Weakness Strike|Skills Debuff All Secret Skill Damage Resistance|Skills To Soul Soul of Unity|Skills Soul Buff All Souls Protection Gauge"
+    },
+    {
+        "id": 312,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_dark",
+        "dmg_type": "phys",
+        "tactics_type": "Speed",
+        "force": "Warrior's Mind|Primal Demon|Fount of Wisdom|Schemer",
+        "release_date": "4/11/2025",
+        "name": "Blanc",
+        "sub_name": "Ivory Blaze Commander",
+        "initial_attack": 4161,
+        "initial_health": 8426,
+        "initial_defense": 2946,
+        "final_attack": 4161,
+        "final_health": 8426,
+        "final_defense": 2946,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "aoe",
+        "char_type": "attack",
+        "weapon": "katana",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Elegant Twirl",
+                "extraText": "90 Skill Points",
+                "description": "Increases physical/magic attack damage for all allies including rearguard by 100% Turns 1\nDecreases all target's dark+ damage resistance by 140% Turns 1"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Whirling Shadows",
+                "extraText": "0 Skill Points",
+                "description": "Increases all Soul of Secrets gauges' increase by 70% Turns 2\nIncreases skill points by 40\n(Activates from Turn 2)(Uses per battle: 3)"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "atk",
+                "attackName": "Glinting Flurry",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes an all-target dark physical attack for 375% normal damage"
+            },
+            {
+                "imageName": "atk",
+                "attackName": "Glinting Flurry",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes an all-target dark physical attack for 750% normal damage"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 3-5 turns\nEffects: Weak Point Damage x1.16\nSuper Weak Point Damage x1.26"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Troop - Protection UP",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Switch - Skill Seal",
+                "description": "When you switch this character to the vanguard and activate souls, all enemies' attack-changing battle skills are sealed\n(Turns 1; Uses by this character per battle: 2)",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Rimuru is assigned to a battle slot.\nIncreases Pierce Power by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Physical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of phys attack characters assigned to battle slots.\nIncreases HP by 378\nIncreases ATK by 190\nIncreases DEF by 110"
+            }
+        ],
+        "tag": "Digsite for Stamina Magigems +30%|Weaving Workshop +10%|Skills Debuff All Dark Resistance|Skills Buff All Physical/Magic Attack Damage|Skills Soul Buff Soul of Secrets Gauge|Skills Gauge Skill Points|EX Unbound|Dark Unbound|All|Battle Characters"
     }
 
 ]
