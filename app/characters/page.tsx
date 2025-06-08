@@ -241,6 +241,7 @@ const dmg_typeIcons = {
   Festive_Memories: "/protector_elements/Festive_Memories.png",
   Flashback_Beatdown_Emissary: "/protector_elements/Flashback_Beatdown_Emissary.png",
   Tournament_Stalwart: "/protector_elements/tournament_stalwart.png",
+  Sparkle_of_Youth: "/protector_elements/sparkle_of_youth.png",
   Forest_Fracas: "/protector_elements/Forest_Fracas.png",
   Fount_of_Wisdom: "/protector_elements/Fount_of_Wisdom.png",
   Frozen_Continent: "/protector_elements/Frozen_Continent.png",
