@@ -22996,7 +22996,7 @@
                 "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 2"
             }
         ],
-        "tag": "Water Magic Device +200%|Symbol of Protection +100%|Skills Buff All Speed-Type P-ATK|Skills Gauge Secret Skill Gauge|Skills Buff All ATK"
+        "tag": "Water Magic Device +200%|Symbol of Protection +100%|EX Unbound|Anti-Water Unbound|Protection Characters|Skills Buff All Speed-Type P-ATK|Skills Gauge Secret Skill Gauge|Skills Buff All ATK"
     },
     {
         "id": 304,
@@ -23105,13 +23105,6 @@
         "skill_trait_0": "Soul Combo - ATK UP",
         "skill_trait_1": "Switch - Skill Seal",
         "weapon": "fists",
-        "ex_hp": "96",
-        "ex_atk": "45",
-        "ex_def": "26",
-        "ex_type": "phys",
-        "ex_person": "Shinsha",
-        "ex_effect": "Critical Power",
-        "ex_percent": "12",
         "battle_skills": [
             {
                 "imageName": "b1.png",
@@ -23197,13 +23190,6 @@
         "skill_trait_0": "Soul Combo - ATK UP",
         "skill_trait_1": "Troop - Protection UP",
         "weapon": "fists",
-        "ex_hp": "378",
-        "ex_atk": "190",
-        "ex_def": "110",
-        "ex_type": "phys",
-        "ex_person": "Rimuru",
-        "ex_effect": "Critical Power",
-        "ex_percent": "12",
         "battle_skills": [
             {
                 "imageName": "b1.png",
@@ -23272,7 +23258,7 @@
         "element": "ex_light",
         "dmg_type": "magic",
         "tactics_type": "Defense",
-        "force": "Sparkle of Youth|Found of Wisdom|Shizu's Will|Determination to Prosper",
+        "force": "Sparkle of Youth|Fount of Wisdom|Shizu's Will|Determination to Prosper",
         "release_date": "2/28/2025",
         "name": "Hinata Sakaguchi",
         "sub_name": "Academy Student",
@@ -23289,13 +23275,6 @@
         "skill_trait_0": "Soul Combo - ATK UP",
         "skill_trait_1": "Switch - Skill Seal",
         "weapon": "hammer",
-        "ex_hp": "114",
-        "ex_atk": "30",
-        "ex_def": "65",
-        "ex_type": "magic",
-        "ex_person": "Shizue Izawa",
-        "ex_effect": "Counterattack power",
-        "ex_percent": "8%",
         "battle_skills": [
             {
                 "imageName": "b1.png",
@@ -23356,6 +23335,234 @@
             }
         ],
         "tag": "Skills Heal All Heal|Skills Soul Buff Soul of Skill Protection Gauge|Skills Buff All Weakness Strike|Traits Buff Self ATK|Digsite for Training Magigems +30%|Savory Pancake Stall +10%|EX Unbound|Light Unbound|All|Battle Characters"
+    },
+    {
+        "id": 308,
+        "type": "protector",
+        "stars": 7,
+        "element": "prot_ex_fire",
+        "dmg_type": "Sparkle of Youth",
+        "tactics_type": "Defense",
+        "force": "Sparkle of Youth",
+        "release_date": "2/28/2025",
+        "name": "Masayuki Honjo",
+        "sub_name": "Lightspeed Exchange Student",
+        "initial_attack": 1637,
+        "initial_health": 3695,
+        "initial_defense": 1748,
+        "final_attack": 1637,
+        "final_health": 3695,
+        "final_defense": 1748,
+        "output_initial": 100,
+        "output_final": 220,
+        "divine_skills": [
+            {
+                "imageName": "/icons/divine.png",
+                "attackName": "Revolutionary Hero",
+                "extraText": "Primary",
+                "description": "Increases damage done by Sparkle of Youth Force characters to fire attribute enemies by 120%; increases magic characters' ATK and DEF by 25%\nAt the beginning of each turn from turn 2 onward, decreases the skill cost by 10 for all allies including rearguard Cannot go below each skill's initial cost"
+            },
+            {
+                "attackName": "Supporting Divine Protection",
+                "extraText": "Support",
+                "description": "Increases ATK of Defense-Type magic characters by 15%"
+            }
+        ],
+        "protection_skill": [
+            {
+                "attackName": "Flicker Slave",
+                "extraText": "100% Protection Gauge",
+                "description": "Applies Healing Reckoning to all allies Turns 3;each time affected ally recovers HP,adds Reckoning charge x2(Each charge x1 deals 150% of affected allie's current HP in ongoing damage to all targets from Turn 5 onward)\nIncreases skill points by 100(Can exceed cost limit)\nDecreases the skill cost to initial value for vanguard allies"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "HP - DEF UP",
+                "description": "When 3 vanguard have 75% or more HP, increases all allies' DEF by 9% at start of turn available in support formation"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Charge - Concentrate",
+                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the single-target attack damage resistance of all allies is increased by 30% Turns 1 Uses by this character per battle: 2"
+            }
+        ],
+        "tag": "Fire Magic Device +200%|Symbol of Protection +100%|EX Unbound|Anti-Fire Unbound|Protection Characters|Skills Special Skill Cost Reset|Skills Buff All Defense-Type M-ATK"
+    },
+    {
+        "id": 309,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_woind",
+        "dmg_type": "magic",
+        "tactics_type": "Defense",
+        "force": "Sparkle of Youth|Fount of Wisdom|Shizu's Will|Commander",
+        "release_date": "3/10/2025",
+        "name": "Yuuki Kagurazaka",
+        "sub_name": "Academy Luminary",
+        "initial_attack": 3356,
+        "initial_health": 8533,
+        "initial_defense": 4465,
+        "final_attack": 3358,
+        "final_health": 8533,
+        "final_defense": 4465,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "single",
+        "char_type": "defense",
+        "weapon": "hammer",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Ingenious Play",
+                "extraText": "0 Skill Points",
+                "description": "For this turn, all allie's battle skills can be activated an unlimited number of times(Excluding skills with the same effect)\nIncreases all soul's skill point increase by 100% Turns 1\n(Cannot exceed the max activation limit during battle)"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Commander's Iron Rule",
+                "extraText": "25 Skill Points",
+                "description": "Changes non-Skills soul x2 into Soul of Skills\nAdds Reckoning charge x2 to all allies(Each charge x1 deals 150% of affected allie's current HP in ongoing damage to all targets from Turn 5 onward)"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "support",
+                "attackName": "Beat Spiral",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes an single-target wind magic attack for 250% normal damage\nIncreases weakness strike of Sparkle of Youth Force characters including rearguard until the end of battle by 60% (Unlimited)"
+            },
+            {
+                "imageName": "support",
+                "attackName": "Beat Spiral",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes an single-target wind magic attack for 250% normal damage\nIncreases weakness strike of Sparkle of Youth Force characters including rearguard until the end of battle by 120% (Unlimited)"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.14\nSuper Weak Point Damage x1.24"
+            }
+        ],
+        "skill_traits": [
+            {
+                "attackName": "Troop - Protection UP",
+                "extraText": "Awaken 3/5",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns available in support formation",
+                "imageName": "t1"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - Skill DOWN",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Skills gauge increases are decreased by 20% Turns 1 Uses by this character per battle: 1",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Shizue Izawa is assigned to a battle slot.\nIncreases counterattack and guard power by 8%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 114\nIncreases ATK by 30\nIncreases DEF by 65"
+            }
+        ],
+        "tag": "Skills Heal All Heal|Skills Soul Buff Soul of Skill Protection Gauge|Skills Buff All Weakness Strike|Traits Buff Self ATK|Digsite for Training Magigems +30%|Savory Pancake Stall +10%|EX Unbound|Light Unbound|All|Battle Characters"
+    },
+    {
+        "id": 310,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_water",
+        "dmg_type": "magic",
+        "tactics_type": "Defense",
+        "force": "Sparkle of Youth|Fount of Wisdom|Determination to Prosper|Ten Great Demon Lords",
+        "release_date": "3/19/2025",
+        "name": "Frey",
+        "sub_name": "Gorgeous Lecturer",
+        "initial_attack": 4157,
+        "initial_health": 8427,
+        "initial_defense": 2928,
+        "final_attack": 4157,
+        "final_health": 8427,
+        "final_defense": 2928,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "single",
+        "char_type": "defense",
+        "skill_trait_0": "Troop - Protection UP",
+        "skill_trait_1": "Soul Combo - ATK UP",
+        "ex_hp": "378",
+        "ex_atk": "190",
+        "ex_def": "110",
+        "ex_type": "magic",
+        "ex_person": "Shizue Izawa",
+        "ex_effect": "Critical Power",
+        "ex_percent": "12",
+        "weapon": "hammer",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Scholarly Radiance",
+                "extraText": "25 Skill Points",
+                "description": "Increases Fount of Wisdom Force and water attribute character's max HP by 120% Turns 2\nGive all allies a continuous heal that restores their HP up to 2 times when the enemy's turn ends(Heals by 40% of max HP)"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Soaring Smash",
+                "extraText": "Skill Points",
+                "description": "Increases M-ATK for all allies including rearguard by 80% Turns 1\nIncreases EX Soul of Combos damage by 100% Turns 1"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "atk",
+                "attackName": "Feather Hurricane",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes a single-target water magic attack for 600% normal damage"
+            },
+            {
+                "imageName": "atk",
+                "attackName": "Feather Hurricane",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes a single-target water magic attack for 900% normal damage"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.14\nSuper Weak Point Damage x1.24"
+            }
+        ],
+        "skill_traits": [
+            {
+                "attackName": "Troop - Skill UP",
+                "extraText": "Awaken 3/5",
+                "description": "When your troop contains 3 or more battle characters, increases skill points by 5 every 2 turns available in support formation",
+                "imageName": "t1"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - Skill DOWN",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Skills gauge increases are decreased by 20% Turns 1 Uses by this character per battle: 1",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Shizue Izawa is assigned to a battle slot.\nIncreases Critical Power by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 378\nIncreases ATK by 190\nIncreases DEF by 110"
+            }
+        ],
+        "tag": "Weapon Magicubeite Digsite 30%|Dango Shop +10%|Skills Buff All M-ATK|Skills Buff All EX Soul of Combos|Skills Heal All Heal|EX Unbound|Water Unbound|Single|Battle Characters"
     }
 
 ]
