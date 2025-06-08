@@ -22775,7 +22775,7 @@
                 "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.2\nSuper Weak Point Damage x1.3"
             }
         ],
-        "tag": "Sweets Shop +30%|Laboratory +10%|EX Unbound|Battle Characters|Magic|Light Unbound|All|Skills Buff Self ATK|Skills Debuff All All Atribute Resistance|Skills Buff All Synergy Rate|Skills Soul Buff Soul of Combos|Traits Gauge Protection Gauge"
+        "tag": "Sweets Shop +30%|Laboratory +10%|EX Unbound|Battle Characters|Magic|Light Unbound|All|Skills Buff Self ATK|Skills Debuff All All Atribute Resistance|Skills Buff All Synergy Rate|Skills Buff All Soul of Combos|Traits Gauge Protection Gauge"
     },
     {
         "id": 301,
@@ -22858,7 +22858,7 @@
                 "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.14\nSuper Weak Point Damage x1.24"
             }
         ],
-        "tag": "Digsite for Stamina Magigems +10%|Decoration Magicubeite Digsite +30%|EX Unbound|Magic|Battle Characters|Space Unbound|All|Skills Buff All ATK|Skills Debuff All Weakness Resistance|Skills From Soul Another Random Character|Skills To Soul Soul of Secrets|Skills Soulf Buff Soul of Secrets Protection Gauge|Traits Debuff All DEF"
+        "tag": "Digsite for Stamina Magigems +10%|Decoration Magicubeite Digsite +30%|EX Unbound|Magic|Battle Characters|Space Unbound|All|Skills Buff All ATK|Skills Debuff All Weakness Resistance|Skills From Soul Another Random Character|Skills To Soul Soul of Secrets|Skills Soul Buff Soul of Secrets Protection Gauge|Traits Debuff All DEF"
     },
     {
         "id": 302,
@@ -23393,7 +23393,7 @@
         "id": 309,
         "type": "attacker",
         "stars": 7,
-        "element": "ex_woind",
+        "element": "ex_wind",
         "dmg_type": "magic",
         "tactics_type": "Defense",
         "force": "Sparkle of Youth|Fount of Wisdom|Shizu's Will|Commander",
