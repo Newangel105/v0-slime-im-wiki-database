@@ -23563,6 +23563,89 @@
             }
         ],
         "tag": "Weapon Magicubeite Digsite 30%|Dango Shop +10%|Skills Buff All M-ATK|Skills Buff All EX Soul of Combos|Skills Heal All Heal|EX Unbound|Water Unbound|Single|Battle Characters"
+    },
+    {
+        "id": 311,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_fire",
+        "dmg_type": "phys",
+        "tactics_type": "Speed",
+        "force": "Warrior's Mind|Primal Demon|Antagonist|Schemer",
+        "release_date": "4/11/2025",
+        "name": "Violet",
+        "sub_name": "Battlefield Enchanter",
+        "initial_attack": 4161,
+        "initial_health": 8431,
+        "initial_defense": 2944,
+        "final_attack": 4161,
+        "final_health": 8431,
+        "final_defense": 2944,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "aoe",
+        "char_type": "attack",
+        "weapon": "hammer",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Mystic Haze",
+                "extraText": "50 Skill Points",
+                "description": "Applies Control x2 to all targets (Turns 2; Stacks)\n(When the enemy's turn ends,increases all allie's weakness strike until the end of battle by 15% Unlimited, based on the number of Control applied to enemies)\nDecreases all target's secret skill damage resistance by 40% Turns 2"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Pristine Assault",
+                "extraText": "35 Skill Points",
+                "description": "Changes all Primal Demon,Schemer and Antagonist Force character's souls into Soul of Unity\nIncreases all soul's protection gauge increase by 10% Turns 1 Uses per battle: 2"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "support",
+                "attackName": "Venozen Banish",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes an all-target water physical attack for 150% normal damage\nIncreases weakness strike of Warrior's Mind Force characters including rearguard until the end of battle by 60% Unlimited"
+            },
+            {
+                "imageName": "support",
+                "attackName": "Venozen Banish",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes an all-target water physical attack for 150% normal damage\nIncreases weakness strike of Warrior's Mind Force characters including rearguard until the end of battle by 120% Unlimited"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 3-5 turns\nEffects: Weak Point Damage x1.16\nSuper Weak Point Damage x1.26"
+            }
+        ],
+        "skill_traits": [
+            {
+                "attackName": "Troop - Skill UP",
+                "extraText": "Awaken 3/5",
+                "description": "When your troop contains 3 or more battle characters, increases skill points by 5 every 2 turns available in support formation",
+                "imageName": "t1"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Switch - Skill Seal",
+                "description": "When you switch this character to the vanguard and activate souls, all enemies' attack-changing battle skills are sealed\n(Turns 1; Uses by this character per battle: 2)",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Rimuru is assigned to a battle slot.\nIncreases Pierce Power by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Physical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of physical attack characters assigned to battle slots.\nIncreases HP by 96\nIncreases ATK by 45\nIncreases DEF by 26"
+            }
+        ],
+        "tag": "Encampment +30%|Armor Magicubeite Digsite +10%|Skills Buff All Weakness Strike|Skills Debuff All Secret Skill Damage Resistance|Skills To Soul Soul of Unity|Skills Soul Buff All Souls Protection Gauge"
     }
 
 ]
