@@ -22644,7 +22644,7 @@
         "type": "protector",
         "stars": 7,
         "element": "prot_ex_dark",
-        "dmg_type": "magic",
+        "dmg_type": "Adventurer",
         "tactics_type": "Charge",
         "force": "Adventurer",
         "release_date": "12/20/2024",
@@ -22948,7 +22948,7 @@
         "type": "protector",
         "stars": 7,
         "element": "prot_ex_water",
-        "dmg_type": "phys",
+        "dmg_type": "Tournament Stalwart",
         "tactics_type": "Speed",
         "force": "Tournament Stalwart",
         "release_date": "1/20/2025",
@@ -23003,7 +23003,7 @@
         "type": "attacker",
         "stars": 5,
         "element": "ex_wind",
-        "dmg_type": "physical",
+        "dmg_type": "phys",
         "tactics_type": "Speed",
         "force": "Tournament Stalwart|Octagram Demon Lord|Commander|Warrior's Mind",
         "release_date": "1/20/2025",
@@ -23080,6 +23080,190 @@
             }
         ],
         "tag": "All|EX Unbound|Wind Unbound|Battle Characters|Skills Buff Self P-ATK|Skills Buff Self Physical Damage|Skills Soul Amount x3|Skills From Soul Another Random Character|Skills Soul Buff All Souls Gauges|Traits Buff Self ATK"
+    },
+    {
+        "id": 305,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_water",
+        "dmg_type": "phys",
+        "tactics_type": "Speed",
+        "force": "Tournament Stalwart|Determination to Prosper|Octagram Demon Lord|Shizu's Will|Tempest Elite",
+        "release_date": "1/31/2025",
+        "name": "Rimuru Tempest",
+        "sub_name": "True Lord of Tempest",
+        "initial_attack": 4147,
+        "initial_health": 8422,
+        "initial_defense": 2942,
+        "final_attack": 4147,
+        "final_health": 8422,
+        "final_defense": 2942,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "aoe",
+        "char_type": "attack",
+        "skill_trait_0": "Soul Combo - ATK UP",
+        "skill_trait_1": "Switch - Skill Seal",
+        "weapon": "fists",
+        "ex_hp": "96",
+        "ex_atk": "45",
+        "ex_def": "26",
+        "ex_type": "phys",
+        "ex_person": "Shinsha",
+        "ex_effect": "Critical Power",
+        "ex_percent": "12",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Demon Lord's Majesty",
+                "extraText": "50 Skill Points",
+                "description": "Increases Soul of Combos damage by 100% Turns 1\nIncreases weakness strike for all allies including rearguard by 50% Turns 1"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Arcane Convergence",
+                "extraText": "25 Skill Points",
+                "description": "Changes Soul of Skills and Soul of Secrets x1 each into Soul of Unity\nIncreases all soul's skill point increase by 20% Turns 1\n(Uses per battle: 3)"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "support",
+                "attackName": "Beelzebub Tempester",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes an all-target water physical attack for 150% normal damage\nIncreases weakness strike of Tournament Stalwart Force characters including rearguard until the end of battle by 60% Unlimited"
+            },
+            {
+                "imageName": "support",
+                "attackName": "Beelzebub Tempester",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes an all-target water physical attack for 150% normal damage\nIncreases weakness strike of Tournament Stalwart Force characters including rearguard until the end of battle by 120% Unlimited"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 3-5 turns\nEffects: Weak Point Damage x1.14\nSuper Weak Point Damage x1.24"
+            }
+        ],
+        "skill_traits": [
+            {
+                "attackName": "Soul Combo - Critical Damage UP",
+                "extraText": "Awaken 3/5",
+                "description": "When you unleash a 6 combo attack with Soul of Skills, increases own critical damage by 15% for the next turn available in support formation",
+                "imageName": "t1"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Switch - Skill Seal",
+                "description": "When you switch this character to the vanguard and activate souls, all enemies' attack-changing battle skills are sealed\n(Turns 1; Uses by this character per battle: 2)",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Shinsha is assigned to a battle slot.\nIncreases Critical Power by 12%"
+            },
+            {
+                "imageName": "e2",
+                "attackName": "Physical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of phys attack characters assigned to battle slots.\nIncreases HP by 96\nIncreases ATK by 45\nIncreases DEF by 26"
+            }
+        ],
+        "tag": "Skills Buff All Soul of Combos|Skills Buff All Weakness Strike|Skills To Soul Soul of Unity|Skills From Soul Soul of Skills|Traits Buff Self Critical Damage|Skills From Soul Soul of Secrets|Skills Soul Buff All Souls Skill Point|EX Unbound|Water Unbound|All|Battle Characters"
+    },
+    {
+        "id": 306,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_wind",
+        "dmg_type": "phys",
+        "tactics_type": "Speed",
+        "force": "Tournament Stalwart|Hyper Heart|Tempest Elite|Warrior's Mind",
+        "release_date": "2/10/2025",
+        "name": "Gobta",
+        "sub_name": "Demon Wolf Fusion",
+        "initial_attack": 4153,
+        "initial_health": 8412,
+        "initial_defense": 2943,
+        "final_attack": 4153,
+        "final_health": 8412,
+        "final_defense": 2943,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "single",
+        "char_type": "attack",
+        "skill_trait_0": "Soul Combo - ATK UP",
+        "skill_trait_1": "Troop - Protection UP",
+        "weapon": "fists",
+        "ex_hp": "378",
+        "ex_atk": "190",
+        "ex_def": "110",
+        "ex_type": "phys",
+        "ex_person": "Rimuru",
+        "ex_effect": "Critical Power",
+        "ex_percent": "12",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Shadowy Dash",
+                "extraText": "40 Skill Points",
+                "description": "Chance to Inspire self: 100% Turns 2\nWhen the enemy\u2019s turn ends, increases ATK by 5% for every 3 times an ally attacked (Max: Up to 30% per turn; Unlimited)\nApplies Multi-hit State to Soul of Divine Protection souls,adding 2 attacks of a fixed percentage damage based on the soul Turns 2"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Direwolve's Claws",
+                "extraText": "50 Skill Points",
+                "description": "Increases all attribute ATK for all allies including rearguard by 60% Turns 1\n Increases EX Soul of Combos damage by 40% Turns 1"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "atk",
+                "attackName": "Spirit Stream",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes an all-target wind physical attack for 300% normal damage"
+            },
+            {
+                "imageName": "atk",
+                "attackName": "Spirit Stream",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes an all-target wind physical attack for 600% normal damage"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 3-5 turns\nEffects: Weak Point Damage x1.14\nSuper Weak Point Damage x1.24"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - Skill DOWN",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Skills gauge increases are decreased by 20% Turns 1 Uses by this character per battle: 1",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "imageName": "t1",
+                "attackName": "Troop - Protection UP",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Rimuru is assigned to a battle slot.\nIncreases Critical Power by 12%"
+            },
+            {
+                "imageName": "e2",
+                "attackName": "Physical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of phys attack characters assigned to battle slots.\nIncreases HP by 378\nIncreases ATK by 190\nIncreases DEF by 110"
+            }
+        ],
+        "tag": "Skills Buff Self ATK|Skills Special Multi-hit Soul of Divine Protection|Skills Buff All All Attribute ATK|Skills Buff All EX Soul of Combos|EX Unbound|Wind Unbound|Single|Battle Characters"
     }
 
 ]
