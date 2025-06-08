@@ -23729,6 +23729,89 @@
             }
         ],
         "tag": "Digsite for Stamina Magigems +30%|Weaving Workshop +10%|Skills Debuff All Dark Resistance|Skills Buff All Physical/Magic Attack Damage|Skills Soul Buff Soul of Secrets Gauge|Skills Gauge Skill Points|EX Unbound|Dark Unbound|All|Battle Characters"
+    },
+    {
+        "id": 313,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_dark",
+        "dmg_type": "phys",
+        "tactics_type": "Speed",
+        "force": "Warrior's Mind|Commander|Protector of Peace",
+        "release_date": "3/27/2025",
+        "name": "Gobwa",
+        "sub_name": "Kurenai Captain",
+        "initial_attack": 4149,
+        "initial_health": 8424,
+        "initial_defense": 2945,
+        "final_attack": 4149,
+        "final_health": 8424,
+        "final_defense": 2945,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "single",
+        "char_type": "attack",
+        "weapon": "katana",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Order Adherence",
+                "extraText": "50 Skill Points",
+                "description": "Increases pierce rate for all allies including rearguard by 100 Turns 1\nDecreases all target's pierce resistance by 60% Turns 1;\nIncreases by 3% for each weakening effect instance applied to a target(Total Max: 120%;effects applied to all targets count as 1 instance)"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Rookie's Resolve",
+                "extraText": "15 Skill Points",
+                "description": "Decreases a single target's all attribute resistance by 55% Turns 2\nDecreases a single target's weakness resistance by 50% Turns 2"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "atk",
+                "attackName": "Blue Flare Blade",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes an all-target wind physical attack for 600% normal damage"
+            },
+            {
+                "imageName": "atk",
+                "attackName": "Blue Flare Blade",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes an all-target wind physical attack for 900% normal damage"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 3-5 turns\nEffects: Weak Point Damage x1.18\nSuper Weak Point Damage x1.28"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Troop - Protection UP",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - Secret DOWN",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Secrets gauge increases are decreased by 20% Turns 1; Uses by this character per battle: 1",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Shion is assigned to a battle slot.\nIncreases Pierce Power by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Physical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of phys attack characters assigned to battle slots.\nIncreases HP by 378\nIncreases ATK by 190\nIncreases DEF by 110"
+            }
+        ],
+        "tag": "Digsite for Defense Magigems +30%|Traditional Snack Shop +10%|Skills Buff All Pierce Rate|Skills Debuff All Pierce Resistance|Skills Debuff Single All Attribute Resistance|Skills Debuff Single Weakness Resistance|EX Unbound|Dark Unbound|Single|Battle Characters"
     }
 
 ]
