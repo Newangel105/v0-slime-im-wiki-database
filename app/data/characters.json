@@ -22206,7 +22206,7 @@
         "type": "protector",
         "stars": 7,
         "element": "prot_ex_wind",
-        "dmg_type": "magic",
+        "dmg_type": "Divine General",
         "tactics_type": "Charge",
         "force": "Divine General",
         "release_date": "10/28/2024",
@@ -23069,7 +23069,7 @@
             "description": "Increases own following status when Rimuru is assigned to a battle slot.\nIncreases critical rate by 12%"
             },
             {
-            "imageName": "e2",
+            "imageName": "",
             "attackName": "Physical Mercy",
             "description": "Increases other troop members' following status in accordance with the number of physical attack characters assigned to battle slots.\nIncreases HP by 378\nIncreases ATK by 190\nIncreases DEF by 110"
             }
@@ -23166,7 +23166,7 @@
                 "description": "Increases own following status when Shinsha is assigned to a battle slot.\nIncreases Critical Power by 12%"
             },
             {
-                "imageName": "e2",
+                "imageName": "",
                 "attackName": "Physical Mercy",
                 "description": "Increases other troop members' following status in accordance with the number of phys attack characters assigned to battle slots.\nIncreases HP by 96\nIncreases ATK by 45\nIncreases DEF by 26"
             }
@@ -23258,12 +23258,104 @@
                 "description": "Increases own following status when Rimuru is assigned to a battle slot.\nIncreases Critical Power by 12%"
             },
             {
-                "imageName": "e2",
+                "imageName": "",
                 "attackName": "Physical Mercy",
                 "description": "Increases other troop members' following status in accordance with the number of phys attack characters assigned to battle slots.\nIncreases HP by 378\nIncreases ATK by 190\nIncreases DEF by 110"
             }
         ],
         "tag": "Skills Buff Self ATK|Skills Special Multi-hit Soul of Divine Protection|Skills Buff All All Attribute ATK|Skills Buff All EX Soul of Combos|EX Unbound|Wind Unbound|Single|Battle Characters"
+    },
+    {
+        "id": 307,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_light",
+        "dmg_type": "magic",
+        "tactics_type": "Defense",
+        "force": "Sparkle of Youth|Found of Wisdom|Shizu's Will|Determination to Prosper",
+        "release_date": "2/28/2025",
+        "name": "Hinata Sakaguchi",
+        "sub_name": "Academy Student",
+        "initial_attack": 3358,
+        "initial_health": 8523,
+        "initial_defense": 4465,
+        "final_attack": 3358,
+        "final_health": 8523,
+        "final_defense": 4465,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "aoe",
+        "char_type": "defense",
+        "skill_trait_0": "Soul Combo - ATK UP",
+        "skill_trait_1": "Switch - Skill Seal",
+        "weapon": "hammer",
+        "ex_hp": "114",
+        "ex_atk": "30",
+        "ex_def": "65",
+        "ex_type": "magic",
+        "ex_person": "Shizue Izawa",
+        "ex_effect": "Counterattack power",
+        "ex_percent": "8%",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Remedial Evasion",
+                "extraText": "30 Skill Points",
+                "description": "Applies Damage Absorption to Sparkle of Youth and Fount of Wisdom Force characters Turns 1: Nullifies all damage and heals by 5% of max HP\nIncreases all gauge's increase of all souls by 10% Turns 1"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Writing Onslaught",
+                "extraText": "25 Skill Points",
+                "description": "Adds Reckoning charge x2 to all allies (Each charge x1 deals 150% of affected allie's current HP in ongoing damage to all targets from Turn 5 onward)\nIncreases Soul of Skill's protection gauge increase by 50% Turns 1"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "support",
+                "attackName": "Fury Obliteration",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes an all-target light magic attack for 150% normal damage\nIncreases weakness strike of Sparkle of Youth Force characters including rearguard until the end of battle by 60% (Unlimited)"
+            },
+            {
+                "imageName": "support",
+                "attackName": "Fury Obliteration",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes an all-target light magic attack for 150% normal damage\nIncreases weakness strike of Sparkle of Youth Force characters including rearguard until the end of battle by 120% (Unlimited)"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.14\nSuper Weak Point Damage x1.24"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Soul Combo - ATK UP",
+                "description": "When you unleash a 6 combo attack with Soul of Divine Protection, increases own ATK by 8% for the next turn available in support formation",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Switch - Skill Seal",
+                "description": "When you switch this character to the vanguard and activate souls, all enemies' attack-changing battle skills are sealed\n(Turns 1; Uses by this character per battle: 2)",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Shizue Izawa is assigned to a battle slot.\nIncreases counterattack and guard power by 8%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 114\nIncreases ATK by 30\nIncreases DEF by 65"
+            }
+        ],
+        "tag": "Skills Heal All Heal|Skills Soul Buff Soul of Skill Protection Gauge|Skills Buff All Weakness Strike|Traits Buff Self ATK|Digsite for Training Magigems +30%|Savory Pancake Stall +10%|EX Unbound|Light Unbound|All|Battle Characters"
     }
 
 ]
