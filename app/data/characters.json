@@ -23902,7 +23902,7 @@
             {
                 "attackName": "Path to Victory",
                 "extraText": "100% Protection Gauge",
-                "description": "Increases P-ATK/M-ATK for all allies including rearguard until the end of battle by 20% Unlimited\nApplies Spirit Blessing to charge-type characters Turns 1\n(Continuos Heal:30%;Secret Skill Vitalization: 50%)\nIncreases Soul of Devine Protection skill point increase until the end of battle by 100%(Max: 500%)"
+                "description": "Increases P-ATK/M-ATK for all allies including rearguard until the end of battle by 20% Unlimited\nApplies Spirit Blessing to charge-type characters Turns 1\n(Continuous Heal:30%;Secret Skill Vitalization: 50%)\nIncreases Soul of Devine Protection skill point increase until the end of battle by 100%(Max: 500%)"
             }
         ],
         "skill_traits": [
@@ -24045,7 +24045,7 @@
             {
                 "imageName": "e1",
                 "attackName": "Individual Mercy",
-                "description": "Increases own following status when Rimuru is assigned to a battle slot.\nIncreases Aegis Rate by 12%"
+                "description": "Increases own following status when Rimuru is assigned to a battle slot.\nIncreases Aegis Power by 12%"
             },
             {
                 "imageName": "",
