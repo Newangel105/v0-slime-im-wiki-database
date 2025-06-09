@@ -24365,7 +24365,20 @@
                 "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.12\nSuper Weak Point Damage x1.3"
             }
         ],
-        "skill_traits": [],
+        "skill_traits": [
+            {
+                "attackName": "Troop - Skill UP",
+                "extraText": "Awaken 3/5",
+                "description": "When your troop contains 3 or more battle characters, increases skill points by 5 every 2 turns available in support formation",
+                "imageName": "t1"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - Protection DOWN",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Divine Protection gauge increases are decreased by 20% Turns 1 Uses by this character per battle: 1",
+                "extraText": "Awaken 3/5"
+            }
+        ],
         "ex_abilities": [
             {
                 "imageName": "e1",
