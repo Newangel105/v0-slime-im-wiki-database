@@ -23971,5 +23971,440 @@
             }
         ],
         "tag": "Wind Magic Device +200%|Symbol of Protection +100%|EX Unbound|Anti-Wind Unbound|Protection Characters|Skills Gauge Skill Points|Skills Buff All Speed-Type P-ATK|Skills To Soul Soul of Skills|Skills Soul Amount All|Skills to Soul Soul of Unity|Skills Buff All ATK|Skills Buff All EX Soul of Combos|Traits Buff All ATK"
+    },
+    ,
+    {
+        "id": 317,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_water",
+        "dmg_type": "magic",
+        "tactics_type": "Charge",
+        "force": "Spirit Master|Dragon Haki|Exalted Champions|Stern of Spirit",
+        "release_date": "4/25/2025",
+        "name": "Velzard",
+        "sub_name": "Frostplate Dragon",
+        "initial_attack": 4161,
+        "initial_health": 8428,
+        "initial_defense": 2945,
+        "final_attack": 4161,
+        "final_health": 8428,
+        "final_defense": 2945,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "aoe",
+        "char_type": "attack",
+        "skill_trait_0": "Troop - Protection UP",
+        "skill_trait_1": "Soul Combo - Secret DOWN",
+        "ex_hp": "96",
+        "ex_atk": "45",
+        "ex_def": "26",
+        "ex_type": "magic",
+        "ex_person": "Rimuru",
+        "ex_effect": "Aegis Rate",
+        "ex_percent": "12",
+        "weapon": "sword",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Spirit Domain",
+                "extraText": "90 Skill Points",
+                "description": "Increases Aegis Rate for all allies including rearguard by 100% Turns 1\nDecreases all target's Aegis Resistance by 100% Turns 1(Aegis: A portion of attacker's DEF will be added to ATK when damage is dealt)"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Passing Void",
+                "extraText": "25 Skill Points",
+                "description": "Chance to freeze a single target:100% Turns 1(Sturn/Frostbite - Weakening Effects:x1.3)\nIncreases stun strike for all allies including rearguard until the end of battle by 10% Unlimited"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "support",
+                "attackName": "Ice-Cold Spiritual",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes an all-target water magic attack for 150% normal damage\nIncreases weakness strike of Spirit Master and Dragon Haki Force characters including rearguard until the end of battle by 60% Unlimited"
+            },
+            {
+                "imageName": "support",
+                "attackName": "Ice-Cold Spiritual",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes an all-target water magic attack for 150% normal damage\nIncreases weakness strike of Spirit Master and Dragon Haki Force characters including rearguard until the end of battle by 120% Unlimited"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.14\nSuper Weak Point Damage x1.24"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Troop - Protection UP",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Charge - Secret DOWN",
+                "description": "When you use souls while 1 or more enemy characters have a secret skill gauge with 100% or more filled, the secret skill gauge of all targets is decreased by 20% Uses by this character per battle: 1",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Rimuru is assigned to a battle slot.\nIncreases Aegis Rate by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 96\nIncreases ATK by 45\nIncreases DEF by 26"
+            }
+        ],
+        "tag": "Skills Buff All Aegis Rate|Skills Debuff All Aegis Resistance|Skills Debuff Single Freeze|Skills Buff All Stun Strike|Skills Buff All Weakeness Strike|Magic Hide Atelier +30%|Digsite for Attack Magigems +10%|EX Unbound|Water Unbound|All|Battle Characters"
+    },
+    {
+        "id": 318,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_earth",
+        "dmg_type": "magic",
+        "tactics_type": "Charge",
+        "force": "Spirit Master|Octagram Demon Lord|Heart of a Hero|Fount of Wisdom",
+        "release_date": "4/25/2025",
+        "name": "Leon Cromwell",
+        "sub_name": "Platinum Bulwark",
+        "initial_attack": 4164,
+        "initial_health": 8428,
+        "initial_defense": 2939,
+        "final_attack": 4164,
+        "final_health": 8428,
+        "final_defense": 2939,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "single",
+        "char_type": "attack",
+        "skill_trait_0": "Soul Combo - Skill DOWN",
+        "skill_trait_1": "Troop - Skill UP",
+        "ex_hp": "378",
+        "ex_atk": "190",
+        "ex_def": "110",
+        "ex_type": "magic",
+        "ex_person": "Rimuru",
+        "ex_effect": "Aegis Power",
+        "ex_percent": "12",
+        "weapon": "sword",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Hope Within Reach",
+                "extraText": "90 Skill Points",
+                "description": "Increases Soul of Combos damage by 110% Turns 1\nIncreases EX Soul of Combos damage by 111 Turns 1"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Dream Flash",
+                "extraText": "30 Skill Points",
+                "description": "Changes non-Divine Protection soul x3 into Soul of Divine Protection\nIncreases all Soul of Divine Protection gauge's increase by 10% Turns 1"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "atk",
+                "attackName": "Corruption Full Burst",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes an single-target earth physical attack for 600% normal damage"
+            },
+            {
+                "imageName": "atk",
+                "attackName": "Corruption Full Burst",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes an single-target earth physical attack for 900% normal damage"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.14\nSuper Weak Point Damage x1.24"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - Skill DOWN",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Skills gauge increases are decreased by 20% Turns 1 Uses by this character per battle: 1",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "attackName": "Troop - Skill UP",
+                "extraText": "Awaken 3/5",
+                "description": "When your troop contains 3 or more battle characters, increases skill points by 5 every 2 turns available in support formation",
+                "imageName": "t1"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Rimuru is assigned to a battle slot.\nIncreases Aegis Power by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 378\nIncreases ATK by 190\nIncreases DEF by 110"
+            }
+        ],
+        "tag": "Magic Fang Atelier +30%|Red Magicluster Digsite +10%|Skills Buff All Soul of Combos|Skills Buff All EX Soul of Combos|Skills To Soul Soul of Divine Protection|Skills Soul Amount x3|Skills From Soul Non-Divine Protection Soul|Traits Gauge Skill Points|EX Unbound|Earth Unbound|Single|Battle Characters"
+    },
+    {
+        "id": 319,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_space",
+        "dmg_type": "magic",
+        "tactics_type": "Charge",
+        "force": "Spirit Master|Primal Demon|Warrior's Mind|Exalted Champions",
+        "release_date": "5/7/2025",
+        "name": "Jaune",
+        "sub_name": "Amber Avenger",
+        "initial_attack": 4162,
+        "initial_health": 8418,
+        "initial_defense": 2947,
+        "final_attack": 4162,
+        "final_health": 8418,
+        "final_defense": 2947,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "aoe",
+        "char_type": "attack",
+        "skill_trait_0": "Troop - Protection UP",
+        "skill_trait_1": "Switch - Skill Seal",
+        "ex_hp": "96",
+        "ex_atk": "45",
+        "ex_def": "26",
+        "ex_type": "magic",
+        "ex_person": "Rimuru",
+        "ex_effect": "Aegis Power",
+        "ex_percent": "12",
+        "weapon": "sword",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Azure Spirit Strike",
+                "extraText": "90 Skill Points",
+                "description": "Increases all attribute ATK for all allies including rearguard by 100% Turns 1\nIncreases Aegis Power for charge-type characters including rearguard by 100% Turns 1\n(Aegis:A portion of attacker's DEF will be added to ATK when damage is dealt)"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Skyripper Battleblade",
+                "extraText": "0 Skill Points",
+                "description": "Sets Soul of Combo's gauge increase to the same amount as Soul of Divine Protection's, with gauge-altering effects applied Turns 1\nIncreases Soul of Divine Protection's secret skill gauge increase by 50% Turns 1"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "support",
+                "attackName": "Spirit Bastard",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes an all-target space magic attack for 150% normal damage\nIncreases weakness strike of Spirit Master and Primal Demon Force characters including rearguard until the end of battle by 60% Unlimited"
+            },
+            {
+                "imageName": "support",
+                "attackName": "Spirit Bastard",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes an all-target space magic attack for 150% normal damage\nIncreases weakness strike of Spirit Master and Primal Demon Force characters including rearguard until the end of battle by 120% Unlimited"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.2\nSuper Weak Point Damage x1.3"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Troop - Protection UP",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Switch - Skill Seal",
+                "description": "When you switch this character to the vanguard and activate souls, all enemies' attack-changing battle skills are sealed\n(Turns 1; Uses by this character per battle: 2)",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Rimuru is assigned to a battle slot.\nIncreases Aegis Power by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 96\nIncreases ATK by 45\nIncreases DEF by 26"
+            }
+        ],
+        "tag": "Magic Feather Atelier +30%|Decoration Magicubeite Digsite +10%|Skills Buff All All Attribute ATK|Skills Buff All Aegis Power|Skills Buff All Weakness Strike|Skills Soul Buff Soul of Divine Protection Secret Skill Gauge|EX Unbound|Space Unbound|All|Battle Characters"
+    },
+    {
+        "id": 320,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_space",
+        "dmg_type": "phys",
+        "tactics_type": "Speed",
+        "force": "Schemer|Wholehearted Devotion|Pretty Sparkle",
+        "release_date": "5/30/2025",
+        "name": "Soka",
+        "sub_name": "Dawn Moon Phantom",
+        "initial_attack": 4161,
+        "initial_health": 8423,
+        "initial_defense": 2947,
+        "final_attack": 4161,
+        "final_health": 8423,
+        "final_defense": 2947,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "single",
+        "char_type": "attack",
+        "skill_trait_0": "Troop - Protection UP",
+        "skill_trait_1": "Soul Combo - Secret DOWN",
+        "ex_hp": "378",
+        "ex_atk": "190",
+        "ex_def": "110",
+        "ex_type": "phys",
+        "ex_person": "Rimuru",
+        "ex_effect": "Synergy Power",
+        "ex_percent": "12",
+        "weapon": "sword",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Dusk Bloom",
+                "extraText": "50 Skill Points",
+                "description": "Increases Synergy Rate for all allies including rearguard by 100% Turns 1\nIncreases Synergy Power for all allies including rearguard by 50%(Turns 1;If activated within 5 turns of battle start,effect amount x2:100%)"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Nocturne Fang",
+                "extraText": "15 Skill Points",
+                "description": "Activates 'Final Combo Attack:Schemer';At the end of Turn 5, counting from the start of battle, deals damage to all enemies based on the total number of attacks by allie and max ATK(damage cap applies)/Schemer Force characters gain a bonus attack\nIncreases all Soul of Skill gauges' increase by 50% Turns 3"
+            }
+        ],
+        "secret_skills": [
+            {
+                "imageName": "atk",
+                "attackName": "Threadslash Field",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes an all-target wind physical attack for 600% normal damage"
+            },
+            {
+                "imageName": "atk",
+                "attackName": "Threadslash Field",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes an all-target wind physical attack for 900% normal damage"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 3-5 turns\nEffects: Weak Point Damage x1.16\nSuper Weak Point Damage x1.26"
+            }
+        ],
+        "skill_traits": [
+            {
+                "imageName": "t1",
+                "attackName": "Troop - Protection UP",
+                "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)",
+                "extraText": "Awaken 3/5"
+            },
+            {
+                "imageName": "t2",
+                "attackName": "Soul Combo - Protection DOWN",
+                "description": "When you unleash a 2 combo, all of the enemy's Soul of Divine Protection gauge increases are decreased by 20% Turns 1 Uses by this character per battle: 1",
+                "extraText": "Awaken 3/5"
+            }
+        ],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Rimuru is assigned to a battle slot.\nIncreases Synergy Power by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Physical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of phys attack characters assigned to battle slots.\nIncreases HP by 378\nIncreases ATK by 190\nIncreases DEF by 110"
+            }
+        ],
+        "tag": "Japanese Style Tavern +30%|Traditional Brewery +10%|Skills Buff All Synergy Rate|Skills Buff All Synergy Power|Skills Soul Buff Soul of Skills Gauges|EX Unbound|Space Unbound|Single|Battle Characters"
+    },
+    {
+        "id": 321,
+        "type": "attacker",
+        "stars": 7,
+        "element": "ex_earth",
+        "dmg_type": "magic",
+        "tactics_type": "Charge",
+        "force": "Spirit Master|Octagram Demon Lord|Warrior's Mind|Exalted Champions",
+        "release_date": "5/14/2025",
+        "name": "Rimuru Tempest",
+        "sub_name": "Twinshade Vanquisher",
+        "initial_attack": 4164,
+        "initial_health": 8423,
+        "initial_defense": 2941,
+        "final_attack": 4164,
+        "final_health": 8423,
+        "final_defense": 2941,
+        "output_initial": 60,
+        "output_final": 150,
+        "ulti": "single",
+        "char_type": "attack",
+        "skill_trait_0": "",
+        "skill_trait_1": "",
+        "ex_hp": "378",
+        "ex_atk": "190",
+        "ex_def": "110",
+        "ex_type": "magic",
+        "ex_person": "Shuna",
+        "ex_effect": "Aegis Power",
+        "ex_percent": "12",
+        "weapon": "sword",
+        "battle_skills": "[\n  {\n    \"imageName\": \"b1.png\",\n    \"attackName\": \"Unyielding Future\",\n    \"extraText\": \"30 Skill Points\",\n    \"description\": \"Applies Ultimate Manifestation to self Turns 3(While in Ultimate Manifestation state, own souls are converted to Soul of Unity/Increases own Soul of Combos damage by 120%(stacks)/While in Ultimate Manifestation state, this skill changes to the After Ultimate Manifestation skill)\\n(Uses per battle: 1)\"\n  },\n  {\n    \"imageName\": \"b3.png\",\n    \"attackName\": \"Unyielding Future\",\n    \"extraText\": \"50 Skill Points\",\n    \"description\": \"Decreases a single target's weakness resistance by 300% Turns 1\"\n  }\n  {\n    \"imageName\": \"b2.png\",\n    \"attackName\": \"Luminous Reminiscence\",\n    \"extraText\": \"0 Skill Points\",\n    \"description\": \"Chance to apply Lord's Ambition state to self:100%(Turns 2;Nullify certain weakening effects;When the enemy's turn ends, decreases all targets' secret skill damage resistance until the end of battle by 10% Unlimited)\\nChanges non-Divine Protection soul x2 into Soul of Divine Protection at start of the next turn\"\n  }\n]",
+        "secret_skills": [
+            {
+                "imageName": "atk",
+                "attackName": "Blazer Fusion",
+                "extraText": "100% Secret Gauge",
+                "description": "Unleashes an all-target wind physical attack for 600% normal damage"
+            },
+            {
+                "imageName": "atk",
+                "attackName": "Blazer Fusion",
+                "extraText": "200% Secret Gauge",
+                "description": "Unleashes an all-target wind physical attack for 900% normal damage"
+            }
+        ],
+        "unbound": [
+            {
+                "description": "Conditions: 6-8 turns\nEffects: Weak Point Damage x1.12\nSuper Weak Point Damage x1.3"
+            }
+        ],
+        "skill_traits": [],
+        "ex_abilities": [
+            {
+                "imageName": "e1",
+                "attackName": "Individual Mercy",
+                "description": "Increases own following status when Shuna is assigned to a battle slot.\nIncreases Aegis Power by 12%"
+            },
+            {
+                "imageName": "",
+                "attackName": "Magical Mercy",
+                "description": "Increases other troop members' following status in accordance with the number of magic attack characters assigned to battle slots.\nIncreases HP by 378\nIncreases ATK by 190\nIncreases DEF by 110"
+            }
+        ],
+        "tag": "Shaved Ice Shop +30%|Elemental Colossus Bay +10%|Skills To Soul Soul of Unity|Skills Buff Self Soul of Combos|Skills Debuff Single Weakness Resistance|Skills Debuff All Secret Skill Damage Resistance|Skills To Soul Soul of Divine Protection|EX Unbound|Earth Unbound|Single|Battle Characters"
     }
 ]
