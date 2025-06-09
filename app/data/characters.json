@@ -24326,15 +24326,6 @@
         "output_final": 150,
         "ulti": "single",
         "char_type": "attack",
-        "skill_trait_0": "",
-        "skill_trait_1": "",
-        "ex_hp": "378",
-        "ex_atk": "190",
-        "ex_def": "110",
-        "ex_type": "magic",
-        "ex_person": "Shuna",
-        "ex_effect": "Aegis Power",
-        "ex_percent": "12",
         "weapon": "sword",
         "battle_skills": [
             {
