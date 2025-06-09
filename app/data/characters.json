@@ -23001,7 +23001,7 @@
     {
         "id": 304,
         "type": "attacker",
-        "stars": 5,
+        "stars": 7,
         "element": "ex_wind",
         "dmg_type": "phys",
         "tactics_type": "Speed",
