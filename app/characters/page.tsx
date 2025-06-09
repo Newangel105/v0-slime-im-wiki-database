@@ -688,8 +688,10 @@ export default function CharactersPage() {
 
   const [sortKey, setSortKey] = useState<
     "name" | "final_attack" | "final_health" | "final_defense" | "stars" | "release_date" | "existence" | null
-  >(null)
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc")
+  >("release_date") // <-- default sort key
+
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc") 
+
 
   const filteredCharacters = useMemo(() => {
     const search = searchTerm.toLowerCase()
