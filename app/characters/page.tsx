@@ -243,6 +243,7 @@ const dmg_typeIcons = {
   Tournament_Stalwart: "/protector_elements/tournament_stalwart.png",
   Sparkle_of_Youth: "/protector_elements/sparkle_of_youth.png",
   Forest_Fracas: "/protector_elements/Forest_Fracas.png",
+  Divine_General: "/protector_elements/divine-general.png",
   Fount_of_Wisdom: "/protector_elements/Fount_of_Wisdom.png",
   Frozen_Continent: "/protector_elements/Frozen_Continent.png",
   Gaining_Status: "/protector_elements/Gaining_Status.png",
