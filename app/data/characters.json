@@ -23994,15 +23994,6 @@
         "output_final": 150,
         "ulti": "aoe",
         "char_type": "attack",
-        "skill_trait_0": "Troop - Protection UP",
-        "skill_trait_1": "Soul Combo - Secret DOWN",
-        "ex_hp": "96",
-        "ex_atk": "45",
-        "ex_def": "26",
-        "ex_type": "magic",
-        "ex_person": "Rimuru",
-        "ex_effect": "Aegis Rate",
-        "ex_percent": "12",
         "weapon": "sword",
         "battle_skills": [
             {
@@ -24086,15 +24077,6 @@
         "output_final": 150,
         "ulti": "single",
         "char_type": "attack",
-        "skill_trait_0": "Soul Combo - Skill DOWN",
-        "skill_trait_1": "Troop - Skill UP",
-        "ex_hp": "378",
-        "ex_atk": "190",
-        "ex_def": "110",
-        "ex_type": "magic",
-        "ex_person": "Rimuru",
-        "ex_effect": "Aegis Power",
-        "ex_percent": "12",
         "weapon": "sword",
         "battle_skills": [
             {
@@ -24178,15 +24160,6 @@
         "output_final": 150,
         "ulti": "aoe",
         "char_type": "attack",
-        "skill_trait_0": "Troop - Protection UP",
-        "skill_trait_1": "Switch - Skill Seal",
-        "ex_hp": "96",
-        "ex_atk": "45",
-        "ex_def": "26",
-        "ex_type": "magic",
-        "ex_person": "Rimuru",
-        "ex_effect": "Aegis Power",
-        "ex_percent": "12",
         "weapon": "sword",
         "battle_skills": [
             {
@@ -24270,15 +24243,6 @@
         "output_final": 150,
         "ulti": "single",
         "char_type": "attack",
-        "skill_trait_0": "Troop - Protection UP",
-        "skill_trait_1": "Soul Combo - Secret DOWN",
-        "ex_hp": "378",
-        "ex_atk": "190",
-        "ex_def": "110",
-        "ex_type": "phys",
-        "ex_person": "Rimuru",
-        "ex_effect": "Synergy Power",
-        "ex_percent": "12",
         "weapon": "sword",
         "battle_skills": [
             {
@@ -24372,7 +24336,26 @@
         "ex_effect": "Aegis Power",
         "ex_percent": "12",
         "weapon": "sword",
-        "battle_skills": "[\n  {\n    \"imageName\": \"b1.png\",\n    \"attackName\": \"Unyielding Future\",\n    \"extraText\": \"30 Skill Points\",\n    \"description\": \"Applies Ultimate Manifestation to self Turns 3(While in Ultimate Manifestation state, own souls are converted to Soul of Unity/Increases own Soul of Combos damage by 120%(stacks)/While in Ultimate Manifestation state, this skill changes to the After Ultimate Manifestation skill)\\n(Uses per battle: 1)\"\n  },\n  {\n    \"imageName\": \"b3.png\",\n    \"attackName\": \"Unyielding Future\",\n    \"extraText\": \"50 Skill Points\",\n    \"description\": \"Decreases a single target's weakness resistance by 300% Turns 1\"\n  }\n  {\n    \"imageName\": \"b2.png\",\n    \"attackName\": \"Luminous Reminiscence\",\n    \"extraText\": \"0 Skill Points\",\n    \"description\": \"Chance to apply Lord's Ambition state to self:100%(Turns 2;Nullify certain weakening effects;When the enemy's turn ends, decreases all targets' secret skill damage resistance until the end of battle by 10% Unlimited)\\nChanges non-Divine Protection soul x2 into Soul of Divine Protection at start of the next turn\"\n  }\n]",
+        "battle_skills": [
+            {
+                "imageName": "b1.png",
+                "attackName": "Unyielding Future",
+                "extraText": "30 Skill Points",
+                "description": "Applies Ultimate Manifestation to self Turns 3 (While in Ultimate Manifestation state, own souls are converted to Soul of Unity / Increases own Soul of Combos damage by 120% (stacks) / While in Ultimate Manifestation state, this skill changes to the After Ultimate Manifestation skill)\n(Uses per battle: 1)"
+            },
+            {
+                "imageName": "b3.png",
+                "attackName": "Unyielding Future",
+                "extraText": "50 Skill Points",
+                "description": "Decreases a single target's weakness resistance by 300% Turns 1"
+            },
+            {
+                "imageName": "b2.png",
+                "attackName": "Luminous Reminiscence",
+                "extraText": "0 Skill Points",
+                "description": "Chance to apply Lord's Ambition state to self: 100% (Turns 2; Nullify certain weakening effects; When the enemy's turn ends, decreases all targets' secret skill damage resistance until the end of battle by 10% Unlimited)\nChanges non-Divine Protection soul x2 into Soul of Divine Protection at start of the next turn"
+            }
+        ],
         "secret_skills": [
             {
                 "imageName": "atk",
