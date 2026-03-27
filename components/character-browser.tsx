@@ -1,8 +1,9 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import Link from "next/link"
-import { ArrowDownUp, Heart, Search, Shield, SlidersHorizontal, Sparkles, Sword } from "lucide-react"
+import { useSearchParams } from "next/navigation"
+import { ArrowDownUp, Search } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -12,7 +13,20 @@ import { Input } from "@/components/ui/input"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { normalizeLabel, stripColorTags, toPublicAssetPath, type WikiCharacter } from "@/lib/pc-wiki"
+import {
+  characterMatchesEffectFilters,
+  getCharacterEffectFilterGroups,
+  type CharacterEffectFilterGroup,
+} from "@/lib/character-effect-filters"
+import {
+  formatWikiLabel,
+  getCharacterVisualTier,
+  getCharacterRarityLabel,
+  getDisplayElementLabel,
+  normalizeLabel,
+  toPublicAssetPath,
+  type WikiCharacter,
+} from "@/lib/pc-wiki"
 
 type SortKey = "name" | "release_date" | "rarity" | "attack" | "hp" | "defense" | "existence"
 
@@ -25,6 +39,13 @@ const elementIconMap: Record<string, string> = {
   air: "/elements/icElementWind.png",
   dark: "/elements/icElementDark.png",
   earth: "/elements/icElementEarth.png",
+  enhancedair: "/Image/IcElementBless/IcElementBlessEnhancedAir.png",
+  enhanceddark: "/Image/IcElementBless/IcElementBlessEnhancedDark.png",
+  enhancedearth: "/Image/IcElementBless/IcElementBlessEnhancedEarth.png",
+  enhancedfire: "/Image/IcElementBless/IcElementBlessEnhancedFire.png",
+  enhancedholy: "/Image/IcElementBless/IcElementBlessEnhancedHoly.png",
+  enhancedwater: "/Image/IcElementBless/IcElementBlessEnhancedWater.png",
+  enhancedwind: "/Image/IcElementBless/IcElementBlessEnhancedWind.png",
   fire: "/elements/icElementFire.png",
   light: "/elements/icElementlight.png",
   space: "/elements/icElementspace.png",
@@ -47,6 +68,13 @@ const weaponIconMap: Record<string, string> = {
   knuckle: "/weapons/fists.png",
   spear: "/weapons/spear.png",
   sword: "/weapons/sword.png",
+}
+
+const tacticsIconMap: Record<string, string> = {
+  charge: "/Image/Tactics/charge.png",
+  defense: "/Image/Tactics/defense.png",
+  normal: "/Image/Tactics/normal.png",
+  speed: "/Image/Tactics/speed.png",
 }
 
 const rarityFrameMap: Record<number, string> = {
@@ -85,23 +113,23 @@ function ToggleFilter({
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline" className="justify-between gap-2 border-stone-300 bg-white/80 text-stone-900">
+        <Button variant="outline" className="justify-between gap-2 border-gray-600 bg-gray-700 text-white hover:bg-gray-600">
           <span>{title}</span>
-          <Badge variant="secondary" className="bg-stone-200 text-stone-900">
+          <Badge variant="secondary" className="bg-gray-900 text-white">
             {selectedValues.length}
           </Badge>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-72 border-stone-200 p-0" align="start">
-        <div className="border-b border-stone-200 px-4 py-3">
-          <p className="text-sm font-semibold text-stone-900">{title}</p>
+      <PopoverContent className="w-72 border-gray-600 bg-gray-700 p-0 text-white" align="start">
+        <div className="border-b border-gray-600 px-4 py-3">
+          <p className="text-sm font-semibold text-white">{title}</p>
         </div>
         <ScrollArea className="h-72 px-4 py-3">
           <div className="space-y-3">
             {options.map((option) => {
               const checked = selectedValues.includes(option.value)
               return (
-                <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-stone-700">
+                <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-gray-200">
                   <Checkbox checked={checked} onCheckedChange={() => onToggle(option.value)} />
                   <span>{option.label}</span>
                 </label>
@@ -114,16 +142,76 @@ function ToggleFilter({
   )
 }
 
+function GroupedToggleFilter({
+  title,
+  groups,
+  selectedValues,
+  onToggle,
+}: {
+  title: string
+  groups: CharacterEffectFilterGroup[]
+  selectedValues: string[]
+  onToggle: (value: string) => void
+}) {
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button variant="outline" className="justify-between gap-2 border-gray-600 bg-gray-700 text-white hover:bg-gray-600">
+          <span>{title}</span>
+          <Badge variant="secondary" className="bg-gray-900 text-white">
+            {selectedValues.length}
+          </Badge>
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-80 border-gray-600 bg-gray-700 p-0 text-white" align="start">
+        <ScrollArea className="h-96">
+          <div className="p-0">
+            {groups.map((group) => (
+              <div key={group.key} className="border-b border-gray-600 last:border-b-0">
+                <div className="bg-gray-600/70 px-4 py-2 text-xs font-semibold tracking-[0.18em] text-gray-100">
+                  {group.title}
+                </div>
+                <div className="space-y-3 px-4 py-3">
+                  {group.options.map((option) => {
+                    const checked = selectedValues.includes(option.value)
+
+                    return (
+                      <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-gray-200">
+                        <Checkbox checked={checked} onCheckedChange={() => onToggle(option.value)} />
+                        <span>{option.label}</span>
+                      </label>
+                    )
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </ScrollArea>
+      </PopoverContent>
+    </Popover>
+  )
+}
+
 export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }) {
+  const searchParams = useSearchParams()
   const [searchText, setSearchText] = useState("")
   const [selectedElements, setSelectedElements] = useState<string[]>([])
   const [selectedAttackTypes, setSelectedAttackTypes] = useState<string[]>([])
   const [selectedTactics, setSelectedTactics] = useState<string[]>([])
   const [selectedForces, setSelectedForces] = useState<string[]>([])
-  const [selectedSkillNames, setSelectedSkillNames] = useState<string[]>([])
+  const [selectedSkillFilters, setSelectedSkillFilters] = useState<string[]>([])
   const [selectedTraitNames, setSelectedTraitNames] = useState<string[]>([])
   const [selectedFacilities, setSelectedFacilities] = useState<string[]>([])
-  const [sortKey, setSortKey] = useState<SortKey>("existence")
+  const [sortKey, setSortKey] = useState<SortKey>("release_date")
+
+  useEffect(() => {
+    const tag = searchParams.get("tag")
+    if (!tag) {
+      return
+    }
+
+    setSearchText(tag)
+  }, [searchParams])
 
   const options = useMemo(
     () => ({
@@ -131,7 +219,7 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
       attackTypes: buildOptions(characters.map((character) => character.attack_type)),
       tactics: buildOptions(characters.map((character) => character.tactics_type)),
       forces: buildOptions(characters.flatMap((character) => character.forces.map((force) => force.name))),
-      skills: buildOptions(characters.flatMap((character) => character.skills.map((skill) => skill.name))),
+      skillGroups: getCharacterEffectFilterGroups(characters),
       traits: buildOptions(characters.flatMap((character) => character.traits.map((trait) => trait.name))),
       facilities: buildOptions(characters.flatMap((character) => character.facilities)),
     }),
@@ -171,7 +259,7 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
       if (selectedForces.length && !selectedForces.every((value) => character.forces.some((force) => force.name === value))) {
         return false
       }
-      if (selectedSkillNames.length && !selectedSkillNames.every((value) => character.skills.some((skill) => skill.name === value))) {
+      if (!characterMatchesEffectFilters(character, selectedSkillFilters)) {
         return false
       }
       if (selectedTraitNames.length && !selectedTraitNames.every((value) => character.traits.some((trait) => trait.name === value))) {
@@ -210,7 +298,7 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
     selectedElements,
     selectedFacilities,
     selectedForces,
-    selectedSkillNames,
+    selectedSkillFilters,
     selectedTactics,
     selectedTraitNames,
     sortKey,
@@ -221,7 +309,7 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
     selectedAttackTypes.length +
     selectedTactics.length +
     selectedForces.length +
-    selectedSkillNames.length +
+    selectedSkillFilters.length +
     selectedTraitNames.length +
     selectedFacilities.length
 
@@ -231,10 +319,10 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
     setSelectedAttackTypes([])
     setSelectedTactics([])
     setSelectedForces([])
-    setSelectedSkillNames([])
+    setSelectedSkillFilters([])
     setSelectedTraitNames([])
     setSelectedFacilities([])
-    setSortKey("existence")
+    setSortKey("release_date")
   }
 
   function toggleValue(values: string[], setter: (next: string[]) => void, value: string) {
@@ -242,61 +330,26 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
   }
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_#f6f0df_0%,_#ede4cf_40%,_#dcccae_100%)] px-6 py-10 text-stone-900">
+    <main className="min-h-screen bg-[#111827] px-4 py-8 text-white sm:px-6">
       <div className="mx-auto flex max-w-7xl flex-col gap-8">
-        <section className="overflow-hidden rounded-[32px] border border-stone-200 bg-white/70 shadow-[0_20px_80px_rgba(73,54,24,0.14)] backdrop-blur">
-          <div className="grid gap-8 px-8 py-10 lg:grid-cols-[1.35fr_0.65fr] lg:px-10">
-            <div className="space-y-4">
-              <Badge className="bg-amber-600 text-white hover:bg-amber-600">Characters</Badge>
-              <h1 className="max-w-3xl font-serif text-4xl font-semibold tracking-tight text-stone-950 sm:text-5xl">
-                A new character database built directly from the generated wiki data.
-              </h1>
-              <p className="max-w-2xl text-base leading-7 text-stone-700 sm:text-lg">
-                Search by name, lock onto exact force or skill combinations, and sort by the stats that matter without the old hand-made data layer getting in the way.
-              </p>
-            </div>
-            <div className="grid gap-3 rounded-[24px] bg-stone-900 p-5 text-stone-100 shadow-inner">
-              <div>
-                <p className="text-sm uppercase tracking-[0.2em] text-stone-400">Catalog</p>
-                <p className="mt-2 text-3xl font-semibold">{characters.length}</p>
-                <p className="text-sm text-stone-400">playable characters indexed from the generated JSON</p>
-              </div>
-              <div className="grid grid-cols-3 gap-3 text-center text-sm">
-                <div className="rounded-2xl bg-white/10 px-3 py-4">
-                  <Sword className="mx-auto mb-2 h-4 w-4" />
-                  <p className="font-medium">ATK</p>
-                  <p className="text-stone-400">sort-ready</p>
-                </div>
-                <div className="rounded-2xl bg-white/10 px-3 py-4">
-                  <Heart className="mx-auto mb-2 h-4 w-4" />
-                  <p className="font-medium">HP</p>
-                  <p className="text-stone-400">filterable</p>
-                </div>
-                <div className="rounded-2xl bg-white/10 px-3 py-4">
-                  <Shield className="mx-auto mb-2 h-4 w-4" />
-                  <p className="font-medium">DEF</p>
-                  <p className="text-stone-400">visible</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="rounded-[28px] border border-stone-200 bg-white/80 p-5 shadow-[0_16px_60px_rgba(73,54,24,0.12)] backdrop-blur sm:p-6">
+        <section className="rounded-2xl border border-gray-700 bg-gray-800 p-5 shadow-[0_0_24px_rgba(255,255,255,0.08)]">
           <div className="flex flex-col gap-4">
+            <div>
+              <h1 className="text-3xl font-bold text-white sm:text-4xl">Characters</h1>
+            </div>
             <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
               <div className="relative w-full lg:max-w-xl">
-                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-500" />
-                <Input value={searchText} onChange={(event) => setSearchText(event.target.value)} placeholder="Search names, affiliations, skills, forces, facilities" className="h-12 rounded-full border-stone-300 bg-white pl-11 text-stone-900" />
+                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                <Input value={searchText} onChange={(event) => setSearchText(event.target.value)} placeholder="Search names, affiliations, effects, forces, towns" className="h-12 rounded-full border-gray-600 bg-gray-700 pl-11 text-white placeholder:text-gray-400" />
               </div>
               <div className="flex flex-wrap items-center gap-3">
-                <div className="flex items-center gap-2 text-sm text-stone-700">
+                <div className="flex items-center gap-2 text-sm text-gray-300">
                   <ArrowDownUp className="h-4 w-4" />
                   <Select value={sortKey} onValueChange={(value) => setSortKey(value as SortKey)}>
-                    <SelectTrigger className="w-[170px] border-stone-300 bg-white">
+                    <SelectTrigger className="w-[170px] border-gray-600 bg-gray-700 text-white">
                       <SelectValue placeholder="Sort by" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="border-gray-600 bg-gray-700 text-white">
                       <SelectItem value="existence">Existence</SelectItem>
                       <SelectItem value="attack">Attack</SelectItem>
                       <SelectItem value="hp">Health</SelectItem>
@@ -307,7 +360,7 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
                     </SelectContent>
                   </Select>
                 </div>
-                <Button variant="outline" onClick={resetFilters} className="border-stone-300 bg-white text-stone-900">
+                <Button variant="outline" onClick={resetFilters} className="border-gray-600 bg-gray-700 text-white hover:bg-gray-600">
                   Reset
                 </Button>
               </div>
@@ -318,19 +371,14 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
               <ToggleFilter title="Attack Type" options={options.attackTypes} selectedValues={selectedAttackTypes} onToggle={(value) => toggleValue(selectedAttackTypes, setSelectedAttackTypes, value)} />
               <ToggleFilter title="Tactics" options={options.tactics} selectedValues={selectedTactics} onToggle={(value) => toggleValue(selectedTactics, setSelectedTactics, value)} />
               <ToggleFilter title="Forces" options={options.forces} selectedValues={selectedForces} onToggle={(value) => toggleValue(selectedForces, setSelectedForces, value)} />
-              <ToggleFilter title="Skills" options={options.skills} selectedValues={selectedSkillNames} onToggle={(value) => toggleValue(selectedSkillNames, setSelectedSkillNames, value)} />
+              <GroupedToggleFilter title="Skills" groups={options.skillGroups} selectedValues={selectedSkillFilters} onToggle={(value) => toggleValue(selectedSkillFilters, setSelectedSkillFilters, value)} />
               <ToggleFilter title="Traits" options={options.traits} selectedValues={selectedTraitNames} onToggle={(value) => toggleValue(selectedTraitNames, setSelectedTraitNames, value)} />
-              <ToggleFilter title="Facilities" options={options.facilities} selectedValues={selectedFacilities} onToggle={(value) => toggleValue(selectedFacilities, setSelectedFacilities, value)} />
+              <ToggleFilter title="Towns" options={options.facilities} selectedValues={selectedFacilities} onToggle={(value) => toggleValue(selectedFacilities, setSelectedFacilities, value)} />
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 text-sm text-stone-700">
-              <div className="inline-flex items-center gap-2 rounded-full bg-stone-900 px-4 py-2 text-stone-100">
-                <SlidersHorizontal className="h-4 w-4" />
+            <div className="flex flex-wrap items-center gap-3 text-sm text-gray-300">
+              <div className="inline-flex items-center gap-2 rounded-full bg-gray-700 px-4 py-2 text-white">
                 <span>{activeFilterCount} active filters</span>
-              </div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-amber-100 px-4 py-2 text-amber-900">
-                <Sparkles className="h-4 w-4" />
-                <span>{filteredCharacters.length} characters shown</span>
               </div>
             </div>
           </div>
@@ -338,98 +386,97 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
 
         <section className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {filteredCharacters.map((character) => {
-            const boundedRarity = Math.min(Math.max(character.rarity, 3), 7)
-            const frameSrc = rarityFrameMap[boundedRarity] ?? rarityFrameMap[5]
-            const starsSrc = starAssetMap[boundedRarity] ?? starAssetMap[5]
+            const visualTier = getCharacterVisualTier(character)
+            const frameSrc = rarityFrameMap[visualTier] ?? rarityFrameMap[5]
+            const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
             const iconSrc = toPublicAssetPath(character.images.icon)
             const elementIcon = elementIconMap[normalizeLabel(character.element)]
             const attackTypeIcon = attackTypeIconMap[normalizeLabel(character.attack_type)]
             const weaponIcon = weaponIconMap[normalizeLabel(character.weapon_type)]
+            const tacticsIcon = tacticsIconMap[normalizeLabel(character.tactics_type || "Normal")]
+            const elementLabel = getDisplayElementLabel(character.element)
+            const attackTypeLabel = formatWikiLabel(character.attack_type)
+            const weaponLabel = formatWikiLabel(character.weapon_type)
+            const rarityLabel = getCharacterRarityLabel(character)
 
             return (
               <Link key={character.master_pc_id} href={`/characters/${character.master_pc_id}`} className="block">
-                <Card className="group h-full overflow-hidden rounded-[28px] border-stone-200 bg-white/90 shadow-[0_18px_50px_rgba(73,54,24,0.1)] transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_22px_70px_rgba(73,54,24,0.18)]">
+                <Card className="group h-full overflow-hidden rounded-3xl border border-gray-700 bg-gradient-to-b from-[#243042] to-[#1a2433] shadow-[0_0_24px_rgba(255,255,255,0.08)] transition-colors duration-200 hover:from-[#2b3850] hover:to-[#1e2a3b]">
                   <CardContent className="p-0">
-                    <div className="border-b border-stone-200 bg-[linear-gradient(135deg,_#32271c,_#8a6840)] px-5 py-4 text-stone-100">
-                      <p className="text-xs uppercase tracking-[0.25em] text-stone-300">{character.affiliation_name}</p>
-                      <div className="mt-2 flex items-start justify-between gap-4">
-                        <div>
-                          <h2 className="text-2xl font-semibold">{character.name}</h2>
-                          <p className="text-sm text-stone-300">#{character.master_pc_id}</p>
-                        </div>
-                        <img src={starsSrc} alt={`${character.rarity} star`} className="h-6 object-contain" />
-                      </div>
-                    </div>
-
                     <div className="grid gap-5 p-5">
-                      <div className="flex items-center gap-5">
-                        <div className="relative h-28 w-28 shrink-0">
-                          <img src={frameSrc} alt="Character frame" className="absolute inset-0 h-full w-full object-contain" />
-                          <img src={iconSrc} alt={character.name} className="absolute inset-[10%] h-[80%] w-[80%] object-contain transition-transform duration-200 group-hover:scale-105" />
-                        </div>
-                        <div className="flex min-w-0 flex-1 flex-wrap gap-2">
-                          <Badge variant="secondary" className="gap-1 bg-stone-100 text-stone-900">
-                            {elementIcon ? <img src={elementIcon} alt={character.element} className="h-4 w-4 object-contain" /> : null}
-                            {character.element}
-                          </Badge>
-                          <Badge variant="secondary" className="gap-1 bg-stone-100 text-stone-900">
-                            {attackTypeIcon ? <img src={attackTypeIcon} alt={character.attack_type} className="h-4 w-4 object-contain" /> : null}
-                            {character.attack_type}
-                          </Badge>
-                          <Badge variant="secondary" className="gap-1 bg-stone-100 text-stone-900">
-                            {weaponIcon ? <img src={weaponIcon} alt={character.weapon_type} className="h-4 w-4 object-contain" /> : null}
-                            {character.weapon_type}
-                          </Badge>
-                          <Badge className="bg-amber-600 text-white hover:bg-amber-600">{character.tactics_type}</Badge>
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-4 gap-3 rounded-[24px] bg-stone-50 p-4 text-center">
-                        <div>
-                          <p className="text-xs uppercase tracking-[0.2em] text-stone-500">HP</p>
-                          <p className="mt-1 text-lg font-semibold text-stone-950">{character.stats.hp}</p>
-                        </div>
-                        <div>
-                          <p className="text-xs uppercase tracking-[0.2em] text-stone-500">ATK</p>
-                          <p className="mt-1 text-lg font-semibold text-stone-950">{character.stats.attack}</p>
-                        </div>
-                        <div>
-                          <p className="text-xs uppercase tracking-[0.2em] text-stone-500">DEF</p>
-                          <p className="mt-1 text-lg font-semibold text-stone-950">{character.stats.defense}</p>
-                        </div>
-                        <div>
-                          <p className="text-xs uppercase tracking-[0.2em] text-stone-500">EXI</p>
-                          <p className="mt-1 text-lg font-semibold text-stone-950">{character.stats.existence}</p>
-                        </div>
-                      </div>
-
-                      <div className="space-y-3">
-                        <div>
-                          <p className="mb-2 text-xs uppercase tracking-[0.2em] text-stone-500">Forces</p>
-                          <div className="flex flex-wrap gap-2">
-                            {character.forces.slice(0, 4).map((force) => (
-                              <Badge key={force.label} variant="outline" className="max-w-full gap-2 border-stone-200 bg-white text-stone-800">
-                                <img src={toPublicAssetPath(force.icon_path)} alt={force.name} className="h-4 w-4 object-contain" />
-                                <span className="truncate">{force.name}</span>
-                              </Badge>
-                            ))}
+                      <div className="flex items-start gap-5">
+                        <div className="relative h-[124px] w-[124px] shrink-0">
+                          <div className="absolute inset-[8px] overflow-hidden rounded-[20px] bg-black/35">
+                            <img src={iconSrc} alt={character.name} className="h-full w-full object-cover object-top transition-transform duration-200 group-hover:scale-105" />
                           </div>
+                          <img src={frameSrc} alt="Character frame" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
                         </div>
-                        <div>
-                          <p className="mb-2 text-xs uppercase tracking-[0.2em] text-stone-500">Skills</p>
-                          <div className="flex flex-wrap gap-2">
-                            {character.skills.slice(0, 2).map((skill) => (
-                              <Badge key={skill.label} variant="secondary" className="max-w-full bg-stone-100 text-stone-900">
-                                {skill.name}
+                        <div className="min-w-0 flex-1 overflow-hidden">
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="min-w-0">
+                              <h2 className="truncate text-[1.9rem] font-semibold leading-none text-white">{character.name}</h2>
+                              <p className="mt-2 truncate text-sm uppercase tracking-[0.22em] text-gray-400">{character.affiliation_name}</p>
+                            </div>
+                            <img src={starsSrc} alt={rarityLabel} className="h-8 shrink-0 object-contain drop-shadow-[0_1px_4px_rgba(0,0,0,0.65)]" />
+                          </div>
+
+                          <div className="mt-4 flex flex-wrap gap-2 overflow-hidden">
+                            {elementIcon ? (
+                              <Badge variant="secondary" className="max-w-full gap-2 rounded-full bg-gray-700/90 px-2.5 py-1 text-xs text-white">
+                                <img src={elementIcon} title={elementLabel} alt={elementLabel} className="h-5 w-5 shrink-0 object-contain" />
+                                <span className="truncate">{elementLabel}</span>
                               </Badge>
-                            ))}
+                            ) : null}
+                            {attackTypeIcon ? (
+                              <Badge variant="secondary" className="max-w-full gap-2 rounded-full bg-gray-700/90 px-2.5 py-1 text-xs text-white">
+                                <img src={attackTypeIcon} title={attackTypeLabel} alt={attackTypeLabel} className="h-5 w-5 shrink-0 object-contain" />
+                                <span className="truncate">{attackTypeLabel}</span>
+                              </Badge>
+                            ) : null}
+                            {weaponIcon ? (
+                              <Badge variant="secondary" className="max-w-full gap-2 rounded-full bg-gray-700/90 px-2.5 py-1 text-xs text-white">
+                                <img src={weaponIcon} title={weaponLabel} alt={weaponLabel} className="h-5 w-5 shrink-0 object-contain" />
+                                <span className="truncate">{weaponLabel}</span>
+                              </Badge>
+                            ) : null}
+                            {tacticsIcon ? (
+                              <Badge variant="secondary" className="max-w-full gap-2 rounded-full bg-gray-700/90 px-2.5 py-1 text-xs text-white">
+                                <img src={tacticsIcon} title={character.tactics_type || "Normal"} alt={character.tactics_type || "Normal"} className="h-5 w-5 shrink-0 object-contain" />
+                                <span className="truncate">{character.tactics_type || "Normal"}</span>
+                              </Badge>
+                            ) : null}
                           </div>
                         </div>
                       </div>
 
-                      <p className="line-clamp-2 text-sm leading-6 text-stone-700">
-                        {stripColorTags(character.skills[0]?.description_max_level ?? "No skill description available.")}
-                      </p>
+                      <div className="grid grid-cols-4 gap-3 rounded-[22px] bg-[#111827] px-4 py-5 text-center text-white shadow-inner">
+                        <div>
+                          <p className="text-[11px] uppercase tracking-[0.22em] text-gray-400">HP</p>
+                          <p className="mt-2 text-[1.95rem] font-semibold leading-none text-emerald-200">{character.stats.hp}</p>
+                        </div>
+                        <div>
+                          <p className="text-[11px] uppercase tracking-[0.22em] text-gray-400">ATK</p>
+                          <p className="mt-2 text-[1.95rem] font-semibold leading-none text-rose-200">{character.stats.attack}</p>
+                        </div>
+                        <div>
+                          <p className="text-[11px] uppercase tracking-[0.22em] text-gray-400">DEF</p>
+                          <p className="mt-2 text-[1.95rem] font-semibold leading-none text-sky-200">{character.stats.defense}</p>
+                        </div>
+                        <div>
+                          <p className="text-[11px] uppercase tracking-[0.22em] text-gray-400">EXI</p>
+                          <p className="mt-2 text-[1.95rem] font-semibold leading-none text-amber-100">{character.stats.existence}</p>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        {character.forces.slice(0, 4).map((force) => (
+                          <Badge key={force.label} variant="outline" className="max-w-full gap-2 border-gray-600 bg-gray-700/80 text-white">
+                            <img src={toPublicAssetPath(force.icon_path)} alt={force.name} className="h-4 w-4 shrink-0 object-contain" />
+                            <span className="truncate">{force.name}</span>
+                          </Badge>
+                        ))}
+                      </div>
+
                     </div>
                   </CardContent>
                 </Card>
