@@ -76,16 +76,16 @@ export default function HomePage() {
   // News state and language selection
   const languageOptions = [
     { key: "EN", language: 2, label: "English" },
-    { key: "JP", language: 1, label: "JP" },
+    { key: "JP", language: 1, label: "Japanese" },
     { key: "CN", language: 3, label: "Chinese" },
-    { key: "KR", language: 4, label: "KR" },
+    { key: "KR", language: 4, label: "Korean" },
   ]
   const [selectedLanguage, setSelectedLanguage] = useState(languageOptions[0])
   const [loadingNews, setLoadingNews] = useState(true)
 
   // Generate the official news URL for embedding - only language changes
   const getNewsUrl = () => {
-    return `https://api-us.ten-sura-m.wfs.games/web/announcement?region=1&language=${selectedLanguage.language}`
+    return `https://api-us.ten-sura-m.wfs.games/web/announcement?language=${selectedLanguage.language}`
   }
 
   useEffect(() => {
