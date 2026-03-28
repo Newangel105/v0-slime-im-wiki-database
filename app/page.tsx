@@ -97,27 +97,15 @@ export default function HomePage() {
     setLoadingNews(true)
     setNewsError(null)
     
-    // Map region to the correct API domain
-    const regionDomains: Record<number, string> = {
-      1: 'api-jp.ten-sura-m.wfs.games',
-      2: 'api-ap.ten-sura-m.wfs.games',
-      3: 'api-us.ten-sura-m.wfs.games',
-      4: 'api-eu.ten-sura-m.wfs.games',
-    }
-    
-    const domain = regionDomains[selectedRegion.region] || 'api-us.ten-sura-m.wfs.games'
-    const apiUrl = `https://${domain}/web/announcement?region=${selectedRegion.region}&language=${selectedRegion.language}`
-    
-    // Fetch directly from client to bypass server restrictions
-    fetch(apiUrl)
+    // Fetch from our API route which handles CORS
+    fetch(`/api/news?region=${selectedRegion.region}&language=${selectedRegion.language}`)
       .then((res) => res.json())
       .then((data) => {
         const list = data?.data?.list || data?.list || []
         setNews(list)
         setLoadingNews(false)
       })
-      .catch((err) => {
-        console.log("[v0] News fetch error:", err)
+      .catch(() => {
         setNewsError("Failed to load news")
         setLoadingNews(false)
       })
@@ -128,54 +116,20 @@ export default function HomePage() {
   const [loadingVideo, setLoadingVideo] = useState(true)
 
   useEffect(() => {
-    // SLIME ISEKAI Memories official channel ID
-    const channelId = 'UCX1rRt5xZ5v8T2RUq7Y_lBQ'
-    const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
-    
-    // Use a CORS proxy to fetch the RSS feed from client
-    const corsProxy = 'https://api.allorigins.win/raw?url='
-    
-    fetch(corsProxy + encodeURIComponent(rssUrl))
-      .then((res) => res.text())
-      .then((xmlText) => {
-        // Parse the XML to extract the latest video
-        const parser = new DOMParser()
-        const xmlDoc = parser.parseFromString(xmlText, 'text/xml')
-        const entries = xmlDoc.getElementsByTagName('entry')
-        
-        if (entries.length > 0) {
-          const firstEntry = entries[0]
-          const videoId = firstEntry.getElementsByTagName('yt:videoId')[0]?.textContent || ''
-          const title = firstEntry.getElementsByTagName('title')[0]?.textContent || 'Latest Stream'
-          const published = firstEntry.getElementsByTagName('published')[0]?.textContent || null
-          
-          setYoutubeVideo({
-            id: videoId,
-            title,
-            url: `https://www.youtube.com/watch?v=${videoId}`,
-            embedUrl: `https://www.youtube.com/embed/${videoId}`,
-            thumbnail: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
-            published,
-          })
-        } else {
-          // Fallback video if no entries found
-          setYoutubeVideo({
-            id: 'oqj9Ho6QS40',
-            title: 'Recent Stream',
-            url: 'https://www.youtube.com/watch?v=oqj9Ho6QS40',
-            embedUrl: 'https://www.youtube.com/embed/oqj9Ho6QS40',
-            thumbnail: 'https://img.youtube.com/vi/oqj9Ho6QS40/hqdefault.jpg',
-            published: null,
-          })
+    // Fetch from our API route which handles the YouTube RSS parsing
+    fetch('/api/youtube')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.video) {
+          setYoutubeVideo(data.video)
         }
         setLoadingVideo(false)
       })
-      .catch((err) => {
-        console.log("[v0] YouTube fetch error:", err)
+      .catch(() => {
         // Fallback video
         setYoutubeVideo({
           id: 'oqj9Ho6QS40',
-          title: 'Recent Stream',
+          title: 'SLIME - ISEKAI Memories',
           url: 'https://www.youtube.com/watch?v=oqj9Ho6QS40',
           embedUrl: 'https://www.youtube.com/embed/oqj9Ho6QS40',
           thumbnail: 'https://img.youtube.com/vi/oqj9Ho6QS40/hqdefault.jpg',
