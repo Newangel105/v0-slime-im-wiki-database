@@ -83,16 +83,9 @@ export default function HomePage() {
   const [selectedRegion, setSelectedRegion] = useState(regionOptions[0])
   const [loadingNews, setLoadingNews] = useState(true)
 
-  // Generate the official news URL for embedding
+  // Generate the official news URL for embedding - only region and language change
   const getNewsUrl = () => {
-    const regionDomains: Record<number, string> = {
-      1: 'api-jp.ten-sura-m.wfs.games',
-      2: 'api-ap.ten-sura-m.wfs.games',
-      3: 'api-us.ten-sura-m.wfs.games',
-      4: 'api-eu.ten-sura-m.wfs.games',
-    }
-    const domain = regionDomains[selectedRegion.region] || 'api-us.ten-sura-m.wfs.games'
-    return `https://${domain}/web/announcement?region=${selectedRegion.region}&language=${selectedRegion.language}`
+    return `https://api-us.ten-sura-m.wfs.games/web/announcement?region=${selectedRegion.region}&language=${selectedRegion.language}`
   }
 
   useEffect(() => {
@@ -257,31 +250,18 @@ export default function HomePage() {
                 </div>
               </div>
               {/* Embedded News via iframe */}
-              <div className="relative rounded-xl overflow-hidden border border-gray-700/30 bg-white">
+              <div className="rounded-xl overflow-hidden border border-gray-700/30 bg-white">
                 {loadingNews ? (
                   <div className="h-96 bg-[#232c3a] animate-pulse flex items-center justify-center">
                     <span className="text-gray-500">Loading news...</span>
                   </div>
                 ) : (
-                  <>
-                    <iframe
-                      src={getNewsUrl()}
-                      title="Game News"
-                      className="w-full h-[500px] border-0"
-                      sandbox="allow-scripts allow-same-origin"
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#181f2a] via-[#181f2a]/90 to-transparent p-4 pt-8">
-                      <a
-                        href={getNewsUrl()}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full text-sm font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        View Full News on Official Site
-                      </a>
-                    </div>
-                  </>
+                  <iframe
+                    src={getNewsUrl()}
+                    title="Game News"
+                    className="w-full h-[500px] border-0"
+                    sandbox="allow-scripts allow-same-origin"
+                  />
                 )}
               </div>
             </div>
