@@ -86,13 +86,13 @@ export default function HomePage() {
   // Generate the official news URL for embedding
   const getNewsUrl = () => {
     const regionDomains: Record<number, string> = {
-      1: 'jp.ten-sura-m.wfs.games',
-      2: 'ap.ten-sura-m.wfs.games',
-      3: 'us.ten-sura-m.wfs.games',
-      4: 'eu.ten-sura-m.wfs.games',
+      1: 'api-jp.ten-sura-m.wfs.games',
+      2: 'api-ap.ten-sura-m.wfs.games',
+      3: 'api-us.ten-sura-m.wfs.games',
+      4: 'api-eu.ten-sura-m.wfs.games',
     }
-    const domain = regionDomains[selectedRegion.region] || 'us.ten-sura-m.wfs.games'
-    return `https://${domain}/announcement?region=${selectedRegion.region}&language=${selectedRegion.language}`
+    const domain = regionDomains[selectedRegion.region] || 'api-us.ten-sura-m.wfs.games'
+    return `https://${domain}/web/announcement?region=${selectedRegion.region}&language=${selectedRegion.language}`
   }
 
   useEffect(() => {
