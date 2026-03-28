@@ -15,46 +15,60 @@ export async function GET() {
     published: null,
   }
 
-  try {
-    const response = await fetch(rssUrl, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-      },
-      next: { revalidate: 3600 }, // Cache for 1 hour
-    })
+  // Try multiple CORS proxies
+  const corsProxies = [
+    (url: string) => `https://corsproxy.io/?${encodeURIComponent(url)}`,
+    (url: string) => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+  ]
 
-    if (!response.ok) {
-      console.error(`[v0] YouTube RSS fetch failed: ${response.status}`)
-      return NextResponse.json({ video: fallbackVideo })
+  for (let i = 0; i < corsProxies.length; i++) {
+    const proxyFn = corsProxies[i]
+    try {
+      const proxyUrl = proxyFn(rssUrl)
+      console.log(`[v0] YouTube: Trying proxy ${i + 1}`)
+      const response = await fetch(proxyUrl)
+
+      console.log(`[v0] YouTube: Proxy ${i + 1} status: ${response.status}`)
+
+      if (!response.ok) {
+        continue
+      }
+
+      const xmlText = await response.text()
+      console.log(`[v0] YouTube: Response length: ${xmlText.length}, starts with: ${xmlText.substring(0, 50)}`)
+      
+      // Check if we got XML
+      if (!xmlText.includes('<feed') && !xmlText.includes('<entry')) {
+        console.log(`[v0] YouTube: Proxy ${i + 1} returned non-XML`)
+        continue
+      }
+
+      // Parse the XML manually to extract the latest video
+      const videoIdMatch = xmlText.match(/<yt:videoId>([^<]+)<\/yt:videoId>/)
+      const titleMatch = xmlText.match(/<entry[^>]*>[\s\S]*?<title>([^<]+)<\/title>/)
+      const publishedMatch = xmlText.match(/<entry[^>]*>[\s\S]*?<published>([^<]+)<\/published>/)
+
+      if (videoIdMatch) {
+        const videoId = videoIdMatch[1]
+        const title = titleMatch ? titleMatch[1] : 'Latest Stream'
+        const published = publishedMatch ? publishedMatch[1] : null
+
+        return NextResponse.json({
+          video: {
+            id: videoId,
+            title,
+            url: `https://www.youtube.com/watch?v=${videoId}`,
+            embedUrl: `https://www.youtube.com/embed/${videoId}`,
+            thumbnail: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
+            published,
+          }
+        })
+      }
+    } catch {
+      continue
     }
-
-    const xmlText = await response.text()
-
-    // Parse video ID from XML using regex (more reliable than DOM parsing on server)
-    const videoIdMatch = xmlText.match(/<yt:videoId>([^<]+)<\/yt:videoId>/)
-    const titleMatch = xmlText.match(/<entry>[\s\S]*?<title>([^<]+)<\/title>/)
-    const publishedMatch = xmlText.match(/<entry>[\s\S]*?<published>([^<]+)<\/published>/)
-
-    if (videoIdMatch && videoIdMatch[1]) {
-      const videoId = videoIdMatch[1]
-      const title = titleMatch?.[1] || 'Latest Video'
-      const published = publishedMatch?.[1] || null
-
-      return NextResponse.json({
-        video: {
-          id: videoId,
-          title,
-          url: `https://www.youtube.com/watch?v=${videoId}`,
-          embedUrl: `https://www.youtube.com/embed/${videoId}`,
-          thumbnail: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
-          published,
-        }
-      })
-    }
-
-    return NextResponse.json({ video: fallbackVideo })
-  } catch (error) {
-    console.error('[v0] YouTube API Error:', error)
-    return NextResponse.json({ video: fallbackVideo })
   }
+
+  // Return fallback video if all attempts fail
+  return NextResponse.json({ video: fallbackVideo })
 }

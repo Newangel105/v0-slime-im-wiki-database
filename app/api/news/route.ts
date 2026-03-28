@@ -16,29 +16,52 @@ export async function GET(request: NextRequest) {
   const domain = regionDomains[region] || 'api-us.ten-sura-m.wfs.games'
   const apiUrl = `https://${domain}/web/announcement?region=${region}&language=${language}`
 
-  try {
-    const response = await fetch(apiUrl, {
-      headers: {
-        'Accept': 'application/json',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept-Language': 'en-US,en;q=0.9',
-        'Origin': 'https://ten-sura-m.wfs.games',
-        'Referer': 'https://ten-sura-m.wfs.games/',
-      },
-      next: { revalidate: 300 }, // Cache for 5 minutes
-    })
+  // Try multiple CORS proxies as fallbacks
+  const corsProxies = [
+    (url: string) => `https://corsproxy.io/?${encodeURIComponent(url)}`,
+    (url: string) => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+    (url: string) => `https://proxy.cors.sh/${url}`,
+  ]
 
-    if (!response.ok) {
-      console.error(`[v0] News API response not OK: ${response.status}`)
-      return NextResponse.json({ data: { list: [] } }, { status: 200 })
+  for (let i = 0; i < corsProxies.length; i++) {
+    const proxyFn = corsProxies[i]
+    try {
+      const proxyUrl = proxyFn(apiUrl)
+      console.log(`[v0] Trying proxy ${i + 1}: ${proxyUrl.substring(0, 50)}...`)
+      
+      const response = await fetch(proxyUrl, {
+        headers: {
+          'Accept': 'application/json',
+        },
+      })
+
+      console.log(`[v0] Proxy ${i + 1} response status: ${response.status}`)
+
+      if (!response.ok) {
+        console.log(`[v0] Proxy ${i + 1} failed with status ${response.status}`)
+        continue
+      }
+
+      const text = await response.text()
+      console.log(`[v0] Proxy ${i + 1} response length: ${text.length}, starts with: ${text.substring(0, 50)}`)
+      
+      // Check if response is JSON
+      if (!text.startsWith('{') && !text.startsWith('[')) {
+        console.log(`[v0] Proxy ${i + 1} returned non-JSON`)
+        continue
+      }
+
+      const data = JSON.parse(text)
+      const list = data?.data?.list || data?.list || data?.announcements || []
+      console.log(`[v0] Successfully parsed news, found ${list.length} items`)
+
+      return NextResponse.json({ data: { list } })
+    } catch (err) {
+      console.log(`[v0] Proxy ${i + 1} error:`, err)
+      continue
     }
-
-    const data = await response.json()
-    const list = data?.data?.list || data?.list || data?.announcements || []
-
-    return NextResponse.json({ data: { list } })
-  } catch (error) {
-    console.error('[v0] News API Error:', error)
-    return NextResponse.json({ data: { list: [] } }, { status: 200 })
   }
+
+  // If all proxies fail, return empty list
+  return NextResponse.json({ data: { list: [] } }, { status: 200 })
 }
