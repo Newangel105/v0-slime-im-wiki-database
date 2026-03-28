@@ -73,25 +73,25 @@ export default function HomePage() {
   const resetLocal = formatLocalTime(resetTarget)
   const updateLocal = formatLocalTime(updateTarget)
 
-  // News state and region/language selection
-  const regionOptions = [
-    { key: "NA", region: 3, language: 2, label: "NA" },
-    { key: "EU", region: 4, language: 2, label: "EU" },
-    { key: "Asia", region: 2, language: 2, label: "Asia" },
-    { key: "Japan", region: 1, language: 1, label: "Japan" },
+  // News state and language selection
+  const languageOptions = [
+    { key: "EN", language: 2, label: "English" },
+    { key: "JP", language: 1, label: "JP" },
+    { key: "CN", language: 3, label: "Chinese" },
+    { key: "KR", language: 4, label: "KR" },
   ]
-  const [selectedRegion, setSelectedRegion] = useState(regionOptions[0])
+  const [selectedLanguage, setSelectedLanguage] = useState(languageOptions[0])
   const [loadingNews, setLoadingNews] = useState(true)
 
-  // Generate the official news URL for embedding - only region and language change
+  // Generate the official news URL for embedding - only language changes
   const getNewsUrl = () => {
-    return `https://api-us.ten-sura-m.wfs.games/web/announcement?region=${selectedRegion.region}&language=${selectedRegion.language}`
+    return `https://api-us.ten-sura-m.wfs.games/web/announcement?region=1&language=${selectedLanguage.language}`
   }
 
   useEffect(() => {
     // News is loaded via iframe, so we just set loading to false
     setLoadingNews(false)
-  }, [selectedRegion])
+  }, [selectedLanguage])
 
   // YouTube video state - automatically fetched from RSS feed
   const [youtubeVideo, setYoutubeVideo] = useState<YouTubeVideo | null>(null)
@@ -234,15 +234,15 @@ export default function HomePage() {
                   LATEST NEWS
                 </h2>
                 <div className="flex gap-2">
-                  {regionOptions.map((opt) => (
+                  {languageOptions.map((opt) => (
                     <button
                       key={opt.key}
                       className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
-                        selectedRegion.key === opt.key 
+                        selectedLanguage.key === opt.key 
                           ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-500/25' 
                           : 'bg-[#232c3a] text-gray-400 hover:text-white hover:bg-[#2a3444]'
                       }`}
-                      onClick={() => setSelectedRegion(opt)}
+                      onClick={() => setSelectedLanguage(opt)}
                     >
                       {opt.label}
                     </button>
@@ -250,7 +250,7 @@ export default function HomePage() {
                 </div>
               </div>
               {/* Embedded News via iframe */}
-              <div className="rounded-xl overflow-hidden border border-gray-700/30 bg-white">
+              <div className="rounded-xl overflow-hidden border border-gray-700/30">
                 {loadingNews ? (
                   <div className="h-96 bg-[#232c3a] animate-pulse flex items-center justify-center">
                     <span className="text-gray-500">Loading news...</span>
