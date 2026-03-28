@@ -1,143 +1,186 @@
 "use client"
-import { redirect } from "next/navigation"
-import { Bell, Calendar, Gift, Settings, Trophy, Users, Wrench, AlertTriangle, Info } from "lucide-react"
+import { useEffect, useState } from "react"
+import { Card } from "@/components/ui/card"
+import { AlertTriangle, Info, Calendar } from "lucide-react"
 
-interface NewsItem {
-  id: string
-  type: "notice" | "event" | "recruit" | "campaign" | "issues" | "update" | "maintenance" | "packs"
-  title: string
-  date: string
-  isNew?: boolean
-  priority?: "high" | "medium" | "low"
-  tags?: string[]
+
+function getNextUtcTime(hour, minute = 0, second = 0) {
+  const now = new Date()
+  const next = new Date(now)
+  next.setUTCHours(hour, minute, second, 0)
+  if (next <= now) next.setUTCDate(next.getUTCDate() + 1)
+  return next
 }
 
-const newsItems: NewsItem[] = [
-  {
-    id: "1",
-    type: "issues",
-    title: "Issue Affecting Charm Equipment",
-    date: "10/17/2024",
-    isNew: true,
-    priority: "high",
-  },
-  {
-    id: "2",
-    type: "campaign",
-    title: "3rd Anniversary Campaign",
-    date: "10/17/2024",
-    isNew: true,
-    priority: "medium",
-  },
-  {
-    id: "3",
-    type: "update",
-    title: "Ver. 2.1.0 Update",
-    date: "10/17/2024",
-    isNew: true,
-    priority: "medium",
-  },
-  {
-    id: "4",
-    type: "notice",
-    title: "Discord Member Milestone Campaign!",
-    date: "10/17/2024",
-    isNew: true,
-    priority: "low",
-  },
-  {
-    id: "5",
-    type: "issues",
-    title: "Issue Causing an Error in Quests",
-    date: "10/17/2024",
-    isNew: true,
-    priority: "high",
-    tags: ["1.6.0", "UTC", "10/17", "Update"],
-  },
-  {
-    id: "6",
-    type: "update",
-    title: "Update Notice",
-    date: "10/17/2024",
-    isNew: true,
-    priority: "medium",
-    tags: ["5:00", "UTC", "10/17", "Update", "Important", "10/16"],
-  },
-]
-
-const filterTypes = [
-  { key: "all", label: "All", icon: null },
-  { key: "notice", label: "Notice", icon: Bell },
-  { key: "event", label: "Event", icon: Calendar },
-  { key: "recruit", label: "Recruit", icon: Users },
-  { key: "campaign", label: "Campaign", icon: Trophy },
-  { key: "issues", label: "Issues", icon: AlertTriangle },
-  { key: "update", label: "Update", icon: Settings },
-  { key: "maintenance", label: "Maintenance", icon: Wrench },
-  { key: "packs", label: "Packs", icon: Gift },
-]
-
-const getTypeIcon = (type: string) => {
-  switch (type) {
-    case "notice":
-      return Bell
-    case "event":
-      return Calendar
-    case "recruit":
-      return Users
-    case "campaign":
-      return Trophy
-    case "issues":
-      return AlertTriangle
-    case "update":
-      return Settings
-    case "maintenance":
-      return Wrench
-    case "packs":
-      return Gift
-    default:
-      return Info
-  }
+function formatLocalTime(date) {
+  return date.toLocaleString(undefined, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  })
 }
 
-const getTypeColor = (type: string) => {
-  switch (type) {
-    case "issues":
-      return "bg-red-600"
-    case "campaign":
-      return "bg-yellow-600"
-    case "update":
-      return "bg-blue-600"
-    case "notice":
-      return "bg-green-600"
-    case "event":
-      return "bg-purple-600"
-    case "recruit":
-      return "bg-orange-600"
-    case "maintenance":
-      return "bg-gray-600"
-    case "packs":
-      return "bg-pink-600"
-    default:
-      return "bg-gray-600"
-  }
+function useCountdown(targetDate) {
+  const [timeLeft, setTimeLeft] = useState(() => targetDate - new Date())
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeLeft(targetDate - new Date())
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [targetDate])
+  const totalSeconds = Math.max(0, Math.floor(timeLeft / 1000))
+  const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, "0")
+  const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0")
+  const seconds = String(totalSeconds % 60).padStart(2, "0")
+  return `${hours}:${minutes}:${seconds}`
 }
 
 export default function HomePage() {
-  redirect("/characters")
-}
+    // Hydration fix: only show timers after mount
+    const [mounted, setMounted] = useState(false)
+    useEffect(() => { setMounted(true) }, [])
+  // Timer region selection (NA, EU, Asia)
+  const timerRegionOptions = [
+    { key: "NA", label: "NA", reset: { hour: 11, minute: 0 }, update: { hour: 2, minute: 0 } },
+    { key: "EU", label: "EU", reset: { hour: 4, minute: 0 }, update: { hour: 2, minute: 0 } },
+    { key: "Asia", label: "Asia", reset: { hour: 19, minute: 0 }, update: { hour: 2, minute: 0 } },
+  ]
+  // Default to NA
+  const [timerRegion, setTimerRegion] = useState(timerRegionOptions[0])
+  // When timerRegion changes, update targets
+  const [resetTarget, setResetTarget] = useState(() => getNextUtcTime(timerRegionOptions[0].reset.hour, timerRegionOptions[0].reset.minute, 0))
+  const [updateTarget, setUpdateTarget] = useState(() => getNextUtcTime(timerRegionOptions[0].update.hour, timerRegionOptions[0].update.minute, 0))
 
-// export default function GameDatabase() {
-//   const [selectedFilter, setSelectedFilter] = useState("all")
-//   const [selectedRegion, setSelectedRegion] = useState("NA")
-//   const [resetTime, setResetTime] = useState({ hours: 18, minutes: 15, seconds: 22 })
-//   const [updateTime, setUpdateTime] = useState({ hours: 9, minutes: 15, seconds: 22 })
-//
-//   useEffect(() => {
-//     const timer = setInterval(() => {
-//       setResetTime((prev) => {
-//         let newSeconds = prev.seconds - 1
-//         let newMinutes = prev.minutes
+  useEffect(() => {
+    setResetTarget(getNextUtcTime(timerRegion.reset.hour, timerRegion.reset.minute, 0))
+    setUpdateTarget(getNextUtcTime(timerRegion.update.hour, timerRegion.update.minute, 0))
+  }, [timerRegion])
+
+  const resetCountdown = useCountdown(resetTarget)
+  const updateCountdown = useCountdown(updateTarget)
+  const resetLocal = formatLocalTime(resetTarget)
+  const updateLocal = formatLocalTime(updateTarget)
+
+  // News state and region/language selection
+  const regionOptions = [
+    { key: "NA", region: 3, language: 2, label: "NA" },
+    { key: "EU", region: 4, language: 2, label: "EU" },
+    { key: "Asia", region: 2, language: 2, label: "Asia" },
+    { key: "Japan", region: 1, language: 1, label: "Japan" },
+  ]
+  const [selectedRegion, setSelectedRegion] = useState(regionOptions[0])
+  const [news, setNews] = useState([])
+  const [loadingNews, setLoadingNews] = useState(true)
+  const [newsError, setNewsError] = useState(null)
+
+  useEffect(() => {
+    setLoadingNews(true)
+    setNewsError(null)
+    fetch(`/api/news?region=${selectedRegion.region}&language=${selectedRegion.language}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setNews(data?.data?.list || [])
+        setLoadingNews(false)
+      })
+      .catch((err) => {
+        setNewsError("Failed to load news")
+        setLoadingNews(false)
+      })
+  }, [selectedRegion])
+
+  // Livestream link (static for now)
+  const livestreamUrl = "https://www.youtube.com/watch?v=oqj9Ho6QS40"
+
+  return (
+    <main className="flex flex-col items-center justify-start min-h-screen bg-gradient-to-br from-[#0a1a2f] to-[#1a2740] p-4">
+      <section className="w-full max-w-4xl bg-[#181f2a] rounded-lg border border-gray-700 p-4 mb-6">
+        <h2 className="text-2xl font-bold text-center text-white mb-2">ABOUT</h2>
+        <p className="text-center text-gray-300 text-sm">This is a Database for SLIME - Isekai Memories, the That Time I Got Reincarnated as a Slime mobile game developed by WFS and published by Bandai Namco Entertainment.</p>
+      </section>
+      <section className="w-full max-w-4xl mb-6">
+        <div className="flex flex-row gap-2 mb-2 justify-center">
+          {timerRegionOptions.map((opt) => (
+            <button
+              key={opt.key}
+              className={`px-3 py-1 rounded text-white text-xs ${timerRegion.key === opt.key ? 'bg-blue-600' : 'bg-[#232c3a]'}`}
+              onClick={() => setTimerRegion(opt)}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Card className="bg-[#181f2a] border border-gray-700 p-4 flex flex-col items-center">
+            <span className="text-gray-400 text-xs mb-1">Reset</span>
+            <span className="text-white text-xs mb-1">{mounted ? resetLocal : "--"}</span>
+            <span className="text-3xl font-mono text-white">{mounted ? resetCountdown : "--:--:--"}</span>
+          </Card>
+          <Card className="bg-[#181f2a] border border-gray-700 p-4 flex flex-col items-center">
+            <span className="text-gray-400 text-xs mb-1">Update</span>
+            <span className="text-white text-xs mb-1">{mounted ? updateLocal : "--"}</span>
+            <span className="text-3xl font-mono text-white">{mounted ? updateCountdown : "--:--:--"}</span>
+          </Card>
+        </div>
+      </section>
+      <section className="w-full max-w-4xl bg-[#181f2a] rounded-lg border border-gray-700 p-4 mb-6">
+        <div className="flex flex-row gap-2 mb-2">
+          {regionOptions.map((opt) => (
+            <button
+              key={opt.key}
+              className={`px-3 py-1 rounded text-white text-xs ${selectedRegion.key === opt.key ? 'bg-blue-600' : 'bg-[#232c3a]'}`}
+              onClick={() => setSelectedRegion(opt)}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+          {loadingNews ? (
+            <Card className="bg-[#232c3a] border border-gray-700 p-3 text-center text-gray-400">Loading news...</Card>
+          ) : newsError ? (
+            <Card className="bg-[#232c3a] border border-gray-700 p-3 text-center text-red-400">{newsError}</Card>
+          ) : news.length === 0 ? (
+            <Card className="bg-[#232c3a] border border-gray-700 p-3 text-center text-gray-400">No news found.</Card>
+          ) : (
+            news.slice(0, 3).map((item) => (
+              <Card key={item.id} className="bg-[#232c3a] border border-gray-700 p-3">
+                <div className="flex flex-row items-center gap-2 mb-1">
+                  {item.category === "Maintenance" ? (
+                    <AlertTriangle className="text-yellow-400 w-4 h-4" />
+                  ) : item.category === "Recruit" ? (
+                    <Info className="text-cyan-400 w-4 h-4" />
+                  ) : item.category === "Campaign" ? (
+                    <Calendar className="text-green-400 w-4 h-4" />
+                  ) : (
+                    <Info className="text-gray-400 w-4 h-4" />
+                  )}
+                  <span className="text-white font-semibold text-sm">{item.category}{item.isNew && <span className="text-green-400 ml-1">NEW</span>}</span>
+                </div>
+                <div className="text-gray-300 text-xs">{item.title}<br />{item.endDate && <span>Ends: {item.endDate}</span>}</div>
+              </Card>
+            ))
+          )}
+        </div>
+      </section>
+      <section className="w-full max-w-4xl bg-[#181f2a] rounded-lg border border-gray-700 p-4 flex justify-center">
+        <iframe
+          width="360"
+          height="202"
+          src="https://www.youtube.com/embed/oqj9Ho6QS40"
+          title="Recent Livestream"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="rounded-lg border border-gray-700 w-full max-w-xs object-cover"
+        />
+      </section>
+    </main>
+  )
+}
 //         let newHours = prev.hours
 //
 //         if (newSeconds < 0) {
