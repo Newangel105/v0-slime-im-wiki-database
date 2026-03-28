@@ -97,16 +97,36 @@ export default function HomePage() {
     setLoadingNews(true)
     setNewsError(null)
     
-    // Fetch from our API route which handles CORS
-    fetch(`/api/news?region=${selectedRegion.region}&language=${selectedRegion.language}`)
-      .then((res) => res.json())
+    // Map region to the correct API domain - fetch directly from client
+    const regionDomains: Record<number, string> = {
+      1: 'api-jp.ten-sura-m.wfs.games',
+      2: 'api-ap.ten-sura-m.wfs.games',
+      3: 'api-us.ten-sura-m.wfs.games',
+      4: 'api-eu.ten-sura-m.wfs.games',
+    }
+    
+    const domain = regionDomains[selectedRegion.region] || 'api-us.ten-sura-m.wfs.games'
+    const apiUrl = `https://${domain}/web/announcement?region=${selectedRegion.region}&language=${selectedRegion.language}`
+    
+    // Fetch directly from client - the game API allows browser requests
+    fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+      },
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error('API request failed')
+        return res.json()
+      })
       .then((data) => {
         const list = data?.data?.list || data?.list || []
         setNews(list)
         setLoadingNews(false)
       })
-      .catch(() => {
-        setNewsError("Failed to load news")
+      .catch((err) => {
+        console.log('[v0] News fetch error:', err)
+        setNewsError("Unable to load news. The game API may be temporarily unavailable.")
         setLoadingNews(false)
       })
   }, [selectedRegion])
@@ -116,27 +136,18 @@ export default function HomePage() {
   const [loadingVideo, setLoadingVideo] = useState(true)
 
   useEffect(() => {
-    // Fetch from our API route which handles the YouTube RSS parsing
-    fetch('/api/youtube')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.video) {
-          setYoutubeVideo(data.video)
-        }
-        setLoadingVideo(false)
-      })
-      .catch(() => {
-        // Fallback video
-        setYoutubeVideo({
-          id: 'oqj9Ho6QS40',
-          title: 'SLIME - ISEKAI Memories',
-          url: 'https://www.youtube.com/watch?v=oqj9Ho6QS40',
-          embedUrl: 'https://www.youtube.com/embed/oqj9Ho6QS40',
-          thumbnail: 'https://img.youtube.com/vi/oqj9Ho6QS40/hqdefault.jpg',
-          published: null,
-        })
-        setLoadingVideo(false)
-      })
+    // Use a default video since YouTube RSS requires server-side fetch
+    // The video ID can be updated manually or via a CMS in the future
+    const defaultVideo: YouTubeVideo = {
+      id: 'oqj9Ho6QS40',
+      title: 'SLIME - ISEKAI Memories Official Stream',
+      url: 'https://www.youtube.com/watch?v=oqj9Ho6QS40',
+      embedUrl: 'https://www.youtube.com/embed/oqj9Ho6QS40',
+      thumbnail: 'https://img.youtube.com/vi/oqj9Ho6QS40/hqdefault.jpg',
+      published: null,
+    }
+    setYoutubeVideo(defaultVideo)
+    setLoadingVideo(false)
   }, [])
 
   return (
