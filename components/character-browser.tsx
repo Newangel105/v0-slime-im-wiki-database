@@ -7,7 +7,6 @@ import { ArrowDownUp, Search } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
@@ -23,7 +22,10 @@ import {
   getCharacterVisualTier,
   getCharacterRarityLabel,
   getDisplayElementLabel,
+  hasExSpecialSkill,
+  isExUnboundCharacter,
   normalizeLabel,
+  stripColorTags,
   toPublicAssetPath,
   type WikiCharacter,
 } from "@/lib/pc-wiki"
@@ -33,12 +35,14 @@ type SortKey = "name" | "release_date" | "rarity" | "attack" | "hp" | "defense" 
 type FilterOption = {
   label: string
   value: string
+  icon?: string
 }
 
 const elementIconMap: Record<string, string> = {
-  air: "/elements/icElementWind.png",
-  dark: "/elements/icElementDark.png",
-  earth: "/elements/icElementEarth.png",
+  air: "/elements/space.png",
+  all: "/Image/IcElementBless/IcElementBlessAll.png",
+  dark: "/elements/dark.png",
+  earth: "/elements/earth.png",
   enhancedair: "/Image/IcElementBless/IcElementBlessEnhancedAir.png",
   enhanceddark: "/Image/IcElementBless/IcElementBlessEnhancedDark.png",
   enhancedearth: "/Image/IcElementBless/IcElementBlessEnhancedEarth.png",
@@ -46,11 +50,437 @@ const elementIconMap: Record<string, string> = {
   enhancedholy: "/Image/IcElementBless/IcElementBlessEnhancedHoly.png",
   enhancedwater: "/Image/IcElementBless/IcElementBlessEnhancedWater.png",
   enhancedwind: "/Image/IcElementBless/IcElementBlessEnhancedWind.png",
-  fire: "/elements/icElementFire.png",
+  fire: "/elements/fire.png",
+  holy: "/elements/light.png",
   light: "/elements/icElementlight.png",
+  magic: "/Image/IcElementBless/IcElementBlessMagic.png",
+  physics: "/Image/IcElementBless/IcElementBlessPhysics.png",
   space: "/elements/icElementspace.png",
+  special: "/Image/IcElementBless/IcElementBlessSpecial.png",
+  specialeffectelementair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.png",
+  specialeffectelementdark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementDark.png",
+  specialeffectelementearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEarth.png",
+  specialeffectelementenhancedair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedAir.png",
+  specialeffectelementenhanceddark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedDark.png",
+  specialeffectelementenhancedearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedEarth.png",
+  specialeffectelementenhancedfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedFire.png",
+  specialeffectelementenhancedholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedHoly.png",
+  specialeffectelementenhancedwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWater.png",
+  specialeffectelementenhancedwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWind.png",
+  specialeffectelementfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementFire.png",
+  specialeffectelementholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementHoly.png",
+  specialeffectelementnone: "/Image/IcElementBless/IcElementBlessSpecialEffectElementNone.png",
+  specialeffectelementwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWater.png",
+  specialeffectelementwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWind.png",
+  water: "/elements/water.png",
+  wind: "/elements/wind.png",
+}
+
+// "Increases <element> ATK by" → base element icon (e.g. wind.png)
+const defenderBaseElementIconMap: Record<string, string> = {
+  air: "/elements/space.png",
+  dark: "/elements/dark.png",
+  earth: "/elements/earth.png",
+  fire: "/elements/fire.png",
+  holy: "/elements/light.png",
+  water: "/elements/water.png",
+  wind: "/elements/wind.png",
+}
+
+// "damage done by ... to <element> attribute enemies" → Anti icon (e.g. Anti-Wind.png)
+const defenderAntiElementIconMap: Record<string, string> = {
+  air: "/elements/Anti-Space.png",
+  dark: "/elements/Anti-Dark.png",
+  earth: "/elements/Anti-Earth.png",
+  fire: "/elements/Anti-Fire.png",
+  holy: "/elements/Anti-Light.png",
+  water: "/elements/Anti-Water.png",
+  wind: "/elements/Anti-Wind.png",
+}
+
+// Same as Anti but for EX Unbound protectors → unbound icon (e.g. anti_wind_attribute_unbound.png)
+const defenderAntiExElementIconMap: Record<string, string> = {
+  air: "/elements/anti_space_attribute_unbound.png",
+  dark: "/elements/anti_dark_attribute_unbound.png",
+  earth: "/elements/anti_earth_attribute_unbound.png",
+  fire: "/elements/anti_fire_attribute_unbound.png",
+  holy: "/elements/anti_light_attribute_unbound.png",
+  water: "/elements/anti_water_attribute_unbound.png",
+  wind: "/elements/anti_wind_attribute_unbound.png",
+}
+
+const attackerElementIconMap: Record<string, string> = {
+  air: "/elements/icElementspace.png",
+  dark: "/elements/icElementDark.png",
+  earth: "/elements/icElementEarth.png",
+  enhancedair: "/elements/Enhancedspace.png",
+  enhanceddark: "/elements/Enhanceddark.png",
+  enhancedearth: "/elements/Enhancedearth.png",
+  enhancedfire: "/elements/Enhancedfire.png",
+  enhancedholy: "/elements/Enhancedlight.png",
+  enhancedwater: "/elements/Enhancedwater.png",
+  enhancedwind: "/elements/Enhancedwind.png",
+  fire: "/elements/icElementFire.png",
+  holy: "/elements/icElementlight.png",
   water: "/elements/icElementWater.png",
   wind: "/elements/icElementWind.png",
+}
+
+const baseElementKeys = new Set(["air", "dark", "earth", "fire", "holy", "water", "wind"])
+const hiddenElementKeys = new Set(["none", "special", "specialeffectelementnone"])
+
+const specialEffectToBase: Record<string, string> = {
+  all: "Earth",
+  special: "Air",
+  specialeffectelementearth: "Earth",
+  specialeffectelementair: "Air",
+  specialeffectelementwind: "Wind",
+  specialeffectelementwater: "Water",
+  specialeffectelementfire: "Fire",
+  specialeffectelementholy: "Holy",
+  specialeffectelementdark: "Dark",
+  specialeffectelementenhancedearth: "EnhancedEarth",
+  specialeffectelementenhancedair: "EnhancedAir",
+  specialeffectelementenhancedwind: "EnhancedWind",
+  specialeffectelementenhancedwater: "EnhancedWater",
+  specialeffectelementenhancedfire: "EnhancedFire",
+  specialeffectelementenhancedholy: "EnhancedHoly",
+  specialeffectelementenhanceddark: "EnhancedDark",
+}
+const attackerElementOrder = [
+  "air",
+  "dark",
+  "earth",
+  "fire",
+  "holy",
+  "water",
+  "wind",
+  "enhancedair",
+  "enhanceddark",
+  "enhancedearth",
+  "enhancedfire",
+  "enhancedholy",
+  "enhancedwater",
+  "enhancedwind",
+]
+
+const attackerElementKeys = new Set(attackerElementOrder)
+
+const defenderElementOrder = [
+  "all",
+  "physics",
+  "magic",
+  "fire",
+  "water",
+  "earth",
+  "air",
+  "wind",
+  "dark",
+  "holy",
+  "specialeffectelementair",
+  "specialeffectelementdark",
+  "specialeffectelementearth",
+  "specialeffectelementfire",
+  "specialeffectelementholy",
+  "specialeffectelementwater",
+  "specialeffectelementwind",
+  "specialeffectelementenhancedair",
+  "specialeffectelementenhanceddark",
+  "specialeffectelementenhancedearth",
+  "specialeffectelementenhancedfire",
+  "specialeffectelementenhancedholy",
+  "specialeffectelementenhancedwater",
+  "specialeffectelementenhancedwind",
+]
+
+const defenderElementKeys = new Set(defenderElementOrder)
+
+const attackerElementOrderIndex = new Map(attackerElementOrder.map((value, index) => [value, index]))
+const defenderElementOrderIndex = new Map(defenderElementOrder.map((value, index) => [value, index]))
+
+function toEnhancedElementValue(value: string): string {
+  return `Enhanced${value.charAt(0).toUpperCase()}${value.slice(1)}`
+}
+
+function isAllAlliesProtector(character: WikiCharacter): boolean {
+  if (!isProtectorCharacter(character) || normalizeLabel(character.element) !== "none") {
+    return false
+  }
+
+  return character.skills.some((skill) => {
+    if (skill.slot !== "leader_skill") return false
+    const description = stripColorTags(skill.description_max_level ?? "").toLowerCase()
+    return description.includes("increases all allies' atk")
+  })
+}
+
+function getProtectorLeaderSkillType(character: WikiCharacter): "Physics" | "Magic" | null {
+  if (!isProtectorCharacter(character)) return null
+  const leaderSkill = character.skills.find((s) => s.slot === "leader_skill")
+  if (!leaderSkill) return null
+  const desc = stripColorTags(leaderSkill.description_max_level ?? "").toLowerCase()
+  if (desc.includes("physical characters'") || desc.includes("increases p-atk")) return "Physics"
+  if (desc.includes("magic characters'") || desc.includes("increases m-atk")) return "Magic"
+  return null
+}
+
+const leaderSkillElementPatterns: [RegExp, string][] = [
+  [/increases?\s+fire\s+atk/i, "Fire"],
+  [/increases?\s+water\s+atk/i, "Water"],
+  [/increases?\s+earth\s+atk/i, "Earth"],
+  [/increases?\s+space\s+atk/i, "Air"],
+  [/increases?\s+wind\s+atk/i, "Wind"],
+  [/increases?\s+dark\s+atk/i, "Dark"],
+  [/increases?\s+light\s+atk/i, "Holy"],
+  [/increases?\s+p-atk/i, "Physics"],
+  [/physical characters'/i, "Physics"],
+  [/increases?\s+m-atk/i, "Magic"],
+  [/magic characters'/i, "Magic"],
+  [/all allies' atk/i, "All"],
+]
+
+const leaderSkillDamageToAttributePattern = /to\s+(?:fire|water|earth|space|wind|dark|light)\s+attribute(?:\s+and\s+(?:fire|water|earth|space|wind|dark|light)\s+attribute)*\s+enemies/i
+
+const damageToAttributeElementMap: Record<string, string> = {
+  fire: "Fire", water: "Water", earth: "Earth", space: "Air",
+  wind: "Wind", dark: "Dark", light: "Holy",
+}
+
+type DefenderElementEntry = {
+  value: string
+  source: "atk" | "damage_to_attribute" | "raw"
+}
+
+function getDefenderElementEntries(character: WikiCharacter): DefenderElementEntry[] {
+  if (!isProtectorCharacter(character)) return [{ value: character.element, source: "raw" }]
+
+  const leaderSkill = character.skills.find((s) => s.slot === "leader_skill")
+  const desc = leaderSkill ? stripColorTags(leaderSkill.description_max_level ?? "") : ""
+
+  const entries: DefenderElementEntry[] = []
+
+  // --- Element icons (mutually exclusive categories) ---
+
+  // Category 1: "damage done by ... to <element> attribute enemies" → anti-element
+  const dmgMatch = desc.match(leaderSkillDamageToAttributePattern)
+  if (dmgMatch) {
+    const seen = new Set<string>()
+    // Supports single and multi-target forms like
+    // "to light attribute and dark attribute enemies"
+    const globalDmgPattern = /(?:to|and)\s+(fire|water|earth|space|wind|dark|light)\s+attribute/gi
+    let m: RegExpExecArray | null
+    while ((m = globalDmgPattern.exec(desc)) !== null) {
+      const el = damageToAttributeElementMap[m[1].toLowerCase()]
+      if (el && !seen.has(el)) {
+        seen.add(el)
+        entries.push({ value: el, source: "damage_to_attribute" })
+      }
+    }
+  } else {
+    // Category 2: "increases <element> ATK" → base element
+    const atkSeen = new Set<string>()
+    for (const [pattern, value] of leaderSkillElementPatterns) {
+      const normalized = normalizeLabel(value)
+      if (pattern.test(desc) && baseElementKeys.has(normalized) && !atkSeen.has(normalized)) {
+        atkSeen.add(normalized)
+        entries.push({ value, source: "atk" })
+      }
+    }
+  }
+
+  // --- Type qualifiers (physics / magic / all) — always checked, coexist with elements ---
+  const typeSeen = new Set<string>()
+  for (const [pattern, value] of leaderSkillElementPatterns) {
+    const normalized = normalizeLabel(value)
+    if (pattern.test(desc) && !baseElementKeys.has(normalized) && !typeSeen.has(normalized)) {
+      typeSeen.add(normalized)
+      entries.push({ value, source: "atk" })
+    }
+  }
+
+  // Fallback: raw element if nothing matched
+  if (entries.length === 0) {
+    entries.push({ value: character.element, source: "raw" })
+  }
+
+  return entries
+}
+
+function getDefenderElementValues(character: WikiCharacter): string[] {
+  if (!isProtectorCharacter(character)) return [normalizeLabel(character.element)]
+
+  const normalized = normalizeLabel(character.element)
+  const leaderSkill = character.skills.find((s) => s.slot === "leader_skill")
+  const desc = leaderSkill ? stripColorTags(leaderSkill.description_max_level ?? "") : ""
+
+  const values: string[] = []
+
+  // Categories 2 & 3: "to <element> attribute enemies"
+  // Build one key per target element while preserving the category family:
+  // base -> fire, special -> specialeffectelementfire,
+  // enhanced special -> specialeffectelementenhancedfire.
+  if (leaderSkillDamageToAttributePattern.test(desc)) {
+    const dmgTargets = [...desc.matchAll(/(?:to|and)\s+(fire|water|earth|space|wind|dark|light)\s+attribute/gi)]
+      .map((m) => normalizeLabel(damageToAttributeElementMap[m[1].toLowerCase()]))
+
+    const isEnhancedSpecial = normalized.startsWith("specialeffectelementenhanced")
+    const isSpecial = normalized.startsWith("specialeffectelement")
+
+    for (const baseKey of dmgTargets) {
+      const key = isEnhancedSpecial
+        ? `specialeffectelementenhanced${baseKey}`
+        : isSpecial
+          ? `specialeffectelement${baseKey}`
+          : baseKey
+      if (!values.includes(key)) {
+        values.push(key)
+      }
+    }
+  } else {
+    // Category 1: "increases <element> ATK" → base element keys from leader skill
+    // (can have multiple, e.g. dark + space)
+    for (const [pattern, value] of leaderSkillElementPatterns) {
+      const key = normalizeLabel(value)
+      if (pattern.test(desc) && baseElementKeys.has(key) && !values.includes(key)) {
+        values.push(key)
+      }
+    }
+  }
+
+  // Non-element qualifiers (physics, magic, all, etc.) — always checked
+  for (const [pattern, value] of leaderSkillElementPatterns) {
+    const key = normalizeLabel(value)
+    if (pattern.test(desc) && !baseElementKeys.has(key) && !values.includes(key)) {
+      values.push(key)
+    }
+  }
+
+  // Fallback to raw element if nothing matched
+  if (values.length === 0) {
+    values.push(normalized)
+  }
+
+  return values
+}
+
+function isProtectorCharacter(character: WikiCharacter): boolean {
+  return character.character_role === "Supporter" &&
+    !character.skills.some((s) => s.slot === "special_skill" && s.kind === "special")
+}
+
+function isAttackerCharacter(character: WikiCharacter): boolean {
+  if (character.character_role === "Attacker") return true
+  return character.skills.some((s) => s.slot === "special_skill" && s.kind === "special")
+}
+
+function getCharacterElementValue(character: WikiCharacter): string {
+  if (isProtectorCharacter(character)) {
+    return getDefenderElementValues(character)[0]
+  }
+  const normalized = normalizeLabel(character.element)
+  const baseFromSpecial = specialEffectToBase[normalized]
+  if (isAttackerCharacter(character) && baseFromSpecial) {
+    const baseNormalized = normalizeLabel(baseFromSpecial)
+    if (baseElementKeys.has(baseNormalized) && hasExSpecialSkill(character)) {
+      return toEnhancedElementValue(baseNormalized)
+    }
+    return baseFromSpecial
+  }
+  if (isAttackerCharacter(character) && baseElementKeys.has(normalized) && hasExSpecialSkill(character)) {
+    return toEnhancedElementValue(normalized)
+  }
+  return character.element
+}
+
+function compareElementValues(left: string, right: string, orderIndex: Map<string, number>): number {
+  const leftNormalized = normalizeLabel(left)
+  const rightNormalized = normalizeLabel(right)
+  const leftIndex = orderIndex.get(leftNormalized)
+  const rightIndex = orderIndex.get(rightNormalized)
+
+  if (leftIndex !== undefined || rightIndex !== undefined) {
+    if (leftIndex === undefined) return 1
+    if (rightIndex === undefined) return -1
+    return leftIndex - rightIndex
+  }
+
+  return getDisplayElementLabel(left).localeCompare(getDisplayElementLabel(right))
+}
+
+function getElementIcon(value: string | null | undefined): string | undefined {
+  const normalized = normalizeLabel(value)
+  if (hiddenElementKeys.has(normalized)) {
+    return undefined
+  }
+  return elementIconMap[normalized]
+}
+
+function getAttackerElementIcon(value: string | null | undefined): string | undefined {
+  const normalized = normalizeLabel(value)
+  if (hiddenElementKeys.has(normalized)) {
+    return undefined
+  }
+  return attackerElementIconMap[normalized]
+}
+
+function getCharacterElementIcon(character: WikiCharacter): string | undefined {
+  const characterElementValue = getCharacterElementValue(character)
+  if (isProtectorCharacter(character)) {
+    return getElementIcon(characterElementValue)
+  }
+  if (isAttackerCharacter(character)) {
+    return getAttackerElementIcon(characterElementValue)
+  }
+  return undefined
+}
+
+function getDefenderEntryIcon(entry: DefenderElementEntry, character: WikiCharacter): string | undefined {
+  const normalized = normalizeLabel(entry.value)
+  if (hiddenElementKeys.has(normalized)) return undefined
+
+  if (entry.source === "damage_to_attribute" && baseElementKeys.has(normalized)) {
+    // "damage done by ... to <element> attribute enemies"
+    // EX Unbound → anti_*_attribute_unbound.png, otherwise → Anti-*.png
+    if (isExUnboundCharacter(character)) {
+      return defenderAntiExElementIconMap[normalized]
+    }
+    return defenderAntiElementIconMap[normalized]
+  }
+
+  if (entry.source === "atk" && baseElementKeys.has(normalized)) {
+    // "Increases <element> ATK by" → base element icon (e.g. wind.png)
+    return defenderBaseElementIconMap[normalized]
+  }
+
+  // Physics / Magic for protectors → use protector-specific icons
+  if (isProtectorCharacter(character)) {
+    const protTypeMap: Record<string, string> = {
+      physics: "/type_dmg/prot_phys.png",
+      magic: "/type_dmg/prot_magic.png",
+    }
+    if (protTypeMap[normalized]) return protTypeMap[normalized]
+  }
+
+  // All, or other non-base-element values → use generic elementIconMap
+  return elementIconMap[normalized]
+}
+
+function getCharacterElementIcons(character: WikiCharacter): { icon: string; label: string }[] {
+  if (isProtectorCharacter(character)) {
+    // Use getDefenderElementValues which returns the correct icon-level keys
+    return getDefenderElementValues(character)
+      .map((value) => ({
+        icon: defenderBlessIconMap[value] ?? elementIconMap[value],
+        label: getDisplayElementLabel(value),
+      }))
+      .filter((e): e is { icon: string; label: string } => !!e.icon)
+  }
+  const characterElementValue = getCharacterElementValue(character)
+  const icon = isAttackerCharacter(character)
+    ? getAttackerElementIcon(characterElementValue)
+    : getElementIcon(characterElementValue)
+  if (!icon) return []
+  return [{ icon, label: getDisplayElementLabel(characterElementValue) }]
 }
 
 const attackTypeIconMap: Record<string, string> = {
@@ -64,6 +494,7 @@ const weaponIconMap: Record<string, string> = {
   fists: "/weapons/fists.png",
   greatsword: "/weapons/greatsword.png",
   hammer: "/weapons/hammer.png",
+  largesword: "/weapons/greatsword.png",
   katana: "/weapons/katana.png",
   knuckle: "/weapons/fists.png",
   spear: "/weapons/spear.png",
@@ -77,12 +508,119 @@ const tacticsIconMap: Record<string, string> = {
   speed: "/Image/Tactics/speed.png",
 }
 
+function fieldBuildingIcon(id: string, ver: string) {
+  return `/Image/FieldBuilding/${id}/${ver}/FieldBuilding_${id}_${ver}_icon.png`
+}
+
+const facilityIconMap: Record<string, string> = {
+  "Armory": fieldBuildingIcon("1209", "02"),
+  "Armor Magicubeite Digsite": fieldBuildingIcon("1333", "01"),
+  "Brewery": fieldBuildingIcon("1318", "02"),
+  "Café": fieldBuildingIcon("1308", "02"),
+  "Churros Stall": fieldBuildingIcon("1338", "01"),
+  "Clothing Store": fieldBuildingIcon("1305", "02"),
+  "Crystal Hotel": fieldBuildingIcon("1453", "01"),
+  "Crystal Restaurant": fieldBuildingIcon("1347", "01"),
+  "Dango Shop": fieldBuildingIcon("1551", "01"),
+  "Dark Arts Shrine": fieldBuildingIcon("1633", "02"),
+  "Dark Magic Device": fieldBuildingIcon("1613", "01"),
+  "Decoration Magicubeite Digsite": fieldBuildingIcon("1334", "01"),
+  "Digsite for Attack Magigems": fieldBuildingIcon("1324", "01"),
+  "Digsite for Attack Magistones": fieldBuildingIcon("1310", "02"),
+  "Digsite for Defense Magigems": fieldBuildingIcon("1321", "01"),
+  "Digsite for Defense Magistones": fieldBuildingIcon("1315", "02"),
+  "Digsite for Stamina Magigems": fieldBuildingIcon("1322", "01"),
+  "Digsite for Stamina Magistones": fieldBuildingIcon("1309", "02"),
+  "Digsite for Training Magigems": fieldBuildingIcon("1323", "01"),
+  "Digsite for Training Magistones": fieldBuildingIcon("1312", "02"),
+  "Dojo": fieldBuildingIcon("1360", "01"),
+  "Earth Arts Shrine": fieldBuildingIcon("1629", "02"),
+  "Earth Magic Device": fieldBuildingIcon("1609", "01"),
+  "Elemental Colossus Bay": fieldBuildingIcon("1344", "01"),
+  "Encampment": fieldBuildingIcon("1326", "01"),
+  "Farm": fieldBuildingIcon("1301", "03"),
+  "Feast Hot Pot": fieldBuildingIcon("1422", "02"),
+  "Field": fieldBuildingIcon("1313", "03"),
+  "Fire Arts Shrine": fieldBuildingIcon("1627", "02"),
+  "Fire Magic Device": fieldBuildingIcon("1607", "01"),
+  "Forest Supply Corps Base": fieldBuildingIcon("1304", "03"),
+  "Fruit Stall": fieldBuildingIcon("1330", "01"),
+  "Gift Shop": fieldBuildingIcon("1335", "01"),
+  "Geological Survey Station": fieldBuildingIcon("1341", "01"),
+  "Hamburger Stall": fieldBuildingIcon("1337", "01"),
+  "Honey Café": fieldBuildingIcon("1225", "01"),
+  "Hot Dog Stall": fieldBuildingIcon("1336", "01"),
+  "Ice Cream Cart": fieldBuildingIcon("1327", "01"),
+  "Inn": fieldBuildingIcon("1316", "02"),
+  "Japanese Style Tavern": fieldBuildingIcon("1214", "01"),
+  "Juice Stand": fieldBuildingIcon("1357", "01"),
+  "Laboratory": fieldBuildingIcon("1606", "02"),
+  "Light Arts Shrine": fieldBuildingIcon("1632", "02"),
+  "Light Magic Device": fieldBuildingIcon("1612", "01"),
+  "Magic Fang Atelier": fieldBuildingIcon("1348", "01"),
+  "Magic Feather Atelier": fieldBuildingIcon("1350", "01"),
+  "Magic Hide Atelier": fieldBuildingIcon("1349", "01"),
+  "Mini Coaster": fieldBuildingIcon("1218", "01"),
+  "Monster Museum": fieldBuildingIcon("1345", "01"),
+  "Mountain Supply Corps Base": fieldBuildingIcon("1302", "03"),
+  "Obstacle Course": fieldBuildingIcon("1359", "01"),
+  "Ocean Supply Corps Base": fieldBuildingIcon("1303", "03"),
+  "Orchard": fieldBuildingIcon("1355", "01"),
+  "Paper Mill": fieldBuildingIcon("1354", "01"),
+  "Photo Studio": fieldBuildingIcon("1362", "02"),
+  "Protection Magistone Digsite": fieldBuildingIcon("1311", "02"),
+  "Purple Magicluster Digsite": fieldBuildingIcon("1352", "02"),
+  "Ramen Shop": fieldBuildingIcon("1328", "01"),
+  "Red Magicluster Digsite": fieldBuildingIcon("1353", "02"),
+  "Restaurant": fieldBuildingIcon("1306", "03"),
+  "Savory Pancake Stall": fieldBuildingIcon("1329", "01"),
+  "Sawmill": fieldBuildingIcon("1317", "02"),
+  "Shaved Ice Shop": fieldBuildingIcon("1351", "01"),
+  "Shishkabob Stall": fieldBuildingIcon("1331", "01"),
+  "Snack Bar Jura": fieldBuildingIcon("1523", "01"),
+  "Souvenir Shop": fieldBuildingIcon("1570", "01"),
+  "Space Arts Shrine": fieldBuildingIcon("1631", "02"),
+  "Space Magic Device": fieldBuildingIcon("1611", "01"),
+  "Sweets Shop": fieldBuildingIcon("1339", "01"),
+  "Symbol of Protection": fieldBuildingIcon("1614", "01"),
+  "Tableware Store": fieldBuildingIcon("1356", "01"),
+  "Tavern": fieldBuildingIcon("1307", "02"),
+  "Tempest Wheel": fieldBuildingIcon("1216", "01"),
+  "Trading Post": fieldBuildingIcon("1206", "02"),
+  "Traditional Brewery": fieldBuildingIcon("1325", "01"),
+  "Traditional Inn": fieldBuildingIcon("1213", "01"),
+  "Traditional Snack Shop": fieldBuildingIcon("1568", "01"),
+  "Training Ground": fieldBuildingIcon("1314", "03"),
+  "Water Arts Shrine": fieldBuildingIcon("1628", "02"),
+  "Water Magic Device": fieldBuildingIcon("1608", "01"),
+  "Water Purification Station": fieldBuildingIcon("1346", "01"),
+  "Weapon Magicubeite Digsite": fieldBuildingIcon("1332", "01"),
+  "Weaving Workshop": fieldBuildingIcon("1320", "02"),
+  "Wind Arts Shrine": fieldBuildingIcon("1630", "02"),
+  "Wind Magic Device": fieldBuildingIcon("1610", "01"),
+  "Flour Mill": fieldBuildingIcon("1365", "01"),
+}
+
 const rarityFrameMap: Record<number, string> = {
   3: "/frame/frameMemberM3.png",
   4: "/frame/frameMemberM4.png",
   5: "/frame/frameMemberM5.png",
   6: "/frame/frameMemberM6.png",
   7: "/frame/frameMemberM7.png",
+}
+
+const blessFrameMap: Record<number, string> = {
+  3: "/frame/frameBlessM3.png",
+  4: "/frame/frameBlessM4.png",
+  5: "/frame/frameBlessM5.png",
+  6: "/frame/frameBlessM6.png",
+  7: "/frame/frameBlessM7.png",
+}
+
+function getCharacterFrame(character: WikiCharacter): string {
+  const visualTier = getCharacterVisualTier(character)
+  const frameMap = isProtectorCharacter(character) ? blessFrameMap : rarityFrameMap
+  return frameMap[visualTier] ?? frameMap[5]
 }
 
 const starAssetMap: Record<number, string> = {
@@ -93,11 +631,218 @@ const starAssetMap: Record<number, string> = {
   7: "/stars/starCharaL7A.png",
 }
 
+const elementColorMap: Record<string, string> = {
+  air: "#22d3ee",
+  all: "#cbd5e1",
+  dark: "#a855f7",
+  earth: "#d97706",
+  enhancedair: "#67e8f9",
+  enhanceddark: "#c084fc",
+  enhancedearth: "#f59e0b",
+  enhancedfire: "#fb923c",
+  enhancedholy: "#fde047",
+  enhancedwater: "#93c5fd",
+  enhancedwind: "#5eead4",
+  fire: "#f97316",
+  light: "#facc15",
+  magic: "#60a5fa",
+  physics: "#f87171",
+  special: "#fbbf24",
+  space: "#6366f1",
+  specialeffectelementair: "#22d3ee",
+  specialeffectelementdark: "#a855f7",
+  specialeffectelementearth: "#d97706",
+  specialeffectelementenhancedair: "#67e8f9",
+  specialeffectelementenhanceddark: "#c084fc",
+  specialeffectelementenhancedearth: "#f59e0b",
+  specialeffectelementenhancedfire: "#fb923c",
+  specialeffectelementenhancedholy: "#fde047",
+  specialeffectelementenhancedwater: "#93c5fd",
+  specialeffectelementenhancedwind: "#5eead4",
+  specialeffectelementfire: "#f97316",
+  specialeffectelementholy: "#facc15",
+  specialeffectelementnone: "#fbbf24",
+  specialeffectelementwater: "#60a5fa",
+  specialeffectelementwind: "#2dd4bf",
+  water: "#60a5fa",
+  wind: "#2dd4bf",
+}
+
 function buildOptions(values: string[]): FilterOption[] {
   return [...new Set(values.filter(Boolean))]
     .sort((left, right) => left.localeCompare(right))
     .map((value) => ({ label: value, value }))
 }
+
+function buildElementOptions(characters: WikiCharacter[], role: "attacker" | "defender"): FilterOption[] {
+  const filteredCharacters = characters.filter((character) =>
+    role === "attacker" ? isAttackerCharacter(character) : isProtectorCharacter(character),
+  )
+  const orderIndex = role === "attacker" ? attackerElementOrderIndex : defenderElementOrderIndex
+  const allowedKeys = role === "attacker" ? attackerElementKeys : defenderElementKeys
+
+  const allValues = role === "defender"
+    ? filteredCharacters.flatMap((character) => getDefenderElementValues(character))
+    : filteredCharacters.map((character) => getCharacterElementValue(character))
+
+  return [...new Set(allValues.filter(Boolean))]
+    .filter((value) => {
+      const normalized = normalizeLabel(value)
+      return !hiddenElementKeys.has(normalized) && allowedKeys.has(normalized)
+    })
+    .sort((left, right) => compareElementValues(left, right, orderIndex))
+    .map((value) => ({
+      label: getDisplayElementLabel(value),
+      value,
+      icon: role === "attacker" ? getAttackerElementIcon(value) : getDefenderFilterIcon(value),
+    }))
+}
+
+/** IcElementBless icons for base element keys in the protector filter bar */
+const defenderBlessIconMap: Record<string, string> = {
+  air: "/Image/IcElementBless/IcElementBlessAir.png",
+  dark: "/Image/IcElementBless/IcElementBlessDark.png",
+  earth: "/Image/IcElementBless/IcElementBlessEarth.png",
+  fire: "/Image/IcElementBless/IcElementBlessFire.png",
+  holy: "/Image/IcElementBless/IcElementBlessHoly.png",
+  water: "/Image/IcElementBless/IcElementBlessWater.png",
+  wind: "/Image/IcElementBless/IcElementBlessWind.png",
+}
+
+function getDefenderFilterIcon(value: string): string | undefined {
+  const normalized = normalizeLabel(value)
+  if (hiddenElementKeys.has(normalized)) return undefined
+  // Base element keys → IcElementBless icons; all others already in elementIconMap
+  return defenderBlessIconMap[normalized] ?? elementIconMap[normalized]
+}
+
+function buildAttackTypeOptions(values: string[]): FilterOption[] {
+  return [...new Set(values.filter(Boolean).map(normalizeLabel))]
+    .sort((left, right) => left.localeCompare(right))
+    .map((value) => ({
+      label: formatWikiLabel(value),
+      value,
+      icon: attackTypeIconMap[value],
+    }))
+}
+
+function buildTacticsOptions(values: string[]): FilterOption[] {
+  return [...new Set(values.filter(Boolean).map(normalizeLabel))]
+    .sort((left, right) => left.localeCompare(right))
+    .map((value) => ({
+      label: formatWikiLabel(value),
+      value,
+      icon: tacticsIconMap[value],
+    }))
+}
+
+function buildWeaponOptions(values: string[]): FilterOption[] {
+  return [...new Set(values.filter(Boolean).map(normalizeLabel))]
+    .sort((left, right) => left.localeCompare(right))
+    .map((value) => ({
+      label: formatWikiLabel(value),
+      value,
+      icon: weaponIconMap[value],
+    }))
+}
+
+function buildForceIconLookup(characters: WikiCharacter[]): Map<string, string> {
+  const forceMap = new Map<string, string>()
+  for (const char of characters) {
+    for (const force of char.forces) {
+      if (!forceMap.has(force.name)) forceMap.set(force.name, force.icon_path)
+    }
+  }
+  return forceMap
+}
+
+function getDerivedProtectorForceNames(character: WikiCharacter): string[] {
+  if (character.character_role !== "Supporter") {
+    return []
+  }
+
+  const names = new Set<string>()
+  for (const skill of character.skills) {
+    const description = skill.description_max_level ?? ""
+    const forceBlockPattern = /((?:<color=[^>]+>[^<]+<\/color>(?:\s+and\s+)?)+)\s+Force characters/gi
+    let blockMatch: RegExpExecArray | null
+    while ((blockMatch = forceBlockPattern.exec(description)) !== null) {
+      const block = blockMatch[1]
+      const namePattern = /<color=[^>]+>([^<]+)<\/color>/gi
+      let nameMatch: RegExpExecArray | null
+      while ((nameMatch = namePattern.exec(block)) !== null) {
+        const forceName = nameMatch[1]?.trim()
+        if (forceName) {
+          names.add(forceName)
+        }
+      }
+    }
+  }
+
+  return [...names]
+}
+
+function getCharacterForceEntries(character: WikiCharacter, forceIconLookup: Map<string, string>): Array<{ name: string; icon?: string }> {
+  if (character.forces.length > 0) {
+    return character.forces.map((force) => ({
+      name: force.name,
+      icon: toPublicAssetPath(force.icon_path),
+    }))
+  }
+
+  return getDerivedProtectorForceNames(character).map((name) => ({
+    name,
+    icon: forceIconLookup.get(name) ? toPublicAssetPath(forceIconLookup.get(name)) : undefined,
+  }))
+}
+
+function getCharacterForceNames(character: WikiCharacter): string[] {
+  if (character.forces.length > 0) {
+    return character.forces.map((force) => force.name)
+  }
+
+  return getDerivedProtectorForceNames(character)
+}
+
+function buildForcesOptions(characters: WikiCharacter[], forceIconLookup: Map<string, string>): FilterOption[] {
+  const forceMap = new Map<string, string | undefined>()
+  for (const char of characters) {
+    for (const force of getCharacterForceEntries(char, forceIconLookup)) {
+      if (!forceMap.has(force.name)) forceMap.set(force.name, force.icon)
+    }
+  }
+
+  return [...forceMap.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([name, iconPath]) => ({
+      label: name,
+      value: name,
+      icon: iconPath,
+    }))
+}
+
+const AOE_KEYWORDS = ["all-target", "all target", "all enemies", "all characters"]
+const SINGLE_KEYWORDS = ["single-target", "single target"]
+
+function getCharacterUltimateType(character: WikiCharacter): "aoe" | "single" | null {
+  if (character.character_role === "Supporter") return null
+  const special = character.skills.find((s) => s.slot === "special_skill" && s.kind === "special")
+  if (!special?.description_max_level) return null
+  const desc = special.description_max_level.toLowerCase()
+  if (AOE_KEYWORDS.some((k) => desc.includes(k))) return "aoe"
+  if (SINGLE_KEYWORDS.some((k) => desc.includes(k))) return "single"
+  return null
+}
+
+const ROLE_OPTIONS: FilterOption[] = [
+  { label: "Attacker", value: "attacker", icon: "/UI/Texture/CharaInfoAtlas/icSkillAttacker.png" },
+  { label: "Protector", value: "protector", icon: "/UI/Texture/CharaInfoAtlas/icSkillBlessLeader.png" },
+]
+
+const ULTIMATE_TYPE_OPTIONS: FilterOption[] = [
+  { label: "AoE", value: "aoe", icon: "/UI/Texture/CharaInfoAtlas/icSpTypeAll.png" },
+  { label: "Single", value: "single", icon: "/UI/Texture/CharaInfoAtlas/icSpTypeSingle.png" },
+]
 
 function ToggleFilter({
   title,
@@ -110,12 +855,24 @@ function ToggleFilter({
   selectedValues: string[]
   onToggle: (value: string) => void
 }) {
+  const selectedOptions = options.filter((o) => selectedValues.includes(o.value))
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline" className="justify-between gap-2 border-gray-600 bg-gray-700 text-white hover:bg-gray-600">
-          <span>{title}</span>
-          <Badge variant="secondary" className="bg-gray-900 text-white">
+        <Button variant="outline" className="h-auto min-h-[2.25rem] justify-between gap-2 border-gray-600 bg-gray-700 px-3 py-1.5 text-white hover:bg-gray-600">
+          {selectedOptions.length > 0 ? (
+            <span className="flex flex-wrap gap-1">
+              {selectedOptions.map((o) => (
+                <span key={o.value} className="inline-flex items-center gap-1 rounded-full bg-white/15 px-2 py-0.5 text-xs font-medium">
+                  {o.icon && <img src={o.icon} alt="" className="h-4 w-4 object-contain" />}
+                  {o.label}
+                </span>
+              ))}
+            </span>
+          ) : (
+            <span className="text-sm text-gray-300">{title}</span>
+          )}
+          <Badge variant="secondary" className="ml-1 shrink-0 bg-gray-900 text-white">
             {selectedValues.length}
           </Badge>
         </Button>
@@ -125,12 +882,15 @@ function ToggleFilter({
           <p className="text-sm font-semibold text-white">{title}</p>
         </div>
         <ScrollArea className="h-72 px-4 py-3">
-          <div className="space-y-3">
+          <div className="space-y-1">
             {options.map((option) => {
               const checked = selectedValues.includes(option.value)
               return (
-                <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-gray-200">
+                <label key={option.value} className={`flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm transition-colors ${
+                  checked ? "bg-white/10 text-white" : "text-gray-300 hover:bg-white/5"
+                }`}>
                   <Checkbox checked={checked} onCheckedChange={() => onToggle(option.value)} />
+                  {option.icon && <img src={option.icon} alt="" className="h-6 w-auto max-w-[80px] shrink-0 object-contain" />}
                   <span>{option.label}</span>
                 </label>
               )
@@ -140,6 +900,94 @@ function ToggleFilter({
       </PopoverContent>
     </Popover>
   )
+}
+
+function IconToggleBar({
+  options,
+  selectedValues,
+  onToggle,
+}: {
+  options: FilterOption[]
+  selectedValues: string[]
+  onToggle: (value: string) => void
+}) {
+  return (
+    <div className="flex flex-wrap gap-1">
+      {options.map((opt) => {
+        const isSelected = selectedValues.includes(opt.value)
+        return (
+          <button
+            key={opt.value}
+            onClick={() => onToggle(opt.value)}
+            title={opt.label}
+            className={`flex h-10 w-10 items-center justify-center rounded-xl transition-all ${
+              isSelected ? "bg-white/20 ring-2 ring-white/70" : "bg-white/5 hover:bg-white/10"
+            }`}
+          >
+            {opt.icon ? (
+              <img
+                src={opt.icon}
+                alt={opt.label}
+                className={`h-7 w-7 object-contain transition-opacity ${isSelected ? "opacity-100" : "opacity-50"}`}
+              />
+            ) : (
+              <span className={`px-1 text-center text-[11px] font-bold leading-tight ${isSelected ? "text-white" : "text-gray-400"}`}>
+                {opt.label}
+              </span>
+            )}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
+// --- Trait helpers ---
+
+function isValorTrait(trait: { icon_path: string }): boolean {
+  return trait.icon_path.includes("ArenaPassive")
+}
+
+// Strip trigger prefix so "HP - ATK UP" and "Soul Combo - ATK UP" both become "ATK UP"
+function getRegularTraitDisplay(rawName: string): string {
+  return rawName.replace(/^(HP|Soul Combo |Soul Combo|Troop|Effect|Switch)\s*[-–]\s*/i, "").trim()
+}
+
+// Explicit display names for valor traits
+const VALOR_DISPLAY_MAP: Record<string, string> = {
+  "Charge - Protection DOWN":                          "Protection DOWN",
+  "Late Battle - Protection DOWN":                     "Protection DOWN",
+  "Soul Combo - Protection DOWN":                      "Soul Combo Protection DOWN",
+  "Soul Combo - Skill DOWN":                           "Soul Combo Skill DOWN",
+  "Soul Combo - Secret DOWN":                          "Soul Combo Secret DOWN",
+  "Charge - Secret DOWN":                              "Charge Secret DOWN",
+  "Late Battle - Skill DOWN":                          "Skill DOWN",
+  "Switch - Bind":                                     "Bind",
+  "Switch - Skill Seal":                               "Skill Seal",
+  "Soul Combo - Soul of Skills Damage DOWN":           "Soul of Skills Damage DOWN",
+  "Soul Combo - Secret Damage DOWN":                   "Soul of Secret Damage DOWN",
+  "Soul Combo - Secret Soul Damage DOWN":              "Soul of Secret Damage DOWN",
+  "Soul Combo - Soul of Divine Protection Damage DOWN": "Soul of Divine Protection Damage DOWN",
+  "Soul Combo  - Counter Power DOWN":                  "Counterattack Resistance",
+  "Soul Combo - Guard Rate DOWN":                      "Guard Rate DOWN",
+}
+
+type TraitEffectMap = Map<string, string[]> // displayName → rawNames[]
+
+function buildTraitEffectMap(characters: WikiCharacter[], valor: boolean): TraitEffectMap {
+  const map: TraitEffectMap = new Map()
+  for (const character of characters) {
+    for (const trait of character.traits) {
+      if (isValorTrait(trait) !== valor) continue
+      const display = valor
+        ? (VALOR_DISPLAY_MAP[trait.name] ?? getRegularTraitDisplay(trait.name))
+        : getRegularTraitDisplay(trait.name)
+      if (!map.has(display)) map.set(display, [])
+      const raws = map.get(display)!
+      if (!raws.includes(trait.name)) raws.push(trait.name)
+    }
+  }
+  return map
 }
 
 function GroupedToggleFilter({
@@ -195,40 +1043,77 @@ function GroupedToggleFilter({
 export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }) {
   const searchParams = useSearchParams()
   const [searchText, setSearchText] = useState("")
-  const [selectedElements, setSelectedElements] = useState<string[]>([])
+  const [selectedAttackerElements, setSelectedAttackerElements] = useState<string[]>([])
+  const [selectedDefenderElements, setSelectedDefenderElements] = useState<string[]>([])
   const [selectedAttackTypes, setSelectedAttackTypes] = useState<string[]>([])
   const [selectedTactics, setSelectedTactics] = useState<string[]>([])
   const [selectedForces, setSelectedForces] = useState<string[]>([])
   const [selectedSkillFilters, setSelectedSkillFilters] = useState<string[]>([])
   const [selectedTraitNames, setSelectedTraitNames] = useState<string[]>([])
+  const [selectedValorTraitNames, setSelectedValorTraitNames] = useState<string[]>([])
   const [selectedFacilities, setSelectedFacilities] = useState<string[]>([])
+  const [selectedWeapons, setSelectedWeapons] = useState<string[]>([])
+  const [selectedRoles, setSelectedRoles] = useState<string[]>([])
+  const [selectedUltimateTypes, setSelectedUltimateTypes] = useState<string[]>([])
   const [sortKey, setSortKey] = useState<SortKey>("release_date")
+  const [sortAsc, setSortAsc] = useState(false)
 
   useEffect(() => {
     const tag = searchParams.get("tag")
-    if (!tag) {
-      return
+    if (tag) {
+      setSearchText(tag)
     }
 
-    setSearchText(tag)
+    const attacker = searchParams.get("attacker")
+    if (attacker) setSelectedAttackerElements(attacker.split(","))
+
+    const defender = searchParams.get("defender")
+    if (defender) setSelectedDefenderElements(defender.split(","))
+
+    const type = searchParams.get("type")
+    if (type) setSelectedAttackTypes(type.split(","))
+
+    const tactics = searchParams.get("tactics")
+    if (tactics) setSelectedTactics(tactics.split(","))
+
+    const weapon = searchParams.get("weapon")
+    if (weapon) setSelectedWeapons(weapon.split(","))
+
+    const role = searchParams.get("role")
+    if (role) setSelectedRoles(role.split(","))
+
+    const ulti = searchParams.get("ulti")
+    if (ulti) setSelectedUltimateTypes(ulti.split(","))
+
+    const force = searchParams.get("force")
+    if (force) setSelectedForces(force.split(","))
+
+    const facility = searchParams.get("facility")
+    if (facility) setSelectedFacilities(facility.split(","))
   }, [searchParams])
+
+  const forceIconLookup = useMemo(() => buildForceIconLookup(characters), [characters])
 
   const options = useMemo(
     () => ({
-      elements: buildOptions(characters.map((character) => character.element)),
-      attackTypes: buildOptions(characters.map((character) => character.attack_type)),
-      tactics: buildOptions(characters.map((character) => character.tactics_type)),
-      forces: buildOptions(characters.flatMap((character) => character.forces.map((force) => force.name))),
+      attackerElements: buildElementOptions(characters, "attacker"),
+      defenderElements: buildElementOptions(characters, "defender"),
+      attackTypes: buildAttackTypeOptions(characters.map((character) => character.attack_type)),
+      weapons: buildWeaponOptions(characters.map((character) => character.weapon_type)),
+      tactics: buildTacticsOptions(characters.map((character) => character.tactics_type)),
+      forces: buildForcesOptions(characters, forceIconLookup),
       skillGroups: getCharacterEffectFilterGroups(characters),
-      traits: buildOptions(characters.flatMap((character) => character.traits.map((trait) => trait.name))),
+      traitEffectMap: buildTraitEffectMap(characters, false),
+      valorTraitEffectMap: buildTraitEffectMap(characters, true),
       facilities: buildOptions(characters.flatMap((character) => character.facilities)),
     }),
-    [characters],
+    [characters, forceIconLookup],
   )
 
   const filteredCharacters = useMemo(() => {
     const query = normalizeLabel(searchText)
     const filtered = characters.filter((character) => {
+      const characterForceNames = getCharacterForceNames(character)
       const searchable = [
         character.name,
         character.affiliation_name,
@@ -236,7 +1121,7 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
         character.attack_type,
         character.weapon_type,
         character.tactics_type,
-        ...character.forces.map((force) => force.name),
+        ...characterForceNames,
         ...character.skills.map((skill) => skill.name),
         ...character.traits.map((trait) => trait.name),
         ...character.facilities,
@@ -247,82 +1132,151 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
       if (query && !searchable.includes(query)) {
         return false
       }
-      if (selectedElements.length && !selectedElements.includes(character.element)) {
+      const characterElementValue = getCharacterElementValue(character)
+      if (isProtectorCharacter(character)) {
+        if (selectedAttackerElements.length) {
+          return false
+        }
+        if (selectedDefenderElements.length) {
+          const defenderValues = getDefenderElementValues(character)
+          if (!selectedDefenderElements.some((sel) => defenderValues.includes(sel))) {
+            return false
+          }
+        }
+      } else if (isAttackerCharacter(character)) {
+        if (selectedDefenderElements.length) {
+          return false
+        }
+        if (selectedAttackerElements.length && !selectedAttackerElements.includes(characterElementValue)) {
+          return false
+        }
+      } else if (selectedAttackerElements.length || selectedDefenderElements.length) {
         return false
       }
-      if (selectedAttackTypes.length && !selectedAttackTypes.includes(character.attack_type)) {
+      if (selectedAttackTypes.length && !selectedAttackTypes.includes(normalizeLabel(character.attack_type))) {
         return false
       }
-      if (selectedTactics.length && !selectedTactics.includes(character.tactics_type)) {
+      if (selectedTactics.length && !selectedTactics.includes(normalizeLabel(character.tactics_type))) {
         return false
       }
-      if (selectedForces.length && !selectedForces.every((value) => character.forces.some((force) => force.name === value))) {
+      if (selectedForces.length && !selectedForces.every((value) => characterForceNames.includes(value))) {
         return false
       }
       if (!characterMatchesEffectFilters(character, selectedSkillFilters)) {
         return false
       }
-      if (selectedTraitNames.length && !selectedTraitNames.every((value) => character.traits.some((trait) => trait.name === value))) {
+      if (selectedTraitNames.length && !selectedTraitNames.every((effect) =>
+        character.traits.some((trait) => !isValorTrait(trait) && (options.traitEffectMap.get(effect) ?? []).includes(trait.name))
+      )) {
+        return false
+      }
+      if (selectedValorTraitNames.length && !selectedValorTraitNames.every((effect) =>
+        character.traits.some((trait) => isValorTrait(trait) && (options.valorTraitEffectMap.get(effect) ?? []).includes(trait.name))
+      )) {
         return false
       }
       if (selectedFacilities.length && !selectedFacilities.every((value) => character.facilities.includes(value))) {
         return false
+      }
+      if (selectedWeapons.length && !selectedWeapons.includes(normalizeLabel(character.weapon_type))) {
+        return false
+      }
+      if (selectedRoles.length) {
+        const role = isProtectorCharacter(character) ? "protector" : isAttackerCharacter(character) ? "attacker" : null
+        if (!role) return false
+        if (!selectedRoles.includes(role)) return false
+      }
+      if (selectedUltimateTypes.length) {
+        const ultType = getCharacterUltimateType(character)
+        if (!ultType || !selectedUltimateTypes.includes(ultType)) return false
       }
 
       return true
     })
 
     return filtered.sort((left, right) => {
+      const dir = sortAsc ? -1 : 1
       switch (sortKey) {
         case "attack":
-          return right.stats.attack - left.stats.attack
+          return dir * (right.stats.attack - left.stats.attack)
         case "hp":
-          return right.stats.hp - left.stats.hp
+          return dir * (right.stats.hp - left.stats.hp)
         case "defense":
-          return right.stats.defense - left.stats.defense
+          return dir * (right.stats.defense - left.stats.defense)
         case "existence":
-          return right.stats.existence - left.stats.existence
+          return dir * (right.stats.existence - left.stats.existence)
         case "rarity":
-          return right.rarity - left.rarity || right.stats.existence - left.stats.existence
-        case "release_date":
-          return right.release_date.localeCompare(left.release_date)
+          return dir * (right.rarity - left.rarity || right.stats.existence - left.stats.existence)
+        case "release_date": {
+          const leftReleaseDate = left.release_date ?? ""
+          const rightReleaseDate = right.release_date ?? ""
+
+          if (!leftReleaseDate && !rightReleaseDate) {
+            return dir * left.name.localeCompare(right.name)
+          }
+          if (!leftReleaseDate) {
+            return 1
+          }
+          if (!rightReleaseDate) {
+            return -1
+          }
+
+          return dir * rightReleaseDate.localeCompare(leftReleaseDate)
+        }
         case "name":
         default:
-          return left.name.localeCompare(right.name)
+          return dir * left.name.localeCompare(right.name)
       }
     })
   }, [
     characters,
     searchText,
     selectedAttackTypes,
-    selectedElements,
+    selectedAttackerElements,
+    selectedDefenderElements,
     selectedFacilities,
     selectedForces,
     selectedSkillFilters,
     selectedTactics,
     selectedTraitNames,
+    selectedValorTraitNames,
+    selectedWeapons,
+    selectedRoles,
+    selectedUltimateTypes,
+    sortAsc,
     sortKey,
   ])
 
   const activeFilterCount =
-    selectedElements.length +
+    selectedAttackerElements.length +
+    selectedDefenderElements.length +
     selectedAttackTypes.length +
+    selectedWeapons.length +
     selectedTactics.length +
     selectedForces.length +
     selectedSkillFilters.length +
     selectedTraitNames.length +
-    selectedFacilities.length
+    selectedValorTraitNames.length +
+    selectedFacilities.length +
+    selectedRoles.length +
+    selectedUltimateTypes.length
 
   function resetFilters() {
     setSearchText("")
-    setSelectedElements([])
+    setSelectedAttackerElements([])
+    setSelectedDefenderElements([])
     setSelectedAttackTypes([])
     setSelectedTactics([])
     setSelectedForces([])
     setSelectedSkillFilters([])
     setSelectedTraitNames([])
+    setSelectedValorTraitNames([])
     setSelectedFacilities([])
+    setSelectedWeapons([])
+    setSelectedRoles([])
+    setSelectedUltimateTypes([])
     setSortKey("release_date")
+    setSortAsc(false)
   }
 
   function toggleValue(values: string[], setter: (next: string[]) => void, value: string) {
@@ -344,7 +1298,13 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
               </div>
               <div className="flex flex-wrap items-center gap-3">
                 <div className="flex items-center gap-2 text-sm text-gray-300">
-                  <ArrowDownUp className="h-4 w-4" />
+                  <button
+                    onClick={() => setSortAsc((prev) => !prev)}
+                    title={sortAsc ? "Ascending" : "Descending"}
+                    className="rounded p-1 text-gray-400 transition-colors hover:bg-gray-600 hover:text-white"
+                  >
+                    <ArrowDownUp className={`h-4 w-4 transition-transform ${sortAsc ? "rotate-180" : ""}`} />
+                  </button>
                   <Select value={sortKey} onValueChange={(value) => setSortKey(value as SortKey)}>
                     <SelectTrigger className="w-[170px] border-gray-600 bg-gray-700 text-white">
                       <SelectValue placeholder="Sort by" />
@@ -367,13 +1327,48 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <ToggleFilter title="Element" options={options.elements} selectedValues={selectedElements} onToggle={(value) => toggleValue(selectedElements, setSelectedElements, value)} />
-              <ToggleFilter title="Attack Type" options={options.attackTypes} selectedValues={selectedAttackTypes} onToggle={(value) => toggleValue(selectedAttackTypes, setSelectedAttackTypes, value)} />
               <ToggleFilter title="Tactics" options={options.tactics} selectedValues={selectedTactics} onToggle={(value) => toggleValue(selectedTactics, setSelectedTactics, value)} />
               <ToggleFilter title="Forces" options={options.forces} selectedValues={selectedForces} onToggle={(value) => toggleValue(selectedForces, setSelectedForces, value)} />
               <GroupedToggleFilter title="Skills" groups={options.skillGroups} selectedValues={selectedSkillFilters} onToggle={(value) => toggleValue(selectedSkillFilters, setSelectedSkillFilters, value)} />
-              <ToggleFilter title="Traits" options={options.traits} selectedValues={selectedTraitNames} onToggle={(value) => toggleValue(selectedTraitNames, setSelectedTraitNames, value)} />
-              <ToggleFilter title="Towns" options={options.facilities} selectedValues={selectedFacilities} onToggle={(value) => toggleValue(selectedFacilities, setSelectedFacilities, value)} />
+              <ToggleFilter title="Traits" options={[...options.traitEffectMap.keys()].sort().map((k) => ({ label: k, value: k }))} selectedValues={selectedTraitNames} onToggle={(value) => toggleValue(selectedTraitNames, setSelectedTraitNames, value)} />
+              <ToggleFilter title="Valor Traits" options={[...options.valorTraitEffectMap.keys()].sort().map((k) => ({ label: k, value: k }))} selectedValues={selectedValorTraitNames} onToggle={(value) => toggleValue(selectedValorTraitNames, setSelectedValorTraitNames, value)} />
+              <ToggleFilter title="Facilities" options={options.facilities} selectedValues={selectedFacilities} onToggle={(value) => toggleValue(selectedFacilities, setSelectedFacilities, value)} />
+            </div>
+
+            {/* Icon-bar strip: Element, Weapon, Attack Type, Role, Ultimate */}
+            <div className="flex flex-col gap-3 rounded-xl border border-white/5 bg-white/3 p-3">
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+                <div className="flex items-center gap-2">
+                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">Attacker</span>
+                  <IconToggleBar options={options.attackerElements} selectedValues={selectedAttackerElements} onToggle={(value) => toggleValue(selectedAttackerElements, setSelectedAttackerElements, value)} />
+                </div>
+              </div>
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+                <div className="flex items-center gap-2">
+                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">Protector</span>
+                  <IconToggleBar options={options.defenderElements} selectedValues={selectedDefenderElements} onToggle={(value) => toggleValue(selectedDefenderElements, setSelectedDefenderElements, value)} />
+                </div>
+              </div>
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+                <div className="flex items-center gap-2">
+                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">Weapon</span>
+                  <IconToggleBar options={options.weapons} selectedValues={selectedWeapons} onToggle={(value) => toggleValue(selectedWeapons, setSelectedWeapons, value)} />
+                </div>
+              </div>
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+                <div className="flex items-center gap-2">
+                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">Type</span>
+                  <IconToggleBar options={options.attackTypes} selectedValues={selectedAttackTypes} onToggle={(value) => toggleValue(selectedAttackTypes, setSelectedAttackTypes, value)} />
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">Role</span>
+                  <IconToggleBar options={ROLE_OPTIONS} selectedValues={selectedRoles} onToggle={(value) => toggleValue(selectedRoles, setSelectedRoles, value)} />
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">Ulti</span>
+                  <IconToggleBar options={ULTIMATE_TYPE_OPTIONS} selectedValues={selectedUltimateTypes} onToggle={(value) => toggleValue(selectedUltimateTypes, setSelectedUltimateTypes, value)} />
+                </div>
+              </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-3 text-sm text-gray-300">
@@ -387,99 +1382,124 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
         <section className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {filteredCharacters.map((character) => {
             const visualTier = getCharacterVisualTier(character)
-            const frameSrc = rarityFrameMap[visualTier] ?? rarityFrameMap[5]
+            const frameSrc = getCharacterFrame(character)
             const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
             const iconSrc = toPublicAssetPath(character.images.icon)
-            const elementIcon = elementIconMap[normalizeLabel(character.element)]
+            const characterElementValue = getCharacterElementValue(character)
+            const elementIcons = getCharacterElementIcons(character)
+            const forceEntries = getCharacterForceEntries(character, forceIconLookup)
             const attackTypeIcon = attackTypeIconMap[normalizeLabel(character.attack_type)]
             const weaponIcon = weaponIconMap[normalizeLabel(character.weapon_type)]
             const tacticsIcon = tacticsIconMap[normalizeLabel(character.tactics_type || "Normal")]
-            const elementLabel = getDisplayElementLabel(character.element)
             const attackTypeLabel = formatWikiLabel(character.attack_type)
             const weaponLabel = formatWikiLabel(character.weapon_type)
             const rarityLabel = getCharacterRarityLabel(character)
 
+            const elementAccentColor = elementColorMap[normalizeLabel(characterElementValue)] ?? "#4b5563"
+            const facilityIcons = [
+              ...new Set(character.facilities.map((f) => f.replace(/ \+\d+%$/, "").trim())),
+            ]
+              .map((name) => ({ name, icon: facilityIconMap[name] }))
+              .filter((entry) => entry.icon)
+              .slice(0, 5)
+
             return (
               <Link key={character.master_pc_id} href={`/characters/${character.master_pc_id}`} className="block">
-                <Card className="group h-full overflow-hidden rounded-3xl border border-gray-700 bg-gradient-to-b from-[#243042] to-[#1a2433] shadow-[0_0_24px_rgba(255,255,255,0.08)] transition-colors duration-200 hover:from-[#2b3850] hover:to-[#1e2a3b]">
-                  <CardContent className="p-0">
-                    <div className="grid gap-5 p-5">
-                      <div className="flex items-start gap-5">
-                        <div className="relative h-[124px] w-[124px] shrink-0">
-                          <div className="absolute inset-[8px] overflow-hidden rounded-[20px] bg-black/35">
-                            <img src={iconSrc} alt={character.name} className="h-full w-full object-cover object-top transition-transform duration-200 group-hover:scale-105" />
-                          </div>
-                          <img src={frameSrc} alt="Character frame" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
+                <div
+                  className="group h-full overflow-hidden rounded-2xl bg-gradient-to-b from-[#1d2d44] to-[#0f1924] shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-2xl"
+                  style={{ borderTop: `4px solid ${elementAccentColor}` }}
+                >
+                  <div>
+                    {/* Portrait + info row */}
+                    <div className="flex gap-4 p-4 pb-3">
+                      {/* Portrait */}
+                      <div className="relative h-[148px] w-[148px] shrink-0">
+                        <div className="absolute inset-[10px] overflow-hidden rounded-[18px] bg-black/40">
+                          <img
+                            src={iconSrc}
+                            alt={character.name}
+                            className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110"
+                          />
                         </div>
-                        <div className="min-w-0 flex-1 overflow-hidden">
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="min-w-0">
-                              <h2 className="truncate text-[1.9rem] font-semibold leading-none text-white">{character.name}</h2>
-                              <p className="mt-2 truncate text-sm uppercase tracking-[0.22em] text-gray-400">{character.affiliation_name}</p>
-                            </div>
-                            <img src={starsSrc} alt={rarityLabel} className="h-8 shrink-0 object-contain drop-shadow-[0_1px_4px_rgba(0,0,0,0.65)]" />
-                          </div>
-
-                          <div className="mt-4 flex flex-wrap gap-2 overflow-hidden">
-                            {elementIcon ? (
-                              <Badge variant="secondary" className="max-w-full gap-2 rounded-full bg-gray-700/90 px-2.5 py-1 text-xs text-white">
-                                <img src={elementIcon} title={elementLabel} alt={elementLabel} className="h-5 w-5 shrink-0 object-contain" />
-                                <span className="truncate">{elementLabel}</span>
-                              </Badge>
-                            ) : null}
-                            {attackTypeIcon ? (
-                              <Badge variant="secondary" className="max-w-full gap-2 rounded-full bg-gray-700/90 px-2.5 py-1 text-xs text-white">
-                                <img src={attackTypeIcon} title={attackTypeLabel} alt={attackTypeLabel} className="h-5 w-5 shrink-0 object-contain" />
-                                <span className="truncate">{attackTypeLabel}</span>
-                              </Badge>
-                            ) : null}
-                            {weaponIcon ? (
-                              <Badge variant="secondary" className="max-w-full gap-2 rounded-full bg-gray-700/90 px-2.5 py-1 text-xs text-white">
-                                <img src={weaponIcon} title={weaponLabel} alt={weaponLabel} className="h-5 w-5 shrink-0 object-contain" />
-                                <span className="truncate">{weaponLabel}</span>
-                              </Badge>
-                            ) : null}
-                            {tacticsIcon ? (
-                              <Badge variant="secondary" className="max-w-full gap-2 rounded-full bg-gray-700/90 px-2.5 py-1 text-xs text-white">
-                                <img src={tacticsIcon} title={character.tactics_type || "Normal"} alt={character.tactics_type || "Normal"} className="h-5 w-5 shrink-0 object-contain" />
-                                <span className="truncate">{character.tactics_type || "Normal"}</span>
-                              </Badge>
-                            ) : null}
-                          </div>
-                        </div>
+                        <img src={frameSrc} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
                       </div>
 
-                      <div className="grid grid-cols-4 gap-3 rounded-[22px] bg-[#111827] px-4 py-5 text-center text-white shadow-inner">
-                        <div>
-                          <p className="text-[11px] uppercase tracking-[0.22em] text-gray-400">HP</p>
-                          <p className="mt-2 text-[1.95rem] font-semibold leading-none text-emerald-200">{character.stats.hp}</p>
+                      {/* Info column */}
+                      <div className="flex min-h-[148px] min-w-0 flex-1 flex-col">
+                        <div className="flex items-start justify-between gap-2">
+                          <h2 className="line-clamp-2 text-[1rem] font-bold leading-snug text-white">{character.name}</h2>
+                          <img src={starsSrc} alt={rarityLabel} className="mt-0.5 h-6 shrink-0 object-contain drop-shadow" />
                         </div>
-                        <div>
-                          <p className="text-[11px] uppercase tracking-[0.22em] text-gray-400">ATK</p>
-                          <p className="mt-2 text-[1.95rem] font-semibold leading-none text-rose-200">{character.stats.attack}</p>
-                        </div>
-                        <div>
-                          <p className="text-[11px] uppercase tracking-[0.22em] text-gray-400">DEF</p>
-                          <p className="mt-2 text-[1.95rem] font-semibold leading-none text-sky-200">{character.stats.defense}</p>
-                        </div>
-                        <div>
-                          <p className="text-[11px] uppercase tracking-[0.22em] text-gray-400">EXI</p>
-                          <p className="mt-2 text-[1.95rem] font-semibold leading-none text-amber-100">{character.stats.existence}</p>
+                        <p className="mt-1 truncate text-[10px] uppercase tracking-[0.18em] text-gray-500">{character.affiliation_name}</p>
+
+                        {/* Tactics badge + facility icons on same row */}
+                        {(tacticsIcon || facilityIcons.length > 0) && (
+                          <div className="mt-2 flex items-center gap-2">
+                            {tacticsIcon && (
+                              <img
+                                src={tacticsIcon}
+                                alt={character.tactics_type || "Normal"}
+                                title={character.tactics_type || "Normal"}
+                                className="h-10 w-auto max-w-[110px] shrink-0 object-contain drop-shadow"
+                              />
+                            )}
+                            {facilityIcons.map(({ name, icon }) => (
+                              <img key={name} src={icon} alt={name} title={name} className="h-8 w-8 object-contain" />
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Element / attack type / weapon icons */}
+                        <div className="mt-auto flex flex-wrap gap-2 pt-1">
+                          {elementIcons.map((entry) => (
+                            <img key={entry.icon} src={entry.icon} alt={entry.label} title={entry.label} className="h-8 w-8 object-contain" />
+                          ))}
+                          {attackTypeIcon && (
+                            <img src={attackTypeIcon} alt={attackTypeLabel} title={attackTypeLabel} className="h-8 w-8 object-contain" />
+                          )}
+                          {weaponIcon && (
+                            <img src={weaponIcon} alt={weaponLabel} title={weaponLabel} className="h-8 w-8 object-contain" />
+                          )}
                         </div>
                       </div>
+                    </div>
 
-                      <div className="flex flex-wrap gap-2">
-                        {character.forces.slice(0, 4).map((force) => (
-                          <Badge key={force.label} variant="outline" className="max-w-full gap-2 border-gray-600 bg-gray-700/80 text-white">
-                            <img src={toPublicAssetPath(force.icon_path)} alt={force.name} className="h-4 w-4 shrink-0 object-contain" />
-                            <span className="truncate">{force.name}</span>
-                          </Badge>
+                    {/* Stats bar */}
+                    <div className="mx-4 grid grid-cols-4 divide-x divide-white/5 rounded-xl bg-white/10 py-2.5">
+                      <div className="px-2 text-center">
+                        <p className="text-[9px] font-semibold uppercase tracking-wider text-white">HP</p>
+                        <p className="mt-1 text-[1.1rem] font-bold leading-none text-emerald-300">{character.stats.hp}</p>
+                      </div>
+                      <div className="px-2 text-center">
+                        <p className="text-[9px] font-semibold uppercase tracking-wider text-white">ATK</p>
+                        <p className="mt-1 text-[1.1rem] font-bold leading-none text-rose-300">{character.stats.attack}</p>
+                      </div>
+                      <div className="px-2 text-center">
+                        <p className="text-[9px] font-semibold uppercase tracking-wider text-white">DEF</p>
+                        <p className="mt-1 text-[1.1rem] font-bold leading-none text-sky-300">{character.stats.defense}</p>
+                      </div>
+                      <div className="px-2 text-center">
+                        <p className="text-[9px] font-semibold uppercase tracking-wider text-white">EXI</p>
+                        <p className="mt-1 text-[1.1rem] font-bold leading-none text-amber-200">{character.stats.existence}</p>
+                      </div>
+                    </div>
+
+                    {/* Forces */}
+                    {forceEntries.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 px-4 py-3">
+                        {forceEntries.slice(0, 4).map((force) => (
+                          <span
+                            key={force.name}
+                            className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-2.5 py-1 text-[10px] text-gray-400 ring-1 ring-white/10"
+                          >
+                            {force.icon && <img src={force.icon} alt={force.name} className="h-5 w-5 shrink-0 object-contain" />}
+                            {force.name}
+                          </span>
                         ))}
                       </div>
-
-                    </div>
-                  </CardContent>
-                </Card>
+                    )}
+                  </div>
+                </div>
               </Link>
             )
           })}
