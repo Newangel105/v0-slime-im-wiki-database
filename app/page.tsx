@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
 import { Card } from "@/components/ui/card"
-import { AlertTriangle, Info, Calendar, Play, ExternalLink } from "lucide-react"
+import { Play, ExternalLink } from "lucide-react"
 
 function getNextUtcTime(hour: number, minute = 0, second = 0) {
   const now = new Date()
@@ -36,14 +36,6 @@ function useCountdown(targetDate: Date) {
   const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0")
   const seconds = String(totalSeconds % 60).padStart(2, "0")
   return `${hours}:${minutes}:${seconds}`
-}
-
-interface NewsItem {
-  id: string
-  category: string
-  title: string
-  endDate?: string
-  isNew?: boolean
 }
 
 interface YouTubeVideo {
@@ -89,46 +81,23 @@ export default function HomePage() {
     { key: "Japan", region: 1, language: 1, label: "Japan" },
   ]
   const [selectedRegion, setSelectedRegion] = useState(regionOptions[0])
-  const [news, setNews] = useState<NewsItem[]>([])
   const [loadingNews, setLoadingNews] = useState(true)
-  const [newsError, setNewsError] = useState<string | null>(null)
+
+  // Generate the official news URL for embedding
+  const getNewsUrl = () => {
+    const regionDomains: Record<number, string> = {
+      1: 'jp.ten-sura-m.wfs.games',
+      2: 'ap.ten-sura-m.wfs.games',
+      3: 'us.ten-sura-m.wfs.games',
+      4: 'eu.ten-sura-m.wfs.games',
+    }
+    const domain = regionDomains[selectedRegion.region] || 'us.ten-sura-m.wfs.games'
+    return `https://${domain}/announcement?region=${selectedRegion.region}&language=${selectedRegion.language}`
+  }
 
   useEffect(() => {
-    setLoadingNews(true)
-    setNewsError(null)
-    
-    // Map region to the correct API domain - fetch directly from client
-    const regionDomains: Record<number, string> = {
-      1: 'api-jp.ten-sura-m.wfs.games',
-      2: 'api-ap.ten-sura-m.wfs.games',
-      3: 'api-us.ten-sura-m.wfs.games',
-      4: 'api-eu.ten-sura-m.wfs.games',
-    }
-    
-    const domain = regionDomains[selectedRegion.region] || 'api-us.ten-sura-m.wfs.games'
-    const apiUrl = `https://${domain}/web/announcement?region=${selectedRegion.region}&language=${selectedRegion.language}`
-    
-    // Fetch directly from client - the game API allows browser requests
-    fetch(apiUrl, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-      },
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error('API request failed')
-        return res.json()
-      })
-      .then((data) => {
-        const list = data?.data?.list || data?.list || []
-        setNews(list)
-        setLoadingNews(false)
-      })
-      .catch((err) => {
-        console.log('[v0] News fetch error:', err)
-        setNewsError("Unable to load news. The game API may be temporarily unavailable.")
-        setLoadingNews(false)
-      })
+    // News is loaded via iframe, so we just set loading to false
+    setLoadingNews(false)
   }, [selectedRegion])
 
   // YouTube video state - automatically fetched from RSS feed
@@ -287,45 +256,32 @@ export default function HomePage() {
                   ))}
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {/* Embedded News via iframe */}
+              <div className="relative rounded-xl overflow-hidden border border-gray-700/30 bg-white">
                 {loadingNews ? (
-                  Array.from({ length: 3 }).map((_, i) => (
-                    <div key={i} className="bg-[#232c3a] rounded-xl p-4 animate-pulse h-24" />
-                  ))
-                ) : newsError ? (
-                  <div className="col-span-full bg-red-900/20 border border-red-700/50 rounded-xl p-4 text-center text-red-400">
-                    {newsError}
-                  </div>
-                ) : news.length === 0 ? (
-                  <div className="col-span-full bg-[#232c3a] rounded-xl p-6 text-center text-gray-400">
-                    No news available for this region. Try selecting a different region.
+                  <div className="h-96 bg-[#232c3a] animate-pulse flex items-center justify-center">
+                    <span className="text-gray-500">Loading news...</span>
                   </div>
                 ) : (
-                  news.slice(0, 6).map((item) => (
-                    <Card key={item.id} className="bg-gradient-to-br from-[#232c3a] to-[#1a222d] border border-gray-700/30 hover:border-cyan-500/30 transition-all">
-                      <div className="p-4">
-                        <div className="flex items-center gap-2 mb-2">
-                          {item.category === "Maintenance" ? (
-                            <AlertTriangle className="text-yellow-400 w-4 h-4" />
-                          ) : item.category === "Recruit" ? (
-                            <Info className="text-cyan-400 w-4 h-4" />
-                          ) : item.category === "Campaign" ? (
-                            <Calendar className="text-green-400 w-4 h-4" />
-                          ) : (
-                            <Info className="text-gray-400 w-4 h-4" />
-                          )}
-                          <span className="text-white font-semibold text-sm">{item.category}</span>
-                          {item.isNew && (
-                            <span className="px-2 py-0.5 bg-green-500/20 text-green-400 text-xs rounded-full font-medium">NEW</span>
-                          )}
-                        </div>
-                        <p className="text-gray-300 text-sm line-clamp-2 mb-2">{item.title}</p>
-                        {item.endDate && (
-                          <p className="text-gray-500 text-xs">Ends: {item.endDate}</p>
-                        )}
-                      </div>
-                    </Card>
-                  ))
+                  <>
+                    <iframe
+                      src={getNewsUrl()}
+                      title="Game News"
+                      className="w-full h-[500px] border-0"
+                      sandbox="allow-scripts allow-same-origin"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#181f2a] via-[#181f2a]/90 to-transparent p-4 pt-8">
+                      <a
+                        href={getNewsUrl()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full text-sm font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        View Full News on Official Site
+                      </a>
+                    </div>
+                  </>
                 )}
               </div>
             </div>
