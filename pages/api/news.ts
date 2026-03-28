@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import fetch from 'node-fetch'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { region = '3', language = '2' } = req.query
