@@ -1,10 +1,9 @@
 "use client"
 import { useEffect, useState } from "react"
 import { Card } from "@/components/ui/card"
-import { AlertTriangle, Info, Calendar } from "lucide-react"
+import { AlertTriangle, Info, Calendar, Play, ExternalLink } from "lucide-react"
 
-
-function getNextUtcTime(hour, minute = 0, second = 0) {
+function getNextUtcTime(hour: number, minute = 0, second = 0) {
   const now = new Date()
   const next = new Date(now)
   next.setUTCHours(hour, minute, second, 0)
@@ -12,7 +11,7 @@ function getNextUtcTime(hour, minute = 0, second = 0) {
   return next
 }
 
-function formatLocalTime(date) {
+function formatLocalTime(date: Date) {
   return date.toLocaleString(undefined, {
     year: 'numeric',
     month: 'long',
@@ -24,11 +23,11 @@ function formatLocalTime(date) {
   })
 }
 
-function useCountdown(targetDate) {
-  const [timeLeft, setTimeLeft] = useState(() => targetDate - new Date())
+function useCountdown(targetDate: Date) {
+  const [timeLeft, setTimeLeft] = useState(() => targetDate.getTime() - new Date().getTime())
   useEffect(() => {
     const interval = setInterval(() => {
-      setTimeLeft(targetDate - new Date())
+      setTimeLeft(targetDate.getTime() - new Date().getTime())
     }, 1000)
     return () => clearInterval(interval)
   }, [targetDate])
@@ -39,19 +38,36 @@ function useCountdown(targetDate) {
   return `${hours}:${minutes}:${seconds}`
 }
 
+interface NewsItem {
+  id: string
+  category: string
+  title: string
+  endDate?: string
+  isNew?: boolean
+}
+
+interface YouTubeVideo {
+  id: string
+  title: string
+  url: string
+  embedUrl: string
+  thumbnail: string
+  published: string | null
+}
+
 export default function HomePage() {
-    // Hydration fix: only show timers after mount
-    const [mounted, setMounted] = useState(false)
-    useEffect(() => { setMounted(true) }, [])
+  // Hydration fix: only show timers after mount
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => { setMounted(true) }, [])
+
   // Timer region selection (NA, EU, Asia)
   const timerRegionOptions = [
     { key: "NA", label: "NA", reset: { hour: 11, minute: 0 }, update: { hour: 2, minute: 0 } },
     { key: "EU", label: "EU", reset: { hour: 4, minute: 0 }, update: { hour: 2, minute: 0 } },
     { key: "Asia", label: "Asia", reset: { hour: 19, minute: 0 }, update: { hour: 2, minute: 0 } },
   ]
-  // Default to NA
+  
   const [timerRegion, setTimerRegion] = useState(timerRegionOptions[0])
-  // When timerRegion changes, update targets
   const [resetTarget, setResetTarget] = useState(() => getNextUtcTime(timerRegionOptions[0].reset.hour, timerRegionOptions[0].reset.minute, 0))
   const [updateTarget, setUpdateTarget] = useState(() => getNextUtcTime(timerRegionOptions[0].update.hour, timerRegionOptions[0].update.minute, 0))
 
@@ -73,9 +89,9 @@ export default function HomePage() {
     { key: "Japan", region: 1, language: 1, label: "Japan" },
   ]
   const [selectedRegion, setSelectedRegion] = useState(regionOptions[0])
-  const [news, setNews] = useState([])
+  const [news, setNews] = useState<NewsItem[]>([])
   const [loadingNews, setLoadingNews] = useState(true)
-  const [newsError, setNewsError] = useState(null)
+  const [newsError, setNewsError] = useState<string | null>(null)
 
   useEffect(() => {
     setLoadingNews(true)
@@ -83,307 +99,235 @@ export default function HomePage() {
     fetch(`/api/news?region=${selectedRegion.region}&language=${selectedRegion.language}`)
       .then((res) => res.json())
       .then((data) => {
-        setNews(data?.data?.list || [])
+        const list = data?.data?.list || data?.list || []
+        setNews(list)
         setLoadingNews(false)
       })
-      .catch((err) => {
+      .catch(() => {
         setNewsError("Failed to load news")
         setLoadingNews(false)
       })
   }, [selectedRegion])
 
-  // Livestream link (static for now)
-  const livestreamUrl = "https://www.youtube.com/watch?v=oqj9Ho6QS40"
+  // YouTube video state - automatically fetched
+  const [youtubeVideo, setYoutubeVideo] = useState<YouTubeVideo | null>(null)
+  const [loadingVideo, setLoadingVideo] = useState(true)
+
+  useEffect(() => {
+    fetch('/api/youtube-latest')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.video) {
+          setYoutubeVideo(data.video)
+        }
+        setLoadingVideo(false)
+      })
+      .catch(() => {
+        // Fallback video
+        setYoutubeVideo({
+          id: 'oqj9Ho6QS40',
+          title: 'Recent Stream',
+          url: 'https://www.youtube.com/watch?v=oqj9Ho6QS40',
+          embedUrl: 'https://www.youtube.com/embed/oqj9Ho6QS40',
+          thumbnail: 'https://img.youtube.com/vi/oqj9Ho6QS40/hqdefault.jpg',
+          published: null,
+        })
+        setLoadingVideo(false)
+      })
+  }, [])
 
   return (
-    <main className="flex flex-col items-center justify-start min-h-screen bg-gradient-to-br from-[#0a1a2f] to-[#1a2740] p-4">
-      <section className="w-full max-w-4xl bg-[#181f2a] rounded-lg border border-gray-700 p-4 mb-6">
-        <h2 className="text-2xl font-bold text-center text-white mb-2">ABOUT</h2>
-        <p className="text-center text-gray-300 text-sm">This is a Database for SLIME - Isekai Memories, the That Time I Got Reincarnated as a Slime mobile game developed by WFS and published by Bandai Namco Entertainment.</p>
-      </section>
-      <section className="w-full max-w-4xl mb-6">
-        <div className="flex flex-row gap-2 mb-2 justify-center">
-          {timerRegionOptions.map((opt) => (
-            <button
-              key={opt.key}
-              className={`px-3 py-1 rounded text-white text-xs ${timerRegion.key === opt.key ? 'bg-blue-600' : 'bg-[#232c3a]'}`}
-              onClick={() => setTimerRegion(opt)}
-            >
-              {opt.label}
-            </button>
-          ))}
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Card className="bg-[#181f2a] border border-gray-700 p-4 flex flex-col items-center">
-            <span className="text-gray-400 text-xs mb-1">Reset</span>
-            <span className="text-white text-xs mb-1">{mounted ? resetLocal : "--"}</span>
-            <span className="text-3xl font-mono text-white">{mounted ? resetCountdown : "--:--:--"}</span>
+    <main className="min-h-screen bg-gradient-to-br from-[#0a1a2f] via-[#0f1f35] to-[#1a2740]">
+      <div className="mx-auto max-w-6xl px-4 py-8">
+        {/* About Section */}
+        <section className="mb-8">
+          <Card className="bg-[#181f2a]/80 border border-gray-700/50 backdrop-blur-sm overflow-hidden">
+            <div className="p-6">
+              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                <span className="h-1 w-8 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"></span>
+                ABOUT
+              </h2>
+              <p className="text-gray-300 leading-relaxed mb-4">
+                Welcome to <span className="text-cyan-400 font-semibold">SLIME.WIKI</span> - The comprehensive database for 
+                <span className="text-blue-400 font-medium"> SLIME - Isekai Memories</span>, the official That Time I Got Reincarnated as a Slime 
+                mobile game developed by WFS and published by Bandai Namco Entertainment.
+              </p>
+              <div className="flex flex-wrap gap-4 text-xs text-gray-500 pt-4 border-t border-gray-700/50">
+                <span>Database maintained by the community</span>
+                <span className="text-gray-600">|</span>
+                <span>All game assets and content are property of WFS and Bandai Namco Entertainment</span>
+                <span className="text-gray-600">|</span>
+                <span>This is an unofficial fan-made resource</span>
+              </div>
+            </div>
           </Card>
-          <Card className="bg-[#181f2a] border border-gray-700 p-4 flex flex-col items-center">
-            <span className="text-gray-400 text-xs mb-1">Update</span>
-            <span className="text-white text-xs mb-1">{mounted ? updateLocal : "--"}</span>
-            <span className="text-3xl font-mono text-white">{mounted ? updateCountdown : "--:--:--"}</span>
-          </Card>
-        </div>
-      </section>
-      <section className="w-full max-w-4xl bg-[#181f2a] rounded-lg border border-gray-700 p-4 mb-6">
-        <div className="flex flex-row gap-2 mb-2">
-          {regionOptions.map((opt) => (
-            <button
-              key={opt.key}
-              className={`px-3 py-1 rounded text-white text-xs ${selectedRegion.key === opt.key ? 'bg-blue-600' : 'bg-[#232c3a]'}`}
-              onClick={() => setSelectedRegion(opt)}
-            >
-              {opt.label}
-            </button>
-          ))}
-        </div>
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-          {loadingNews ? (
-            <Card className="bg-[#232c3a] border border-gray-700 p-3 text-center text-gray-400">Loading news...</Card>
-          ) : newsError ? (
-            <Card className="bg-[#232c3a] border border-gray-700 p-3 text-center text-red-400">{newsError}</Card>
-          ) : news.length === 0 ? (
-            <Card className="bg-[#232c3a] border border-gray-700 p-3 text-center text-gray-400">No news found.</Card>
-          ) : (
-            news.slice(0, 3).map((item) => (
-              <Card key={item.id} className="bg-[#232c3a] border border-gray-700 p-3">
-                <div className="flex flex-row items-center gap-2 mb-1">
-                  {item.category === "Maintenance" ? (
-                    <AlertTriangle className="text-yellow-400 w-4 h-4" />
-                  ) : item.category === "Recruit" ? (
-                    <Info className="text-cyan-400 w-4 h-4" />
-                  ) : item.category === "Campaign" ? (
-                    <Calendar className="text-green-400 w-4 h-4" />
-                  ) : (
-                    <Info className="text-gray-400 w-4 h-4" />
-                  )}
-                  <span className="text-white font-semibold text-sm">{item.category}{item.isNew && <span className="text-green-400 ml-1">NEW</span>}</span>
+        </section>
+
+        {/* Main Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+          {/* Timers Section - Left Column */}
+          <section className="lg:col-span-2">
+            <Card className="bg-[#181f2a]/80 border border-gray-700/50 backdrop-blur-sm h-full">
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <span className="h-1 w-6 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"></span>
+                    TIMERS
+                  </h2>
+                  <div className="flex gap-2">
+                    {timerRegionOptions.map((opt) => (
+                      <button
+                        key={opt.key}
+                        className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
+                          timerRegion.key === opt.key 
+                            ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-500/25' 
+                            : 'bg-[#232c3a] text-gray-400 hover:text-white hover:bg-[#2a3444]'
+                        }`}
+                        onClick={() => setTimerRegion(opt)}
+                      >
+                        {opt.label}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-                <div className="text-gray-300 text-xs">{item.title}<br />{item.endDate && <span>Ends: {item.endDate}</span>}</div>
-              </Card>
-            ))
-          )}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-gradient-to-br from-[#232c3a] to-[#1a222d] rounded-xl p-5 border border-gray-700/30">
+                    <span className="text-gray-400 text-sm font-medium mb-1 block">Daily Reset</span>
+                    <span className="text-gray-500 text-xs mb-3 block">{mounted ? resetLocal : "--"}</span>
+                    <span className="text-4xl font-mono font-bold text-white tracking-wider">{mounted ? resetCountdown : "--:--:--"}</span>
+                  </div>
+                  <div className="bg-gradient-to-br from-[#232c3a] to-[#1a222d] rounded-xl p-5 border border-gray-700/30">
+                    <span className="text-gray-400 text-sm font-medium mb-1 block">Weekly Update</span>
+                    <span className="text-gray-500 text-xs mb-3 block">{mounted ? updateLocal : "--"}</span>
+                    <span className="text-4xl font-mono font-bold text-white tracking-wider">{mounted ? updateCountdown : "--:--:--"}</span>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </section>
+
+          {/* Latest Stream Section - Right Column */}
+          <section className="lg:col-span-1">
+            <Card className="bg-[#181f2a]/80 border border-gray-700/50 backdrop-blur-sm h-full">
+              <div className="p-6">
+                <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                  <Play className="w-5 h-5 text-red-500" />
+                  LATEST STREAM
+                </h2>
+                {loadingVideo ? (
+                  <div className="aspect-video bg-[#232c3a] rounded-xl animate-pulse flex items-center justify-center">
+                    <span className="text-gray-500">Loading...</span>
+                  </div>
+                ) : youtubeVideo ? (
+                  <div className="space-y-3">
+                    <div className="relative aspect-video rounded-xl overflow-hidden border border-gray-700/30">
+                      <iframe
+                        src={youtubeVideo.embedUrl}
+                        title={youtubeVideo.title}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="w-full h-full"
+                      />
+                    </div>
+                    <div className="flex items-start justify-between gap-2">
+                      <p className="text-sm text-gray-300 line-clamp-2 flex-1">{youtubeVideo.title}</p>
+                      <a 
+                        href={youtubeVideo.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-cyan-400 transition-colors flex-shrink-0"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            </Card>
+          </section>
         </div>
-      </section>
-      <section className="w-full max-w-4xl bg-[#181f2a] rounded-lg border border-gray-700 p-4 flex justify-center">
-        <iframe
-          width="360"
-          height="202"
-          src="https://www.youtube.com/embed/oqj9Ho6QS40"
-          title="Recent Livestream"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          className="rounded-lg border border-gray-700 w-full max-w-xs object-cover"
-        />
-      </section>
+
+        {/* News Section - Full Width */}
+        <section>
+          <Card className="bg-[#181f2a]/80 border border-gray-700/50 backdrop-blur-sm">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                  <span className="h-1 w-6 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"></span>
+                  LATEST NEWS
+                </h2>
+                <div className="flex gap-2">
+                  {regionOptions.map((opt) => (
+                    <button
+                      key={opt.key}
+                      className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
+                        selectedRegion.key === opt.key 
+                          ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-500/25' 
+                          : 'bg-[#232c3a] text-gray-400 hover:text-white hover:bg-[#2a3444]'
+                      }`}
+                      onClick={() => setSelectedRegion(opt)}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {loadingNews ? (
+                  Array.from({ length: 3 }).map((_, i) => (
+                    <div key={i} className="bg-[#232c3a] rounded-xl p-4 animate-pulse h-24" />
+                  ))
+                ) : newsError ? (
+                  <div className="col-span-full bg-red-900/20 border border-red-700/50 rounded-xl p-4 text-center text-red-400">
+                    {newsError}
+                  </div>
+                ) : news.length === 0 ? (
+                  <div className="col-span-full bg-[#232c3a] rounded-xl p-6 text-center text-gray-400">
+                    No news available for this region. Try selecting a different region.
+                  </div>
+                ) : (
+                  news.slice(0, 6).map((item) => (
+                    <Card key={item.id} className="bg-gradient-to-br from-[#232c3a] to-[#1a222d] border border-gray-700/30 hover:border-cyan-500/30 transition-all">
+                      <div className="p-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          {item.category === "Maintenance" ? (
+                            <AlertTriangle className="text-yellow-400 w-4 h-4" />
+                          ) : item.category === "Recruit" ? (
+                            <Info className="text-cyan-400 w-4 h-4" />
+                          ) : item.category === "Campaign" ? (
+                            <Calendar className="text-green-400 w-4 h-4" />
+                          ) : (
+                            <Info className="text-gray-400 w-4 h-4" />
+                          )}
+                          <span className="text-white font-semibold text-sm">{item.category}</span>
+                          {item.isNew && (
+                            <span className="px-2 py-0.5 bg-green-500/20 text-green-400 text-xs rounded-full font-medium">NEW</span>
+                          )}
+                        </div>
+                        <p className="text-gray-300 text-sm line-clamp-2 mb-2">{item.title}</p>
+                        {item.endDate && (
+                          <p className="text-gray-500 text-xs">Ends: {item.endDate}</p>
+                        )}
+                      </div>
+                    </Card>
+                  ))
+                )}
+              </div>
+            </div>
+          </Card>
+        </section>
+
+        {/* Footer */}
+        <footer className="mt-12 pt-6 border-t border-gray-700/30 text-center">
+          <p className="text-gray-500 text-sm">
+            SLIME.WIKI is a fan-made database. All rights reserved to WFS and Bandai Namco Entertainment.
+          </p>
+          <p className="text-gray-600 text-xs mt-2">
+            That Time I Got Reincarnated as a Slime is a trademark of the respective owners.
+          </p>
+        </footer>
+      </div>
     </main>
   )
 }
-//         let newHours = prev.hours
-//
-//         if (newSeconds < 0) {
-//           newSeconds = 59
-//           newMinutes -= 1
-//         }
-//         if (newMinutes < 0) {
-//           newMinutes = 59
-//           newHours -= 1
-//         }
-//         if (newHours < 0) {
-//           newHours = 23
-//         }
-//
-//         return { hours: newHours, minutes: newMinutes, seconds: newSeconds }
-//       })
-//
-//       setUpdateTime((prev) => {
-//         let newSeconds = prev.seconds - 1
-//         let newMinutes = prev.minutes
-//         let newHours = prev.hours
-//
-//         if (newSeconds < 0) {
-//           newSeconds = 59
-//           newMinutes -= 1
-//         }
-//         if (newMinutes < 0) {
-//           newMinutes = 59
-//           newHours -= 1
-//         }
-//         if (newHours < 0) {
-//           newHours = 23
-//         }
-//
-//         return { hours: newHours, minutes: newMinutes, seconds: newSeconds }
-//       })
-//     }, 1000)
-//
-//     return () => clearInterval(timer)
-//   }, [])
-//
-//   const filteredNews = selectedFilter === "all" ? newsItems : newsItems.filter((item) => item.type === selectedFilter)
-//
-//   const formatTime = (time: { hours: number; minutes: number; seconds: number }) => {
-//     return `${time.hours.toString().padStart(2, "0")}:${time.minutes.toString().padStart(2, "0")}:${time.seconds.toString().padStart(2, "0")}`
-//   }
-//
-//   return (
-//     <div className="min-h-screen bg-gray-900 text-white">
-//       {/* Header */}
-//       <header className="bg-gray-800 border-b border-gray-700">
-//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//           <div className="flex items-center justify-between h-16">
-//             <div className="flex items-center space-x-8">
-//               <div className="flex items-center space-x-2">
-//                 <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-//                   <Gamepad2 className="w-5 h-5" />
-//                 </div>
-//                 <span className="text-xl font-bold">GAME.WIKI</span>
-//               </div>
-//               <nav className="hidden md:flex space-x-6">
-//                 <a href="#" className="text-gray-300 hover:text-white transition-colors">
-//                   Characters
-//                 </a>
-//                 <a href="#" className="text-gray-300 hover:text-white transition-colors">
-//                   Forces
-//                 </a>
-//                 <a href="#" className="text-gray-300 hover:text-white transition-colors">
-//                   Events
-//                 </a>
-//               </nav>
-//             </div>
-//           </div>
-//         </div>
-//       </header>
-//
-//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-//         {/* About Section */}
-//         <Card className="bg-gray-800 border-gray-700 mb-8">
-//           <CardContent className="p-6">
-//             <h2 className="text-lg font-semibold mb-4 text-gray-300">ABOUT</h2>
-//             <p className="text-gray-400 mb-4">
-//               GAME.WIKI is a Database for GAME - Isekai Memories, the That Time I Got Reincarnated as a Slime mobile
-//               game developed by WFS and published by Bandai Namco Entertainment.
-//             </p>
-//             <div className="bg-red-600 text-white p-3 rounded">
-//               This website is only getting automatic updates until I get the slimeim.wiki domain back, if ever.
-//             </div>
-//           </CardContent>
-//         </Card>
-//
-//         {/* Timers Section */}
-//         <Card className="bg-gray-800 border-gray-700 mb-8">
-//           <CardContent className="p-6">
-//             <h2 className="text-lg font-semibold mb-4 text-gray-300">TIMERS</h2>
-//             <div className="flex space-x-2 mb-6">
-//               {["NA", "EU", "Asia"].map((region) => (
-//                 <Button
-//                   key={region}
-//                   variant={selectedRegion === region ? "default" : "outline"}
-//                   size="sm"
-//                   onClick={() => setSelectedRegion(region)}
-//                   className={selectedRegion === region ? "bg-gray-600" : "border-gray-600 text-gray-300"}
-//                 >
-//                   {region}
-//                 </Button>
-//               ))}
-//             </div>
-//             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-//               <div className="text-center">
-//                 <h3 className="text-gray-400 mb-2">Reset</h3>
-//                 <p className="text-xs text-gray-500 mb-2">Sun Jun 01 2025 1:00:00</p>
-//                 <div className="text-4xl font-mono font-bold">{formatTime(resetTime)}</div>
-//               </div>
-//               <div className="text-center">
-//                 <h3 className="text-gray-400 mb-2">Update</h3>
-//                 <p className="text-xs text-gray-500 mb-2">Sun Jun 01 2025 02:00:00</p>
-//                 <div className="text-4xl font-mono font-bold">{formatTime(updateTime)}</div>
-//               </div>
-//             </div>
-//           </CardContent>
-//         </Card>
-//
-//         {/* Latest Section */}
-//         <Card className="bg-gray-800 border-gray-700">
-//           <CardContent className="p-6">
-//             <h2 className="text-lg font-semibold mb-6 text-gray-300">LATEST</h2>
-//             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-//               {/* Filter Sidebar */}
-//               <div className="lg:col-span-1">
-//                 <div className="space-y-2">
-//                   {filterTypes.map((filter) => {
-//                     const Icon = filter.icon
-//                     return (
-//                       <button
-//                         key={filter.key}
-//                         onClick={() => setSelectedFilter(filter.key)}
-//                         className={`w-full flex items-center space-x-3 px-3 py-2 rounded text-left transition-colors ${
-//                           selectedFilter === filter.key
-//                             ? "bg-gray-700 text-white"
-//                             : "text-gray-400 hover:text-white hover:bg-gray-700"
-//                         }`}
-//                       >
-//                         {Icon && <Icon className="w-4 h-4" />}
-//                         <span>{filter.label}</span>
-//                       </button>
-//                     )
-//                   })}
-//                 </div>
-//               </div>
-//
-//               {/* News Items */}
-//               <div className="lg:col-span-3">
-//                 <div className="space-y-4">
-//                   {filteredNews.map((item) => {
-//                     const TypeIcon = getTypeIcon(item.type)
-//                     return (
-//                       <div key={item.id} className="bg-gray-700 rounded-lg p-4 hover:bg-gray-600 transition-colors">
-//                         <div className="flex items-start justify-between">
-//                           <div className="flex-1">
-//                             <div className="flex items-center space-x-2 mb-2">
-//                               {item.isNew && <Badge className="bg-yellow-600 text-black text-xs px-2 py-1">NEW</Badge>}
-//                               <div
-//                                 className={`w-6 h-6 rounded flex items-center justify-center ${getTypeColor(item.type)}`}
-//                               >
-//                                 <TypeIcon className="w-3 h-3" />
-//                               </div>
-//                               <span className="text-xs text-gray-400 capitalize">{item.type}</span>
-//                             </div>
-//                             <h3 className="text-white font-medium mb-2">{item.title}</h3>
-//                             {item.tags && (
-//                               <div className="flex flex-wrap gap-1 mb-2">
-//                                 {item.tags.map((tag, index) => (
-//                                   <Badge
-//                                     key={index}
-//                                     variant="outline"
-//                                     className="text-xs border-gray-600 text-gray-300"
-//                                   >
-//                                     {tag}
-//                                   </Badge>
-//                                 ))}
-//                               </div>
-//                             )}
-//                           </div>
-//                           <div className="text-xs text-gray-400 ml-4">{item.date}</div>
-//                         </div>
-//                       </div>
-//                     )
-//                   })}
-//                 </div>
-//               </div>
-//             </div>
-//           </CardContent>
-//         </Card>
-//
-//         {/* Recent Livestream Section */}
-//         <Card className="bg-gray-800 border-gray-700 mt-8">
-//           <CardContent className="p-6">
-//             <h2 className="text-lg font-semibold mb-4 text-gray-300">RECENT LIVESTREAM</h2>
-//             <div className="text-gray-400 text-center py-8">No recent livestream data available</div>
-//           </CardContent>
-//         </Card>
-//       </div>
-//     </div>
-//   )
-// }
