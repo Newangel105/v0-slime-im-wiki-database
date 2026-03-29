@@ -23850,6 +23850,17 @@
           "icon_path": "Image/Skill/072/09/3/IcSkill_072_09_3_L"
         },
         {
+          "slot": "active_skill_1",
+          "label": "JauneGothic_debuff_823",
+          "kind": "debuff",
+          "name": "Explosive Break",
+          "description_max_level": "Decreases all targets' all attribute resistance by <color=#2BE41D>-100%</color> (Turns: 3)\nIncreases all allies' weakness strike by <color=#2BE41D>150%</color> (Turns: 3)",
+          "icon_path": "Image/Skill/072/09/3/IcSkill_072_09_3_L",
+          "is_skill_change": true,
+          "replaces_label": "JauneGothic_debuff_23",
+          "replaces_slot": "active_skill_1"
+        },
+        {
           "slot": "active_skill_2",
           "label": "JauneGothic_buff_24",
           "kind": "buff",
@@ -24687,6 +24698,17 @@
           "icon_path": "Image/Skill/070/14/3/IcSkill_070_14_3_L"
         },
         {
+          "slot": "active_skill_1",
+          "label": "MaskedHeroHA2024_buff_823",
+          "kind": "buff",
+          "name": "Expand Fate",
+          "description_max_level": "Applies All-Target Attack state to own souls (Turns: 2)\nIncreases own souls' damage by <color=#2BE41D>40%</color> (Turns: 2)\nIncreases own ATK by <color=#2BE41D>40%</color> (Turns: 2)",
+          "icon_path": "Image/Skill/070/14/3/IcSkill_070_14_3_L",
+          "is_skill_change": true,
+          "replaces_label": "MaskedHeroHA2024_buff_23",
+          "replaces_slot": "active_skill_1"
+        },
+        {
           "slot": "active_skill_2",
           "label": "MaskedHeroHA2024_buff_24",
           "kind": "buff",
@@ -25130,6 +25152,17 @@
           "name": "Spirit Blade",
           "description_max_level": "Increases <color=#FFFF00>Commander</color> and <color=#FFFF00>Heart of a Hero</color> Force characters' P-ATK by <color=#2BE41D>100%</color> (Turns: 1)\nIncreases EX Soul of Combos damage by <color=#2BE41D>70%</color> (Turns: 1)",
           "icon_path": "Image/Skill/097/02/3/IcSkill_097_02_3_L"
+        },
+        {
+          "slot": "active_skill_1",
+          "label": "ShizuAnime3rd_buff_823",
+          "kind": "buff",
+          "name": "Spirit Blade",
+          "description_max_level": "Increases <color=#FFFF00>Commander</color>, <color=#FFFF00>Heart of a Hero</color>, and <color=#FFFF00>Stern of Spirit</color> Force characters' P-ATK by <color=#2BE41D>100%</color> (Turns: 1)\nIncreases EX Soul of Combos damage by <color=#2BE41D>100%</color> (Turns: 1)",
+          "icon_path": "Image/Skill/097/02/3/IcSkill_097_02_3_L",
+          "is_skill_change": true,
+          "replaces_label": "ShizuAnime3rd_buff_23",
+          "replaces_slot": "active_skill_1"
         },
         {
           "slot": "active_skill_2",
