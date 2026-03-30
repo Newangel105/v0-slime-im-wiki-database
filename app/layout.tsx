@@ -9,7 +9,8 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "SLIME.WIKI - Character Database",
   description: "Character database for SLIME - Isekai Memories",
-    generator: 'v0.dev'
+  generator: 'v0.dev',
+  viewport: 'width=device-width, initial-scale=1'
 }
 
 export default function RootLayout({
