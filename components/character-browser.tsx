@@ -22,7 +22,6 @@ import {
   getCharacterVisualTier,
   getCharacterRarityLabel,
   getDisplayElementLabel,
-  hasExSpecialSkill,
   isExUnboundCharacter,
   normalizeLabel,
   stripColorTags,
@@ -381,12 +380,12 @@ function getCharacterElementValue(character: WikiCharacter): string {
   const baseFromSpecial = specialEffectToBase[normalized]
   if (isAttackerCharacter(character) && baseFromSpecial) {
     const baseNormalized = normalizeLabel(baseFromSpecial)
-    if (baseElementKeys.has(baseNormalized) && hasExSpecialSkill(character)) {
+    if (baseElementKeys.has(baseNormalized) && isExUnboundCharacter(character)) {
       return toEnhancedElementValue(baseNormalized)
     }
     return baseFromSpecial
   }
-  if (isAttackerCharacter(character) && baseElementKeys.has(normalized) && hasExSpecialSkill(character)) {
+  if (isAttackerCharacter(character) && baseElementKeys.has(normalized) && isExUnboundCharacter(character)) {
     return toEnhancedElementValue(normalized)
   }
   return character.element
