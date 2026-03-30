@@ -184,7 +184,7 @@ function BadgeContent({ text }: { text: string }) {
 function TraitDescription({ text }: { text: string }) {
   const lines = text.split("\n")
   return (
-    <div className="space-y-1.5 text-sm leading-7 text-gray-300">
+    <div className="space-y-1.5 text-sm leading-7 text-gray-300 text-left">
       {lines.map((line, li) => {
         const segs = parseLine(line)
         return (
@@ -249,9 +249,47 @@ function TraitGroupCard({ group }: { group: TraitGroup }) {
           : "border-gray-600 bg-gray-700 shadow-none"
       }`}
     >
-      <CardContent className="flex gap-4 p-5">
-        <img src={toPublicAssetPath(trait.icon_path)} alt={trait.name} className="h-14 w-14 shrink-0 rounded-xl bg-gray-900 p-1.5 object-contain" />
-        <div className="min-w-0 flex-1 space-y-2">
+      <CardContent className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 p-5 items-start">
+        {/* Mobile header: icon + name inline */}
+        <div className="flex items-center gap-4 sm:hidden">
+          <img src={toPublicAssetPath(trait.icon_path)} alt={trait.name} className="h-14 w-14 shrink-0 rounded-xl bg-gray-900 p-1.5 object-contain" />
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2">
+              <h3 className="text-base font-bold text-white">{group.baseName}</h3>
+              {group.members.length === 1 && (
+                <span className="rounded bg-gray-700 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gray-400">
+                  {trait.unlock}
+                </span>
+              )}
+            </div>
+            {group.members.length > 1 && (
+              <div className="flex items-center gap-1 rounded-xl bg-gray-900/60 p-1 w-fit mt-2">
+                {group.members.map((m, i) => (
+                  <button
+                    key={m.label}
+                    onClick={() => setSelectedIdx(i)}
+                    className={`rounded-lg px-3 py-1 text-xs font-semibold transition-all ${
+                      i === selectedIdx
+                        ? "bg-blue-500/25 text-blue-300 shadow ring-1 ring-blue-500/40"
+                        : "text-gray-500 hover:text-blue-300"
+                    }`}
+                  >
+                    <span className="flex items-center gap-1.5">
+                      <span className={`h-1.5 w-1.5 rounded-full ${i === selectedIdx ? "bg-blue-400" : "bg-gray-600"}`} />
+                      {unlockShortLabel(m.unlock)}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Desktop image column */}
+        <img src={toPublicAssetPath(trait.icon_path)} alt={trait.name} className="hidden sm:block h-14 w-14 shrink-0 rounded-xl bg-gray-900 p-1.5 object-contain" />
+
+        {/* Desktop content column */}
+        <div className="hidden sm:block min-w-0 space-y-2">
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="text-base font-bold text-white">{group.baseName}</h3>
             {group.members.length === 1 && (
@@ -280,6 +318,13 @@ function TraitGroupCard({ group }: { group: TraitGroup }) {
               ))}
             </div>
           )}
+          <div className="mt-1 sm:mt-2">
+            <TraitDescription text={trait.description_max_level} />
+          </div>
+        </div>
+
+        {/* Mobile description full width */}
+        <div className="sm:hidden mt-1">
           <TraitDescription text={trait.description_max_level} />
         </div>
       </CardContent>

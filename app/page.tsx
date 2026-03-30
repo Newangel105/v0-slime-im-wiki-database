@@ -145,7 +145,7 @@ export default function HomePage() {
           <section className="lg:col-span-2">
             <Card className="bg-[#181f2a]/80 border border-gray-700/50 backdrop-blur-sm h-full">
               <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
                   <h2 className="text-xl font-bold text-white flex items-center gap-2">
                     <span className="h-1 w-6 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"></span>
                     TIMERS
@@ -155,8 +155,8 @@ export default function HomePage() {
                       <button
                         key={opt.key}
                         className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
-                          timerRegion.key === opt.key 
-                            ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-500/25' 
+                          timerRegion.key === opt.key
+                            ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-500/25'
                             : 'bg-[#232c3a] text-gray-400 hover:text-white hover:bg-[#2a3444]'
                         }`}
                         onClick={() => setTimerRegion(opt)}

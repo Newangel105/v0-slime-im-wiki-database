@@ -579,7 +579,7 @@ function BadgeContent({ text }: { text: string }) {
 function RichDescription({ text }: { text: string }) {
   const lines = text.split("\n")
   return (
-    <div className="space-y-1.5 text-sm leading-7 text-gray-300">
+    <div className="space-y-1.5 text-sm leading-7 text-gray-300 text-left">
       {lines.map((line, lineIndex) => {
         const segments = parseDescriptionLine(line)
         return (
@@ -748,23 +748,50 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
                 <div className="grid gap-4 lg:grid-cols-2">
                   {character.ex_abilities.map((ability) => (
                     <Card key={ability.name} className="rounded-2xl border-gray-600 bg-gray-700 shadow-none">
-                      <CardContent className="flex gap-4 p-5">
-                        {ability.name === "Individual Mercy" && (
-                          <img src="/skills/e1.png" alt={ability.name} className="h-14 w-14 shrink-0 rounded-xl bg-gray-900 p-1.5 object-contain" />
-                        )}
-                        <div className="min-w-0 space-y-3">
-                          <h3 className="text-base font-bold text-white">{ability.name}</h3>
-                          <RichDescription text={ability.description} />
-                          <ul className="space-y-2 text-sm text-gray-300">
-                            {ability.effects.map((effect) => (
-                              <li key={effect} className="rounded-xl bg-gray-900 px-4 py-3">
-                                <RichDescription text={stripColorTags(effect)} />
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </CardContent>
-                    </Card>
+                          <CardContent className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 p-5 items-start">
+                            {/* Mobile header: icon + title inline */}
+                            <div className="flex items-center gap-4 sm:hidden">
+                              {ability.name === "Individual Mercy" && (
+                                <img src="/skills/e1.png" alt={ability.name} className="h-14 w-14 shrink-0 rounded-xl bg-gray-900 p-1.5 object-contain" />
+                              )}
+                              <div className="min-w-0">
+                                <h3 className="text-base font-bold text-white">{ability.name}</h3>
+                              </div>
+                            </div>
+
+                            {/* Desktop image column */}
+                            {ability.name === "Individual Mercy" && (
+                              <img src="/skills/e1.png" alt={ability.name} className="hidden sm:block h-14 w-14 shrink-0 rounded-xl bg-gray-900 p-1.5 object-contain" />
+                            )}
+
+                            {/* Desktop content column */}
+                            <div className="hidden sm:block min-w-0 space-y-3">
+                              <h3 className="text-base font-bold text-white">{ability.name}</h3>
+                              <div className="mt-1 sm:mt-2">
+                                <RichDescription text={ability.description} />
+                              </div>
+                              <ul className="space-y-2 text-sm text-gray-300">
+                                {ability.effects.map((effect) => (
+                                  <li key={effect} className="rounded-xl bg-gray-900 px-4 py-3">
+                                    <RichDescription text={stripColorTags(effect)} />
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            {/* Mobile description: full width */}
+                            <div className="sm:hidden mt-1">
+                              <RichDescription text={ability.description} />
+                              <ul className="space-y-2 text-sm text-gray-300 mt-3">
+                                {ability.effects.map((effect) => (
+                                  <li key={effect} className="rounded-xl bg-gray-900 px-4 py-3">
+                                    <RichDescription text={stripColorTags(effect)} />
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                        </CardContent>
+                      </Card>
                   ))}
                 </div>
               </TabsContent>
