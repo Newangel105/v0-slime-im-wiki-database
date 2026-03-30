@@ -129,7 +129,7 @@ export default function ForcesPage() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto pl-6 pr-4 sm:pl-8 sm:pr-6 lg:px-8 py-8">
         {/* Page Title */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-300 uppercase tracking-wider">FORCES</h1>
@@ -161,15 +161,15 @@ export default function ForcesPage() {
                   {/* Force Header */}
                   <button
                     onClick={() => toggleForce(forceName)}
-                    className="w-full flex items-center justify-between p-4 hover:bg-gray-700 transition-colors"
+                    className="w-full flex items-center justify-between px-6 py-5 hover:bg-gray-700 transition-colors"
                   >
-                    <div className="flex items-center space-x-3">
+                      <div className="flex-1 min-w-0 flex items-center gap-3">
                       {forceIcon && (
-                        <img src={forceIcon} alt={forceName} className="w-8 h-8 object-contain" />
+                        <img src={forceIcon} alt={forceName} className="w-8 h-8 object-contain flex-shrink-0" />
                       )}
-                      <span className="text-white font-medium text-lg">{forceName}</span>
+                      <span className="text-white font-medium text-sm sm:text-base leading-tight text-left block max-w-full whitespace-normal break-words">{forceName}</span>
                     </div>
-                    <div className="flex items-center space-x-3">
+                    <div className="flex items-center space-x-3 mt-1">
                       <span className="text-gray-400 font-medium">{forceChars.length}</span>
                       <img src="/icons/name.png" alt="User Icon" className="w-3 h-5" />
                       {isExpanded ? (
@@ -182,8 +182,8 @@ export default function ForcesPage() {
 
                   {/* Characters Grid */}
                   {isExpanded && (
-                    <div className="px-4 pb-4">
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
+                    <div className="px-4 pt-4 pb-4">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-2">
                         {forceChars.map((character) => {
                           const visualTier = getCharacterVisualTier(character)
                           const frameMap = isProtectorChar(character) ? blessFrameMap : rarityFrameMap
@@ -193,8 +193,8 @@ export default function ForcesPage() {
                           const elementIcon = getElementIconForCard(character)
 
                           return (
-                            <Link key={character.master_pc_id} href={`/characters/${character.master_pc_id}`}>
-                              <div className="relative w-full h-32 overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white transition-all">
+                            <Link key={character.master_pc_id} href={`/characters/${character.master_pc_id}`} className="min-w-0">
+                              <div className="relative w-full pt-[100%] overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white transition-all">
                                 <img
                                   src={iconSrc}
                                   alt={character.name}
@@ -203,7 +203,7 @@ export default function ForcesPage() {
                                 <img
                                   src={frameSrc}
                                   alt=""
-                                  className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                                  className="absolute inset-0 w-full h-full object-contain pointer-events-none"
                                 />
                                 {/* Name (top-left) */}
                                 <div className="absolute top-1 left-1 bg-black bg-opacity-80 text-white text-[10px] px-1 py-0.5 rounded z-10">

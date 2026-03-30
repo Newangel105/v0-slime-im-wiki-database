@@ -1379,7 +1379,7 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
           </div>
         </section>
 
-        <section className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+        <section className="grid gap-5 min-w-0 sm:grid-cols-2 xl:grid-cols-3">
           {filteredCharacters.map((character) => {
             const visualTier = getCharacterVisualTier(character)
             const frameSrc = getCharacterFrame(character)
@@ -1404,16 +1404,16 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
               .slice(0, 5)
 
             return (
-              <Link key={character.master_pc_id} href={`/characters/${character.master_pc_id}`} className="block">
-                <div
-                  className="group h-full overflow-hidden rounded-2xl bg-gradient-to-b from-[#1d2d44] to-[#0f1924] shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-2xl"
-                  style={{ borderTop: `4px solid ${elementAccentColor}` }}
-                >
+              <Link key={character.master_pc_id} href={`/characters/${character.master_pc_id}`} className="block w-full min-w-0">
+                    <div
+                      className="w-full min-w-0 group h-full overflow-hidden rounded-2xl bg-gradient-to-b from-[#1d2d44] to-[#0f1924] shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-2xl"
+                      style={{ borderTop: `4px solid ${elementAccentColor}` }}
+                    >
                   <div>
                     {/* Portrait + info row */}
                     <div className="flex gap-4 p-4 pb-3">
                       {/* Portrait */}
-                      <div className="relative h-[148px] w-[148px] shrink-0">
+                      <div className="relative h-24 w-24 md:h-[148px] md:w-[148px] shrink-0">
                         <div className="absolute inset-[10px] overflow-hidden rounded-[18px] bg-black/40">
                           <img
                             src={iconSrc}
@@ -1425,7 +1425,7 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
                       </div>
 
                       {/* Info column */}
-                      <div className="flex min-h-[148px] min-w-0 flex-1 flex-col">
+                      <div className="flex min-w-0 flex-1 flex-col md:min-h-[148px]">
                         <div className="flex items-start justify-between gap-2">
                           <h2 className="line-clamp-2 text-[1rem] font-bold leading-snug text-white">{character.name}</h2>
                           <img src={starsSrc} alt={rarityLabel} className="mt-0.5 h-6 shrink-0 object-contain drop-shadow" />
@@ -1465,7 +1465,7 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
                     </div>
 
                     {/* Stats bar */}
-                    <div className="mx-4 grid grid-cols-4 divide-x divide-white/5 rounded-xl bg-white/10 py-2.5">
+                    <div className="px-4 grid grid-cols-4 divide-x divide-white/5 rounded-xl bg-white/10 py-2.5 w-full min-w-0">
                       <div className="px-2 text-center">
                         <p className="text-[9px] font-semibold uppercase tracking-wider text-white">HP</p>
                         <p className="mt-1 text-[1.1rem] font-bold leading-none text-emerald-300">{character.stats.hp}</p>

@@ -85,6 +85,22 @@ body {
 }
 
 @layer base {
+  html, body, #__next {
+    @apply bg-background text-foreground overflow-x-hidden;
+    min-height: 100%;
+    width: 100%;
+  }
+
+  /* Prevent large embedded content from overflowing the viewport */
+  img, iframe, video {
+    max-width: 100%;
+  }
+
+  /* Allow flex/grid children to shrink instead of forcing overflow */
+  .flex > *, .grid > * {
+    min-width: 0;
+  }
+
   * {
     @apply border-border;
   }

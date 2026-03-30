@@ -228,12 +228,12 @@ export default function HomePage() {
         <section>
           <Card className="bg-[#181f2a]/80 border border-gray-700/50 backdrop-blur-sm">
             <div className="p-6">
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
                 <h2 className="text-xl font-bold text-white flex items-center gap-2">
                   <span className="h-1 w-6 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"></span>
                   LATEST NEWS
                 </h2>
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-wrap">
                   {languageOptions.map((opt) => (
                     <button
                       key={opt.key}
@@ -259,7 +259,7 @@ export default function HomePage() {
                   <iframe
                     src={getNewsUrl()}
                     title="Game News"
-                    className="w-full h-[500px] border-0"
+                    className="w-full max-w-full h-[500px] border-0"
                     sandbox="allow-scripts allow-same-origin"
                   />
                 )}
