@@ -186,7 +186,11 @@ export function hasExSpecialSkill(character: WikiCharacter): boolean {
 }
 
 export function isExUnboundCharacter(character: WikiCharacter): boolean {
-  return /^(enhanced|specialeffectelementenhanced)/i.test(character.element)
+  return /Enhanced/i.test(character.element)
+}
+
+export function isExAttacker(character: WikiCharacter): boolean {
+  return /^(SpecialEffect)/i.test(character.element)
 }
 
 export function getCharacterVisualTier(character: WikiCharacter): number {
@@ -199,6 +203,10 @@ export function getCharacterVisualTier(character: WikiCharacter): number {
   }
 
   if (hasExSpecialSkill(character)) {
+    return 6
+  }
+
+  if (isExAttacker(character)) {
     return 6
   }
 
