@@ -10,6 +10,9 @@ import {
   toPublicAssetPath,
   getCharacterVisualTier,
   normalizeLabel,
+  stripColorTags,
+  getCharacterForceEntries,
+  isExUnboundCharacter,
 } from "@/lib/pc-wiki"
 
 function isProtectorChar(character: WikiCharacter): boolean {
@@ -79,6 +82,146 @@ function getElementIconForCard(character: WikiCharacter): string | undefined {
   return attackerElementIconMap[key]
 }
 
+// Defender IcElementBless icons for base element keys (used by character browser)
+const defenderBlessIconMap: Record<string, string> = {
+  air: "/Image/IcElementBless/IcElementBlessAir.png",
+  dark: "/Image/IcElementBless/IcElementBlessDark.png",
+  earth: "/Image/IcElementBless/IcElementBlessEarth.png",
+  fire: "/Image/IcElementBless/IcElementBlessFire.png",
+  holy: "/Image/IcElementBless/IcElementBlessHoly.png",
+  water: "/Image/IcElementBless/IcElementBlessWater.png",
+  wind: "/Image/IcElementBless/IcElementBlessWind.png",
+}
+
+// Generic element icon map (mirrors character-browser mapping)
+const elementIconMap: Record<string, string> = {
+  air: "/elements/space.png",
+  all: "/Image/IcElementBless/IcElementBlessAll.png",
+  dark: "/elements/dark.png",
+  earth: "/elements/earth.png",
+  enhancedair: "/Image/IcElementBless/IcElementBlessEnhancedAir.png",
+  enhanceddark: "/Image/IcElementBless/IcElementBlessEnhancedDark.png",
+  enhancedearth: "/Image/IcElementBless/IcElementBlessEnhancedEarth.png",
+  enhancedfire: "/Image/IcElementBless/IcElementBlessEnhancedFire.png",
+  enhancedholy: "/Image/IcElementBless/IcElementBlessEnhancedHoly.png",
+  enhancedwater: "/Image/IcElementBless/IcElementBlessEnhancedWater.png",
+  enhancedwind: "/Image/IcElementBless/IcElementBlessEnhancedWind.png",
+  fire: "/elements/fire.png",
+  holy: "/elements/light.png",
+  light: "/elements/icElementlight.png",
+  magic: "/Image/IcElementBless/IcElementBlessMagic.png",
+  physics: "/Image/IcElementBless/IcElementBlessPhysics.png",
+  special: "/Image/IcElementBless/IcElementBlessSpecial.png",
+  space: "/elements/icElementspace.png",
+  specialeffectelementair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.png",
+  specialeffectelementdark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementDark.png",
+  specialeffectelementearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEarth.png",
+  specialeffectelementenhancedair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedAir.png",
+  specialeffectelementenhanceddark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedDark.png",
+  specialeffectelementenhancedearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedEarth.png",
+  specialeffectelementenhancedfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedFire.png",
+  specialeffectelementenhancedholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedHoly.png",
+  specialeffectelementenhancedwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWater.png",
+  specialeffectelementenhancedwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWind.png",
+  specialeffectelementfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementFire.png",
+  specialeffectelementholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementHoly.png",
+  specialeffectelementnone: "/Image/IcElementBless/IcElementBlessSpecialEffectElementNone.png",
+  specialeffectelementwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWater.png",
+  specialeffectelementwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWind.png",
+  water: "/elements/water.png",
+  wind: "/elements/wind.png",
+}
+
+function getProtectorElementDisplayIcon(value: string | null | undefined): string | undefined {
+  const normalized = normalizeLabel(value)
+  if (normalized === "" || normalized === "none") return undefined
+  // base element keys use IcElementBless icons, others fallback to generic elementIconMap
+  return defenderBlessIconMap[normalized] ?? elementIconMap[normalized]
+}
+
+const attackTypeIconMap: Record<string, string> = {
+  magic: "/type_dmg/icAttackTypeMagic.png",
+  physical: "/type_dmg/icAttackTypePhysics.png",
+}
+
+function isAttackerChar(character: WikiCharacter): boolean {
+  if (character.character_role === "Attacker") return true
+  return character.skills.some((s) => s.slot === "special_skill" && s.kind === "special")
+}
+
+// Helpers copied/adapted from the character browser to derive protector element values
+const baseElementKeys = new Set(["air", "dark", "earth", "fire", "holy", "water", "wind"])
+const hiddenElementKeys = new Set(["none", "special", "specialeffectelementnone"])
+
+const leaderSkillDamageToAttributePattern = /to\s+(?:fire|water|earth|space|wind|dark|light)\s+attribute(?:\s+and\s+(?:fire|water|earth|space|wind|dark|light)\s+attribute)*\s+enemies/i
+
+const damageToAttributeElementMap: Record<string, string> = {
+  fire: "Fire", water: "Water", earth: "Earth", space: "Air",
+  wind: "Wind", dark: "Dark", light: "Holy",
+}
+
+const leaderSkillElementPatterns: [RegExp, string][] = [
+  [/increases?\s+fire\s+atk/i, "Fire"],
+  [/increases?\s+water\s+atk/i, "Water"],
+  [/increases?\s+earth\s+atk/i, "Earth"],
+  [/increases?\s+space\s+atk/i, "Air"],
+  [/increases?\s+wind\s+atk/i, "Wind"],
+  [/increases?\s+dark\s+atk/i, "Dark"],
+  [/increases?\s+light\s+atk/i, "Holy"],
+  [/increases?\s+p-atk/i, "Physics"],
+  [/physical characters'/i, "Physics"],
+  [/increases?\s+m-atk/i, "Magic"],
+  [/magic characters'/i, "Magic"],
+  [/all allies' atk/i, "All"],
+]
+
+function getDefenderElementValues(character: WikiCharacter): string[] {
+  if (!isProtectorChar(character)) return [normalizeLabel(character.element)]
+
+  const normalized = normalizeLabel(character.element)
+  const leaderSkill = character.skills.find((s) => s.slot === "leader_skill")
+  const desc = leaderSkill ? stripColorTags(leaderSkill.description_max_level ?? "") : ""
+
+  const values: string[] = []
+
+  if (leaderSkillDamageToAttributePattern.test(desc)) {
+    const dmgTargets = [...desc.matchAll(/(?:to|and)\s+(fire|water|earth|space|wind|dark|light)\s+attribute/gi)]
+      .map((m) => normalizeLabel(damageToAttributeElementMap[m[1].toLowerCase()]))
+
+    const isEnhancedSpecial = normalized.startsWith("specialeffectelementenhanced")
+    const isSpecial = normalized.startsWith("specialeffectelement")
+
+    for (const baseKey of dmgTargets) {
+      const key = isEnhancedSpecial
+        ? `specialeffectelementenhanced${baseKey}`
+        : isSpecial
+          ? `specialeffectelement${baseKey}`
+          : baseKey
+      if (!values.includes(key)) values.push(key)
+    }
+  } else {
+    for (const [pattern, value] of leaderSkillElementPatterns) {
+      const key = normalizeLabel(value)
+      if (pattern.test(desc) && baseElementKeys.has(key) && !values.includes(key)) {
+        values.push(key)
+      }
+    }
+  }
+
+  for (const [pattern, value] of leaderSkillElementPatterns) {
+    const key = normalizeLabel(value)
+    if (pattern.test(desc) && !baseElementKeys.has(key) && !values.includes(key)) {
+      values.push(key)
+    }
+  }
+
+  if (values.length === 0) {
+    values.push(normalized)
+  }
+
+  return values
+}
+
 const allCharacters = getAllWikiCharacters()
 
 export default function ForcesPage() {
@@ -88,8 +231,9 @@ export default function ForcesPage() {
   const forceIconLookup = useMemo(() => {
     const map = new Map<string, string>()
     for (const char of allCharacters) {
-      for (const force of char.forces) {
-        if (!map.has(force.name)) map.set(force.name, toPublicAssetPath(force.icon_path))
+      const entries = getCharacterForceEntries(char)
+      for (const entry of entries) {
+        if (!map.has(entry.name) && entry.icon) map.set(entry.name, entry.icon)
       }
     }
     return map
@@ -98,9 +242,10 @@ export default function ForcesPage() {
   const forceGroups = useMemo(() => {
     const groups: Record<string, WikiCharacter[]> = {}
     for (const character of allCharacters) {
-      for (const force of character.forces) {
-        if (!groups[force.name]) groups[force.name] = []
-        groups[force.name].push(character)
+      const entries = getCharacterForceEntries(character)
+      for (const entry of entries) {
+        if (!groups[entry.name]) groups[entry.name] = []
+        groups[entry.name].push(character)
       }
     }
 
@@ -190,7 +335,152 @@ export default function ForcesPage() {
                           const frameSrc = frameMap[visualTier] ?? frameMap[5]
                           const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
                           const iconSrc = toPublicAssetPath(character.images.icon)
-                          const elementIcon = getElementIconForCard(character)
+
+                          // Determine first/second icons per user rules.
+                          // Attackers: [element, attack-type]
+                          // Protectors: priority -> Force, Element, Physics/Magic/All
+                          const isProtector = isProtectorChar(character)
+                          const isAttacker = isAttackerChar(character)
+                          let firstIcon: string | undefined
+                          let secondIcon: string | undefined
+
+                          const protTypeMap: Record<string, string> = {
+                            physics: "/type_dmg/prot_phys.png",
+                            magic: "/type_dmg/prot_magic.png",
+                          }
+
+                          function toEnhancedElementValue(value: string): string {
+                            return `Enhanced${value.charAt(0).toUpperCase()}${value.slice(1)}`
+                          }
+
+                          const specialEffectToBase: Record<string, string> = {
+                            all: "Earth",
+                            special: "Air",
+                            specialeffectelementearth: "Earth",
+                            specialeffectelementair: "Air",
+                            specialeffectelementwind: "Wind",
+                            specialeffectelementwater: "Water",
+                            specialeffectelementfire: "Fire",
+                            specialeffectelementholy: "Holy",
+                            specialeffectelementdark: "Dark",
+                            specialeffectelementenhancedearth: "EnhancedEarth",
+                            specialeffectelementenhancedair: "EnhancedAir",
+                            specialeffectelementenhancedwind: "EnhancedWind",
+                            specialeffectelementenhancedwater: "EnhancedWater",
+                            specialeffectelementenhancedfire: "EnhancedFire",
+                            specialeffectelementenhancedholy: "EnhancedHoly",
+                            specialeffectelementenhanceddark: "EnhancedDark",
+                          }
+
+                          function getCharacterElementValue(character: WikiCharacter): string {
+                            if (isProtectorChar(character)) {
+                              return getDefenderElementValues(character)[0]
+                            }
+                            const normalized = normalizeLabel(character.element)
+                            const baseFromSpecial = specialEffectToBase[normalized]
+                            if (isAttackerChar(character) && baseFromSpecial) {
+                              const baseNormalized = normalizeLabel(baseFromSpecial)
+                              if (baseElementKeys.has(baseNormalized) && isExUnboundCharacter(character)) {
+                                return toEnhancedElementValue(baseNormalized)
+                              }
+                              return baseFromSpecial
+                            }
+                            if (isAttackerChar(character) && baseElementKeys.has(normalized) && isExUnboundCharacter(character)) {
+                              return toEnhancedElementValue(normalized)
+                            }
+                            return character.element
+                          }
+
+                          function getAttackerElementIcon(value: string | null | undefined): string | undefined {
+                            const normalized = normalizeLabel(value)
+                            if (hiddenElementKeys.has(normalized)) return undefined
+                            return attackerElementIconMap[normalized]
+                          }
+
+                          function isElementLike(val: string): boolean {
+                            const n = normalizeLabel(val)
+                            if (baseElementKeys.has(n)) return true
+                            if (n.startsWith("specialeffectelement")) return true
+                            if (n.startsWith("specialeffectelementenhanced")) return true
+                            if (n === "all") return true
+                            return false
+                          }
+
+                          if (isAttacker) {
+                            const elemVal = getCharacterElementValue(character)
+                            firstIcon = getAttackerElementIcon(elemVal) ?? getElementIconForCard(character)
+                            secondIcon = attackTypeIconMap[normalizeLabel(character.attack_type)]
+                          } else if (isProtector) {
+                            const forceEntries = getCharacterForceEntries(character)
+                            const defenderValues = getDefenderElementValues(character)
+
+                            // If there are forces, first icon = first force (if it has icon)
+                            if (forceEntries.length > 0) {
+                              if (forceEntries[0].icon) {
+                                firstIcon = forceEntries[0].icon
+                              } else if (character.forces.length > 0) {
+                                firstIcon = toPublicAssetPath(character.forces[0].icon_path)
+                              }
+
+                              // second icon: prefer last element-like value, otherwise last qualifier
+                              const elementsList = defenderValues.filter(isElementLike)
+                              if (elementsList.length > 0) {
+                                const sel = elementsList[elementsList.length - 1]
+                                secondIcon = getProtectorElementDisplayIcon(sel)
+                              } else {
+                                // pick last qualifier (physics/magic/all)
+                                const quals = defenderValues.filter((v) => {
+                                  const n = normalizeLabel(v)
+                                  return n === "physics" || n === "magic" || n === "all"
+                                })
+                                if (quals.length > 0) {
+                                  const lastQ = normalizeLabel(quals[quals.length - 1])
+                                  if (lastQ === "physics" || lastQ === "magic") {
+                                    secondIcon = protTypeMap[lastQ]
+                                  } else {
+                                    secondIcon = elementIconMap[lastQ]
+                                  }
+                                }
+                              }
+                            } else {
+                              // No forces: show up to two element/qualifier icons
+                              const elementsList = defenderValues.filter(isElementLike)
+                              if (elementsList.length >= 2) {
+                                firstIcon = getProtectorElementDisplayIcon(elementsList[0])
+                                secondIcon = getProtectorElementDisplayIcon(elementsList[1])
+                              } else if (elementsList.length === 1) {
+                                firstIcon = getProtectorElementDisplayIcon(elementsList[0])
+                                const quals = defenderValues.filter((v) => {
+                                  const n = normalizeLabel(v)
+                                  return n === "physics" || n === "magic" || n === "all"
+                                })
+                                if (quals.length > 0) {
+                                  const q = normalizeLabel(quals[0])
+                                  if (q === "physics" || q === "magic") {
+                                    secondIcon = protTypeMap[q]
+                                  } else {
+                                    secondIcon = elementIconMap[q]
+                                  }
+                                }
+                              } else {
+                                // No elements or forces: show single qualifier if available
+                                const quals = defenderValues.filter((v) => {
+                                  const n = normalizeLabel(v)
+                                  return n === "physics" || n === "magic" || n === "all"
+                                })
+                                if (quals.length > 0) {
+                                  const q = normalizeLabel(quals[0])
+                                  if (q === "physics" || q === "magic") {
+                                    firstIcon = protTypeMap[q]
+                                  } else {
+                                    firstIcon = elementIconMap[q]
+                                  }
+                                }
+                              }
+                            }
+                          } else {
+                            firstIcon = getElementIconForCard(character)
+                          }
 
                           return (
                             <Link key={character.master_pc_id} href={`/characters/${character.master_pc_id}`} className="min-w-0">
@@ -215,12 +505,15 @@ export default function ForcesPage() {
                                   alt=""
                                   className="absolute bottom-1 left-1 h-6 object-contain z-10"
                                 />
-                                {/* Element Icon (top-right) */}
-                                {elementIcon && (
-                                  <div className="absolute top-1 right-1 z-20">
-                                    <img src={elementIcon} alt={character.element} className="w-6 h-6 object-contain" />
-                                  </div>
-                                )}
+                                {/* Top-right icons (element/force / type) */}
+                                <div className="absolute top-1 right-1 z-20 flex flex-col items-end gap-1">
+                                  {firstIcon && (
+                                    <img src={firstIcon} alt="" className="w-6 h-6 object-contain" />
+                                  )}
+                                  {secondIcon && (
+                                    <img src={secondIcon} alt="" className="w-5 h-5 object-contain" />
+                                  )}
+                                </div>
                               </div>
                             </Link>
                           )
