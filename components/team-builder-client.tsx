@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useMemo, useState } from "react"
 import type { WikiCharacter } from "@/lib/pc-wiki"
@@ -24,29 +24,20 @@ const HEARTPRINT_IDS = [
 ]
 
 // ---- FRAME PATH HELPERS ----
-// Frame notes:
-// L3-L5: 248×612, border=17px each side,    interior=214×578
-// L6-7:  264×628, border=28px L/R 35px T/B, interior=208×558
-//
-// Strategy: position the frame so its opaque border lands exactly at the card edge.
-// Scale the frame so interior = card (100%×100%), then offset so interior starts at (0,0).
-//   scaleW = frameW / intW,  scaleH = frameH / intH
-//   left   = -(borderX / intW) * 100%,  top = -(borderY / intH) * 100%
 function getMainFramePaths(tier: number, role: "member" | "bless") {
   const t = Math.min(Math.max(tier, 3), 7)
   const pfx = role === "bless" ? "Bless" : "Member"
   const baseTier = t === 7 ? 6 : t
   const isHigh = t >= 6
-  // [frameW, frameH, borderX, borderY]
   const [fw, fh, bx, by] = isHigh ? [264, 628, 28, 35] : [248, 612, 17, 17]
   const intW = fw - 2 * bx
   const intH = fh - 2 * by
   const frameStyle: React.CSSProperties = {
     position: "absolute",
-    width:  `${(fw / intW) * 100}%`,
+    width: `${(fw / intW) * 100}%`,
     height: `${(fh / intH) * 100}%`,
-    left:   `${-(bx / intW) * 100}%`,
-    top:    `${-(by / intH) * 100}%`,
+    left: `${-(bx / intW) * 100}%`,
+    top: `${-(by / intH) * 100}%`,
     objectFit: "fill",
   }
   return {
@@ -70,39 +61,39 @@ function elementMatches(charEl: string, filterKey: string): boolean {
 
 // ---- FILTER OPTION DEFINITIONS ----
 const NORMAL_ELEMENTS = [
-  { key: "Air",   label: "Air",   icon: "/elements/space.png"  },
-  { key: "Holy",  label: "Holy",  icon: "/elements/light.png"  },
-  { key: "Dark",  label: "Dark",  icon: "/elements/dark.png"   },
-  { key: "Fire",  label: "Fire",  icon: "/elements/fire.png"   },
-  { key: "Wind",  label: "Wind",  icon: "/elements/wind.png"   },
-  { key: "Water", label: "Water", icon: "/elements/water.png"  },
-  { key: "Earth", label: "Earth", icon: "/elements/earth.png"  },
+  { key: "Air", label: "Air", icon: "/elements/space.png" },
+  { key: "Holy", label: "Holy", icon: "/elements/light.png" },
+  { key: "Dark", label: "Dark", icon: "/elements/dark.png" },
+  { key: "Fire", label: "Fire", icon: "/elements/fire.png" },
+  { key: "Wind", label: "Wind", icon: "/elements/wind.png" },
+  { key: "Water", label: "Water", icon: "/elements/water.png" },
+  { key: "Earth", label: "Earth", icon: "/elements/earth.png" },
 ]
 const ENHANCED_ELEMENTS = [
-  { key: "EnhancedAir",   label: "Air+",   icon: "/elements/Enhancedspace.png" },
-  { key: "EnhancedHoly",  label: "Holy+",  icon: "/elements/Enhancedlight.png" },
-  { key: "EnhancedDark",  label: "Dark+",  icon: "/elements/Enhanceddark.png"  },
-  { key: "EnhancedFire",  label: "Fire+",  icon: "/elements/Enhancedfire.png"  },
-  { key: "EnhancedWind",  label: "Wind+",  icon: "/elements/Enhancedwind.png"  },
+  { key: "EnhancedAir", label: "Air+", icon: "/elements/Enhancedspace.png" },
+  { key: "EnhancedHoly", label: "Holy+", icon: "/elements/Enhancedlight.png" },
+  { key: "EnhancedDark", label: "Dark+", icon: "/elements/Enhanceddark.png" },
+  { key: "EnhancedFire", label: "Fire+", icon: "/elements/Enhancedfire.png" },
+  { key: "EnhancedWind", label: "Wind+", icon: "/elements/Enhancedwind.png" },
   { key: "EnhancedWater", label: "Water+", icon: "/elements/Enhancedwater.png" },
   { key: "EnhancedEarth", label: "Earth+", icon: "/elements/Enhancedearth.png" },
 ]
 const ATTACK_TYPES = [
   { key: "Physical", label: "Physical", icon: "/type_dmg/icAttackTypePhysics.png" },
-  { key: "Magic",    label: "Magic",    icon: "/type_dmg/icAttackTypeMagic.png"   },
+  { key: "Magic", label: "Magic", icon: "/type_dmg/icAttackTypeMagic.png" },
 ]
 const TACTICS_TYPES = [
-  { key: "Speed",   label: "Speed",   icon: "/Image/Tactics/speed.png"   },
+  { key: "Speed", label: "Speed", icon: "/Image/Tactics/speed.png" },
   { key: "Defense", label: "Defense", icon: "/Image/Tactics/defense.png" },
-  { key: "Charge",  label: "Charge",  icon: "/Image/Tactics/charge.png"  },
-  { key: "Normal",  label: "Neutral", icon: "/Image/Tactics/normal.png"  },
+  { key: "Charge", label: "Charge", icon: "/Image/Tactics/charge.png" },
+  { key: "Normal", label: "Neutral", icon: "/Image/Tactics/normal.png" },
 ]
 const STAR_ASSETS: Record<number, string> = {
   3: "/stars/starCharaL3A.png", 4: "/stars/starCharaL4A.png",
   5: "/stars/starCharaL5A.png", 6: "/stars/starCharaL6A.png", 7: "/stars/starCharaL7A.png",
 }
 
-// Card overlay icons — attacker element map (lowercase keys)
+// Card overlay icons
 const ATTACKER_ELEMENT_ICONS: Record<string, string> = {
   air: "/elements/icElementspace.png", dark: "/elements/icElementDark.png",
   earth: "/elements/icElementEarth.png", fire: "/elements/icElementFire.png",
@@ -118,7 +109,7 @@ const ATK_TYPE_ICONS: Record<string, string> = {
   magic: "/type_dmg/icAttackTypeMagic.png",
 }
 
-// ---- Protector detection (mirrors forces page) ----
+// ---- Protector detection ----
 function isProtectorChar(c: WikiCharacter): boolean {
   return c.character_role === "Supporter" && !c.skills.some((s) => s.slot === "special_skill" && s.kind === "special")
 }
@@ -126,7 +117,7 @@ function isAttackerChar(c: WikiCharacter): boolean {
   return c.character_role === "Attacker" || c.skills.some((s) => s.slot === "special_skill" && s.kind === "special")
 }
 
-// ---- Full element icon map (covers all Bless types) — mirrors forces page ----
+// ---- Full element icon map ----
 const FULL_ELEMENT_ICON_MAP: Record<string, string> = {
   air: "/Image/IcElementBless/IcElementBlessAir.png",
   all: "/Image/IcElementBless/IcElementBlessAll.png",
@@ -163,15 +154,15 @@ const FULL_ELEMENT_ICON_MAP: Record<string, string> = {
   specialeffectelementnone: "/Image/IcElementBless/IcElementBlessSpecialEffectElementNone.png",
 }
 
-// Derive the actual element value(s) for a protector from their leader skill (mirrors forces page)
-const _baseElementKeys = new Set(["air","dark","earth","fire","holy","water","wind"])
+// Derive element values for protector
+const _baseElementKeys = new Set(["air", "dark", "earth", "fire", "holy", "water", "wind"])
 const _leaderSkillDmgPattern = /to\s+(?:fire|water|earth|space|wind|dark|light)\s+attribute(?:\s+and\s+(?:fire|water|earth|space|wind|dark|light)\s+attribute)*\s+enemies/i
-const _dmgAttrMap: Record<string,string> = { fire:"fire",water:"water",earth:"earth",space:"air",wind:"wind",dark:"dark",light:"holy" }
+const _dmgAttrMap: Record<string, string> = { fire: "fire", water: "water", earth: "earth", space: "air", wind: "wind", dark: "dark", light: "holy" }
 const _elemPatterns: [RegExp, string][] = [
-  [/increases?\s+fire\s+atk/i,"fire"],[/increases?\s+water\s+atk/i,"water"],[/increases?\s+earth\s+atk/i,"earth"],
-  [/increases?\s+space\s+atk/i,"air"],[/increases?\s+wind\s+atk/i,"wind"],[/increases?\s+dark\s+atk/i,"dark"],
-  [/increases?\s+light\s+atk/i,"holy"],[/increases?\s+p-atk/i,"physics"],[/physical characters'/i,"physics"],
-  [/increases?\s+m-atk/i,"magic"],[/magic characters'/i,"magic"],[/all allies' atk/i,"all"],
+  [/increases?\s+fire\s+atk/i, "fire"], [/increases?\s+water\s+atk/i, "water"], [/increases?\s+earth\s+atk/i, "earth"],
+  [/increases?\s+space\s+atk/i, "air"], [/increases?\s+wind\s+atk/i, "wind"], [/increases?\s+dark\s+atk/i, "dark"],
+  [/increases?\s+light\s+atk/i, "holy"], [/increases?\s+p-atk/i, "physics"], [/physical characters'/i, "physics"],
+  [/increases?\s+m-atk/i, "magic"], [/magic characters'/i, "magic"], [/all allies' atk/i, "all"],
 ]
 function getProtectorElementKeys(c: WikiCharacter): string[] {
   const normalized = normalizeLabel(c.element)
@@ -196,17 +187,12 @@ function getProtectorElementKeys(c: WikiCharacter): string[] {
   return values
 }
 
-// Returns up to 3 icons for the card overlay.
-// Protectors: [force1, force2?, element(s)] derived from leader skill, max 3.
-// Attackers:  [element icon, attack-type icon, null]
-function getCardIcons(char: WikiCharacter): [string|null, string|null, string|null] {
+function getCardIcons(char: WikiCharacter): [string | null, string | null, string | null] {
   if (isProtectorChar(char)) {
     const forceIcons = getCharacterForceEntries(char)
       .map(e => e.icon ?? null).filter(Boolean) as string[]
     const elementIcons = getProtectorElementKeys(char)
       .map(k => FULL_ELEMENT_ICON_MAP[k] ?? null).filter(Boolean) as string[]
-
-    // Guarantee at least 1 element icon when available
     const maxForces = elementIcons.length > 0 ? Math.min(forceIcons.length, 2) : Math.min(forceIcons.length, 3)
     const icons = [...forceIcons.slice(0, maxForces), ...elementIcons].slice(0, 3)
     return [icons[0] ?? null, icons[1] ?? null, icons[2] ?? null]
@@ -216,57 +202,49 @@ function getCardIcons(char: WikiCharacter): [string|null, string|null, string|nu
   return [ATTACKER_ELEMENT_ICONS[elKey] ?? null, ATK_TYPE_ICONS[atkKey] ?? null, null]
 }
 
-// Mini slot variant: max 2 icons for protectors, priority cascade:
-// 1. force + element  → [force, element]
-// 2. no force, 2 elements → [el1, el2]
-// 3. no force, 1 element + qualifier → [element, qualifier]
-// 4. no force, no element, qualifier → [qualifier]
-// "element" = non-physics/magic/all keys; "qualifier" = physics/magic/all keys
-// element icons use char.element directly (the base element field).
-function getMiniCardIcons(char: WikiCharacter): [string|null, string|null] {
+function getMiniCardIcons(char: WikiCharacter): [string | null, string | null] {
   if (isProtectorChar(char)) {
     const forceIcon = getCharacterForceEntries(char).map(e => e.icon ?? null).find(Boolean) ?? null
-
     const allKeys = getProtectorElementKeys(char)
     const QUALIFIERS = new Set(["physics", "magic", "all"])
-    const elKeys  = allKeys.filter(k => !QUALIFIERS.has(k))
+    const elKeys = allKeys.filter(k => !QUALIFIERS.has(k))
     const qualKey = allKeys.find(k => QUALIFIERS.has(k)) ?? null
-
-    const elIcon1  = elKeys[0]  ? (FULL_ELEMENT_ICON_MAP[elKeys[0]]  ?? null) : null
-    const elIcon2  = elKeys[1]  ? (FULL_ELEMENT_ICON_MAP[elKeys[1]]  ?? null) : null
-    const qualIcon = qualKey    ? (FULL_ELEMENT_ICON_MAP[qualKey]     ?? null) : null
-
+    const elIcon1 = elKeys[0] ? (FULL_ELEMENT_ICON_MAP[elKeys[0]] ?? null) : null
+    const elIcon2 = elKeys[1] ? (FULL_ELEMENT_ICON_MAP[elKeys[1]] ?? null) : null
+    const qualIcon = qualKey ? (FULL_ELEMENT_ICON_MAP[qualKey] ?? null) : null
     if (forceIcon) {
       const elementIcon = FULL_ELEMENT_ICON_MAP[normalizeLabel(char.element)] ?? null
-      return [forceIcon, elementIcon]          // 1. force + char.element directly
+      return [forceIcon, elementIcon]
     }
-    if (elIcon1 && elIcon2)     return [elIcon1,   elIcon2]          // 2. two elements
-    if (elIcon1 && qualIcon)    return [elIcon1,   qualIcon]         // 3. element + qualifier
-    if (elIcon1)                return [elIcon1,   null]             // just one element
-    return [qualIcon, null]                                          // 4. only qualifier
+    if (elIcon1 && elIcon2) return [elIcon1, elIcon2]
+    if (elIcon1 && qualIcon) return [elIcon1, qualIcon]
+    if (elIcon1) return [elIcon1, null]
+    return [qualIcon, null]
   }
-  const elKey  = normalizeLabel(char.element)
+  const elKey = normalizeLabel(char.element)
   const atkKey = normalizeLabel(char.attack_type)
   return [ATTACKER_ELEMENT_ICONS[elKey] ?? null, ATK_TYPE_ICONS[atkKey] ?? null]
 }
 
 // =================================
 export default function TeamBuilderClient({ characters }: { characters: WikiCharacter[] }) {
-  const [slots, setSlots]           = useState<(number | null)[]>(Array(6).fill(null))
-  const [miniSlots, setMiniSlots]   = useState<(number | null)[]>(Array(6).fill(null))
+  // 4 main slots + 4 sub-slots + 2 side slots (side-by-side)
+  const [mainSlots, setMainSlots] = useState<(number | null)[]>(Array(4).fill(null))
+  const [subSlots, setSubSlots] = useState<(number | null)[]>(Array(4).fill(null))
+  const [sideSlots, setSideSlots] = useState<(number | null)[]>(Array(2).fill(null))
   const [heartPrintId, setHeartPrintId] = useState<number | null>(null)
 
   const [pickerOpenFor, setPickerOpenFor] = useState<number | null>(null)
-  const [pickerMode, setPickerMode]       = useState<"main" | "mini" | "heartprint">("main")
-  const [showFilters, setShowFilters]     = useState(false)
+  const [pickerMode, setPickerMode] = useState<"main" | "sub" | "side" | "heartprint">("main")
+  const [showFilters, setShowFilters] = useState(false)
 
-  const [query,          setQuery]          = useState("")
-  const [filterEl,       setFilterEl]       = useState<string | null>(null)
-  const [filterAttack,   setFilterAttack]   = useState<string | null>(null)
-  const [filterTactics,  setFilterTactics]  = useState<string | null>(null)
+  const [query, setQuery] = useState("")
+  const [filterEl, setFilterEl] = useState<string | null>(null)
+  const [filterAttack, setFilterAttack] = useState<string | null>(null)
+  const [filterTactics, setFilterTactics] = useState<string | null>(null)
   const [filterCharType, setFilterCharType] = useState<"normal" | "ex" | null>(null)
-  const [filterRarity,   setFilterRarity]   = useState<number | null>(null)
-  const [filterForces,   setFilterForces]   = useState<string[]>([])
+  const [filterRarity, setFilterRarity] = useState<number | null>(null)
+  const [filterForces, setFilterForces] = useState<string[]>([])
 
   const forceOptions = useMemo(() => {
     const map = getForceIconLookup()
@@ -284,7 +262,9 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
 
   const results = useMemo(() => {
     if (pickerMode === "heartprint") return []
-    const roleFilter = pickerOpenFor === 0 ? "supporter" : "attacker"
+    // slot 0 = protector, slots 1-4 = attackers for main
+    // side slots are always attackers
+    const roleFilter = (pickerMode === "main" && pickerOpenFor === 0) ? "supporter" : "attacker"
     const q = query.trim().toLowerCase()
     return characters.filter((c) => {
       if (q && !c.name.toLowerCase().includes(q)) return false
@@ -293,14 +273,14 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
       if (filterAttack && c.attack_type?.toLowerCase() !== filterAttack.toLowerCase()) return false
       if (filterTactics && c.tactics_type?.toLowerCase() !== filterTactics.toLowerCase()) return false
       if (filterCharType === "normal" && isExChar(c)) return false
-      if (filterCharType === "ex"     && !isExChar(c)) return false
+      if (filterCharType === "ex" && !isExChar(c)) return false
       if (filterRarity != null && c.rarity !== filterRarity) return false
       if (filterForces.length && !filterForces.some((f) => c.forces.map((x) => x.name).includes(f))) return false
       return true
     })
   }, [characters, pickerMode, pickerOpenFor, query, filterEl, filterAttack, filterTactics, filterCharType, filterRarity, filterForces])
 
-  function openPicker(i: number, mode: "main" | "mini" | "heartprint") {
+  function openPicker(i: number, mode: "main" | "sub" | "side" | "heartprint") {
     setPickerOpenFor(i); setPickerMode(mode); setQuery("")
     setFilterEl(null); setFilterAttack(null); setFilterTactics(null)
     setFilterCharType(null); setFilterRarity(null); setFilterForces([])
@@ -310,148 +290,193 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
 
   function selectChar(i: number, id: number) {
     if (pickerMode === "heartprint") setHeartPrintId(id)
-    else if (pickerMode === "mini") setMiniSlots((s) => { const c = [...s]; c[i] = id; return c })
-    else setSlots((s) => { const c = [...s]; c[i] = id; return c })
+    else if (pickerMode === "sub") setSubSlots((s) => { const c = [...s]; c[i] = id; return c })
+    else if (pickerMode === "side") setSideSlots((s) => { const c = [...s]; c[i] = id; return c })
+    else setMainSlots((s) => { const c = [...s]; c[i] = id; return c })
     closePicker()
   }
 
-  // =================================================================
-  //   TROOP SLOT CARD — fixed-aspect portrait card (248/612)
-  // =================================================================
-  function TroopSlot({ i }: { i: number }) {
-    const charId = slots[i], miniCharId = miniSlots[i]
-    const char = charId     ? characters.find((c) => c.master_pc_id === charId) ?? null : null
-    const mini = miniCharId ? characters.find((c) => c.master_pc_id === miniCharId) ?? null : null
+  // ==========================================
+  // MAIN SLOT CARD
+  // Frame dimensions: high-tier (6-7★) = 264×628, low-tier (3-5★) = 248×612
+  // The frame PNG has transparent center; base+portrait fill behind it.
+  // ==========================================
+  function MainSlotCard({ i }: { i: number }) {
+    const charId = mainSlots[i]
+    const subCharId = subSlots[i]
+    const char = charId ? characters.find((c) => c.master_pc_id === charId) ?? null : null
+    const subChar = subCharId ? characters.find((c) => c.master_pc_id === subCharId) ?? null : null
     const isProt = i === 0
     const role: "bless" | "member" = isProt ? "bless" : "member"
     const tier = char ? getCharacterVisualTier(char) : 5
-    const { base: mainBase, frame: mainFrame, frameStyle } = getMainFramePaths(tier, role)
-    const miniTier = mini ? getCharacterVisualTier(mini) : 5
-    const miniRole: "bless" | "member" = mini ? (isProtectorChar(mini) ? "bless" : "member") : "member"
-    const { base: miniBase, frame: miniFrame } = getMiniFramePaths(miniTier, miniRole)
-    const [icon1, icon2, icon3] = char ? getCardIcons(char) : [null, null, null]
-    const cardIcons = [icon1, icon2, icon3].filter(Boolean) as string[]
+    const { base: mainBase, frame: mainFrame } = getMainFramePaths(tier, role)
+
+    // Use consistent frame aspect for layout (high-tier dimensions)
+    const FRAME_W = 264, FRAME_H = 628
+    const [mainIcon1, mainIcon2, mainIcon3] = char ? getCardIcons(char) : [null, null, null]
+    const mainIcons = [mainIcon1, mainIcon2, mainIcon3].filter(Boolean) as string[]
+    const [subIcon1, subIcon2] = subChar ? getMiniCardIcons(subChar) : [null, null]
+
+    // Icon positions for attacker diamond slots (top-right of frame)
+    // These percentages position icons within the frame's diamond icon area
+    const iconTop = "3.5%"
+    const iconRight = "5%"
 
     return (
-      <div className="flex flex-col w-full min-w-0">
-        {/* Portrait card — aspect-ratio keeps empty/filled same size */}
-        <div className="relative w-full overflow-hidden rounded-sm cursor-pointer select-none"
-          style={{ aspectRatio: "248/612" }}
-          onClick={() => openPicker(i, "main")}
-        >
-          {/* ── Base background ── */}
-          {char ? (
-            <img src={mainBase} alt="" className="absolute inset-0 w-full h-full object-fill pointer-events-none"
-              onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-          ) : (
-            <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 35%, #0e2c2c 0%, #081818 55%, #040e0e 100%)" }} />
-          )}
+      <div
+        className="relative flex-shrink-0 cursor-pointer select-none h-full"
+        style={{ aspectRatio: `${FRAME_W}/${FRAME_H}` }}
+        onClick={() => openPicker(i, "main")}
+      >
+        {/* Empty state */}
+        {!char && (
+          <div
+            className="absolute inset-0 flex items-center justify-center rounded-lg"
+            style={{
+              border: "2px solid rgba(120,120,130,0.4)",
+              background: "rgba(18,20,28,0.85)",
+            }}
+          >
+            <span className="text-white/40 font-light select-none text-4xl">+</span>
+          </div>
+        )}
 
-          {/* ── Character art — fills full container; frame overlay masks the edges ── */}
-          {char && (
+        {/* Filled state: base → portrait → frame overlay */}
+        {char && (
+          <>
+            {/* Base texture fills entire card */}
+            <img
+              src={mainBase} alt=""
+              className="absolute inset-0 w-full h-full object-fill pointer-events-none"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }}
+            />
+            {/* Character portrait fills entire card */}
             <img
               src={`/partyL/${char.master_pc_id}.png`} alt={char.name}
               className="absolute inset-0 w-full h-full object-fill pointer-events-none"
               onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(char.images.full) }}
             />
-          )}
-
-          {/* ── Frame overlay: positioned so opaque border aligns exactly with card edges ── */}
-          {char && (
-            <img src={mainFrame} alt=""
-              className="pointer-events-none z-10"
-              style={frameStyle}
-              onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-          )}
-
-          {/* ── Empty slot: "+" icon centred ── */}
-          {!char && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-white/30 text-4xl font-thin leading-none">+</span>
-            </div>
-          )}
-
-          {/* ── Star badge top-left (z above frame) ── */}
-          {char && (
-            <img src={STAR_ASSETS[tier] ?? STAR_ASSETS[5]} alt=""
-              className="pointer-events-none absolute z-20 object-contain"
-              style={{ top: "3%", left: "3%", width: "36%" }}
+            {/* Frame overlay fills entire card (has transparent center) */}
+            <img
+              src={mainFrame} alt=""
+              className="absolute inset-0 w-full h-full pointer-events-none z-10"
+              style={{ objectFit: "fill" }}
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }}
             />
-          )}
+          </>
+        )}
 
-          {/* ── Element + atk type icons top-right (z above frame) ── */}
-          {char && cardIcons.length > 0 && (
-            <div className="absolute z-20 flex flex-col items-center gap-[3%]"
-              style={{ top: "6%", right: "3%", width: "13%" }}>
-              {cardIcons.map((src, idx) => (
-                <img key={idx} src={src} alt="" className="w-full aspect-square object-contain drop-shadow" />
-              ))}
-            </div>
-          )}
-
-          {/* ── Mini sub-slot (bottom-centre of card) ── */}
-          <button
-            onClick={(e) => { e.stopPropagation(); openPicker(i, "mini") }}
-            className="absolute z-20"
-            style={{ bottom: "2%", left: "50%", transform: "translateX(-50%)", width: "44%", aspectRatio: "1" }}
-          >
-            {mini ? (
-              <div className="relative w-full h-full">
-                <img src={miniBase} alt="" className="absolute inset-0 w-full h-full object-contain pointer-events-none"
+        {/* Sub-slot at bottom center */}
+        <button
+          onClick={(e) => { e.stopPropagation(); openPicker(i, "sub") }}
+          className="absolute overflow-hidden z-20"
+          style={{
+            width: "38%", aspectRatio: "1",
+            bottom: "4%", left: "50%", transform: "translateX(-50%)",
+            borderRadius: "4px",
+            border: "1.5px solid rgba(140,140,150,0.5)",
+            background: "rgba(10,12,18,0.8)",
+          }}
+        >
+          {subChar ? (
+            <>
+              <img src={toPublicAssetPath(subChar.images.icon)} alt={subChar.name}
+                className="absolute inset-0 w-full h-full object-cover object-top" />
+              {(() => {
+                const t = getCharacterVisualTier(subChar)
+                const r: "bless" | "member" = isProtectorChar(subChar) ? "bless" : "member"
+                const { frame } = getMiniFramePaths(t, r)
+                return <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-                <img src={toPublicAssetPath(mini.images.icon)} alt={mini.name}
-                  className="absolute inset-0 w-full h-full object-cover object-top"
-                  onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(mini.images.full) }} />
-                <img src={miniFrame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-contain"
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-                {/* Mini element + atk icons — max 2, one of each */}
-                {(() => {
-                  const [mI1, mI2] = getMiniCardIcons(mini)
-                  if (!mI1 && !mI2) return null
-                  return (
-                    <div className="pointer-events-none absolute z-10 flex flex-col items-center gap-[3%]"
-                      style={{ top: "4%", right: "3%", width: "28%" }}>
-                      {mI1 && <img src={mI1} alt="" className="w-full aspect-square object-contain" />}
-                      {mI2 && <img src={mI2} alt="" className="w-full aspect-square object-contain" />}
-                    </div>
-                  )
-                })()}
-                <button onClick={(e) => { e.stopPropagation(); setMiniSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
-                  className="absolute -top-1 -right-1 bg-black/60 rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] z-30 text-white">×</button>
-              </div>
-            ) : (
-              /* Empty mini slot */
-              <div className="relative w-full h-full border border-gray-500/40 rounded-sm"
-                style={{ background: "#0a1010" }}>
-                <span className="absolute inset-0 flex items-center justify-center text-white/30 text-xs font-thin">+</span>
-              </div>
-            )}
-          </button>
-
-          {/* ── Clear main slot ── */}
-          {char && (
-            <button onClick={(e) => { e.stopPropagation(); setSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
-              className="absolute top-1 right-1 bg-black/60 hover:bg-black/80 rounded-full w-5 h-5 flex items-center justify-center text-[10px] z-30 text-white">×</button>
+              })()}
+              {(subIcon1 || subIcon2) && (
+                <div className="absolute top-0.5 right-0.5 z-20 flex flex-col gap-0.5">
+                  {subIcon1 && <img src={subIcon1} alt="" className="w-3 h-3 object-contain drop-shadow" />}
+                  {subIcon2 && <img src={subIcon2} alt="" className="w-3 h-3 object-contain drop-shadow" />}
+                </div>
+              )}
+              <button onClick={(e) => { e.stopPropagation(); setSubSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
+                className="absolute top-0 left-0 bg-black/80 w-4 h-4 flex items-center justify-center text-[8px] z-30 text-white rounded-br-sm">x</button>
+            </>
+          ) : (
+            <span className="absolute inset-0 flex items-center justify-center text-white/35 font-light text-lg">+</span>
           )}
-        </div>
+        </button>
 
+        {/* Element / type icons — positioned for frame's diamond slots */}
+        {char && mainIcons.length > 0 && (
+          <div className="absolute z-30 flex flex-col items-center gap-1"
+            style={{ top: iconTop, right: iconRight }}>
+            {mainIcons.map((src, idx) => (
+              <img key={idx} src={src} alt="" className="w-6 h-6 object-contain drop-shadow-lg" />
+            ))}
+          </div>
+        )}
+
+        {/* Clear button */}
+        {char && (
+          <button onClick={(e) => { e.stopPropagation(); setMainSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
+            className="absolute top-2 right-2 bg-black/70 hover:bg-black/90 rounded-full w-5 h-5 flex items-center justify-center text-[10px] z-30 text-white">x</button>
+        )}
       </div>
     )
   }
 
-  // =================================================
-  //   PICKER MODAL — game-style two-panel layout
-  // =================================================
+  // ==========================================
+  // SIDE SLOT CARD — tall vertical slots for the right panel
+  // ==========================================
+  function SideSlotCard({ i }: { i: number }) {
+    const charId = sideSlots[i]
+    const char = charId ? characters.find((c) => c.master_pc_id === charId) ?? null : null
+    const tier = char ? getCharacterVisualTier(char) : 5
+    const role: "bless" | "member" = char && isProtectorChar(char) ? "bless" : "member"
+    const { base: sideBase, frame } = getMiniFramePaths(tier, role)
+    const [icon1, icon2] = char ? getMiniCardIcons(char) : [null, null]
+
+    return (
+      <div
+        className="relative w-full h-full overflow-hidden cursor-pointer select-none"
+        style={{
+          borderRadius: "6px",
+          border: "2px solid rgba(120,120,130,0.4)",
+          background: char ? "transparent" : "rgba(18,20,28,0.85)",
+        }}
+        onClick={() => openPicker(i, "side")}
+      >
+        {!char && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-white/40 text-xl font-light">+</span>
+          </div>
+        )}
+        {char && (
+          <>
+            <img src={sideBase} alt="" className="absolute inset-0 w-full h-full object-fill pointer-events-none"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+            <img src={toPublicAssetPath(char.images.icon)} alt={char.name}
+              className="absolute inset-0 w-full h-full object-cover object-top" />
+            <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+            {(icon1 || icon2) && (
+              <div className="absolute top-1 right-1 z-20 flex flex-col gap-0.5">
+                {icon1 && <img src={icon1} alt="" className="w-4 h-4 object-contain drop-shadow" />}
+                {icon2 && <img src={icon2} alt="" className="w-4 h-4 object-contain drop-shadow" />}
+              </div>
+            )}
+            <button onClick={(e) => { e.stopPropagation(); setSideSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
+              className="absolute top-0 left-0 bg-black/80 w-4 h-4 flex items-center justify-center text-[8px] z-30 text-white rounded-br-sm">x</button>
+          </>
+        )}
+      </div>
+    )
+  }
+
+  // ==========================================
+  // PICKER MODAL
+  // ==========================================
   function PickerModal() {
     if (pickerOpenFor === null) return null
-    const isProt = pickerOpenFor === 0
-    const isMain = pickerMode === "main"
-    const isMini = pickerMode === "mini"
-    const isHP   = pickerMode === "heartprint"
-
-    // Currently assigned char in the slot being edited (for left preview)
-    const previewCharId = isMain ? slots[pickerOpenFor] : isMini ? miniSlots[pickerOpenFor] : null
-    const previewChar = previewCharId ? characters.find((c) => c.master_pc_id === previewCharId) ?? null : null
+    const isProt = pickerMode === "main" && pickerOpenFor === 0
+    const isHP = pickerMode === "heartprint"
 
     return (
       <div className="fixed inset-0 z-50 flex" role="dialog" aria-modal="true">
@@ -459,87 +484,14 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
         <div className="relative z-50 m-auto flex max-h-[95vh] w-[95vw] max-w-6xl rounded-xl overflow-hidden shadow-2xl"
           style={{ background: "linear-gradient(180deg, #0c1929 0%, #111d2e 100%)" }}>
 
-          {/* LEFT PANEL — Slot preview (like game's diamond + rectangle) */}
-          <div className="hidden sm:flex flex-col items-center justify-center gap-4 p-4 border-r border-white/5"
-            style={{ width: "200px", minWidth: "160px" }}>
-
-            {/* Slot preview */}
-            {(isMain || isMini) && (
-              <div className="flex flex-col items-center gap-3">
-                {/* Diamond preview for main slot */}
-                {isMain && (
-                  <div className="relative w-28 h-28" style={{ transform: "rotate(45deg)" }}>
-                    <div className="absolute inset-1 border-2 border-green-500/40 bg-[#0a1420] overflow-hidden">
-                      {previewChar && (
-                        <img src={toPublicAssetPath(previewChar.images.icon)} alt="" className="w-full h-full object-cover"
-                          style={{ transform: "rotate(-45deg) scale(1.4)" }} />
-                      )}
-                      {!previewChar && (
-                        <div className="w-full h-full flex items-center justify-center">
-                          <span className="text-white/30 text-xl font-bold" style={{ transform: "rotate(-45deg)" }}>+</span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )}
-
-                {/* Tall rectangle below diamond (same slot, portrait) */}
-                <div className="relative w-20 rounded-sm overflow-hidden border border-gray-600/30" style={{ aspectRatio: "248 / 612" }}>
-                  {previewChar ? (
-                    <>
-                      <img src={`/partyL/${previewChar.master_pc_id}.png`} alt="" className="absolute inset-0 w-full h-full object-fill" />
-                      {(() => {
-                        const t = getCharacterVisualTier(previewChar)
-                        const r: "bless" | "member" = previewChar.character_role?.toLowerCase() === "supporter" ? "bless" : "member"
-                        return <img src={getMainFramePaths(t, r).frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-                      })()}
-                    </>
-                  ) : (
-                    <img src="/frames/baseMemberLEmpty.png" alt="" className="absolute inset-0 w-full h-full object-fill" />
-                  )}
-                </div>
-
-                {/* Remove button */}
-                <button
-                  onClick={() => {
-                    if (isMini) setMiniSlots((s) => { const c = [...s]; c[pickerOpenFor] = null; return c })
-                    else setSlots((s) => { const c = [...s]; c[pickerOpenFor] = null; return c })
-                    closePicker()
-                  }}
-                  className="px-4 py-2 rounded border border-teal-500/40 bg-teal-900/30 text-teal-300 text-sm hover:bg-teal-900/50 transition-colors"
-                >Confirm</button>
-              </div>
-            )}
-
-            {/* HeartPrint preview */}
-            {isHP && (
-              <div className="flex flex-col items-center gap-3">
-                <div className="relative w-32 h-20 rounded overflow-hidden border border-amber-400/20 bg-black/40">
-                  {heartPrintId ? (
-                    <>
-                      <img src={`/SkillStill/${heartPrintId}/skill_still_${heartPrintId}_M.png`} alt="" className="absolute inset-0 w-full h-full object-cover" />
-                      <img src="/StillFrame/StillFrame1_m.png" alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
-                        onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-                    </>
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <img src="/frames/btnStillEmptyNormal.png" alt="" className="h-8 object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-                    </div>
-                  )}
-                </div>
-                <span className="text-[10px] text-amber-300/60 text-center">HeartPrint Skill</span>
-              </div>
-            )}
-          </div>
-
-          {/* RIGHT PANEL — Header, filters toggle, character grid */}
+          {/* Right panel - filters and grid */}
           <div className="flex-1 flex flex-col min-w-0 max-h-[95vh]">
             {/* Top bar */}
             <div className="flex items-center gap-2 px-3 py-2 border-b border-white/5 shrink-0">
               <div className="flex items-center gap-2 flex-1 min-w-0">
                 <Input
                   autoFocus value={query} onChange={(e) => setQuery(e.target.value)}
-                  placeholder={isHP ? "Search by ID…" : "Search by name…"}
+                  placeholder={isHP ? "Search by ID..." : "Search by name..."}
                   className="h-8 flex-1 border-gray-700 bg-gray-800/80 text-white text-sm" />
               </div>
               {!isHP && (
@@ -551,7 +503,7 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
                   Filter
                 </button>
               )}
-              <button onClick={closePicker} className="w-8 h-8 flex items-center justify-center rounded bg-white/5 hover:bg-white/10 text-gray-400 text-sm">✕</button>
+              <button onClick={closePicker} className="w-8 h-8 flex items-center justify-center rounded bg-white/5 hover:bg-white/10 text-gray-400 text-sm">x</button>
             </div>
 
             {/* Role indicator */}
@@ -559,16 +511,16 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
               <div className={`flex items-center gap-2 px-3 py-1.5 text-xs font-medium border-b border-white/5 ${isProt ? "text-purple-300 bg-purple-900/10" : "text-sky-300 bg-sky-900/10"}`}>
                 <img src={isProt ? "/UI/Texture/CharaInfoAtlas/icSkillBlessLeader.png" : "/UI/Texture/CharaInfoAtlas/icSkillAttacker.png"}
                   alt="" className="h-4 w-4 object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-                {isProt ? "Protector" : "Attacker"} — {results.length} units
+                {isProt ? "Protector" : "Attacker"} - {results.length} units
               </div>
             )}
             {isHP && (
               <div className="flex items-center gap-2 px-3 py-1.5 text-xs text-amber-300/70 border-b border-white/5 bg-amber-900/5">
-                HeartPrint Skills — {heartprintItems.length} available
+                HeartPrint Skills - {heartprintItems.length} available
               </div>
             )}
 
-            {/* Collapsible filter panel */}
+            {/* Filters */}
             {showFilters && !isHP && (
               <div className="px-3 py-3 border-b border-white/5 bg-[#0a1420] space-y-3 overflow-y-auto max-h-[40vh]">
                 {/* Attribute */}
@@ -583,7 +535,7 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
                   </div>
                 </div>
 
-                {/* Attack Type (attackers only) */}
+                {/* Attack Type */}
                 {!isProt && (
                   <div>
                     <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">Attack Type</div>
@@ -622,7 +574,7 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
                     <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">Rarity</div>
                     <div className="flex gap-1">
                       <FilterBtn active={filterRarity === null} onClick={() => setFilterRarity(null)}>ALL</FilterBtn>
-                      {[3, 4, 5].map((r) => <FilterBtn key={r} active={filterRarity === r} onClick={() => setFilterRarity(filterRarity === r ? null : r)}>{r}★</FilterBtn>)}
+                      {[3, 4, 5].map((r) => <FilterBtn key={r} active={filterRarity === r} onClick={() => setFilterRarity(filterRarity === r ? null : r)}>{r}*</FilterBtn>)}
                     </div>
                   </div>
                 </div>
@@ -633,7 +585,7 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
                   <Popover>
                     <PopoverTrigger asChild>
                       <Button variant="outline" className="h-7 gap-1.5 border-gray-600 bg-gray-800 px-2.5 text-white hover:bg-gray-700 text-[11px]">
-                        {filterForces.length > 0 ? `${filterForces.length} selected` : "Select Forces ▸"}
+                        {filterForces.length > 0 ? `${filterForces.length} selected` : "Select Forces"}
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-64 border-gray-600 bg-gray-800 p-0 text-white z-[60]" align="start">
@@ -658,19 +610,20 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
               </div>
             )}
 
-            {/* CHARACTER GRID */}
+            {/* Character grid */}
             <div className="flex-1 overflow-auto p-2">
               <div className={`grid gap-1.5 ${isHP ? "grid-cols-3 sm:grid-cols-4 md:grid-cols-5" : "grid-cols-5 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8"}`}>
                 {/* Remove card */}
                 <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-gray-600 p-1.5 hover:bg-white/5 transition-colors aspect-square"
                   onClick={() => {
                     if (isHP) setHeartPrintId(null)
-                    else if (isMini) setMiniSlots((s) => { const c = [...s]; c[pickerOpenFor] = null; return c })
-                    else setSlots((s) => { const c = [...s]; c[pickerOpenFor] = null; return c })
+                    else if (pickerMode === "sub") setSubSlots((s) => { const c = [...s]; c[pickerOpenFor] = null; return c })
+                    else if (pickerMode === "side") setSideSlots((s) => { const c = [...s]; c[pickerOpenFor] = null; return c })
+                    else setMainSlots((s) => { const c = [...s]; c[pickerOpenFor] = null; return c })
                     closePicker()
                   }}>
                   <div className="w-10 h-10 flex items-center justify-center border border-dashed border-gray-500 rounded">
-                    <span className="text-gray-500 text-sm">✕</span>
+                    <span className="text-gray-500 text-sm">x</span>
                   </div>
                   <span className="text-[9px] text-gray-500">Remove</span>
                 </div>
@@ -715,7 +668,7 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
     )
   }
 
-  // Simple filter button helpers
+  // Filter helpers
   function FilterBtn({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
     return (
       <button onClick={onClick}
@@ -733,39 +686,67 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
   }
 
   // ============================
-  //   MAIN RENDER
+  // MAIN RENDER
   // ============================
-  return (
-    <div className="w-full">
-      <h1 className="mb-3 text-2xl font-bold text-white sm:text-3xl">Team Builder</h1>
+  //
+  // Layout (all top-aligned):
+  //   [Main0] [Main1] [Main2] [Main3]  [Side0] [Side1]
+  //                                    [  Heartprint  ]
+  //
+  // Main cards use frame aspect (264/628). Side slots + heartprint combined
+  // height equals main card height. We calculate this using CSS.
+  //
+  const MAIN_CARD_WIDTH = "clamp(120px, 14vw, 175px)"
+  const SIDE_SLOT_WIDTH = "clamp(70px, 8vw, 100px)"
+  // Main card aspect ratio
+  const MAIN_ASPECT = 264 / 628
+  // Side slots take ~75% of main height, heartprint takes ~25%
+  const SIDE_HEIGHT_RATIO = 0.72
+  const HEARTPRINT_HEIGHT_RATIO = 0.25
 
-      {/*
-        TROOP LAYOUT
-        ─ 4 large portrait slots (aspect 248/612) each flex-1
-        ─ Right section: also flex-1; inside it: 2 compact portrait slots side-by-side + heartprint below
-        All slots use the same aspect-ratio so empty = filled in height.
-        We cap the row height so it fits without scrolling.
-      */}
-      <div className="flex gap-1 items-start" style={{ maxWidth: "min(90vw, 850px)" }}>
-        {/* 4 large slots */}
+  return (
+    <div className="w-full flex flex-col items-center px-4">
+      <h1 className="mb-6 text-2xl font-bold text-white sm:text-3xl self-start">Team Builder</h1>
+
+      {/* Main container - all items top-aligned */}
+      <div className="flex flex-nowrap gap-3 items-start justify-center w-full overflow-x-auto pb-4">
+
+        {/* 4 main character slots */}
         {[0, 1, 2, 3].map((i) => (
-          <div key={i} className="flex-1 min-w-0">
-            <TroopSlot i={i} />
+          <div key={i} className="flex-shrink-0" style={{ width: MAIN_CARD_WIDTH }}>
+            <MainSlotCard i={i} />
           </div>
         ))}
 
-        {/* Right section — same flex-1 width as a large slot; split horizontally for 2 compact slots */}
-        <div className="flex-1 min-w-0 flex flex-col gap-1">
-          {/* 2 compact slots side-by-side */}
-          <div className="flex gap-1">
-            <div className="flex-1 min-w-0"><TroopSlot i={4} /></div>
-            <div className="flex-1 min-w-0"><TroopSlot i={5} /></div>
+        {/* Right panel: 2 side slots side-by-side + heartprint below */}
+        {/* Height matches main card height using aspect ratio calc */}
+        <div
+          className="flex flex-col gap-2 flex-shrink-0"
+          style={{
+            width: `calc(${SIDE_SLOT_WIDTH} * 2 + 8px)`,
+            height: `calc(${MAIN_CARD_WIDTH} / ${MAIN_ASPECT})`,
+          }}
+        >
+          {/* 2 side slots in a row - take ~72% of total height */}
+          <div className="flex gap-2" style={{ height: `${SIDE_HEIGHT_RATIO * 100}%` }}>
+            {[0, 1].map((i) => (
+              <div key={i} className="flex-1 h-full">
+                <SideSlotCard i={i} />
+              </div>
+            ))}
           </div>
 
-          {/* Heartprint slot — landscape, small */}
-          <button onClick={() => openPicker(0, "heartprint")}
-            className="relative w-full overflow-hidden rounded-sm border border-gray-600/40 hover:border-amber-400/50 transition-all"
-            style={{ aspectRatio: "245/146", background: "#06100e" }}>
+          {/* Heartprint skill slot — takes ~25% of total height */}
+          <button
+            onClick={() => openPicker(0, "heartprint")}
+            className="relative w-full overflow-hidden transition-opacity hover:opacity-90"
+            style={{
+              height: `${HEARTPRINT_HEIGHT_RATIO * 100}%`,
+              borderRadius: "6px",
+              border: "2px solid rgba(120,120,130,0.4)",
+              background: "rgba(18,20,28,0.85)",
+            }}
+          >
             {heartPrintId ? (
               <>
                 <img src={`/SkillStill/${heartPrintId}/skill_still_${heartPrintId}_S.png`} alt=""
@@ -775,16 +756,17 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
                   className="pointer-events-none absolute inset-0 w-full h-full object-fill"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
                 <button onClick={(e) => { e.stopPropagation(); setHeartPrintId(null) }}
-                  className="absolute top-0.5 right-0.5 bg-black/60 rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] z-10 text-white">×</button>
+                  className="absolute top-1 right-1 bg-black/70 rounded-full w-4 h-4 flex items-center justify-center text-[9px] z-10 text-white">x</button>
               </>
             ) : (
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5">
-                <span className="text-white/20 text-base font-thin leading-none">+</span>
-                <span className="text-[6px] text-gray-600 text-center leading-tight">Heartprint Skill<br/>Unassigned</span>
+                <span className="text-white/40 text-lg font-light">+</span>
+                <span className="text-[9px] text-gray-400 text-center leading-tight">Heartprint Skill Unassigned</span>
               </div>
             )}
           </button>
         </div>
+
       </div>
 
       <PickerModal />
