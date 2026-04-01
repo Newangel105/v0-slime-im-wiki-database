@@ -1,421 +1,793 @@
-"use client"
+﻿"use client"
 
-import { useEffect, useMemo, useState } from "react"
+import { useMemo, useState } from "react"
 import type { WikiCharacter } from "@/lib/pc-wiki"
-import { toPublicAssetPath, getCharacterVisualTier, getDisplayElementLabel, normalizeLabel, getForceIconLookup } from "@/lib/pc-wiki"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import {
+  toPublicAssetPath, getCharacterVisualTier, getForceIconLookup,
+  isExUnboundCharacter, hasExSpecialSkill, isExAttacker,
+  normalizeLabel, stripColorTags, getCharacterForceEntries,
+} from "@/lib/pc-wiki"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 
-export default function TeamBuilderClient({ characters }: { characters: WikiCharacter[] }) {
-  const [slots, setSlots] = useState<Array<number | null>>(Array(6).fill(null))
-  const [miniSlots, setMiniSlots] = useState<Array<number | null>>(Array(6).fill(null))
-  const [pickerOpenFor, setPickerOpenFor] = useState<number | null>(null)
-  const [pickerMode, setPickerMode] = useState<"main" | "mini">("main")
-  const [query, setQuery] = useState("")
-  const [selectedElement, setSelectedElement] = useState<string | null>(null)
-  const [selectedRarity, setSelectedRarity] = useState<number | null>(null)
-  const [selectedRole, setSelectedRole] = useState<string | null>(null)
-  const [slotSizes, setSlotSizes] = useState<Record<number, { partyLW?: number; partyLH?: number; partyMW?: number; partyMH?: number }>>({})
+// ---- HEARTPRINT IDs (SkillStill folder IDs — NOT character master_pc_ids) ----
+const HEARTPRINT_IDS = [
+  1100201, 1100601, 1100602, 1100801, 1101001, 1101101, 1101301, 1101602, 1101603, 1101901,
+  1102101, 1102801, 1102901, 1103101, 1103501, 1103601, 1103701, 1103702, 1103703, 1103704,
+  1104201, 1104801, 1105002, 1105101, 1106402, 1106601, 1106802, 1200111, 1200401, 1200801,
+  1201101, 1201102, 1202001, 1202301, 1400101, 1400102, 1400201, 2100101, 2101401, 2101701,
+  2103401, 2105001, 2106401, 2106801, 2400101, 2400501, 2500008, 2500082, 2500083, 2500086,
+  2500087, 2500088, 2500089,
+]
 
-  const allChars = useMemo(() => characters, [characters])
-  const elementIconMap: Record<string, string> = {
-    air: "/elements/space.png",
-    all: "/Image/IcElementBless/IcElementBlessAll.png",
-    dark: "/elements/dark.png",
-    earth: "/elements/earth.png",
-    enhancedair: "/Image/IcElementBless/IcElementBlessEnhancedAir.png",
-    enhanceddark: "/Image/IcElementBless/IcElementBlessEnhancedDark.png",
-    enhancedearth: "/Image/IcElementBless/IcElementBlessEnhancedEarth.png",
-    enhancedfire: "/Image/IcElementBless/IcElementBlessEnhancedFire.png",
-    enhancedholy: "/Image/IcElementBless/IcElementBlessEnhancedHoly.png",
-    enhancedwater: "/Image/IcElementBless/IcElementBlessEnhancedWater.png",
-    enhancedwind: "/Image/IcElementBless/IcElementBlessEnhancedWind.png",
-    fire: "/elements/fire.png",
-    holy: "/elements/light.png",
-    light: "/elements/icElementlight.png",
-    magic: "/Image/IcElementBless/IcElementBlessMagic.png",
-    physics: "/Image/IcElementBless/IcElementBlessPhysics.png",
-    space: "/elements/icElementspace.png",
-    special: "/Image/IcElementBless/IcElementBlessSpecial.png",
-    water: "/elements/water.png",
-    wind: "/elements/wind.png",
+// ---- FRAME PATH HELPERS ----
+// Frame notes:
+// L3-L5: 248×612, border=17px each side,    interior=214×578
+// L6-7:  264×628, border=28px L/R 35px T/B, interior=208×558
+//
+// Strategy: position the frame so its opaque border lands exactly at the card edge.
+// Scale the frame so interior = card (100%×100%), then offset so interior starts at (0,0).
+//   scaleW = frameW / intW,  scaleH = frameH / intH
+//   left   = -(borderX / intW) * 100%,  top = -(borderY / intH) * 100%
+function getMainFramePaths(tier: number, role: "member" | "bless") {
+  const t = Math.min(Math.max(tier, 3), 7)
+  const pfx = role === "bless" ? "Bless" : "Member"
+  const baseTier = t === 7 ? 6 : t
+  const isHigh = t >= 6
+  // [frameW, frameH, borderX, borderY]
+  const [fw, fh, bx, by] = isHigh ? [264, 628, 28, 35] : [248, 612, 17, 17]
+  const intW = fw - 2 * bx
+  const intH = fh - 2 * by
+  const frameStyle: React.CSSProperties = {
+    position: "absolute",
+    width:  `${(fw / intW) * 100}%`,
+    height: `${(fh / intH) * 100}%`,
+    left:   `${-(bx / intW) * 100}%`,
+    top:    `${-(by / intH) * 100}%`,
+    objectFit: "fill",
   }
+  return {
+    base: `/frames/base${pfx}L${baseTier}.png`,
+    frame: `/frames/frame${pfx}L${t}.png`,
+    frameStyle,
+  }
+}
+function getMiniFramePaths(tier: number, role: "member" | "bless") {
+  const t = Math.min(Math.max(tier, 3), 7)
+  const pfx = role === "bless" ? "Bless" : "Member"
+  return { base: `/frame/base${pfx}M${t}.png`, frame: `/frame/frame${pfx}M${t}.png` }
+}
 
-  const elementOptions = useMemo(
-    () =>
-      Array.from(new Set(characters.map((c) => c.element).filter(Boolean))).map((el) => ({
-        label: getDisplayElementLabel(el),
-        value: el,
-        icon: elementIconMap[normalizeLabel(el)] ?? undefined,
-      })),
-    [characters],
-  )
-  const rarityOptions = useMemo(() => Array.from(new Set(characters.map((c) => c.rarity).filter(Boolean))).sort(), [characters])
-  const tacticsOptions = useMemo(() => Array.from(new Set(characters.map((c) => c.tactics_type).filter(Boolean))).map((v) => ({ label: v, value: v })), [characters])
+function elementMatches(charEl: string, filterKey: string): boolean {
+  const el = charEl.toLowerCase(), key = filterKey.toLowerCase()
+  if (el === key) return true
+  if (key.startsWith("enhanced")) return el.endsWith(key)
+  return el.endsWith(key) && !el.endsWith("enhanced" + key)
+}
+
+// ---- FILTER OPTION DEFINITIONS ----
+const NORMAL_ELEMENTS = [
+  { key: "Air",   label: "Air",   icon: "/elements/space.png"  },
+  { key: "Holy",  label: "Holy",  icon: "/elements/light.png"  },
+  { key: "Dark",  label: "Dark",  icon: "/elements/dark.png"   },
+  { key: "Fire",  label: "Fire",  icon: "/elements/fire.png"   },
+  { key: "Wind",  label: "Wind",  icon: "/elements/wind.png"   },
+  { key: "Water", label: "Water", icon: "/elements/water.png"  },
+  { key: "Earth", label: "Earth", icon: "/elements/earth.png"  },
+]
+const ENHANCED_ELEMENTS = [
+  { key: "EnhancedAir",   label: "Air+",   icon: "/elements/Enhancedspace.png" },
+  { key: "EnhancedHoly",  label: "Holy+",  icon: "/elements/Enhancedlight.png" },
+  { key: "EnhancedDark",  label: "Dark+",  icon: "/elements/Enhanceddark.png"  },
+  { key: "EnhancedFire",  label: "Fire+",  icon: "/elements/Enhancedfire.png"  },
+  { key: "EnhancedWind",  label: "Wind+",  icon: "/elements/Enhancedwind.png"  },
+  { key: "EnhancedWater", label: "Water+", icon: "/elements/Enhancedwater.png" },
+  { key: "EnhancedEarth", label: "Earth+", icon: "/elements/Enhancedearth.png" },
+]
+const ATTACK_TYPES = [
+  { key: "Physical", label: "Physical", icon: "/type_dmg/icAttackTypePhysics.png" },
+  { key: "Magic",    label: "Magic",    icon: "/type_dmg/icAttackTypeMagic.png"   },
+]
+const TACTICS_TYPES = [
+  { key: "Speed",   label: "Speed",   icon: "/Image/Tactics/speed.png"   },
+  { key: "Defense", label: "Defense", icon: "/Image/Tactics/defense.png" },
+  { key: "Charge",  label: "Charge",  icon: "/Image/Tactics/charge.png"  },
+  { key: "Normal",  label: "Neutral", icon: "/Image/Tactics/normal.png"  },
+]
+const STAR_ASSETS: Record<number, string> = {
+  3: "/stars/starCharaL3A.png", 4: "/stars/starCharaL4A.png",
+  5: "/stars/starCharaL5A.png", 6: "/stars/starCharaL6A.png", 7: "/stars/starCharaL7A.png",
+}
+
+// Card overlay icons — attacker element map (lowercase keys)
+const ATTACKER_ELEMENT_ICONS: Record<string, string> = {
+  air: "/elements/icElementspace.png", dark: "/elements/icElementDark.png",
+  earth: "/elements/icElementEarth.png", fire: "/elements/icElementFire.png",
+  holy: "/elements/icElementlight.png", water: "/elements/icElementWater.png",
+  wind: "/elements/icElementWind.png",
+  enhancedair: "/elements/Enhancedspace.png", enhanceddark: "/elements/Enhanceddark.png",
+  enhancedearth: "/elements/Enhancedearth.png", enhancedfire: "/elements/Enhancedfire.png",
+  enhancedholy: "/elements/Enhancedlight.png", enhancedwater: "/elements/Enhancedwater.png",
+  enhancedwind: "/elements/Enhancedwind.png",
+}
+const ATK_TYPE_ICONS: Record<string, string> = {
+  physical: "/type_dmg/icAttackTypePhysics.png",
+  magic: "/type_dmg/icAttackTypeMagic.png",
+}
+
+// ---- Protector detection (mirrors forces page) ----
+function isProtectorChar(c: WikiCharacter): boolean {
+  return c.character_role === "Supporter" && !c.skills.some((s) => s.slot === "special_skill" && s.kind === "special")
+}
+function isAttackerChar(c: WikiCharacter): boolean {
+  return c.character_role === "Attacker" || c.skills.some((s) => s.slot === "special_skill" && s.kind === "special")
+}
+
+// ---- Full element icon map (covers all Bless types) — mirrors forces page ----
+const FULL_ELEMENT_ICON_MAP: Record<string, string> = {
+  air: "/Image/IcElementBless/IcElementBlessAir.png",
+  all: "/Image/IcElementBless/IcElementBlessAll.png",
+  dark: "/Image/IcElementBless/IcElementBlessDark.png",
+  earth: "/Image/IcElementBless/IcElementBlessEarth.png",
+  fire: "/Image/IcElementBless/IcElementBlessFire.png",
+  holy: "/Image/IcElementBless/IcElementBlessHoly.png",
+  magic: "/Image/IcElementBless/IcElementBlessMagic.png",
+  physics: "/Image/IcElementBless/IcElementBlessPhysics.png",
+  water: "/Image/IcElementBless/IcElementBlessWater.png",
+  wind: "/Image/IcElementBless/IcElementBlessWind.png",
+  enhancedair: "/Image/IcElementBless/IcElementBlessEnhancedAir.png",
+  enhanceddark: "/Image/IcElementBless/IcElementBlessEnhancedDark.png",
+  enhancedearth: "/Image/IcElementBless/IcElementBlessEnhancedEarth.png",
+  enhancedfire: "/Image/IcElementBless/IcElementBlessEnhancedFire.png",
+  enhancedholy: "/Image/IcElementBless/IcElementBlessEnhancedHoly.png",
+  enhancedwater: "/Image/IcElementBless/IcElementBlessEnhancedWater.png",
+  enhancedwind: "/Image/IcElementBless/IcElementBlessEnhancedWind.png",
+  specialeffectelementearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEarth.png",
+  specialeffectelementair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.png",
+  specialeffectelementwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWind.png",
+  specialeffectelementwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWater.png",
+  specialeffectelementfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementFire.png",
+  specialeffectelementholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementHoly.png",
+  specialeffectelementdark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementDark.png",
+  specialeffectelementenhancedearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedEarth.png",
+  specialeffectelementenhancedair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedAir.png",
+  specialeffectelementenhancedwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWind.png",
+  specialeffectelementenhancedwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWater.png",
+  specialeffectelementenhancedfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedFire.png",
+  specialeffectelementenhancedholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedHoly.png",
+  specialeffectelementenhanceddark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedDark.png",
+  special: "/Image/IcElementBless/IcElementBlessSpecial.png",
+  specialeffectelementnone: "/Image/IcElementBless/IcElementBlessSpecialEffectElementNone.png",
+}
+
+// Derive the actual element value(s) for a protector from their leader skill (mirrors forces page)
+const _baseElementKeys = new Set(["air","dark","earth","fire","holy","water","wind"])
+const _leaderSkillDmgPattern = /to\s+(?:fire|water|earth|space|wind|dark|light)\s+attribute(?:\s+and\s+(?:fire|water|earth|space|wind|dark|light)\s+attribute)*\s+enemies/i
+const _dmgAttrMap: Record<string,string> = { fire:"fire",water:"water",earth:"earth",space:"air",wind:"wind",dark:"dark",light:"holy" }
+const _elemPatterns: [RegExp, string][] = [
+  [/increases?\s+fire\s+atk/i,"fire"],[/increases?\s+water\s+atk/i,"water"],[/increases?\s+earth\s+atk/i,"earth"],
+  [/increases?\s+space\s+atk/i,"air"],[/increases?\s+wind\s+atk/i,"wind"],[/increases?\s+dark\s+atk/i,"dark"],
+  [/increases?\s+light\s+atk/i,"holy"],[/increases?\s+p-atk/i,"physics"],[/physical characters'/i,"physics"],
+  [/increases?\s+m-atk/i,"magic"],[/magic characters'/i,"magic"],[/all allies' atk/i,"all"],
+]
+function getProtectorElementKeys(c: WikiCharacter): string[] {
+  const normalized = normalizeLabel(c.element)
+  const leaderSkill = c.skills.find((s) => s.slot === "leader_skill")
+  const desc = leaderSkill ? stripColorTags(leaderSkill.description_max_level ?? "") : ""
+  const values: string[] = []
+  if (_leaderSkillDmgPattern.test(desc)) {
+    const matches = [...desc.matchAll(/(?:to|and)\s+(fire|water|earth|space|wind|dark|light)\s+attribute/gi)]
+    const isEnhSpecial = normalized.startsWith("specialeffectelementenhanced")
+    const isSpecial = normalized.startsWith("specialeffectelement")
+    for (const m of matches) {
+      const base = _dmgAttrMap[m[1].toLowerCase()] ?? ""
+      const key = isEnhSpecial ? `specialeffectelementenhanced${base}` : isSpecial ? `specialeffectelement${base}` : base
+      if (key && !values.includes(key)) values.push(key)
+    }
+  } else {
+    for (const [pat, val] of _elemPatterns) {
+      if (pat.test(desc) && !values.includes(val)) values.push(val)
+    }
+  }
+  if (values.length === 0) values.push(normalized)
+  return values
+}
+
+// Returns up to 3 icons for the card overlay.
+// Protectors: [force1, force2?, element(s)] derived from leader skill, max 3.
+// Attackers:  [element icon, attack-type icon, null]
+function getCardIcons(char: WikiCharacter): [string|null, string|null, string|null] {
+  if (isProtectorChar(char)) {
+    const forceIcons = getCharacterForceEntries(char)
+      .map(e => e.icon ?? null).filter(Boolean) as string[]
+    const elementIcons = getProtectorElementKeys(char)
+      .map(k => FULL_ELEMENT_ICON_MAP[k] ?? null).filter(Boolean) as string[]
+
+    // Guarantee at least 1 element icon when available
+    const maxForces = elementIcons.length > 0 ? Math.min(forceIcons.length, 2) : Math.min(forceIcons.length, 3)
+    const icons = [...forceIcons.slice(0, maxForces), ...elementIcons].slice(0, 3)
+    return [icons[0] ?? null, icons[1] ?? null, icons[2] ?? null]
+  }
+  const elKey = normalizeLabel(char.element)
+  const atkKey = normalizeLabel(char.attack_type)
+  return [ATTACKER_ELEMENT_ICONS[elKey] ?? null, ATK_TYPE_ICONS[atkKey] ?? null, null]
+}
+
+// Mini slot variant: max 2 icons for protectors, priority cascade:
+// 1. force + element  → [force, element]
+// 2. no force, 2 elements → [el1, el2]
+// 3. no force, 1 element + qualifier → [element, qualifier]
+// 4. no force, no element, qualifier → [qualifier]
+// "element" = non-physics/magic/all keys; "qualifier" = physics/magic/all keys
+// element icons use char.element directly (the base element field).
+function getMiniCardIcons(char: WikiCharacter): [string|null, string|null] {
+  if (isProtectorChar(char)) {
+    const forceIcon = getCharacterForceEntries(char).map(e => e.icon ?? null).find(Boolean) ?? null
+
+    const allKeys = getProtectorElementKeys(char)
+    const QUALIFIERS = new Set(["physics", "magic", "all"])
+    const elKeys  = allKeys.filter(k => !QUALIFIERS.has(k))
+    const qualKey = allKeys.find(k => QUALIFIERS.has(k)) ?? null
+
+    const elIcon1  = elKeys[0]  ? (FULL_ELEMENT_ICON_MAP[elKeys[0]]  ?? null) : null
+    const elIcon2  = elKeys[1]  ? (FULL_ELEMENT_ICON_MAP[elKeys[1]]  ?? null) : null
+    const qualIcon = qualKey    ? (FULL_ELEMENT_ICON_MAP[qualKey]     ?? null) : null
+
+    if (forceIcon) {
+      const elementIcon = FULL_ELEMENT_ICON_MAP[normalizeLabel(char.element)] ?? null
+      return [forceIcon, elementIcon]          // 1. force + char.element directly
+    }
+    if (elIcon1 && elIcon2)     return [elIcon1,   elIcon2]          // 2. two elements
+    if (elIcon1 && qualIcon)    return [elIcon1,   qualIcon]         // 3. element + qualifier
+    if (elIcon1)                return [elIcon1,   null]             // just one element
+    return [qualIcon, null]                                          // 4. only qualifier
+  }
+  const elKey  = normalizeLabel(char.element)
+  const atkKey = normalizeLabel(char.attack_type)
+  return [ATTACKER_ELEMENT_ICONS[elKey] ?? null, ATK_TYPE_ICONS[atkKey] ?? null]
+}
+
+// =================================
+export default function TeamBuilderClient({ characters }: { characters: WikiCharacter[] }) {
+  const [slots, setSlots]           = useState<(number | null)[]>(Array(6).fill(null))
+  const [miniSlots, setMiniSlots]   = useState<(number | null)[]>(Array(6).fill(null))
+  const [heartPrintId, setHeartPrintId] = useState<number | null>(null)
+
+  const [pickerOpenFor, setPickerOpenFor] = useState<number | null>(null)
+  const [pickerMode, setPickerMode]       = useState<"main" | "mini" | "heartprint">("main")
+  const [showFilters, setShowFilters]     = useState(false)
+
+  const [query,          setQuery]          = useState("")
+  const [filterEl,       setFilterEl]       = useState<string | null>(null)
+  const [filterAttack,   setFilterAttack]   = useState<string | null>(null)
+  const [filterTactics,  setFilterTactics]  = useState<string | null>(null)
+  const [filterCharType, setFilterCharType] = useState<"normal" | "ex" | null>(null)
+  const [filterRarity,   setFilterRarity]   = useState<number | null>(null)
+  const [filterForces,   setFilterForces]   = useState<string[]>([])
+
   const forceOptions = useMemo(() => {
     const map = getForceIconLookup()
     return Array.from(map.entries()).map(([name, icon]) => ({ label: name, value: name, icon: toPublicAssetPath(icon) }))
-  }, [characters])
-
-  // preload all known main frame assets (both Member and Bless variants) so we can size placeholders
-  const [frameInfo, setFrameInfo] = useState<Record<string, { w: number; h: number; src: string }>>({})
-  useEffect(() => {
-    const files = [
-      'frameBlessL3.png','frameBlessL4.png','frameBlessL5.png','frameBlessL5u.png','frameBlessL5up.png','frameBlessL6u.png','frameBlessL6up.png',
-      'frameMemberL3.png','frameMemberL4.png','frameMemberL5.png','frameMemberL6.png','frameMemberL6u.png','frameMemberL6up.png',
-    ]
-    files.forEach((file) => {
-      const img = new Image()
-      const src = `/frames/${file}`
-      img.src = src
-      img.onload = () => setFrameInfo((prev) => ({ ...prev, [file]: { w: img.naturalWidth, h: img.naturalHeight, src } }))
-    })
   }, [])
 
-  // helpers to compute frame filenames based on role + visual tier
-  function isProtectorCharacter(c: WikiCharacter | null) {
-    return !!c && c.character_role === "Supporter"
-  }
+  const heartprintItems = useMemo(() => {
+    const q = query.trim().toLowerCase()
+    return HEARTPRINT_IDS.filter((id) => !q || String(id).includes(q))
+  }, [query])
 
-  function getMainFrameFilenameForCharacter(c: WikiCharacter | null) {
-    const tier = c ? getCharacterVisualTier(c) : 5
-    const prot = isProtectorCharacter(c)
-    const base = prot ? 'frameBlessL' : 'frameMemberL'
-    if (tier === 3) return `${base}3.png`
-    if (tier === 4) return `${base}4.png`
-    if (tier === 5) return `${base}5.png`
-    if (tier === 6) return `${base}6u.png`
-    if (tier === 7) return `${base}6up.png`
-    return `${base}5.png`
+  function isExChar(c: WikiCharacter) {
+    return isExUnboundCharacter(c) || hasExSpecialSkill(c) || isExAttacker(c)
   }
-
-  function getMiniFrameFilenameForCharacter(c: WikiCharacter | null) {
-    const tier = c ? getCharacterVisualTier(c) : 5
-    const prot = isProtectorCharacter(c)
-    const base = prot ? 'frameBlessM' : 'frameMemberM'
-    return `${base}${tier}.png`
-  }
-
-  // local toggle helpers for the modal filters (declared before results so memo deps work)
-  const [selectedTactics, setSelectedTactics] = useState<string[]>([])
-  const [selectedForces, setSelectedForces] = useState<string[]>([])
 
   const results = useMemo(() => {
+    if (pickerMode === "heartprint") return []
+    const roleFilter = pickerOpenFor === 0 ? "supporter" : "attacker"
     const q = query.trim().toLowerCase()
-    return allChars.filter((c) => {
-      if (q && !(c.name.toLowerCase().includes(q) || String(c.master_pc_id) === q)) return false
-      if (selectedElement && normalizeLabel(selectedElement) !== normalizeLabel(c.element)) return false
-      if (selectedRarity && Number(c.rarity) !== Number(selectedRarity)) return false
-      if (selectedRole && c.character_role?.toLowerCase() !== selectedRole) return false
-      if (selectedTactics.length && !selectedTactics.includes(normalizeLabel(c.tactics_type))) return false
-      if (selectedForces.length) {
-        const forceNames = c.forces.map((f) => f.name)
-        if (!selectedForces.every((val) => forceNames.includes(val))) return false
-      }
+    return characters.filter((c) => {
+      if (q && !c.name.toLowerCase().includes(q)) return false
+      if (c.character_role?.toLowerCase() !== roleFilter) return false
+      if (filterEl && !elementMatches(c.element ?? "", filterEl)) return false
+      if (filterAttack && c.attack_type?.toLowerCase() !== filterAttack.toLowerCase()) return false
+      if (filterTactics && c.tactics_type?.toLowerCase() !== filterTactics.toLowerCase()) return false
+      if (filterCharType === "normal" && isExChar(c)) return false
+      if (filterCharType === "ex"     && !isExChar(c)) return false
+      if (filterRarity != null && c.rarity !== filterRarity) return false
+      if (filterForces.length && !filterForces.some((f) => c.forces.map((x) => x.name).includes(f))) return false
       return true
     })
-  }, [allChars, query, selectedElement, selectedRarity, selectedRole, selectedTactics, selectedForces])
+  }, [characters, pickerMode, pickerOpenFor, query, filterEl, filterAttack, filterTactics, filterCharType, filterRarity, filterForces])
 
-  useEffect(() => {
-    if (pickerOpenFor === null) setQuery("")
-  }, [pickerOpenFor])
-
-  function openPicker(i: number, mode: "main" | "mini" = "main") {
-    setPickerOpenFor(i)
-    setPickerMode(mode)
+  function openPicker(i: number, mode: "main" | "mini" | "heartprint") {
+    setPickerOpenFor(i); setPickerMode(mode); setQuery("")
+    setFilterEl(null); setFilterAttack(null); setFilterTactics(null)
+    setFilterCharType(null); setFilterRarity(null); setFilterForces([])
+    setShowFilters(false)
   }
+  function closePicker() { setPickerOpenFor(null) }
 
-  function closePicker() {
-    setPickerOpenFor(null)
-    setPickerMode("main")
-  }
-
-  function selectCharacter(i: number, id: number) {
-    if (pickerMode === "mini") {
-      setMiniSlots((s) => {
-        const copy = [...s]
-        copy[i] = id
-        return copy
-      })
-    } else {
-      setSlots((s) => {
-        const copy = [...s]
-        copy[i] = id
-        return copy
-      })
-    }
+  function selectChar(i: number, id: number) {
+    if (pickerMode === "heartprint") setHeartPrintId(id)
+    else if (pickerMode === "mini") setMiniSlots((s) => { const c = [...s]; c[i] = id; return c })
+    else setSlots((s) => { const c = [...s]; c[i] = id; return c })
     closePicker()
   }
 
-  function clearSlot(i: number) {
-    setSlots((s) => {
-      const copy = [...s]
-      copy[i] = null
-      return copy
-    })
-  }
+  // =================================================================
+  //   TROOP SLOT CARD — fixed-aspect portrait card (248/612)
+  // =================================================================
+  function TroopSlot({ i }: { i: number }) {
+    const charId = slots[i], miniCharId = miniSlots[i]
+    const char = charId     ? characters.find((c) => c.master_pc_id === charId) ?? null : null
+    const mini = miniCharId ? characters.find((c) => c.master_pc_id === miniCharId) ?? null : null
+    const isProt = i === 0
+    const role: "bless" | "member" = isProt ? "bless" : "member"
+    const tier = char ? getCharacterVisualTier(char) : 5
+    const { base: mainBase, frame: mainFrame, frameStyle } = getMainFramePaths(tier, role)
+    const miniTier = mini ? getCharacterVisualTier(mini) : 5
+    const miniRole: "bless" | "member" = mini ? (isProtectorChar(mini) ? "bless" : "member") : "member"
+    const { base: miniBase, frame: miniFrame } = getMiniFramePaths(miniTier, miniRole)
+    const [icon1, icon2, icon3] = char ? getCardIcons(char) : [null, null, null]
+    const cardIcons = [icon1, icon2, icon3].filter(Boolean) as string[]
 
-  function clearMiniSlot(i: number) {
-    setMiniSlots((s) => {
-      const copy = [...s]
-      copy[i] = null
-      return copy
-    })
-  }
-
-  function ToggleFilter({ title, options, selectedValues, onToggle }: { title: string; options: { label: string; value: string; icon?: string }[]; selectedValues: string[]; onToggle: (value: string) => void }) {
-    const selectedOptions = options.filter((o) => selectedValues.includes(o.value))
     return (
-      <Popover>
-        <PopoverTrigger asChild>
-          <Button variant="outline" className="h-auto min-h-[2.25rem] justify-between gap-2 border-gray-600 bg-gray-700 px-3 py-1.5 text-white hover:bg-gray-600">
-            {selectedOptions.length > 0 ? (
-              <span className="flex flex-wrap gap-1">
-                {selectedOptions.map((o) => (
-                  <span key={o.value} className="inline-flex items-center gap-1 rounded-full bg-white/15 px-2 py-0.5 text-xs font-medium">
-                    {o.icon && <img src={o.icon} alt="" className="h-4 w-4 object-contain" />}
-                    {o.label}
-                  </span>
-                ))}
-              </span>
-            ) : (
-              <span className="text-sm text-gray-300">{title}</span>
-            )}
-            <Badge variant="secondary" className="ml-1 shrink-0 bg-gray-900 text-white">
-              {selectedValues.length}
-            </Badge>
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-72 border-gray-600 bg-gray-700 p-0 text-white" align="start">
-          <div className="border-b border-gray-600 px-4 py-3">
-            <p className="text-sm font-semibold text-white">{title}</p>
-          </div>
-          <ScrollArea className="h-72 px-4 py-3">
-            <div className="space-y-1">
-              {options.map((option) => {
-                const checked = selectedValues.includes(option.value)
-                return (
-                  <label key={option.value} className={`flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm transition-colors ${checked ? "bg-white/10 text-white" : "text-gray-300 hover:bg-white/5"}`}>
-                    <Checkbox checked={checked} onCheckedChange={() => onToggle(option.value)} />
-                    {option.icon && <img src={option.icon} alt="" className="h-6 w-auto max-w-[80px] shrink-0 object-contain" />}
-                    <span>{option.label}</span>
-                  </label>
-                )
-              })}
+      <div className="flex flex-col w-full min-w-0">
+        {/* Portrait card — aspect-ratio keeps empty/filled same size */}
+        <div className="relative w-full overflow-hidden rounded-sm cursor-pointer select-none"
+          style={{ aspectRatio: "248/612" }}
+          onClick={() => openPicker(i, "main")}
+        >
+          {/* ── Base background ── */}
+          {char ? (
+            <img src={mainBase} alt="" className="absolute inset-0 w-full h-full object-fill pointer-events-none"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+          ) : (
+            <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 35%, #0e2c2c 0%, #081818 55%, #040e0e 100%)" }} />
+          )}
+
+          {/* ── Character art — fills full container; frame overlay masks the edges ── */}
+          {char && (
+            <img
+              src={`/partyL/${char.master_pc_id}.png`} alt={char.name}
+              className="absolute inset-0 w-full h-full object-fill pointer-events-none"
+              onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(char.images.full) }}
+            />
+          )}
+
+          {/* ── Frame overlay: positioned so opaque border aligns exactly with card edges ── */}
+          {char && (
+            <img src={mainFrame} alt=""
+              className="pointer-events-none z-10"
+              style={frameStyle}
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+          )}
+
+          {/* ── Empty slot: "+" icon centred ── */}
+          {!char && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-white/30 text-4xl font-thin leading-none">+</span>
             </div>
-          </ScrollArea>
-        </PopoverContent>
-      </Popover>
-    )
-  }
+          )}
 
-  function IconToggleBar({ options, selectedValues, onToggle }: { options: { label: string; value: string; icon?: string }[]; selectedValues: string[]; onToggle: (value: string) => void }) {
-    return (
-      <div className="flex flex-wrap gap-1">
-        {options.map((opt) => {
-          const isSelected = selectedValues.includes(opt.value)
-          return (
-            <button
-              key={opt.value}
-              onClick={() => onToggle(opt.value)}
-              title={opt.label}
-              className={`flex h-10 w-10 items-center justify-center rounded-xl transition-all ${isSelected ? "bg-white/20 ring-2 ring-white/70" : "bg-white/5 hover:bg-white/10"}`}>
-              {opt.icon ? (
-                <img src={opt.icon} alt={opt.label} className={`h-7 w-7 object-contain transition-opacity ${isSelected ? "opacity-100" : "opacity-50"}`} />
-              ) : (
-                <span className={`px-1 text-center text-[11px] font-bold leading-tight ${isSelected ? "text-white" : "text-gray-400"}`}>{opt.label}</span>
-              )}
-            </button>
-          )
-        })}
+          {/* ── Star badge top-left (z above frame) ── */}
+          {char && (
+            <img src={STAR_ASSETS[tier] ?? STAR_ASSETS[5]} alt=""
+              className="pointer-events-none absolute z-20 object-contain"
+              style={{ top: "3%", left: "3%", width: "36%" }}
+            />
+          )}
+
+          {/* ── Element + atk type icons top-right (z above frame) ── */}
+          {char && cardIcons.length > 0 && (
+            <div className="absolute z-20 flex flex-col items-center gap-[3%]"
+              style={{ top: "6%", right: "3%", width: "13%" }}>
+              {cardIcons.map((src, idx) => (
+                <img key={idx} src={src} alt="" className="w-full aspect-square object-contain drop-shadow" />
+              ))}
+            </div>
+          )}
+
+          {/* ── Mini sub-slot (bottom-centre of card) ── */}
+          <button
+            onClick={(e) => { e.stopPropagation(); openPicker(i, "mini") }}
+            className="absolute z-20"
+            style={{ bottom: "2%", left: "50%", transform: "translateX(-50%)", width: "44%", aspectRatio: "1" }}
+          >
+            {mini ? (
+              <div className="relative w-full h-full">
+                <img src={miniBase} alt="" className="absolute inset-0 w-full h-full object-contain pointer-events-none"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                <img src={toPublicAssetPath(mini.images.icon)} alt={mini.name}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(mini.images.full) }} />
+                <img src={miniFrame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-contain"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                {/* Mini element + atk icons — max 2, one of each */}
+                {(() => {
+                  const [mI1, mI2] = getMiniCardIcons(mini)
+                  if (!mI1 && !mI2) return null
+                  return (
+                    <div className="pointer-events-none absolute z-10 flex flex-col items-center gap-[3%]"
+                      style={{ top: "4%", right: "3%", width: "28%" }}>
+                      {mI1 && <img src={mI1} alt="" className="w-full aspect-square object-contain" />}
+                      {mI2 && <img src={mI2} alt="" className="w-full aspect-square object-contain" />}
+                    </div>
+                  )
+                })()}
+                <button onClick={(e) => { e.stopPropagation(); setMiniSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
+                  className="absolute -top-1 -right-1 bg-black/60 rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] z-30 text-white">×</button>
+              </div>
+            ) : (
+              /* Empty mini slot */
+              <div className="relative w-full h-full border border-gray-500/40 rounded-sm"
+                style={{ background: "#0a1010" }}>
+                <span className="absolute inset-0 flex items-center justify-center text-white/30 text-xs font-thin">+</span>
+              </div>
+            )}
+          </button>
+
+          {/* ── Clear main slot ── */}
+          {char && (
+            <button onClick={(e) => { e.stopPropagation(); setSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
+              className="absolute top-1 right-1 bg-black/60 hover:bg-black/80 rounded-full w-5 h-5 flex items-center justify-center text-[10px] z-30 text-white">×</button>
+          )}
+        </div>
+
       </div>
     )
   }
 
+  // =================================================
+  //   PICKER MODAL — game-style two-panel layout
+  // =================================================
+  function PickerModal() {
+    if (pickerOpenFor === null) return null
+    const isProt = pickerOpenFor === 0
+    const isMain = pickerMode === "main"
+    const isMini = pickerMode === "mini"
+    const isHP   = pickerMode === "heartprint"
 
-  function toggleValue(values: string[], setter: (next: string[]) => void, value: string) {
-    setter(values.includes(value) ? values.filter((entry) => entry !== value) : [...values, value])
-  }
+    // Currently assigned char in the slot being edited (for left preview)
+    const previewCharId = isMain ? slots[pickerOpenFor] : isMini ? miniSlots[pickerOpenFor] : null
+    const previewChar = previewCharId ? characters.find((c) => c.master_pc_id === previewCharId) ?? null : null
 
-  return (
-    <div className="w-full">
-      <div className="flex flex-col gap-4">
-        <div>
-          <h1 className="text-3xl font-bold text-white sm:text-4xl">Team Builder</h1>
-        </div>
+    return (
+      <div className="fixed inset-0 z-50 flex" role="dialog" aria-modal="true">
+        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={closePicker} />
+        <div className="relative z-50 m-auto flex max-h-[95vh] w-[95vw] max-w-6xl rounded-xl overflow-hidden shadow-2xl"
+          style={{ background: "linear-gradient(180deg, #0c1929 0%, #111d2e 100%)" }}>
 
-        <div className="mx-auto w-[65vw]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-start py-4">
-          {slots.map((charId, i) => {
-            const character = charId ? characters.find((c) => c.master_pc_id === charId) : null
-            const miniChar = miniSlots[i] ? characters.find((c) => c.master_pc_id === miniSlots[i]) : null
-            const mainTier = character ? getCharacterVisualTier(character) : 5
-            const miniTier = miniChar ? getCharacterVisualTier(miniChar) : 5
-            const mainFrameFile = getMainFrameFilenameForCharacter(character)
-            const dims = frameInfo[mainFrameFile]
-            return (
-              <div key={i} className="relative p-0 w-full" style={{ height: 'min(72vh, calc(100vh - 8rem))' }}>
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <div
-                    className="relative w-full h-full flex items-center justify-center cursor-pointer"
-                    onClick={() => openPicker(i, "main")}
-                    role="button"
-                    tabIndex={0}
-                  >
-                    <div className="relative w-full" style={{ width: '100%', maxHeight: '100%', aspectRatio: dims ? `${dims.w}/${dims.h}` : undefined }}>
-                      {character ? (
-                        <>
-                          <img
-                            src={`/partyL/${character.master_pc_id}.png`}
-                            alt={character.name}
-                            onLoad={(e) => {
-                              const img = e.target as HTMLImageElement
-                              setSlotSizes((s) => ({ ...s, [i]: { ...(s[i] ?? {}), partyLW: img.naturalWidth, partyLH: img.naturalHeight } }))
-                            }}
-                            onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(character.images.full) }}
-                            style={{ height: '100%', width: 'auto', maxWidth: '100%' }}
-                            className="object-contain block mx-auto"
-                          />
+          {/* LEFT PANEL — Slot preview (like game's diamond + rectangle) */}
+          <div className="hidden sm:flex flex-col items-center justify-center gap-4 p-4 border-r border-white/5"
+            style={{ width: "200px", minWidth: "160px" }}>
 
-                          <img
-                            src={frameInfo[mainFrameFile]?.src ?? `/frames/${mainFrameFile}`}
-                            alt="frame"
-                            className="pointer-events-none absolute left-0 top-0 w-full h-full object-contain"
-                            onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }}
-                          />
-                        </>
-                      ) : (
-                        <div className="h-full w-full rounded-none border-4 border-white/80 bg-transparent flex items-center justify-center">
-                          <div className="text-center text-gray-300 pointer-events-none">
-                            <div className="text-4xl font-bold">+</div>
-                          </div>
+            {/* Slot preview */}
+            {(isMain || isMini) && (
+              <div className="flex flex-col items-center gap-3">
+                {/* Diamond preview for main slot */}
+                {isMain && (
+                  <div className="relative w-28 h-28" style={{ transform: "rotate(45deg)" }}>
+                    <div className="absolute inset-1 border-2 border-green-500/40 bg-[#0a1420] overflow-hidden">
+                      {previewChar && (
+                        <img src={toPublicAssetPath(previewChar.images.icon)} alt="" className="w-full h-full object-cover"
+                          style={{ transform: "rotate(-45deg) scale(1.4)" }} />
+                      )}
+                      {!previewChar && (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <span className="text-white/30 text-xl font-bold" style={{ transform: "rotate(-45deg)" }}>+</span>
                         </div>
                       )}
+                    </div>
+                  </div>
+                )}
 
-                      {/* mini inside the main frame (centered, inside) */}
-                      <button
-                        onClick={(e) => { e.stopPropagation(); openPicker(i, "mini") }}
-                        title="Select mini-slot character"
-                        className="absolute left-1/2 -translate-x-1/2"
-                        style={{ bottom: '28px', width: 'clamp(72px, 9vw, 140px)', height: 'clamp(72px, 9vw, 140px)' }}
-                      >
-                        <div className="relative w-full h-full">
-                          {miniChar ? (
-                            <div className="relative w-full h-full">
-                              <img src={`/frame/${getMiniFrameFilenameForCharacter(miniChar)}`} alt="mini-frame" className="pointer-events-none absolute inset-0 w-full h-full object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-                              <img src={toPublicAssetPath(miniChar.images.icon)} alt={miniChar.name} className="absolute inset-2 w-[calc(100%-8px)] h-[calc(100%-8px)] object-contain" onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(miniChar.images.full) }} />
-                              <button onClick={(e) => { e.stopPropagation(); clearMiniSlot(i) }} className="absolute top-1 right-1 bg-white/10 hover:bg-white/20 rounded-full w-6 h-6 flex items-center justify-center text-xs">×</button>
-                            </div>
-                          ) : (
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="w-full h-full flex items-center justify-center bg-black/60 border border-white/10 rounded-sm">
-                                <span className="text-white text-3xl font-bold leading-none">+</span>
-                              </div>
-                            </div>
-                          )}
-                        </div>
+                {/* Tall rectangle below diamond (same slot, portrait) */}
+                <div className="relative w-20 rounded-sm overflow-hidden border border-gray-600/30" style={{ aspectRatio: "248 / 612" }}>
+                  {previewChar ? (
+                    <>
+                      <img src={`/partyL/${previewChar.master_pc_id}.png`} alt="" className="absolute inset-0 w-full h-full object-fill" />
+                      {(() => {
+                        const t = getCharacterVisualTier(previewChar)
+                        const r: "bless" | "member" = previewChar.character_role?.toLowerCase() === "supporter" ? "bless" : "member"
+                        return <img src={getMainFramePaths(t, r).frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                      })()}
+                    </>
+                  ) : (
+                    <img src="/frames/baseMemberLEmpty.png" alt="" className="absolute inset-0 w-full h-full object-fill" />
+                  )}
+                </div>
+
+                {/* Remove button */}
+                <button
+                  onClick={() => {
+                    if (isMini) setMiniSlots((s) => { const c = [...s]; c[pickerOpenFor] = null; return c })
+                    else setSlots((s) => { const c = [...s]; c[pickerOpenFor] = null; return c })
+                    closePicker()
+                  }}
+                  className="px-4 py-2 rounded border border-teal-500/40 bg-teal-900/30 text-teal-300 text-sm hover:bg-teal-900/50 transition-colors"
+                >Confirm</button>
+              </div>
+            )}
+
+            {/* HeartPrint preview */}
+            {isHP && (
+              <div className="flex flex-col items-center gap-3">
+                <div className="relative w-32 h-20 rounded overflow-hidden border border-amber-400/20 bg-black/40">
+                  {heartPrintId ? (
+                    <>
+                      <img src={`/SkillStill/${heartPrintId}/skill_still_${heartPrintId}_M.png`} alt="" className="absolute inset-0 w-full h-full object-cover" />
+                      <img src="/StillFrame/StillFrame1_m.png" alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
+                        onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                    </>
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <img src="/frames/btnStillEmptyNormal.png" alt="" className="h-8 object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                    </div>
+                  )}
+                </div>
+                <span className="text-[10px] text-amber-300/60 text-center">HeartPrint Skill</span>
+              </div>
+            )}
+          </div>
+
+          {/* RIGHT PANEL — Header, filters toggle, character grid */}
+          <div className="flex-1 flex flex-col min-w-0 max-h-[95vh]">
+            {/* Top bar */}
+            <div className="flex items-center gap-2 px-3 py-2 border-b border-white/5 shrink-0">
+              <div className="flex items-center gap-2 flex-1 min-w-0">
+                <Input
+                  autoFocus value={query} onChange={(e) => setQuery(e.target.value)}
+                  placeholder={isHP ? "Search by ID…" : "Search by name…"}
+                  className="h-8 flex-1 border-gray-700 bg-gray-800/80 text-white text-sm" />
+              </div>
+              {!isHP && (
+                <button
+                  onClick={() => setShowFilters(!showFilters)}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs transition-all ${showFilters ? "bg-teal-800/50 text-teal-300 ring-1 ring-teal-400/30" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" /></svg>
+                  Filter
+                </button>
+              )}
+              <button onClick={closePicker} className="w-8 h-8 flex items-center justify-center rounded bg-white/5 hover:bg-white/10 text-gray-400 text-sm">✕</button>
+            </div>
+
+            {/* Role indicator */}
+            {!isHP && (
+              <div className={`flex items-center gap-2 px-3 py-1.5 text-xs font-medium border-b border-white/5 ${isProt ? "text-purple-300 bg-purple-900/10" : "text-sky-300 bg-sky-900/10"}`}>
+                <img src={isProt ? "/UI/Texture/CharaInfoAtlas/icSkillBlessLeader.png" : "/UI/Texture/CharaInfoAtlas/icSkillAttacker.png"}
+                  alt="" className="h-4 w-4 object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                {isProt ? "Protector" : "Attacker"} — {results.length} units
+              </div>
+            )}
+            {isHP && (
+              <div className="flex items-center gap-2 px-3 py-1.5 text-xs text-amber-300/70 border-b border-white/5 bg-amber-900/5">
+                HeartPrint Skills — {heartprintItems.length} available
+              </div>
+            )}
+
+            {/* Collapsible filter panel */}
+            {showFilters && !isHP && (
+              <div className="px-3 py-3 border-b border-white/5 bg-[#0a1420] space-y-3 overflow-y-auto max-h-[40vh]">
+                {/* Attribute */}
+                <div>
+                  <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">Attribute</div>
+                  <div className="flex flex-wrap gap-1 mb-1">
+                    <FilterBtn active={filterEl === null} onClick={() => setFilterEl(null)}>ALL</FilterBtn>
+                    {NORMAL_ELEMENTS.map((e) => <FilterIcon key={e.key} active={filterEl === e.key} icon={e.icon} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />)}
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    {ENHANCED_ELEMENTS.map((e) => <FilterIcon key={e.key} active={filterEl === e.key} icon={e.icon} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />)}
+                  </div>
+                </div>
+
+                {/* Attack Type (attackers only) */}
+                {!isProt && (
+                  <div>
+                    <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">Attack Type</div>
+                    <div className="flex gap-1">
+                      <FilterBtn active={filterAttack === null} onClick={() => setFilterAttack(null)}>ALL</FilterBtn>
+                      {ATTACK_TYPES.map((a) => <FilterIcon key={a.key} active={filterAttack === a.key} icon={a.icon} label={a.label} onClick={() => setFilterAttack(filterAttack === a.key ? null : a.key)} />)}
+                    </div>
+                  </div>
+                )}
+
+                {/* Tactics Type */}
+                <div>
+                  <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">Tactics Type</div>
+                  <div className="flex flex-wrap gap-1">
+                    <FilterBtn active={filterTactics === null} onClick={() => setFilterTactics(null)}>ALL</FilterBtn>
+                    {TACTICS_TYPES.map((t) => (
+                      <button key={t.key} onClick={() => setFilterTactics(filterTactics === t.key ? null : t.key)}
+                        className={`flex items-center gap-1 px-2 py-1 rounded text-[11px] transition-all ${filterTactics === t.key ? "bg-white/20 text-white ring-1 ring-white/40" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
+                        <img src={t.icon} alt="" className={`w-4 h-4 object-contain ${filterTactics === t.key ? "opacity-100" : "opacity-50"}`} />{t.label}
                       </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Character Type + Rarity */}
+                <div className="flex gap-6 flex-wrap">
+                  <div>
+                    <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">Character Type</div>
+                    <div className="flex gap-1">
+                      {([["ALL", null], ["Normal", "normal"], ["EX", "ex"]] as [string, "normal" | "ex" | null][]).map(([lbl, val]) => (
+                        <FilterBtn key={String(val)} active={filterCharType === val} onClick={() => setFilterCharType(val)}>{lbl}</FilterBtn>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">Rarity</div>
+                    <div className="flex gap-1">
+                      <FilterBtn active={filterRarity === null} onClick={() => setFilterRarity(null)}>ALL</FilterBtn>
+                      {[3, 4, 5].map((r) => <FilterBtn key={r} active={filterRarity === r} onClick={() => setFilterRarity(filterRarity === r ? null : r)}>{r}★</FilterBtn>)}
                     </div>
                   </div>
                 </div>
-              </div>
-            )
-          })}
-          </div>
-        </div>
 
-        {/* Picker modal (search + filters inside) */}
-        {pickerOpenFor !== null && (
-          <div className="fixed inset-0 z-50 flex" role="dialog" aria-modal="true">
-            <div className="absolute inset-0 bg-black/60" onClick={closePicker} />
-            <div className="relative z-50 m-auto max-w-4xl w-full bg-gray-900 rounded-lg p-4 shadow-lg">
-              <div className="flex items-center gap-3 mb-3">
-                <Input autoFocus value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search characters by name or ID" className="flex-1 rounded px-3 py-2 bg-gray-800 border border-gray-700 text-white" />
-                <button onClick={closePicker} className="px-3 py-2 rounded bg-white/10">Close</button>
+                {/* Forces */}
+                <div>
+                  <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">Forces</div>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button variant="outline" className="h-7 gap-1.5 border-gray-600 bg-gray-800 px-2.5 text-white hover:bg-gray-700 text-[11px]">
+                        {filterForces.length > 0 ? `${filterForces.length} selected` : "Select Forces ▸"}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-64 border-gray-600 bg-gray-800 p-0 text-white z-[60]" align="start">
+                      <ScrollArea className="h-52 px-2 py-2">
+                        <div className="space-y-0.5">
+                          {forceOptions.map((opt) => {
+                            const checked = filterForces.includes(opt.value)
+                            return (
+                              <label key={opt.value} className={`flex cursor-pointer items-center gap-2 rounded px-2 py-1 text-xs ${checked ? "bg-white/10" : "hover:bg-white/5"}`}>
+                                <Checkbox checked={checked} onCheckedChange={() => setFilterForces((prev) => checked ? prev.filter((v) => v !== opt.value) : [...prev, opt.value])} />
+                                {opt.icon && <img src={opt.icon} alt="" className="h-4 w-auto max-w-[50px] shrink-0 object-contain" />}
+                                <span>{opt.label}</span>
+                              </label>
+                            )
+                          })}
+                        </div>
+                      </ScrollArea>
+                    </PopoverContent>
+                  </Popover>
+                  {filterForces.length > 0 && <button onClick={() => setFilterForces([])} className="ml-2 text-[10px] text-gray-500 hover:text-gray-300 underline">clear</button>}
+                </div>
               </div>
+            )}
 
-                <div className="mb-3 flex flex-wrap items-center gap-3">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-gray-300">Element</span>
-                  <div className="ml-2">
-                    <IconToggleBar
-                      options={elementOptions}
-                      selectedValues={selectedElement ? [selectedElement] : []}
-                      onToggle={(v) => setSelectedElement((prev) => (prev === v ? null : v))}
-                    />
+            {/* CHARACTER GRID */}
+            <div className="flex-1 overflow-auto p-2">
+              <div className={`grid gap-1.5 ${isHP ? "grid-cols-3 sm:grid-cols-4 md:grid-cols-5" : "grid-cols-5 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8"}`}>
+                {/* Remove card */}
+                <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-gray-600 p-1.5 hover:bg-white/5 transition-colors aspect-square"
+                  onClick={() => {
+                    if (isHP) setHeartPrintId(null)
+                    else if (isMini) setMiniSlots((s) => { const c = [...s]; c[pickerOpenFor] = null; return c })
+                    else setSlots((s) => { const c = [...s]; c[pickerOpenFor] = null; return c })
+                    closePicker()
+                  }}>
+                  <div className="w-10 h-10 flex items-center justify-center border border-dashed border-gray-500 rounded">
+                    <span className="text-gray-500 text-sm">✕</span>
                   </div>
+                  <span className="text-[9px] text-gray-500">Remove</span>
                 </div>
 
-                <div className="flex items-center gap-2">
-                  <Select onValueChange={(v) => setSelectedRarity(v === "all" ? null : Number(v))}>
-                    <SelectTrigger className="w-28 border-gray-600 bg-gray-700 text-white">
-                      <SelectValue placeholder="Rarity" />
-                    </SelectTrigger>
-                    <SelectContent className="border-gray-600 bg-gray-700 text-white">
-                      <SelectItem value="all">All</SelectItem>
-                      {rarityOptions.map((r) => (
-                        <SelectItem key={String(r)} value={String(r)}>{String(r)}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <Select onValueChange={(v) => setSelectedRole(v === "all" ? null : v)}>
-                    <SelectTrigger className="w-32 border-gray-600 bg-gray-700 text-white">
-                      <SelectValue placeholder="Role" />
-                    </SelectTrigger>
-                    <SelectContent className="border-gray-600 bg-gray-700 text-white">
-                      <SelectItem value="all">All</SelectItem>
-                      <SelectItem value="attacker">Attacker</SelectItem>
-                      <SelectItem value="supporter">Supporter</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="ml-auto flex items-center gap-2">
-                  <div className="flex gap-2">
-                    <ToggleFilter title="Tactics" options={tacticsOptions} selectedValues={selectedTactics} onToggle={(v) => toggleValue(selectedTactics, setSelectedTactics, v)} />
-                    <ToggleFilter title="Forces" options={forceOptions} selectedValues={selectedForces} onToggle={(v) => toggleValue(selectedForces, setSelectedForces, v)} />
+                {isHP ? heartprintItems.map((id) => (
+                  <div key={id} className="flex flex-col items-center gap-0.5 p-1 rounded hover:bg-white/5 cursor-pointer transition-colors"
+                    onClick={() => { setHeartPrintId(id); closePicker() }}>
+                    <div className="relative w-full overflow-hidden rounded bg-black/40" style={{ aspectRatio: "245 / 146" }}>
+                      <img src={`/SkillStill/${id}/skill_still_${id}_S.png`} alt="" className="absolute inset-0 w-full h-full object-cover"
+                        onError={(e) => { (e.target as HTMLImageElement).style.opacity = "0.2" }} />
+                      <img src="/StillFrame/StillFrame1_s.png" alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
+                        onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                      {heartPrintId === id && <div className="absolute inset-0 ring-2 ring-amber-400 ring-inset rounded" />}
+                    </div>
                   </div>
-                  {pickerOpenFor !== null && (
-                    <button
-                      onClick={() => {
-                        if (pickerMode === "mini") clearMiniSlot(pickerOpenFor)
-                        else clearSlot(pickerOpenFor)
-                      }}
-                      className="px-3 py-1 rounded bg-white/10 hover:bg-white/20"
-                    >
-                      Reset
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 max-h-[60vh] overflow-auto">
-                {results.map((c) => {
-                  const smallFrame = `/frame/${getMiniFrameFilenameForCharacter(c)}`
+                )) : results.map((c) => {
+                  const t = getCharacterVisualTier(c)
+                  const r: "bless" | "member" = c.character_role?.toLowerCase() === "supporter" ? "bless" : "member"
+                  const { base, frame } = getMiniFramePaths(t, r)
                   return (
-                    <div key={c.master_pc_id} className="flex flex-col items-center gap-2 p-3 rounded bg-gray-800 hover:bg-gray-700 cursor-pointer" onClick={() => selectCharacter(pickerOpenFor, c.master_pc_id)}>
-                      <div className="relative h-20 w-20">
-                        <img src={toPublicAssetPath(c.images.icon)} alt={c.name} className="absolute inset-3 w-[calc(100%-24px)] h-[calc(100%-24px)] object-contain rounded" onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(c.images.full) }} />
-                        <img src={smallFrame} alt="frame" className="pointer-events-none absolute inset-0 w-full h-full object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                    <div key={c.master_pc_id} className="flex flex-col items-center gap-0.5 p-1 rounded hover:bg-white/5 cursor-pointer transition-colors"
+                      onClick={() => selectChar(pickerOpenFor, c.master_pc_id)}>
+                      <div className="relative w-full" style={{ aspectRatio: "1" }}>
+                        <img src={base} alt="" className="absolute inset-0 w-full h-full object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                        <img src={toPublicAssetPath(c.images.icon)} alt={c.name} className="absolute inset-0 w-full h-full object-cover object-top"
+                          onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(c.images.full) }} />
+                        <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-contain"
+                          onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                        <img src={STAR_ASSETS[t] ?? STAR_ASSETS[5]} alt="" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[14%] object-contain" />
                       </div>
-                      <div className="text-center text-sm font-semibold">{c.name}</div>
-                      <div className="text-xs text-gray-400">ID: {c.master_pc_id}</div>
                     </div>
                   )
                 })}
               </div>
+
+              {!isHP && results.length === 0 && <p className="py-6 text-center text-xs text-gray-500">No characters match</p>}
+              {isHP && heartprintItems.length === 0 && <p className="py-6 text-center text-xs text-gray-500">No HeartPrint skills match</p>}
             </div>
           </div>
-        )}
+        </div>
       </div>
+    )
+  }
+
+  // Simple filter button helpers
+  function FilterBtn({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+    return (
+      <button onClick={onClick}
+        className={`px-2 py-1 rounded text-[11px] font-medium transition-all ${active ? "bg-white/20 text-white ring-1 ring-white/30" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}
+      >{children}</button>
+    )
+  }
+  function FilterIcon({ active, icon, label, onClick }: { active: boolean; icon: string; label: string; onClick: () => void }) {
+    return (
+      <button onClick={onClick} title={label}
+        className={`w-8 h-8 flex items-center justify-center rounded transition-all ${active ? "ring-2 ring-white bg-white/20" : "bg-white/5 hover:bg-white/10"}`}>
+        <img src={icon} alt={label} className={`w-5 h-5 object-contain ${active ? "opacity-100" : "opacity-50"}`} />
+      </button>
+    )
+  }
+
+  // ============================
+  //   MAIN RENDER
+  // ============================
+  return (
+    <div className="w-full">
+      <h1 className="mb-3 text-2xl font-bold text-white sm:text-3xl">Team Builder</h1>
+
+      {/*
+        TROOP LAYOUT
+        ─ 4 large portrait slots (aspect 248/612) each flex-1
+        ─ Right section: also flex-1; inside it: 2 compact portrait slots side-by-side + heartprint below
+        All slots use the same aspect-ratio so empty = filled in height.
+        We cap the row height so it fits without scrolling.
+      */}
+      <div className="flex gap-1 items-start" style={{ maxWidth: "min(90vw, 850px)" }}>
+        {/* 4 large slots */}
+        {[0, 1, 2, 3].map((i) => (
+          <div key={i} className="flex-1 min-w-0">
+            <TroopSlot i={i} />
+          </div>
+        ))}
+
+        {/* Right section — same flex-1 width as a large slot; split horizontally for 2 compact slots */}
+        <div className="flex-1 min-w-0 flex flex-col gap-1">
+          {/* 2 compact slots side-by-side */}
+          <div className="flex gap-1">
+            <div className="flex-1 min-w-0"><TroopSlot i={4} /></div>
+            <div className="flex-1 min-w-0"><TroopSlot i={5} /></div>
+          </div>
+
+          {/* Heartprint slot — landscape, small */}
+          <button onClick={() => openPicker(0, "heartprint")}
+            className="relative w-full overflow-hidden rounded-sm border border-gray-600/40 hover:border-amber-400/50 transition-all"
+            style={{ aspectRatio: "245/146", background: "#06100e" }}>
+            {heartPrintId ? (
+              <>
+                <img src={`/SkillStill/${heartPrintId}/skill_still_${heartPrintId}_S.png`} alt=""
+                  className="absolute inset-0 w-full h-full object-cover"
+                  onError={(e) => { (e.target as HTMLImageElement).style.opacity = "0.3" }} />
+                <img src="/StillFrame/StillFrame1_s.png" alt=""
+                  className="pointer-events-none absolute inset-0 w-full h-full object-fill"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                <button onClick={(e) => { e.stopPropagation(); setHeartPrintId(null) }}
+                  className="absolute top-0.5 right-0.5 bg-black/60 rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] z-10 text-white">×</button>
+              </>
+            ) : (
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5">
+                <span className="text-white/20 text-base font-thin leading-none">+</span>
+                <span className="text-[6px] text-gray-600 text-center leading-tight">Heartprint Skill<br/>Unassigned</span>
+              </div>
+            )}
+          </button>
+        </div>
+      </div>
+
+      <PickerModal />
     </div>
   )
 }
