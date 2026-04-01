@@ -298,10 +298,8 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
 
   // ==========================================
   // MAIN SLOT CARD
-  // The outer div is sized to the FULL frame dimensions (fw × fh).
-  // The inner "viewport" (bx, by, intW, intH) clips the base+portrait.
-  // The frame image is placed absolute over the full outer div.
-  // This ensures the frame is fully visible and correctly proportioned.
+  // Frame dimensions: high-tier (6-7★) = 264×628, low-tier (3-5★) = 248×612
+  // The frame PNG has transparent center; base+portrait fill behind it.
   // ==========================================
   function MainSlotCard({ i }: { i: number }) {
     const charId = mainSlots[i]
@@ -313,110 +311,104 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
     const tier = char ? getCharacterVisualTier(char) : 5
     const { base: mainBase, frame: mainFrame } = getMainFramePaths(tier, role)
 
-    // Frame pixel dimensions from getMainFramePaths logic
-    const isHigh = tier >= 6
-    const [fw, fh, bx, by] = isHigh ? [264, 628, 28, 35] : [248, 612, 17, 17]
-    // Interior dimensions (the art viewport)
-    const intW = fw - 2 * bx
-    const intH = fh - 2 * by
-    // As percentages of the full frame
-    const artLeft = `${(bx / fw) * 100}%`
-    const artTop = `${(by / fh) * 100}%`
-    const artW = `${(intW / fw) * 100}%`
-    const artH = `${(intH / fh) * 100}%`
-    // Sub-slot: ~30% of interior width, square
-    const subSlotW = `${(intW * 0.42 / fw) * 100}%`
-
+    // Use consistent frame aspect for layout (high-tier dimensions)
+    const FRAME_W = 264, FRAME_H = 628
     const [mainIcon1, mainIcon2, mainIcon3] = char ? getCardIcons(char) : [null, null, null]
     const mainIcons = [mainIcon1, mainIcon2, mainIcon3].filter(Boolean) as string[]
     const [subIcon1, subIcon2] = subChar ? getMiniCardIcons(subChar) : [null, null]
 
+    // Icon positions for attacker diamond slots (top-right of frame)
+    // These percentages position icons within the frame's diamond icon area
+    const iconTop = "3.5%"
+    const iconRight = "5%"
+
     return (
-      /*
-       * Outer box is the FULL frame size.
-       * aspect-ratio = fw/fh so it scales uniformly in the flex row.
-       * overflow: visible so the frame shadow/glow can bleed out.
-       */
       <div
-        className="relative flex-shrink-0 cursor-pointer select-none"
-        style={{ aspectRatio: `${fw}/${fh}`, width: "100%", overflow: "visible" }}
+        className="relative flex-shrink-0 cursor-pointer select-none h-full"
+        style={{ aspectRatio: `${FRAME_W}/${FRAME_H}` }}
         onClick={() => openPicker(i, "main")}
       >
-        {/* ── Art viewport (clipped to interior) ── */}
-        <div
-          className="absolute overflow-hidden"
-          style={{
-            left: artLeft, top: artTop, width: artW, height: artH,
-            border: "1.5px solid rgba(160,160,160,0.3)",
-            background: char ? "transparent" : "rgba(20,20,24,0.72)",
-          }}
-        >
-          {!char && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-white/40 font-light select-none" style={{ fontSize: "clamp(1.5rem,3vw,2.5rem)" }}>+</span>
-            </div>
-          )}
-          {char && (
-            <>
-              <img src={mainBase} alt="" className="absolute inset-0 w-full h-full object-fill pointer-events-none"
-                onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-              <img src={`/partyL/${char.master_pc_id}.png`} alt={char.name}
-                className="absolute inset-0 w-full h-full object-fill pointer-events-none"
-                onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(char.images.full) }} />
-            </>
-          )}
-
-          {/* Sub-slot: bottom-center of art viewport */}
-          <button
-            onClick={(e) => { e.stopPropagation(); openPicker(i, "sub") }}
-            className="absolute overflow-hidden rounded-sm z-20"
+        {/* Empty state */}
+        {!char && (
+          <div
+            className="absolute inset-0 flex items-center justify-center rounded-lg"
             style={{
-              width: subSlotW, aspectRatio: "1",
-              bottom: "4%", left: "50%", transform: "translateX(-50%)",
-              border: "1.5px solid rgba(160,160,160,0.45)",
-              background: "rgba(0,0,0,0.65)",
+              border: "2px solid rgba(120,120,130,0.4)",
+              background: "rgba(18,20,28,0.85)",
             }}
           >
-            {subChar ? (
-              <>
-                <img src={toPublicAssetPath(subChar.images.icon)} alt={subChar.name}
-                  className="absolute inset-0 w-full h-full object-cover object-top" />
-                {(() => {
-                  const t = getCharacterVisualTier(subChar)
-                  const r: "bless" | "member" = isProtectorChar(subChar) ? "bless" : "member"
-                  const { frame } = getMiniFramePaths(t, r)
-                  return <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-contain"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-                })()}
-                {(subIcon1 || subIcon2) && (
-                  <div className="absolute top-0.5 right-0.5 z-20 flex flex-col gap-0.5">
-                    {subIcon1 && <img src={subIcon1} alt="" className="w-3 h-3 object-contain drop-shadow" />}
-                    {subIcon2 && <img src={subIcon2} alt="" className="w-3 h-3 object-contain drop-shadow" />}
-                  </div>
-                )}
-                <button onClick={(e) => { e.stopPropagation(); setSubSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
-                  className="absolute top-0 left-0 bg-black/75 w-3 h-3 flex items-center justify-center text-[7px] z-30 text-white rounded-br-sm">x</button>
-              </>
-            ) : (
-              <span className="absolute inset-0 flex items-center justify-center text-white/30 font-light text-base">+</span>
-            )}
-          </button>
-        </div>
-
-        {/* ── Full frame image over entire outer box ── */}
-        {char && (
-          <img src={mainFrame} alt=""
-            className="absolute inset-0 w-full h-full pointer-events-none z-10"
-            style={{ objectFit: "fill" }}
-            onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+            <span className="text-white/40 font-light select-none text-4xl">+</span>
+          </div>
         )}
 
-        {/* ── Element / type icons — top-right of art viewport ── */}
+        {/* Filled state: base → portrait → frame overlay */}
+        {char && (
+          <>
+            {/* Base texture fills entire card */}
+            <img
+              src={mainBase} alt=""
+              className="absolute inset-0 w-full h-full object-fill pointer-events-none"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }}
+            />
+            {/* Character portrait fills entire card */}
+            <img
+              src={`/partyL/${char.master_pc_id}.png`} alt={char.name}
+              className="absolute inset-0 w-full h-full object-fill pointer-events-none"
+              onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(char.images.full) }}
+            />
+            {/* Frame overlay fills entire card (has transparent center) */}
+            <img
+              src={mainFrame} alt=""
+              className="absolute inset-0 w-full h-full pointer-events-none z-10"
+              style={{ objectFit: "fill" }}
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }}
+            />
+          </>
+        )}
+
+        {/* Sub-slot at bottom center */}
+        <button
+          onClick={(e) => { e.stopPropagation(); openPicker(i, "sub") }}
+          className="absolute overflow-hidden z-20"
+          style={{
+            width: "38%", aspectRatio: "1",
+            bottom: "4%", left: "50%", transform: "translateX(-50%)",
+            borderRadius: "4px",
+            border: "1.5px solid rgba(140,140,150,0.5)",
+            background: "rgba(10,12,18,0.8)",
+          }}
+        >
+          {subChar ? (
+            <>
+              <img src={toPublicAssetPath(subChar.images.icon)} alt={subChar.name}
+                className="absolute inset-0 w-full h-full object-cover object-top" />
+              {(() => {
+                const t = getCharacterVisualTier(subChar)
+                const r: "bless" | "member" = isProtectorChar(subChar) ? "bless" : "member"
+                const { frame } = getMiniFramePaths(t, r)
+                return <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+              })()}
+              {(subIcon1 || subIcon2) && (
+                <div className="absolute top-0.5 right-0.5 z-20 flex flex-col gap-0.5">
+                  {subIcon1 && <img src={subIcon1} alt="" className="w-3 h-3 object-contain drop-shadow" />}
+                  {subIcon2 && <img src={subIcon2} alt="" className="w-3 h-3 object-contain drop-shadow" />}
+                </div>
+              )}
+              <button onClick={(e) => { e.stopPropagation(); setSubSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
+                className="absolute top-0 left-0 bg-black/80 w-4 h-4 flex items-center justify-center text-[8px] z-30 text-white rounded-br-sm">x</button>
+            </>
+          ) : (
+            <span className="absolute inset-0 flex items-center justify-center text-white/35 font-light text-lg">+</span>
+          )}
+        </button>
+
+        {/* Element / type icons — positioned for frame's diamond slots */}
         {char && mainIcons.length > 0 && (
-          <div className="absolute z-30 flex flex-col items-end gap-0.5"
-            style={{ top: `calc(${artTop} + 4%)`, right: `calc(${artLeft} + 2%)` }}>
+          <div className="absolute z-30 flex flex-col items-center gap-1"
+            style={{ top: iconTop, right: iconRight }}>
             {mainIcons.map((src, idx) => (
-              <img key={idx} src={src} alt="" className="w-5 h-5 object-contain drop-shadow-md" />
+              <img key={idx} src={src} alt="" className="w-6 h-6 object-contain drop-shadow-lg" />
             ))}
           </div>
         )}
@@ -424,15 +416,14 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
         {/* Clear button */}
         {char && (
           <button onClick={(e) => { e.stopPropagation(); setMainSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
-            className="absolute bg-black/70 hover:bg-black/90 rounded-full w-5 h-5 flex items-center justify-center text-[10px] z-30 text-white"
-            style={{ top: `calc(${artTop} + 2px)`, right: `calc(${artLeft} + 2px)` }}>x</button>
+            className="absolute top-2 right-2 bg-black/70 hover:bg-black/90 rounded-full w-5 h-5 flex items-center justify-center text-[10px] z-30 text-white">x</button>
         )}
       </div>
     )
   }
 
   // ==========================================
-  // SIDE SLOT CARD — tall vertical, same aspect as main card art viewport
+  // SIDE SLOT CARD — tall vertical slots for the right panel
   // ==========================================
   function SideSlotCard({ i }: { i: number }) {
     const charId = sideSlots[i]
@@ -444,16 +435,17 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
 
     return (
       <div
-        className="relative w-full h-full overflow-hidden cursor-pointer select-none rounded-sm"
+        className="relative w-full h-full overflow-hidden cursor-pointer select-none"
         style={{
-          border: "1.5px solid rgba(160,160,160,0.35)",
-          background: char ? "transparent" : "rgba(20,20,24,0.72)",
+          borderRadius: "6px",
+          border: "2px solid rgba(120,120,130,0.4)",
+          background: char ? "transparent" : "rgba(18,20,28,0.85)",
         }}
         onClick={() => openPicker(i, "side")}
       >
         {!char && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-white/40 text-2xl font-light">+</span>
+            <span className="text-white/40 text-xl font-light">+</span>
           </div>
         )}
         {char && (
@@ -462,7 +454,7 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
               onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
             <img src={toPublicAssetPath(char.images.icon)} alt={char.name}
               className="absolute inset-0 w-full h-full object-cover object-top" />
-            <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-contain"
+            <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
               onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
             {(icon1 || icon2) && (
               <div className="absolute top-1 right-1 z-20 flex flex-col gap-0.5">
@@ -471,7 +463,7 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
               </div>
             )}
             <button onClick={(e) => { e.stopPropagation(); setSideSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
-              className="absolute top-0 left-0 bg-black/75 w-4 h-4 flex items-center justify-center text-[8px] z-30 text-white rounded-br-sm">x</button>
+              className="absolute top-0 left-0 bg-black/80 w-4 h-4 flex items-center justify-center text-[8px] z-30 text-white rounded-br-sm">x</button>
           </>
         )}
       </div>
@@ -697,29 +689,29 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
   // MAIN RENDER
   // ============================
   //
-  // Layout:
+  // Layout (all top-aligned):
   //   [Main0] [Main1] [Main2] [Main3]  [Side0] [Side1]
   //                                    [  Heartprint  ]
   //
-  // 4 main cards drive the height. Side slots are narrower but the same
-  // aspect ratio as the art viewport (intW:intH ≈ 208:558 for high tier).
-  // Heartprint is below the 2 side slots, spanning their combined width.
+  // Main cards use frame aspect (264/628). Side slots + heartprint combined
+  // height equals main card height. We calculate this using CSS.
   //
-  // We give each main card a fixed width and let its aspect-ratio determine
-  // its height. The right panel matches that height via flex-stretch.
-  //
-  const MAIN_CARD_WIDTH = "clamp(100px, 13vw, 155px)"
-  const SIDE_CARD_WIDTH = "clamp(72px, 9vw, 108px)"
-  // Art viewport aspect for side slots: use intW:intH of high-tier (208:558 ≈ 0.373)
-  const SIDE_ASPECT = "208 / 558"
+  const MAIN_CARD_WIDTH = "clamp(120px, 14vw, 175px)"
+  const SIDE_SLOT_WIDTH = "clamp(70px, 8vw, 100px)"
+  // Main card aspect ratio
+  const MAIN_ASPECT = 264 / 628
+  // Side slots take ~75% of main height, heartprint takes ~25%
+  const SIDE_HEIGHT_RATIO = 0.72
+  const HEARTPRINT_HEIGHT_RATIO = 0.25
 
   return (
-    <div className="w-full flex flex-col items-center">
-      <h1 className="mb-4 text-2xl font-bold text-white sm:text-3xl self-start">Team Builder</h1>
+    <div className="w-full flex flex-col items-center px-4">
+      <h1 className="mb-6 text-2xl font-bold text-white sm:text-3xl self-start">Team Builder</h1>
 
-      <div className="flex flex-nowrap gap-2 items-end justify-center w-full overflow-x-auto pb-2">
+      {/* Main container - all items top-aligned */}
+      <div className="flex flex-nowrap gap-3 items-start justify-center w-full overflow-x-auto pb-4">
 
-        {/* 4 main character slots — width-driven, height auto from aspect ratio */}
+        {/* 4 main character slots */}
         {[0, 1, 2, 3].map((i) => (
           <div key={i} className="flex-shrink-0" style={{ width: MAIN_CARD_WIDTH }}>
             <MainSlotCard i={i} />
@@ -727,25 +719,32 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
         ))}
 
         {/* Right panel: 2 side slots side-by-side + heartprint below */}
-        <div className="flex flex-col gap-1.5 flex-shrink-0" style={{ width: `calc(${SIDE_CARD_WIDTH} * 2 + 6px)` }}>
-
-          {/* 2 side slots in a single row */}
-          <div className="flex gap-1.5">
+        {/* Height matches main card height using aspect ratio calc */}
+        <div
+          className="flex flex-col gap-2 flex-shrink-0"
+          style={{
+            width: `calc(${SIDE_SLOT_WIDTH} * 2 + 8px)`,
+            height: `calc(${MAIN_CARD_WIDTH} / ${MAIN_ASPECT})`,
+          }}
+        >
+          {/* 2 side slots in a row - take ~72% of total height */}
+          <div className="flex gap-2" style={{ height: `${SIDE_HEIGHT_RATIO * 100}%` }}>
             {[0, 1].map((i) => (
-              <div key={i} className="flex-1" style={{ aspectRatio: SIDE_ASPECT }}>
+              <div key={i} className="flex-1 h-full">
                 <SideSlotCard i={i} />
               </div>
             ))}
           </div>
 
-          {/* Heartprint skill slot — full width, fixed height */}
+          {/* Heartprint skill slot — takes ~25% of total height */}
           <button
             onClick={() => openPicker(0, "heartprint")}
-            className="relative w-full overflow-hidden rounded-sm transition-opacity hover:opacity-90"
+            className="relative w-full overflow-hidden transition-opacity hover:opacity-90"
             style={{
-              height: "clamp(48px, 6vw, 72px)",
-              border: "1.5px solid rgba(160,160,160,0.35)",
-              background: "rgba(20,20,24,0.72)",
+              height: `${HEARTPRINT_HEIGHT_RATIO * 100}%`,
+              borderRadius: "6px",
+              border: "2px solid rgba(120,120,130,0.4)",
+              background: "rgba(18,20,28,0.85)",
             }}
           >
             {heartPrintId ? (
@@ -757,12 +756,12 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
                   className="pointer-events-none absolute inset-0 w-full h-full object-fill"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
                 <button onClick={(e) => { e.stopPropagation(); setHeartPrintId(null) }}
-                  className="absolute top-0.5 right-0.5 bg-black/70 rounded-full w-4 h-4 flex items-center justify-center text-[9px] z-10 text-white">x</button>
+                  className="absolute top-1 right-1 bg-black/70 rounded-full w-4 h-4 flex items-center justify-center text-[9px] z-10 text-white">x</button>
               </>
             ) : (
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5">
-                <span className="text-white/35 text-base font-light">+</span>
-                <span className="text-[8px] text-gray-400 text-center leading-tight px-1">Heartprint Skill Unassigned</span>
+                <span className="text-white/40 text-lg font-light">+</span>
+                <span className="text-[9px] text-gray-400 text-center leading-tight">Heartprint Skill Unassigned</span>
               </div>
             )}
           </button>
