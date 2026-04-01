@@ -228,9 +228,9 @@ function getMiniCardIcons(char: WikiCharacter): [string | null, string | null] {
 
 // =================================
 export default function TeamBuilderClient({ characters }: { characters: WikiCharacter[] }) {
-  // 5 main slots + 5 sub-slots + 4 side slots
-  const [mainSlots, setMainSlots] = useState<(number | null)[]>(Array(5).fill(null))
-  const [subSlots, setSubSlots] = useState<(number | null)[]>(Array(5).fill(null))
+  // 4 main slots + 4 sub-slots + 4 side slots
+  const [mainSlots, setMainSlots] = useState<(number | null)[]>(Array(4).fill(null))
+  const [subSlots, setSubSlots] = useState<(number | null)[]>(Array(4).fill(null))
   const [sideSlots, setSideSlots] = useState<(number | null)[]>(Array(4).fill(null))
   const [heartPrintId, setHeartPrintId] = useState<number | null>(null)
 
@@ -297,7 +297,7 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
   }
 
   // ==========================================
-  // MAIN SLOT CARD - Game style tall card
+  // MAIN SLOT CARD - Tall vertical card matching game UI
   // ==========================================
   function MainSlotCard({ i }: { i: number }) {
     const charId = mainSlots[i]
@@ -311,150 +311,146 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
     const [icon1, icon2, icon3] = char ? getCardIcons(char) : [null, null, null]
     const cardIcons = [icon1, icon2, icon3].filter(Boolean) as string[]
 
-    // Get card border color based on tier
-    const getBorderColor = () => {
-      if (!char) return "border-cyan-500/40"
-      if (tier >= 6) return "border-yellow-400/60"
-      if (tier === 5) return "border-purple-400/50"
-      if (tier === 4) return "border-orange-400/50"
-      return "border-gray-400/50"
+    const getBorderColor = (): string => {
+      if (!char) return "rgba(160,160,160,0.35)"
+      if (tier >= 6) return "rgba(250,200,60,0.7)"
+      if (tier === 5) return "rgba(180,130,255,0.6)"
+      if (tier === 4) return "rgba(255,160,50,0.6)"
+      return "rgba(160,160,160,0.5)"
     }
 
     return (
-      <div className="flex flex-col gap-1">
-        {/* Main card */}
-        <div
-          className={`relative overflow-hidden cursor-pointer select-none rounded-sm border-2 ${getBorderColor()}`}
-          style={{ aspectRatio: "170/320" }}
-          onClick={() => openPicker(i, "main")}
-        >
-          {/* Empty slot background - nebula style */}
-          {!char && (
-            <div
-              className="absolute inset-0"
-              style={{
-                background: "radial-gradient(ellipse at 50% 30%, #0d3535 0%, #082828 40%, #041818 70%, #020e0e 100%)",
-              }}
-            >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-white/40 text-5xl font-light">+</span>
-              </div>
-            </div>
-          )}
+      /* Outer card wrapper — tall portrait ratio */
+      <div
+        className="relative flex-shrink-0 cursor-pointer select-none overflow-hidden rounded-sm"
+        style={{
+          aspectRatio: "170/380",
+          border: `2px solid ${getBorderColor()}`,
+          background: char ? "transparent" : "rgba(20,20,24,0.72)",
+        }}
+        onClick={() => openPicker(i, "main")}
+      >
+        {/* Empty state: centred + */}
+        {!char && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-white/35 font-light" style={{ fontSize: "clamp(2rem,4vw,3rem)" }}>+</span>
+          </div>
+        )}
 
-          {/* Character art */}
-          {char && (
-            <>
-              <img src={mainBase} alt="" className="absolute inset-0 w-full h-full object-fill pointer-events-none"
-                onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-              <img
-                src={`/partyL/${char.master_pc_id}.png`} alt={char.name}
-                className="absolute inset-0 w-full h-full object-fill pointer-events-none"
-                onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(char.images.full) }}
-              />
-              <img src={mainFrame} alt="" className="pointer-events-none z-10" style={frameStyle}
-                onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-            </>
-          )}
-
-          {/* Star rating top-left */}
-          {char && (
-            <img src={STAR_ASSETS[tier] ?? STAR_ASSETS[5]} alt=""
-              className="pointer-events-none absolute z-20 object-contain"
-              style={{ top: "2%", left: "2%", width: "40%" }}
+        {/* Filled: base texture → portrait → decorative frame */}
+        {char && (
+          <>
+            <img
+              src={mainBase} alt=""
+              className="absolute inset-0 w-full h-full object-fill pointer-events-none"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }}
             />
-          )}
+            <img
+              src={`/partyL/${char.master_pc_id}.png`} alt={char.name}
+              className="absolute inset-0 w-full h-full object-fill pointer-events-none"
+              onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(char.images.full) }}
+            />
+            <img
+              src={mainFrame} alt=""
+              className="pointer-events-none z-10"
+              style={frameStyle}
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }}
+            />
+          </>
+        )}
 
-          {/* Element icons top-right */}
-          {char && cardIcons.length > 0 && (
-            <div className="absolute z-20 flex flex-col items-center gap-1"
-              style={{ top: "4%", right: "4%", width: "18%" }}>
-              {cardIcons.map((src, idx) => (
-                <img key={idx} src={src} alt="" className="w-full aspect-square object-contain drop-shadow-lg" />
-              ))}
-            </div>
-          )}
+        {/* ── TOP-LEFT: star rating ── */}
+        {char && (
+          <img
+            src={STAR_ASSETS[tier] ?? STAR_ASSETS[5]} alt=""
+            className="pointer-events-none absolute z-20 object-contain"
+            style={{ top: "2%", left: "2%", width: "42%", maxWidth: "56px" }}
+          />
+        )}
 
-          {/* Level indicator at bottom */}
-          {char && (
-            <div className="absolute bottom-[18%] left-1/2 -translate-x-1/2 z-20 bg-black/60 px-2 py-0.5 rounded text-xs text-white font-medium">
-              Lv.100
-            </div>
-          )}
+        {/* ── TOP-RIGHT: element / attack-type icons — stacked, clamped inside card ── */}
+        {char && cardIcons.length > 0 && (
+          <div
+            className="absolute z-20 flex flex-col items-center gap-0.5"
+            style={{ top: "2%", right: "3%", width: "16%", maxWidth: "22px" }}
+          >
+            {cardIcons.map((src, idx) => (
+              <img
+                key={idx} src={src} alt=""
+                className="w-full aspect-square object-contain drop-shadow-md"
+              />
+            ))}
+          </div>
+        )}
 
-          {/* Sub-slot (equipment/support) */}
+        {/* ── LOWER SECTION: sub-slot + level ── */}
+        {/* Semi-dark band so sub-slot area reads clearly */}
+        <div
+          className="absolute bottom-0 left-0 right-0 z-10 flex flex-col items-center pb-[4%] pt-[3%] gap-[4%]"
+          style={{ background: char ? "linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%)" : "none" }}
+        >
+          {/* Sub-slot square — sits inside the card lower area */}
           <button
             onClick={(e) => { e.stopPropagation(); openPicker(i, "sub") }}
-            className="absolute z-20 border border-gray-600/60 rounded-sm overflow-hidden"
-            style={{ bottom: "3%", left: "50%", transform: "translateX(-50%)", width: "50%", aspectRatio: "1" }}
+            className="relative overflow-hidden rounded-sm flex-shrink-0"
+            style={{
+              width: "46%",
+              aspectRatio: "1",
+              border: "1.5px solid rgba(160,160,160,0.45)",
+              background: "rgba(0,0,0,0.55)",
+            }}
           >
             {subChar ? (
-              <div className="relative w-full h-full bg-black/40">
-                <img src={toPublicAssetPath(subChar.images.icon)} alt={subChar.name}
-                  className="absolute inset-0 w-full h-full object-cover object-top" />
+              <>
+                <img
+                  src={toPublicAssetPath(subChar.images.icon)} alt={subChar.name}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                />
                 {(() => {
                   const t = getCharacterVisualTier(subChar)
                   const r: "bless" | "member" = isProtectorChar(subChar) ? "bless" : "member"
                   const { frame } = getMiniFramePaths(t, r)
-                  return <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-contain"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                  return (
+                    <img src={frame} alt=""
+                      className="pointer-events-none absolute inset-0 w-full h-full object-contain"
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }}
+                    />
+                  )
                 })()}
-                <button onClick={(e) => { e.stopPropagation(); setSubSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
-                  className="absolute -top-1 -right-1 bg-black/80 rounded-full w-4 h-4 flex items-center justify-center text-[9px] z-30 text-white">x</button>
-              </div>
+                <button
+                  onClick={(e) => { e.stopPropagation(); setSubSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
+                  className="absolute top-0 right-0 bg-black/75 w-3.5 h-3.5 flex items-center justify-center text-[8px] z-30 text-white rounded-bl-sm"
+                >x</button>
+              </>
             ) : (
-              <div className="w-full h-full flex items-center justify-center bg-[#0a1515]">
-                <span className="text-white/30 text-lg font-light">+</span>
-              </div>
+              <span className="absolute inset-0 flex items-center justify-center text-white/30 text-lg font-light">+</span>
             )}
           </button>
 
-          {/* Clear main slot button */}
+          {/* Level badge */}
           {char && (
-            <button onClick={(e) => { e.stopPropagation(); setMainSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
-              className="absolute top-1.5 right-1.5 bg-black/70 hover:bg-black/90 rounded-full w-5 h-5 flex items-center justify-center text-[10px] z-30 text-white">x</button>
+            <span
+              className="text-white font-bold leading-none"
+              style={{ fontSize: "clamp(8px,1.2vw,13px)", textShadow: "0 1px 4px rgba(0,0,0,0.9)" }}
+            >
+              Lv.100
+            </span>
           )}
         </div>
 
-        {/* Stats below card */}
-        <div className="flex flex-col gap-0.5 px-1 py-1 bg-gradient-to-b from-[#0a1a1a] to-[#061212] rounded-sm border border-cyan-900/30">
-          <StatRow icon="heart" value={char ? (char.hp_max ?? 0).toLocaleString() : "---"} color="text-red-400" />
-          <StatRow icon="sword" value={char ? (char.attack_max ?? 0).toLocaleString() : "---"} color="text-cyan-300" />
-          <StatRow icon="shield" value={char ? (char.defense_max ?? 0).toLocaleString() : "---"} color="text-cyan-300" />
-        </div>
-      </div>
-    )
-  }
-
-  // Stat row component
-  function StatRow({ icon, value, color }: { icon: "heart" | "sword" | "shield"; value: string; color: string }) {
-    const icons = {
-      heart: (
-        <svg className="w-3 h-3 text-red-400" fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-        </svg>
-      ),
-      sword: (
-        <svg className="w-3 h-3 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" transform="rotate(-45 12 12)" />
-        </svg>
-      ),
-      shield: (
-        <svg className="w-3 h-3 text-cyan-300" fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2A11.954 11.954 0 0110 1.944z" clipRule="evenodd" />
-        </svg>
-      ),
-    }
-    return (
-      <div className="flex items-center gap-1">
-        {icons[icon]}
-        <span className={`text-[10px] font-medium ${color}`}>{value}</span>
+        {/* Clear main slot */}
+        {char && (
+          <button
+            onClick={(e) => { e.stopPropagation(); setMainSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
+            className="absolute top-1 right-1 bg-black/70 hover:bg-black/90 rounded-full w-5 h-5 flex items-center justify-center text-[10px] z-30 text-white"
+          >x</button>
+        )}
       </div>
     )
   }
 
   // ==========================================
-  // SIDE SLOT CARD - Smaller portrait
+  // SIDE SLOT CARD - Smaller portrait (same tall ratio as main)
   // ==========================================
   function SideSlotCard({ i }: { i: number }) {
     const charId = sideSlots[i]
@@ -464,60 +460,61 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
     const { frame } = getMiniFramePaths(tier, role)
     const [icon1, icon2] = char ? getMiniCardIcons(char) : [null, null]
 
-    const getBorderColor = () => {
-      if (!char) return "border-cyan-500/30"
-      if (tier >= 6) return "border-yellow-400/50"
-      if (tier === 5) return "border-purple-400/40"
-      if (tier === 4) return "border-orange-400/40"
-      return "border-gray-400/40"
+    const getBorderColor = (): string => {
+      if (!char) return "rgba(160,160,160,0.35)"
+      if (tier >= 6) return "rgba(250,200,60,0.7)"
+      if (tier === 5) return "rgba(180,130,255,0.6)"
+      if (tier === 4) return "rgba(255,160,50,0.6)"
+      return "rgba(160,160,160,0.5)"
     }
 
     return (
       <div
-        className={`relative overflow-hidden cursor-pointer select-none rounded-sm border ${getBorderColor()}`}
-        style={{ aspectRatio: "1" }}
+        className="relative overflow-hidden cursor-pointer select-none rounded-sm"
+        style={{
+          aspectRatio: "1 / 1.6",
+          border: `1.5px solid ${getBorderColor()}`,
+          background: char ? "transparent" : "rgba(20,20,24,0.72)",
+        }}
         onClick={() => openPicker(i, "side")}
       >
+        {/* Empty */}
         {!char && (
-          <div
-            className="absolute inset-0 flex items-center justify-center"
-            style={{ background: "radial-gradient(ellipse at 50% 30%, #0d3535 0%, #082828 40%, #041818 70%, #020e0e 100%)" }}
-          >
-            <span className="text-white/30 text-2xl font-light">+</span>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-white/35 text-2xl font-light">+</span>
           </div>
         )}
 
+        {/* Filled */}
         {char && (
           <>
-            <img src={toPublicAssetPath(char.images.icon)} alt={char.name}
-              className="absolute inset-0 w-full h-full object-cover object-top" />
-            <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-contain"
-              onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+            <img
+              src={toPublicAssetPath(char.images.icon)} alt={char.name}
+              className="absolute inset-0 w-full h-full object-cover object-top"
+            />
+            <img
+              src={frame} alt=""
+              className="pointer-events-none absolute inset-0 w-full h-full object-contain"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }}
+            />
             {/* Level */}
-            <div className="absolute bottom-1 left-1 z-20 bg-black/70 px-1 py-0.5 rounded text-[8px] text-white font-medium">
-              Lv.100
-            </div>
-            {/* Icons */}
+            <span
+              className="absolute bottom-1 left-1 z-20 text-white font-bold leading-none"
+              style={{ fontSize: "9px", textShadow: "0 1px 3px rgba(0,0,0,0.9)" }}
+            >Lv.100</span>
+            {/* Icons top-right */}
             {(icon1 || icon2) && (
-              <div className="absolute top-1 right-1 z-20 flex flex-col gap-0.5">
-                {icon1 && <img src={icon1} alt="" className="w-4 h-4 object-contain" />}
-                {icon2 && <img src={icon2} alt="" className="w-4 h-4 object-contain" />}
+              <div className="absolute top-0.5 right-0.5 z-20 flex flex-col gap-0.5">
+                {icon1 && <img src={icon1} alt="" className="w-3.5 h-3.5 object-contain drop-shadow" />}
+                {icon2 && <img src={icon2} alt="" className="w-3.5 h-3.5 object-contain drop-shadow" />}
               </div>
             )}
-            {/* Clear button */}
-            <button onClick={(e) => { e.stopPropagation(); setSideSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
-              className="absolute top-0.5 left-0.5 bg-black/70 rounded-full w-3.5 h-3.5 flex items-center justify-center text-[8px] z-30 text-white">x</button>
+            {/* Clear */}
+            <button
+              onClick={(e) => { e.stopPropagation(); setSideSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
+              className="absolute top-0 left-0 bg-black/75 w-3.5 h-3.5 flex items-center justify-center text-[8px] z-30 text-white rounded-br-sm"
+            >x</button>
           </>
-        )}
-
-        {/* Stats below */}
-        {char && (
-          <div className="absolute bottom-0 left-0 right-0 bg-black/70 px-1 py-0.5 flex flex-col gap-0">
-            <div className="flex items-center gap-0.5">
-              <span className="text-red-400 text-[7px]">HP</span>
-              <span className="text-white text-[7px]">{(char.hp_max ?? 0).toLocaleString()}</span>
-            </div>
-          </div>
         )}
       </div>
     )
@@ -745,51 +742,75 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
     <div className="w-full">
       <h1 className="mb-4 text-2xl font-bold text-white sm:text-3xl">Team Builder</h1>
 
-      {/* Main layout: 5 main slots + right panel */}
-      <div className="flex gap-2 items-start" style={{ maxWidth: "100%" }}>
-        {/* 5 main character slots */}
-        <div className="flex gap-2 flex-1">
-          {[0, 1, 2, 3, 4].map((i) => (
-            <div key={i} className="flex-1 min-w-0" style={{ maxWidth: "180px" }}>
+      {/*
+        Layout (mirrors the game screenshots):
+          [Main0] [Main1] [Main2] [Main3]  |  [Side0][Side1]
+                                           |  [Side2][Side3]
+                                           |  [Heartprint   ]
+        All cards share the same height (driven by the tallest — the main slots).
+        The right panel is a fixed-width column next to the 4 main slots.
+      */}
+      <div className="flex gap-2 items-start w-full overflow-x-auto pb-2">
+
+        {/* 4 main character slots */}
+        <div className="flex gap-2 flex-shrink-0">
+          {[0, 1, 2, 3].map((i) => (
+            <div key={i} style={{ width: "clamp(90px, 14vw, 160px)" }}>
               <MainSlotCard i={i} />
             </div>
           ))}
         </div>
 
-        {/* Right panel: 4 side slots + heartprint */}
-        <div className="flex flex-col gap-2" style={{ width: "120px", flexShrink: 0 }}>
-          {/* 4 side slots in 2x2 grid */}
-          <div className="grid grid-cols-2 gap-1">
+        {/* Right panel: 2×2 side slots + heartprint below */}
+        <div
+          className="flex flex-col gap-1.5 flex-shrink-0"
+          style={{ width: "clamp(100px, 15vw, 160px)" }}
+        >
+          {/* 2×2 grid of side slots */}
+          <div className="grid grid-cols-2 gap-1.5">
             {[0, 1, 2, 3].map((i) => (
               <SideSlotCard key={i} i={i} />
             ))}
           </div>
 
-          {/* Heartprint slot */}
+          {/* Heartprint skill slot */}
           <button
             onClick={() => openPicker(0, "heartprint")}
-            className="relative w-full overflow-hidden rounded-sm border border-cyan-600/40 hover:border-amber-400/50 transition-all"
-            style={{ aspectRatio: "245/146", background: "linear-gradient(180deg, #0a1818 0%, #061010 100%)" }}
+            className="relative w-full overflow-hidden rounded-sm transition-opacity hover:opacity-90"
+            style={{
+              aspectRatio: "245/146",
+              border: "1.5px solid rgba(160,160,160,0.35)",
+              background: "rgba(20,20,24,0.72)",
+            }}
           >
             {heartPrintId ? (
               <>
-                <img src={`/SkillStill/${heartPrintId}/skill_still_${heartPrintId}_S.png`} alt=""
+                <img
+                  src={`/SkillStill/${heartPrintId}/skill_still_${heartPrintId}_S.png`} alt=""
                   className="absolute inset-0 w-full h-full object-cover"
-                  onError={(e) => { (e.target as HTMLImageElement).style.opacity = "0.3" }} />
-                <img src="/StillFrame/StillFrame1_s.png" alt=""
+                  onError={(e) => { (e.target as HTMLImageElement).style.opacity = "0.3" }}
+                />
+                <img
+                  src="/StillFrame/StillFrame1_s.png" alt=""
                   className="pointer-events-none absolute inset-0 w-full h-full object-fill"
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-                <button onClick={(e) => { e.stopPropagation(); setHeartPrintId(null) }}
-                  className="absolute top-0.5 right-0.5 bg-black/60 rounded-full w-4 h-4 flex items-center justify-center text-[9px] z-10 text-white">x</button>
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }}
+                />
+                <button
+                  onClick={(e) => { e.stopPropagation(); setHeartPrintId(null) }}
+                  className="absolute top-0.5 right-0.5 bg-black/70 rounded-full w-4 h-4 flex items-center justify-center text-[9px] z-10 text-white"
+                >x</button>
               </>
             ) : (
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5">
-                <span className="text-white/30 text-xl font-light">+</span>
-                <span className="text-[8px] text-gray-500 text-center leading-tight px-1">Heartprint Skill<br />Unassigned</span>
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
+                <span className="text-white/35 text-xl font-light">+</span>
+                <span className="text-[9px] text-gray-400 text-center leading-tight px-1">
+                  Heartprint Skill<br />Unassigned
+                </span>
               </div>
             )}
           </button>
         </div>
+
       </div>
 
       <PickerModal />
