@@ -616,10 +616,32 @@ const blessFrameMap: Record<number, string> = {
   7: "/frame/frameBlessM7.png",
 }
 
+const baseRarityMap: Record<number, string> = {
+  3: "/frame/baseMemberM3.png",
+  4: "/frame/baseMemberM4.png",
+  5: "/frame/baseMemberM5.png",
+  6: "/frame/baseMemberM6.png",
+  7: "/frame/baseMemberM7.png",
+}
+
+const baseBlessMap: Record<number, string> = {
+  3: "/frame/baseBlessM3.png",
+  4: "/frame/baseBlessM4.png",
+  5: "/frame/baseBlessM5.png",
+  6: "/frame/baseBlessM6.png",
+  7: "/frame/baseBlessM7.png",
+}
+
 function getCharacterFrame(character: WikiCharacter): string {
   const visualTier = getCharacterVisualTier(character)
   const frameMap = isProtectorCharacter(character) ? blessFrameMap : rarityFrameMap
   return frameMap[visualTier] ?? frameMap[5]
+}
+
+function getCharacterBase(character: WikiCharacter): string {
+  const visualTier = getCharacterVisualTier(character)
+  const baseMap = isProtectorCharacter(character) ? baseBlessMap : baseRarityMap
+  return baseMap[visualTier] ?? baseMap[5]
 }
 
 const starAssetMap: Record<number, string> = {
@@ -1382,6 +1404,7 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
           {filteredCharacters.map((character) => {
             const visualTier = getCharacterVisualTier(character)
             const frameSrc = getCharacterFrame(character)
+            const baseSrc = getCharacterBase(character)
             const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
             const iconSrc = toPublicAssetPath(character.images.icon)
             const characterElementValue = getCharacterElementValue(character)
@@ -1413,7 +1436,8 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
                     <div className="flex gap-4 p-4 pb-3">
                       {/* Portrait */}
                       <div className="relative h-24 w-24 md:h-[148px] md:w-[148px] shrink-0">
-                        <div className="absolute inset-[10px] overflow-hidden rounded-[18px] bg-black/40">
+                        <img src={baseSrc} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
+                        <div className="absolute inset-[10px] overflow-hidden rounded-[18px]">
                           <img
                             src={iconSrc}
                             alt={character.name}
