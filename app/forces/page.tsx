@@ -38,6 +38,22 @@ const blessFrameMap: Record<number, string> = {
   7: "/frame/frameBlessM7.png",
 }
 
+const baseRarityMap: Record<number, string> = {
+  3: "/frame/baseMemberM3.png",
+  4: "/frame/baseMemberM4.png",
+  5: "/frame/baseMemberM5.png",
+  6: "/frame/baseMemberM6.png",
+  7: "/frame/baseMemberM7.png",
+}
+
+const baseBlessMap: Record<number, string> = {
+  3: "/frame/baseBlessM3.png",
+  4: "/frame/baseBlessM4.png",
+  5: "/frame/baseBlessM5.png",
+  6: "/frame/baseBlessM6.png",
+  7: "/frame/baseBlessM7.png",
+}
+
 const starAssetMap: Record<number, string> = {
   3: "/stars/starCharaL3A.png",
   4: "/stars/starCharaL4A.png",
@@ -333,6 +349,8 @@ export default function ForcesPage() {
                           const visualTier = getCharacterVisualTier(character)
                           const frameMap = isProtectorChar(character) ? blessFrameMap : rarityFrameMap
                           const frameSrc = frameMap[visualTier] ?? frameMap[5]
+                          const baseMap = isProtectorChar(character) ? baseBlessMap : baseRarityMap
+                          const baseSrc = baseMap[visualTier] ?? baseMap[5]
                           const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
                           const iconSrc = toPublicAssetPath(character.images.icon)
 
@@ -485,6 +503,11 @@ export default function ForcesPage() {
                           return (
                             <Link key={character.master_pc_id} href={`/characters/${character.master_pc_id}`} className="min-w-0">
                               <div className="relative w-full pt-[100%] overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white transition-all">
+                                <img
+                                  src={baseSrc}
+                                  alt=""
+                                  className="absolute inset-0 w-full h-full object-contain pointer-events-none"
+                                />
                                 <img
                                   src={iconSrc}
                                   alt={character.name}
