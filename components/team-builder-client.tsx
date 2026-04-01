@@ -228,10 +228,10 @@ function getMiniCardIcons(char: WikiCharacter): [string | null, string | null] {
 
 // =================================
 export default function TeamBuilderClient({ characters }: { characters: WikiCharacter[] }) {
-  // 4 main slots + 4 sub-slots + 4 side slots
+  // 4 main slots + 4 sub-slots + 2 side slots (stacked vertically)
   const [mainSlots, setMainSlots] = useState<(number | null)[]>(Array(4).fill(null))
   const [subSlots, setSubSlots] = useState<(number | null)[]>(Array(4).fill(null))
-  const [sideSlots, setSideSlots] = useState<(number | null)[]>(Array(4).fill(null))
+  const [sideSlots, setSideSlots] = useState<(number | null)[]>(Array(2).fill(null))
   const [heartPrintId, setHeartPrintId] = useState<number | null>(null)
 
   const [pickerOpenFor, setPickerOpenFor] = useState<number | null>(null)
@@ -298,6 +298,7 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
 
   // ==========================================
   // MAIN SLOT CARD - Tall vertical card matching game UI
+  // No star overlays, no level badge. Frame contains everything.
   // ==========================================
   function MainSlotCard({ i }: { i: number }) {
     const charId = mainSlots[i]
@@ -308,24 +309,14 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
     const role: "bless" | "member" = isProt ? "bless" : "member"
     const tier = char ? getCharacterVisualTier(char) : 5
     const { base: mainBase, frame: mainFrame, frameStyle } = getMainFramePaths(tier, role)
-    const [icon1, icon2, icon3] = char ? getCardIcons(char) : [null, null, null]
-    const cardIcons = [icon1, icon2, icon3].filter(Boolean) as string[]
-
-    const getBorderColor = (): string => {
-      if (!char) return "rgba(160,160,160,0.35)"
-      if (tier >= 6) return "rgba(250,200,60,0.7)"
-      if (tier === 5) return "rgba(180,130,255,0.6)"
-      if (tier === 4) return "rgba(255,160,50,0.6)"
-      return "rgba(160,160,160,0.5)"
-    }
+    const [subIcon1, subIcon2] = subChar ? getMiniCardIcons(subChar) : [null, null]
 
     return (
-      /* Outer card wrapper — tall portrait ratio */
+      /* Outer card wrapper — tall portrait ratio, grey border when empty */
       <div
-        className="relative flex-shrink-0 cursor-pointer select-none overflow-hidden rounded-sm"
+        className="relative flex-shrink-0 cursor-pointer select-none overflow-hidden rounded-sm h-full"
         style={{
-          aspectRatio: "170/380",
-          border: `2px solid ${getBorderColor()}`,
+          border: char ? "none" : "1.5px solid rgba(160,160,160,0.35)",
           background: char ? "transparent" : "rgba(20,20,24,0.72)",
         }}
         onClick={() => openPicker(i, "main")}
@@ -337,7 +328,7 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
           </div>
         )}
 
-        {/* Filled: base texture → portrait → decorative frame */}
+        {/* Filled: base texture → portrait → decorative frame (frame contains star & element icons) */}
         {char && (
           <>
             <img
@@ -359,45 +350,20 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
           </>
         )}
 
-        {/* ── TOP-LEFT: star rating ── */}
-        {char && (
-          <img
-            src={STAR_ASSETS[tier] ?? STAR_ASSETS[5]} alt=""
-            className="pointer-events-none absolute z-20 object-contain"
-            style={{ top: "2%", left: "2%", width: "42%", maxWidth: "56px" }}
-          />
-        )}
-
-        {/* ── TOP-RIGHT: element / attack-type icons — stacked, clamped inside card ── */}
-        {char && cardIcons.length > 0 && (
-          <div
-            className="absolute z-20 flex flex-col items-center gap-0.5"
-            style={{ top: "2%", right: "3%", width: "16%", maxWidth: "22px" }}
-          >
-            {cardIcons.map((src, idx) => (
-              <img
-                key={idx} src={src} alt=""
-                className="w-full aspect-square object-contain drop-shadow-md"
-              />
-            ))}
-          </div>
-        )}
-
-        {/* ── LOWER SECTION: sub-slot + level ── */}
-        {/* Semi-dark band so sub-slot area reads clearly */}
+        {/* ── LOWER SECTION: sub-slot (inside the card) ── */}
         <div
-          className="absolute bottom-0 left-0 right-0 z-10 flex flex-col items-center pb-[4%] pt-[3%] gap-[4%]"
-          style={{ background: char ? "linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%)" : "none" }}
+          className="absolute bottom-0 left-0 right-0 z-10 flex flex-col items-center pb-[5%]"
+          style={{ background: char ? "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%)" : "none" }}
         >
-          {/* Sub-slot square — sits inside the card lower area */}
+          {/* Sub-slot square */}
           <button
             onClick={(e) => { e.stopPropagation(); openPicker(i, "sub") }}
             className="relative overflow-hidden rounded-sm flex-shrink-0"
             style={{
-              width: "46%",
+              width: "48%",
               aspectRatio: "1",
               border: "1.5px solid rgba(160,160,160,0.45)",
-              background: "rgba(0,0,0,0.55)",
+              background: "rgba(0,0,0,0.6)",
             }}
           >
             {subChar ? (
@@ -417,25 +383,22 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
                     />
                   )
                 })()}
+                {/* Icons on sub-slot */}
+                {(subIcon1 || subIcon2) && (
+                  <div className="absolute top-0.5 right-0.5 z-20 flex flex-col gap-0.5">
+                    {subIcon1 && <img src={subIcon1} alt="" className="w-3 h-3 object-contain drop-shadow" />}
+                    {subIcon2 && <img src={subIcon2} alt="" className="w-3 h-3 object-contain drop-shadow" />}
+                  </div>
+                )}
                 <button
                   onClick={(e) => { e.stopPropagation(); setSubSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
-                  className="absolute top-0 right-0 bg-black/75 w-3.5 h-3.5 flex items-center justify-center text-[8px] z-30 text-white rounded-bl-sm"
+                  className="absolute top-0 left-0 bg-black/75 w-3 h-3 flex items-center justify-center text-[7px] z-30 text-white rounded-br-sm"
                 >x</button>
               </>
             ) : (
               <span className="absolute inset-0 flex items-center justify-center text-white/30 text-lg font-light">+</span>
             )}
           </button>
-
-          {/* Level badge */}
-          {char && (
-            <span
-              className="text-white font-bold leading-none"
-              style={{ fontSize: "clamp(8px,1.2vw,13px)", textShadow: "0 1px 4px rgba(0,0,0,0.9)" }}
-            >
-              Lv.100
-            </span>
-          )}
         </div>
 
         {/* Clear main slot */}
@@ -450,7 +413,7 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
   }
 
   // ==========================================
-  // SIDE SLOT CARD - Smaller portrait (same tall ratio as main)
+  // SIDE SLOT CARD - 2 slots stacked vertically, no level indicator
   // ==========================================
   function SideSlotCard({ i }: { i: number }) {
     const charId = sideSlots[i]
@@ -460,20 +423,11 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
     const { frame } = getMiniFramePaths(tier, role)
     const [icon1, icon2] = char ? getMiniCardIcons(char) : [null, null]
 
-    const getBorderColor = (): string => {
-      if (!char) return "rgba(160,160,160,0.35)"
-      if (tier >= 6) return "rgba(250,200,60,0.7)"
-      if (tier === 5) return "rgba(180,130,255,0.6)"
-      if (tier === 4) return "rgba(255,160,50,0.6)"
-      return "rgba(160,160,160,0.5)"
-    }
-
     return (
       <div
-        className="relative overflow-hidden cursor-pointer select-none rounded-sm"
+        className="relative overflow-hidden cursor-pointer select-none rounded-sm h-full"
         style={{
-          aspectRatio: "1 / 1.6",
-          border: `1.5px solid ${getBorderColor()}`,
+          border: char ? "none" : "1.5px solid rgba(160,160,160,0.35)",
           background: char ? "transparent" : "rgba(20,20,24,0.72)",
         }}
         onClick={() => openPicker(i, "side")}
@@ -497,11 +451,6 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
               className="pointer-events-none absolute inset-0 w-full h-full object-contain"
               onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }}
             />
-            {/* Level */}
-            <span
-              className="absolute bottom-1 left-1 z-20 text-white font-bold leading-none"
-              style={{ fontSize: "9px", textShadow: "0 1px 3px rgba(0,0,0,0.9)" }}
-            >Lv.100</span>
             {/* Icons top-right */}
             {(icon1 || icon2) && (
               <div className="absolute top-0.5 right-0.5 z-20 flex flex-col gap-0.5">
@@ -738,47 +687,50 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
   // ============================
   // MAIN RENDER
   // ============================
+  // Main card height is the reference. Side slots + heartprint together equal main height.
+  const MAIN_HEIGHT = "clamp(280px, 42vw, 420px)"
+  const MAIN_WIDTH = "clamp(100px, 15vw, 150px)"
+  const SIDE_WIDTH = "clamp(70px, 10vw, 100px)"
+
   return (
-    <div className="w-full">
-      <h1 className="mb-4 text-2xl font-bold text-white sm:text-3xl">Team Builder</h1>
+    <div className="w-full flex flex-col items-center">
+      <h1 className="mb-4 text-2xl font-bold text-white sm:text-3xl self-start">Team Builder</h1>
 
       {/*
         Layout (mirrors the game screenshots):
-          [Main0] [Main1] [Main2] [Main3]  |  [Side0][Side1]
-                                           |  [Side2][Side3]
-                                           |  [Heartprint   ]
-        All cards share the same height (driven by the tallest — the main slots).
-        The right panel is a fixed-width column next to the 4 main slots.
+          [Main0] [Main1] [Main2] [Main3]  |  [Side0]
+                                           |  [Side1]
+                                           |  [Heartprint]
+        Side slots are stacked vertically. Combined height of 2 side slots + heartprint = main slot height.
       */}
-      <div className="flex gap-2 items-start w-full overflow-x-auto pb-2">
+      <div className="flex gap-2 items-stretch justify-center w-full overflow-x-auto pb-2">
 
         {/* 4 main character slots */}
-        <div className="flex gap-2 flex-shrink-0">
-          {[0, 1, 2, 3].map((i) => (
-            <div key={i} style={{ width: "clamp(90px, 14vw, 160px)" }}>
-              <MainSlotCard i={i} />
-            </div>
-          ))}
-        </div>
+        {[0, 1, 2, 3].map((i) => (
+          <div key={i} className="flex-shrink-0" style={{ width: MAIN_WIDTH, height: MAIN_HEIGHT }}>
+            <MainSlotCard i={i} />
+          </div>
+        ))}
 
-        {/* Right panel: 2×2 side slots + heartprint below */}
+        {/* Right panel: 2 stacked side slots + heartprint below (combined height = main height) */}
         <div
           className="flex flex-col gap-1.5 flex-shrink-0"
-          style={{ width: "clamp(100px, 15vw, 160px)" }}
+          style={{ width: SIDE_WIDTH, height: MAIN_HEIGHT }}
         >
-          {/* 2×2 grid of side slots */}
-          <div className="grid grid-cols-2 gap-1.5">
-            {[0, 1, 2, 3].map((i) => (
-              <SideSlotCard key={i} i={i} />
-            ))}
+          {/* Side slot 0 */}
+          <div className="flex-1 min-h-0">
+            <SideSlotCard i={0} />
           </div>
-
-          {/* Heartprint skill slot */}
+          {/* Side slot 1 */}
+          <div className="flex-1 min-h-0">
+            <SideSlotCard i={1} />
+          </div>
+          {/* Heartprint skill slot — takes remaining space proportionally */}
           <button
             onClick={() => openPicker(0, "heartprint")}
-            className="relative w-full overflow-hidden rounded-sm transition-opacity hover:opacity-90"
+            className="relative w-full overflow-hidden rounded-sm transition-opacity hover:opacity-90 flex-shrink-0"
             style={{
-              aspectRatio: "245/146",
+              height: "22%",
               border: "1.5px solid rgba(160,160,160,0.35)",
               background: "rgba(20,20,24,0.72)",
             }}
@@ -801,9 +753,9 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
                 >x</button>
               </>
             ) : (
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
-                <span className="text-white/35 text-xl font-light">+</span>
-                <span className="text-[9px] text-gray-400 text-center leading-tight px-1">
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5">
+                <span className="text-white/35 text-lg font-light">+</span>
+                <span className="text-[8px] text-gray-400 text-center leading-tight px-1">
                   Heartprint Skill<br />Unassigned
                 </span>
               </div>
