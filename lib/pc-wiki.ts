@@ -208,6 +208,7 @@ export type Equipment = {
   type: "weapon" | "armor" | "accessory"
   name: string
   rarity: number
+  base_rarity: number
   weapon_type: string | null
   image: string | null
   max_level: number | null
@@ -216,6 +217,8 @@ export type Equipment = {
   max_hp: number
   level_group_id: number | null
   release_label: string
+  effect1: string | null
+  effect2: string | null
 }
 
 export type CharmSkill = {

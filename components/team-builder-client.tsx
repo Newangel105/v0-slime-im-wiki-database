@@ -318,20 +318,22 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
   const [sideSubSlots, setSideSubSlots] = useState<(number | null)[]>(Array(2).fill(null))
   const [heartPrintId, setHeartPrintId] = useState<number | null>(null)
 
-  // Equipment slots: each attacker (main 1-3) has weapon, armor, accessory
-  // equipSlots[slotIndex] = { weapon: equipId, armor: equipId, accessory: equipId }
-  const [equipSlots, setEquipSlots] = useState<Record<number, Record<string, number | null>>>({
-    1: { weapon: null, armor: null, accessory: null },
-    2: { weapon: null, armor: null, accessory: null },
-    3: { weapon: null, armor: null, accessory: null },
-  })
-  // Charm slot for protector (main slot 0)
-  const [charmId, setCharmId] = useState<number | null>(null)
+  // Equipment slots keyed by slotKey (e.g. "main0", "sub0", "main1", "sub1", "side0", "sidesub0")
+  // Each has { weapon, armor, accessory } for attackers
+  const [equipSlots, setEquipSlots] = useState<Record<string, Record<string, number | null>>>({})
+  // Charm slots keyed by slotKey → skill_id
+  const [charmSlots, setCharmSlots] = useState<Record<string, number | null>>({})
+
+  // Equipment modal state
+  const [showEquipModal, setShowEquipModal] = useState(false)
+  const [activeEquipSlot, setActiveEquipSlot] = useState<{ slotKey: string; type: "charm" | "weapon" | "armor" | "accessory" } | null>(null)
+  const [equipHoveredId, setEquipHoveredId] = useState<number | null>(null)
+  const [equipQuery, setEquipQuery] = useState("")
+  const [equipFilterRarity, setEquipFilterRarity] = useState<number | null>(null)
 
   const [pickerOpenFor, setPickerOpenFor] = useState<number | null>(null)
-  const [pickerMode, setPickerMode] = useState<"main" | "sub" | "side" | "sidesub" | "heartprint" | "equipment" | "charm">("main")
+  const [pickerMode, setPickerMode] = useState<"main" | "sub" | "side" | "sidesub" | "heartprint">("main")
   const [showFilterModal, setShowFilterModal] = useState(false)
-  const [equipPickerType, setEquipPickerType] = useState<"weapon" | "armor" | "accessory">("weapon")
 
   const [query, setQuery] = useState("")
   const [filterEl, setFilterEl] = useState<string | null>(null)
@@ -350,7 +352,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
   const [filterUltimateType, setFilterUltimateType] = useState<"all" | "attack" | "support">("all")
   const [filterEnhancement, setFilterEnhancement] = useState<"all" | "ex" | "unbound">("all")
   const [filterProtSkill, setFilterProtSkill] = useState<"all" | "secret" | "protection" | "skill" | "other">("all")
-  const [filterSkillCost, setFilterSkillCost] = useState<[number, number]>([0, 100])
+  const [filterSkillCost, setFilterSkillCost] = useState(0)
   const [filterDragOffset, setFilterDragOffset] = useState<{x: number, y: number}>({x: 0, y: 0})
   const [filterSize, setFilterSize] = useState<{w: number, h: number}>({w: 380, h: 0})
   const filterResizeStart = useRef<{w: number, h: number, px: number, py: number} | null>(null)
@@ -490,11 +492,11 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
         if (filterUltimateType === "support" && ut !== "support") return false
       }
       // Skill cost slider filter — only active for All or Battle Skills
-      if (filterSkillCost[1] < 100 && (filterSkillType === "all" || filterSkillType === "battle")) {
+      if (filterSkillCost > 0 && (filterSkillType === "all" || filterSkillType === "battle")) {
         const hasMatchingSkill = c.skills.some(s => {
           const cost = s.cost
           if (cost == null) return false
-          return cost <= filterSkillCost[1]
+          return cost >= filterSkillCost
         })
         if (!hasMatchingSkill) return false
       }
@@ -502,30 +504,89 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
     })
   }, [characters, pickerMode, pickerOpenFor, query, filterEl, filterAttack, filterTactics, filterCharType, filterCharacterType, filterRarity, filterForces, filterSkillGroups, filterSkillType, filterWeapon, filterProtType, filterUltimateType, filterEnhancement, filterProtSkill, filterSkillCost, mainSlots, subSlots, sideSlots, sideSubSlots])
 
-  // Filtered equipment list for equipment picker
-  const filteredEquipment = useMemo(() => {
-    if (pickerMode !== "equipment") return []
-    const q = query.trim().toLowerCase()
+  // Flatten charms into individual skill items, deduplicated by skill_id
+  type FlatCharm = { skill_id: number; name: string; description: string | null; image_path: string | null; rarity: number; is_quest_skill: boolean }
+  const flatCharms = useMemo(() => {
+    const seen = new Set<number>()
+    const items: FlatCharm[] = []
+    for (const ch of charms) {
+      for (const sk of ch.possible_skills) {
+        if (seen.has(sk.skill_id)) continue
+        seen.add(sk.skill_id)
+        items.push({ skill_id: sk.skill_id, name: sk.name ?? "Unknown Charm", description: sk.description, image_path: sk.image_path, rarity: ch.rarity, is_quest_skill: sk.is_quest_skill })
+      }
+    }
+    return items
+  }, [charms])
+
+  // Equipment modal: items for the active slot
+  const equipModalItems = useMemo(() => {
+    if (!activeEquipSlot) return [] as (Equipment | FlatCharm)[]
+    const q = equipQuery.trim().toLowerCase()
+    if (activeEquipSlot.type === "charm") {
+      return flatCharms.filter(c => {
+        if (q && !c.name.toLowerCase().includes(q)) return false
+        if (equipFilterRarity != null && c.rarity !== equipFilterRarity) return false
+        return true
+      })
+    }
     return equipment.filter(e => {
-      if (e.type !== equipPickerType) return false
-      if (q && !e.name.toLowerCase().includes(q) && !String(e.id).includes(q)) return false
-      if (filterRarity != null && e.rarity !== filterRarity) return false
+      if (e.type !== activeEquipSlot.type) return false
+      if (q && !e.name.toLowerCase().includes(q)) return false
+      if (equipFilterRarity != null && e.base_rarity !== equipFilterRarity) return false
       return true
     })
-  }, [equipment, pickerMode, equipPickerType, query, filterRarity])
+  }, [activeEquipSlot, equipQuery, equipFilterRarity, flatCharms, equipment])
 
-  // Filtered charms list for charm picker
-  const filteredCharms = useMemo(() => {
-    if (pickerMode !== "charm") return []
-    const q = query.trim().toLowerCase()
-    return charms.filter(c => {
-      if (q && !(c.name ?? "").toLowerCase().includes(q) && !String(c.id).includes(q)) return false
-      if (filterRarity != null && c.rarity !== filterRarity) return false
-      return true
-    })
-  }, [charms, pickerMode, query, filterRarity])
+  // Helper to get equip record for a slotKey
+  function getEquipRecord(slotKey: string) {
+    return equipSlots[slotKey] ?? { weapon: null, armor: null, accessory: null }
+  }
+  function setEquipForSlot(slotKey: string, eqType: string, eqId: number | null) {
+    setEquipSlots(prev => ({ ...prev, [slotKey]: { ...(prev[slotKey] ?? { weapon: null, armor: null, accessory: null }), [eqType]: eqId } }))
+  }
 
-  function openPicker(i: number, mode: "main" | "sub" | "side" | "sidesub" | "heartprint" | "equipment" | "charm") {
+  // Helper to build modal character list: returns { slotKey, label, charId, isProt }[]
+  const equipModalChars = useMemo(() => {
+    const list: { slotKey: string; label: string; charId: number; isProt: boolean }[] = []
+    // Main slots
+    for (let i = 0; i < 4; i++) {
+      if (mainSlots[i]) {
+        const c = characters.find(ch => ch.master_pc_id === mainSlots[i])
+        const isProt = c ? isProtectorChar(c) : i === 0
+        list.push({ slotKey: `main${i}`, label: isProt ? "Protection" : `Battle ${i}`, charId: mainSlots[i]!, isProt })
+      }
+      if (subSlots[i]) {
+        const c = characters.find(ch => ch.master_pc_id === subSlots[i])
+        const isProt = c ? isProtectorChar(c) : false
+        list.push({ slotKey: `sub${i}`, label: isProt ? "Protection (Sub)" : `Battle ${i} (Sub)`, charId: subSlots[i]!, isProt })
+      }
+    }
+    // Side slots
+    for (let i = 0; i < 2; i++) {
+      if (sideSlots[i]) {
+        const c = characters.find(ch => ch.master_pc_id === sideSlots[i])
+        const isProt = c ? isProtectorChar(c) : false
+        list.push({ slotKey: `side${i}`, label: isProt ? `Side Protection ${i+1}` : `Side ${i+1}`, charId: sideSlots[i]!, isProt })
+      }
+      if (sideSubSlots[i]) {
+        const c = characters.find(ch => ch.master_pc_id === sideSubSlots[i])
+        const isProt = c ? isProtectorChar(c) : false
+        list.push({ slotKey: `sidesub${i}`, label: isProt ? `Side Prot ${i+1} (Sub)` : `Side ${i+1} (Sub)`, charId: sideSubSlots[i]!, isProt })
+      }
+    }
+    return list
+  }, [mainSlots, subSlots, sideSlots, sideSubSlots, characters])
+
+  function openEquipModal() {
+    setActiveEquipSlot(null)
+    setEquipQuery("")
+    setEquipFilterRarity(null)
+    setEquipHoveredId(null)
+    setShowEquipModal(true)
+  }
+
+  function openPicker(i: number, mode: "main" | "sub" | "side" | "sidesub" | "heartprint") {
     setPickerOpenFor(i); setPickerMode(mode); setQuery("")
     setFilterEl(null); setFilterAttack(null); setFilterTactics(null)
     setFilterCharType(null); setFilterCharacterType(null); setFilterRarity(null); setFilterForces([]); setFilterSkillGroups([])
@@ -534,21 +595,11 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
     setFilterEnhancement("all"); setFilterProtSkill("all"); setFilterDragOffset({x: 0, y: 0})
     setFilterSkillCost([0, 100]); setShowSkillEffect(false)
     setShowFilterModal(false)
-    if (mode === "equipment") setEquipPickerType("weapon")
   }
   function closePicker() { setPickerOpenFor(null) }
 
   function selectChar(i: number, id: number) {
     if (pickerMode === "heartprint") { setHeartPrintId(id); closePicker(); return }
-    if (pickerMode === "charm") { setCharmId(id); closePicker(); return }
-    if (pickerMode === "equipment") {
-      setEquipSlots(prev => ({
-        ...prev,
-        [i]: { ...prev[i], [equipPickerType]: id },
-      }))
-      closePicker()
-      return
-    }
     // Character selection → set the slot, switch to editing the other slot, don't close
     if (pickerMode === "sub") {
       setSubSlots((s) => { const c = [...s]; c[i] = id; return c })
@@ -676,8 +727,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
               })()}
               {(subIcon1 || subIcon2) && (
                 <div className="absolute top-0.5 right-0.5 z-20 flex flex-col gap-0.5">
-                  {subIcon1 && <img src={subIcon1} alt="" className="w-4 h-4 object-contain drop-shadow" />}
-                  {subIcon2 && <img src={subIcon2} alt="" className="w-4 h-4 object-contain drop-shadow" />}
+                  {subIcon1 && <img src={subIcon1} alt="" className="w-5 h-5 object-contain drop-shadow" />}
+                  {subIcon2 && <img src={subIcon2} alt="" className="w-5 h-5 object-contain drop-shadow" />}
                 </div>
               )}
             </>
@@ -816,8 +867,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                   })()}
                   {(sideSubIcon1 || sideSubIcon2) && (
                     <div className="absolute top-0.5 right-0.5 z-20 flex flex-col gap-0.5">
-                      {sideSubIcon1 && <img src={sideSubIcon1} alt="" className="w-4 h-4 object-contain drop-shadow" />}
-                      {sideSubIcon2 && <img src={sideSubIcon2} alt="" className="w-4 h-4 object-contain drop-shadow" />}
+                      {sideSubIcon1 && <img src={sideSubIcon1} alt="" className="w-5 h-5 object-contain drop-shadow" />}
+                      {sideSubIcon2 && <img src={sideSubIcon2} alt="" className="w-5 h-5 object-contain drop-shadow" />}
                     </div>
                   )}
                 </>
@@ -838,8 +889,6 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
     if (pickerOpenFor === null) return null
     const isProt = (pickerMode === "main" || pickerMode === "sub") && pickerOpenFor === 0
     const isHP = pickerMode === "heartprint"
-    const isEquip = pickerMode === "equipment"
-    const isCharm = pickerMode === "charm"
     const isSideMode = pickerMode === "side" || pickerMode === "sidesub"
     const isEditingMain = pickerMode === "main" || pickerMode === "side"
 
@@ -856,7 +905,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       filterForces.length > 0, filterSkillGroups.length > 0,
       filterWeapon !== null, filterProtType !== "all", filterSkillType !== "all",
       filterEnhancement !== "all", filterProtSkill !== "all", filterUltimateType !== "all",
-      filterSkillCost[1] < 100,
+      filterSkillCost > 0,
     ].filter(Boolean).length
 
     function clearAllFilters() {
@@ -864,7 +913,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       setFilterCharType(null); setFilterCharacterType(null); setFilterRarity(null)
       setFilterForces([]); setFilterSkillGroups([])
       setFilterWeapon(null); setFilterProtType("all"); setFilterSkillType("all"); setFilterUltimateType("all")
-      setFilterEnhancement("all"); setFilterProtSkill("all"); setFilterSkillCost([0, 100])
+      setFilterEnhancement("all"); setFilterProtSkill("all"); setFilterSkillCost(0)
     }
 
     return (
@@ -957,128 +1006,6 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                 </div>
               </div>
             </>
-          ) : isEquip ? (
-            /* ── EQUIPMENT PICKER ── */
-            <>
-              <div className="flex items-center gap-2 px-3 py-2 border-b border-white/5 shrink-0">
-                <Input autoFocus value={query} onChange={e => setQuery(e.target.value)}
-                  placeholder="Search equipment..." className="h-8 flex-1 border-gray-700 bg-gray-800/80 text-white text-sm" />
-                <div className="text-xs text-amber-300/60 px-1 shrink-0">Equipment — {filteredEquipment.length}</div>
-                <button onClick={closePicker} className="w-8 h-8 flex items-center justify-center rounded bg-white/5 hover:bg-white/10 text-gray-400 shrink-0">✕</button>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 border-b border-white/5 shrink-0">
-                {(["weapon", "armor", "accessory"] as const).map(t => (
-                  <button key={t} onClick={() => setEquipPickerType(t)}
-                    className={`px-3 py-1 rounded text-xs font-semibold transition-all ${equipPickerType === t ? "bg-sky-600 text-white" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
-                    {t === "weapon" ? "⚔️ Weapon" : t === "armor" ? "🛡️ Armor" : "💎 Accessory"}
-                  </button>
-                ))}
-                <div className="flex-1" />
-                {[6, 5, 3, 2, 1].map(r => (
-                  <button key={r} onClick={() => setFilterRarity(filterRarity === r ? null : r)}
-                    className={`w-7 h-7 rounded text-[10px] font-bold transition-all ${filterRarity === r ? "bg-amber-500 text-black" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
-                    {r}★
-                  </button>
-                ))}
-              </div>
-              <div className="flex-1 overflow-y-auto overscroll-contain p-2">
-                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2">
-                  <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-gray-600 p-2 hover:bg-white/5 transition-colors"
-                    style={{ aspectRatio: "1" }} onClick={() => {
-                      if (pickerOpenFor !== null) {
-                        setEquipSlots(prev => ({
-                          ...prev,
-                          [pickerOpenFor]: { ...prev[pickerOpenFor], [equipPickerType]: null },
-                        }))
-                      }
-                      closePicker()
-                    }}>
-                    <span className="text-gray-500 text-xl">×</span>
-                    <span className="text-[10px] text-gray-500">Remove</span>
-                  </div>
-                  {filteredEquipment.map(eq => {
-                    const isSelected = pickerOpenFor !== null && equipSlots[pickerOpenFor]?.[eq.type] === eq.id
-                    return (
-                      <div key={eq.id}
-                        className="flex flex-col items-center gap-1 rounded hover:bg-white/5 cursor-pointer transition-colors p-1"
-                        onClick={() => { if (pickerOpenFor !== null) selectChar(pickerOpenFor, eq.id) }}>
-                        <div className="relative w-full overflow-hidden rounded bg-black/40" style={{ aspectRatio: "1" }}>
-                          {eq.image && (
-                            <img src={eq.image} alt={eq.name}
-                              className="absolute inset-0 w-full h-full object-contain p-1"
-                              onError={e => { (e.target as HTMLImageElement).style.opacity = "0.2" }} />
-                          )}
-                          <div className="absolute bottom-0.5 left-0.5 flex gap-0.5">
-                            {Array.from({ length: Math.min(eq.rarity, 7) }, (_, i) => (
-                              <span key={i} className="text-amber-400 text-[8px]">★</span>
-                            ))}
-                          </div>
-                          <div className="absolute top-0.5 right-0.5 text-[8px] font-bold text-sky-300 bg-black/60 px-1 rounded">
-                            {eq.type === "weapon" ? `ATK ${eq.max_atk}` : eq.type === "armor" ? `DEF ${eq.max_def}` : `HP ${eq.max_hp}`}
-                          </div>
-                          {isSelected && <div className="absolute inset-0 ring-2 ring-amber-400 ring-inset rounded" />}
-                        </div>
-                        <span className="text-[9px] text-gray-400 leading-none text-center line-clamp-1 w-full px-0.5">{eq.name || `#${eq.id}`}</span>
-                      </div>
-                    )
-                  })}
-                </div>
-                {filteredEquipment.length === 0 && <p className="py-6 text-center text-xs text-gray-500">No equipment matches</p>}
-              </div>
-            </>
-          ) : isCharm ? (
-            /* ── CHARM PICKER ── */
-            <>
-              <div className="flex items-center gap-2 px-3 py-2 border-b border-white/5 shrink-0">
-                <Input autoFocus value={query} onChange={e => setQuery(e.target.value)}
-                  placeholder="Search charms..." className="h-8 flex-1 border-gray-700 bg-gray-800/80 text-white text-sm" />
-                <div className="text-xs text-amber-300/60 px-1 shrink-0">Charms — {filteredCharms.length}</div>
-                <button onClick={closePicker} className="w-8 h-8 flex items-center justify-center rounded bg-white/5 hover:bg-white/10 text-gray-400 shrink-0">✕</button>
-              </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 border-b border-white/5 shrink-0">
-                <span className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Rarity</span>
-                {[3, 2, 1].map(r => (
-                  <button key={r} onClick={() => setFilterRarity(filterRarity === r ? null : r)}
-                    className={`w-7 h-7 rounded text-[10px] font-bold transition-all ${filterRarity === r ? "bg-amber-500 text-black" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
-                    {r}★
-                  </button>
-                ))}
-              </div>
-              <div className="flex-1 overflow-y-auto overscroll-contain p-2">
-                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
-                  <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-gray-600 p-2 hover:bg-white/5 transition-colors"
-                    style={{ aspectRatio: "1" }} onClick={() => { setCharmId(null); closePicker() }}>
-                    <span className="text-gray-500 text-xl">×</span>
-                    <span className="text-[10px] text-gray-500">Remove</span>
-                  </div>
-                  {filteredCharms.map(ch => {
-                    const isSelected = charmId === ch.id
-                    return (
-                      <div key={ch.id}
-                        className="flex flex-col items-center gap-1 rounded hover:bg-white/5 cursor-pointer transition-colors p-1"
-                        onClick={() => { selectChar(0, ch.id) }}>
-                        <div className="relative w-full overflow-hidden rounded bg-black/40" style={{ aspectRatio: "1" }}>
-                          <div className="absolute inset-0 flex items-center justify-center p-2">
-                            <span className="text-3xl">🔮</span>
-                          </div>
-                          <div className="absolute bottom-0.5 left-0.5 flex gap-0.5">
-                            {Array.from({ length: ch.rarity }, (_, i) => (
-                              <span key={i} className="text-amber-400 text-[8px]">★</span>
-                            ))}
-                          </div>
-                          <div className="absolute top-0.5 right-0.5 text-[8px] font-bold text-purple-300 bg-black/60 px-1 rounded">
-                            HP {ch.max_hp ?? 0} · ATK {ch.max_attack ?? 0} · DEF {ch.max_defense ?? 0}
-                          </div>
-                          {isSelected && <div className="absolute inset-0 ring-2 ring-purple-400 ring-inset rounded" />}
-                        </div>
-                        <span className="text-[9px] text-gray-400 leading-none text-center line-clamp-1 w-full px-0.5">{ch.name || `Charm #${ch.id}`}</span>
-                      </div>
-                    )
-                  })}
-                </div>
-                {filteredCharms.length === 0 && <p className="py-6 text-center text-xs text-gray-500">No charms match</p>}
-              </div>
-            </>
           ) : (
             /* ── CHARACTER PICKER: left slot panel + right search/grid ── */
             <div className="flex flex-1 min-h-0 overflow-hidden">
@@ -1100,6 +1027,9 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                       const t = getCharacterVisualTier(slotMainChar)
                       const r: "bless" | "member" = isProtectorChar(slotMainChar) ? "bless" : "member"
                       const { base, frame } = getMainFramePaths(t, r)
+                      const isProt = isProtectorChar(slotMainChar)
+                      const [mi1, mi2, mi3] = getCardIcons(slotMainChar)
+                      const mIcons = [mi1, mi2, mi3].filter(Boolean) as string[]
                       return (
                         <>
                           <img src={base} alt="" className="absolute object-fill pointer-events-none"
@@ -1111,6 +1041,20 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                             onError={e => { (e.target as HTMLImageElement).src = toPublicAssetPath(slotMainChar.images.full) }} />
                           <img src={frame} alt="" className="absolute inset-0 w-full h-full object-fill pointer-events-none"
                             onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                          {/* Element / type icons */}
+                          {!isProt && mIcons.length > 0 && (
+                            <>
+                              {mIcons[0] && <img src={mIcons[0]} alt="" className="absolute z-30 object-contain drop-shadow-lg"
+                                style={ t >= 6 ? { right: '3%', top: '1.5%', width: '22%' } : { right: '0.8%', top: '0.1%', width: '22%' } } />}
+                              {mIcons[1] && <img src={mIcons[1]} alt="" className="absolute z-30 object-contain drop-shadow-lg"
+                                style={ t >= 6 ? { right: '3.5%', top: '10.3%', width: '21.5%' } : { right: '1%', top: '9.4%', width: '22%' } } />}
+                            </>
+                          )}
+                          {isProt && mIcons.length > 0 && (
+                            <div className="absolute z-30 flex flex-col items-center gap-0.5" style={{ top: '3%', right: '3%' }}>
+                              {mIcons.map((src, idx) => <img key={idx} src={src} alt="" className="object-contain drop-shadow-lg" style={{ width: '30px' }} />)}
+                            </div>
+                          )}
                         </>
                       )
                     })() : (
@@ -1144,6 +1088,15 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                           const { frame } = getMiniFramePaths(t, r)
                           return <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
                             onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                        })()}
+                        {(() => {
+                          const [si1, si2] = getMiniCardIcons(slotSubChar)
+                          return (si1 || si2) ? (
+                            <div className="absolute top-0.5 right-0.5 z-20 flex flex-col gap-0.5">
+                              {si1 && <img src={si1} alt="" className="w-4 h-4 object-contain drop-shadow" />}
+                              {si2 && <img src={si2} alt="" className="w-4 h-4 object-contain drop-shadow" />}
+                            </div>
+                          ) : null
                         })()}
                       </>
                     ) : (
@@ -1459,24 +1412,24 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                       {/* ── Skill Effect ── */}
                       <div>
                         <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-3 uppercase tracking-wider flex items-center justify-between">
-                          <span>Skill Effect {(filterSkillGroups.length > 0 || filterSkillCost[1] < 100) ? `(${filterSkillGroups.length + (filterSkillCost[1] < 100 ? 1 : 0)} active)` : ""}</span>
+                          <span>Skill Effect {(filterSkillGroups.length > 0 || filterSkillCost > 0) ? `(${filterSkillGroups.length + (filterSkillCost > 0 ? 1 : 0)} active)` : ""}</span>
                         </div>
 
                         {/* Skill Cost Slider — single slider, disabled unless All or Battle Skills */}
                         <div className="mb-4">
                           <div className={`text-[10px] mb-2 ${filterSkillType === "all" || filterSkillType === "battle" ? "text-gray-500" : "text-gray-600"}`}>
-                            Skill Cost (SP): ≤ {filterSkillCost[1] >= 100 ? "Any" : filterSkillCost[1]}
+                            Skill Cost (SP): {filterSkillCost === 0 ? "Any" : `${filterSkillCost}+`}
                           </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[10px] text-gray-500 w-4 text-right">0</span>
-                            <input type="range" min={0} max={100} value={filterSkillCost[1]}
+                            <input type="range" min={0} max={85} step={5} value={filterSkillCost}
                               disabled={filterSkillType !== "all" && filterSkillType !== "battle"}
-                              onChange={e => { const v = Number(e.target.value); setFilterSkillCost([0, v]) }}
+                              onChange={e => { setFilterSkillCost(Number(e.target.value)) }}
                               className={`flex-1 h-1 accent-teal-500 bg-white/10 rounded appearance-none ${filterSkillType === "all" || filterSkillType === "battle" ? "cursor-pointer" : "cursor-not-allowed opacity-40"}`} />
-                            <span className="text-[10px] text-gray-500 w-6">{filterSkillCost[1] >= 100 ? "Any" : filterSkillCost[1]}</span>
+                            <span className="text-[10px] text-gray-500 w-6">85+</span>
                           </div>
-                          {filterSkillCost[1] < 100 && (
-                            <button onClick={() => setFilterSkillCost([0, 100])} className="text-[10px] text-teal-400 hover:text-teal-300 underline mt-1">Reset</button>
+                          {filterSkillCost > 0 && (
+                            <button onClick={() => setFilterSkillCost(0)} className="text-[10px] text-teal-400 hover:text-teal-300 underline mt-1">Reset</button>
                           )}
                         </div>
 
@@ -1810,103 +1763,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
         </div>
       </div>
 
-      {/* ── EQUIPMENT & CHARMS SECTION ── */}
-      {(mainSlots[0] || mainSlots[1] || mainSlots[2] || mainSlots[3]) && (
-        <div className="w-full mt-4 rounded-lg overflow-hidden"
-          style={{ maxWidth: "calc(4 * clamp(135px, 16vw, 200px) + 2 * clamp(95px, 11.5vw, 138px) + 32px)", background: "rgba(8,12,22,0.92)", border: "1px solid rgba(255,255,255,0.08)" }}>
-          <div className="px-3 py-2 border-b border-white/10">
-            <span className="text-[11px] font-semibold text-white/80 uppercase tracking-wider">Equipment & Charms</span>
-          </div>
-          <div className="divide-y divide-white/[0.06]">
-            {/* Protector (slot 0) — charm */}
-            {mainSlots[0] && (() => {
-              const ch = characters.find(c => c.master_pc_id === mainSlots[0]) ?? null
-              const selectedCharm = charmId ? charms.find(c => c.id === charmId) ?? null : null
-              return (
-                <div className="flex items-center gap-3 px-3 py-2">
-                  {ch && (
-                    <div className="flex items-center gap-2 w-36 shrink-0">
-                      <img src={toPublicAssetPath(ch.images.icon)} alt={ch.name} className="w-8 h-8 rounded object-cover" />
-                      <div className="min-w-0">
-                        <div className="text-[10px] text-purple-300 font-semibold truncate">{ch.name}</div>
-                        <div className="text-[9px] text-gray-500">Protector</div>
-                      </div>
-                    </div>
-                  )}
-                  <div className="flex-1 flex items-center gap-2">
-                    <button onClick={() => openPicker(0, "charm")}
-                      className="w-12 h-12 rounded border border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.08] transition-all overflow-hidden relative"
-                      title="Charm">
-                      {selectedCharm ? (
-                        <>
-                          {(() => {
-                            const sk = selectedCharm.possible_skills?.[0]
-                            const img = sk?.image_path ? `/Equip/Accessory/${sk.image_path.match(/\/(\d+)\//)?.[1] ?? ""}/Accessory_${sk.image_path.match(/\/(\d+)\//)?.[1] ?? ""}_AccessoryM.png` : null
-                            return img ? <img src={img} alt="" className="w-10 h-10 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} /> : null
-                          })()}
-                        </>
-                      ) : (
-                        <span className="text-white/30 text-lg">+</span>
-                      )}
-                    </button>
-                    {selectedCharm && (
-                      <div className="min-w-0 flex-1">
-                        <div className="text-[10px] text-white/80 font-medium truncate">{selectedCharm.name}</div>
-                        {selectedCharm.possible_skills?.slice(0, 2).map((sk, idx) => (
-                          <div key={idx} className="text-[9px] text-gray-400 truncate">
-                            {sk.name}{sk.description ? `: ${sk.description.replace(/<[^>]+>/g, "").slice(0, 60)}` : ""}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )
-            })()}
 
-            {/* Attackers (slots 1-3) — equipment */}
-            {[1, 2, 3].map(slotIdx => {
-              if (!mainSlots[slotIdx]) return null
-              const ch = characters.find(c => c.master_pc_id === mainSlots[slotIdx]) ?? null
-              const slots = equipSlots[slotIdx] ?? { weapon: null, armor: null, accessory: null }
-              return (
-                <div key={slotIdx} className="flex items-center gap-3 px-3 py-2">
-                  {ch && (
-                    <div className="flex items-center gap-2 w-36 shrink-0">
-                      <img src={toPublicAssetPath(ch.images.icon)} alt={ch.name} className="w-8 h-8 rounded object-cover" />
-                      <div className="min-w-0">
-                        <div className="text-[10px] text-cyan-300 font-semibold truncate">{ch.name}</div>
-                        <div className="text-[9px] text-gray-500">Attacker {slotIdx}</div>
-                      </div>
-                    </div>
-                  )}
-                  <div className="flex-1 flex items-center gap-2">
-                    {(["weapon", "armor", "accessory"] as const).map(eqType => {
-                      const eqId = slots[eqType]
-                      const eq = eqId ? equipment.find(e => e.id === eqId) ?? null : null
-                      return (
-                        <div key={eqType} className="flex flex-col items-center gap-0.5">
-                          <button onClick={() => { setEquipPickerType(eqType); openPicker(slotIdx, "equipment") }}
-                            className="w-12 h-12 rounded border border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.08] transition-all overflow-hidden"
-                            title={eqType}>
-                            {eq?.image ? (
-                              <img src={eq.image} alt={eq.name} className="w-10 h-10 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
-                            ) : (
-                              <span className="text-white/30 text-lg">+</span>
-                            )}
-                          </button>
-                          <span className="text-[8px] text-gray-500 capitalize">{eqType}</span>
-                          {eq && <span className="text-[8px] text-white/60 truncate max-w-[50px]">{eq.name}</span>}
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      )}
 
       {/* ── ACTION BUTTONS ── */}
       <div className="mt-4 flex items-center gap-3">
@@ -1919,7 +1776,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
           Save PNG
         </button>
         <button
-          onClick={() => openPicker(1, "equipment")}
+          onClick={openEquipModal}
           className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
           style={{ background: "linear-gradient(135deg, #3a1e5f 0%, #22103f 100%)", border: "1px solid rgba(180,100,255,0.3)" }}
         >
@@ -1929,6 +1786,242 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       </div>
 
       {PickerModal()}
+
+      {/* ── EQUIPMENT MODAL ── */}
+      {showEquipModal && (
+        <div className="fixed inset-0 z-50 flex" role="dialog" aria-modal="true">
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setShowEquipModal(false)} />
+          <div className="relative z-50 m-auto flex flex-col max-h-[95vh] w-[95vw] max-w-5xl rounded-xl overflow-hidden shadow-2xl"
+            style={{ background: "linear-gradient(180deg, #0c1929 0%, #111d2e 100%)" }}>
+            {/* Header */}
+            <div className="flex items-center gap-2 px-4 py-2.5 border-b border-white/10 shrink-0">
+              <img src="/UI/Texture/QuestAtlas/icBtnEquip.png" alt="" className="w-5 h-5 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+              <span className="text-[12px] font-semibold text-white/90 uppercase tracking-wider">Equipment & Charms</span>
+              <div className="flex-1" />
+              <button onClick={() => setShowEquipModal(false)} className="w-8 h-8 flex items-center justify-center rounded bg-white/5 hover:bg-white/10 text-gray-400 shrink-0">✕</button>
+            </div>
+
+            <div className="flex flex-1 min-h-0 overflow-hidden">
+              {/* LEFT: Characters + Slots */}
+              <div className="w-[38%] min-w-[220px] max-w-[340px] border-r border-white/10 overflow-y-auto shrink-0">
+                {equipModalChars.length === 0 && (
+                  <div className="flex items-center justify-center h-full text-[11px] text-gray-500 p-6 text-center">
+                    Add characters to your team first
+                  </div>
+                )}
+                {equipModalChars.map(({ slotKey, label, charId, isProt }) => {
+                  const ch = characters.find(c => c.master_pc_id === charId) ?? null
+                  if (!ch) return null
+                  const isActiveRow = activeEquipSlot?.slotKey === slotKey
+                  const selectedSkillId = charmSlots[slotKey] ?? null
+                  const selectedFlatCharm = selectedSkillId ? flatCharms.find(fc => fc.skill_id === selectedSkillId) ?? null : null
+                  const slots = getEquipRecord(slotKey)
+
+                  return (
+                    <div key={slotKey} className={`px-3 py-2.5 border-b border-white/[0.06] transition-colors ${isActiveRow ? (isProt ? "bg-purple-950/20" : "bg-sky-950/20") : ""}`}>
+                      <div className="flex items-center gap-2 mb-2">
+                        <img src={toPublicAssetPath(ch.images.icon)} alt={ch.name} className="w-8 h-8 rounded object-cover" />
+                        <div className="min-w-0">
+                          <div className={`text-[10px] font-semibold truncate ${isProt ? "text-purple-300" : "text-cyan-300"}`}>{ch.name}</div>
+                          <div className="text-[9px] text-gray-500">{label}</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        {isProt ? (
+                          /* Protectors get a charm slot */
+                          <div className="flex flex-col items-center gap-0.5">
+                            <button
+                              onClick={() => { setActiveEquipSlot({ slotKey, type: "charm" }); setEquipQuery(""); setEquipFilterRarity(null); setEquipHoveredId(null) }}
+                              className={`w-12 h-12 rounded border flex items-center justify-center transition-all overflow-hidden relative ${activeEquipSlot?.slotKey === slotKey && activeEquipSlot?.type === "charm" ? "border-purple-400 ring-1 ring-purple-400/50 bg-purple-900/20" : "border-white/10 bg-white/[0.03] hover:bg-white/[0.08]"}`}
+                              title="Charm">
+                              {selectedFlatCharm ? (() => {
+                                const match = selectedFlatCharm.image_path?.match(/\/(\d+)\//)
+                                const img = match ? `/Equip/Accessory/${match[1]}/Accessory_${match[1]}_AccessoryM.png` : null
+                                return img ? <img src={img} alt="" className="w-10 h-10 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} /> : <span className="text-purple-300/50 text-lg">♦</span>
+                              })() : (
+                                <span className="text-white/30 text-lg">+</span>
+                              )}
+                            </button>
+                            <span className="text-[8px] text-gray-500">Charm</span>
+                          </div>
+                        ) : (
+                          /* Attackers get weapon/armor/accessory */
+                          (["weapon", "armor", "accessory"] as const).map(eqType => {
+                            const eqId = slots[eqType]
+                            const eq = eqId ? equipment.find(e => e.id === eqId) ?? null : null
+                            const isActive = activeEquipSlot?.slotKey === slotKey && activeEquipSlot?.type === eqType
+                            return (
+                              <div key={eqType} className="flex flex-col items-center gap-0.5">
+                                <button
+                                  onClick={() => { setActiveEquipSlot({ slotKey, type: eqType }); setEquipQuery(""); setEquipFilterRarity(null); setEquipHoveredId(null) }}
+                                  className={`w-12 h-12 rounded border flex items-center justify-center transition-all overflow-hidden ${isActive ? "border-sky-400 ring-1 ring-sky-400/50 bg-sky-900/20" : "border-white/10 bg-white/[0.03] hover:bg-white/[0.08]"}`}
+                                  title={eqType}>
+                                  {eq?.image ? (
+                                    <img src={eq.image} alt={eq.name} className="w-10 h-10 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                                  ) : (
+                                    <span className="text-white/30 text-lg">+</span>
+                                  )}
+                                </button>
+                                <span className="text-[8px] text-gray-500 capitalize">{eqType}</span>
+                              </div>
+                            )
+                          })
+                        )}
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+
+              {/* RIGHT: Effects + Grid */}
+              <div className="flex-1 flex flex-col overflow-hidden">
+                {!activeEquipSlot ? (
+                  <div className="flex-1 flex items-center justify-center text-[11px] text-gray-500 text-center p-4">
+                    Select an equipment or charm slot on the left to edit
+                  </div>
+                ) : (
+                  <>
+                    {/* Effects panel */}
+                    <div className="px-3 py-2 border-b border-white/10 bg-[#0a1525] min-h-[60px] transition-all duration-200">
+                      <div className="text-[10px] text-amber-300/80 font-semibold uppercase tracking-wider mb-1">Effects</div>
+                      {(() => {
+                        if (activeEquipSlot.type === "charm") {
+                          const hoveredFc = equipHoveredId != null ? flatCharms.find(fc => fc.skill_id === equipHoveredId) ?? null : null
+                          const selectedFc = charmSlots[activeEquipSlot.slotKey] ? flatCharms.find(fc => fc.skill_id === charmSlots[activeEquipSlot.slotKey]) ?? null : null
+                          const fc = hoveredFc ?? selectedFc
+                          if (fc) return (
+                            <div>
+                              <div className="text-[11px] text-white/90 font-medium">{fc.name}</div>
+                              <div className="text-[10px] text-gray-300 mt-0.5">{fc.description ? renderColoredDesc(fc.description) : "—"}</div>
+                            </div>
+                          )
+                        } else {
+                          const hoveredEq = equipHoveredId != null ? equipment.find(e => e.id === equipHoveredId) ?? null : null
+                          const currentEqId = getEquipRecord(activeEquipSlot.slotKey)[activeEquipSlot.type]
+                          const selectedEq = currentEqId ? equipment.find(e => e.id === currentEqId) ?? null : null
+                          const eq = hoveredEq ?? selectedEq
+                          if (eq) return (
+                            <div>
+                              <div className="text-[11px] text-white/90 font-medium">{eq.name}</div>
+                              <div className="text-[10px] text-gray-300 mt-0.5 flex gap-3">
+                                <span>ATK {eq.max_atk}</span>
+                                <span>DEF {eq.max_def}</span>
+                                <span>HP {eq.max_hp}</span>
+                                <span className="text-amber-400">★{eq.rarity} <span className="text-gray-500">({eq.base_rarity}★ base)</span></span>
+                              </div>
+                              {(eq.effect1 || eq.effect2) && (
+                                <div className="mt-1 space-y-0.5">
+                                  {eq.effect1 && <div className="text-[10px] text-gray-300">{renderColoredDesc(eq.effect1)}</div>}
+                                  {eq.effect2 && <div className="text-[10px] text-gray-300">{renderColoredDesc(eq.effect2)}</div>}
+                                </div>
+                              )}
+                            </div>
+                          )
+                        }
+                        return <div className="text-[10px] text-gray-600">Hover over an item to see its effects</div>
+                      })()}
+                    </div>
+
+                    {/* Search + Rarity filter */}
+                    <div className="flex items-center gap-2 px-3 py-1.5 border-b border-white/5 shrink-0">
+                      <input
+                        value={equipQuery} onChange={e => setEquipQuery(e.target.value)}
+                        placeholder={activeEquipSlot.type === "charm" ? "Search charms..." : `Search ${activeEquipSlot.type}s...`}
+                        className="h-7 flex-1 rounded border border-gray-700 bg-gray-800/80 text-white text-[11px] px-2 outline-none focus:border-sky-500" />
+                      {(activeEquipSlot.type === "charm" ? [3, 2, 1] : [6, 3, 2, 1]).map(r => (
+                        <button key={r} onClick={() => setEquipFilterRarity(equipFilterRarity === r ? null : r)}
+                          className={`w-6 h-6 rounded text-[9px] font-bold transition-all ${equipFilterRarity === r ? "bg-amber-500 text-black" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
+                          {r}★
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Item grid */}
+                    <div className="flex-1 overflow-y-auto overscroll-contain p-2">
+                      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
+                        {/* Remove button */}
+                        <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-gray-600 p-2 hover:bg-white/5 transition-colors"
+                          style={{ aspectRatio: "1" }}
+                          onClick={() => {
+                            if (activeEquipSlot.type === "charm") {
+                              setCharmSlots(prev => ({ ...prev, [activeEquipSlot.slotKey]: null }))
+                            } else {
+                              setEquipForSlot(activeEquipSlot.slotKey, activeEquipSlot.type, null)
+                            }
+                          }}>
+                          <span className="text-gray-500 text-xl">⊘</span>
+                          <span className="text-[10px] text-gray-500">Remove</span>
+                        </div>
+
+                        {/* Items */}
+                        {activeEquipSlot.type === "charm" ? (
+                          (equipModalItems as FlatCharm[]).map(fc => {
+                            const isSelected = charmSlots[activeEquipSlot.slotKey] === fc.skill_id
+                            const match = fc.image_path?.match(/\/(\d+)\//)
+                            const img = match ? `/Equip/Accessory/${match[1]}/Accessory_${match[1]}_AccessoryM.png` : null
+                            return (
+                              <div key={fc.skill_id}
+                                className={`flex flex-col items-center gap-1 rounded cursor-pointer transition-colors p-1 ${equipHoveredId === fc.skill_id ? "bg-white/10" : "hover:bg-white/5"}`}
+                                onPointerEnter={() => setEquipHoveredId(fc.skill_id)}
+                                onPointerLeave={() => setEquipHoveredId(prev => prev === fc.skill_id ? null : prev)}
+                                onClick={() => setCharmSlots(prev => ({ ...prev, [activeEquipSlot.slotKey]: fc.skill_id }))}>
+                                <div className="relative w-full overflow-hidden rounded" style={{ aspectRatio: "1" }}>
+                                  <img src={`/UI/Texture/CommonRarityAtlas/itemRrarity${Math.min(fc.rarity + 1, 4)}.png`} alt=""
+                                    className="absolute inset-0 w-full h-full object-fill pointer-events-none" />
+                                  {img ? (
+                                    <img src={img} alt="" className="absolute inset-0 w-full h-full object-contain p-1.5 z-10" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                                  ) : (
+                                    <div className="absolute inset-0 flex items-center justify-center z-10"><span className="text-purple-300/50 text-lg">♦</span></div>
+                                  )}
+                                  <div className="absolute bottom-0.5 left-1/2 -translate-x-1/2 flex gap-px">
+                                    {Array.from({ length: fc.rarity }, (_, i) => (
+                                      <img key={i} src="/UI/Texture/CommonRarityAtlas/starOn.png" alt="★" className="w-3 h-3 object-contain" />
+                                    ))}
+                                  </div>
+                                  {isSelected && <div className="absolute inset-0 ring-2 ring-purple-400 ring-inset rounded" />}
+                                </div>
+                                <span className="text-[9px] text-gray-400 leading-none text-center line-clamp-2 w-full px-0.5">{fc.name}</span>
+                              </div>
+                            )
+                          })
+                        ) : (
+                          (equipModalItems as Equipment[]).map(eq => {
+                            const isSelected = getEquipRecord(activeEquipSlot.slotKey)[activeEquipSlot.type] === eq.id
+                            return (
+                              <div key={eq.id}
+                                className={`flex flex-col items-center gap-1 rounded cursor-pointer transition-colors p-1 ${equipHoveredId === eq.id ? "bg-white/10" : "hover:bg-white/5"}`}
+                                onPointerEnter={() => setEquipHoveredId(eq.id)}
+                                onPointerLeave={() => setEquipHoveredId(prev => prev === eq.id ? null : prev)}
+                                onClick={() => setEquipForSlot(activeEquipSlot.slotKey, activeEquipSlot.type, eq.id)}>
+                                <div className="relative w-full overflow-hidden rounded bg-black/40" style={{ aspectRatio: "1" }}>
+                                  {eq.image && (
+                                    <img src={eq.image} alt={eq.name} className="absolute inset-0 w-full h-full object-contain p-1" onError={e => { (e.target as HTMLImageElement).style.opacity = "0.2" }} />
+                                  )}
+                                  <div className="absolute bottom-0.5 left-0.5 flex gap-0">
+                                    {Array.from({ length: Math.min(eq.rarity, 8) }, (_, i) => (
+                                      <img key={i} src="/UI/Texture/CharaInfoAtlas/awakeEvolutionRarityStarAdd.png" alt="★" className="w-3.5 h-3.5 object-contain -mr-0.5" />
+                                    ))}
+                                  </div>
+                                  <div className="absolute top-0.5 right-0.5 text-[8px] font-bold text-sky-300 bg-black/60 px-1 rounded">
+                                    {eq.type === "weapon" ? `ATK ${eq.max_atk}` : eq.type === "armor" ? `DEF ${eq.max_def}` : `HP ${eq.max_hp}`}
+                                  </div>
+                                  {isSelected && <div className="absolute inset-0 ring-2 ring-amber-400 ring-inset rounded" />}
+                                </div>
+                                <span className="text-[9px] text-gray-400 leading-none text-center line-clamp-1 w-full px-0.5">{eq.name || `#${eq.id}`}</span>
+                              </div>
+                            )
+                          })
+                        )}
+                      </div>
+                      {equipModalItems.length === 0 && <p className="py-6 text-center text-xs text-gray-500">No items match</p>}
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
