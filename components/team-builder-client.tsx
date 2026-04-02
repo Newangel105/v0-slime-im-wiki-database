@@ -1,7 +1,7 @@
 "use client"
 
-import { useMemo, useState } from "react"
-import type { WikiCharacter } from "@/lib/pc-wiki"
+import { useMemo, useState, useRef } from "react"
+import type { WikiCharacter, Heartprint, Equipment, Charm } from "@/lib/pc-wiki"
 import {
   toPublicAssetPath, getCharacterVisualTier, getForceIconLookup,
   isExUnboundCharacter, hasExSpecialSkill, isExAttacker,
@@ -13,15 +13,65 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 
-// ---- HEARTPRINT IDs (SkillStill folder IDs — NOT character master_pc_ids) ----
-const HEARTPRINT_IDS = [
-  1100201, 1100601, 1100602, 1100801, 1101001, 1101101, 1101301, 1101602, 1101603, 1101901,
-  1102101, 1102801, 1102901, 1103101, 1103501, 1103601, 1103701, 1103702, 1103703, 1103704,
-  1104201, 1104801, 1105002, 1105101, 1106402, 1106601, 1106802, 1200111, 1200401, 1200801,
-  1201101, 1201102, 1202001, 1202301, 1400101, 1400102, 1400201, 2100101, 2101401, 2101701,
-  2103401, 2105001, 2106401, 2106801, 2400101, 2400501, 2500008, 2500082, 2500083, 2500086,
-  2500087, 2500088, 2500089,
-]
+// ---- CATEGORY DISPLAY NAME MAP for Skill Filter Modal ----
+const SKILL_CAT_LABELS: Record<string, string> = {
+  DamageUP: "Damage UP",
+  DamageDown: "Damage DOWN",
+  GageUP: "Gauge UP",
+  GageDown: "Gauge DOWN",
+  AbnormalCondition: "Status Abnormalities",
+  BuffChangeAct: "Status Effects",
+  ConditionChange: "Condition Change",
+  Special: "Special",
+}
+
+// ---- Character Type display labels ----
+const CHAR_TYPE_DISPLAY: Record<string, string> = {
+  Attack: "Attack Growth Type",
+  Defense: "Defense Growth Type",
+  Support: "Balance Growth Type",
+  ExtremeAttack: "Attack Growth Type EX",
+  ExtremeDefense: "Defense Growth Type EX",
+  ExtremeAverage: "Balance Growth Type EX",
+}
+
+// ---- Weapon type icons for attacker picker ----
+const WEAPON_ICONS: Record<string, string> = {
+  Book: "/weapons/book.png",
+  Fist: "/weapons/fists.png",
+  Fists: "/weapons/fists.png",
+  Greatsword: "/weapons/greatsword.png",
+  Hammer: "/weapons/hammer.png",
+  Katana: "/weapons/katana.png",
+  Knuckle: "/weapons/fists.png",
+  Largesword: "/weapons/greatsword.png",
+  Spear: "/weapons/spear.png",
+  Sword: "/weapons/sword.png",
+}
+
+// ---- Force group display labels ----
+const FORCE_GROUP_LABELS: Record<string, string> = {
+  tribe: "Tribe",
+  ability: "Skill / Personality",
+  event: "Event / Theme",
+  team: "Team",
+  others: "Other",
+}
+const FORCE_GROUP_ORDER = ["tribe", "ability", "event", "team", "others"]
+
+// ---- Color tag renderer ----
+function renderColoredDesc(text: string): React.ReactNode[] {
+  const parts: React.ReactNode[] = []
+  const re = /<color=(#[0-9a-fA-F]{6,8})>([\s\S]*?)<\/color>/gi
+  let last = 0, match: RegExpExecArray | null
+  while ((match = re.exec(text)) !== null) {
+    if (match.index > last) parts.push(text.slice(last, match.index))
+    parts.push(<span key={match.index} style={{ color: match[1] }}>{match[2]}</span>)
+    last = match.index + match[0].length
+  }
+  if (last < text.length) parts.push(text.slice(last))
+  return parts
+}
 
 // ---- FRAME PATH HELPERS ----
 function getMainFramePaths(tier: number, role: "member" | "bless") {
@@ -78,6 +128,30 @@ const ENHANCED_ELEMENTS = [
   { key: "EnhancedWater", label: "Water+", icon: "/elements/Enhancedwater.png" },
   { key: "EnhancedEarth", label: "Earth+", icon: "/elements/Enhancedearth.png" },
 ]
+const SPECIAL_EFFECT_ELEMENTS = [
+  { key: "SpecialEffectElementAir", label: "SE Air", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.png" },
+  { key: "SpecialEffectElementHoly", label: "SE Holy", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementHoly.png" },
+  { key: "SpecialEffectElementDark", label: "SE Dark", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementDark.png" },
+  { key: "SpecialEffectElementFire", label: "SE Fire", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementFire.png" },
+  { key: "SpecialEffectElementWind", label: "SE Wind", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWind.png" },
+  { key: "SpecialEffectElementWater", label: "SE Water", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWater.png" },
+  { key: "SpecialEffectElementEarth", label: "SE Earth", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEarth.png" },
+]
+const SPECIAL_EFFECT_ENHANCED_ELEMENTS = [
+  { key: "SpecialEffectElementEnhancedAir", label: "SE Air+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedAir.png" },
+  { key: "SpecialEffectElementEnhancedHoly", label: "SE Holy+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedHoly.png" },
+  { key: "SpecialEffectElementEnhancedDark", label: "SE Dark+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedDark.png" },
+  { key: "SpecialEffectElementEnhancedFire", label: "SE Fire+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedFire.png" },
+  { key: "SpecialEffectElementEnhancedWind", label: "SE Wind+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWind.png" },
+  { key: "SpecialEffectElementEnhancedWater", label: "SE Water+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWater.png" },
+  { key: "SpecialEffectElementEnhancedEarth", label: "SE Earth+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedEarth.png" },
+]
+const PROT_SUPPORT_TYPES = [
+  { key: "all", label: "ALL", icon: "/Image/IcElementBless/IcElementBlessAll.png" },
+  { key: "physics", label: "Physical", icon: "/Image/IcElementBless/IcElementBlessPhysics.png" },
+  { key: "magic", label: "Magic", icon: "/Image/IcElementBless/IcElementBlessMagic.png" },
+  { key: "special", label: "Special", icon: "/Image/IcElementBless/IcElementBlessSpecial.png" },
+]
 const ATTACK_TYPES = [
   { key: "Physical", label: "Physical", icon: "/type_dmg/icAttackTypePhysics.png" },
   { key: "Magic", label: "Magic", icon: "/type_dmg/icAttackTypeMagic.png" },
@@ -115,6 +189,15 @@ function isProtectorChar(c: WikiCharacter): boolean {
 }
 function isAttackerChar(c: WikiCharacter): boolean {
   return c.character_role === "Attacker" || c.skills.some((s) => s.slot === "special_skill" && s.kind === "special")
+}
+function getProtectorSupportType(c: WikiCharacter): "physics" | "magic" | null {
+  if (!isProtectorChar(c)) return null
+  const leaderSkill = c.skills.find(s => s.slot === "leader_skill")
+  if (!leaderSkill) return null
+  const desc = (leaderSkill.description_max_level ?? "").toLowerCase()
+  if (desc.includes("physical characters'") || desc.includes("increases p-atk")) return "physics"
+  if (desc.includes("magic characters'") || desc.includes("increases m-atk")) return "magic"
+  return null
 }
 
 // ---- Full element icon map ----
@@ -227,34 +310,98 @@ function getMiniCardIcons(char: WikiCharacter): [string | null, string | null] {
 }
 
 // =================================
-export default function TeamBuilderClient({ characters }: { characters: WikiCharacter[] }) {
-  // 4 main slots + 4 sub-slots + 2 side slots (side-by-side)
+export default function TeamBuilderClient({ characters, heartprints, equipment, charms }: { characters: WikiCharacter[], heartprints: Heartprint[], equipment: Equipment[], charms: Charm[] }) {
+  // 4 main slots + 4 sub-slots + 2 side slots + 2 side sub-slots
   const [mainSlots, setMainSlots] = useState<(number | null)[]>(Array(4).fill(null))
   const [subSlots, setSubSlots] = useState<(number | null)[]>(Array(4).fill(null))
   const [sideSlots, setSideSlots] = useState<(number | null)[]>(Array(2).fill(null))
+  const [sideSubSlots, setSideSubSlots] = useState<(number | null)[]>(Array(2).fill(null))
   const [heartPrintId, setHeartPrintId] = useState<number | null>(null)
 
+  // Equipment slots: each attacker (main 1-3) has weapon, armor, accessory
+  // equipSlots[slotIndex] = { weapon: equipId, armor: equipId, accessory: equipId }
+  const [equipSlots, setEquipSlots] = useState<Record<number, Record<string, number | null>>>({
+    1: { weapon: null, armor: null, accessory: null },
+    2: { weapon: null, armor: null, accessory: null },
+    3: { weapon: null, armor: null, accessory: null },
+  })
+  // Charm slot for protector (main slot 0)
+  const [charmId, setCharmId] = useState<number | null>(null)
+
   const [pickerOpenFor, setPickerOpenFor] = useState<number | null>(null)
-  const [pickerMode, setPickerMode] = useState<"main" | "sub" | "side" | "heartprint">("main")
-  const [showFilters, setShowFilters] = useState(false)
+  const [pickerMode, setPickerMode] = useState<"main" | "sub" | "side" | "sidesub" | "heartprint" | "equipment" | "charm">("main")
+  const [showFilterModal, setShowFilterModal] = useState(false)
+  const [equipPickerType, setEquipPickerType] = useState<"weapon" | "armor" | "accessory">("weapon")
 
   const [query, setQuery] = useState("")
   const [filterEl, setFilterEl] = useState<string | null>(null)
   const [filterAttack, setFilterAttack] = useState<string | null>(null)
   const [filterTactics, setFilterTactics] = useState<string | null>(null)
   const [filterCharType, setFilterCharType] = useState<"normal" | "ex" | null>(null)
+  const [filterCharacterType, setFilterCharacterType] = useState<string | null>(null)
   const [filterRarity, setFilterRarity] = useState<number | null>(null)
   const [filterForces, setFilterForces] = useState<string[]>([])
+  const [filterSkillGroups, setFilterSkillGroups] = useState<number[]>([])
+  const [previewHp, setPreviewHp] = useState<Heartprint | null>(null)
+  const [filterSkillType, setFilterSkillType] = useState<"all" | "secret" | "battle" | "protection" | "skill" | "trait" | "valor" | "other">("all")
+  const [expandedSkillCats, setExpandedSkillCats] = useState<string[]>([])
+  const [filterWeapon, setFilterWeapon] = useState<string | null>(null)
+  const [filterProtType, setFilterProtType] = useState<"all" | "physics" | "magic" | "special">("all")
+  const [filterUltimateType, setFilterUltimateType] = useState<"all" | "attack" | "support">("all")
+  const [filterEnhancement, setFilterEnhancement] = useState<"all" | "ex" | "unbound">("all")
+  const [filterProtSkill, setFilterProtSkill] = useState<"all" | "secret" | "protection" | "skill" | "other">("all")
+  const [filterSkillCost, setFilterSkillCost] = useState<[number, number]>([0, 100])
+  const [filterDragOffset, setFilterDragOffset] = useState<{x: number, y: number}>({x: 0, y: 0})
+  const [filterSize, setFilterSize] = useState<{w: number, h: number}>({w: 380, h: 0})
+  const filterResizeStart = useRef<{w: number, h: number, px: number, py: number} | null>(null)
+  const [showSkillEffect, setShowSkillEffect] = useState(false)
 
   const forceOptions = useMemo(() => {
     const map = getForceIconLookup()
     return Array.from(map.entries()).map(([name, icon]) => ({ label: name, value: name, icon: toPublicAssetPath(icon) }))
   }, [])
 
+  const filterDragStart = useRef<{x: number, y: number, px: number, py: number} | null>(null)
+
+  // Forces grouped by group field
+  const forceGroups = useMemo(() => {
+    const groups = new Map<string, Array<{ name: string; icon: string | null }>>()
+    for (const c of characters) {
+      for (const f of c.forces) {
+        if (!groups.has(f.group)) groups.set(f.group, [])
+        const arr = groups.get(f.group)!
+        if (!arr.find(x => x.name === f.name)) arr.push({ name: f.name, icon: f.icon_path ? toPublicAssetPath(f.icon_path) : null })
+      }
+    }
+    // Sort each group alphabetically
+    for (const [, arr] of groups) arr.sort((a, b) => a.name.localeCompare(b.name))
+    return groups
+  }, [characters])
+
+  // Derived skill filter categories from all character data
+  const skillFilterCats = useMemo(() => {
+    const cats = new Map<string, Map<string, number>>() // category → (sub_label → group_id)
+    for (const c of characters) {
+      for (const sk of c.skills) {
+        for (const fg of (sk.skill_filter_groups ?? [])) {
+          if (!cats.has(fg.category_name)) cats.set(fg.category_name, new Map())
+          cats.get(fg.category_name)!.set(fg.sub_category_label, fg.master_skill_filter_group_id)
+        }
+      }
+    }
+    return cats
+  }, [characters])
+
+  const masterCharacterTacticsOptions = useMemo(() => {
+    const seen = new Set<string>()
+    for (const c of characters) if (c.master_character_tactics_type) seen.add(c.master_character_tactics_type)
+    return Array.from(seen).sort()
+  }, [characters])
+
   const heartprintItems = useMemo(() => {
     const q = query.trim().toLowerCase()
-    return HEARTPRINT_IDS.filter((id) => !q || String(id).includes(q))
-  }, [query])
+    return heartprints.filter(hp => !q || hp.title?.toLowerCase().includes(q) || String(hp.heartprint_id).includes(q))
+  }, [heartprints, query])
 
   function isExChar(c: WikiCharacter) {
     return isExUnboundCharacter(c) || hasExSpecialSkill(c) || isExAttacker(c)
@@ -262,38 +409,161 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
 
   const results = useMemo(() => {
     if (pickerMode === "heartprint") return []
-    // slot 0 = protector, slots 1-4 = attackers for main
-    // side slots are always attackers
-    const roleFilter = (pickerMode === "main" && pickerOpenFor === 0) ? "supporter" : "attacker"
+    const roleFilter = ((pickerMode === "main" || pickerMode === "sub") && pickerOpenFor === 0) ? "supporter" : "attacker"
     const q = query.trim().toLowerCase()
+    // Build set of already-selected IDs, excluding the current slot being edited
+    const taken = new Set<number>()
+    mainSlots.forEach((id, idx) => { if (id && !(pickerMode === "main" && pickerOpenFor === idx)) taken.add(id) })
+    subSlots.forEach((id, idx) => { if (id && !(pickerMode === "sub" && pickerOpenFor === idx)) taken.add(id) })
+    sideSlots.forEach((id, idx) => { if (id && !(pickerMode === "side" && pickerOpenFor === idx)) taken.add(id) })
+    sideSubSlots.forEach((id, idx) => { if (id && !(pickerMode === "sidesub" && pickerOpenFor === idx)) taken.add(id) })
     return characters.filter((c) => {
-      if (q && !c.name.toLowerCase().includes(q)) return false
+      if (taken.has(c.master_pc_id)) return false
+      if (q && !c.name.toLowerCase().includes(q) && !(c.affiliation_name?.toLowerCase().includes(q))) return false
       if (c.character_role?.toLowerCase() !== roleFilter) return false
       if (filterEl && !elementMatches(c.element ?? "", filterEl)) return false
       if (filterAttack && c.attack_type?.toLowerCase() !== filterAttack.toLowerCase()) return false
       if (filterTactics && c.tactics_type?.toLowerCase() !== filterTactics.toLowerCase()) return false
       if (filterCharType === "normal" && isExChar(c)) return false
       if (filterCharType === "ex" && !isExChar(c)) return false
-      if (filterRarity != null && c.rarity !== filterRarity) return false
+      if (filterCharacterType && c.master_character_tactics_type !== filterCharacterType) return false
+      if (filterRarity != null && getCharacterVisualTier(c) !== filterRarity) return false
       if (filterForces.length && !filterForces.some((f) => c.forces.map((x) => x.name).includes(f))) return false
+      if (filterWeapon && c.weapon_type?.toLowerCase() !== filterWeapon.toLowerCase()) return false
+      if (filterProtType !== "all" && isProtectorChar(c)) {
+        if (filterProtType === "special") {
+          const el = (c.element ?? "").toLowerCase()
+          if (!el.startsWith("specialeffect")) return false
+        } else {
+          const st = getProtectorSupportType(c)
+          if (st && st !== filterProtType) return false
+        }
+      }
+      if (filterEnhancement === "ex" && !isExAttacker(c) && !hasExSpecialSkill(c)) return false
+      if (filterEnhancement === "unbound" && !isExUnboundCharacter(c)) return false
+      // Protection Skill filter — protectors only
+      if (filterProtSkill !== "all" && roleFilter === "supporter") {
+        if (filterProtSkill === "secret") {
+          if (!c.skills.some(s => s.slot === "bless_skill")) return false
+        } else if (filterProtSkill === "protection") {
+          const ls = c.skills.find(s => s.slot === "leader_skill")
+          const desc = (ls?.description_max_level ?? "").toLowerCase()
+          if (!(desc.includes("def") || desc.includes("protect") || desc.includes("guard") || desc.includes("reduce") || desc.includes("resist"))) return false
+        } else if (filterProtSkill === "skill") {
+          const ls = c.skills.find(s => s.slot === "leader_skill")
+          const desc = (ls?.description_max_level ?? "").toLowerCase()
+          if (!(desc.includes("atk") || desc.includes("attack") || desc.includes("damage") || desc.includes("increase"))) return false
+        } else if (filterProtSkill === "other") {
+          const ls = c.skills.find(s => s.slot === "leader_skill")
+          const desc = (ls?.description_max_level ?? "").toLowerCase()
+          const isDefensive = desc.includes("def") || desc.includes("protect") || desc.includes("guard") || desc.includes("reduce") || desc.includes("resist")
+          const isOffensive = desc.includes("atk") || desc.includes("attack") || desc.includes("damage") || desc.includes("increase")
+          if (isDefensive || isOffensive) return false
+        }
+      }
+      if (filterSkillGroups.length > 0) {
+        const groupSet = new Set(filterSkillGroups)
+        const isProtPicker = roleFilter === "supporter"
+        const skillsToCheck = filterSkillType === "secret"
+          ? (isProtPicker
+            ? c.skills.filter(s => s.slot === "bless_skill")
+            : c.skills.filter(s => s.slot === "special_skill"))
+          : filterSkillType === "battle"
+          ? c.skills.filter(s => s.slot.startsWith("active_skill"))
+          : filterSkillType === "protection"
+          ? c.skills.filter(s => s.slot === "leader_skill" || s.slot === "assist_leader_skill")
+          : filterSkillType === "skill"
+          ? c.skills.filter(s => s.slot.startsWith("active_skill"))
+          : filterSkillType === "trait"
+          ? (c.traits as {skill_filter_groups?: {master_skill_filter_group_id:number}[]}[]).filter(t => !(t as any).icon_path?.includes("ArenaPassive"))
+          : filterSkillType === "valor"
+          ? (c.traits as {skill_filter_groups?: {master_skill_filter_group_id:number}[]}[]).filter(t => (t as any).icon_path?.includes("ArenaPassive"))
+          : filterSkillType === "other"
+          ? [...c.traits]
+          : [...c.skills, ...c.traits]
+        if (!skillsToCheck.some(sk => (sk.skill_filter_groups ?? []).some(fg => groupSet.has(fg.master_skill_filter_group_id)))) return false
+      }
+      // Secret skill sub-filter (ultimate_type) — attackers only
+      if (filterSkillType === "secret" && filterUltimateType !== "all" && roleFilter !== "supporter") {
+        const ut = (c.ultimate_type ?? "None").toLowerCase()
+        if (filterUltimateType === "attack" && ut !== "attack") return false
+        if (filterUltimateType === "support" && ut !== "support") return false
+      }
+      // Skill cost slider filter — only active for All or Battle Skills
+      if (filterSkillCost[1] < 100 && (filterSkillType === "all" || filterSkillType === "battle")) {
+        const hasMatchingSkill = c.skills.some(s => {
+          const cost = s.cost
+          if (cost == null) return false
+          return cost <= filterSkillCost[1]
+        })
+        if (!hasMatchingSkill) return false
+      }
       return true
     })
-  }, [characters, pickerMode, pickerOpenFor, query, filterEl, filterAttack, filterTactics, filterCharType, filterRarity, filterForces])
+  }, [characters, pickerMode, pickerOpenFor, query, filterEl, filterAttack, filterTactics, filterCharType, filterCharacterType, filterRarity, filterForces, filterSkillGroups, filterSkillType, filterWeapon, filterProtType, filterUltimateType, filterEnhancement, filterProtSkill, filterSkillCost, mainSlots, subSlots, sideSlots, sideSubSlots])
 
-  function openPicker(i: number, mode: "main" | "sub" | "side" | "heartprint") {
+  // Filtered equipment list for equipment picker
+  const filteredEquipment = useMemo(() => {
+    if (pickerMode !== "equipment") return []
+    const q = query.trim().toLowerCase()
+    return equipment.filter(e => {
+      if (e.type !== equipPickerType) return false
+      if (q && !e.name.toLowerCase().includes(q) && !String(e.id).includes(q)) return false
+      if (filterRarity != null && e.rarity !== filterRarity) return false
+      return true
+    })
+  }, [equipment, pickerMode, equipPickerType, query, filterRarity])
+
+  // Filtered charms list for charm picker
+  const filteredCharms = useMemo(() => {
+    if (pickerMode !== "charm") return []
+    const q = query.trim().toLowerCase()
+    return charms.filter(c => {
+      if (q && !(c.name ?? "").toLowerCase().includes(q) && !String(c.id).includes(q)) return false
+      if (filterRarity != null && c.rarity !== filterRarity) return false
+      return true
+    })
+  }, [charms, pickerMode, query, filterRarity])
+
+  function openPicker(i: number, mode: "main" | "sub" | "side" | "sidesub" | "heartprint" | "equipment" | "charm") {
     setPickerOpenFor(i); setPickerMode(mode); setQuery("")
     setFilterEl(null); setFilterAttack(null); setFilterTactics(null)
-    setFilterCharType(null); setFilterRarity(null); setFilterForces([])
-    setShowFilters(false)
+    setFilterCharType(null); setFilterCharacterType(null); setFilterRarity(null); setFilterForces([]); setFilterSkillGroups([])
+    setPreviewHp(null); setFilterSkillType("all"); setExpandedSkillCats([])
+    setFilterWeapon(null); setFilterProtType("all"); setFilterUltimateType("all")
+    setFilterEnhancement("all"); setFilterProtSkill("all"); setFilterDragOffset({x: 0, y: 0})
+    setFilterSkillCost([0, 100]); setShowSkillEffect(false)
+    setShowFilterModal(false)
+    if (mode === "equipment") setEquipPickerType("weapon")
   }
   function closePicker() { setPickerOpenFor(null) }
 
   function selectChar(i: number, id: number) {
-    if (pickerMode === "heartprint") setHeartPrintId(id)
-    else if (pickerMode === "sub") setSubSlots((s) => { const c = [...s]; c[i] = id; return c })
-    else if (pickerMode === "side") setSideSlots((s) => { const c = [...s]; c[i] = id; return c })
-    else setMainSlots((s) => { const c = [...s]; c[i] = id; return c })
-    closePicker()
+    if (pickerMode === "heartprint") { setHeartPrintId(id); closePicker(); return }
+    if (pickerMode === "charm") { setCharmId(id); closePicker(); return }
+    if (pickerMode === "equipment") {
+      setEquipSlots(prev => ({
+        ...prev,
+        [i]: { ...prev[i], [equipPickerType]: id },
+      }))
+      closePicker()
+      return
+    }
+    // Character selection → set the slot, switch to editing the other slot, don't close
+    if (pickerMode === "sub") {
+      setSubSlots((s) => { const c = [...s]; c[i] = id; return c })
+      setPickerMode("main")
+    } else if (pickerMode === "sidesub") {
+      setSideSubSlots((s) => { const c = [...s]; c[i] = id; return c })
+      setPickerMode("side")
+    } else if (pickerMode === "side") {
+      setSideSlots((s) => { const c = [...s]; c[i] = id; return c })
+      setPickerMode("sidesub")
+    } else {
+      setMainSlots((s) => { const c = [...s]; c[i] = id; return c })
+      setPickerMode("sub")
+    }
+    setQuery("")
   }
 
   // ==========================================
@@ -311,49 +581,65 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
     const tier = char ? getCharacterVisualTier(char) : 5
     const { base: mainBase, frame: mainFrame } = getMainFramePaths(tier, role)
 
-    // Use consistent frame aspect for layout (high-tier dimensions)
-    const FRAME_W = 264, FRAME_H = 628
+    // FRAME_W/FRAME_H defined at component level
     const [mainIcon1, mainIcon2, mainIcon3] = char ? getCardIcons(char) : [null, null, null]
     const mainIcons = [mainIcon1, mainIcon2, mainIcon3].filter(Boolean) as string[]
     const [subIcon1, subIcon2] = subChar ? getMiniCardIcons(subChar) : [null, null]
 
-    // Icon positions for attacker diamond slots (top-right of frame)
-    // These percentages position icons within the frame's diamond icon area
-    const iconTop = "3.5%"
-    const iconRight = "5%"
+    // Diamond slot centers measured from frame PNGs (averaged L5/L6):
+    // Upper diamond: right≈14%, top≈5%  |  Lower diamond: right≈14%, top≈14.3%
+    // Icon width=12% of card width → center offset = 6%, height offset ≈ 2.5%
 
     return (
       <div
-        className="relative flex-shrink-0 cursor-pointer select-none h-full"
-        style={{ aspectRatio: `${FRAME_W}/${FRAME_H}` }}
+        className="relative flex-shrink-0 overflow-hidden cursor-pointer select-none"
+        style={{ aspectRatio: '264 / 628' }}
         onClick={() => openPicker(i, "main")}
       >
-        {/* Empty state */}
+        {/* Empty state — diamond shape with + */}
         {!char && (
           <div
-            className="absolute inset-0 flex items-center justify-center rounded-lg"
+            className="absolute inset-0 flex items-center justify-center"
             style={{
-              border: "2px solid rgba(120,120,130,0.4)",
               background: "rgba(18,20,28,0.85)",
+              borderRadius: "4px",
             }}
           >
-            <span className="text-white/40 font-light select-none text-4xl">+</span>
+            <div className="relative" style={{ width: "55%", aspectRatio: "1" }}>
+              <div style={{
+                width: "100%", height: "100%",
+                clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+                background: "linear-gradient(135deg, rgba(80,90,120,0.3), rgba(40,50,70,0.6))",
+                border: "none",
+              }}>
+                <div style={{
+                  position: "absolute", inset: "2px",
+                  clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+                  background: "rgba(12,16,24,0.9)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                }}>
+                  <span className="text-white/40 font-light text-3xl select-none" style={{ transform: "none" }}>+</span>
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
         {/* Filled state: base → portrait → frame overlay */}
         {char && (
           <>
-            {/* Base texture fills entire card */}
+            {/* Base texture — inset to stay within ornate frame borders */}
             <img
               src={mainBase} alt=""
-              className="absolute inset-0 w-full h-full object-fill pointer-events-none"
+              className="absolute object-fill pointer-events-none"
+              style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
               onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }}
             />
-            {/* Character portrait fills entire card */}
+            {/* Character portrait — inset to stay within ornate frame borders */}
             <img
               src={`/partyL/${char.master_pc_id}.png`} alt={char.name}
-              className="absolute inset-0 w-full h-full object-fill pointer-events-none"
+              className="absolute object-fill pointer-events-none"
+              style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
               onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(char.images.full) }}
             />
             {/* Frame overlay fills entire card (has transparent center) */}
@@ -371,8 +657,8 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
           onClick={(e) => { e.stopPropagation(); openPicker(i, "sub") }}
           className="absolute overflow-hidden z-20"
           style={{
-            width: "38%", aspectRatio: "1",
-            bottom: "4%", left: "50%", transform: "translateX(-50%)",
+            width: "46%", aspectRatio: "1",
+            bottom: "4%", left: "27%",
             borderRadius: "4px",
             border: "1.5px solid rgba(140,140,150,0.5)",
             background: "rgba(10,12,18,0.8)",
@@ -380,8 +666,7 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
         >
           {subChar ? (
             <>
-              <img src={toPublicAssetPath(subChar.images.icon)} alt={subChar.name}
-                className="absolute inset-0 w-full h-full object-cover object-top" />
+              <div className="absolute inset-0" style={{ backgroundImage: `url('${toPublicAssetPath(subChar.images.icon)}')`, backgroundSize: 'cover', backgroundPosition: 'top center' }} />
               {(() => {
                 const t = getCharacterVisualTier(subChar)
                 const r: "bless" | "member" = isProtectorChar(subChar) ? "bless" : "member"
@@ -391,79 +676,155 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
               })()}
               {(subIcon1 || subIcon2) && (
                 <div className="absolute top-0.5 right-0.5 z-20 flex flex-col gap-0.5">
-                  {subIcon1 && <img src={subIcon1} alt="" className="w-3 h-3 object-contain drop-shadow" />}
-                  {subIcon2 && <img src={subIcon2} alt="" className="w-3 h-3 object-contain drop-shadow" />}
+                  {subIcon1 && <img src={subIcon1} alt="" className="w-4 h-4 object-contain drop-shadow" />}
+                  {subIcon2 && <img src={subIcon2} alt="" className="w-4 h-4 object-contain drop-shadow" />}
                 </div>
               )}
-              <button onClick={(e) => { e.stopPropagation(); setSubSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
-                className="absolute top-0 left-0 bg-black/80 w-4 h-4 flex items-center justify-center text-[8px] z-30 text-white rounded-br-sm">x</button>
             </>
           ) : (
             <span className="absolute inset-0 flex items-center justify-center text-white/35 font-light text-lg">+</span>
           )}
         </button>
 
-        {/* Element / type icons — positioned for frame's diamond slots */}
-        {char && mainIcons.length > 0 && (
-          <div className="absolute z-30 flex flex-col items-center gap-1"
-            style={{ top: iconTop, right: iconRight }}>
+        {/* Attacker icons — positioned at frame's diamond slots */}
+        {char && !isProt && mainIcons.length > 0 && (
+          <>
+            {mainIcons[0] && (
+              <img src={mainIcons[0]} alt=""
+                className="absolute z-30 object-contain drop-shadow-lg"
+                style={ tier >= 6
+                  ? { right: '3%', top: '1.5%', width: '22%' }
+                  : { right: '0.8%', top: '0.1%', width: '22%' } }
+              />
+            )}
+            {mainIcons[1] && (
+              <img src={mainIcons[1]} alt=""
+                className="absolute z-30 object-contain drop-shadow-lg"
+                style={ tier >= 6
+                  ? { right: '3.5%', top: '10.3%', width: '21.5%' }
+                  : { right: '1%', top: '9.4%', width: '22%' } }
+              />
+            )}
+          </>
+        )}
+        {/* Protector icons — simple stack */}
+        {char && isProt && mainIcons.length > 0 && (
+          <div className="absolute z-30 flex flex-col items-center gap-0.5"
+            style={{ top: '3%', right: '3%' }}>
             {mainIcons.map((src, idx) => (
-              <img key={idx} src={src} alt="" className="w-6 h-6 object-contain drop-shadow-lg" />
+              <img key={idx} src={src} alt=""
+                className="object-contain drop-shadow-lg" style={{ width: '30px' }} />
             ))}
           </div>
         )}
 
-        {/* Clear button */}
-        {char && (
-          <button onClick={(e) => { e.stopPropagation(); setMainSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
-            className="absolute top-2 right-2 bg-black/70 hover:bg-black/90 rounded-full w-5 h-5 flex items-center justify-center text-[10px] z-30 text-white">x</button>
-        )}
+
       </div>
     )
   }
 
   // ==========================================
-  // SIDE SLOT CARD — tall vertical slots for the right panel
+  // SIDE SLOT CARD — tall portrait slots (same frame as main slots, smaller width)
   // ==========================================
   function SideSlotCard({ i }: { i: number }) {
     const charId = sideSlots[i]
+    const sideSubCharId = sideSubSlots[i]
     const char = charId ? characters.find((c) => c.master_pc_id === charId) ?? null : null
+    const sideSubChar = sideSubCharId ? characters.find((c) => c.master_pc_id === sideSubCharId) ?? null : null
     const tier = char ? getCharacterVisualTier(char) : 5
     const role: "bless" | "member" = char && isProtectorChar(char) ? "bless" : "member"
-    const { base: sideBase, frame } = getMiniFramePaths(tier, role)
+    const { base: sideBase, frame } = getMainFramePaths(tier, role)
     const [icon1, icon2] = char ? getMiniCardIcons(char) : [null, null]
+    const [sideSubIcon1, sideSubIcon2] = sideSubChar ? getMiniCardIcons(sideSubChar) : [null, null]
 
     return (
       <div
-        className="relative w-full h-full overflow-hidden cursor-pointer select-none"
-        style={{
-          borderRadius: "6px",
-          border: "2px solid rgba(120,120,130,0.4)",
-          background: char ? "transparent" : "rgba(18,20,28,0.85)",
-        }}
+        className="relative w-full overflow-hidden cursor-pointer select-none"
+        style={{ aspectRatio: '264 / 628' }}
         onClick={() => openPicker(i, "side")}
       >
         {!char && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-white/40 text-xl font-light">+</span>
+          <div className="absolute inset-0 flex items-center justify-center"
+            style={{ background: "rgba(18,20,28,0.85)", borderRadius: "4px" }}>
+            <div className="relative" style={{ width: "55%", aspectRatio: "1" }}>
+              <div style={{
+                width: "100%", height: "100%",
+                clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+                background: "linear-gradient(135deg, rgba(80,90,120,0.3), rgba(40,50,70,0.6))",
+              }}>
+                <div style={{
+                  position: "absolute", inset: "2px",
+                  clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+                  background: "rgba(12,16,24,0.9)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                }}>
+                  <span className="text-white/40 font-light text-xl select-none">+</span>
+                </div>
+              </div>
+            </div>
           </div>
         )}
         {char && (
           <>
-            <img src={sideBase} alt="" className="absolute inset-0 w-full h-full object-fill pointer-events-none"
+            <img src={sideBase} alt=""
+              className="absolute object-fill pointer-events-none"
+              style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
               onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-            <img src={toPublicAssetPath(char.images.icon)} alt={char.name}
-              className="absolute inset-0 w-full h-full object-cover object-top" />
-            <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
+            <img src={`/partyL/${char.master_pc_id}.png`} alt={char.name}
+              className="absolute object-fill pointer-events-none"
+              style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
+              onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(char.images.full) }} />
+            <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill z-10"
               onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-            {(icon1 || icon2) && (
-              <div className="absolute top-1 right-1 z-20 flex flex-col gap-0.5">
-                {icon1 && <img src={icon1} alt="" className="w-4 h-4 object-contain drop-shadow" />}
-                {icon2 && <img src={icon2} alt="" className="w-4 h-4 object-contain drop-shadow" />}
-              </div>
+            {icon1 && (
+              <img src={icon1} alt=""
+                className="absolute z-20 object-contain drop-shadow"
+                style={tier >= 6
+                  ? { right: '3%', top: '1.5%', width: '22%' }
+                  : { right: '0.8%', top: '0.1%', width: '22%' }}
+              />
             )}
-            <button onClick={(e) => { e.stopPropagation(); setSideSlots((s) => { const c = [...s]; c[i] = null; return c }) }}
-              className="absolute top-0 left-0 bg-black/80 w-4 h-4 flex items-center justify-center text-[8px] z-30 text-white rounded-br-sm">x</button>
+            {icon2 && (
+              <img src={icon2} alt=""
+                className="absolute z-20 object-contain drop-shadow"
+                style={tier >= 6
+                  ? { right: '3.5%', top: '10.3%', width: '21.5%' }
+                  : { right: '1%', top: '9.4%', width: '22%' }}
+              />
+            )}
+            {/* Sub-slot at bottom center */}
+            <button
+              onClick={(e) => { e.stopPropagation(); openPicker(i, "sidesub") }}
+              className="absolute overflow-hidden z-20"
+              style={{
+                width: "46%", aspectRatio: "1",
+                bottom: "4%", left: "27%",
+                borderRadius: "4px",
+                border: "1.5px solid rgba(140,140,150,0.5)",
+                background: "rgba(10,12,18,0.8)",
+              }}
+            >
+              {sideSubChar ? (
+                <>
+                  <div className="absolute inset-0" style={{ backgroundImage: `url('${toPublicAssetPath(sideSubChar.images.icon)}')`, backgroundSize: 'cover', backgroundPosition: 'top center' }} />
+                  {(() => {
+                    const t = getCharacterVisualTier(sideSubChar)
+                    const r: "bless" | "member" = isProtectorChar(sideSubChar) ? "bless" : "member"
+                    const { frame: subFrame } = getMiniFramePaths(t, r)
+                    return <img src={subFrame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                  })()}
+                  {(sideSubIcon1 || sideSubIcon2) && (
+                    <div className="absolute top-0.5 right-0.5 z-20 flex flex-col gap-0.5">
+                      {sideSubIcon1 && <img src={sideSubIcon1} alt="" className="w-4 h-4 object-contain drop-shadow" />}
+                      {sideSubIcon2 && <img src={sideSubIcon2} alt="" className="w-4 h-4 object-contain drop-shadow" />}
+                    </div>
+                  )}
+                </>
+              ) : (
+                <span className="absolute inset-0 flex items-center justify-center text-white/35 font-light text-lg">+</span>
+              )}
+            </button>
           </>
         )}
       </div>
@@ -475,194 +836,779 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
   // ==========================================
   function PickerModal() {
     if (pickerOpenFor === null) return null
-    const isProt = pickerMode === "main" && pickerOpenFor === 0
+    const isProt = (pickerMode === "main" || pickerMode === "sub") && pickerOpenFor === 0
     const isHP = pickerMode === "heartprint"
+    const isEquip = pickerMode === "equipment"
+    const isCharm = pickerMode === "charm"
+    const isSideMode = pickerMode === "side" || pickerMode === "sidesub"
+    const isEditingMain = pickerMode === "main" || pickerMode === "side"
+
+    // Slot preview chars for the left panel
+    const slotMainId = isSideMode ? sideSlots[pickerOpenFor] : mainSlots[pickerOpenFor]
+    const slotSubId = isSideMode ? sideSubSlots[pickerOpenFor] : subSlots[pickerOpenFor]
+    const slotMainChar = slotMainId ? characters.find(c => c.master_pc_id === slotMainId) ?? null : null
+    const slotSubChar = slotSubId ? characters.find(c => c.master_pc_id === slotSubId) ?? null : null
+
+    // Active filter count badge
+    const activeFilterCount = [
+      filterEl !== null, filterAttack !== null, filterTactics !== null,
+      filterCharType !== null, filterCharacterType !== null, filterRarity !== null,
+      filterForces.length > 0, filterSkillGroups.length > 0,
+      filterWeapon !== null, filterProtType !== "all", filterSkillType !== "all",
+      filterEnhancement !== "all", filterProtSkill !== "all", filterUltimateType !== "all",
+      filterSkillCost[1] < 100,
+    ].filter(Boolean).length
+
+    function clearAllFilters() {
+      setFilterEl(null); setFilterAttack(null); setFilterTactics(null)
+      setFilterCharType(null); setFilterCharacterType(null); setFilterRarity(null)
+      setFilterForces([]); setFilterSkillGroups([])
+      setFilterWeapon(null); setFilterProtType("all"); setFilterSkillType("all"); setFilterUltimateType("all")
+      setFilterEnhancement("all"); setFilterProtSkill("all"); setFilterSkillCost([0, 100])
+    }
 
     return (
       <div className="fixed inset-0 z-50 flex" role="dialog" aria-modal="true">
         <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={closePicker} />
-        <div className="relative z-50 m-auto flex max-h-[95vh] w-[95vw] max-w-6xl rounded-xl overflow-hidden shadow-2xl"
+        <div className="relative z-50 m-auto flex flex-col max-h-[95vh] w-[95vw] max-w-6xl rounded-xl overflow-hidden shadow-2xl"
           style={{ background: "linear-gradient(180deg, #0c1929 0%, #111d2e 100%)" }}>
 
-          {/* Right panel - filters and grid */}
-          <div className="flex-1 flex flex-col min-w-0 max-h-[95vh]">
-            {/* Top bar */}
-            <div className="flex items-center gap-2 px-3 py-2 border-b border-white/5 shrink-0">
-              <div className="flex items-center gap-2 flex-1 min-w-0">
-                <Input
-                  autoFocus value={query} onChange={(e) => setQuery(e.target.value)}
-                  placeholder={isHP ? "Search by ID..." : "Search by name..."}
-                  className="h-8 flex-1 border-gray-700 bg-gray-800/80 text-white text-sm" />
+          {isHP ? (
+            /* ── HEARTPRINT PICKER: top bar + left preview + right grid ── */
+            <>
+              <div className="flex items-center gap-2 px-3 py-2 border-b border-white/5 shrink-0">
+                <Input autoFocus value={query} onChange={e => setQuery(e.target.value)}
+                  placeholder="Search by name..." className="h-8 flex-1 border-gray-700 bg-gray-800/80 text-white text-sm" />
+                <div className="text-xs text-amber-300/60 px-1 shrink-0">HeartPrint — {heartprintItems.length}</div>
+                <button onClick={closePicker} className="w-8 h-8 flex items-center justify-center rounded bg-white/5 hover:bg-white/10 text-gray-400 shrink-0">✕</button>
               </div>
-              {!isHP && (
-                <button
-                  onClick={() => setShowFilters(!showFilters)}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs transition-all ${showFilters ? "bg-teal-800/50 text-teal-300 ring-1 ring-teal-400/30" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}
+              <div className="flex flex-1 min-h-0 overflow-hidden">
+                {/* Left: preview panel */}
+                <div className="w-[42%] shrink-0 flex flex-col p-3 border-r border-white/10 overflow-y-auto bg-[#09131f]">
+                  {(() => {
+                    const hp = previewHp ?? (heartPrintId ? heartprints.find(h => h.heartprint_id === heartPrintId) ?? null : null)
+                    if (!hp) return (
+                      <div className="flex-1 flex items-center justify-center text-[11px] text-gray-600 text-center p-4">
+                        Hover over a still to preview
+                      </div>
+                    )
+                    const isRare = hp.still_type === "rare"
+                    const frameImg = isRare ? "/StillFrame/StillFrame3_m.png" : "/StillFrame/StillFrame1_m.png"
+                    return (
+                      <div className="flex flex-col gap-3">
+                        <div className="relative w-full overflow-hidden rounded bg-black/40" style={{ aspectRatio: "245 / 146" }}>
+                          <img src={`/SkillStill/${hp.heartprint_id}/skill_still_${hp.heartprint_id}_L.png`} alt=""
+                            className="absolute inset-0 w-full h-full object-cover"
+                            onError={e => { (e.target as HTMLImageElement).style.opacity = "0.2" }} />
+                          <img src={frameImg} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
+                            onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                          {isRare && (
+                            <div className="absolute bottom-2 left-2 flex gap-1">
+                              {[1,2,3].map(i => <img key={i} src="/UI/Texture/CommonEtcAtlas/iconRarity3.png" alt=""
+                                className="w-4 h-4 object-contain drop-shadow" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />)}
+                            </div>
+                          )}
+                        </div>
+                        <div className="text-[13px] font-semibold text-white leading-tight">{hp.title}{isRare ? " Lv.3" : ""}</div>
+                        {hp.skill_description && (
+                          <div className="text-[11px] text-gray-300 leading-relaxed">{renderColoredDesc(hp.skill_description)}</div>
+                        )}
+                      </div>
+                    )
+                  })()}
+                </div>
+                {/* Right: thumbnail grid — overscroll-contain prevents page scroll */}
+                <div className="flex-1 overflow-y-auto overscroll-contain p-2">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                    <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-gray-600 p-2 hover:bg-white/5 transition-colors"
+                      style={{ aspectRatio: "245 / 146" }} onClick={() => { setHeartPrintId(null); closePicker() }}>
+                      <span className="text-gray-500 text-xl">×</span>
+                      <span className="text-[10px] text-gray-500">Remove</span>
+                    </div>
+                    {heartprintItems.map(hp => {
+                      const isRare = hp.still_type === "rare"
+                      const frameImg = isRare ? "/StillFrame/StillFrame3_s.png" : "/StillFrame/StillFrame1_s.png"
+                      return (
+                        <div key={hp.heartprint_id}
+                          className="flex flex-col items-center gap-1 rounded hover:bg-white/5 cursor-pointer transition-colors"
+                          onClick={() => { setHeartPrintId(hp.heartprint_id); closePicker() }}
+                          onMouseEnter={() => setPreviewHp(hp)}
+                          onMouseLeave={() => setPreviewHp(null)}>
+                          <div className="relative w-full overflow-hidden rounded bg-black/40" style={{ aspectRatio: "245 / 146" }}>
+                            <img src={`/SkillStill/${hp.heartprint_id}/skill_still_${hp.heartprint_id}_S.png`} alt=""
+                              className="absolute inset-0 w-full h-full object-cover"
+                              onError={e => { (e.target as HTMLImageElement).style.opacity = "0.2" }} />
+                            <img src={frameImg} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
+                              onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                            {isRare && (
+                              <div className="absolute bottom-1 left-1 flex gap-0.5">
+                                {[1,2,3].map(i => <img key={i} src="/UI/Texture/CommonEtcAtlas/iconRarity3.png" alt=""
+                                  className="w-3 h-3 object-contain drop-shadow" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />)}
+                              </div>
+                            )}
+                            {heartPrintId === hp.heartprint_id && <div className="absolute inset-0 ring-2 ring-amber-400 ring-inset rounded" />}
+                          </div>
+                          <span className="text-[9px] text-gray-400 leading-none text-center line-clamp-1 w-full px-1">{hp.title}</span>
+                        </div>
+                      )
+                    })}
+                  </div>
+                  {heartprintItems.length === 0 && <p className="py-6 text-center text-xs text-gray-500">No HeartPrint skills match</p>}
+                </div>
+              </div>
+            </>
+          ) : isEquip ? (
+            /* ── EQUIPMENT PICKER ── */
+            <>
+              <div className="flex items-center gap-2 px-3 py-2 border-b border-white/5 shrink-0">
+                <Input autoFocus value={query} onChange={e => setQuery(e.target.value)}
+                  placeholder="Search equipment..." className="h-8 flex-1 border-gray-700 bg-gray-800/80 text-white text-sm" />
+                <div className="text-xs text-amber-300/60 px-1 shrink-0">Equipment — {filteredEquipment.length}</div>
+                <button onClick={closePicker} className="w-8 h-8 flex items-center justify-center rounded bg-white/5 hover:bg-white/10 text-gray-400 shrink-0">✕</button>
+              </div>
+              <div className="flex items-center gap-2 px-3 py-1.5 border-b border-white/5 shrink-0">
+                {(["weapon", "armor", "accessory"] as const).map(t => (
+                  <button key={t} onClick={() => setEquipPickerType(t)}
+                    className={`px-3 py-1 rounded text-xs font-semibold transition-all ${equipPickerType === t ? "bg-sky-600 text-white" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
+                    {t === "weapon" ? "⚔️ Weapon" : t === "armor" ? "🛡️ Armor" : "💎 Accessory"}
+                  </button>
+                ))}
+                <div className="flex-1" />
+                {[6, 5, 3, 2, 1].map(r => (
+                  <button key={r} onClick={() => setFilterRarity(filterRarity === r ? null : r)}
+                    className={`w-7 h-7 rounded text-[10px] font-bold transition-all ${filterRarity === r ? "bg-amber-500 text-black" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
+                    {r}★
+                  </button>
+                ))}
+              </div>
+              <div className="flex-1 overflow-y-auto overscroll-contain p-2">
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2">
+                  <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-gray-600 p-2 hover:bg-white/5 transition-colors"
+                    style={{ aspectRatio: "1" }} onClick={() => {
+                      if (pickerOpenFor !== null) {
+                        setEquipSlots(prev => ({
+                          ...prev,
+                          [pickerOpenFor]: { ...prev[pickerOpenFor], [equipPickerType]: null },
+                        }))
+                      }
+                      closePicker()
+                    }}>
+                    <span className="text-gray-500 text-xl">×</span>
+                    <span className="text-[10px] text-gray-500">Remove</span>
+                  </div>
+                  {filteredEquipment.map(eq => {
+                    const isSelected = pickerOpenFor !== null && equipSlots[pickerOpenFor]?.[eq.type] === eq.id
+                    return (
+                      <div key={eq.id}
+                        className="flex flex-col items-center gap-1 rounded hover:bg-white/5 cursor-pointer transition-colors p-1"
+                        onClick={() => { if (pickerOpenFor !== null) selectChar(pickerOpenFor, eq.id) }}>
+                        <div className="relative w-full overflow-hidden rounded bg-black/40" style={{ aspectRatio: "1" }}>
+                          {eq.image && (
+                            <img src={eq.image} alt={eq.name}
+                              className="absolute inset-0 w-full h-full object-contain p-1"
+                              onError={e => { (e.target as HTMLImageElement).style.opacity = "0.2" }} />
+                          )}
+                          <div className="absolute bottom-0.5 left-0.5 flex gap-0.5">
+                            {Array.from({ length: Math.min(eq.rarity, 7) }, (_, i) => (
+                              <span key={i} className="text-amber-400 text-[8px]">★</span>
+                            ))}
+                          </div>
+                          <div className="absolute top-0.5 right-0.5 text-[8px] font-bold text-sky-300 bg-black/60 px-1 rounded">
+                            {eq.type === "weapon" ? `ATK ${eq.max_atk}` : eq.type === "armor" ? `DEF ${eq.max_def}` : `HP ${eq.max_hp}`}
+                          </div>
+                          {isSelected && <div className="absolute inset-0 ring-2 ring-amber-400 ring-inset rounded" />}
+                        </div>
+                        <span className="text-[9px] text-gray-400 leading-none text-center line-clamp-1 w-full px-0.5">{eq.name || `#${eq.id}`}</span>
+                      </div>
+                    )
+                  })}
+                </div>
+                {filteredEquipment.length === 0 && <p className="py-6 text-center text-xs text-gray-500">No equipment matches</p>}
+              </div>
+            </>
+          ) : isCharm ? (
+            /* ── CHARM PICKER ── */
+            <>
+              <div className="flex items-center gap-2 px-3 py-2 border-b border-white/5 shrink-0">
+                <Input autoFocus value={query} onChange={e => setQuery(e.target.value)}
+                  placeholder="Search charms..." className="h-8 flex-1 border-gray-700 bg-gray-800/80 text-white text-sm" />
+                <div className="text-xs text-amber-300/60 px-1 shrink-0">Charms — {filteredCharms.length}</div>
+                <button onClick={closePicker} className="w-8 h-8 flex items-center justify-center rounded bg-white/5 hover:bg-white/10 text-gray-400 shrink-0">✕</button>
+              </div>
+              <div className="flex items-center gap-2 px-3 py-1.5 border-b border-white/5 shrink-0">
+                <span className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Rarity</span>
+                {[3, 2, 1].map(r => (
+                  <button key={r} onClick={() => setFilterRarity(filterRarity === r ? null : r)}
+                    className={`w-7 h-7 rounded text-[10px] font-bold transition-all ${filterRarity === r ? "bg-amber-500 text-black" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
+                    {r}★
+                  </button>
+                ))}
+              </div>
+              <div className="flex-1 overflow-y-auto overscroll-contain p-2">
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
+                  <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-gray-600 p-2 hover:bg-white/5 transition-colors"
+                    style={{ aspectRatio: "1" }} onClick={() => { setCharmId(null); closePicker() }}>
+                    <span className="text-gray-500 text-xl">×</span>
+                    <span className="text-[10px] text-gray-500">Remove</span>
+                  </div>
+                  {filteredCharms.map(ch => {
+                    const isSelected = charmId === ch.id
+                    return (
+                      <div key={ch.id}
+                        className="flex flex-col items-center gap-1 rounded hover:bg-white/5 cursor-pointer transition-colors p-1"
+                        onClick={() => { selectChar(0, ch.id) }}>
+                        <div className="relative w-full overflow-hidden rounded bg-black/40" style={{ aspectRatio: "1" }}>
+                          <div className="absolute inset-0 flex items-center justify-center p-2">
+                            <span className="text-3xl">🔮</span>
+                          </div>
+                          <div className="absolute bottom-0.5 left-0.5 flex gap-0.5">
+                            {Array.from({ length: ch.rarity }, (_, i) => (
+                              <span key={i} className="text-amber-400 text-[8px]">★</span>
+                            ))}
+                          </div>
+                          <div className="absolute top-0.5 right-0.5 text-[8px] font-bold text-purple-300 bg-black/60 px-1 rounded">
+                            HP {ch.max_hp ?? 0} · ATK {ch.max_attack ?? 0} · DEF {ch.max_defense ?? 0}
+                          </div>
+                          {isSelected && <div className="absolute inset-0 ring-2 ring-purple-400 ring-inset rounded" />}
+                        </div>
+                        <span className="text-[9px] text-gray-400 leading-none text-center line-clamp-1 w-full px-0.5">{ch.name || `Charm #${ch.id}`}</span>
+                      </div>
+                    )
+                  })}
+                </div>
+                {filteredCharms.length === 0 && <p className="py-6 text-center text-xs text-gray-500">No charms match</p>}
+              </div>
+            </>
+          ) : (
+            /* ── CHARACTER PICKER: left slot panel + right search/grid ── */
+            <div className="flex flex-1 min-h-0 overflow-hidden">
+
+              {/* LEFT PANEL: game-style card preview with sub-slot overlaid */}
+              <div className="w-[18%] min-w-[140px] max-w-[200px] shrink-0 flex flex-col items-center border-r border-white/10 bg-[#090f1b] min-h-0 p-3 gap-2 overflow-y-auto">
+                {/* Main card with sub-slot overlaid on it */}
+                <div
+                  className="relative w-full cursor-pointer"
+                  style={{ aspectRatio: '264 / 628' }}
+                  onClick={() => setPickerMode(isSideMode ? "side" : "main")}
                 >
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" /></svg>
-                  Filter
-                </button>
-              )}
-              <button onClick={closePicker} className="w-8 h-8 flex items-center justify-center rounded bg-white/5 hover:bg-white/10 text-gray-400 text-sm">x</button>
-            </div>
-
-            {/* Role indicator */}
-            {!isHP && (
-              <div className={`flex items-center gap-2 px-3 py-1.5 text-xs font-medium border-b border-white/5 ${isProt ? "text-purple-300 bg-purple-900/10" : "text-sky-300 bg-sky-900/10"}`}>
-                <img src={isProt ? "/UI/Texture/CharaInfoAtlas/icSkillBlessLeader.png" : "/UI/Texture/CharaInfoAtlas/icSkillAttacker.png"}
-                  alt="" className="h-4 w-4 object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-                {isProt ? "Protector" : "Attacker"} - {results.length} units
-              </div>
-            )}
-            {isHP && (
-              <div className="flex items-center gap-2 px-3 py-1.5 text-xs text-amber-300/70 border-b border-white/5 bg-amber-900/5">
-                HeartPrint Skills - {heartprintItems.length} available
-              </div>
-            )}
-
-            {/* Filters */}
-            {showFilters && !isHP && (
-              <div className="px-3 py-3 border-b border-white/5 bg-[#0a1420] space-y-3 overflow-y-auto max-h-[40vh]">
-                {/* Attribute */}
-                <div>
-                  <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">Attribute</div>
-                  <div className="flex flex-wrap gap-1 mb-1">
-                    <FilterBtn active={filterEl === null} onClick={() => setFilterEl(null)}>ALL</FilterBtn>
-                    {NORMAL_ELEMENTS.map((e) => <FilterIcon key={e.key} active={filterEl === e.key} icon={e.icon} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />)}
+                  <div
+                    className={`absolute inset-0 rounded-lg overflow-hidden transition-all
+                      ${isEditingMain ? "ring-2 ring-teal-400/70 shadow-lg shadow-teal-900/30" : "ring-1 ring-white/10 hover:ring-white/20"}`}
+                    style={{ background: "rgba(18,20,28,0.85)" }}
+                  >
+                    {slotMainChar ? (() => {
+                      const t = getCharacterVisualTier(slotMainChar)
+                      const r: "bless" | "member" = isProtectorChar(slotMainChar) ? "bless" : "member"
+                      const { base, frame } = getMainFramePaths(t, r)
+                      return (
+                        <>
+                          <img src={base} alt="" className="absolute object-fill pointer-events-none"
+                            style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
+                            onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                          <img src={`/partyL/${slotMainChar.master_pc_id}.png`} alt={slotMainChar.name}
+                            className="absolute object-fill pointer-events-none"
+                            style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
+                            onError={e => { (e.target as HTMLImageElement).src = toPublicAssetPath(slotMainChar.images.full) }} />
+                          <img src={frame} alt="" className="absolute inset-0 w-full h-full object-fill pointer-events-none"
+                            onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                        </>
+                      )
+                    })() : (
+                      <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
+                        <div className="w-10 h-10 rotate-45 border-2 border-gray-500/50 flex items-center justify-center rounded-sm">
+                          <span className="text-white/40 text-lg -rotate-45">+</span>
+                        </div>
+                      </div>
+                    )}
+                    {isEditingMain && (
+                      <div className="absolute top-1 left-1 bg-teal-500/80 text-white text-[7px] font-bold px-1 rounded z-20">EDIT</div>
+                    )}
                   </div>
-                  <div className="flex flex-wrap gap-1">
-                    {ENHANCED_ELEMENTS.map((e) => <FilterIcon key={e.key} active={filterEl === e.key} icon={e.icon} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />)}
-                  </div>
+                  {/* Sub-slot overlaid on main card — bottom center */}
+                  <button
+                    onClick={(e) => { e.stopPropagation(); setPickerMode(isSideMode ? "sidesub" : "sub") }}
+                    className={`absolute z-20 overflow-hidden rounded cursor-pointer transition-all
+                      ${!isEditingMain ? "ring-2 ring-teal-400/70 shadow-lg shadow-teal-900/30" : "ring-1.5 ring-white/20 hover:ring-white/30"}`}
+                    style={{
+                      width: "42%", aspectRatio: "1",
+                      bottom: "5%", left: "29%",
+                      background: "rgba(10,12,18,0.85)",
+                    }}
+                  >
+                    {slotSubChar ? (
+                      <>
+                        <div className="absolute inset-0" style={{ backgroundImage: `url('${toPublicAssetPath(slotSubChar.images.icon)}')`, backgroundSize: 'cover', backgroundPosition: 'top center' }} />
+                        {(() => {
+                          const t = getCharacterVisualTier(slotSubChar)
+                          const r: "bless" | "member" = isProtectorChar(slotSubChar) ? "bless" : "member"
+                          const { frame } = getMiniFramePaths(t, r)
+                          return <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
+                            onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                        })()}
+                      </>
+                    ) : (
+                      <span className="absolute inset-0 flex items-center justify-center text-white/35 font-light text-lg">+</span>
+                    )}
+                    {!isEditingMain && (
+                      <div className="absolute top-0.5 left-0.5 bg-teal-500/80 text-white text-[6px] font-bold px-0.5 rounded">EDIT</div>
+                    )}
+                  </button>
+                </div>
+                <div className="text-[9px] text-gray-500 text-center shrink-0">{results.length} units</div>
+              </div>
+
+              {/* RIGHT: search bar + filter button + character grid */}
+              <div className="flex-1 flex flex-col min-w-0 relative">
+                {/* Top bar */}
+                <div className="flex items-center gap-2 px-3 py-2 border-b border-white/5 shrink-0">
+                  <Input autoFocus value={query} onChange={e => setQuery(e.target.value)}
+                    placeholder="Search by name..." className="h-8 flex-1 border-gray-700 bg-gray-800/80 text-white text-sm" />
+                  <button onClick={() => setShowFilterModal(true)}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs transition-all shrink-0 ${activeFilterCount > 0 ? "bg-teal-800/50 text-teal-300 ring-1 ring-teal-400/30" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" /></svg>
+                    Filter{activeFilterCount > 0 ? ` (${activeFilterCount})` : ""}
+                  </button>
+                  <button onClick={closePicker} className="w-8 h-8 flex items-center justify-center rounded bg-white/5 hover:bg-white/10 text-gray-400 shrink-0">✕</button>
                 </div>
 
-                {/* Attack Type */}
-                {!isProt && (
-                  <div>
-                    <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">Attack Type</div>
-                    <div className="flex gap-1">
-                      <FilterBtn active={filterAttack === null} onClick={() => setFilterAttack(null)}>ALL</FilterBtn>
-                      {ATTACK_TYPES.map((a) => <FilterIcon key={a.key} active={filterAttack === a.key} icon={a.icon} label={a.label} onClick={() => setFilterAttack(filterAttack === a.key ? null : a.key)} />)}
+                {/* Character grid */}
+                <div className="flex-1 overflow-y-auto overscroll-contain p-2">
+                  <div className="grid gap-1.5 grid-cols-5 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8">
+                    <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-gray-600 p-1.5 hover:bg-white/5 transition-colors aspect-square"
+                      onClick={() => {
+                        if (pickerMode === "sub") setSubSlots(s => { const c = [...s]; c[pickerOpenFor] = null; return c })
+                        else if (pickerMode === "side") setSideSlots(s => { const c = [...s]; c[pickerOpenFor] = null; return c })
+                        else if (pickerMode === "sidesub") setSideSubSlots(s => { const c = [...s]; c[pickerOpenFor] = null; return c })
+                        else setMainSlots(s => { const c = [...s]; c[pickerOpenFor] = null; return c })
+                        closePicker()
+                      }}>
+                      <div className="w-10 h-10 flex items-center justify-center border border-dashed border-gray-500 rounded">
+                        <span className="text-gray-500 text-sm">x</span>
+                      </div>
+                      <span className="text-[9px] text-gray-500">Remove</span>
+                    </div>
+                    {results.map(c => {
+                      const t = getCharacterVisualTier(c)
+                      const r: "bless" | "member" = c.character_role?.toLowerCase() === "supporter" ? "bless" : "member"
+                      const { base, frame } = getMiniFramePaths(t, r)
+                      const [ci1, ci2] = getMiniCardIcons(c)
+                      return (
+                        <div key={c.master_pc_id} className="flex flex-col items-center gap-0.5 p-1 rounded hover:bg-white/5 cursor-pointer transition-colors"
+                          onClick={() => selectChar(pickerOpenFor, c.master_pc_id)}>
+                          <div className="relative w-full" style={{ aspectRatio: "1" }}>
+                            <img src={base} alt="" className="absolute inset-0 w-full h-full object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                            <img src={toPublicAssetPath(c.images.icon)} alt={c.name} className="absolute inset-0 w-full h-full object-cover object-top"
+                              onError={e => { (e.target as HTMLImageElement).src = toPublicAssetPath(c.images.full) }} />
+                            <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-contain"
+                              onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                            <img src={STAR_ASSETS[t] ?? STAR_ASSETS[5]} alt="" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[14%] object-contain" />
+                            {(ci1 || ci2) && (
+                              <div className="absolute top-0.5 right-0.5 z-10 flex flex-col gap-0.5">
+                                {ci1 && <img src={ci1} alt="" className="w-5 h-5 object-contain drop-shadow" />}
+                                {ci2 && <img src={ci2} alt="" className="w-5 h-5 object-contain drop-shadow" />}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                  {results.length === 0 && <p className="py-6 text-center text-xs text-gray-500">No characters match</p>}
+                </div>
+
+                {/* ── FLOATING FILTER PANEL ── */}
+                {showFilterModal && (
+                  <div className="fixed z-[60] flex flex-col overflow-hidden rounded-lg shadow-2xl border border-white/10"
+                    style={{
+                      background: "rgba(12,25,41,0.97)",
+                      backdropFilter: "blur(12px)",
+                      top: `calc(50% + ${filterDragOffset.y}px)`,
+                      right: `calc(10% - ${filterDragOffset.x}px)`,
+                      transform: "translateY(-50%)",
+                      width: `${filterSize.w}px`,
+                      maxWidth: "95vw",
+                      height: filterSize.h > 0 ? `${filterSize.h}px` : "min(80vh, 700px)",
+                      maxHeight: "95vh",
+                    }}>
+                    {/* Drag handle header */}
+                    <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 shrink-0 cursor-move select-none"
+                      onPointerDown={(e) => {
+                        filterDragStart.current = { x: filterDragOffset.x, y: filterDragOffset.y, px: e.clientX, py: e.clientY }
+                        ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
+                      }}
+                      onPointerMove={(e) => {
+                        if (!filterDragStart.current) return
+                        const dx = e.clientX - filterDragStart.current.px
+                        const dy = e.clientY - filterDragStart.current.py
+                        setFilterDragOffset({ x: filterDragStart.current.x + dx, y: filterDragStart.current.y + dy })
+                      }}
+                      onPointerUp={() => { filterDragStart.current = null }}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="text-gray-500 text-xs">⠿</span>
+                        <span className="text-[13px] font-bold text-white tracking-wide">Filters</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        {activeFilterCount > 0 && (
+                          <button onClick={clearAllFilters} className="text-[11px] text-red-400/80 hover:text-red-300 underline">
+                            Clear all ({activeFilterCount})
+                          </button>
+                        )}
+                        <button onClick={() => setShowFilterModal(false)} className="text-gray-400 hover:text-white text-lg leading-none">✕</button>
+                      </div>
+                    </div>
+
+                    {/* Scrollable filter sections */}
+                    <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-3 space-y-5 min-h-0">
+
+                      {/* ── Attribute / Support Type ── */}
+                      <div>
+                        <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-2 uppercase tracking-wider">
+                          {isProt ? "Divine Protection - Attribute / Attack Type" : "Attribute"}
+                        </div>
+                        {isProt ? (
+                          <div className="flex gap-3">
+                            {/* Left: element grid */}
+                            <div className="flex-1 space-y-1">
+                              <div className="flex flex-wrap gap-1">
+                                <FilterBtn active={filterEl === null} onClick={() => setFilterEl(null)}>ALL</FilterBtn>
+                                {NORMAL_ELEMENTS.map(e => <FilterIcon key={e.key} active={filterEl === e.key} icon={e.icon} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />)}
+                              </div>
+                              <div className="flex flex-wrap gap-1">
+                                {ENHANCED_ELEMENTS.map(e => <FilterIcon key={e.key} active={filterEl === e.key} icon={e.icon} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />)}
+                              </div>
+                              <div className="border-t border-white/[0.08] my-1" />
+                              <div className="flex flex-wrap gap-1">
+                                {SPECIAL_EFFECT_ELEMENTS.map(e => <FilterIcon key={e.key} active={filterEl === e.key} icon={e.icon} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />)}
+                              </div>
+                              <div className="flex flex-wrap gap-1">
+                                {SPECIAL_EFFECT_ENHANCED_ELEMENTS.map(e => <FilterIcon key={e.key} active={filterEl === e.key} icon={e.icon} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />)}
+                              </div>
+                            </div>
+                            {/* Right: support type icons */}
+                            <div className="flex flex-col gap-1 shrink-0">
+                              {PROT_SUPPORT_TYPES.map(t => (
+                                <button key={t.key} onClick={() => setFilterProtType(t.key as any)}
+                                  className={`w-9 h-9 flex items-center justify-center rounded transition-all ${filterProtType === t.key ? "ring-2 ring-white bg-white/20" : "bg-white/5 hover:bg-white/10"}`}
+                                  title={t.label}>
+                                  <img src={t.icon} alt={t.label} className={`w-6 h-6 object-contain ${filterProtType === t.key ? "opacity-100" : "opacity-50"}`}
+                                    onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="flex flex-wrap gap-1 mb-1">
+                              <FilterBtn active={filterEl === null} onClick={() => setFilterEl(null)}>ALL</FilterBtn>
+                              {NORMAL_ELEMENTS.map(e => <FilterIcon key={e.key} active={filterEl === e.key} icon={e.icon} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />)}
+                            </div>
+                            <div className="flex flex-wrap gap-1">
+                              {ENHANCED_ELEMENTS.map(e => <FilterIcon key={e.key} active={filterEl === e.key} icon={e.icon} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />)}
+                            </div>
+                          </>
+                        )}
+                      </div>
+
+                      {/* ── Attack Type (attacker only) ── */}
+                      {!isProt && (
+                        <div>
+                          <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-2 uppercase tracking-wider">Attack Type</div>
+                          <div className="flex gap-1">
+                            <FilterBtn active={filterAttack === null} onClick={() => setFilterAttack(null)}>ALL</FilterBtn>
+                            {ATTACK_TYPES.map(a => <FilterIcon key={a.key} active={filterAttack === a.key} icon={a.icon} label={a.label} onClick={() => setFilterAttack(filterAttack === a.key ? null : a.key)} />)}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* ── Weapon (attacker only) ── */}
+                      {!isProt && (
+                        <div>
+                          <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-2 uppercase tracking-wider">Weapon</div>
+                          <div className="flex flex-wrap gap-1">
+                            <FilterBtn active={filterWeapon === null} onClick={() => setFilterWeapon(null)}>ALL</FilterBtn>
+                            {Object.entries(WEAPON_ICONS).map(([key, icon]) => (
+                              <button key={key} onClick={() => setFilterWeapon(filterWeapon === key ? null : key)} title={key}
+                                className={`w-7 h-7 flex items-center justify-center rounded transition-all relative overflow-hidden ${filterWeapon === key ? "bg-white/20 ring-1 ring-white/50" : "bg-white/5 hover:bg-white/10"}`}>
+                                <img src="/elements/weaponDiamondBg.png" alt="" className="absolute inset-0 w-full h-full object-contain opacity-60 pointer-events-none"
+                                  onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                                <img src={icon} alt={key} className={`relative w-4 h-4 object-contain ${filterWeapon === key ? "opacity-100" : "opacity-50"}`}
+                                  onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* ── Protection Skill (protector only, above Tactics) ── */}
+                      {isProt && (
+                        <div>
+                          <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-2 uppercase tracking-wider">Protection Skill</div>
+                          <div className="flex flex-wrap gap-1">
+                            {([["all","ALL"],["secret","Secret Skills"],["protection","Protection"],["skill","Skill"],["other","Other"]] as const).map(([k, l]) => (
+                              <button key={k} onClick={() => setFilterProtSkill(k as any)}
+                                className={`px-2 py-1 rounded text-[11px] transition-all ${filterProtSkill === k ? "bg-white/20 text-white ring-1 ring-white/40" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
+                                {l}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* ── Tactics Type ── */}
+                      <div>
+                        <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-2 uppercase tracking-wider">Tactics Type</div>
+                        <div className="flex flex-wrap gap-1">
+                          <FilterBtn active={filterTactics === null} onClick={() => setFilterTactics(null)}>ALL</FilterBtn>
+                          {TACTICS_TYPES.map(t => (
+                            <button key={t.key} onClick={() => setFilterTactics(filterTactics === t.key ? null : t.key)}
+                              className={`flex items-center gap-1 px-2 py-1 rounded text-[11px] transition-all ${filterTactics === t.key ? "bg-white/20 text-white ring-1 ring-white/40" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
+                              <img src={t.icon} alt="" className={`w-4 h-4 object-contain ${filterTactics === t.key ? "opacity-100" : "opacity-50"}`} />{t.label}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* ── Secret Skills (attacker only, below Tactics) ── */}
+                      {!isProt && (
+                        <div>
+                          <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-2 uppercase tracking-wider">Secret Skills</div>
+                          <div className="flex flex-wrap gap-1">
+                            {(["all","attack","support"] as const).map(k => (
+                              <button key={k} onClick={() => setFilterUltimateType(k)}
+                                className={`px-2 py-1 rounded text-[11px] transition-all ${filterUltimateType === k ? "bg-white/20 text-white ring-1 ring-white/40" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
+                                {k === "all" ? "ALL" : k === "attack" ? "Attack" : "Support"}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* ── Rarity ── */}
+                      <div>
+                        <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-2 uppercase tracking-wider">Rarity</div>
+                        <div className="flex flex-wrap gap-1">
+                          <FilterBtn active={filterRarity === null} onClick={() => setFilterRarity(null)}>ALL</FilterBtn>
+                          {[3,4,5,6,7].map(tier => (
+                            <button key={tier} onClick={() => setFilterRarity(filterRarity === tier ? null : tier)}
+                              className={`h-7 px-1.5 flex items-center justify-center rounded transition-all ${filterRarity === tier ? "ring-2 ring-white/60 bg-white/20" : "bg-white/5 hover:bg-white/10"}`}>
+                              <img src={STAR_ASSETS[tier]} alt={`L${tier}`} className={`h-4 object-contain ${filterRarity === tier ? "opacity-100" : "opacity-55"}`} />
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* ── Character Type ── */}
+                      <div>
+                        <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-2 uppercase tracking-wider">Character Type</div>
+                        <div className="flex flex-wrap gap-1">
+                          <FilterBtn active={filterCharacterType === null} onClick={() => setFilterCharacterType(null)}>ALL</FilterBtn>
+                          {masterCharacterTacticsOptions.map(type => (
+                            <button key={type} onClick={() => setFilterCharacterType(filterCharacterType === type ? null : type)}
+                              className={`px-2 py-1 rounded text-[11px] transition-all ${filterCharacterType === type ? "bg-white/20 text-white ring-1 ring-white/40" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
+                              {CHAR_TYPE_DISPLAY[type] ?? type}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* ── Character Enhancement ── */}
+                      <div>
+                        <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-2 uppercase tracking-wider">Character Enhancement</div>
+                        <div className="flex flex-wrap gap-1">
+                          {([["all","ALL"],["ex","EX Enhancement"],["unbound","Attribute Unbound"]] as const).map(([k, l]) => (
+                            <button key={k} onClick={() => setFilterEnhancement(k as any)}
+                              className={`px-2 py-1 rounded text-[11px] transition-all ${filterEnhancement === k ? "bg-white/20 text-white ring-1 ring-white/40" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
+                              {l}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* ── Forces (grouped inline) ── */}
+                      <div>
+                        <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-2 uppercase tracking-wider flex items-center justify-between">
+                          <span>Forces</span>
+                          {filterForces.length > 0 && (
+                            <button onClick={() => setFilterForces([])} className="text-[10px] text-teal-400 hover:text-teal-300 normal-case underline">
+                              Clear ({filterForces.length})
+                            </button>
+                          )}
+                        </div>
+                        {FORCE_GROUP_ORDER.filter(g => forceGroups.has(g)).map(group => (
+                          <div key={group} className="mb-3">
+                            <div className="text-[10px] font-semibold text-white/50 mb-1">{FORCE_GROUP_LABELS[group] ?? group}</div>
+                            <div className="grid grid-cols-2 gap-1">
+                              {forceGroups.get(group)!.map(f => {
+                                const active = filterForces.includes(f.name)
+                                return (
+                                  <button key={f.name}
+                                    onClick={() => setFilterForces(prev => active ? prev.filter(x => x !== f.name) : [...prev, f.name])}
+                                    className={`flex items-center gap-1.5 px-2 py-1.5 rounded text-[10px] border transition-all text-left ${active ? "bg-teal-600/20 border-teal-400/60 text-white" : "bg-white/[0.03] border-white/[0.06] text-gray-400 hover:bg-white/[0.08]"}`}>
+                                    {f.icon && <img src={f.icon} alt="" className="w-4 h-4 object-contain shrink-0 rounded-full"
+                                      onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />}
+                                    <span className="leading-tight truncate">{f.name}</span>
+                                  </button>
+                                )
+                              })}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* ── Skill Effect ── */}
+                      <div>
+                        <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-3 uppercase tracking-wider flex items-center justify-between">
+                          <span>Skill Effect {(filterSkillGroups.length > 0 || filterSkillCost[1] < 100) ? `(${filterSkillGroups.length + (filterSkillCost[1] < 100 ? 1 : 0)} active)` : ""}</span>
+                        </div>
+
+                        {/* Skill Cost Slider — single slider, disabled unless All or Battle Skills */}
+                        <div className="mb-4">
+                          <div className={`text-[10px] mb-2 ${filterSkillType === "all" || filterSkillType === "battle" ? "text-gray-500" : "text-gray-600"}`}>
+                            Skill Cost (SP): ≤ {filterSkillCost[1] >= 100 ? "Any" : filterSkillCost[1]}
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="text-[10px] text-gray-500 w-4 text-right">0</span>
+                            <input type="range" min={0} max={100} value={filterSkillCost[1]}
+                              disabled={filterSkillType !== "all" && filterSkillType !== "battle"}
+                              onChange={e => { const v = Number(e.target.value); setFilterSkillCost([0, v]) }}
+                              className={`flex-1 h-1 accent-teal-500 bg-white/10 rounded appearance-none ${filterSkillType === "all" || filterSkillType === "battle" ? "cursor-pointer" : "cursor-not-allowed opacity-40"}`} />
+                            <span className="text-[10px] text-gray-500 w-6">{filterSkillCost[1] >= 100 ? "Any" : filterSkillCost[1]}</span>
+                          </div>
+                          {filterSkillCost[1] < 100 && (
+                            <button onClick={() => setFilterSkillCost([0, 100])} className="text-[10px] text-teal-400 hover:text-teal-300 underline mt-1">Reset</button>
+                          )}
+                        </div>
+
+                        {/* Skill Type */}
+                        <div className="mb-4">
+                          <div className="text-[10px] text-gray-500 mb-1.5">Skill Type</div>
+                          <div className="flex flex-wrap gap-1.5">
+                            {(isProt
+                              ? [["all","ALL"],["secret","Secret Skills"],["battle","Battle Skills"],["trait","Trait"],["valor","Valor Trait"]] as const
+                              : [["all","ALL"],["secret","Secret Skills"],["battle","Battle Skills"],["trait","Trait"],["valor","Valor Trait"]] as const
+                            ).map(([k, l]) => (
+                              <button key={k} onClick={() => { setFilterSkillType(k as any); if (k !== "all" && k !== "battle") setFilterSkillCost([0, 100]) }}
+                                className={`px-2.5 py-1.5 rounded text-[11px] border flex items-center gap-1.5 transition-all ${filterSkillType === k ? "bg-teal-600/30 border-teal-400/70 text-white" : "bg-white/5 border-white/15 text-gray-400 hover:bg-white/10"}`}>
+                                {filterSkillType === k && <span className="text-teal-400 text-[10px]">✓</span>}
+                                <span>{l}</span>
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Effect Type — game-style category grid + collapsible subcategories */}
+                        <div>
+                          <div className="text-[10px] text-gray-500 mb-1.5">Effect Type</div>
+
+                          {/* Top-level: "Select All" button row */}
+                          <div className="mb-3">
+                            <div className="text-[10px] text-white/40 mb-1.5 border-b border-white/10 pb-1">
+                              {filterSkillGroups.length === 0 ? "Select All" : "Select Specified"}
+                            </div>
+                            <div className="grid grid-cols-3 gap-1.5">
+                              <button onClick={() => setFilterSkillGroups([])}
+                                className={`px-2 py-2 rounded text-[11px] border font-semibold transition-all flex items-center justify-center gap-1.5 ${filterSkillGroups.length === 0 ? "bg-teal-600/30 border-teal-400/70 text-white" : "bg-white/5 border-white/15 text-gray-400 hover:bg-white/10"}`}>
+                                {filterSkillGroups.length === 0 && <span className="text-teal-400 text-[10px]">✓</span>}ALL
+                              </button>
+                              {Array.from(skillFilterCats.entries()).map(([cat, subMap]) => {
+                                const catLabel = SKILL_CAT_LABELS[cat] ?? cat
+                                const catGroupIds = Array.from(subMap.values())
+                                const allSelected = catGroupIds.length > 0 && catGroupIds.every(id => filterSkillGroups.includes(id))
+                                const someSelected = catGroupIds.some(id => filterSkillGroups.includes(id))
+                                return (
+                                  <button key={cat}
+                                    onClick={() => {
+                                      if (allSelected) {
+                                        setFilterSkillGroups(prev => prev.filter(id => !catGroupIds.includes(id)))
+                                      } else {
+                                        setFilterSkillGroups(prev => [...new Set([...prev, ...catGroupIds])])
+                                      }
+                                    }}
+                                    className={`px-2 py-2 rounded text-[10px] border font-medium transition-all text-center ${allSelected ? "bg-teal-600/30 border-teal-400/70 text-white" : someSelected ? "bg-teal-600/15 border-teal-400/40 text-teal-300" : "bg-white/5 border-white/15 text-gray-400 hover:bg-white/10"}`}>
+                                    {catLabel}
+                                  </button>
+                                )
+                              })}
+                            </div>
+                          </div>
+
+                          {/* Subcategories — collapsible per category */}
+                          {filterSkillGroups.length > 0 && Array.from(skillFilterCats.entries()).map(([cat, subMap]) => {
+                            const catLabel = SKILL_CAT_LABELS[cat] ?? cat
+                            const catGroupIds = Array.from(subMap.values())
+                            const someSelected = catGroupIds.some(id => filterSkillGroups.includes(id))
+                            const isExpanded = expandedSkillCats.includes(cat)
+                            return (
+                              <div key={cat} className="mb-1">
+                                <button
+                                  onClick={() => setExpandedSkillCats(prev => prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat])}
+                                  className={`w-full flex items-center justify-between px-3 py-2 rounded text-[11px] font-semibold transition-all ${someSelected ? "bg-white/[0.06] text-white" : "bg-white/[0.03] text-gray-400 hover:bg-white/[0.06]"}`}
+                                >
+                                  <span>{catLabel}</span>
+                                  <div className="flex items-center gap-2">
+                                    {someSelected && <span className="text-teal-400 text-[10px]">Selected</span>}
+                                    <span className="text-[10px] text-gray-400">{isExpanded ? "▲" : "▼"}</span>
+                                  </div>
+                                </button>
+                                {isExpanded && (
+                                  <div className="grid grid-cols-2 gap-1 mt-1.5 pl-2">
+                                    {Array.from(subMap.entries()).sort(([a], [b]) => a.localeCompare(b)).map(([label, groupId]) => {
+                                      const active = filterSkillGroups.includes(groupId)
+                                      return (
+                                        <button key={groupId}
+                                          onClick={() => setFilterSkillGroups(prev => active ? prev.filter(id => id !== groupId) : [...prev, groupId])}
+                                          className={`px-2 py-1.5 rounded text-[10px] border text-left transition-all flex items-center gap-1 ${active ? "bg-teal-500/20 border-teal-400/50 text-teal-200" : "bg-white/5 border-white/10 text-gray-400 hover:bg-white/10"}`}>
+                                          {active && <span className="text-teal-400 text-[9px] shrink-0">✓</span>}
+                                          <span className="truncate" dangerouslySetInnerHTML={{ __html: label }} />
+                                        </button>
+                                      )
+                                    })}
+                                  </div>
+                                )}
+                              </div>
+                            )
+                          })}
+                          {filterSkillGroups.length > 0 && (
+                            <div className="text-[10px] text-teal-400 mt-2">{filterSkillGroups.length} selected</div>
+                          )}
+                        </div>
+                      </div>
+
+                    </div>
+
+                    {/* Filter footer */}
+                    <div className="shrink-0 px-4 py-2.5 border-t border-white/10 flex justify-between items-center">
+                      <button onClick={clearAllFilters} className="text-[11px] text-gray-400 hover:text-white underline">Clear all</button>
+                      <button onClick={() => setShowFilterModal(false)}
+                        className="px-5 py-1.5 bg-teal-600 hover:bg-teal-500 text-white text-[11px] rounded transition-all font-semibold">
+                        Apply{activeFilterCount > 0 ? ` (${activeFilterCount})` : ""}
+                      </button>
+                    </div>
+                    {/* Resize handle */}
+                    <div className="absolute bottom-0 right-0 w-4 h-4 cursor-se-resize"
+                      onPointerDown={(e) => {
+                        const el = (e.target as HTMLElement).closest("[class*='fixed']") as HTMLElement
+                        filterResizeStart.current = { w: el?.offsetWidth ?? filterSize.w, h: el?.offsetHeight ?? 500, px: e.clientX, py: e.clientY }
+                        ;(e.target as HTMLElement).setPointerCapture(e.pointerId)
+                      }}
+                      onPointerMove={(e) => {
+                        if (!filterResizeStart.current) return
+                        const dw = e.clientX - filterResizeStart.current.px
+                        const dh = e.clientY - filterResizeStart.current.py
+                        setFilterSize({ w: Math.max(300, filterResizeStart.current.w + dw), h: Math.max(250, filterResizeStart.current.h + dh) })
+                      }}
+                      onPointerUp={() => { filterResizeStart.current = null }}
+                    >
+                      <svg viewBox="0 0 10 10" className="w-full h-full text-white/20"><path d="M9 1L1 9M9 5L5 9" stroke="currentColor" fill="none" strokeWidth="1" /></svg>
                     </div>
                   </div>
                 )}
 
-                {/* Tactics Type */}
-                <div>
-                  <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">Tactics Type</div>
-                  <div className="flex flex-wrap gap-1">
-                    <FilterBtn active={filterTactics === null} onClick={() => setFilterTactics(null)}>ALL</FilterBtn>
-                    {TACTICS_TYPES.map((t) => (
-                      <button key={t.key} onClick={() => setFilterTactics(filterTactics === t.key ? null : t.key)}
-                        className={`flex items-center gap-1 px-2 py-1 rounded text-[11px] transition-all ${filterTactics === t.key ? "bg-white/20 text-white ring-1 ring-white/40" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
-                        <img src={t.icon} alt="" className={`w-4 h-4 object-contain ${filterTactics === t.key ? "opacity-100" : "opacity-50"}`} />{t.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Character Type + Rarity */}
-                <div className="flex gap-6 flex-wrap">
-                  <div>
-                    <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">Character Type</div>
-                    <div className="flex gap-1">
-                      {([["ALL", null], ["Normal", "normal"], ["EX", "ex"]] as [string, "normal" | "ex" | null][]).map(([lbl, val]) => (
-                        <FilterBtn key={String(val)} active={filterCharType === val} onClick={() => setFilterCharType(val)}>{lbl}</FilterBtn>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">Rarity</div>
-                    <div className="flex gap-1">
-                      <FilterBtn active={filterRarity === null} onClick={() => setFilterRarity(null)}>ALL</FilterBtn>
-                      {[3, 4, 5].map((r) => <FilterBtn key={r} active={filterRarity === r} onClick={() => setFilterRarity(filterRarity === r ? null : r)}>{r}*</FilterBtn>)}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Forces */}
-                <div>
-                  <div className="text-[10px] uppercase tracking-wider text-gray-500 mb-1.5">Forces</div>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button variant="outline" className="h-7 gap-1.5 border-gray-600 bg-gray-800 px-2.5 text-white hover:bg-gray-700 text-[11px]">
-                        {filterForces.length > 0 ? `${filterForces.length} selected` : "Select Forces"}
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-64 border-gray-600 bg-gray-800 p-0 text-white z-[60]" align="start">
-                      <ScrollArea className="h-52 px-2 py-2">
-                        <div className="space-y-0.5">
-                          {forceOptions.map((opt) => {
-                            const checked = filterForces.includes(opt.value)
-                            return (
-                              <label key={opt.value} className={`flex cursor-pointer items-center gap-2 rounded px-2 py-1 text-xs ${checked ? "bg-white/10" : "hover:bg-white/5"}`}>
-                                <Checkbox checked={checked} onCheckedChange={() => setFilterForces((prev) => checked ? prev.filter((v) => v !== opt.value) : [...prev, opt.value])} />
-                                {opt.icon && <img src={opt.icon} alt="" className="h-4 w-auto max-w-[50px] shrink-0 object-contain" />}
-                                <span>{opt.label}</span>
-                              </label>
-                            )
-                          })}
-                        </div>
-                      </ScrollArea>
-                    </PopoverContent>
-                  </Popover>
-                  {filterForces.length > 0 && <button onClick={() => setFilterForces([])} className="ml-2 text-[10px] text-gray-500 hover:text-gray-300 underline">clear</button>}
-                </div>
               </div>
-            )}
-
-            {/* Character grid */}
-            <div className="flex-1 overflow-auto p-2">
-              <div className={`grid gap-1.5 ${isHP ? "grid-cols-3 sm:grid-cols-4 md:grid-cols-5" : "grid-cols-5 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8"}`}>
-                {/* Remove card */}
-                <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-gray-600 p-1.5 hover:bg-white/5 transition-colors aspect-square"
-                  onClick={() => {
-                    if (isHP) setHeartPrintId(null)
-                    else if (pickerMode === "sub") setSubSlots((s) => { const c = [...s]; c[pickerOpenFor] = null; return c })
-                    else if (pickerMode === "side") setSideSlots((s) => { const c = [...s]; c[pickerOpenFor] = null; return c })
-                    else setMainSlots((s) => { const c = [...s]; c[pickerOpenFor] = null; return c })
-                    closePicker()
-                  }}>
-                  <div className="w-10 h-10 flex items-center justify-center border border-dashed border-gray-500 rounded">
-                    <span className="text-gray-500 text-sm">x</span>
-                  </div>
-                  <span className="text-[9px] text-gray-500">Remove</span>
-                </div>
-
-                {isHP ? heartprintItems.map((id) => (
-                  <div key={id} className="flex flex-col items-center gap-0.5 p-1 rounded hover:bg-white/5 cursor-pointer transition-colors"
-                    onClick={() => { setHeartPrintId(id); closePicker() }}>
-                    <div className="relative w-full overflow-hidden rounded bg-black/40" style={{ aspectRatio: "245 / 146" }}>
-                      <img src={`/SkillStill/${id}/skill_still_${id}_S.png`} alt="" className="absolute inset-0 w-full h-full object-cover"
-                        onError={(e) => { (e.target as HTMLImageElement).style.opacity = "0.2" }} />
-                      <img src="/StillFrame/StillFrame1_s.png" alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
-                        onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-                      {heartPrintId === id && <div className="absolute inset-0 ring-2 ring-amber-400 ring-inset rounded" />}
-                    </div>
-                  </div>
-                )) : results.map((c) => {
-                  const t = getCharacterVisualTier(c)
-                  const r: "bless" | "member" = c.character_role?.toLowerCase() === "supporter" ? "bless" : "member"
-                  const { base, frame } = getMiniFramePaths(t, r)
-                  return (
-                    <div key={c.master_pc_id} className="flex flex-col items-center gap-0.5 p-1 rounded hover:bg-white/5 cursor-pointer transition-colors"
-                      onClick={() => selectChar(pickerOpenFor, c.master_pc_id)}>
-                      <div className="relative w-full" style={{ aspectRatio: "1" }}>
-                        <img src={base} alt="" className="absolute inset-0 w-full h-full object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-                        <img src={toPublicAssetPath(c.images.icon)} alt={c.name} className="absolute inset-0 w-full h-full object-cover object-top"
-                          onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(c.images.full) }} />
-                        <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-contain"
-                          onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-                        <img src={STAR_ASSETS[t] ?? STAR_ASSETS[5]} alt="" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[14%] object-contain" />
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-
-              {!isHP && results.length === 0 && <p className="py-6 text-center text-xs text-gray-500">No characters match</p>}
-              {isHP && heartprintItems.length === 0 && <p className="py-6 text-center text-xs text-gray-500">No HeartPrint skills match</p>}
             </div>
-          </div>
+          )}
+
         </div>
       </div>
     )
@@ -696,20 +1642,110 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
   // Main cards use frame aspect (264/628). Side slots + heartprint combined
   // height equals main card height. We calculate this using CSS.
   //
-  const MAIN_CARD_WIDTH = "clamp(120px, 14vw, 175px)"
-  const SIDE_SLOT_WIDTH = "clamp(70px, 8vw, 100px)"
-  // Main card aspect ratio
+  const MAIN_CARD_WIDTH = "clamp(135px, 16vw, 200px)"
+  const SIDE_SLOT_WIDTH = "clamp(95px, 11.5vw, 138px)"
+  const FRAME_W = 264, FRAME_H = 628
+  // All cards use the same 264:628 aspect ratio for consistency
   const MAIN_ASPECT = 264 / 628
-  // Side slots take ~75% of main height, heartprint takes ~25%
-  const SIDE_HEIGHT_RATIO = 0.72
-  const HEARTPRINT_HEIGHT_RATIO = 0.25
+
+  const teamRef = useRef<HTMLDivElement>(null)
+  const cardsRef = useRef<HTMLDivElement>(null)
+
+  async function savePng() {
+    const el = cardsRef.current
+    if (!el) return
+    // Dynamically load html2canvas from CDN
+    const w = window as any
+    if (!w.html2canvas) {
+      await new Promise<void>((resolve, reject) => {
+        const s = document.createElement("script")
+        s.src = "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+        s.onload = () => resolve()
+        s.onerror = reject
+        document.head.appendChild(s)
+      })
+    }
+    const canvas = await w.html2canvas(el, { useCORS: true, allowTaint: true, backgroundColor: null })
+    const link = document.createElement("a")
+    link.download = "team.png"
+    link.href = canvas.toDataURL("image/png")
+    link.click()
+  }
+
+  const protChar = mainSlots[0] ? characters.find((c) => c.master_pc_id === mainSlots[0]) ?? null : null
+  const protSubChar = subSlots[0] ? characters.find((c) => c.master_pc_id === subSlots[0]) ?? null : null
+  const leaderSkill = protChar?.skills.find((s) => s.slot === "leader_skill") ?? null
+  const assistSkill = protSubChar?.skills.find((s) => s.slot === "assist_leader_skill") ?? null
+  const selectedHp = heartPrintId ? heartprints.find(h => h.heartprint_id === heartPrintId) ?? null : null
 
   return (
     <div className="w-full flex flex-col items-center px-4">
-      <h1 className="mb-6 text-2xl font-bold text-white sm:text-3xl self-start">Team Builder</h1>
 
-      {/* Main container - all items top-aligned */}
-      <div className="flex flex-nowrap gap-3 items-start justify-center w-full overflow-x-auto pb-4">
+      {/* ── HEADER ── */}
+      <div className="w-full flex items-end justify-center mb-3 select-none gap-3">
+        {/* Left slime — smaller than logo, aligned to bottom */}
+        <img src="/brand/battleSlime16.png" alt=""
+          className="h-16 object-contain pointer-events-none drop-shadow-lg"
+          onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+        {/* Center logo — larger */}
+        <img src="/brand/Logo.png" alt="Tensura Memories"
+          className="h-28 object-contain drop-shadow-xl"
+          onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+        {/* Right splash slime — smaller than logo, aligned to bottom */}
+        <img src="/brand/battleSplashB_02.png" alt=""
+          className="h-16 object-contain pointer-events-none drop-shadow-lg"
+          onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+      </div>
+
+      {/* ── TEAM CAPTURE AREA ── */}
+      <div ref={teamRef} className="w-full flex flex-col items-center">
+
+      {/* ── PROTECTOR SKILL INFO BAR ── */}
+      {(leaderSkill || assistSkill) && (
+        <div className="mb-3 rounded-lg overflow-hidden text-xs"
+          style={{
+            width: "calc(4 * clamp(135px, 16vw, 200px) + 2 * clamp(95px, 11.5vw, 138px) + 32px)",
+            maxWidth: "100%",
+            background: "rgba(8,12,22,0.92)", border: "1px solid rgba(255,255,255,0.08)"
+          }}>
+          {/* Leader skill row */}
+          {leaderSkill && (
+            <div className="flex items-start gap-2 px-3 py-2"
+              style={{ borderBottom: assistSkill ? "1px solid rgba(255,255,255,0.06)" : undefined }}>
+              {leaderSkill.icon_path && (
+                <img src={`/${leaderSkill.icon_path}.png`} alt=""
+                  className="w-8 h-8 flex-shrink-0 object-contain rounded"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+              )}
+              <div className="flex flex-col gap-0.5 min-w-0">
+                <span className="text-white/60 font-semibold text-[10px] uppercase tracking-wide">{leaderSkill.name}</span>
+                <span className="text-white/85 leading-snug break-words whitespace-pre-line w-full">
+                  {renderColoredDesc(leaderSkill.description_max_level ?? "")}
+                </span>
+              </div>
+            </div>
+          )}
+          {/* Assist leader skill row */}
+          {assistSkill && (
+            <div className="flex items-start gap-2 px-3 py-2">
+              {assistSkill.icon_path && (
+                <img src={`/${assistSkill.icon_path}.png`} alt=""
+                  className="w-8 h-8 flex-shrink-0 object-contain rounded"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+              )}
+              <div className="flex flex-col gap-0.5 min-w-0">
+                <span className="text-white/50 font-semibold text-[10px] uppercase tracking-wide">{assistSkill.name}</span>
+                <span className="text-white/70 leading-snug break-words whitespace-pre-line w-full">
+                  {renderColoredDesc(assistSkill.description_max_level ?? "")}
+                </span>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+        {/* Main container - all items top-aligned */}
+        <div ref={cardsRef} className="flex flex-nowrap gap-1.5 items-start overflow-x-auto pb-4">
 
         {/* 4 main character slots */}
         {[0, 1, 2, 3].map((i) => (
@@ -727,21 +1763,21 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
             height: `calc(${MAIN_CARD_WIDTH} / ${MAIN_ASPECT})`,
           }}
         >
-          {/* 2 side slots in a row - take ~72% of total height */}
-          <div className="flex gap-2" style={{ height: `${SIDE_HEIGHT_RATIO * 100}%` }}>
+          {/* 2 side slots in a row — each uses 264:628 aspect ratio, determines row height */}
+          <div className="flex gap-2 flex-shrink-0">
             {[0, 1].map((i) => (
-              <div key={i} className="flex-1 h-full">
+              <div key={i} className="flex-1 min-w-0">
                 <SideSlotCard i={i} />
               </div>
             ))}
           </div>
 
-          {/* Heartprint skill slot — takes ~25% of total height */}
+          {/* Heartprint skill slot — fills remaining height below side slots */}
           <button
             onClick={() => openPicker(0, "heartprint")}
-            className="relative w-full overflow-hidden transition-opacity hover:opacity-90"
+            className="relative w-full flex-1 overflow-hidden transition-opacity hover:opacity-90"
             style={{
-              height: `${HEARTPRINT_HEIGHT_RATIO * 100}%`,
+              minHeight: "60px",
               borderRadius: "6px",
               border: "2px solid rgba(120,120,130,0.4)",
               background: "rgba(18,20,28,0.85)",
@@ -752,11 +1788,15 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
                 <img src={`/SkillStill/${heartPrintId}/skill_still_${heartPrintId}_S.png`} alt=""
                   className="absolute inset-0 w-full h-full object-cover"
                   onError={(e) => { (e.target as HTMLImageElement).style.opacity = "0.3" }} />
-                <img src="/StillFrame/StillFrame1_s.png" alt=""
+                <img src={selectedHp?.still_type === "rare" ? "/StillFrame/StillFrame3_s.png" : "/StillFrame/StillFrame1_s.png"} alt=""
                   className="pointer-events-none absolute inset-0 w-full h-full object-fill"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-                <button onClick={(e) => { e.stopPropagation(); setHeartPrintId(null) }}
-                  className="absolute top-1 right-1 bg-black/70 rounded-full w-4 h-4 flex items-center justify-center text-[9px] z-10 text-white">x</button>
+                <div className="absolute bottom-1 left-1 flex gap-0.5">
+                  {selectedHp?.still_type === "rare"
+                    ? [1,2,3].map(i => <img key={i} src="/UI/Texture/CommonEtcAtlas/iconRarity3.png" alt="" className="w-3.5 h-3.5 object-contain drop-shadow" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />)
+                    : [1].map(i => <img key={i} src="/UI/Texture/CommonEtcAtlas/iconRarity1.png" alt="" className="w-3.5 h-3.5 object-contain drop-shadow" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />)
+                  }
+                </div>
               </>
             ) : (
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5">
@@ -767,9 +1807,128 @@ export default function TeamBuilderClient({ characters }: { characters: WikiChar
           </button>
         </div>
 
+        </div>
       </div>
 
-      <PickerModal />
+      {/* ── EQUIPMENT & CHARMS SECTION ── */}
+      {(mainSlots[0] || mainSlots[1] || mainSlots[2] || mainSlots[3]) && (
+        <div className="w-full mt-4 rounded-lg overflow-hidden"
+          style={{ maxWidth: "calc(4 * clamp(135px, 16vw, 200px) + 2 * clamp(95px, 11.5vw, 138px) + 32px)", background: "rgba(8,12,22,0.92)", border: "1px solid rgba(255,255,255,0.08)" }}>
+          <div className="px-3 py-2 border-b border-white/10">
+            <span className="text-[11px] font-semibold text-white/80 uppercase tracking-wider">Equipment & Charms</span>
+          </div>
+          <div className="divide-y divide-white/[0.06]">
+            {/* Protector (slot 0) — charm */}
+            {mainSlots[0] && (() => {
+              const ch = characters.find(c => c.master_pc_id === mainSlots[0]) ?? null
+              const selectedCharm = charmId ? charms.find(c => c.id === charmId) ?? null : null
+              return (
+                <div className="flex items-center gap-3 px-3 py-2">
+                  {ch && (
+                    <div className="flex items-center gap-2 w-36 shrink-0">
+                      <img src={toPublicAssetPath(ch.images.icon)} alt={ch.name} className="w-8 h-8 rounded object-cover" />
+                      <div className="min-w-0">
+                        <div className="text-[10px] text-purple-300 font-semibold truncate">{ch.name}</div>
+                        <div className="text-[9px] text-gray-500">Protector</div>
+                      </div>
+                    </div>
+                  )}
+                  <div className="flex-1 flex items-center gap-2">
+                    <button onClick={() => openPicker(0, "charm")}
+                      className="w-12 h-12 rounded border border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.08] transition-all overflow-hidden relative"
+                      title="Charm">
+                      {selectedCharm ? (
+                        <>
+                          {(() => {
+                            const sk = selectedCharm.possible_skills?.[0]
+                            const img = sk?.image_path ? `/Equip/Accessory/${sk.image_path.match(/\/(\d+)\//)?.[1] ?? ""}/Accessory_${sk.image_path.match(/\/(\d+)\//)?.[1] ?? ""}_AccessoryM.png` : null
+                            return img ? <img src={img} alt="" className="w-10 h-10 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} /> : null
+                          })()}
+                        </>
+                      ) : (
+                        <span className="text-white/30 text-lg">+</span>
+                      )}
+                    </button>
+                    {selectedCharm && (
+                      <div className="min-w-0 flex-1">
+                        <div className="text-[10px] text-white/80 font-medium truncate">{selectedCharm.name}</div>
+                        {selectedCharm.possible_skills?.slice(0, 2).map((sk, idx) => (
+                          <div key={idx} className="text-[9px] text-gray-400 truncate">
+                            {sk.name}{sk.description ? `: ${sk.description.replace(/<[^>]+>/g, "").slice(0, 60)}` : ""}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )
+            })()}
+
+            {/* Attackers (slots 1-3) — equipment */}
+            {[1, 2, 3].map(slotIdx => {
+              if (!mainSlots[slotIdx]) return null
+              const ch = characters.find(c => c.master_pc_id === mainSlots[slotIdx]) ?? null
+              const slots = equipSlots[slotIdx] ?? { weapon: null, armor: null, accessory: null }
+              return (
+                <div key={slotIdx} className="flex items-center gap-3 px-3 py-2">
+                  {ch && (
+                    <div className="flex items-center gap-2 w-36 shrink-0">
+                      <img src={toPublicAssetPath(ch.images.icon)} alt={ch.name} className="w-8 h-8 rounded object-cover" />
+                      <div className="min-w-0">
+                        <div className="text-[10px] text-cyan-300 font-semibold truncate">{ch.name}</div>
+                        <div className="text-[9px] text-gray-500">Attacker {slotIdx}</div>
+                      </div>
+                    </div>
+                  )}
+                  <div className="flex-1 flex items-center gap-2">
+                    {(["weapon", "armor", "accessory"] as const).map(eqType => {
+                      const eqId = slots[eqType]
+                      const eq = eqId ? equipment.find(e => e.id === eqId) ?? null : null
+                      return (
+                        <div key={eqType} className="flex flex-col items-center gap-0.5">
+                          <button onClick={() => { setEquipPickerType(eqType); openPicker(slotIdx, "equipment") }}
+                            className="w-12 h-12 rounded border border-white/10 bg-white/[0.03] flex items-center justify-center hover:bg-white/[0.08] transition-all overflow-hidden"
+                            title={eqType}>
+                            {eq?.image ? (
+                              <img src={eq.image} alt={eq.name} className="w-10 h-10 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                            ) : (
+                              <span className="text-white/30 text-lg">+</span>
+                            )}
+                          </button>
+                          <span className="text-[8px] text-gray-500 capitalize">{eqType}</span>
+                          {eq && <span className="text-[8px] text-white/60 truncate max-w-[50px]">{eq.name}</span>}
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* ── ACTION BUTTONS ── */}
+      <div className="mt-4 flex items-center gap-3">
+        <button
+          onClick={savePng}
+          className="flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
+          style={{ background: "linear-gradient(135deg, #1e3a5f 0%, #0f2236 100%)", border: "1px solid rgba(100,160,255,0.3)" }}
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+          Save PNG
+        </button>
+        <button
+          onClick={() => openPicker(1, "equipment")}
+          className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
+          style={{ background: "linear-gradient(135deg, #3a1e5f 0%, #22103f 100%)", border: "1px solid rgba(180,100,255,0.3)" }}
+        >
+          <img src="/UI/Texture/QuestAtlas/icBtnEquip.png" alt="" className="w-5 h-5 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+          Equipment
+        </button>
+      </div>
+
+      {PickerModal()}
     </div>
   )
 }

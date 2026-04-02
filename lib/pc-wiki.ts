@@ -1,10 +1,19 @@
 import wikiData from "../pc_wiki.generated.json"
+import heartprintData from "../pc_wiki.heartprints.json"
+import equipmentData from "../pc_wiki.equipment.json"
+import charmData from "../pc_wiki.charms.json"
 
 export type WikiForce = {
   label: string
   name: string
   group: string
   icon_path: string
+}
+
+export type SkillFilterGroup = {
+  master_skill_filter_group_id: number
+  category_name: string
+  sub_category_label: string
 }
 
 export type WikiSkill = {
@@ -14,9 +23,11 @@ export type WikiSkill = {
   name: string
   description_max_level: string
   icon_path: string
+  cost: number | null
   is_skill_change?: boolean
   replaces_label?: string
   replaces_slot?: string
+  skill_filter_groups?: SkillFilterGroup[]
 }
 
 export type WikiTrait = {
@@ -44,6 +55,7 @@ export type WikiCharacter = {
   attack_type: string
   weapon_type: string
   tactics_type: string
+  master_character_tactics_type?: string
   character_role: string
   ultimate_type: string
   stats: {
@@ -129,6 +141,124 @@ export function getAllWikiCharacters(): WikiCharacter[] {
   return payload.characters
     .filter((character) => !WEBSITE_EXCLUDED_CHARACTER_IDS.has(character.master_pc_id))
     .map(toWebsiteCharacter)
+}
+
+// ---------------------------------------------------------------------------
+// Heartprint types and loader
+// ---------------------------------------------------------------------------
+
+export type HeartprintRareLevel = {
+  level: number
+  active_skill_label: string
+  rare_levelup_item_group_id: number
+}
+
+export type HeartprintPassiveLevel = {
+  level: number
+  hp: number
+  attack: number
+  defense: number
+  show_hp: boolean
+  show_attack: boolean
+  show_defense: boolean
+}
+
+export type HeartprintExEffect = {
+  level: number
+  critical: number
+  penetration: number
+  cooperation: number
+  defcritical: number
+  element: number
+}
+
+export type HeartprintPassiveSkill = {
+  passive_skill_id: number
+  target_type: number
+  levels: HeartprintPassiveLevel[]
+  bless_levels: HeartprintPassiveLevel[]
+  ex_effects: HeartprintExEffect[]
+}
+
+export type Heartprint = {
+  heartprint_id: number
+  still_type: "normal" | "rare"
+  master_still_id?: number
+  master_still_rare_id?: number
+  tab_type: number
+  order: number
+  picture_path: string
+  release_label: string
+  title: string
+  skill_description: string | null
+  display_character_id: number
+  // normal only
+  passive_skill?: HeartprintPassiveSkill
+  // rare only
+  effect_type?: number
+  rare_level_group_id?: number
+  rare_levels?: HeartprintRareLevel[]
+}
+
+type HeartprintPayload = { heartprints: Heartprint[] }
+const hpPayload = heartprintData as HeartprintPayload
+
+export type Equipment = {
+  id: number
+  type: "weapon" | "armor" | "accessory"
+  name: string
+  rarity: number
+  weapon_type: string | null
+  image: string | null
+  max_level: number | null
+  max_atk: number
+  max_def: number
+  max_hp: number
+  level_group_id: number | null
+  release_label: string
+}
+
+export type CharmSkill = {
+  skill_id: number
+  name: string | null
+  description: string | null
+  image_path: string | null
+  label: string | null
+  effect_type: number | null
+  is_quest_skill: boolean
+  skill_level_group_id: number | null
+  gain: Record<string, number | null> | null
+  scale: Record<string, number | null> | null
+}
+
+export type Charm = {
+  id: number
+  rarity: number
+  name: string | null
+  evolution_group_id: number | null
+  init_hp: number | null
+  init_attack: number | null
+  init_defense: number | null
+  max_hp: number | null
+  max_attack: number | null
+  max_defense: number | null
+  possible_skills: CharmSkill[]
+  release_label: string
+}
+
+const eqPayload = equipmentData as Equipment[]
+const chPayload = charmData as Charm[]
+
+export function getAllEquipment(): Equipment[] {
+  return eqPayload
+}
+
+export function getAllCharms(): Charm[] {
+  return chPayload
+}
+
+export function getAllHeartprints(): Heartprint[] {
+  return hpPayload.heartprints
 }
 
 export function getWikiCharacterById(characterId: number): WikiCharacter | undefined {
