@@ -1,0 +1,3314 @@
+[
+  {
+    "id": 90000000000001,
+    "rarity": 1,
+    "name": "Tactical Charm",
+    "evolution_group_id": 1001,
+    "init_hp": 13,
+    "init_attack": 3,
+    "init_defense": 6,
+    "max_hp": 23,
+    "max_attack": 6,
+    "max_defense": 11,
+    "possible_skills": [
+      {
+        "skill_id": 90030000000001,
+        "name": "ATK Charm",
+        "image_path": "Image/Equip/Accessory/450011/Accessory_450011_Accessory{0}",
+        "label": "OwnerDefault_bless_11",
+        "effect_type": 1,
+        "skill_level_group_id": 9001,
+        "gain": {
+          "level1": 4000,
+          "level2": 3500,
+          "level3": 2500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 5.0,
+          "level3": 1.0,
+          "level4": 0.5,
+          "level5": 0.5
+        },
+        "description": "Increases all allies' ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000002,
+        "name": "DEF Charm",
+        "image_path": "Image/Equip/Accessory/450012/Accessory_450012_Accessory{0}",
+        "label": "OwnerDefault_bless_12",
+        "effect_type": 1,
+        "skill_level_group_id": 9002,
+        "gain": {
+          "level1": 4000,
+          "level2": 3500,
+          "level3": 2500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 5.0,
+          "level3": 1.0,
+          "level4": 0.5,
+          "level5": 0.5
+        },
+        "description": "Increases all allies' DEF by ?% (Turns: 2)"
+      },
+      {
+        "skill_id": 90030000000003,
+        "name": "All Souls Skill Charm",
+        "image_path": "Image/Equip/Accessory/450013/Accessory_450013_Accessory{0}",
+        "label": "OwnerDefault_bless_13",
+        "effect_type": 1,
+        "skill_level_group_id": 9003,
+        "gain": {
+          "level1": 4000,
+          "level2": 3500,
+          "level3": 2500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 5.0,
+          "level3": 1.0,
+          "level4": 0.5,
+          "level5": 0.5
+        },
+        "description": "Increases all souls' skill point increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000004,
+        "name": "All Souls Protection Charm",
+        "image_path": "Image/Equip/Accessory/450013/Accessory_450013_Accessory{0}",
+        "label": "OwnerDefault_bless_14",
+        "effect_type": 1,
+        "skill_level_group_id": 9004,
+        "gain": {
+          "level1": 4000,
+          "level2": 3500,
+          "level3": 2500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 5.0,
+          "level3": 1.0,
+          "level4": 0.5,
+          "level5": 0.5
+        },
+        "description": "Increases all souls' protection gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000005,
+        "name": "All Souls Secret Skill Charm",
+        "image_path": "Image/Equip/Accessory/450013/Accessory_450013_Accessory{0}",
+        "label": "OwnerDefault_bless_15",
+        "effect_type": 1,
+        "skill_level_group_id": 9004,
+        "gain": {
+          "level1": 4000,
+          "level2": 3500,
+          "level3": 2500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 5.0,
+          "level3": 1.0,
+          "level4": 0.5,
+          "level5": 0.5
+        },
+        "description": "Increases all souls' secret skill gauge increase by ?% (Turns: 3)"
+      }
+    ],
+    "release_label": "202210_engrave_1"
+  },
+  {
+    "id": 90000000000002,
+    "rarity": 2,
+    "name": "Tactical Charm",
+    "evolution_group_id": 1001,
+    "init_hp": 32,
+    "init_attack": 7,
+    "init_defense": 13,
+    "max_hp": 55,
+    "max_attack": 12,
+    "max_defense": 23,
+    "possible_skills": [
+      {
+        "skill_id": 90030000000006,
+        "name": "Physical ATK Charm",
+        "image_path": "Image/Equip/Accessory/450014/Accessory_450014_Accessory{0}",
+        "label": "OwnerDefault_bless_16",
+        "effect_type": 1,
+        "skill_level_group_id": 9005,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' P-ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000007,
+        "name": "Magic ATK Charm",
+        "image_path": "Image/Equip/Accessory/450014/Accessory_450014_Accessory{0}",
+        "label": "OwnerDefault_bless_17",
+        "effect_type": 1,
+        "skill_level_group_id": 9005,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' M-ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000008,
+        "name": "Secret Skill Damage Charm",
+        "image_path": "Image/Equip/Accessory/450018/Accessory_450018_Accessory{0}",
+        "label": "OwnerDefault_bless_18",
+        "effect_type": 1,
+        "skill_level_group_id": 9006,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases Soul of Combos damage by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000009,
+        "name": "All-Target ATK Charm",
+        "image_path": "Image/Equip/Accessory/450015/Accessory_450015_Accessory{0}",
+        "label": "OwnerDefault_bless_19",
+        "effect_type": 1,
+        "skill_level_group_id": 9007,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' all-target ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000010,
+        "name": "Physical Resistance Charm",
+        "image_path": "Image/Equip/Accessory/450016/Accessory_450016_Accessory{0}",
+        "label": "OwnerDefault_bless_20",
+        "effect_type": 1,
+        "skill_level_group_id": 9008,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' physical attack resistance by ?% (Turns: 2)"
+      },
+      {
+        "skill_id": 90030000000011,
+        "name": "Magic Resistance Charm",
+        "image_path": "Image/Equip/Accessory/450016/Accessory_450016_Accessory{0}",
+        "label": "OwnerDefault_bless_21",
+        "effect_type": 1,
+        "skill_level_group_id": 9008,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' magic attack resistance by ?% (Turns: 2)"
+      },
+      {
+        "skill_id": 90030000000012,
+        "name": "Healing Charm",
+        "image_path": "Image/Equip/Accessory/450017/Accessory_450017_Accessory{0}",
+        "label": "OwnerDefault_bless_22",
+        "effect_type": 1,
+        "skill_level_group_id": 9009,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Heals all allies by ?% of their max HP"
+      },
+      {
+        "skill_id": 90030000000013,
+        "name": "Green Souls Skill Charm",
+        "image_path": "Image/Equip/Accessory/450018/Accessory_450018_Accessory{0}",
+        "label": "OwnerDefault_bless_23",
+        "effect_type": 1,
+        "skill_level_group_id": 9010,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases Soul of Skills' skill point increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000014,
+        "name": "Blue Souls Protection Charm",
+        "image_path": "Image/Equip/Accessory/450018/Accessory_450018_Accessory{0}",
+        "label": "OwnerDefault_bless_24",
+        "effect_type": 1,
+        "skill_level_group_id": 9010,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases Soul of Divine Protection's protection gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000015,
+        "name": "Orange Souls Secret Skill Charm",
+        "image_path": "Image/Equip/Accessory/450018/Accessory_450018_Accessory{0}",
+        "label": "OwnerDefault_bless_25",
+        "effect_type": 1,
+        "skill_level_group_id": 9010,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases Soul of Secrets secret skill gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000016,
+        "name": "Critical Power Charm",
+        "image_path": "Image/Equip/Accessory/450015/Accessory_450015_Accessory{0}",
+        "label": "OwnerDefault_bless_46",
+        "effect_type": 1,
+        "skill_level_group_id": 9011,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' critical power by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000017,
+        "name": "Pierce Power Charm",
+        "image_path": "Image/Equip/Accessory/450015/Accessory_450015_Accessory{0}",
+        "label": "OwnerDefault_bless_47",
+        "effect_type": 1,
+        "skill_level_group_id": 9011,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' pierce power by ?% (Turns: 1)"
+      }
+    ],
+    "release_label": "202210_engrave_1"
+  },
+  {
+    "id": 90000000000005,
+    "rarity": 2,
+    "name": "Tactical Charm",
+    "evolution_group_id": 1001,
+    "init_hp": null,
+    "init_attack": null,
+    "init_defense": null,
+    "max_hp": 23,
+    "max_attack": 6,
+    "max_defense": 11,
+    "possible_skills": [
+      {
+        "skill_id": 90030000000006,
+        "name": "Physical ATK Charm",
+        "image_path": "Image/Equip/Accessory/450014/Accessory_450014_Accessory{0}",
+        "label": "OwnerDefault_bless_16",
+        "effect_type": 1,
+        "skill_level_group_id": 9005,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' P-ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000007,
+        "name": "Magic ATK Charm",
+        "image_path": "Image/Equip/Accessory/450014/Accessory_450014_Accessory{0}",
+        "label": "OwnerDefault_bless_17",
+        "effect_type": 1,
+        "skill_level_group_id": 9005,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' M-ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000008,
+        "name": "Secret Skill Damage Charm",
+        "image_path": "Image/Equip/Accessory/450018/Accessory_450018_Accessory{0}",
+        "label": "OwnerDefault_bless_18",
+        "effect_type": 1,
+        "skill_level_group_id": 9006,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases Soul of Combos damage by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000009,
+        "name": "All-Target ATK Charm",
+        "image_path": "Image/Equip/Accessory/450015/Accessory_450015_Accessory{0}",
+        "label": "OwnerDefault_bless_19",
+        "effect_type": 1,
+        "skill_level_group_id": 9007,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' all-target ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000010,
+        "name": "Physical Resistance Charm",
+        "image_path": "Image/Equip/Accessory/450016/Accessory_450016_Accessory{0}",
+        "label": "OwnerDefault_bless_20",
+        "effect_type": 1,
+        "skill_level_group_id": 9008,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' physical attack resistance by ?% (Turns: 2)"
+      },
+      {
+        "skill_id": 90030000000011,
+        "name": "Magic Resistance Charm",
+        "image_path": "Image/Equip/Accessory/450016/Accessory_450016_Accessory{0}",
+        "label": "OwnerDefault_bless_21",
+        "effect_type": 1,
+        "skill_level_group_id": 9008,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' magic attack resistance by ?% (Turns: 2)"
+      },
+      {
+        "skill_id": 90030000000012,
+        "name": "Healing Charm",
+        "image_path": "Image/Equip/Accessory/450017/Accessory_450017_Accessory{0}",
+        "label": "OwnerDefault_bless_22",
+        "effect_type": 1,
+        "skill_level_group_id": 9009,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Heals all allies by ?% of their max HP"
+      },
+      {
+        "skill_id": 90030000000013,
+        "name": "Green Souls Skill Charm",
+        "image_path": "Image/Equip/Accessory/450018/Accessory_450018_Accessory{0}",
+        "label": "OwnerDefault_bless_23",
+        "effect_type": 1,
+        "skill_level_group_id": 9010,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases Soul of Skills' skill point increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000014,
+        "name": "Blue Souls Protection Charm",
+        "image_path": "Image/Equip/Accessory/450018/Accessory_450018_Accessory{0}",
+        "label": "OwnerDefault_bless_24",
+        "effect_type": 1,
+        "skill_level_group_id": 9010,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases Soul of Divine Protection's protection gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000015,
+        "name": "Orange Souls Secret Skill Charm",
+        "image_path": "Image/Equip/Accessory/450018/Accessory_450018_Accessory{0}",
+        "label": "OwnerDefault_bless_25",
+        "effect_type": 1,
+        "skill_level_group_id": 9010,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases Soul of Secrets secret skill gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000016,
+        "name": "Critical Power Charm",
+        "image_path": "Image/Equip/Accessory/450015/Accessory_450015_Accessory{0}",
+        "label": "OwnerDefault_bless_46",
+        "effect_type": 1,
+        "skill_level_group_id": 9011,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' critical power by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000017,
+        "name": "Pierce Power Charm",
+        "image_path": "Image/Equip/Accessory/450015/Accessory_450015_Accessory{0}",
+        "label": "OwnerDefault_bless_47",
+        "effect_type": 1,
+        "skill_level_group_id": 9011,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' pierce power by ?% (Turns: 1)"
+      }
+    ],
+    "release_label": "202210_engrave_1"
+  },
+  {
+    "id": 90000000000008,
+    "rarity": 2,
+    "name": "Tactical Charm",
+    "evolution_group_id": 1002,
+    "init_hp": 32,
+    "init_attack": 7,
+    "init_defense": 13,
+    "max_hp": 55,
+    "max_attack": 12,
+    "max_defense": 23,
+    "possible_skills": [
+      {
+        "skill_id": 90030000000006,
+        "name": "Physical ATK Charm",
+        "image_path": "Image/Equip/Accessory/450014/Accessory_450014_Accessory{0}",
+        "label": "OwnerDefault_bless_16",
+        "effect_type": 1,
+        "skill_level_group_id": 9005,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' P-ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000007,
+        "name": "Magic ATK Charm",
+        "image_path": "Image/Equip/Accessory/450014/Accessory_450014_Accessory{0}",
+        "label": "OwnerDefault_bless_17",
+        "effect_type": 1,
+        "skill_level_group_id": 9005,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' M-ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000008,
+        "name": "Secret Skill Damage Charm",
+        "image_path": "Image/Equip/Accessory/450018/Accessory_450018_Accessory{0}",
+        "label": "OwnerDefault_bless_18",
+        "effect_type": 1,
+        "skill_level_group_id": 9006,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases Soul of Combos damage by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000009,
+        "name": "All-Target ATK Charm",
+        "image_path": "Image/Equip/Accessory/450015/Accessory_450015_Accessory{0}",
+        "label": "OwnerDefault_bless_19",
+        "effect_type": 1,
+        "skill_level_group_id": 9007,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' all-target ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000010,
+        "name": "Physical Resistance Charm",
+        "image_path": "Image/Equip/Accessory/450016/Accessory_450016_Accessory{0}",
+        "label": "OwnerDefault_bless_20",
+        "effect_type": 1,
+        "skill_level_group_id": 9008,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' physical attack resistance by ?% (Turns: 2)"
+      },
+      {
+        "skill_id": 90030000000011,
+        "name": "Magic Resistance Charm",
+        "image_path": "Image/Equip/Accessory/450016/Accessory_450016_Accessory{0}",
+        "label": "OwnerDefault_bless_21",
+        "effect_type": 1,
+        "skill_level_group_id": 9008,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' magic attack resistance by ?% (Turns: 2)"
+      },
+      {
+        "skill_id": 90030000000012,
+        "name": "Healing Charm",
+        "image_path": "Image/Equip/Accessory/450017/Accessory_450017_Accessory{0}",
+        "label": "OwnerDefault_bless_22",
+        "effect_type": 1,
+        "skill_level_group_id": 9009,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Heals all allies by ?% of their max HP"
+      },
+      {
+        "skill_id": 90030000000013,
+        "name": "Green Souls Skill Charm",
+        "image_path": "Image/Equip/Accessory/450018/Accessory_450018_Accessory{0}",
+        "label": "OwnerDefault_bless_23",
+        "effect_type": 1,
+        "skill_level_group_id": 9010,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases Soul of Skills' skill point increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000014,
+        "name": "Blue Souls Protection Charm",
+        "image_path": "Image/Equip/Accessory/450018/Accessory_450018_Accessory{0}",
+        "label": "OwnerDefault_bless_24",
+        "effect_type": 1,
+        "skill_level_group_id": 9010,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases Soul of Divine Protection's protection gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000015,
+        "name": "Orange Souls Secret Skill Charm",
+        "image_path": "Image/Equip/Accessory/450018/Accessory_450018_Accessory{0}",
+        "label": "OwnerDefault_bless_25",
+        "effect_type": 1,
+        "skill_level_group_id": 9010,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases Soul of Secrets secret skill gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000016,
+        "name": "Critical Power Charm",
+        "image_path": "Image/Equip/Accessory/450015/Accessory_450015_Accessory{0}",
+        "label": "OwnerDefault_bless_46",
+        "effect_type": 1,
+        "skill_level_group_id": 9011,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' critical power by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000017,
+        "name": "Pierce Power Charm",
+        "image_path": "Image/Equip/Accessory/450015/Accessory_450015_Accessory{0}",
+        "label": "OwnerDefault_bless_47",
+        "effect_type": 1,
+        "skill_level_group_id": 9011,
+        "gain": {
+          "level1": 5000,
+          "level2": 3000,
+          "level3": 2000,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 1.0,
+          "level3": 0.5,
+          "level4": 0.5,
+          "level5": 0.4
+        },
+        "description": "Increases all allies' pierce power by ?% (Turns: 1)"
+      }
+    ],
+    "release_label": "202210_engrave_1"
+  },
+  {
+    "id": 90000000000003,
+    "rarity": 3,
+    "name": "Tactical Charm",
+    "evolution_group_id": 1001,
+    "init_hp": 80,
+    "init_attack": 16,
+    "init_defense": 32,
+    "max_hp": 136,
+    "max_attack": 28,
+    "max_defense": 55,
+    "possible_skills": [
+      {
+        "skill_id": 90030000000018,
+        "name": "Fire ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_26",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' fire ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000019,
+        "name": "Water ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_27",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' water ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000020,
+        "name": "Wind ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_28",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' wind ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000021,
+        "name": "Space ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_29",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' space ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000022,
+        "name": "Earth ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_30",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' earth ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000023,
+        "name": "Light ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_31",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' light ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000024,
+        "name": "Dark ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_32",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' dark ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000025,
+        "name": "Guard Penetration Charm",
+        "image_path": "Image/Equip/Accessory/450020/Accessory_450020_Accessory{0}",
+        "label": "OwnerDefault_bless_33",
+        "effect_type": 1,
+        "skill_level_group_id": 9013,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' guard penetration by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000026,
+        "name": "Guard Power Charm",
+        "image_path": "Image/Equip/Accessory/450023/Accessory_450023_Accessory{0}",
+        "label": "OwnerDefault_bless_34",
+        "effect_type": 1,
+        "skill_level_group_id": 9014,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' guard power by ?% (Turns: 2)"
+      },
+      {
+        "skill_id": 90030000000027,
+        "name": "Counter Power Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_35",
+        "effect_type": 1,
+        "skill_level_group_id": 9015,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' counter power by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000028,
+        "name": "Blessing Charm",
+        "image_path": "Image/Equip/Accessory/450024/Accessory_450024_Accessory{0}",
+        "label": "OwnerDefault_bless_36",
+        "effect_type": 1,
+        "skill_level_group_id": 9016,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Heals the ally with the lowest percentage of HP by ?% of their max HP"
+      },
+      {
+        "skill_id": 90030000000029,
+        "name": "Green Souls Protection Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_37",
+        "effect_type": 1,
+        "skill_level_group_id": 9017,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Skills' protection gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000030,
+        "name": "Green Souls Secret Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_38",
+        "effect_type": 1,
+        "skill_level_group_id": 9017,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Skills' secret skill gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000031,
+        "name": "Blue Souls Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_39",
+        "effect_type": 1,
+        "skill_level_group_id": 9018,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Divine Protection's skill point increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000032,
+        "name": "Blue Souls Secret Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_40",
+        "effect_type": 1,
+        "skill_level_group_id": 9019,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Divine Protection's secret skill gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000033,
+        "name": "Orange Souls Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_41",
+        "effect_type": 1,
+        "skill_level_group_id": 9018,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Secrets' skill point increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000034,
+        "name": "Orange Souls Protection Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_42",
+        "effect_type": 1,
+        "skill_level_group_id": 9019,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Secrets' protection gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000035,
+        "name": "Secret Skill Focus Charm",
+        "image_path": "Image/Equip/Accessory/450022/Accessory_450022_Accessory{0}",
+        "label": "OwnerDefault_bless_50",
+        "effect_type": 1,
+        "skill_level_group_id": 9020,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases the secret skill gauge of the ally with the highest ATK by ?%"
+      }
+    ],
+    "release_label": "202210_engrave_1"
+  },
+  {
+    "id": 90000000000004,
+    "rarity": 3,
+    "name": "Questing Charm",
+    "evolution_group_id": 1001,
+    "init_hp": 80,
+    "init_attack": 16,
+    "init_defense": 32,
+    "max_hp": 136,
+    "max_attack": 28,
+    "max_defense": 55,
+    "possible_skills": [
+      {
+        "skill_id": 90030000000036,
+        "name": "Gold Fortune Charm",
+        "image_path": "Image/Equip/Accessory/450025/Accessory_450025_Accessory{0}",
+        "label": "OwnerDefault_bless_43",
+        "effect_type": 2,
+        "skill_level_group_id": 9021,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Amount of gold coins gained in Gold Coin Quests increases by ?%"
+      },
+      {
+        "skill_id": 90030000000037,
+        "name": "Growth Fortune Charm",
+        "image_path": "Image/Equip/Accessory/450025/Accessory_450025_Accessory{0}",
+        "label": "OwnerDefault_bless_44",
+        "effect_type": 2,
+        "skill_level_group_id": 9021,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Amount of magicules gained in Level Up Quests increases by ?%"
+      }
+    ],
+    "release_label": "202210_engrave_1"
+  },
+  {
+    "id": 90000000000006,
+    "rarity": 3,
+    "name": "Tactical Charm",
+    "evolution_group_id": 1001,
+    "init_hp": null,
+    "init_attack": null,
+    "init_defense": null,
+    "max_hp": 55,
+    "max_attack": 12,
+    "max_defense": 23,
+    "possible_skills": [
+      {
+        "skill_id": 90030000000018,
+        "name": "Fire ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_26",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' fire ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000019,
+        "name": "Water ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_27",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' water ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000020,
+        "name": "Wind ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_28",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' wind ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000021,
+        "name": "Space ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_29",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' space ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000022,
+        "name": "Earth ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_30",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' earth ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000023,
+        "name": "Light ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_31",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' light ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000024,
+        "name": "Dark ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_32",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' dark ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000025,
+        "name": "Guard Penetration Charm",
+        "image_path": "Image/Equip/Accessory/450020/Accessory_450020_Accessory{0}",
+        "label": "OwnerDefault_bless_33",
+        "effect_type": 1,
+        "skill_level_group_id": 9013,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' guard penetration by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000026,
+        "name": "Guard Power Charm",
+        "image_path": "Image/Equip/Accessory/450023/Accessory_450023_Accessory{0}",
+        "label": "OwnerDefault_bless_34",
+        "effect_type": 1,
+        "skill_level_group_id": 9014,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' guard power by ?% (Turns: 2)"
+      },
+      {
+        "skill_id": 90030000000027,
+        "name": "Counter Power Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_35",
+        "effect_type": 1,
+        "skill_level_group_id": 9015,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' counter power by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000028,
+        "name": "Blessing Charm",
+        "image_path": "Image/Equip/Accessory/450024/Accessory_450024_Accessory{0}",
+        "label": "OwnerDefault_bless_36",
+        "effect_type": 1,
+        "skill_level_group_id": 9016,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Heals the ally with the lowest percentage of HP by ?% of their max HP"
+      },
+      {
+        "skill_id": 90030000000029,
+        "name": "Green Souls Protection Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_37",
+        "effect_type": 1,
+        "skill_level_group_id": 9017,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Skills' protection gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000030,
+        "name": "Green Souls Secret Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_38",
+        "effect_type": 1,
+        "skill_level_group_id": 9017,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Skills' secret skill gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000031,
+        "name": "Blue Souls Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_39",
+        "effect_type": 1,
+        "skill_level_group_id": 9018,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Divine Protection's skill point increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000032,
+        "name": "Blue Souls Secret Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_40",
+        "effect_type": 1,
+        "skill_level_group_id": 9019,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Divine Protection's secret skill gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000033,
+        "name": "Orange Souls Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_41",
+        "effect_type": 1,
+        "skill_level_group_id": 9018,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Secrets' skill point increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000034,
+        "name": "Orange Souls Protection Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_42",
+        "effect_type": 1,
+        "skill_level_group_id": 9019,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Secrets' protection gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000035,
+        "name": "Secret Skill Focus Charm",
+        "image_path": "Image/Equip/Accessory/450022/Accessory_450022_Accessory{0}",
+        "label": "OwnerDefault_bless_50",
+        "effect_type": 1,
+        "skill_level_group_id": 9020,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases the secret skill gauge of the ally with the highest ATK by ?%"
+      }
+    ],
+    "release_label": "202210_engrave_1"
+  },
+  {
+    "id": 90000000000007,
+    "rarity": 3,
+    "name": "Questing Charm",
+    "evolution_group_id": 1001,
+    "init_hp": null,
+    "init_attack": null,
+    "init_defense": null,
+    "max_hp": 55,
+    "max_attack": 12,
+    "max_defense": 23,
+    "possible_skills": [
+      {
+        "skill_id": 90030000000036,
+        "name": "Gold Fortune Charm",
+        "image_path": "Image/Equip/Accessory/450025/Accessory_450025_Accessory{0}",
+        "label": "OwnerDefault_bless_43",
+        "effect_type": 2,
+        "skill_level_group_id": 9021,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Amount of gold coins gained in Gold Coin Quests increases by ?%"
+      },
+      {
+        "skill_id": 90030000000037,
+        "name": "Growth Fortune Charm",
+        "image_path": "Image/Equip/Accessory/450025/Accessory_450025_Accessory{0}",
+        "label": "OwnerDefault_bless_44",
+        "effect_type": 2,
+        "skill_level_group_id": 9021,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Amount of magicules gained in Level Up Quests increases by ?%"
+      }
+    ],
+    "release_label": "202210_engrave_1"
+  },
+  {
+    "id": 90000000000009,
+    "rarity": 3,
+    "name": "Tactical Charm",
+    "evolution_group_id": 1002,
+    "init_hp": 80,
+    "init_attack": 16,
+    "init_defense": 32,
+    "max_hp": 136,
+    "max_attack": 28,
+    "max_defense": 55,
+    "possible_skills": [
+      {
+        "skill_id": 90030000000018,
+        "name": "Fire ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_26",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' fire ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000019,
+        "name": "Water ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_27",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' water ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000020,
+        "name": "Wind ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_28",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' wind ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000021,
+        "name": "Space ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_29",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' space ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000022,
+        "name": "Earth ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_30",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' earth ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000023,
+        "name": "Light ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_31",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' light ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000024,
+        "name": "Dark ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_32",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' dark ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000025,
+        "name": "Guard Penetration Charm",
+        "image_path": "Image/Equip/Accessory/450020/Accessory_450020_Accessory{0}",
+        "label": "OwnerDefault_bless_33",
+        "effect_type": 1,
+        "skill_level_group_id": 9013,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' guard penetration by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000026,
+        "name": "Guard Power Charm",
+        "image_path": "Image/Equip/Accessory/450023/Accessory_450023_Accessory{0}",
+        "label": "OwnerDefault_bless_34",
+        "effect_type": 1,
+        "skill_level_group_id": 9014,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' guard power by ?% (Turns: 2)"
+      },
+      {
+        "skill_id": 90030000000027,
+        "name": "Counter Power Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_35",
+        "effect_type": 1,
+        "skill_level_group_id": 9015,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' counter power by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000028,
+        "name": "Blessing Charm",
+        "image_path": "Image/Equip/Accessory/450024/Accessory_450024_Accessory{0}",
+        "label": "OwnerDefault_bless_36",
+        "effect_type": 1,
+        "skill_level_group_id": 9016,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Heals the ally with the lowest percentage of HP by ?% of their max HP"
+      },
+      {
+        "skill_id": 90030000000029,
+        "name": "Green Souls Protection Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_37",
+        "effect_type": 1,
+        "skill_level_group_id": 9017,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Skills' protection gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000030,
+        "name": "Green Souls Secret Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_38",
+        "effect_type": 1,
+        "skill_level_group_id": 9017,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Skills' secret skill gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000031,
+        "name": "Blue Souls Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_39",
+        "effect_type": 1,
+        "skill_level_group_id": 9018,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Divine Protection's skill point increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000032,
+        "name": "Blue Souls Secret Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_40",
+        "effect_type": 1,
+        "skill_level_group_id": 9019,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Divine Protection's secret skill gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000033,
+        "name": "Orange Souls Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_41",
+        "effect_type": 1,
+        "skill_level_group_id": 9018,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Secrets' skill point increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000034,
+        "name": "Orange Souls Protection Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_42",
+        "effect_type": 1,
+        "skill_level_group_id": 9019,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Secrets' protection gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000035,
+        "name": "Secret Skill Focus Charm",
+        "image_path": "Image/Equip/Accessory/450022/Accessory_450022_Accessory{0}",
+        "label": "OwnerDefault_bless_50",
+        "effect_type": 1,
+        "skill_level_group_id": 9020,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases the secret skill gauge of the ally with the highest ATK by ?%"
+      }
+    ],
+    "release_label": "202210_engrave_1"
+  },
+  {
+    "id": 90000000000010,
+    "rarity": 3,
+    "name": "Questing Charm",
+    "evolution_group_id": 1002,
+    "init_hp": 80,
+    "init_attack": 16,
+    "init_defense": 32,
+    "max_hp": 55,
+    "max_attack": 12,
+    "max_defense": 23,
+    "possible_skills": [
+      {
+        "skill_id": 90030000000036,
+        "name": "Gold Fortune Charm",
+        "image_path": "Image/Equip/Accessory/450025/Accessory_450025_Accessory{0}",
+        "label": "OwnerDefault_bless_43",
+        "effect_type": 2,
+        "skill_level_group_id": 9021,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Amount of gold coins gained in Gold Coin Quests increases by ?%"
+      },
+      {
+        "skill_id": 90030000000037,
+        "name": "Growth Fortune Charm",
+        "image_path": "Image/Equip/Accessory/450025/Accessory_450025_Accessory{0}",
+        "label": "OwnerDefault_bless_44",
+        "effect_type": 2,
+        "skill_level_group_id": 9021,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Amount of magicules gained in Level Up Quests increases by ?%"
+      }
+    ],
+    "release_label": "202210_engrave_1"
+  },
+  {
+    "id": 90000000000011,
+    "rarity": 3,
+    "name": "Tactical Charm",
+    "evolution_group_id": 1002,
+    "init_hp": null,
+    "init_attack": null,
+    "init_defense": null,
+    "max_hp": 55,
+    "max_attack": 12,
+    "max_defense": 23,
+    "possible_skills": [
+      {
+        "skill_id": 90030000000018,
+        "name": "Fire ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_26",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' fire ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000019,
+        "name": "Water ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_27",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' water ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000020,
+        "name": "Wind ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_28",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' wind ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000021,
+        "name": "Space ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_29",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' space ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000022,
+        "name": "Earth ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_30",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' earth ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000023,
+        "name": "Light ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_31",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' light ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000024,
+        "name": "Dark ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_32",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' dark ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000025,
+        "name": "Guard Penetration Charm",
+        "image_path": "Image/Equip/Accessory/450020/Accessory_450020_Accessory{0}",
+        "label": "OwnerDefault_bless_33",
+        "effect_type": 1,
+        "skill_level_group_id": 9013,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' guard penetration by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000026,
+        "name": "Guard Power Charm",
+        "image_path": "Image/Equip/Accessory/450023/Accessory_450023_Accessory{0}",
+        "label": "OwnerDefault_bless_34",
+        "effect_type": 1,
+        "skill_level_group_id": 9014,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' guard power by ?% (Turns: 2)"
+      },
+      {
+        "skill_id": 90030000000027,
+        "name": "Counter Power Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_35",
+        "effect_type": 1,
+        "skill_level_group_id": 9015,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' counter power by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000028,
+        "name": "Blessing Charm",
+        "image_path": "Image/Equip/Accessory/450024/Accessory_450024_Accessory{0}",
+        "label": "OwnerDefault_bless_36",
+        "effect_type": 1,
+        "skill_level_group_id": 9016,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Heals the ally with the lowest percentage of HP by ?% of their max HP"
+      },
+      {
+        "skill_id": 90030000000029,
+        "name": "Green Souls Protection Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_37",
+        "effect_type": 1,
+        "skill_level_group_id": 9017,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Skills' protection gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000030,
+        "name": "Green Souls Secret Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_38",
+        "effect_type": 1,
+        "skill_level_group_id": 9017,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Skills' secret skill gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000031,
+        "name": "Blue Souls Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_39",
+        "effect_type": 1,
+        "skill_level_group_id": 9018,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Divine Protection's skill point increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000032,
+        "name": "Blue Souls Secret Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_40",
+        "effect_type": 1,
+        "skill_level_group_id": 9019,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Divine Protection's secret skill gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000033,
+        "name": "Orange Souls Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_41",
+        "effect_type": 1,
+        "skill_level_group_id": 9018,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Secrets' skill point increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000034,
+        "name": "Orange Souls Protection Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_42",
+        "effect_type": 1,
+        "skill_level_group_id": 9019,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Secrets' protection gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000035,
+        "name": "Secret Skill Focus Charm",
+        "image_path": "Image/Equip/Accessory/450022/Accessory_450022_Accessory{0}",
+        "label": "OwnerDefault_bless_50",
+        "effect_type": 1,
+        "skill_level_group_id": 9020,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases the secret skill gauge of the ally with the highest ATK by ?%"
+      }
+    ],
+    "release_label": "202210_engrave_1"
+  },
+  {
+    "id": 90000000000012,
+    "rarity": 3,
+    "name": "Questing Charm",
+    "evolution_group_id": 1002,
+    "init_hp": null,
+    "init_attack": null,
+    "init_defense": null,
+    "max_hp": 55,
+    "max_attack": 12,
+    "max_defense": 23,
+    "possible_skills": [
+      {
+        "skill_id": 90030000000036,
+        "name": "Gold Fortune Charm",
+        "image_path": "Image/Equip/Accessory/450025/Accessory_450025_Accessory{0}",
+        "label": "OwnerDefault_bless_43",
+        "effect_type": 2,
+        "skill_level_group_id": 9021,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Amount of gold coins gained in Gold Coin Quests increases by ?%"
+      },
+      {
+        "skill_id": 90030000000037,
+        "name": "Growth Fortune Charm",
+        "image_path": "Image/Equip/Accessory/450025/Accessory_450025_Accessory{0}",
+        "label": "OwnerDefault_bless_44",
+        "effect_type": 2,
+        "skill_level_group_id": 9021,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Amount of magicules gained in Level Up Quests increases by ?%"
+      }
+    ],
+    "release_label": "202210_engrave_1"
+  },
+  {
+    "id": 90000000000013,
+    "rarity": 3,
+    "name": "Tactical Charm",
+    "evolution_group_id": 1003,
+    "init_hp": 80,
+    "init_attack": 16,
+    "init_defense": 32,
+    "max_hp": 136,
+    "max_attack": 28,
+    "max_defense": 55,
+    "possible_skills": [
+      {
+        "skill_id": 90030000000018,
+        "name": "Fire ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_26",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' fire ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000019,
+        "name": "Water ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_27",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' water ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000020,
+        "name": "Wind ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_28",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' wind ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000021,
+        "name": "Space ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_29",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' space ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000022,
+        "name": "Earth ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_30",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' earth ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000023,
+        "name": "Light ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_31",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' light ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000024,
+        "name": "Dark ATK Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_32",
+        "effect_type": 1,
+        "skill_level_group_id": 9012,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' dark ATK by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000025,
+        "name": "Guard Penetration Charm",
+        "image_path": "Image/Equip/Accessory/450020/Accessory_450020_Accessory{0}",
+        "label": "OwnerDefault_bless_33",
+        "effect_type": 1,
+        "skill_level_group_id": 9013,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' guard penetration by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000026,
+        "name": "Guard Power Charm",
+        "image_path": "Image/Equip/Accessory/450023/Accessory_450023_Accessory{0}",
+        "label": "OwnerDefault_bless_34",
+        "effect_type": 1,
+        "skill_level_group_id": 9014,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' guard power by ?% (Turns: 2)"
+      },
+      {
+        "skill_id": 90030000000027,
+        "name": "Counter Power Charm",
+        "image_path": "Image/Equip/Accessory/450019/Accessory_450019_Accessory{0}",
+        "label": "OwnerDefault_bless_35",
+        "effect_type": 1,
+        "skill_level_group_id": 9015,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases all allies' counter power by ?% (Turns: 1)"
+      },
+      {
+        "skill_id": 90030000000028,
+        "name": "Blessing Charm",
+        "image_path": "Image/Equip/Accessory/450024/Accessory_450024_Accessory{0}",
+        "label": "OwnerDefault_bless_36",
+        "effect_type": 1,
+        "skill_level_group_id": 9016,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Heals the ally with the lowest percentage of HP by ?% of their max HP"
+      },
+      {
+        "skill_id": 90030000000029,
+        "name": "Green Souls Protection Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_37",
+        "effect_type": 1,
+        "skill_level_group_id": 9017,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Skills' protection gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000030,
+        "name": "Green Souls Secret Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_38",
+        "effect_type": 1,
+        "skill_level_group_id": 9017,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Skills' secret skill gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000031,
+        "name": "Blue Souls Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_39",
+        "effect_type": 1,
+        "skill_level_group_id": 9018,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Divine Protection's skill point increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000032,
+        "name": "Blue Souls Secret Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_40",
+        "effect_type": 1,
+        "skill_level_group_id": 9019,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Divine Protection's secret skill gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000033,
+        "name": "Orange Souls Skill Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_41",
+        "effect_type": 1,
+        "skill_level_group_id": 9018,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Secrets' skill point increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000034,
+        "name": "Orange Souls Protection Charm",
+        "image_path": "Image/Equip/Accessory/450021/Accessory_450021_Accessory{0}",
+        "label": "OwnerDefault_bless_42",
+        "effect_type": 1,
+        "skill_level_group_id": 9019,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases Soul of Secrets' protection gauge increase by ?% (Turns: 3)"
+      },
+      {
+        "skill_id": 90030000000035,
+        "name": "Secret Skill Focus Charm",
+        "image_path": "Image/Equip/Accessory/450022/Accessory_450022_Accessory{0}",
+        "label": "OwnerDefault_bless_50",
+        "effect_type": 1,
+        "skill_level_group_id": 9020,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Increases the secret skill gauge of the ally with the highest ATK by ?%"
+      }
+    ],
+    "release_label": "202210_engrave_1"
+  },
+  {
+    "id": 90000000000014,
+    "rarity": 3,
+    "name": "Questing Charm",
+    "evolution_group_id": 1003,
+    "init_hp": 80,
+    "init_attack": 16,
+    "init_defense": 32,
+    "max_hp": 136,
+    "max_attack": 28,
+    "max_defense": 55,
+    "possible_skills": [
+      {
+        "skill_id": 90030000000036,
+        "name": "Gold Fortune Charm",
+        "image_path": "Image/Equip/Accessory/450025/Accessory_450025_Accessory{0}",
+        "label": "OwnerDefault_bless_43",
+        "effect_type": 2,
+        "skill_level_group_id": 9021,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Amount of gold coins gained in Gold Coin Quests increases by ?%"
+      },
+      {
+        "skill_id": 90030000000037,
+        "name": "Growth Fortune Charm",
+        "image_path": "Image/Equip/Accessory/450025/Accessory_450025_Accessory{0}",
+        "label": "OwnerDefault_bless_44",
+        "effect_type": 2,
+        "skill_level_group_id": 9021,
+        "gain": {
+          "level1": 8500,
+          "level2": 1000,
+          "level3": 500,
+          "level4": 0,
+          "level5": 0
+        },
+        "scale": {
+          "level2": 0.5,
+          "level3": 0.4,
+          "level4": 0.4,
+          "level5": 0.2
+        },
+        "description": "Amount of magicules gained in Level Up Quests increases by ?%"
+      }
+    ],
+    "release_label": "202210_engrave_1"
+  }
+]
