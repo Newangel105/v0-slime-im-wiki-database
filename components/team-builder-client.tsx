@@ -404,7 +404,10 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
 
   const heartprintItems = useMemo(() => {
     const q = query.trim().toLowerCase()
-    return heartprints.filter(hp => !q || hp.title?.toLowerCase().includes(q) || String(hp.heartprint_id).includes(q))
+    return heartprints.filter(hp =>
+      hp.still_type === "rare" &&
+      (!q || hp.title?.toLowerCase().includes(q) || String(hp.heartprint_id).includes(q))
+    )
   }, [heartprints, query])
 
   function isExChar(c: WikiCharacter) {
