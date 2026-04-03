@@ -7,6 +7,8 @@ import {
   isExUnboundCharacter, hasExSpecialSkill, isExAttacker,
   normalizeLabel, stripColorTags, getCharacterForceEntries,
 } from "@/lib/pc-wiki"
+import { calcSlotStats, calcTeamEP, getEPRankIcon } from "@/lib/ep-calc"
+import type { TeamSlotInput, SlotStats } from "@/lib/ep-calc"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -419,7 +421,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
     subSlots.forEach((id, idx) => { if (id && !(pickerMode === "sub" && pickerOpenFor === idx)) taken.add(id) })
     sideSlots.forEach((id, idx) => { if (id && !(pickerMode === "side" && pickerOpenFor === idx)) taken.add(id) })
     sideSubSlots.forEach((id, idx) => { if (id && !(pickerMode === "sidesub" && pickerOpenFor === idx)) taken.add(id) })
-    return characters.filter((c) => {
+    const filtered = characters.filter((c) => {
       if (taken.has(c.master_pc_id)) return false
       if (q && !c.name.toLowerCase().includes(q) && !(c.affiliation_name?.toLowerCase().includes(q))) return false
       if (c.character_role?.toLowerCase() !== roleFilter) return false
@@ -483,7 +485,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
           : filterSkillType === "other"
           ? [...c.traits]
           : [...c.skills, ...c.traits]
-        if (!skillsToCheck.some(sk => (sk.skill_filter_groups ?? []).some(fg => groupSet.has(fg.master_skill_filter_group_id)))) return false
+        if (!skillsToCheck.some(sk => ((sk as {skill_filter_groups?: {master_skill_filter_group_id:number}[]}).skill_filter_groups ?? []).some((fg: {master_skill_filter_group_id:number}) => groupSet.has(fg.master_skill_filter_group_id)))) return false
       }
       // Secret skill sub-filter (ultimate_type) — attackers only
       if (filterSkillType === "secret" && filterUltimateType !== "all" && roleFilter !== "supporter") {
@@ -502,6 +504,9 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       }
       return true
     })
+    // Sort by rarity descending: EX Unbound (7) > EX (6) > 5 > 4 > 3
+    filtered.sort((a, b) => getCharacterVisualTier(b) - getCharacterVisualTier(a))
+    return filtered
   }, [characters, pickerMode, pickerOpenFor, query, filterEl, filterAttack, filterTactics, filterCharType, filterCharacterType, filterRarity, filterForces, filterSkillGroups, filterSkillType, filterWeapon, filterProtType, filterUltimateType, filterEnhancement, filterProtSkill, filterSkillCost, mainSlots, subSlots, sideSlots, sideSubSlots])
 
   // Flatten charms into individual skill items, deduplicated by skill_id
@@ -546,37 +551,189 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
     setEquipSlots(prev => ({ ...prev, [slotKey]: { ...(prev[slotKey] ?? { weapon: null, armor: null, accessory: null }), [eqType]: eqId } }))
   }
 
-  // Helper to build modal character list: returns { slotKey, label, charId, isProt }[]
-  const equipModalChars = useMemo(() => {
-    const list: { slotKey: string; label: string; charId: number; isProt: boolean }[] = []
-    // Main slots
+  // Helper to build modal character list grouped: main+sub pairs per battle slot, protector first
+  type EquipSlotEntry = { slotKey: string; label: string; charId: number; isProt: boolean; isSub: boolean }
+  type EquipSlotGroup = { mainEntry: EquipSlotEntry | null; subEntry: EquipSlotEntry | null; isProtGroup: boolean }
+  const equipModalGroups = useMemo(() => {
+    const groups: EquipSlotGroup[] = []
+    // Slot 0 = protector group, slots 1-3 = battle groups
     for (let i = 0; i < 4; i++) {
-      if (mainSlots[i]) {
-        const c = characters.find(ch => ch.master_pc_id === mainSlots[i])
-        const isProt = c ? isProtectorChar(c) : i === 0
-        list.push({ slotKey: `main${i}`, label: isProt ? "Protection" : `Battle ${i}`, charId: mainSlots[i]!, isProt })
-      }
-      if (subSlots[i]) {
-        const c = characters.find(ch => ch.master_pc_id === subSlots[i])
-        const isProt = c ? isProtectorChar(c) : false
-        list.push({ slotKey: `sub${i}`, label: isProt ? "Protection (Sub)" : `Battle ${i} (Sub)`, charId: subSlots[i]!, isProt })
-      }
+      const mainId = mainSlots[i]
+      const subId = subSlots[i]
+      if (!mainId && !subId) continue
+      const mainChar = mainId ? characters.find(ch => ch.master_pc_id === mainId) ?? null : null
+      const subChar = subId ? characters.find(ch => ch.master_pc_id === subId) ?? null : null
+      const protGroup = i === 0
+      const mainEntry: EquipSlotEntry | null = mainId ? {
+        slotKey: `main${i}`, label: protGroup ? "Protection" : `Battle ${i}`,
+        charId: mainId, isProt: protGroup, isSub: false
+      } : null
+      const subEntry: EquipSlotEntry | null = subId ? {
+        slotKey: `sub${i}`, label: protGroup ? "Protection (Sub)" : `Battle ${i} (Sub)`,
+        charId: subId, isProt: mainChar ? isProtectorChar(mainChar) : false, isSub: true
+      } : null
+      groups.push({ mainEntry, subEntry, isProtGroup: protGroup })
     }
     // Side slots
     for (let i = 0; i < 2; i++) {
+      const mainId = sideSlots[i]
+      const subId = sideSubSlots[i]
+      if (!mainId && !subId) continue
+      const mainChar = mainId ? characters.find(ch => ch.master_pc_id === mainId) ?? null : null
+      const isProt = mainChar ? isProtectorChar(mainChar) : false
+      const mainEntry: EquipSlotEntry | null = mainId ? {
+        slotKey: `side${i}`, label: isProt ? `Side Prot ${i+1}` : `Side ${i+1}`,
+        charId: mainId, isProt, isSub: false
+      } : null
+      const subEntry: EquipSlotEntry | null = subId ? {
+        slotKey: `sidesub${i}`, label: isProt ? `Side Prot ${i+1} (Sub)` : `Side ${i+1} (Sub)`,
+        charId: subId, isProt: false, isSub: true
+      } : null
+      groups.push({ mainEntry, subEntry, isProtGroup: isProt })
+    }
+    return groups
+  }, [mainSlots, subSlots, sideSlots, sideSubSlots, characters])
+
+  // Flat list for backward-compat (used by auto-equip)
+  const equipModalChars = useMemo(() => {
+    const list: { slotKey: string; label: string; charId: number; isProt: boolean }[] = []
+    for (const g of equipModalGroups) {
+      if (g.mainEntry) list.push(g.mainEntry)
+      if (g.subEntry) list.push(g.subEntry)
+    }
+    return list
+  }, [equipModalGroups])
+
+  // ── Auto-equip logic ──────────────────────────────────────────────────────
+  // Scoring model: effective stats the character actually gets from this piece.
+  //   Weapon  : effective_atk = max_atk × (1 + 0.20 × weaponTypeMatch + 0.10 × elementMatch)
+  //   Armor   : effective_def = max_def × (1 + 0.10 × elementMatch)
+  //   Accessory: effective_hp = max_hp  × (1 + 0.10 × elementMatch)
+  // Exclusive (name / affiliation in desc) → large flat bonus so they beat generics.
+  // Valor Cup effects are excluded (don't apply outside Valor Cup battles).
+  //
+  // Weapon type normalisation: character names ≠ equipment names
+  //   Spear → Lance | Largesword → Greatsword | Book → Magic Tome | Knuckle → Fist
+  //
+  // Element normalisation (char element → description word):
+  //   Holy → light | Air → wind | Wind → wind | EnhancedX → same as X (strip prefix)
+  //   Fire | Water | Earth | Dark are same lower-case.
+
+  const CHAR_WEAPON_NORM: Record<string, string> = {
+    Spear: "Lance", Largesword: "Greatsword", Book: "Magic Tome", Knuckle: "Fist"
+  }
+  function normalizeWeaponType(wt: string | null): string {
+    if (!wt) return ""
+    return (CHAR_WEAPON_NORM[wt] ?? wt).toLowerCase()
+  }
+
+  const CHAR_ELEMENT_NORM: Record<string, string> = {
+    Holy: "light", Air: "wind",
+    EnhancedHoly: "light", EnhancedAir: "wind", EnhancedWind: "wind",
+    EnhancedFire: "fire", EnhancedWater: "water", EnhancedEarth: "earth", EnhancedDark: "dark"
+  }
+  function normalizeElement(el: string | null): string {
+    if (!el) return ""
+    return (CHAR_ELEMENT_NORM[el] ?? el).toLowerCase()
+  }
+
+  function scoreEquipment(eq: Equipment, char: WikiCharacter): number {
+    // Strip Valor Cup effects — they only apply in arena and never count here
+    const validEffects = [eq.effect1 ?? "", eq.effect2 ?? ""]
+      .filter(e => !e.toLowerCase().includes("valor cup"))
+      .map(e => e.toLowerCase())
+    const combined = validEffects.join(" ")
+
+    const charName  = (char.name ?? "").toLowerCase()
+    const charAffil = (char.affiliation_name ?? "").toLowerCase()
+    const charEl    = normalizeElement(char.element ?? "")
+    const charWt    = normalizeWeaponType(char.weapon_type ?? "")
+    const eqWt      = (eq.weapon_type ?? "").toLowerCase()
+
+    // Compute weapon-type and element multipliers
+    const weaponMatch   = eq.type === "weapon" && !!charWt && !!eqWt && eqWt === charWt
+    const elementMatch  = !!charEl && combined.includes(charEl + " character")
+
+    // Effective primary stat (what the character actually gets)
+    let effectiveStat: number
+    if (eq.type === "weapon") {
+      const atk = eq.max_atk ?? 0
+      effectiveStat = atk * (1 + (weaponMatch ? 0.20 : 0) + (elementMatch ? 0.10 : 0))
+    } else if (eq.type === "armor") {
+      effectiveStat = (eq.max_def ?? 0) * (1 + (elementMatch ? 0.10 : 0))
+    } else {
+      effectiveStat = (eq.max_hp ?? 0) * (1 + (elementMatch ? 0.10 : 0))
+    }
+
+    // Base: effective stat drives sorting (rarity is a tiebreaker)
+    let score = effectiveStat + eq.rarity * 0.5 + eq.base_rarity * 0.1
+
+    // Exclusive bonus: character name in description wins over generic pieces
+    // Search name first; if name found AND affiliation found → confirmed exclusive
+    const nameInDesc  = charName.length > 2 && combined.includes(charName)
+    const affilInDesc = charAffil.length > 2 && combined.includes(charAffil)
+    if (nameInDesc && affilInDesc) {
+      score += 100000  // confirmed exclusive
+    } else if (nameInDesc) {
+      score += 80000   // name match alone (covers e.g. "Megumin")
+    } else if (affilInDesc) {
+      score += 60000   // affiliation only (still likely dedicated piece)
+    }
+
+    return score
+  }
+
+  function autoEquipAll() {
+    const usedIds: Record<string, Set<number>> = { weapon: new Set(), armor: new Set(), accessory: new Set() }
+    const newEquipSlots: Record<string, Record<string, number | null>> = {}
+
+    // Collect all attacker slot keys in order (main first, then sub, side, sidesub)
+    const attackerSlots: { slotKey: string; charId: number }[] = []
+    for (let i = 0; i < 4; i++) {
+      if (mainSlots[i]) {
+        const c = characters.find(ch => ch.master_pc_id === mainSlots[i])
+        if (c && !isProtectorChar(c)) attackerSlots.push({ slotKey: `main${i}`, charId: mainSlots[i]! })
+      }
+      if (subSlots[i]) {
+        const c = characters.find(ch => ch.master_pc_id === subSlots[i])
+        if (c && !isProtectorChar(c)) attackerSlots.push({ slotKey: `sub${i}`, charId: subSlots[i]! })
+      }
+    }
+    for (let i = 0; i < 2; i++) {
       if (sideSlots[i]) {
         const c = characters.find(ch => ch.master_pc_id === sideSlots[i])
-        const isProt = c ? isProtectorChar(c) : false
-        list.push({ slotKey: `side${i}`, label: isProt ? `Side Protection ${i+1}` : `Side ${i+1}`, charId: sideSlots[i]!, isProt })
+        if (c && !isProtectorChar(c)) attackerSlots.push({ slotKey: `side${i}`, charId: sideSlots[i]! })
       }
       if (sideSubSlots[i]) {
         const c = characters.find(ch => ch.master_pc_id === sideSubSlots[i])
-        const isProt = c ? isProtectorChar(c) : false
-        list.push({ slotKey: `sidesub${i}`, label: isProt ? `Side Prot ${i+1} (Sub)` : `Side ${i+1} (Sub)`, charId: sideSubSlots[i]!, isProt })
+        if (c && !isProtectorChar(c)) attackerSlots.push({ slotKey: `sidesub${i}`, charId: sideSubSlots[i]! })
       }
     }
-    return list
-  }, [mainSlots, subSlots, sideSlots, sideSubSlots, characters])
+
+    for (const { slotKey, charId } of attackerSlots) {
+      const char = characters.find(c => c.master_pc_id === charId)!
+      const slotRec: Record<string, number | null> = { weapon: null, armor: null, accessory: null }
+
+      for (const eqType of ["weapon", "armor", "accessory"] as const) {
+        const candidates = equipment.filter(e => {
+          if (e.type !== eqType) return false
+          if (usedIds[eqType].has(e.id)) return false
+          // Exclude items whose EVERY description effect is a Valor Cup bonus —
+          // they provide no benefit outside Valor Cup battles.
+          const descEffects = [e.effect1 ?? "", e.effect2 ?? ""].filter(s => s.trim().length > 0)
+          if (descEffects.length > 0 && descEffects.every(ef => ef.toLowerCase().includes("valor cup"))) return false
+          return true
+        })
+        if (candidates.length === 0) continue
+        candidates.sort((a, b) => scoreEquipment(b, char) - scoreEquipment(a, char))
+        const best = candidates[0]
+        slotRec[eqType] = best.id
+        usedIds[eqType].add(best.id)
+      }
+      newEquipSlots[slotKey] = slotRec
+    }
+    setEquipSlots(prev => ({ ...prev, ...newEquipSlots }))
+  }
 
   function openEquipModal() {
     setActiveEquipSlot(null)
@@ -593,7 +750,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
     setPreviewHp(null); setFilterSkillType("all"); setExpandedSkillCats([])
     setFilterWeapon(null); setFilterProtType("all"); setFilterUltimateType("all")
     setFilterEnhancement("all"); setFilterProtSkill("all"); setFilterDragOffset({x: 0, y: 0})
-    setFilterSkillCost([0, 100]); setShowSkillEffect(false)
+    setFilterSkillCost(0); setShowSkillEffect(false)
     setShowFilterModal(false)
   }
   function closePicker() { setPickerOpenFor(null) }
@@ -711,7 +868,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
             width: "46%", aspectRatio: "1",
             bottom: "4%", left: "27%",
             borderRadius: "4px",
-            border: "1.5px solid rgba(140,140,150,0.5)",
+            border: subChar ? "none" : "1.5px solid rgba(140,140,150,0.5)",
             background: "rgba(10,12,18,0.8)",
           }}
         >
@@ -727,8 +884,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
               })()}
               {(subIcon1 || subIcon2) && (
                 <div className="absolute top-0.5 right-0.5 z-20 flex flex-col gap-0.5">
-                  {subIcon1 && <img src={subIcon1} alt="" className="w-5 h-5 object-contain drop-shadow" />}
-                  {subIcon2 && <img src={subIcon2} alt="" className="w-5 h-5 object-contain drop-shadow" />}
+                  {subIcon1 && <img src={subIcon1} alt="" className="w-3 h-3 sm:w-4 sm:h-4 object-contain drop-shadow" />}
+                  {subIcon2 && <img src={subIcon2} alt="" className="w-3 h-3 sm:w-4 sm:h-4 object-contain drop-shadow" />}
                 </div>
               )}
             </>
@@ -764,7 +921,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
             style={{ top: '3%', right: '3%' }}>
             {mainIcons.map((src, idx) => (
               <img key={idx} src={src} alt=""
-                className="object-contain drop-shadow-lg" style={{ width: '30px' }} />
+                className="object-contain drop-shadow-lg" style={{ width: '25px' }} />
             ))}
           </div>
         )}
@@ -851,7 +1008,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                 width: "46%", aspectRatio: "1",
                 bottom: "4%", left: "27%",
                 borderRadius: "4px",
-                border: "1.5px solid rgba(140,140,150,0.5)",
+                border: sideSubChar ? "none" : "1.5px solid rgba(140,140,150,0.5)",
                 background: "rgba(10,12,18,0.8)",
               }}
             >
@@ -867,8 +1024,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                   })()}
                   {(sideSubIcon1 || sideSubIcon2) && (
                     <div className="absolute top-0.5 right-0.5 z-20 flex flex-col gap-0.5">
-                      {sideSubIcon1 && <img src={sideSubIcon1} alt="" className="w-5 h-5 object-contain drop-shadow" />}
-                      {sideSubIcon2 && <img src={sideSubIcon2} alt="" className="w-5 h-5 object-contain drop-shadow" />}
+                      {sideSubIcon1 && <img src={sideSubIcon1} alt="" className="w-3 h-3 sm:w-4 sm:h-4 object-contain drop-shadow" />}
+                      {sideSubIcon2 && <img src={sideSubIcon2} alt="" className="w-3 h-3 sm:w-4 sm:h-4 object-contain drop-shadow" />}
                     </div>
                   )}
                 </>
@@ -1011,7 +1168,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
             <div className="flex flex-1 min-h-0 overflow-hidden">
 
               {/* LEFT PANEL: game-style card preview with sub-slot overlaid */}
-              <div className="w-[18%] min-w-[140px] max-w-[200px] shrink-0 flex flex-col items-center border-r border-white/10 bg-[#090f1b] min-h-0 p-3 gap-2 overflow-y-auto">
+              <div className="hidden sm:flex w-[18%] min-w-[140px] max-w-[200px] shrink-0 flex-col items-center border-r border-white/10 bg-[#090f1b] min-h-0 p-3 gap-2 overflow-y-auto">
                 {/* Main card with sub-slot overlaid on it */}
                 <div
                   className="relative w-full cursor-pointer"
@@ -1157,8 +1314,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                             <img src={STAR_ASSETS[t] ?? STAR_ASSETS[5]} alt="" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[14%] object-contain" />
                             {(ci1 || ci2) && (
                               <div className="absolute top-0.5 right-0.5 z-10 flex flex-col gap-0.5">
-                                {ci1 && <img src={ci1} alt="" className="w-5 h-5 object-contain drop-shadow" />}
-                                {ci2 && <img src={ci2} alt="" className="w-5 h-5 object-contain drop-shadow" />}
+                                {ci1 && <img src={ci1} alt="" className="w-3 h-3 sm:w-5 sm:h-5 object-contain drop-shadow" />}
+                                {ci2 && <img src={ci2} alt="" className="w-3 h-3 sm:w-5 sm:h-5 object-contain drop-shadow" />}
                               </div>
                             )}
                           </div>
@@ -1418,7 +1575,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                         {/* Skill Cost Slider — single slider, disabled unless All or Battle Skills */}
                         <div className="mb-4">
                           <div className={`text-[10px] mb-2 ${filterSkillType === "all" || filterSkillType === "battle" ? "text-gray-500" : "text-gray-600"}`}>
-                            Skill Cost (SP): {filterSkillCost === 0 ? "Any" : `${filterSkillCost}+`}
+                            Skill Cost (SP): {filterSkillCost},85+
                           </div>
                           <div className="flex items-center gap-3">
                             <span className="text-[10px] text-gray-500 w-4 text-right">0</span>
@@ -1441,7 +1598,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                               ? [["all","ALL"],["secret","Secret Skills"],["battle","Battle Skills"],["trait","Trait"],["valor","Valor Trait"]] as const
                               : [["all","ALL"],["secret","Secret Skills"],["battle","Battle Skills"],["trait","Trait"],["valor","Valor Trait"]] as const
                             ).map(([k, l]) => (
-                              <button key={k} onClick={() => { setFilterSkillType(k as any); if (k !== "all" && k !== "battle") setFilterSkillCost([0, 100]) }}
+                              <button key={k} onClick={() => { setFilterSkillType(k as any); if (k !== "all" && k !== "battle") setFilterSkillCost(0) }}
                                 className={`px-2.5 py-1.5 rounded text-[11px] border flex items-center gap-1.5 transition-all ${filterSkillType === k ? "bg-teal-600/30 border-teal-400/70 text-white" : "bg-white/5 border-white/15 text-gray-400 hover:bg-white/10"}`}>
                                 {filterSkillType === k && <span className="text-teal-400 text-[10px]">✓</span>}
                                 <span>{l}</span>
@@ -1595,8 +1752,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
   // Main cards use frame aspect (264/628). Side slots + heartprint combined
   // height equals main card height. We calculate this using CSS.
   //
-  const MAIN_CARD_WIDTH = "clamp(135px, 16vw, 200px)"
-  const SIDE_SLOT_WIDTH = "clamp(95px, 11.5vw, 138px)"
+  const MAIN_CARD_WIDTH = "clamp(110px, 12vw, 155px)"
+  const SIDE_SLOT_WIDTH = "clamp(78px, 8.5vw, 109px)"
   const FRAME_W = 264, FRAME_H = 628
   // All cards use the same 264:628 aspect ratio for consistency
   const MAIN_ASPECT = 264 / 628
@@ -1631,22 +1788,43 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
   const assistSkill = protSubChar?.skills.find((s) => s.slot === "assist_leader_skill") ?? null
   const selectedHp = heartPrintId ? heartprints.find(h => h.heartprint_id === heartPrintId) ?? null : null
 
+  // ── EP Calculation ──
+  const teamEP = useMemo(() => {
+    const slots: TeamSlotInput[] = [0, 1, 2, 3].map((i) => {
+      const mainChar = mainSlots[i] ? characters.find(c => c.master_pc_id === mainSlots[i]) ?? null : null
+      const subChar = subSlots[i] ? characters.find(c => c.master_pc_id === subSlots[i]) ?? null : null
+      const eq = equipSlots[`main${i}`] ?? {}
+      const weapon = eq.weapon ? equipment.find(e => e.id === eq.weapon) ?? null : null
+      const armor = eq.armor ? equipment.find(e => e.id === eq.armor) ?? null : null
+      const accessory = eq.accessory ? equipment.find(e => e.id === eq.accessory) ?? null : null
+      return { mainChar, subChar, weapon, armor, accessory }
+    })
+    // Side slots
+    const sideInputs: TeamSlotInput[] = [0, 1].map((i) => {
+      const mainChar = sideSlots[i] ? characters.find(c => c.master_pc_id === sideSlots[i]) ?? null : null
+      const subChar = sideSubSlots[i] ? characters.find(c => c.master_pc_id === sideSubSlots[i]) ?? null : null
+      const eq = equipSlots[`side${i}`] ?? {}
+      const weapon = eq.weapon ? equipment.find(e => e.id === eq.weapon) ?? null : null
+      const armor = eq.armor ? equipment.find(e => e.id === eq.armor) ?? null : null
+      const accessory = eq.accessory ? equipment.find(e => e.id === eq.accessory) ?? null : null
+      return { mainChar, subChar, weapon, armor, accessory }
+    })
+    return calcTeamEP([...slots, ...sideInputs])
+  }, [mainSlots, subSlots, sideSlots, sideSubSlots, equipSlots, characters, equipment])
+
   return (
-    <div className="w-full flex flex-col items-center px-4">
+    <div className="w-full flex flex-col items-center px-2 sm:px-4">
 
       {/* ── HEADER ── */}
-      <div className="w-full flex items-end justify-center mb-3 select-none gap-3">
-        {/* Left slime — smaller than logo, aligned to bottom */}
+      <div className="w-full flex items-end justify-center mb-3 select-none gap-2 sm:gap-3">
         <img src="/brand/battleSlime16.png" alt=""
-          className="h-16 object-contain pointer-events-none drop-shadow-lg"
+          className="h-10 sm:h-16 object-contain pointer-events-none drop-shadow-lg"
           onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-        {/* Center logo — larger */}
         <img src="/brand/Logo.png" alt="Tensura Memories"
-          className="h-28 object-contain drop-shadow-xl"
+          className="h-20 sm:h-28 object-contain drop-shadow-xl"
           onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-        {/* Right splash slime — smaller than logo, aligned to bottom */}
         <img src="/brand/battleSplashB_02.png" alt=""
-          className="h-16 object-contain pointer-events-none drop-shadow-lg"
+          className="h-10 sm:h-16 object-contain pointer-events-none drop-shadow-lg"
           onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
       </div>
 
@@ -1657,7 +1835,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       {(leaderSkill || assistSkill) && (
         <div className="mb-3 rounded-lg overflow-hidden text-xs"
           style={{
-            width: "calc(4 * clamp(135px, 16vw, 200px) + 2 * clamp(95px, 11.5vw, 138px) + 32px)",
+            width: "calc(4 * clamp(110px, 12vw, 155px) + 2 * clamp(78px, 8.5vw, 109px) + 32px)",
             maxWidth: "100%",
             background: "rgba(8,12,22,0.92)", border: "1px solid rgba(255,255,255,0.08)"
           }}>
@@ -1697,15 +1875,18 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
         </div>
       )}
 
-        {/* Main container - all items top-aligned */}
-        <div ref={cardsRef} className="flex flex-nowrap gap-1.5 items-start overflow-x-auto pb-4">
+        {/* Main container - horizontally scrollable on mobile, centered on desktop */}
+        <div className="w-full overflow-x-auto" style={{ WebkitOverflowScrolling: "touch" }}>
+        <div ref={cardsRef} className="flex flex-nowrap gap-1 sm:gap-1.5 items-start pb-4 mx-auto w-fit">
 
         {/* 4 main character slots */}
-        {[0, 1, 2, 3].map((i) => (
+        {[0, 1, 2, 3].map((i) => {
+          return (
           <div key={i} className="flex-shrink-0" style={{ width: MAIN_CARD_WIDTH }}>
             <MainSlotCard i={i} />
           </div>
-        ))}
+          )
+        })}
 
         {/* Right panel: 2 side slots side-by-side + heartprint below */}
         {/* Height matches main card height using aspect ratio calc */}
@@ -1718,11 +1899,13 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
         >
           {/* 2 side slots in a row — each uses 264:628 aspect ratio, determines row height */}
           <div className="flex gap-2 flex-shrink-0">
-            {[0, 1].map((i) => (
+            {[0, 1].map((i) => {
+              return (
               <div key={i} className="flex-1 min-w-0">
                 <SideSlotCard i={i} />
               </div>
-            ))}
+              )
+            })}
           </div>
 
           {/* Heartprint skill slot — fills remaining height below side slots */}
@@ -1761,15 +1944,28 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
         </div>
 
         </div>
+        </div>
       </div>
+
+      {/* EP bar hidden until formula is confirmed */}
+      {false && teamEP.total > 0 && (
+        <div className="mt-2 flex items-center justify-center gap-2 px-4 py-1.5 rounded-lg select-none"
+          style={{ background: "linear-gradient(135deg, rgba(20,28,44,0.9), rgba(12,20,35,0.95))", border: "1px solid rgba(200,170,80,0.25)" }}>
+          <img src={getEPRankIcon(teamEP.total)} alt=""
+            className="w-8 h-8 object-contain drop-shadow"
+            onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+          <span className="text-[11px] text-amber-400/80 font-semibold uppercase tracking-wider">Troop EP</span>
+          <span className="text-base text-amber-200 font-bold tabular-nums tracking-wide">{teamEP.total.toLocaleString()}</span>
+        </div>
+      )}
 
 
 
       {/* ── ACTION BUTTONS ── */}
-      <div className="mt-4 flex items-center gap-3">
+      <div className="mt-4 flex items-center gap-2 sm:gap-3 flex-wrap justify-center">
         <button
           onClick={savePng}
-          className="flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
+          className="flex items-center gap-2 px-4 sm:px-5 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
           style={{ background: "linear-gradient(135deg, #1e3a5f 0%, #0f2236 100%)", border: "1px solid rgba(100,160,255,0.3)" }}
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
@@ -1777,7 +1973,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
         </button>
         <button
           onClick={openEquipModal}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
+          className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
           style={{ background: "linear-gradient(135deg, #3a1e5f 0%, #22103f 100%)", border: "1px solid rgba(180,100,255,0.3)" }}
         >
           <img src="/UI/Texture/QuestAtlas/icBtnEquip.png" alt="" className="w-5 h-5 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
@@ -1791,86 +1987,145 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       {showEquipModal && (
         <div className="fixed inset-0 z-50 flex" role="dialog" aria-modal="true">
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setShowEquipModal(false)} />
-          <div className="relative z-50 m-auto flex flex-col max-h-[95vh] w-[95vw] max-w-5xl rounded-xl overflow-hidden shadow-2xl"
+          <div className="relative z-50 m-auto flex flex-col max-h-[95vh] w-[98vw] sm:w-[95vw] max-w-5xl rounded-xl overflow-hidden shadow-2xl"
             style={{ background: "linear-gradient(180deg, #0c1929 0%, #111d2e 100%)" }}>
             {/* Header */}
             <div className="flex items-center gap-2 px-4 py-2.5 border-b border-white/10 shrink-0">
               <img src="/UI/Texture/QuestAtlas/icBtnEquip.png" alt="" className="w-5 h-5 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
-              <span className="text-[12px] font-semibold text-white/90 uppercase tracking-wider">Equipment & Charms</span>
+              <span className="text-[12px] font-semibold text-white/90 uppercase tracking-wider">Equipment &amp; Charms</span>
               <div className="flex-1" />
+              <button
+                onClick={autoEquipAll}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded text-[11px] font-semibold transition-all bg-amber-700/40 hover:bg-amber-600/50 text-amber-200 border border-amber-500/30"
+                title="Auto-assign best equipment to all battle characters">
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                Auto Equip
+              </button>
               <button onClick={() => setShowEquipModal(false)} className="w-8 h-8 flex items-center justify-center rounded bg-white/5 hover:bg-white/10 text-gray-400 shrink-0">✕</button>
             </div>
 
-            <div className="flex flex-1 min-h-0 overflow-hidden">
+            <div className="flex flex-col sm:flex-row flex-1 min-h-0 overflow-hidden">
               {/* LEFT: Characters + Slots */}
-              <div className="w-[38%] min-w-[220px] max-w-[340px] border-r border-white/10 overflow-y-auto shrink-0">
-                {equipModalChars.length === 0 && (
+              <div className="w-full sm:w-[40%] sm:min-w-[260px] sm:max-w-[380px] border-b sm:border-b-0 sm:border-r border-white/10 overflow-y-auto shrink-0 max-h-[40vh] sm:max-h-none">
+                {equipModalGroups.length === 0 && (
                   <div className="flex items-center justify-center h-full text-[11px] text-gray-500 p-6 text-center">
                     Add characters to your team first
                   </div>
                 )}
-                {equipModalChars.map(({ slotKey, label, charId, isProt }) => {
-                  const ch = characters.find(c => c.master_pc_id === charId) ?? null
-                  if (!ch) return null
-                  const isActiveRow = activeEquipSlot?.slotKey === slotKey
-                  const selectedSkillId = charmSlots[slotKey] ?? null
-                  const selectedFlatCharm = selectedSkillId ? flatCharms.find(fc => fc.skill_id === selectedSkillId) ?? null : null
-                  const slots = getEquipRecord(slotKey)
 
-                  return (
-                    <div key={slotKey} className={`px-3 py-2.5 border-b border-white/[0.06] transition-colors ${isActiveRow ? (isProt ? "bg-purple-950/20" : "bg-sky-950/20") : ""}`}>
-                      <div className="flex items-center gap-2 mb-2">
-                        <img src={toPublicAssetPath(ch.images.icon)} alt={ch.name} className="w-8 h-8 rounded object-cover" />
-                        <div className="min-w-0">
-                          <div className={`text-[10px] font-semibold truncate ${isProt ? "text-purple-300" : "text-cyan-300"}`}>{ch.name}</div>
-                          <div className="text-[9px] text-gray-500">{label}</div>
+                {/* Section headers + grouped rows */}
+                {(() => {
+                  const protGroups = equipModalGroups.filter(g => g.isProtGroup)
+                  const battleGroups = equipModalGroups.filter(g => !g.isProtGroup)
+
+                  function renderEntry(entry: EquipSlotEntry, isSub: boolean) {
+                    const ch = characters.find(c => c.master_pc_id === entry.charId) ?? null
+                    if (!ch) return null
+                    const isActiveRow = activeEquipSlot?.slotKey === entry.slotKey
+                    const selectedSkillId = charmSlots[entry.slotKey] ?? null
+                    const selectedFlatCharm = selectedSkillId ? flatCharms.find(fc => fc.skill_id === selectedSkillId) ?? null : null
+                    const slots = getEquipRecord(entry.slotKey)
+                    const isProtChar = entry.isProt
+
+                    return (
+                      <div key={entry.slotKey}
+                        className={`px-3 py-2.5 border-b border-white/[0.06] transition-colors ${isActiveRow ? (isProtChar ? "bg-purple-950/20" : "bg-sky-950/20") : ""} ${isSub ? "pl-9 bg-white/[0.015]" : ""}`}>
+                        {/* Sub-slot indicator tab */}
+                        {isSub && (
+                          <div className="flex items-center gap-1 mb-1.5">
+                            <div className="w-2 h-px bg-white/20" />
+                            <span className="text-[8px] text-white/30 uppercase tracking-widest">Sub Slot</span>
+                          </div>
+                        )}
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className={`relative overflow-hidden rounded ${isSub ? "w-9 h-9" : "w-11 h-11"}`}>
+                            <img src={toPublicAssetPath(ch.images.icon)} alt={ch.name} className="absolute inset-0 w-full h-full object-cover object-top" />
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <div className={`font-semibold truncate ${isSub ? "text-[9px]" : "text-[10px]"} ${isProtChar ? "text-purple-300" : "text-cyan-300"}`}>{ch.name}</div>
+                            {ch.weapon_type && !isProtChar && (
+                              <div className="flex items-center gap-1 mt-0.5">
+                                {WEAPON_ICONS[ch.weapon_type] && <img src={WEAPON_ICONS[ch.weapon_type]} alt="" className="w-3 h-3 object-contain opacity-60" />}
+                                <span className="text-[8px] text-gray-500">{ch.weapon_type}</span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          {isProtChar ? (
+                            <div className="flex flex-col items-center gap-0.5">
+                              <button
+                                onClick={() => { setActiveEquipSlot({ slotKey: entry.slotKey, type: "charm" }); setEquipQuery(""); setEquipFilterRarity(null); setEquipHoveredId(null) }}
+                                className={`w-14 h-14 rounded border flex items-center justify-center transition-all overflow-hidden relative ${activeEquipSlot?.slotKey === entry.slotKey && activeEquipSlot?.type === "charm" ? "border-purple-400 ring-1 ring-purple-400/50 bg-purple-900/20" : "border-white/10 bg-white/[0.03] hover:bg-white/[0.08]"}`}
+                                title="Charm">
+                                {selectedFlatCharm ? (() => {
+                                  const match = selectedFlatCharm.image_path?.match(/\/(\d+)\//)
+                                  const img = match ? `/Equip/Accessory/${match[1]}/Accessory_${match[1]}_AccessoryM.png` : null
+                                  return img ? <img src={img} alt="" className="w-12 h-12 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} /> : <span className="text-purple-300/50 text-lg">♦</span>
+                                })() : (
+                                  <span className="text-white/30 text-2xl">+</span>
+                                )}
+                              </button>
+                              <span className="text-[8px] text-gray-500">Charm</span>
+                            </div>
+                          ) : (
+                            (["weapon", "armor", "accessory"] as const).map(eqType => {
+                              const eqId = slots[eqType]
+                              const eq = eqId ? equipment.find(e => e.id === eqId) ?? null : null
+                              const isActive = activeEquipSlot?.slotKey === entry.slotKey && activeEquipSlot?.type === eqType
+                              return (
+                                <div key={eqType} className="flex flex-col items-center gap-0.5">
+                                  <button
+                                    onClick={() => { setActiveEquipSlot({ slotKey: entry.slotKey, type: eqType }); setEquipQuery(""); setEquipFilterRarity(null); setEquipHoveredId(null) }}
+                                    className={`w-14 h-14 rounded border flex items-center justify-center transition-all overflow-hidden ${isActive ? "border-sky-400 ring-1 ring-sky-400/50 bg-sky-900/20" : "border-white/10 bg-white/[0.03] hover:bg-white/[0.08]"}`}
+                                    title={eqType}>
+                                    {eq?.image ? (
+                                      <img src={eq.image} alt={eq.name} className="w-12 h-12 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                                    ) : (
+                                      <span className="text-white/30 text-2xl">+</span>
+                                    )}
+                                  </button>
+                                  <span className="text-[8px] text-gray-500 capitalize">{eqType}</span>
+                                </div>
+                              )
+                            })
+                          )}
                         </div>
                       </div>
-                      <div className="flex items-center gap-2">
-                        {isProt ? (
-                          /* Protectors get a charm slot */
-                          <div className="flex flex-col items-center gap-0.5">
-                            <button
-                              onClick={() => { setActiveEquipSlot({ slotKey, type: "charm" }); setEquipQuery(""); setEquipFilterRarity(null); setEquipHoveredId(null) }}
-                              className={`w-12 h-12 rounded border flex items-center justify-center transition-all overflow-hidden relative ${activeEquipSlot?.slotKey === slotKey && activeEquipSlot?.type === "charm" ? "border-purple-400 ring-1 ring-purple-400/50 bg-purple-900/20" : "border-white/10 bg-white/[0.03] hover:bg-white/[0.08]"}`}
-                              title="Charm">
-                              {selectedFlatCharm ? (() => {
-                                const match = selectedFlatCharm.image_path?.match(/\/(\d+)\//)
-                                const img = match ? `/Equip/Accessory/${match[1]}/Accessory_${match[1]}_AccessoryM.png` : null
-                                return img ? <img src={img} alt="" className="w-10 h-10 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} /> : <span className="text-purple-300/50 text-lg">♦</span>
-                              })() : (
-                                <span className="text-white/30 text-lg">+</span>
-                              )}
-                            </button>
-                            <span className="text-[8px] text-gray-500">Charm</span>
+                    )
+                  }
+
+                  return (
+                    <>
+                      {protGroups.length > 0 && (
+                        <>
+                          <div className="px-3 py-1.5 bg-purple-950/30 border-b border-purple-400/10 sticky top-0 z-10">
+                            <span className="text-[9px] font-bold text-purple-300/70 uppercase tracking-widest">Protection Character</span>
                           </div>
-                        ) : (
-                          /* Attackers get weapon/armor/accessory */
-                          (["weapon", "armor", "accessory"] as const).map(eqType => {
-                            const eqId = slots[eqType]
-                            const eq = eqId ? equipment.find(e => e.id === eqId) ?? null : null
-                            const isActive = activeEquipSlot?.slotKey === slotKey && activeEquipSlot?.type === eqType
-                            return (
-                              <div key={eqType} className="flex flex-col items-center gap-0.5">
-                                <button
-                                  onClick={() => { setActiveEquipSlot({ slotKey, type: eqType }); setEquipQuery(""); setEquipFilterRarity(null); setEquipHoveredId(null) }}
-                                  className={`w-12 h-12 rounded border flex items-center justify-center transition-all overflow-hidden ${isActive ? "border-sky-400 ring-1 ring-sky-400/50 bg-sky-900/20" : "border-white/10 bg-white/[0.03] hover:bg-white/[0.08]"}`}
-                                  title={eqType}>
-                                  {eq?.image ? (
-                                    <img src={eq.image} alt={eq.name} className="w-10 h-10 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
-                                  ) : (
-                                    <span className="text-white/30 text-lg">+</span>
-                                  )}
-                                </button>
-                                <span className="text-[8px] text-gray-500 capitalize">{eqType}</span>
-                              </div>
-                            )
-                          })
-                        )}
-                      </div>
-                    </div>
+                          {protGroups.map(g => (
+                            <div key={g.mainEntry?.slotKey ?? g.subEntry?.slotKey}>
+                              {g.mainEntry && renderEntry(g.mainEntry, false)}
+                              {g.subEntry && renderEntry(g.subEntry, true)}
+                            </div>
+                          ))}
+                        </>
+                      )}
+                      {battleGroups.length > 0 && (
+                        <>
+                          <div className="px-3 py-1.5 bg-sky-950/30 border-b border-sky-400/10 sticky top-0 z-10 mt-0">
+                            <span className="text-[9px] font-bold text-sky-300/70 uppercase tracking-widest">Battle Characters</span>
+                          </div>
+                          {battleGroups.map(g => (
+                            <div key={g.mainEntry?.slotKey ?? g.subEntry?.slotKey}>
+                              {g.mainEntry && renderEntry(g.mainEntry, false)}
+                              {g.subEntry && renderEntry(g.subEntry, true)}
+                            </div>
+                          ))}
+                        </>
+                      )}
+                    </>
                   )
-                })}
+                })()}
               </div>
 
               {/* RIGHT: Effects + Grid */}
