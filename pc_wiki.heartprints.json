@@ -10,6 +10,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Pomp and Circumstance",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 2,
       "display_character_id": 210000002000002,
       "passive_skill": {
         "passive_skill_id": 210000007000003,
@@ -704,6 +705,7 @@
       "release_label": "3.0.0_still_update",
       "title": "In Need of a Bath",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 2,
       "display_character_id": 210000002000004,
       "passive_skill": {
         "passive_skill_id": 210000007000002,
@@ -1398,6 +1400,7 @@
       "release_label": "3.0.0_still_update",
       "title": "How Are You Eating That!?",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 2,
       "display_character_id": 210000002000005,
       "passive_skill": {
         "passive_skill_id": 210000007000003,
@@ -2092,6 +2095,7 @@
       "release_label": "3.0.0_still_update",
       "title": "The Destined One",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 3,
       "display_character_id": 210000002000005,
       "passive_skill": {
         "passive_skill_id": 210000007000006,
@@ -2786,6 +2790,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Taste of Revival",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 2,
       "display_character_id": 210000002000001,
       "passive_skill": {
         "passive_skill_id": 210000007000005,
@@ -3480,6 +3485,7 @@
       "release_label": "3.0.0_still_update",
       "title": "It's Going to Snap!",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 3,
       "display_character_id": 210000002000008,
       "passive_skill": {
         "passive_skill_id": 210000007000007,
@@ -4174,6 +4180,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Thread That Cuts All",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 2,
       "display_character_id": 210000002000011,
       "passive_skill": {
         "passive_skill_id": 210000007000004,
@@ -4868,6 +4875,7 @@
       "release_label": "3.0.0_still_update",
       "title": "The Bellicose Dragoneye",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 2,
       "display_character_id": 210000002000012,
       "passive_skill": {
         "passive_skill_id": 210000007000001,
@@ -5562,6 +5570,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Hot Springs Are the Best",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 3,
       "display_character_id": 210000002000008,
       "passive_skill": {
         "passive_skill_id": 210000007000002,
@@ -6256,6 +6265,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Drago Buster",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 2,
       "display_character_id": 210000002000012,
       "passive_skill": {
         "passive_skill_id": 210000007000006,
@@ -6950,6 +6960,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Gift",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 2,
       "display_character_id": 210000002000022,
       "passive_skill": {
         "passive_skill_id": 210000007000006,
@@ -7644,6 +7655,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Wonders of Magic",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 2,
       "display_character_id": 210000002000013,
       "passive_skill": {
         "passive_skill_id": 210000007000007,
@@ -8338,6 +8350,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Past Sins",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 2,
       "display_character_id": 210000002000014,
       "passive_skill": {
         "passive_skill_id": 210000007000008,
@@ -9032,6 +9045,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Glad You're Safe",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 2,
       "display_character_id": 210000002000001,
       "passive_skill": {
         "passive_skill_id": 210000007000004,
@@ -9726,6 +9740,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Evolution to Demon Lord",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 3,
       "display_character_id": 210000002000001,
       "passive_skill": {
         "passive_skill_id": 210000007000001,
@@ -10420,6 +10435,7 @@
       "release_label": "3.0.0_still_update",
       "title": "You Can Go Home",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 2,
       "display_character_id": 210000002000015,
       "passive_skill": {
         "passive_skill_id": 210000007000007,
@@ -11114,6 +11130,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Chef",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 2,
       "display_character_id": 210000002000010,
       "passive_skill": {
         "passive_skill_id": 210000007000003,
@@ -11808,6 +11825,7 @@
       "release_label": "202602_event_soukai_no_namida_start",
       "title": "Close Call",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
       "display_character_id": 210000002000001,
       "passive_skill": {
         "passive_skill_id": 210000007000003,
@@ -12502,6 +12520,7 @@
       "release_label": "202602_event_soukai_no_namida_start",
       "title": "A Perfect Vacation Day",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
       "display_character_id": 210000002000004,
       "passive_skill": {
         "passive_skill_id": 210000007000007,
@@ -13196,6 +13215,7 @@
       "release_label": "202602_event_soukai_no_namida2_start",
       "title": "Divine Desserts",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
       "display_character_id": 210000002000012,
       "passive_skill": {
         "passive_skill_id": 210000007000002,
@@ -13890,6 +13910,7 @@
       "release_label": "3.0.0_still_update",
       "title": "As an Older Sister",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 3,
       "display_character_id": 210000002000016,
       "passive_skill": {
         "passive_skill_id": 210000007000008,
@@ -14584,6 +14605,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Vampire Progenitor's True Form",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 3,
       "display_character_id": 210000002000017,
       "passive_skill": {
         "passive_skill_id": 210000007000004,
@@ -15278,6 +15300,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Hinata, Promoted to Captain of Crusaders",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 2,
       "display_character_id": 210000002000018,
       "passive_skill": {
         "passive_skill_id": 210000007000001,
@@ -15972,6 +15995,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Geld's Worries",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 2,
       "display_character_id": 210000002000023,
       "passive_skill": {
         "passive_skill_id": 210000007000002,
@@ -16666,6 +16690,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Emotional Reunion",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 2,
       "display_character_id": 210000002000026,
       "passive_skill": {
         "passive_skill_id": 210000007000008,
@@ -17360,6 +17385,7 @@
       "release_label": "3.0.0_still_update",
       "title": "The Hero's Party",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 3,
       "display_character_id": 210000002000024,
       "passive_skill": {
         "passive_skill_id": 210000007000005,
@@ -18054,6 +18080,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Fruits of Research",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 2,
       "display_character_id": 210000002000025,
       "passive_skill": {
         "passive_skill_id": 210000007000005,
@@ -18748,6 +18775,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Glimpse From the Water",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
       "display_character_id": 210000002000001,
       "passive_skill": {
         "passive_skill_id": 210000007000002,
@@ -19442,6 +19470,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Mirror World Encounters",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
       "display_character_id": 210000002000001,
       "passive_skill": {
         "passive_skill_id": 210000007000005,
@@ -20136,6 +20165,7 @@
       "release_label": "3.0.0_still_update",
       "title": "One's Ideals",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
       "display_character_id": 210000002000006,
       "passive_skill": {
         "passive_skill_id": 210000007000001,
@@ -20830,6 +20860,7 @@
       "release_label": "3.0.0_still_update",
       "title": "The Mirror Feeding Drama",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
       "display_character_id": 210000002000009,
       "passive_skill": {
         "passive_skill_id": 210000007000004,
@@ -21524,6 +21555,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Dress-Up Slime",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
       "display_character_id": 210000002000010,
       "passive_skill": {
         "passive_skill_id": 210000007000003,
@@ -22218,6 +22250,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Composed Smile",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
       "display_character_id": 210000002000006,
       "passive_skill": {
         "passive_skill_id": 210000007000007,
@@ -22912,6 +22945,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Awakened Shinsha",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
       "display_character_id": 210000002000009,
       "passive_skill": {
         "passive_skill_id": 210000007000006,
@@ -23606,6 +23640,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Unexpected Challenge",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
       "display_character_id": 210000002000019,
       "passive_skill": {
         "passive_skill_id": 210000007000008,
@@ -24300,6 +24335,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Send Some Over",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
       "display_character_id": 210000002000020,
       "passive_skill": {
         "passive_skill_id": 210000007000003,
@@ -24994,6 +25030,7 @@
       "release_label": "3.0.0_still_update",
       "title": "Valor Cup Begins",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
       "display_character_id": 210000002000001,
       "passive_skill": {
         "passive_skill_id": 210000007000008,
@@ -25688,6 +25725,7 @@
       "release_label": "202604_event_questioner_and_answerer_start",
       "title": "Anime Tie-in Quiz Part 1",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
       "display_character_id": 210000002000015,
       "passive_skill": {
         "passive_skill_id": 210000007000001,
@@ -26382,6 +26420,7 @@
       "release_label": "202604_event_questioner_and_answerer_start",
       "title": "Anime Tie-in Quiz Part 2",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
       "display_character_id": 210000002000018,
       "passive_skill": {
         "passive_skill_id": 210000007000005,
@@ -27076,6 +27115,7 @@
       "release_label": "202604_event_questioner_and_answerer_start",
       "title": "Anime Tie-in Quiz Part 3",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
       "display_character_id": 210000002000001,
       "passive_skill": {
         "passive_skill_id": 210000007000004,
@@ -28049,6 +28089,7 @@
       "release_label": "202602_event_time_valentine_start",
       "title": "Three Girls in Love",
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
       "display_character_id": 210000002000014,
       "passive_skill": {
         "passive_skill_id": 210000007000008,
