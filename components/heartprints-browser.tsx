@@ -15,14 +15,28 @@ function heartprintLarge(picturePath: string): string {
   return "/" + picturePath.replace(/^Image\//, "").replace("{0}", "L") + ".png"
 }
 
-function StatPill({ label, value }: { label: string; value: number }) {
+function StatPill({ label, value, pct = false }: { label: string; value: number; pct?: boolean }) {
   if (!value) return null
+  const display = pct ? `${(value / 100).toFixed(2)}%` : value.toLocaleString()
   return (
     <span className="inline-flex items-center gap-1 rounded bg-gray-700/60 px-2 py-0.5 text-xs text-gray-200">
       <span className="text-gray-400">{label}</span>
-      <span className="font-semibold text-white">+{value.toLocaleString()}</span>
+      <span className="font-semibold text-white">+{display}</span>
     </span>
   )
+}
+
+const ELEMENT_NAMES: Record<number, string> = {
+  1: "Earth", 2: "Space", 3: "Wind", 4: "Water", 5: "Fire", 6: "Light", 7: "Dark",
+}
+
+function elementSkillDesc(hp: Heartprint): string | null {
+  if (hp.still_type !== "normal" || !hp.passive_skill?.target_type) return null
+  const targetType = hp.passive_skill.target_type
+  if (!hp.passive_skill_level) return null
+  if (targetType === 90) return `Increases Protection Characters effect level by ${hp.passive_skill_level}`
+  const elem = ELEMENT_NAMES[targetType] ?? String(targetType)
+  return `Increases ${elem} Attribute effect level by ${hp.passive_skill_level}`
 }
 
 function HeartprintCard({ hp, onClick }: { hp: Heartprint; onClick: () => void }) {
@@ -35,7 +49,9 @@ function HeartprintCard({ hp, onClick }: { hp: Heartprint; onClick: () => void }
     ? hp.passive_skill?.levels[hp.passive_skill.levels.length - 1]
     : null
 
-  const desc = hp.skill_description ? stripColorTags(hp.skill_description) : null
+  const desc = isEquipable
+    ? (hp.skill_description ? stripColorTags(hp.skill_description) : null)
+    : elementSkillDesc(hp)
 
   return (
     <button
@@ -62,9 +78,9 @@ function HeartprintCard({ hp, onClick }: { hp: Heartprint; onClick: () => void }
         {/* Passive max stats (not-equipable only) */}
         {maxLevel && (
           <div className="flex flex-wrap gap-1 mt-auto pt-1">
-            <StatPill label="HP" value={maxLevel.hp} />
-            <StatPill label="ATK" value={maxLevel.attack} />
-            <StatPill label="DEF" value={maxLevel.defense} />
+            <StatPill label="HP" value={maxLevel.hp} pct />
+            <StatPill label="ATK" value={maxLevel.attack} pct />
+            <StatPill label="DEF" value={maxLevel.defense} pct />
           </div>
         )}
       </div>
@@ -76,15 +92,27 @@ function HeartprintModal({ hp, onClose }: { hp: Heartprint; onClose: () => void 
   const large = heartprintLarge(hp.picture_path)
   // rare = equipable (active skill), normal = not equipable (passive stats)
   const isEquipable = hp.still_type === "rare"
-  const desc = hp.skill_description ? stripColorTags(hp.skill_description) : null
+  const desc = isEquipable
+    ? (hp.skill_description ? stripColorTags(hp.skill_description) : null)
+    : elementSkillDesc(hp)
 
   // Non-equipable normals show passive stats
   const maxLevel = !isEquipable
     ? hp.passive_skill?.levels[hp.passive_skill.levels.length - 1]
     : null
 
-  const exEffect = !isEquipable
-    ? hp.passive_skill?.ex_effects[hp.passive_skill.ex_effects.length - 1]
+  // Sum all milestone entries for cumulative totals at max level
+  const exTotals = !isEquipable && hp.passive_skill?.ex_effects?.length
+    ? hp.passive_skill.ex_effects.reduce(
+        (acc, e) => ({
+          critical:    acc.critical    + (e.critical    ?? 0),
+          penetration: acc.penetration + (e.penetration ?? 0),
+          cooperation: acc.cooperation + (e.cooperation ?? 0),
+          defcritical: acc.defcritical + (e.defcritical ?? 0),
+          element:     acc.element     + (e.element     ?? 0),
+        }),
+        { critical: 0, penetration: 0, cooperation: 0, defcritical: 0, element: 0 }
+      )
     : null
 
   return (
@@ -124,25 +152,25 @@ function HeartprintModal({ hp, onClose }: { hp: Heartprint; onClose: () => void 
                 Max Level Stats (Lv.{maxLevel.level})
               </p>
               <div className="flex flex-wrap gap-2">
-                {maxLevel.hp > 0 && <StatPill label="HP" value={maxLevel.hp} />}
-                {maxLevel.attack > 0 && <StatPill label="ATK" value={maxLevel.attack} />}
-                {maxLevel.defense > 0 && <StatPill label="DEF" value={maxLevel.defense} />}
+                {maxLevel.hp > 0 && <StatPill label="HP" value={maxLevel.hp} pct />}
+                {maxLevel.attack > 0 && <StatPill label="ATK" value={maxLevel.attack} pct />}
+                {maxLevel.defense > 0 && <StatPill label="DEF" value={maxLevel.defense} pct />}
               </div>
             </div>
           )}
 
-          {/* Not-equipable normals: EX effects */}
-          {!isEquipable && exEffect && (
+          {/* Not-equipable normals: EX effects (cumulative totals) */}
+          {!isEquipable && exTotals && (
             <div>
               <p className="text-xs text-gray-500 uppercase tracking-wide mb-1.5">
-                Max EX Effects (Lv.{exEffect.level})
+                EX Effects (Max Level Totals)
               </p>
               <div className="flex flex-wrap gap-2">
-                {exEffect.critical > 0 && <StatPill label="Crit" value={exEffect.critical} />}
-                {exEffect.penetration > 0 && <StatPill label="Pen" value={exEffect.penetration} />}
-                {exEffect.cooperation > 0 && <StatPill label="Coop" value={exEffect.cooperation} />}
-                {exEffect.defcritical > 0 && <StatPill label="DefCrit" value={exEffect.defcritical} />}
-                {exEffect.element > 0 && <StatPill label="Elem" value={exEffect.element} />}
+                {exTotals.critical    > 0 && <StatPill label="Critical Damage" value={exTotals.critical}    pct />}
+                {exTotals.penetration > 0 && <StatPill label="Pierce Power"    value={exTotals.penetration} pct />}
+                {exTotals.cooperation > 0 && <StatPill label="Synergy Power"   value={exTotals.cooperation} pct />}
+                {exTotals.defcritical > 0 && <StatPill label="Aegis Power"     value={exTotals.defcritical} pct />}
+                {exTotals.element     > 0 && <StatPill label="Element"         value={exTotals.element}     pct />}
               </div>
             </div>
           )}

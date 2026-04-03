@@ -194,6 +194,7 @@ export type Heartprint = {
   release_label: string
   title: string
   skill_description: string | null
+  passive_skill_level?: number
   display_character_id: number
   // normal only
   passive_skill?: HeartprintPassiveSkill
