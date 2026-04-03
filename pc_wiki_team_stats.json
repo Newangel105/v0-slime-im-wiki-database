@@ -1,0 +1,1016 @@
+{
+  "level_max_add": {
+    "1501": {
+      "level": 120,
+      "add_hp": 3259,
+      "add_attack": 1407,
+      "add_defense": 1407
+    },
+    "1502": {
+      "level": 120,
+      "add_hp": 3162,
+      "add_attack": 1551,
+      "add_defense": 1159
+    },
+    "1503": {
+      "level": 120,
+      "add_hp": 3162,
+      "add_attack": 1159,
+      "add_defense": 1943
+    },
+    "1511": {
+      "level": 120,
+      "add_hp": 2092,
+      "add_attack": 901,
+      "add_defense": 901
+    },
+    "1512": {
+      "level": 120,
+      "add_hp": 1993,
+      "add_attack": 998,
+      "add_defense": 746
+    },
+    "1513": {
+      "level": 120,
+      "add_hp": 1993,
+      "add_attack": 746,
+      "add_defense": 1250
+    },
+    "1521": {
+      "level": 120,
+      "add_hp": 3827,
+      "add_attack": 1494,
+      "add_defense": 1494
+    },
+    "1522": {
+      "level": 120,
+      "add_hp": 3792,
+      "add_attack": 1518,
+      "add_defense": 1458
+    },
+    "1523": {
+      "level": 120,
+      "add_hp": 3792,
+      "add_attack": 1458,
+      "add_defense": 1579
+    },
+    "1401": {
+      "level": 120,
+      "add_hp": 2365,
+      "add_attack": 1019,
+      "add_defense": 1019
+    },
+    "1402": {
+      "level": 120,
+      "add_hp": 2266,
+      "add_attack": 1127,
+      "add_defense": 843
+    },
+    "1403": {
+      "level": 120,
+      "add_hp": 2266,
+      "add_attack": 843,
+      "add_defense": 1412
+    },
+    "1411": {
+      "level": 120,
+      "add_hp": 2182,
+      "add_attack": 940,
+      "add_defense": 940
+    },
+    "1412": {
+      "level": 120,
+      "add_hp": 2083,
+      "add_attack": 1041,
+      "add_defense": 778
+    },
+    "1413": {
+      "level": 120,
+      "add_hp": 2083,
+      "add_attack": 962,
+      "add_defense": 936
+    },
+    "1301": {
+      "level": 120,
+      "add_hp": 2345,
+      "add_attack": 875,
+      "add_defense": 1051
+    },
+    "1302": {
+      "level": 120,
+      "add_hp": 2112,
+      "add_attack": 992,
+      "add_defense": 913
+    },
+    "1303": {
+      "level": 120,
+      "add_hp": 2112,
+      "add_attack": 788,
+      "add_defense": 1320
+    },
+    "1311": {
+      "level": 100,
+      "add_hp": 967,
+      "add_attack": 413,
+      "add_defense": 413
+    },
+    "1312": {
+      "level": 100,
+      "add_hp": 868,
+      "add_attack": 466,
+      "add_defense": 349
+    },
+    "1313": {
+      "level": 100,
+      "add_hp": 868,
+      "add_attack": 349,
+      "add_defense": 582
+    },
+    "2501": {
+      "level": 120,
+      "add_hp": 1602,
+      "add_attack": 690,
+      "add_defense": 690
+    },
+    "2502": {
+      "level": 120,
+      "add_hp": 1509,
+      "add_attack": 765,
+      "add_defense": 572
+    },
+    "2503": {
+      "level": 120,
+      "add_hp": 1509,
+      "add_attack": 572,
+      "add_defense": 958
+    },
+    "2511": {
+      "level": 120,
+      "add_hp": 1115,
+      "add_attack": 479,
+      "add_defense": 479
+    },
+    "2512": {
+      "level": 120,
+      "add_hp": 1020,
+      "add_attack": 534,
+      "add_defense": 400
+    },
+    "2513": {
+      "level": 120,
+      "add_hp": 1020,
+      "add_attack": 400,
+      "add_defense": 668
+    },
+    "2521": {
+      "level": 120,
+      "add_hp": 1850,
+      "add_attack": 796,
+      "add_defense": 796
+    },
+    "2522": {
+      "level": 120,
+      "add_hp": 1736,
+      "add_attack": 883,
+      "add_defense": 660
+    },
+    "2523": {
+      "level": 120,
+      "add_hp": 1736,
+      "add_attack": 660,
+      "add_defense": 1106
+    },
+    "2401": {
+      "level": 120,
+      "add_hp": 1175,
+      "add_attack": 505,
+      "add_defense": 505
+    },
+    "2402": {
+      "level": 120,
+      "add_hp": 1081,
+      "add_attack": 563,
+      "add_defense": 421
+    },
+    "2403": {
+      "level": 120,
+      "add_hp": 1081,
+      "add_attack": 421,
+      "add_defense": 704
+    },
+    "2411": {
+      "level": 120,
+      "add_hp": 1084,
+      "add_attack": 465,
+      "add_defense": 465
+    },
+    "2412": {
+      "level": 120,
+      "add_hp": 989,
+      "add_attack": 519,
+      "add_defense": 389
+    },
+    "2413": {
+      "level": 120,
+      "add_hp": 989,
+      "add_attack": 389,
+      "add_defense": 650
+    },
+    "2301": {
+      "level": 120,
+      "add_hp": 1117,
+      "add_attack": 479,
+      "add_defense": 479
+    },
+    "2302": {
+      "level": 120,
+      "add_hp": 1022,
+      "add_attack": 535,
+      "add_defense": 400
+    },
+    "2303": {
+      "level": 120,
+      "add_hp": 1022,
+      "add_attack": 400,
+      "add_defense": 669
+    },
+    "2311": {
+      "level": 120,
+      "add_hp": 944,
+      "add_attack": 405,
+      "add_defense": 405
+    },
+    "2312": {
+      "level": 120,
+      "add_hp": 849,
+      "add_attack": 453,
+      "add_defense": 339
+    },
+    "2313": {
+      "level": 120,
+      "add_hp": 849,
+      "add_attack": 339,
+      "add_defense": 567
+    },
+    "1421": {
+      "level": 120,
+      "add_hp": 3785,
+      "add_attack": 723,
+      "add_defense": 723
+    },
+    "1422": {
+      "level": 120,
+      "add_hp": 3557,
+      "add_attack": 822,
+      "add_defense": 617
+    },
+    "1423": {
+      "level": 120,
+      "add_hp": 3557,
+      "add_attack": 617,
+      "add_defense": 1028
+    },
+    "1531": {
+      "level": 120,
+      "add_hp": 2202,
+      "add_attack": 946,
+      "add_defense": 946
+    },
+    "1532": {
+      "level": 120,
+      "add_hp": 2039,
+      "add_attack": 1061,
+      "add_defense": 783
+    },
+    "1533": {
+      "level": 120,
+      "add_hp": 2059,
+      "add_attack": 821,
+      "add_defense": 1253
+    },
+    "2531": {
+      "level": 120,
+      "add_hp": 1234,
+      "add_attack": 533,
+      "add_defense": 533
+    },
+    "2532": {
+      "level": 120,
+      "add_hp": 1012,
+      "add_attack": 607,
+      "add_defense": 464
+    },
+    "2533": {
+      "level": 120,
+      "add_hp": 1046,
+      "add_attack": 482,
+      "add_defense": 701
+    },
+    "1541": {
+      "level": 120,
+      "add_hp": 2242,
+      "add_attack": 966,
+      "add_defense": 966
+    },
+    "1542": {
+      "level": 120,
+      "add_hp": 2079,
+      "add_attack": 1081,
+      "add_defense": 803
+    },
+    "1543": {
+      "level": 120,
+      "add_hp": 2099,
+      "add_attack": 841,
+      "add_defense": 1273
+    },
+    "2541": {
+      "level": 120,
+      "add_hp": 1242,
+      "add_attack": 541,
+      "add_defense": 541
+    },
+    "2542": {
+      "level": 120,
+      "add_hp": 1020,
+      "add_attack": 615,
+      "add_defense": 472
+    },
+    "2543": {
+      "level": 120,
+      "add_hp": 1054,
+      "add_attack": 490,
+      "add_defense": 709
+    },
+    "1551": {
+      "level": 120,
+      "add_hp": 3823,
+      "add_attack": 841,
+      "add_defense": 841
+    },
+    "1552": {
+      "level": 120,
+      "add_hp": 3593,
+      "add_attack": 957,
+      "add_defense": 717
+    },
+    "1553": {
+      "level": 120,
+      "add_hp": 3593,
+      "add_attack": 717,
+      "add_defense": 1196
+    },
+    "2451": {
+      "level": 120,
+      "add_hp": 1081,
+      "add_attack": 465,
+      "add_defense": 465
+    },
+    "2452": {
+      "level": 120,
+      "add_hp": 994,
+      "add_attack": 518,
+      "add_defense": 387
+    },
+    "2453": {
+      "level": 120,
+      "add_hp": 994,
+      "add_attack": 387,
+      "add_defense": 648
+    },
+    "1561": {
+      "level": 120,
+      "add_hp": 2392,
+      "add_attack": 1026,
+      "add_defense": 1026
+    },
+    "1562": {
+      "level": 120,
+      "add_hp": 2179,
+      "add_attack": 1161,
+      "add_defense": 843
+    },
+    "1563": {
+      "level": 120,
+      "add_hp": 2199,
+      "add_attack": 881,
+      "add_defense": 1393
+    },
+    "2561": {
+      "level": 120,
+      "add_hp": 1317,
+      "add_attack": 571,
+      "add_defense": 571
+    },
+    "2562": {
+      "level": 120,
+      "add_hp": 1080,
+      "add_attack": 652,
+      "add_defense": 494
+    },
+    "2563": {
+      "level": 120,
+      "add_hp": 1114,
+      "add_attack": 511,
+      "add_defense": 763
+    }
+  },
+  "statusboard_totals": {
+    "1700001501": {
+      "hp": 3942,
+      "attack": 1560,
+      "defense": 1560
+    },
+    "1700001502": {
+      "hp": 3800,
+      "attack": 1696,
+      "defense": 1344
+    },
+    "1700001503": {
+      "hp": 4000,
+      "attack": 1446,
+      "defense": 1764
+    },
+    "1700001511": {
+      "hp": 3942,
+      "attack": 1560,
+      "defense": 1560
+    },
+    "1700001512": {
+      "hp": 3800,
+      "attack": 1696,
+      "defense": 1344
+    },
+    "1700001513": {
+      "hp": 4000,
+      "attack": 1446,
+      "defense": 1764
+    },
+    "1700001521": {
+      "hp": 3942,
+      "attack": 1560,
+      "defense": 1560
+    },
+    "1700001522": {
+      "hp": 3800,
+      "attack": 1696,
+      "defense": 1344
+    },
+    "1700001523": {
+      "hp": 4000,
+      "attack": 1446,
+      "defense": 1764
+    },
+    "1700001401": {
+      "hp": 3942,
+      "attack": 1560,
+      "defense": 1560
+    },
+    "1700001402": {
+      "hp": 3800,
+      "attack": 1696,
+      "defense": 1344
+    },
+    "1700001403": {
+      "hp": 4000,
+      "attack": 1446,
+      "defense": 1764
+    },
+    "1700001411": {
+      "hp": 3942,
+      "attack": 1560,
+      "defense": 1560
+    },
+    "1700001412": {
+      "hp": 3800,
+      "attack": 1696,
+      "defense": 1344
+    },
+    "1700001413": {
+      "hp": 4000,
+      "attack": 1446,
+      "defense": 1764
+    },
+    "1700001301": {
+      "hp": 3942,
+      "attack": 1560,
+      "defense": 1560
+    },
+    "1700001302": {
+      "hp": 3800,
+      "attack": 1696,
+      "defense": 1344
+    },
+    "1700001303": {
+      "hp": 4000,
+      "attack": 1446,
+      "defense": 1764
+    },
+    "1700001311": {
+      "hp": 3942,
+      "attack": 1560,
+      "defense": 1560
+    },
+    "1700001312": {
+      "hp": 3800,
+      "attack": 1696,
+      "defense": 1344
+    },
+    "1700001313": {
+      "hp": 4000,
+      "attack": 1446,
+      "defense": 1764
+    },
+    "1700002501": {
+      "hp": 1554,
+      "attack": 644,
+      "defense": 644
+    },
+    "1700002502": {
+      "hp": 2068,
+      "attack": 556,
+      "defense": 543
+    },
+    "1700002503": {
+      "hp": 2180,
+      "attack": 585,
+      "defense": 584
+    },
+    "1700002511": {
+      "hp": 1554,
+      "attack": 644,
+      "defense": 644
+    },
+    "1700002512": {
+      "hp": 2068,
+      "attack": 556,
+      "defense": 543
+    },
+    "1700002513": {
+      "hp": 2180,
+      "attack": 585,
+      "defense": 584
+    },
+    "1700002521": {
+      "hp": 1554,
+      "attack": 644,
+      "defense": 644
+    },
+    "1700002522": {
+      "hp": 2068,
+      "attack": 556,
+      "defense": 543
+    },
+    "1700002523": {
+      "hp": 2180,
+      "attack": 585,
+      "defense": 584
+    },
+    "1700002401": {
+      "hp": 1554,
+      "attack": 644,
+      "defense": 644
+    },
+    "1700002402": {
+      "hp": 2068,
+      "attack": 556,
+      "defense": 543
+    },
+    "1700002403": {
+      "hp": 2180,
+      "attack": 585,
+      "defense": 584
+    },
+    "1700002411": {
+      "hp": 1554,
+      "attack": 644,
+      "defense": 644
+    },
+    "1700002412": {
+      "hp": 2068,
+      "attack": 556,
+      "defense": 543
+    },
+    "1700002413": {
+      "hp": 2180,
+      "attack": 585,
+      "defense": 584
+    },
+    "1700002301": {
+      "hp": 1554,
+      "attack": 644,
+      "defense": 644
+    },
+    "1700002302": {
+      "hp": 2068,
+      "attack": 556,
+      "defense": 543
+    },
+    "1700002303": {
+      "hp": 2180,
+      "attack": 585,
+      "defense": 584
+    },
+    "1700002311": {
+      "hp": 1554,
+      "attack": 644,
+      "defense": 644
+    },
+    "1700002312": {
+      "hp": 2068,
+      "attack": 556,
+      "defense": 543
+    },
+    "1700002313": {
+      "hp": 2180,
+      "attack": 585,
+      "defense": 584
+    },
+    "1700001421": {
+      "hp": 3942,
+      "attack": 1560,
+      "defense": 1560
+    },
+    "1700001422": {
+      "hp": 3800,
+      "attack": 1696,
+      "defense": 1344
+    },
+    "1700001423": {
+      "hp": 4000,
+      "attack": 1446,
+      "defense": 1764
+    },
+    "1700001531": {
+      "hp": 5040,
+      "attack": 2020,
+      "defense": 2020
+    },
+    "1700001532": {
+      "hp": 4992,
+      "attack": 2256,
+      "defense": 1554
+    },
+    "1700001533": {
+      "hp": 5072,
+      "attack": 1791,
+      "defense": 2452
+    },
+    "1700002531": {
+      "hp": 1938,
+      "attack": 804,
+      "defense": 804
+    },
+    "1700002532": {
+      "hp": 2068,
+      "attack": 784,
+      "defense": 795
+    },
+    "1700002533": {
+      "hp": 2056,
+      "attack": 810,
+      "defense": 744
+    },
+    "1700001541": {
+      "hp": 5232,
+      "attack": 2100,
+      "defense": 2100
+    },
+    "1700001542": {
+      "hp": 5188,
+      "attack": 2352,
+      "defense": 1623
+    },
+    "1700001543": {
+      "hp": 5268,
+      "attack": 1863,
+      "defense": 2548
+    },
+    "1700002541": {
+      "hp": 2016,
+      "attack": 844,
+      "defense": 844
+    },
+    "1700002542": {
+      "hp": 2156,
+      "attack": 824,
+      "defense": 834
+    },
+    "1700002543": {
+      "hp": 2144,
+      "attack": 849,
+      "defense": 784
+    },
+    "1700001551": {
+      "hp": 3942,
+      "attack": 1560,
+      "defense": 1560
+    },
+    "1700001552": {
+      "hp": 3800,
+      "attack": 1696,
+      "defense": 1344
+    },
+    "1700001553": {
+      "hp": 4000,
+      "attack": 1446,
+      "defense": 1764
+    },
+    "1700002451": {
+      "hp": 1554,
+      "attack": 644,
+      "defense": 644
+    },
+    "1700002452": {
+      "hp": 2068,
+      "attack": 556,
+      "defense": 543
+    },
+    "1700002453": {
+      "hp": 2180,
+      "attack": 585,
+      "defense": 584
+    },
+    "1700001561": {
+      "hp": 5361,
+      "attack": 2136,
+      "defense": 2136
+    },
+    "1700001562": {
+      "hp": 5272,
+      "attack": 2400,
+      "defense": 1653
+    },
+    "1700001563": {
+      "hp": 5348,
+      "attack": 1893,
+      "defense": 2616
+    },
+    "1700002561": {
+      "hp": 2067,
+      "attack": 864,
+      "defense": 864
+    },
+    "1700002562": {
+      "hp": 2188,
+      "attack": 852,
+      "defense": 846
+    },
+    "1700002563": {
+      "hp": 2184,
+      "attack": 861,
+      "defense": 824
+    }
+  },
+  "enhanced_statusboard_totals": {
+    "190000200000001": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    },
+    "190000200000002": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    },
+    "190000200000011": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    },
+    "190000200000012": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    },
+    "190000200000021": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    },
+    "190000200000022": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    },
+    "190000200000031": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    },
+    "190000200000032": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    },
+    "190000200000041": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    },
+    "190000200000042": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    },
+    "190000200000051": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    },
+    "190000200000052": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    },
+    "190000200000061": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    },
+    "190000200000062": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    },
+    "190000200000071": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    },
+    "190000200000072": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    }
+  },
+  "bond_max_ratios": {
+    "1": {
+      "hp_ratio": 940,
+      "attack_ratio": 940,
+      "defense_ratio": 920,
+      "max_level": 50
+    }
+  },
+  "facility_bonuses": {
+    "0": {
+      "elem_name": "All",
+      "hp_pct": 6.0,
+      "atk_pct": 10.0,
+      "def_pct": 10.0,
+      "battle_only_atk_pct": 20.0,
+      "battle_only_def_pct": 20.0
+    },
+    "1": {
+      "elem_name": "Earth",
+      "hp_pct": 6.0,
+      "atk_pct": 25.0,
+      "def_pct": 25.0,
+      "battle_only_atk_pct": 25.0,
+      "battle_only_def_pct": 25.0
+    },
+    "2": {
+      "elem_name": "Air",
+      "hp_pct": 6.0,
+      "atk_pct": 25.0,
+      "def_pct": 25.0,
+      "battle_only_atk_pct": 25.0,
+      "battle_only_def_pct": 25.0
+    },
+    "3": {
+      "elem_name": "Wind",
+      "hp_pct": 6.0,
+      "atk_pct": 25.0,
+      "def_pct": 25.0,
+      "battle_only_atk_pct": 25.0,
+      "battle_only_def_pct": 25.0
+    },
+    "4": {
+      "elem_name": "Water",
+      "hp_pct": 6.0,
+      "atk_pct": 25.0,
+      "def_pct": 25.0,
+      "battle_only_atk_pct": 25.0,
+      "battle_only_def_pct": 25.0
+    },
+    "5": {
+      "elem_name": "Fire",
+      "hp_pct": 6.0,
+      "atk_pct": 25.0,
+      "def_pct": 25.0,
+      "battle_only_atk_pct": 25.0,
+      "battle_only_def_pct": 25.0
+    },
+    "6": {
+      "elem_name": "Holy",
+      "hp_pct": 6.0,
+      "atk_pct": 25.0,
+      "def_pct": 25.0,
+      "battle_only_atk_pct": 25.0,
+      "battle_only_def_pct": 25.0
+    },
+    "7": {
+      "elem_name": "Dark",
+      "hp_pct": 6.0,
+      "atk_pct": 25.0,
+      "def_pct": 25.0,
+      "battle_only_atk_pct": 25.0,
+      "battle_only_def_pct": 25.0
+    }
+  },
+  "equipment_facility_bonuses": {
+    "1": {
+      "equip_atk_pct": 0.0,
+      "equip_def_pct": 12.4,
+      "equip_hp_pct": 0.0
+    },
+    "7": {
+      "equip_atk_pct": 0.0,
+      "equip_def_pct": 12.4,
+      "equip_hp_pct": 0.0
+    },
+    "6": {
+      "equip_atk_pct": 0.0,
+      "equip_def_pct": 12.4,
+      "equip_hp_pct": 0.0
+    },
+    "5": {
+      "equip_atk_pct": 0.0,
+      "equip_def_pct": 12.4,
+      "equip_hp_pct": 0.0
+    },
+    "4": {
+      "equip_atk_pct": 0.0,
+      "equip_def_pct": 12.4,
+      "equip_hp_pct": 0.0
+    },
+    "3": {
+      "equip_atk_pct": 0.0,
+      "equip_def_pct": 12.4,
+      "equip_hp_pct": 0.0
+    },
+    "2": {
+      "equip_atk_pct": 0.0,
+      "equip_def_pct": 12.4,
+      "equip_hp_pct": 0.0
+    },
+    "9": {
+      "equip_atk_pct": 12.4,
+      "equip_def_pct": 0.0,
+      "equip_hp_pct": 0.0
+    }
+  },
+  "define_values": {
+    "equipment.stock.bless.pc.initial.count": 80,
+    "equipment.stock.bless.pc.add.count.per.once": 5,
+    "equipment.stock.bless.pc.max.count": 1100,
+    "consume.expand.equipment.stock.bless.pc": 15,
+    "bless.equipment.disassemble.high.rarity": 3,
+    "founding.rescue.accept.item": 3200001,
+    "founding.rescue.accept.item.amount": 1,
+    "gift.limitover.blesspc.expired_day": 14,
+    "party.parameter.bless.pc.bonus.rate": 10000,
+    "party.parameter.assist.base.rate.rarity3": 2500,
+    "party.parameter.assist.same.element.rate.rarity3": 1000,
+    "party.parameter.assist.base.rate.rarity4": 2500,
+    "party.parameter.assist.same.element.rate.rarity4": 1000,
+    "party.parameter.assist.base.rate.rarity5": 3000,
+    "party.parameter.assist.same.element.rate.rarity5": 1000,
+    "party.parameter.assist.base.rate.rarity6": 3000,
+    "party.parameter.assist.same.element.rate.rarity6": 1000,
+    "party.parameter.assist.bless.pc.bonus.rate": 1500,
+    "ep.ranking.page.element.count": 50,
+    "ep.ranking.page.size": 2,
+    "ep.ranking.open.enabled": 1,
+    "ep.ranking.score.post.disabled": 0,
+    "ep.ranking.rank.in.limit": 100000,
+    "ep.ranking.jp.population.limit": 80000,
+    "ep.ranking.ap.population.limit": 50000,
+    "ep.ranking.us.population.limit": 70000,
+    "ep.ranking.eu.population.limit": 70000,
+    "battle.condition.effect.divinepunishment.threshold.medium.lower": 4000,
+    "battle.condition.effect.divinepunishment.threshold.large.lower": 6000,
+    "battle.condition.effect.divinepunishment.limit.damage.upper": 1410065408,
+    "bless_equipment.equipment.rarity.max": 3,
+    "bless_equipment.refine.consume.max": 5,
+    "bless_equipment.refine.step.max": 5,
+    "bless_equipment.refine.status.lower_limit.1": 1500,
+    "bless_equipment.refine.status.lower_limit.2": 2500,
+    "bless_equipment.refine.status.lower_limit.3": 4000,
+    "bless_equipment.refine.status.lower_limit.4": 6000,
+    "bless_equipment.refine.status.lower_limit.5": 8500,
+    "bless_equipment.status.uprate": 2000,
+    "bless_equipment.skill.uprate": 10000,
+    "bless_equipment.stock.add.count.per.once": 5,
+    "bless_equipment.stock.max.count": 1100,
+    "consume.expand.bless_equipment.stock": 15,
+    "bless_equipment.specialeffect.reset_time": 86400,
+    "bless_equipment.specialeffect.gem": 100,
+    "bless_equipment.specialeffect.atk": 5000,
+    "bless_equipment.specialeffect.def": 5000,
+    "bless_equipment.specialeffect.hp": 5000,
+    "bless_equipment.specialeffect.support.bonus": 500,
+    "guild.founding.rescue.accept.item": 2400100,
+    "guild.founding.rescue.accept.item.amount": 1
+  }
+}

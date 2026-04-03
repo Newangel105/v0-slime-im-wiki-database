@@ -56,6 +56,9 @@ export type WikiCharacter = {
   weapon_type: string
   tactics_type: string
   master_character_tactics_type?: string
+  master_pc_level_group_id?: number
+  master_statusboard_id?: number
+  master_enhanced_statusboard_id?: number
   character_role: string
   ultimate_type: string
   stats: {
