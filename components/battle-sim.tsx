@@ -1470,8 +1470,8 @@ export function BattleSim({
     <div className="min-h-screen bg-[#111827] text-white">
       {/* Header bar */}
       <div className="bg-gray-900/80 border-b border-gray-800 px-4 py-2 flex items-center gap-3">
-        <span className="text-gray-400 text-xs font-bold">Battle Simulator</span>
-        <span className="text-gray-600 text-xs ml-auto hidden md:block">Configure team, select enemy, then click a special skill to calculate</span>
+        <span className="text-gray-300 text-xs font-bold">Battle Sim WIP</span>
+        <span className="text-amber-300/90 text-xs ml-auto hidden md:block">Work in progress: calculation flow is usable, but there are still bugs and missing edge cases to fix.</span>
       </div>
 
       {/* Main layout */}

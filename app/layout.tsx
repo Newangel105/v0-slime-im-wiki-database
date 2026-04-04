@@ -14,6 +14,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "SLIME.WIKI - Character Database",
   description: "Character database for SLIME - Isekai Memories",
+  icons: {
+    icon: "/icons/logo.png",
+    shortcut: "/icons/logo.png",
+    apple: "/icons/logo.png",
+  },
   generator: 'v0.dev',
 }
 
