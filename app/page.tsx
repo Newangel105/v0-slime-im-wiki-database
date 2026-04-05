@@ -1,10 +1,117 @@
+"use client"
+import { useEffect, useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Play, ExternalLink } from "lucide-react"
-import HomeTimersClient from "@/components/home-timers-client"
-import HomeYouTubeClient from "@/components/home-youtube-client"
-import HomeNewsClient from "@/components/home-news-client"
+
+function getNextUtcTime(hour: number, minute = 0, second = 0) {
+  const now = new Date()
+  const next = new Date(now)
+  next.setUTCHours(hour, minute, second, 0)
+  if (next <= now) next.setUTCDate(next.getUTCDate() + 1)
+  return next
+}
+
+function formatLocalTime(date: Date) {
+  return date.toLocaleString(undefined, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  })
+}
+
+function useCountdown(targetDate: Date) {
+  const [timeLeft, setTimeLeft] = useState(() => targetDate.getTime() - new Date().getTime())
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeLeft(targetDate.getTime() - new Date().getTime())
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [targetDate])
+  const totalSeconds = Math.max(0, Math.floor(timeLeft / 1000))
+  const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, "0")
+  const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0")
+  const seconds = String(totalSeconds % 60).padStart(2, "0")
+  return `${hours}:${minutes}:${seconds}`
+}
+
+interface YouTubeVideo {
+  id: string
+  title: string
+  url: string
+  embedUrl: string
+  thumbnail: string
+  published: string | null
+}
 
 export default function HomePage() {
+  // Hydration fix: only show timers after mount
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => { setMounted(true) }, [])
+
+  // Timer region selection (NA, EU, Asia)
+  const timerRegionOptions = [
+    { key: "NA", label: "NA", reset: { hour: 11, minute: 0 }, update: { hour: 2, minute: 0 } },
+    { key: "EU", label: "EU", reset: { hour: 4, minute: 0 }, update: { hour: 2, minute: 0 } },
+    { key: "Asia", label: "Asia", reset: { hour: 19, minute: 0 }, update: { hour: 2, minute: 0 } },
+  ]
+  
+  const [timerRegion, setTimerRegion] = useState(timerRegionOptions[0])
+  const [resetTarget, setResetTarget] = useState(() => getNextUtcTime(timerRegionOptions[0].reset.hour, timerRegionOptions[0].reset.minute, 0))
+  const [updateTarget, setUpdateTarget] = useState(() => getNextUtcTime(timerRegionOptions[0].update.hour, timerRegionOptions[0].update.minute, 0))
+
+  useEffect(() => {
+    setResetTarget(getNextUtcTime(timerRegion.reset.hour, timerRegion.reset.minute, 0))
+    setUpdateTarget(getNextUtcTime(timerRegion.update.hour, timerRegion.update.minute, 0))
+  }, [timerRegion])
+
+  const resetCountdown = useCountdown(resetTarget)
+  const updateCountdown = useCountdown(updateTarget)
+  const resetLocal = formatLocalTime(resetTarget)
+  const updateLocal = formatLocalTime(updateTarget)
+
+  // News state and language selection
+  const languageOptions = [
+    { key: "EN", language: 2, label: "English" },
+    { key: "JP", language: 1, label: "Japanese" },
+    { key: "CN", language: 3, label: "Chinese" },
+    { key: "KR", language: 4, label: "Korean" },
+  ]
+  const [selectedLanguage, setSelectedLanguage] = useState(languageOptions[0])
+  const [loadingNews, setLoadingNews] = useState(true)
+
+  // Generate the official news URL for embedding - only language changes
+  const getNewsUrl = () => {
+    return `https://api-us.ten-sura-m.wfs.games/web/announcement?language=${selectedLanguage.language}`
+  }
+
+  useEffect(() => {
+    // News is loaded via iframe, so we just set loading to false
+    setLoadingNews(false)
+  }, [selectedLanguage])
+
+  // YouTube video state - automatically fetched from RSS feed
+  const [youtubeVideo, setYoutubeVideo] = useState<YouTubeVideo | null>(null)
+  const [loadingVideo, setLoadingVideo] = useState(true)
+
+  useEffect(() => {
+    // Use a default video since YouTube RSS requires server-side fetch
+    // The video ID can be updated manually or via a CMS in the future
+    const defaultVideo: YouTubeVideo = {
+      id: 'oqj9Ho6QS40',
+      title: 'SLIME - ISEKAI Memories Official Stream',
+      url: 'https://www.youtube.com/watch?v=oqj9Ho6QS40',
+      embedUrl: 'https://www.youtube.com/embed/oqj9Ho6QS40',
+      thumbnail: 'https://img.youtube.com/vi/oqj9Ho6QS40/hqdefault.jpg',
+      published: null,
+    }
+    setYoutubeVideo(defaultVideo)
+    setLoadingVideo(false)
+  }, [])
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-[#0a1a2f] via-[#0f1f35] to-[#1a2740]">
       <div className="mx-auto max-w-6xl px-4 py-8">
@@ -34,20 +141,131 @@ export default function HomePage() {
 
         {/* Main Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-          {/* Timers Section - Left Column (client widget) */}
+          {/* Timers Section - Left Column */}
           <section className="lg:col-span-2">
-            <HomeTimersClient />
+            <Card className="bg-[#181f2a]/80 border border-gray-700/50 backdrop-blur-sm h-full">
+              <div className="p-6">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
+                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <span className="h-1 w-6 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"></span>
+                    TIMERS
+                  </h2>
+                  <div className="flex gap-2">
+                    {timerRegionOptions.map((opt) => (
+                      <button
+                        key={opt.key}
+                        className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
+                          timerRegion.key === opt.key
+                            ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-500/25'
+                            : 'bg-[#232c3a] text-gray-400 hover:text-white hover:bg-[#2a3444]'
+                        }`}
+                        onClick={() => setTimerRegion(opt)}
+                      >
+                        {opt.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-gradient-to-br from-[#232c3a] to-[#1a222d] rounded-xl p-5 border border-gray-700/30">
+                    <span className="text-gray-400 text-sm font-medium mb-1 block">Daily Reset</span>
+                    <span className="text-gray-500 text-xs mb-3 block">{mounted ? resetLocal : "--"}</span>
+                    <span className="text-4xl font-mono font-bold text-white tracking-wider">{mounted ? resetCountdown : "--:--:--"}</span>
+                  </div>
+                  <div className="bg-gradient-to-br from-[#232c3a] to-[#1a222d] rounded-xl p-5 border border-gray-700/30">
+                    <span className="text-gray-400 text-sm font-medium mb-1 block">Weekly Update</span>
+                    <span className="text-gray-500 text-xs mb-3 block">{mounted ? updateLocal : "--"}</span>
+                    <span className="text-4xl font-mono font-bold text-white tracking-wider">{mounted ? updateCountdown : "--:--:--"}</span>
+                  </div>
+                </div>
+              </div>
+            </Card>
           </section>
 
-          {/* Latest Stream Section - Right Column (client widget) */}
+          {/* Latest Stream Section - Right Column */}
           <section className="lg:col-span-1">
-            <HomeYouTubeClient />
+            <Card className="bg-[#181f2a]/80 border border-gray-700/50 backdrop-blur-sm h-full">
+              <div className="p-6">
+                <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                  <Play className="w-5 h-5 text-red-500" />
+                  LATEST STREAM
+                </h2>
+                {loadingVideo ? (
+                  <div className="aspect-video bg-[#232c3a] rounded-xl animate-pulse flex items-center justify-center">
+                    <span className="text-gray-500">Loading...</span>
+                  </div>
+                ) : youtubeVideo ? (
+                  <div className="space-y-3">
+                    <div className="relative aspect-video rounded-xl overflow-hidden border border-gray-700/30">
+                      <iframe
+                        src={youtubeVideo.embedUrl}
+                        title={youtubeVideo.title}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="w-full h-full"
+                      />
+                    </div>
+                    <div className="flex items-start justify-between gap-2">
+                      <p className="text-sm text-gray-300 line-clamp-2 flex-1">{youtubeVideo.title}</p>
+                      <a 
+                        href={youtubeVideo.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-cyan-400 transition-colors flex-shrink-0"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            </Card>
           </section>
         </div>
 
-        {/* News Section - Full Width (client widget) */}
+        {/* News Section - Full Width */}
         <section>
-          <HomeNewsClient />
+          <Card className="bg-[#181f2a]/80 border border-gray-700/50 backdrop-blur-sm">
+            <div className="p-6">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
+                <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                  <span className="h-1 w-6 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"></span>
+                  LATEST NEWS
+                </h2>
+                <div className="flex gap-2 flex-wrap">
+                  {languageOptions.map((opt) => (
+                    <button
+                      key={opt.key}
+                      className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
+                        selectedLanguage.key === opt.key 
+                          ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-500/25' 
+                          : 'bg-[#232c3a] text-gray-400 hover:text-white hover:bg-[#2a3444]'
+                      }`}
+                      onClick={() => setSelectedLanguage(opt)}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              {/* Embedded News via iframe */}
+              <div className="rounded-xl overflow-hidden border border-gray-700/30">
+                {loadingNews ? (
+                  <div className="h-96 bg-[#232c3a] animate-pulse flex items-center justify-center">
+                    <span className="text-gray-500">Loading news...</span>
+                  </div>
+                ) : (
+                  <iframe
+                    src={getNewsUrl()}
+                    title="Game News"
+                    className="w-full max-w-full h-[500px] border-0"
+                    sandbox="allow-scripts allow-same-origin"
+                  />
+                )}
+              </div>
+            </div>
+          </Card>
         </section>
 
         {/* Footer */}
