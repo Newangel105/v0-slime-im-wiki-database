@@ -2,8 +2,8 @@ import wikiData from "../pc_wiki.generated.json"
 import heartprintData from "../pc_wiki.heartprints.json"
 import equipmentData from "../pc_wiki.equipment.json"
 import fallbackEquipmentData from "../public/equipment.json"
-import charmData from "../pc_wiki.charms.json"
-import fallbackCharmData from "../public/charms.json"
+import charmData from "../public/charms.json"
+import fallbackCharmData from "../pc_wiki.charms.json"
 
 export type WikiForce = {
   label: string
