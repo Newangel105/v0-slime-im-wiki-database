@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
+import { useDeferredValue, useEffect, useMemo, useState } from "react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { ArrowDownUp, Search } from "lucide-react"
@@ -17,6 +17,7 @@ import {
   getCharacterEffectFilterGroups,
   type CharacterEffectFilterGroup,
 } from "@/lib/character-effect-filters"
+import { type BrowserCharacter } from "@/lib/character-browser-data"
 import {
   formatWikiLabel,
   getCharacterVisualTier,
@@ -25,8 +26,6 @@ import {
   isExUnboundCharacter,
   normalizeLabel,
   stripColorTags,
-  toPublicAssetPath,
-  type WikiCharacter,
 } from "@/lib/pc-wiki"
 
 type SortKey = "name" | "release_date" | "rarity" | "attack" | "hp" | "defense" | "existence"
@@ -201,7 +200,7 @@ function toEnhancedElementValue(value: string): string {
   return `Enhanced${value.charAt(0).toUpperCase()}${value.slice(1)}`
 }
 
-function isAllAlliesProtector(character: WikiCharacter): boolean {
+function isAllAlliesProtector(character: BrowserCharacter): boolean {
   if (!isProtectorCharacter(character) || normalizeLabel(character.element) !== "none") {
     return false
   }
@@ -213,7 +212,7 @@ function isAllAlliesProtector(character: WikiCharacter): boolean {
   })
 }
 
-function getProtectorLeaderSkillType(character: WikiCharacter): "Physics" | "Magic" | null {
+function getProtectorLeaderSkillType(character: BrowserCharacter): "Physics" | "Magic" | null {
   if (!isProtectorCharacter(character)) return null
   const leaderSkill = character.skills.find((s) => s.slot === "leader_skill")
   if (!leaderSkill) return null
@@ -250,7 +249,7 @@ type DefenderElementEntry = {
   source: "atk" | "damage_to_attribute" | "raw"
 }
 
-function getDefenderElementEntries(character: WikiCharacter): DefenderElementEntry[] {
+function getDefenderElementEntries(character: BrowserCharacter): DefenderElementEntry[] {
   if (!isProtectorCharacter(character)) return [{ value: character.element, source: "raw" }]
 
   const leaderSkill = character.skills.find((s) => s.slot === "leader_skill")
@@ -305,7 +304,7 @@ function getDefenderElementEntries(character: WikiCharacter): DefenderElementEnt
   return entries
 }
 
-function getDefenderElementValues(character: WikiCharacter): string[] {
+function getDefenderElementValues(character: BrowserCharacter): string[] {
   if (!isProtectorCharacter(character)) return [normalizeLabel(character.element)]
 
   const normalized = normalizeLabel(character.element)
@@ -362,17 +361,17 @@ function getDefenderElementValues(character: WikiCharacter): string[] {
   return values
 }
 
-function isProtectorCharacter(character: WikiCharacter): boolean {
+function isProtectorCharacter(character: BrowserCharacter): boolean {
   return character.character_role === "Supporter" &&
     !character.skills.some((s) => s.slot === "special_skill" && s.kind === "special")
 }
 
-function isAttackerCharacter(character: WikiCharacter): boolean {
+function isAttackerCharacter(character: BrowserCharacter): boolean {
   if (character.character_role === "Attacker") return true
   return character.skills.some((s) => s.slot === "special_skill" && s.kind === "special")
 }
 
-function getCharacterElementValue(character: WikiCharacter): string {
+function getCharacterElementValue(character: BrowserCharacter): string {
   if (isProtectorCharacter(character)) {
     return getDefenderElementValues(character)[0]
   }
@@ -422,7 +421,7 @@ function getAttackerElementIcon(value: string | null | undefined): string | unde
   return attackerElementIconMap[normalized]
 }
 
-function getCharacterElementIcon(character: WikiCharacter): string | undefined {
+function getCharacterElementIcon(character: BrowserCharacter): string | undefined {
   const characterElementValue = getCharacterElementValue(character)
   if (isProtectorCharacter(character)) {
     return getElementIcon(characterElementValue)
@@ -433,7 +432,7 @@ function getCharacterElementIcon(character: WikiCharacter): string | undefined {
   return undefined
 }
 
-function getDefenderEntryIcon(entry: DefenderElementEntry, character: WikiCharacter): string | undefined {
+function getDefenderEntryIcon(entry: DefenderElementEntry, character: BrowserCharacter): string | undefined {
   const normalized = normalizeLabel(entry.value)
   if (hiddenElementKeys.has(normalized)) return undefined
 
@@ -464,7 +463,7 @@ function getDefenderEntryIcon(entry: DefenderElementEntry, character: WikiCharac
   return elementIconMap[normalized]
 }
 
-function getCharacterElementIcons(character: WikiCharacter): { icon: string; label: string }[] {
+function getCharacterElementIcons(character: BrowserCharacter): { icon: string; label: string }[] {
   if (isProtectorCharacter(character)) {
     // Use getDefenderElementValues which returns the correct icon-level keys
     return getDefenderElementValues(character)
@@ -632,13 +631,13 @@ const baseBlessMap: Record<number, string> = {
   7: "/frame/baseBlessM7.png",
 }
 
-function getCharacterFrame(character: WikiCharacter): string {
+function getCharacterFrame(character: BrowserCharacter): string {
   const visualTier = getCharacterVisualTier(character)
   const frameMap = isProtectorCharacter(character) ? blessFrameMap : rarityFrameMap
   return frameMap[visualTier] ?? frameMap[5]
 }
 
-function getCharacterBase(character: WikiCharacter): string {
+function getCharacterBase(character: BrowserCharacter): string {
   const visualTier = getCharacterVisualTier(character)
   const baseMap = isProtectorCharacter(character) ? baseBlessMap : baseRarityMap
   return baseMap[visualTier] ?? baseMap[5]
@@ -695,7 +694,7 @@ function buildOptions(values: string[]): FilterOption[] {
     .map((value) => ({ label: value, value }))
 }
 
-function buildElementOptions(characters: WikiCharacter[], role: "attacker" | "defender"): FilterOption[] {
+function buildElementOptions(characters: BrowserCharacter[], role: "attacker" | "defender"): FilterOption[] {
   const filteredCharacters = characters.filter((character) =>
     role === "attacker" ? isAttackerCharacter(character) : isProtectorCharacter(character),
   )
@@ -767,68 +766,10 @@ function buildWeaponOptions(values: string[]): FilterOption[] {
     }))
 }
 
-function buildForceIconLookup(characters: WikiCharacter[]): Map<string, string> {
-  const forceMap = new Map<string, string>()
-  for (const char of characters) {
-    for (const force of char.forces) {
-      if (!forceMap.has(force.name)) forceMap.set(force.name, force.icon_path)
-    }
-  }
-  return forceMap
-}
-
-function getDerivedProtectorForceNames(character: WikiCharacter): string[] {
-  if (character.character_role !== "Supporter") {
-    return []
-  }
-
-  const names = new Set<string>()
-  for (const skill of character.skills) {
-    const description = skill.description_max_level ?? ""
-    const forceBlockPattern = /((?:<color=[^>]+>[^<]+<\/color>(?:\s+and\s+)?)+)\s+Force characters/gi
-    let blockMatch: RegExpExecArray | null
-    while ((blockMatch = forceBlockPattern.exec(description)) !== null) {
-      const block = blockMatch[1]
-      const namePattern = /<color=[^>]+>([^<]+)<\/color>/gi
-      let nameMatch: RegExpExecArray | null
-      while ((nameMatch = namePattern.exec(block)) !== null) {
-        const forceName = nameMatch[1]?.trim()
-        if (forceName) {
-          names.add(forceName)
-        }
-      }
-    }
-  }
-
-  return [...names]
-}
-
-function getCharacterForceEntries(character: WikiCharacter, forceIconLookup: Map<string, string>): Array<{ name: string; icon?: string }> {
-  if (character.forces.length > 0) {
-    return character.forces.map((force) => ({
-      name: force.name,
-      icon: toPublicAssetPath(force.icon_path),
-    }))
-  }
-
-  return getDerivedProtectorForceNames(character).map((name) => ({
-    name,
-    icon: forceIconLookup.get(name) ? toPublicAssetPath(forceIconLookup.get(name)) : undefined,
-  }))
-}
-
-function getCharacterForceNames(character: WikiCharacter): string[] {
-  if (character.forces.length > 0) {
-    return character.forces.map((force) => force.name)
-  }
-
-  return getDerivedProtectorForceNames(character)
-}
-
-function buildForcesOptions(characters: WikiCharacter[], forceIconLookup: Map<string, string>): FilterOption[] {
+function buildForcesOptions(characters: BrowserCharacter[]): FilterOption[] {
   const forceMap = new Map<string, string | undefined>()
   for (const char of characters) {
-    for (const force of getCharacterForceEntries(char, forceIconLookup)) {
+    for (const force of char.force_entries) {
       if (!forceMap.has(force.name)) forceMap.set(force.name, force.icon)
     }
   }
@@ -842,17 +783,8 @@ function buildForcesOptions(characters: WikiCharacter[], forceIconLookup: Map<st
     }))
 }
 
-const AOE_KEYWORDS = ["all-target", "all target", "all enemies", "all characters"]
-const SINGLE_KEYWORDS = ["single-target", "single target"]
-
-function getCharacterUltimateType(character: WikiCharacter): "aoe" | "single" | null {
-  if (character.character_role === "Supporter") return null
-  const special = character.skills.find((s) => s.slot === "special_skill" && s.kind === "special")
-  if (!special?.description_max_level) return null
-  const desc = special.description_max_level.toLowerCase()
-  if (AOE_KEYWORDS.some((k) => desc.includes(k))) return "aoe"
-  if (SINGLE_KEYWORDS.some((k) => desc.includes(k))) return "single"
-  return null
+function getCharacterUltimateType(character: BrowserCharacter): "aoe" | "single" | null {
+  return character.ultimate_type
 }
 
 const ROLE_OPTIONS: FilterOption[] = [
@@ -995,7 +927,7 @@ const VALOR_DISPLAY_MAP: Record<string, string> = {
 
 type TraitEffectMap = Map<string, string[]> // displayName → rawNames[]
 
-function buildTraitEffectMap(characters: WikiCharacter[], valor: boolean): TraitEffectMap {
+function buildTraitEffectMap(characters: BrowserCharacter[], valor: boolean): TraitEffectMap {
   const map: TraitEffectMap = new Map()
   for (const character of characters) {
     for (const trait of character.traits) {
@@ -1061,7 +993,7 @@ function GroupedToggleFilter({
   )
 }
 
-export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }) {
+export function CharacterBrowser({ characters }: { characters: BrowserCharacter[] }) {
   const searchParams = useSearchParams()
   const [searchText, setSearchText] = useState("")
   const [selectedAttackerElements, setSelectedAttackerElements] = useState<string[]>([])
@@ -1078,6 +1010,7 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
   const [selectedUltimateTypes, setSelectedUltimateTypes] = useState<string[]>([])
   const [sortKey, setSortKey] = useState<SortKey>("release_date")
   const [sortAsc, setSortAsc] = useState(false)
+  const deferredSearchText = useDeferredValue(searchText)
 
   useEffect(() => {
     const tag = searchParams.get("tag")
@@ -1113,8 +1046,6 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
     if (facility) setSelectedFacilities(facility.split(","))
   }, [searchParams])
 
-  const forceIconLookup = useMemo(() => buildForceIconLookup(characters), [characters])
-
   const options = useMemo(
     () => ({
       attackerElements: buildElementOptions(characters, "attacker"),
@@ -1122,35 +1053,21 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
       attackTypes: buildAttackTypeOptions(characters.map((character) => character.attack_type)),
       weapons: buildWeaponOptions(characters.map((character) => character.weapon_type)),
       tactics: buildTacticsOptions(characters.map((character) => character.tactics_type)),
-      forces: buildForcesOptions(characters, forceIconLookup),
+      forces: buildForcesOptions(characters),
       skillGroups: getCharacterEffectFilterGroups(characters),
       traitEffectMap: buildTraitEffectMap(characters, false),
       valorTraitEffectMap: buildTraitEffectMap(characters, true),
       facilities: buildOptions(characters.flatMap((character) => character.facilities)),
     }),
-    [characters, forceIconLookup],
+    [characters],
   )
 
   const filteredCharacters = useMemo(() => {
-    const query = normalizeLabel(searchText)
+    const query = normalizeLabel(deferredSearchText)
     const filtered = characters.filter((character) => {
-      const characterForceNames = getCharacterForceNames(character)
-      const searchable = [
-        character.name,
-        character.affiliation_name,
-        character.element,
-        character.attack_type,
-        character.weapon_type,
-        character.tactics_type,
-        ...characterForceNames,
-        ...character.skills.map((skill) => skill.name),
-        ...character.traits.map((trait) => trait.name),
-        ...character.facilities,
-      ]
-        .join(" ")
-        .toLowerCase()
+      const characterForceNames = character.force_names
 
-      if (query && !searchable.includes(query)) {
+      if (query && !character.search_text.includes(query)) {
         return false
       }
       const characterElementValue = getCharacterElementValue(character)
@@ -1251,7 +1168,7 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
     })
   }, [
     characters,
-    searchText,
+    deferredSearchText,
     selectedAttackTypes,
     selectedAttackerElements,
     selectedDefenderElements,
@@ -1401,21 +1318,23 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
         </section>
 
         <section className="grid gap-5 min-w-0 sm:grid-cols-2 xl:grid-cols-3">
-          {filteredCharacters.map((character) => {
+          {filteredCharacters.map((character, index) => {
             const visualTier = getCharacterVisualTier(character)
             const frameSrc = getCharacterFrame(character)
             const baseSrc = getCharacterBase(character)
             const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
-            const iconSrc = toPublicAssetPath(character.images.icon)
+            const iconSrc = character.images.icon
             const characterElementValue = getCharacterElementValue(character)
             const elementIcons = getCharacterElementIcons(character)
-            const forceEntries = getCharacterForceEntries(character, forceIconLookup)
+            const forceEntries = character.force_entries
             const attackTypeIcon = attackTypeIconMap[normalizeLabel(character.attack_type)]
             const weaponIcon = weaponIconMap[normalizeLabel(character.weapon_type)]
             const tacticsIcon = tacticsIconMap[normalizeLabel(character.tactics_type || "Normal")]
             const attackTypeLabel = formatWikiLabel(character.attack_type)
             const weaponLabel = formatWikiLabel(character.weapon_type)
             const rarityLabel = getCharacterRarityLabel(character)
+            const isPriorityCard = index < 6
+            const imageLoading = isPriorityCard ? "eager" : "lazy"
 
             const elementAccentColor = elementColorMap[normalizeLabel(characterElementValue)] ?? "#4b5563"
             const facilityIcons = [
@@ -1426,32 +1345,35 @@ export function CharacterBrowser({ characters }: { characters: WikiCharacter[] }
               .slice(0, 5)
 
             return (
-              <Link key={character.master_pc_id} href={`/characters/${character.master_pc_id}`} className="block w-full min-w-0">
+              <Link key={character.master_pc_id} href={`/characters/${character.master_pc_id}`} prefetch={false} className="block w-full min-w-0">
                     <div
                       className="w-full min-w-0 group h-full overflow-hidden rounded-2xl bg-gradient-to-b from-[#1d2d44] to-[#0f1924] shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-2xl"
-                      style={{ borderTop: `4px solid ${elementAccentColor}` }}
+                      style={{ borderTop: `4px solid ${elementAccentColor}`, contentVisibility: "auto", containIntrinsicSize: "420px" }}
                     >
                   <div>
                     {/* Portrait + info row */}
                     <div className="flex gap-4 p-4 pb-3">
                       {/* Portrait */}
                       <div className="relative h-24 w-24 md:h-[148px] md:w-[148px] shrink-0">
-                        <img src={baseSrc} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
+                        <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
                         <div className="absolute inset-[10px] overflow-hidden rounded-[18px]">
                           <img
                             src={iconSrc}
                             alt={character.name}
+                            loading={imageLoading}
+                            decoding="async"
+                            fetchPriority={isPriorityCard ? "high" : "low"}
                             className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110"
                           />
                         </div>
-                        <img src={frameSrc} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
+                        <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
                       </div>
 
                       {/* Info column */}
                       <div className="flex min-w-0 flex-1 flex-col md:min-h-[148px]">
                         <div className="flex items-start justify-between gap-2">
                           <h2 className="line-clamp-2 text-[1rem] font-bold leading-snug text-white">{character.name}</h2>
-                          <img src={starsSrc} alt={rarityLabel} className="mt-0.5 h-6 shrink-0 object-contain drop-shadow" />
+                          <img src={starsSrc} alt={rarityLabel} loading={imageLoading} decoding="async" className="mt-0.5 h-6 shrink-0 object-contain drop-shadow" />
                         </div>
                         <p className="mt-1 truncate text-[10px] uppercase tracking-[0.18em] text-gray-500">{character.affiliation_name}</p>
 

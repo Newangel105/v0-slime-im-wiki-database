@@ -140,10 +140,14 @@ function toWebsiteCharacter(character: WikiCharacter): WikiCharacter {
   }
 }
 
+const websiteCharacters = payload.characters
+  .filter((character) => !WEBSITE_EXCLUDED_CHARACTER_IDS.has(character.master_pc_id))
+  .map(toWebsiteCharacter)
+
+const websiteCharacterById = new Map(websiteCharacters.map((character) => [character.master_pc_id, character]))
+
 export function getAllWikiCharacters(): WikiCharacter[] {
-  return payload.characters
-    .filter((character) => !WEBSITE_EXCLUDED_CHARACTER_IDS.has(character.master_pc_id))
-    .map(toWebsiteCharacter)
+  return websiteCharacters
 }
 
 // ---------------------------------------------------------------------------
@@ -269,12 +273,7 @@ export function getAllHeartprints(): Heartprint[] {
 }
 
 export function getWikiCharacterById(characterId: number): WikiCharacter | undefined {
-  if (WEBSITE_EXCLUDED_CHARACTER_IDS.has(characterId)) {
-    return undefined
-  }
-
-  const character = payload.characters.find((entry) => entry.master_pc_id === characterId)
-  return character ? toWebsiteCharacter(character) : undefined
+  return websiteCharacterById.get(characterId)
 }
 
 export function toPublicAssetPath(assetPath: string | null | undefined): string {
@@ -314,7 +313,11 @@ export function getDisplayReleaseDate(value: string | null | undefined): string 
   return value.split(" ", 1)[0] ?? null
 }
 
-export function hasExSpecialSkill(character: WikiCharacter): boolean {
+type CharacterVisualInfo = Pick<WikiCharacter, "rarity" | "element" | "character_role"> & {
+  skills: Array<Pick<WikiSkill, "slot" | "kind" | "description_max_level">>
+}
+
+export function hasExSpecialSkill(character: CharacterVisualInfo): boolean {
   return character.skills.some(
     (skill) =>
       skill.slot === "special_skill" &&
@@ -322,15 +325,15 @@ export function hasExSpecialSkill(character: WikiCharacter): boolean {
   )
 }
 
-export function isExUnboundCharacter(character: WikiCharacter): boolean {
+export function isExUnboundCharacter(character: Pick<WikiCharacter, "element">): boolean {
   return /Enhanced/i.test(character.element)
 }
 
-export function isExAttacker(character: WikiCharacter): boolean {
+export function isExAttacker(character: Pick<WikiCharacter, "element">): boolean {
   return /^(SpecialEffect)/i.test(character.element)
 }
 
-export function getCharacterVisualTier(character: WikiCharacter): number {
+export function getCharacterVisualTier(character: CharacterVisualInfo): number {
   if (character.rarity !== 5) {
     return Math.min(Math.max(character.rarity, 3), 7)
   }
@@ -350,7 +353,7 @@ export function getCharacterVisualTier(character: WikiCharacter): number {
   return 5
 }
 
-export function getCharacterRarityLabel(character: WikiCharacter): string {
+export function getCharacterRarityLabel(character: CharacterVisualInfo): string {
   const visualTier = getCharacterVisualTier(character)
 
   if (visualTier === 7) {

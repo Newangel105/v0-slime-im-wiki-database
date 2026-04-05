@@ -1,4 +1,22 @@
-import { normalizeLabel, stripColorTags, type WikiCharacter } from "@/lib/pc-wiki"
+import { normalizeLabel, stripColorTags } from "@/lib/pc-wiki"
+
+export type CharacterEffectFilterCharacter = {
+  master_pc_id: number
+  skills: Array<{
+    name?: string
+    description_max_level?: string | null
+  }>
+  traits: Array<{
+    name: string
+    description_max_level?: string | null
+  }>
+  ex_abilities?: Array<{
+    name?: string | null
+    description?: string | null
+    effects?: string[] | null
+  }>
+  effect_tags?: string[]
+}
 
 export type CharacterEffectFilterOption = {
   label: string
@@ -244,11 +262,11 @@ function normalizeText(value: string): string {
     .trim()
 }
 
-function buildSegments(character: WikiCharacter): string[] {
+function buildSegments(character: CharacterEffectFilterCharacter): string[] {
   return [
-    ...character.skills.flatMap((skill) => [skill.name, skill.description_max_level]),
-    ...character.traits.flatMap((trait) => [trait.name, trait.description_max_level]),
-    ...character.ex_abilities.flatMap((ability) => [ability.name, ability.description, ...ability.effects]),
+    ...character.skills.flatMap((skill) => [skill.name ?? "", skill.description_max_level ?? ""]),
+    ...character.traits.flatMap((trait) => [trait.name, trait.description_max_level ?? ""]),
+    ...(character.ex_abilities ?? []).flatMap((ability) => [ability.name ?? "", ability.description ?? "", ...(ability.effects ?? [])]),
   ]
     .map(normalizeText)
     .filter(Boolean)
@@ -300,10 +318,16 @@ function addContextualMatches(tagSet: Set<string>, segments: string[], group: Gr
   }
 }
 
-export function getCharacterEffectTags(character: WikiCharacter): Set<string> {
+export function getCharacterEffectTags(character: CharacterEffectFilterCharacter): Set<string> {
   const cached = effectTagCache.get(character.master_pc_id)
   if (cached) {
     return cached
+  }
+
+  if (character.effect_tags?.length) {
+    const precomputed = new Set(character.effect_tags)
+    effectTagCache.set(character.master_pc_id, precomputed)
+    return precomputed
   }
 
   const segments = buildSegments(character)
@@ -347,7 +371,7 @@ export function getCharacterEffectTags(character: WikiCharacter): Set<string> {
   return tagSet
 }
 
-export function characterMatchesEffectFilters(character: WikiCharacter, selectedValues: string[]): boolean {
+export function characterMatchesEffectFilters(character: CharacterEffectFilterCharacter, selectedValues: string[]): boolean {
   if (!selectedValues.length) {
     return true
   }
@@ -356,7 +380,7 @@ export function characterMatchesEffectFilters(character: WikiCharacter, selected
   return selectedValues.every((value) => tagSet.has(value))
 }
 
-export function getCharacterEffectFilterGroups(characters: WikiCharacter[]): CharacterEffectFilterGroup[] {
+export function getCharacterEffectFilterGroups(characters: CharacterEffectFilterCharacter[]): CharacterEffectFilterGroup[] {
   const available = new Set<string>()
 
   for (const character of characters) {
