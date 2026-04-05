@@ -1,11 +1,12 @@
 "use client"
 
-import { useMemo, useState, useRef } from "react"
-import type { WikiCharacter, Heartprint, Equipment, Charm } from "@/lib/pc-wiki"
+import { useCallback, useDeferredValue, useMemo, useRef, useState } from "react"
+import type { Heartprint, Equipment, Charm } from "@/lib/pc-wiki"
+import type { TeamBuilderCharacter } from "@/lib/team-builder-character-data"
 import {
-  toPublicAssetPath, getCharacterVisualTier, getForceIconLookup,
+  toPublicAssetPath, getCharacterVisualTier,
   isExUnboundCharacter, hasExSpecialSkill, isExAttacker,
-  normalizeLabel, stripColorTags, getCharacterForceEntries,
+  normalizeLabel, stripColorTags,
 } from "@/lib/pc-wiki"
 import { calcSlotStats, calcTeamEP, getEPRankIcon } from "@/lib/ep-calc"
 import type { TeamSlotInput, SlotStats } from "@/lib/ep-calc"
@@ -37,18 +38,24 @@ const CHAR_TYPE_DISPLAY: Record<string, string> = {
   ExtremeAverage: "Balance Growth Type EX",
 }
 
-// ---- Weapon type icons for attacker picker ----
-const WEAPON_ICONS: Record<string, string> = {
-  Book: "/weapons/book.png",
-  Fist: "/weapons/fists.png",
-  Fists: "/weapons/fists.png",
-  Greatsword: "/weapons/greatsword.png",
-  Hammer: "/weapons/hammer.png",
-  Katana: "/weapons/katana.png",
-  Knuckle: "/weapons/fists.png",
-  Largesword: "/weapons/greatsword.png",
-  Spear: "/weapons/spear.png",
-  Sword: "/weapons/sword.png",
+// ---- Weapon type icons for attacker picker (match character-browser) ----
+const weaponIconMap: Record<string, string> = {
+  book: "/weapons/book.png",
+  fist: "/weapons/fists.png",
+  fists: "/weapons/fists.png",
+  greatsword: "/weapons/greatsword.png",
+  hammer: "/weapons/hammer.png",
+  largesword: "/weapons/greatsword.png",
+  katana: "/weapons/katana.png",
+  knuckle: "/weapons/fists.png",
+  spear: "/weapons/spear.png",
+  sword: "/weapons/sword.png",
+}
+
+function formatWikiLabel(label: string): string {
+  // Capitalize first letter, rest lowercase, replace underscores with space
+  if (!label) return ""
+  return label.charAt(0).toUpperCase() + label.slice(1).replace(/_/g, " ").toLowerCase()
 }
 
 // ---- Force group display labels ----
@@ -186,13 +193,13 @@ const ATK_TYPE_ICONS: Record<string, string> = {
 }
 
 // ---- Protector detection ----
-function isProtectorChar(c: WikiCharacter): boolean {
+function isProtectorChar(c: TeamBuilderCharacter): boolean {
   return c.character_role === "Supporter" && !c.skills.some((s) => s.slot === "special_skill" && s.kind === "special")
 }
-function isAttackerChar(c: WikiCharacter): boolean {
+function isAttackerChar(c: TeamBuilderCharacter): boolean {
   return c.character_role === "Attacker" || c.skills.some((s) => s.slot === "special_skill" && s.kind === "special")
 }
-function getProtectorSupportType(c: WikiCharacter): "physics" | "magic" | null {
+function getProtectorSupportType(c: TeamBuilderCharacter): "physics" | "magic" | null {
   if (!isProtectorChar(c)) return null
   const leaderSkill = c.skills.find(s => s.slot === "leader_skill")
   if (!leaderSkill) return null
@@ -249,7 +256,7 @@ const _elemPatterns: [RegExp, string][] = [
   [/increases?\s+light\s+atk/i, "holy"], [/increases?\s+p-atk/i, "physics"], [/physical characters'/i, "physics"],
   [/increases?\s+m-atk/i, "magic"], [/magic characters'/i, "magic"], [/all allies' atk/i, "all"],
 ]
-function getProtectorElementKeys(c: WikiCharacter): string[] {
+function getProtectorElementKeys(c: TeamBuilderCharacter): string[] {
   const normalized = normalizeLabel(c.element)
   const leaderSkill = c.skills.find((s) => s.slot === "leader_skill")
   const desc = leaderSkill ? stripColorTags(leaderSkill.description_max_level ?? "") : ""
@@ -272,9 +279,9 @@ function getProtectorElementKeys(c: WikiCharacter): string[] {
   return values
 }
 
-function getCardIcons(char: WikiCharacter): [string | null, string | null, string | null] {
+function getCardIcons(char: TeamBuilderCharacter): [string | null, string | null, string | null] {
   if (isProtectorChar(char)) {
-    const forceIcons = getCharacterForceEntries(char)
+    const forceIcons = char.force_entries
       .map(e => e.icon ?? null).filter(Boolean) as string[]
     const elementIcons = getProtectorElementKeys(char)
       .map(k => FULL_ELEMENT_ICON_MAP[k] ?? null).filter(Boolean) as string[]
@@ -287,9 +294,9 @@ function getCardIcons(char: WikiCharacter): [string | null, string | null, strin
   return [ATTACKER_ELEMENT_ICONS[elKey] ?? null, ATK_TYPE_ICONS[atkKey] ?? null, null]
 }
 
-function getMiniCardIcons(char: WikiCharacter): [string | null, string | null] {
+function getMiniCardIcons(char: TeamBuilderCharacter): [string | null, string | null] {
   if (isProtectorChar(char)) {
-    const forceIcon = getCharacterForceEntries(char).map(e => e.icon ?? null).find(Boolean) ?? null
+    const forceIcon = char.force_entries.map(e => e.icon ?? null).find(Boolean) ?? null
     const allKeys = getProtectorElementKeys(char)
     const QUALIFIERS = new Set(["physics", "magic", "all"])
     const elKeys = allKeys.filter(k => !QUALIFIERS.has(k))
@@ -312,7 +319,7 @@ function getMiniCardIcons(char: WikiCharacter): [string | null, string | null] {
 }
 
 // =================================
-export default function TeamBuilderClient({ characters, heartprints, equipment, charms }: { characters: WikiCharacter[], heartprints: Heartprint[], equipment: Equipment[], charms: Charm[] }) {
+export default function TeamBuilderClient({ characters, heartprints, equipment, charms }: { characters: TeamBuilderCharacter[], heartprints: Heartprint[], equipment: Equipment[], charms: Charm[] }) {
   // 4 main slots + 4 sub-slots + 2 side slots + 2 side sub-slots
   const [mainSlots, setMainSlots] = useState<(number | null)[]>(Array(4).fill(null))
   const [subSlots, setSubSlots] = useState<(number | null)[]>(Array(4).fill(null))
@@ -359,11 +366,35 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
   const [filterSize, setFilterSize] = useState<{w: number, h: number}>({w: 380, h: 0})
   const filterResizeStart = useRef<{w: number, h: number, px: number, py: number} | null>(null)
   const [showSkillEffect, setShowSkillEffect] = useState(false)
+  const deferredQuery = useDeferredValue(query)
+
+  const characterById = useMemo(() => new Map(characters.map((character) => [character.master_pc_id, character])), [characters])
+  const ambiguousCharacterNames = useMemo(() => {
+    const counts = new Map<string, number>()
+    for (const character of characters) {
+      const nameKey = normalizeIdentityText(character.name)
+      if (!nameKey) continue
+      counts.set(nameKey, (counts.get(nameKey) ?? 0) + 1)
+    }
+    return new Set(Array.from(counts.entries()).filter(([, count]) => count > 1).map(([name]) => name))
+  }, [characters])
+
+  const getCharacterById = useCallback((characterId: number | null | undefined): TeamBuilderCharacter | null => {
+    if (characterId == null) return null
+    return characterById.get(characterId) ?? null
+  }, [characterById])
 
   const forceOptions = useMemo(() => {
-    const map = getForceIconLookup()
+    const map = new Map<string, string>()
+    for (const character of characters) {
+      for (const force of character.forces) {
+        if (!map.has(force.name)) {
+          map.set(force.name, force.icon_path)
+        }
+      }
+    }
     return Array.from(map.entries()).map(([name, icon]) => ({ label: name, value: name, icon: toPublicAssetPath(icon) }))
-  }, [])
+  }, [characters])
 
   const filterDragStart = useRef<{x: number, y: number, px: number, py: number} | null>(null)
 
@@ -403,21 +434,21 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
   }, [characters])
 
   const heartprintItems = useMemo(() => {
-    const q = query.trim().toLowerCase()
+    const q = deferredQuery.trim().toLowerCase()
     return heartprints.filter(hp =>
       hp.still_type === "rare" &&
       (!q || hp.title?.toLowerCase().includes(q) || String(hp.heartprint_id).includes(q))
     )
-  }, [heartprints, query])
+  }, [deferredQuery, heartprints])
 
-  function isExChar(c: WikiCharacter) {
+  function isExChar(c: TeamBuilderCharacter) {
     return isExUnboundCharacter(c) || hasExSpecialSkill(c) || isExAttacker(c)
   }
 
   const results = useMemo(() => {
     if (pickerMode === "heartprint") return []
     const roleFilter = ((pickerMode === "main" || pickerMode === "sub") && pickerOpenFor === 0) ? "supporter" : "attacker"
-    const q = query.trim().toLowerCase()
+    const q = deferredQuery.trim().toLowerCase()
     // Build set of already-selected IDs, excluding the current slot being edited
     const taken = new Set<number>()
     mainSlots.forEach((id, idx) => { if (id && !(pickerMode === "main" && pickerOpenFor === idx)) taken.add(id) })
@@ -426,7 +457,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
     sideSubSlots.forEach((id, idx) => { if (id && !(pickerMode === "sidesub" && pickerOpenFor === idx)) taken.add(id) })
     const filtered = characters.filter((c) => {
       if (taken.has(c.master_pc_id)) return false
-      if (q && !c.name.toLowerCase().includes(q) && !(c.affiliation_name?.toLowerCase().includes(q))) return false
+      if (q && !c.search_text.includes(q)) return false
       if (c.character_role?.toLowerCase() !== roleFilter) return false
       if (filterEl && !elementMatches(c.element ?? "", filterEl)) return false
       if (filterAttack && c.attack_type?.toLowerCase() !== filterAttack.toLowerCase()) return false
@@ -435,7 +466,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       if (filterCharType === "ex" && !isExChar(c)) return false
       if (filterCharacterType && c.master_character_tactics_type !== filterCharacterType) return false
       if (filterRarity != null && getCharacterVisualTier(c) !== filterRarity) return false
-      if (filterForces.length && !filterForces.some((f) => c.forces.map((x) => x.name).includes(f))) return false
+      if (filterForces.length && !filterForces.some((forceName) => c.force_names.includes(forceName))) return false
       if (filterWeapon && c.weapon_type?.toLowerCase() !== filterWeapon.toLowerCase()) return false
       if (filterProtType !== "all" && isProtectorChar(c)) {
         if (filterProtType === "special") {
@@ -510,7 +541,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
     // Sort by rarity descending: EX Unbound (7) > EX (6) > 5 > 4 > 3
     filtered.sort((a, b) => getCharacterVisualTier(b) - getCharacterVisualTier(a))
     return filtered
-  }, [characters, pickerMode, pickerOpenFor, query, filterEl, filterAttack, filterTactics, filterCharType, filterCharacterType, filterRarity, filterForces, filterSkillGroups, filterSkillType, filterWeapon, filterProtType, filterUltimateType, filterEnhancement, filterProtSkill, filterSkillCost, mainSlots, subSlots, sideSlots, sideSubSlots])
+  }, [characters, deferredQuery, filterAttack, filterCharType, filterCharacterType, filterEl, filterEnhancement, filterForces, filterProtSkill, filterProtType, filterRarity, filterSkillCost, filterSkillGroups, filterSkillType, filterTactics, filterUltimateType, filterWeapon, mainSlots, pickerMode, pickerOpenFor, sideSlots, sideSubSlots, subSlots])
 
   // Flatten charms into individual skill items, deduplicated by skill_id
   type FlatCharm = { skill_id: number; name: string; description: string | null; image_path: string | null; rarity: number; is_quest_skill: boolean }
@@ -564,8 +595,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       const mainId = mainSlots[i]
       const subId = subSlots[i]
       if (!mainId && !subId) continue
-      const mainChar = mainId ? characters.find(ch => ch.master_pc_id === mainId) ?? null : null
-      const subChar = subId ? characters.find(ch => ch.master_pc_id === subId) ?? null : null
+      const mainChar = getCharacterById(mainId)
+      const subChar = getCharacterById(subId)
       const protGroup = i === 0
       const mainEntry: EquipSlotEntry | null = mainId ? {
         slotKey: `main${i}`, label: protGroup ? "Protection" : `Battle ${i}`,
@@ -582,7 +613,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       const mainId = sideSlots[i]
       const subId = sideSubSlots[i]
       if (!mainId && !subId) continue
-      const mainChar = mainId ? characters.find(ch => ch.master_pc_id === mainId) ?? null : null
+      const mainChar = getCharacterById(mainId)
       const isProt = mainChar ? isProtectorChar(mainChar) : false
       const mainEntry: EquipSlotEntry | null = mainId ? {
         slotKey: `side${i}`, label: isProt ? `Side Prot ${i+1}` : `Side ${i+1}`,
@@ -595,7 +626,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       groups.push({ mainEntry, subEntry, isProtGroup: isProt })
     }
     return groups
-  }, [mainSlots, subSlots, sideSlots, sideSubSlots, characters])
+  }, [getCharacterById, mainSlots, sideSlots, sideSubSlots, subSlots])
 
   // Flat list for backward-compat (used by auto-equip)
   const equipModalChars = useMemo(() => {
@@ -616,23 +647,18 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
   // Valor Cup effects are excluded (don't apply outside Valor Cup battles).
   //
   // Weapon type normalisation: character names ≠ equipment names
-  //   Spear → Lance | Largesword → Greatsword | Book → Magic Tome | Knuckle → Fist
-  //
   // Element normalisation (char element → description word):
   //   Holy → light | Air → wind | Wind → wind | EnhancedX → same as X (strip prefix)
   //   Fire | Water | Earth | Dark are same lower-case.
 
-  const CHAR_WEAPON_NORM: Record<string, string> = {
-    Spear: "Lance", Largesword: "Greatsword", Book: "Magic Tome", Knuckle: "Fist"
-  }
   function normalizeWeaponType(wt: string | null): string {
     if (!wt) return ""
-    return (CHAR_WEAPON_NORM[wt] ?? wt).toLowerCase()
+    return wt.toLowerCase()
   }
 
   const CHAR_ELEMENT_NORM: Record<string, string> = {
-    Holy: "light", Air: "wind",
-    EnhancedHoly: "light", EnhancedAir: "wind", EnhancedWind: "wind",
+    Holy: "light", Air: "space",
+    EnhancedHoly: "light", EnhancedAir: "space", EnhancedWind: "wind",
     EnhancedFire: "fire", EnhancedWater: "water", EnhancedEarth: "earth", EnhancedDark: "dark"
   }
   function normalizeElement(el: string | null): string {
@@ -640,15 +666,55 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
     return (CHAR_ELEMENT_NORM[el] ?? el).toLowerCase()
   }
 
-  function scoreEquipment(eq: Equipment, char: WikiCharacter): number {
+  function normalizeIdentityText(value: string | null | undefined): string {
+    return stripColorTags(value ?? "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim()
+  }
+
+  function getEquipmentTargetPhrases(effects: string[]): string[] {
+    const targets = new Set<string>()
+    for (const effect of effects) {
+      const normalizedEffect = normalizeIdentityText(effect)
+      const matches = normalizedEffect.matchAll(/when equipped by (.+?) increases/g)
+      for (const match of matches) {
+        const target = (match[1] ?? "").trim().replace(/\s+,/g, "").trim()
+        if (target) {
+          targets.add(target)
+        }
+      }
+    }
+    return [...targets]
+  }
+
+  function getCharacterIdentityPhrases(char: TeamBuilderCharacter): string[] {
+    const name = normalizeIdentityText(char.name)
+    const affiliation = normalizeIdentityText(char.affiliation_name)
+    if (!name) return []
+    if (!affiliation) return [name]
+
+    const phrases = new Set<string>([
+      `${name} ${affiliation}`.trim(),
+      `${name} the ${affiliation}`.trim(),
+    ])
+
+    if (affiliation.startsWith("the ")) {
+      phrases.add(`${name} ${affiliation.replace(/^the\s+/, "")}`.trim())
+    }
+
+    return [...phrases].filter(Boolean)
+  }
+
+  function scoreEquipment(eq: Equipment, char: TeamBuilderCharacter): number {
     // Strip Valor Cup effects — they only apply in arena and never count here
     const validEffects = [eq.effect1 ?? "", eq.effect2 ?? ""]
       .filter(e => !e.toLowerCase().includes("valor cup"))
-      .map(e => e.toLowerCase())
-    const combined = validEffects.join(" ")
+    const combined = validEffects.join(" ").toLowerCase()
+    const equipmentTargets = getEquipmentTargetPhrases(validEffects)
 
-    const charName  = (char.name ?? "").toLowerCase()
-    const charAffil = (char.affiliation_name ?? "").toLowerCase()
+    const charName  = normalizeIdentityText(char.name)
+    const charAffil = normalizeIdentityText(char.affiliation_name)
     const charEl    = normalizeElement(char.element ?? "")
     const charWt    = normalizeWeaponType(char.weapon_type ?? "")
     const eqWt      = (eq.weapon_type ?? "").toLowerCase()
@@ -671,13 +737,14 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
     // Base: effective stat drives sorting (rarity is a tiebreaker)
     let score = effectiveStat + eq.rarity * 0.5 + eq.base_rarity * 0.1
 
-    // Exclusive bonus: character name in description wins over generic pieces
-    // Search name first; if name found AND affiliation found → confirmed exclusive
-    const nameInDesc  = charName.length > 2 && combined.includes(charName)
+    const identityPhrases = getCharacterIdentityPhrases(char)
+    const fullIdentityMatch = identityPhrases.some((phrase) => equipmentTargets.includes(phrase))
+    const nameTargetMatch = charName.length > 2 && equipmentTargets.includes(charName)
     const affilInDesc = charAffil.length > 2 && combined.includes(charAffil)
-    if (nameInDesc && affilInDesc) {
+
+    if (fullIdentityMatch) {
       score += 100000  // confirmed exclusive
-    } else if (nameInDesc) {
+    } else if (nameTargetMatch && !ambiguousCharacterNames.has(charName)) {
       score += 80000   // name match alone (covers e.g. "Megumin")
     } else if (affilInDesc) {
       score += 60000   // affiliation only (still likely dedicated piece)
@@ -694,27 +761,28 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
     const attackerSlots: { slotKey: string; charId: number }[] = []
     for (let i = 0; i < 4; i++) {
       if (mainSlots[i]) {
-        const c = characters.find(ch => ch.master_pc_id === mainSlots[i])
+        const c = getCharacterById(mainSlots[i])
         if (c && !isProtectorChar(c)) attackerSlots.push({ slotKey: `main${i}`, charId: mainSlots[i]! })
       }
       if (subSlots[i]) {
-        const c = characters.find(ch => ch.master_pc_id === subSlots[i])
+        const c = getCharacterById(subSlots[i])
         if (c && !isProtectorChar(c)) attackerSlots.push({ slotKey: `sub${i}`, charId: subSlots[i]! })
       }
     }
     for (let i = 0; i < 2; i++) {
       if (sideSlots[i]) {
-        const c = characters.find(ch => ch.master_pc_id === sideSlots[i])
+        const c = getCharacterById(sideSlots[i])
         if (c && !isProtectorChar(c)) attackerSlots.push({ slotKey: `side${i}`, charId: sideSlots[i]! })
       }
       if (sideSubSlots[i]) {
-        const c = characters.find(ch => ch.master_pc_id === sideSubSlots[i])
+        const c = getCharacterById(sideSubSlots[i])
         if (c && !isProtectorChar(c)) attackerSlots.push({ slotKey: `sidesub${i}`, charId: sideSubSlots[i]! })
       }
     }
 
     for (const { slotKey, charId } of attackerSlots) {
-      const char = characters.find(c => c.master_pc_id === charId)!
+      const char = getCharacterById(charId)
+      if (!char) continue
       const slotRec: Record<string, number | null> = { weapon: null, armor: null, accessory: null }
 
       for (const eqType of ["weapon", "armor", "accessory"] as const) {
@@ -785,8 +853,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
   function MainSlotCard({ i }: { i: number }) {
     const charId = mainSlots[i]
     const subCharId = subSlots[i]
-    const char = charId ? characters.find((c) => c.master_pc_id === charId) ?? null : null
-    const subChar = subCharId ? characters.find((c) => c.master_pc_id === subCharId) ?? null : null
+    const char = getCharacterById(charId)
+    const subChar = getCharacterById(subCharId)
     const isProt = i === 0
     const role: "bless" | "member" = isProt ? "bless" : "member"
     const tier = char ? getCharacterVisualTier(char) : 5
@@ -940,8 +1008,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
   function SideSlotCard({ i }: { i: number }) {
     const charId = sideSlots[i]
     const sideSubCharId = sideSubSlots[i]
-    const char = charId ? characters.find((c) => c.master_pc_id === charId) ?? null : null
-    const sideSubChar = sideSubCharId ? characters.find((c) => c.master_pc_id === sideSubCharId) ?? null : null
+    const char = getCharacterById(charId)
+    const sideSubChar = getCharacterById(sideSubCharId)
     const tier = char ? getCharacterVisualTier(char) : 5
     const role: "bless" | "member" = char && isProtectorChar(char) ? "bless" : "member"
     const { base: sideBase, frame } = getMainFramePaths(tier, role)
@@ -1055,8 +1123,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
     // Slot preview chars for the left panel
     const slotMainId = isSideMode ? sideSlots[pickerOpenFor] : mainSlots[pickerOpenFor]
     const slotSubId = isSideMode ? sideSubSlots[pickerOpenFor] : subSlots[pickerOpenFor]
-    const slotMainChar = slotMainId ? characters.find(c => c.master_pc_id === slotMainId) ?? null : null
-    const slotSubChar = slotSubId ? characters.find(c => c.master_pc_id === slotSubId) ?? null : null
+    const slotMainChar = getCharacterById(slotMainId)
+    const slotSubChar = getCharacterById(slotSubId)
 
     // Active filter count badge
     const activeFilterCount = [
@@ -1300,21 +1368,24 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                       </div>
                       <span className="text-[9px] text-gray-500">Remove</span>
                     </div>
-                    {results.map(c => {
+                    {results.map((c, index) => {
                       const t = getCharacterVisualTier(c)
                       const r: "bless" | "member" = c.character_role?.toLowerCase() === "supporter" ? "bless" : "member"
                       const { base, frame } = getMiniFramePaths(t, r)
                       const [ci1, ci2] = getMiniCardIcons(c)
+                      const imageLoading = index < 24 ? "eager" : "lazy"
                       return (
                         <div key={c.master_pc_id} className="flex flex-col items-center gap-0.5 p-1 rounded hover:bg-white/5 cursor-pointer transition-colors"
+                          style={{ contentVisibility: "auto", containIntrinsicSize: "72px" }}
                           onClick={() => selectChar(pickerOpenFor, c.master_pc_id)}>
                           <div className="relative w-full" style={{ aspectRatio: "1" }}>
-                            <img src={base} alt="" className="absolute inset-0 w-full h-full object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                            <img src={base} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
                             <img src={toPublicAssetPath(c.images.icon)} alt={c.name} className="absolute inset-0 w-full h-full object-cover object-top"
+                              loading={imageLoading} decoding="async"
                               onError={e => { (e.target as HTMLImageElement).src = toPublicAssetPath(c.images.full) }} />
-                            <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-contain"
+                            <img src={frame} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 w-full h-full object-contain"
                               onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
-                            <img src={STAR_ASSETS[t] ?? STAR_ASSETS[5]} alt="" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[14%] object-contain" />
+                            <img src={STAR_ASSETS[t] ?? STAR_ASSETS[5]} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[14%] object-contain" />
                             {(ci1 || ci2) && (
                               <div className="absolute top-0.5 right-0.5 z-10 flex flex-col gap-0.5">
                                 {ci1 && <img src={ci1} alt="" className="w-3 h-3 sm:w-5 sm:h-5 object-contain drop-shadow" />}
@@ -1440,15 +1511,19 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                           <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-2 uppercase tracking-wider">Weapon</div>
                           <div className="flex flex-wrap gap-1">
                             <FilterBtn active={filterWeapon === null} onClick={() => setFilterWeapon(null)}>ALL</FilterBtn>
-                            {Object.entries(WEAPON_ICONS).map(([key, icon]) => (
-                              <button key={key} onClick={() => setFilterWeapon(filterWeapon === key ? null : key)} title={key}
-                                className={`w-7 h-7 flex items-center justify-center rounded transition-all relative overflow-hidden ${filterWeapon === key ? "bg-white/20 ring-1 ring-white/50" : "bg-white/5 hover:bg-white/10"}`}>
-                                <img src="/elements/weaponDiamondBg.png" alt="" className="absolute inset-0 w-full h-full object-contain opacity-60 pointer-events-none"
-                                  onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
-                                <img src={icon} alt={key} className={`relative w-4 h-4 object-contain ${filterWeapon === key ? "opacity-100" : "opacity-50"}`}
-                                  onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
-                              </button>
-                            ))}
+                            {[...new Set(characters.map(c => normalizeWeaponType(c.weapon_type)).filter(Boolean))]
+                              .map(key => key.toLowerCase())
+                              .sort((a, b) => a.localeCompare(b))
+                              .map(key => (
+                                <button key={key} onClick={() => setFilterWeapon(filterWeapon === key ? null : key)} title={formatWikiLabel(key)}
+                                  className={`w-7 h-7 flex items-center justify-center rounded transition-all relative overflow-hidden ${filterWeapon === key ? "bg-white/20 ring-1 ring-white/50" : "bg-white/5 hover:bg-white/10"}`}>
+                                  <div
+                                    className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-sm border border-white/20 bg-white/5 pointer-events-none"
+                                  />
+                                  <img src={weaponIconMap[key]} alt={formatWikiLabel(key)} className={`relative w-4 h-4 object-contain ${filterWeapon === key ? "opacity-100" : "opacity-50"}`}
+                                    onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                                </button>
+                              ))}
                           </div>
                         </div>
                       )}
@@ -1785,8 +1860,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
     link.click()
   }
 
-  const protChar = mainSlots[0] ? characters.find((c) => c.master_pc_id === mainSlots[0]) ?? null : null
-  const protSubChar = subSlots[0] ? characters.find((c) => c.master_pc_id === subSlots[0]) ?? null : null
+  const protChar = getCharacterById(mainSlots[0])
+  const protSubChar = getCharacterById(subSlots[0])
   const leaderSkill = protChar?.skills.find((s) => s.slot === "leader_skill") ?? null
   const assistSkill = protSubChar?.skills.find((s) => s.slot === "assist_leader_skill") ?? null
   const selectedHp = heartPrintId ? heartprints.find(h => h.heartprint_id === heartPrintId) ?? null : null
@@ -1794,8 +1869,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
   // ── EP Calculation ──
   const teamEP = useMemo(() => {
     const slots: TeamSlotInput[] = [0, 1, 2, 3].map((i) => {
-      const mainChar = mainSlots[i] ? characters.find(c => c.master_pc_id === mainSlots[i]) ?? null : null
-      const subChar = subSlots[i] ? characters.find(c => c.master_pc_id === subSlots[i]) ?? null : null
+      const mainChar = getCharacterById(mainSlots[i])
+      const subChar = getCharacterById(subSlots[i])
       const eq = equipSlots[`main${i}`] ?? {}
       const weapon = eq.weapon ? equipment.find(e => e.id === eq.weapon) ?? null : null
       const armor = eq.armor ? equipment.find(e => e.id === eq.armor) ?? null : null
@@ -1804,8 +1879,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
     })
     // Side slots
     const sideInputs: TeamSlotInput[] = [0, 1].map((i) => {
-      const mainChar = sideSlots[i] ? characters.find(c => c.master_pc_id === sideSlots[i]) ?? null : null
-      const subChar = sideSubSlots[i] ? characters.find(c => c.master_pc_id === sideSubSlots[i]) ?? null : null
+      const mainChar = getCharacterById(sideSlots[i])
+      const subChar = getCharacterById(sideSubSlots[i])
       const eq = equipSlots[`side${i}`] ?? {}
       const weapon = eq.weapon ? equipment.find(e => e.id === eq.weapon) ?? null : null
       const armor = eq.armor ? equipment.find(e => e.id === eq.armor) ?? null : null
@@ -1813,7 +1888,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       return { mainChar, subChar, weapon, armor, accessory }
     })
     return calcTeamEP([...slots, ...sideInputs])
-  }, [mainSlots, subSlots, sideSlots, sideSubSlots, equipSlots, characters, equipment])
+  }, [equipment, equipSlots, getCharacterById, mainSlots, sideSlots, sideSubSlots, subSlots])
 
   return (
     <div className="w-full flex flex-col items-center px-2 sm:px-4">
@@ -2022,7 +2097,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                   const battleGroups = equipModalGroups.filter(g => !g.isProtGroup)
 
                   function renderEntry(entry: EquipSlotEntry, isSub: boolean) {
-                    const ch = characters.find(c => c.master_pc_id === entry.charId) ?? null
+                    const ch = getCharacterById(entry.charId)
                     if (!ch) return null
                     const isActiveRow = activeEquipSlot?.slotKey === entry.slotKey
                     const selectedSkillId = charmSlots[entry.slotKey] ?? null
@@ -2048,8 +2123,10 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                             <div className={`font-semibold truncate ${isSub ? "text-[9px]" : "text-[10px]"} ${isProtChar ? "text-purple-300" : "text-cyan-300"}`}>{ch.name}</div>
                             {ch.weapon_type && !isProtChar && (
                               <div className="flex items-center gap-1 mt-0.5">
-                                {WEAPON_ICONS[ch.weapon_type] && <img src={WEAPON_ICONS[ch.weapon_type]} alt="" className="w-3 h-3 object-contain opacity-60" />}
-                                <span className="text-[8px] text-gray-500">{ch.weapon_type}</span>
+                                {weaponIconMap[normalizeWeaponType(ch.weapon_type)] && (
+                                  <img src={weaponIconMap[normalizeWeaponType(ch.weapon_type)]} alt="" className="w-3 h-3 object-contain opacity-60" />
+                                )}
+                                <span className="text-[8px] text-gray-500">{formatWikiLabel(ch.weapon_type)}</span>
                               </div>
                             )}
                           </div>
