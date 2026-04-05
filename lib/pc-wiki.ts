@@ -88,6 +88,10 @@ const WEBSITE_EXCLUDED_CHARACTER_IDS = new Set([100001, 100002, 180001, 180002, 
 const WEBSITE_RELEASE_DATE_OVERRIDES: Record<string, string> = {
   "2019/12/31": "2023/02/28",
 }
+const websiteCharacters = payload.characters
+  .filter((character) => !WEBSITE_EXCLUDED_CHARACTER_IDS.has(character.master_pc_id))
+  .map(toWebsiteCharacter)
+const websiteCharacterById = new Map(websiteCharacters.map((character) => [character.master_pc_id, character]))
 
 const elementLabelMap: Record<string, string> = {
   all: "All",
@@ -141,9 +145,7 @@ function toWebsiteCharacter(character: WikiCharacter): WikiCharacter {
 }
 
 export function getAllWikiCharacters(): WikiCharacter[] {
-  return payload.characters
-    .filter((character) => !WEBSITE_EXCLUDED_CHARACTER_IDS.has(character.master_pc_id))
-    .map(toWebsiteCharacter)
+  return websiteCharacters
 }
 
 // ---------------------------------------------------------------------------
@@ -269,12 +271,7 @@ export function getAllHeartprints(): Heartprint[] {
 }
 
 export function getWikiCharacterById(characterId: number): WikiCharacter | undefined {
-  if (WEBSITE_EXCLUDED_CHARACTER_IDS.has(characterId)) {
-    return undefined
-  }
-
-  const character = payload.characters.find((entry) => entry.master_pc_id === characterId)
-  return character ? toWebsiteCharacter(character) : undefined
+  return websiteCharacterById.get(characterId)
 }
 
 export function toPublicAssetPath(assetPath: string | null | undefined): string {
