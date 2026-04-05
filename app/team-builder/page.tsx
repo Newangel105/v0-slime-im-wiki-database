@@ -1,8 +1,9 @@
 import TeamBuilderClient from "@/components/team-builder-client"
-import { getAllWikiCharacters, getAllHeartprints, getAllEquipment, getAllCharms } from "@/lib/pc-wiki"
+import { getAllHeartprints, getAllEquipment, getAllCharms } from "@/lib/pc-wiki"
+import { getAllTeamBuilderCharacters } from "@/lib/team-builder-character-data"
 
 export default function TeamBuilderPage() {
-  const characters = getAllWikiCharacters()
+  const characters = getAllTeamBuilderCharacters()
   const heartprints = getAllHeartprints()
   const equipment = getAllEquipment()
   const charms = getAllCharms()

@@ -1,6 +1,8 @@
 import type { WikiCharacter, Equipment } from "./pc-wiki"
 import teamStatsData from "../pc_wiki_team_stats.json"
 
+type EPCharacter = Pick<WikiCharacter, "element" | "master_pc_level_group_id" | "master_statusboard_id" | "master_enhanced_statusboard_id" | "stats">
+
 // ── Types ──────────────────────────────────────────────────────────────────
 
 type TeamStats = typeof teamStatsData
@@ -68,22 +70,22 @@ const ts: TeamStats = teamStatsData
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
-function elemKey(char: WikiCharacter): string {
+function elemKey(char: EPCharacter): string {
   return ELEMENT_KEY_MAP[char.element] ?? "0"
 }
 
-function baseElement(char: WikiCharacter): string {
+function baseElement(char: EPCharacter): string {
   // Return the base element string (e.g. "Earth") from possibly enhanced/special names
   const key = elemKey(char)
   const fac = ts.facility_bonuses[key as keyof typeof ts.facility_bonuses] as FacilityBonus | undefined
   return fac?.elem_name ?? "None"
 }
 
-function sameElement(a: WikiCharacter, b: WikiCharacter): boolean {
+function sameElement(a: EPCharacter, b: EPCharacter): boolean {
   return elemKey(a) === elemKey(b) && elemKey(a) !== "0"
 }
 
-function getStatusboardBonus(char: WikiCharacter): { hp: number; attack: number; defense: number } {
+function getStatusboardBonus(char: EPCharacter): { hp: number; attack: number; defense: number } {
   const sbId = char.master_statusboard_id
   if (!sbId) return { hp: 0, attack: 0, defense: 0 }
   const sb = ts.statusboard_totals[String(sbId) as keyof typeof ts.statusboard_totals] as
@@ -91,7 +93,7 @@ function getStatusboardBonus(char: WikiCharacter): { hp: number; attack: number;
   return sb ?? { hp: 0, attack: 0, defense: 0 }
 }
 
-function getEnhancedStatusboardBonus(char: WikiCharacter): { hp: number; attack: number; defense: number } {
+function getEnhancedStatusboardBonus(char: EPCharacter): { hp: number; attack: number; defense: number } {
   const esbId = char.master_enhanced_statusboard_id
   if (!esbId) return { hp: 0, attack: 0, defense: 0 }
   const esb = ts.enhanced_statusboard_totals[String(esbId) as keyof typeof ts.enhanced_statusboard_totals] as
@@ -99,7 +101,7 @@ function getEnhancedStatusboardBonus(char: WikiCharacter): { hp: number; attack:
   return esb ?? { hp: 0, attack: 0, defense: 0 }
 }
 
-function getLevelMaxAdd(char: WikiCharacter): { add_hp: number; add_attack: number; add_defense: number } {
+function getLevelMaxAdd(char: EPCharacter): { add_hp: number; add_attack: number; add_defense: number } {
   const gid = char.master_pc_level_group_id
   if (!gid) return { add_hp: 0, add_attack: 0, add_defense: 0 }
   const lma = ts.level_max_add[String(gid) as keyof typeof ts.level_max_add] as
@@ -114,7 +116,7 @@ function getBondRatios(): { hp_ratio: number; attack_ratio: number; defense_rati
   return bond ?? { hp_ratio: 0, attack_ratio: 0, defense_ratio: 0 }
 }
 
-function getFacilityBonus(char: WikiCharacter): FacilityBonus {
+function getFacilityBonus(char: EPCharacter): FacilityBonus {
   const key = elemKey(char)
   const fac = ts.facility_bonuses[key as keyof typeof ts.facility_bonuses] as FacilityBonus | undefined
   if (fac) return fac
@@ -122,7 +124,7 @@ function getFacilityBonus(char: WikiCharacter): FacilityBonus {
   return ts.facility_bonuses["0" as keyof typeof ts.facility_bonuses] as FacilityBonus
 }
 
-function getEquipFacilityBonus(char: WikiCharacter): { atk_pct: number; def_pct: number; hp_pct: number } {
+function getEquipFacilityBonus(char: EPCharacter): { atk_pct: number; def_pct: number; hp_pct: number } {
   const ek = elemKey(char)
   // All chars get ATK from key "9" (all-char ATK building)
   const allAtk = ts.equipment_facility_bonuses["9" as keyof typeof ts.equipment_facility_bonuses] as EquipFacilityBonus | undefined
@@ -149,8 +151,8 @@ function computeEP(hp: number, atk: number, def: number): number {
 // ── Main EP Calculation ────────────────────────────────────────────────────
 
 export function calcSlotStats(
-  mainChar: WikiCharacter,
-  subChar: WikiCharacter | null,
+  mainChar: EPCharacter,
+  subChar: EPCharacter | null,
   equipWeapon: Equipment | null,
   equipArmor: Equipment | null,
   equipAccessory: Equipment | null,
@@ -242,8 +244,8 @@ export function calcSlotStats(
 // ── Team EP ────────────────────────────────────────────────────────────────
 
 export type TeamSlotInput = {
-  mainChar: WikiCharacter | null
-  subChar: WikiCharacter | null
+  mainChar: EPCharacter | null
+  subChar: EPCharacter | null
   weapon: Equipment | null
   armor: Equipment | null
   accessory: Equipment | null
