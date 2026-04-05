@@ -1,6 +1,7 @@
 "use client"
 
-import { useDeferredValue, useEffect, useMemo, useState } from "react"
+import { useDeferredValue, useEffect, useLayoutEffect, useMemo, useState, useRef } from "react"
+import { Grid as VirtualizedGrid } from "react-window"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { ArrowDownUp, Search } from "lucide-react"
@@ -1063,6 +1064,7 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
   )
 
   const filteredCharacters = useMemo(() => {
+    if (!Array.isArray(characters)) return [];
     const query = normalizeLabel(deferredSearchText)
     const filtered = characters.filter((character) => {
       const characterForceNames = character.force_names
@@ -1183,7 +1185,7 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
     selectedUltimateTypes,
     sortAsc,
     sortKey,
-  ])
+  ]) || []
 
   const activeFilterCount =
     selectedAttackerElements.length +
@@ -1198,6 +1200,48 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
     selectedFacilities.length +
     selectedRoles.length +
     selectedUltimateTypes.length
+
+  // Virtualization settings
+  const gridRef = useRef<HTMLDivElement>(null)
+  const [containerWidth, setContainerWidth] = useState<number>(0)
+
+  useLayoutEffect(() => {
+    if (!gridRef.current) return
+    const ro = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setContainerWidth(entry.contentRect.width)
+      }
+    })
+    ro.observe(gridRef.current)
+    // initial measurement
+    setContainerWidth(gridRef.current.clientWidth)
+    return () => ro.disconnect()
+  }, [])
+
+  const DEFAULT_GAP = 12
+  const MOBILE_GAP = 8
+  const GAP = containerWidth && containerWidth < 640 ? MOBILE_GAP : DEFAULT_GAP
+  const DESIRED_CARD_WIDTH = 320
+  const DESKTOP_CARD_HEIGHT = 340
+  const MOBILE_CARD_HEIGHT = 320
+  const CARD_HEIGHT = containerWidth && containerWidth < 640 ? MOBILE_CARD_HEIGHT : DESKTOP_CARD_HEIGHT
+
+  const computedColumnCount = containerWidth
+    ? containerWidth >= 1280
+      ? 3
+      : containerWidth >= 640
+      ? 2
+      : 1
+    : 1
+
+  const columnWidth = containerWidth ? containerWidth / computedColumnCount : DESIRED_CARD_WIDTH + GAP
+  const cardWidth = Math.max(0, columnWidth - GAP)
+  const rowCount = Math.ceil(filteredCharacters.length / computedColumnCount)
+  const gridHeight = Math.min(6, rowCount) * CARD_HEIGHT + 10 // Show up to 6 rows at once
+
+  // For VariableSizeGrid, must provide functions
+  const getColumnWidth = () => columnWidth
+  const getRowHeight = () => CARD_HEIGHT
 
   function resetFilters() {
     setSearchText("")
@@ -1223,6 +1267,17 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
 
   return (
     <main className="min-h-screen bg-[#111827] px-4 py-8 text-white sm:px-6">
+      <style jsx global>{`
+        .hide-scrollbar {
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
+          -webkit-overflow-scrolling: touch;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none; /* Safari and Chrome */
+          width: 0; height: 0;
+        }
+      `}</style>
       <div className="mx-auto flex max-w-7xl flex-col gap-8">
         <section className="rounded-2xl border border-gray-700 bg-gray-800 p-5 shadow-[0_0_24px_rgba(255,255,255,0.08)]">
           <div className="flex flex-col gap-4">
@@ -1317,137 +1372,156 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
           </div>
         </section>
 
-        <section className="grid gap-5 min-w-0 sm:grid-cols-2 xl:grid-cols-3">
-          {filteredCharacters.map((character, index) => {
-            const visualTier = getCharacterVisualTier(character)
-            const frameSrc = getCharacterFrame(character)
-            const baseSrc = getCharacterBase(character)
-            const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
-            const iconSrc = character.images.icon
-            const characterElementValue = getCharacterElementValue(character)
-            const elementIcons = getCharacterElementIcons(character)
-            const forceEntries = character.force_entries
-            const attackTypeIcon = attackTypeIconMap[normalizeLabel(character.attack_type)]
-            const weaponIcon = weaponIconMap[normalizeLabel(character.weapon_type)]
-            const tacticsIcon = tacticsIconMap[normalizeLabel(character.tactics_type || "Normal")]
-            const attackTypeLabel = formatWikiLabel(character.attack_type)
-            const weaponLabel = formatWikiLabel(character.weapon_type)
-            const rarityLabel = getCharacterRarityLabel(character)
-            const isPriorityCard = index < 6
-            const imageLoading = isPriorityCard ? "eager" : "lazy"
-
-            const elementAccentColor = elementColorMap[normalizeLabel(characterElementValue)] ?? "#4b5563"
-            const facilityIcons = [
-              ...new Set(character.facilities.map((f) => f.replace(/ \+\d+%$/, "").trim())),
-            ]
-              .map((name) => ({ name, icon: facilityIconMap[name] }))
-              .filter((entry) => entry.icon)
-              .slice(0, 5)
-
-            return (
-              <Link key={character.master_pc_id} href={`/characters/${character.master_pc_id}`} prefetch={false} className="block w-full min-w-0">
-                    <div
-                      className="w-full min-w-0 group h-full overflow-hidden rounded-2xl bg-gradient-to-b from-[#1d2d44] to-[#0f1924] shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-2xl"
-                      style={{ borderTop: `4px solid ${elementAccentColor}`, contentVisibility: "auto", containIntrinsicSize: "420px" }}
-                    >
-                  <div>
-                    {/* Portrait + info row */}
-                    <div className="flex gap-4 p-4 pb-3">
-                      {/* Portrait */}
-                      <div className="relative h-24 w-24 md:h-[148px] md:w-[148px] shrink-0">
-                        <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
-                        <div className="absolute inset-[10px] overflow-hidden rounded-[18px]">
-                          <img
-                            src={iconSrc}
-                            alt={character.name}
-                            loading={imageLoading}
-                            decoding="async"
-                            fetchPriority={isPriorityCard ? "high" : "low"}
-                            className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110"
-                          />
-                        </div>
-                        <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
-                      </div>
-
-                      {/* Info column */}
-                      <div className="flex min-w-0 flex-1 flex-col md:min-h-[148px]">
-                        <div className="flex items-start justify-between gap-2">
-                          <h2 className="line-clamp-2 text-[1rem] font-bold leading-snug text-white">{character.name}</h2>
-                          <img src={starsSrc} alt={rarityLabel} loading={imageLoading} decoding="async" className="mt-0.5 h-6 shrink-0 object-contain drop-shadow" />
-                        </div>
-                        <p className="mt-1 truncate text-[10px] uppercase tracking-[0.18em] text-gray-500">{character.affiliation_name}</p>
-
-                        {/* Tactics badge + facility icons on same row */}
-                        {(tacticsIcon || facilityIcons.length > 0) && (
-                          <div className="mt-2 flex items-center gap-2">
-                            {tacticsIcon && (
-                              <img
-                                src={tacticsIcon}
-                                alt={character.tactics_type || "Normal"}
-                                title={character.tactics_type || "Normal"}
-                                className="h-10 w-auto max-w-[110px] shrink-0 object-contain drop-shadow"
-                              />
-                            )}
-                            {facilityIcons.map(({ name, icon }) => (
-                              <img key={name} src={icon} alt={name} title={name} className="h-8 w-8 object-contain" />
-                            ))}
-                          </div>
-                        )}
-
-                        {/* Element / attack type / weapon icons */}
-                        <div className="mt-auto flex flex-wrap gap-2 pt-1">
-                          {elementIcons.map((entry) => (
-                            <img key={entry.icon} src={entry.icon} alt={entry.label} title={entry.label} className="h-8 w-8 object-contain" />
-                          ))}
-                          {attackTypeIcon && (
-                            <img src={attackTypeIcon} alt={attackTypeLabel} title={attackTypeLabel} className="h-8 w-8 object-contain" />
-                          )}
-                          {weaponIcon && (
-                            <img src={weaponIcon} alt={weaponLabel} title={weaponLabel} className="h-8 w-8 object-contain" />
-                          )}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Stats bar */}
-                    <div className="px-4 grid grid-cols-4 divide-x divide-white/5 rounded-xl bg-white/10 py-2.5 w-full min-w-0">
-                      <div className="px-2 text-center">
-                        <p className="text-[9px] font-semibold uppercase tracking-wider text-white">HP</p>
-                        <p className="mt-1 text-[1.1rem] font-bold leading-none text-emerald-300">{character.stats.hp}</p>
-                      </div>
-                      <div className="px-2 text-center">
-                        <p className="text-[9px] font-semibold uppercase tracking-wider text-white">ATK</p>
-                        <p className="mt-1 text-[1.1rem] font-bold leading-none text-rose-300">{character.stats.attack}</p>
-                      </div>
-                      <div className="px-2 text-center">
-                        <p className="text-[9px] font-semibold uppercase tracking-wider text-white">DEF</p>
-                        <p className="mt-1 text-[1.1rem] font-bold leading-none text-sky-300">{character.stats.defense}</p>
-                      </div>
-                      <div className="px-2 text-center">
-                        <p className="text-[9px] font-semibold uppercase tracking-wider text-white">EXI</p>
-                        <p className="mt-1 text-[1.1rem] font-bold leading-none text-amber-200">{character.stats.existence}</p>
-                      </div>
-                    </div>
-
-                    {/* Forces */}
-                    {forceEntries.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 px-4 py-3">
-                        {forceEntries.slice(0, 4).map((force) => (
-                          <span
-                            key={force.name}
-                            className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-2.5 py-1 text-[10px] text-gray-400 ring-1 ring-white/10"
+        <section className="min-w-0">
+          {Array.isArray(filteredCharacters) && filteredCharacters.length > 0 && (
+            <div ref={gridRef} className="w-full">
+              <VirtualizedGrid
+                className="hide-scrollbar"
+                columnCount={computedColumnCount}
+                columnWidth={columnWidth}
+                rowCount={rowCount}
+                rowHeight={CARD_HEIGHT}
+                height={gridHeight}
+                width={containerWidth || computedColumnCount * DESIRED_CARD_WIDTH}
+                cellProps={{}}
+                cellComponent={({ columnIndex, rowIndex, style }) => {
+                  const index = rowIndex * computedColumnCount + columnIndex;
+                  if (index >= filteredCharacters.length) return null;
+                  const character = filteredCharacters[index];
+                  const visualTier = getCharacterVisualTier(character);
+                  const frameSrc = getCharacterFrame(character);
+                  const baseSrc = getCharacterBase(character);
+                  const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5];
+                  const iconSrc = character.images.icon;
+                  const characterElementValue = getCharacterElementValue(character);
+                  const elementIcons = getCharacterElementIcons(character);
+                  const forceEntries = character.force_entries;
+                  const attackTypeIcon = attackTypeIconMap[normalizeLabel(character.attack_type)];
+                  const weaponIcon = weaponIconMap[normalizeLabel(character.weapon_type)];
+                  const tacticsIcon = tacticsIconMap[normalizeLabel(character.tactics_type || "Normal")];
+                  const attackTypeLabel = formatWikiLabel(character.attack_type);
+                  const weaponLabel = formatWikiLabel(character.weapon_type);
+                  const rarityLabel = getCharacterRarityLabel(character);
+                  const isPriorityCard = index < 6;
+                  const imageLoading = isPriorityCard ? "eager" : "lazy";
+                  const elementAccentColor = elementColorMap[normalizeLabel(characterElementValue)] ?? "#4b5563";
+                  const facilityIcons = [
+                    ...new Set(character.facilities.map((f) => f.replace(/ \+\d+%$/, "").trim())),
+                  ]
+                    .map((name) => ({ name, icon: facilityIconMap[name] }))
+                    .filter((entry) => entry.icon)
+                    .slice(0, 5);
+                  const rawLeft = (style as any).left ?? 0
+                  const rawWidth = (style as any).width ?? columnWidth
+                  const adjustedLeft = rawLeft + GAP / 2
+                  const adjustedWidth = Math.max(0, rawWidth - GAP)
+                  const adjustedStyle = { ...style, left: adjustedLeft, width: adjustedWidth }
+                  return (
+                    <div style={adjustedStyle} key={character.master_pc_id}>
+                      <div style={{ width: "100%", height: "100%", boxSizing: "border-box" }}>
+                        <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="block w-full min-w-0">
+                          <div
+                            className="w-full min-w-0 group h-full overflow-hidden rounded-2xl bg-gradient-to-b from-[#1d2d44] to-[#0f1924] shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-2xl"
+                            style={{ borderTop: `4px solid ${elementAccentColor}`, contentVisibility: "auto", containIntrinsicSize: `${CARD_HEIGHT}px` }}
                           >
-                            {force.icon && <img src={force.icon} alt={force.name} className="h-5 w-5 shrink-0 object-contain" />}
-                            {force.name}
-                          </span>
-                        ))}
+                            <div>
+                              {/* Portrait + info row */}
+                              <div className="flex gap-4 p-4 pb-3">
+                                {/* Portrait */}
+                                <div className="relative h-24 w-24 md:h-[148px] md:w-[148px] shrink-0">
+                                  <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
+                                  <div className="absolute inset-[10px] overflow-hidden rounded-[18px]">
+                                    <img
+                                      src={iconSrc}
+                                      alt={character.name}
+                                      loading={imageLoading}
+                                      decoding="async"
+                                      fetchPriority={isPriorityCard ? "high" : "low"}
+                                      className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110"
+                                    />
+                                  </div>
+                                  <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
+                                </div>
+                                {/* Info column */}
+                                <div className="flex min-w-0 flex-1 flex-col md:min-h-[148px]">
+                                  <div className="flex items-start justify-between gap-2">
+                                    <h2 className="line-clamp-2 text-[1rem] font-bold leading-snug text-white">{character.name}</h2>
+                                    <img src={starsSrc} alt={rarityLabel} loading={imageLoading} decoding="async" className="mt-0.5 h-6 shrink-0 object-contain drop-shadow" />
+                                  </div>
+                                  <p className="mt-1 truncate text-[10px] uppercase tracking-[0.18em] text-gray-500">{character.affiliation_name}</p>
+                                  {/* Tactics badge + facility icons on same row */}
+                                  {(tacticsIcon || facilityIcons.length > 0) && (
+                                    <div className="mt-2 flex items-center gap-2">
+                                      {tacticsIcon && (
+                                        <img
+                                          src={tacticsIcon}
+                                          alt={character.tactics_type || "Normal"}
+                                          title={character.tactics_type || "Normal"}
+                                          className="h-10 w-auto max-w-[110px] shrink-0 object-contain drop-shadow"
+                                        />
+                                      )}
+                                      {facilityIcons.map(({ name, icon }) => (
+                                        <img key={name} src={icon} alt={name} title={name} className="h-8 w-8 object-contain" />
+                                      ))}
+                                    </div>
+                                  )}
+                                  {/* Element / attack type / weapon icons */}
+                                  <div className="mt-auto flex flex-wrap gap-2 pt-1">
+                                    {elementIcons.map((entry) => (
+                                      <img key={entry.icon} src={entry.icon} alt={entry.label} title={entry.label} className="h-8 w-8 object-contain" />
+                                    ))}
+                                    {attackTypeIcon && (
+                                      <img src={attackTypeIcon} alt={attackTypeLabel} title={attackTypeLabel} className="h-8 w-8 object-contain" />
+                                    )}
+                                    {weaponIcon && (
+                                      <img src={weaponIcon} alt={weaponLabel} title={weaponLabel} className="h-8 w-8 object-contain" />
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                              {/* Stats bar */}
+                              <div className="px-4 grid grid-cols-4 divide-x divide-white/5 rounded-xl bg-white/10 py-2.5 w-full min-w-0">
+                                <div className="px-2 text-center">
+                                  <p className="text-[9px] font-semibold uppercase tracking-wider text-white">HP</p>
+                                  <p className="mt-1 text-[1.1rem] font-bold leading-none text-emerald-300">{character.stats.hp}</p>
+                                </div>
+                                <div className="px-2 text-center">
+                                  <p className="text-[9px] font-semibold uppercase tracking-wider text-white">ATK</p>
+                                  <p className="mt-1 text-[1.1rem] font-bold leading-none text-rose-300">{character.stats.attack}</p>
+                                </div>
+                                <div className="px-2 text-center">
+                                  <p className="text-[9px] font-semibold uppercase tracking-wider text-white">DEF</p>
+                                  <p className="mt-1 text-[1.1rem] font-bold leading-none text-sky-300">{character.stats.defense}</p>
+                                </div>
+                                <div className="px-2 text-center">
+                                  <p className="text-[9px] font-semibold uppercase tracking-wider text-white">EXI</p>
+                                  <p className="mt-1 text-[1.1rem] font-bold leading-none text-amber-200">{character.stats.existence}</p>
+                                </div>
+                              </div>
+                              {/* Forces */}
+                              {forceEntries.length > 0 && (
+                                <div className="flex flex-wrap gap-1.5 px-4 py-3">
+                                  {forceEntries.slice(0, 4).map((force) => (
+                                    <span
+                                      key={force.name}
+                                      className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-2.5 py-1 text-[10px] text-gray-400 ring-1 ring-white/10"
+                                    >
+                                      {force.icon && <img src={force.icon} alt={force.name} className="h-5 w-5 shrink-0 object-contain" />}
+                                      {force.name}
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </Link>
                       </div>
-                    )}
-                  </div>
-                </div>
-              </Link>
-            )
-          })}
+                    </div>
+                  );
+                }}
+              />
+            </div>
+          )}
         </section>
       </div>
     </main>
