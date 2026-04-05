@@ -38,18 +38,24 @@ const CHAR_TYPE_DISPLAY: Record<string, string> = {
   ExtremeAverage: "Balance Growth Type EX",
 }
 
-// ---- Weapon type icons for attacker picker ----
-const WEAPON_ICONS: Record<string, string> = {
-  Book: "/weapons/book.png",
-  Fist: "/weapons/fists.png",
-  Fists: "/weapons/fists.png",
-  Greatsword: "/weapons/greatsword.png",
-  Hammer: "/weapons/hammer.png",
-  Katana: "/weapons/katana.png",
-  Knuckle: "/weapons/fists.png",
-  Largesword: "/weapons/greatsword.png",
-  Spear: "/weapons/spear.png",
-  Sword: "/weapons/sword.png",
+// ---- Weapon type icons for attacker picker (match character-browser) ----
+const weaponIconMap: Record<string, string> = {
+  book: "/weapons/book.png",
+  fist: "/weapons/fists.png",
+  fists: "/weapons/fists.png",
+  greatsword: "/weapons/greatsword.png",
+  hammer: "/weapons/hammer.png",
+  largesword: "/weapons/greatsword.png",
+  katana: "/weapons/katana.png",
+  knuckle: "/weapons/fists.png",
+  spear: "/weapons/spear.png",
+  sword: "/weapons/sword.png",
+}
+
+function formatWikiLabel(label: string): string {
+  // Capitalize first letter, rest lowercase, replace underscores with space
+  if (!label) return ""
+  return label.charAt(0).toUpperCase() + label.slice(1).replace(/_/g, " ").toLowerCase()
 }
 
 // ---- Force group display labels ----
@@ -641,18 +647,13 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
   // Valor Cup effects are excluded (don't apply outside Valor Cup battles).
   //
   // Weapon type normalisation: character names ≠ equipment names
-  //   Spear → Lance | Largesword → Greatsword | Book → Magic Tome | Knuckle → Fist
-  //
   // Element normalisation (char element → description word):
   //   Holy → light | Air → wind | Wind → wind | EnhancedX → same as X (strip prefix)
   //   Fire | Water | Earth | Dark are same lower-case.
 
-  const CHAR_WEAPON_NORM: Record<string, string> = {
-    Spear: "Lance", Largesword: "Greatsword", Book: "Magic Tome", Knuckle: "Fist"
-  }
   function normalizeWeaponType(wt: string | null): string {
     if (!wt) return ""
-    return (CHAR_WEAPON_NORM[wt] ?? wt).toLowerCase()
+    return wt.toLowerCase()
   }
 
   const CHAR_ELEMENT_NORM: Record<string, string> = {
@@ -1510,16 +1511,19 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                           <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-2 uppercase tracking-wider">Weapon</div>
                           <div className="flex flex-wrap gap-1">
                             <FilterBtn active={filterWeapon === null} onClick={() => setFilterWeapon(null)}>ALL</FilterBtn>
-                            {Object.entries(WEAPON_ICONS).map(([key, icon]) => (
-                              <button key={key} onClick={() => setFilterWeapon(filterWeapon === key ? null : key)} title={key}
-                                className={`w-7 h-7 flex items-center justify-center rounded transition-all relative overflow-hidden ${filterWeapon === key ? "bg-white/20 ring-1 ring-white/50" : "bg-white/5 hover:bg-white/10"}`}>
-                                <div
-                                  className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-sm border border-white/20 bg-white/5 pointer-events-none"
-                                />
-                                <img src={icon} alt={key} className={`relative w-4 h-4 object-contain ${filterWeapon === key ? "opacity-100" : "opacity-50"}`}
-                                  onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
-                              </button>
-                            ))}
+                            {[...new Set(characters.map(c => normalizeWeaponType(c.weapon_type)).filter(Boolean))]
+                              .map(key => key.toLowerCase())
+                              .sort((a, b) => a.localeCompare(b))
+                              .map(key => (
+                                <button key={key} onClick={() => setFilterWeapon(filterWeapon === key ? null : key)} title={formatWikiLabel(key)}
+                                  className={`w-7 h-7 flex items-center justify-center rounded transition-all relative overflow-hidden ${filterWeapon === key ? "bg-white/20 ring-1 ring-white/50" : "bg-white/5 hover:bg-white/10"}`}>
+                                  <div
+                                    className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-sm border border-white/20 bg-white/5 pointer-events-none"
+                                  />
+                                  <img src={weaponIconMap[key]} alt={formatWikiLabel(key)} className={`relative w-4 h-4 object-contain ${filterWeapon === key ? "opacity-100" : "opacity-50"}`}
+                                    onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                                </button>
+                              ))}
                           </div>
                         </div>
                       )}
@@ -2119,8 +2123,10 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                             <div className={`font-semibold truncate ${isSub ? "text-[9px]" : "text-[10px]"} ${isProtChar ? "text-purple-300" : "text-cyan-300"}`}>{ch.name}</div>
                             {ch.weapon_type && !isProtChar && (
                               <div className="flex items-center gap-1 mt-0.5">
-                                {WEAPON_ICONS[ch.weapon_type] && <img src={WEAPON_ICONS[ch.weapon_type]} alt="" className="w-3 h-3 object-contain opacity-60" />}
-                                <span className="text-[8px] text-gray-500">{ch.weapon_type}</span>
+                                {weaponIconMap[normalizeWeaponType(ch.weapon_type)] && (
+                                  <img src={weaponIconMap[normalizeWeaponType(ch.weapon_type)]} alt="" className="w-3 h-3 object-contain opacity-60" />
+                                )}
+                                <span className="text-[8px] text-gray-500">{formatWikiLabel(ch.weapon_type)}</span>
                               </div>
                             )}
                           </div>
