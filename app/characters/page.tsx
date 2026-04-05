@@ -1,6 +1,7 @@
-import { CharacterBrowser } from "@/components/character-browser"
+import CharacterBrowserServer from "@/components/character-browser.server"
 import { getAllWikiCharacters } from "@/lib/pc-wiki"
 
 export default function CharactersPage() {
-  return <CharacterBrowser characters={getAllWikiCharacters()} />
+  const characters = getAllWikiCharacters()
+  return <CharacterBrowserServer characters={characters} />
 }
