@@ -1,5 +1,8 @@
+"use client"
+import { useState, useMemo } from "react"
+import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
-import { Search, ChevronDown } from "lucide-react"
+import { Search, ChevronDown, ChevronUp } from "lucide-react"
 import Link from "next/link"
 import {
   getAllWikiCharacters,
@@ -235,41 +238,55 @@ function getDefenderElementValues(character: WikiCharacter): string[] {
   return values
 }
 
-export default function ForcesPage({ searchParams }: { searchParams?: { q?: string } }) {
-  const searchTerm = (searchParams?.q ?? "").toLowerCase().trim()
+const allCharacters = getAllWikiCharacters()
 
-  const allCharacters = getAllWikiCharacters()
+export default function ForcesPage() {
+  const [searchTerm, setSearchTerm] = useState("")
+  const [expandedForces, setExpandedForces] = useState<Set<string>>(new Set())
 
-  const forceIconLookup = new Map<string, string>()
-  for (const char of allCharacters) {
-    const entries = getCharacterForceEntries(char)
-    for (const entry of entries) {
-      if (!forceIconLookup.has(entry.name) && entry.icon) forceIconLookup.set(entry.name, entry.icon)
+  const forceIconLookup = useMemo(() => {
+    const map = new Map<string, string>()
+    for (const char of allCharacters) {
+      const entries = getCharacterForceEntries(char)
+      for (const entry of entries) {
+        if (!map.has(entry.name) && entry.icon) map.set(entry.name, entry.icon)
+      }
     }
-  }
+    return map
+  }, [])
 
-  const groups: Record<string, WikiCharacter[]> = {}
-  for (const character of allCharacters) {
-    const entries = getCharacterForceEntries(character)
-    for (const entry of entries) {
-      if (!groups[entry.name]) groups[entry.name] = []
-      groups[entry.name].push(character)
+  const forceGroups = useMemo(() => {
+    const groups: Record<string, WikiCharacter[]> = {}
+    for (const character of allCharacters) {
+      const entries = getCharacterForceEntries(character)
+      for (const entry of entries) {
+        if (!groups[entry.name]) groups[entry.name] = []
+        groups[entry.name].push(character)
+      }
     }
-  }
 
-  const forceGroups = searchTerm
-    ? Object.fromEntries(Object.entries(groups).filter(([name, chars]) => {
-        const forceMatch = name.toLowerCase().includes(searchTerm)
-        const matchedChars = chars.filter((c) => c.name.toLowerCase().includes(searchTerm))
-        return forceMatch || matchedChars.length > 0
-      }).map(([name, chars]) => {
-        const forceMatch = name.toLowerCase().includes(searchTerm)
-        const matchedChars = chars.filter((c) => c.name.toLowerCase().includes(searchTerm))
-        return [name, forceMatch ? chars : matchedChars]
-      }))
-    : groups
+    if (!searchTerm) return groups
+
+    const filtered: Record<string, WikiCharacter[]> = {}
+    for (const [forceName, chars] of Object.entries(groups)) {
+      const forceMatch = forceName.toLowerCase().includes(searchTerm.toLowerCase())
+      const matchedChars = chars.filter((c) => c.name.toLowerCase().includes(searchTerm.toLowerCase()))
+      if (forceMatch || matchedChars.length > 0) {
+        filtered[forceName] = forceMatch ? chars : matchedChars
+      }
+    }
+    return filtered
+  }, [searchTerm])
 
   const sortedForces = Object.keys(forceGroups).sort()
+
+  const toggleForce = (forceName: string) => {
+    setExpandedForces((prev) => {
+      const next = new Set(prev)
+      next.has(forceName) ? next.delete(forceName) : next.add(forceName)
+      return next
+    })
+  }
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -279,41 +296,53 @@ export default function ForcesPage({ searchParams }: { searchParams?: { q?: stri
           <h1 className="text-3xl font-bold text-gray-300 uppercase tracking-wider">FORCES</h1>
         </div>
 
-        {/* Search (server-side GET) */}
+        {/* Search */}
         <div className="max-w-md mx-auto mb-8">
-          <form method="get">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-              <input name="q" defaultValue={searchTerm} placeholder="Search..." className="pl-10 bg-gray-700 border border-gray-600 text-white w-full rounded-md py-2.5 px-3" />
-            </div>
-          </form>
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <Input
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10 bg-gray-700 border-gray-600 text-white"
+            />
+          </div>
         </div>
 
         {/* Forces List */}
         <div className="space-y-4">
           {sortedForces.map((forceName) => {
             const forceChars = forceGroups[forceName]
+            const isExpanded = expandedForces.has(forceName)
             const forceIcon = forceIconLookup.get(forceName)
 
             return (
               <Card key={forceName} className="bg-gray-800 border-gray-700">
                 <CardContent className="p-0">
-                  <details>
-                    <summary className="w-full flex items-center justify-between px-6 py-5 hover:bg-gray-700 transition-colors cursor-pointer list-none">
+                  {/* Force Header */}
+                  <button
+                    onClick={() => toggleForce(forceName)}
+                    className="w-full flex items-center justify-between px-6 py-5 hover:bg-gray-700 transition-colors"
+                  >
                       <div className="flex-1 min-w-0 flex items-center gap-3">
-                        {forceIcon && (
-                          <img src={forceIcon} alt={forceName} className="w-8 h-8 object-contain flex-shrink-0" />
-                        )}
-                        <span className="text-white font-medium text-sm sm:text-base leading-tight text-left block max-w-full whitespace-normal break-words">{forceName}</span>
-                      </div>
-                      <div className="flex items-center space-x-3 mt-1">
-                        <span className="text-gray-400 font-medium">{forceChars.length}</span>
-                        <img src="/icons/name.png" alt="User Icon" className="w-3 h-5" />
+                      {forceIcon && (
+                        <img src={forceIcon} alt={forceName} className="w-8 h-8 object-contain flex-shrink-0" />
+                      )}
+                      <span className="text-white font-medium text-sm sm:text-base leading-tight text-left block max-w-full whitespace-normal break-words">{forceName}</span>
+                    </div>
+                    <div className="flex items-center space-x-3 mt-1">
+                      <span className="text-gray-400 font-medium">{forceChars.length}</span>
+                      <img src="/icons/name.png" alt="User Icon" className="w-3 h-5" />
+                      {isExpanded ? (
+                        <ChevronUp className="w-5 h-5 text-gray-400" />
+                      ) : (
                         <ChevronDown className="w-5 h-5 text-gray-400" />
-                      </div>
-                    </summary>
+                      )}
+                    </div>
+                  </button>
 
-                    {/* Characters Grid */}
+                  {/* Characters Grid */}
+                  {isExpanded && (
                     <div className="px-4 pt-4 pb-4">
                       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-2">
                         {forceChars.map((character) => {
@@ -325,6 +354,9 @@ export default function ForcesPage({ searchParams }: { searchParams?: { q?: stri
                           const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
                           const iconSrc = toPublicAssetPath(character.images.icon)
 
+                          // Determine first/second icons per user rules.
+                          // Attackers: [element, attack-type]
+                          // Protectors: priority -> Force, Element, Physics/Magic/All
                           const isProtector = isProtectorChar(character)
                           const isAttacker = isAttackerChar(character)
                           let firstIcon: string | undefined
@@ -400,6 +432,7 @@ export default function ForcesPage({ searchParams }: { searchParams?: { q?: stri
                             const forceEntries = getCharacterForceEntries(character)
                             const defenderValues = getDefenderElementValues(character)
 
+                            // If there are forces, first icon = first force (if it has icon)
                             if (forceEntries.length > 0) {
                               if (forceEntries[0].icon) {
                                 firstIcon = forceEntries[0].icon
@@ -407,11 +440,13 @@ export default function ForcesPage({ searchParams }: { searchParams?: { q?: stri
                                 firstIcon = toPublicAssetPath(character.forces[0].icon_path)
                               }
 
+                              // second icon: prefer last element-like value, otherwise last qualifier
                               const elementsList = defenderValues.filter(isElementLike)
                               if (elementsList.length > 0) {
                                 const sel = elementsList[elementsList.length - 1]
                                 secondIcon = getProtectorElementDisplayIcon(sel)
                               } else {
+                                // pick last qualifier (physics/magic/all)
                                 const quals = defenderValues.filter((v) => {
                                   const n = normalizeLabel(v)
                                   return n === "physics" || n === "magic" || n === "all"
@@ -426,6 +461,7 @@ export default function ForcesPage({ searchParams }: { searchParams?: { q?: stri
                                 }
                               }
                             } else {
+                              // No forces: show up to two element/qualifier icons
                               const elementsList = defenderValues.filter(isElementLike)
                               if (elementsList.length >= 2) {
                                 firstIcon = getProtectorElementDisplayIcon(elementsList[0])
@@ -445,6 +481,7 @@ export default function ForcesPage({ searchParams }: { searchParams?: { q?: stri
                                   }
                                 }
                               } else {
+                                // No elements or forces: show single qualifier if available
                                 const quals = defenderValues.filter((v) => {
                                   const n = normalizeLabel(v)
                                   return n === "physics" || n === "magic" || n === "all"
@@ -506,7 +543,7 @@ export default function ForcesPage({ searchParams }: { searchParams?: { q?: stri
                         })}
                       </div>
                     </div>
-                  </details>
+                  )}
                 </CardContent>
               </Card>
             )
