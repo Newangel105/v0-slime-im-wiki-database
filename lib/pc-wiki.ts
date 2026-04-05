@@ -1,7 +1,9 @@
 import wikiData from "../pc_wiki.generated.json"
 import heartprintData from "../pc_wiki.heartprints.json"
 import equipmentData from "../pc_wiki.equipment.json"
+import fallbackEquipmentData from "../public/equipment.json"
 import charmData from "../pc_wiki.charms.json"
+import fallbackCharmData from "../public/charms.json"
 
 export type WikiForce = {
   label: string
@@ -257,8 +259,12 @@ export type Charm = {
   release_label: string
 }
 
-const eqPayload = equipmentData as Equipment[]
-const chPayload = charmData as Charm[]
+const eqPayload = ((equipmentData as Equipment[]).length > 0
+  ? equipmentData
+  : fallbackEquipmentData) as Equipment[]
+const chPayload = ((charmData as Charm[]).length > 0
+  ? charmData
+  : fallbackCharmData) as Charm[]
 
 export function getAllEquipment(): Equipment[] {
   return eqPayload
