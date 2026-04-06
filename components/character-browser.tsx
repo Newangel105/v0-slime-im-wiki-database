@@ -1,7 +1,7 @@
 "use client"
 
 import { useDeferredValue, useEffect, useLayoutEffect, useMemo, useState, useRef } from "react"
-import { Grid as VirtualizedGrid } from "react-window"
+import { Grid as VirtualizedGrid, type CellComponentProps } from "react-window"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { ArrowDownUp, Search } from "lucide-react"
@@ -123,104 +123,6 @@ const attackerElementIconMap: Record<string, string> = {
   holy: "/elements/icElementlight.png",
   water: "/elements/icElementWater.png",
   wind: "/elements/icElementWind.png",
-}
-
-const baseElementKeys = new Set(["air", "dark", "earth", "fire", "holy", "water", "wind"])
-const hiddenElementKeys = new Set(["none", "special", "specialeffectelementnone"])
-
-const specialEffectToBase: Record<string, string> = {
-  all: "Earth",
-  special: "Air",
-  specialeffectelementearth: "Earth",
-  specialeffectelementair: "Air",
-  specialeffectelementwind: "Wind",
-  specialeffectelementwater: "Water",
-  specialeffectelementfire: "Fire",
-  specialeffectelementholy: "Holy",
-  specialeffectelementdark: "Dark",
-  specialeffectelementenhancedearth: "EnhancedEarth",
-  specialeffectelementenhancedair: "EnhancedAir",
-  specialeffectelementenhancedwind: "EnhancedWind",
-  specialeffectelementenhancedwater: "EnhancedWater",
-  specialeffectelementenhancedfire: "EnhancedFire",
-  specialeffectelementenhancedholy: "EnhancedHoly",
-  specialeffectelementenhanceddark: "EnhancedDark",
-}
-const attackerElementOrder = [
-  "air",
-  "dark",
-  "earth",
-  "fire",
-  "holy",
-  "water",
-  "wind",
-  "enhancedair",
-  "enhanceddark",
-  "enhancedearth",
-  "enhancedfire",
-  "enhancedholy",
-  "enhancedwater",
-  "enhancedwind",
-]
-
-const attackerElementKeys = new Set(attackerElementOrder)
-
-const defenderElementOrder = [
-  "all",
-  "physics",
-  "magic",
-  "fire",
-  "water",
-  "earth",
-  "air",
-  "wind",
-  "dark",
-  "holy",
-  "specialeffectelementair",
-  "specialeffectelementdark",
-  "specialeffectelementearth",
-  "specialeffectelementfire",
-  "specialeffectelementholy",
-  "specialeffectelementwater",
-  "specialeffectelementwind",
-  "specialeffectelementenhancedair",
-  "specialeffectelementenhanceddark",
-  "specialeffectelementenhancedearth",
-  "specialeffectelementenhancedfire",
-  "specialeffectelementenhancedholy",
-  "specialeffectelementenhancedwater",
-  "specialeffectelementenhancedwind",
-]
-
-const defenderElementKeys = new Set(defenderElementOrder)
-
-const attackerElementOrderIndex = new Map(attackerElementOrder.map((value, index) => [value, index]))
-const defenderElementOrderIndex = new Map(defenderElementOrder.map((value, index) => [value, index]))
-
-function toEnhancedElementValue(value: string): string {
-  return `Enhanced${value.charAt(0).toUpperCase()}${value.slice(1)}`
-}
-
-function isAllAlliesProtector(character: BrowserCharacter): boolean {
-  if (!isProtectorCharacter(character) || normalizeLabel(character.element) !== "none") {
-    return false
-  }
-
-  return character.skills.some((skill) => {
-    if (skill.slot !== "leader_skill") return false
-    const description = stripColorTags(skill.description_max_level ?? "").toLowerCase()
-    return description.includes("increases all allies' atk")
-  })
-}
-
-function getProtectorLeaderSkillType(character: BrowserCharacter): "Physics" | "Magic" | null {
-  if (!isProtectorCharacter(character)) return null
-  const leaderSkill = character.skills.find((s) => s.slot === "leader_skill")
-  if (!leaderSkill) return null
-  const desc = stripColorTags(leaderSkill.description_max_level ?? "").toLowerCase()
-  if (desc.includes("physical characters'") || desc.includes("increases p-atk")) return "Physics"
-  if (desc.includes("magic characters'") || desc.includes("increases m-atk")) return "Magic"
-  return null
 }
 
 const leaderSkillElementPatterns: [RegExp, string][] = [
@@ -370,6 +272,82 @@ function isProtectorCharacter(character: BrowserCharacter): boolean {
 function isAttackerCharacter(character: BrowserCharacter): boolean {
   if (character.character_role === "Attacker") return true
   return character.skills.some((s) => s.slot === "special_skill" && s.kind === "special")
+}
+
+// Helpers: element key maps, ordering, and utilities
+const specialEffectToBase: Record<string, string> = {
+  all: "Earth",
+  special: "Air",
+  specialeffectelementearth: "Earth",
+  specialeffectelementair: "Air",
+  specialeffectelementwind: "Wind",
+  specialeffectelementwater: "Water",
+  specialeffectelementfire: "Fire",
+  specialeffectelementholy: "Holy",
+  specialeffectelementdark: "Dark",
+  specialeffectelementenhancedearth: "EnhancedEarth",
+  specialeffectelementenhancedair: "EnhancedAir",
+  specialeffectelementenhancedwind: "EnhancedWind",
+  specialeffectelementenhancedwater: "EnhancedWater",
+  specialeffectelementenhancedfire: "EnhancedFire",
+  specialeffectelementenhancedholy: "EnhancedHoly",
+  specialeffectelementenhanceddark: "EnhancedDark",
+}
+
+const baseElementKeys = new Set(["air", "dark", "earth", "fire", "holy", "water", "wind"])
+const hiddenElementKeys = new Set(["none", "special", "specialeffectelementnone"])
+
+const attackerElementOrder = [
+  "air",
+  "dark",
+  "earth",
+  "fire",
+  "holy",
+  "water",
+  "wind",
+  "enhancedair",
+  "enhanceddark",
+  "enhancedearth",
+  "enhancedfire",
+  "enhancedholy",
+  "enhancedwater",
+  "enhancedwind",
+]
+const attackerElementKeys = new Set(attackerElementOrder)
+
+const defenderElementOrder = [
+  "all",
+  "physics",
+  "magic",
+  "fire",
+  "water",
+  "earth",
+  "air",
+  "wind",
+  "dark",
+  "holy",
+  "specialeffectelementair",
+  "specialeffectelementdark",
+  "specialeffectelementearth",
+  "specialeffectelementfire",
+  "specialeffectelementholy",
+  "specialeffectelementwater",
+  "specialeffectelementwind",
+  "specialeffectelementenhancedair",
+  "specialeffectelementenhanceddark",
+  "specialeffectelementenhancedearth",
+  "specialeffectelementenhancedfire",
+  "specialeffectelementenhancedholy",
+  "specialeffectelementenhancedwater",
+  "specialeffectelementenhancedwind",
+]
+const defenderElementKeys = new Set(defenderElementOrder)
+
+const attackerElementOrderIndex = new Map(attackerElementOrder.map((v, i) => [v, i]))
+const defenderElementOrderIndex = new Map(defenderElementOrder.map((v, i) => [v, i]))
+
+function toEnhancedElementValue(value: string): string {
+  return `Enhanced${value.charAt(0).toUpperCase()}${value.slice(1)}`
 }
 
 function getCharacterElementValue(character: BrowserCharacter): string {
@@ -1234,14 +1212,288 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
       : 1
     : 1
 
-  const columnWidth = containerWidth ? containerWidth / computedColumnCount : DESIRED_CARD_WIDTH + GAP
+  // Treat narrow containers as mobile so layout responds to viewport width.
+  const IS_MOBILE = !!(containerWidth && containerWidth < 640)
+  const columnCount = IS_MOBILE ? 1 : computedColumnCount
+
+  const [isIphone, setIsIphone] = useState(false)
+  useEffect(() => {
+    if (typeof navigator !== "undefined") {
+      setIsIphone(/iPhone/i.test(navigator.userAgent))
+    }
+  }, [])
+
+  const MIN_IPHONE_INITIAL_ITEMS = 12
+  const showGridOnIphone = !isIphone || filteredCharacters.length >= MIN_IPHONE_INITIAL_ITEMS
+
+  const columnWidth = containerWidth ? containerWidth / columnCount : DESIRED_CARD_WIDTH + GAP
   const cardWidth = Math.max(0, columnWidth - GAP)
-  const rowCount = Math.ceil(filteredCharacters.length / computedColumnCount)
-  const gridHeight = Math.min(6, rowCount) * CARD_HEIGHT + 10 // Show up to 6 rows at once
+  const rowCount = Math.ceil(filteredCharacters.length / columnCount)
+  // Add vertical gap to row height so spacing between rows is uniform on mobile
+  const ROW_HEIGHT = IS_MOBILE ? CARD_HEIGHT + GAP : CARD_HEIGHT
+  const gridHeight = Math.min(6, rowCount) * ROW_HEIGHT + 10 // Show up to 6 rows at once
 
   // For VariableSizeGrid, must provide functions
   const getColumnWidth = () => columnWidth
-  const getRowHeight = () => CARD_HEIGHT
+  const getRowHeight = () => ROW_HEIGHT
+
+  function MobileCard({ character, index }: { character: BrowserCharacter; index: number }) {
+    const visualTier = getCharacterVisualTier(character)
+    const frameSrc = getCharacterFrame(character)
+    const baseSrc = getCharacterBase(character)
+    const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
+    const iconSrc = character.images.icon
+    const characterElementValue = getCharacterElementValue(character)
+    const elementIcons = getCharacterElementIcons(character)
+    const forceEntries = character.force_entries
+    const attackTypeIcon = attackTypeIconMap[normalizeLabel(character.attack_type)]
+    const weaponIcon = weaponIconMap[normalizeLabel(character.weapon_type)]
+    const tacticsIcon = tacticsIconMap[normalizeLabel(character.tactics_type || "Normal")]
+    const attackTypeLabel = formatWikiLabel(character.attack_type)
+    const weaponLabel = formatWikiLabel(character.weapon_type)
+    const rarityLabel = getCharacterRarityLabel(character)
+    const isPriorityCard = index < 6
+    const imageLoading = isPriorityCard ? "eager" : "lazy"
+    const elementAccentColor = elementColorMap[normalizeLabel(characterElementValue)] ?? "#4b5563"
+    const facilityIcons = [
+      ...new Set(character.facilities.map((f) => f.replace(/ \+\d+%$/, "").trim())),
+    ]
+      .map((name) => ({ name, icon: facilityIconMap[name] }))
+      .filter((entry) => entry.icon)
+      .slice(0, 5)
+
+    return (
+      <div style={{ paddingLeft: GAP / 2, paddingRight: GAP / 2, boxSizing: "border-box" }} key={character.master_pc_id}>
+        <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="block w-full min-w-0">
+          <div
+            className="w-full min-w-0 group h-auto overflow-hidden rounded-2xl bg-gradient-to-b from-[#1d2d44] to-[#0f1924] shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-2xl"
+            style={{ borderTop: `4px solid ${elementAccentColor}`, contentVisibility: "auto", containIntrinsicSize: `${CARD_HEIGHT}px` }}
+          >
+            <div>
+              <div className="flex gap-4 p-4 pb-3">
+                <div className="relative h-24 w-24 md:h-[148px] md:w-[148px] shrink-0">
+                  <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
+                  <div className="absolute inset-[10px] overflow-hidden rounded-[18px]">
+                    <img
+                      src={iconSrc}
+                      alt={character.name}
+                      loading={imageLoading}
+                      decoding="async"
+                      fetchPriority={isPriorityCard ? "high" : "low"}
+                      className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110"
+                    />
+                  </div>
+                  <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
+                </div>
+                <div className="flex min-w-0 flex-1 flex-col md:min-h-[148px]">
+                  <div className="flex items-start justify-between gap-2">
+                    <h2 className="line-clamp-2 text-[1rem] font-bold leading-snug text-white">{character.name}</h2>
+                    <img src={starsSrc} alt={rarityLabel} loading={imageLoading} decoding="async" className="mt-0.5 h-6 shrink-0 object-contain drop-shadow" />
+                  </div>
+                  <p className="mt-1 truncate text-[10px] uppercase tracking-[0.18em] text-gray-500">{character.affiliation_name}</p>
+                  {(tacticsIcon || facilityIcons.length > 0) && (
+                    <div className="mt-2 flex items-center gap-2">
+                      {tacticsIcon && (
+                        <img
+                          src={tacticsIcon}
+                          alt={character.tactics_type || "Normal"}
+                          title={character.tactics_type || "Normal"}
+                          className="h-10 w-auto max-w-[110px] shrink-0 object-contain drop-shadow"
+                        />
+                      )}
+                      {facilityIcons.map(({ name, icon }) => (
+                        <img key={name} src={icon} alt={name} title={name} className="h-8 w-8 object-contain" />
+                      ))}
+                    </div>
+                  )}
+                  <div className="mt-auto flex flex-wrap gap-2 pt-1">
+                    {elementIcons.map((entry) => (
+                      <img key={entry.icon} src={entry.icon} alt={entry.label} title={entry.label} className="h-8 w-8 object-contain" />
+                    ))}
+                    {attackTypeIcon && (
+                      <img src={attackTypeIcon} alt={attackTypeLabel} title={attackTypeLabel} className="h-8 w-8 object-contain" />
+                    )}
+                    {weaponIcon && (
+                      <img src={weaponIcon} alt={weaponLabel} title={weaponLabel} className="h-8 w-8 object-contain" />
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className="px-4 grid grid-cols-4 divide-x divide-white/5 rounded-xl bg-white/10 py-2.5 w-full min-w-0">
+                <div className="px-2 text-center">
+                  <p className="text-[9px] font-semibold uppercase tracking-wider text-white">HP</p>
+                  <p className="mt-1 text-[1.1rem] font-bold leading-none text-emerald-300">{character.stats.hp}</p>
+                </div>
+                <div className="px-2 text-center">
+                  <p className="text-[9px] font-semibold uppercase tracking-wider text-white">ATK</p>
+                  <p className="mt-1 text-[1.1rem] font-bold leading-none text-rose-300">{character.stats.attack}</p>
+                </div>
+                <div className="px-2 text-center">
+                  <p className="text-[9px] font-semibold uppercase tracking-wider text-white">DEF</p>
+                  <p className="mt-1 text-[1.1rem] font-bold leading-none text-sky-300">{character.stats.defense}</p>
+                </div>
+                <div className="px-2 text-center">
+                  <p className="text-[9px] font-semibold uppercase tracking-wider text-white">EXI</p>
+                  <p className="mt-1 text-[1.1rem] font-bold leading-none text-amber-200">{character.stats.existence}</p>
+                </div>
+              </div>
+              {forceEntries.length > 0 && (
+                <div className="flex flex-wrap gap-1.5 px-4 py-3">
+                  {forceEntries.slice(0, 4).map((force) => (
+                    <span
+                      key={force.name}
+                      className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-2.5 py-1 text-[10px] text-gray-400 ring-1 ring-white/10"
+                    >
+                      {force.icon && <img src={force.icon} alt={force.name} className="h-5 w-5 shrink-0 object-contain" />}
+                      {force.name}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </Link>
+      </div>
+    )
+  }
+
+  // Grid cell component for react-window `Grid` (typed as CellComponentProps)
+  function GridCell({ ariaAttributes, columnIndex, rowIndex, style }: CellComponentProps) {
+    const index = rowIndex * columnCount + columnIndex
+    if (index >= filteredCharacters.length) return null
+    const character = filteredCharacters[index]
+    const visualTier = getCharacterVisualTier(character)
+    const frameSrc = getCharacterFrame(character)
+    const baseSrc = getCharacterBase(character)
+    const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
+    const iconSrc = character.images.icon
+    const characterElementValue = getCharacterElementValue(character)
+    const elementIcons = getCharacterElementIcons(character)
+    const forceEntries = character.force_entries
+    const attackTypeIcon = attackTypeIconMap[normalizeLabel(character.attack_type)]
+    const weaponIcon = weaponIconMap[normalizeLabel(character.weapon_type)]
+    const tacticsIcon = tacticsIconMap[normalizeLabel(character.tactics_type || "Normal")]
+    const attackTypeLabel = formatWikiLabel(character.attack_type)
+    const weaponLabel = formatWikiLabel(character.weapon_type)
+    const rarityLabel = getCharacterRarityLabel(character)
+    const isPriorityCard = index < 6
+    const imageLoading = isPriorityCard ? "eager" : "lazy"
+    const elementAccentColor = elementColorMap[normalizeLabel(characterElementValue)] ?? "#4b5563"
+    const facilityIcons = [
+      ...new Set(character.facilities.map((f) => f.replace(/ \+\d+%$/, "").trim())),
+    ]
+      .map((name) => ({ name, icon: facilityIconMap[name] }))
+      .filter((entry) => entry.icon)
+      .slice(0, 5)
+    const rawLeft = (style as any).left ?? 0
+    const rawWidth = (style as any).width ?? columnWidth
+    const adjustedLeft = rawLeft + GAP / 2
+    const adjustedWidth = Math.max(0, rawWidth - GAP)
+    const adjustedStyle = { ...style, left: adjustedLeft, width: adjustedWidth }
+
+    return (
+      <div style={adjustedStyle} key={character.master_pc_id} aria-colindex={ariaAttributes?.["aria-colindex"]} role={ariaAttributes?.role}>
+        <div style={{ width: "100%", height: "100%", boxSizing: "border-box" }}>
+          <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="block w-full min-w-0">
+            <div
+              className="w-full min-w-0 group h-full overflow-hidden rounded-2xl bg-gradient-to-b from-[#1d2d44] to-[#0f1924] shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-2xl"
+              style={{ borderTop: `4px solid ${elementAccentColor}`, contentVisibility: "auto", containIntrinsicSize: `${CARD_HEIGHT}px` }}
+            >
+              <div>
+                {/* Portrait + info row */}
+                <div className="flex gap-4 p-4 pb-3">
+                  {/* Portrait */}
+                  <div className="relative h-24 w-24 md:h-[148px] md:w-[148px] shrink-0">
+                    <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
+                    <div className="absolute inset-[10px] overflow-hidden rounded-[18px]">
+                      <img
+                        src={iconSrc}
+                        alt={character.name}
+                        loading={imageLoading}
+                        decoding="async"
+                        fetchPriority={isPriorityCard ? "high" : "low"}
+                        className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110"
+                      />
+                    </div>
+                    <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
+                  </div>
+                  {/* Info column */}
+                  <div className="flex min-w-0 flex-1 flex-col md:min-h-[148px]">
+                    <div className="flex items-start justify-between gap-2">
+                      <h2 className="line-clamp-2 text-[1rem] font-bold leading-snug text-white">{character.name}</h2>
+                      <img src={starsSrc} alt={rarityLabel} loading={imageLoading} decoding="async" className="mt-0.5 h-6 shrink-0 object-contain drop-shadow" />
+                    </div>
+                    <p className="mt-1 truncate text-[10px] uppercase tracking-[0.18em] text-gray-500">{character.affiliation_name}</p>
+                    {/* Tactics badge + facility icons on same row */}
+                    {(tacticsIcon || facilityIcons.length > 0) && (
+                      <div className="mt-2 flex items-center gap-2">
+                        {tacticsIcon && (
+                          <img
+                            src={tacticsIcon}
+                            alt={character.tactics_type || "Normal"}
+                            title={character.tactics_type || "Normal"}
+                            className="h-10 w-auto max-w-[110px] shrink-0 object-contain drop-shadow"
+                          />
+                        )}
+                        {facilityIcons.map(({ name, icon }) => (
+                          <img key={name} src={icon} alt={name} title={name} className="h-8 w-8 object-contain" />
+                        ))}
+                      </div>
+                    )}
+                    {/* Element / attack type / weapon icons */}
+                    <div className="mt-auto flex flex-wrap gap-2 pt-1">
+                      {elementIcons.map((entry) => (
+                        <img key={entry.icon} src={entry.icon} alt={entry.label} title={entry.label} className="h-8 w-8 object-contain" />
+                      ))}
+                      {attackTypeIcon && (
+                        <img src={attackTypeIcon} alt={attackTypeLabel} title={attackTypeLabel} className="h-8 w-8 object-contain" />
+                      )}
+                      {weaponIcon && (
+                        <img src={weaponIcon} alt={weaponLabel} title={weaponLabel} className="h-8 w-8 object-contain" />
+                      )}
+                    </div>
+                  </div>
+                </div>
+                {/* Stats bar */}
+                <div className="px-4 grid grid-cols-4 divide-x divide-white/5 rounded-xl bg-white/10 py-2.5 w-full min-w-0">
+                  <div className="px-2 text-center">
+                    <p className="text-[9px] font-semibold uppercase tracking-wider text-white">HP</p>
+                    <p className="mt-1 text-[1.1rem] font-bold leading-none text-emerald-300">{character.stats.hp}</p>
+                  </div>
+                  <div className="px-2 text-center">
+                    <p className="text-[9px] font-semibold uppercase tracking-wider text-white">ATK</p>
+                    <p className="mt-1 text-[1.1rem] font-bold leading-none text-rose-300">{character.stats.attack}</p>
+                  </div>
+                  <div className="px-2 text-center">
+                    <p className="text-[9px] font-semibold uppercase tracking-wider text-white">DEF</p>
+                    <p className="mt-1 text-[1.1rem] font-bold leading-none text-sky-300">{character.stats.defense}</p>
+                  </div>
+                  <div className="px-2 text-center">
+                    <p className="text-[9px] font-semibold uppercase tracking-wider text-white">EXI</p>
+                    <p className="mt-1 text-[1.1rem] font-bold leading-none text-amber-200">{character.stats.existence}</p>
+                  </div>
+                </div>
+                {/* Forces */}
+                {forceEntries.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 px-4 py-3">
+                    {forceEntries.slice(0, 4).map((force) => (
+                      <span
+                        key={force.name}
+                        className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-2.5 py-1 text-[10px] text-gray-400 ring-1 ring-white/10"
+                      >
+                        {force.icon && <img src={force.icon} alt={force.name} className="h-5 w-5 shrink-0 object-contain" />}
+                        {force.name}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </Link>
+        </div>
+      </div>
+    )
+  }
 
   function resetFilters() {
     setSearchText("")
@@ -1375,151 +1627,30 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
         <section className="min-w-0">
           {Array.isArray(filteredCharacters) && filteredCharacters.length > 0 && (
             <div ref={gridRef} className="w-full">
-              <VirtualizedGrid
-                className="hide-scrollbar"
-                columnCount={computedColumnCount}
-                columnWidth={columnWidth}
-                rowCount={rowCount}
-                rowHeight={CARD_HEIGHT}
-                height={gridHeight}
-                width={containerWidth || computedColumnCount * DESIRED_CARD_WIDTH}
-                cellProps={{}}
-                cellComponent={({ columnIndex, rowIndex, style }) => {
-                  const index = rowIndex * computedColumnCount + columnIndex;
-                  if (index >= filteredCharacters.length) return null;
-                  const character = filteredCharacters[index];
-                  const visualTier = getCharacterVisualTier(character);
-                  const frameSrc = getCharacterFrame(character);
-                  const baseSrc = getCharacterBase(character);
-                  const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5];
-                  const iconSrc = character.images.icon;
-                  const characterElementValue = getCharacterElementValue(character);
-                  const elementIcons = getCharacterElementIcons(character);
-                  const forceEntries = character.force_entries;
-                  const attackTypeIcon = attackTypeIconMap[normalizeLabel(character.attack_type)];
-                  const weaponIcon = weaponIconMap[normalizeLabel(character.weapon_type)];
-                  const tacticsIcon = tacticsIconMap[normalizeLabel(character.tactics_type || "Normal")];
-                  const attackTypeLabel = formatWikiLabel(character.attack_type);
-                  const weaponLabel = formatWikiLabel(character.weapon_type);
-                  const rarityLabel = getCharacterRarityLabel(character);
-                  const isPriorityCard = index < 6;
-                  const imageLoading = isPriorityCard ? "eager" : "lazy";
-                  const elementAccentColor = elementColorMap[normalizeLabel(characterElementValue)] ?? "#4b5563";
-                  const facilityIcons = [
-                    ...new Set(character.facilities.map((f) => f.replace(/ \+\d+%$/, "").trim())),
-                  ]
-                    .map((name) => ({ name, icon: facilityIconMap[name] }))
-                    .filter((entry) => entry.icon)
-                    .slice(0, 5);
-                  const rawLeft = (style as any).left ?? 0
-                  const rawWidth = (style as any).width ?? columnWidth
-                  const adjustedLeft = rawLeft + GAP / 2
-                  const adjustedWidth = Math.max(0, rawWidth - GAP)
-                  const adjustedStyle = { ...style, left: adjustedLeft, width: adjustedWidth }
-                  return (
-                    <div style={adjustedStyle} key={character.master_pc_id}>
-                      <div style={{ width: "100%", height: "100%", boxSizing: "border-box" }}>
-                        <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="block w-full min-w-0">
-                          <div
-                            className="w-full min-w-0 group h-full overflow-hidden rounded-2xl bg-gradient-to-b from-[#1d2d44] to-[#0f1924] shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-2xl"
-                            style={{ borderTop: `4px solid ${elementAccentColor}`, contentVisibility: "auto", containIntrinsicSize: `${CARD_HEIGHT}px` }}
-                          >
-                            <div>
-                              {/* Portrait + info row */}
-                              <div className="flex gap-4 p-4 pb-3">
-                                {/* Portrait */}
-                                <div className="relative h-24 w-24 md:h-[148px] md:w-[148px] shrink-0">
-                                  <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
-                                  <div className="absolute inset-[10px] overflow-hidden rounded-[18px]">
-                                    <img
-                                      src={iconSrc}
-                                      alt={character.name}
-                                      loading={imageLoading}
-                                      decoding="async"
-                                      fetchPriority={isPriorityCard ? "high" : "low"}
-                                      className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110"
-                                    />
-                                  </div>
-                                  <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
-                                </div>
-                                {/* Info column */}
-                                <div className="flex min-w-0 flex-1 flex-col md:min-h-[148px]">
-                                  <div className="flex items-start justify-between gap-2">
-                                    <h2 className="line-clamp-2 text-[1rem] font-bold leading-snug text-white">{character.name}</h2>
-                                    <img src={starsSrc} alt={rarityLabel} loading={imageLoading} decoding="async" className="mt-0.5 h-6 shrink-0 object-contain drop-shadow" />
-                                  </div>
-                                  <p className="mt-1 truncate text-[10px] uppercase tracking-[0.18em] text-gray-500">{character.affiliation_name}</p>
-                                  {/* Tactics badge + facility icons on same row */}
-                                  {(tacticsIcon || facilityIcons.length > 0) && (
-                                    <div className="mt-2 flex items-center gap-2">
-                                      {tacticsIcon && (
-                                        <img
-                                          src={tacticsIcon}
-                                          alt={character.tactics_type || "Normal"}
-                                          title={character.tactics_type || "Normal"}
-                                          className="h-10 w-auto max-w-[110px] shrink-0 object-contain drop-shadow"
-                                        />
-                                      )}
-                                      {facilityIcons.map(({ name, icon }) => (
-                                        <img key={name} src={icon} alt={name} title={name} className="h-8 w-8 object-contain" />
-                                      ))}
-                                    </div>
-                                  )}
-                                  {/* Element / attack type / weapon icons */}
-                                  <div className="mt-auto flex flex-wrap gap-2 pt-1">
-                                    {elementIcons.map((entry) => (
-                                      <img key={entry.icon} src={entry.icon} alt={entry.label} title={entry.label} className="h-8 w-8 object-contain" />
-                                    ))}
-                                    {attackTypeIcon && (
-                                      <img src={attackTypeIcon} alt={attackTypeLabel} title={attackTypeLabel} className="h-8 w-8 object-contain" />
-                                    )}
-                                    {weaponIcon && (
-                                      <img src={weaponIcon} alt={weaponLabel} title={weaponLabel} className="h-8 w-8 object-contain" />
-                                    )}
-                                  </div>
-                                </div>
-                              </div>
-                              {/* Stats bar */}
-                              <div className="px-4 grid grid-cols-4 divide-x divide-white/5 rounded-xl bg-white/10 py-2.5 w-full min-w-0">
-                                <div className="px-2 text-center">
-                                  <p className="text-[9px] font-semibold uppercase tracking-wider text-white">HP</p>
-                                  <p className="mt-1 text-[1.1rem] font-bold leading-none text-emerald-300">{character.stats.hp}</p>
-                                </div>
-                                <div className="px-2 text-center">
-                                  <p className="text-[9px] font-semibold uppercase tracking-wider text-white">ATK</p>
-                                  <p className="mt-1 text-[1.1rem] font-bold leading-none text-rose-300">{character.stats.attack}</p>
-                                </div>
-                                <div className="px-2 text-center">
-                                  <p className="text-[9px] font-semibold uppercase tracking-wider text-white">DEF</p>
-                                  <p className="mt-1 text-[1.1rem] font-bold leading-none text-sky-300">{character.stats.defense}</p>
-                                </div>
-                                <div className="px-2 text-center">
-                                  <p className="text-[9px] font-semibold uppercase tracking-wider text-white">EXI</p>
-                                  <p className="mt-1 text-[1.1rem] font-bold leading-none text-amber-200">{character.stats.existence}</p>
-                                </div>
-                              </div>
-                              {/* Forces */}
-                              {forceEntries.length > 0 && (
-                                <div className="flex flex-wrap gap-1.5 px-4 py-3">
-                                  {forceEntries.slice(0, 4).map((force) => (
-                                    <span
-                                      key={force.name}
-                                      className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-2.5 py-1 text-[10px] text-gray-400 ring-1 ring-white/10"
-                                    >
-                                      {force.icon && <img src={force.icon} alt={force.name} className="h-5 w-5 shrink-0 object-contain" />}
-                                      {force.name}
-                                    </span>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        </Link>
-                      </div>
-                    </div>
-                  );
-                }}
-              />
+              {showGridOnIphone ? (
+                IS_MOBILE ? (
+                  <div className="flex flex-col" style={{ gap: `${GAP}px` }}>
+                    {filteredCharacters.map((ch, idx) => (
+                      <MobileCard key={ch.master_pc_id} character={ch} index={idx} />
+                    ))}
+                  </div>
+                ) : (
+                  <VirtualizedGrid
+                    className="hide-scrollbar"
+                    columnCount={columnCount}
+                    columnWidth={columnWidth}
+                    rowCount={rowCount}
+                    rowHeight={ROW_HEIGHT}
+                    cellComponent={GridCell}
+                    cellProps={{}}
+                    defaultHeight={gridHeight}
+                    defaultWidth={containerWidth || columnCount * DESIRED_CARD_WIDTH}
+                    style={{ height: gridHeight, width: containerWidth || columnCount * DESIRED_CARD_WIDTH }}
+                  />
+                )
+              ) : (
+                <div className="py-20 text-center text-gray-400">Loading characters…</div>
+              )}
             </div>
           )}
         </section>
