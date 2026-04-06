@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/heartprints", label: "Heartprints" },
   { href: "/team-builder", label: "Team Builder" },
   { href: "/battle-sim", label: "Battle Sim" },
+  { href: "/tier-maker", label: "Tier Maker" },
 ]
 
 export function SiteNav() {
