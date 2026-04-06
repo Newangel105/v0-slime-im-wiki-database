@@ -653,7 +653,40 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
 
   function normalizeWeaponType(wt: string | null): string {
     if (!wt) return ""
-    return wt.toLowerCase()
+    const n = wt.toLowerCase().trim()
+    const map: Record<string, string> = {
+      // knuckle / fist synonyms used in equipment vs character data
+      fist: "knuckle",
+      fists: "knuckle",
+      knuckles: "knuckle",
+      gauntlet: "knuckle",
+      // large/greatsword synonyms
+      largesword: "greatsword",
+      "large sword": "greatsword",
+      "large_sword": "greatsword",
+      "large-sword": "greatsword",
+      greatsword: "greatsword",
+      "great sword": "greatsword",
+      "great_sword": "greatsword",
+      "great-sword": "greatsword",
+      // book / tome synonyms (equipment uses "Magic Tome", characters use "Book")
+      "magic tome": "book",
+      "magic_tome": "book",
+      "magic-tome": "book",
+      tome: "book",
+      grimoire: "book",
+      spellbook: "book",
+      "spell book": "book",
+      // spear / lance synonyms (equipment may call them Lance/Pike etc.)
+      lance: "spear",
+      lances: "spear",
+      pike: "spear",
+      pikes: "spear",
+      trident: "spear",
+      halberd: "spear",
+      glaive: "spear",
+    }
+    return map[n] ?? n
   }
 
   const CHAR_ELEMENT_NORM: Record<string, string> = {
@@ -717,7 +750,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
     const charAffil = normalizeIdentityText(char.affiliation_name)
     const charEl    = normalizeElement(char.element ?? "")
     const charWt    = normalizeWeaponType(char.weapon_type ?? "")
-    const eqWt      = (eq.weapon_type ?? "").toLowerCase()
+    const eqWt      = normalizeWeaponType(eq.weapon_type ?? "")
 
     // Compute weapon-type and element multipliers
     const weaponMatch   = eq.type === "weapon" && !!charWt && !!eqWt && eqWt === charWt
@@ -754,7 +787,9 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
   }
 
   function autoEquipAll() {
-    const usedIds: Record<string, Set<number>> = { weapon: new Set(), armor: new Set(), accessory: new Set() }
+    // Note: allow the same equipment to be assigned to multiple characters —
+    // we intentionally do not track "used" ids across slots so each character
+    // receives the best-fitting gear regardless of duplicates.
     const newEquipSlots: Record<string, Record<string, number | null>> = {}
 
     // Collect all attacker slot keys in order (main first, then sub, side, sidesub)
@@ -788,18 +823,202 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       for (const eqType of ["weapon", "armor", "accessory"] as const) {
         const candidates = equipment.filter(e => {
           if (e.type !== eqType) return false
-          if (usedIds[eqType].has(e.id)) return false
+          // allow reuse of the same equipment across characters
+
           // Exclude items whose EVERY description effect is a Valor Cup bonus —
           // they provide no benefit outside Valor Cup battles.
           const descEffects = [e.effect1 ?? "", e.effect2 ?? ""].filter(s => s.trim().length > 0)
           if (descEffects.length > 0 && descEffects.every(ef => ef.toLowerCase().includes("valor cup"))) return false
+
+          // If the item explicitly targets a specific character (e.g. "When equipped by My Name Is Megumin,..."),
+          // consider it exclusive and only allow it as a candidate for the matching character(s).
+          const equipmentTargets = getEquipmentTargetPhrases(descEffects)
+          if (equipmentTargets.length > 0) {
+            // If any target is generic (mentions "character"/"force"/"ally"/"team"), allow it —
+            // these are group targets, not single-character exclusives.
+            const hasGenericTarget = equipmentTargets.some(t =>
+              t.includes("character") || t.includes("characters") || t.includes("force") || t.includes("ally") || t.includes("allies") || t.includes("team")
+            )
+            if (!hasGenericTarget) {
+              const charName = normalizeIdentityText(char.name)
+              const charAffil = normalizeIdentityText(char.affiliation_name)
+              const nameAffilA = `${charName} ${charAffil}`.trim()
+              const nameAffilB = `${charAffil} ${charName}`.trim()
+              const identityPhrases = getCharacterIdentityPhrases(char)
+
+              const descCombined = descEffects.join(" ").toLowerCase()
+
+              const matchesTarget = equipmentTargets.includes(charName)
+                || equipmentTargets.includes(nameAffilA)
+                || equipmentTargets.includes(nameAffilB)
+                || identityPhrases.some(p => equipmentTargets.includes(p))
+                || (charAffil.length > 2 && descCombined.includes(charAffil))
+
+              if (!matchesTarget) return false
+            }
+          }
+
           return true
         })
+
         if (candidates.length === 0) continue
-        candidates.sort((a, b) => scoreEquipment(b, char) - scoreEquipment(a, char))
-        const best = candidates[0]
-        slotRec[eqType] = best.id
-        usedIds[eqType].add(best.id)
+
+        // Helper: does this equipment explicitly target this character (and is not a generic target)?
+        const isExclusiveForChar = (e: Equipment) => {
+          const descEffects = [e.effect1 ?? "", e.effect2 ?? ""].filter(s => s.trim().length > 0)
+          const equipmentTargets = getEquipmentTargetPhrases(descEffects)
+          if (equipmentTargets.length === 0) return false
+          const hasGenericTarget = equipmentTargets.some(t =>
+            t.includes("character") || t.includes("characters") || t.includes("force") || t.includes("ally") || t.includes("allies") || t.includes("team")
+          )
+          if (hasGenericTarget) return false
+          const charName = normalizeIdentityText(char.name)
+          const charAffil = normalizeIdentityText(char.affiliation_name)
+          const nameAffilA = `${charName} ${charAffil}`.trim()
+          const nameAffilB = `${charAffil} ${charName}`.trim()
+          const identityPhrases = getCharacterIdentityPhrases(char)
+          const descCombined = descEffects.join(" ").toLowerCase()
+          return equipmentTargets.includes(charName)
+            || equipmentTargets.includes(nameAffilA)
+            || equipmentTargets.includes(nameAffilB)
+            || identityPhrases.some(p => equipmentTargets.includes(p))
+            || (charAffil.length > 2 && descCombined.includes(charAffil))
+        }
+
+        const equipmentElementMatch = (e: Equipment) => {
+          const validEffects = [e.effect1 ?? "", e.effect2 ?? ""].filter(ef => ef && !ef.toLowerCase().includes("valor cup"))
+          if (validEffects.length === 0) return false
+          // strip color tags and other markup before matching
+          const combined = validEffects.map(s => stripColorTags(s)).join(" ").toLowerCase()
+          const nameText = (e.name ?? "").toLowerCase()
+          const charEl = normalizeElement(char.element ?? "")
+          if (!charEl) return false
+
+          // Common synonyms that may appear in equipment descriptions/names
+          const ELEMENT_SYNONYMS: Record<string, string[]> = {
+            water: ["water", "aqua", "icy"],
+            fire: ["fire", "flame", "flames", "blaze", "blazing"],
+            earth: ["earth"],
+            dark: ["dark", "shadow"],
+            light: ["light", "holy"],
+            wind: ["wind", "air"],
+            space: ["space"]
+          }
+
+          const aliases = ELEMENT_SYNONYMS[charEl] ?? [charEl]
+          for (const a of aliases) {
+            const token = a.toLowerCase()
+            if (combined.includes(`${token} character`) || combined.includes(`${token} characters`) || combined.includes(`${token} element`) || combined.includes(`${token} attribute`)) return true
+            // name-based matches (e.g. "Amulet of Icy Water", "Tome of Icy Water")
+            if (nameText.includes(token)) return true
+          }
+
+          return false
+        }
+
+        // If there are any exclusives for this char, pick by name-first, then affiliation.
+        const exclusiveCandidates = candidates.filter(isExclusiveForChar)
+        if (exclusiveCandidates.length > 0) {
+          const charName = normalizeIdentityText(char.name)
+          const charAffil = normalizeIdentityText(char.affiliation_name)
+
+          // Helpers for precise identity matching
+          const getTargetsForEquip = (e: Equipment) => getEquipmentTargetPhrases([e.effect1 ?? "", e.effect2 ?? ""])
+          const descCombinedFor = (e: Equipment) => ([e.effect1 ?? "", e.effect2 ?? ""].join(" ").toLowerCase())
+
+          // Return true if the equipment's target phrase should match this character by name.
+          // We treat a target phrase with extra words (e.g. "frey the sky queen") as a specific identity
+          // and require the affiliation to match; only single-token phrases count as generic name-only targets.
+          const matchesNamePhrase = (e: Equipment) => {
+            const targets = getTargetsForEquip(e)
+            for (const t of targets) {
+              const tNoThe = t.replace(/\bthe\b/g, "").trim()
+              const toks = tNoThe.split(/\s+/).filter(Boolean)
+              if (toks.length === 1 && toks[0] === charName) return true
+              // if phrase contains the name and also contains the character's affiliation, accept
+              if (t.includes(charName) && t.includes(charAffil)) return true
+            }
+            return false
+          }
+
+          const targetsIncludeToken = (e: Equipment, token: string) => {
+            if (!token) return false
+            const targets = getTargetsForEquip(e)
+            const descCombined = descCombinedFor(e)
+            return targets.some(t => t.includes(token)) || descCombined.includes(token)
+          }
+
+          // 1) Prefer items that mention the character name (generic name or name+affiliation as above).
+          const nameMatches = exclusiveCandidates.filter(e => matchesNamePhrase(e))
+            if (nameMatches.length === 1) {
+            slotRec[eqType] = nameMatches[0].id
+            continue
+          }
+          if (nameMatches.length > 1) {
+            // If multiple name-matched items, prefer ones that also reference affiliation.
+            const affMatches = nameMatches.filter(e => targetsIncludeToken(e, charAffil))
+            const pool = affMatches.length > 0 ? affMatches : nameMatches
+            pool.sort((a, b) => scoreEquipment(b, char) - scoreEquipment(a, char))
+            const best = pool[0]
+            slotRec[eqType] = best.id
+            continue
+          }
+
+          // 2) No name matches — fall back to affiliation-only exclusives (that do not match name above).
+          const affOnlyMatches = exclusiveCandidates.filter(e => !matchesNamePhrase(e) && targetsIncludeToken(e, charAffil))
+          if (affOnlyMatches.length === 1) {
+            slotRec[eqType] = affOnlyMatches[0].id
+            continue
+          }
+          if (affOnlyMatches.length > 1) {
+            affOnlyMatches.sort((a, b) => scoreEquipment(b, char) - scoreEquipment(a, char))
+            const best = affOnlyMatches[0]
+            slotRec[eqType] = best.id
+            continue
+          }
+
+          // 3) Fallback: pick best exclusive by score.
+          exclusiveCandidates.sort((a, b) => scoreEquipment(b, char) - scoreEquipment(a, char))
+          const best = exclusiveCandidates[0]
+          slotRec[eqType] = best.id
+          continue
+        }
+
+        // No exclusives — pick by strict matching rules requested:
+        // - Weapon: prefer same weapon type, prefer element within that set
+        // - Armor/Accessory: prefer element-matching items
+        if (eqType === "weapon") {
+          const charWt = normalizeWeaponType(char.weapon_type ?? "")
+          let wtCandidates = charWt ? candidates.filter(e => normalizeWeaponType(e.weapon_type ?? "") === charWt) : []
+          if (wtCandidates.length > 0) {
+            const wtElCandidates = wtCandidates.filter(equipmentElementMatch)
+            const pool = wtElCandidates.length > 0 ? wtElCandidates : wtCandidates
+            pool.sort((a, b) => scoreEquipment(b, char) - scoreEquipment(a, char))
+            const best = pool[0]
+            slotRec[eqType] = best.id
+            continue
+          }
+        } else {
+          // armor or accessory: prefer element-matching
+          const elCandidates = candidates.filter(equipmentElementMatch)
+          if (elCandidates.length > 0) {
+            elCandidates.sort((a, b) => scoreEquipment(b, char) - scoreEquipment(a, char))
+            const best = elCandidates[0]
+            slotRec[eqType] = best.id
+            continue
+          }
+        }
+
+        // Fallback behavior:
+        if (eqType === "weapon") {
+          // For weapons, fall back to best-scored candidate
+          candidates.sort((a, b) => scoreEquipment(b, char) - scoreEquipment(a, char))
+          const best = candidates[0]
+          slotRec[eqType] = best.id
+        } else {
+          // For armor/accessory we require element-matching; leave empty if none found.
+          slotRec[eqType] = null
+        }
       }
       newEquipSlots[slotKey] = slotRec
     }
