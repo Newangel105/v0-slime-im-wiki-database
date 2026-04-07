@@ -96,6 +96,9 @@ export default function HomePage() {
   // YouTube video state - automatically fetched from RSS feed
   const [youtubeVideo, setYoutubeVideo] = useState<YouTubeVideo | null>(null)
   const [loadingVideo, setLoadingVideo] = useState(true)
+  const [showEmbed, setShowEmbed] = useState(false)
+  const [thumbnailSrc, setThumbnailSrc] = useState<string | null>(null)
+  const [thumbAttempt, setThumbAttempt] = useState(0)
 
   useEffect(() => {
     // Use a default video since YouTube RSS requires server-side fetch
@@ -105,12 +108,40 @@ export default function HomePage() {
       title: 'SLIME - ISEKAI Memories Official Stream',
       url: 'https://youtu.be/YbFIcnUR4z0',
       embedUrl: 'https://www.youtube.com/embed/YbFIcnUR4z0',
-      thumbnail: 'https://img.youtube.com/vi/YbFIcnUR4z0/hqdefault.jpg',
+      thumbnail: 'https://img.youtube.com/vi/YbFIcnUR4z0/maxresdefault.jpg',
       published: null,
     }
     setYoutubeVideo(defaultVideo)
     setLoadingVideo(false)
   }, [])
+
+  // Thumbnail fallback list for different YouTube sizes
+  const thumbFallbacks = (id: string) => [
+    `https://img.youtube.com/vi/${id}/maxresdefault.jpg`,
+    `https://img.youtube.com/vi/${id}/sddefault.jpg`,
+    `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
+    `https://img.youtube.com/vi/${id}/mqdefault.jpg`,
+    `https://img.youtube.com/vi/${id}/default.jpg`,
+  ]
+
+  useEffect(() => {
+    if (!youtubeVideo) return
+    setThumbAttempt(0)
+    setThumbnailSrc(thumbFallbacks(youtubeVideo.id)[0])
+    setShowEmbed(false)
+  }, [youtubeVideo])
+
+  function onThumbError() {
+    if (!youtubeVideo) return
+    const next = thumbAttempt + 1
+    const list = thumbFallbacks(youtubeVideo.id)
+    if (next < list.length) {
+      setThumbAttempt(next)
+      setThumbnailSrc(list[next])
+    }
+  }
+
+  const isUpcoming = !!(youtubeVideo && !youtubeVideo.published)
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-[#0a1a2f] via-[#0f1f35] to-[#1a2740]">
@@ -196,15 +227,54 @@ export default function HomePage() {
                   </div>
                 ) : youtubeVideo ? (
                   <div className="space-y-3">
-                    <div className="relative aspect-video rounded-xl overflow-hidden border border-gray-700/30">
-                      <iframe
-                        src={youtubeVideo.embedUrl}
-                        title={youtubeVideo.title}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        className="w-full h-full"
-                      />
+                    <div className="relative aspect-video rounded-xl overflow-hidden border border-gray-700/30 bg-black">
+                      {!showEmbed ? (
+                        isUpcoming ? (
+                          <a
+                            href={youtubeVideo.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full h-full block p-0 m-0"
+                            aria-label={`Open ${youtubeVideo.title} on YouTube`}
+                          >
+                            <img
+                              src={thumbnailSrc || youtubeVideo.thumbnail}
+                              alt={youtubeVideo.title}
+                              onError={onThumbError}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                              <div className="bg-red-600/95 rounded-full p-3 shadow-lg">
+                                <Play className="w-6 h-6 text-white" />
+                              </div>
+                            </div>
+                            <div className="absolute left-3 top-3 bg-yellow-400 text-xs text-black font-semibold px-2 py-1 rounded">Upcoming</div>
+                          </a>
+                        ) : (
+                          <button onClick={() => setShowEmbed(true)} className="w-full h-full p-0 m-0 block">
+                            <img
+                              src={thumbnailSrc || youtubeVideo.thumbnail}
+                              alt={youtubeVideo.title}
+                              onError={onThumbError}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="bg-red-600/95 rounded-full p-3 shadow-lg">
+                                <Play className="w-6 h-6 text-white" />
+                              </div>
+                            </div>
+                          </button>
+                        )
+                      ) : (
+                        <iframe
+                          src={youtubeVideo.embedUrl}
+                          title={youtubeVideo.title}
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          className="w-full h-full"
+                        />
+                      )}
                     </div>
                     <div className="flex items-start justify-between gap-2">
                       <p className="text-sm text-gray-300 line-clamp-2 flex-1">{youtubeVideo.title}</p>
