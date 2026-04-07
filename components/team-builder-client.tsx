@@ -1224,7 +1224,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
             style={{ top: '1.7%', right: '4%' }}>
             {mainIcons.map((src, idx) => (
               <img key={idx} src={src} alt=""
-                className="object-contain drop-shadow-lg" style={{ width: '45px' }} />
+                className="object-contain drop-shadow-lg w-8 h-8 sm:w-11 sm:h-11" />
             ))}
           </div>
         )}
