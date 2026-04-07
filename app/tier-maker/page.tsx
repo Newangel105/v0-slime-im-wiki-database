@@ -411,7 +411,7 @@ export default function TierMakerPage() {
           // Prevent default panning while a drag is active
           try { ev.preventDefault() } catch (e) {}
           const last = touchLastYRef.current ?? ev.clientY
-          const delta = last - ev.clientY
+          const delta = ev.clientY - last
           if (delta !== 0) {
             try {
               const se = document.scrollingElement || document.documentElement
@@ -485,7 +485,7 @@ export default function TierMakerPage() {
       const t = ev.touches && ev.touches[0]
       if (!t) return
       const last = touchLastYRef.current ?? t.clientY
-      const delta = last - t.clientY
+      const delta = t.clientY - last
       if (delta !== 0) {
         try {
           const se = document.scrollingElement || document.documentElement
