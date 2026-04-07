@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useDeferredValue, useMemo, useRef, useState } from "react"
+import { useCallback, useDeferredValue, useMemo, useRef, useState, useEffect } from "react"
 import type { Heartprint, Equipment, Charm } from "@/lib/pc-wiki"
 import type { TeamBuilderCharacter } from "@/lib/team-builder-character-data"
 import {
@@ -355,6 +355,18 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
   const [filterForces, setFilterForces] = useState<string[]>([])
   const [filterSkillGroups, setFilterSkillGroups] = useState<number[]>([])
   const [previewHp, setPreviewHp] = useState<Heartprint | null>(null)
+  const [isTouchDevice, setIsTouchDevice] = useState(false)
+
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    try {
+      const hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) || ((navigator as any).msMaxTouchPoints && (navigator as any).msMaxTouchPoints > 0)
+      setIsTouchDevice(Boolean(hasTouch))
+    } catch (e) {
+      setIsTouchDevice(false)
+    }
+  }, [])
+  const lastTouchRef = useRef<number>(0)
   const [filterSkillType, setFilterSkillType] = useState<"all" | "secret" | "battle" | "protection" | "skill" | "trait" | "valor" | "other">("all")
   const [expandedSkillCats, setExpandedSkillCats] = useState<string[]>([])
   const [filterWeapon, setFilterWeapon] = useState<string | null>(null)
@@ -1407,9 +1419,15 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                           )}
                         </div>
                         <div className="text-[13px] font-semibold text-white leading-tight">{hp.title}{isRare ? " Lv.3" : ""}</div>
-                        {hp.skill_description && (
-                          <div className="text-[11px] text-gray-300 leading-relaxed">{renderColoredDesc(hp.skill_description)}</div>
-                        )}
+                            {hp.skill_description && (
+                              <div className="text-[11px] text-gray-300 leading-relaxed">{renderColoredDesc(hp.skill_description)}</div>
+                            )}
+                            {isTouchDevice && (
+                              <div className="mt-2 block sm:hidden">
+                                <button onClick={() => { setHeartPrintId(hp.heartprint_id); closePicker() }}
+                                  className="px-2 py-1 text-sm bg-amber-500 text-black rounded font-semibold">Select</button>
+                              </div>
+                            )}
                       </div>
                     )
                   })()}
@@ -1428,7 +1446,12 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                       return (
                         <div key={hp.heartprint_id}
                           className="flex flex-col items-center gap-1 rounded hover:bg-white/5 cursor-pointer transition-colors"
-                          onClick={() => { setHeartPrintId(hp.heartprint_id); closePicker() }}
+                          onTouchEnd={(e) => { try { e.preventDefault(); e.stopPropagation() } catch (err) {} ; setPreviewHp(hp); lastTouchRef.current = Date.now() }}
+                          onClick={(e) => {
+                            // ignore synthetic click fired after touch
+                            if (Date.now() - (lastTouchRef.current || 0) < 700) { lastTouchRef.current = 0; return }
+                            setHeartPrintId(hp.heartprint_id); closePicker()
+                          }}
                           onMouseEnter={() => setPreviewHp(hp)}
                           onMouseLeave={() => setPreviewHp(null)}>
                           <div className="relative w-full overflow-hidden rounded bg-black/40" style={{ aspectRatio: "245 / 146" }}>
@@ -1443,7 +1466,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                                   className="w-3 h-3 object-contain drop-shadow" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />)}
                               </div>
                             )}
-                            {heartPrintId === hp.heartprint_id && <div className="absolute inset-0 ring-2 ring-amber-400 ring-inset rounded" />}
+                            {(heartPrintId === hp.heartprint_id || (isTouchDevice && previewHp?.heartprint_id === hp.heartprint_id)) && <div className="absolute inset-0 ring-2 ring-amber-400 ring-inset rounded" />}
                           </div>
                           <span className="text-[9px] text-gray-400 leading-none text-center line-clamp-1 w-full px-1">{hp.title}</span>
                         </div>
