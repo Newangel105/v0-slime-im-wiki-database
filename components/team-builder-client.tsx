@@ -1636,8 +1636,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                             <img src={STAR_ASSETS[t] ?? STAR_ASSETS[5]} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[14%] object-contain" />
                             {(ci1 || ci2) && (
                               <div className="absolute top-0.5 right-0.5 z-10 flex flex-col gap-0.5">
-                                {ci1 && <img src={ci1} alt="" className="w-5 h-5 sm:w-6 sm:h-6 object-contain drop-shadow" />}
-                                {ci2 && <img src={ci2} alt="" className="w-5 h-5 sm:w-6 sm:h-6 object-contain drop-shadow" />}
+                                {ci1 && <img src={ci1} alt="" className="w-4 h-4 sm:w-6 sm:h-6 object-contain drop-shadow" />}
+                                {ci2 && <img src={ci2} alt="" className="w-4 h-4 sm:w-6 sm:h-6 object-contain drop-shadow" />}
                               </div>
                             )}
                           </div>
@@ -2249,7 +2249,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
           >
             {heartPrintId ? (
               <>
-                <img src={`/SkillStill/${heartPrintId}/skill_still_${heartPrintId}_S.png`} alt=""
+                <img src={`/SkillStill/${heartPrintId}/skill_still_${heartPrintId}_L.png`} alt=""
                   className="absolute inset-0 w-full h-full object-cover"
                   onError={(e) => { (e.target as HTMLImageElement).style.opacity = "0.3" }} />
                 <img src={selectedHp?.still_type === "rare" ? "/StillFrame/StillFrame3_s.png" : "/StillFrame/StillFrame1_s.png"} alt=""
