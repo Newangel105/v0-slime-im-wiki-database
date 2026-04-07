@@ -1187,8 +1187,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
               })()}
               {(subIcon1 || subIcon2) && (
                 <div className="absolute top-0.5 right-0.5 z-20 flex flex-col gap-0.5">
-                  {subIcon1 && <img src={subIcon1} alt="" className="w-3 h-3 sm:w-4 sm:h-4 object-contain drop-shadow" />}
-                  {subIcon2 && <img src={subIcon2} alt="" className="w-3 h-3 sm:w-4 sm:h-4 object-contain drop-shadow" />}
+                  {subIcon1 && <img src={subIcon1} alt="" className="w-5 h-5 sm:w-6 sm:h-6 object-contain drop-shadow" />}
+                  {subIcon2 && <img src={subIcon2} alt="" className="w-5 h-5 sm:w-6 sm:h-6 object-contain drop-shadow" />}
                 </div>
               )}
             </>
@@ -1221,10 +1221,10 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
         {/* Protector icons — simple stack */}
         {char && isProt && mainIcons.length > 0 && (
           <div className="absolute z-30 flex flex-col items-center gap-0.5"
-            style={{ top: '3%', right: '3%' }}>
+            style={{ top: '1.7%', right: '4%' }}>
             {mainIcons.map((src, idx) => (
               <img key={idx} src={src} alt=""
-                className="object-contain drop-shadow-lg" style={{ width: '25px' }} />
+                className="object-contain drop-shadow-lg" style={{ width: '45px' }} />
             ))}
           </div>
         )}
@@ -1327,8 +1327,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                   })()}
                   {(sideSubIcon1 || sideSubIcon2) && (
                     <div className="absolute top-0.5 right-0.5 z-20 flex flex-col gap-0.5">
-                      {sideSubIcon1 && <img src={sideSubIcon1} alt="" className="w-3 h-3 sm:w-4 sm:h-4 object-contain drop-shadow" />}
-                      {sideSubIcon2 && <img src={sideSubIcon2} alt="" className="w-3 h-3 sm:w-4 sm:h-4 object-contain drop-shadow" />}
+                      {sideSubIcon1 && <img src={sideSubIcon1} alt="" className="w-5 h-5 sm:w-6 sm:h-6 object-contain drop-shadow" />}
+                      {sideSubIcon2 && <img src={sideSubIcon2} alt="" className="w-5 h-5 sm:w-6 sm:h-6 object-contain drop-shadow" />}
                     </div>
                   )}
                 </>
@@ -1636,8 +1636,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                             <img src={STAR_ASSETS[t] ?? STAR_ASSETS[5]} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[14%] object-contain" />
                             {(ci1 || ci2) && (
                               <div className="absolute top-0.5 right-0.5 z-10 flex flex-col gap-0.5">
-                                {ci1 && <img src={ci1} alt="" className="w-3 h-3 sm:w-5 sm:h-5 object-contain drop-shadow" />}
-                                {ci2 && <img src={ci2} alt="" className="w-3 h-3 sm:w-5 sm:h-5 object-contain drop-shadow" />}
+                                {ci1 && <img src={ci1} alt="" className="w-5 h-5 sm:w-6 sm:h-6 object-contain drop-shadow" />}
+                                {ci2 && <img src={ci2} alt="" className="w-5 h-5 sm:w-6 sm:h-6 object-contain drop-shadow" />}
                               </div>
                             )}
                           </div>
@@ -2078,8 +2078,10 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
   // Main cards use frame aspect (264/628). Side slots + heartprint combined
   // height equals main card height. We calculate this using CSS.
   //
-  const MAIN_CARD_WIDTH = "clamp(110px, 12vw, 155px)"
-  const SIDE_SLOT_WIDTH = "clamp(78px, 8.5vw, 109px)"
+  // scale factor to increase sizes (30% larger)
+  const SIZE_SCALE = 1.5
+  const MAIN_CARD_WIDTH = `calc(clamp(110px, 12vw, 155px) * ${SIZE_SCALE})`
+  const SIDE_SLOT_WIDTH = `calc(clamp(78px, 8.5vw, 109px) * ${SIZE_SCALE})`
   const FRAME_W = 264, FRAME_H = 628
   // All cards use the same 264:628 aspect ratio for consistency
   const MAIN_ASPECT = 264 / 628
@@ -2161,7 +2163,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       {(leaderSkill || assistSkill) && (
         <div className="mb-3 rounded-lg overflow-hidden text-xs"
           style={{
-            width: "calc(4 * clamp(110px, 12vw, 155px) + 2 * clamp(78px, 8.5vw, 109px) + 32px)",
+            width: `calc(4 * (clamp(110px, 12vw, 155px) * ${SIZE_SCALE}) + 2 * (clamp(78px, 8.5vw, 109px) * ${SIZE_SCALE}) + 32px)`,
             maxWidth: "100%",
             background: "rgba(8,12,22,0.92)", border: "1px solid rgba(255,255,255,0.08)"
           }}>
