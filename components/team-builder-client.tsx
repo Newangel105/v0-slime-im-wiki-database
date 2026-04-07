@@ -343,6 +343,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
   const [pickerOpenFor, setPickerOpenFor] = useState<number | null>(null)
   const [pickerMode, setPickerMode] = useState<"main" | "sub" | "side" | "sidesub" | "heartprint">("main")
   const [showFilterModal, setShowFilterModal] = useState(false)
+  const [mobileLeftOpen, setMobileLeftOpen] = useState(false)
 
   const [query, setQuery] = useState("")
   const [filterEl, setFilterEl] = useState<string | null>(null)
@@ -1455,10 +1456,14 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
             </>
           ) : (
             /* ── CHARACTER PICKER: left slot panel + right search/grid ── */
-            <div className="flex flex-1 min-h-0 overflow-hidden">
+            <div className="flex flex-col sm:flex-row flex-1 min-h-0 overflow-auto overscroll-contain">
 
               {/* LEFT PANEL: game-style card preview with sub-slot overlaid */}
-              <div className="hidden sm:flex w-[18%] min-w-[140px] max-w-[200px] shrink-0 flex-col items-center border-r border-white/10 bg-[#090f1b] min-h-0 p-3 gap-2 overflow-y-auto">
+              {mobileLeftOpen && <div className="absolute inset-0 z-40 bg-black/60 sm:hidden" onClick={() => setMobileLeftOpen(false)} />}
+              <div className={`${mobileLeftOpen ? 'absolute inset-4 z-50 rounded-xl overflow-hidden flex' : 'hidden sm:flex'} sm:w-[18%] min-w-0 sm:min-w-[140px] max-w-[200px] sm:shrink-0 flex-col items-center sm:border-r sm:border-white/10 bg-[#090f1b] min-h-0 p-3 gap-2 overflow-y-auto`}>
+                {mobileLeftOpen && (
+                  <button className="sm:hidden absolute top-3 right-3 z-50 px-2 py-1 rounded bg-white/5 text-sm text-gray-200" onClick={() => setMobileLeftOpen(false)}>✕</button>
+                )}
                 {/* Main card with sub-slot overlaid on it */}
                 <div
                   className="relative w-full cursor-pointer"
@@ -1558,9 +1563,10 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
               </div>
 
               {/* RIGHT: search bar + filter button + character grid */}
-              <div className="flex-1 flex flex-col min-w-0 relative">
+              <div className="flex-1 flex flex-col min-w-0 relative overflow-visible sm:overflow-hidden">
                 {/* Top bar */}
                 <div className="flex items-center gap-2 px-3 py-2 border-b border-white/5 shrink-0">
+                  <button className="sm:hidden px-2 py-1 rounded bg-white/5 text-[12px] text-gray-200 font-semibold" onClick={() => setMobileLeftOpen(v => !v)} aria-expanded={mobileLeftOpen} aria-label="Toggle preview">{mobileLeftOpen ? "Close" : "Edit"}</button>
                   <Input autoFocus value={query} onChange={e => setQuery(e.target.value)}
                     placeholder="Search by name..." className="h-8 flex-1 border-gray-700 bg-gray-800/80 text-white text-sm" />
                   <button onClick={() => setShowFilterModal(true)}
@@ -1572,7 +1578,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                 </div>
 
                 {/* Character grid */}
-                <div className="flex-1 overflow-y-auto overscroll-contain p-2">
+                <div className="flex-1 sm:overflow-y-auto overscroll-contain p-2">
                   <div className="grid gap-1.5 grid-cols-5 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8">
                     <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-gray-600 p-1.5 hover:bg-white/5 transition-colors aspect-square"
                       onClick={() => {
@@ -2284,10 +2290,10 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       {showEquipModal && (
         <div className="fixed inset-0 z-50 flex" role="dialog" aria-modal="true">
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setShowEquipModal(false)} />
-          <div className="relative z-50 m-auto flex flex-col max-h-[95vh] w-[98vw] sm:w-[95vw] max-w-5xl rounded-xl overflow-hidden shadow-2xl"
+          <div className="relative z-50 isolate m-auto flex flex-col max-h-[95vh] w-[98vw] sm:w-[95vw] max-w-5xl rounded-xl overflow-hidden shadow-2xl"
             style={{ background: "linear-gradient(180deg, #0c1929 0%, #111d2e 100%)" }}>
             {/* Header */}
-            <div className="flex items-center gap-2 px-4 py-2.5 border-b border-white/10 shrink-0">
+            <div className="relative z-50 flex items-center gap-2 px-4 py-2.5 border-b border-white/10 shrink-0">
               <img src="/UI/Texture/QuestAtlas/icBtnEquip.png" alt="" className="w-5 h-5 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
               <span className="text-[12px] font-semibold text-white/90 uppercase tracking-wider">Equipment &amp; Charms</span>
               <div className="flex-1" />
@@ -2303,7 +2309,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
 
             <div className="flex flex-col sm:flex-row flex-1 min-h-0 overflow-hidden">
               {/* LEFT: Characters + Slots */}
-              <div className="w-full sm:w-[40%] sm:min-w-[260px] sm:max-w-[380px] border-b sm:border-b-0 sm:border-r border-white/10 overflow-y-auto shrink-0 max-h-[40vh] sm:max-h-none">
+              <div className="relative z-10 w-full sm:w-[40%] sm:min-w-[260px] sm:max-w-[380px] border-b sm:border-b-0 sm:border-r border-white/10 overflow-y-auto shrink-0 max-h-[40vh] sm:max-h-none">
                 {equipModalGroups.length === 0 && (
                   <div className="flex items-center justify-center h-full text-[11px] text-gray-500 p-6 text-center">
                     Add characters to your team first
@@ -2396,9 +2402,9 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
 
                   return (
                     <>
-                      {protGroups.length > 0 && (
+                          {protGroups.length > 0 && (
                         <>
-                          <div className="px-3 py-1.5 bg-purple-950/30 border-b border-purple-400/10 sticky top-0 z-10">
+                          <div className="px-3 py-1.5 bg-purple-950/30 border-b border-purple-400/10 sm:sticky top-0 z-20">
                             <span className="text-[9px] font-bold text-purple-300/70 uppercase tracking-widest">Protection Character</span>
                           </div>
                           {protGroups.map(g => (
@@ -2411,7 +2417,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                       )}
                       {battleGroups.length > 0 && (
                         <>
-                          <div className="px-3 py-1.5 bg-sky-950/30 border-b border-sky-400/10 sticky top-0 z-10 mt-0">
+                          <div className="px-3 py-1.5 bg-sky-950/30 border-b border-sky-400/10 sm:sticky top-0 z-20 mt-0">
                             <span className="text-[9px] font-bold text-sky-300/70 uppercase tracking-widest">Battle Characters</span>
                           </div>
                           {battleGroups.map(g => (
@@ -2428,15 +2434,15 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
               </div>
 
               {/* RIGHT: Effects + Grid */}
-              <div className="flex-1 flex flex-col overflow-hidden">
+              <div className="flex-1 flex flex-col min-w-0 relative overflow-y-auto sm:overflow-hidden">
                 {!activeEquipSlot ? (
                   <div className="flex-1 flex items-center justify-center text-[11px] text-gray-500 text-center p-4">
                     Select an equipment or charm slot on the left to edit
                   </div>
                 ) : (
                   <>
-                    {/* Effects panel */}
-                    <div className="px-3 py-2 border-b border-white/10 bg-[#0a1525] min-h-[60px] transition-all duration-200">
+                    {/* Effects + Search wrapper: keep description and search on same background so description never overlaps */}
+                    <div className="relative px-3 py-3 border-b border-white/10 bg-[#0a1525] transition-all duration-200 mb-2">
                       <div className="text-[10px] text-amber-300/80 font-semibold uppercase tracking-wider mb-1">Effects</div>
                       {(() => {
                         if (activeEquipSlot.type === "charm") {
@@ -2474,24 +2480,24 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                         }
                         return <div className="text-[10px] text-gray-600">Hover over an item to see its effects</div>
                       })()}
-                    </div>
 
-                    {/* Search + Rarity filter */}
-                    <div className="flex items-center gap-2 px-3 py-1.5 border-b border-white/5 shrink-0">
-                      <input
-                        value={equipQuery} onChange={e => setEquipQuery(e.target.value)}
-                        placeholder={activeEquipSlot.type === "charm" ? "Search charms..." : `Search ${activeEquipSlot.type}s...`}
-                        className="h-7 flex-1 rounded border border-gray-700 bg-gray-800/80 text-white text-[11px] px-2 outline-none focus:border-sky-500" />
-                      {(activeEquipSlot.type === "charm" ? [3, 2, 1] : [6, 3, 2, 1]).map(r => (
-                        <button key={r} onClick={() => setEquipFilterRarity(equipFilterRarity === r ? null : r)}
-                          className={`w-6 h-6 rounded text-[9px] font-bold transition-all ${equipFilterRarity === r ? "bg-amber-500 text-black" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
-                          {r}★
-                        </button>
-                      ))}
+                      {/* Search + Rarity filter (moved inside same background to avoid clipping) */}
+                      <div className="mt-3 flex items-center gap-2 px-0 py-1.5 border-t border-white/5 shrink-0">
+                        <input
+                          value={equipQuery} onChange={e => setEquipQuery(e.target.value)}
+                          placeholder={activeEquipSlot.type === "charm" ? "Search charms..." : `Search ${activeEquipSlot.type}s...`}
+                          className="h-7 flex-1 rounded border border-gray-700 bg-gray-800/80 text-white text-[11px] px-2 outline-none focus:border-sky-500" />
+                        {(activeEquipSlot.type === "charm" ? [3, 2, 1] : [6, 3, 2, 1]).map(r => (
+                          <button key={r} onClick={() => setEquipFilterRarity(equipFilterRarity === r ? null : r)}
+                            className={`w-6 h-6 rounded text-[9px] font-bold transition-all ${equipFilterRarity === r ? "bg-amber-500 text-black" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
+                            {r}★
+                          </button>
+                        ))}
+                      </div>
                     </div>
 
                     {/* Item grid */}
-                    <div className="flex-1 overflow-y-auto overscroll-contain p-2">
+                    <div className="flex-1 sm:overflow-y-auto overscroll-contain p-2">
                       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
                         {/* Remove button */}
                         <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-gray-600 p-2 hover:bg-white/5 transition-colors"

@@ -327,6 +327,7 @@ export default function TierMakerPage() {
   const touchDragRef = useRef<{ charId: string; fromTierIndex: number } | null>(null)
   const touchDragImageRef = useRef<string | null>(null)
   const touchGhostRef = useRef<HTMLElement | null>(null)
+  const touchLastYRef = useRef<number | null>(null)
 
   function removeTouchGhost() {
     try {
@@ -378,6 +379,7 @@ export default function TierMakerPage() {
       if (!touchDragRef.current) return
       const { charId } = touchDragRef.current
       touchDragRef.current = null
+      touchLastYRef.current = null
       const x = ev.clientX
       const y = ev.clientY
       removeTouchGhost()
@@ -403,8 +405,32 @@ export default function TierMakerPage() {
       }
     }
 
+    function handlePointerMove(ev: PointerEvent) {
+      try {
+        if (ev.pointerType === 'touch' && touchDragRef.current) {
+          // Prevent default panning while a drag is active
+          try { ev.preventDefault() } catch (e) {}
+          const last = touchLastYRef.current ?? ev.clientY
+          const delta = last - ev.clientY
+          if (delta !== 0) {
+            try {
+              const se = document.scrollingElement || document.documentElement
+              se.scrollTop = (se.scrollTop || 0) + delta
+            } catch (e) {}
+          }
+          touchLastYRef.current = ev.clientY
+          // update ghost position so it follows finger
+          moveTouchGhost(ev.clientX, ev.clientY)
+        }
+      } catch (e) {}
+    }
+
     window.addEventListener("pointerup", handlePointerUp)
-    return () => window.removeEventListener("pointerup", handlePointerUp)
+    window.addEventListener("pointermove", handlePointerMove, { passive: false })
+    return () => {
+      window.removeEventListener("pointerup", handlePointerUp)
+      window.removeEventListener("pointermove", handlePointerMove as any)
+    }
   }, [insertCharAt, appendCharToTier, removeFromTiers])
 
   // Touch fallback for browsers that don't emit pointer events (older Safari/Android)
@@ -413,6 +439,7 @@ export default function TierMakerPage() {
       if (!touchDragRef.current) return
       const { charId } = touchDragRef.current
       touchDragRef.current = null
+      touchLastYRef.current = null
       const touch = ev.changedTouches && ev.changedTouches[0]
       if (!touch) return
       const x = touch.clientX
@@ -453,13 +480,25 @@ export default function TierMakerPage() {
   useEffect(() => {
     function handleTouchMove(ev: TouchEvent) {
       if (!touchDragRef.current) return
+      // while dragging on touch, prevent the default panning and manually scroll the page
+      try { ev.preventDefault() } catch (e) {}
       const t = ev.touches && ev.touches[0]
       if (!t) return
+      const last = touchLastYRef.current ?? t.clientY
+      const delta = last - t.clientY
+      if (delta !== 0) {
+        try {
+          const se = document.scrollingElement || document.documentElement
+          se.scrollTop = (se.scrollTop || 0) + delta
+        } catch (e) {}
+      }
+      touchLastYRef.current = t.clientY
       if (!touchGhostRef.current && touchDragImageRef.current) createTouchGhost(touchDragImageRef.current)
       moveTouchGhost(t.clientX, t.clientY)
     }
 
-    window.addEventListener("touchmove", handleTouchMove, { passive: true })
+    // listener must be non-passive so preventDefault() works
+    window.addEventListener("touchmove", handleTouchMove, { passive: false })
     return () => {
       window.removeEventListener("touchmove", handleTouchMove)
       removeTouchGhost()
@@ -710,17 +749,25 @@ export default function TierMakerPage() {
                           onDrop={(e) => handleDropOnItem(e as React.DragEvent, idx, itemIndex)}
                           data-tier-index={idx}
                           data-item-index={itemIndex}
-                          onPointerDown={(e) => { if ((e as any).pointerType === 'touch') { touchDragRef.current = { charId: id, fromTierIndex: idx }; touchDragImageRef.current = c.images.icon; try { createTouchGhost(c.images.icon); moveTouchGhost((e as any).clientX, (e as any).clientY) } catch (err) {} } }}
-                          onTouchStart={(e) => { if ((e as any).touches && (e as any).touches.length === 1) { touchDragRef.current = { charId: id, fromTierIndex: idx }; touchDragImageRef.current = c.images.icon; const t = (e as any).touches[0]; try { createTouchGhost(c.images.icon); moveTouchGhost(t.clientX, t.clientY) } catch (err) {} } }}
-                          onTouchCancel={() => { touchDragRef.current = null; touchDragImageRef.current = null; removeTouchGhost() }}
+                          onPointerDown={(e) => { if ((e as any).pointerType === 'touch') { try { (e as any).preventDefault() } catch (err) {} touchLastYRef.current = (e as any).clientY; touchDragRef.current = { charId: id, fromTierIndex: idx }; touchDragImageRef.current = c.images.icon; try { createTouchGhost(c.images.icon); moveTouchGhost((e as any).clientX, (e as any).clientY) } catch (err) {} } }}
+                          onTouchStart={(e) => { if ((e as any).touches && (e as any).touches.length === 1) { try { (e as any).preventDefault() } catch (err) {} const t = (e as any).touches[0]; touchLastYRef.current = t.clientY; touchDragRef.current = { charId: id, fromTierIndex: idx }; touchDragImageRef.current = c.images.icon; try { createTouchGhost(c.images.icon); moveTouchGhost(t.clientX, t.clientY) } catch (err) {} } }}
+                          onTouchCancel={() => { touchDragRef.current = null; touchDragImageRef.current = null; touchLastYRef.current = null; removeTouchGhost() }}
                           className="relative w-20 h-20 flex-shrink-0"
                           title={c.name}
+                          style={{ touchAction: 'none' }}
                         >
                           <div className="w-full h-full flex items-center justify-center bg-[#0b1220] rounded-md p-1">
-                            <img src={c.images.icon} alt={c.name} className="max-w-full max-h-full object-contain" />
+                            <img
+                              src={c.images.icon}
+                              alt={c.name}
+                              draggable={false}
+                              onContextMenu={(e) => e.preventDefault()}
+                              className="max-w-full max-h-full object-contain"
+                              style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" }}
+                            />
                           </div>
                           {miniFrame && <img src={miniFrame} alt="rarity-frame" className="pointer-events-none absolute inset-0 w-full h-full object-fill z-10" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />}
-                          {variant === "skill" && <img src="/skill-icons/skill_integrated_3400001_ItemM.png" alt="skill-change" className="absolute bottom-1 right-1 w-5 h-5 z-20" />}
+                          {variant === "skill" && <img src="/skill-icons/skill_integrated_3400001_ItemM.png" alt="skill-change" draggable={false} onContextMenu={(e) => e.preventDefault()} className="absolute bottom-1 right-1 w-5 h-5 z-20" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" }} />}
                         </div>
                       )
                     })}
@@ -823,17 +870,24 @@ export default function TierMakerPage() {
                   key={pin.id}
                   draggable
                   onDragStart={(e) => handleDragStart(e as React.DragEvent, pin.id, -1)}
-                  onPointerDown={(e) => { if ((e as any).pointerType === 'touch') { touchDragRef.current = { charId: pin.id, fromTierIndex: -1 }; touchDragImageRef.current = pin.image; try { createTouchGhost(pin.image); moveTouchGhost((e as any).clientX, (e as any).clientY) } catch (err) {} } }}
-                  onTouchStart={(e) => { if ((e as any).touches && (e as any).touches.length === 1) { touchDragRef.current = { charId: pin.id, fromTierIndex: -1 }; touchDragImageRef.current = pin.image; const t = (e as any).touches[0]; try { createTouchGhost(pin.image); moveTouchGhost(t.clientX, t.clientY) } catch (err) {} } }}
-                  onTouchCancel={() => { touchDragRef.current = null; touchDragImageRef.current = null; removeTouchGhost() }}
+                  onPointerDown={(e) => { if ((e as any).pointerType === 'touch') { try { (e as any).preventDefault() } catch (err) {} touchLastYRef.current = (e as any).clientY; touchDragRef.current = { charId: pin.id, fromTierIndex: -1 }; touchDragImageRef.current = pin.image; try { createTouchGhost(pin.image); moveTouchGhost((e as any).clientX, (e as any).clientY) } catch (err) {} } }}
+                  onTouchStart={(e) => { if ((e as any).touches && (e as any).touches.length === 1) { try { (e as any).preventDefault() } catch (err) {} const t = (e as any).touches[0]; touchLastYRef.current = t.clientY; touchDragRef.current = { charId: pin.id, fromTierIndex: -1 }; touchDragImageRef.current = pin.image; try { createTouchGhost(pin.image); moveTouchGhost(t.clientX, t.clientY) } catch (err) {} } }}
+                  onTouchCancel={() => { touchDragRef.current = null; touchDragImageRef.current = null; touchLastYRef.current = null; removeTouchGhost() }}
                   data-pin-id={pin.id}
                   className="relative w-16 h-16 rounded-md p-1 cursor-grab flex items-center justify-center"
                   title={pin.name}
-                  style={{ backgroundColor: 'rgb(55 65 81)' }}
+                  style={{ backgroundColor: 'rgb(55 65 81)', touchAction: 'none' }}
                 >
-                  <img src={pin.image} alt={pin.name} className="max-w-full max-h-full object-contain" />
+                  <img
+                    src={pin.image}
+                    alt={pin.name}
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
+                    className="max-w-full max-h-full object-contain"
+                    style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" }}
+                  />
                   {miniFrame && <img src={miniFrame} alt="rarity-frame" className="pointer-events-none absolute inset-0 w-full h-full object-fill z-10" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />}
-                  {pin.variant === "skill" && <img src="/skill-icons/skill_integrated_3400001_ItemM.png" alt="skill-change" className="absolute bottom-1 right-1 w-5 h-5 z-20" />}
+                  {pin.variant === "skill" && <img src="/skill-icons/skill_integrated_3400001_ItemM.png" alt="skill-change" draggable={false} onContextMenu={(e) => e.preventDefault()} className="absolute bottom-1 right-1 w-5 h-5 z-20" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" }} />}
                 </div>
               )
             })}
