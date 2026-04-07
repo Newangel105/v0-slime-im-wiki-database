@@ -101,11 +101,11 @@ export default function HomePage() {
     // Use a default video since YouTube RSS requires server-side fetch
     // The video ID can be updated manually or via a CMS in the future
     const defaultVideo: YouTubeVideo = {
-      id: 'oqj9Ho6QS40',
+      id: 'YbFIcnUR4z0',
       title: 'SLIME - ISEKAI Memories Official Stream',
-      url: 'https://www.youtube.com/watch?v=oqj9Ho6QS40',
-      embedUrl: 'https://www.youtube.com/embed/oqj9Ho6QS40',
-      thumbnail: 'https://img.youtube.com/vi/oqj9Ho6QS40/hqdefault.jpg',
+      url: 'https://youtu.be/YbFIcnUR4z0',
+      embedUrl: 'https://www.youtube.com/embed/YbFIcnUR4z0',
+      thumbnail: 'https://img.youtube.com/vi/YbFIcnUR4z0/hqdefault.jpg',
       published: null,
     }
     setYoutubeVideo(defaultVideo)
@@ -182,13 +182,13 @@ export default function HomePage() {
             </Card>
           </section>
 
-          {/* Latest Stream Section - Right Column */}
+          {/* Upcoming Stream Section - Right Column */}
           <section className="lg:col-span-1">
             <Card className="bg-[#181f2a]/80 border border-gray-700/50 backdrop-blur-sm h-full">
               <div className="p-6">
                 <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                   <Play className="w-5 h-5 text-red-500" />
-                  LATEST STREAM
+                  UPCOMING STREAM
                 </h2>
                 {loadingVideo ? (
                   <div className="aspect-video bg-[#232c3a] rounded-xl animate-pulse flex items-center justify-center">
