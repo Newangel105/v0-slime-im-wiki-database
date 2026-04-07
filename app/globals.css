@@ -113,6 +113,7 @@ body {
 .image-scroll {
   scrollbar-width: thin;
   scrollbar-color: rgba(255,255,255,0.10) transparent;
+  scrollbar-gutter: stable;
 }
 .image-scroll::-webkit-scrollbar {
   width: 12px;

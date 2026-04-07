@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useMemo, useState } from "react"
+import React, { useEffect, useMemo, useState, useRef } from "react"
 import { getAllCharacterBrowserData } from "@/lib/character-browser-data"
 import { getAllWikiCharacters, getCharacterVisualTier } from "@/lib/pc-wiki"
 import { Input } from "@/components/ui/input"
@@ -323,6 +323,42 @@ export default function TierMakerPage() {
     return out
   }, [allChars, skillChangeIds])
 
+  // Pointer-based mobile drag fallback: store active drag data and handle pointerup
+  const touchDragRef = useRef<{ charId: string; fromTierIndex: number } | null>(null)
+
+  useEffect(() => {
+    function handlePointerUp(ev: PointerEvent) {
+      if (!touchDragRef.current) return
+      const { charId } = touchDragRef.current
+      touchDragRef.current = null
+      const x = ev.clientX
+      const y = ev.clientY
+      const el = document.elementFromPoint(x, y) as HTMLElement | null
+      if (!el) return
+
+      const tierEl = el.closest("[data-tier-index]") as HTMLElement | null
+      if (tierEl) {
+        const ti = Number(tierEl.getAttribute("data-tier-index"))
+        const itemEl = el.closest("[data-item-index]") as HTMLElement | null
+        if (itemEl && itemEl.getAttribute("data-tier-index") === String(ti)) {
+          const itemIndex = Number(itemEl.getAttribute("data-item-index"))
+          insertCharAt(charId, ti, itemIndex)
+        } else {
+          appendCharToTier(charId, ti)
+        }
+        return
+      }
+
+      const pinsEl = el.closest("[data-pins]")
+      if (pinsEl) {
+        removeFromTiers(charId)
+      }
+    }
+
+    window.addEventListener("pointerup", handlePointerUp)
+    return () => window.removeEventListener("pointerup", handlePointerUp)
+  }, [insertCharAt, appendCharToTier, removeFromTiers])
+
   function isProtectorChar(wc: any) {
     if (!wc) return false
     // mirrors logic used on forces/characters page
@@ -548,7 +584,7 @@ export default function TierMakerPage() {
                   </div>
                 </div>
 
-                <div className="flex-1 min-h-[5rem] border border-gray-700/50 bg-[#0f1b2a]/80 text-white rounded-md flex items-start justify-between px-3 py-3 relative" onDragOver={(e) => e.preventDefault()} onDrop={(e) => handleDropOnTier(e as React.DragEvent, idx)}>
+                <div data-tier-index={idx} className="flex-1 min-h-[5rem] border border-gray-700/50 bg-[#0f1b2a]/80 text-white rounded-md flex items-start justify-between px-3 py-3 relative" onDragOver={(e) => e.preventDefault()} onDrop={(e) => handleDropOnTier(e as React.DragEvent, idx)}>
                   <div className="flex flex-wrap gap-2 items-start">
                     {tier.items.map((id, itemIndex) => {
                       const [baseId, variant] = String(id).split(":")
@@ -559,7 +595,18 @@ export default function TierMakerPage() {
                       const pfx = wc && isProtectorChar(wc) ? "Bless" : "Member"
                       const miniFrame = wc ? `/frame/frame${pfx}M${visualTier}.png` : null
                       return (
-                        <div key={id} draggable onDragStart={(e) => handleDragStart(e as React.DragEvent, id, idx)} onDragOver={(e) => e.preventDefault()} onDrop={(e) => handleDropOnItem(e as React.DragEvent, idx, itemIndex)} className="relative w-20 h-20 flex-shrink-0" title={c.name}>
+                        <div
+                          key={id}
+                          draggable
+                          onDragStart={(e) => handleDragStart(e as React.DragEvent, id, idx)}
+                          onDragOver={(e) => e.preventDefault()}
+                          onDrop={(e) => handleDropOnItem(e as React.DragEvent, idx, itemIndex)}
+                          data-tier-index={idx}
+                          data-item-index={itemIndex}
+                          onPointerDown={(e) => { if ((e as any).pointerType === 'touch') touchDragRef.current = { charId: id, fromTierIndex: idx } }}
+                          className="relative w-20 h-20 flex-shrink-0"
+                          title={c.name}
+                        >
                           <div className="w-full h-full flex items-center justify-center bg-[#0b1220] rounded-md p-1">
                             <img src={c.images.icon} alt={c.name} className="max-w-full max-h-full object-contain" />
                           </div>
@@ -591,42 +638,72 @@ export default function TierMakerPage() {
         </div>
 
         <div className="mt-6 mb-2">
-          <div className="flex items-center justify-between gap-4 mb-2">
-              <div className="flex items-center gap-2">
-              <div className="flex items-center gap-2">
-                <div className="flex gap-2">
-                  <button className={`rounded p-1 text-sm transition-colors ${roleFilter === "all" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`} onClick={() => setRoleFilter("all") }>
-                    <span className="px-2">All</span>
-                  </button>
-                  <button className={`rounded p-1 text-sm flex items-center gap-2 transition-colors ${roleFilter === "protector" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`} onClick={() => setRoleFilter("protector") }>
-                    <img src="/UI/Texture/CharaInfoAtlas/icSkillBlessLeader.png" alt="protector" className="w-4 h-4" />
-                    <span className="sr-only">Protector</span>
-                  </button>
-                  <button className={`rounded p-1 text-sm flex items-center gap-2 transition-colors ${roleFilter === "attacker" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`} onClick={() => setRoleFilter("attacker") }>
-                    <img src="/UI/Texture/CharaInfoAtlas/icSkillAttacker.png" alt="attacker" className="w-4 h-4" />
-                    <span className="sr-only">Attacker</span>
-                  </button>
-                </div>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-1 mb-2">
+              <div className="flex flex-wrap items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-1">
+                      <span className="text-xs text-gray-300">ROLE</span>
+                      <div className="flex items-center gap-2 overflow-x-auto">
+                        <button
+                          className={`h-8 w-8 rounded flex items-center justify-center text-xs transition-colors ${roleFilter === "all" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
+                          onClick={() => setRoleFilter("all")}
+                          aria-label="All roles"
+                        >
+                          <span className="select-none">All</span>
+                        </button>
 
-                <div className="ml-3 flex items-center gap-2">
-                  <span className="text-xs text-gray-300 mr-1">RARITY</span>
-                  <button className={`rounded p-1 text-sm transition-colors ${rarityFilter === null ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`} onClick={() => setRarityFilter(null)}>All</button>
-                  {[3,4,5,6,7].map((r) => (
-                    <button key={r} onClick={() => setRarityFilter(r)} title={`${r}★`} className={`w-7 h-7 rounded p-0 flex items-center justify-center transition-colors ${rarityFilter === r ? "bg-[#2a3444]" : "bg-transparent hover:bg-gray-600"}`}>
-                      <img src={RARITY_ASSETS[r]} alt={`star-${r}`} className="w-5 h-5 object-contain" />
-                    </button>
-                  ))}
-                </div>
+                        <button
+                          className={`h-8 w-8 rounded flex items-center justify-center text-sm transition-colors ${roleFilter === "protector" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
+                          onClick={() => setRoleFilter("protector")}
+                          aria-label="Protector"
+                        >
+                          <img src="/UI/Texture/CharaInfoAtlas/icSkillBlessLeader.png" alt="" className="w-5 h-5 object-contain" />
+                        </button>
+
+                        <button
+                          className={`h-8 w-8 rounded flex items-center justify-center text-sm transition-colors ${roleFilter === "attacker" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
+                          onClick={() => setRoleFilter("attacker")}
+                          aria-label="Attacker"
+                        >
+                          <img src="/UI/Texture/CharaInfoAtlas/icSkillAttacker.png" alt="" className="w-5 h-5 object-contain" />
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                      <span className="text-xs text-gray-300">RARITY</span>
+                      <div className="flex items-center gap-2">
+                        <button
+                          className={`h-8 w-8 rounded flex items-center justify-center text-xs transition-colors ${rarityFilter === null ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
+                          onClick={() => setRarityFilter(null)}
+                          aria-label="All rarities"
+                        >
+                          <span className="select-none">All</span>
+                        </button>
+                        {[3, 4, 5, 6, 7].map((r) => (
+                          <button
+                            key={r}
+                            onClick={() => setRarityFilter(r)}
+                            title={`${r}★`}
+                            className={`w-8 h-8 rounded p-0 flex items-center justify-center transition-colors ${rarityFilter === r ? "bg-[#2a3444]" : "bg-transparent hover:bg-gray-600"}`}
+                          >
+                            <img src={RARITY_ASSETS[r]} alt={`star-${r}`} className="w-5 h-5 object-contain" />
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
               </div>
             </div>
 
-            <div className="relative w-56 sm:w-64 lg:w-80">
+            <div className="relative w-full sm:w-64 lg:w-80 mt-1 sm:mt-0 sm:ml-auto">
               <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-              <Input value={imageSearch} onChange={(e) => setImageSearch(e.target.value)} placeholder="Search images" className="h-10 rounded-full border-gray-600 bg-gray-700 pl-10 text-white placeholder:text-gray-400" />
+              <Input value={imageSearch} onChange={(e) => setImageSearch(e.target.value)} placeholder="Search images" className="h-9 w-full border-gray-600 bg-gray-700 pl-10 text-white placeholder:text-gray-400" />
             </div>
           </div>
 
-          <div className="grid grid-cols-12 gap-2 max-h-[40vh] overflow-auto image-scroll" onDragOver={(e) => e.preventDefault()} onDrop={(e) => handleDropOnPins(e as React.DragEvent)}>
+          <div data-pins="true" className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-2 max-h-[40vh] overflow-auto image-scroll" onDragOver={(e) => e.preventDefault()} onDrop={(e) => handleDropOnPins(e as React.DragEvent)}>
             {availablePins.map((pin) => {
               const wc = wikiChars.find((w: any) => w.master_pc_id === pin.masterId)
               const visualTier = wc ? getCharacterVisualTier(wc) : 5
@@ -637,6 +714,8 @@ export default function TierMakerPage() {
                   key={pin.id}
                   draggable
                   onDragStart={(e) => handleDragStart(e as React.DragEvent, pin.id, -1)}
+                  onPointerDown={(e) => { if ((e as any).pointerType === 'touch') touchDragRef.current = { charId: pin.id, fromTierIndex: -1 } }}
+                  data-pin-id={pin.id}
                   className="relative w-16 h-16 rounded-md p-1 cursor-grab flex items-center justify-center"
                   title={pin.name}
                   style={{ backgroundColor: 'rgb(55 65 81)' }}

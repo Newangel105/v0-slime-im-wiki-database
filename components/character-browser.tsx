@@ -1196,7 +1196,7 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
     return () => ro.disconnect()
   }, [])
 
-  const DEFAULT_GAP = 12
+  const DEFAULT_GAP = 6
   const MOBILE_GAP = 8
   const GAP = containerWidth && containerWidth < 640 ? MOBILE_GAP : DEFAULT_GAP
   const DESIRED_CARD_WIDTH = 320
@@ -1388,12 +1388,22 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
     const rawLeft = (style as any).left ?? 0
     const rawWidth = (style as any).width ?? columnWidth
     const adjustedLeft = rawLeft + GAP / 2
-    const adjustedWidth = Math.max(0, rawWidth - GAP)
+    const isLastColumn = columnIndex === columnCount - 1
+    const EXTRA_LAST_COLUMN_SPACE = 4 // px breathing room to avoid corner clipping at small gaps
+    const adjustedWidth = Math.max(0, rawWidth - GAP - (isLastColumn ? EXTRA_LAST_COLUMN_SPACE : 0))
     const adjustedStyle = { ...style, left: adjustedLeft, width: adjustedWidth }
 
     return (
       <div style={adjustedStyle} key={character.master_pc_id} aria-colindex={ariaAttributes?.["aria-colindex"]} role={ariaAttributes?.role}>
-        <div style={{ width: "100%", height: "100%", boxSizing: "border-box" }}>
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            boxSizing: "border-box",
+            paddingLeft: GAP / 2,
+            paddingRight: isLastColumn ? GAP / 2 + EXTRA_LAST_COLUMN_SPACE : GAP / 2,
+          }}
+        >
           <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="block w-full min-w-0">
             <div
               className="w-full min-w-0 group h-full overflow-hidden rounded-2xl bg-gradient-to-b from-[#1d2d44] to-[#0f1924] shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-2xl"
@@ -1529,6 +1539,8 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
           display: none; /* Safari and Chrome */
           width: 0; height: 0;
         }
+
+        /* Keep the thin .image-scroll scrollbar visible on small screens */
       `}</style>
       <div className="mx-auto flex max-w-7xl flex-col gap-8">
         <section className="rounded-2xl border border-gray-700 bg-gray-800 p-5 shadow-[0_0_24px_rgba(255,255,255,0.08)]">
@@ -1636,7 +1648,7 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
                   </div>
                 ) : (
                   <VirtualizedGrid
-                    className="hide-scrollbar"
+                    className="image-scroll"
                     columnCount={columnCount}
                     columnWidth={columnWidth}
                     rowCount={rowCount}
@@ -1645,7 +1657,7 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
                     cellProps={{}}
                     defaultHeight={gridHeight}
                     defaultWidth={containerWidth || columnCount * DESIRED_CARD_WIDTH}
-                    style={{ height: gridHeight, width: containerWidth || columnCount * DESIRED_CARD_WIDTH }}
+                    style={{ height: gridHeight, width: containerWidth || columnCount * DESIRED_CARD_WIDTH, overflowX: "hidden" }}
                   />
                 )
               ) : (
