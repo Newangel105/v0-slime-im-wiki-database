@@ -763,11 +763,11 @@ export default function TierMakerPage() {
                               draggable={false}
                               onContextMenu={(e) => e.preventDefault()}
                               className="max-w-full max-h-full object-contain"
-                              style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" }}
+                              style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any}
                             />
                           </div>
                           {miniFrame && <img src={miniFrame} alt="rarity-frame" className="pointer-events-none absolute inset-0 w-full h-full object-fill z-10" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />}
-                          {variant === "skill" && <img src="/skill-icons/skill_integrated_3400001_ItemM.png" alt="skill-change" draggable={false} onContextMenu={(e) => e.preventDefault()} className="absolute bottom-1 right-1 w-5 h-5 z-20" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" }} />}
+                          {variant === "skill" && <img src="/skill-icons/skill_integrated_3400001_ItemM.png" alt="skill-change" draggable={false} onContextMenu={(e) => e.preventDefault()} className="absolute bottom-1 right-1 w-5 h-5 z-20" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any} />}
                         </div>
                       )
                     })}
@@ -884,10 +884,10 @@ export default function TierMakerPage() {
                     draggable={false}
                     onContextMenu={(e) => e.preventDefault()}
                     className="max-w-full max-h-full object-contain"
-                    style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" }}
+                    style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any}
                   />
                   {miniFrame && <img src={miniFrame} alt="rarity-frame" className="pointer-events-none absolute inset-0 w-full h-full object-fill z-10" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />}
-                  {pin.variant === "skill" && <img src="/skill-icons/skill_integrated_3400001_ItemM.png" alt="skill-change" draggable={false} onContextMenu={(e) => e.preventDefault()} className="absolute bottom-1 right-1 w-5 h-5 z-20" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" }} />}
+                  {pin.variant === "skill" && <img src="/skill-icons/skill_integrated_3400001_ItemM.png" alt="skill-change" draggable={false} onContextMenu={(e) => e.preventDefault()} className="absolute bottom-1 right-1 w-5 h-5 z-20" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any} />}
                 </div>
               )
             })}
