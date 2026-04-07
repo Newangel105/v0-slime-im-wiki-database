@@ -325,6 +325,53 @@ export default function TierMakerPage() {
 
   // Pointer-based mobile drag fallback: store active drag data and handle pointerup
   const touchDragRef = useRef<{ charId: string; fromTierIndex: number } | null>(null)
+  const touchDragImageRef = useRef<string | null>(null)
+  const touchGhostRef = useRef<HTMLElement | null>(null)
+
+  function removeTouchGhost() {
+    try {
+      const el = touchGhostRef.current
+      if (el && el.parentNode) el.parentNode.removeChild(el)
+    } catch (e) {}
+    touchGhostRef.current = null
+    touchDragImageRef.current = null
+  }
+
+  function createTouchGhost(src?: string) {
+    try {
+      removeTouchGhost()
+      const el = document.createElement("div")
+      el.style.position = "fixed"
+      el.style.left = "0px"
+      el.style.top = "0px"
+      el.style.width = "48px"
+      el.style.height = "48px"
+      el.style.pointerEvents = "none"
+      el.style.zIndex = "999999"
+      el.style.borderRadius = "6px"
+      el.style.overflow = "hidden"
+      el.style.boxShadow = "0 6px 18px rgba(0,0,0,0.5)"
+      el.style.transform = "translate(-50%, -50%)"
+      const img = document.createElement("img")
+      img.src = src ?? ""
+      img.style.width = "100%"
+      img.style.height = "100%"
+      img.style.objectFit = "contain"
+      el.appendChild(img)
+      document.body.appendChild(el)
+      touchGhostRef.current = el
+      return el
+    } catch (e) {
+      return null
+    }
+  }
+
+  function moveTouchGhost(x: number, y: number) {
+    const el = touchGhostRef.current
+    if (!el) return
+    el.style.left = `${x}px`
+    el.style.top = `${y}px`
+  }
 
   useEffect(() => {
     function handlePointerUp(ev: PointerEvent) {
@@ -333,6 +380,7 @@ export default function TierMakerPage() {
       touchDragRef.current = null
       const x = ev.clientX
       const y = ev.clientY
+      removeTouchGhost()
       const el = document.elementFromPoint(x, y) as HTMLElement | null
       if (!el) return
 
@@ -358,6 +406,65 @@ export default function TierMakerPage() {
     window.addEventListener("pointerup", handlePointerUp)
     return () => window.removeEventListener("pointerup", handlePointerUp)
   }, [insertCharAt, appendCharToTier, removeFromTiers])
+
+  // Touch fallback for browsers that don't emit pointer events (older Safari/Android)
+  useEffect(() => {
+    function handleTouchEnd(ev: TouchEvent) {
+      if (!touchDragRef.current) return
+      const { charId } = touchDragRef.current
+      touchDragRef.current = null
+      const touch = ev.changedTouches && ev.changedTouches[0]
+      if (!touch) return
+      const x = touch.clientX
+      const y = touch.clientY
+      // remove visual ghost before hit-testing so it doesn't block elementFromPoint
+      removeTouchGhost()
+      const el = document.elementFromPoint(x, y) as HTMLElement | null
+      if (!el) return
+
+      const tierEl = el.closest("[data-tier-index]") as HTMLElement | null
+      if (tierEl) {
+        const ti = Number(tierEl.getAttribute("data-tier-index"))
+        const itemEl = el.closest("[data-item-index]") as HTMLElement | null
+        if (itemEl && itemEl.getAttribute("data-tier-index") === String(ti)) {
+          const itemIndex = Number(itemEl.getAttribute("data-item-index"))
+          insertCharAt(charId, ti, itemIndex)
+        } else {
+          appendCharToTier(charId, ti)
+        }
+        return
+      }
+
+      const pinsEl = el.closest("[data-pins]")
+      if (pinsEl) {
+        removeFromTiers(charId)
+      }
+    }
+
+    window.addEventListener("touchend", handleTouchEnd)
+    window.addEventListener("touchcancel", handleTouchEnd)
+    return () => {
+      window.removeEventListener("touchend", handleTouchEnd)
+      window.removeEventListener("touchcancel", handleTouchEnd)
+    }
+  }, [insertCharAt, appendCharToTier, removeFromTiers])
+
+  // Update or create the visual ghost while touching and ensure cleanup
+  useEffect(() => {
+    function handleTouchMove(ev: TouchEvent) {
+      if (!touchDragRef.current) return
+      const t = ev.touches && ev.touches[0]
+      if (!t) return
+      if (!touchGhostRef.current && touchDragImageRef.current) createTouchGhost(touchDragImageRef.current)
+      moveTouchGhost(t.clientX, t.clientY)
+    }
+
+    window.addEventListener("touchmove", handleTouchMove, { passive: true })
+    return () => {
+      window.removeEventListener("touchmove", handleTouchMove)
+      removeTouchGhost()
+    }
+  }, [])
 
   function isProtectorChar(wc: any) {
     if (!wc) return false
@@ -603,7 +710,9 @@ export default function TierMakerPage() {
                           onDrop={(e) => handleDropOnItem(e as React.DragEvent, idx, itemIndex)}
                           data-tier-index={idx}
                           data-item-index={itemIndex}
-                          onPointerDown={(e) => { if ((e as any).pointerType === 'touch') touchDragRef.current = { charId: id, fromTierIndex: idx } }}
+                          onPointerDown={(e) => { if ((e as any).pointerType === 'touch') { touchDragRef.current = { charId: id, fromTierIndex: idx }; touchDragImageRef.current = c.images.icon; try { createTouchGhost(c.images.icon); moveTouchGhost((e as any).clientX, (e as any).clientY) } catch (err) {} } }}
+                          onTouchStart={(e) => { if ((e as any).touches && (e as any).touches.length === 1) { touchDragRef.current = { charId: id, fromTierIndex: idx }; touchDragImageRef.current = c.images.icon; const t = (e as any).touches[0]; try { createTouchGhost(c.images.icon); moveTouchGhost(t.clientX, t.clientY) } catch (err) {} } }}
+                          onTouchCancel={() => { touchDragRef.current = null; touchDragImageRef.current = null; removeTouchGhost() }}
                           className="relative w-20 h-20 flex-shrink-0"
                           title={c.name}
                         >
@@ -714,7 +823,9 @@ export default function TierMakerPage() {
                   key={pin.id}
                   draggable
                   onDragStart={(e) => handleDragStart(e as React.DragEvent, pin.id, -1)}
-                  onPointerDown={(e) => { if ((e as any).pointerType === 'touch') touchDragRef.current = { charId: pin.id, fromTierIndex: -1 } }}
+                  onPointerDown={(e) => { if ((e as any).pointerType === 'touch') { touchDragRef.current = { charId: pin.id, fromTierIndex: -1 }; touchDragImageRef.current = pin.image; try { createTouchGhost(pin.image); moveTouchGhost((e as any).clientX, (e as any).clientY) } catch (err) {} } }}
+                  onTouchStart={(e) => { if ((e as any).touches && (e as any).touches.length === 1) { touchDragRef.current = { charId: pin.id, fromTierIndex: -1 }; touchDragImageRef.current = pin.image; const t = (e as any).touches[0]; try { createTouchGhost(pin.image); moveTouchGhost(t.clientX, t.clientY) } catch (err) {} } }}
+                  onTouchCancel={() => { touchDragRef.current = null; touchDragImageRef.current = null; removeTouchGhost() }}
                   data-pin-id={pin.id}
                   className="relative w-16 h-16 rounded-md p-1 cursor-grab flex items-center justify-center"
                   title={pin.name}
