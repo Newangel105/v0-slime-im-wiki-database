@@ -70,6 +70,7 @@ export type TeamBuilderCharacter = {
   force_names: string[]
   force_entries: TeamBuilderForceEntry[]
   search_text: string
+  master_leader_skill_element_type_2?: string | null
 }
 
 function buildForceIconLookup(characters: WikiCharacter[]): Map<string, string> {
@@ -158,6 +159,7 @@ function toTeamBuilderCharacter(character: WikiCharacter, forceIconLookup: Map<s
       icon_path: trait.icon_path,
       skill_filter_groups: (trait as typeof trait & { skill_filter_groups?: SkillFilterGroup[] }).skill_filter_groups,
     })),
+    master_leader_skill_element_type_2: (character as any).master_leader_skill_element_type_2 ?? null,
     force_names: forceNames,
     force_entries: forceEntries,
     search_text: buildSearchText(character, forceNames),

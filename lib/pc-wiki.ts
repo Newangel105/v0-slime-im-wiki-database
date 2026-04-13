@@ -54,6 +54,7 @@ export type WikiCharacter = {
   affiliation_name: string
   rarity: number
   element: string
+  master_leader_skill_element_type_2?: string | null
   attack_type: string
   weapon_type: string
   tactics_type: string

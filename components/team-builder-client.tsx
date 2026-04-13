@@ -112,9 +112,23 @@ function getMiniFramePaths(tier: number, role: "member" | "bless") {
 }
 
 function elementMatches(charEl: string, filterKey: string): boolean {
-  const el = charEl.toLowerCase(), key = filterKey.toLowerCase()
+  if (!charEl || !filterKey) return false
+  const el = charEl.toLowerCase()
+  const key = filterKey.toLowerCase()
+
+  // exact match
   if (el === key) return true
+
+  // if the filter key is a special-effect key, match special-effect elements
+  if (key.startsWith("specialeffectelement")) return el === key || el.endsWith(key)
+
+  // enhanced filter keys should match enhanced element keys
   if (key.startsWith("enhanced")) return el.endsWith(key)
+
+  // Prevent base element filters (e.g. "air") from matching special-effect keys
+  if (el.startsWith("specialeffectelement")) return false
+
+  // default: match by suffix but avoid matching enhanced variants when not requested
   return el.endsWith(key) && !el.endsWith("enhanced" + key)
 }
 
@@ -159,7 +173,7 @@ const PROT_SUPPORT_TYPES = [
   { key: "all", label: "ALL", icon: "/Image/IcElementBless/IcElementBlessAll.png" },
   { key: "physics", label: "Physical", icon: "/Image/IcElementBless/IcElementBlessPhysics.png" },
   { key: "magic", label: "Magic", icon: "/Image/IcElementBless/IcElementBlessMagic.png" },
-  { key: "special", label: "Special", icon: "/Image/IcElementBless/IcElementBlessSpecial.png" },
+  { key: "special", label: "Special", icon: "/type_dmg/IcElementBlessSpecial.png" },
 ]
 const ATTACK_TYPES = [
   { key: "Physical", label: "Physical", icon: "/type_dmg/icAttackTypePhysics.png" },
@@ -201,11 +215,11 @@ function isAttackerChar(c: TeamBuilderCharacter): boolean {
 }
 function getProtectorSupportType(c: TeamBuilderCharacter): "physics" | "magic" | null {
   if (!isProtectorChar(c)) return null
-  const leaderSkill = c.skills.find(s => s.slot === "leader_skill")
-  if (!leaderSkill) return null
-  const desc = (leaderSkill.description_max_level ?? "").toLowerCase()
-  if (desc.includes("physical characters'") || desc.includes("increases p-atk")) return "physics"
-  if (desc.includes("magic characters'") || desc.includes("increases m-atk")) return "magic"
+  const secondRaw = (c as any).master_leader_skill_element_type_2 ?? null
+  if (!secondRaw) return null
+  const secondKey = normalizeLabel(secondRaw)
+  if (secondKey === "physics") return "physics"
+  if (secondKey === "magic") return "magic"
   return null
 }
 
@@ -242,40 +256,34 @@ const FULL_ELEMENT_ICON_MAP: Record<string, string> = {
   specialeffectelementenhancedfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedFire.png",
   specialeffectelementenhancedholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedHoly.png",
   specialeffectelementenhanceddark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedDark.png",
-  special: "/Image/IcElementBless/IcElementBlessSpecial.png",
+  special: "/type_dmg/IcElementBlessSpecial.png",
   specialeffectelementnone: "/Image/IcElementBless/IcElementBlessSpecialEffectElementNone.png",
 }
 
-// Derive element values for protector
+// Derive element values for protector using canonical fields (element + master_leader_skill_element_type_2)
 const _baseElementKeys = new Set(["air", "dark", "earth", "fire", "holy", "water", "wind"])
-const _leaderSkillDmgPattern = /to\s+(?:fire|water|earth|space|wind|dark|light)\s+attribute(?:\s+and\s+(?:fire|water|earth|space|wind|dark|light)\s+attribute)*\s+enemies/i
-const _dmgAttrMap: Record<string, string> = { fire: "fire", water: "water", earth: "earth", space: "air", wind: "wind", dark: "dark", light: "holy" }
-const _elemPatterns: [RegExp, string][] = [
-  [/increases?\s+fire\s+atk/i, "fire"], [/increases?\s+water\s+atk/i, "water"], [/increases?\s+earth\s+atk/i, "earth"],
-  [/increases?\s+space\s+atk/i, "air"], [/increases?\s+wind\s+atk/i, "wind"], [/increases?\s+dark\s+atk/i, "dark"],
-  [/increases?\s+light\s+atk/i, "holy"], [/increases?\s+p-atk/i, "physics"], [/physical characters'/i, "physics"],
-  [/increases?\s+m-atk/i, "magic"], [/magic characters'/i, "magic"], [/all allies' atk/i, "all"],
-]
 function getProtectorElementKeys(c: TeamBuilderCharacter): string[] {
   const normalized = normalizeLabel(c.element)
-  const leaderSkill = c.skills.find((s) => s.slot === "leader_skill")
-  const desc = leaderSkill ? stripColorTags(leaderSkill.description_max_level ?? "") : ""
   const values: string[] = []
-  if (_leaderSkillDmgPattern.test(desc)) {
-    const matches = [...desc.matchAll(/(?:to|and)\s+(fire|water|earth|space|wind|dark|light)\s+attribute/gi)]
-    const isEnhSpecial = normalized.startsWith("specialeffectelementenhanced")
-    const isSpecial = normalized.startsWith("specialeffectelement")
-    for (const m of matches) {
-      const base = _dmgAttrMap[m[1].toLowerCase()] ?? ""
-      const key = isEnhSpecial ? `specialeffectelementenhanced${base}` : isSpecial ? `specialeffectelement${base}` : base
-      if (key && !values.includes(key)) values.push(key)
-    }
-  } else {
-    for (const [pat, val] of _elemPatterns) {
-      if (pat.test(desc) && !values.includes(val)) values.push(val)
+
+  // Primary: character element (use specialeffect keys verbatim)
+  if (normalized.startsWith("specialeffectelement")) {
+    values.push(normalized)
+  } else if (_baseElementKeys.has(normalized)) {
+    values.push(normalized)
+  }
+
+  // Secondary: canonical master_leader_skill_element_type_2 (no leader_skill text parsing)
+  const secondRaw = (c as any).master_leader_skill_element_type_2 ?? null
+  if (secondRaw) {
+    const secondKey = normalizeLabel(secondRaw)
+    if (secondKey && secondKey !== "none" && !values.includes(secondKey)) {
+      values.push(secondKey)
     }
   }
-  if (values.length === 0) values.push(normalized)
+
+  // Fallback
+  if (values.length === 0 && normalized && normalized !== "none") values.push(normalized)
   return values
 }
 
@@ -370,10 +378,10 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
   const [filterSkillType, setFilterSkillType] = useState<"all" | "secret" | "battle" | "protection" | "skill" | "trait" | "valor" | "other">("all")
   const [expandedSkillCats, setExpandedSkillCats] = useState<string[]>([])
   const [filterWeapon, setFilterWeapon] = useState<string | null>(null)
-  const [filterProtType, setFilterProtType] = useState<"all" | "physics" | "magic" | "special">("all")
+  const [filterProtType, setFilterProtType] = useState<"all" | "physics" | "magic" | "special" | null>(null)
   const [filterUltimateType, setFilterUltimateType] = useState<"all" | "attack" | "support">("all")
   const [filterEnhancement, setFilterEnhancement] = useState<"all" | "ex" | "unbound">("all")
-  const [filterProtSkill, setFilterProtSkill] = useState<"all" | "secret" | "protection" | "skill" | "other">("all")
+  const [filterProtSkill, setFilterProtSkill] = useState<"all" | "secret" | "protection" | "skill">("all")
   const [filterSkillCost, setFilterSkillCost] = useState(0)
   const [filterDragOffset, setFilterDragOffset] = useState<{x: number, y: number}>({x: 0, y: 0})
   const [filterSize, setFilterSize] = useState<{w: number, h: number}>({w: 380, h: 0})
@@ -472,7 +480,15 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       if (taken.has(c.master_pc_id)) return false
       if (q && !c.search_text.includes(q)) return false
       if (c.character_role?.toLowerCase() !== roleFilter) return false
-      if (filterEl && !elementMatches(c.element ?? "", filterEl)) return false
+      if (filterEl) {
+        if (isProtectorChar(c)) {
+          const keys = getProtectorElementKeys(c).map(k => normalizeLabel(k))
+          const fk = normalizeLabel(filterEl)
+          if (!keys.includes(fk)) return false
+        } else {
+          if (!elementMatches(c.element ?? "", filterEl)) return false
+        }
+      }
       if (filterAttack && c.attack_type?.toLowerCase() !== filterAttack.toLowerCase()) return false
       if (filterTactics && c.tactics_type?.toLowerCase() !== filterTactics.toLowerCase()) return false
       if (filterCharType === "normal" && isExChar(c)) return false
@@ -481,35 +497,27 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       if (filterRarity != null && getCharacterVisualTier(c) !== filterRarity) return false
       if (filterForces.length && !filterForces.some((forceName) => c.force_names.includes(forceName))) return false
       if (filterWeapon && c.weapon_type?.toLowerCase() !== filterWeapon.toLowerCase()) return false
-      if (filterProtType !== "all" && isProtectorChar(c)) {
-        if (filterProtType === "special") {
-          const el = (c.element ?? "").toLowerCase()
-          if (!el.startsWith("specialeffect")) return false
-        } else {
-          const st = getProtectorSupportType(c)
-          if (st && st !== filterProtType) return false
-        }
+      if (filterProtType != null && isProtectorChar(c)) {
+        const keys = getProtectorElementKeys(c).map(k => normalizeLabel(k))
+        if (!keys.includes(filterProtType)) return false
       }
       if (filterEnhancement === "ex" && !isExAttacker(c) && !hasExSpecialSkill(c)) return false
       if (filterEnhancement === "unbound" && !isExUnboundCharacter(c)) return false
       // Protection Skill filter — protectors only
       if (filterProtSkill !== "all" && roleFilter === "supporter") {
+        const hasBlessPhrase = (phrase: string) => {
+          const needle = (`into ${phrase}`).toLowerCase()
+          return c.skills.some(s => s.slot === "bless_skill" && (
+            ((s.description_max_level ?? "").toLowerCase().includes(needle)) ||
+            ((s.name ?? "").toLowerCase().includes(needle))
+          ))
+        }
         if (filterProtSkill === "secret") {
-          if (!c.skills.some(s => s.slot === "bless_skill")) return false
+          if (!hasBlessPhrase("soul of secrets")) return false
         } else if (filterProtSkill === "protection") {
-          const ls = c.skills.find(s => s.slot === "leader_skill")
-          const desc = (ls?.description_max_level ?? "").toLowerCase()
-          if (!(desc.includes("def") || desc.includes("protect") || desc.includes("guard") || desc.includes("reduce") || desc.includes("resist"))) return false
+          if (!hasBlessPhrase("soul of divine protection")) return false
         } else if (filterProtSkill === "skill") {
-          const ls = c.skills.find(s => s.slot === "leader_skill")
-          const desc = (ls?.description_max_level ?? "").toLowerCase()
-          if (!(desc.includes("atk") || desc.includes("attack") || desc.includes("damage") || desc.includes("increase"))) return false
-        } else if (filterProtSkill === "other") {
-          const ls = c.skills.find(s => s.slot === "leader_skill")
-          const desc = (ls?.description_max_level ?? "").toLowerCase()
-          const isDefensive = desc.includes("def") || desc.includes("protect") || desc.includes("guard") || desc.includes("reduce") || desc.includes("resist")
-          const isOffensive = desc.includes("atk") || desc.includes("attack") || desc.includes("damage") || desc.includes("increase")
-          if (isDefensive || isOffensive) return false
+          if (!hasBlessPhrase("soul of skills")) return false
         }
       }
       if (filterSkillGroups.length > 0) {
@@ -1051,7 +1059,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
     setFilterEl(null); setFilterAttack(null); setFilterTactics(null)
     setFilterCharType(null); setFilterCharacterType(null); setFilterRarity(null); setFilterForces([]); setFilterSkillGroups([])
     setPreviewHp(null); setFilterSkillType("all"); setExpandedSkillCats([])
-    setFilterWeapon(null); setFilterProtType("all"); setFilterUltimateType("all")
+    setFilterWeapon(null); setFilterProtType(null); setFilterUltimateType("all")
     setFilterEnhancement("all"); setFilterProtSkill("all"); setFilterDragOffset({x: 0, y: 0})
     setFilterSkillCost(0); setShowSkillEffect(false)
     setShowFilterModal(false)
@@ -1363,7 +1371,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       filterEl !== null, filterAttack !== null, filterTactics !== null,
       filterCharType !== null, filterCharacterType !== null, filterRarity !== null,
       filterForces.length > 0, filterSkillGroups.length > 0,
-      filterWeapon !== null, filterProtType !== "all", filterSkillType !== "all",
+      filterWeapon !== null, filterProtType !== null, filterSkillType !== "all",
       filterEnhancement !== "all", filterProtSkill !== "all", filterUltimateType !== "all",
       filterSkillCost > 0,
     ].filter(Boolean).length
@@ -1372,7 +1380,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       setFilterEl(null); setFilterAttack(null); setFilterTactics(null)
       setFilterCharType(null); setFilterCharacterType(null); setFilterRarity(null)
       setFilterForces([]); setFilterSkillGroups([])
-      setFilterWeapon(null); setFilterProtType("all"); setFilterSkillType("all"); setFilterUltimateType("all")
+      setFilterWeapon(null); setFilterProtType(null); setFilterSkillType("all"); setFilterUltimateType("all")
       setFilterEnhancement("all"); setFilterProtSkill("all"); setFilterSkillCost(0)
     }
 
@@ -1704,11 +1712,12 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                             <div className="flex-1 space-y-1">
                               <div className="flex flex-wrap gap-1">
                                 <FilterBtn active={filterEl === null} onClick={() => setFilterEl(null)}>ALL</FilterBtn>
-                                {NORMAL_ELEMENTS.map(e => <FilterIcon key={e.key} active={filterEl === e.key} icon={e.icon} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />)}
+                                {NORMAL_ELEMENTS.map(e => {
+                                  const iconPath = FULL_ELEMENT_ICON_MAP[normalizeLabel(e.key)] ?? e.icon
+                                  return <FilterIcon key={e.key} active={filterEl === e.key} icon={iconPath} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />
+                                })}
                               </div>
-                              <div className="flex flex-wrap gap-1">
-                                {ENHANCED_ELEMENTS.map(e => <FilterIcon key={e.key} active={filterEl === e.key} icon={e.icon} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />)}
-                              </div>
+                              {/* Enhanced elements row intentionally omitted for protector picker (use canonical defender values) */}
                               <div className="border-t border-white/[0.08] my-1" />
                               <div className="flex flex-wrap gap-1">
                                 {SPECIAL_EFFECT_ELEMENTS.map(e => <FilterIcon key={e.key} active={filterEl === e.key} icon={e.icon} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />)}
@@ -1720,7 +1729,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                             {/* Right: support type icons */}
                             <div className="flex flex-col gap-1 shrink-0">
                               {PROT_SUPPORT_TYPES.map(t => (
-                                <button key={t.key} onClick={() => setFilterProtType(t.key as any)}
+                                <button key={t.key} onClick={() => setFilterProtType(filterProtType === t.key ? null : (t.key as any))}
                                   className={`w-9 h-9 flex items-center justify-center rounded transition-all ${filterProtType === t.key ? "ring-2 ring-white bg-white/20" : "bg-white/5 hover:bg-white/10"}`}
                                   title={t.label}>
                                   <img src={t.icon} alt={t.label} className={`w-6 h-6 object-contain ${filterProtType === t.key ? "opacity-100" : "opacity-50"}`}
@@ -1733,10 +1742,16 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                           <>
                             <div className="flex flex-wrap gap-1 mb-1">
                               <FilterBtn active={filterEl === null} onClick={() => setFilterEl(null)}>ALL</FilterBtn>
-                              {NORMAL_ELEMENTS.map(e => <FilterIcon key={e.key} active={filterEl === e.key} icon={e.icon} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />)}
+                              {NORMAL_ELEMENTS.map(e => {
+                                const iconPath = ATTACKER_ELEMENT_ICONS[normalizeLabel(e.key)] ?? e.icon
+                                return <FilterIcon key={e.key} active={filterEl === e.key} icon={iconPath} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />
+                              })}
                             </div>
                             <div className="flex flex-wrap gap-1">
-                              {ENHANCED_ELEMENTS.map(e => <FilterIcon key={e.key} active={filterEl === e.key} icon={e.icon} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />)}
+                              {ENHANCED_ELEMENTS.map(e => {
+                                const iconPath = ATTACKER_ELEMENT_ICONS[normalizeLabel(e.key)] ?? e.icon
+                                return <FilterIcon key={e.key} active={filterEl === e.key} icon={iconPath} label={e.label} onClick={() => setFilterEl(filterEl === e.key ? null : e.key)} />
+                              })}
                             </div>
                           </>
                         )}
@@ -1781,7 +1796,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                         <div>
                           <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-2 uppercase tracking-wider">Protection Skill</div>
                           <div className="flex flex-wrap gap-1">
-                            {([["all","ALL"],["secret","Secret Skills"],["protection","Protection"],["skill","Skill"],["other","Other"]] as const).map(([k, l]) => (
+                            {([ ["all","ALL"],["secret","Secret Skills"],["protection","Protection"],["skill","Skill"] ] as const).map(([k, l]) => (
                               <button key={k} onClick={() => setFilterProtSkill(k as any)}
                                 className={`px-2 py-1 rounded text-[11px] transition-all ${filterProtSkill === k ? "bg-white/20 text-white ring-1 ring-white/40" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
                                 {l}
@@ -1811,7 +1826,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                           <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-2 uppercase tracking-wider">Secret Skills</div>
                           <div className="flex flex-wrap gap-1">
                             {(["all","attack","support"] as const).map(k => (
-                              <button key={k} onClick={() => setFilterUltimateType(k)}
+                              <button key={k} onClick={() => { setFilterUltimateType(k); setFilterSkillType("secret") }}
                                 className={`px-2 py-1 rounded text-[11px] transition-all ${filterUltimateType === k ? "bg-white/20 text-white ring-1 ring-white/40" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
                                 {k === "all" ? "ALL" : k === "attack" ? "Attack" : "Support"}
                               </button>
@@ -1899,6 +1914,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                         </div>
 
                         {/* Skill Cost Slider — single slider, disabled unless All or Battle Skills */}
+                        {!isProt && (
                         <div className="mb-4">
                           <div className={`text-[10px] mb-2 ${filterSkillType === "all" || filterSkillType === "battle" ? "text-gray-500" : "text-gray-600"}`}>
                             Skill Cost (SP): {filterSkillCost},85+
@@ -1915,6 +1931,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                             <button onClick={() => setFilterSkillCost(0)} className="text-[10px] text-teal-400 hover:text-teal-300 underline mt-1">Reset</button>
                           )}
                         </div>
+                        )}
 
                         {/* Skill Type */}
                         <div className="mb-4">

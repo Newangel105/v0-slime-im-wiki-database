@@ -80,6 +80,7 @@ const defenderGenericIconMap: Record<string, string> = {
   all: "/Image/IcElementBless/IcElementBlessAll.png",
   physics: "/Image/IcElementBless/IcElementBlessPhysics.png",
   magic: "/Image/IcElementBless/IcElementBlessMagic.png",
+  special: "/type_dmg/IcElementBlessSpecial.png",
   specialeffectelementair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.png",
   specialeffectelementdark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementDark.png",
   specialeffectelementearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEarth.png",
@@ -235,78 +236,40 @@ function getProtectorIconTags(character: WikiCharacter): IconTag[] {
   const normalized = normalizeLabel(character.element)
   const seenDefenderKeys = new Set<string>()
 
-  const leaderSkill = character.skills.find((s) => s.slot === "leader_skill")
-  const desc = leaderSkill ? stripColorTags(leaderSkill.description_max_level ?? "") : ""
+  // Primary: derive from the `element` field (base element or specialeffect key)
+  let primaryKey: string | null = null
+  if (normalized.startsWith("specialeffectelement")) {
+    primaryKey = normalized
+  } else if (baseElementKeys.has(normalized)) {
+    primaryKey = normalized
+  }
 
-  // Categories 2 & 3: "to <element> attribute enemies"
-  // Build one key per target element while preserving the category family.
-  if (leaderSkillDamageToAttributePattern.test(desc)) {
-    const dmgTargets = [...desc.matchAll(/(?:to|and)\s+(fire|water|earth|space|wind|dark|light)\s+attribute/gi)]
-      .map((m) => normalizeLabel(damageToAttributeElementMap[m[1].toLowerCase()]))
-
-    const isEnhancedSpecial = normalized.startsWith("specialeffectelementenhanced")
-    const isSpecial = normalized.startsWith("specialeffectelement")
-
-    for (const baseKey of dmgTargets) {
-      const key = isEnhancedSpecial
-        ? `specialeffectelementenhanced${baseKey}`
-        : isSpecial
-          ? `specialeffectelement${baseKey}`
-          : baseKey
-
-      const icon = defenderGenericIconMap[key] ?? defenderBaseElementIconMap[key]
-      if (icon && !seenDefenderKeys.has(key)) {
-        seenDefenderKeys.add(key)
-        tags.push({
-          icon,
-          label: getDisplayElementLabel(key),
-          href: `/characters?defender=${encodeURIComponent(key)}`,
-        })
-      }
+  if (primaryKey) {
+    const icon = defenderGenericIconMap[primaryKey] ?? defenderBaseElementIconMap[primaryKey]
+    if (icon) {
+      seenDefenderKeys.add(primaryKey)
+      tags.push({ icon, label: getDisplayElementLabel(primaryKey), href: `/characters?defender=${encodeURIComponent(primaryKey)}` })
     }
-  } else {
-    // Category 1: "increases <element> ATK" → IcElementBless base icons (can have multiple)
-    for (const [pattern, value] of leaderSkillElementPatterns) {
-      const key = normalizeLabel(value)
-      if (pattern.test(desc) && baseElementKeys.has(key)) {
-        const icon = defenderBaseElementIconMap[key]
-        if (icon && !seenDefenderKeys.has(key)) {
-          seenDefenderKeys.add(key)
-          tags.push({
-            icon,
-            label: getDisplayElementLabel(value),
-            href: `/characters?defender=${encodeURIComponent(key)}`,
-          })
-        }
+  }
+
+  // Secondary: canonical `master_leader_skill_element_type_2` if present
+  const secondRaw = (character as any).master_leader_skill_element_type_2 ?? null
+  if (secondRaw) {
+    const secondKey = normalizeLabel(secondRaw)
+    if (secondKey && secondKey !== "none" && !seenDefenderKeys.has(secondKey)) {
+      const icon = defenderGenericIconMap[secondKey] ?? defenderBaseElementIconMap[secondKey]
+      if (icon) {
+        seenDefenderKeys.add(secondKey)
+        tags.push({ icon, label: getDisplayElementLabel(secondRaw), href: `/characters?defender=${encodeURIComponent(secondKey)}` })
       }
     }
   }
 
-  // Non-element qualifiers (physics, magic, all, etc.) — always shown alongside
-  for (const [pattern, value] of leaderSkillElementPatterns) {
-    const key = normalizeLabel(value)
-    if (pattern.test(desc) && !baseElementKeys.has(key)) {
-      const icon = defenderGenericIconMap[key]
-      if (icon && !seenDefenderKeys.has(key)) {
-        seenDefenderKeys.add(key)
-        tags.push({
-          icon,
-          label: getDisplayElementLabel(value),
-          href: `/characters?defender=${encodeURIComponent(key)}`,
-        })
-      }
-    }
-  }
-
-  // Fallback: raw element if nothing matched
+  // Fallback: try using the raw element's generic icon
   if (tags.length === 0) {
     const icon = defenderGenericIconMap[normalized] ?? defenderBaseElementIconMap[normalized]
     if (icon) {
-      tags.push({
-        icon,
-        label: getDisplayElementLabel(character.element),
-        href: `/characters?defender=${encodeURIComponent(normalized)}`,
-      })
+      tags.push({ icon, label: getDisplayElementLabel(character.element), href: `/characters?defender=${encodeURIComponent(normalized)}` })
     }
   }
 

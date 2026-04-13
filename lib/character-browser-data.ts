@@ -47,6 +47,7 @@ export type BrowserCharacter = {
   effect_tags: string[]
   search_text: string
   ultimate_type: BrowserCharacterUltimateType
+  master_leader_skill_element_type_2?: string | null
 }
 
 const AOE_KEYWORDS = ["all-target", "all target", "all enemies", "all characters"]
@@ -182,6 +183,7 @@ function toBrowserCharacter(character: WikiCharacter, forceIconLookup: Map<strin
     effect_tags: [...getCharacterEffectTags(character)],
     search_text: buildSearchText(character, forceNames),
     ultimate_type: getCharacterUltimateType(character),
+    master_leader_skill_element_type_2: (character as any).master_leader_skill_element_type_2 ?? null,
   }
 }
 
