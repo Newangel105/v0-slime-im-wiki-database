@@ -55,7 +55,8 @@ const elementIconMap: Record<string, string> = {
   magic: "/Image/IcElementBless/IcElementBlessMagic.png",
   physics: "/Image/IcElementBless/IcElementBlessPhysics.png",
   space: "/elements/icElementspace.png",
-  special: "/Image/IcElementBless/IcElementBlessSpecial.png",
+  special: "/type_dmg/IcElementBlessSpecial.png",
+  
   specialeffectelementair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.png",
   specialeffectelementdark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementDark.png",
   specialeffectelementearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEarth.png",
@@ -155,109 +156,36 @@ type DefenderElementEntry = {
 function getDefenderElementEntries(character: BrowserCharacter): DefenderElementEntry[] {
   if (!isProtectorCharacter(character)) return [{ value: character.element, source: "raw" }]
 
-  const leaderSkill = character.skills.find((s) => s.slot === "leader_skill")
-  const desc = leaderSkill ? stripColorTags(leaderSkill.description_max_level ?? "") : ""
-
-  const entries: DefenderElementEntry[] = []
-
-  // --- Element icons (mutually exclusive categories) ---
-
-  // Category 1: "damage done by ... to <element> attribute enemies" → anti-element
-  const dmgMatch = desc.match(leaderSkillDamageToAttributePattern)
-  if (dmgMatch) {
-    const seen = new Set<string>()
-    // Supports single and multi-target forms like
-    // "to light attribute and dark attribute enemies"
-    const globalDmgPattern = /(?:to|and)\s+(fire|water|earth|space|wind|dark|light)\s+attribute/gi
-    let m: RegExpExecArray | null
-    while ((m = globalDmgPattern.exec(desc)) !== null) {
-      const el = damageToAttributeElementMap[m[1].toLowerCase()]
-      if (el && !seen.has(el)) {
-        seen.add(el)
-        entries.push({ value: el, source: "damage_to_attribute" })
-      }
-    }
-  } else {
-    // Category 2: "increases <element> ATK" → base element
-    const atkSeen = new Set<string>()
-    for (const [pattern, value] of leaderSkillElementPatterns) {
-      const normalized = normalizeLabel(value)
-      if (pattern.test(desc) && baseElementKeys.has(normalized) && !atkSeen.has(normalized)) {
-        atkSeen.add(normalized)
-        entries.push({ value, source: "atk" })
-      }
-    }
-  }
-
-  // --- Type qualifiers (physics / magic / all) — always checked, coexist with elements ---
-  const typeSeen = new Set<string>()
-  for (const [pattern, value] of leaderSkillElementPatterns) {
-    const normalized = normalizeLabel(value)
-    if (pattern.test(desc) && !baseElementKeys.has(normalized) && !typeSeen.has(normalized)) {
-      typeSeen.add(normalized)
-      entries.push({ value, source: "atk" })
-    }
-  }
-
-  // Fallback: raw element if nothing matched
-  if (entries.length === 0) {
-    entries.push({ value: character.element, source: "raw" })
-  }
-
-  return entries
+  // Derive defender entries from the character element and the canonical
+  // `master_leader_skill_element_type_2` field. Do not parse leader_skill text.
+  const values = getDefenderElementValues(character)
+  return values.map((v) => ({ value: v, source: "raw" }))
 }
 
 function getDefenderElementValues(character: BrowserCharacter): string[] {
   if (!isProtectorCharacter(character)) return [normalizeLabel(character.element)]
 
   const normalized = normalizeLabel(character.element)
-  const leaderSkill = character.skills.find((s) => s.slot === "leader_skill")
-  const desc = leaderSkill ? stripColorTags(leaderSkill.description_max_level ?? "") : ""
-
   const values: string[] = []
 
-  // Categories 2 & 3: "to <element> attribute enemies"
-  // Build one key per target element while preserving the category family:
-  // base -> fire, special -> specialeffectelementfire,
-  // enhanced special -> specialeffectelementenhancedfire.
-  if (leaderSkillDamageToAttributePattern.test(desc)) {
-    const dmgTargets = [...desc.matchAll(/(?:to|and)\s+(fire|water|earth|space|wind|dark|light)\s+attribute/gi)]
-      .map((m) => normalizeLabel(damageToAttributeElementMap[m[1].toLowerCase()]))
+  // Primary: use the character's element (base or specialeffect key) if present
+  if (normalized.startsWith("specialeffectelement")) {
+    values.push(normalized)
+  } else if (baseElementKeys.has(normalized)) {
+    values.push(normalized)
+  }
 
-    const isEnhancedSpecial = normalized.startsWith("specialeffectelementenhanced")
-    const isSpecial = normalized.startsWith("specialeffectelement")
-
-    for (const baseKey of dmgTargets) {
-      const key = isEnhancedSpecial
-        ? `specialeffectelementenhanced${baseKey}`
-        : isSpecial
-          ? `specialeffectelement${baseKey}`
-          : baseKey
-      if (!values.includes(key)) {
-        values.push(key)
-      }
-    }
-  } else {
-    // Category 1: "increases <element> ATK" → base element keys from leader skill
-    // (can have multiple, e.g. dark + space)
-    for (const [pattern, value] of leaderSkillElementPatterns) {
-      const key = normalizeLabel(value)
-      if (pattern.test(desc) && baseElementKeys.has(key) && !values.includes(key)) {
-        values.push(key)
-      }
+  // Secondary: use canonical `master_leader_skill_element_type_2` (no leader_skill parsing)
+  const secondRaw = (character as any).master_leader_skill_element_type_2 ?? null
+  if (secondRaw) {
+    const secondKey = normalizeLabel(secondRaw)
+    if (secondKey && secondKey !== "none" && !values.includes(secondKey)) {
+      values.push(secondKey)
     }
   }
 
-  // Non-element qualifiers (physics, magic, all, etc.) — always checked
-  for (const [pattern, value] of leaderSkillElementPatterns) {
-    const key = normalizeLabel(value)
-    if (pattern.test(desc) && !baseElementKeys.has(key) && !values.includes(key)) {
-      values.push(key)
-    }
-  }
-
-  // Fallback to raw element if nothing matched
-  if (values.length === 0) {
+  // Fallback to raw element value if nothing matched
+  if (values.length === 0 && normalized && normalized !== "none") {
     values.push(normalized)
   }
 
@@ -295,7 +223,7 @@ const specialEffectToBase: Record<string, string> = {
 }
 
 const baseElementKeys = new Set(["air", "dark", "earth", "fire", "holy", "water", "wind"])
-const hiddenElementKeys = new Set(["none", "special", "specialeffectelementnone"])
+const hiddenElementKeys = new Set(["none", "specialeffectelementnone"])
 
 const attackerElementOrder = [
   "air",
@@ -317,6 +245,7 @@ const attackerElementKeys = new Set(attackerElementOrder)
 
 const defenderElementOrder = [
   "all",
+  "special",
   "physics",
   "magic",
   "fire",
@@ -415,17 +344,8 @@ function getDefenderEntryIcon(entry: DefenderElementEntry, character: BrowserCha
   const normalized = normalizeLabel(entry.value)
   if (hiddenElementKeys.has(normalized)) return undefined
 
-  if (entry.source === "damage_to_attribute" && baseElementKeys.has(normalized)) {
-    // "damage done by ... to <element> attribute enemies"
-    // EX Unbound → anti_*_attribute_unbound.png, otherwise → Anti-*.png
-    if (isExUnboundCharacter(character)) {
-      return defenderAntiExElementIconMap[normalized]
-    }
-    return defenderAntiElementIconMap[normalized]
-  }
-
-  if (entry.source === "atk" && baseElementKeys.has(normalized)) {
-    // "Increases <element> ATK by" → base element icon (e.g. wind.png)
+  // Base elements → IcElementBless base icons
+  if (baseElementKeys.has(normalized)) {
     return defenderBaseElementIconMap[normalized]
   }
 
@@ -683,6 +603,11 @@ function buildElementOptions(characters: BrowserCharacter[], role: "attacker" | 
   const allValues = role === "defender"
     ? filteredCharacters.flatMap((character) => getDefenderElementValues(character))
     : filteredCharacters.map((character) => getCharacterElementValue(character))
+
+  // Always include 'all' and 'special' in defender filter options even if no characters use them
+  if (role === "defender") {
+    allValues.push("all", "special")
+  }
 
   return [...new Set(allValues.filter(Boolean))]
     .filter((value) => {
@@ -1194,7 +1119,9 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
     // initial measurement
     setContainerWidth(gridRef.current.clientWidth)
     return () => ro.disconnect()
-  }, [])
+  // Re-run when the filtered list changes so the observer re-attaches
+  // after the grid mounts/unmounts (fixes layout when toggling empty filters).
+  }, [filteredCharacters.length])
 
   const DEFAULT_GAP = 6
   const MOBILE_GAP = 8

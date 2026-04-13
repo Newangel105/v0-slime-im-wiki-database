@@ -127,7 +127,7 @@ const elementIconMap: Record<string, string> = {
   light: "/elements/icElementlight.png",
   magic: "/Image/IcElementBless/IcElementBlessMagic.png",
   physics: "/Image/IcElementBless/IcElementBlessPhysics.png",
-  special: "/Image/IcElementBless/IcElementBlessSpecial.png",
+  special: "/type_dmg/IcElementBlessSpecial.png",
   space: "/elements/icElementspace.png",
   specialeffectelementair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.png",
   specialeffectelementdark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementDark.png",
@@ -167,71 +167,32 @@ function isAttackerChar(character: WikiCharacter): boolean {
 
 // Helpers copied/adapted from the character browser to derive protector element values
 const baseElementKeys = new Set(["air", "dark", "earth", "fire", "holy", "water", "wind"])
-const hiddenElementKeys = new Set(["none", "special", "specialeffectelementnone"])
-
-const leaderSkillDamageToAttributePattern = /to\s+(?:fire|water|earth|space|wind|dark|light)\s+attribute(?:\s+and\s+(?:fire|water|earth|space|wind|dark|light)\s+attribute)*\s+enemies/i
-
-const damageToAttributeElementMap: Record<string, string> = {
-  fire: "Fire", water: "Water", earth: "Earth", space: "Air",
-  wind: "Wind", dark: "Dark", light: "Holy",
-}
-
-const leaderSkillElementPatterns: [RegExp, string][] = [
-  [/increases?\s+fire\s+atk/i, "Fire"],
-  [/increases?\s+water\s+atk/i, "Water"],
-  [/increases?\s+earth\s+atk/i, "Earth"],
-  [/increases?\s+space\s+atk/i, "Air"],
-  [/increases?\s+wind\s+atk/i, "Wind"],
-  [/increases?\s+dark\s+atk/i, "Dark"],
-  [/increases?\s+light\s+atk/i, "Holy"],
-  [/increases?\s+p-atk/i, "Physics"],
-  [/physical characters'/i, "Physics"],
-  [/increases?\s+m-atk/i, "Magic"],
-  [/magic characters'/i, "Magic"],
-  [/all allies' atk/i, "All"],
-]
+const hiddenElementKeys = new Set(["none", "specialeffectelementnone"])
 
 function getDefenderElementValues(character: WikiCharacter): string[] {
   if (!isProtectorChar(character)) return [normalizeLabel(character.element)]
 
   const normalized = normalizeLabel(character.element)
-  const leaderSkill = character.skills.find((s) => s.slot === "leader_skill")
-  const desc = leaderSkill ? stripColorTags(leaderSkill.description_max_level ?? "") : ""
-
   const values: string[] = []
 
-  if (leaderSkillDamageToAttributePattern.test(desc)) {
-    const dmgTargets = [...desc.matchAll(/(?:to|and)\s+(fire|water|earth|space|wind|dark|light)\s+attribute/gi)]
-      .map((m) => normalizeLabel(damageToAttributeElementMap[m[1].toLowerCase()]))
+  // Primary: use the character's element (base or specialeffect key) if present
+  if (normalized.startsWith("specialeffectelement")) {
+    values.push(normalized)
+  } else if (baseElementKeys.has(normalized)) {
+    values.push(normalized)
+  }
 
-    const isEnhancedSpecial = normalized.startsWith("specialeffectelementenhanced")
-    const isSpecial = normalized.startsWith("specialeffectelement")
-
-    for (const baseKey of dmgTargets) {
-      const key = isEnhancedSpecial
-        ? `specialeffectelementenhanced${baseKey}`
-        : isSpecial
-          ? `specialeffectelement${baseKey}`
-          : baseKey
-      if (!values.includes(key)) values.push(key)
-    }
-  } else {
-    for (const [pattern, value] of leaderSkillElementPatterns) {
-      const key = normalizeLabel(value)
-      if (pattern.test(desc) && baseElementKeys.has(key) && !values.includes(key)) {
-        values.push(key)
-      }
+  // Secondary: use canonical `master_leader_skill_element_type_2` (no leader_skill parsing)
+  const secondRaw = (character as any).master_leader_skill_element_type_2 ?? null
+  if (secondRaw) {
+    const secondKey = normalizeLabel(secondRaw)
+    if (secondKey && secondKey !== "none" && !values.includes(secondKey)) {
+      values.push(secondKey)
     }
   }
 
-  for (const [pattern, value] of leaderSkillElementPatterns) {
-    const key = normalizeLabel(value)
-    if (pattern.test(desc) && !baseElementKeys.has(key) && !values.includes(key)) {
-      values.push(key)
-    }
-  }
-
-  if (values.length === 0) {
+  // Fallback to raw element value if nothing matched
+  if (values.length === 0 && normalized && normalized !== "none") {
     values.push(normalized)
   }
 
@@ -440,23 +401,29 @@ export default function ForcesPage() {
                                 firstIcon = toPublicAssetPath(character.forces[0].icon_path)
                               }
 
-                              // second icon: prefer last element-like value, otherwise last qualifier
-                              const elementsList = defenderValues.filter(isElementLike)
-                              if (elementsList.length > 0) {
-                                const sel = elementsList[elementsList.length - 1]
-                                secondIcon = getProtectorElementDisplayIcon(sel)
+                              // second icon: prefer the character's primary element value first,
+                              // otherwise fall back to any element-like value, then qualifiers.
+                              const primary = defenderValues.length > 0 ? defenderValues[0] : null
+                              if (primary && isElementLike(primary)) {
+                                secondIcon = getProtectorElementDisplayIcon(primary)
                               } else {
-                                // pick last qualifier (physics/magic/all)
-                                const quals = defenderValues.filter((v) => {
-                                  const n = normalizeLabel(v)
-                                  return n === "physics" || n === "magic" || n === "all"
-                                })
-                                if (quals.length > 0) {
-                                  const lastQ = normalizeLabel(quals[quals.length - 1])
-                                  if (lastQ === "physics" || lastQ === "magic") {
-                                    secondIcon = protTypeMap[lastQ]
-                                  } else {
-                                    secondIcon = elementIconMap[lastQ]
+                                const elementsList = defenderValues.filter(isElementLike)
+                                if (elementsList.length > 0) {
+                                  const sel = elementsList[elementsList.length - 1]
+                                  secondIcon = getProtectorElementDisplayIcon(sel)
+                                } else {
+                                  // pick last qualifier (physics/magic/all)
+                                  const quals = defenderValues.filter((v) => {
+                                    const n = normalizeLabel(v)
+                                    return n === "physics" || n === "magic" || n === "all"
+                                  })
+                                  if (quals.length > 0) {
+                                    const lastQ = normalizeLabel(quals[quals.length - 1])
+                                    if (lastQ === "physics" || lastQ === "magic") {
+                                      secondIcon = protTypeMap[lastQ]
+                                    } else {
+                                      secondIcon = elementIconMap[lastQ]
+                                    }
                                   }
                                 }
                               }
@@ -530,12 +497,12 @@ export default function ForcesPage() {
                                 />
                                 {/* Top-right icons (element/force / type) */}
                                 <div className="absolute top-1 right-1 z-20 flex flex-col items-end gap-1">
-                                  {firstIcon && (
-                                    <img src={firstIcon} alt="" className="w-6 h-6 object-contain" />
-                                  )}
-                                  {secondIcon && (
-                                    <img src={secondIcon} alt="" className="w-5 h-5 object-contain" />
-                                  )}
+                                    {firstIcon && (
+                                      <img src={firstIcon} alt="" className="w-6 h-6 object-contain" />
+                                    )}
+                                    {secondIcon && (
+                                      <img src={secondIcon} alt="" className="w-6 h-6 object-contain" />
+                                    )}
                                 </div>
                               </div>
                             </Link>
