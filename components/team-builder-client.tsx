@@ -543,7 +543,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
         if (!skillsToCheck.some(sk => ((sk as {skill_filter_groups?: {master_skill_filter_group_id:number}[]}).skill_filter_groups ?? []).some((fg: {master_skill_filter_group_id:number}) => groupSet.has(fg.master_skill_filter_group_id)))) return false
       }
       // Secret skill sub-filter (ultimate_type) — attackers only
-      if (filterSkillType === "secret" && filterUltimateType !== "all" && roleFilter !== "supporter") {
+      if (filterUltimateType !== "all" && roleFilter !== "supporter") {
         const ut = (c.ultimate_type ?? "None").toLowerCase()
         if (filterUltimateType === "attack" && ut !== "attack") return false
         if (filterUltimateType === "support" && ut !== "support") return false
@@ -1826,7 +1826,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                           <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-2 uppercase tracking-wider">Secret Skills</div>
                           <div className="flex flex-wrap gap-1">
                             {(["all","attack","support"] as const).map(k => (
-                              <button key={k} onClick={() => { setFilterUltimateType(k); setFilterSkillType("secret") }}
+                              <button key={k} onClick={() => { setFilterUltimateType(k) }}
                                 className={`px-2 py-1 rounded text-[11px] transition-all ${filterUltimateType === k ? "bg-white/20 text-white ring-1 ring-white/40" : "bg-white/5 text-gray-400 hover:bg-white/10"}`}>
                                 {k === "all" ? "ALL" : k === "attack" ? "Attack" : "Support"}
                               </button>
