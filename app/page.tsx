@@ -219,7 +219,7 @@ export default function HomePage() {
               <div className="p-6">
                 <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                   <Play className="w-5 h-5 text-red-500" />
-                  UPCOMING STREAM
+                  RECENT STREAM
                 </h2>
                 {loadingVideo ? (
                   <div className="aspect-video bg-[#232c3a] rounded-xl animate-pulse flex items-center justify-center">
@@ -248,7 +248,7 @@ export default function HomePage() {
                                 <Play className="w-6 h-6 text-white" />
                               </div>
                             </div>
-                            <div className="absolute left-3 top-3 bg-yellow-400 text-xs text-black font-semibold px-2 py-1 rounded">Upcoming</div>
+                            <div className="absolute left-3 top-3 bg-yellow-400 text-xs text-black font-semibold px-2 py-1 rounded">Recent</div>
                           </a>
                         ) : (
                           <button onClick={() => setShowEmbed(true)} className="w-full h-full p-0 m-0 block">
