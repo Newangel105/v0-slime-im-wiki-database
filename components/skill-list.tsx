@@ -254,6 +254,11 @@ function SkillGroupCard({ group }: { group: SkillGroup }) {
               <span className="rounded bg-gray-700 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gray-400">
                 {group.base.slot.replace(/_/g, " ")}
               </span>
+              {skill.cost !== null && (
+                <span className="rounded bg-blue-900/30 px-2 py-0.5 text-[10px] font-semibold text-blue-300 border border-blue-700/50">
+                  Cost: {skill.cost}
+                </span>
+              )}
             </div>
             {group.changed && (
               <div className="flex items-center gap-1 rounded-xl bg-gray-900/60 p-1 w-fit mt-2">
@@ -293,6 +298,11 @@ function SkillGroupCard({ group }: { group: SkillGroup }) {
             <span className="rounded bg-gray-700 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gray-400">
               {group.base.slot.replace(/_/g, " ")}
             </span>
+            {skill.cost !== null && (
+              <span className="rounded bg-blue-900/30 px-2 py-0.5 text-[10px] font-semibold text-blue-300 border border-blue-700/50">
+                Cost: {skill.cost}
+              </span>
+            )}
           </div>
           {group.changed && (
             <div className="flex items-center gap-1 rounded-xl bg-gray-900/60 p-1 w-fit">
