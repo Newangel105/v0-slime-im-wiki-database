@@ -914,6 +914,7 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
   const [selectedUltimateTypes, setSelectedUltimateTypes] = useState<string[]>([])
   const [sortKey, setSortKey] = useState<SortKey>("release_date")
   const [sortAsc, setSortAsc] = useState(false)
+  const [showStats, setShowStats] = useState(true)
   const deferredSearchText = useDeferredValue(searchText)
 
   useEffect(() => {
@@ -1129,7 +1130,10 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
   const DESIRED_CARD_WIDTH = 320
   const DESKTOP_CARD_HEIGHT = 340
   const MOBILE_CARD_HEIGHT = 320
-  const CARD_HEIGHT = containerWidth && containerWidth < 640 ? MOBILE_CARD_HEIGHT : DESKTOP_CARD_HEIGHT
+  const STATS_HEIGHT = 55 // Height of the stats section (grid + padding)
+  const ADJUSTED_DESKTOP_HEIGHT = showStats ? DESKTOP_CARD_HEIGHT : DESKTOP_CARD_HEIGHT - STATS_HEIGHT
+  const ADJUSTED_MOBILE_HEIGHT = showStats ? MOBILE_CARD_HEIGHT : MOBILE_CARD_HEIGHT - STATS_HEIGHT
+  const CARD_HEIGHT = containerWidth && containerWidth < 640 ? ADJUSTED_MOBILE_HEIGHT : ADJUSTED_DESKTOP_HEIGHT
 
   const computedColumnCount = containerWidth
     ? containerWidth >= 1280
@@ -1246,6 +1250,7 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
                   </div>
                 </div>
               </div>
+              {showStats && (
               <div className="px-4 grid grid-cols-4 divide-x divide-white/5 rounded-xl bg-white/10 py-2.5 w-full min-w-0">
                 <div className="px-2 text-center">
                   <p className="text-[9px] font-semibold uppercase tracking-wider text-white">HP</p>
@@ -1264,6 +1269,7 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
                   <p className="mt-1 text-[1.1rem] font-bold leading-none text-amber-200">{character.stats.existence}</p>
                 </div>
               </div>
+              )}
               {forceEntries.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 px-4 py-3">
                   {forceEntries.slice(0, 4).map((force) => (
@@ -1392,6 +1398,7 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
                   </div>
                 </div>
                 {/* Stats bar */}
+                {showStats && (
                 <div className="px-4 grid grid-cols-4 divide-x divide-white/5 rounded-xl bg-white/10 py-2.5 w-full min-w-0">
                   <div className="px-2 text-center">
                     <p className="text-[9px] font-semibold uppercase tracking-wider text-white">HP</p>
@@ -1410,6 +1417,7 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
                     <p className="mt-1 text-[1.1rem] font-bold leading-none text-amber-200">{character.stats.existence}</p>
                   </div>
                 </div>
+                )}
                 {/* Forces */}
                 {forceEntries.length > 0 && (
                   <div className="flex flex-wrap gap-1.5 px-4 py-3">
@@ -1559,6 +1567,12 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
               <div className="inline-flex items-center gap-2 rounded-full bg-gray-700 px-4 py-2 text-white">
                 <span>{activeFilterCount} active filters</span>
               </div>
+              <button
+                onClick={() => setShowStats(!showStats)}
+                className="inline-flex items-center rounded-full bg-gray-700 px-4 py-2 text-xs font-semibold text-gray-300 hover:bg-gray-600 hover:text-white transition-all"
+              >
+                {showStats ? "Hide Stats" : "Show Stats"}
+              </button>
             </div>
           </div>
         </section>
