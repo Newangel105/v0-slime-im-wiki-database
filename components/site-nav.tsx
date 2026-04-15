@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/forces", label: "Forces" },
   { href: "/heartprints", label: "Heartprints" },
   { href: "/team-builder", label: "Team Builder" },
+  { href: "/gauge-builder", label: "Gauge Traits" },
   { href: "/battle-sim", label: "Battle Sim" },
   { href: "/tier-maker", label: "Tier Maker" },
 ]

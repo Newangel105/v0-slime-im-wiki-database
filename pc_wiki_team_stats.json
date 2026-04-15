@@ -413,6 +413,42 @@
       "add_hp": 1114,
       "add_attack": 511,
       "add_defense": 763
+    },
+    "1611": {
+      "level": 150,
+      "add_hp": 3970,
+      "add_attack": 1703,
+      "add_defense": 1703
+    },
+    "1612": {
+      "level": 150,
+      "add_hp": 3616,
+      "add_attack": 1927,
+      "add_defense": 1399
+    },
+    "1613": {
+      "level": 150,
+      "add_hp": 3650,
+      "add_attack": 1462,
+      "add_defense": 2312
+    },
+    "2611": {
+      "level": 150,
+      "add_hp": 2010,
+      "add_attack": 871,
+      "add_defense": 871
+    },
+    "2612": {
+      "level": 150,
+      "add_hp": 1648,
+      "add_attack": 995,
+      "add_defense": 754
+    },
+    "2613": {
+      "level": 150,
+      "add_hp": 1700,
+      "add_attack": 780,
+      "add_defense": 1164
     }
   },
   "statusboard_totals": {
@@ -760,90 +796,39 @@
       "hp": 2184,
       "attack": 861,
       "defense": 824
+    },
+    "1700001611": {
+      "hp": 5361,
+      "attack": 2136,
+      "defense": 2136
+    },
+    "1700001612": {
+      "hp": 5272,
+      "attack": 2400,
+      "defense": 1653
+    },
+    "1700001613": {
+      "hp": 5348,
+      "attack": 1893,
+      "defense": 2616
+    },
+    "1700002611": {
+      "hp": 2067,
+      "attack": 864,
+      "defense": 864
+    },
+    "1700002612": {
+      "hp": 2188,
+      "attack": 852,
+      "defense": 846
+    },
+    "1700002613": {
+      "hp": 2184,
+      "attack": 861,
+      "defense": 824
     }
   },
-  "enhanced_statusboard_totals": {
-    "190000200000001": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0
-    },
-    "190000200000002": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0
-    },
-    "190000200000011": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0
-    },
-    "190000200000012": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0
-    },
-    "190000200000021": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0
-    },
-    "190000200000022": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0
-    },
-    "190000200000031": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0
-    },
-    "190000200000032": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0
-    },
-    "190000200000041": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0
-    },
-    "190000200000042": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0
-    },
-    "190000200000051": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0
-    },
-    "190000200000052": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0
-    },
-    "190000200000061": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0
-    },
-    "190000200000062": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0
-    },
-    "190000200000071": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0
-    },
-    "190000200000072": {
-      "hp": 0,
-      "attack": 0,
-      "defense": 0
-    }
-  },
+  "enhanced_statusboard_totals": {},
   "bond_max_ratios": {
     "1": {
       "hp_ratio": 940,
@@ -979,6 +964,8 @@
     "party.parameter.assist.base.rate.rarity6": 3000,
     "party.parameter.assist.same.element.rate.rarity6": 1000,
     "party.parameter.assist.bless.pc.bonus.rate": 1500,
+    "party.parameter.assist.base.rate.rarity7": 3000,
+    "party.parameter.assist.same.element.rate.rarity7": 1000,
     "ep.ranking.page.element.count": 50,
     "ep.ranking.page.size": 2,
     "ep.ranking.open.enabled": 1,
@@ -991,6 +978,7 @@
     "battle.condition.effect.divinepunishment.threshold.medium.lower": 4000,
     "battle.condition.effect.divinepunishment.threshold.large.lower": 6000,
     "battle.condition.effect.divinepunishment.limit.damage.upper": 1410065408,
+    "battle.rate.epic.add.weak.damage": 14000,
     "bless_equipment.equipment.rarity.max": 3,
     "bless_equipment.refine.consume.max": 5,
     "bless_equipment.refine.step.max": 5,
