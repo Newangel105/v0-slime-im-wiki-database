@@ -39,13 +39,14 @@ export const FROM_TYPE_CONFIG: Record<string, { label: string; bgClass: string }
   giveOwn:      { label: "Own Orbs",                 bgClass: "bg-emerald-900 text-emerald-100" },
   giveForce:    { label: "Force-limited Give",       bgClass: "bg-amber-900 text-amber-100" },
   resetAll:     { label: "All Orbs",                 bgClass: "bg-teal-900 text-teal-100" },
+  comboAddition: { label: "Combo Addition",            bgClass: "bg-indigo-900 text-indigo-100" },
 }
 
 export const FROM_TYPE_ORDER: Record<OrbTarget, string[]> = {
-  blue:   ["fromGreen", "fromOrange", "special", "ult", "setUlt", "own", "force", "element", "future", "nextTurn"],
-  green:  ["fromBlue", "fromOrange", "special", "ult", "setUlt", "own", "force", "element", "future", "nextTurn"],
-  orange: ["fromBlue", "fromGreen", "stolenOrange", "special", "ult", "setUlt", "own", "force", "element", "future", "nextTurn"],
-  unity:  ["fromBlue", "fromGreen", "fromOrange", "special", "ult", "setUlt", "own", "force", "element", "future", "nextTurn"],
+  blue:   ["fromGreen", "fromOrange", "special", "ult", "setUlt", "own", "force", "element", "future", "nextTurn", "comboAddition"],
+  green:  ["fromBlue", "fromOrange", "special", "ult", "setUlt", "own", "force", "element", "future", "nextTurn", "comboAddition"],
+  orange: ["fromBlue", "fromGreen", "stolenOrange", "special", "ult", "setUlt", "own", "force", "element", "future", "nextTurn", "comboAddition"],
+  unity:  ["fromBlue", "fromGreen", "fromOrange", "special", "ult", "setUlt", "own", "force", "element", "future", "nextTurn", "comboAddition"],
   steal:  ["stealBlue", "stealOrange", "stealOther", "stealElement", "stealSpecific"],
   give:   ["giveBlue", "giveOrange", "giveOwn", "giveForce"],
   reset:  ["resetAll"],
@@ -140,8 +141,28 @@ function classifyLine(line: string, cost: number | null): Array<{
     low.includes("redraw") ||
     low.includes("converted to soul") ||
     low.includes("ultimate manifestation") ||
-    low.includes("sets soul of combos")
+    low.includes("sets soul of combos") ||
+    low.includes("combo addition")
   if (!isAction) return []
+
+  // ── COMBO ADDITION ────────────────────────────────────────────────────────
+  if (low.includes("combo addition")) {
+    let toOrb: OrbTarget | null = null
+    if (low.includes("soul of divine protection")) toOrb = "blue"
+    else if (low.includes("soul of skills")) toOrb = "green"
+    else if (low.includes("soul of secrets")) toOrb = "orange"
+    else if (low.includes("soul of unity")) toOrb = "unity"
+    if (!toOrb) return []
+    const m = line.match(/\+(\d+)/)
+    let amount: OrbAmount = "x1"
+    if (m) {
+      const n = parseInt(m[1])
+      if (n >= 6) amount = "x6"
+      else if (n >= 3) amount = "x3"
+      else if (n >= 2) amount = "x2"
+    }
+    return [{ toOrb, fromType: "comboAddition", amount }]
+  }
 
   // ── SET ULT GAUGE ─────────────────────────────────────────────────────────
   if (low.includes("sets soul of combos")) {
