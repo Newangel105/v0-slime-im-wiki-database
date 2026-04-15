@@ -87,7 +87,7 @@ type WikiPayload = {
 }
 
 const payload = wikiData as WikiPayload
-const WEBSITE_EXCLUDED_CHARACTER_IDS = new Set([100001, 100002, 180001, 180002, 180003, 180004])
+const WEBSITE_EXCLUDED_CHARACTER_IDS = new Set([100001, 100002, 100003, 180001, 180002, 180003, 180004])
 const WEBSITE_RELEASE_DATE_OVERRIDES: Record<string, string> = {
   "2019/12/31": "2023/02/28",
 }

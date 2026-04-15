@@ -1,0 +1,436 @@
+[
+  {
+    "name": "Gazel Dwargo",
+    "affiliation": "King of an Armed Nation",
+    "amount": 11,
+    "timing": "Start of battle",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 11 at the start of battle (available in support formation)"
+  },
+  {
+    "name": "Milim Nava",
+    "affiliation": "Dragonoid",
+    "amount": 6,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Rimuru Tempest",
+    "affiliation": "Chancellor of Tempest",
+    "amount": 6,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Milim Nava",
+    "affiliation": "One of the Oldest Demon Lords",
+    "amount": 11,
+    "timing": "Start of battle",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 11 at the start of battle (available in support formation)"
+  },
+  {
+    "name": "Milim Nava",
+    "affiliation": "Manifestation of the Dragon",
+    "amount": 11,
+    "timing": "Start of battle",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 11 at the start of battle (available in support formation)"
+  },
+  {
+    "name": "Guy Crimson",
+    "affiliation": "Lord of Darkness",
+    "amount": 6,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Masked Hero",
+    "affiliation": "Time Traveler",
+    "amount": 6,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Rimuru Tempest",
+    "affiliation": "Bridegroom Slime",
+    "amount": 5,
+    "timing": "Up till turn 3",
+    "description": "When your troop contains 3 or more battle characters, increases the protection gauge by 5 once per turn from the start of battle to Turn 3 (available in support formation)"
+  },
+  {
+    "name": "Luminus Valentine",
+    "affiliation": "The Elegant Blood",
+    "amount": 5,
+    "timing": "Up till turn 3",
+    "description": "When your troop contains 3 or more battle characters, increases the protection gauge by 5 once per turn from the start of battle to Turn 3 (available in support formation)"
+  },
+  {
+    "name": "Treyni",
+    "affiliation": "The Spider Witch",
+    "amount": 5,
+    "timing": "Up till turn 3",
+    "description": "When your troop contains 3 or more battle characters, increases the protection gauge by 5 once per turn from the start of battle to Turn 3 (available in support formation)"
+  },
+  {
+    "name": "Shion",
+    "affiliation": "Charming Purple Ogre",
+    "amount": 5,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 5 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Myulan",
+    "affiliation": "Seeker of Enchantment",
+    "amount": 5,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 5 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Clayman",
+    "affiliation": "The Marionette Master",
+    "amount": 6,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Violet",
+    "affiliation": "The Purple Progenitor",
+    "amount": 5,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 5 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Rimuru Tempest",
+    "affiliation": "Sacred Sun of Tempest",
+    "amount": 6,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Luminus Valentine",
+    "affiliation": "Heavenly Noble",
+    "amount": 5,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 5 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Hinata Sakaguchi",
+    "affiliation": "Piercing Blossom",
+    "amount": 5,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 5 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Albis",
+    "affiliation": "Discipline Officer",
+    "amount": 6,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Megumin",
+    "affiliation": "My Name Is",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Aqua",
+    "affiliation": "Useless Goddess",
+    "amount": 7,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Guy Crimson",
+    "affiliation": "Red Realm Demon Peer",
+    "amount": 7,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Rimuru Tempest",
+    "affiliation": "Forsaken Future",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Shuna",
+    "affiliation": "Unfettered Feral Princess",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Veldora Tempest",
+    "affiliation": "Thunderous Storm Dragon",
+    "amount": 7,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Shinsha",
+    "affiliation": "Whisker Witchcraft Maiden",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Violet",
+    "affiliation": "Purple Demon Zenith",
+    "amount": 7,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Blanc",
+    "affiliation": "Primordial White",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Mirai Kasuga",
+    "affiliation": "Princess Star",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Ainz Ooal Gown",
+    "affiliation": "OVERLORD",
+    "amount": 7,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Shizue Izawa",
+    "affiliation": "Will to Protect",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Jaune",
+    "affiliation": "Explosive Yellow Demon",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Blanc",
+    "affiliation": "Ethereal White Demon",
+    "amount": 7,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Milim Nava",
+    "affiliation": "Charged Mythical Dragon",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Hinata Sakaguchi",
+    "affiliation": "Holy Armament",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Diablo",
+    "affiliation": "Despair Time",
+    "amount": 7,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Clayman",
+    "affiliation": "Crazy Pierrot",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Shuna",
+    "affiliation": "Bright Dancer Oni",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Hinata Sakaguchi",
+    "affiliation": "Ballroom Knight",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Shion",
+    "affiliation": "Purple Ogre Virtuoso",
+    "amount": 7,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Milim Nava",
+    "affiliation": "Armored Dragonoid",
+    "amount": 7,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Blanc",
+    "affiliation": "Avatar of Allure",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Momiji",
+    "affiliation": "Graceful Love",
+    "amount": 7,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Frieren",
+    "affiliation": "The Slayer",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Fern",
+    "affiliation": "First-class Mage",
+    "amount": 7,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Yuuki Kagurazaka",
+    "affiliation": "Academy Luminary",
+    "amount": 7,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Gobwa",
+    "affiliation": "Kurenai Captain",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Blanc",
+    "affiliation": "Ivory Blaze Commander",
+    "amount": 7,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Velzard",
+    "affiliation": "Frostplate Dragon",
+    "amount": 8,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 8 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Jaune",
+    "affiliation": "Amber Avenger",
+    "amount": 7,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Soka",
+    "affiliation": "Dawn Moon Phantom",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Shion",
+    "affiliation": "Lord of Spirits",
+    "amount": 7,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Hinata Sakaguchi",
+    "affiliation": "Lord of Calamity",
+    "amount": 8,
+    "timing": "Every 3 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 8 every 3 turns (available in support formation)"
+  },
+  {
+    "name": "Violet",
+    "affiliation": "Wild Delight",
+    "amount": 7,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Masayuki Honjo",
+    "affiliation": "Radiant Blade",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Luminus Valentine",
+    "affiliation": "Holy Shadow Witch",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Rimuru Tempest",
+    "affiliation": "Pact-Bound Demon Lord",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Hinata Sakaguchi",
+    "affiliation": "Cat-Eared Knight",
+    "amount": 8,
+    "timing": "Up till turn 2",
+    "description": "When your troop contains 3 or more battle characters, increases the protection gauge by 8 once per turn from the start of battle to Turn 2 (available in support formation)"
+  },
+  {
+    "name": "Kirito",
+    "affiliation": "The Black Swordsman",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Yuuki",
+    "affiliation": "Absolute Sword",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Hiiro",
+    "affiliation": "Crimson Oath",
+    "amount": 8,
+    "timing": "Up till turn 2",
+    "description": "When your troop contains 3 or more battle characters, increases the protection gauge by 8 once per turn from the start of battle to Turn 2 (available in support formation)"
+  },
+  {
+    "name": "Violet",
+    "affiliation": "Goddess of Mischief",
+    "amount": 6,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 6 every 2 turns (available in support formation)"
+  },
+  {
+    "name": "Jaune",
+    "affiliation": "Amber Dusk Priestess",
+    "amount": 7,
+    "timing": "Every 2 turns",
+    "description": "When your troop contains 3 or more battle characters, increases protection gauge by 7 every 2 turns (available in support formation)"
+  }
+]
