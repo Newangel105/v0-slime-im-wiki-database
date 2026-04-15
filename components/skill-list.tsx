@@ -209,6 +209,7 @@ function SkillDescription({ text }: { text: string }) {
 type SkillGroup = {
   base: WikiSkill
   changed: WikiSkill | null
+  changedLabel?: string // defaults to "Skill Change"
 }
 
 function groupSkills(skills: WikiSkill[]): SkillGroup[] {
@@ -220,9 +221,22 @@ function groupSkills(skills: WikiSkill[]): SkillGroup[] {
     }
   }
 
+  // Pair active_skill_3 with active_skill_1 as Ultimate Manifestation variant
+  const ultManifest = skills.find((s) => s.slot === "active_skill_3") ?? null
+  const skill1 = skills.find((s) => s.slot === "active_skill_1") ?? null
+
   const groups: SkillGroup[] = []
   for (const skill of skills) {
     if (skill.is_skill_change) continue // handled as part of their base
+    if (skill.slot === "active_skill_3") continue // handled as part of active_skill_1
+    if (ultManifest && skill1 && skill.label === skill1.label) {
+      groups.push({
+        base: skill,
+        changed: ultManifest,
+        changedLabel: "Ultimate Manifestation",
+      })
+      continue
+    }
     groups.push({
       base: skill,
       changed: changesByReplaces.get(skill.label) ?? null,
@@ -234,13 +248,17 @@ function groupSkills(skills: WikiSkill[]): SkillGroup[] {
 function SkillGroupCard({ group }: { group: SkillGroup }) {
   // Default to showing the skill change version when one exists
   const [showChanged, setShowChanged] = useState(!!group.changed)
+  const variantLabel = group.changedLabel ?? "Skill Change"
+  const isUltManifest = variantLabel === "Ultimate Manifestation"
   const skill = showChanged && group.changed ? group.changed : group.base
 
   return (
       <Card
       className={`rounded-2xl transition-all ${
         showChanged && group.changed
-          ? "border-amber-500/50 bg-gray-700 shadow-[0_0_24px_rgba(245,158,11,0.18)]"
+          ? isUltManifest
+            ? "border-purple-500/50 bg-gray-700 shadow-[0_0_24px_rgba(168,85,247,0.18)]"
+            : "border-amber-500/50 bg-gray-700 shadow-[0_0_24px_rgba(245,158,11,0.18)]"
           : "border-gray-600 bg-gray-700 shadow-none"
       }`}
     >
@@ -276,12 +294,20 @@ function SkillGroupCard({ group }: { group: SkillGroup }) {
                   onClick={() => setShowChanged(true)}
                   className={`flex items-center gap-1.5 rounded-lg px-3 py-1 text-xs font-semibold transition-all ${
                     showChanged
-                      ? "bg-amber-500/25 text-amber-300 shadow ring-1 ring-amber-500/40"
-                      : "text-gray-500 hover:text-amber-400"
+                      ? isUltManifest
+                        ? "bg-purple-500/25 text-purple-300 shadow ring-1 ring-purple-500/40"
+                        : "bg-amber-500/25 text-amber-300 shadow ring-1 ring-amber-500/40"
+                      : isUltManifest
+                        ? "text-gray-500 hover:text-purple-400"
+                        : "text-gray-500 hover:text-amber-400"
                   }`}
                 >
-                  <span className={`h-1.5 w-1.5 rounded-full ${showChanged ? "bg-amber-400" : "bg-gray-600"}`} />
-                  Skill Change
+                  <span className={`h-1.5 w-1.5 rounded-full ${
+                    showChanged
+                      ? isUltManifest ? "bg-purple-400" : "bg-amber-400"
+                      : "bg-gray-600"
+                  }`} />
+                  {variantLabel}
                 </button>
               </div>
             )}
@@ -320,12 +346,20 @@ function SkillGroupCard({ group }: { group: SkillGroup }) {
                 onClick={() => setShowChanged(true)}
                 className={`flex items-center gap-1.5 rounded-lg px-3 py-1 text-xs font-semibold transition-all ${
                   showChanged
-                    ? "bg-amber-500/25 text-amber-300 shadow ring-1 ring-amber-500/40"
-                    : "text-gray-500 hover:text-amber-400"
+                    ? isUltManifest
+                      ? "bg-purple-500/25 text-purple-300 shadow ring-1 ring-purple-500/40"
+                      : "bg-amber-500/25 text-amber-300 shadow ring-1 ring-amber-500/40"
+                    : isUltManifest
+                      ? "text-gray-500 hover:text-purple-400"
+                      : "text-gray-500 hover:text-amber-400"
                 }`}
               >
-                <span className={`h-1.5 w-1.5 rounded-full ${showChanged ? "bg-amber-400" : "bg-gray-600"}`} />
-                Skill Change
+                <span className={`h-1.5 w-1.5 rounded-full ${
+                  showChanged
+                    ? isUltManifest ? "bg-purple-400" : "bg-amber-400"
+                    : "bg-gray-600"
+                }`} />
+                {variantLabel}
               </button>
             </div>
           )}

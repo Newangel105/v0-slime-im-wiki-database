@@ -6,12 +6,12 @@ import { useEffect, useState } from "react"
 import { Menu, X } from "lucide-react"
 
 const navLinks = [
-  { href: "/", label: "Home" },
   { href: "/characters", label: "Characters" },
   { href: "/forces", label: "Forces" },
   { href: "/heartprints", label: "Heartprints" },
   { href: "/team-builder", label: "Team Builder" },
-  { href: "/gauge-builder", label: "Gauge Traits" },
+  { href: "/gauge-builder", label: "Soul Gauges" },
+  { href: "/orb-converter", label: "Orb Converters" },
   { href: "/battle-sim", label: "Battle Sim" },
   { href: "/tier-maker", label: "Tier Maker" },
 ]
@@ -30,7 +30,7 @@ export function SiteNav() {
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2 text-lg font-bold tracking-wider text-white">
             <img src="/icons/logo.png" alt="SLIME.WIKI logo" className="h-10 w-10 md:h-16 md:w-16 object-contain" />
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent text-xl font-extrabold">SLIME.WIKI</span>
+            <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent text-xl font-extrabold">SLIME-WIKI</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-6">
