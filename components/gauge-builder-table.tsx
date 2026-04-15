@@ -43,15 +43,15 @@ export default function GaugeBuilderTable() {
         <p className="text-sm text-gray-300">
           Showing <span className="font-semibold text-blue-400">{count} characters</span> with gauge traits organized by timing and amount.
         </p>
-        <div className="overflow-x-auto border border-gray-700 rounded-lg bg-[#1f2937] w-fit max-w-full">
+        <div className="w-fit max-w-full overflow-x-auto border border-gray-700 rounded-lg bg-[#1f2937]">
           <table className="text-xs sm:text-sm">
             <thead className="bg-[#111827] border-b border-gray-700 sticky top-0">
               <tr>
-                <th className="px-3 py-2 text-left font-semibold text-gray-300 min-w-24">Turn(s)</th>
+                <th className="px-2 py-2 text-left font-semibold text-gray-300 whitespace-nowrap sticky left-0 z-20 bg-[#111827] w-16 sm:w-32">Turn(s)</th>
                 {columns.map((column) => (
                   <th
                     key={column}
-                    className="px-2 py-2 text-center font-semibold text-gray-300 whitespace-nowrap"
+                    className="px-2 py-2 text-center font-semibold text-gray-300 whitespace-nowrap min-w-[150px] sm:min-w-[230px]"
                   >
                     {column}
                   </th>
@@ -61,7 +61,7 @@ export default function GaugeBuilderTable() {
             <tbody>
               {rows.map((row) => (
                 <tr key={row} className="border-b border-gray-700 hover:bg-[#374151] transition-colors">
-                  <td className="px-3 py-3 text-left font-semibold text-gray-200 bg-[#111827] sticky left-0">
+                  <td className="px-1 sm:px-3 py-2 sm:py-3 text-left font-semibold text-gray-200 bg-[#111827] sticky left-0 z-10 w-16 sm:w-32 whitespace-nowrap text-xs sm:text-sm leading-tight">
                     {row}
                   </td>
                   {columns.map((column) => {
@@ -78,7 +78,7 @@ export default function GaugeBuilderTable() {
                         className="p-0 border-r border-gray-700 align-top"
                       >
                         {cellCharacters.length > 0 ? (
-                          <div className="grid grid-cols-4">
+                          <div className="grid grid-cols-4 gap-0.5 p-0.5">
                             {cellCharacters.map((character) => (
                               <Link
                                 key={character.master_pc_id}
@@ -88,7 +88,7 @@ export default function GaugeBuilderTable() {
                                 title={`${character.name}${character.affiliation_name ? ` — ${character.affiliation_name}` : ""}`}
                                 className="block"
                               >
-                                <div className="relative w-14 h-14 overflow-hidden hover:brightness-110 hover:ring-2 hover:ring-blue-400 transition-all cursor-pointer">
+                                <div className="relative w-9 h-9 sm:w-14 sm:h-14 overflow-hidden hover:brightness-110 hover:ring-1 hover:ring-blue-400 transition-all cursor-pointer">
                                   <Image
                                     src={toPublicAssetPath(character.images.icon)}
                                     alt={character.name}
@@ -124,7 +124,7 @@ export default function GaugeBuilderTable() {
           <TabsTrigger value="skillPoint" className="data-[state=active]:bg-green-600 data-[state=active]:text-white">
             Skill Points
           </TabsTrigger>
-          <TabsTrigger value="secretSkill" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">
+          <TabsTrigger value="secretSkill" className="data-[state=active]:bg-orange-600 data-[state=active]:text-white">
             Secret Skills
           </TabsTrigger>
         </TabsList>
