@@ -10,7 +10,7 @@ const navLinks = [
   { href: "/forces", label: "Forces" },
   { href: "/heartprints", label: "Heartprints" },
   { href: "/team-builder", label: "Team Builder" },
-  { href: "/gauge-builder", label: "Soul Gauges" },
+  { href: "/gauge-builder", label: "Trait Chart" },
   { href: "/orb-converter", label: "Orb Converters" },
   { href: "/battle-sim", label: "Battle Sim" },
   { href: "/tier-maker", label: "Tier Maker" },
