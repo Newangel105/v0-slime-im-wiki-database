@@ -26,6 +26,8 @@ export type WikiSkill = {
   description_max_level: string
   icon_path: string
   cost: number | null
+  skill_level_group_id?: number | null
+  special_skill_type?: string
   is_skill_change?: boolean
   replaces_label?: string
   replaces_slot?: string
