@@ -17,9 +17,11 @@ import {
 import { Search } from "lucide-react"
 
 type Tier = { name: string; items: string[]; color?: string }
+type TierListEntry = { name: string; tiers: Tier[] }
 
 const DEFAULT_TIER_NAMES = ["S", "A", "B", "C", "D"]
 const STORAGE_KEY = "tierList_v1"
+const LISTS_STORAGE_KEY = "tierLists_v2"
 
 const DEFAULT_TIER_COLORS = ["#dc2626", "#ea580c", "#eab308", "#f59e0b", "#84cc16"]
 const RARITY_ASSETS: Record<number, string> = {
@@ -98,9 +100,22 @@ export default function TierMakerPage() {
     return s
   }, [wikiChars])
 
-  const [tiers, setTiers] = useState<Tier[]>(() =>
-    DEFAULT_TIER_NAMES.map((n, i) => ({ name: n, items: [], color: DEFAULT_TIER_COLORS[i % DEFAULT_TIER_COLORS.length] })),
-  )
+  const [tierLists, setTierLists] = useState<TierListEntry[]>([
+    { name: "Tier List 1", tiers: DEFAULT_TIER_NAMES.map((n, i) => ({ name: n, items: [], color: DEFAULT_TIER_COLORS[i % DEFAULT_TIER_COLORS.length] })) }
+  ])
+  const [activeListIndex, setActiveListIndex] = useState(0)
+
+  const tiers = tierLists[activeListIndex]?.tiers ?? []
+  const setTiers: React.Dispatch<React.SetStateAction<Tier[]>> = (action) => {
+    setTierLists(prev => {
+      const copy = prev.map(tl => ({ ...tl }))
+      const current = copy[activeListIndex]
+      if (!current) return prev
+      const newTiers = typeof action === 'function' ? action(current.tiers) : action
+      copy[activeListIndex] = { ...current, tiers: newTiers }
+      return copy
+    })
+  }
 
   const [imageSearch, setImageSearch] = useState("")
   const [roleFilter, setRoleFilter] = useState<"all" | "protector" | "attacker">("all")
@@ -108,9 +123,9 @@ export default function TierMakerPage() {
 
   useEffect(() => {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(tiers))
+      localStorage.setItem(LISTS_STORAGE_KEY, JSON.stringify(tierLists))
     } catch (e) {}
-  }, [tiers])
+  }, [tierLists])
 
   useEffect(() => {
     try {
@@ -122,13 +137,17 @@ export default function TierMakerPage() {
         try {
           const decoded = decodeBase64ToUnicode(d)
           const parsed = JSON.parse(decoded)
-          if (Array.isArray(parsed)) {
-            setTiers(parsed)
+          if (parsed?.lists && Array.isArray(parsed.lists)) {
+            setTierLists(parsed.lists)
+            setActiveListIndex(0)
             return
           }
-        } catch (e) {
-          // ignore
-        }
+          if (Array.isArray(parsed)) {
+            setTierLists([{ name: "Shared List", tiers: parsed }])
+            setActiveListIndex(0)
+            return
+          }
+        } catch (e) {}
       }
 
       if (gistParam) {
@@ -137,43 +156,59 @@ export default function TierMakerPage() {
             const res = await fetch(`/api/tier-list?gist=${encodeURIComponent(gistParam)}`)
             if (res.ok) {
               const json = await res.json()
-              if (json?.tiers) setTiers(json.tiers)
+              if (json?.tiers) {
+                setTierLists([{ name: "Gist List", tiers: json.tiers }])
+                setActiveListIndex(0)
+              }
             }
-          } catch (e) {
-            // ignore
-          }
+          } catch (e) {}
         })()
         return
       }
 
-      // load saved tiers from localStorage on mount (client-only). Doing this in an effect
-      // avoids reading localStorage during SSR and prevents hydration mismatches.
+      // Try new multi-list format first
+      try {
+        const savedLists = localStorage.getItem(LISTS_STORAGE_KEY)
+        if (savedLists) {
+          const parsed = JSON.parse(savedLists)
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            setTierLists(parsed)
+            setActiveListIndex(0)
+            return
+          }
+        }
+      } catch (e) {}
+
+      // Fall back to legacy single-list format
       try {
         const saved = localStorage.getItem(STORAGE_KEY)
         if (saved) {
           const parsed = JSON.parse(saved)
           if (Array.isArray(parsed)) {
-            setTiers(parsed.map((t: any, i: number) => ({
-              name: t.name ?? "",
-              items: (t.items || []).map((it: any) => String(it)),
-              color: t.color ?? DEFAULT_TIER_COLORS[i % DEFAULT_TIER_COLORS.length],
-            })))
+            setTierLists([{
+              name: "Tier List 1",
+              tiers: parsed.map((t: any, i: number) => ({
+                name: t.name ?? "",
+                items: (t.items || []).map((it: any) => String(it)),
+                color: t.color ?? DEFAULT_TIER_COLORS[i % DEFAULT_TIER_COLORS.length],
+              }))
+            }])
+            setActiveListIndex(0)
             return
           }
         }
-      } catch (e) {
-        // ignore malformed localStorage
-      }
+      } catch (e) {}
 
       ;(async () => {
         try {
           const res = await fetch("/api/tier-list")
           if (!res.ok) return
           const json = await res.json()
-          if (json?.tiers) setTiers(json.tiers)
-        } catch (e) {
-          // ignore
-        }
+          if (json?.tiers) {
+            setTierLists([{ name: "Tier List 1", tiers: json.tiers }])
+            setActiveListIndex(0)
+          }
+        } catch (e) {}
       })()
     } catch (e) {}
   }, [])
@@ -563,6 +598,16 @@ export default function TierMakerPage() {
     URL.revokeObjectURL(url)
   }
 
+  function exportAllJson() {
+    const blob = new Blob([JSON.stringify({ lists: tierLists }, null, 2)], { type: "application/json" })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement("a")
+    a.href = url
+    a.download = "tier-lists-all.json"
+    a.click()
+    URL.revokeObjectURL(url)
+  }
+
   function copyShareLink() {
     try {
       const encoded = encodeUnicodeToBase64(JSON.stringify(tiers))
@@ -669,9 +714,16 @@ export default function TierMakerPage() {
     reader.onload = () => {
       try {
         const parsed = JSON.parse(String(reader.result))
-        if (Array.isArray(parsed)) setTiers(parsed)
-        else if (parsed?.tiers) setTiers(parsed.tiers)
-        else alert("Unsupported file format")
+        if (parsed?.lists && Array.isArray(parsed.lists)) {
+          setTierLists(parsed.lists)
+          setActiveListIndex(0)
+        } else if (Array.isArray(parsed)) {
+          setTiers(parsed)
+        } else if (parsed?.tiers) {
+          setTiers(parsed.tiers)
+        } else {
+          alert("Unsupported file format")
+        }
       } catch (e) {
         alert("Failed to parse file")
       }
@@ -680,10 +732,11 @@ export default function TierMakerPage() {
   }
 
   function resetAll() {
-    if (!confirm("Reset tiers to default and clear saved state?")) return
-    const def = DEFAULT_TIER_NAMES.map((n, i) => ({ name: n, items: [], color: DEFAULT_TIER_COLORS[i % DEFAULT_TIER_COLORS.length] }))
-    setTiers(def)
-    try { localStorage.removeItem(STORAGE_KEY) } catch (e) {}
+    if (!confirm("Reset all tier lists to default and clear saved state?")) return
+    const def: TierListEntry[] = [{ name: "Tier List 1", tiers: DEFAULT_TIER_NAMES.map((n, i) => ({ name: n, items: [], color: DEFAULT_TIER_COLORS[i % DEFAULT_TIER_COLORS.length] })) }]
+    setTierLists(def)
+    setActiveListIndex(0)
+    try { localStorage.removeItem(LISTS_STORAGE_KEY); localStorage.removeItem(STORAGE_KEY) } catch (e) {}
   }
 
   function addTier(afterIndex: number | null = null) {
@@ -697,6 +750,31 @@ export default function TierMakerPage() {
   }
 
   function deleteTier(index: number) { setTiers((prev) => { const copy = [...prev]; copy.splice(index, 1); return copy }) }
+
+  function addTierList() {
+    const name = `Tier List ${tierLists.length + 1}`
+    setTierLists(prev => [...prev, { name, tiers: DEFAULT_TIER_NAMES.map((n, i) => ({ name: n, items: [], color: DEFAULT_TIER_COLORS[i % DEFAULT_TIER_COLORS.length] })) }])
+    setActiveListIndex(tierLists.length)
+  }
+
+  function removeTierList(index: number) {
+    if (tierLists.length <= 1) return
+    if (!confirm(`Delete "${tierLists[index]?.name}"?`)) return
+    setTierLists(prev => prev.filter((_, i) => i !== index))
+    setActiveListIndex(prev => {
+      const newLen = tierLists.length - 1
+      if (prev > index) return prev - 1
+      if (prev >= newLen) return Math.max(0, newLen - 1)
+      return prev
+    })
+  }
+
+  function renameTierList(index: number) {
+    const current = tierLists[index]?.name ?? ""
+    const newName = prompt("Rename tier list:", current)
+    if (newName == null || newName.trim() === "") return
+    setTierLists(prev => prev.map((tl, i) => i === index ? { ...tl, name: newName.trim() } : tl))
+  }
 
   function moveTierLeft(index: number) { setTiers((prev) => { if (index <= 0) return prev; const copy = [...prev]; const tmp = copy[index - 1]; copy[index - 1] = copy[index]; copy[index] = tmp; return copy }) }
   function moveTierRight(index: number) { setTiers((prev) => { if (index >= prev.length - 1) return prev; const copy = [...prev]; const tmp = copy[index + 1]; copy[index + 1] = copy[index]; copy[index] = tmp; return copy }) }
@@ -713,10 +791,35 @@ export default function TierMakerPage() {
       <div className="max-w-7xl mx-auto pl-6 pr-4 sm:pl-8 sm:pr-6 lg:px-8 py-8">
         
 
+        {/* Tier list tabs */}
+        <div className="mb-3 flex items-center gap-2 overflow-x-auto pb-1">
+          {tierLists.map((tl, i) => (
+            <button
+              key={i}
+              onClick={() => setActiveListIndex(i)}
+              onDoubleClick={() => renameTierList(i)}
+              className={`group flex items-center gap-1.5 px-3 py-1.5 rounded text-sm border whitespace-nowrap transition-colors ${i === activeListIndex ? 'bg-[#2a3444] text-white border-gray-500' : 'bg-[#232c3a] text-gray-400 border-gray-700 hover:text-white hover:bg-[#2a3444]'}`}
+              title="Double-click to rename"
+            >
+              <span className="truncate max-w-[120px]">{tl.name}</span>
+              {tierLists.length > 1 && (
+                <span
+                  onClick={(e) => { e.stopPropagation(); removeTierList(i) }}
+                  className="ml-0.5 text-gray-500 hover:text-red-400 text-xs cursor-pointer"
+                >
+                  ×
+                </span>
+              )}
+            </button>
+          ))}
+          <button onClick={addTierList} className="px-2 py-1.5 rounded bg-[#232c3a] text-gray-400 hover:text-white border border-gray-700 text-sm" title="Add new tier list">+</button>
+        </div>
+
         <div className="mb-4 flex flex-wrap gap-2 items-center">
           <button className="px-3 py-1 rounded bg-[#232c3a] text-gray-200 hover:text-white hover:bg-[#2a3444] border border-gray-700 text-sm" onClick={() => addTier(null)}>Add Tier</button>
           <button className="px-3 py-1 rounded bg-[#232c3a] text-gray-200 hover:text-white hover:bg-[#2a3444] border border-gray-700 text-sm" onClick={copyShareLink}>Copy Share Link</button>
           <button className="px-3 py-1 rounded bg-[#232c3a] text-gray-200 hover:text-white hover:bg-[#2a3444] border border-gray-700 text-sm" onClick={exportJson}>Export</button>
+          <button className="px-3 py-1 rounded bg-[#232c3a] text-gray-200 hover:text-white hover:bg-[#2a3444] border border-gray-700 text-sm" onClick={exportAllJson}>Export All</button>
           <label className="px-3 py-1 rounded bg-[#232c3a] text-gray-200 hover:text-white hover:bg-[#2a3444] border border-gray-700 text-sm cursor-pointer">
             Import
             <input type="file" accept="application/json" className="hidden" onChange={(e) => importJson(e.target.files?.[0] ?? null)} />
