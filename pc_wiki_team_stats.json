@@ -828,7 +828,23 @@
       "defense": 824
     }
   },
-  "enhanced_statusboard_totals": {},
+  "enhanced_statusboard_totals": {
+    "0": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    },
+    "190000200000001": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    },
+    "190000200000002": {
+      "hp": 0,
+      "attack": 0,
+      "defense": 0
+    }
+  },
   "bond_max_ratios": {
     "1": {
       "hp_ratio": 940,
@@ -841,66 +857,66 @@
     "0": {
       "elem_name": "All",
       "hp_pct": 6.0,
-      "atk_pct": 10.0,
-      "def_pct": 10.0,
-      "battle_only_atk_pct": 20.0,
-      "battle_only_def_pct": 20.0
+      "atk_pct": 30.0,
+      "def_pct": 30.0,
+      "battle_only_atk_pct": 60.0,
+      "battle_only_def_pct": 60.0
     },
     "1": {
       "elem_name": "Earth",
       "hp_pct": 6.0,
-      "atk_pct": 25.0,
-      "def_pct": 25.0,
-      "battle_only_atk_pct": 25.0,
-      "battle_only_def_pct": 25.0
+      "atk_pct": 60.0,
+      "def_pct": 60.0,
+      "battle_only_atk_pct": 60.0,
+      "battle_only_def_pct": 60.0
     },
     "2": {
       "elem_name": "Air",
       "hp_pct": 6.0,
-      "atk_pct": 25.0,
-      "def_pct": 25.0,
-      "battle_only_atk_pct": 25.0,
-      "battle_only_def_pct": 25.0
+      "atk_pct": 60.0,
+      "def_pct": 60.0,
+      "battle_only_atk_pct": 60.0,
+      "battle_only_def_pct": 60.0
     },
     "3": {
       "elem_name": "Wind",
       "hp_pct": 6.0,
-      "atk_pct": 25.0,
-      "def_pct": 25.0,
-      "battle_only_atk_pct": 25.0,
-      "battle_only_def_pct": 25.0
+      "atk_pct": 60.0,
+      "def_pct": 60.0,
+      "battle_only_atk_pct": 60.0,
+      "battle_only_def_pct": 60.0
     },
     "4": {
       "elem_name": "Water",
       "hp_pct": 6.0,
-      "atk_pct": 25.0,
-      "def_pct": 25.0,
-      "battle_only_atk_pct": 25.0,
-      "battle_only_def_pct": 25.0
+      "atk_pct": 60.0,
+      "def_pct": 60.0,
+      "battle_only_atk_pct": 60.0,
+      "battle_only_def_pct": 60.0
     },
     "5": {
       "elem_name": "Fire",
       "hp_pct": 6.0,
-      "atk_pct": 25.0,
-      "def_pct": 25.0,
-      "battle_only_atk_pct": 25.0,
-      "battle_only_def_pct": 25.0
+      "atk_pct": 60.0,
+      "def_pct": 60.0,
+      "battle_only_atk_pct": 60.0,
+      "battle_only_def_pct": 60.0
     },
     "6": {
       "elem_name": "Holy",
       "hp_pct": 6.0,
-      "atk_pct": 25.0,
-      "def_pct": 25.0,
-      "battle_only_atk_pct": 25.0,
-      "battle_only_def_pct": 25.0
+      "atk_pct": 60.0,
+      "def_pct": 60.0,
+      "battle_only_atk_pct": 60.0,
+      "battle_only_def_pct": 60.0
     },
     "7": {
       "elem_name": "Dark",
       "hp_pct": 6.0,
-      "atk_pct": 25.0,
-      "def_pct": 25.0,
-      "battle_only_atk_pct": 25.0,
-      "battle_only_def_pct": 25.0
+      "atk_pct": 60.0,
+      "def_pct": 60.0,
+      "battle_only_atk_pct": 60.0,
+      "battle_only_def_pct": 60.0
     }
   },
   "equipment_facility_bonuses": {
