@@ -15,6 +15,15 @@ import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
+} from "@/components/ui/dialog"
 
 // ---- CATEGORY DISPLAY NAME MAP for Skill Filter Modal ----
 const SKILL_CAT_LABELS: Record<string, string> = {
@@ -924,6 +933,94 @@ const META_PRESETS: MetaPreset[] = [
 // =================================
 export default function TeamBuilderClient({ characters, heartprints, equipment, charms }: { characters: TeamBuilderCharacter[], heartprints: Heartprint[], equipment: Equipment[], charms: Charm[] }) {
   // 4 main slots + 4 sub-slots + 2 side slots + 2 side sub-slots
+  const [shareDialogOpen, setShareDialogOpen] = useState(false)
+  const [shareName, setShareName] = useState("")
+  const [shareAuthor, setShareAuthor] = useState("")
+  const [shareDescription, setShareDescription] = useState("")
+  const [shareSubmitting, setShareSubmitting] = useState(false)
+
+  // ── Community Browse State ──
+  const [communityTeamsBrowseOpen, setCommunityTeamsBrowseOpen] = useState(false)
+  const [communityTeams, setCommunityTeams] = useState<{ id: string; name: string; author: string; description: string; slots: { mainSlots: (number|null)[]; subSlots: (number|null)[]; sideSlots: (number|null)[]; sideSubSlots: (number|null)[] }; character_ids: number[]; created_at: string }[]>([])
+  const [communityTeamsLoading, setCommunityTeamsLoading] = useState(false)
+  const [communityTeamsPage, setCommunityTeamsPage] = useState(1)
+  const [communityTeamsTotal, setCommunityTeamsTotal] = useState(0)
+  const [communityTeamsSearch, setCommunityTeamsSearch] = useState("")
+  const [communityTeamsFilterId, setCommunityTeamsFilterId] = useState<number | null>(null)
+  const [communityTeamsCharSearch, setCommunityTeamsCharSearch] = useState("")
+
+  const communityTeamsSortedChars = useMemo(() => [...characters].sort((a, b) => (b.rarity - a.rarity) || a.name.localeCompare(b.name)), [characters])
+  const communityTeamsVisibleChars = useMemo(() => {
+    if (!communityTeamsCharSearch.trim()) return communityTeamsSortedChars
+    const q = communityTeamsCharSearch.toLowerCase()
+    return communityTeamsSortedChars.filter((c) => c.name.toLowerCase().includes(q))
+  }, [communityTeamsSortedChars, communityTeamsCharSearch])
+
+  useEffect(() => {
+    if (!communityTeamsBrowseOpen) return
+    setCommunityTeamsLoading(true)
+    const params = new URLSearchParams({ page: String(communityTeamsPage), limit: "20" })
+    if (communityTeamsFilterId) params.set("character_id", String(communityTeamsFilterId))
+    fetch(`/api/community/teams?${params}`)
+      .then((r) => r.json())
+      .then((json) => { setCommunityTeams(json.data ?? []); setCommunityTeamsTotal(json.total ?? 0) })
+      .finally(() => setCommunityTeamsLoading(false))
+  }, [communityTeamsBrowseOpen, communityTeamsPage, communityTeamsFilterId])
+
+  const communityTeamsFiltered = useMemo(() => {
+    if (!communityTeamsSearch.trim()) return communityTeams
+    const q = communityTeamsSearch.toLowerCase()
+    return communityTeams.filter((t) => t.name.toLowerCase().includes(q) || t.author.toLowerCase().includes(q))
+  }, [communityTeams, communityTeamsSearch])
+
+  function loadCommunityTeam(team: { slots: { mainSlots: (number|null)[]; subSlots: (number|null)[]; sideSlots: (number|null)[]; sideSubSlots: (number|null)[] } }) {
+    const s = team.slots
+    setMainSlots((s.mainSlots ?? []).map((v) => v == null ? null : Number(v)))
+    setSubSlots((s.subSlots ?? []).map((v) => v == null ? null : Number(v)))
+    setSideSlots((s.sideSlots ?? []).map((v) => v == null ? null : Number(v)))
+    setSideSubSlots((s.sideSubSlots ?? []).map((v) => v == null ? null : Number(v)))
+    setCommunityTeamsBrowseOpen(false)
+  }
+
+  // Load team from community page (sessionStorage handoff)
+  useEffect(() => {
+    try {
+      const raw = sessionStorage.getItem("communityTeamLoad")
+      if (!raw) return
+      sessionStorage.removeItem("communityTeamLoad")
+      const slots = JSON.parse(raw)
+      if (slots.mainSlots) setMainSlots(slots.mainSlots.map((v: any) => (v == null ? null : Number(v))))
+      if (slots.subSlots) setSubSlots(slots.subSlots.map((v: any) => (v == null ? null : Number(v))))
+      if (slots.sideSlots) setSideSlots(slots.sideSlots.map((v: any) => (v == null ? null : Number(v))))
+      if (slots.sideSubSlots) setSideSubSlots(slots.sideSubSlots.map((v: any) => (v == null ? null : Number(v))))
+    } catch {}
+  }, [])
+
+  async function shareTeamToCommunity() {
+    const name = shareName.trim()
+    if (!name) { alert("Please enter a name"); return }
+    setShareSubmitting(true)
+    try {
+      const slots = { mainSlots, subSlots, sideSlots, sideSubSlots }
+      const res = await fetch("/api/community/teams", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, author: shareAuthor.trim() || "Anonymous", description: shareDescription.trim(), slots }),
+      })
+      const json = await res.json()
+      if (!res.ok) { alert(json.error ?? "Failed to share"); return }
+      setShareDialogOpen(false)
+      setShareName("")
+      setShareAuthor("")
+      setShareDescription("")
+      alert("Shared successfully! It will appear on the Community Teams page.")
+    } catch (e) {
+      alert("Failed to share: " + String(e))
+    } finally {
+      setShareSubmitting(false)
+    }
+  }
+
   const [mainSlots, setMainSlots] = useState<(number | null)[]>(Array(4).fill(null))
   const [subSlots, setSubSlots] = useState<(number | null)[]>(Array(4).fill(null))
   const [sideSlots, setSideSlots] = useState<(number | null)[]>(Array(2).fill(null))
@@ -2967,6 +3064,22 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
           Save PNG
         </button>
         <button
+          onClick={() => setShareDialogOpen(true)}
+          className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
+          style={{ background: "linear-gradient(135deg, #1e4a3a 0%, #0f2920 100%)", border: "1px solid rgba(100,255,160,0.3)" }}
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
+          Share to Community
+        </button>
+        <button
+          onClick={() => { setCommunityTeamsBrowseOpen(true); setCommunityTeamsPage(1) }}
+          className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
+          style={{ background: "linear-gradient(135deg, #3a1e5f 0%, #220f40 100%)", border: "1px solid rgba(180,100,255,0.3)" }}
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+          Browse Community
+        </button>
+        <button
           onClick={openEquipModal}
           className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
           style={{ background: "linear-gradient(135deg, #3a1e5f 0%, #22103f 100%)", border: "1px solid rgba(180,100,255,0.3)" }}
@@ -2975,6 +3088,143 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
           Equipment
         </button>
       </div>
+
+      {/* Share to Community Dialog */}
+      <Dialog open={shareDialogOpen} onOpenChange={setShareDialogOpen}>
+        <DialogContent className="w-96 bg-[#0b1220] text-white border border-gray-700">
+          <DialogHeader>
+            <DialogTitle>Share to Community</DialogTitle>
+            <DialogDescription>Share your team composition so other players can browse and load it.</DialogDescription>
+          </DialogHeader>
+          <div className="mt-4 space-y-3">
+            <div>
+              <label className="text-sm text-gray-300 mb-1 block">Name <span className="text-red-400">*</span></label>
+              <Input value={shareName} onChange={(e) => setShareName(e.target.value)} placeholder="e.g. My PvP Team" className="h-10 rounded-md border border-gray-700 bg-[#232c3a] px-3 text-white placeholder:text-gray-400" />
+            </div>
+            <div>
+              <label className="text-sm text-gray-300 mb-1 block">Author (optional)</label>
+              <Input value={shareAuthor} onChange={(e) => setShareAuthor(e.target.value)} placeholder="Anonymous" className="h-10 rounded-md border border-gray-700 bg-[#232c3a] px-3 text-white placeholder:text-gray-400" />
+            </div>
+            <div>
+              <label className="text-sm text-gray-300 mb-1 block">Description (optional)</label>
+              <Input value={shareDescription} onChange={(e) => setShareDescription(e.target.value)} placeholder="Strategy notes..." className="h-10 rounded-md border border-gray-700 bg-[#232c3a] px-3 text-white placeholder:text-gray-400" />
+            </div>
+          </div>
+          <DialogFooter>
+            <DialogClose asChild><button className="px-3 py-1.5 bg-gray-700 text-white rounded text-sm">Cancel</button></DialogClose>
+            <button onClick={shareTeamToCommunity} disabled={shareSubmitting} className="px-3 py-1.5 bg-blue-600 text-white rounded text-sm disabled:opacity-50 hover:bg-blue-500">{shareSubmitting ? "Sharing..." : "Share"}</button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Browse Community Teams Dialog */}
+      <Dialog open={communityTeamsBrowseOpen} onOpenChange={setCommunityTeamsBrowseOpen}>
+        <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] flex flex-col bg-[#0b1220] text-white border border-gray-700 overflow-hidden">
+          <DialogHeader className="shrink-0">
+            <DialogTitle>Community Teams</DialogTitle>
+            <DialogDescription>Browse team compositions shared by players. Click a character to filter, or load directly into the builder.</DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col gap-3 overflow-hidden flex-1 min-h-0">
+            {/* Character filter */}
+            <div className="rounded-xl border border-gray-700 bg-gray-800/60 p-3 flex flex-col gap-2 shrink-0">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold text-gray-300">Filter by character</span>
+                {communityTeamsFilterId && (
+                  <button onClick={() => { setCommunityTeamsFilterId(null); setCommunityTeamsPage(1) }} className="text-xs text-blue-400 hover:text-blue-300">Clear filter</button>
+                )}
+              </div>
+              <input
+                value={communityTeamsCharSearch}
+                onChange={(e) => setCommunityTeamsCharSearch(e.target.value)}
+                placeholder="Search characters…"
+                className="h-7 rounded border border-gray-600 bg-gray-700 px-2 text-xs text-white placeholder:text-gray-400"
+              />
+              <div className="flex flex-wrap gap-1 max-h-36 overflow-y-auto">
+                {communityTeamsVisibleChars.map((c) => {
+                  const active = communityTeamsFilterId === c.master_pc_id
+                  return (
+                    <button
+                      key={c.master_pc_id}
+                      onClick={() => { setCommunityTeamsFilterId(active ? null : c.master_pc_id); setCommunityTeamsPage(1) }}
+                      title={c.name}
+                      className={`relative w-9 h-9 rounded overflow-hidden transition-all ${active ? "ring-2 ring-blue-400 ring-offset-1 ring-offset-gray-900" : "opacity-60 hover:opacity-100"}`}
+                    >
+                      <img src={toPublicAssetPath(c.images.icon)} alt={c.name} className="w-full h-full object-cover object-top" />
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+            <input
+              value={communityTeamsSearch}
+              onChange={(e) => setCommunityTeamsSearch(e.target.value)}
+              placeholder="Search by name or author…"
+              className="h-9 rounded-lg border border-gray-600 bg-gray-800 px-3 text-sm text-white placeholder:text-gray-400 shrink-0"
+            />
+            <div className="overflow-y-auto flex-1 min-h-0">
+              {communityTeamsLoading ? (
+                <div className="py-10 text-center text-gray-400 text-sm">Loading…</div>
+              ) : communityTeamsFiltered.length === 0 ? (
+                <div className="py-10 text-center text-gray-500 text-sm">No teams found. Be the first to share one!</div>
+              ) : (
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {communityTeamsFiltered.map((team) => {
+                    const { mainSlots: ms, subSlots: ss, sideSlots: sl, sideSubSlots: ssl } = team.slots ?? { mainSlots: [], subSlots: [], sideSlots: [], sideSubSlots: [] }
+                    return (
+                      <div key={team.id} className="flex flex-col gap-2 rounded-xl border border-gray-700 bg-gray-800 p-3">
+                        <div className="flex items-start justify-between gap-2">
+                          <div>
+                            <p className="font-semibold text-white text-sm">{team.name}</p>
+                            <p className="text-xs text-gray-400">by {team.author}</p>
+                            {team.description && <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">{team.description}</p>}
+                          </div>
+                          <span className="text-xs text-gray-500 shrink-0">{new Date(team.created_at).toLocaleDateString()}</span>
+                        </div>
+                        <div className="flex gap-1.5">
+                          {Array.from({ length: 4 }).map((_, i) => {
+                            const cid = ms?.[i] ?? null
+                            const c = cid ? characters.find((x) => x.master_pc_id === cid) : null
+                            return (
+                              <div key={i} className="flex flex-col gap-0.5 items-center">
+                                <div className="w-12 h-12 rounded bg-gray-700/40 border border-gray-700 overflow-hidden">{c && <img src={toPublicAssetPath(c.images.icon)} alt={c.name} title={c.name} className="w-full h-full object-cover object-top" />}</div>
+                                {(() => { const sc = ss?.[i] ?? null; const s = sc ? characters.find((x) => x.master_pc_id === sc) : null; return <div className="w-8 h-8 rounded bg-gray-700/40 border border-gray-700 overflow-hidden">{s && <img src={toPublicAssetPath(s.images.icon)} alt={s.name} className="w-full h-full object-cover object-top" />}</div> })()}
+                              </div>
+                            )
+                          })}
+                        </div>
+                        {(sl?.some(Boolean) || ssl?.some(Boolean)) && (
+                          <div className="flex gap-1.5">
+                            {Array.from({ length: 2 }).map((_, i) => {
+                              const cid = sl?.[i] ?? null
+                              const c = cid ? characters.find((x) => x.master_pc_id === cid) : null
+                              return (
+                                <div key={i} className="flex flex-col gap-0.5 items-center">
+                                  <div className="w-12 h-12 rounded bg-gray-700/40 border border-gray-700 overflow-hidden">{c && <img src={toPublicAssetPath(c.images.icon)} alt={c.name} title={c.name} className="w-full h-full object-cover object-top" />}</div>
+                                  {(() => { const sc = ssl?.[i] ?? null; const s = sc ? characters.find((x) => x.master_pc_id === sc) : null; return <div className="w-8 h-8 rounded bg-gray-700/40 border border-gray-700 overflow-hidden">{s && <img src={toPublicAssetPath(s.images.icon)} alt={s.name} className="w-full h-full object-cover object-top" />}</div> })()}
+                                </div>
+                              )
+                            })}
+                          </div>
+                        )}
+                        <button onClick={() => loadCommunityTeam(team)} className="mt-auto w-full rounded-lg bg-blue-600 py-1.5 text-xs font-semibold text-white hover:bg-blue-500 transition-colors">
+                          Load into Team Builder
+                        </button>
+                      </div>
+                    )
+                  })}
+                </div>
+              )}
+            </div>
+            {Math.ceil(communityTeamsTotal / 20) > 1 && (
+              <div className="flex items-center justify-center gap-3 pt-1 shrink-0">
+                <button onClick={() => setCommunityTeamsPage((p) => Math.max(1, p - 1))} disabled={communityTeamsPage === 1} className="px-3 py-1 rounded bg-gray-700 text-xs disabled:opacity-40 hover:bg-gray-600">Previous</button>
+                <span className="text-xs text-gray-400">{communityTeamsPage} / {Math.ceil(communityTeamsTotal / 20)}</span>
+                <button onClick={() => setCommunityTeamsPage((p) => Math.min(Math.ceil(communityTeamsTotal / 20), p + 1))} disabled={communityTeamsPage === Math.ceil(communityTeamsTotal / 20)} className="px-3 py-1 rounded bg-gray-700 text-xs disabled:opacity-40 hover:bg-gray-600">Next</button>
+              </div>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {PickerModal()}
 

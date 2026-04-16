@@ -32,6 +32,7 @@ export type WikiSkill = {
   replaces_label?: string
   replaces_slot?: string
   skill_filter_groups?: SkillFilterGroup[]
+  skill_change_type?: string | null
 }
 
 export type WikiTrait = {
