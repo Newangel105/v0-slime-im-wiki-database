@@ -277,6 +277,22 @@ function groupSkills(skills: WikiSkill[]): SkillGroup[] {
   return groups
 }
 
+const SKILL_CHANGE_TYPE_STYLES: Record<string, string> = {
+  "Attack Changing":        "bg-red-900/40 text-red-300 border border-red-700/50",
+  "Defense Changing":       "bg-blue-900/40 text-blue-300 border border-blue-700/50",
+  "Body and Spirit Changing": "bg-green-900/40 text-green-300 border border-green-700/50",
+  "Magic Changing":         "bg-yellow-900/40 text-yellow-300 border border-yellow-700/50",
+}
+
+function SkillChangeTypeBadge({ type }: { type: string }) {
+  const cls = SKILL_CHANGE_TYPE_STYLES[type] ?? "bg-gray-800 text-gray-300 border border-gray-600"
+  return (
+    <span className={`inline-flex items-center rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${cls}`}>
+      {type}
+    </span>
+  )
+}
+
 function SecretSkillTypeBadge({ type }: { type: string }) {
   const isAttack = type === "Attack"
   return (
@@ -371,6 +387,7 @@ function SkillGroupCard({ group, rarity }: { group: SkillGroup; rarity?: number 
     ? (tripleMode === "attack" ? group.attackVariant! : tripleMode === "support" ? group.supportVariant! : group.base)
     : (showChanged && group.changed ? group.changed : group.base)
   const displayedType = isSecretTriple && tripleMode !== "base" ? skill.special_skill_type : (!isSecretTriple ? skill.special_skill_type : undefined)
+  const skillChangeType = group.base.skill_change_type
 
   return (
       <Card
@@ -401,6 +418,7 @@ function SkillGroupCard({ group, rarity }: { group: SkillGroup; rarity?: number 
                 {group.base.slot === "special_skill" ? "secret skill" : group.base.slot.replace(/_/g, " ")}
               </span>
               {displayedType && <SecretSkillTypeBadge type={displayedType} />}
+              {skillChangeType && <SkillChangeTypeBadge type={skillChangeType} />}
               {skill.cost !== null && (
                 <span className="rounded bg-blue-900/30 px-2 py-0.5 text-[10px] font-semibold text-blue-300 border border-blue-700/50">
                   Cost: {skill.cost}
@@ -516,6 +534,7 @@ function SkillGroupCard({ group, rarity }: { group: SkillGroup; rarity?: number 
               {group.base.slot === "special_skill" ? "secret skill" : group.base.slot.replace(/_/g, " ")}
             </span>
             {displayedType && <SecretSkillTypeBadge type={displayedType} />}
+            {skillChangeType && <SkillChangeTypeBadge type={skillChangeType} />}
             {skill.cost !== null && (
               <span className="rounded bg-blue-900/30 px-2 py-0.5 text-[10px] font-semibold text-blue-300 border border-blue-700/50">
                 Cost: {skill.cost}
