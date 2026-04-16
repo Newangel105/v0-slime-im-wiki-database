@@ -28,6 +28,13 @@ const RARITY_ASSETS: Record<number, string> = {
   5: "/stars/starCharaL5A.png",
   6: "/stars/starCharaL6A.png",
   7: "/stars/starCharaL7A.png",
+  8: "/stars/starCharaL7_Epic.png",
+}
+
+function getMiniFramePath(tier: number, pfx: string) {
+  if (tier === 8) return `/frame/frame${pfx}M7_Epic.png`
+  const t = Math.min(Math.max(tier, 3), 7)
+  return `/frame/frame${pfx}M${t}.png`
 }
 
 function getContrastColor(hex?: string) {
@@ -519,19 +526,29 @@ export default function TierMakerPage() {
   }
 
   const availablePins = useMemo(() => {
-    return pins.filter((p) => {
-      if (assigned.has(p.id)) return false
-      if (imageSearch && !p.name.toLowerCase().includes(imageSearch.toLowerCase())) return false
-      const wc = wikiChars.find((w: any) => w.master_pc_id === p.masterId)
-      if (roleFilter === "protector" && !isProtectorChar(wc)) return false
-      if (roleFilter === "attacker" && !isAttackerChar(wc)) return false
-      if (rarityFilter != null) {
-        if (!wc) return false
-        const vt = getCharacterVisualTier(wc)
-        if (vt !== rarityFilter) return false
-      }
-      return true
-    })
+    const wcMap = new Map(wikiChars.map((w: any) => [w.master_pc_id, w]))
+    return pins
+      .filter((p) => {
+        if (assigned.has(p.id)) return false
+        if (imageSearch && !p.name.toLowerCase().includes(imageSearch.toLowerCase())) return false
+        const wc = wcMap.get(p.masterId)
+        if (roleFilter === "protector" && !isProtectorChar(wc)) return false
+        if (roleFilter === "attacker" && !isAttackerChar(wc)) return false
+        if (rarityFilter != null) {
+          if (!wc) return false
+          const vt = getCharacterVisualTier(wc)
+          if (vt !== rarityFilter) return false
+        }
+        return true
+      })
+      .sort((a, b) => {
+        const wcA = wcMap.get(a.masterId)
+        const wcB = wcMap.get(b.masterId)
+        const tierA = wcA ? getCharacterVisualTier(wcA) : 5
+        const tierB = wcB ? getCharacterVisualTier(wcB) : 5
+        if (tierB !== tierA) return tierB - tierA
+        return a.name.localeCompare(b.name)
+      })
   }, [pins, assigned, imageSearch, roleFilter, rarityFilter, wikiChars])
 
   
@@ -739,7 +756,8 @@ export default function TierMakerPage() {
                       const wc = wikiChars.find((w: any) => w.master_pc_id === c.master_pc_id)
                       const visualTier = wc ? getCharacterVisualTier(wc) : 5
                       const pfx = wc && isProtectorChar(wc) ? "Bless" : "Member"
-                      const miniFrame = wc ? `/frame/frame${pfx}M${visualTier}.png` : null
+                      const miniFrame = wc ? getMiniFramePath(visualTier, pfx) : null
+                      const starAsset = RARITY_ASSETS[visualTier] ?? null
                       return (
                         <div
                           key={id}
@@ -767,6 +785,7 @@ export default function TierMakerPage() {
                             />
                           </div>
                           {miniFrame && <img src={miniFrame} alt="rarity-frame" className="pointer-events-none absolute inset-0 w-full h-full object-fill z-10" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />}
+                          {starAsset && <img src={starAsset} alt="" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[14%] object-contain z-20" />}
                           {variant === "skill" && <img src="/skill-icons/skill_integrated_3400001_ItemM.png" alt="skill-change" draggable={false} onContextMenu={(e) => e.preventDefault()} className="absolute bottom-1 right-1 w-5 h-5 z-20" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any} />}
                         </div>
                       )
@@ -837,7 +856,7 @@ export default function TierMakerPage() {
                         >
                           <span className="select-none">All</span>
                         </button>
-                        {[3, 4, 5, 6, 7].map((r) => (
+                        {[3, 4, 5, 6, 7, 8].map((r) => (
                           <button
                             key={r}
                             onClick={() => setRarityFilter(r)}
@@ -864,7 +883,8 @@ export default function TierMakerPage() {
               const wc = wikiChars.find((w: any) => w.master_pc_id === pin.masterId)
               const visualTier = wc ? getCharacterVisualTier(wc) : 5
               const pfx = wc && isProtectorChar(wc) ? "Bless" : "Member"
-              const miniFrame = wc ? `/frame/frame${pfx}M${visualTier}.png` : null
+              const miniFrame = wc ? getMiniFramePath(visualTier, pfx) : null
+              const starAsset = RARITY_ASSETS[visualTier] ?? null
               return (
                 <div
                   key={pin.id}
@@ -887,6 +907,7 @@ export default function TierMakerPage() {
                     style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any}
                   />
                   {miniFrame && <img src={miniFrame} alt="rarity-frame" className="pointer-events-none absolute inset-0 w-full h-full object-fill z-10" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />}
+                  {starAsset && <img src={starAsset} alt="" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[14%] object-contain z-20" />}
                   {pin.variant === "skill" && <img src="/skill-icons/skill_integrated_3400001_ItemM.png" alt="skill-change" draggable={false} onContextMenu={(e) => e.preventDefault()} className="absolute bottom-1 right-1 w-5 h-5 z-20" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any} />}
                 </div>
               )

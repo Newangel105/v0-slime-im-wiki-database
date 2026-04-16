@@ -341,6 +341,10 @@ export function isExAttacker(character: Pick<WikiCharacter, "element">): boolean
 }
 
 export function getCharacterVisualTier(character: CharacterVisualInfo): number {
+  if (character.rarity === 6) {
+    return 8 // Epic tier
+  }
+
   if (character.rarity !== 5) {
     return Math.min(Math.max(character.rarity, 3), 7)
   }
@@ -362,6 +366,10 @@ export function getCharacterVisualTier(character: CharacterVisualInfo): number {
 
 export function getCharacterRarityLabel(character: CharacterVisualInfo): string {
   const visualTier = getCharacterVisualTier(character)
+
+  if (visualTier === 8) {
+    return "Epic"
+  }
 
   if (visualTier === 7) {
     return "EX Unbound"

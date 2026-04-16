@@ -173,6 +173,8 @@ function getDefenderElementValues(character: BrowserCharacter): string[] {
     values.push(normalized)
   } else if (baseElementKeys.has(normalized)) {
     values.push(normalized)
+  } else if (normalized === "physics" || normalized === "magic") {
+    values.push(normalized) // protector-type primary elements
   }
 
   // Secondary: use canonical `master_leader_skill_element_type_2` (no leader_skill parsing)
@@ -504,6 +506,7 @@ const rarityFrameMap: Record<number, string> = {
   5: "/frame/frameMemberM5.png",
   6: "/frame/frameMemberM6.png",
   7: "/frame/frameMemberM7.png",
+  8: "/frame/frameMemberM7_Epic.png",
 }
 
 const blessFrameMap: Record<number, string> = {
@@ -512,6 +515,7 @@ const blessFrameMap: Record<number, string> = {
   5: "/frame/frameBlessM5.png",
   6: "/frame/frameBlessM6.png",
   7: "/frame/frameBlessM7.png",
+  8: "/frame/frameBlessM7_Epic.png",
 }
 
 const baseRarityMap: Record<number, string> = {
@@ -520,6 +524,7 @@ const baseRarityMap: Record<number, string> = {
   5: "/frame/baseMemberM5.png",
   6: "/frame/baseMemberM6.png",
   7: "/frame/baseMemberM7.png",
+  8: "/frame/baseMemberM7_Epic.png",
 }
 
 const baseBlessMap: Record<number, string> = {
@@ -528,6 +533,7 @@ const baseBlessMap: Record<number, string> = {
   5: "/frame/baseBlessM5.png",
   6: "/frame/baseBlessM6.png",
   7: "/frame/baseBlessM7.png",
+  8: "/frame/baseBlessM7_Epic.png",
 }
 
 function getCharacterFrame(character: BrowserCharacter): string {
@@ -548,6 +554,7 @@ const starAssetMap: Record<number, string> = {
   5: "/stars/starCharaL5A.png",
   6: "/stars/starCharaL6A.png",
   7: "/stars/starCharaL7A.png",
+  8: "/stars/starCharaL7_Epic.png",
 }
 
 const elementColorMap: Record<string, string> = {

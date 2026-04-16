@@ -84,9 +84,8 @@ function renderColoredDesc(text: string): React.ReactNode[] {
 
 // ---- FRAME PATH HELPERS ----
 function getMainFramePaths(tier: number, role: "member" | "bless") {
-  const t = Math.min(Math.max(tier, 3), 7)
+  const t = Math.min(Math.max(tier, 3), 8)
   const pfx = role === "bless" ? "Bless" : "Member"
-  const baseTier = t === 7 ? 6 : t
   const isHigh = t >= 6
   const [fw, fh, bx, by] = isHigh ? [264, 628, 28, 35] : [248, 612, 17, 17]
   const intW = fw - 2 * bx
@@ -99,6 +98,14 @@ function getMainFramePaths(tier: number, role: "member" | "bless") {
     top: `${-(by / intH) * 100}%`,
     objectFit: "fill",
   }
+  if (t === 8) {
+    return {
+      base: `/frames/base${pfx}L7_Epic.png`,
+      frame: `/frames/frame${pfx}L7_Epic.png`,
+      frameStyle,
+    }
+  }
+  const baseTier = t === 7 ? 6 : t
   return {
     base: `/frames/base${pfx}L${baseTier}.png`,
     frame: `/frames/frame${pfx}L${t}.png`,
@@ -106,8 +113,11 @@ function getMainFramePaths(tier: number, role: "member" | "bless") {
   }
 }
 function getMiniFramePaths(tier: number, role: "member" | "bless") {
-  const t = Math.min(Math.max(tier, 3), 7)
+  const t = Math.min(Math.max(tier, 3), 8)
   const pfx = role === "bless" ? "Bless" : "Member"
+  if (t === 8) {
+    return { base: `/frame/base${pfx}M7_Epic.png`, frame: `/frame/frame${pfx}M7_Epic.png` }
+  }
   return { base: `/frame/base${pfx}M${t}.png`, frame: `/frame/frame${pfx}M${t}.png` }
 }
 
@@ -188,6 +198,7 @@ const TACTICS_TYPES = [
 const STAR_ASSETS: Record<number, string> = {
   3: "/stars/starCharaL3A.png", 4: "/stars/starCharaL4A.png",
   5: "/stars/starCharaL5A.png", 6: "/stars/starCharaL6A.png", 7: "/stars/starCharaL7A.png",
+  8: "/stars/starCharaL7_Epic.png",
 }
 
 // Card overlay icons
@@ -271,6 +282,8 @@ function getProtectorElementKeys(c: TeamBuilderCharacter): string[] {
     values.push(normalized)
   } else if (_baseElementKeys.has(normalized)) {
     values.push(normalized)
+  } else if (normalized === "physics" || normalized === "magic") {
+    values.push(normalized) // protector-type primary elements
   }
 
   // Secondary: canonical master_leader_skill_element_type_2 (no leader_skill text parsing)
@@ -559,7 +572,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       }
       return true
     })
-    // Sort by rarity descending: EX Unbound (7) > EX (6) > 5 > 4 > 3
+    // Sort by rarity descending: Epic (8) > EX Unbound (7) > EX (6) > 5 > 4 > 3
     filtered.sort((a, b) => getCharacterVisualTier(b) - getCharacterVisualTier(a))
     return filtered
   }, [characters, deferredQuery, filterAttack, filterCharType, filterCharacterType, filterEl, filterEnhancement, filterForces, filterProtSkill, filterProtType, filterRarity, filterSkillCost, filterSkillGroups, filterSkillType, filterTactics, filterUltimateType, filterWeapon, mainSlots, pickerMode, pickerOpenFor, sideSlots, sideSubSlots, subSlots])
@@ -1840,7 +1853,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
                         <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-2 uppercase tracking-wider">Rarity</div>
                         <div className="flex flex-wrap gap-1">
                           <FilterBtn active={filterRarity === null} onClick={() => setFilterRarity(null)}>ALL</FilterBtn>
-                          {[3,4,5,6,7].map(tier => (
+                          {[3,4,5,6,7,8].map(tier => (
                             <button key={tier} onClick={() => setFilterRarity(filterRarity === tier ? null : tier)}
                               className={`h-7 px-1.5 flex items-center justify-center rounded transition-all ${filterRarity === tier ? "ring-2 ring-white/60 bg-white/20" : "bg-white/5 hover:bg-white/10"}`}>
                               <img src={STAR_ASSETS[tier]} alt={`L${tier}`} className={`h-4 object-contain ${filterRarity === tier ? "opacity-100" : "opacity-55"}`} />
