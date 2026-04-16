@@ -701,7 +701,7 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
               {tabCount === 3 && <TabsTrigger value="ex">EX Abilities</TabsTrigger>}
             </TabsList>
             <TabsContent value="skills" className="mt-6">
-              <SkillList skills={character.skills} />
+              <SkillList skills={character.skills} rarity={character.rarity} />
             </TabsContent>
             <TabsContent value="traits" className="mt-6">
               <TraitList traits={character.traits} />

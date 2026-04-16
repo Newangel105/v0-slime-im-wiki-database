@@ -922,6 +922,7 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
   const [sortKey, setSortKey] = useState<SortKey>("release_date")
   const [sortAsc, setSortAsc] = useState(false)
   const [showStats, setShowStats] = useState(true)
+  const [filtersOpen, setFiltersOpen] = useState(false)
   const deferredSearchText = useDeferredValue(searchText)
 
   useEffect(() => {
@@ -1495,6 +1496,7 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
                 <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
                 <Input value={searchText} onChange={(event) => setSearchText(event.target.value)} placeholder="Search names, affiliations, effects, forces, towns" className="h-12 rounded-full border-gray-600 bg-gray-700 pl-11 text-white placeholder:text-gray-400" />
               </div>
+              {filtersOpen && (
               <div className="flex flex-wrap items-center gap-3">
                 <div className="flex items-center gap-2 text-sm text-gray-300">
                   <button
@@ -1523,8 +1525,31 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
                   Reset
                 </Button>
               </div>
+              )}
             </div>
 
+            <div className="flex flex-wrap items-center gap-3 text-sm text-gray-300">
+              <button
+                onClick={() => setFiltersOpen(!filtersOpen)}
+                className="inline-flex items-center rounded-full bg-gray-700 px-4 py-2 text-xs font-semibold text-gray-300 hover:bg-gray-600 hover:text-white transition-all"
+              >
+                {filtersOpen ? "Hide Filters" : "Show Filters"}
+              </button>
+              {activeFilterCount > 0 && (
+                <div className="inline-flex items-center gap-2 rounded-full bg-gray-700 px-4 py-2 text-white">
+                  <span>{activeFilterCount} active filters</span>
+                </div>
+              )}
+              <button
+                onClick={() => setShowStats(!showStats)}
+                className="inline-flex items-center rounded-full bg-gray-700 px-4 py-2 text-xs font-semibold text-gray-300 hover:bg-gray-600 hover:text-white transition-all"
+              >
+                {showStats ? "Hide Stats" : "Show Stats"}
+              </button>
+            </div>
+
+            {filtersOpen && (
+            <>
             <div className="flex flex-wrap gap-3">
               <ToggleFilter title="Tactics" options={options.tactics} selectedValues={selectedTactics} onToggle={(value) => toggleValue(selectedTactics, setSelectedTactics, value)} />
               <ToggleFilter title="Forces" options={options.forces} selectedValues={selectedForces} onToggle={(value) => toggleValue(selectedForces, setSelectedForces, value)} />
@@ -1569,18 +1594,8 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
                 </div>
               </div>
             </div>
-
-            <div className="flex flex-wrap items-center gap-3 text-sm text-gray-300">
-              <div className="inline-flex items-center gap-2 rounded-full bg-gray-700 px-4 py-2 text-white">
-                <span>{activeFilterCount} active filters</span>
-              </div>
-              <button
-                onClick={() => setShowStats(!showStats)}
-                className="inline-flex items-center rounded-full bg-gray-700 px-4 py-2 text-xs font-semibold text-gray-300 hover:bg-gray-600 hover:text-white transition-all"
-              >
-                {showStats ? "Hide Stats" : "Show Stats"}
-              </button>
-            </div>
+            </>
+            )}
           </div>
         </section>
 

@@ -33,14 +33,14 @@ export function SiteNav() {
             <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent text-xl font-extrabold">SLIME-WIKI</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-3 lg:gap-6 flex-wrap">
             {navLinks.map((link) => {
               const isActive = pathname === link.href || pathname.startsWith(link.href + "/")
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-lg font-semibold transition-colors ${isActive ? "text-white" : "text-gray-400 hover:text-white"}`}
+                  className={`text-sm lg:text-lg font-semibold whitespace-nowrap transition-colors ${isActive ? "text-white" : "text-gray-400 hover:text-white"}`}
                 >
                   {link.label}
                 </Link>
