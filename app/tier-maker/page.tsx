@@ -610,7 +610,8 @@ export default function TierMakerPage() {
 
   function copyShareLink() {
     try {
-      const encoded = encodeUnicodeToBase64(JSON.stringify(tiers))
+      const payload = tierLists.length === 1 ? tiers : { lists: tierLists }
+      const encoded = encodeUnicodeToBase64(JSON.stringify(payload))
       const url = `${window.location.origin}${window.location.pathname}?d=${encodeURIComponent(encoded)}`
       navigator.clipboard.writeText(url)
       alert("Share link copied to clipboard")
