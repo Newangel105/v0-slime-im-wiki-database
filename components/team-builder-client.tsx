@@ -340,6 +340,551 @@ function getMiniCardIcons(char: TeamBuilderCharacter): [string | null, string | 
 }
 
 // =================================
+// META PRESETS
+// Each slot is matched by affiliation_name (the title shown in meta images).
+// Slot assignment (left → right):
+//   protector    → mainSlots[0]   (Slot 1)
+//   battle1      → mainSlots[1]   (Slot 2)
+//   battle2      → mainSlots[2]   (Slot 3)
+//   battle3      → mainSlots[3]   (Slot 4)
+//   battle4      → sideSlots[0]   (Slot 5)
+//   battle5      → sideSlots[1]   (Slot 6)
+//   mini1        → subSlots[0]    (Mini slot under Slot 1)
+// =================================
+type MetaPreset = {
+  id: string
+  name: string
+  protector?: string
+  battle1?: string
+  battle2?: string
+  battle3?: string
+  battle5?: string
+  battle4?: string
+  mini1?: string
+  mini2?: string
+  mini3?: string
+}
+
+const META_PRESETS: MetaPreset[] = [
+  // ── MetasHelp0 ──
+  {
+    id: "dark1",
+    name: "Dark 1.0",
+    protector: "The Talented Secretary",
+    battle1: "The Black Progenitor",
+    battle2: "Seal Releaser",
+    battle3: "Manifestation of the Dragon",
+    battle4: "Awakened Demon Lord",
+    battle5: "Crimson Ogre Warrior",
+  },
+  {
+    id: "wind1",
+    name: "Wind 1.0",
+    protector: "The Faithful Housemaid",
+    battle1: "Queen of Yule",
+    battle2: "Master of Maids",
+    battle3: "The True Butler",
+    battle4: "The Bold Servant",
+  },
+  {
+    id: "fire1",
+    name: "Fire 1.0",
+    protector: "The Chancellor of Prosperity",
+    battle1: "The Enthusiastic Player",
+    battle2: "Captain of the Goblin Riders",
+    battle3: "Lord of Darkness",
+    battle4: "The Holy Sunrise",
+  },
+  {
+    id: "light1",
+    name: "Light 1.0",
+    protector: "The Lovestruck Maiden",
+    battle1: "Date Night Beauty",
+    battle2: "Captain of the Holy Knights",
+    battle3: "The Platinum Devil",
+    battle4: "Leisurely Lady",
+  },
+  {
+    id: "water1",
+    name: "Water 1.0",
+    protector: "Quiet Knight Girl",
+    battle1: "Brave Knight Girl",
+    battle2: "Lord of Wisdom",
+    battle3: "The White Ice Dragon",
+    battle4: "Loyal Horn",
+  },
+  // ── MetasHelp1 ──
+  {
+    id: "earth1",
+    name: "Earth 1.0",
+    protector: "Ultimate Blade",
+    battle1: "Undefeated General",
+    battle2: "Successful Shinobi",
+    battle3: "The Queen of Nightmares",
+    battle4: "The Golden Serpent",
+  },
+  {
+    id: "space1_dark15",
+    name: "Halfanni Space (Space 1.0 & Dark 1.5)",
+    protector: "Mighty Roar",
+    battle1: "Dragon Fist",
+    battle2: "Time Traveler",
+    battle3: "Beastmaster",
+    battle5: "Ebony Demon",
+    battle4: "Sky Queen",
+    mini1: "Stately Sovereign",
+  },
+  {
+    id: "light2",
+    name: "Light 2.0",
+    protector: "Dream Bride",
+    battle1: "Runaway Bride",
+    battle2: "Bridegroom Slime",
+    battle3: "Proud Giant Fist",
+    battle4: "Precocious Bride",
+  },
+  {
+    id: "wind2",
+    name: "Wind 2.0",
+    protector: "The Badlands Dragonewt",
+    battle1: "The Necromancing Devil",
+    battle2: "The Spider Witch",
+    battle3: "The Sleeping Ruler",
+    battle4: "The Terrible Experiment",
+  },
+  {
+    id: "water2",
+    name: "Water 2.0",
+    protector: "Summer High",
+    battle1: "Beachside Princess",
+    battle2: "Charming Purple Ogre",
+    battle3: "Dead End Striker",
+    battle4: "Lord of Sun and Fun",
+  },
+  // ── MetasHelp2 ──
+  {
+    id: "space2",
+    name: "Space 2.0",
+    protector: "Elegant Crimson Emperor",
+    battle1: "Graceful Ice Dragon",
+    battle2: "The Blue Progenitor",
+    battle3: "The Platinum Saber",
+    battle4: "The Green Progenitor",
+  },
+  {
+    id: "earth2",
+    name: "Earth 2.0",
+    protector: "Mystic General",
+    battle1: "Seeker of Enchantment",
+    battle2: "Wight King",
+    battle3: "The Marionette Master",
+    battle4: "Psychedelic Sorcerer",
+  },
+  {
+    id: "dark1year",
+    name: "Dark 1 Year Anniversary",
+    protector: "Dragon Guardian of Tempest",
+    battle1: "The True Demon Lord",
+    battle2: "Powerful Princess",
+    battle3: "Impulsive Adolescent",
+    battle5: "Demon Lord's Dark Servant",
+    battle4: "Mirror Queen",
+  },
+  {
+    id: "fire2",
+    name: "Fire 2.0 (Movie Meta)",
+    protector: "Queen of a Sub-Nation",
+    battle1: "Oath of Black Flame",
+    battle2: "The Purple Progenitor",
+    battle3: "Gift of Desire",
+    battle5: "White Gift Dragon",
+    battle4: "Scarlet Bond",
+  },
+  {
+    id: "light3",
+    name: "Light 3.0",
+    protector: "Sacred Sun of Tempest",
+    battle1: "Dragonoid Destroyer",
+    battle2: "Heavenly Noble",
+    battle3: "Rabbit of Prosperity",
+    battle4: "Priestess Protector",
+  },
+  // ── MetasHelp3 ──
+  {
+    id: "octagram",
+    name: "Octagram",
+    protector: "Worldmaker",
+    battle1: "Proud Dragon Demon Lord",
+    mini2: "The Supreme Fist",
+    battle2: "The Creator",
+    battle3: "The Beginning",
+    mini3: "Fallen One",
+    battle5: "The Flashing Blade",
+    battle4: "The Elegant Blood",
+  },
+  // ── MetasHelp4 ──
+  {
+    id: "space3",
+    name: "Space 3.0",
+    protector: "Fairy of Confection",
+    battle1: "Shockingly Sweet",
+    battle2: "True Emotion",
+    battle3: "Fighting Spirit",
+    battle4: "Cooking Challenger",
+  },
+  {
+    id: "fow",
+    name: "Fount of Wisdom",
+    protector: "Fanatical Student",
+    battle1: "Youthful Pupil",
+    battle2: "Discipline Officer",
+    battle3: "Piercing Blossom",
+    battle4: "Schoolboy Slacker",
+    mini1: "Guileless Scholar",
+  },
+  {
+    id: "wof",
+    name: "World of Fantasy",
+    protector: "Angelic Entertainer",
+    battle1: "Host of Wonder",
+    battle2: "Fresh-Faced Adventurer",
+    battle3: "Sacred Future",
+    battle4: "Festive Procession",
+    mini1: "Guide of Paradise",
+  },
+  {
+    id: "wm1",
+    name: "1.5th Halfanni Warrior's Mind 1.0",
+    protector: "White Ice Queen",
+    battle1: "Red Realm Demon Peer",
+    battle2: "Sanguine Enchantress",
+    battle3: "Grinning Mayhem",
+    battle5: "Forsaken Future",
+    battle4: "Purple Ogre General",
+    mini1: "Formalwear Fallen",
+  },
+  {
+    id: "god",
+    name: "Goddess of Destiny",
+    protector: "Bewitching Bride",
+    battle1: "Crafty Bride",
+    battle2: "Maiden Bride",
+    battle3: "Azure Demon",
+    battle4: "Virtuous Bride",
+    mini1: "Sorcerer Bride",
+  },
+  // ── MetasHelp5 ──
+  {
+    id: "adv1",
+    name: "KonoSuba Adventurer 1.0",
+    protector: "Crimson Demon Chancellor",
+    battle1: "My Name Is",
+    battle2: "Reincarnated Adventurer",
+    battle3: "Useless Goddess",
+    battle4: "Crusader",
+    mini1: "Exalted Elegance",
+  },
+  {
+    id: "sm1",
+    name: "Summer Memories 1",
+    protector: "Summer Lotus Bliss",
+    battle1: "Summer Radiance",
+    battle2: "Scorching Summer Dragon",
+    battle3: "Summershine Highblood",
+    battle5: "Summer Solace",
+    battle4: "Serene Summer Fairy",
+    mini1: "Summer Holiday Slime",
+  },
+  {
+    id: "ol",
+    name: "Otherworld Legend",
+    protector: "Trickster Ice Dragon",
+    battle1: "Winged Wisdom",
+    battle2: "Unfettered Feral Princess",
+    battle3: "Thunderous Storm Dragon",
+    battle4: "Adamant Allfather",
+    mini1: "Bestial World Serpent",
+  },
+  {
+    id: "wom",
+    name: "Wielder of Magic",
+    protector: "Talisman Spiritstealer",
+    battle1: "Whisker Witchcraft Maiden",
+    battle2: "White-Mantled Swordwielder",
+    battle3: "Steelhearted Swordwielder",
+    battle4: "Shadowbound Wolf",
+    mini1: "Franken-Stout",
+  },
+  {
+    id: "voc2",
+    name: "2nd Anni Visions of Coleus",
+    protector: "Night Rose Queen",
+    battle1: "Sandstorm Thief",
+    battle2: "Purple Demon Zenith",
+    battle3: "Primordial White",
+    battle5: "Primordial Yellow",
+    battle4: "Alluring Dark Elf",
+    mini1: "Satoru the Great Thief",
+  },
+  // ── MetasHelp6 ──
+  {
+    id: "ps",
+    name: "Idolmaster Pretty Sparkle",
+    protector: "Chancellor Idol",
+    battle1: "Princess Star",
+    battle2: "Fairy Star",
+    battle3: "Priestess Idol",
+    battle4: "Angel Star",
+    mini1: "Admirer Idol",
+  },
+  {
+    id: "nyb",
+    name: "New Year's Blessing",
+    protector: "Purple Ogre Fox Spirit",
+    battle1: "Federation Onmyoji",
+    battle2: "Underworld Dragon Princess",
+    battle3: "Evolving Bonds",
+    battle4: "Dark Onmyoji",
+    mini1: "Mountain Oni",
+  },
+  {
+    id: "sos",
+    name: "Overlord Stern of Spirit",
+    protector: "Chancellor of the Dead",
+    battle1: "OVERLORD",
+    battle2: "Leader of the Guardians",
+    battle3: "Will to Protect",
+    battle5: "The Bloody Valkyrie",
+    battle4: "Third Pleiades Sister",
+    mini1: "Demon Dragonewt",
+  },
+  {
+    id: "te",
+    name: "Tempest Elite",
+    protector: "Great Forest's Secretary",
+    battle1: "Destroyer Princess",
+    battle2: "Spy General",
+    battle3: "Fatebound",
+    battle4: "Hobgoblin Instructor",
+    mini1: "Dragonewt Conductor",
+  },
+  {
+    id: "pd",
+    name: "Primal Demon",
+    protector: "Controlling Purple Demon",
+    battle1: "Covert Ebony Demon",
+    battle2: "Explosive Yellow Demon",
+    battle3: "Ethereal White Demon",
+    battle4: "Shrouded Green Demon",
+    mini1: "Devoted Azure Demon",
+  },
+  // ── MetasHelp7 ──
+  {
+    id: "ec",
+    name: "2.5th Halfanni Exalted Champions",
+    protector: "Majestic Mythical Beast",
+    battle1: "Charged Mythical Dragon",
+    battle2: "Mythical Vermilion Wings",
+    battle3: "Mythical Stormbringer",
+    battle5: "Mythical Sentinel",
+    battle4: "Militant Mythical Dragon",
+    mini1: "Submaster",
+  },
+  {
+    id: "commander",
+    name: "Commander",
+    protector: "Noble of Light",
+    battle1: "Holy Armament",
+    battle2: "Flaming Armament",
+    battle3: "Despair Time",
+    battle4: "Raging Sea",
+    mini1: "Yomigaeri Leader",
+  },
+  {
+    id: "dtp",
+    name: "Determination to Prosper",
+    protector: "Plotting Heiress",
+    battle1: "True Vampire",
+    battle2: "High Elf Emperor",
+    battle3: "Future Attack Prediction",
+    battle4: "Captain of the Guards",
+    mini1: "Water Elementalist",
+  },
+  {
+    id: "op",
+    name: "Ogre's Pride",
+    protector: "Heaven Soaring Oni",
+    battle1: "Tengu Elder's Proxy",
+    battle2: "Swift Shadow Oni",
+    battle3: "Bright Dancer Oni",
+    battle4: "Blade Master Oni",
+    mini1: "Vying Wife",
+  },
+  {
+    id: "pop",
+    name: "Protector of Peace",
+    protector: "The Lightspeed Hero",
+    battle1: "Welcoming Chancellor",
+    battle2: "Ballroom Knight",
+    battle3: "Purple Ogre Virtuoso",
+    battle4: "Immovable Fortress",
+    mini1: "Wings of the Night Banquet",
+  },
+  // ── MetasHelp8 ──
+  {
+    id: "ant",
+    name: "Antagonist",
+    protector: "Mad City Lord",
+    battle1: "Serpent Zinnia Slime",
+    battle2: "Mirror Dragon King",
+    battle3: "Dark Chaos Oni",
+    battle4: "Fascinator Elf",
+    mini1: "Momentary Bliss",
+  },
+  {
+    id: "odl",
+    name: "Octagram Demon Lord",
+    protector: "Blazing Red Octagram",
+    battle1: "Armored Dragonoid",
+  },
+  {
+    id: "dg",
+    name: "3rd Anni Divine General",
+    protector: "Avatar of Seas",
+    battle1: "Avatar of Omnipotence",
+    battle2: "Avatar of the Underworld",
+    battle3: "Avatar of Moonlight",
+    battle5: "Avatar of Allure",
+    battle4: "Avatar of War",
+    mini1: "Avatar of the Forge",
+  },
+  {
+    id: "fm",
+    name: "Festive Memories",
+    protector: "Alluring Love",
+    battle1: "Graceful Love",
+    battle2: "Blessing of Desire",
+    battle3: "Sinister Night",
+    battle4: "Holy Adoration",
+    mini1: "Festive Memories",
+  },
+  {
+    id: "adv2",
+    name: "Frieren Adventurer 2.0",
+    protector: "The Hero",
+    battle1: "The Slayer",
+    battle2: "Otherworld Sorcerer",
+    battle3: "First-class Mage",
+    battle4: "Reliable Vanguard",
+    mini1: "Dragonoid's Choice",
+  },
+  // ── MetasHelp9 ──
+  {
+    id: "ts",
+    name: "Tournament Stalwart",
+    protector: "Wild Storm Dragon",
+    battle1: "Transcendent Vampiress",
+    battle2: "True Lord of Tempest",
+    battle3: "Demon Wolf Fusion",
+    battle4: "Pure Slime",
+    mini1: "Elementalist",
+  },
+  {
+    id: "soy",
+    name: "Sparkle of Youth",
+    protector: "Lightspeed Exchange Student",
+    battle1: "Academy Student",
+    battle2: "Academy Luminary",
+    battle3: "Gorgeous Lecturer",
+    battle4: "Instructor of Flames",
+    mini1: "Zealous Beastmaster",
+  },
+  {
+    id: "wm2",
+    name: "Warrior's Mind 2.0",
+    protector: "Oracle Commander",
+    battle1: "Kurenai Captain",
+    battle2: "Battlefield Enchanter",
+    battle3: "Ivory Blaze Commander",
+    battle4: "Yomigaeri Oni",
+    mini1: "Fey Medic",
+  },
+  {
+    id: "spm",
+    name: "3.5th Halfanni Spirit Master",
+    protector: "Veiled Armaments",
+    battle1: "Platinum Bulwark",
+    battle2: "Frostplate Dragon",
+    battle3: "Amber Avenger",
+    battle5: "Twinshade Vanquisher",
+    battle4: "Holy Knight of Water",
+    mini1: "Trueform Fairy",
+  },
+  {
+    id: "schemer",
+    name: "Schemer",
+    protector: "Azure Moon Phantom",
+    battle1: "Dawn Moon Phantom",
+    battle2: "Playful Cat Burglar",
+    battle3: "Gentleman-Thief",
+    battle4: "Wonder Pierrot",
+    mini1: "Midnight Tracker",
+  },
+  // ── MetasHelp10 ──
+  {
+    id: "tales",
+    name: "Tales of World of Fantasy 2",
+    protector: "Enforcer of Justice",
+    battle1: "Curse of Thorns",
+    battle2: "Lord of Spirits",
+    battle3: "Lord of Calamity",
+    battle4: "Iron Mask",
+    mini1: "Light of the Sacred Flame",
+  },
+  {
+    id: "sm2",
+    name: "Summer Memories 2",
+    protector: "Red Surf King",
+    battle1: "Ocean Belle",
+    battle2: "Wild Delight",
+    battle3: "Sun-Soaked Soul",
+    battle4: "Flaming Giant",
+    mini1: "Carefree Wanderer",
+  },
+  {
+    id: "danmachi",
+    name: "DanMachi Dungeon Crawler",
+    protector: "Goddess of the Hearth",
+    battle1: "Little Rookie",
+    battle2: "Goddess' Priestess",
+    battle3: "Sword Princess",
+    battle5: "Gale Wind",
+    battle4: "Gale Ninja",
+    mini1: "Supporter",
+  },
+  {
+    id: "sw",
+    name: "Scourge Wielder",
+    protector: "Key Sovereign",
+    battle1: "Radiant Blade",
+    battle2: "Master of Manipulation",
+    battle3: "Holy Shadow Witch",
+    battle4: "Sorcerous Secretary",
+    mini1: "Mischief Mage",
+  },
+  {
+    id: "dh",
+    name: "Dragon Haki",
+    protector: "Oathbound Storm Dragon",
+    battle1: "Ebon Overlord",
+    battle2: "Pact-Bound Demon Lord",
+    battle3: "Silver Dragoness",
+    battle4: "Trishula",
+    mini1: "Girl of Cherished Bonds",
+  },
+]
+
+// =================================
 export default function TeamBuilderClient({ characters, heartprints, equipment, charms }: { characters: TeamBuilderCharacter[], heartprints: Heartprint[], equipment: Equipment[], charms: Charm[] }) {
   // 4 main slots + 4 sub-slots + 2 side slots + 2 side sub-slots
   const [mainSlots, setMainSlots] = useState<(number | null)[]>(Array(4).fill(null))
@@ -377,6 +922,8 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
   const [filterSkillGroups, setFilterSkillGroups] = useState<number[]>([])
   const [previewHp, setPreviewHp] = useState<Heartprint | null>(null)
   const [isTouchDevice, setIsTouchDevice] = useState(false)
+  const [metaPresetSearch, setMetaPresetSearch] = useState("")
+  const [metaPresetOpen, setMetaPresetOpen] = useState(false)
 
   useEffect(() => {
     if (typeof window === "undefined") return
@@ -411,6 +958,19 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       counts.set(nameKey, (counts.get(nameKey) ?? 0) + 1)
     }
     return new Set(Array.from(counts.entries()).filter(([, count]) => count > 1).map(([name]) => name))
+  }, [characters])
+
+  const loadPreset = useCallback((preset: MetaPreset) => {
+    const findId = (title?: string): number | null => {
+      if (!title) return null
+      return characters.find(c => c.affiliation_name === title)?.master_pc_id ?? null
+    }
+    setMainSlots([findId(preset.protector), findId(preset.battle1), findId(preset.battle2), findId(preset.battle3)])
+    setSubSlots([findId(preset.mini1), findId(preset.mini2), findId(preset.mini3), null])
+    setSideSlots([findId(preset.battle4), findId(preset.battle5)])
+    setSideSubSlots([null, null])
+    setMetaPresetOpen(false)
+    setMetaPresetSearch("")
   }, [characters])
 
   const getCharacterById = useCallback((characterId: number | null | undefined): TeamBuilderCharacter | null => {
@@ -2184,6 +2744,46 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
         <img src="/brand/battleSplashB_02.png" alt=""
           className="h-10 sm:h-16 object-contain pointer-events-none drop-shadow-lg"
           onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+      </div>
+
+      {/* ── META PRESET LOADER ── */}
+      <div className="w-full flex justify-center mb-3">
+        <div className="relative w-full max-w-sm">
+          <button
+            onClick={() => setMetaPresetOpen(o => !o)}
+            className="w-full flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-sm text-white/80 border border-white/10"
+            style={{ background: "rgba(8,12,22,0.92)" }}
+          >
+            <span>Load Meta Preset...</span>
+            <span>{metaPresetOpen ? "▲" : "▼"}</span>
+          </button>
+          {metaPresetOpen && (
+            <div className="absolute top-full left-0 right-0 z-50 mt-1 rounded-lg overflow-hidden border border-white/10"
+              style={{ background: "rgba(8,12,22,0.97)" }}>
+              <div className="p-2 border-b border-white/10">
+                <Input
+                  value={metaPresetSearch}
+                  onChange={e => setMetaPresetSearch(e.target.value)}
+                  placeholder="Search metas..."
+                  className="h-8 text-sm bg-white/5 border-white/10 text-white placeholder:text-white/30"
+                  autoFocus
+                />
+              </div>
+              <div className="overflow-y-auto" style={{ maxHeight: "16rem", scrollbarColor: "rgba(255,255,255,0.2) transparent" }}>
+                {[...META_PRESETS].reverse()
+                  .filter(p => p.name.toLowerCase().includes(metaPresetSearch.toLowerCase()))
+                  .map(preset => (
+                    <button key={preset.id}
+                      className="w-full text-left px-3 py-2 text-sm text-white/80 hover:bg-white/10 transition-colors"
+                      onClick={() => loadPreset(preset)}
+                    >
+                      {preset.name}
+                    </button>
+                  ))}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* ── TEAM CAPTURE AREA ── */}
