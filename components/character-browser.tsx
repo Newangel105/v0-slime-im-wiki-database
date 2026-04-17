@@ -719,9 +719,13 @@ function ToggleFilter({
   selectedValues: string[]
   onToggle: (value: string) => void
 }) {
+  const [dropdownSearch, setDropdownSearch] = useState("")
   const selectedOptions = options.filter((o) => selectedValues.includes(o.value))
+  const visibleOptions = dropdownSearch.trim()
+    ? options.filter((o) => o.label.toLowerCase().includes(dropdownSearch.toLowerCase()))
+    : options
   return (
-    <Popover>
+    <Popover onOpenChange={() => setDropdownSearch("")}>      
       <PopoverTrigger asChild>
         <Button variant="outline" className="h-auto min-h-[2.25rem] justify-between gap-2 border-gray-600 bg-gray-700 px-3 py-1.5 text-white hover:bg-gray-600">
           {selectedOptions.length > 0 ? (
@@ -743,11 +747,20 @@ function ToggleFilter({
       </PopoverTrigger>
       <PopoverContent className="w-72 border-gray-600 bg-gray-700 p-0 text-white" align="start">
         <div className="border-b border-gray-600 px-4 py-3">
-          <p className="text-sm font-semibold text-white">{title}</p>
+          <p className="text-sm font-semibold text-white mb-2">{title}</p>
+          <div className="relative">
+            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 w-3.5 h-3.5" />
+            <Input
+              placeholder="Search..."
+              value={dropdownSearch}
+              onChange={(e) => setDropdownSearch(e.target.value)}
+              className="h-7 pl-8 text-xs bg-gray-800 border-gray-600 text-white placeholder:text-gray-500"
+            />
+          </div>
         </div>
         <ScrollArea className="h-72 px-4 py-3">
           <div className="space-y-1">
-            {options.map((option) => {
+            {visibleOptions.map((option) => {
               const checked = selectedValues.includes(option.value)
               return (
                 <label key={option.value} className={`flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm transition-colors ${
@@ -759,6 +772,9 @@ function ToggleFilter({
                 </label>
               )
             })}
+            {visibleOptions.length === 0 && (
+              <p className="py-2 text-center text-xs text-gray-500">No results</p>
+            )}
           </div>
         </ScrollArea>
       </PopoverContent>
@@ -865,8 +881,15 @@ function GroupedToggleFilter({
   selectedValues: string[]
   onToggle: (value: string) => void
 }) {
+  const [dropdownSearch, setDropdownSearch] = useState("")
+  const query = dropdownSearch.toLowerCase().trim()
+  const filteredGroups = query
+    ? groups
+        .map((g) => ({ ...g, options: g.options.filter((o) => o.label.toLowerCase().includes(query)) }))
+        .filter((g) => g.options.length > 0)
+    : groups
   return (
-    <Popover>
+    <Popover onOpenChange={() => setDropdownSearch("")}>
       <PopoverTrigger asChild>
         <Button variant="outline" className="justify-between gap-2 border-gray-600 bg-gray-700 text-white hover:bg-gray-600">
           <span>{title}</span>
@@ -876,9 +899,24 @@ function GroupedToggleFilter({
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-80 border-gray-600 bg-gray-700 p-0 text-white" align="start">
+        <div className="border-b border-gray-600 px-4 py-3">
+          <p className="text-sm font-semibold text-white mb-2">{title}</p>
+          <div className="relative">
+            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 w-3.5 h-3.5" />
+            <Input
+              placeholder="Search..."
+              value={dropdownSearch}
+              onChange={(e) => setDropdownSearch(e.target.value)}
+              className="h-7 pl-8 text-xs bg-gray-800 border-gray-600 text-white placeholder:text-gray-500"
+            />
+          </div>
+        </div>
         <ScrollArea className="h-96">
           <div className="p-0">
-            {groups.map((group) => (
+            {filteredGroups.length === 0 && (
+              <p className="py-4 text-center text-xs text-gray-500">No results</p>
+            )}
+            {filteredGroups.map((group) => (
               <div key={group.key} className="border-b border-gray-600 last:border-b-0">
                 <div className="bg-gray-600/70 px-4 py-2 text-xs font-semibold tracking-[0.18em] text-gray-100">
                   {group.title}

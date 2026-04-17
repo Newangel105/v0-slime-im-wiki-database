@@ -2,7 +2,12 @@
 
 import { useMemo, useState } from "react"
 import { Search } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import { stripColorTags, type Heartprint } from "@/lib/pc-wiki"
 
 function heartprintThumb(picturePath: string): string {
@@ -349,9 +354,121 @@ interface Props {
   heartprints: Heartprint[]
 }
 
+type ExFilterKey = "crit" | "pierce" | "synergy" | "aegis" | "gauge" | "soul" | "heal" | "skillpts"
+
+const EX_FILTER_OPTIONS: { key: ExFilterKey; label: string }[] = [
+  { key: "crit",     label: "Critical"     },
+  { key: "pierce",   label: "Pierce"       },
+  { key: "synergy",  label: "Synergy"      },
+  { key: "aegis",    label: "Aegis"        },
+  { key: "gauge",    label: "Gauge"        },
+  { key: "soul",     label: "Soul Change"  },
+  { key: "heal",     label: "Heal / HP"    },
+  { key: "skillpts", label: "Skill Points" },
+]
+
+const EX_FILTER_PATTERNS: Record<ExFilterKey, RegExp> = {
+  crit:     /critical power/i,
+  pierce:   /pierce power/i,
+  synergy:  /synergy power/i,
+  aegis:    /aegis power/i,
+  gauge:    /protection gauge/i,
+  soul:     /changes non-|soul of/i,
+  heal:     /heal|max hp/i,
+  skillpts: /skill points/i,
+}
+
+function getRareDesc(hp: Heartprint): string {
+  const levels = hp.rare_levels ?? []
+  const last = levels[levels.length - 1]
+  const raw = last?.skill_description ?? hp.skill_description ?? ""
+  return stripColorTags(raw)
+}
+
+function heartprintMatchesFilter(hp: Heartprint, key: ExFilterKey): boolean {
+  const desc = getRareDesc(hp)
+  return EX_FILTER_PATTERNS[key].test(desc)
+}
+
+function EquipableFilterDropdown({
+  selectedValues,
+  onToggle,
+}: {
+  selectedValues: string[]
+  onToggle: (value: string) => void
+}) {
+  const [dropdownSearch, setDropdownSearch] = useState("")
+  const visibleOptions = dropdownSearch.trim()
+    ? EX_FILTER_OPTIONS.filter((o) => o.label.toLowerCase().includes(dropdownSearch.toLowerCase()))
+    : EX_FILTER_OPTIONS
+  return (
+    <Popover onOpenChange={() => setDropdownSearch("")}>
+      <PopoverTrigger asChild>
+        <Button variant="outline" className="h-auto min-h-[2.25rem] justify-between gap-2 border-gray-600 bg-gray-700 px-3 py-1.5 text-white hover:bg-gray-600">
+          {selectedValues.length > 0 ? (
+            <span className="flex flex-wrap gap-1">
+              {selectedValues.map((v) => {
+                const opt = EX_FILTER_OPTIONS.find((o) => o.key === v)
+                return (
+                  <span key={v} className="inline-flex items-center gap-1 rounded-full bg-white/15 px-2 py-0.5 text-xs font-medium">
+                    {opt?.label ?? v}
+                  </span>
+                )
+              })}
+            </span>
+          ) : (
+            <span className="text-sm text-gray-300">Filter by effect</span>
+          )}
+          <Badge variant="secondary" className="ml-1 shrink-0 bg-gray-900 text-white">
+            {selectedValues.length}
+          </Badge>
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-56 border-gray-600 bg-gray-700 p-0 text-white" align="start">
+        <div className="border-b border-gray-600 px-4 py-3">
+          <p className="text-sm font-semibold text-white mb-2">Filter by effect</p>
+          <div className="relative">
+            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 w-3.5 h-3.5" />
+            <Input
+              placeholder="Search..."
+              value={dropdownSearch}
+              onChange={(e) => setDropdownSearch(e.target.value)}
+              className="h-7 pl-8 text-xs bg-gray-800 border-gray-600 text-white placeholder:text-gray-500"
+            />
+          </div>
+        </div>
+        <ScrollArea className="max-h-64 px-4 py-3">
+          <div className="space-y-1">
+            {visibleOptions.map((option) => {
+              const checked = selectedValues.includes(option.key)
+              return (
+                <label key={option.key} className={`flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm transition-colors ${
+                  checked ? "bg-white/10 text-white" : "text-gray-300 hover:bg-white/5"
+                }`}>
+                  <Checkbox checked={checked} onCheckedChange={() => onToggle(option.key)} />
+                  <span>{option.label}</span>
+                </label>
+              )
+            })}
+            {visibleOptions.length === 0 && (
+              <p className="py-2 text-center text-xs text-gray-500">No results</p>
+            )}
+          </div>
+        </ScrollArea>
+      </PopoverContent>
+    </Popover>
+  )
+}
+
 export function HeartprintsBrowser({ heartprints }: Props) {
   const [search, setSearch] = useState("")
   const [selected, setSelected] = useState<Heartprint | null>(null)
+  const [exFilters, setExFilters] = useState<ExFilterKey[]>([])
+
+  function toggleExFilter(key: string) {
+    const k = key as ExFilterKey
+    setExFilters((prev) => prev.includes(k) ? prev.filter((x) => x !== k) : [...prev, k])
+  }
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase().trim()
@@ -364,7 +481,10 @@ export function HeartprintsBrowser({ heartprints }: Props) {
     )
   }, [heartprints, search])
 
-  const equipable    = filtered.filter((hp) => hp.still_type === "rare").sort((a, b) => a.order - b.order)
+  const allEquipable = filtered.filter((hp) => hp.still_type === "rare").sort((a, b) => a.order - b.order)
+  const equipable = exFilters.length > 0
+    ? allEquipable.filter((hp) => exFilters.every((k) => heartprintMatchesFilter(hp, k)))
+    : allEquipable
   const notEquipable = filtered.filter((hp) => hp.still_type === "normal").sort((a, b) => a.order - b.order)
 
   return (
@@ -388,11 +508,15 @@ export function HeartprintsBrowser({ heartprints }: Props) {
 
         {/* Equipable section */}
         <section className="mb-14">
-          <div className="flex items-center gap-3 mb-5">
+          <div className="flex flex-wrap items-center gap-3 mb-5">
             <h2 className="text-xl font-bold text-gray-200 uppercase tracking-wide">Equipable</h2>
             <span className="rounded-full bg-blue-600/20 border border-blue-500/30 px-2.5 py-0.5 text-xs font-semibold text-blue-300">
               {equipable.length}
             </span>
+            <EquipableFilterDropdown
+              selectedValues={exFilters}
+              onToggle={toggleExFilter}
+            />
           </div>
           {equipable.length === 0
             ? <p className="text-gray-500 text-sm py-4">No heartprints found.</p>
