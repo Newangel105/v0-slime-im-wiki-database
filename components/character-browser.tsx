@@ -1,6 +1,6 @@
 "use client"
 
-import { startTransition, useDeferredValue, useEffect, useLayoutEffect, useMemo, useState, useRef } from "react"
+import { useDeferredValue, useEffect, useLayoutEffect, useMemo, useState, useRef } from "react"
 import { Grid as VirtualizedGrid, type CellComponentProps } from "react-window"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -1064,9 +1064,8 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
 
   const [options, setOptions] = useState<CharacterBrowserOptions>(EMPTY_OPTIONS)
   useEffect(() => {
-    startTransition(() => {
-      setOptions(buildAllOptions(characters))
-    })
+    const id = setTimeout(() => setOptions(buildAllOptions(characters)), 0)
+    return () => clearTimeout(id)
   }, [characters])
 
   const filteredCharacters = useMemo(() => {
@@ -1406,7 +1405,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     const elementIcons = getCharacterElementIcons(character)
     const attackTypeIcon = attackTypeIconMap[normalizeLabel(character.attack_type)]
     const attackTypeLabel = formatWikiLabel(character.attack_type)
-    const isPriority = index < 24
+    const isPriority = index < 6
     const imageLoading = isPriority ? "eager" : "lazy"
     // Same firstIcon/secondIcon logic as forces page:
     // attackers → element + attack type; protectors → up to two element icons
