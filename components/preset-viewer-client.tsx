@@ -80,7 +80,7 @@ function SkillIcon({ skill, size = 40 }: { skill: WikiSkill; size?: number }) {
 
 // ── Slot ordering ─────────────────────────────────────────────────────────────
 const SLOT_KEYS: (keyof MetaPreset)[] = [
-  "protector", "battle1", "battle2", "battle3", "battle4", "battle5", "mini1", "mini2", "mini3",
+  "protector", "battle1", "battle2", "battle3", "battle4", "battle5", "mini1", "mini2", "mini3", "mini4",
 ]
 
 const SLOT_LABELS: Record<string, string> = {
@@ -93,6 +93,7 @@ const SLOT_LABELS: Record<string, string> = {
   mini1: "Mini 1",
   mini2: "Mini 2",
   mini3: "Mini 3",
+  mini4: "Mini 4",
 }
 
 // ── Main component ────────────────────────────────────────────────────────────

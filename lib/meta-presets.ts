@@ -10,9 +10,17 @@ export type MetaPreset = {
   mini1?: string
   mini2?: string
   mini3?: string
+  mini4?: string
 }
 
 export const META_PRESETS: MetaPreset[] = [
+  {
+    id: "big3",
+    name: "Big 3",
+    mini2: "King of an Armed Nation",
+    mini3: "One of the Oldest Demon Lords",
+    mini4: "Manifestation of the Dragon",
+  },
   {
     id: "dark1",
     name: "Dark 1.0",
@@ -535,7 +543,20 @@ export const META_PRESETS: MetaPreset[] = [
     protector: "Azure-Winged Fairy",
     battle1: "The Black Swordsman",
     battle2: "Hero in Black",
+    battle3: "Absolute Sword",
+    battle4: "Ice Sniper",
+    battle5: "The Flash",
     mini1: "Speedaholic",
+  },
+  {
+    id: "op_2",
+    name: "Ogre's Pride 2.0",
+    protector: "Purple Ogre of Repose",
+    battle1: "Goddess of Mischief",
+    battle2: "Crimson Oath",
+    battle3: "Kurenai Commander",
+    battle4: "Clown of Despair",
+    mini1: "Queen of Festivities",
   },
   {
     id: "tears",
