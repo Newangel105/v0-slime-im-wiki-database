@@ -10,20 +10,22 @@ import { join, extname, basename } from "path"
 const PUBLIC = join(process.cwd(), "public")
 
 const FOLDERS = [
-  { path: join(PUBLIC, "partyL"),    recursive: false },
-  { path: join(PUBLIC, "SkillStill"), recursive: true  },
-  { path: join(PUBLIC, "frame"),     recursive: false },
-  { path: join(PUBLIC, "stars"),     recursive: false },
+  { path: join(PUBLIC, "partyL"),    recursive: false, pattern: null },
+  { path: join(PUBLIC, "SkillStill"), recursive: true, pattern: null },
+  { path: join(PUBLIC, "frame"),     recursive: false, pattern: null },
+  { path: join(PUBLIC, "stars"),     recursive: false, pattern: null },
+  { path: join(PUBLIC, "Image", "Character", "PC"),   recursive: true, pattern: /CharaPartyM\.png$/i },
+  { path: join(PUBLIC, "Image", "Character", "Bless"), recursive: true, pattern: /BlessPartyM\.png$/i },
 ]
 
-async function* walkPngs(dir, recursive) {
+async function* walkPngs(dir, recursive, pattern) {
   const entries = await readdir(dir, { withFileTypes: true })
   for (const e of entries) {
     const full = join(dir, e.name)
     if (e.isDirectory() && recursive) {
-      yield* walkPngs(full, true)
+      yield* walkPngs(full, true, pattern)
     } else if (e.isFile() && extname(e.name).toLowerCase() === ".png") {
-      yield full
+      if (!pattern || pattern.test(e.name)) yield full
     }
   }
 }
@@ -32,9 +34,9 @@ let converted = 0
 let skipped = 0
 let errors = 0
 
-for (const { path: dir, recursive } of FOLDERS) {
+for (const { path: dir, recursive, pattern } of FOLDERS) {
   console.log(`\nProcessing: ${dir}`)
-  for await (const pngPath of walkPngs(dir, recursive)) {
+  for await (const pngPath of walkPngs(dir, recursive, pattern)) {
     const webpPath = pngPath.replace(/\.png$/i, ".webp")
     // Skip if webp already exists and is newer than png
     try {
