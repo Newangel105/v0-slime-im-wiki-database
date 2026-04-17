@@ -373,10 +373,18 @@ type MetaPreset = {
   mini1?: string
   mini2?: string
   mini3?: string
+  mini4?: string
 }
 
 const META_PRESETS: MetaPreset[] = [
   // ── MetasHelp0 ──
+  {
+    id: "big3",
+    name: "Big 3",
+    mini2: "King of an Armed Nation",
+    mini3: "One of the Oldest Demon Lords",
+    mini4: "Manifestation of the Dragon",
+  },
   {
     id: "dark1",
     name: "Dark 1.0",
@@ -1063,7 +1071,7 @@ export default function TeamBuilderClient({ characters, heartprints, equipment, 
       return characters.find(c => c.affiliation_name === title)?.master_pc_id ?? null
     }
     setMainSlots([findId(preset.protector), findId(preset.battle1), findId(preset.battle2), findId(preset.battle3)])
-    setSubSlots([findId(preset.mini1), findId(preset.mini2), findId(preset.mini3), null])
+    setSubSlots([findId(preset.mini1), findId(preset.mini2), findId(preset.mini3), findId(preset.mini4)])
     setSideSlots([findId(preset.battle4), findId(preset.battle5)])
     setSideSubSlots([null, null])
     setMetaPresetOpen(false)
