@@ -38,92 +38,92 @@ type FilterOption = {
 }
 
 const elementIconMap: Record<string, string> = {
-  air: "/elements/space.png",
-  all: "/Image/IcElementBless/IcElementBlessAll.png",
-  dark: "/elements/dark.png",
-  earth: "/elements/earth.png",
-  enhancedair: "/Image/IcElementBless/IcElementBlessEnhancedAir.png",
-  enhanceddark: "/Image/IcElementBless/IcElementBlessEnhancedDark.png",
-  enhancedearth: "/Image/IcElementBless/IcElementBlessEnhancedEarth.png",
-  enhancedfire: "/Image/IcElementBless/IcElementBlessEnhancedFire.png",
-  enhancedholy: "/Image/IcElementBless/IcElementBlessEnhancedHoly.png",
-  enhancedwater: "/Image/IcElementBless/IcElementBlessEnhancedWater.png",
-  enhancedwind: "/Image/IcElementBless/IcElementBlessEnhancedWind.png",
-  fire: "/elements/fire.png",
-  holy: "/elements/light.png",
-  light: "/elements/icElementlight.png",
-  magic: "/Image/IcElementBless/IcElementBlessMagic.png",
-  physics: "/Image/IcElementBless/IcElementBlessPhysics.png",
-  space: "/elements/icElementspace.png",
-  special: "/type_dmg/IcElementBlessSpecial.png",
+  air: "/elements/space.webp",
+  all: "/Image/IcElementBless/IcElementBlessAll.webp",
+  dark: "/elements/dark.webp",
+  earth: "/elements/earth.webp",
+  enhancedair: "/Image/IcElementBless/IcElementBlessEnhancedAir.webp",
+  enhanceddark: "/Image/IcElementBless/IcElementBlessEnhancedDark.webp",
+  enhancedearth: "/Image/IcElementBless/IcElementBlessEnhancedEarth.webp",
+  enhancedfire: "/Image/IcElementBless/IcElementBlessEnhancedFire.webp",
+  enhancedholy: "/Image/IcElementBless/IcElementBlessEnhancedHoly.webp",
+  enhancedwater: "/Image/IcElementBless/IcElementBlessEnhancedWater.webp",
+  enhancedwind: "/Image/IcElementBless/IcElementBlessEnhancedWind.webp",
+  fire: "/elements/fire.webp",
+  holy: "/elements/light.webp",
+  light: "/elements/icElementlight.webp",
+  magic: "/Image/IcElementBless/IcElementBlessMagic.webp",
+  physics: "/Image/IcElementBless/IcElementBlessPhysics.webp",
+  space: "/elements/icElementspace.webp",
+  special: "/type_dmg/IcElementBlessSpecial.webp",
   
-  specialeffectelementair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.png",
-  specialeffectelementdark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementDark.png",
-  specialeffectelementearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEarth.png",
-  specialeffectelementenhancedair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedAir.png",
-  specialeffectelementenhanceddark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedDark.png",
-  specialeffectelementenhancedearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedEarth.png",
-  specialeffectelementenhancedfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedFire.png",
-  specialeffectelementenhancedholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedHoly.png",
-  specialeffectelementenhancedwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWater.png",
-  specialeffectelementenhancedwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWind.png",
-  specialeffectelementfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementFire.png",
-  specialeffectelementholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementHoly.png",
-  specialeffectelementnone: "/Image/IcElementBless/IcElementBlessSpecialEffectElementNone.png",
-  specialeffectelementwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWater.png",
-  specialeffectelementwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWind.png",
-  water: "/elements/water.png",
-  wind: "/elements/wind.png",
+  specialeffectelementair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.webp",
+  specialeffectelementdark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementDark.webp",
+  specialeffectelementearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEarth.webp",
+  specialeffectelementenhancedair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedAir.webp",
+  specialeffectelementenhanceddark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedDark.webp",
+  specialeffectelementenhancedearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedEarth.webp",
+  specialeffectelementenhancedfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedFire.webp",
+  specialeffectelementenhancedholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedHoly.webp",
+  specialeffectelementenhancedwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWater.webp",
+  specialeffectelementenhancedwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWind.webp",
+  specialeffectelementfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementFire.webp",
+  specialeffectelementholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementHoly.webp",
+  specialeffectelementnone: "/Image/IcElementBless/IcElementBlessSpecialEffectElementNone.webp",
+  specialeffectelementwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWater.webp",
+  specialeffectelementwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWind.webp",
+  water: "/elements/water.webp",
+  wind: "/elements/wind.webp",
 }
 
-// "Increases <element> ATK by" → base element icon (e.g. wind.png)
+// "Increases <element> ATK by" → base element icon (e.g. wind.webp)
 const defenderBaseElementIconMap: Record<string, string> = {
-  air: "/elements/space.png",
-  dark: "/elements/dark.png",
-  earth: "/elements/earth.png",
-  fire: "/elements/fire.png",
-  holy: "/elements/light.png",
-  water: "/elements/water.png",
-  wind: "/elements/wind.png",
+  air: "/elements/space.webp",
+  dark: "/elements/dark.webp",
+  earth: "/elements/earth.webp",
+  fire: "/elements/fire.webp",
+  holy: "/elements/light.webp",
+  water: "/elements/water.webp",
+  wind: "/elements/wind.webp",
 }
 
-// "damage done by ... to <element> attribute enemies" → Anti icon (e.g. Anti-Wind.png)
+// "damage done by ... to <element> attribute enemies" → Anti icon (e.g. Anti-Wind.webp)
 const defenderAntiElementIconMap: Record<string, string> = {
-  air: "/elements/Anti-Space.png",
-  dark: "/elements/Anti-Dark.png",
-  earth: "/elements/Anti-Earth.png",
-  fire: "/elements/Anti-Fire.png",
-  holy: "/elements/Anti-Light.png",
-  water: "/elements/Anti-Water.png",
-  wind: "/elements/Anti-Wind.png",
+  air: "/elements/Anti-Space.webp",
+  dark: "/elements/Anti-Dark.webp",
+  earth: "/elements/Anti-Earth.webp",
+  fire: "/elements/Anti-Fire.webp",
+  holy: "/elements/Anti-Light.webp",
+  water: "/elements/Anti-Water.webp",
+  wind: "/elements/Anti-Wind.webp",
 }
 
-// Same as Anti but for EX Unbound protectors → unbound icon (e.g. anti_wind_attribute_unbound.png)
+// Same as Anti but for EX Unbound protectors → unbound icon (e.g. anti_wind_attribute_unbound.webp)
 const defenderAntiExElementIconMap: Record<string, string> = {
-  air: "/elements/anti_space_attribute_unbound.png",
-  dark: "/elements/anti_dark_attribute_unbound.png",
-  earth: "/elements/anti_earth_attribute_unbound.png",
-  fire: "/elements/anti_fire_attribute_unbound.png",
-  holy: "/elements/anti_light_attribute_unbound.png",
-  water: "/elements/anti_water_attribute_unbound.png",
-  wind: "/elements/anti_wind_attribute_unbound.png",
+  air: "/elements/anti_space_attribute_unbound.webp",
+  dark: "/elements/anti_dark_attribute_unbound.webp",
+  earth: "/elements/anti_earth_attribute_unbound.webp",
+  fire: "/elements/anti_fire_attribute_unbound.webp",
+  holy: "/elements/anti_light_attribute_unbound.webp",
+  water: "/elements/anti_water_attribute_unbound.webp",
+  wind: "/elements/anti_wind_attribute_unbound.webp",
 }
 
 const attackerElementIconMap: Record<string, string> = {
-  air: "/elements/icElementspace.png",
-  dark: "/elements/icElementDark.png",
-  earth: "/elements/icElementEarth.png",
-  enhancedair: "/elements/Enhancedspace.png",
-  enhanceddark: "/elements/Enhanceddark.png",
-  enhancedearth: "/elements/Enhancedearth.png",
-  enhancedfire: "/elements/Enhancedfire.png",
-  enhancedholy: "/elements/Enhancedlight.png",
-  enhancedwater: "/elements/Enhancedwater.png",
-  enhancedwind: "/elements/Enhancedwind.png",
-  fire: "/elements/icElementFire.png",
-  holy: "/elements/icElementlight.png",
-  water: "/elements/icElementWater.png",
-  wind: "/elements/icElementWind.png",
+  air: "/elements/icElementspace.webp",
+  dark: "/elements/icElementDark.webp",
+  earth: "/elements/icElementEarth.webp",
+  enhancedair: "/elements/Enhancedspace.webp",
+  enhanceddark: "/elements/Enhanceddark.webp",
+  enhancedearth: "/elements/Enhancedearth.webp",
+  enhancedfire: "/elements/Enhancedfire.webp",
+  enhancedholy: "/elements/Enhancedlight.webp",
+  enhancedwater: "/elements/Enhancedwater.webp",
+  enhancedwind: "/elements/Enhancedwind.webp",
+  fire: "/elements/icElementFire.webp",
+  holy: "/elements/icElementlight.webp",
+  water: "/elements/icElementWater.webp",
+  wind: "/elements/icElementWind.webp",
 }
 
 const leaderSkillElementPatterns: [RegExp, string][] = [
@@ -354,8 +354,8 @@ function getDefenderEntryIcon(entry: DefenderElementEntry, character: BrowserCha
   // Physics / Magic for protectors → use protector-specific icons
   if (isProtectorCharacter(character)) {
     const protTypeMap: Record<string, string> = {
-      physics: "/type_dmg/prot_phys.png",
-      magic: "/type_dmg/prot_magic.png",
+      physics: "/type_dmg/prot_phys.webp",
+      magic: "/type_dmg/prot_magic.webp",
     }
     if (protTypeMap[normalized]) return protTypeMap[normalized]
   }
@@ -383,28 +383,28 @@ function getCharacterElementIcons(character: BrowserCharacter): { icon: string; 
 }
 
 const attackTypeIconMap: Record<string, string> = {
-  magic: "/type_dmg/icAttackTypeMagic.png",
-  physical: "/type_dmg/icAttackTypePhysics.png",
+  magic: "/type_dmg/icAttackTypeMagic.webp",
+  physical: "/type_dmg/icAttackTypePhysics.webp",
 }
 
 const weaponIconMap: Record<string, string> = {
-  book: "/weapons/book.png",
-  fist: "/weapons/fists.png",
-  fists: "/weapons/fists.png",
-  greatsword: "/weapons/greatsword.png",
-  hammer: "/weapons/hammer.png",
-  largesword: "/weapons/greatsword.png",
-  katana: "/weapons/katana.png",
-  knuckle: "/weapons/fists.png",
-  spear: "/weapons/spear.png",
-  sword: "/weapons/sword.png",
+  book: "/weapons/book.webp",
+  fist: "/weapons/fists.webp",
+  fists: "/weapons/fists.webp",
+  greatsword: "/weapons/greatsword.webp",
+  hammer: "/weapons/hammer.webp",
+  largesword: "/weapons/greatsword.webp",
+  katana: "/weapons/katana.webp",
+  knuckle: "/weapons/fists.webp",
+  spear: "/weapons/spear.webp",
+  sword: "/weapons/sword.webp",
 }
 
 const tacticsIconMap: Record<string, string> = {
-  charge: "/Image/Tactics/charge.png",
-  defense: "/Image/Tactics/defense.png",
-  normal: "/Image/Tactics/normal.png",
-  speed: "/Image/Tactics/speed.png",
+  charge: "/Image/Tactics/charge.webp",
+  defense: "/Image/Tactics/defense.webp",
+  normal: "/Image/Tactics/normal.webp",
+  speed: "/Image/Tactics/speed.webp",
 }
 
 function fieldBuildingIcon(id: string, ver: string) {
@@ -631,13 +631,13 @@ function buildElementOptions(characters: BrowserCharacter[], role: "attacker" | 
 
 /** IcElementBless icons for base element keys in the protector filter bar */
 const defenderBlessIconMap: Record<string, string> = {
-  air: "/Image/IcElementBless/IcElementBlessAir.png",
-  dark: "/Image/IcElementBless/IcElementBlessDark.png",
-  earth: "/Image/IcElementBless/IcElementBlessEarth.png",
-  fire: "/Image/IcElementBless/IcElementBlessFire.png",
-  holy: "/Image/IcElementBless/IcElementBlessHoly.png",
-  water: "/Image/IcElementBless/IcElementBlessWater.png",
-  wind: "/Image/IcElementBless/IcElementBlessWind.png",
+  air: "/Image/IcElementBless/IcElementBlessAir.webp",
+  dark: "/Image/IcElementBless/IcElementBlessDark.webp",
+  earth: "/Image/IcElementBless/IcElementBlessEarth.webp",
+  fire: "/Image/IcElementBless/IcElementBlessFire.webp",
+  holy: "/Image/IcElementBless/IcElementBlessHoly.webp",
+  water: "/Image/IcElementBless/IcElementBlessWater.webp",
+  wind: "/Image/IcElementBless/IcElementBlessWind.webp",
 }
 
 function getDefenderFilterIcon(value: string): string | undefined {
@@ -699,13 +699,13 @@ function getCharacterUltimateType(character: BrowserCharacter): "aoe" | "single"
 }
 
 const ROLE_OPTIONS: FilterOption[] = [
-  { label: "Attacker", value: "attacker", icon: "/UI/Texture/CharaInfoAtlas/icSkillAttacker.png" },
-  { label: "Protector", value: "protector", icon: "/UI/Texture/CharaInfoAtlas/icSkillBlessLeader.png" },
+  { label: "Attacker", value: "attacker", icon: "/UI/Texture/CharaInfoAtlas/icSkillAttacker.webp" },
+  { label: "Protector", value: "protector", icon: "/UI/Texture/CharaInfoAtlas/icSkillBlessLeader.webp" },
 ]
 
 const ULTIMATE_TYPE_OPTIONS: FilterOption[] = [
-  { label: "AoE", value: "aoe", icon: "/UI/Texture/CharaInfoAtlas/icSpTypeAll.png" },
-  { label: "Single", value: "single", icon: "/UI/Texture/CharaInfoAtlas/icSpTypeSingle.png" },
+  { label: "AoE", value: "aoe", icon: "/UI/Texture/CharaInfoAtlas/icSpTypeAll.webp" },
+  { label: "Single", value: "single", icon: "/UI/Texture/CharaInfoAtlas/icSpTypeSingle.webp" },
 ]
 
 function ToggleFilter({
@@ -963,18 +963,13 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   const [sortKey, setSortKey] = useState<SortKey>("release_date")
   const [sortAsc, setSortAsc] = useState(false)
   const [showStats, setShowStats] = useState(true)
-  const [viewMode, setViewMode] = useState<"cards" | "compact">(() => {
-    if (typeof sessionStorage !== "undefined") {
-      return sessionStorage.getItem("characterBrowserViewMode") === "cards" ? "cards" : "compact"
-    }
-    return "cards"
-  })
-  const [filtersOpen, setFiltersOpen] = useState(() => {
-    if (typeof sessionStorage !== "undefined") {
-      return sessionStorage.getItem("characterBrowserFiltersOpen") === "1"
-    }
-    return false
-  })
+  const [viewMode, setViewMode] = useState<"cards" | "compact">("compact")
+  const [filtersOpen, setFiltersOpen] = useState(false)
+  useEffect(() => {
+    const saved = sessionStorage.getItem("characterBrowserViewMode")
+    if (saved === "cards" || saved === "compact") setViewMode(saved)
+    if (sessionStorage.getItem("characterBrowserFiltersOpen") === "1") setFiltersOpen(true)
+  }, [])
   const [filterMode, setFilterMode] = useState<"AND" | "OR">("OR")
   const [searchSkills, setSearchSkills] = useState(false)
   const deferredSearchText = useDeferredValue(searchText)
@@ -1320,6 +1315,19 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   const getColumnWidth = () => columnWidth
   const getRowHeight = () => ROW_HEIGHT
 
+  // Compact grid sizing (mirrors the responsive CSS grid breakpoints)
+  const COMPACT_GAP = 8
+  const compactColumnCount = !containerWidth ? 12
+    : containerWidth >= 1280 ? 12
+    : containerWidth >= 1024 ? 10
+    : containerWidth >= 768 ? 8
+    : containerWidth >= 640 ? 6
+    : 4
+  const compactCellWidth = containerWidth ? containerWidth / compactColumnCount : 80
+  const compactCellHeight = compactCellWidth + COMPACT_GAP
+  const compactRowCount = Math.ceil(filteredCharacters.length / compactColumnCount)
+  const compactGridHeight = Math.min(8, compactRowCount) * compactCellHeight + 10
+
   function CompactCard({ character, index }: { character: BrowserCharacter; index: number }) {
     const visualTier = getCharacterVisualTier(character)
     const frameSrc = getCharacterFrame(character)
@@ -1367,6 +1375,63 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     )
   }
 
+  function CompactGridCell({ ariaAttributes, columnIndex, rowIndex, style }: CellComponentProps) {
+    const index = rowIndex * compactColumnCount + columnIndex
+    if (index >= filteredCharacters.length) return null
+    const character = filteredCharacters[index]
+    const visualTier = getCharacterVisualTier(character)
+    const frameSrc = getCharacterFrame(character)
+    const baseSrc = getCharacterBase(character)
+    const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
+    const iconSrc = character.images.icon?.replace(/\.png$/i, ".webp")
+    const elementIcons = getCharacterElementIcons(character)
+    const attackTypeIcon = attackTypeIconMap[normalizeLabel(character.attack_type)]
+    const attackTypeLabel = formatWikiLabel(character.attack_type)
+    const isPriority = index < 24
+    const imageLoading = isPriority ? "eager" : "lazy"
+    let firstIcon: string | undefined
+    let secondIcon: string | undefined
+    if (isAttackerCharacter(character)) {
+      firstIcon = elementIcons[0]?.icon
+      secondIcon = attackTypeIcon
+    } else {
+      firstIcon = elementIcons[0]?.icon
+      secondIcon = elementIcons[1]?.icon
+    }
+    const rawLeft = (style as any).left ?? 0
+    const rawWidth = (style as any).width ?? compactCellWidth
+    const isLastColumn = columnIndex === compactColumnCount - 1
+    const adjustedLeft = rawLeft + COMPACT_GAP / 2
+    const adjustedWidth = Math.max(0, rawWidth - COMPACT_GAP - (isLastColumn ? 2 : 0))
+    const adjustedStyle = { ...style, left: adjustedLeft, width: adjustedWidth }
+    return (
+      <div style={adjustedStyle} aria-colindex={ariaAttributes?.["aria-colindex"]} role={ariaAttributes?.role}>
+        {/* paddingBottom creates the row gap; pt-[100%] maintains a 1:1 square aspect ratio */}
+        <div style={{ paddingBottom: COMPACT_GAP }}>
+          <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="block w-full min-w-0">
+            <div className="relative w-full pt-[100%] overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white transition-all">
+              <div className={`absolute overflow-hidden ${visualTier >= 8 ? "inset-[8%] rounded-[12%]" : "inset-0"}`}>
+                <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
+                <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-cover object-top" />
+              </div>
+              <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
+              <div className="absolute top-1 left-1 bg-black bg-opacity-80 text-white text-[9px] px-1 py-0.5 rounded z-10 leading-tight max-w-[70%] line-clamp-2">
+                {character.name}
+              </div>
+              <img src={starsSrc} alt="" loading="lazy" decoding="async" className="absolute bottom-1 left-1 h-5 object-contain z-10" />
+              {(firstIcon || secondIcon) && (
+                <div className="absolute top-1 right-1 z-20 flex flex-col items-end gap-0.5">
+                  {firstIcon && <img src={firstIcon} alt="" className="w-5 h-5 object-contain" />}
+                  {secondIcon && <img src={secondIcon} alt={attackTypeLabel} className="w-5 h-5 object-contain" />}
+                </div>
+              )}
+            </div>
+          </Link>
+        </div>
+      </div>
+    )
+  }
+
   function MobileCard({ character, index }: { character: BrowserCharacter; index: number }) {
     const visualTier = getCharacterVisualTier(character)
     const frameSrc = getCharacterFrame(character)
@@ -1402,17 +1467,19 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
             <div>
               <div className="flex gap-4 p-4 pb-3">
                 <div className="relative h-24 w-24 md:h-[148px] md:w-[148px] shrink-0">
-                  <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
-                  <div className="absolute inset-[10px] overflow-hidden rounded-[18px]">
-                    <img
-                      src={iconSrc}
-                      alt={character.name}
-                      loading={imageLoading}
-                      decoding="async"
-                      fetchPriority={isPriorityCard ? "high" : "low"}
-                      className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110"
-                    />
-                  </div>
+                  {visualTier >= 8 ? (
+                    <div className="absolute inset-[8%] rounded-[12%] overflow-hidden">
+                      <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
+                      <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={isPriorityCard ? "high" : "low"} className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                  ) : (
+                    <>
+                      <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
+                      <div className="absolute inset-[10px] rounded-[18px] overflow-hidden">
+                        <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={isPriorityCard ? "high" : "low"} className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110" />
+                      </div>
+                    </>
+                  )}
                   <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
                 </div>
                 <div className="flex min-w-0 flex-1 flex-col md:min-h-[148px]">
@@ -1546,17 +1613,19 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                 <div className="flex gap-4 p-4 pb-3">
                   {/* Portrait */}
                   <div className="relative h-24 w-24 md:h-[148px] md:w-[148px] shrink-0">
-                    <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
-                    <div className="absolute inset-[10px] overflow-hidden rounded-[18px]">
-                      <img
-                        src={iconSrc}
-                        alt={character.name}
-                        loading={imageLoading}
-                        decoding="async"
-                        fetchPriority={isPriorityCard ? "high" : "low"}
-                        className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110"
-                      />
-                    </div>
+                    {visualTier >= 8 ? (
+                      <div className="absolute inset-[8%] rounded-[12%] overflow-hidden">
+                        <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
+                        <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={isPriorityCard ? "high" : "low"} className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110" />
+                      </div>
+                    ) : (
+                      <>
+                        <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
+                        <div className="absolute inset-[10px] rounded-[18px] overflow-hidden">
+                          <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={isPriorityCard ? "high" : "low"} className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110" />
+                        </div>
+                      </>
+                    )}
                     <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
                   </div>
                   {/* Info column */}
@@ -1855,11 +1924,18 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
           {Array.isArray(filteredCharacters) && filteredCharacters.length > 0 && (
             <div ref={gridRef} className="w-full">
               {viewMode === "compact" ? (
-                <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-y-4 gap-x-2">
-                  {filteredCharacters.slice(0, visibleCount).map((ch, idx) => (
-                    <CompactCard key={ch.master_pc_id} character={ch} index={idx} />
-                  ))}
-                </div>
+                <VirtualizedGrid
+                  className="image-scroll"
+                  columnCount={compactColumnCount}
+                  columnWidth={compactCellWidth}
+                  rowCount={compactRowCount}
+                  rowHeight={compactCellHeight}
+                  cellComponent={CompactGridCell}
+                  cellProps={{}}
+                  defaultHeight={compactGridHeight}
+                  defaultWidth={containerWidth || compactColumnCount * compactCellWidth}
+                  style={{ height: compactGridHeight, width: containerWidth || compactColumnCount * compactCellWidth, overflowX: "hidden" }}
+                />
               ) : showGridOnIphone ? (
                 IS_MOBILE ? (
                   <div className="flex flex-col" style={{ gap: `${GAP}px` }}>
