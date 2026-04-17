@@ -96,6 +96,7 @@ const buffAllEntries: EntryDefinition[] = [
   { label: "Drago", aliases: ["drago"] },
   { label: "Synergy Rate", aliases: ["synergy rate"] },
   { label: "Synergy Power", aliases: ["synergy power"] },
+  { label: "Critical Power", aliases: ["critical power"] },
   { label: "Charge-Type M-ATK", aliases: ["charge type m atk"] },
   { label: "Defense-Type P-ATK", aliases: ["defense type p atk"] },
   { label: "EX Soul of Combos", aliases: ["ex soul of combos"] },
@@ -157,6 +158,14 @@ const debuffAllEntries: EntryDefinition[] = [
   { label: "Weakness Resistance", aliases: ["weakness resistance"] },
   { label: "Physical Attack Damage Resistance", aliases: ["physical attack damage resistance"] },
   { label: "Aegis Resistance", aliases: ["aegis resistance"] },
+  { label: "Synergy Resistance", aliases: ["synergy resistance"] },
+  { label: "Synergy Power", aliases: ["synergy power"] },
+  { label: "Enamor", aliases: ["enamor"] },
+  { label: "Frostbite", aliases: ["frostbite"] },
+  { label: "Vengeance", aliases: ["vengeance"] },
+  { label: "Despair", aliases: ["despair"] },
+  { label: "Dread", aliases: ["dread"] },
+  { label: "Chaos", aliases: ["chaos"] },
 ]
 
 const fromSoulEntries: EntryDefinition[] = [
@@ -201,13 +210,26 @@ const buffSelfEntries: EntryDefinition[] = [
 const specialEntries: EntryDefinition[] = [
   { label: "Skill Cost Reset", aliases: ["skill cost reset"] },
   { label: "Self Taunt", aliases: ["self taunt", "taunt"] },
-  { label: "Burn Single", aliases: ["burn"] },
+  { label: "Burn", aliases: ["burn"] },
   { label: "Deals Damage", aliases: ["deals damage"] },
   { label: "Absorb Secret Skill", aliases: ["absorb secret skill"] },
-  { label: "Make Another Move", aliases: ["make another move"] },
+  { label: "Make Another Move", aliases: ["make another move", "second move"] },
   { label: "Redraw", aliases: ["redraw"] },
   { label: "Barrier", aliases: ["barrier"] },
-  { label: "Multi-hit Soul of Divine Protection", aliases: ["multi hit soul of divine protection"] },
+  { label: "Multi-hit Soul", aliases: ["multi hit soul of divine protection", "multi hit soul"] },
+  { label: "Inspire", aliases: ["inspire"] },
+  { label: "Grit", aliases: ["grit"] },
+  { label: "Invincible", aliases: ["invincible"] },
+  { label: "Resurrection", aliases: ["resurrection"] },
+  { label: "Continuous Heal", aliases: ["continuous heal"] },
+  { label: "Secret Skill Vitalization", aliases: ["secret skill vitalization"] },
+  { label: "Reckoning", aliases: ["reckoning"] },
+  { label: "Damage Absorption", aliases: ["damage absorption"] },
+  { label: "Unlimited Skill Use", aliases: ["unlimited skill use"] },
+  { label: "Live Mode", aliases: ["live mode"] },
+  { label: "Status Effects Nullified", aliases: ["status effects nullified", "nullifies status effects"] },
+  { label: "Seeking Soul", aliases: ["seeking soul"] },
+  { label: "Lord's Ambition", aliases: ["lord's ambition", "lords ambition"] },
 ]
 
 const debuffSingleEntries: EntryDefinition[] = [
@@ -225,6 +247,12 @@ const debuffSingleEntries: EntryDefinition[] = [
   { label: "All Attribute Resistance", aliases: ["all attribute resistance"] },
   { label: "Weakness Resistance", aliases: ["weakness resistance"] },
   { label: "Freeze", aliases: ["freeze"] },
+  { label: "Enamor", aliases: ["enamor"] },
+  { label: "Frostbite", aliases: ["frostbite"] },
+  { label: "Vengeance", aliases: ["vengeance"] },
+  { label: "Despair", aliases: ["despair"] },
+  { label: "Dread", aliases: ["dread"] },
+  { label: "Chaos", aliases: ["chaos"] },
 ]
 
 const healEntries: EntryDefinition[] = [
@@ -301,7 +329,7 @@ function hasHealContext(text: string): boolean {
 }
 
 function hasSpecialContext(text: string): boolean {
-  return /(barrier|redraw|taunt|burn|absorb secret skill|make another move|skill cost reset|multi hit soul of divine protection|deals damage)/.test(text)
+  return /(barrier|redraw|taunt|burn|absorb secret skill|make another move|second move|skill cost reset|multi hit soul|deals damage|inspire|grit|invincible|resurrection|continuous heal|secret skill vitalization|reckoning|damage absorption|unlimited skill use|live mode|status effects nullified|seeking soul|lords ambition|lord.s ambition)/.test(text)
 }
 
 function addContextualMatches(tagSet: Set<string>, segments: string[], group: GroupDefinition, predicate: (text: string) => boolean) {
