@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState, useEffect } from "react"
+import { useMemo, useState } from "react"
 import { Search } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -11,11 +11,11 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { stripColorTags, type Heartprint } from "@/lib/pc-wiki"
 
 function heartprintThumb(picturePath: string): string {
-  return "/" + picturePath.replace(/^Image\//, "").replace("{0}", "S") + ".png"
+  return "/" + picturePath.replace(/^Image\//, "").replace("{0}", "S") + ".webp"
 }
 
 function heartprintLarge(picturePath: string): string {
-  return "/" + picturePath.replace(/^Image\//, "").replace("{0}", "L") + ".png"
+  return "/" + picturePath.replace(/^Image\//, "").replace("{0}", "L") + ".webp"
 }
 
 const ELEMENT_NAMES: Record<number, string> = {
@@ -460,17 +460,7 @@ function EquipableFilterDropdown({
   )
 }
 
-export function HeartprintsBrowser() {
-  const [heartprints, setHeartprints] = useState<Heartprint[]>([])
-  const [dataLoading, setDataLoading] = useState(true)
-
-  useEffect(() => {
-    fetch("/api/heartprints")
-      .then((r) => r.json())
-      .then((data) => { setHeartprints(data); setDataLoading(false) })
-      .catch(() => setDataLoading(false))
-  }, [])
-
+export function HeartprintsBrowser({ heartprints }: { heartprints: Heartprint[] }) {
   const [search, setSearch] = useState("")
   const [selected, setSelected] = useState<Heartprint | null>(null)
   const [exFilters, setExFilters] = useState<ExFilterKey[]>([])
@@ -496,17 +486,6 @@ export function HeartprintsBrowser() {
     ? allEquipable.filter((hp) => exFilters.every((k) => heartprintMatchesFilter(hp, k)))
     : allEquipable
   const notEquipable = filtered.filter((hp) => hp.still_type === "normal").sort((a, b) => a.order - b.order)
-
-  if (dataLoading) {
-    return (
-      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <div className="flex flex-col items-center gap-3">
-          <div className="h-10 w-10 animate-spin rounded-full border-[3px] border-gray-700 border-t-blue-400" />
-          <p className="text-sm text-gray-500 animate-pulse">Loading…</p>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
