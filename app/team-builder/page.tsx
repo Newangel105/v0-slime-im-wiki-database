@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import TeamBuilderClient from "@/components/team-builder-client"
 import { getAllHeartprints, getAllEquipment, getAllCharms } from "@/lib/pc-wiki"
 import { getAllTeamBuilderCharacters } from "@/lib/team-builder-character-data"
@@ -10,7 +11,9 @@ export default function TeamBuilderPage() {
   return (
     <main className="min-h-screen bg-[#111827] px-4 py-8 text-white sm:px-6">
       <div className="mx-auto w-full flex flex-col gap-8">
-        <TeamBuilderClient characters={characters} heartprints={heartprints} equipment={equipment} charms={charms} />
+        <Suspense>
+          <TeamBuilderClient characters={characters} heartprints={heartprints} equipment={equipment} charms={charms} />
+        </Suspense>
       </div>
     </main>
   )

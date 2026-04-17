@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { TraitList } from "@/components/trait-list"
 import { SkillList } from "@/components/skill-list"
+import { BackButton } from "@/components/back-button"
 import {
   type WikiCharacter,
   type CharacterVariant,
@@ -16,6 +17,7 @@ import {
   getCharacterRarityLabel,
   getCharacterVariants,
   getCharacterVisualTier,
+  getCharMaxStats,
   getDisplayElementLabel,
   getDisplayReleaseDate,
   getForceIconLookup,
@@ -621,6 +623,7 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
   const character = resolvedCharacter
   const releaseDateLabel = getDisplayReleaseDate(character.release_date)
   const statMaxes = getGlobalStatMaxes()
+  const displayStats = getCharMaxStats(character.master_pc_id) ?? character.stats
   const forceEntries = getCharacterForceEntries(character)
   const isProtector = isProtectorCharacter(character)
   const hasExAbilities = character.ex_abilities.length > 0
@@ -638,10 +641,7 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
     <main className="min-h-screen bg-[#111827] px-4 py-8 text-white sm:px-6">
       <div className="mx-auto flex max-w-7xl flex-col gap-8">
         <div className="flex items-center justify-between gap-4">
-          <Link href="/characters" className="inline-flex items-center gap-2 rounded-full border border-gray-600 bg-gray-800 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-700">
-            <ArrowLeft className="h-4 w-4" />
-            Back to characters
-          </Link>
+          <BackButton />
           <Badge className="bg-gray-700 text-white hover:bg-gray-700">#{character.master_pc_id}</Badge>
         </div>
 
@@ -663,10 +663,10 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
 
               {/* Stats with progress bars */}
               <div className="space-y-3 rounded-xl border border-gray-700 bg-gray-900/50 p-4">
-                <StatBar label="Health" value={character.stats.hp} max={statMaxes.hp} icon="/stats/hp.png" color="#34d399" />
-                <StatBar label="Attack" value={character.stats.attack} max={statMaxes.attack} icon="/stats/attack.png" color="#f87171" />
-                <StatBar label="Defense" value={character.stats.defense} max={statMaxes.defense} icon="/stats/defense.png" color="#60a5fa" />
-                <StatBar label="Existence" value={character.stats.existence} max={statMaxes.existence} icon="/stats/existence.png" color="#fbbf24" />
+                <StatBar label="Health" value={displayStats.hp} max={statMaxes.hp} icon="/stats/hp.png" color="#34d399" />
+                <StatBar label="Attack" value={displayStats.attack} max={statMaxes.attack} icon="/stats/attack.png" color="#f87171" />
+                <StatBar label="Defense" value={displayStats.defense} max={statMaxes.defense} icon="/stats/defense.png" color="#60a5fa" />
+                <StatBar label="Existence" value={displayStats.existence} max={statMaxes.existence} icon="/stats/existence.png" color="#fbbf24" />
               </div>
 
               {/* Tags: facilities (select in Facilities dropdown), forces (select in Forces dropdown) */}

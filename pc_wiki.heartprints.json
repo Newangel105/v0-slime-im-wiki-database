@@ -12,6 +12,12 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 2,
       "display_character_id": 210000002000002,
+      "episode_id": 210000009000020,
+      "season": "Original Story #2",
+      "unlock_conditions": [],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000003,
         "target_type": 3,
@@ -707,6 +713,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 2,
       "display_character_id": 210000002000004,
+      "episode_id": 210000009000060,
+      "season": "Season 1 #6",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 5,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000002,
         "target_type": 2,
@@ -1402,6 +1425,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 2,
       "display_character_id": 210000002000005,
+      "episode_id": 210000009000060,
+      "season": "Season 1 #6",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 5,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000003,
         "target_type": 3,
@@ -2097,6 +2137,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 3,
       "display_character_id": 210000002000005,
+      "episode_id": 210000009000080,
+      "season": "Season 1 #8",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 10,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000006,
         "target_type": 6,
@@ -2792,6 +2849,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 2,
       "display_character_id": 210000002000001,
+      "episode_id": 210000009000100,
+      "season": "Season 1 #10",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 5,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000005,
         "target_type": 5,
@@ -3487,6 +3561,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 3,
       "display_character_id": 210000002000008,
+      "episode_id": 210000009000110,
+      "season": "Season 1 #11",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 10,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000007,
         "target_type": 7,
@@ -4182,6 +4273,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 2,
       "display_character_id": 210000002000011,
+      "episode_id": 210000009000130,
+      "season": "Season 1 #13",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000004,
         "target_type": 4,
@@ -4877,6 +4985,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 2,
       "display_character_id": 210000002000012,
+      "episode_id": 210000009000160,
+      "season": "Season 1 #16",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000001,
         "target_type": 1,
@@ -5572,6 +5697,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 3,
       "display_character_id": 210000002000008,
+      "episode_id": 210000009000160,
+      "season": "Season 1 #16",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 10,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000002,
         "target_type": 2,
@@ -6267,6 +6409,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 2,
       "display_character_id": 210000002000012,
+      "episode_id": 210000009000190,
+      "season": "Season 1 #19",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000006,
         "target_type": 6,
@@ -6962,6 +7121,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 2,
       "display_character_id": 210000002000022,
+      "episode_id": 210000009000210,
+      "season": "Season 1 #21",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 5,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000006,
         "target_type": 6,
@@ -7657,6 +7833,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 2,
       "display_character_id": 210000002000013,
+      "episode_id": 210000009000280,
+      "season": "Season 1 #28",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 5,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000007,
         "target_type": 7,
@@ -8352,6 +8545,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 2,
       "display_character_id": 210000002000014,
+      "episode_id": 210000009000290,
+      "season": "Season 1 #29",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000008,
         "target_type": 90,
@@ -9047,6 +9257,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 2,
       "display_character_id": 210000002000001,
+      "episode_id": 210000009000310,
+      "season": "Season 1 #31",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 5,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000004,
         "target_type": 4,
@@ -9742,6 +9969,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 3,
       "display_character_id": 210000002000001,
+      "episode_id": 210000009000350,
+      "season": "Season 1 #35",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 20,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000001,
         "target_type": 1,
@@ -10437,6 +10681,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 2,
       "display_character_id": 210000002000015,
+      "episode_id": 210000009000360,
+      "season": "Season 1 #36",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000007,
         "target_type": 7,
@@ -11132,6 +11393,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 2,
       "display_character_id": 210000002000010,
+      "episode_id": 210000009000370,
+      "season": "Season 1 #37",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 10,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000003,
         "target_type": 3,
@@ -11827,6 +12105,27 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000001,
+      "episode_id": 0,
+      "season": null,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": {
+        "quest_name": "Rippling Reflection",
+        "event_id": 10000000029460,
+        "is_missable": true
+      },
       "passive_skill": {
         "passive_skill_id": 210000007000003,
         "target_type": 3,
@@ -12522,6 +12821,27 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000004,
+      "episode_id": 0,
+      "season": null,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": {
+        "quest_name": "Complete all That Time I Got Reincarnated as a Slime the Movie: Tears of the Azure Sea Premiere Mission Part 1 missions",
+        "is_missable": true,
+        "source_type": "ogc_mission"
+      },
       "passive_skill": {
         "passive_skill_id": 210000007000007,
         "target_type": 7,
@@ -13217,6 +13537,27 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000012,
+      "episode_id": 0,
+      "season": null,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": {
+        "quest_name": "Complete all That Time I Got Reincarnated as a Slime the Movie: Tears of the Azure Sea Premiere Mission Part 2 missions",
+        "is_missable": true,
+        "source_type": "ogc_mission"
+      },
       "passive_skill": {
         "passive_skill_id": 210000007000002,
         "target_type": 2,
@@ -13912,6 +14253,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 3,
       "display_character_id": 210000002000016,
+      "episode_id": 210000009000420,
+      "season": "Season 1 #42",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 20,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000008,
         "target_type": 90,
@@ -14607,6 +14965,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 3,
       "display_character_id": 210000002000017,
+      "episode_id": 210000009000480,
+      "season": "Season 1 #48",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 10,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000004,
         "target_type": 4,
@@ -15302,6 +15677,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 2,
       "display_character_id": 210000002000018,
+      "episode_id": 210000009000500,
+      "season": "Season 1 #50",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 10,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000001,
         "target_type": 1,
@@ -15997,6 +16389,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 2,
       "display_character_id": 210000002000023,
+      "episode_id": 210000009000510,
+      "season": "Season 1 #51",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000002,
         "target_type": 2,
@@ -16692,6 +17101,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 2,
       "display_character_id": 210000002000026,
+      "episode_id": 210000009000640,
+      "season": "Season 1 #64",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 5,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000008,
         "target_type": 90,
@@ -17387,6 +17813,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 3,
       "display_character_id": 210000002000024,
+      "episode_id": 210000009000660,
+      "season": "Season 1 #66",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 20,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000005,
         "target_type": 5,
@@ -18082,6 +18525,23 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 2,
       "display_character_id": 210000002000025,
+      "episode_id": 210000009000680,
+      "season": "Season 1 #68",
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 5,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000005,
         "target_type": 5,
@@ -18777,6 +19237,33 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000001,
+      "episode_id": 210000009000015,
+      "season": "Original Story",
+      "unlock_conditions": [
+        {
+          "type": 1,
+          "target_count": 0,
+          "quest_id": 4010001005,
+          "quest_name": "Deathmarch",
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        },
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000002,
         "target_type": 2,
@@ -19472,6 +19959,33 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000001,
+      "episode_id": 210000009000045,
+      "season": "Season 1",
+      "unlock_conditions": [
+        {
+          "type": 1,
+          "target_count": 0,
+          "quest_id": 4010004006,
+          "quest_name": "In With the Ogres",
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        },
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000005,
         "target_type": 5,
@@ -20167,6 +20681,33 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000006,
+      "episode_id": 210000009000085,
+      "season": "Season 1",
+      "unlock_conditions": [
+        {
+          "type": 1,
+          "target_count": 0,
+          "quest_id": 4010008011,
+          "quest_name": "Pappy? Mammy? Yummy!",
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        },
+        {
+          "type": 6,
+          "target_count": 5,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000001,
         "target_type": 1,
@@ -20862,6 +21403,33 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000009,
+      "episode_id": 210000009000115,
+      "season": "Season 1",
+      "unlock_conditions": [
+        {
+          "type": 1,
+          "target_count": 0,
+          "quest_id": 4010011007,
+          "quest_name": "Reflections of Life",
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        },
+        {
+          "type": 6,
+          "target_count": 5,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000004,
         "target_type": 4,
@@ -21557,6 +22125,33 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000010,
+      "episode_id": 210000009000115,
+      "season": "Season 1",
+      "unlock_conditions": [
+        {
+          "type": 1,
+          "target_count": 0,
+          "quest_id": 4010011007,
+          "quest_name": "Reflections of Life",
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        },
+        {
+          "type": 6,
+          "target_count": 10,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000003,
         "target_type": 3,
@@ -22252,6 +22847,33 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000006,
+      "episode_id": 210000009000205,
+      "season": "Season 1",
+      "unlock_conditions": [
+        {
+          "type": 1,
+          "target_count": 0,
+          "quest_id": 4010009014,
+          "quest_name": "A Clue",
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        },
+        {
+          "type": 6,
+          "target_count": 10,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000007,
         "target_type": 7,
@@ -22947,6 +23569,33 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000009,
+      "episode_id": 210000009000235,
+      "season": "Season 1",
+      "unlock_conditions": [
+        {
+          "type": 1,
+          "target_count": 0,
+          "quest_id": 4010010010,
+          "quest_name": "That Time I Was the One Who Graduated",
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        },
+        {
+          "type": 6,
+          "target_count": 10,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000006,
         "target_type": 6,
@@ -23642,6 +24291,27 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000019,
+      "episode_id": 0,
+      "season": null,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": {
+        "area_name": "Eurazania",
+        "area_id": 420200001,
+        "growth_value": 100
+      },
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000008,
         "target_type": 90,
@@ -24337,6 +25007,27 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000020,
+      "episode_id": 0,
+      "season": null,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": {
+        "area_name": "Eurazania",
+        "area_id": 420200001,
+        "growth_value": 400
+      },
+      "arena_rank_source": null,
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000003,
         "target_type": 3,
@@ -25032,6 +25723,26 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000001,
+      "episode_id": 0,
+      "season": null,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": {
+        "rank_name": "Diamond I",
+        "arena_group": 3
+      },
+      "event_source": null,
       "passive_skill": {
         "passive_skill_id": 210000007000008,
         "target_type": 90,
@@ -25727,6 +26438,27 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000015,
+      "episode_id": 0,
+      "season": null,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": {
+        "quest_name": "Anime Tie-in Quiz Question 1",
+        "event_id": 10000000110050,
+        "is_missable": true
+      },
       "passive_skill": {
         "passive_skill_id": 210000007000001,
         "target_type": 1,
@@ -26422,6 +27154,27 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000018,
+      "episode_id": 0,
+      "season": null,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": {
+        "quest_name": "Anime Tie-in Quiz Question 2",
+        "event_id": 10000000110050,
+        "is_missable": true
+      },
       "passive_skill": {
         "passive_skill_id": 210000007000005,
         "target_type": 5,
@@ -27117,6 +27870,27 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000001,
+      "episode_id": 0,
+      "season": null,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": {
+        "quest_name": "Anime Tie-in Quiz Question 3",
+        "event_id": 10000000110050,
+        "is_missable": true
+      },
       "passive_skill": {
         "passive_skill_id": 210000007000004,
         "target_type": 4,
@@ -27812,6 +28586,27 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000002,
+      "episode_id": 0,
+      "season": null,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": {
+        "quest_name": "Anime Tie-in Quiz Question 4",
+        "event_id": 10000000110050,
+        "is_missable": true
+      },
       "passive_skill": {
         "passive_skill_id": 210000007000006,
         "target_type": 6,
@@ -28508,20 +29303,48 @@
       "display_character_id": 210000002000002,
       "effect_type": 6,
       "rare_level_group_id": 1001,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 1,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        },
+        {
+          "type": 3,
+          "target_count": 0,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": 210000000000002,
+          "required_still_title": "Pomp and Circumstance",
+          "required_still_season": "Original Story #2"
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "rare_levels": [
         {
           "level": 1,
           "active_skill_label": "StillSkill_group_01_01",
+          "skill_description": "Recovers all allies from <color=#2BE41D>poison</color>",
           "rare_levelup_item_group_id": 1001
         },
         {
           "level": 2,
           "active_skill_label": "StillSkill_group_01_02",
+          "skill_description": "Recovers all allies from <color=#2BE41D>poison and bind</color>",
           "rare_levelup_item_group_id": 1002
         },
         {
           "level": 3,
           "active_skill_label": "StillSkill_group_01_03",
+          "skill_description": "Recovers all allies from <color=#2BE41D>poison, bind, and stun</color>",
           "rare_levelup_item_group_id": 1002
         }
       ]
@@ -28539,20 +29362,58 @@
       "display_character_id": 210000002000001,
       "effect_type": 4,
       "rare_level_group_id": 1004,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 3,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        },
+        {
+          "type": 3,
+          "target_count": 0,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": 210000000000039,
+          "required_still_title": "Geld's Worries",
+          "required_still_season": "Season 1 #51"
+        },
+        {
+          "type": 3,
+          "target_count": 0,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": 210000000000015,
+          "required_still_title": "Thread That Cuts All",
+          "required_still_season": "Season 1 #13"
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "rare_levels": [
         {
           "level": 1,
           "active_skill_label": "StillSkill_group_04_01",
+          "skill_description": "Changes non-Skills soul x<color=#2BE41D>1</color> into Soul of Skills",
           "rare_levelup_item_group_id": 1011
         },
         {
           "level": 2,
           "active_skill_label": "StillSkill_group_04_02",
+          "skill_description": "Changes non-Skills soul x<color=#2BE41D>2</color> into Soul of Skills",
           "rare_levelup_item_group_id": 1012
         },
         {
           "level": 3,
           "active_skill_label": "StillSkill_group_04_03",
+          "skill_description": "Changes non-Skills soul x<color=#2BE41D>3</color> into Soul of Skills",
           "rare_levelup_item_group_id": 1012
         }
       ]
@@ -28570,20 +29431,58 @@
       "display_character_id": 210000002000012,
       "effect_type": 2,
       "rare_level_group_id": 1002,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 3,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        },
+        {
+          "type": 3,
+          "target_count": 0,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": 210000000000043,
+          "required_still_title": "The Bellicose Dragoneye",
+          "required_still_season": "Season 1 #16"
+        },
+        {
+          "type": 3,
+          "target_count": 0,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": 210000000000036,
+          "required_still_title": "Drago Buster",
+          "required_still_season": "Season 1 #19"
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "rare_levels": [
         {
           "level": 1,
           "active_skill_label": "StillSkill_group_02_01",
+          "skill_description": "Changes non-Secrets soul x<color=#2BE41D>1</color> into Soul of Secrets",
           "rare_levelup_item_group_id": 1011
         },
         {
           "level": 2,
           "active_skill_label": "StillSkill_group_02_02",
+          "skill_description": "Changes non-Secrets soul x<color=#2BE41D>2</color> into Soul of Secrets",
           "rare_levelup_item_group_id": 1012
         },
         {
           "level": 3,
           "active_skill_label": "StillSkill_group_02_03",
+          "skill_description": "Changes non-Secrets soul x<color=#2BE41D>3</color> into Soul of Secrets",
           "rare_levelup_item_group_id": 1012
         }
       ]
@@ -28601,20 +29500,58 @@
       "display_character_id": 210000002000001,
       "effect_type": 1,
       "rare_level_group_id": 1003,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 3,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        },
+        {
+          "type": 3,
+          "target_count": 0,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": 210000000000021,
+          "required_still_title": "Past Sins",
+          "required_still_season": "Season 1 #29"
+        },
+        {
+          "type": 3,
+          "target_count": 0,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": 210000000000022,
+          "required_still_title": "You Can Go Home",
+          "required_still_season": "Season 1 #36"
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "rare_levels": [
         {
           "level": 1,
           "active_skill_label": "StillSkill_group_03_01",
+          "skill_description": "Changes non-Divine Protection soul x<color=#2BE41D>1</color> into Soul of Divine Protection",
           "rare_levelup_item_group_id": 1011
         },
         {
           "level": 2,
           "active_skill_label": "StillSkill_group_03_02",
+          "skill_description": "Changes non-Divine Protection soul x<color=#2BE41D>2</color> into Soul of Divine Protection",
           "rare_levelup_item_group_id": 1012
         },
         {
           "level": 3,
           "active_skill_label": "StillSkill_group_03_03",
+          "skill_description": "Changes non-Divine Protection soul x<color=#2BE41D>3</color> into Soul of Divine Protection",
           "rare_levelup_item_group_id": 1012
         }
       ]
@@ -28632,20 +29569,68 @@
       "display_character_id": 210000002000018,
       "effect_type": 6,
       "rare_level_group_id": 1007,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 25,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        },
+        {
+          "type": 3,
+          "target_count": 0,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": 210000000000044,
+          "required_still_title": "The Destined One",
+          "required_still_season": "Season 1 #8"
+        },
+        {
+          "type": 3,
+          "target_count": 0,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": 210000000000026,
+          "required_still_title": "Vampire Progenitor's True Form",
+          "required_still_season": "Season 1 #48"
+        },
+        {
+          "type": 3,
+          "target_count": 0,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": 210000000000045,
+          "required_still_title": "Hinata, Promoted to Captain of Crusaders",
+          "required_still_season": "Season 1 #50"
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "rare_levels": [
         {
           "level": 1,
           "active_skill_label": "StillSkill_group_07_01",
+          "skill_description": "Increases protection gauge by <color=#2BE41D>5</color>",
           "rare_levelup_item_group_id": 1031
         },
         {
           "level": 2,
           "active_skill_label": "StillSkill_group_07_02",
+          "skill_description": "Increases protection gauge by <color=#2BE41D>10</color>",
           "rare_levelup_item_group_id": 1032
         },
         {
           "level": 3,
           "active_skill_label": "StillSkill_group_07_03",
+          "skill_description": "Increases protection gauge by <color=#2BE41D>15</color>",
           "rare_levelup_item_group_id": 1032
         }
       ]
@@ -28663,20 +29648,48 @@
       "display_character_id": 210000002000026,
       "effect_type": 5,
       "rare_level_group_id": 1005,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 15,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        },
+        {
+          "type": 3,
+          "target_count": 0,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": 210000000000040,
+          "required_still_title": "Emotional Reunion",
+          "required_still_season": "Season 1 #64"
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "rare_levels": [
         {
           "level": 1,
           "active_skill_label": "StillSkill_group_05_01",
+          "skill_description": "Transfers random soul x<color=#2BE41D>1</color> to the character with the highest ATK",
           "rare_levelup_item_group_id": 1021
         },
         {
           "level": 2,
           "active_skill_label": "StillSkill_group_05_02",
+          "skill_description": "Transfers random soul x<color=#2BE41D>2</color> to the character with the highest ATK",
           "rare_levelup_item_group_id": 1022
         },
         {
           "level": 3,
           "active_skill_label": "StillSkill_group_05_03",
+          "skill_description": "Transfers random soul x<color=#2BE41D>3</color> to the character with the highest ATK",
           "rare_levelup_item_group_id": 1022
         }
       ]
@@ -28694,20 +29707,68 @@
       "display_character_id": 210000002000008,
       "effect_type": 2,
       "rare_level_group_id": 1006,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 25,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        },
+        {
+          "type": 3,
+          "target_count": 0,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": 210000000000012,
+          "required_still_title": "It's Going to Snap!",
+          "required_still_season": "Season 1 #11"
+        },
+        {
+          "type": 3,
+          "target_count": 0,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": 210000000000035,
+          "required_still_title": "Hot Springs Are the Best",
+          "required_still_season": "Season 1 #16"
+        },
+        {
+          "type": 3,
+          "target_count": 0,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": 210000000000046,
+          "required_still_title": "Chef",
+          "required_still_season": "Season 1 #37"
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
       "rare_levels": [
         {
           "level": 1,
           "active_skill_label": "StillSkill_group_06_01",
+          "skill_description": "Increases all allies' max HP by <color=#2BE41D>20%</color> (Turns: 3)\nGives all allies a continuous heal that restores their HP up to 1 time when the enemy's turn ends\n(Heals by <color=#2BE41D>20%</color> of max HP)",
           "rare_levelup_item_group_id": 1031
         },
         {
           "level": 2,
           "active_skill_label": "StillSkill_group_06_02",
+          "skill_description": "Increases all allies' max HP by <color=#2BE41D>35%</color> (Turns: 3)\nGives all allies a continuous heal that restores their HP up to 1 time when the enemy's turn ends\n(Heals by <color=#2BE41D>35%</color> of max HP)",
           "rare_levelup_item_group_id": 1032
         },
         {
           "level": 3,
           "active_skill_label": "StillSkill_group_06_03",
+          "skill_description": "Increases all allies' max HP by <color=#2BE41D>50%</color> (Turns: 3)\nGives all allies a continuous heal that restores their HP up to 1 time when the enemy's turn ends\n(Heals by <color=#2BE41D>50%</color> of max HP)",
           "rare_levelup_item_group_id": 1032
         }
       ]
@@ -28725,20 +29786,62 @@
       "display_character_id": 210000002000007,
       "effect_type": 4,
       "rare_level_group_id": 1008,
+      "unlock_conditions": [
+        {
+          "type": 3,
+          "target_count": 0,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": 210000000000033,
+          "required_still_title": "Unexpected Challenge",
+          "required_still_season": null
+        },
+        {
+          "type": 3,
+          "target_count": 0,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": 210000000000034,
+          "required_still_title": "Send Some Over",
+          "required_still_season": null
+        },
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": {
+        "area_name": "Eurazania",
+        "area_id": 420200001,
+        "growth_value": 650
+      },
+      "arena_rank_source": null,
+      "event_source": null,
       "rare_levels": [
         {
           "level": 1,
           "active_skill_label": "StillSkill_group_08_01",
+          "skill_description": "Increases skill points by <color=#2BE41D>10</color>",
           "rare_levelup_item_group_id": 1001
         },
         {
           "level": 2,
           "active_skill_label": "StillSkill_group_08_02",
+          "skill_description": "Increases skill points by <color=#2BE41D>15</color>",
           "rare_levelup_item_group_id": 1002
         },
         {
           "level": 3,
           "active_skill_label": "StillSkill_group_08_03",
+          "skill_description": "Increases skill points by <color=#2BE41D>25</color>",
           "rare_levelup_item_group_id": 1002
         }
       ]
@@ -28756,20 +29859,42 @@
       "display_character_id": 210000002000001,
       "effect_type": 1,
       "rare_level_group_id": 1009,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": {
+        "quest_name": "Complete New Feature Heartscape Kick-Start Event",
+        "is_missable": true,
+        "source_type": "ogc_mission"
+      },
       "rare_levels": [
         {
           "level": 1,
           "active_skill_label": "StillSkill_group_09_01",
+          "skill_description": "Applies Vengeance Counterattack to all allies (Turns: <color=#2BE41D>1</color>); each time affected ally takes damage, adds Vengeance charge x1 to all targets including rearguard (Each charge x1 deals 50% of target's ATK in ongoing damage from Turn 5 onward)",
           "rare_levelup_item_group_id": 1011
         },
         {
           "level": 2,
           "active_skill_label": "StillSkill_group_09_02",
+          "skill_description": "Applies Vengeance Counterattack to all allies (Turns: <color=#2BE41D>2</color>); each time affected ally takes damage, adds Vengeance charge x1 to all targets including rearguard (Each charge x1 deals 50% of target's ATK in ongoing damage from Turn 5 onward)",
           "rare_levelup_item_group_id": 1012
         },
         {
           "level": 3,
           "active_skill_label": "StillSkill_group_09_03",
+          "skill_description": "Applies Vengeance Counterattack to all allies (Turns: <color=#2BE41D>3</color>); each time affected ally takes damage, adds Vengeance charge x<color=#2BE41D>2</color> to all targets including rearguard (Each charge x1 deals 50% of target's ATK in ongoing damage from Turn 5 onward)",
           "rare_levelup_item_group_id": 1012
         }
       ]
@@ -28786,6 +29911,27 @@
       "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
       "passive_skill_level": 1,
       "display_character_id": 210000002000014,
+      "episode_id": 0,
+      "season": null,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": {
+        "quest_name": "A Moment to Remember",
+        "event_id": 10000000027950,
+        "is_missable": true
+      },
       "passive_skill": {
         "passive_skill_id": 210000007000008,
         "target_type": 90,
@@ -29482,20 +30628,42 @@
       "display_character_id": 210000002000002,
       "effect_type": 5,
       "rare_level_group_id": 1010,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": {
+        "quest_name": "Sworn Friend's Boast...",
+        "event_id": 10000000028350,
+        "is_missable": true
+      },
       "rare_levels": [
         {
           "level": 1,
           "active_skill_label": "StillSkill_group_event_catastrophe_01",
+          "skill_description": "Increases charge-type characters' critical power by <color=#2BE41D>5%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1041
         },
         {
           "level": 2,
           "active_skill_label": "StillSkill_group_event_catastrophe_02",
+          "skill_description": "Increases charge-type characters' critical power by <color=#2BE41D>10%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1042
         },
         {
           "level": 3,
           "active_skill_label": "StillSkill_group_event_catastrophe_03",
+          "skill_description": "Increases charge-type characters' critical power by <color=#2BE41D>15%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1042
         }
       ]
@@ -29513,20 +30681,42 @@
       "display_character_id": 210000002000015,
       "effect_type": 2,
       "rare_level_group_id": 1011,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": {
+        "quest_name": "Joyful Morning",
+        "event_id": 10000000028490,
+        "is_missable": true
+      },
       "rare_levels": [
         {
           "level": 1,
           "active_skill_label": "StillSkill_group_event_xmas_surprise_start_01",
+          "skill_description": "Increases speed-type characters' pierce power by <color=#2BE41D>5%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1041
         },
         {
           "level": 2,
           "active_skill_label": "StillSkill_group_event_xmas_surprise_start_02",
+          "skill_description": "Increases speed-type characters' pierce power by <color=#2BE41D>10%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1042
         },
         {
           "level": 3,
           "active_skill_label": "StillSkill_group_event_xmas_surprise_start_03",
+          "skill_description": "Increases speed-type characters' pierce power by <color=#2BE41D>15%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1042
         }
       ]
@@ -29544,20 +30734,42 @@
       "display_character_id": 210000002000001,
       "effect_type": 1,
       "rare_level_group_id": 1012,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": {
+        "quest_name": "World Tree",
+        "event_id": 10000000028610,
+        "is_missable": true
+      },
       "rare_levels": [
         {
           "level": 1,
           "active_skill_label": "StillSkill_group_event_sao_collaboration_1_start_01",
+          "skill_description": "Increases charge-type characters' synergy power by <color=#2BE41D>5%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1041
         },
         {
           "level": 2,
           "active_skill_label": "StillSkill_group_event_sao_collaboration_1_start_02",
+          "skill_description": "Increases charge-type characters' synergy power by <color=#2BE41D>10%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1042
         },
         {
           "level": 3,
           "active_skill_label": "StillSkill_group_event_sao_collaboration_1_start_03",
+          "skill_description": "Increases charge-type characters' synergy power by <color=#2BE41D>15%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1042
         }
       ]
@@ -29575,20 +30787,42 @@
       "display_character_id": 210000002000007,
       "effect_type": 5,
       "rare_level_group_id": 1013,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": {
+        "quest_name": "A reward?",
+        "event_id": 10000000028940,
+        "is_missable": true
+      },
       "rare_levels": [
         {
           "level": 1,
           "active_skill_label": "StillSkill_group_event_epitaph_of_fate_start_01",
+          "skill_description": "Increases speed-type characters' Aegis power by <color=#2BE41D>5%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1041
         },
         {
           "level": 2,
           "active_skill_label": "StillSkill_group_event_epitaph_of_fate_start_02",
+          "skill_description": "Increases speed-type characters' Aegis power by <color=#2BE41D>10%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1042
         },
         {
           "level": 3,
           "active_skill_label": "StillSkill_group_event_epitaph_of_fate_start_03",
+          "skill_description": "Increases speed-type characters' Aegis power by <color=#2BE41D>15%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1042
         }
       ]
@@ -29606,20 +30840,42 @@
       "display_character_id": 210000002000001,
       "effect_type": 3,
       "rare_level_group_id": 1014,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": {
+        "quest_name": "Azure Sea's Gratitude",
+        "event_id": 10000000029430,
+        "is_missable": true
+      },
       "rare_levels": [
         {
           "level": 1,
           "active_skill_label": "StillSkill_group_event_harbinger_of_the_blue_sea_start_01",
+          "skill_description": "Increases speed-type characters' synergy power by <color=#2BE41D>5%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1041
         },
         {
           "level": 2,
           "active_skill_label": "StillSkill_group_event_harbinger_of_the_blue_sea_start_02",
+          "skill_description": "Increases speed-type characters' synergy power by <color=#2BE41D>10%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1042
         },
         {
           "level": 3,
           "active_skill_label": "StillSkill_group_event_harbinger_of_the_blue_sea_start_03",
+          "skill_description": "Increases speed-type characters' synergy power by <color=#2BE41D>15%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1042
         }
       ]
@@ -29637,20 +30893,42 @@
       "display_character_id": 210000002000015,
       "effect_type": 4,
       "rare_level_group_id": 1015,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": {
+        "quest_name": "Weight of Legacy",
+        "event_id": 10000000027610,
+        "is_missable": true
+      },
       "rare_levels": [
         {
           "level": 1,
           "active_skill_label": "StillSkill_group_event_Blaze_start_01",
+          "skill_description": "Increases speed-type characters' critical power by <color=#2BE41D>5%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1041
         },
         {
           "level": 2,
           "active_skill_label": "StillSkill_group_event_Blaze_start_02",
+          "skill_description": "Increases speed-type characters' critical power by <color=#2BE41D>10%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1042
         },
         {
           "level": 3,
           "active_skill_label": "StillSkill_group_event_Blaze_start_03",
+          "skill_description": "Increases speed-type characters' critical power by <color=#2BE41D>15%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1042
         }
       ]
