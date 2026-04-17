@@ -1280,6 +1280,32 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     }
   }, [])
 
+  const COMPACT_PAGE_SIZE = 48
+  const CARDS_PAGE_SIZE = 12
+  const [visibleCount, setVisibleCount] = useState(COMPACT_PAGE_SIZE)
+  const sentinelRef = useRef<HTMLDivElement>(null)
+
+  // Reset visible count when the filtered list or view changes
+  useEffect(() => {
+    setVisibleCount(viewMode === "compact" ? COMPACT_PAGE_SIZE : CARDS_PAGE_SIZE)
+  }, [filteredCharacters, viewMode])
+
+  // Load more characters as user scrolls toward the bottom
+  useEffect(() => {
+    const sentinel = sentinelRef.current
+    if (!sentinel) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setVisibleCount((prev) => prev + (viewMode === "compact" ? COMPACT_PAGE_SIZE : CARDS_PAGE_SIZE))
+        }
+      },
+      { rootMargin: "400px" },
+    )
+    observer.observe(sentinel)
+    return () => observer.disconnect()
+  }, [filteredCharacters, viewMode])
+
   const MIN_IPHONE_INITIAL_ITEMS = 12
   const showGridOnIphone = !isIphone || filteredCharacters.length >= MIN_IPHONE_INITIAL_ITEMS
 
@@ -1830,14 +1856,14 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
             <div ref={gridRef} className="w-full">
               {viewMode === "compact" ? (
                 <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-y-4 gap-x-2">
-                  {filteredCharacters.map((ch, idx) => (
+                  {filteredCharacters.slice(0, visibleCount).map((ch, idx) => (
                     <CompactCard key={ch.master_pc_id} character={ch} index={idx} />
                   ))}
                 </div>
               ) : showGridOnIphone ? (
                 IS_MOBILE ? (
                   <div className="flex flex-col" style={{ gap: `${GAP}px` }}>
-                    {filteredCharacters.map((ch, idx) => (
+                    {filteredCharacters.slice(0, visibleCount).map((ch, idx) => (
                       <MobileCard key={ch.master_pc_id} character={ch} index={idx} />
                     ))}
                   </div>
@@ -1859,6 +1885,10 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                 <div className="py-20 text-center text-gray-400">Loading characters…</div>
               )}
             </div>
+          )}
+          {/* Infinite scroll sentinel — becomes visible when user nears the bottom */}
+          {visibleCount < filteredCharacters.length && (
+            <div ref={sentinelRef} className="h-2" aria-hidden />
           )}
         </section>
       </div>
