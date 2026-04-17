@@ -501,39 +501,39 @@ const facilityIconMap: Record<string, string> = {
 }
 
 const rarityFrameMap: Record<number, string> = {
-  3: "/frame/frameMemberM3.png",
-  4: "/frame/frameMemberM4.png",
-  5: "/frame/frameMemberM5.png",
-  6: "/frame/frameMemberM6.png",
-  7: "/frame/frameMemberM7.png",
-  8: "/frame/frameMemberM7_Epic.png",
+  3: "/frame/frameMemberM3.webp",
+  4: "/frame/frameMemberM4.webp",
+  5: "/frame/frameMemberM5.webp",
+  6: "/frame/frameMemberM6.webp",
+  7: "/frame/frameMemberM7.webp",
+  8: "/frame/frameMemberM7_Epic.webp",
 }
 
 const blessFrameMap: Record<number, string> = {
-  3: "/frame/frameBlessM3.png",
-  4: "/frame/frameBlessM4.png",
-  5: "/frame/frameBlessM5.png",
-  6: "/frame/frameBlessM6.png",
-  7: "/frame/frameBlessM7.png",
-  8: "/frame/frameBlessM7_Epic.png",
+  3: "/frame/frameBlessM3.webp",
+  4: "/frame/frameBlessM4.webp",
+  5: "/frame/frameBlessM5.webp",
+  6: "/frame/frameBlessM6.webp",
+  7: "/frame/frameBlessM7.webp",
+  8: "/frame/frameBlessM7_Epic.webp",
 }
 
 const baseRarityMap: Record<number, string> = {
-  3: "/frame/baseMemberM3.png",
-  4: "/frame/baseMemberM4.png",
-  5: "/frame/baseMemberM5.png",
-  6: "/frame/baseMemberM6.png",
-  7: "/frame/baseMemberM7.png",
-  8: "/frame/baseMemberM7_Epic.png",
+  3: "/frame/baseMemberM3.webp",
+  4: "/frame/baseMemberM4.webp",
+  5: "/frame/baseMemberM5.webp",
+  6: "/frame/baseMemberM6.webp",
+  7: "/frame/baseMemberM7.webp",
+  8: "/frame/baseMemberM7_Epic.webp",
 }
 
 const baseBlessMap: Record<number, string> = {
-  3: "/frame/baseBlessM3.png",
-  4: "/frame/baseBlessM4.png",
-  5: "/frame/baseBlessM5.png",
-  6: "/frame/baseBlessM6.png",
-  7: "/frame/baseBlessM7.png",
-  8: "/frame/baseBlessM7_Epic.png",
+  3: "/frame/baseBlessM3.webp",
+  4: "/frame/baseBlessM4.webp",
+  5: "/frame/baseBlessM5.webp",
+  6: "/frame/baseBlessM6.webp",
+  7: "/frame/baseBlessM7.webp",
+  8: "/frame/baseBlessM7_Epic.webp",
 }
 
 function getCharacterFrame(character: BrowserCharacter): string {
@@ -549,12 +549,12 @@ function getCharacterBase(character: BrowserCharacter): string {
 }
 
 const starAssetMap: Record<number, string> = {
-  3: "/stars/starCharaL3A.png",
-  4: "/stars/starCharaL4A.png",
-  5: "/stars/starCharaL5A.png",
-  6: "/stars/starCharaL6A.png",
-  7: "/stars/starCharaL7A.png",
-  8: "/stars/starCharaL7_Epic.png",
+  3: "/stars/starCharaL3A.webp",
+  4: "/stars/starCharaL4A.webp",
+  5: "/stars/starCharaL5A.webp",
+  6: "/stars/starCharaL6A.webp",
+  7: "/stars/starCharaL7A.webp",
+  8: "/stars/starCharaL7_Epic.webp",
 }
 
 const elementColorMap: Record<string, string> = {
@@ -1294,15 +1294,17 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   const getColumnWidth = () => columnWidth
   const getRowHeight = () => ROW_HEIGHT
 
-  function CompactCard({ character }: { character: BrowserCharacter }) {
+  function CompactCard({ character, index }: { character: BrowserCharacter; index: number }) {
     const visualTier = getCharacterVisualTier(character)
     const frameSrc = getCharacterFrame(character)
     const baseSrc = getCharacterBase(character)
     const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
-    const iconSrc = character.images.icon
+    const iconSrc = character.images.icon?.replace(/\.png$/i, ".webp")
     const elementIcons = getCharacterElementIcons(character)
     const attackTypeIcon = attackTypeIconMap[normalizeLabel(character.attack_type)]
     const attackTypeLabel = formatWikiLabel(character.attack_type)
+    const isPriority = index < 24
+    const imageLoading = isPriority ? "eager" : "lazy"
     // Same firstIcon/secondIcon logic as forces page:
     // attackers → element + attack type; protectors → up to two element icons
     let firstIcon: string | undefined
@@ -1318,9 +1320,9 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     return (
       <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="min-w-0">
         <div className="relative w-full pt-[100%] overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white transition-all">
-          <img src={baseSrc} alt="" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
-          <img src={iconSrc} alt={character.name} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover object-top" />
-          <img src={frameSrc} alt="" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
+          <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
+          <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-cover object-top" />
+          <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
           {/* Name top-left */}
           <div className="absolute top-1 left-1 bg-black bg-opacity-80 text-white text-[9px] px-1 py-0.5 rounded z-10 leading-tight max-w-[70%] line-clamp-2">
             {character.name}
@@ -1344,7 +1346,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     const frameSrc = getCharacterFrame(character)
     const baseSrc = getCharacterBase(character)
     const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
-    const iconSrc = character.images.icon
+    const iconSrc = character.images.icon?.replace(/\.png$/i, ".webp")
     const characterElementValue = getCharacterElementValue(character)
     const elementIcons = getCharacterElementIcons(character)
     const forceEntries = character.force_entries
@@ -1470,7 +1472,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     const frameSrc = getCharacterFrame(character)
     const baseSrc = getCharacterBase(character)
     const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
-    const iconSrc = character.images.icon
+    const iconSrc = character.images.icon?.replace(/\.png$/i, ".webp")
     const characterElementValue = getCharacterElementValue(character)
     const elementIcons = getCharacterElementIcons(character)
     const forceEntries = character.force_entries
@@ -1828,8 +1830,8 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
             <div ref={gridRef} className="w-full">
               {viewMode === "compact" ? (
                 <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-y-4 gap-x-2">
-                  {filteredCharacters.map((ch) => (
-                    <CompactCard key={ch.master_pc_id} character={ch} />
+                  {filteredCharacters.map((ch, idx) => (
+                    <CompactCard key={ch.master_pc_id} character={ch} index={idx} />
                   ))}
                 </div>
               ) : showGridOnIphone ? (
