@@ -14,8 +14,15 @@ const FOLDERS = [
   { path: join(PUBLIC, "SkillStill"), recursive: true, pattern: null },
   { path: join(PUBLIC, "frame"),     recursive: false, pattern: null },
   { path: join(PUBLIC, "stars"),     recursive: false, pattern: null },
+  { path: join(PUBLIC, "elements"),  recursive: false, pattern: null },
+  { path: join(PUBLIC, "frames"),    recursive: false, pattern: null },
   { path: join(PUBLIC, "Image", "Character", "PC"),   recursive: true, pattern: /CharaPartyM\.png$/i },
   { path: join(PUBLIC, "Image", "Character", "Bless"), recursive: true, pattern: /BlessPartyM\.png$/i },
+  { path: join(PUBLIC, "Image", "IcElementBless"), recursive: false, pattern: null },
+  { path: join(PUBLIC, "Image", "Tactics"), recursive: false, pattern: null },
+  { path: join(PUBLIC, "type_dmg"),  recursive: false, pattern: null },
+  { path: join(PUBLIC, "weapons"),   recursive: false, pattern: null },
+  { path: join(PUBLIC, "UI", "Texture", "CharaInfoAtlas"), recursive: false, pattern: null },
 ]
 
 async function* walkPngs(dir, recursive, pattern) {
@@ -25,6 +32,7 @@ async function* walkPngs(dir, recursive, pattern) {
     if (e.isDirectory() && recursive) {
       yield* walkPngs(full, true, pattern)
     } else if (e.isFile() && extname(e.name).toLowerCase() === ".png") {
+      if (e.name.includes("__Sprite_")) continue  // skip Unity atlas duplicates
       if (!pattern || pattern.test(e.name)) yield full
     }
   }
