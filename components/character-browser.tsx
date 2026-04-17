@@ -942,7 +942,9 @@ function GroupedToggleFilter({
   )
 }
 
-export function CharacterBrowser({ characters }: { characters: BrowserCharacter[] }) {
+export function CharacterBrowser({ initialCharacters }: { initialCharacters: BrowserCharacter[] }) {
+  const characters = initialCharacters
+
   const searchParams = useSearchParams()
   const router = useRouter()
   const [searchText, setSearchText] = useState("")
@@ -963,7 +965,7 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
   const [showStats, setShowStats] = useState(true)
   const [viewMode, setViewMode] = useState<"cards" | "compact">(() => {
     if (typeof sessionStorage !== "undefined") {
-      return sessionStorage.getItem("characterBrowserViewMode") === "compact" ? "compact" : "cards"
+      return sessionStorage.getItem("characterBrowserViewMode") === "cards" ? "cards" : "compact"
     }
     return "cards"
   })

@@ -351,7 +351,22 @@ function getMiniCardIcons(char: TeamBuilderCharacter): [string | null, string | 
 }
 
 // =================================
-export default function TeamBuilderClient({ characters, heartprints, equipment, charms }: { characters: TeamBuilderCharacter[], heartprints: Heartprint[], equipment: Equipment[], charms: Charm[] }) {
+export default function TeamBuilderClient({
+  characters: initialCharacters,
+  heartprints: initialHeartprints,
+  equipment: initialEquipment,
+  charms: initialCharms,
+}: {
+  characters: TeamBuilderCharacter[]
+  heartprints: Heartprint[]
+  equipment: Equipment[]
+  charms: Charm[]
+}) {
+  const characters = initialCharacters
+  const heartprints = initialHeartprints
+  const equipment = initialEquipment
+  const charms = initialCharms
+
   const searchParams = useSearchParams()
   const [shareLinkCopied, setShareLinkCopied] = useState(false)
 
