@@ -2011,18 +2011,11 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
           {Array.isArray(filteredCharacters) && filteredCharacters.length > 0 && (
             <div ref={gridRef} className="w-full">
               {viewMode === "compact" ? (
-                <VirtualizedGrid
-                  className="image-scroll"
-                  columnCount={compactColumnCount}
-                  columnWidth={compactCellWidth}
-                  rowCount={compactRowCount}
-                  rowHeight={compactCellHeight}
-                  cellComponent={CompactGridCell}
-                  cellProps={{}}
-                  defaultHeight={compactGridHeight}
-                  defaultWidth={containerWidth || compactColumnCount * compactCellWidth}
-                  style={{ height: compactGridHeight, width: containerWidth || compactColumnCount * compactCellWidth, overflowX: "hidden" }}
-                />
+                <div className="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12">
+                  {filteredCharacters.slice(0, visibleCount).map((character, index) => (
+                    <CompactCard key={character.master_pc_id} character={character} index={index} />
+                  ))}
+                </div>
               ) : showGridOnIphone ? (
                 IS_MOBILE ? (
                   <div className="flex flex-col" style={{ gap: `${GAP}px` }}>
