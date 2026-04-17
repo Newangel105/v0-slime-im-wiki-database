@@ -720,26 +720,14 @@ function ToggleFilter({
   onToggle: (value: string) => void
 }) {
   const [dropdownSearch, setDropdownSearch] = useState("")
-  const selectedOptions = options.filter((o) => selectedValues.includes(o.value))
   const visibleOptions = dropdownSearch.trim()
     ? options.filter((o) => o.label.toLowerCase().includes(dropdownSearch.toLowerCase()))
     : options
   return (
     <Popover onOpenChange={() => setDropdownSearch("")}>      
       <PopoverTrigger asChild>
-        <Button variant="outline" className="h-auto min-h-[2.25rem] justify-between gap-2 border-gray-600 bg-gray-700 px-3 py-1.5 text-white hover:bg-gray-600">
-          {selectedOptions.length > 0 ? (
-            <span className="flex flex-wrap gap-1">
-              {selectedOptions.map((o) => (
-                <span key={o.value} className="inline-flex items-center gap-1 rounded-full bg-white/15 px-2 py-0.5 text-xs font-medium">
-                  {o.icon && <img src={o.icon} alt="" className="h-4 w-4 object-contain" />}
-                  {o.label}
-                </span>
-              ))}
-            </span>
-          ) : (
-            <span className="text-sm text-gray-300">{title}</span>
-          )}
+        <Button variant="outline" className="justify-between gap-2 border-gray-600 bg-gray-700 text-white hover:bg-gray-600">
+          <span className="text-sm">{title}</span>
           <Badge variant="secondary" className="ml-1 shrink-0 bg-gray-900 text-white">
             {selectedValues.length}
           </Badge>
@@ -1148,9 +1136,9 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
         results.push(character.traits.some((trait) => isValorTrait(trait) && (options.valorTraitEffectMap.get(v) ?? []).includes(trait.name)))
       }
 
-      // Skill effect filters (complex grouped logic — always AND internally)
-      if (selectedSkillFilters.length) {
-        results.push(characterMatchesEffectFilters(character, selectedSkillFilters))
+      // Skill effect filters — push each selected value separately so filterMode controls them
+      for (const v of selectedSkillFilters) {
+        results.push(characterMatchesEffectFilters(character, [v]))
       }
 
       if (results.length === 0) return true
@@ -1225,6 +1213,66 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     selectedFacilities.length +
     selectedRoles.length +
     selectedUltimateTypes.length
+
+  const skillFilterLabelMap = useMemo(() => {
+    const map = new Map<string, { groupTitle: string; label: string }>()
+    for (const group of options.skillGroups) {
+      for (const opt of group.options) {
+        map.set(opt.value, { groupTitle: group.title, label: opt.label })
+      }
+    }
+    return map
+  }, [options.skillGroups])
+
+  const activeFilterChips = useMemo(() => {
+    const chips: { key: string; category: string; label: string; icon?: string; remove: () => void }[] = []
+    for (const v of selectedAttackerElements) {
+      const opt = options.attackerElements.find((o) => o.value === v)
+      chips.push({ key: `ae:${v}`, category: "Attacker", label: opt?.label ?? v, icon: opt?.icon, remove: () => setSelectedAttackerElements((prev) => prev.filter((x) => x !== v)) })
+    }
+    for (const v of selectedDefenderElements) {
+      const opt = options.defenderElements.find((o) => o.value === v)
+      chips.push({ key: `de:${v}`, category: "Protector", label: opt?.label ?? v, icon: opt?.icon, remove: () => setSelectedDefenderElements((prev) => prev.filter((x) => x !== v)) })
+    }
+    for (const v of selectedAttackTypes) {
+      const opt = options.attackTypes.find((o) => o.value === v)
+      chips.push({ key: `at:${v}`, category: "Attack Type", label: opt?.label ?? v, icon: opt?.icon, remove: () => setSelectedAttackTypes((prev) => prev.filter((x) => x !== v)) })
+    }
+    for (const v of selectedWeapons) {
+      const opt = options.weapons.find((o) => o.value === v)
+      chips.push({ key: `wp:${v}`, category: "Weapon", label: opt?.label ?? v, icon: opt?.icon, remove: () => setSelectedWeapons((prev) => prev.filter((x) => x !== v)) })
+    }
+    for (const v of selectedTactics) {
+      const opt = options.tactics.find((o) => o.value === v)
+      chips.push({ key: `tc:${v}`, category: "Tactics", label: opt?.label ?? v, icon: opt?.icon, remove: () => setSelectedTactics((prev) => prev.filter((x) => x !== v)) })
+    }
+    for (const v of selectedRoles) {
+      const opt = ROLE_OPTIONS.find((o) => o.value === v)
+      chips.push({ key: `ro:${v}`, category: "Role", label: opt?.label ?? v, icon: opt?.icon, remove: () => setSelectedRoles((prev) => prev.filter((x) => x !== v)) })
+    }
+    for (const v of selectedUltimateTypes) {
+      const opt = ULTIMATE_TYPE_OPTIONS.find((o) => o.value === v)
+      chips.push({ key: `ut:${v}`, category: "Ultimate", label: opt?.label ?? v, icon: opt?.icon, remove: () => setSelectedUltimateTypes((prev) => prev.filter((x) => x !== v)) })
+    }
+    for (const v of selectedForces) {
+      const opt = options.forces.find((o) => o.value === v)
+      chips.push({ key: `fo:${v}`, category: "Force", label: v, icon: opt?.icon, remove: () => setSelectedForces((prev) => prev.filter((x) => x !== v)) })
+    }
+    for (const v of selectedFacilities) {
+      chips.push({ key: `fa:${v}`, category: "Facility", label: v, remove: () => setSelectedFacilities((prev) => prev.filter((x) => x !== v)) })
+    }
+    for (const v of selectedTraitNames) {
+      chips.push({ key: `tr:${v}`, category: "Trait", label: v, remove: () => setSelectedTraitNames((prev) => prev.filter((x) => x !== v)) })
+    }
+    for (const v of selectedValorTraitNames) {
+      chips.push({ key: `vt:${v}`, category: "Valor Trait", label: v, remove: () => setSelectedValorTraitNames((prev) => prev.filter((x) => x !== v)) })
+    }
+    for (const v of selectedSkillFilters) {
+      const info = skillFilterLabelMap.get(v)
+      chips.push({ key: `sk:${v}`, category: "Skills", label: info ? `${info.groupTitle} · ${info.label}` : v, remove: () => setSelectedSkillFilters((prev) => prev.filter((x) => x !== v)) })
+    }
+    return chips
+  }, [selectedAttackerElements, selectedDefenderElements, selectedAttackTypes, selectedWeapons, selectedTactics, selectedRoles, selectedUltimateTypes, selectedForces, selectedFacilities, selectedTraitNames, selectedValorTraitNames, selectedSkillFilters, options, skillFilterLabelMap])
 
   // Virtualization settings
   const gridRef = useRef<HTMLDivElement>(null)
@@ -1868,6 +1916,24 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                 {viewMode === "cards" ? <LayoutGrid className="h-4 w-4" /> : <List className="h-4 w-4" />}
               </button>
             </div>
+
+            {activeFilterChips.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {activeFilterChips.map((chip) => (
+                  <button
+                    key={chip.key}
+                    onClick={chip.remove}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-gray-700 px-3 py-1 text-xs text-gray-200 hover:bg-red-900/40 hover:border-red-500/40 hover:text-white transition-colors"
+                  >
+                    <span className="text-gray-500">{chip.category}</span>
+                    <span className="text-gray-500">·</span>
+                    {chip.icon && <img src={chip.icon} alt="" className="h-3.5 w-3.5 object-contain" />}
+                    <span>{chip.label}</span>
+                    <span className="ml-0.5 text-gray-400">×</span>
+                  </button>
+                ))}
+              </div>
+            )}
 
             {filtersOpen && (
             <>
