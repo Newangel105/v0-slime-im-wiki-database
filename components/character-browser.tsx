@@ -2,7 +2,6 @@
 
 import { useDeferredValue, useEffect, useLayoutEffect, useMemo, useState, useRef } from "react"
 import { Grid as VirtualizedGrid, type CellComponentProps } from "react-window"
-import Image from "next/image"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
 import { ArrowDownUp, LayoutGrid, List, Search } from "lucide-react"
@@ -1404,7 +1403,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
       <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="min-w-0">
         <div className="relative w-full pt-[100%] overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white transition-all">
           <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
-          <Image fill src={iconSrc!} alt={character.name} priority={index < 3} sizes="(min-width: 640px) 25vw, 25vw" style={{ objectFit: "cover", objectPosition: "top" }} />
+          <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={index < 3 ? "high" : "low"} className="absolute inset-0 w-full h-full object-cover object-top" />
           <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
           {/* Name top-left */}
           <div className="absolute top-1 left-1 bg-black bg-opacity-80 text-white text-[9px] px-1 py-0.5 rounded z-10 leading-tight max-w-[70%] line-clamp-2">
@@ -1461,7 +1460,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
             <div className="relative w-full pt-[100%] overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white transition-all">
               <div className={`absolute overflow-hidden ${visualTier >= 8 ? "inset-[8%] rounded-[12%]" : "inset-0"}`}>
                 <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
-                <Image fill src={iconSrc!} alt={character.name} priority={index < 3} sizes="(min-width: 1280px) 107px, (min-width: 1024px) 102px, (min-width: 768px) 96px, 25vw" style={{ objectFit: "cover", objectPosition: "top" }} />
+                <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={index < 3 ? "high" : "low"} className="absolute inset-0 w-full h-full object-cover object-top" />
               </div>
               <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
               <div className="absolute top-1 left-1 bg-black bg-opacity-80 text-white text-[9px] px-1 py-0.5 rounded z-10 leading-tight max-w-[70%] line-clamp-2">
@@ -1519,13 +1518,13 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                   {visualTier >= 8 ? (
                     <div className="absolute inset-[8%] rounded-[12%] overflow-hidden">
                       <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
-                      <Image fill src={iconSrc!} alt={character.name} priority={isPriorityCard} sizes="(min-width: 768px) 124px, 81px" style={{ objectFit: "cover", objectPosition: "top" }} className="transition-transform duration-300 group-hover:scale-110" />
+                      <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={isPriorityCard ? "high" : "low"} className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110" />
                     </div>
                   ) : (
                     <>
                       <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
                       <div className="absolute inset-[10px] rounded-[18px] overflow-hidden">
-                        <Image fill src={iconSrc!} alt={character.name} priority={isPriorityCard} sizes="(min-width: 768px) 128px, 76px" style={{ objectFit: "cover", objectPosition: "top" }} className="transition-transform duration-300 group-hover:scale-110" />
+                        <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={isPriorityCard ? "high" : "low"} className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110" />
                       </div>
                     </>
                   )}
@@ -1665,13 +1664,13 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                     {visualTier >= 8 ? (
                       <div className="absolute inset-[8%] rounded-[12%] overflow-hidden">
                         <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
-                        <Image fill src={iconSrc!} alt={character.name} priority={isPriorityCard} sizes="(min-width: 768px) 124px, 81px" style={{ objectFit: "cover", objectPosition: "top" }} className="transition-transform duration-300 group-hover:scale-110" />
+                        <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={isPriorityCard ? "high" : "low"} className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110" />
                       </div>
                     ) : (
                       <>
                         <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
                         <div className="absolute inset-[10px] rounded-[18px] overflow-hidden">
-                          <Image fill src={iconSrc!} alt={character.name} priority={isPriorityCard} sizes="(min-width: 768px) 128px, 76px" style={{ objectFit: "cover", objectPosition: "top" }} className="transition-transform duration-300 group-hover:scale-110" />
+                          <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={isPriorityCard ? "high" : "low"} className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110" />
                         </div>
                       </>
                     )}
