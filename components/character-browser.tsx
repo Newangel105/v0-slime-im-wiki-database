@@ -4,7 +4,7 @@ import { useDeferredValue, useEffect, useLayoutEffect, useMemo, useState, useRef
 import { Grid as VirtualizedGrid, type CellComponentProps } from "react-window"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
-import { ArrowDownUp, Search } from "lucide-react"
+import { ArrowDownUp, LayoutGrid, List, Search } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -961,6 +961,12 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
   const [sortKey, setSortKey] = useState<SortKey>("release_date")
   const [sortAsc, setSortAsc] = useState(false)
   const [showStats, setShowStats] = useState(true)
+  const [viewMode, setViewMode] = useState<"cards" | "compact">(() => {
+    if (typeof sessionStorage !== "undefined") {
+      return sessionStorage.getItem("characterBrowserViewMode") === "compact" ? "compact" : "cards"
+    }
+    return "cards"
+  })
   const [filtersOpen, setFiltersOpen] = useState(() => {
     if (typeof sessionStorage !== "undefined") {
       return sessionStorage.getItem("characterBrowserFiltersOpen") === "1"
@@ -1285,6 +1291,51 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
   // For VariableSizeGrid, must provide functions
   const getColumnWidth = () => columnWidth
   const getRowHeight = () => ROW_HEIGHT
+
+  function CompactCard({ character }: { character: BrowserCharacter }) {
+    const visualTier = getCharacterVisualTier(character)
+    const frameSrc = getCharacterFrame(character)
+    const baseSrc = getCharacterBase(character)
+    const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
+    const iconSrc = character.images.icon
+    const elementIcons = getCharacterElementIcons(character)
+    const attackTypeIcon = attackTypeIconMap[normalizeLabel(character.attack_type)]
+    const attackTypeLabel = formatWikiLabel(character.attack_type)
+    // Same firstIcon/secondIcon logic as forces page:
+    // attackers → element + attack type; protectors → up to two element icons
+    let firstIcon: string | undefined
+    let secondIcon: string | undefined
+    if (isAttackerCharacter(character)) {
+      firstIcon = elementIcons[0]?.icon
+      secondIcon = attackTypeIcon
+    } else {
+      firstIcon = elementIcons[0]?.icon
+      secondIcon = elementIcons[1]?.icon
+    }
+
+    return (
+      <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="min-w-0">
+        <div className="relative w-full pt-[100%] overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white transition-all">
+          <img src={baseSrc} alt="" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
+          <img src={iconSrc} alt={character.name} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover object-top" />
+          <img src={frameSrc} alt="" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
+          {/* Name top-left */}
+          <div className="absolute top-1 left-1 bg-black bg-opacity-80 text-white text-[9px] px-1 py-0.5 rounded z-10 leading-tight max-w-[70%] line-clamp-2">
+            {character.name}
+          </div>
+          {/* Stars bottom-left */}
+          <img src={starsSrc} alt="" loading="lazy" decoding="async" className="absolute bottom-1 left-1 h-5 object-contain z-10" />
+          {/* Icons top-right */}
+          {(firstIcon || secondIcon) && (
+            <div className="absolute top-1 right-1 z-20 flex flex-col items-end gap-0.5">
+              {firstIcon && <img src={firstIcon} alt="" className="w-5 h-5 object-contain" />}
+              {secondIcon && <img src={secondIcon} alt={attackTypeLabel} className="w-5 h-5 object-contain" />}
+            </div>
+          )}
+        </div>
+      </Link>
+    )
+  }
 
   function MobileCard({ character, index }: { character: BrowserCharacter; index: number }) {
     const visualTier = getCharacterVisualTier(character)
@@ -1706,6 +1757,17 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
               >
                 {showStats ? "Hide Stats" : "Show Stats"}
               </button>
+              <button
+                onClick={() => {
+                  const next = viewMode === "cards" ? "compact" : "cards"
+                  setViewMode(next)
+                  sessionStorage.setItem("characterBrowserViewMode", next)
+                }}
+                title={viewMode === "cards" ? "Switch to compact grid view" : "Switch to card view"}
+                className="inline-flex items-center gap-1.5 rounded-full bg-gray-700 px-3 py-2 text-xs font-semibold text-gray-300 hover:bg-gray-600 hover:text-white transition-all"
+              >
+                {viewMode === "cards" ? <LayoutGrid className="h-4 w-4" /> : <List className="h-4 w-4" />}
+              </button>
             </div>
 
             {filtersOpen && (
@@ -1762,7 +1824,13 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
         <section className="min-w-0">
           {Array.isArray(filteredCharacters) && filteredCharacters.length > 0 && (
             <div ref={gridRef} className="w-full">
-              {showGridOnIphone ? (
+              {viewMode === "compact" ? (
+                <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 gap-y-4 gap-x-2">
+                  {filteredCharacters.map((ch) => (
+                    <CompactCard key={ch.master_pc_id} character={ch} />
+                  ))}
+                </div>
+              ) : showGridOnIphone ? (
                 IS_MOBILE ? (
                   <div className="flex flex-col" style={{ gap: `${GAP}px` }}>
                     {filteredCharacters.map((ch, idx) => (
