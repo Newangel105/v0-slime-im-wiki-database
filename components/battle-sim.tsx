@@ -1235,9 +1235,7 @@ function StatModal({
 }
 
 // ─── Main BattleSim ───────────────────────────────────────────────────────────
-export function BattleSim({
-  characters, enemies,
-}: { characters: WikiCharacter[]; enemies: WikiEnemy[] }) {
+export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]; enemies: WikiEnemy[] }) {
 
   // Team state
   const DEFAULT_RATES: BaseRates = {
@@ -1464,7 +1462,6 @@ export function BattleSim({
     }
     return items
   }, [mainProtector, subProtector])
-
 
   return (
     <div className="min-h-screen bg-[#111827] text-white">

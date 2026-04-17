@@ -98,6 +98,7 @@ const SLOT_LABELS: Record<string, string> = {
 
 // ── Main component ────────────────────────────────────────────────────────────
 export default function PresetViewerClient({ characters }: { characters: WikiCharacter[] }) {
+
   const [selectedPreset, setSelectedPreset] = useState<MetaPreset | null>(null)
   const [search, setSearch] = useState("")
   const [selectorOpen, setSelectorOpen] = useState(true)

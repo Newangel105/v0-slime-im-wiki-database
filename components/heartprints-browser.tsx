@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useMemo, useState, useEffect } from "react"
 import { Search } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -460,7 +460,17 @@ function EquipableFilterDropdown({
   )
 }
 
-export function HeartprintsBrowser({ heartprints }: Props) {
+export function HeartprintsBrowser() {
+  const [heartprints, setHeartprints] = useState<Heartprint[]>([])
+  const [dataLoading, setDataLoading] = useState(true)
+
+  useEffect(() => {
+    fetch("/api/heartprints")
+      .then((r) => r.json())
+      .then((data) => { setHeartprints(data); setDataLoading(false) })
+      .catch(() => setDataLoading(false))
+  }, [])
+
   const [search, setSearch] = useState("")
   const [selected, setSelected] = useState<Heartprint | null>(null)
   const [exFilters, setExFilters] = useState<ExFilterKey[]>([])
@@ -486,6 +496,17 @@ export function HeartprintsBrowser({ heartprints }: Props) {
     ? allEquipable.filter((hp) => exFilters.every((k) => heartprintMatchesFilter(hp, k)))
     : allEquipable
   const notEquipable = filtered.filter((hp) => hp.still_type === "normal").sort((a, b) => a.order - b.order)
+
+  if (dataLoading) {
+    return (
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-3">
+          <div className="h-10 w-10 animate-spin rounded-full border-[3px] border-gray-700 border-t-blue-400" />
+          <p className="text-sm text-gray-500 animate-pulse">Loading…</p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">

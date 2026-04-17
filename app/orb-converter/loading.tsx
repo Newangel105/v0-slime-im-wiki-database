@@ -1,4 +1,4 @@
-export default function Loading() {
+﻿export default function Loading() {
   return (
     <div className="min-h-screen bg-gray-900 flex items-center justify-center">
       <div className="flex flex-col items-center gap-3">

@@ -5,5 +5,7 @@ import { getAllEnemies } from "@/lib/enemies"
 export const metadata = { title: "Battle Sim WIP | Slime.Wiki" }
 
 export default function BattleSimPage() {
-  return <BattleSim characters={getAllWikiCharacters()} enemies={getAllEnemies()} />
+  const characters = getAllWikiCharacters()
+  const enemies = getAllEnemies()
+  return <BattleSim characters={characters} enemies={enemies} />
 }

@@ -1,7 +1,7 @@
 import { Suspense } from "react"
 import TeamBuilderClient from "@/components/team-builder-client"
-import { getAllHeartprints, getAllEquipment, getAllCharms } from "@/lib/pc-wiki"
 import { getAllTeamBuilderCharacters } from "@/lib/team-builder-character-data"
+import { getAllHeartprints, getAllEquipment, getAllCharms } from "@/lib/pc-wiki"
 
 export default function TeamBuilderPage() {
   const characters = getAllTeamBuilderCharacters()
