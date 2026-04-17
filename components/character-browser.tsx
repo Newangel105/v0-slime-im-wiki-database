@@ -3,7 +3,7 @@
 import { useDeferredValue, useEffect, useLayoutEffect, useMemo, useState, useRef } from "react"
 import { Grid as VirtualizedGrid, type CellComponentProps } from "react-window"
 import Link from "next/link"
-import { useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { ArrowDownUp, Search } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
@@ -906,6 +906,7 @@ function GroupedToggleFilter({
 
 export function CharacterBrowser({ characters }: { characters: BrowserCharacter[] }) {
   const searchParams = useSearchParams()
+  const router = useRouter()
   const [searchText, setSearchText] = useState("")
   const [selectedAttackerElements, setSelectedAttackerElements] = useState<string[]>([])
   const [selectedDefenderElements, setSelectedDefenderElements] = useState<string[]>([])
@@ -922,7 +923,14 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
   const [sortKey, setSortKey] = useState<SortKey>("release_date")
   const [sortAsc, setSortAsc] = useState(false)
   const [showStats, setShowStats] = useState(true)
-  const [filtersOpen, setFiltersOpen] = useState(false)
+  const [filtersOpen, setFiltersOpen] = useState(() => {
+    if (typeof sessionStorage !== "undefined") {
+      return sessionStorage.getItem("characterBrowserFiltersOpen") === "1"
+    }
+    return false
+  })
+  const [filterMode, setFilterMode] = useState<"AND" | "OR">("OR")
+  const [searchSkills, setSearchSkills] = useState(false)
   const deferredSearchText = useDeferredValue(searchText)
 
   useEffect(() => {
@@ -957,7 +965,44 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
 
     const facility = searchParams.get("facility")
     if (facility) setSelectedFacilities(facility.split(","))
-  }, [searchParams])
+
+    const skill = searchParams.get("skill")
+    if (skill) setSelectedSkillFilters(skill.split(","))
+
+    const trait = searchParams.get("trait")
+    if (trait) setSelectedTraitNames(trait.split(","))
+
+    const valor = searchParams.get("valor")
+    if (valor) setSelectedValorTraitNames(valor.split(","))
+
+    const sort = searchParams.get("sort")
+    if (sort) setSortKey(sort as SortKey)
+
+    const asc = searchParams.get("asc")
+    if (asc === "1") setSortAsc(true)
+  }, [])
+
+  // Sync filter state back to URL so "Back" button restores filters
+  useEffect(() => {
+    const params = new URLSearchParams()
+    if (searchText) params.set("tag", searchText)
+    if (selectedAttackerElements.length) params.set("attacker", selectedAttackerElements.join(","))
+    if (selectedDefenderElements.length) params.set("defender", selectedDefenderElements.join(","))
+    if (selectedAttackTypes.length) params.set("type", selectedAttackTypes.join(","))
+    if (selectedTactics.length) params.set("tactics", selectedTactics.join(","))
+    if (selectedWeapons.length) params.set("weapon", selectedWeapons.join(","))
+    if (selectedRoles.length) params.set("role", selectedRoles.join(","))
+    if (selectedUltimateTypes.length) params.set("ulti", selectedUltimateTypes.join(","))
+    if (selectedForces.length) params.set("force", selectedForces.join(","))
+    if (selectedFacilities.length) params.set("facility", selectedFacilities.join(","))
+    if (selectedSkillFilters.length) params.set("skill", selectedSkillFilters.join(","))
+    if (selectedTraitNames.length) params.set("trait", selectedTraitNames.join(","))
+    if (selectedValorTraitNames.length) params.set("valor", selectedValorTraitNames.join(","))
+    if (sortKey !== "release_date") params.set("sort", sortKey)
+    if (sortAsc) params.set("asc", "1")
+    const qs = params.toString()
+    router.replace(qs ? `/characters?${qs}` : "/characters", { scroll: false })
+  }, [searchText, selectedAttackerElements, selectedDefenderElements, selectedAttackTypes, selectedTactics, selectedWeapons, selectedRoles, selectedUltimateTypes, selectedForces, selectedFacilities, selectedSkillFilters, selectedTraitNames, selectedValorTraitNames, sortKey, sortAsc])
 
   const options = useMemo(
     () => ({
@@ -978,72 +1023,97 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
   const filteredCharacters = useMemo(() => {
     if (!Array.isArray(characters)) return [];
     const query = normalizeLabel(deferredSearchText)
+    // isAND: every selected filter must be satisfied; isOR: any selected filter is enough
+    const isAND = filterMode === "AND"
+
     const filtered = characters.filter((character) => {
       const characterForceNames = character.force_names
 
-      if (query && !character.search_text.includes(query)) {
-        return false
+      // Text search always narrows (not subject to AND/OR toggle)
+      if (query) {
+        const nameMatch = character.search_text.includes(query)
+        const skillMatch = searchSkills && character.skills.some((s) =>
+          s.slot !== "special_skill" && (normalizeLabel(s.name).includes(query) || normalizeLabel(s.description_max_level).includes(query))
+        )
+        if (!nameMatch && !skillMatch) return false
       }
-      const characterElementValue = getCharacterElementValue(character)
-      if (isProtectorCharacter(character)) {
-        if (selectedAttackerElements.length) {
-          return false
-        }
-        if (selectedDefenderElements.length) {
-          const defenderValues = getDefenderElementValues(character)
-          if (!selectedDefenderElements.some((sel) => defenderValues.includes(sel))) {
-            return false
+
+      // Each entry is a boolean: does this character satisfy this filter selection?
+      const results: boolean[] = []
+
+      // ── Element filters ──
+      // Attacker elements: one element per character — each selected element is its own test
+      if (selectedAttackerElements.length) {
+        if (isProtectorCharacter(character)) {
+          // Protectors don't participate in attacker element filters at all
+          results.push(false)
+        } else if (isAttackerCharacter(character)) {
+          const characterElementValue = getCharacterElementValue(character)
+          for (const el of selectedAttackerElements) {
+            results.push(characterElementValue === el)
           }
+        } else {
+          results.push(false)
         }
-      } else if (isAttackerCharacter(character)) {
-        if (selectedDefenderElements.length) {
-          return false
+      }
+      // Defender elements: protectors can cover multiple elements
+      if (selectedDefenderElements.length) {
+        if (isAttackerCharacter(character)) {
+          results.push(false)
+        } else if (isProtectorCharacter(character)) {
+          const defenderValues = getDefenderElementValues(character)
+          for (const el of selectedDefenderElements) {
+            results.push(defenderValues.includes(el))
+          }
+        } else {
+          results.push(false)
         }
-        if (selectedAttackerElements.length && !selectedAttackerElements.includes(characterElementValue)) {
-          return false
-        }
-      } else if (selectedAttackerElements.length || selectedDefenderElements.length) {
-        return false
       }
-      if (selectedAttackTypes.length && !selectedAttackTypes.includes(normalizeLabel(character.attack_type))) {
-        return false
+
+      // ── Single-value filters: each selected value is its own test ──
+      for (const v of selectedAttackTypes) {
+        results.push(normalizeLabel(character.attack_type) === v)
       }
-      if (selectedTactics.length && !selectedTactics.includes(normalizeLabel(character.tactics_type))) {
-        return false
+      for (const v of selectedTactics) {
+        results.push(normalizeLabel(character.tactics_type) === v)
       }
-      if (selectedForces.length && !selectedForces.every((value) => characterForceNames.includes(value))) {
-        return false
-      }
-      if (!characterMatchesEffectFilters(character, selectedSkillFilters)) {
-        return false
-      }
-      if (selectedTraitNames.length && !selectedTraitNames.every((effect) =>
-        character.traits.some((trait) => !isValorTrait(trait) && (options.traitEffectMap.get(effect) ?? []).includes(trait.name))
-      )) {
-        return false
-      }
-      if (selectedValorTraitNames.length && !selectedValorTraitNames.every((effect) =>
-        character.traits.some((trait) => isValorTrait(trait) && (options.valorTraitEffectMap.get(effect) ?? []).includes(trait.name))
-      )) {
-        return false
-      }
-      if (selectedFacilities.length && !selectedFacilities.every((value) => character.facilities.includes(value))) {
-        return false
-      }
-      if (selectedWeapons.length && !selectedWeapons.includes(normalizeLabel(character.weapon_type))) {
-        return false
+      for (const v of selectedWeapons) {
+        results.push(normalizeLabel(character.weapon_type) === v)
       }
       if (selectedRoles.length) {
         const role = isProtectorCharacter(character) ? "protector" : isAttackerCharacter(character) ? "attacker" : null
-        if (!role) return false
-        if (!selectedRoles.includes(role)) return false
+        for (const v of selectedRoles) {
+          results.push(role === v)
+        }
       }
       if (selectedUltimateTypes.length) {
         const ultType = getCharacterUltimateType(character)
-        if (!ultType || !selectedUltimateTypes.includes(ultType)) return false
+        for (const v of selectedUltimateTypes) {
+          results.push(!!ultType && ultType === v)
+        }
       }
 
-      return true
+      // ── Multi-value filters: character can belong to multiple ──
+      for (const v of selectedForces) {
+        results.push(characterForceNames.includes(v))
+      }
+      for (const v of selectedFacilities) {
+        results.push(character.facilities.includes(v))
+      }
+      for (const v of selectedTraitNames) {
+        results.push(character.traits.some((trait) => !isValorTrait(trait) && (options.traitEffectMap.get(v) ?? []).includes(trait.name)))
+      }
+      for (const v of selectedValorTraitNames) {
+        results.push(character.traits.some((trait) => isValorTrait(trait) && (options.valorTraitEffectMap.get(v) ?? []).includes(trait.name)))
+      }
+
+      // Skill effect filters (complex grouped logic — always AND internally)
+      if (selectedSkillFilters.length) {
+        results.push(characterMatchesEffectFilters(character, selectedSkillFilters))
+      }
+
+      if (results.length === 0) return true
+      return isAND ? results.every(Boolean) : results.some(Boolean)
     })
 
     return filtered.sort((left, right) => {
@@ -1058,7 +1128,7 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
         case "existence":
           return dir * (right.stats.existence - left.stats.existence)
         case "rarity":
-          return dir * (right.rarity - left.rarity || right.stats.existence - left.stats.existence)
+          return dir * (getCharacterVisualTier(right) - getCharacterVisualTier(left) || right.stats.existence - left.stats.existence)
         case "release_date": {
           const leftReleaseDate = left.release_date ?? ""
           const rightReleaseDate = right.release_date ?? ""
@@ -1083,6 +1153,8 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
   }, [
     characters,
     deferredSearchText,
+    filterMode,
+    searchSkills,
     selectedAttackTypes,
     selectedAttackerElements,
     selectedDefenderElements,
@@ -1345,7 +1417,7 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
             paddingRight: isLastColumn ? GAP / 2 + EXTRA_LAST_COLUMN_SPACE : GAP / 2,
           }}
         >
-          <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="block w-full min-w-0">
+          <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="block w-full h-full min-w-0">
             <div
               className="w-full min-w-0 group h-full overflow-hidden rounded-2xl bg-gradient-to-b from-[#1d2d44] to-[#0f1924] shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-2xl"
               style={{ borderTop: `4px solid ${elementAccentColor}`, contentVisibility: "auto", containIntrinsicSize: `${CARD_HEIGHT}px` }}
@@ -1464,6 +1536,7 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
     setSelectedUltimateTypes([])
     setSortKey("release_date")
     setSortAsc(false)
+    setFilterMode("OR")
   }
 
   function toggleValue(values: string[], setter: (next: string[]) => void, value: string) {
@@ -1492,9 +1565,30 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
               <h1 className="text-3xl font-bold text-white sm:text-4xl">Characters</h1>
             </div>
             <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-              <div className="relative w-full lg:max-w-xl">
+              <div className="relative w-full lg:max-w-xl flex items-center">
                 <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-                <Input value={searchText} onChange={(event) => setSearchText(event.target.value)} placeholder="Search names, affiliations, effects, forces, towns" className="h-12 rounded-full border-gray-600 bg-gray-700 pl-11 text-white placeholder:text-gray-400" />
+                <Input value={searchText} onChange={(event) => setSearchText(event.target.value)} placeholder="Search names, affiliations, effects, forces, towns" className="h-12 rounded-full border-gray-600 bg-gray-700 pl-11 pr-36 text-white placeholder:text-gray-400 flex-1" />
+                {/* Skills toggle embedded at right of search bar */}
+                <button
+                  onClick={() => setSearchSkills((prev) => !prev)}
+                  title={searchSkills ? "Also searching skill names & descriptions" : "Click to also search skill names & descriptions"}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition-all select-none"
+                  style={searchSkills
+                    ? { background: "linear-gradient(135deg,#1e40af,#2563eb)", color: "#fff", boxShadow: "0 0 8px rgba(59,130,246,0.5)" }
+                    : { background: "rgba(255,255,255,0.07)", color: "#9ca3af", border: "1px solid rgba(255,255,255,0.1)" }}
+                >
+                  {/* mini toggle pill */}
+                  <span
+                    className="relative inline-flex h-3.5 w-6 shrink-0 rounded-full transition-colors"
+                    style={{ background: searchSkills ? "#60a5fa" : "#374151" }}
+                  >
+                    <span
+                      className="absolute top-0.5 h-2.5 w-2.5 rounded-full bg-white shadow transition-transform"
+                      style={{ transform: searchSkills ? "translateX(13px)" : "translateX(2px)" }}
+                    />
+                  </span>
+                  Search Skills
+                </button>
               </div>
               {filtersOpen && (
               <div className="flex flex-wrap items-center gap-3">
@@ -1530,7 +1624,11 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
 
             <div className="flex flex-wrap items-center gap-3 text-sm text-gray-300">
               <button
-                onClick={() => setFiltersOpen(!filtersOpen)}
+                onClick={() => {
+                  const next = !filtersOpen
+                  setFiltersOpen(next)
+                  sessionStorage.setItem("characterBrowserFiltersOpen", next ? "1" : "0")
+                }}
                 className="inline-flex items-center rounded-full bg-gray-700 px-4 py-2 text-xs font-semibold text-gray-300 hover:bg-gray-600 hover:text-white transition-all"
               >
                 {filtersOpen ? "Hide Filters" : "Show Filters"}
@@ -1539,6 +1637,30 @@ export function CharacterBrowser({ characters }: { characters: BrowserCharacter[
                 <div className="inline-flex items-center gap-2 rounded-full bg-gray-700 px-4 py-2 text-white">
                   <span>{activeFilterCount} active filters</span>
                 </div>
+              )}
+              {activeFilterCount > 0 && (
+                <button
+                  onClick={() => setFilterMode((prev) => prev === "AND" ? "OR" : "AND")}
+                  title={filterMode === "AND" ? "AND: character must match ALL filters — click for OR" : "OR: character matches ANY filter — click for AND"}
+                  className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold transition-all select-none"
+                  style={filterMode === "AND"
+                    ? { background: "linear-gradient(135deg,#14532d,#16a34a)", color: "#fff", boxShadow: "0 0 10px rgba(34,197,94,0.4)", border: "1px solid rgba(74,222,128,0.4)" }
+                    : { background: "rgba(255,255,255,0.07)", color: "#9ca3af", border: "1px solid rgba(255,255,255,0.1)" }}
+                >
+                  {/* Switch track */}
+                  <span
+                    className="relative inline-flex h-4 w-8 shrink-0 items-center rounded-full transition-colors"
+                    style={{ background: filterMode === "AND" ? "#22c55e" : "#374151" }}
+                  >
+                    <span
+                      className="absolute top-0.5 h-3 w-3 rounded-full bg-white shadow transition-transform"
+                      style={{ transform: filterMode === "AND" ? "translateX(18px)" : "translateX(2px)" }}
+                    />
+                  </span>
+                  <span className="font-bold tracking-widest" style={{ color: filterMode === "AND" ? "#bbf7d0" : "#6b7280" }}>
+                    {filterMode}
+                  </span>
+                </button>
               )}
               <button
                 onClick={() => setShowStats(!showStats)}

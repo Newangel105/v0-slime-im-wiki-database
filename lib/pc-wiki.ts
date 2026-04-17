@@ -4,6 +4,8 @@ import equipmentData from "../pc_wiki.equipment.json"
 import fallbackEquipmentData from "../public/equipment.json"
 import charmData from "../public/charms.json"
 import fallbackCharmData from "../pc_wiki.charms.json"
+import charStatsRaw from "../pc_wiki_char_stats.json"
+import teamStatsRaw from "../pc_wiki_team_stats.json"
 
 export type WikiForce = {
   label: string
@@ -163,6 +165,7 @@ export function getAllWikiCharacters(): WikiCharacter[] {
 export type HeartprintRareLevel = {
   level: number
   active_skill_label: string
+  skill_description: string | null
   rare_levelup_item_group_id: number
 }
 
@@ -193,6 +196,17 @@ export type HeartprintPassiveSkill = {
   ex_effects: HeartprintExEffect[]
 }
 
+export type HeartprintUnlockCondition = {
+  type: number           // 1 = complete quest, 3 = own heartprint, 6 = collect N heartprints
+  target_count: number
+  quest_id: number | null
+  quest_name: string | null
+  target_season: number | null
+  required_still_id: number | null
+  required_still_title: string | null
+  required_still_season: string | null
+}
+
 export type Heartprint = {
   heartprint_id: number
   still_type: "normal" | "rare"
@@ -206,6 +220,24 @@ export type Heartprint = {
   skill_description: string | null
   passive_skill_level?: number
   display_character_id: number
+  episode_id?: number | null
+  season?: string | null          // e.g. "#17" (prefix "Season " for display)
+  unlock_conditions?: HeartprintUnlockCondition[]
+  facility_source?: {
+    area_name?: string | null
+    area_id?: number | null
+    growth_value?: number | null
+  } | null
+  arena_rank_source?: {
+    rank_name?: string | null
+    arena_group?: number | null
+  } | null
+  event_source?: {
+    quest_name?: string | null
+    event_id?: number | null
+    is_missable?: boolean
+    source_type?: string | null
+  } | null
   // normal only
   passive_skill?: HeartprintPassiveSkill
   // rare only
@@ -284,6 +316,40 @@ export function getAllHeartprints(): Heartprint[] {
 
 export function getWikiCharacterById(characterId: number): WikiCharacter | undefined {
   return websiteCharacterById.get(characterId)
+}
+
+// ---------------------------------------------------------------------------
+// Max-level stats (base stats + level growth to character max level)
+// ---------------------------------------------------------------------------
+type CharStatsEntry = { max_hp: number; max_atk: number; max_def: number; sb_hp: number; sb_atk: number; sb_def: number; level_group_id: number; statusboard_id: number }
+type CharStatsPayload = { char_stats: Record<string, CharStatsEntry>; bond_max: { hp_pct: number; atk_pct: number; def_pct: number } }
+const charStatsMap = (charStatsRaw as CharStatsPayload).char_stats
+const bondMax = (charStatsRaw as CharStatsPayload).bond_max
+
+type LevelMaxAddEntry = { level: number; add_hp: number; add_attack: number; add_defense: number }
+type TeamStatsPayload = { level_max_add: Record<string, LevelMaxAddEntry> }
+const levelMaxAddMap = (teamStatsRaw as TeamStatsPayload).level_max_add
+
+export function getCharMaxStats(characterId: number): { hp: number; attack: number; defense: number; existence: number } | null {
+  const entry = charStatsMap[String(characterId)]
+  if (entry) {
+    const baseWithBoardHp = entry.max_hp + (entry.sb_hp ?? 0)
+    const baseWithBoardAtk = entry.max_atk + (entry.sb_atk ?? 0)
+    const baseWithBoardDef = entry.max_def + (entry.sb_def ?? 0)
+    const hp = Math.floor(baseWithBoardHp * (1 + bondMax.hp_pct / 100))
+    const attack = Math.floor(baseWithBoardAtk * (1 + bondMax.atk_pct / 100))
+    const defense = Math.floor(baseWithBoardDef * (1 + bondMax.def_pct / 100))
+    return { hp, attack, defense, existence: hp + attack + defense }
+  }
+  // Fallback: compute from base stats + level_max_add for characters missing from char_stats
+  const character = websiteCharacterById.get(characterId)
+  if (!character?.master_pc_level_group_id) return null
+  const add = levelMaxAddMap[String(character.master_pc_level_group_id)]
+  if (!add) return null
+  const hp = Math.floor((character.stats.hp + add.add_hp) * (1 + bondMax.hp_pct / 100))
+  const attack = Math.floor((character.stats.attack + add.add_attack) * (1 + bondMax.atk_pct / 100))
+  const defense = Math.floor((character.stats.defense + add.add_defense) * (1 + bondMax.def_pct / 100))
+  return { hp, attack, defense, existence: hp + attack + defense }
 }
 
 export function toPublicAssetPath(assetPath: string | null | undefined): string {
@@ -432,11 +498,12 @@ export function getGlobalStatMaxes(): GlobalStatMaxes {
   if (cachedStatMaxes) return cachedStatMaxes
 
   const characters = getAllWikiCharacters()
+  const resolved = characters.map((c) => getCharMaxStats(c.master_pc_id) ?? c.stats)
   cachedStatMaxes = {
-    hp: Math.max(...characters.map((c) => c.stats.hp)),
-    attack: Math.max(...characters.map((c) => c.stats.attack)),
-    defense: Math.max(...characters.map((c) => c.stats.defense)),
-    existence: Math.max(...characters.map((c) => c.stats.existence)),
+    hp: Math.max(...resolved.map((s) => s.hp)),
+    attack: Math.max(...resolved.map((s) => s.attack)),
+    defense: Math.max(...resolved.map((s) => s.defense)),
+    existence: Math.max(...resolved.map((s) => s.existence)),
   }
   return cachedStatMaxes
 }

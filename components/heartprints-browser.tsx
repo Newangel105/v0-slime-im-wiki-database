@@ -3,11 +3,9 @@
 import { useMemo, useState } from "react"
 import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
-import { getAllHeartprints, stripColorTags, type Heartprint } from "@/lib/pc-wiki"
+import { stripColorTags, type Heartprint } from "@/lib/pc-wiki"
 
 function heartprintThumb(picturePath: string): string {
-  // picture_path: "Image/SkillStill/<id>/skill_still_<id>_{0}"
-  // → /SkillStill/<id>/skill_still_<id>_S.png
   return "/" + picturePath.replace(/^Image\//, "").replace("{0}", "S") + ".png"
 }
 
@@ -15,164 +13,319 @@ function heartprintLarge(picturePath: string): string {
   return "/" + picturePath.replace(/^Image\//, "").replace("{0}", "L") + ".png"
 }
 
-function StatPill({ label, value, pct = false }: { label: string; value: number; pct?: boolean }) {
-  if (!value) return null
-  const display = pct ? `${(value / 100).toFixed(2)}%` : value.toLocaleString()
-  return (
-    <span className="inline-flex items-center gap-1 rounded bg-gray-700/60 px-2 py-0.5 text-xs text-gray-200">
-      <span className="text-gray-400">{label}</span>
-      <span className="font-semibold text-white">+{display}</span>
-    </span>
-  )
-}
-
 const ELEMENT_NAMES: Record<number, string> = {
-  1: "Earth", 2: "Space", 3: "Wind", 4: "Water", 5: "Fire", 6: "Light", 7: "Dark",
+  1: "Earth", 2: "Space", 3: "Wind", 4: "Water", 5: "Fire", 6: "Light", 7: "Dark", 90: "Protection",
 }
 
-function elementSkillDesc(hp: Heartprint): string | null {
-  if (hp.still_type !== "normal" || !hp.passive_skill?.target_type) return null
-  const targetType = hp.passive_skill.target_type
-  if (!hp.passive_skill_level) return null
-  if (targetType === 90) return `Increases Protection Characters effect level by ${hp.passive_skill_level}`
-  const elem = ELEMENT_NAMES[targetType] ?? String(targetType)
-  return `Increases ${elem} Attribute effect level by ${hp.passive_skill_level}`
+const ELEMENT_COLORS: Record<number, string> = {
+  1: "text-yellow-600 bg-yellow-900/30 border-yellow-700/40",
+  2: "text-indigo-400 bg-indigo-900/30 border-indigo-700/40",
+  3: "text-green-400 bg-green-900/30 border-green-700/40",
+  4: "text-blue-400 bg-blue-900/30 border-blue-700/40",
+  5: "text-red-400 bg-red-900/30 border-red-700/40",
+  6: "text-yellow-300 bg-yellow-900/20 border-yellow-600/40",
+  7: "text-purple-400 bg-purple-900/30 border-purple-700/40",
+  90: "text-gray-300 bg-gray-700/30 border-gray-600/40",
 }
+
+const ELEMENT_HEADER_COLORS: Record<number, string> = {
+  1: "border-yellow-700/50 bg-yellow-900/20",
+  2: "border-indigo-700/50 bg-indigo-900/20",
+  3: "border-green-700/50 bg-green-900/20",
+  4: "border-blue-700/50 bg-blue-900/20",
+  5: "border-red-700/50 bg-red-900/20",
+  6: "border-yellow-600/50 bg-yellow-900/10",
+  7: "border-purple-700/50 bg-purple-900/20",
+  90: "border-gray-600/50 bg-gray-800/40",
+}
+
+function formatSeason(season: string | null | undefined): string | null {
+  if (!season) return null
+  return season
+}
+
+function formatCondition(c: { type: number; target_count: number; quest_id: number | null; quest_name: string | null; target_season: number | null; required_still_id?: number | null; required_still_title?: string | null; required_still_season?: string | null }): string {
+  if (c.type === 1) return "Complete quest: " + (c.quest_name ?? ("ID " + c.quest_id))
+  if (c.type === 3) {
+    const season = c.required_still_season ? c.required_still_season + " " : ""
+    return "Own Heartprint: " + season + (c.required_still_title ?? ("ID " + c.required_still_id))
+  }
+  if (c.type === 6 && c.target_count > 0) return "Collect " + c.target_count + " Heartprint" + (c.target_count !== 1 ? "s" : "")
+  return "Condition type " + c.type
+}
+
+// -- Equipable card --
 
 function HeartprintCard({ hp, onClick }: { hp: Heartprint; onClick: () => void }) {
   const thumb = heartprintThumb(hp.picture_path)
-  // rare = equipable (active skill), normal = not equipable (passive stats)
-  const isEquipable = hp.still_type === "rare"
-
-  // Non-equipable normals show passive max stats
-  const maxLevel = !isEquipable
-    ? hp.passive_skill?.levels[hp.passive_skill.levels.length - 1]
-    : null
-
-  const desc = isEquipable
-    ? (hp.skill_description ? stripColorTags(hp.skill_description) : null)
-    : elementSkillDesc(hp)
+  const desc = hp.skill_description ? stripColorTags(hp.skill_description) : null
 
   return (
     <button
       onClick={onClick}
-      className="group flex flex-col bg-gray-800 border border-gray-700 rounded-lg overflow-hidden hover:border-blue-500/60 hover:bg-gray-750 transition-all text-left w-full"
+      className="group flex flex-col bg-gray-800 border border-gray-700 rounded-lg overflow-hidden hover:border-blue-500/60 transition-all text-left w-full"
     >
-      {/* Thumbnail */}
       <div className="relative w-full aspect-video bg-gray-900 overflow-hidden">
-        <img
-          src={thumb}
-          alt={hp.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-        />
+        <img src={thumb} alt={hp.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
       </div>
-
-      {/* Info */}
       <div className="flex flex-col gap-1.5 p-3 flex-1">
         <p className="text-sm font-semibold text-white leading-tight line-clamp-2">{hp.title}</p>
-
-        {desc && (
-          <p className="text-xs text-gray-400 leading-snug line-clamp-2">{desc}</p>
-        )}
-
-        {/* Passive max stats (not-equipable only) */}
-        {maxLevel && (
-          <div className="flex flex-wrap gap-1 mt-auto pt-1">
-            <StatPill label="HP" value={maxLevel.hp} pct />
-            <StatPill label="ATK" value={maxLevel.attack} pct />
-            <StatPill label="DEF" value={maxLevel.defense} pct />
-          </div>
-        )}
+        {desc && <p className="text-xs text-gray-400 leading-snug line-clamp-2">{desc}</p>}
       </div>
     </button>
   )
 }
 
+// -- Not Equipable table with rowspan element column --
+
+function NotEquipableTable({ heartprints, onSelect }: { heartprints: Heartprint[]; onSelect: (hp: Heartprint) => void }) {
+  if (heartprints.length === 0) return <p className="text-gray-500 text-sm py-4">No heartprints found.</p>
+
+  const byElement: Map<number, Heartprint[]> = new Map()
+  for (const hp of heartprints) {
+    const tt = hp.passive_skill?.target_type ?? 0
+    if (!byElement.has(tt)) byElement.set(tt, [])
+    byElement.get(tt)!.push(hp)
+  }
+  const sortedElements = [...byElement.keys()].sort((a, b) => {
+    if (a === 90) return 1
+    if (b === 90) return -1
+    return a - b
+  })
+
+  return (
+    <div className="w-full overflow-x-auto rounded-lg border border-gray-700/60">
+      <table className="w-full text-sm border-collapse">
+        <thead>
+          <tr className="bg-gray-800/80 border-b border-gray-700">
+            <th className="text-left px-4 py-3 text-gray-400 font-semibold uppercase tracking-wide text-xs w-28">Element</th>
+            <th className="text-left px-4 py-3 text-gray-400 font-semibold uppercase tracking-wide text-xs">Heartprint</th>
+            <th className="text-center px-4 py-3 text-gray-400 font-semibold uppercase tracking-wide text-xs whitespace-nowrap">Elem. Lv</th>
+            <th className="text-center px-4 py-3 text-gray-400 font-semibold uppercase tracking-wide text-xs">HP%</th>
+            <th className="text-center px-4 py-3 text-gray-400 font-semibold uppercase tracking-wide text-xs">ATK%</th>
+            <th className="text-center px-4 py-3 text-gray-400 font-semibold uppercase tracking-wide text-xs">DEF%</th>
+            <th className="text-left px-4 py-3 text-gray-400 font-semibold uppercase tracking-wide text-xs">EX Effects</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedElements.map((elemId) => {
+            const group = byElement.get(elemId)!
+            const sorted = [...group].sort((a, b) => {
+              const lvDiff = (b.passive_skill_level ?? 0) - (a.passive_skill_level ?? 0)
+              return lvDiff !== 0 ? lvDiff : a.order - b.order
+            })
+            const elemName = ELEMENT_NAMES[elemId] ?? ("Type " + elemId)
+            const badgeCls = ELEMENT_COLORS[elemId] ?? "text-gray-300 bg-gray-700/30 border-gray-600/40"
+            const elemBgCls = ELEMENT_HEADER_COLORS[elemId] ?? "bg-gray-800/40"
+
+            return sorted.map((hp, rowIdx) => {
+              const maxLv = hp.passive_skill?.levels?.[hp.passive_skill.levels.length - 1]
+              const hpPct  = maxLv ? "+" + (maxLv.hp      / 100).toFixed(2) + "%" : "-"
+              const atkPct = maxLv ? "+" + (maxLv.attack   / 100).toFixed(2) + "%" : "-"
+              const defPct = maxLv ? "+" + (maxLv.defense  / 100).toFixed(2) + "%" : "-"
+              const season = formatSeason(hp.season)
+              const thumb  = heartprintThumb(hp.picture_path)
+              const isLast = rowIdx === sorted.length - 1
+
+              // EX totals across all ex_effect entries
+              const exTotals = hp.passive_skill?.ex_effects?.length
+                ? hp.passive_skill.ex_effects.reduce(
+                    (acc, e: { critical?: number; penetration?: number; cooperation?: number; defcritical?: number; element?: number }) => ({
+                      critical:    acc.critical    + (e.critical    ?? 0),
+                      penetration: acc.penetration + (e.penetration ?? 0),
+                      cooperation: acc.cooperation + (e.cooperation ?? 0),
+                      defcritical: acc.defcritical + (e.defcritical ?? 0),
+                      element:     acc.element     + (e.element     ?? 0),
+                    }),
+                    { critical: 0, penetration: 0, cooperation: 0, defcritical: 0, element: 0 }
+                  )
+                : null
+              const exLines: { label: string; val: number }[] = exTotals ? [
+                { label: "Crit Dmg",    val: exTotals.critical    },
+                { label: "Pierce",      val: exTotals.penetration },
+                { label: "Synergy",     val: exTotals.cooperation },
+                { label: "Aegis",       val: exTotals.defcritical },
+                { label: "Element",     val: exTotals.element     },
+              ].filter(x => x.val > 0) : []
+
+              return (
+                <tr
+                  key={hp.heartprint_id}
+                  className={"border-b border-gray-700/40 hover:bg-gray-700/25 cursor-pointer transition-colors" + (isLast ? " border-b-2 border-b-gray-600/60" : "")}
+                  onClick={() => onSelect(hp)}
+                >
+                  {/* Element cell — rowspan on first row only */}
+                  {rowIdx === 0 && (
+                    <td
+                      rowSpan={sorted.length}
+                      className={"px-4 text-center align-middle border-r border-gray-700/40 " + elemBgCls}
+                    >
+                      <span className={"inline-block rounded border px-2 py-1 text-xs font-bold " + badgeCls}>
+                        {elemName}
+                      </span>
+                    </td>
+                  )}
+
+                  {/* Heartprint thumbnail + name + season */}
+                  <td className="px-4 py-2">
+                    <div className="flex items-center gap-3">
+                      <img
+                        src={thumb}
+                        alt={hp.title}
+                        className="w-20 h-12 object-cover rounded flex-shrink-0 bg-gray-900"
+                      />
+                      <div className="flex flex-col">
+                        <span className="text-white font-medium leading-snug">{hp.title}</span>
+                        {season && <span className="text-xs text-gray-500 mt-0.5">{season}</span>}
+                      </div>
+                    </div>
+                  </td>
+
+                  {/* Elem. Lv */}
+                  <td className="px-4 py-2 text-center">
+                    <span className="font-bold text-gray-200">{hp.passive_skill_level ?? "-"}</span>
+                  </td>
+
+                  {/* Stats */}
+                  <td className="px-4 py-2 text-center font-mono text-xs text-green-400 whitespace-nowrap">{hpPct}</td>
+                  <td className="px-4 py-2 text-center font-mono text-xs text-red-400 whitespace-nowrap">{atkPct}</td>
+                  <td className="px-4 py-2 text-center font-mono text-xs text-blue-400 whitespace-nowrap">{defPct}</td>
+
+                  {/* EX effects */}
+                  <td className="px-4 py-2">
+                    {exLines.length > 0
+                      ? (
+                        <div className="flex flex-col gap-0.5">
+                          {exLines.map(x => (
+                            <span key={x.label} className="text-xs text-gray-300 whitespace-nowrap">
+                              <span className="text-gray-500">{x.label} </span>
+                              <span className="font-mono text-yellow-300">+{(x.val / 100).toFixed(2)}%</span>
+                            </span>
+                          ))}
+                        </div>
+                      )
+                      : <span className="text-gray-600 text-xs">-</span>
+                    }
+                  </td>
+                </tr>
+              )
+            })
+          })}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+// -- Modal --
+
 function HeartprintModal({ hp, onClose }: { hp: Heartprint; onClose: () => void }) {
   const large = heartprintLarge(hp.picture_path)
-  // rare = equipable (active skill), normal = not equipable (passive stats)
   const isEquipable = hp.still_type === "rare"
-  const desc = isEquipable
-    ? (hp.skill_description ? stripColorTags(hp.skill_description) : null)
-    : elementSkillDesc(hp)
+  const season = formatSeason(hp.season)
+  const conditions = hp.unlock_conditions ?? []
+  const hasObtain = season != null || conditions.length > 0 || !!hp.facility_source || !!hp.arena_rank_source || !!hp.event_source
 
-  // Non-equipable normals show passive stats
-  const maxLevel = !isEquipable
-    ? hp.passive_skill?.levels[hp.passive_skill.levels.length - 1]
-    : null
-
-  // Sum all milestone entries for cumulative totals at max level
-  const exTotals = !isEquipable && hp.passive_skill?.ex_effects?.length
-    ? hp.passive_skill.ex_effects.reduce(
-        (acc, e) => ({
-          critical:    acc.critical    + (e.critical    ?? 0),
-          penetration: acc.penetration + (e.penetration ?? 0),
-          cooperation: acc.cooperation + (e.cooperation ?? 0),
-          defcritical: acc.defcritical + (e.defcritical ?? 0),
-          element:     acc.element     + (e.element     ?? 0),
-        }),
-        { critical: 0, penetration: 0, cooperation: 0, defcritical: 0, element: 0 }
-      )
+  // Level toggle state for equipable (rare) heartprints
+  const rareLevels = hp.rare_levels ?? []
+  const [selectedLevel, setSelectedLevel] = useState<number>(rareLevels.length > 0 ? rareLevels[rareLevels.length - 1].level : 1)
+  const activeLevelData = rareLevels.find((l) => l.level === selectedLevel)
+  const displayDesc = activeLevelData?.skill_description
+    ? stripColorTags(activeLevelData.skill_description)
+    : hp.skill_description
+    ? stripColorTags(hp.skill_description)
     : null
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
-      onClick={onClose}
-    >
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4" onClick={onClose}>
       <div
-        className="relative bg-gray-800 border border-gray-600 rounded-xl overflow-hidden max-w-lg w-full shadow-2xl"
+        className="relative bg-gray-800 border border-gray-600 rounded-xl overflow-hidden max-w-lg w-full shadow-2xl max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Large image */}
-        <img src={large} alt={hp.title} className="w-full object-cover" />
+        {/* Hero image with level selector overlay for equipable */}
+        <div className="relative">
+          <img src={large} alt={hp.title} className="w-full object-cover" />
+          {isEquipable && rareLevels.length > 0 && (
+            <div className="absolute bottom-3 left-3 flex gap-1.5 items-center">
+              {[1, 2, 3].map((pos) => {
+                const isActive = pos <= selectedLevel
+                return (
+                  <button
+                    key={pos}
+                    onClick={(e) => { e.stopPropagation(); setSelectedLevel(pos) }}
+                    title={`Level ${pos}`}
+                    className="transition-all"
+                  >
+                    <img
+                      src={`/UI/Texture/CommonEtcAtlas/iconRarity${selectedLevel}.png`}
+                      alt={`Level ${pos}`}
+                      className={`w-8 h-8 object-contain transition-all ${isActive ? "opacity-100" : "opacity-25 grayscale"}`}
+                    />
+                  </button>
+                )
+              })}
+            </div>
+          )}
+        </div>
 
         <div className="p-5 space-y-3">
-          {/* Title + badge */}
-          <div className="flex items-start justify-between gap-3">
-            <h2 className="text-lg font-bold text-white leading-tight">{hp.title}</h2>
-            <span
-              className={`flex-shrink-0 rounded-full px-2.5 py-0.5 text-xs font-semibold uppercase ${
-                isEquipable
-                  ? "bg-blue-600/30 text-blue-300 border border-blue-500/40"
-                  : "bg-purple-600/30 text-purple-300 border border-purple-500/40"
-              }`}
-            >
-              {isEquipable ? "Equipable" : "Not Equipable"}
-            </span>
-          </div>
+          <h2 className="text-lg font-bold text-white leading-tight">{hp.title}</h2>
 
-          {/* Description */}
-          {desc && <p className="text-sm text-gray-300 leading-snug">{desc}</p>}
+          {/* Equipable: show per-level skill description */}
+          {isEquipable && displayDesc && (
+            <p className="text-sm text-gray-300 leading-snug">{displayDesc}</p>
+          )}
 
-          {/* Not-equipable normals: passive max stats */}
-          {!isEquipable && maxLevel && (
+          {/* How to Obtain — shown for both equipable and not-equipable */}
+          {hasObtain && (
             <div>
-              <p className="text-xs text-gray-500 uppercase tracking-wide mb-1.5">
-                Max Level Stats (Lv.{maxLevel.level})
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {maxLevel.hp > 0 && <StatPill label="HP" value={maxLevel.hp} pct />}
-                {maxLevel.attack > 0 && <StatPill label="ATK" value={maxLevel.attack} pct />}
-                {maxLevel.defense > 0 && <StatPill label="DEF" value={maxLevel.defense} pct />}
+              <p className="text-xs text-gray-500 uppercase tracking-wide mb-2">How to Obtain</p>
+              <div className="space-y-1.5">
+                {season && (
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-gray-500 w-16 flex-shrink-0">From</span>
+                    <span className="text-sm text-yellow-300 font-semibold">{season}</span>
+                  </div>
+                )}
+                {conditions.map((c, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <span className="text-xs text-gray-500 w-16 flex-shrink-0">Requires</span>
+                    <span className="text-sm text-gray-200">{formatCondition(c)}</span>
+                  </div>
+                ))}
+                {hp.facility_source && (
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-gray-500 w-16 flex-shrink-0">District</span>
+                    <span className="text-sm text-gray-200">
+                      {hp.facility_source.area_name} district progress level {hp.facility_source.growth_value}
+                    </span>
+                  </div>
+                )}
+                {hp.arena_rank_source && (
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-gray-500 w-16 flex-shrink-0">Arena</span>
+                    <span className="text-sm text-gray-200">
+                      Reach {hp.arena_rank_source.rank_name} in the Valor Cup
+                    </span>
+                  </div>
+                )}
+                {hp.event_source && (
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-gray-500 w-16 flex-shrink-0">Event</span>
+                    <span className="text-sm text-gray-200">
+                      {hp.event_source.quest_name
+                        ? `Complete quest "${hp.event_source.quest_name}" in a limited story event`
+                        : "Complete a limited story event"}
+                      {hp.event_source.is_missable && " (Missable)"}
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           )}
 
-          {/* Not-equipable normals: EX effects (cumulative totals) */}
-          {!isEquipable && exTotals && (
-            <div>
-              <p className="text-xs text-gray-500 uppercase tracking-wide mb-1.5">
-                EX Effects (Max Level Totals)
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {exTotals.critical    > 0 && <StatPill label="Critical Damage" value={exTotals.critical}    pct />}
-                {exTotals.penetration > 0 && <StatPill label="Pierce Power"    value={exTotals.penetration} pct />}
-                {exTotals.cooperation > 0 && <StatPill label="Synergy Power"   value={exTotals.cooperation} pct />}
-                {exTotals.defcritical > 0 && <StatPill label="Aegis Power"     value={exTotals.defcritical} pct />}
-                {exTotals.element     > 0 && <StatPill label="Element"         value={exTotals.element}     pct />}
-              </div>
-            </div>
+          {!hasObtain && (
+            <p className="text-xs text-gray-500 italic">No obtain information available.</p>
           )}
         </div>
 
@@ -190,18 +343,7 @@ function HeartprintModal({ hp, onClose }: { hp: Heartprint; onClose: () => void 
   )
 }
 
-function SectionGrid({ heartprints, onSelect }: { heartprints: Heartprint[]; onSelect: (hp: Heartprint) => void }) {
-  if (heartprints.length === 0) {
-    return <p className="text-gray-500 text-sm py-4">No heartprints found.</p>
-  }
-  return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
-      {heartprints.map((hp) => (
-        <HeartprintCard key={hp.heartprint_id} hp={hp} onClick={() => onSelect(hp)} />
-      ))}
-    </div>
-  )
-}
+// -- Main browser --
 
 interface Props {
   heartprints: Heartprint[]
@@ -217,22 +359,21 @@ export function HeartprintsBrowser({ heartprints }: Props) {
     return heartprints.filter(
       (hp) =>
         hp.title.toLowerCase().includes(q) ||
-        (hp.skill_description && stripColorTags(hp.skill_description).toLowerCase().includes(q))
+        (hp.skill_description && stripColorTags(hp.skill_description).toLowerCase().includes(q)) ||
+        (hp.season && hp.season.toLowerCase().includes(q))
     )
   }, [heartprints, search])
 
-  const equipable = filtered.filter((hp) => hp.still_type === "rare").sort((a, b) => a.order - b.order)
+  const equipable    = filtered.filter((hp) => hp.still_type === "rare").sort((a, b) => a.order - b.order)
   const notEquipable = filtered.filter((hp) => hp.still_type === "normal").sort((a, b) => a.order - b.order)
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto pl-6 pr-4 sm:pl-8 sm:pr-6 lg:px-8 py-8">
-        {/* Page Title */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-300 uppercase tracking-wider">HEARTPRINTS</h1>
         </div>
 
-        {/* Search */}
         <div className="max-w-md mx-auto mb-10">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -246,32 +387,39 @@ export function HeartprintsBrowser({ heartprints }: Props) {
         </div>
 
         {/* Equipable section */}
-        <section className="mb-12">
+        <section className="mb-14">
           <div className="flex items-center gap-3 mb-5">
             <h2 className="text-xl font-bold text-gray-200 uppercase tracking-wide">Equipable</h2>
             <span className="rounded-full bg-blue-600/20 border border-blue-500/30 px-2.5 py-0.5 text-xs font-semibold text-blue-300">
               {equipable.length}
             </span>
           </div>
-          <SectionGrid heartprints={equipable} onSelect={setSelected} />
+          {equipable.length === 0
+            ? <p className="text-gray-500 text-sm py-4">No heartprints found.</p>
+            : (
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+                {equipable.map((hp) => (
+                  <HeartprintCard key={hp.heartprint_id} hp={hp} onClick={() => setSelected(hp)} />
+                ))}
+              </div>
+            )
+          }
         </section>
 
-        {/* Not Equipable section */}
+        {/* Not Equipable section - grouped grid */}
         <section>
-          <div className="flex items-center gap-3 mb-5">
+          <div className="flex items-center gap-3 mb-6">
             <h2 className="text-xl font-bold text-gray-200 uppercase tracking-wide">Not Equipable</h2>
             <span className="rounded-full bg-purple-600/20 border border-purple-500/30 px-2.5 py-0.5 text-xs font-semibold text-purple-300">
               {notEquipable.length}
             </span>
+            <span className="text-xs text-gray-500 ml-1">Click a row to see how to obtain it</span>
           </div>
-          <SectionGrid heartprints={notEquipable} onSelect={setSelected} />
+          <NotEquipableTable heartprints={notEquipable} onSelect={setSelected} />
         </section>
       </div>
 
-      {/* Detail modal */}
-      {selected && (
-        <HeartprintModal hp={selected} onClose={() => setSelected(null)} />
-      )}
+      {selected && <HeartprintModal hp={selected} onClose={() => setSelected(null)} />}
     </div>
   )
 }

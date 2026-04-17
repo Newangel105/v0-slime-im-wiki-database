@@ -1,5 +1,5 @@
 import { getCharacterEffectTags } from "@/lib/character-effect-filters"
-import { getAllWikiCharacters, normalizeLabel, stripColorTags, toPublicAssetPath, type WikiCharacter } from "@/lib/pc-wiki"
+import { getAllWikiCharacters, getCharMaxStats, normalizeLabel, stripColorTags, toPublicAssetPath, type WikiCharacter } from "@/lib/pc-wiki"
 
 export type BrowserForceEntry = {
   name: string
@@ -9,6 +9,7 @@ export type BrowserForceEntry = {
 export type BrowserCharacterSkill = {
   slot: string
   kind: string
+  name: string
   description_max_level: string
 }
 
@@ -162,17 +163,18 @@ function toBrowserCharacter(character: WikiCharacter, forceIconLookup: Map<strin
     tactics_type: character.tactics_type,
     character_role: character.character_role,
     release_date: character.release_date,
-    stats: character.stats,
+    stats: getCharMaxStats(character.master_pc_id) ?? character.stats,
     images: {
       icon: toPublicAssetPath(character.images.icon),
     },
     force_names: forceNames,
     force_entries: forceEntries,
     skills: character.skills
-      .filter((skill) => skill.slot === "leader_skill" || skill.slot === "special_skill")
+      .filter((skill) => skill.slot === "leader_skill" || skill.slot === "special_skill" || skill.slot === "active_skill" || skill.slot === "bless_skill")
       .map((skill) => ({
         slot: skill.slot,
         kind: skill.kind,
+        name: skill.name ?? "",
         description_max_level: skill.description_max_level ?? "",
       })),
     traits: character.traits.map((trait) => ({
