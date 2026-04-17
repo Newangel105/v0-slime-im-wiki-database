@@ -3,7 +3,7 @@
 import { startTransition, useDeferredValue, useEffect, useLayoutEffect, useMemo, useState, useRef } from "react"
 import { Grid as VirtualizedGrid, type CellComponentProps } from "react-window"
 import Link from "next/link"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { ArrowDownUp, LayoutGrid, List, Search } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
@@ -963,7 +963,6 @@ function GroupedToggleFilter({
 export function CharacterBrowser({ initialCharacters }: { initialCharacters: BrowserCharacter[] }) {
   const characters = initialCharacters
 
-  const searchParams = useSearchParams()
   const router = useRouter()
   const [searchText, setSearchText] = useState("")
   const [selectedAttackerElements, setSelectedAttackerElements] = useState<string[]>([])
@@ -993,51 +992,51 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   const deferredSearchText = useDeferredValue(searchText)
 
   useEffect(() => {
-    const tag = searchParams.get("tag")
-    if (tag) {
-      setSearchText(tag)
-    }
+    const sp = new URLSearchParams(window.location.search)
 
-    const attacker = searchParams.get("attacker")
+    const tag = sp.get("tag")
+    if (tag) setSearchText(tag)
+
+    const attacker = sp.get("attacker")
     if (attacker) setSelectedAttackerElements(attacker.split(","))
 
-    const defender = searchParams.get("defender")
+    const defender = sp.get("defender")
     if (defender) setSelectedDefenderElements(defender.split(","))
 
-    const type = searchParams.get("type")
+    const type = sp.get("type")
     if (type) setSelectedAttackTypes(type.split(","))
 
-    const tactics = searchParams.get("tactics")
+    const tactics = sp.get("tactics")
     if (tactics) setSelectedTactics(tactics.split(","))
 
-    const weapon = searchParams.get("weapon")
+    const weapon = sp.get("weapon")
     if (weapon) setSelectedWeapons(weapon.split(","))
 
-    const role = searchParams.get("role")
+    const role = sp.get("role")
     if (role) setSelectedRoles(role.split(","))
 
-    const ulti = searchParams.get("ulti")
+    const ulti = sp.get("ulti")
     if (ulti) setSelectedUltimateTypes(ulti.split(","))
 
-    const force = searchParams.get("force")
+    const force = sp.get("force")
     if (force) setSelectedForces(force.split(","))
 
-    const facility = searchParams.get("facility")
+    const facility = sp.get("facility")
     if (facility) setSelectedFacilities(facility.split(","))
 
-    const skill = searchParams.get("skill")
+    const skill = sp.get("skill")
     if (skill) setSelectedSkillFilters(skill.split(","))
 
-    const trait = searchParams.get("trait")
+    const trait = sp.get("trait")
     if (trait) setSelectedTraitNames(trait.split(","))
 
-    const valor = searchParams.get("valor")
+    const valor = sp.get("valor")
     if (valor) setSelectedValorTraitNames(valor.split(","))
 
-    const sort = searchParams.get("sort")
+    const sort = sp.get("sort")
     if (sort) setSortKey(sort as SortKey)
 
-    const asc = searchParams.get("asc")
+    const asc = sp.get("asc")
     if (asc === "1") setSortAsc(true)
   }, [])
 

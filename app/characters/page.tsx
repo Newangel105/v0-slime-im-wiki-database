@@ -1,4 +1,3 @@
-import { Suspense } from "react"
 import { CharacterBrowser } from "@/components/character-browser"
 import { getAllCharacterBrowserData } from "@/lib/character-browser-data"
 
@@ -13,9 +12,7 @@ export default function CharactersPage() {
       <link rel="preload" as="image" href="/Image/Character/PC/ShionBeforeAnotherPC/7/ShionBeforeAnotherPC_7_CharaPartyM.webp" fetchPriority="high" />
       <link rel="preload" as="image" href="/Image/Character/Bless/RimuruSlimeBlackHero/4/RimuruSlimeBlackHero_4_BlessPartyM.webp" fetchPriority="high" />
       <link rel="preload" as="image" href="/Image/Character/Bless/ShizuBlackHero/5/ShizuBlackHero_5_BlessPartyM.webp" fetchPriority="high" />
-      <Suspense>
-        <CharacterBrowser initialCharacters={characters} />
-      </Suspense>
+      <CharacterBrowser initialCharacters={characters} />
     </>
   )
 }
