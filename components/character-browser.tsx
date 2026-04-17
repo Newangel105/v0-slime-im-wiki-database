@@ -1,6 +1,6 @@
 "use client"
 
-import { useDeferredValue, useEffect, useLayoutEffect, useMemo, useState, useRef } from "react"
+import { startTransition, useDeferredValue, useEffect, useLayoutEffect, useMemo, useState, useRef } from "react"
 import { Grid as VirtualizedGrid, type CellComponentProps } from "react-window"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
@@ -594,6 +594,36 @@ const elementColorMap: Record<string, string> = {
   wind: "#2dd4bf",
 }
 
+function buildAllOptions(characters: BrowserCharacter[]) {
+  return {
+    attackerElements: buildElementOptions(characters, "attacker"),
+    defenderElements: buildElementOptions(characters, "defender"),
+    attackTypes: buildAttackTypeOptions(characters.map((c) => c.attack_type)),
+    weapons: buildWeaponOptions(characters.map((c) => c.weapon_type)),
+    tactics: buildTacticsOptions(characters.map((c) => c.tactics_type)),
+    forces: buildForcesOptions(characters),
+    skillGroups: getCharacterEffectFilterGroups(characters),
+    traitEffectMap: buildTraitEffectMap(characters, false),
+    valorTraitEffectMap: buildTraitEffectMap(characters, true),
+    facilities: buildOptions(characters.flatMap((c) => c.facilities)),
+  }
+}
+
+type CharacterBrowserOptions = ReturnType<typeof buildAllOptions>
+
+const EMPTY_OPTIONS: CharacterBrowserOptions = {
+  attackerElements: [],
+  defenderElements: [],
+  attackTypes: [],
+  weapons: [],
+  tactics: [],
+  forces: [],
+  skillGroups: [],
+  traitEffectMap: new Map(),
+  valorTraitEffectMap: new Map(),
+  facilities: [],
+}
+
 function buildOptions(values: string[]): FilterOption[] {
   return [...new Set(values.filter(Boolean))]
     .sort((left, right) => left.localeCompare(right))
@@ -1033,21 +1063,12 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     router.replace(qs ? `/characters?${qs}` : "/characters", { scroll: false })
   }, [searchText, selectedAttackerElements, selectedDefenderElements, selectedAttackTypes, selectedTactics, selectedWeapons, selectedRoles, selectedUltimateTypes, selectedForces, selectedFacilities, selectedSkillFilters, selectedTraitNames, selectedValorTraitNames, sortKey, sortAsc])
 
-  const options = useMemo(
-    () => ({
-      attackerElements: buildElementOptions(characters, "attacker"),
-      defenderElements: buildElementOptions(characters, "defender"),
-      attackTypes: buildAttackTypeOptions(characters.map((character) => character.attack_type)),
-      weapons: buildWeaponOptions(characters.map((character) => character.weapon_type)),
-      tactics: buildTacticsOptions(characters.map((character) => character.tactics_type)),
-      forces: buildForcesOptions(characters),
-      skillGroups: getCharacterEffectFilterGroups(characters),
-      traitEffectMap: buildTraitEffectMap(characters, false),
-      valorTraitEffectMap: buildTraitEffectMap(characters, true),
-      facilities: buildOptions(characters.flatMap((character) => character.facilities)),
-    }),
-    [characters],
-  )
+  const [options, setOptions] = useState<CharacterBrowserOptions>(EMPTY_OPTIONS)
+  useEffect(() => {
+    startTransition(() => {
+      setOptions(buildAllOptions(characters))
+    })
+  }, [characters])
 
   const filteredCharacters = useMemo(() => {
     if (!Array.isArray(characters)) return [];
@@ -1062,7 +1083,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
       if (query) {
         const nameMatch = character.search_text.includes(query)
         const skillMatch = searchSkills && character.skills.some((s) =>
-          s.slot !== "special_skill" && (normalizeLabel(s.name).includes(query) || normalizeLabel(s.description_max_level).includes(query))
+          s.slot !== "special_skill" && normalizeLabel(s.name).includes(query)
         )
         if (!nameMatch && !skillMatch) return false
       }
@@ -1198,6 +1219,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     selectedUltimateTypes,
     sortAsc,
     sortKey,
+    options,
   ]) || []
 
   const activeFilterCount =

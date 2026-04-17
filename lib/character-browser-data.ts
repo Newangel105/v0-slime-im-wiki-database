@@ -10,7 +10,6 @@ export type BrowserCharacterSkill = {
   slot: string
   kind: string
   name: string
-  description_max_level: string
 }
 
 export type BrowserCharacterTrait = {
@@ -142,6 +141,7 @@ function buildSearchText(character: WikiCharacter, forceNames: string[]): string
       character.tactics_type,
       ...forceNames,
       ...character.skills.map((skill) => skill.name),
+      ...character.skills.map((skill) => skill.description_max_level ?? ""),
       ...character.traits.map((trait) => trait.name),
       ...character.facilities,
     ].join(" "),
@@ -175,7 +175,6 @@ function toBrowserCharacter(character: WikiCharacter, forceIconLookup: Map<strin
         slot: skill.slot,
         kind: skill.kind,
         name: skill.name ?? "",
-        description_max_level: skill.description_max_level ?? "",
       })),
     traits: character.traits.map((trait) => ({
       name: trait.name,

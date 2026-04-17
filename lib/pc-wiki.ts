@@ -390,14 +390,14 @@ export function getDisplayReleaseDate(value: string | null | undefined): string 
 }
 
 type CharacterVisualInfo = Pick<WikiCharacter, "rarity" | "element" | "character_role"> & {
-  skills: Array<Pick<WikiSkill, "slot" | "kind" | "description_max_level">>
+  skills: Array<Pick<WikiSkill, "slot" | "kind"> & { description_max_level?: string }>
 }
 
-export function hasExSpecialSkill(character: CharacterVisualInfo): boolean {
+export function hasExSpecialSkill(character: Pick<WikiCharacter, "rarity" | "element" | "character_role"> & { skills: Array<Pick<WikiSkill, "slot" | "kind"> & { description_max_level?: string }> }): boolean {
   return character.skills.some(
     (skill) =>
       skill.slot === "special_skill" &&
-      /EX Soul of Combos/i.test(stripColorTags(skill.description_max_level)),
+      /EX Soul of Combos/i.test(stripColorTags(skill.description_max_level ?? "")),
   )
 }
 
