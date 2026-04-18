@@ -31,9 +31,9 @@ const RARITY_ASSETS: Record<number, string> = {
 }
 
 function getMiniFramePath(tier: number, pfx: string) {
-  if (tier === 8) return `/frame/frame${pfx}M7_Epic.png`
+  if (tier === 8) return `/frame/frame${pfx}M7_Epic.webp`
   const t = Math.min(Math.max(tier, 3), 7)
-  return `/frame/frame${pfx}M${t}.png`
+  return `/frame/frame${pfx}M${t}.webp`
 }
 
 function isProtectorChar(wc: any) {

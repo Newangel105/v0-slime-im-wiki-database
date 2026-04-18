@@ -262,7 +262,7 @@ function HeartprintModal({ hp, onClose }: { hp: Heartprint; onClose: () => void 
                     className="transition-all"
                   >
                     <img
-                      src={`/UI/Texture/CommonEtcAtlas/iconRarity${selectedLevel}.png`}
+                      src={`/UI/Texture/CommonEtcAtlas/iconRarity${selectedLevel}.webp`}
                       alt={`Level ${pos}`}
                       className={`w-8 h-8 object-contain transition-all ${isActive ? "opacity-100" : "opacity-25 grayscale"}`}
                     />
