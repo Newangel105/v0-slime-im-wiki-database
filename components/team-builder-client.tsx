@@ -51,16 +51,16 @@ const CHAR_TYPE_DISPLAY: Record<string, string> = {
 
 // ---- Weapon type icons for attacker picker (match character-browser) ----
 const weaponIconMap: Record<string, string> = {
-  book: "/weapons/book.png",
-  fist: "/weapons/fists.png",
-  fists: "/weapons/fists.png",
-  greatsword: "/weapons/greatsword.png",
-  hammer: "/weapons/hammer.png",
-  largesword: "/weapons/greatsword.png",
-  katana: "/weapons/katana.png",
-  knuckle: "/weapons/fists.png",
-  spear: "/weapons/spear.png",
-  sword: "/weapons/sword.png",
+  book: "/weapons/book.webp",
+  fist: "/weapons/fists.webp",
+  fists: "/weapons/fists.webp",
+  greatsword: "/weapons/greatsword.webp",
+  hammer: "/weapons/hammer.webp",
+  largesword: "/weapons/greatsword.webp",
+  katana: "/weapons/katana.webp",
+  knuckle: "/weapons/fists.webp",
+  spear: "/weapons/spear.webp",
+  sword: "/weapons/sword.webp",
 }
 
 function formatWikiLabel(label: string): string {
@@ -111,15 +111,15 @@ function getMainFramePaths(tier: number, role: "member" | "bless") {
   }
   if (t === 8) {
     return {
-      base: `/frames/base${pfx}L7_Epic.png`,
-      frame: `/frames/frame${pfx}L7_Epic.png`,
+      base: `/frames/base${pfx}L7_Epic.webp`,
+      frame: `/frames/frame${pfx}L7_Epic.webp`,
       frameStyle,
     }
   }
   const baseTier = t === 7 ? 6 : t
   return {
-    base: `/frames/base${pfx}L${baseTier}.png`,
-    frame: `/frames/frame${pfx}L${t}.png`,
+    base: `/frames/base${pfx}L${baseTier}.webp`,
+    frame: `/frames/frame${pfx}L${t}.webp`,
     frameStyle,
   }
 }
@@ -127,9 +127,9 @@ function getMiniFramePaths(tier: number, role: "member" | "bless") {
   const t = Math.min(Math.max(tier, 3), 8)
   const pfx = role === "bless" ? "Bless" : "Member"
   if (t === 8) {
-    return { base: `/frame/base${pfx}M7_Epic.png`, frame: `/frame/frame${pfx}M7_Epic.png` }
+    return { base: `/frame/base${pfx}M7_Epic.webp`, frame: `/frame/frame${pfx}M7_Epic.webp` }
   }
-  return { base: `/frame/base${pfx}M${t}.png`, frame: `/frame/frame${pfx}M${t}.png` }
+  return { base: `/frame/base${pfx}M${t}.webp`, frame: `/frame/frame${pfx}M${t}.webp` }
 }
 
 function elementMatches(charEl: string, filterKey: string): boolean {
@@ -155,77 +155,77 @@ function elementMatches(charEl: string, filterKey: string): boolean {
 
 // ---- FILTER OPTION DEFINITIONS ----
 const NORMAL_ELEMENTS = [
-  { key: "Air", label: "Air", icon: "/elements/space.png" },
-  { key: "Holy", label: "Holy", icon: "/elements/light.png" },
-  { key: "Dark", label: "Dark", icon: "/elements/dark.png" },
-  { key: "Fire", label: "Fire", icon: "/elements/fire.png" },
-  { key: "Wind", label: "Wind", icon: "/elements/wind.png" },
-  { key: "Water", label: "Water", icon: "/elements/water.png" },
-  { key: "Earth", label: "Earth", icon: "/elements/earth.png" },
+  { key: "Air", label: "Air", icon: "/elements/space.webp" },
+  { key: "Holy", label: "Holy", icon: "/elements/light.webp" },
+  { key: "Dark", label: "Dark", icon: "/elements/dark.webp" },
+  { key: "Fire", label: "Fire", icon: "/elements/fire.webp" },
+  { key: "Wind", label: "Wind", icon: "/elements/wind.webp" },
+  { key: "Water", label: "Water", icon: "/elements/water.webp" },
+  { key: "Earth", label: "Earth", icon: "/elements/earth.webp" },
 ]
 const ENHANCED_ELEMENTS = [
-  { key: "EnhancedAir", label: "Air+", icon: "/elements/Enhancedspace.png" },
-  { key: "EnhancedHoly", label: "Holy+", icon: "/elements/Enhancedlight.png" },
-  { key: "EnhancedDark", label: "Dark+", icon: "/elements/Enhanceddark.png" },
-  { key: "EnhancedFire", label: "Fire+", icon: "/elements/Enhancedfire.png" },
-  { key: "EnhancedWind", label: "Wind+", icon: "/elements/Enhancedwind.png" },
-  { key: "EnhancedWater", label: "Water+", icon: "/elements/Enhancedwater.png" },
-  { key: "EnhancedEarth", label: "Earth+", icon: "/elements/Enhancedearth.png" },
+  { key: "EnhancedAir", label: "Air+", icon: "/elements/Enhancedspace.webp" },
+  { key: "EnhancedHoly", label: "Holy+", icon: "/elements/Enhancedlight.webp" },
+  { key: "EnhancedDark", label: "Dark+", icon: "/elements/Enhanceddark.webp" },
+  { key: "EnhancedFire", label: "Fire+", icon: "/elements/Enhancedfire.webp" },
+  { key: "EnhancedWind", label: "Wind+", icon: "/elements/Enhancedwind.webp" },
+  { key: "EnhancedWater", label: "Water+", icon: "/elements/Enhancedwater.webp" },
+  { key: "EnhancedEarth", label: "Earth+", icon: "/elements/Enhancedearth.webp" },
 ]
 const SPECIAL_EFFECT_ELEMENTS = [
-  { key: "SpecialEffectElementAir", label: "SE Air", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.png" },
-  { key: "SpecialEffectElementHoly", label: "SE Holy", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementHoly.png" },
-  { key: "SpecialEffectElementDark", label: "SE Dark", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementDark.png" },
-  { key: "SpecialEffectElementFire", label: "SE Fire", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementFire.png" },
-  { key: "SpecialEffectElementWind", label: "SE Wind", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWind.png" },
-  { key: "SpecialEffectElementWater", label: "SE Water", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWater.png" },
-  { key: "SpecialEffectElementEarth", label: "SE Earth", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEarth.png" },
+  { key: "SpecialEffectElementAir", label: "SE Air", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.webp" },
+  { key: "SpecialEffectElementHoly", label: "SE Holy", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementHoly.webp" },
+  { key: "SpecialEffectElementDark", label: "SE Dark", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementDark.webp" },
+  { key: "SpecialEffectElementFire", label: "SE Fire", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementFire.webp" },
+  { key: "SpecialEffectElementWind", label: "SE Wind", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWind.webp" },
+  { key: "SpecialEffectElementWater", label: "SE Water", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWater.webp" },
+  { key: "SpecialEffectElementEarth", label: "SE Earth", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEarth.webp" },
 ]
 const SPECIAL_EFFECT_ENHANCED_ELEMENTS = [
-  { key: "SpecialEffectElementEnhancedAir", label: "SE Air+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedAir.png" },
-  { key: "SpecialEffectElementEnhancedHoly", label: "SE Holy+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedHoly.png" },
-  { key: "SpecialEffectElementEnhancedDark", label: "SE Dark+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedDark.png" },
-  { key: "SpecialEffectElementEnhancedFire", label: "SE Fire+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedFire.png" },
-  { key: "SpecialEffectElementEnhancedWind", label: "SE Wind+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWind.png" },
-  { key: "SpecialEffectElementEnhancedWater", label: "SE Water+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWater.png" },
-  { key: "SpecialEffectElementEnhancedEarth", label: "SE Earth+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedEarth.png" },
+  { key: "SpecialEffectElementEnhancedAir", label: "SE Air+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedAir.webp" },
+  { key: "SpecialEffectElementEnhancedHoly", label: "SE Holy+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedHoly.webp" },
+  { key: "SpecialEffectElementEnhancedDark", label: "SE Dark+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedDark.webp" },
+  { key: "SpecialEffectElementEnhancedFire", label: "SE Fire+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedFire.webp" },
+  { key: "SpecialEffectElementEnhancedWind", label: "SE Wind+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWind.webp" },
+  { key: "SpecialEffectElementEnhancedWater", label: "SE Water+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWater.webp" },
+  { key: "SpecialEffectElementEnhancedEarth", label: "SE Earth+", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedEarth.webp" },
 ]
 const PROT_SUPPORT_TYPES = [
-  { key: "all", label: "ALL", icon: "/Image/IcElementBless/IcElementBlessAll.png" },
-  { key: "physics", label: "Physical", icon: "/Image/IcElementBless/IcElementBlessPhysics.png" },
-  { key: "magic", label: "Magic", icon: "/Image/IcElementBless/IcElementBlessMagic.png" },
-  { key: "special", label: "Special", icon: "/type_dmg/IcElementBlessSpecial.png" },
+  { key: "all", label: "ALL", icon: "/Image/IcElementBless/IcElementBlessAll.webp" },
+  { key: "physics", label: "Physical", icon: "/Image/IcElementBless/IcElementBlessPhysics.webp" },
+  { key: "magic", label: "Magic", icon: "/Image/IcElementBless/IcElementBlessMagic.webp" },
+  { key: "special", label: "Special", icon: "/type_dmg/IcElementBlessSpecial.webp" },
 ]
 const ATTACK_TYPES = [
-  { key: "Physical", label: "Physical", icon: "/type_dmg/icAttackTypePhysics.png" },
-  { key: "Magic", label: "Magic", icon: "/type_dmg/icAttackTypeMagic.png" },
+  { key: "Physical", label: "Physical", icon: "/type_dmg/icAttackTypePhysics.webp" },
+  { key: "Magic", label: "Magic", icon: "/type_dmg/icAttackTypeMagic.webp" },
 ]
 const TACTICS_TYPES = [
-  { key: "Speed", label: "Speed", icon: "/Image/Tactics/speed.png" },
-  { key: "Defense", label: "Defense", icon: "/Image/Tactics/defense.png" },
-  { key: "Charge", label: "Charge", icon: "/Image/Tactics/charge.png" },
-  { key: "Normal", label: "Neutral", icon: "/Image/Tactics/normal.png" },
+  { key: "Speed", label: "Speed", icon: "/Image/Tactics/speed.webp" },
+  { key: "Defense", label: "Defense", icon: "/Image/Tactics/defense.webp" },
+  { key: "Charge", label: "Charge", icon: "/Image/Tactics/charge.webp" },
+  { key: "Normal", label: "Neutral", icon: "/Image/Tactics/normal.webp" },
 ]
 const STAR_ASSETS: Record<number, string> = {
-  3: "/stars/starCharaL3A.png", 4: "/stars/starCharaL4A.png",
-  5: "/stars/starCharaL5A.png", 6: "/stars/starCharaL6A.png", 7: "/stars/starCharaL7A.png",
-  8: "/stars/starCharaL7_Epic.png",
+  3: "/stars/starCharaL3A.webp", 4: "/stars/starCharaL4A.webp",
+  5: "/stars/starCharaL5A.webp", 6: "/stars/starCharaL6A.webp", 7: "/stars/starCharaL7A.webp",
+  8: "/stars/starCharaL7_Epic.webp",
 }
 
 // Card overlay icons
 const ATTACKER_ELEMENT_ICONS: Record<string, string> = {
-  air: "/elements/icElementspace.png", dark: "/elements/icElementDark.png",
-  earth: "/elements/icElementEarth.png", fire: "/elements/icElementFire.png",
-  holy: "/elements/icElementlight.png", water: "/elements/icElementWater.png",
-  wind: "/elements/icElementWind.png",
-  enhancedair: "/elements/Enhancedspace.png", enhanceddark: "/elements/Enhanceddark.png",
-  enhancedearth: "/elements/Enhancedearth.png", enhancedfire: "/elements/Enhancedfire.png",
-  enhancedholy: "/elements/Enhancedlight.png", enhancedwater: "/elements/Enhancedwater.png",
-  enhancedwind: "/elements/Enhancedwind.png",
+  air: "/elements/icElementspace.webp", dark: "/elements/icElementDark.webp",
+  earth: "/elements/icElementEarth.webp", fire: "/elements/icElementFire.webp",
+  holy: "/elements/icElementlight.webp", water: "/elements/icElementWater.webp",
+  wind: "/elements/icElementWind.webp",
+  enhancedair: "/elements/Enhancedspace.webp", enhanceddark: "/elements/Enhanceddark.webp",
+  enhancedearth: "/elements/Enhancedearth.webp", enhancedfire: "/elements/Enhancedfire.webp",
+  enhancedholy: "/elements/Enhancedlight.webp", enhancedwater: "/elements/Enhancedwater.webp",
+  enhancedwind: "/elements/Enhancedwind.webp",
 }
 const ATK_TYPE_ICONS: Record<string, string> = {
-  physical: "/type_dmg/icAttackTypePhysics.png",
-  magic: "/type_dmg/icAttackTypeMagic.png",
+  physical: "/type_dmg/icAttackTypePhysics.webp",
+  magic: "/type_dmg/icAttackTypeMagic.webp",
 }
 
 // ---- Protector detection ----
@@ -247,39 +247,39 @@ function getProtectorSupportType(c: TeamBuilderCharacter): "physics" | "magic" |
 
 // ---- Full element icon map ----
 const FULL_ELEMENT_ICON_MAP: Record<string, string> = {
-  air: "/Image/IcElementBless/IcElementBlessAir.png",
-  all: "/Image/IcElementBless/IcElementBlessAll.png",
-  dark: "/Image/IcElementBless/IcElementBlessDark.png",
-  earth: "/Image/IcElementBless/IcElementBlessEarth.png",
-  fire: "/Image/IcElementBless/IcElementBlessFire.png",
-  holy: "/Image/IcElementBless/IcElementBlessHoly.png",
-  magic: "/Image/IcElementBless/IcElementBlessMagic.png",
-  physics: "/Image/IcElementBless/IcElementBlessPhysics.png",
-  water: "/Image/IcElementBless/IcElementBlessWater.png",
-  wind: "/Image/IcElementBless/IcElementBlessWind.png",
-  enhancedair: "/Image/IcElementBless/IcElementBlessEnhancedAir.png",
-  enhanceddark: "/Image/IcElementBless/IcElementBlessEnhancedDark.png",
-  enhancedearth: "/Image/IcElementBless/IcElementBlessEnhancedEarth.png",
-  enhancedfire: "/Image/IcElementBless/IcElementBlessEnhancedFire.png",
-  enhancedholy: "/Image/IcElementBless/IcElementBlessEnhancedHoly.png",
-  enhancedwater: "/Image/IcElementBless/IcElementBlessEnhancedWater.png",
-  enhancedwind: "/Image/IcElementBless/IcElementBlessEnhancedWind.png",
-  specialeffectelementearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEarth.png",
-  specialeffectelementair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.png",
-  specialeffectelementwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWind.png",
-  specialeffectelementwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWater.png",
-  specialeffectelementfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementFire.png",
-  specialeffectelementholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementHoly.png",
-  specialeffectelementdark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementDark.png",
-  specialeffectelementenhancedearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedEarth.png",
-  specialeffectelementenhancedair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedAir.png",
-  specialeffectelementenhancedwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWind.png",
-  specialeffectelementenhancedwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWater.png",
-  specialeffectelementenhancedfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedFire.png",
-  specialeffectelementenhancedholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedHoly.png",
-  specialeffectelementenhanceddark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedDark.png",
-  special: "/type_dmg/IcElementBlessSpecial.png",
-  specialeffectelementnone: "/Image/IcElementBless/IcElementBlessSpecialEffectElementNone.png",
+  air: "/Image/IcElementBless/IcElementBlessAir.webp",
+  all: "/Image/IcElementBless/IcElementBlessAll.webp",
+  dark: "/Image/IcElementBless/IcElementBlessDark.webp",
+  earth: "/Image/IcElementBless/IcElementBlessEarth.webp",
+  fire: "/Image/IcElementBless/IcElementBlessFire.webp",
+  holy: "/Image/IcElementBless/IcElementBlessHoly.webp",
+  magic: "/Image/IcElementBless/IcElementBlessMagic.webp",
+  physics: "/Image/IcElementBless/IcElementBlessPhysics.webp",
+  water: "/Image/IcElementBless/IcElementBlessWater.webp",
+  wind: "/Image/IcElementBless/IcElementBlessWind.webp",
+  enhancedair: "/Image/IcElementBless/IcElementBlessEnhancedAir.webp",
+  enhanceddark: "/Image/IcElementBless/IcElementBlessEnhancedDark.webp",
+  enhancedearth: "/Image/IcElementBless/IcElementBlessEnhancedEarth.webp",
+  enhancedfire: "/Image/IcElementBless/IcElementBlessEnhancedFire.webp",
+  enhancedholy: "/Image/IcElementBless/IcElementBlessEnhancedHoly.webp",
+  enhancedwater: "/Image/IcElementBless/IcElementBlessEnhancedWater.webp",
+  enhancedwind: "/Image/IcElementBless/IcElementBlessEnhancedWind.webp",
+  specialeffectelementearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEarth.webp",
+  specialeffectelementair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.webp",
+  specialeffectelementwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWind.webp",
+  specialeffectelementwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWater.webp",
+  specialeffectelementfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementFire.webp",
+  specialeffectelementholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementHoly.webp",
+  specialeffectelementdark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementDark.webp",
+  specialeffectelementenhancedearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedEarth.webp",
+  specialeffectelementenhancedair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedAir.webp",
+  specialeffectelementenhancedwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWind.webp",
+  specialeffectelementenhancedwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWater.webp",
+  specialeffectelementenhancedfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedFire.webp",
+  specialeffectelementenhancedholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedHoly.webp",
+  specialeffectelementenhanceddark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedDark.webp",
+  special: "/type_dmg/IcElementBlessSpecial.webp",
+  specialeffectelementnone: "/Image/IcElementBless/IcElementBlessSpecialEffectElementNone.webp",
 }
 
 // Derive element values for protector using canonical fields (element + master_leader_skill_element_type_2)
@@ -663,8 +663,8 @@ export default function TeamBuilderClient({
       }
       return true
     })
-    // Sort by rarity descending: Epic (8) > EX Unbound (7) > EX (6) > 5 > 4 > 3
-    filtered.sort((a, b) => getCharacterVisualTier(b) - getCharacterVisualTier(a))
+    // Sort by release order descending (newest first), using master_pc_id as proxy
+    filtered.sort((a, b) => b.master_pc_id - a.master_pc_id)
     return filtered
   }, [characters, deferredQuery, filterAttack, filterCharType, filterCharacterType, filterEl, filterEnhancement, filterForces, filterProtSkill, filterProtType, filterRarity, filterSkillCost, filterSkillGroups, filterSkillType, filterTactics, filterUltimateType, filterWeapon, mainSlots, pickerMode, pickerOpenFor, sideSlots, sideSubSlots, subSlots])
 
@@ -1159,13 +1159,9 @@ export default function TeamBuilderClient({
   }
 
   function openPicker(i: number, mode: "main" | "sub" | "side" | "sidesub" | "heartprint") {
-    setPickerOpenFor(i); setPickerMode(mode); setQuery("")
-    setFilterEl(null); setFilterAttack(null); setFilterTactics(null)
-    setFilterCharType(null); setFilterCharacterType(null); setFilterRarity(null); setFilterForces([]); setFilterSkillGroups([])
-    setPreviewHp(null); setFilterSkillType("all"); setExpandedSkillCats([])
-    setFilterWeapon(null); setFilterProtType(null); setFilterUltimateType("all")
-    setFilterEnhancement("all"); setFilterProtSkill("all"); setFilterDragOffset({x: 0, y: 0})
-    setFilterSkillCost(0); setShowSkillEffect(false)
+    // Open picker but preserve current filters so user selections remain active
+    setPickerOpenFor(i)
+    setPickerMode(mode)
     setShowFilterModal(false)
   }
   function closePicker() { setPickerOpenFor(null) }
@@ -1260,7 +1256,7 @@ export default function TeamBuilderClient({
             />
             {/* Character portrait — inset to stay within ornate frame borders */}
             <img
-              src={`/partyL/${char.master_pc_id}.png`} alt={char.name}
+              src={`/partyL/${char.master_pc_id}.webp`} alt={char.name}
               className="absolute object-fill pointer-events-none"
               style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
               onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(char.images.full) }}
@@ -1393,7 +1389,7 @@ export default function TeamBuilderClient({
               className="absolute object-fill pointer-events-none"
               style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
               onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-            <img src={`/partyL/${char.master_pc_id}.png`} alt={char.name}
+            <img src={`/partyL/${char.master_pc_id}.webp`} alt={char.name}
               className="absolute object-fill pointer-events-none"
               style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
               onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(char.images.full) }} />
@@ -1514,18 +1510,18 @@ export default function TeamBuilderClient({
                       </div>
                     )
                     const isRare = hp.still_type === "rare"
-                    const frameImg = isRare ? "/StillFrame/StillFrame3_m.png" : "/StillFrame/StillFrame1_m.png"
+                    const frameImg = isRare ? "/StillFrame/StillFrame3_m.webp" : "/StillFrame/StillFrame1_m.webp"
                     return (
                       <div className="flex flex-col gap-3">
                         <div className="relative w-full overflow-hidden rounded bg-black/40" style={{ aspectRatio: "245 / 146" }}>
-                          <img src={`/SkillStill/${hp.heartprint_id}/skill_still_${hp.heartprint_id}_L.png`} alt=""
+                          <img src={`/SkillStill/${hp.heartprint_id}/skill_still_${hp.heartprint_id}_L.webp`} alt=""
                             className="absolute inset-0 w-full h-full object-cover"
                             onError={e => { (e.target as HTMLImageElement).style.opacity = "0.2" }} />
                           <img src={frameImg} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
                             onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
                           {isRare && (
                             <div className="absolute bottom-2 left-2 flex gap-1">
-                              {[1,2,3].map(i => <img key={i} src="/UI/Texture/CommonEtcAtlas/iconRarity3.png" alt=""
+                              {[1,2,3].map(i => <img key={i} src="/UI/Texture/CommonEtcAtlas/iconRarity3.webp" alt=""
                                 className="w-4 h-4 object-contain drop-shadow" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />)}
                             </div>
                           )}
@@ -1554,7 +1550,7 @@ export default function TeamBuilderClient({
                     </div>
                     {heartprintItems.map(hp => {
                       const isRare = hp.still_type === "rare"
-                      const frameImg = isRare ? "/StillFrame/StillFrame3_s.png" : "/StillFrame/StillFrame1_s.png"
+                      const frameImg = isRare ? "/StillFrame/StillFrame3_s.webp" : "/StillFrame/StillFrame1_s.webp"
                       return (
                         <div key={hp.heartprint_id}
                           className="flex flex-col items-center gap-1 rounded hover:bg-white/5 cursor-pointer transition-colors"
@@ -1567,14 +1563,14 @@ export default function TeamBuilderClient({
                           onMouseEnter={() => setPreviewHp(hp)}
                           onMouseLeave={() => setPreviewHp(null)}>
                           <div className="relative w-full overflow-hidden rounded bg-black/40" style={{ aspectRatio: "245 / 146" }}>
-                            <img src={`/SkillStill/${hp.heartprint_id}/skill_still_${hp.heartprint_id}_S.png`} alt=""
+                            <img src={`/SkillStill/${hp.heartprint_id}/skill_still_${hp.heartprint_id}_S.webp`} alt=""
                               className="absolute inset-0 w-full h-full object-cover"
                               onError={e => { (e.target as HTMLImageElement).style.opacity = "0.2" }} />
                             <img src={frameImg} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
                               onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
                             {isRare && (
                               <div className="absolute bottom-1 left-1 flex gap-0.5">
-                                {[1,2,3].map(i => <img key={i} src="/UI/Texture/CommonEtcAtlas/iconRarity3.png" alt=""
+                                {[1,2,3].map(i => <img key={i} src="/UI/Texture/CommonEtcAtlas/iconRarity3.webp" alt=""
                                   className="w-3 h-3 object-contain drop-shadow" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />)}
                               </div>
                             )}
@@ -1622,7 +1618,7 @@ export default function TeamBuilderClient({
                           <img src={base} alt="" className="absolute object-fill pointer-events-none"
                             style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
                             onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
-                          <img src={`/partyL/${slotMainChar.master_pc_id}.png`} alt={slotMainChar.name}
+                          <img src={`/partyL/${slotMainChar.master_pc_id}.webp`} alt={slotMainChar.name}
                             className="absolute object-fill pointer-events-none"
                             style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
                             onError={e => { (e.target as HTMLImageElement).src = toPublicAssetPath(slotMainChar.images.full) }} />
@@ -2226,7 +2222,7 @@ export default function TeamBuilderClient({
     }
     const canvas = await w.html2canvas(el, { useCORS: true, allowTaint: true, backgroundColor: null })
     const link = document.createElement("a")
-    link.download = "team.png"
+    link.download = "team.webp"
     link.href = canvas.toDataURL("image/png")
     link.click()
   }
@@ -2266,13 +2262,13 @@ export default function TeamBuilderClient({
 
       {/* ── HEADER ── */}
       <div className="w-full flex items-end justify-center mb-3 select-none gap-2 sm:gap-3">
-        <img src="/brand/battleSlime16.png" alt=""
+        <img src="/brand/battleSlime16.webp" alt=""
           className="h-10 sm:h-16 object-contain pointer-events-none drop-shadow-lg"
           onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-        <img src="/brand/Logo.png" alt="Tensura Memories"
+        <img src="/brand/Logo.webp" alt="Tensura Memories"
           className="h-20 sm:h-28 object-contain drop-shadow-xl"
           onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-        <img src="/brand/battleSplashB_02.png" alt=""
+        <img src="/brand/battleSplashB_02.webp" alt=""
           className="h-10 sm:h-16 object-contain pointer-events-none drop-shadow-lg"
           onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
       </div>
@@ -2333,7 +2329,7 @@ export default function TeamBuilderClient({
             <div className="flex items-start gap-2 px-3 py-2"
               style={{ borderBottom: assistSkill ? "1px solid rgba(255,255,255,0.06)" : undefined }}>
               {leaderSkill.icon_path && (
-                <img src={`/${leaderSkill.icon_path}.png`} alt=""
+                <img src={`/${leaderSkill.icon_path}.webp`} alt=""
                   className="w-8 h-8 flex-shrink-0 object-contain rounded"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
               )}
@@ -2349,7 +2345,7 @@ export default function TeamBuilderClient({
           {assistSkill && (
             <div className="flex items-start gap-2 px-3 py-2">
               {assistSkill.icon_path && (
-                <img src={`/${assistSkill.icon_path}.png`} alt=""
+                <img src={`/${assistSkill.icon_path}.webp`} alt=""
                   className="w-8 h-8 flex-shrink-0 object-contain rounded"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
               )}
@@ -2410,16 +2406,16 @@ export default function TeamBuilderClient({
           >
             {heartPrintId ? (
               <>
-                <img src={`/SkillStill/${heartPrintId}/skill_still_${heartPrintId}_L.png`} alt=""
+                <img src={`/SkillStill/${heartPrintId}/skill_still_${heartPrintId}_L.webp`} alt=""
                   className="absolute inset-0 w-full h-full object-cover"
                   onError={(e) => { (e.target as HTMLImageElement).style.opacity = "0.3" }} />
-                <img src={selectedHp?.still_type === "rare" ? "/StillFrame/StillFrame3_s.png" : "/StillFrame/StillFrame1_s.png"} alt=""
+                <img src={selectedHp?.still_type === "rare" ? "/StillFrame/StillFrame3_s.webp" : "/StillFrame/StillFrame1_s.webp"} alt=""
                   className="pointer-events-none absolute inset-0 w-full h-full object-fill"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
                 <div className="absolute bottom-1 left-1 flex gap-0.5">
                   {selectedHp?.still_type === "rare"
-                    ? [1,2,3].map(i => <img key={i} src="/UI/Texture/CommonEtcAtlas/iconRarity3.png" alt="" className="w-3.5 h-3.5 object-contain drop-shadow" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />)
-                    : [1].map(i => <img key={i} src="/UI/Texture/CommonEtcAtlas/iconRarity1.png" alt="" className="w-3.5 h-3.5 object-contain drop-shadow" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />)
+                    ? [1,2,3].map(i => <img key={i} src="/UI/Texture/CommonEtcAtlas/iconRarity3.webp" alt="" className="w-3.5 h-3.5 object-contain drop-shadow" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />)
+                    : [1].map(i => <img key={i} src="/UI/Texture/CommonEtcAtlas/iconRarity1.webp" alt="" className="w-3.5 h-3.5 object-contain drop-shadow" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />)
                   }
                 </div>
               </>
@@ -2453,11 +2449,27 @@ export default function TeamBuilderClient({
       {/* ── ACTION BUTTONS ── */}
       <div className="mt-4 flex items-center gap-2 sm:gap-3 flex-wrap justify-center">
         <button
+          onClick={() => {
+            setMainSlots(Array(4).fill(null))
+            setSubSlots(Array(4).fill(null))
+            setSideSlots(Array(2).fill(null))
+            setSideSubSlots(Array(2).fill(null))
+            setHeartPrintId(null)
+            setEquipSlots({})
+            setCharmSlots({})
+          }}
+          className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
+          style={{ background: "linear-gradient(135deg, #5f1e1e 0%, #360f0f 100%)", border: "1px solid rgba(255,100,100,0.3)" }}
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+          Reset All
+        </button>
+        <button
           onClick={savePng}
           className="flex items-center gap-2 px-4 sm:px-5 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
           style={{ background: "linear-gradient(135deg, #1e3a5f 0%, #0f2236 100%)", border: "1px solid rgba(100,160,255,0.3)" }}
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-1v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
           Save PNG
         </button>
         <button
@@ -2473,7 +2485,7 @@ export default function TeamBuilderClient({
           className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
           style={{ background: "linear-gradient(135deg, #3a1e5f 0%, #22103f 100%)", border: "1px solid rgba(180,100,255,0.3)" }}
         >
-          <img src="/UI/Texture/QuestAtlas/icBtnEquip.png" alt="" className="w-5 h-5 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+          <img src="/UI/Texture/QuestAtlas/icBtnEquip.webp" alt="" className="w-5 h-5 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
           Equipment
         </button>
       </div>
@@ -2488,7 +2500,7 @@ export default function TeamBuilderClient({
             style={{ background: "linear-gradient(180deg, #0c1929 0%, #111d2e 100%)" }}>
             {/* Header */}
             <div className="relative z-50 flex items-center gap-2 px-4 py-2.5 border-b border-white/10 shrink-0">
-              <img src="/UI/Texture/QuestAtlas/icBtnEquip.png" alt="" className="w-5 h-5 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+              <img src="/UI/Texture/QuestAtlas/icBtnEquip.webp" alt="" className="w-5 h-5 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
               <span className="text-[12px] font-semibold text-white/90 uppercase tracking-wider">Equipment &amp; Charms</span>
               <div className="flex-1" />
               <button
@@ -2559,7 +2571,7 @@ export default function TeamBuilderClient({
                                 title="Charm">
                                 {selectedFlatCharm ? (() => {
                                   const match = selectedFlatCharm.image_path?.match(/\/(\d+)\//)
-                                  const img = match ? `/Equip/Accessory/${match[1]}/Accessory_${match[1]}_AccessoryM.png` : null
+                                  const img = match ? `/Equip/Accessory/${match[1]}/Accessory_${match[1]}_AccessoryM.webp` : null
                                   return img ? <img src={img} alt="" className="w-12 h-12 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} /> : <span className="text-purple-300/50 text-lg">♦</span>
                                 })() : (
                                   <span className="text-white/30 text-2xl">+</span>
@@ -2712,7 +2724,7 @@ export default function TeamBuilderClient({
                           (equipModalItems as FlatCharm[]).map(fc => {
                             const isSelected = charmSlots[activeEquipSlot.slotKey] === fc.skill_id
                             const match = fc.image_path?.match(/\/(\d+)\//)
-                            const img = match ? `/Equip/Accessory/${match[1]}/Accessory_${match[1]}_AccessoryM.png` : null
+                            const img = match ? `/Equip/Accessory/${match[1]}/Accessory_${match[1]}_AccessoryM.webp` : null
                             return (
                               <div key={fc.skill_id}
                                 className={`flex flex-col items-center gap-1 rounded cursor-pointer transition-colors p-1 ${equipHoveredId === fc.skill_id ? "bg-white/10" : "hover:bg-white/5"}`}
@@ -2720,7 +2732,7 @@ export default function TeamBuilderClient({
                                 onPointerLeave={() => setEquipHoveredId(prev => prev === fc.skill_id ? null : prev)}
                                 onClick={() => setCharmSlots(prev => ({ ...prev, [activeEquipSlot.slotKey]: fc.skill_id }))}>
                                 <div className="relative w-full overflow-hidden rounded" style={{ aspectRatio: "1" }}>
-                                  <img src={`/UI/Texture/CommonRarityAtlas/itemRrarity${Math.min(fc.rarity + 1, 4)}.png`} alt=""
+                                  <img src={`/UI/Texture/CommonRarityAtlas/itemRrarity${Math.min(fc.rarity + 1, 4)}.webp`} alt=""
                                     className="absolute inset-0 w-full h-full object-fill pointer-events-none" />
                                   {img ? (
                                     <img src={img} alt="" className="absolute inset-0 w-full h-full object-contain p-1.5 z-10" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
@@ -2729,7 +2741,7 @@ export default function TeamBuilderClient({
                                   )}
                                   <div className="absolute bottom-0.5 left-1/2 -translate-x-1/2 flex gap-px">
                                     {Array.from({ length: fc.rarity }, (_, i) => (
-                                      <img key={i} src="/UI/Texture/CommonRarityAtlas/starOn.png" alt="★" className="w-3 h-3 object-contain" />
+                                      <img key={i} src="/UI/Texture/CommonRarityAtlas/starOn.webp" alt="★" className="w-3 h-3 object-contain" />
                                     ))}
                                   </div>
                                   {isSelected && <div className="absolute inset-0 ring-2 ring-purple-400 ring-inset rounded" />}
@@ -2753,7 +2765,7 @@ export default function TeamBuilderClient({
                                   )}
                                   <div className="absolute bottom-0.5 left-0.5 flex gap-0">
                                     {Array.from({ length: Math.min(eq.rarity, 8) }, (_, i) => (
-                                      <img key={i} src="/UI/Texture/CharaInfoAtlas/awakeEvolutionRarityStarAdd.png" alt="★" className="w-3.5 h-3.5 object-contain -mr-0.5" />
+                                      <img key={i} src="/UI/Texture/CharaInfoAtlas/awakeEvolutionRarityStarAdd.webp" alt="★" className="w-3.5 h-3.5 object-contain -mr-0.5" />
                                     ))}
                                   </div>
                                   <div className="absolute top-0.5 right-0.5 text-[8px] font-bold text-sky-300 bg-black/60 px-1 rounded">

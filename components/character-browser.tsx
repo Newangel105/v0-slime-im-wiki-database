@@ -408,7 +408,7 @@ const tacticsIconMap: Record<string, string> = {
 }
 
 function fieldBuildingIcon(id: string, ver: string) {
-  return `/Image/FieldBuilding/${id}/${ver}/FieldBuilding_${id}_${ver}_icon.png`
+  return `/Image/FieldBuilding/${id}/${ver}/FieldBuilding_${id}_${ver}_icon.webp`
 }
 
 const facilityIconMap: Record<string, string> = {
@@ -1401,7 +1401,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     const frameSrc = getCharacterFrame(character)
     const baseSrc = getCharacterBase(character)
     const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
-    const iconSrc = character.images.icon?.replace(/\.png$/i, ".webp")
+    const iconSrc = character.images.icon?.replace(/\.webp$/i, ".webp")
     const elementIcons = getCharacterElementIcons(character)
     const attackTypeIcon = attackTypeIconMap[normalizeLabel(character.attack_type)]
     const attackTypeLabel = formatWikiLabel(character.attack_type)
@@ -1451,7 +1451,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     const frameSrc = getCharacterFrame(character)
     const baseSrc = getCharacterBase(character)
     const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
-    const iconSrc = character.images.icon?.replace(/\.png$/i, ".webp")
+    const iconSrc = character.images.icon?.replace(/\.webp$/i, ".webp")
     const elementIcons = getCharacterElementIcons(character)
     const attackTypeIcon = attackTypeIconMap[normalizeLabel(character.attack_type)]
     const attackTypeLabel = formatWikiLabel(character.attack_type)
@@ -1505,7 +1505,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     const frameSrc = getCharacterFrame(character)
     const baseSrc = getCharacterBase(character)
     const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
-    const iconSrc = character.images.icon?.replace(/\.png$/i, ".webp")
+    const iconSrc = character.images.icon?.replace(/\.webp$/i, ".webp")
     const characterElementValue = getCharacterElementValue(character)
     const elementIcons = getCharacterElementIcons(character)
     const forceEntries = character.force_entries
@@ -1633,7 +1633,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     const frameSrc = getCharacterFrame(character)
     const baseSrc = getCharacterBase(character)
     const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
-    const iconSrc = character.images.icon?.replace(/\.png$/i, ".webp")
+    const iconSrc = character.images.icon?.replace(/\.webp$/i, ".webp")
     const characterElementValue = getCharacterElementValue(character)
     const elementIcons = getCharacterElementIcons(character)
     const forceEntries = character.force_entries

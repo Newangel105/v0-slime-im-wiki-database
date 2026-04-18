@@ -359,10 +359,11 @@ export function toPublicAssetPath(assetPath: string | null | undefined): string 
 
   const normalized = assetPath.replace(/^\/+/, "")
   if (/\.[a-z0-9]+$/i.test(normalized)) {
-    return `/${normalized}`
+    // If path already has a .webp extension, rewrite to .webp
+    return `/${normalized.replace(/\.webp$/i, ".webp")}`
   }
 
-  return `/${normalized}.png`
+  return `/${normalized}.webp`
 }
 
 export function stripColorTags(text: string): string {

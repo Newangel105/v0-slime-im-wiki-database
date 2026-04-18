@@ -31,97 +31,97 @@ import {
 
 /* ── Attacker element icons (same as character-browser attackerElementIconMap) ── */
 const attackerElementIconMap: Record<string, string> = {
-  air: "/elements/icElementspace.png",
-  dark: "/elements/icElementDark.png",
-  earth: "/elements/icElementEarth.png",
-  enhancedair: "/elements/Enhancedspace.png",
-  enhanceddark: "/elements/Enhanceddark.png",
-  enhancedearth: "/elements/Enhancedearth.png",
-  enhancedfire: "/elements/Enhancedfire.png",
-  enhancedholy: "/elements/Enhancedlight.png",
-  enhancedwater: "/elements/Enhancedwater.png",
-  enhancedwind: "/elements/Enhancedwind.png",
-  fire: "/elements/icElementFire.png",
-  holy: "/elements/icElementlight.png",
-  water: "/elements/icElementWater.png",
-  wind: "/elements/icElementWind.png",
+  air: "/elements/icElementspace.webp",
+  dark: "/elements/icElementDark.webp",
+  earth: "/elements/icElementEarth.webp",
+  enhancedair: "/elements/Enhancedspace.webp",
+  enhanceddark: "/elements/Enhanceddark.webp",
+  enhancedearth: "/elements/Enhancedearth.webp",
+  enhancedfire: "/elements/Enhancedfire.webp",
+  enhancedholy: "/elements/Enhancedlight.webp",
+  enhancedwater: "/elements/Enhancedwater.webp",
+  enhancedwind: "/elements/Enhancedwind.webp",
+  fire: "/elements/icElementFire.webp",
+  holy: "/elements/icElementlight.webp",
+  water: "/elements/icElementWater.webp",
+  wind: "/elements/icElementWind.webp",
 }
 
 /* ── Protector / defender element icons ── */
 const defenderBaseElementIconMap: Record<string, string> = {
-  air: "/Image/IcElementBless/IcElementBlessAir.png",
-  dark: "/Image/IcElementBless/IcElementBlessDark.png",
-  earth: "/Image/IcElementBless/IcElementBlessEarth.png",
-  fire: "/Image/IcElementBless/IcElementBlessFire.png",
-  holy: "/Image/IcElementBless/IcElementBlessHoly.png",
-  water: "/Image/IcElementBless/IcElementBlessWater.png",
-  wind: "/Image/IcElementBless/IcElementBlessWind.png",
+  air: "/Image/IcElementBless/IcElementBlessAir.webp",
+  dark: "/Image/IcElementBless/IcElementBlessDark.webp",
+  earth: "/Image/IcElementBless/IcElementBlessEarth.webp",
+  fire: "/Image/IcElementBless/IcElementBlessFire.webp",
+  holy: "/Image/IcElementBless/IcElementBlessHoly.webp",
+  water: "/Image/IcElementBless/IcElementBlessWater.webp",
+  wind: "/Image/IcElementBless/IcElementBlessWind.webp",
 }
 
 const defenderAntiElementIconMap: Record<string, string> = {
-  fire: "/elements/Anti-Fire.png",
-  water: "/elements/Anti-Water.png",
-  earth: "/elements/Anti-Earth.png",
-  air: "/elements/Anti-Space.png",
-  wind: "/elements/Anti-Wind.png",
-  dark: "/elements/Anti-Dark.png",
-  holy: "/elements/Anti-Light.png",
+  fire: "/elements/Anti-Fire.webp",
+  water: "/elements/Anti-Water.webp",
+  earth: "/elements/Anti-Earth.webp",
+  air: "/elements/Anti-Space.webp",
+  wind: "/elements/Anti-Wind.webp",
+  dark: "/elements/Anti-Dark.webp",
+  holy: "/elements/Anti-Light.webp",
 }
 
 const defenderAntiExElementIconMap: Record<string, string> = {
-  fire: "/elements/anti_fire_attribute_unbound.png",
-  water: "/elements/anti_water_attribute_unbound.png",
-  earth: "/elements/anti_earth_attribute_unbound.png",
-  air: "/elements/anti_space_attribute_unbound.png",
-  wind: "/elements/anti_wind_attribute_unbound.png",
-  dark: "/elements/anti_dark_attribute_unbound.png",
-  holy: "/elements/anti_light_attribute_unbound.png",
+  fire: "/elements/anti_fire_attribute_unbound.webp",
+  water: "/elements/anti_water_attribute_unbound.webp",
+  earth: "/elements/anti_earth_attribute_unbound.webp",
+  air: "/elements/anti_space_attribute_unbound.webp",
+  wind: "/elements/anti_wind_attribute_unbound.webp",
+  dark: "/elements/anti_dark_attribute_unbound.webp",
+  holy: "/elements/anti_light_attribute_unbound.webp",
 }
 
 const defenderGenericIconMap: Record<string, string> = {
-  all: "/Image/IcElementBless/IcElementBlessAll.png",
-  physics: "/Image/IcElementBless/IcElementBlessPhysics.png",
-  magic: "/Image/IcElementBless/IcElementBlessMagic.png",
-  special: "/type_dmg/IcElementBlessSpecial.png",
-  specialeffectelementair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.png",
-  specialeffectelementdark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementDark.png",
-  specialeffectelementearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEarth.png",
-  specialeffectelementfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementFire.png",
-  specialeffectelementholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementHoly.png",
-  specialeffectelementwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWater.png",
-  specialeffectelementwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWind.png",
-  specialeffectelementenhancedair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedAir.png",
-  specialeffectelementenhanceddark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedDark.png",
-  specialeffectelementenhancedearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedEarth.png",
-  specialeffectelementenhancedfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedFire.png",
-  specialeffectelementenhancedholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedHoly.png",
-  specialeffectelementenhancedwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWater.png",
-  specialeffectelementenhancedwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWind.png",
+  all: "/Image/IcElementBless/IcElementBlessAll.webp",
+  physics: "/Image/IcElementBless/IcElementBlessPhysics.webp",
+  magic: "/Image/IcElementBless/IcElementBlessMagic.webp",
+  special: "/type_dmg/IcElementBlessSpecial.webp",
+  specialeffectelementair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.webp",
+  specialeffectelementdark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementDark.webp",
+  specialeffectelementearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEarth.webp",
+  specialeffectelementfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementFire.webp",
+  specialeffectelementholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementHoly.webp",
+  specialeffectelementwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWater.webp",
+  specialeffectelementwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWind.webp",
+  specialeffectelementenhancedair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedAir.webp",
+  specialeffectelementenhanceddark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedDark.webp",
+  specialeffectelementenhancedearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedEarth.webp",
+  specialeffectelementenhancedfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedFire.webp",
+  specialeffectelementenhancedholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedHoly.webp",
+  specialeffectelementenhancedwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWater.webp",
+  specialeffectelementenhancedwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedWind.webp",
 }
 
 const attackTypeIconMap: Record<string, string> = {
-  magic: "/type_dmg/icAttackTypeMagic.png",
-  physical: "/type_dmg/icAttackTypePhysics.png",
+  magic: "/type_dmg/icAttackTypeMagic.webp",
+  physical: "/type_dmg/icAttackTypePhysics.webp",
 }
 
 const tacticsIconMap: Record<string, string> = {
-  charge: "/Image/Tactics/charge.png",
-  defense: "/Image/Tactics/defense.png",
-  normal: "/Image/Tactics/normal.png",
-  speed: "/Image/Tactics/speed.png",
+  charge: "/Image/Tactics/charge.webp",
+  defense: "/Image/Tactics/defense.webp",
+  normal: "/Image/Tactics/normal.webp",
+  speed: "/Image/Tactics/speed.webp",
 }
 
 const weaponIconMap: Record<string, string> = {
-  book: "/weapons/book.png",
-  fist: "/weapons/fists.png",
-  fists: "/weapons/fists.png",
-  greatsword: "/weapons/greatsword.png",
-  hammer: "/weapons/hammer.png",
-  largesword: "/weapons/greatsword.png",
-  katana: "/weapons/katana.png",
-  knuckle: "/weapons/fists.png",
-  spear: "/weapons/spear.png",
-  sword: "/weapons/sword.png",
+  book: "/weapons/book.webp",
+  fist: "/weapons/fists.webp",
+  fists: "/weapons/fists.webp",
+  greatsword: "/weapons/greatsword.webp",
+  hammer: "/weapons/hammer.webp",
+  largesword: "/weapons/greatsword.webp",
+  katana: "/weapons/katana.webp",
+  knuckle: "/weapons/fists.webp",
+  spear: "/weapons/spear.webp",
+  sword: "/weapons/sword.webp",
 }
 
 /* ── Map from SpecialEffectElement* → base element key ── */
@@ -168,24 +168,24 @@ const leaderSkillElementPatterns: [RegExp, string][] = [
 
 /* ── Element icon for inline description rendering ── */
 const inlineElementIconMap: Record<string, string> = {
-  fire: "/elements/icElementFire.png",
-  water: "/elements/icElementWater.png",
-  earth: "/elements/icElementEarth.png",
-  wind: "/elements/icElementWind.png",
-  dark: "/elements/icElementDark.png",
-  light: "/elements/icElementlight.png",
-  holy: "/elements/icElementlight.png",
-  space: "/elements/icElementspace.png",
-  air: "/elements/icElementspace.png",
+  fire: "/elements/icElementFire.webp",
+  water: "/elements/icElementWater.webp",
+  earth: "/elements/icElementEarth.webp",
+  wind: "/elements/icElementWind.webp",
+  dark: "/elements/icElementDark.webp",
+  light: "/elements/icElementlight.webp",
+  holy: "/elements/icElementlight.webp",
+  space: "/elements/icElementspace.webp",
+  air: "/elements/icElementspace.webp",
 }
 
 /* ── Star asset map (same as character-browser) ── */
 const starAssetMap: Record<number, string> = {
-  3: "/stars/starCharaL3A.png",
-  4: "/stars/starCharaL4A.png",
-  5: "/stars/starCharaL5A.png",
-  6: "/stars/starCharaL6A.png",
-  7: "/stars/starCharaL7A.png",
+  3: "/stars/starCharaL3A.webp",
+  4: "/stars/starCharaL4A.webp",
+  5: "/stars/starCharaL5A.webp",
+  6: "/stars/starCharaL6A.webp",
+  7: "/stars/starCharaL7A.webp",
 }
 
 /* ── Helpers ── */
@@ -228,8 +228,8 @@ function getAttackerIconTags(character: WikiCharacter): IconTag[] {
 
 /* ── Protector type icons (physics / magic) ── */
 const protectorTypeIconMap: Record<string, string> = {
-  physics: "/type_dmg/prot_phys.png",
-  magic: "/type_dmg/prot_magic.png",
+  physics: "/type_dmg/prot_phys.webp",
+  magic: "/type_dmg/prot_magic.webp",
 }
 
 /** Build icon tags for a PROTECTOR character — uses element field + leader skill */
@@ -338,14 +338,14 @@ function IconFilterTag({ href, icon, label }: { href: string; icon: string; labe
 
 /** Stat-keyword → icon path mapping for inline rendering */
 const statIconMap: Record<string, string> = {
-  hp: "/stats/hp.png",
-  atk: "/stats/attack.png",
-  def: "/stats/defense.png",
+  hp: "/stats/hp.webp",
+  atk: "/stats/attack.webp",
+  def: "/stats/defense.webp",
 }
 
 const atkTypeIconMap: Record<string, string> = {
-  "p-": "/type_dmg/icAttackTypePhysics.png",
-  "m-": "/type_dmg/icAttackTypeMagic.png",
+  "p-": "/type_dmg/icAttackTypePhysics.webp",
+  "m-": "/type_dmg/icAttackTypeMagic.webp",
 }
 
 type DescSegment =
@@ -398,7 +398,7 @@ function parseStatAndElementTokens(text: string): DescSegment[] {
           prefix,
           prefixIcon: atkTypeIconMap[prefix.toLowerCase()],
           stat,
-          statIcon: statIcon ?? "/stats/attack.png",
+          statIcon: statIcon ?? "/stats/attack.webp",
         })
       } else if (statIcon) {
         segments.push({ type: "stat", text: stat, icon: statIcon })
@@ -663,10 +663,10 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
 
               {/* Stats with progress bars */}
               <div className="space-y-3 rounded-xl border border-gray-700 bg-gray-900/50 p-4">
-                <StatBar label="Health" value={displayStats.hp} max={statMaxes.hp} icon="/stats/hp.png" color="#34d399" />
-                <StatBar label="Attack" value={displayStats.attack} max={statMaxes.attack} icon="/stats/attack.png" color="#f87171" />
-                <StatBar label="Defense" value={displayStats.defense} max={statMaxes.defense} icon="/stats/defense.png" color="#60a5fa" />
-                <StatBar label="Existence" value={displayStats.existence} max={statMaxes.existence} icon="/stats/existence.png" color="#fbbf24" />
+                <StatBar label="Health" value={displayStats.hp} max={statMaxes.hp} icon="/stats/hp.webp" color="#34d399" />
+                <StatBar label="Attack" value={displayStats.attack} max={statMaxes.attack} icon="/stats/attack.webp" color="#f87171" />
+                <StatBar label="Defense" value={displayStats.defense} max={statMaxes.defense} icon="/stats/defense.webp" color="#60a5fa" />
+                <StatBar label="Existence" value={displayStats.existence} max={statMaxes.existence} icon="/stats/existence.webp" color="#fbbf24" />
               </div>
 
               {/* Tags: facilities (select in Facilities dropdown), forces (select in Forces dropdown) */}
@@ -715,7 +715,7 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
                             {/* Mobile header: icon + title inline */}
                             <div className="flex items-center gap-4 sm:hidden">
                               {ability.name === "Individual Mercy" && (
-                                <img src="/skills/e1.png" alt={ability.name} className="h-14 w-14 shrink-0 rounded-xl bg-gray-900 p-1.5 object-contain" />
+                                <img src="/skills/e1.webp" alt={ability.name} className="h-14 w-14 shrink-0 rounded-xl bg-gray-900 p-1.5 object-contain" />
                               )}
                               <div className="min-w-0">
                                 <h3 className="text-base font-bold text-white">{ability.name}</h3>
@@ -724,7 +724,7 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
 
                             {/* Desktop image column */}
                             {ability.name === "Individual Mercy" && (
-                              <img src="/skills/e1.png" alt={ability.name} className="hidden sm:block h-14 w-14 shrink-0 rounded-xl bg-gray-900 p-1.5 object-contain" />
+                              <img src="/skills/e1.webp" alt={ability.name} className="hidden sm:block h-14 w-14 shrink-0 rounded-xl bg-gray-900 p-1.5 object-contain" />
                             )}
 
                             {/* Desktop content column */}

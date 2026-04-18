@@ -7,26 +7,26 @@ import { type WikiSkill, toPublicAssetPath } from "@/lib/pc-wiki"
 /* ── Inline description rendering (mirrors page's RichDescription) ── */
 
 const statIconMap: Record<string, string> = {
-  hp: "/stats/hp.png",
-  atk: "/stats/attack.png",
-  def: "/stats/defense.png",
+  hp: "/stats/hp.webp",
+  atk: "/stats/attack.webp",
+  def: "/stats/defense.webp",
 }
 
 const atkTypeIconMap: Record<string, string> = {
-  "p-": "/type_dmg/icAttackTypePhysics.png",
-  "m-": "/type_dmg/icAttackTypeMagic.png",
+  "p-": "/type_dmg/icAttackTypePhysics.webp",
+  "m-": "/type_dmg/icAttackTypeMagic.webp",
 }
 
 const inlineElementIconMap: Record<string, string> = {
-  fire: "/elements/icElementFire.png",
-  water: "/elements/icElementWater.png",
-  earth: "/elements/icElementEarth.png",
-  wind: "/elements/icElementWind.png",
-  dark: "/elements/icElementDark.png",
-  light: "/elements/icElementlight.png",
-  holy: "/elements/icElementlight.png",
-  space: "/elements/icElementspace.png",
-  air: "/elements/icElementspace.png",
+  fire: "/elements/icElementFire.webp",
+  water: "/elements/icElementWater.webp",
+  earth: "/elements/icElementEarth.webp",
+  wind: "/elements/icElementWind.webp",
+  dark: "/elements/icElementDark.webp",
+  light: "/elements/icElementlight.webp",
+  holy: "/elements/icElementlight.webp",
+  space: "/elements/icElementspace.webp",
+  air: "/elements/icElementspace.webp",
 }
 
 type Seg =
@@ -50,7 +50,7 @@ function parseStatTokens(text: string): Seg[] {
       const stat = m[2].toUpperCase()
       const statIcon = statIconMap[stat.toLowerCase()]
       if (prefix && atkTypeIconMap[prefix.toLowerCase()]) {
-        segs.push({ type: "atktype", prefix, prefixIcon: atkTypeIconMap[prefix.toLowerCase()], stat, statIcon: statIcon ?? "/stats/attack.png" })
+        segs.push({ type: "atktype", prefix, prefixIcon: atkTypeIconMap[prefix.toLowerCase()], stat, statIcon: statIcon ?? "/stats/attack.webp" })
       } else if (statIcon) {
         segs.push({ type: "stat", text: stat, icon: statIcon })
       } else {
@@ -330,13 +330,13 @@ function SecretSkillIcon({
     : skill.special_skill_type
   const cardFrame = isSecretSkill
     ? effectiveType === "Attack"
-      ? `${BATTLE_ATLAS}/cardBaseSpAttack.png`
+      ? `${BATTLE_ATLAS}/cardBaseSpAttack.webp`
       : effectiveType === "Support"
-        ? `${BATTLE_ATLAS}/cardBaseSpSupport.png`
-        : `${BATTLE_ATLAS}/cardBaseSp.png`
+        ? `${BATTLE_ATLAS}/cardBaseSpSupport.webp`
+        : `${BATTLE_ATLAS}/cardBaseSp.webp`
     : null
-  const targetIcon = isAoe ? `${BATTLE_ATLAS}/icSpTypeAll.png` : `${BATTLE_ATLAS}/icSpTypeSingle.png`
-  const rarityIcon = rarity === 6 ? `${BATTLE_ATLAS}/icEpicOff.png` : `${BATTLE_ATLAS}/icUltimateOff.png`
+  const targetIcon = isAoe ? `${BATTLE_ATLAS}/icSpTypeAll.webp` : `${BATTLE_ATLAS}/icSpTypeSingle.webp`
+  const rarityIcon = rarity === 6 ? `${BATTLE_ATLAS}/icEpicOff.webp` : `${BATTLE_ATLAS}/icUltimateOff.webp`
 
   return (
     <div className="relative h-14 w-14 shrink-0">

@@ -8,17 +8,17 @@ import { getCharacterVisualTier, toPublicAssetPath, type WikiCharacter, type Wik
 function getMiniFramePaths(tier: number, role: "member" | "bless") {
   const t = Math.min(Math.max(tier, 3), 8)
   const pfx = role === "bless" ? "Bless" : "Member"
-  if (t === 8) return { base: `/frame/base${pfx}M7_Epic.png`, frame: `/frame/frame${pfx}M7_Epic.png` }
-  return { base: `/frame/base${pfx}M${t}.png`, frame: `/frame/frame${pfx}M${t}.png` }
+  if (t === 8) return { base: `/frame/base${pfx}M7_Epic.webp`, frame: `/frame/frame${pfx}M7_Epic.webp` }
+  return { base: `/frame/base${pfx}M${t}.webp`, frame: `/frame/frame${pfx}M${t}.webp` }
 }
 
 const STAR_ASSETS: Record<number, string> = {
-  3: "/stars/starCharaL3A.png",
-  4: "/stars/starCharaL4A.png",
-  5: "/stars/starCharaL5A.png",
-  6: "/stars/starCharaL6A.png",
-  7: "/stars/starCharaL7A.png",
-  8: "/stars/starCharaL7_Epic.png",
+  3: "/stars/starCharaL3A.webp",
+  4: "/stars/starCharaL4A.webp",
+  5: "/stars/starCharaL5A.webp",
+  6: "/stars/starCharaL6A.webp",
+  7: "/stars/starCharaL7A.webp",
+  8: "/stars/starCharaL7_Epic.webp",
 }
 
 // ── Skill description rendering ───────────────────────────────────────────────
@@ -65,7 +65,7 @@ function CharIcon({ char, size = 72 }: { char: WikiCharacter; size?: number }) {
       {iconSrc && <img src={iconSrc} alt={char.name} className="absolute inset-0 w-full h-full object-contain" style={{ padding: "8%" }} />}
       <img src={frame} alt="" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
       {starSrc && (
-        <img src={starSrc} alt="" className="absolute bottom-0 left-0 right-0 w-full object-contain pointer-events-none" style={{ height: "28%" }} />
+        <img src={starSrc} alt="" className="absolute bottom-0 left-0 object-contain pointer-events-none" style={{ height: "38%", width: "38%" }} />
       )}
     </div>
   )

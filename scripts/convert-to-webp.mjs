@@ -1,71 +1,80 @@
 /**
- * Convert key PNG images to WebP for significant bandwidth savings.
- * Targets: partyL (character portraits), SkillStill (heartprint images),
- *          frame (shared card frames), stars (rarity stars).
+ * Clean up public/ images:
+ *   1. Delete all files whose name contains "_Sprite" (Unity atlas artefacts).
+ *   2. Convert every remaining .webp to .webp (always re-convert so no staleness).
+ *   3. Delete every .webp file (including ones that already had a .webp).
+ *
+ * Usage:
+ *   node scripts/convert-to-webp.mjs
  */
 import sharp from "sharp"
-import { readdir, stat } from "fs/promises"
-import { join, extname, basename } from "path"
+import { readdir, unlink } from "fs/promises"
+import { join, extname } from "path"
 
 const PUBLIC = join(process.cwd(), "public")
 
-const FOLDERS = [
-  { path: join(PUBLIC, "partyL"),    recursive: false, pattern: null },
-  { path: join(PUBLIC, "SkillStill"), recursive: true, pattern: null },
-  { path: join(PUBLIC, "frame"),     recursive: false, pattern: null },
-  { path: join(PUBLIC, "stars"),     recursive: false, pattern: null },
-  { path: join(PUBLIC, "elements"),  recursive: false, pattern: null },
-  { path: join(PUBLIC, "frames"),    recursive: false, pattern: null },
-  { path: join(PUBLIC, "Image", "Character", "PC"),   recursive: true, pattern: /CharaPartyM\.png$/i },
-  { path: join(PUBLIC, "Image", "Character", "Bless"), recursive: true, pattern: /BlessPartyM\.png$/i },
-  { path: join(PUBLIC, "Image", "IcElementBless"), recursive: false, pattern: null },
-  { path: join(PUBLIC, "Image", "Tactics"), recursive: false, pattern: null },
-  { path: join(PUBLIC, "type_dmg"),  recursive: false, pattern: null },
-  { path: join(PUBLIC, "weapons"),   recursive: false, pattern: null },
-  { path: join(PUBLIC, "UI", "Texture", "CharaInfoAtlas"), recursive: false, pattern: null },
-]
-
-async function* walkPngs(dir, recursive, pattern) {
-  const entries = await readdir(dir, { withFileTypes: true })
+async function* walkAll(dir) {
+  let entries
+  try {
+    entries = await readdir(dir, { withFileTypes: true })
+  } catch {
+    return
+  }
   for (const e of entries) {
     const full = join(dir, e.name)
-    if (e.isDirectory() && recursive) {
-      yield* walkPngs(full, true, pattern)
-    } else if (e.isFile() && extname(e.name).toLowerCase() === ".png") {
-      if (e.name.includes("__Sprite_")) continue  // skip Unity atlas duplicates
-      if (!pattern || pattern.test(e.name)) yield full
+    if (e.isDirectory()) {
+      yield* walkAll(full)
+    } else if (e.isFile()) {
+      yield { full, name: e.name }
     }
   }
 }
 
+let spritesDeleted = 0
 let converted = 0
-let skipped = 0
+let pngsDeleted = 0
 let errors = 0
 
-for (const { path: dir, recursive, pattern } of FOLDERS) {
-  console.log(`\nProcessing: ${dir}`)
-  for await (const pngPath of walkPngs(dir, recursive, pattern)) {
-    const webpPath = pngPath.replace(/\.png$/i, ".webp")
-    // Skip if webp already exists and is newer than png
-    try {
-      const [pngStat, webpStat] = await Promise.all([stat(pngPath), stat(webpPath).catch(() => null)])
-      if (webpStat && webpStat.mtimeMs >= pngStat.mtimeMs) {
-        skipped++
-        continue
-      }
-    } catch { /* continue */ }
+console.log(`Public dir: ${PUBLIC}\n`)
 
-    try {
-      await sharp(pngPath)
-        .webp({ quality: 82, effort: 4 })
-        .toFile(webpPath)
-      converted++
-      if (converted % 50 === 0) process.stdout.write(`  ${converted} converted...\r`)
-    } catch (e) {
-      console.error(`  ERROR: ${pngPath} — ${e.message}`)
-      errors++
-    }
+// Step 1 + 2 + 3 in one pass
+for await (const { full, name } of walkAll(PUBLIC)) {
+  const ext = extname(name).toLowerCase()
+
+  // Step 1: delete _Sprite files (any extension)
+  if (name.includes("_Sprite")) {
+    await unlink(full).catch(() => {})
+    spritesDeleted++
+    continue
+  }
+
+  if (ext !== ".webp") continue
+
+  const webpPath = full.replace(/\.webp$/i, ".webp")
+
+  // Step 2: convert to webp
+  try {
+    await sharp(full)
+      .webp({ quality: 82, effort: 4 })
+      .toFile(webpPath)
+    converted++
+  } catch (e) {
+    console.error(`  CONVERT ERROR: ${full} — ${e.message}`)
+    errors++
+  }
+
+  // Step 3: delete the png (even if conversion failed, remove it)
+  await unlink(full).catch(() => {})
+  pngsDeleted++
+
+  const total = spritesDeleted + converted + pngsDeleted
+  if (total % 200 === 0) {
+    process.stdout.write(`  sprites removed: ${spritesDeleted}  converted: ${converted}  pngs deleted: ${pngsDeleted}\r`)
   }
 }
 
-console.log(`\nDone: ${converted} converted, ${skipped} up-to-date, ${errors} errors`)
+console.log(`\n\nDone!`)
+console.log(`  _Sprite files deleted : ${spritesDeleted}`)
+console.log(`  PNGs converted to webp: ${converted}`)
+console.log(`  PNGs deleted          : ${pngsDeleted}`)
+if (errors) console.log(`  Errors               : ${errors}`)
