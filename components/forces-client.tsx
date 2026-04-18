@@ -89,7 +89,7 @@ export default function ForcesClient({ forceGroups }: { forceGroups: SlimForceGr
                     </div>
                     <div className="flex items-center space-x-3 mt-1">
                       <span className="text-gray-400 font-medium">{group.characters.length}</span>
-                      <img src="/icons/name.png" alt="User Icon" className="w-3 h-5" />
+                      <img src="/icons/name.webp" alt="User Icon" className="w-3 h-5" />
                       {isExpanded ? (
                         <ChevronUp className="w-5 h-5 text-gray-400" />
                       ) : (

@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "sync:assets": "node scripts/sync_pc_wiki_assets.mjs"
+    "sync:assets": "node scripts/sync_pc_wiki_assets.mjs",
+    "convert:webp": "node scripts/convert-to-webp.mjs",
+    "convert:webp:clean": "node scripts/convert-to-webp.mjs --delete-png"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

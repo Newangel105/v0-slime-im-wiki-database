@@ -22,12 +22,12 @@ type TeamMeta = {
 }
 
 const RARITY_ASSETS: Record<number, string> = {
-  3: "/stars/starCharaL3A.png",
-  4: "/stars/starCharaL4A.png",
-  5: "/stars/starCharaL5A.png",
-  6: "/stars/starCharaL6A.png",
-  7: "/stars/starCharaL7A.png",
-  8: "/stars/starCharaL7_Epic.png",
+  3: "/stars/starCharaL3A.webp",
+  4: "/stars/starCharaL4A.webp",
+  5: "/stars/starCharaL5A.webp",
+  6: "/stars/starCharaL6A.webp",
+  7: "/stars/starCharaL7A.webp",
+  8: "/stars/starCharaL7_Epic.webp",
 }
 
 function getMiniFramePath(tier: number, pfx: string) {

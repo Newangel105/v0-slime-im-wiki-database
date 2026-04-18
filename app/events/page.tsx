@@ -42,19 +42,19 @@ const getCategoryConfig = (headerClass: string, articleType: string) => {
   let bgImage = ""
 
   if (headerClass.includes("is-yellow")) {
-    bgImage = "/events/category-bg_yellow.png"
+    bgImage = "/events/category-bg_yellow.webp"
   } else if (headerClass.includes("is-red")) {
-    bgImage = "/events/category-bg_red.png"
+    bgImage = "/events/category-bg_red.webp"
   } else if (headerClass.includes("is-green")) {
-    bgImage = "/events/category-bg_green.png"
+    bgImage = "/events/category-bg_green.webp"
   } else if (headerClass.includes("is-pink") || headerClass.includes("is-magenta")) {
-    bgImage = "/events/category-bg_magenta.png"
+    bgImage = "/events/category-bg_magenta.webp"
   } else if (headerClass.includes("is-purple")) {
-    bgImage = "/events/category-bg_purple.png"
+    bgImage = "/events/category-bg_purple.webp"
   } else if (headerClass.includes("is-gray")) {
-    bgImage = "/events/category-bg_gray.png"
+    bgImage = "/events/category-bg_gray.webp"
   } else if (headerClass.includes("is-blue")) {
-    bgImage = "/events/category-bg_blue.png"
+    bgImage = "/events/category-bg_blue.webp"
   }
 
   return { bgImage }
