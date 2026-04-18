@@ -1159,13 +1159,9 @@ export default function TeamBuilderClient({
   }
 
   function openPicker(i: number, mode: "main" | "sub" | "side" | "sidesub" | "heartprint") {
-    setPickerOpenFor(i); setPickerMode(mode); setQuery("")
-    setFilterEl(null); setFilterAttack(null); setFilterTactics(null)
-    setFilterCharType(null); setFilterCharacterType(null); setFilterRarity(null); setFilterForces([]); setFilterSkillGroups([])
-    setPreviewHp(null); setFilterSkillType("all"); setExpandedSkillCats([])
-    setFilterWeapon(null); setFilterProtType(null); setFilterUltimateType("all")
-    setFilterEnhancement("all"); setFilterProtSkill("all"); setFilterDragOffset({x: 0, y: 0})
-    setFilterSkillCost(0); setShowSkillEffect(false)
+    // Open picker but preserve current filters so user selections remain active
+    setPickerOpenFor(i)
+    setPickerMode(mode)
     setShowFilterModal(false)
   }
   function closePicker() { setPickerOpenFor(null) }
