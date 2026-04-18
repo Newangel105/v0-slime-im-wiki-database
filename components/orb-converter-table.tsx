@@ -46,7 +46,7 @@ export default function OrbConverterTable() {
       </div>
       {entry.isSkillChange && (
         <img
-          src="/skill-icons/skill_integrated_3400001_ItemM.png"
+          src="/skill-icons/skill_integrated_3400001_ItemM.webp"
           alt="Skill Change"
           className="absolute bottom-0 right-0 w-4 h-4 sm:w-5 sm:h-5 z-[1] select-none"
           draggable={false}
