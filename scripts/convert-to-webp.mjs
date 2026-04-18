@@ -1,29 +1,19 @@
 /**
- * Convert ALL PNG images in public/ to WebP for bandwidth savings.
+ * Clean up public/ images:
+ *   1. Delete all files whose name contains "_Sprite" (Unity atlas artefacts).
+ *   2. Convert every remaining .webp to .webp (always re-convert so no staleness).
+ *   3. Delete every .webp file (including ones that already had a .webp).
  *
  * Usage:
- *   node scripts/convert-to-webp.mjs [--delete-png] [--all]
- *
- * Flags:
- *   --delete-png   Remove the source .png after a successful conversion.
- *   --all          Process every PNG in public/ (default behaviour).
- *                  Without this flag the script still processes everything;
- *                  it is kept for explicit invocation clarity.
- *
- * Behaviour:
- *   - Skips files whose name contains "__Sprite_" (Unity atlas artefacts).
- *   - Skips conversion if a .webp already exists AND is newer than the .png.
- *   - Processes all sub-directories recursively.
+ *   node scripts/convert-to-webp.mjs
  */
 import sharp from "sharp"
-import { readdir, stat, unlink } from "fs/promises"
+import { readdir, unlink } from "fs/promises"
 import { join, extname } from "path"
-import { argv } from "process"
 
 const PUBLIC = join(process.cwd(), "public")
-const DELETE_PNG = argv.includes("--delete-png")
 
-async function* walkPngs(dir) {
+async function* walkAll(dir) {
   let entries
   try {
     entries = await readdir(dir, { withFileTypes: true })
@@ -33,58 +23,58 @@ async function* walkPngs(dir) {
   for (const e of entries) {
     const full = join(dir, e.name)
     if (e.isDirectory()) {
-      yield* walkPngs(full)
-    } else if (e.isFile() && extname(e.name).toLowerCase() === ".png") {
-      if (e.name.includes("__Sprite_")) continue  // skip Unity atlas duplicates
-      yield full
+      yield* walkAll(full)
+    } else if (e.isFile()) {
+      yield { full, name: e.name }
     }
   }
 }
 
+let spritesDeleted = 0
 let converted = 0
-let skipped = 0
-let deleted = 0
+let pngsDeleted = 0
 let errors = 0
 
-console.log(`Converting ALL PNGs in: ${PUBLIC}`)
-console.log(`Delete originals: ${DELETE_PNG}\n`)
+console.log(`Public dir: ${PUBLIC}\n`)
 
-for await (const pngPath of walkPngs(PUBLIC)) {
-  const webpPath = pngPath.replace(/\.png$/i, ".webp")
+// Step 1 + 2 + 3 in one pass
+for await (const { full, name } of walkAll(PUBLIC)) {
+  const ext = extname(name).toLowerCase()
 
-  // Skip if webp already exists and is at least as new as the png
+  // Step 1: delete _Sprite files (any extension)
+  if (name.includes("_Sprite")) {
+    await unlink(full).catch(() => {})
+    spritesDeleted++
+    continue
+  }
+
+  if (ext !== ".webp") continue
+
+  const webpPath = full.replace(/\.webp$/i, ".webp")
+
+  // Step 2: convert to webp
   try {
-    const [pngStat, webpStat] = await Promise.all([
-      stat(pngPath),
-      stat(webpPath).catch(() => null),
-    ])
-    if (webpStat && webpStat.mtimeMs >= pngStat.mtimeMs) {
-      skipped++
-      if (DELETE_PNG) {
-        await unlink(pngPath).catch(() => {})
-        deleted++
-      }
-      continue
-    }
-  } catch { /* continue */ }
-
-  try {
-    await sharp(pngPath)
+    await sharp(full)
       .webp({ quality: 82, effort: 4 })
       .toFile(webpPath)
     converted++
-    if ((converted + skipped) % 100 === 0) {
-      process.stdout.write(`  ${converted} converted, ${skipped} up-to-date...\r`)
-    }
-    if (DELETE_PNG) {
-      await unlink(pngPath).catch(() => {})
-      deleted++
-    }
   } catch (e) {
-    console.error(`  ERROR: ${pngPath} — ${e.message}`)
+    console.error(`  CONVERT ERROR: ${full} — ${e.message}`)
     errors++
+  }
+
+  // Step 3: delete the png (even if conversion failed, remove it)
+  await unlink(full).catch(() => {})
+  pngsDeleted++
+
+  const total = spritesDeleted + converted + pngsDeleted
+  if (total % 200 === 0) {
+    process.stdout.write(`  sprites removed: ${spritesDeleted}  converted: ${converted}  pngs deleted: ${pngsDeleted}\r`)
   }
 }
 
-console.log(`\nDone: ${converted} converted, ${skipped} up-to-date, ${errors} errors`)
-if (DELETE_PNG) console.log(`Deleted: ${deleted} source PNG files`)
+console.log(`\n\nDone!`)
+console.log(`  _Sprite files deleted : ${spritesDeleted}`)
+console.log(`  PNGs converted to webp: ${converted}`)
+console.log(`  PNGs deleted          : ${pngsDeleted}`)
+if (errors) console.log(`  Errors               : ${errors}`)

@@ -261,7 +261,7 @@ export function calcTeamEP(slots: TeamSlotInput[]): TeamEP {
 }
 
 // ── EP Rank icon helper ────────────────────────────────────────────────────
-// IcRank folders: 01-05, files: IcRank_XX_YY.png
+// IcRank folders: 01-05, files: IcRank_XX_YY.webp
 // Rank tiers based on total EP thresholds (approximate game brackets):
 //  01 = < 50,000   02 = 50k-100k   03 = 100k-200k   04 = 200k-400k   05 = 400k+
 // Sub-rank within each tier: 01-03 (or more) based on finer thresholds
@@ -285,7 +285,7 @@ export function getEPRankIcon(totalEP: number): string {
     tier = "01"
     sub = totalEP >= 25000 ? "03" : totalEP >= 12500 ? "02" : "01"
   }
-  return `/Image/IcRank/${tier}/IcRank_${tier}_${sub}.png`
+  return `/Image/IcRank/${tier}/IcRank_${tier}_${sub}.webp`
 }
 
 export { baseElement }

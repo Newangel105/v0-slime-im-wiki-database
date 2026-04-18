@@ -14,20 +14,20 @@ const publicRoot = path.join(projectRoot, "public")
 const imageRoot = path.join(publicRoot, "Image")
 
 const enhancedBlessIconMap = {
-  EnhancedAir: "IcElementBlessEnhancedAir.png",
-  EnhancedDark: "IcElementBlessEnhancedDark.png",
-  EnhancedEarth: "IcElementBlessEnhancedEarth.png",
-  EnhancedFire: "IcElementBlessEnhancedFire.png",
-  EnhancedHoly: "IcElementBlessEnhancedHoly.png",
-  EnhancedWater: "IcElementBlessEnhancedWater.png",
-  EnhancedWind: "IcElementBlessEnhancedWind.png",
+  EnhancedAir: "IcElementBlessEnhancedAir.webp",
+  EnhancedDark: "IcElementBlessEnhancedDark.webp",
+  EnhancedEarth: "IcElementBlessEnhancedEarth.webp",
+  EnhancedFire: "IcElementBlessEnhancedFire.webp",
+  EnhancedHoly: "IcElementBlessEnhancedHoly.webp",
+  EnhancedWater: "IcElementBlessEnhancedWater.webp",
+  EnhancedWind: "IcElementBlessEnhancedWind.webp",
 }
 
-const baseElementBlessIcons = ["IcElementBlessHoly.png"]
+const baseElementBlessIcons = ["IcElementBlessHoly.webp"]
 
-const tacticsIcons = ["charge.png", "defense.png", "normal.png", "speed.png"]
+const tacticsIcons = ["charge.webp", "defense.webp", "normal.webp", "speed.webp"]
 
-// Each entry: { id, ver } maps to FieldBuilding_{id}_{ver}_icon.png
+// Each entry: { id, ver } maps to FieldBuilding_{id}_{ver}_icon.webp
 const facilityIconEntries = [
   { id: "1206", ver: "02" }, // Trading Post
   { id: "1209", ver: "02" }, // Armory
@@ -118,7 +118,7 @@ const facilityIconEntries = [
 ]
 
 function withPngExtension(assetPath) {
-  return /\.[a-z0-9]+$/i.test(assetPath) ? assetPath : `${assetPath}.png`
+  return /\.[a-z0-9]+$/i.test(assetPath) ? assetPath : `${assetPath}.webp`
 }
 
 function collectAssetPaths(characters) {
@@ -233,7 +233,7 @@ async function main() {
   }
 
   for (const { id, ver } of facilityIconEntries) {
-    const fileName = `FieldBuilding_${id}_${ver}_icon.png`
+    const fileName = `FieldBuilding_${id}_${ver}_icon.webp`
     const sourcePath = path.join(externalFieldBuildingRoot, id, ver, fileName)
     const destinationPath = path.join(publicRoot, "Image", "FieldBuilding", id, ver, fileName)
 

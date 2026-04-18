@@ -359,8 +359,8 @@ export function toPublicAssetPath(assetPath: string | null | undefined): string 
 
   const normalized = assetPath.replace(/^\/+/, "")
   if (/\.[a-z0-9]+$/i.test(normalized)) {
-    // If path already has a .png extension, rewrite to .webp
-    return `/${normalized.replace(/\.png$/i, ".webp")}`
+    // If path already has a .webp extension, rewrite to .webp
+    return `/${normalized.replace(/\.webp$/i, ".webp")}`
   }
 
   return `/${normalized}.webp`

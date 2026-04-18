@@ -32,20 +32,20 @@ for (const c of wiki.characters) {
   const rarity = String(c.rarity || parts[4] || '5')
   const candidates = []
   // common patterns using category (PC, Bless, etc)
-  candidates.push(path.join(srcRoot, 'Image', 'Character', category, folder, rarity, `${folder}_${rarity}_CharaPartyL.png`))
-  candidates.push(path.join(srcRoot, 'Image', 'Character', category, folder, rarity, `${folder}_${rarity}_CharaInfoPartyL.png`))
+  candidates.push(path.join(srcRoot, 'Image', 'Character', category, folder, rarity, `${folder}_${rarity}_CharaPartyL.webp`))
+  candidates.push(path.join(srcRoot, 'Image', 'Character', category, folder, rarity, `${folder}_${rarity}_CharaInfoPartyL.webp`))
   // bless-specific patterns (some assets use BlessPartyL suffix)
-  candidates.push(path.join(srcRoot, 'Image', 'Character', category, folder, rarity, `${folder}_${rarity}_BlessPartyL.png`))
-  candidates.push(path.join(srcRoot, 'Image', 'Character', category, folder, rarity, `${folder}_${rarity}_BlessInfoPartyL.png`))
+  candidates.push(path.join(srcRoot, 'Image', 'Character', category, folder, rarity, `${folder}_${rarity}_BlessPartyL.webp`))
+  candidates.push(path.join(srcRoot, 'Image', 'Character', category, folder, rarity, `${folder}_${rarity}_BlessInfoPartyL.webp`))
   // try other rarity folders (3..7) for common and bless patterns
   for (let r = 3; r <= 7; r++) {
-    candidates.push(path.join(srcRoot, 'Image', 'Character', category, folder, String(r), `${folder}_${r}_CharaPartyL.png`))
-    candidates.push(path.join(srcRoot, 'Image', 'Character', category, folder, String(r), `${folder}_${r}_BlessPartyL.png`))
+    candidates.push(path.join(srcRoot, 'Image', 'Character', category, folder, String(r), `${folder}_${r}_CharaPartyL.webp`))
+    candidates.push(path.join(srcRoot, 'Image', 'Character', category, folder, String(r), `${folder}_${r}_BlessPartyL.webp`))
   }
 
   let copied = false
   for (const cand of candidates) {
-    const dest = path.join(outDir, `${c.master_pc_id}.png`)
+    const dest = path.join(outDir, `${c.master_pc_id}.webp`)
     if (tryCopy(cand, dest)) {
       console.log(`Copied ${cand} -> ${dest}`)
       copied = true
@@ -53,7 +53,7 @@ for (const c of wiki.characters) {
     }
   }
   if (!copied) {
-    // fallback: scan the folder for any *PartyL.png files
+    // fallback: scan the folder for any *PartyL.webp files
     const scanDirs = [path.join(srcRoot, 'Image', 'Character', category, folder, rarity)]
     for (let r = 3; r <= 7; r++) scanDirs.push(path.join(srcRoot, 'Image', 'Character', category, folder, String(r)))
     for (const d of scanDirs) {
@@ -61,9 +61,9 @@ for (const c of wiki.characters) {
         if (!fs.existsSync(d)) continue
         const files = fs.readdirSync(d)
         for (const f of files) {
-          if (f.endsWith('PartyL.png')) {
+          if (f.endsWith('PartyL.webp')) {
             const src = path.join(d, f)
-            const dest = path.join(outDir, `${c.master_pc_id}.png`)
+            const dest = path.join(outDir, `${c.master_pc_id}.webp`)
             if (tryCopy(src, dest)) {
               console.log(`Copied ${src} -> ${dest} (wildcard)`)
               copied = true
@@ -83,7 +83,7 @@ for (const c of wiki.characters) {
 }
 
 // Copy frames if available in source
-const frameNames = ['frameMemberL3.png','frameMemberL4.png','frameMemberL5.png','frameMemberL6.png','frameMemberL6up.png']
+const frameNames = ['frameMemberL3.webp','frameMemberL4.webp','frameMemberL5.webp','frameMemberL6.webp','frameMemberL6up.webp']
 for (const f of frameNames) {
   const src = path.join(srcRoot, 'UI', 'Texture', 'CommonRarityAtlas', f)
   const dest = path.join(framesOut, f)

@@ -330,13 +330,13 @@ function SecretSkillIcon({
     : skill.special_skill_type
   const cardFrame = isSecretSkill
     ? effectiveType === "Attack"
-      ? `${BATTLE_ATLAS}/cardBaseSpAttack.png`
+      ? `${BATTLE_ATLAS}/cardBaseSpAttack.webp`
       : effectiveType === "Support"
-        ? `${BATTLE_ATLAS}/cardBaseSpSupport.png`
-        : `${BATTLE_ATLAS}/cardBaseSp.png`
+        ? `${BATTLE_ATLAS}/cardBaseSpSupport.webp`
+        : `${BATTLE_ATLAS}/cardBaseSp.webp`
     : null
-  const targetIcon = isAoe ? `${BATTLE_ATLAS}/icSpTypeAll.png` : `${BATTLE_ATLAS}/icSpTypeSingle.png`
-  const rarityIcon = rarity === 6 ? `${BATTLE_ATLAS}/icEpicOff.png` : `${BATTLE_ATLAS}/icUltimateOff.png`
+  const targetIcon = isAoe ? `${BATTLE_ATLAS}/icSpTypeAll.webp` : `${BATTLE_ATLAS}/icSpTypeSingle.webp`
+  const rarityIcon = rarity === 6 ? `${BATTLE_ATLAS}/icEpicOff.webp` : `${BATTLE_ATLAS}/icUltimateOff.webp`
 
   return (
     <div className="relative h-14 w-14 shrink-0">

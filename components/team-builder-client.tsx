@@ -111,15 +111,15 @@ function getMainFramePaths(tier: number, role: "member" | "bless") {
   }
   if (t === 8) {
     return {
-      base: `/frames/base${pfx}L7_Epic.png`,
-      frame: `/frames/frame${pfx}L7_Epic.png`,
+      base: `/frames/base${pfx}L7_Epic.webp`,
+      frame: `/frames/frame${pfx}L7_Epic.webp`,
       frameStyle,
     }
   }
   const baseTier = t === 7 ? 6 : t
   return {
-    base: `/frames/base${pfx}L${baseTier}.png`,
-    frame: `/frames/frame${pfx}L${t}.png`,
+    base: `/frames/base${pfx}L${baseTier}.webp`,
+    frame: `/frames/frame${pfx}L${t}.webp`,
     frameStyle,
   }
 }
@@ -127,9 +127,9 @@ function getMiniFramePaths(tier: number, role: "member" | "bless") {
   const t = Math.min(Math.max(tier, 3), 8)
   const pfx = role === "bless" ? "Bless" : "Member"
   if (t === 8) {
-    return { base: `/frame/base${pfx}M7_Epic.png`, frame: `/frame/frame${pfx}M7_Epic.png` }
+    return { base: `/frame/base${pfx}M7_Epic.webp`, frame: `/frame/frame${pfx}M7_Epic.webp` }
   }
-  return { base: `/frame/base${pfx}M${t}.png`, frame: `/frame/frame${pfx}M${t}.png` }
+  return { base: `/frame/base${pfx}M${t}.webp`, frame: `/frame/frame${pfx}M${t}.webp` }
 }
 
 function elementMatches(charEl: string, filterKey: string): boolean {
@@ -663,8 +663,8 @@ export default function TeamBuilderClient({
       }
       return true
     })
-    // Sort by rarity descending: Epic (8) > EX Unbound (7) > EX (6) > 5 > 4 > 3
-    filtered.sort((a, b) => getCharacterVisualTier(b) - getCharacterVisualTier(a))
+    // Sort by release order descending (newest first), using master_pc_id as proxy
+    filtered.sort((a, b) => b.master_pc_id - a.master_pc_id)
     return filtered
   }, [characters, deferredQuery, filterAttack, filterCharType, filterCharacterType, filterEl, filterEnhancement, filterForces, filterProtSkill, filterProtType, filterRarity, filterSkillCost, filterSkillGroups, filterSkillType, filterTactics, filterUltimateType, filterWeapon, mainSlots, pickerMode, pickerOpenFor, sideSlots, sideSubSlots, subSlots])
 
@@ -1260,7 +1260,7 @@ export default function TeamBuilderClient({
             />
             {/* Character portrait — inset to stay within ornate frame borders */}
             <img
-              src={`/partyL/${char.master_pc_id}.png`} alt={char.name}
+              src={`/partyL/${char.master_pc_id}.webp`} alt={char.name}
               className="absolute object-fill pointer-events-none"
               style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
               onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(char.images.full) }}
@@ -1393,7 +1393,7 @@ export default function TeamBuilderClient({
               className="absolute object-fill pointer-events-none"
               style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
               onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-            <img src={`/partyL/${char.master_pc_id}.png`} alt={char.name}
+            <img src={`/partyL/${char.master_pc_id}.webp`} alt={char.name}
               className="absolute object-fill pointer-events-none"
               style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
               onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(char.images.full) }} />
@@ -1518,7 +1518,7 @@ export default function TeamBuilderClient({
                     return (
                       <div className="flex flex-col gap-3">
                         <div className="relative w-full overflow-hidden rounded bg-black/40" style={{ aspectRatio: "245 / 146" }}>
-                          <img src={`/SkillStill/${hp.heartprint_id}/skill_still_${hp.heartprint_id}_L.png`} alt=""
+                          <img src={`/SkillStill/${hp.heartprint_id}/skill_still_${hp.heartprint_id}_L.webp`} alt=""
                             className="absolute inset-0 w-full h-full object-cover"
                             onError={e => { (e.target as HTMLImageElement).style.opacity = "0.2" }} />
                           <img src={frameImg} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
@@ -1567,7 +1567,7 @@ export default function TeamBuilderClient({
                           onMouseEnter={() => setPreviewHp(hp)}
                           onMouseLeave={() => setPreviewHp(null)}>
                           <div className="relative w-full overflow-hidden rounded bg-black/40" style={{ aspectRatio: "245 / 146" }}>
-                            <img src={`/SkillStill/${hp.heartprint_id}/skill_still_${hp.heartprint_id}_S.png`} alt=""
+                            <img src={`/SkillStill/${hp.heartprint_id}/skill_still_${hp.heartprint_id}_S.webp`} alt=""
                               className="absolute inset-0 w-full h-full object-cover"
                               onError={e => { (e.target as HTMLImageElement).style.opacity = "0.2" }} />
                             <img src={frameImg} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
@@ -1622,7 +1622,7 @@ export default function TeamBuilderClient({
                           <img src={base} alt="" className="absolute object-fill pointer-events-none"
                             style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
                             onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
-                          <img src={`/partyL/${slotMainChar.master_pc_id}.png`} alt={slotMainChar.name}
+                          <img src={`/partyL/${slotMainChar.master_pc_id}.webp`} alt={slotMainChar.name}
                             className="absolute object-fill pointer-events-none"
                             style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
                             onError={e => { (e.target as HTMLImageElement).src = toPublicAssetPath(slotMainChar.images.full) }} />
@@ -2226,7 +2226,7 @@ export default function TeamBuilderClient({
     }
     const canvas = await w.html2canvas(el, { useCORS: true, allowTaint: true, backgroundColor: null })
     const link = document.createElement("a")
-    link.download = "team.png"
+    link.download = "team.webp"
     link.href = canvas.toDataURL("image/png")
     link.click()
   }
@@ -2333,7 +2333,7 @@ export default function TeamBuilderClient({
             <div className="flex items-start gap-2 px-3 py-2"
               style={{ borderBottom: assistSkill ? "1px solid rgba(255,255,255,0.06)" : undefined }}>
               {leaderSkill.icon_path && (
-                <img src={`/${leaderSkill.icon_path}.png`} alt=""
+                <img src={`/${leaderSkill.icon_path}.webp`} alt=""
                   className="w-8 h-8 flex-shrink-0 object-contain rounded"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
               )}
@@ -2349,7 +2349,7 @@ export default function TeamBuilderClient({
           {assistSkill && (
             <div className="flex items-start gap-2 px-3 py-2">
               {assistSkill.icon_path && (
-                <img src={`/${assistSkill.icon_path}.png`} alt=""
+                <img src={`/${assistSkill.icon_path}.webp`} alt=""
                   className="w-8 h-8 flex-shrink-0 object-contain rounded"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
               )}
@@ -2410,7 +2410,7 @@ export default function TeamBuilderClient({
           >
             {heartPrintId ? (
               <>
-                <img src={`/SkillStill/${heartPrintId}/skill_still_${heartPrintId}_L.png`} alt=""
+                <img src={`/SkillStill/${heartPrintId}/skill_still_${heartPrintId}_L.webp`} alt=""
                   className="absolute inset-0 w-full h-full object-cover"
                   onError={(e) => { (e.target as HTMLImageElement).style.opacity = "0.3" }} />
                 <img src={selectedHp?.still_type === "rare" ? "/StillFrame/StillFrame3_s.webp" : "/StillFrame/StillFrame1_s.webp"} alt=""
@@ -2453,11 +2453,27 @@ export default function TeamBuilderClient({
       {/* ── ACTION BUTTONS ── */}
       <div className="mt-4 flex items-center gap-2 sm:gap-3 flex-wrap justify-center">
         <button
+          onClick={() => {
+            setMainSlots(Array(4).fill(null))
+            setSubSlots(Array(4).fill(null))
+            setSideSlots(Array(2).fill(null))
+            setSideSubSlots(Array(2).fill(null))
+            setHeartPrintId(null)
+            setEquipSlots({})
+            setCharmSlots({})
+          }}
+          className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
+          style={{ background: "linear-gradient(135deg, #5f1e1e 0%, #360f0f 100%)", border: "1px solid rgba(255,100,100,0.3)" }}
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+          Reset All
+        </button>
+        <button
           onClick={savePng}
           className="flex items-center gap-2 px-4 sm:px-5 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
           style={{ background: "linear-gradient(135deg, #1e3a5f 0%, #0f2236 100%)", border: "1px solid rgba(100,160,255,0.3)" }}
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-1v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
           Save PNG
         </button>
         <button
@@ -2559,7 +2575,7 @@ export default function TeamBuilderClient({
                                 title="Charm">
                                 {selectedFlatCharm ? (() => {
                                   const match = selectedFlatCharm.image_path?.match(/\/(\d+)\//)
-                                  const img = match ? `/Equip/Accessory/${match[1]}/Accessory_${match[1]}_AccessoryM.png` : null
+                                  const img = match ? `/Equip/Accessory/${match[1]}/Accessory_${match[1]}_AccessoryM.webp` : null
                                   return img ? <img src={img} alt="" className="w-12 h-12 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} /> : <span className="text-purple-300/50 text-lg">♦</span>
                                 })() : (
                                   <span className="text-white/30 text-2xl">+</span>
@@ -2712,7 +2728,7 @@ export default function TeamBuilderClient({
                           (equipModalItems as FlatCharm[]).map(fc => {
                             const isSelected = charmSlots[activeEquipSlot.slotKey] === fc.skill_id
                             const match = fc.image_path?.match(/\/(\d+)\//)
-                            const img = match ? `/Equip/Accessory/${match[1]}/Accessory_${match[1]}_AccessoryM.png` : null
+                            const img = match ? `/Equip/Accessory/${match[1]}/Accessory_${match[1]}_AccessoryM.webp` : null
                             return (
                               <div key={fc.skill_id}
                                 className={`flex flex-col items-center gap-1 rounded cursor-pointer transition-colors p-1 ${equipHoveredId === fc.skill_id ? "bg-white/10" : "hover:bg-white/5"}`}
@@ -2720,7 +2736,7 @@ export default function TeamBuilderClient({
                                 onPointerLeave={() => setEquipHoveredId(prev => prev === fc.skill_id ? null : prev)}
                                 onClick={() => setCharmSlots(prev => ({ ...prev, [activeEquipSlot.slotKey]: fc.skill_id }))}>
                                 <div className="relative w-full overflow-hidden rounded" style={{ aspectRatio: "1" }}>
-                                  <img src={`/UI/Texture/CommonRarityAtlas/itemRrarity${Math.min(fc.rarity + 1, 4)}.png`} alt=""
+                                  <img src={`/UI/Texture/CommonRarityAtlas/itemRrarity${Math.min(fc.rarity + 1, 4)}.webp`} alt=""
                                     className="absolute inset-0 w-full h-full object-fill pointer-events-none" />
                                   {img ? (
                                     <img src={img} alt="" className="absolute inset-0 w-full h-full object-contain p-1.5 z-10" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />

@@ -34,9 +34,9 @@ const RARITY_ASSETS: Record<number, string> = {
 }
 
 function getMiniFramePath(tier: number, pfx: string) {
-  if (tier === 8) return `/frame/frame${pfx}M7_Epic.png`
+  if (tier === 8) return `/frame/frame${pfx}M7_Epic.webp`
   const t = Math.min(Math.max(tier, 3), 7)
-  return `/frame/frame${pfx}M${t}.png`
+  return `/frame/frame${pfx}M${t}.webp`
 }
 
 function getContrastColor(hex?: string) {
@@ -696,7 +696,7 @@ export default function TierMakerPage() {
           const url = URL.createObjectURL(blob)
           const a = document.createElement("a")
           a.href = url
-          a.download = "tier-board.png"
+          a.download = "tier-board.webp"
           a.click()
           URL.revokeObjectURL(url)
           resolve()
@@ -891,7 +891,7 @@ export default function TierMakerPage() {
                             />
                           </div>
                           {miniFrame && <img src={miniFrame} alt="rarity-frame" className="pointer-events-none absolute inset-0 w-full h-full object-fill z-10" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />}
-                          {starAsset && <img src={starAsset} alt="" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[14%] object-contain z-20" />}
+                          {starAsset && <img src={starAsset} alt="" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[28%] object-contain z-20" />}
                           {variant === "skill" && <img src="/skill-icons/skill_integrated_3400001_ItemM.webp" alt="skill-change" draggable={false} onContextMenu={(e) => e.preventDefault()} className="absolute bottom-1 right-1 w-5 h-5 z-20" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any} />}
                         </div>
                       )
@@ -1013,7 +1013,7 @@ export default function TierMakerPage() {
                     style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any}
                   />
                   {miniFrame && <img src={miniFrame} alt="rarity-frame" className="pointer-events-none absolute inset-0 w-full h-full object-fill z-10" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />}
-                  {starAsset && <img src={starAsset} alt="" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[14%] object-contain z-20" />}
+                  {starAsset && <img src={starAsset} alt="" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[33%] object-contain z-20" />}
                   {pin.variant === "skill" && <img src="/skill-icons/skill_integrated_3400001_ItemM.webp" alt="skill-change" draggable={false} onContextMenu={(e) => e.preventDefault()} className="absolute bottom-1 right-1 w-5 h-5 z-20" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any} />}
                 </div>
               )
