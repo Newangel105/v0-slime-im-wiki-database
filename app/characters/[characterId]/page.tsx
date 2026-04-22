@@ -82,7 +82,7 @@ const defenderGenericIconMap: Record<string, string> = {
   all: "/Image/IcElementBless/IcElementBlessAll.webp",
   physics: "/Image/IcElementBless/IcElementBlessPhysics.webp",
   magic: "/Image/IcElementBless/IcElementBlessMagic.webp",
-  special: "/type_dmg/IcElementBlessSpecial.webp",
+  special: "/Image/IcElementBless/IcElementBlessSpecial.webp",
   specialeffectelementair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.webp",
   specialeffectelementdark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementDark.webp",
   specialeffectelementearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEarth.webp",
@@ -105,10 +105,10 @@ const attackTypeIconMap: Record<string, string> = {
 }
 
 const tacticsIconMap: Record<string, string> = {
-  charge: "/Image/Tactics/charge.webp",
-  defense: "/Image/Tactics/defense.webp",
-  normal: "/Image/Tactics/normal.webp",
-  speed: "/Image/Tactics/speed.webp",
+  charge: "/L10NAssets/En/Image/Tactics/tactics_004.webp",
+  defense: "/L10NAssets/En/Image/Tactics/tactics_003.webp",
+  normal: "/L10NAssets/En/Image/Tactics/tactics_001.webp",
+  speed: "/L10NAssets/En/Image/Tactics/tactics_002.webp",
 }
 
 const weaponIconMap: Record<string, string> = {

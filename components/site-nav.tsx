@@ -14,6 +14,7 @@ const primaryLinks = [
 const toolLinks = [
   { href: "/team-builder", label: "Team Builder" },
   { href: "/preset-viewer", label: "Preset Viewer" },
+  { href: "/skill-viewer", label: "Skill Viewer" },
   { href: "/gauge-builder", label: "Trait Chart" },
   { href: "/orb-converter", label: "Orb Converters" },
   { href: "/battle-sim", label: "Battle Sim" },

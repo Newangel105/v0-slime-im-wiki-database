@@ -9,24 +9,24 @@ import {
 } from "@/lib/pc-wiki"
 
 const rarityFrameMap: Record<number, string> = {
-  3: "/frame/frameMemberM3.webp", 4: "/frame/frameMemberM4.webp",
-  5: "/frame/frameMemberM5.webp", 6: "/frame/frameMemberM6.webp",
-  7: "/frame/frameMemberM7.webp", 8: "/frame/frameMemberM7_Epic.webp",
+  3: "UI/Texture/CommonRarityAtlas/frameMemberM3.webp", 4: "UI/Texture/CommonRarityAtlas/frameMemberM4.webp",
+  5: "UI/Texture/CommonRarityAtlas/frameMemberM5.webp", 6: "UI/Texture/CommonRarityAtlas/frameMemberM6.webp",
+  7: "UI/Texture/CommonRarityAtlas/frameMemberM6_SpecialPlus.webp", 8: "UI/Texture/CommonRarityAtlas/frameMemberM7_Epic.webp",
 }
 const blessFrameMap: Record<number, string> = {
-  3: "/frame/frameBlessM3.webp", 4: "/frame/frameBlessM4.webp",
-  5: "/frame/frameBlessM5.webp", 6: "/frame/frameBlessM6.webp",
-  7: "/frame/frameBlessM7.webp", 8: "/frame/frameBlessM7_Epic.webp",
+  3: "UI/Texture/CommonRarityAtlas/frameBlessM3.webp", 4: "UI/Texture/CommonRarityAtlas/frameBlessM4.webp",
+  5: "UI/Texture/CommonRarityAtlas/frameBlessM5.webp", 6: "UI/Texture/CommonRarityAtlas/frameBlessM6.webp",
+  7: "UI/Texture/CommonRarityAtlas/frameBlessM6_SpecialPlus.webp", 8: "UI/Texture/CommonRarityAtlas/frameBlessM7_Epic.webp",
 }
 const baseRarityMap: Record<number, string> = {
-  3: "/frame/baseMemberM3.webp", 4: "/frame/baseMemberM4.webp",
-  5: "/frame/baseMemberM5.webp", 6: "/frame/baseMemberM6.webp",
-  7: "/frame/baseMemberM7.webp", 8: "/frame/baseMemberM7_Epic.webp",
+  3: "UI/Texture/CommonRarityAtlas/baseMemberM3.webp", 4: "UI/Texture/CommonRarityAtlas/baseMemberM4.webp",
+  5: "UI/Texture/CommonRarityAtlas/baseMemberM5.webp", 6: "UI/Texture/CommonRarityAtlas/baseMemberM6.webp",
+  7: "UI/Texture/CommonRarityAtlas/baseMemberM6_SpecialPlus.webp", 8: "UI/Texture/CommonRarityAtlas/baseMemberM7_Epic.webp",
 }
 const baseBlessMap: Record<number, string> = {
-  3: "/frame/baseBlessM3.webp", 4: "/frame/baseBlessM4.webp",
-  5: "/frame/baseBlessM5.webp", 6: "/frame/baseBlessM6.webp",
-  7: "/frame/baseBlessM7.webp", 8: "/frame/baseBlessM7_Epic.webp",
+  3: "UI/Texture/CommonRarityAtlas/baseBlessM3.webp", 4: "UI/Texture/CommonRarityAtlas/baseBlessM4.webp",
+  5: "UI/Texture/CommonRarityAtlas/baseBlessM5.webp", 6: "UI/Texture/CommonRarityAtlas/baseBlessM6.webp",
+  7: "UI/Texture/CommonRarityAtlas/baseBlessM6_SpecialPlus.webp", 8: "UI/Texture/CommonRarityAtlas/baseBlessM7_Epic.webp",
 }
 const starAssetMap: Record<number, string> = {
   3: "/stars/starCharaL3A.webp", 4: "/stars/starCharaL4A.webp",
@@ -68,7 +68,7 @@ const elementIconMap: Record<string, string> = {
   fire: "/elements/fire.webp", holy: "/elements/light.webp",
   light: "/elements/icElementlight.webp", magic: "/Image/IcElementBless/IcElementBlessMagic.webp",
   physics: "/Image/IcElementBless/IcElementBlessPhysics.webp",
-  special: "/type_dmg/IcElementBlessSpecial.webp", space: "/elements/icElementspace.webp",
+  special: "/Image/IcElementBless/IcElementBlessSpecial.webp", space: "/elements/icElementspace.webp",
   specialeffectelementair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.webp",
   specialeffectelementdark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementDark.webp",
   specialeffectelementearth: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEarth.webp",

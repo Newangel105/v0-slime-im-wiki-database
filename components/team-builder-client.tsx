@@ -4,6 +4,7 @@ import { useCallback, useDeferredValue, useMemo, useRef, useState, useEffect } f
 import { useSearchParams } from "next/navigation"
 import type { Heartprint, Equipment, Charm } from "@/lib/pc-wiki"
 import type { TeamBuilderCharacter } from "@/lib/team-builder-character-data"
+import skillFiltersCatalog from "@/skill_filters.json"
 import {
   toPublicAssetPath, getCharacterVisualTier,
   isExUnboundCharacter, hasExSpecialSkill, isExAttacker,
@@ -34,10 +35,23 @@ const SKILL_CAT_LABELS: Record<string, string> = {
   GageUP: "Gauge UP",
   GageDown: "Gauge DOWN",
   AbnormalCondition: "Status Abnormalities",
-  BuffChangeAct: "Status Effects",
-  ConditionChange: "Condition Change",
+  BuffChangeAct: "Soul Conversion",
+  ConditionChange: "Status Effects",
   Special: "Special",
+  Other: "Other",
 }
+
+const SKILL_CAT_ORDER = [
+  "BuffChangeAct",
+  "DamageUP",
+  "DamageDown",
+  "GageUP",
+  "GageDown",
+  "ConditionChange",
+  "AbnormalCondition",
+  "Special",
+  "Other",
+] as const
 
 // ---- Character Type display labels ----
 const CHAR_TYPE_DISPLAY: Record<string, string> = {
@@ -111,15 +125,29 @@ function getMainFramePaths(tier: number, role: "member" | "bless") {
   }
   if (t === 8) {
     return {
-      base: `/frames/base${pfx}L7_Epic.webp`,
-      frame: `/frames/frame${pfx}L7_Epic.webp`,
+      base: `/UI/Texture/CommonRarityAtlasL/base${pfx}L7_Epic.webp`,
+      frame: `/UI/Texture/CommonRarityAtlasL/frame${pfx}L7_Epic.webp`,
+      frameStyle,
+    }
+  }
+  if (t === 7) {
+    return {
+      base: `/UI/Texture/CommonRarityAtlasL/base${pfx}L6_SpecialPlus.webp`,
+      frame: `/UI/Texture/CommonRarityAtlasL/frame${pfx}L6_SpecialPlus.webp`,
+      frameStyle,
+    }
+  }
+  if (t === 6) {
+    return {
+      base: `/UI/Texture/CommonRarityAtlasL/base${pfx}L6_Special.webp`,
+      frame: `/UI/Texture/CommonRarityAtlasL/frame${pfx}L6_Special.webp`,
       frameStyle,
     }
   }
   const baseTier = t === 7 ? 6 : t
   return {
-    base: `/frames/base${pfx}L${baseTier}.webp`,
-    frame: `/frames/frame${pfx}L${t}.webp`,
+    base: `/UI/Texture/CommonRarityAtlasL/base${pfx}L${baseTier}.webp`,
+    frame: `/UI/Texture/CommonRarityAtlasL/frame${pfx}L${t}.webp`,
     frameStyle,
   }
 }
@@ -127,9 +155,15 @@ function getMiniFramePaths(tier: number, role: "member" | "bless") {
   const t = Math.min(Math.max(tier, 3), 8)
   const pfx = role === "bless" ? "Bless" : "Member"
   if (t === 8) {
-    return { base: `/frame/base${pfx}M7_Epic.webp`, frame: `/frame/frame${pfx}M7_Epic.webp` }
+    return { base: `UI/Texture/CommonRarityAtlas/base${pfx}M7_Epic.webp`, frame: `UI/Texture/CommonRarityAtlas/frame${pfx}M7_Epic.webp` }
   }
-  return { base: `/frame/base${pfx}M${t}.webp`, frame: `/frame/frame${pfx}M${t}.webp` }
+  if (t === 7) {
+    return { base: `UI/Texture/CommonRarityAtlas/base${pfx}M6_SpecialPlus.webp`, frame: `UI/Texture/CommonRarityAtlas/frame${pfx}M6_SpecialPlus.webp` }
+  }
+  if (t === 6) {
+    return { base: `UI/Texture/CommonRarityAtlas/base${pfx}M6_Special.webp`, frame: `UI/Texture/CommonRarityAtlas/frame${pfx}M6_Special.webp` }
+  }
+  return { base: `UI/Texture/CommonRarityAtlas/base${pfx}M${t}.webp`, frame: `UI/Texture/CommonRarityAtlas/frame${pfx}M${t}.webp` }
 }
 
 function elementMatches(charEl: string, filterKey: string): boolean {
@@ -194,17 +228,17 @@ const PROT_SUPPORT_TYPES = [
   { key: "all", label: "ALL", icon: "/Image/IcElementBless/IcElementBlessAll.webp" },
   { key: "physics", label: "Physical", icon: "/Image/IcElementBless/IcElementBlessPhysics.webp" },
   { key: "magic", label: "Magic", icon: "/Image/IcElementBless/IcElementBlessMagic.webp" },
-  { key: "special", label: "Special", icon: "/type_dmg/IcElementBlessSpecial.webp" },
+  { key: "special", label: "Special", icon: "/Image/IcElementBless/IcElementBlessSpecial.webp" },
 ]
 const ATTACK_TYPES = [
   { key: "Physical", label: "Physical", icon: "/type_dmg/icAttackTypePhysics.webp" },
   { key: "Magic", label: "Magic", icon: "/type_dmg/icAttackTypeMagic.webp" },
 ]
 const TACTICS_TYPES = [
-  { key: "Speed", label: "Speed", icon: "/Image/Tactics/speed.webp" },
-  { key: "Defense", label: "Defense", icon: "/Image/Tactics/defense.webp" },
-  { key: "Charge", label: "Charge", icon: "/Image/Tactics/charge.webp" },
-  { key: "Normal", label: "Neutral", icon: "/Image/Tactics/normal.webp" },
+  { key: "Speed", label: "Speed", icon: "/L10NAssets/En/Image/Tactics/tactics_002.webp" },
+  { key: "Defense", label: "Defense", icon: "/L10NAssets/En/Image/Tactics/tactics_003.webp" },
+  { key: "Charge", label: "Charge", icon: "/L10NAssets/En/Image/Tactics/tactics_004.webp" },
+  { key: "Normal", label: "Neutral", icon: "/L10NAssets/En/Image/Tactics/tactics_001.webp" },
 ]
 const STAR_ASSETS: Record<number, string> = {
   3: "/stars/starCharaL3A.webp", 4: "/stars/starCharaL4A.webp",
@@ -278,7 +312,7 @@ const FULL_ELEMENT_ICON_MAP: Record<string, string> = {
   specialeffectelementenhancedfire: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedFire.webp",
   specialeffectelementenhancedholy: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedHoly.webp",
   specialeffectelementenhanceddark: "/Image/IcElementBless/IcElementBlessSpecialEffectElementEnhancedDark.webp",
-  special: "/type_dmg/IcElementBlessSpecial.webp",
+  special: "/Image/IcElementBless/IcElementBlessSpecial.webp",
   specialeffectelementnone: "/Image/IcElementBless/IcElementBlessSpecialEffectElementNone.webp",
 }
 
@@ -451,6 +485,8 @@ export default function TeamBuilderClient({
   const [filterRarity, setFilterRarity] = useState<number | null>(null)
   const [filterForces, setFilterForces] = useState<string[]>([])
   const [filterSkillGroups, setFilterSkillGroups] = useState<number[]>([])
+  const [filterSkillAllMode, setFilterSkillAllMode] = useState(true)
+  const [filterSkillOtherSelected, setFilterSkillOtherSelected] = useState(false)
   const [previewHp, setPreviewHp] = useState<Heartprint | null>(null)
   const [isTouchDevice, setIsTouchDevice] = useState(false)
   const [metaPresetSearch, setMetaPresetSearch] = useState("")
@@ -538,19 +574,44 @@ export default function TeamBuilderClient({
     return groups
   }, [characters])
 
-  // Derived skill filter categories from all character data
+  // Canonical skill filter categories from the game catalog
   const skillFilterCats = useMemo(() => {
     const cats = new Map<string, Map<string, number>>() // category → (sub_label → group_id)
-    for (const c of characters) {
-      for (const sk of c.skills) {
-        for (const fg of (sk.skill_filter_groups ?? [])) {
-          if (!cats.has(fg.category_name)) cats.set(fg.category_name, new Map())
-          cats.get(fg.category_name)!.set(fg.sub_category_label, fg.master_skill_filter_group_id)
-        }
-      }
+    for (const group of skillFiltersCatalog.groups) {
+      const categoryName = group.category_name
+      if (!categoryName || categoryName === "Other") continue
+      const subCategoryLabel = group.sub_category_label ?? group.localized?.sub_category_label ?? group.label
+      if (!subCategoryLabel) continue
+      if (!cats.has(categoryName)) cats.set(categoryName, new Map())
+      cats.get(categoryName)!.set(subCategoryLabel, group.master_skill_filter_group_id)
     }
     return cats
-  }, [characters])
+  }, [])
+
+  const orderedSkillFilterCats = useMemo(() => {
+    const preferred = SKILL_CAT_ORDER.filter((cat) => cat !== "Other")
+    const ordered = preferred
+      .map((cat) => [cat, skillFilterCats.get(cat) ?? new Map<string, number>()] as const)
+      .filter(([, subMap]) => subMap.size > 0)
+    const extras = Array.from(skillFilterCats.entries())
+      .filter(([cat]) => !ordered.some(([orderedCat]) => orderedCat === cat))
+      .sort(([a], [b]) => a.localeCompare(b))
+    return [...ordered, ...extras]
+  }, [skillFilterCats])
+
+  const allSkillFilterGroupIds = useMemo(() => {
+    return orderedSkillFilterCats.flatMap(([, subMap]) => Array.from(subMap.values()))
+  }, [orderedSkillFilterCats])
+
+  const selectedSkillEffectCount = useMemo(() => {
+    if (filterSkillAllMode) return allSkillFilterGroupIds.length
+    return filterSkillGroups.length + (filterSkillOtherSelected ? 1 : 0)
+  }, [allSkillFilterGroupIds, filterSkillAllMode, filterSkillGroups, filterSkillOtherSelected])
+
+  const activeSkillEffectFilterCount = useMemo(() => {
+    return (filterSkillAllMode ? 0 : Math.max(1, filterSkillGroups.length + (filterSkillOtherSelected ? 1 : 0)))
+      + (filterSkillCost > 0 ? 1 : 0)
+  }, [filterSkillAllMode, filterSkillGroups, filterSkillOtherSelected, filterSkillCost])
 
   const masterCharacterTacticsOptions = useMemo(() => {
     const seen = new Set<string>()
@@ -624,7 +685,8 @@ export default function TeamBuilderClient({
           if (!hasBlessPhrase("soul of skills")) return false
         }
       }
-      if (filterSkillGroups.length > 0) {
+      if (!filterSkillAllMode) {
+        if (filterSkillGroups.length === 0 && !filterSkillOtherSelected) return false
         const groupSet = new Set(filterSkillGroups)
         const isProtPicker = roleFilter === "supporter"
         const skillsToCheck = filterSkillType === "secret"
@@ -644,7 +706,14 @@ export default function TeamBuilderClient({
           : filterSkillType === "other"
           ? [...c.traits]
           : [...c.skills, ...c.traits]
-        if (!skillsToCheck.some(sk => ((sk as {skill_filter_groups?: {master_skill_filter_group_id:number}[]}).skill_filter_groups ?? []).some((fg: {master_skill_filter_group_id:number}) => groupSet.has(fg.master_skill_filter_group_id)))) return false
+        const hasGroupedMatch = filterSkillGroups.length > 0 && skillsToCheck.some(
+          sk => ((sk as {skill_filter_groups?: {master_skill_filter_group_id:number}[]}).skill_filter_groups ?? [])
+            .some((fg: {master_skill_filter_group_id:number}) => groupSet.has(fg.master_skill_filter_group_id))
+        )
+        const hasOtherMatch = filterSkillOtherSelected && skillsToCheck.some(
+          sk => (((sk as {skill_filter_groups?: {master_skill_filter_group_id:number}[]}).skill_filter_groups ?? []).length === 0)
+        )
+        if (!hasGroupedMatch && !hasOtherMatch) return false
       }
       // Secret skill sub-filter (ultimate_type) — attackers only
       if (filterUltimateType !== "all" && roleFilter !== "supporter") {
@@ -666,7 +735,7 @@ export default function TeamBuilderClient({
     // Sort by release order descending (newest first), using master_pc_id as proxy
     filtered.sort((a, b) => b.master_pc_id - a.master_pc_id)
     return filtered
-  }, [characters, deferredQuery, filterAttack, filterCharType, filterCharacterType, filterEl, filterEnhancement, filterForces, filterProtSkill, filterProtType, filterRarity, filterSkillCost, filterSkillGroups, filterSkillType, filterTactics, filterUltimateType, filterWeapon, mainSlots, pickerMode, pickerOpenFor, sideSlots, sideSubSlots, subSlots])
+  }, [characters, deferredQuery, filterAttack, filterCharType, filterCharacterType, filterEl, filterEnhancement, filterForces, filterProtSkill, filterProtType, filterRarity, filterSkillAllMode, filterSkillCost, filterSkillGroups, filterSkillType, filterTactics, filterUltimateType, filterWeapon, mainSlots, pickerMode, pickerOpenFor, sideSlots, sideSubSlots, subSlots])
 
   // Flatten charms into individual skill items, deduplicated by skill_id
   type FlatCharm = { skill_id: number; name: string; description: string | null; image_path: string | null; rarity: number; is_quest_skill: boolean }
@@ -1256,7 +1325,7 @@ export default function TeamBuilderClient({
             />
             {/* Character portrait — inset to stay within ornate frame borders */}
             <img
-              src={`/partyL/${char.master_pc_id}.webp`} alt={char.name}
+              src={`/${char.images.icon.replace("CharaPartyM", "CharaPartyL").replace("BlessPartyM", "BlessPartyL")}.webp`} alt={char.name}
               className="absolute object-fill pointer-events-none"
               style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
               onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(char.images.full) }}
@@ -1389,7 +1458,7 @@ export default function TeamBuilderClient({
               className="absolute object-fill pointer-events-none"
               style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
               onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
-            <img src={`/partyL/${char.master_pc_id}.webp`} alt={char.name}
+            <img src={`/${char.images.icon.replace("CharaPartyM", "CharaPartyL").replace("BlessPartyM", "BlessPartyL")}.webp`} alt={char.name}
               className="absolute object-fill pointer-events-none"
               style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
               onError={(e) => { (e.target as HTMLImageElement).src = toPublicAssetPath(char.images.full) }} />
@@ -1470,7 +1539,7 @@ export default function TeamBuilderClient({
     const activeFilterCount = [
       filterEl !== null, filterAttack !== null, filterTactics !== null,
       filterCharType !== null, filterCharacterType !== null, filterRarity !== null,
-      filterForces.length > 0, filterSkillGroups.length > 0,
+      filterForces.length > 0, !filterSkillAllMode,
       filterWeapon !== null, filterProtType !== null, filterSkillType !== "all",
       filterEnhancement !== "all", filterProtSkill !== "all", filterUltimateType !== "all",
       filterSkillCost > 0,
@@ -1479,7 +1548,8 @@ export default function TeamBuilderClient({
     function clearAllFilters() {
       setFilterEl(null); setFilterAttack(null); setFilterTactics(null)
       setFilterCharType(null); setFilterCharacterType(null); setFilterRarity(null)
-      setFilterForces([]); setFilterSkillGroups([])
+      setFilterForces([]); setFilterSkillGroups([]); setFilterSkillAllMode(true)
+      setFilterSkillOtherSelected(false)
       setFilterWeapon(null); setFilterProtType(null); setFilterSkillType("all"); setFilterUltimateType("all")
       setFilterEnhancement("all"); setFilterProtSkill("all"); setFilterSkillCost(0)
     }
@@ -1510,11 +1580,11 @@ export default function TeamBuilderClient({
                       </div>
                     )
                     const isRare = hp.still_type === "rare"
-                    const frameImg = isRare ? "/StillFrame/StillFrame3_m.webp" : "/StillFrame/StillFrame1_m.webp"
+                    const frameImg = isRare ? "/Image/StillFrame/StillFrame3_m.webp" : "/Image/StillFrame/StillFrame1_m.webp"
                     return (
                       <div className="flex flex-col gap-3">
                         <div className="relative w-full overflow-hidden rounded bg-black/40" style={{ aspectRatio: "245 / 146" }}>
-                          <img src={`/SkillStill/${hp.heartprint_id}/skill_still_${hp.heartprint_id}_L.webp`} alt=""
+                          <img src={`/Image/SkillStill/${hp.heartprint_id}/skill_still_${hp.heartprint_id}_L.webp`} alt=""
                             className="absolute inset-0 w-full h-full object-cover"
                             onError={e => { (e.target as HTMLImageElement).style.opacity = "0.2" }} />
                           <img src={frameImg} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
@@ -1550,7 +1620,7 @@ export default function TeamBuilderClient({
                     </div>
                     {heartprintItems.map(hp => {
                       const isRare = hp.still_type === "rare"
-                      const frameImg = isRare ? "/StillFrame/StillFrame3_s.webp" : "/StillFrame/StillFrame1_s.webp"
+                      const frameImg = isRare ? "/Image/StillFrame/StillFrame3_s.webp" : "/Image/StillFrame/StillFrame1_s.webp"
                       return (
                         <div key={hp.heartprint_id}
                           className="flex flex-col items-center gap-1 rounded hover:bg-white/5 cursor-pointer transition-colors"
@@ -1563,7 +1633,7 @@ export default function TeamBuilderClient({
                           onMouseEnter={() => setPreviewHp(hp)}
                           onMouseLeave={() => setPreviewHp(null)}>
                           <div className="relative w-full overflow-hidden rounded bg-black/40" style={{ aspectRatio: "245 / 146" }}>
-                            <img src={`/SkillStill/${hp.heartprint_id}/skill_still_${hp.heartprint_id}_S.webp`} alt=""
+                            <img src={`/Image/SkillStill/${hp.heartprint_id}/skill_still_${hp.heartprint_id}_S.webp`} alt=""
                               className="absolute inset-0 w-full h-full object-cover"
                               onError={e => { (e.target as HTMLImageElement).style.opacity = "0.2" }} />
                             <img src={frameImg} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
@@ -1618,7 +1688,7 @@ export default function TeamBuilderClient({
                           <img src={base} alt="" className="absolute object-fill pointer-events-none"
                             style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
                             onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
-                          <img src={`/partyL/${slotMainChar.master_pc_id}.webp`} alt={slotMainChar.name}
+                          <img src={`${slotMainChar.images.icon.replace("CharaPartyM", "CharaPartyL").replace("BlessPartyM", "BlessPartyL")}.webp`} alt={slotMainChar.name}
                             className="absolute object-fill pointer-events-none"
                             style={{ top: '2%', left: '4%', width: '92%', height: '96%' }}
                             onError={e => { (e.target as HTMLImageElement).src = toPublicAssetPath(slotMainChar.images.full) }} />
@@ -1741,7 +1811,7 @@ export default function TeamBuilderClient({
                               onError={e => { (e.target as HTMLImageElement).src = toPublicAssetPath(c.images.full) }} />
                             <img src={frame} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 w-full h-full object-contain"
                               onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
-                            <img src={STAR_ASSETS[t] ?? STAR_ASSETS[5]} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[14%] object-contain" />
+                            <img src={STAR_ASSETS[t] ?? STAR_ASSETS[5]} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[24%] object-contain" />
                             {(ci1 || ci2) && (
                               <div className="absolute top-0.5 right-0.5 z-10 flex flex-col gap-0.5">
                                 {ci1 && <img src={ci1} alt="" className="w-4 h-4 sm:w-6 sm:h-6 object-contain drop-shadow" />}
@@ -2010,7 +2080,7 @@ export default function TeamBuilderClient({
                       {/* ── Skill Effect ── */}
                       <div>
                         <div className="text-[11px] font-semibold text-white/80 bg-white/[0.04] rounded px-2 py-1.5 mb-3 uppercase tracking-wider flex items-center justify-between">
-                          <span>Skill Effect {(filterSkillGroups.length > 0 || filterSkillCost > 0) ? `(${filterSkillGroups.length + (filterSkillCost > 0 ? 1 : 0)} active)` : ""}</span>
+                          <span>Skill Effect {(!filterSkillAllMode || filterSkillCost > 0) ? `(${activeSkillEffectFilterCount} active)` : ""}</span>
                         </div>
 
                         {/* Skill Cost Slider — single slider, disabled unless All or Battle Skills */}
@@ -2057,60 +2127,126 @@ export default function TeamBuilderClient({
                           {/* Top-level: "Select All" button row */}
                           <div className="mb-3">
                             <div className="text-[10px] text-white/40 mb-1.5 border-b border-white/10 pb-1">
-                              {filterSkillGroups.length === 0 ? "Select All" : "Select Specified"}
+                              Effect Type
                             </div>
                             <div className="grid grid-cols-3 gap-1.5">
-                              <button onClick={() => setFilterSkillGroups([])}
-                                className={`px-2 py-2 rounded text-[11px] border font-semibold transition-all flex items-center justify-center gap-1.5 ${filterSkillGroups.length === 0 ? "bg-teal-600/30 border-teal-400/70 text-white" : "bg-white/5 border-white/15 text-gray-400 hover:bg-white/10"}`}>
-                                {filterSkillGroups.length === 0 && <span className="text-teal-400 text-[10px]">✓</span>}ALL
+                              <button onClick={() => {
+                                  setFilterSkillAllMode(true)
+                                  setFilterSkillGroups([])
+                                  setFilterSkillOtherSelected(false)
+                                  setExpandedSkillCats([])
+                                }}
+                                className={`px-2 py-2 rounded text-[11px] border font-semibold transition-all flex items-center justify-center gap-1.5 ${filterSkillAllMode ? "bg-teal-600/30 border-teal-400/70 text-white" : "bg-white/5 border-white/15 text-gray-400 hover:bg-white/10"}`}>
+                                {filterSkillAllMode && <span className="text-teal-400 text-[10px]">✓</span>}ALL
                               </button>
-                              {Array.from(skillFilterCats.entries()).map(([cat, subMap]) => {
+                              {orderedSkillFilterCats.map(([cat, subMap]) => {
                                 const catLabel = SKILL_CAT_LABELS[cat] ?? cat
                                 const catGroupIds = Array.from(subMap.values())
-                                const allSelected = catGroupIds.length > 0 && catGroupIds.every(id => filterSkillGroups.includes(id))
-                                const someSelected = catGroupIds.some(id => filterSkillGroups.includes(id))
+                                const selectedIds = filterSkillAllMode ? allSkillFilterGroupIds : filterSkillGroups
+                                const selectedSet = new Set(selectedIds)
+                                const allSelected = catGroupIds.length > 0 && catGroupIds.every(id => selectedSet.has(id))
+                                const someSelected = catGroupIds.some(id => selectedSet.has(id))
                                 return (
                                   <button key={cat}
                                     onClick={() => {
-                                      if (allSelected) {
-                                        setFilterSkillGroups(prev => prev.filter(id => !catGroupIds.includes(id)))
-                                      } else {
-                                        setFilterSkillGroups(prev => [...new Set([...prev, ...catGroupIds])])
-                                      }
+                                      // Isolate filter to this category only.
+                                      setFilterSkillAllMode(false)
+                                      setFilterSkillGroups([...new Set(catGroupIds)])
+                                      setFilterSkillOtherSelected(false)
+                                      setExpandedSkillCats(prev => prev.includes(cat) ? prev : [...prev, cat])
                                     }}
                                     className={`px-2 py-2 rounded text-[10px] border font-medium transition-all text-center ${allSelected ? "bg-teal-600/30 border-teal-400/70 text-white" : someSelected ? "bg-teal-600/15 border-teal-400/40 text-teal-300" : "bg-white/5 border-white/15 text-gray-400 hover:bg-white/10"}`}>
-                                    {catLabel}
+                                    <div className="flex flex-col items-center leading-tight">
+                                      <span>{catLabel}</span>
+                                    </div>
                                   </button>
                                 )
                               })}
+                              <button
+                                onClick={() => {
+                                  if (filterSkillAllMode) {
+                                    setFilterSkillAllMode(false)
+                                    setFilterSkillGroups([])
+                                    setFilterSkillOtherSelected(true)
+                                    return
+                                  }
+                                  if (filterSkillOtherSelected && filterSkillGroups.length === 0) {
+                                    setFilterSkillAllMode(true)
+                                    setFilterSkillOtherSelected(false)
+                                    return
+                                  }
+                                  setFilterSkillOtherSelected(prev => !prev)
+                                }}
+                                className={`px-2 py-2 rounded text-[10px] border font-medium transition-all text-center ${!filterSkillAllMode && filterSkillOtherSelected ? "bg-teal-600/30 border-teal-400/70 text-white" : "bg-white/5 border-white/15 text-gray-400 hover:bg-white/10"}`}>
+                                {SKILL_CAT_LABELS.Other}
+                              </button>
                             </div>
                           </div>
 
-                          {/* Subcategories — collapsible per category */}
-                          {filterSkillGroups.length > 0 && Array.from(skillFilterCats.entries()).map(([cat, subMap]) => {
+                          {/* Subcategories — shown when category is expanded */}
+                          {orderedSkillFilterCats.map(([cat, subMap]) => {
                             const catLabel = SKILL_CAT_LABELS[cat] ?? cat
                             const catGroupIds = Array.from(subMap.values())
-                            const someSelected = catGroupIds.some(id => filterSkillGroups.includes(id))
+                            const selectedIds = filterSkillAllMode ? allSkillFilterGroupIds : filterSkillGroups
+                            const selectedSet = new Set(selectedIds)
+                            const allSelected = catGroupIds.length > 0 && catGroupIds.every(id => selectedSet.has(id))
+                            const someSelected = catGroupIds.some(id => selectedSet.has(id))
                             const isExpanded = expandedSkillCats.includes(cat)
                             return (
                               <div key={cat} className="mb-1">
-                                <button
+                                <div
+                                  role="button"
+                                  tabIndex={0}
                                   onClick={() => setExpandedSkillCats(prev => prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat])}
-                                  className={`w-full flex items-center justify-between px-3 py-2 rounded text-[11px] font-semibold transition-all ${someSelected ? "bg-white/[0.06] text-white" : "bg-white/[0.03] text-gray-400 hover:bg-white/[0.06]"}`}
-                                >
+                                  onKeyDown={(e) => {
+                                    if (e.target !== e.currentTarget) return
+                                    if (e.key === "Enter" || e.key === " ") {
+                                      e.preventDefault()
+                                      setExpandedSkillCats(prev => prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat])
+                                    }
+                                  }}
+                                  className={`w-full flex items-center justify-between px-3 py-2 rounded text-[11px] font-semibold transition-all hover:bg-white/[0.09] ${someSelected ? "bg-white/[0.06] text-white" : "bg-white/[0.03] text-gray-300"}`}>
                                   <span>{catLabel}</span>
                                   <div className="flex items-center gap-2">
-                                    {someSelected && <span className="text-teal-400 text-[10px]">Selected</span>}
-                                    <span className="text-[10px] text-gray-400">{isExpanded ? "▲" : "▼"}</span>
+                                    {someSelected && <span className="text-teal-400 text-[10px]">{catGroupIds.filter(id => selectedSet.has(id)).length} selected</span>}
+                                    <button
+                                      onClick={(e) => {
+                                        e.stopPropagation()
+                                        setFilterSkillAllMode(false)
+                                        if (allSelected) {
+                                          if (filterSkillAllMode) {
+                                            // From virtual-all state, deselecting this category means selecting all others.
+                                            setFilterSkillGroups(allSkillFilterGroupIds.filter(id => !catGroupIds.includes(id)))
+                                          } else {
+                                            setFilterSkillGroups(prev => prev.filter(id => !catGroupIds.includes(id)))
+                                          }
+                                        } else {
+                                          setFilterSkillGroups(prev => [...new Set([...prev, ...catGroupIds])])
+                                        }
+                                      }}
+                                      className={`px-2 py-0.5 rounded text-[9px] border font-semibold transition-all ${allSelected ? "bg-teal-600/40 border-teal-400/70 text-teal-200 hover:bg-teal-600/60" : "bg-white/10 border-white/20 text-gray-300 hover:bg-white/20"}`}>
+                                      {allSelected ? "Deselect All" : "Select All"}
+                                    </button>
+                                    <span className="text-gray-500 text-[10px] leading-none px-1">{isExpanded ? "▲" : "▼"}</span>
                                   </div>
-                                </button>
+                                </div>
                                 {isExpanded && (
                                   <div className="grid grid-cols-2 gap-1 mt-1.5 pl-2">
                                     {Array.from(subMap.entries()).sort(([a], [b]) => a.localeCompare(b)).map(([label, groupId]) => {
-                                      const active = filterSkillGroups.includes(groupId)
+                                      const active = selectedSet.has(groupId)
                                       return (
                                         <button key={groupId}
-                                          onClick={() => setFilterSkillGroups(prev => active ? prev.filter(id => id !== groupId) : [...prev, groupId])}
+                                          onClick={() => {
+                                            if (filterSkillAllMode) {
+                                              setFilterSkillAllMode(false)
+                                              setFilterSkillGroups(active
+                                                ? allSkillFilterGroupIds.filter(id => id !== groupId)
+                                                : [...new Set([...allSkillFilterGroupIds, groupId])]
+                                              )
+                                            } else {
+                                              setFilterSkillGroups(prev => active ? prev.filter(id => id !== groupId) : [...prev, groupId])
+                                            }
+                                          }}
                                           className={`px-2 py-1.5 rounded text-[10px] border text-left transition-all flex items-center gap-1 ${active ? "bg-teal-500/20 border-teal-400/50 text-teal-200" : "bg-white/5 border-white/10 text-gray-400 hover:bg-white/10"}`}>
                                           {active && <span className="text-teal-400 text-[9px] shrink-0">✓</span>}
                                           <span className="truncate" dangerouslySetInnerHTML={{ __html: label }} />
@@ -2122,9 +2258,9 @@ export default function TeamBuilderClient({
                               </div>
                             )
                           })}
-                          {filterSkillGroups.length > 0 && (
-                            <div className="text-[10px] text-teal-400 mt-2">{filterSkillGroups.length} selected</div>
-                          )}
+                          <div className="text-[10px] text-teal-400 mt-2">
+                            {selectedSkillEffectCount} filter{selectedSkillEffectCount !== 1 ? "s" : ""} selected total
+                          </div>
                         </div>
                       </div>
 
@@ -2329,7 +2465,7 @@ export default function TeamBuilderClient({
             <div className="flex items-start gap-2 px-3 py-2"
               style={{ borderBottom: assistSkill ? "1px solid rgba(255,255,255,0.06)" : undefined }}>
               {leaderSkill.icon_path && (
-                <img src={`/${leaderSkill.icon_path}.webp`} alt=""
+                <img src={`/${leaderSkill.icon_path.replaceAll("{1}", "3").replaceAll("{0}", "L")}.webp`} alt=""
                   className="w-8 h-8 flex-shrink-0 object-contain rounded"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
               )}
@@ -2345,7 +2481,7 @@ export default function TeamBuilderClient({
           {assistSkill && (
             <div className="flex items-start gap-2 px-3 py-2">
               {assistSkill.icon_path && (
-                <img src={`/${assistSkill.icon_path}.webp`} alt=""
+                <img src={`/${assistSkill.icon_path.replaceAll("{1}", "3").replaceAll("{0}", "L")}.webp`} alt=""
                   className="w-8 h-8 flex-shrink-0 object-contain rounded"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
               )}
@@ -2406,10 +2542,10 @@ export default function TeamBuilderClient({
           >
             {heartPrintId ? (
               <>
-                <img src={`/SkillStill/${heartPrintId}/skill_still_${heartPrintId}_L.webp`} alt=""
+                <img src={`/Image/SkillStill/${heartPrintId}/skill_still_${heartPrintId}_L.webp`} alt=""
                   className="absolute inset-0 w-full h-full object-cover"
                   onError={(e) => { (e.target as HTMLImageElement).style.opacity = "0.3" }} />
-                <img src={selectedHp?.still_type === "rare" ? "/StillFrame/StillFrame3_s.webp" : "/StillFrame/StillFrame1_s.webp"} alt=""
+                <img src={selectedHp?.still_type === "rare" ? "/Image/StillFrame/StillFrame3_s.webp" : "/Image/StillFrame/StillFrame1_s.webp"} alt=""
                   className="pointer-events-none absolute inset-0 w-full h-full object-fill"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
                 <div className="absolute bottom-1 left-1 flex gap-0.5">
@@ -2485,7 +2621,7 @@ export default function TeamBuilderClient({
           className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-95"
           style={{ background: "linear-gradient(135deg, #3a1e5f 0%, #22103f 100%)", border: "1px solid rgba(180,100,255,0.3)" }}
         >
-          <img src="/UI/Texture/QuestAtlas/icBtnEquip.webp" alt="" className="w-5 h-5 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+          <img src="/UI/Texture/CommonEtcAtlas/icArmor.webp" alt="" className="w-5 h-5 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
           Equipment
         </button>
       </div>
@@ -2500,7 +2636,7 @@ export default function TeamBuilderClient({
             style={{ background: "linear-gradient(180deg, #0c1929 0%, #111d2e 100%)" }}>
             {/* Header */}
             <div className="relative z-50 flex items-center gap-2 px-4 py-2.5 border-b border-white/10 shrink-0">
-              <img src="/UI/Texture/QuestAtlas/icBtnEquip.webp" alt="" className="w-5 h-5 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+              <img src="/UI/Texture/CommonEtcAtlas/icArmor.webp" alt="" className="w-5 h-5 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
               <span className="text-[12px] font-semibold text-white/90 uppercase tracking-wider">Equipment &amp; Charms</span>
               <div className="flex-1" />
               <button
@@ -2571,7 +2707,7 @@ export default function TeamBuilderClient({
                                 title="Charm">
                                 {selectedFlatCharm ? (() => {
                                   const match = selectedFlatCharm.image_path?.match(/\/(\d+)\//)
-                                  const img = match ? `/Equip/Accessory/${match[1]}/Accessory_${match[1]}_AccessoryM.webp` : null
+                                  const img = match ? `/Image/Equip/Accessory/${match[1]}/Accessory_${match[1]}_AccessoryM.webp` : null
                                   return img ? <img src={img} alt="" className="w-12 h-12 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} /> : <span className="text-purple-300/50 text-lg">♦</span>
                                 })() : (
                                   <span className="text-white/30 text-2xl">+</span>
@@ -2724,7 +2860,7 @@ export default function TeamBuilderClient({
                           (equipModalItems as FlatCharm[]).map(fc => {
                             const isSelected = charmSlots[activeEquipSlot.slotKey] === fc.skill_id
                             const match = fc.image_path?.match(/\/(\d+)\//)
-                            const img = match ? `/Equip/Accessory/${match[1]}/Accessory_${match[1]}_AccessoryM.webp` : null
+                            const img = match ? `/Image/Equip/Accessory/${match[1]}/Accessory_${match[1]}_AccessoryM.webp` : null
                             return (
                               <div key={fc.skill_id}
                                 className={`flex flex-col items-center gap-1 rounded cursor-pointer transition-colors p-1 ${equipHoveredId === fc.skill_id ? "bg-white/10" : "hover:bg-white/5"}`}
@@ -2732,7 +2868,7 @@ export default function TeamBuilderClient({
                                 onPointerLeave={() => setEquipHoveredId(prev => prev === fc.skill_id ? null : prev)}
                                 onClick={() => setCharmSlots(prev => ({ ...prev, [activeEquipSlot.slotKey]: fc.skill_id }))}>
                                 <div className="relative w-full overflow-hidden rounded" style={{ aspectRatio: "1" }}>
-                                  <img src={`/UI/Texture/CommonRarityAtlas/itemRrarity${Math.min(fc.rarity + 1, 4)}.webp`} alt=""
+                                  <img src={`UI/Texture/CommonRarityAtlas/itemRrarity${Math.min(fc.rarity + 1, 4)}.webp`} alt=""
                                     className="absolute inset-0 w-full h-full object-fill pointer-events-none" />
                                   {img ? (
                                     <img src={img} alt="" className="absolute inset-0 w-full h-full object-contain p-1.5 z-10" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
@@ -2741,7 +2877,7 @@ export default function TeamBuilderClient({
                                   )}
                                   <div className="absolute bottom-0.5 left-1/2 -translate-x-1/2 flex gap-px">
                                     {Array.from({ length: fc.rarity }, (_, i) => (
-                                      <img key={i} src="/UI/Texture/CommonRarityAtlas/starOn.webp" alt="★" className="w-3 h-3 object-contain" />
+                                      <img key={i} src="UI/Texture/CommonRarityAtlas/starOn.webp" alt="★" className="w-3 h-3 object-contain" />
                                     ))}
                                   </div>
                                   {isSelected && <div className="absolute inset-0 ring-2 ring-purple-400 ring-inset rounded" />}
@@ -2761,7 +2897,7 @@ export default function TeamBuilderClient({
                                 onClick={() => setEquipForSlot(activeEquipSlot.slotKey, activeEquipSlot.type, eq.id)}>
                                 <div className="relative w-full overflow-hidden rounded bg-black/40" style={{ aspectRatio: "1" }}>
                                   {eq.image && (
-                                    <img src={eq.image} alt={eq.name} className="absolute inset-0 w-full h-full object-contain p-1" onError={e => { (e.target as HTMLImageElement).style.opacity = "0.2" }} />
+                                    <img src={`${eq.image}`} alt={eq.name} className="absolute inset-0 w-full h-full object-contain p-1" onError={e => { (e.target as HTMLImageElement).style.opacity = "0.2" }} />
                                   )}
                                   <div className="absolute bottom-0.5 left-0.5 flex gap-0">
                                     {Array.from({ length: Math.min(eq.rarity, 8) }, (_, i) => (

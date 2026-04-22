@@ -11,11 +11,11 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { stripColorTags, type Heartprint } from "@/lib/pc-wiki"
 
 function heartprintThumb(picturePath: string): string {
-  return "/" + picturePath.replace(/^Image\//, "").replace("{0}", "S") + ".webp"
+  return "/" + picturePath.replace("{0}", "S") + ".webp"
 }
 
 function heartprintLarge(picturePath: string): string {
-  return "/" + picturePath.replace(/^Image\//, "").replace("{0}", "L") + ".webp"
+  return "/" + picturePath.replace("{0}", "L") + ".webp"
 }
 
 const ELEMENT_NAMES: Record<number, string> = {

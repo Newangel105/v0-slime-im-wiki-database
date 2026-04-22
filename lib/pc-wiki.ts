@@ -1,8 +1,8 @@
 import wikiData from "../pc_wiki.generated.json"
 import heartprintData from "../pc_wiki.heartprints.json"
 import equipmentData from "../pc_wiki.equipment.json"
-import fallbackEquipmentData from "../public/equipment.json"
-import charmData from "../public/charms.json"
+import fallbackEquipmentData from "../pc_wiki.equipment.json"
+import charmData from "../pc_wiki.charms.json"
 import fallbackCharmData from "../pc_wiki.charms.json"
 import charStatsRaw from "../pc_wiki_char_stats.json"
 import teamStatsRaw from "../pc_wiki_team_stats.json"
@@ -357,13 +357,17 @@ export function toPublicAssetPath(assetPath: string | null | undefined): string 
     return "/placeholder.svg"
   }
 
+  // Strip leading slashes and expand generator templates commonly used
+  // in asset paths: {1} -> '3' (family variant) and {0} -> 'L' (size suffix)
   const normalized = assetPath.replace(/^\/+/, "")
-  if (/\.[a-z0-9]+$/i.test(normalized)) {
-    // If path already has a .webp extension, rewrite to .webp
-    return `/${normalized.replace(/\.webp$/i, ".webp")}`
+  const expanded = normalized.replace(/\{1\}/g, "3").replace(/\{0\}/g, "L")
+
+  if (/\.[a-z0-9]+$/i.test(expanded)) {
+    // If path already has an extension, normalize webp casing and keep it
+    return `/${expanded.replace(/\.webp$/i, ".webp")}`
   }
 
-  return `/${normalized}.webp`
+  return `/${expanded}.webp`
 }
 
 export function stripColorTags(text: string): string {

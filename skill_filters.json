@@ -6,7 +6,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 1,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "ATK UP",
       "localized": {
         "localize_id": 21500000000001,
         "sub_category_label": "ATK UP",
@@ -171,7 +171,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 2,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "M-ATK UP",
       "localized": {
         "localize_id": 21500000000002,
         "sub_category_label": "M-ATK UP",
@@ -306,7 +306,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 3,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "P-ATK UP",
       "localized": {
         "localize_id": 21500000000003,
         "sub_category_label": "P-ATK UP",
@@ -411,7 +411,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 4,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Single-Target ATK UP",
       "localized": {
         "localize_id": 21500000000004,
         "sub_category_label": "Single-Target ATK UP",
@@ -486,7 +486,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 5,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "All-Target ATK UP",
       "localized": {
         "localize_id": 21500000000005,
         "sub_category_label": "All-Target ATK UP",
@@ -591,7 +591,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 6,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Fire ATK UP",
       "localized": {
         "localize_id": 21500000000006,
         "sub_category_label": "Fire ATK UP",
@@ -696,7 +696,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 7,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Water ATK UP",
       "localized": {
         "localize_id": 21500000000007,
         "sub_category_label": "Water ATK UP",
@@ -801,7 +801,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 8,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Wind ATK UP",
       "localized": {
         "localize_id": 21500000000008,
         "sub_category_label": "Wind ATK UP",
@@ -936,7 +936,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 9,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Space ATK UP",
       "localized": {
         "localize_id": 21500000000009,
         "sub_category_label": "Space ATK UP",
@@ -1041,7 +1041,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 10,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Earth ATK UP",
       "localized": {
         "localize_id": 21500000000010,
         "sub_category_label": "Earth ATK UP",
@@ -1146,7 +1146,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 11,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Light ATK UP",
       "localized": {
         "localize_id": 21500000000011,
         "sub_category_label": "Light ATK UP",
@@ -1251,7 +1251,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 12,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Dark ATK UP",
       "localized": {
         "localize_id": 21500000000012,
         "sub_category_label": "Dark ATK UP",
@@ -1356,7 +1356,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 13,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Damage to Fire UP",
       "localized": {
         "localize_id": 21500000000013,
         "sub_category_label": "Damage to Fire UP",
@@ -1461,7 +1461,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 14,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Damage to Water UP",
       "localized": {
         "localize_id": 21500000000014,
         "sub_category_label": "Damage to Water UP",
@@ -1566,7 +1566,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 15,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Damage to Wind UP",
       "localized": {
         "localize_id": 21500000000015,
         "sub_category_label": "Damage to Wind UP",
@@ -1671,7 +1671,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 16,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Damage to Space UP",
       "localized": {
         "localize_id": 21500000000016,
         "sub_category_label": "Damage to Space UP",
@@ -1776,7 +1776,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 17,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Damage to Earth UP",
       "localized": {
         "localize_id": 21500000000017,
         "sub_category_label": "Damage to Earth UP",
@@ -1881,7 +1881,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 18,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Damage to Light UP",
       "localized": {
         "localize_id": 21500000000018,
         "sub_category_label": "Damage to Light UP",
@@ -1986,7 +1986,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 19,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Damage to Dark UP",
       "localized": {
         "localize_id": 21500000000019,
         "sub_category_label": "Damage to Dark UP",
@@ -2091,7 +2091,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 20,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Critical Power UP",
       "localized": {
         "localize_id": 21500000000020,
         "sub_category_label": "Critical Power UP",
@@ -2196,7 +2196,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 21,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Pierce Power UP",
       "localized": {
         "localize_id": 21500000000021,
         "sub_category_label": "Pierce Power UP",
@@ -2301,7 +2301,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 22,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Synergy Power UP",
       "localized": {
         "localize_id": 21500000000022,
         "sub_category_label": "Synergy Power UP",
@@ -2406,7 +2406,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 23,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Counter Power UP",
       "localized": {
         "localize_id": 21500000000023,
         "sub_category_label": "Counter Power UP",
@@ -2481,7 +2481,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 24,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Guard Penetration UP",
       "localized": {
         "localize_id": 21500000000024,
         "sub_category_label": "Guard Penetration UP",
@@ -2556,7 +2556,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 25,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Critical Rate UP",
       "localized": {
         "localize_id": 21500000000025,
         "sub_category_label": "Critical Rate UP",
@@ -2661,7 +2661,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 26,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Pierce Rate UP",
       "localized": {
         "localize_id": 21500000000026,
         "sub_category_label": "Pierce Rate UP",
@@ -2766,7 +2766,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 27,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Synergy Rate UP",
       "localized": {
         "localize_id": 21500000000027,
         "sub_category_label": "Synergy Rate UP",
@@ -2871,7 +2871,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 28,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Counterattack Rate UP",
       "localized": {
         "localize_id": 21500000000028,
         "sub_category_label": "Counterattack Rate UP",
@@ -2976,7 +2976,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 29,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Weakness Strike UP",
       "localized": {
         "localize_id": 21500000000029,
         "sub_category_label": "Weakness Strike UP",
@@ -3081,7 +3081,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 30,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Super Weakness Strike UP",
       "localized": {
         "localize_id": 21500000000030,
         "sub_category_label": "Super Weakness Strike UP",
@@ -3156,7 +3156,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 31,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "DEF DOWN",
       "localized": {
         "localize_id": 21500000000031,
         "sub_category_label": "DEF DOWN",
@@ -3231,7 +3231,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 32,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Magic Attack Resistance DOWN",
       "localized": {
         "localize_id": 21500000000032,
         "sub_category_label": "Magic Attack Resistance DOWN",
@@ -3306,7 +3306,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 33,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Physical Attack Resistance DOWN",
       "localized": {
         "localize_id": 21500000000033,
         "sub_category_label": "Physical Attack Resistance DOWN",
@@ -3381,7 +3381,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 34,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Fire Resistance DOWN",
       "localized": {
         "localize_id": 21500000000034,
         "sub_category_label": "Fire Resistance DOWN",
@@ -3456,7 +3456,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 35,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Water Resistance DOWN",
       "localized": {
         "localize_id": 21500000000035,
         "sub_category_label": "Water Resistance DOWN",
@@ -3531,7 +3531,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 36,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Wind Resistance DOWN",
       "localized": {
         "localize_id": 21500000000036,
         "sub_category_label": "Wind Resistance DOWN",
@@ -3606,7 +3606,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 37,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Space Resistance DOWN",
       "localized": {
         "localize_id": 21500000000037,
         "sub_category_label": "Space Resistance DOWN",
@@ -3681,7 +3681,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 38,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Earth Resistance DOWN",
       "localized": {
         "localize_id": 21500000000038,
         "sub_category_label": "Earth Resistance DOWN",
@@ -3756,7 +3756,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 39,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Light Resistance DOWN",
       "localized": {
         "localize_id": 21500000000039,
         "sub_category_label": "Light Resistance DOWN",
@@ -3831,7 +3831,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 40,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Dark Resistance DOWN",
       "localized": {
         "localize_id": 21500000000040,
         "sub_category_label": "Dark Resistance DOWN",
@@ -3906,7 +3906,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 41,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Critical Resistance DOWN",
       "localized": {
         "localize_id": 21500000000041,
         "sub_category_label": "Critical Resistance DOWN",
@@ -3981,7 +3981,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 42,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Pierce Resistance DOWN",
       "localized": {
         "localize_id": 21500000000042,
         "sub_category_label": "Pierce Resistance DOWN",
@@ -4056,7 +4056,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 43,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Synergy Resistance DOWN",
       "localized": {
         "localize_id": 21500000000043,
         "sub_category_label": "Synergy Resistance DOWN",
@@ -4131,7 +4131,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 44,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Counterattack Resistance DOWN",
       "localized": {
         "localize_id": 21500000000044,
         "sub_category_label": "Counterattack Resistance DOWN",
@@ -4206,7 +4206,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 45,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Weakness Resistance DOWN",
       "localized": {
         "localize_id": 21500000000045,
         "sub_category_label": "Weakness Resistance DOWN",
@@ -4281,7 +4281,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 46,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Poison Damage UP",
       "localized": {
         "localize_id": 21500000000046,
         "sub_category_label": "Poison Damage UP",
@@ -4356,7 +4356,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 47,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Secret Skill Damage Resistance DOWN",
       "localized": {
         "localize_id": 21500000000047,
         "sub_category_label": "Secret Skill Damage Resistance DOWN",
@@ -4431,7 +4431,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 1,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "DEF UP",
       "localized": {
         "localize_id": 21500000000048,
         "sub_category_label": "DEF UP",
@@ -4596,7 +4596,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 2,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Magic Attack Resistance UP",
       "localized": {
         "localize_id": 21500000000049,
         "sub_category_label": "Magic Attack Resistance UP",
@@ -4671,7 +4671,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 3,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Physical Attack Resistance UP",
       "localized": {
         "localize_id": 21500000000050,
         "sub_category_label": "Physical Attack Resistance UP",
@@ -4746,7 +4746,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 4,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Fire Resistance UP",
       "localized": {
         "localize_id": 21500000000051,
         "sub_category_label": "Fire Resistance UP",
@@ -4821,7 +4821,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 5,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Water Resistance UP",
       "localized": {
         "localize_id": 21500000000052,
         "sub_category_label": "Water Resistance UP",
@@ -4896,7 +4896,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 6,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Wind Resistance UP",
       "localized": {
         "localize_id": 21500000000053,
         "sub_category_label": "Wind Resistance UP",
@@ -4971,7 +4971,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 7,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Space Resistance UP",
       "localized": {
         "localize_id": 21500000000054,
         "sub_category_label": "Space Resistance UP",
@@ -5046,7 +5046,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 8,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Earth Resistance UP",
       "localized": {
         "localize_id": 21500000000055,
         "sub_category_label": "Earth Resistance UP",
@@ -5121,7 +5121,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 9,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Light Resistance UP",
       "localized": {
         "localize_id": 21500000000056,
         "sub_category_label": "Light Resistance UP",
@@ -5196,7 +5196,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 10,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Dark Resistance UP",
       "localized": {
         "localize_id": 21500000000057,
         "sub_category_label": "Dark Resistance UP",
@@ -5271,7 +5271,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 11,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Critical Resistance UP",
       "localized": {
         "localize_id": 21500000000058,
         "sub_category_label": "Critical Resistance UP",
@@ -5346,7 +5346,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 12,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Pierce Resistance UP",
       "localized": {
         "localize_id": 21500000000059,
         "sub_category_label": "Pierce Resistance UP",
@@ -5421,7 +5421,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 13,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Synergy Resistance UP",
       "localized": {
         "localize_id": 21500000000060,
         "sub_category_label": "Synergy Resistance UP",
@@ -5496,7 +5496,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 14,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Counterattack Resistance UP",
       "localized": {
         "localize_id": 21500000000061,
         "sub_category_label": "Counterattack Resistance UP",
@@ -5571,7 +5571,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 15,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Guard Power UP",
       "localized": {
         "localize_id": 21500000000062,
         "sub_category_label": "Guard Power UP",
@@ -5646,7 +5646,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 16,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Guard Rate UP",
       "localized": {
         "localize_id": 21500000000063,
         "sub_category_label": "Guard Rate UP",
@@ -5781,7 +5781,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 17,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Super Guard Rate UP",
       "localized": {
         "localize_id": 21500000000064,
         "sub_category_label": "Super Guard Rate UP",
@@ -5886,7 +5886,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 18,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Evasion Rate UP",
       "localized": {
         "localize_id": 21500000000065,
         "sub_category_label": "Evasion Rate UP",
@@ -5931,7 +5931,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 19,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Secret Skill Damage Resistance UP",
       "localized": {
         "localize_id": 21500000000066,
         "sub_category_label": "Secret Skill Damage Resistance UP",
@@ -6006,7 +6006,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 20,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "ATK DOWN",
       "localized": {
         "localize_id": 21500000000067,
         "sub_category_label": "ATK DOWN",
@@ -6081,7 +6081,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 21,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "M-ATK DOWN",
       "localized": {
         "localize_id": 21500000000068,
         "sub_category_label": "M-ATK DOWN",
@@ -6156,7 +6156,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 22,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "P-ATK DOWN",
       "localized": {
         "localize_id": 21500000000069,
         "sub_category_label": "P-ATK DOWN",
@@ -6231,7 +6231,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 23,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Critical Power DOWN",
       "localized": {
         "localize_id": 21500000000070,
         "sub_category_label": "Critical Power DOWN",
@@ -6306,7 +6306,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 24,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Pierce Power DOWN",
       "localized": {
         "localize_id": 21500000000071,
         "sub_category_label": "Pierce Power DOWN",
@@ -6381,7 +6381,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 25,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Synergy Power DOWN",
       "localized": {
         "localize_id": 21500000000072,
         "sub_category_label": "Synergy Power DOWN",
@@ -6456,7 +6456,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 26,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Counter Power DOWN",
       "localized": {
         "localize_id": 21500000000073,
         "sub_category_label": "Counter Power DOWN",
@@ -6531,7 +6531,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 27,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Soul of Skills Damage DOWN",
       "localized": {
         "localize_id": 21500000000074,
         "sub_category_label": "Soul of Skills Damage DOWN",
@@ -6576,7 +6576,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 28,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Soul of Divine Protection Damage DOWN",
       "localized": {
         "localize_id": 21500000000075,
         "sub_category_label": "Soul of Divine Protection Damage DOWN",
@@ -6621,7 +6621,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 29,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Soul of Secrets Damage DOWN",
       "localized": {
         "localize_id": 21500000000076,
         "sub_category_label": "Soul of Secrets Damage DOWN",
@@ -6666,7 +6666,7 @@
       "category_name": "AbnormalCondition",
       "sub_category_id": 1,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Stun Evasion Rate UP",
       "localized": {
         "localize_id": 21500000000077,
         "sub_category_label": "Stun Evasion Rate UP",
@@ -6741,7 +6741,7 @@
       "category_name": "AbnormalCondition",
       "sub_category_id": 2,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Stun Evasion Rate DOWN",
       "localized": {
         "localize_id": 21500000000078,
         "sub_category_label": "Stun Evasion Rate DOWN",
@@ -6816,7 +6816,7 @@
       "category_name": "AbnormalCondition",
       "sub_category_id": 3,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Poison Evasion Rate UP",
       "localized": {
         "localize_id": 21500000000079,
         "sub_category_label": "Poison Evasion Rate UP",
@@ -6891,7 +6891,7 @@
       "category_name": "AbnormalCondition",
       "sub_category_id": 4,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Enamor Strike UP",
       "localized": {
         "localize_id": 21500000000080,
         "sub_category_label": "Enamor Strike UP",
@@ -6966,7 +6966,7 @@
       "category_name": "AbnormalCondition",
       "sub_category_id": 5,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Stun Strike UP",
       "localized": {
         "localize_id": 21500000000081,
         "sub_category_label": "Stun Strike UP",
@@ -7041,7 +7041,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 48,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "All Souls Damage UP",
       "localized": {
         "localize_id": 21500000000082,
         "sub_category_label": "All Souls Damage UP",
@@ -7086,7 +7086,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 49,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Soul of Skills Damage UP",
       "localized": {
         "localize_id": 21500000000083,
         "sub_category_label": "Soul of Skills Damage UP",
@@ -7131,7 +7131,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 50,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Soul of Divine Protection Damage UP",
       "localized": {
         "localize_id": 21500000000084,
         "sub_category_label": "Soul of Divine Protection Damage UP",
@@ -7176,7 +7176,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 51,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Soul of Secrets Damage UP",
       "localized": {
         "localize_id": 21500000000085,
         "sub_category_label": "Soul of Secrets Damage UP",
@@ -7221,7 +7221,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 52,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Soul of Combos Damage UP",
       "localized": {
         "localize_id": 21500000000086,
         "sub_category_label": "Soul of Combos Damage UP",
@@ -7266,7 +7266,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 53,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "EX Soul of Combos Damage UP",
       "localized": {
         "localize_id": 21500000000087,
         "sub_category_label": "EX Soul of Combos Damage UP",
@@ -7311,7 +7311,7 @@
       "category_name": "GageUP",
       "sub_category_id": 1,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[All] All Gauges Increase UP",
       "localized": {
         "localize_id": 21500000000088,
         "sub_category_label": "[All] All Gauges Increase UP",
@@ -7356,7 +7356,7 @@
       "category_name": "GageUP",
       "sub_category_id": 2,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[Skills] All Gauges Increase UP",
       "localized": {
         "localize_id": 21500000000089,
         "sub_category_label": "[Skills] All Gauges Increase UP",
@@ -7401,7 +7401,7 @@
       "category_name": "GageUP",
       "sub_category_id": 3,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[Divine Protection] All Gauges Increase UP",
       "localized": {
         "localize_id": 21500000000090,
         "sub_category_label": "[Divine Protection] All Gauges Increase UP",
@@ -7446,7 +7446,7 @@
       "category_name": "GageUP",
       "sub_category_id": 4,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[Secrets] All Gauges Increase UP",
       "localized": {
         "localize_id": 21500000000091,
         "sub_category_label": "[Secrets] All Gauges Increase UP",
@@ -7491,7 +7491,7 @@
       "category_name": "GageUP",
       "sub_category_id": 5,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[All] Skill Point Increase UP",
       "localized": {
         "localize_id": 21500000000092,
         "sub_category_label": "[All] Skill Point Increase UP",
@@ -7536,7 +7536,7 @@
       "category_name": "GageUP",
       "sub_category_id": 6,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[Skills] Skill Point Increase UP",
       "localized": {
         "localize_id": 21500000000093,
         "sub_category_label": "[Skills] Skill Point Increase UP",
@@ -7581,7 +7581,7 @@
       "category_name": "GageUP",
       "sub_category_id": 7,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[Divine Protection] Skill Point Increase UP",
       "localized": {
         "localize_id": 21500000000094,
         "sub_category_label": "[Divine Protection] Skill Point Increase UP",
@@ -7626,7 +7626,7 @@
       "category_name": "GageUP",
       "sub_category_id": 8,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[Secrets] Skill Point Increase UP",
       "localized": {
         "localize_id": 21500000000095,
         "sub_category_label": "[Secrets] Skill Point Increase UP",
@@ -7671,7 +7671,7 @@
       "category_name": "GageUP",
       "sub_category_id": 9,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[All] Protection Gauge Increase UP",
       "localized": {
         "localize_id": 21500000000096,
         "sub_category_label": "[All] Protection Gauge Increase UP",
@@ -7716,7 +7716,7 @@
       "category_name": "GageUP",
       "sub_category_id": 10,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[Skills] Protection Gauge Increase UP",
       "localized": {
         "localize_id": 21500000000097,
         "sub_category_label": "[Skills] Protection Gauge Increase UP",
@@ -7761,7 +7761,7 @@
       "category_name": "GageUP",
       "sub_category_id": 11,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[Divine Protection] Protection Gauge Increase UP",
       "localized": {
         "localize_id": 21500000000098,
         "sub_category_label": "[Divine Protection] Protection Gauge Increase UP",
@@ -7806,7 +7806,7 @@
       "category_name": "GageUP",
       "sub_category_id": 12,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[Secrets] Protection Gauge Increase UP",
       "localized": {
         "localize_id": 21500000000099,
         "sub_category_label": "[Secrets] Protection Gauge Increase UP",
@@ -7851,7 +7851,7 @@
       "category_name": "Special",
       "sub_category_id": 1,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Live Mode",
       "localized": {
         "localize_id": 21500000000100,
         "sub_category_label": "Live Mode",
@@ -8046,7 +8046,7 @@
       "category_name": "Special",
       "sub_category_id": 2,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "All-Target Attack Effect",
       "localized": {
         "localize_id": 21500000000101,
         "sub_category_label": "All-Target Attack Effect",
@@ -8211,7 +8211,7 @@
       "category_name": "GageDown",
       "sub_category_id": 1,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[Skills] All Gauges Increase DOWN",
       "localized": {
         "localize_id": 21500000000102,
         "sub_category_label": "[Skills] All Gauges Increase DOWN",
@@ -8256,7 +8256,7 @@
       "category_name": "GageDown",
       "sub_category_id": 2,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[Divine Protection] All Gauges Increase DOWN",
       "localized": {
         "localize_id": 21500000000103,
         "sub_category_label": "[Divine Protection] All Gauges Increase DOWN",
@@ -8301,7 +8301,7 @@
       "category_name": "GageDown",
       "sub_category_id": 3,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[Secrets] All Gauges Increase DOWN",
       "localized": {
         "localize_id": 21500000000104,
         "sub_category_label": "[Secrets] All Gauges Increase DOWN",
@@ -8346,7 +8346,7 @@
       "category_name": "Special",
       "sub_category_id": 3,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Multi-hit Soul",
       "localized": {
         "localize_id": 21500000000105,
         "sub_category_label": "Multi-hit Soul",
@@ -8511,7 +8511,7 @@
       "category_name": "Special",
       "sub_category_id": 4,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Seeking Soul",
       "localized": {
         "localize_id": 21500000000106,
         "sub_category_label": "Seeking Soul",
@@ -8676,7 +8676,7 @@
       "category_name": "Special",
       "sub_category_id": 9,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Secret Skill Gauge Usage 0%",
       "localized": {
         "localize_id": 21500000000107,
         "sub_category_label": "Secret Skill Gauge Usage 0%",
@@ -8721,7 +8721,7 @@
       "category_name": "GageUP",
       "sub_category_id": 13,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[All] Secret Skill Gauge Increase UP",
       "localized": {
         "localize_id": 21500000000108,
         "sub_category_label": "[All] Secret Skill Gauge Increase UP",
@@ -8766,7 +8766,7 @@
       "category_name": "GageUP",
       "sub_category_id": 14,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[Skills] Secret Skill Gauge Increase UP",
       "localized": {
         "localize_id": 21500000000109,
         "sub_category_label": "[Skills] Secret Skill Gauge Increase UP",
@@ -8811,7 +8811,7 @@
       "category_name": "GageUP",
       "sub_category_id": 15,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[Divine Protection] Secret Skill Gauge Increase UP",
       "localized": {
         "localize_id": 21500000000110,
         "sub_category_label": "[Divine Protection] Secret Skill Gauge Increase UP",
@@ -8856,7 +8856,7 @@
       "category_name": "GageUP",
       "sub_category_id": 16,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "[Secrets] Secret Skill Gauge Increase UP",
       "localized": {
         "localize_id": 21500000000111,
         "sub_category_label": "[Secrets] Secret Skill Gauge Increase UP",
@@ -8901,7 +8901,7 @@
       "category_name": "AbnormalCondition",
       "sub_category_id": 6,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Burn",
       "localized": {
         "localize_id": 21500000000112,
         "sub_category_label": "Burn",
@@ -8976,7 +8976,7 @@
       "category_name": "AbnormalCondition",
       "sub_category_id": 7,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Enamor",
       "localized": {
         "localize_id": 21500000000113,
         "sub_category_label": "Enamor",
@@ -9051,7 +9051,7 @@
       "category_name": "AbnormalCondition",
       "sub_category_id": 8,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Frostbite",
       "localized": {
         "localize_id": 21500000000114,
         "sub_category_label": "Frostbite",
@@ -9126,7 +9126,7 @@
       "category_name": "AbnormalCondition",
       "sub_category_id": 9,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Stun",
       "localized": {
         "localize_id": 21500000000115,
         "sub_category_label": "Stun",
@@ -9261,7 +9261,7 @@
       "category_name": "AbnormalCondition",
       "sub_category_id": 10,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Poison",
       "localized": {
         "localize_id": 21500000000116,
         "sub_category_label": "Poison",
@@ -9366,7 +9366,7 @@
       "category_name": "AbnormalCondition",
       "sub_category_id": 11,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Vengeance",
       "localized": {
         "localize_id": 21500000000117,
         "sub_category_label": "Vengeance",
@@ -9501,7 +9501,7 @@
       "category_name": "AbnormalCondition",
       "sub_category_id": 12,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Despair",
       "localized": {
         "localize_id": 21500000000118,
         "sub_category_label": "Despair",
@@ -9546,7 +9546,7 @@
       "category_name": "AbnormalCondition",
       "sub_category_id": 13,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Control",
       "localized": {
         "localize_id": 21500000000119,
         "sub_category_label": "Control",
@@ -9591,7 +9591,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 1,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Drago",
       "localized": {
         "localize_id": 21500000000120,
         "sub_category_label": "Drago",
@@ -9666,7 +9666,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 2,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Inspire",
       "localized": {
         "localize_id": 21500000000121,
         "sub_category_label": "Inspire",
@@ -9711,7 +9711,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 3,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Grit",
       "localized": {
         "localize_id": 21500000000122,
         "sub_category_label": "Grit",
@@ -9756,7 +9756,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 4,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Invincible",
       "localized": {
         "localize_id": 21500000000123,
         "sub_category_label": "Invincible",
@@ -9831,7 +9831,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 5,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Lord's Ambition",
       "localized": {
         "localize_id": 21500000000124,
         "sub_category_label": "Lord's Ambition",
@@ -9906,7 +9906,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 6,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Stat Reverse",
       "localized": {
         "localize_id": 21500000000125,
         "sub_category_label": "Stat Reverse",
@@ -9981,7 +9981,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 7,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Taunt",
       "localized": {
         "localize_id": 21500000000126,
         "sub_category_label": "Taunt",
@@ -10026,7 +10026,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 8,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Absorb Secret Skill",
       "localized": {
         "localize_id": 21500000000127,
         "sub_category_label": "Absorb Secret Skill",
@@ -10071,7 +10071,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 9,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Secret Skill Vitalization",
       "localized": {
         "localize_id": 21500000000128,
         "sub_category_label": "Secret Skill Vitalization",
@@ -10146,7 +10146,7 @@
       "category_name": "Special",
       "sub_category_id": 5,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Unlimited Skill Use",
       "localized": {
         "localize_id": 21500000000129,
         "sub_category_label": "Unlimited Skill Use",
@@ -10191,7 +10191,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 10,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Barrier",
       "localized": {
         "localize_id": 21500000000130,
         "sub_category_label": "Barrier",
@@ -10356,7 +10356,7 @@
       "category_name": "AbnormalCondition",
       "sub_category_id": 14,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Protection Seal",
       "localized": {
         "localize_id": 21500000000131,
         "sub_category_label": "Protection Seal",
@@ -10401,7 +10401,7 @@
       "category_name": "GageUP",
       "sub_category_id": 17,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Skill Point UP",
       "localized": {
         "localize_id": 21500000000132,
         "sub_category_label": "Skill Point UP",
@@ -10476,7 +10476,7 @@
       "category_name": "GageUP",
       "sub_category_id": 18,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Skill Cost Limit UP",
       "localized": {
         "localize_id": 21500000000133,
         "sub_category_label": "Skill Cost Limit UP",
@@ -10521,7 +10521,7 @@
       "category_name": "GageUP",
       "sub_category_id": 19,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Protection Gauge UP",
       "localized": {
         "localize_id": 21500000000134,
         "sub_category_label": "Protection Gauge UP",
@@ -10566,7 +10566,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 1,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "All → Skills",
       "localized": {
         "localize_id": 21500000000135,
         "sub_category_label": "All → Skills",
@@ -10611,7 +10611,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 2,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Divine Protection → Skills",
       "localized": {
         "localize_id": 21500000000136,
         "sub_category_label": "Divine Protection → Skills",
@@ -10656,7 +10656,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 3,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Secrets → Skills",
       "localized": {
         "localize_id": 21500000000137,
         "sub_category_label": "Secrets → Skills",
@@ -10701,7 +10701,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 4,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Own → Skills",
       "localized": {
         "localize_id": 21500000000138,
         "sub_category_label": "Own → Skills",
@@ -10746,7 +10746,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 5,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Combos → Skills",
       "localized": {
         "localize_id": 21500000000139,
         "sub_category_label": "Combos → Skills",
@@ -10821,7 +10821,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 6,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "All → Divine Protection",
       "localized": {
         "localize_id": 21500000000140,
         "sub_category_label": "All → Divine Protection",
@@ -10896,7 +10896,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 7,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Skills → Divine Protection",
       "localized": {
         "localize_id": 21500000000141,
         "sub_category_label": "Skills → Divine Protection",
@@ -10941,7 +10941,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 8,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Secrets → Divine Protection",
       "localized": {
         "localize_id": 21500000000142,
         "sub_category_label": "Secrets → Divine Protection",
@@ -10986,7 +10986,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 9,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Own → Divine Protection",
       "localized": {
         "localize_id": 21500000000143,
         "sub_category_label": "Own → Divine Protection",
@@ -11031,7 +11031,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 10,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Combos → Divine Protection",
       "localized": {
         "localize_id": 21500000000144,
         "sub_category_label": "Combos → Divine Protection",
@@ -11106,7 +11106,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 11,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "All → Secrets",
       "localized": {
         "localize_id": 21500000000145,
         "sub_category_label": "All → Secrets",
@@ -11181,7 +11181,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 13,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Divine Protection → Secrets",
       "localized": {
         "localize_id": 21500000000146,
         "sub_category_label": "Divine Protection → Secrets",
@@ -11226,7 +11226,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 12,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Skills → Secrets",
       "localized": {
         "localize_id": 21500000000147,
         "sub_category_label": "Skills → Secrets",
@@ -11271,7 +11271,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 14,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Own → Secrets",
       "localized": {
         "localize_id": 21500000000148,
         "sub_category_label": "Own → Secrets",
@@ -11316,7 +11316,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 15,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Combos → Secrets",
       "localized": {
         "localize_id": 21500000000149,
         "sub_category_label": "Combos → Secrets",
@@ -11391,7 +11391,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 16,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "All → Unity",
       "localized": {
         "localize_id": 21500000000150,
         "sub_category_label": "All → Unity",
@@ -11436,7 +11436,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 17,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Divine Protection → Unity",
       "localized": {
         "localize_id": 21500000000151,
         "sub_category_label": "Divine Protection → Unity",
@@ -11481,7 +11481,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 18,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Secrets → Unity",
       "localized": {
         "localize_id": 21500000000152,
         "sub_category_label": "Secrets → Unity",
@@ -11526,7 +11526,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 19,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Own → Unity",
       "localized": {
         "localize_id": 21500000000153,
         "sub_category_label": "Own → Unity",
@@ -11571,7 +11571,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 20,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Combos → Unity",
       "localized": {
         "localize_id": 21500000000154,
         "sub_category_label": "Combos → Unity",
@@ -11616,7 +11616,7 @@
       "category_name": "Special",
       "sub_category_id": 6,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Second Move",
       "localized": {
         "localize_id": 21500000000155,
         "sub_category_label": "Second Move",
@@ -11691,7 +11691,7 @@
       "category_name": "Special",
       "sub_category_id": 7,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Skill Cost DOWN",
       "localized": {
         "localize_id": 21500000000156,
         "sub_category_label": "Skill Cost DOWN",
@@ -11766,7 +11766,7 @@
       "category_name": "Special",
       "sub_category_id": 8,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Skill Cost Reset",
       "localized": {
         "localize_id": 21500000000157,
         "sub_category_label": "Skill Cost Reset",
@@ -11811,7 +11811,7 @@
       "category_name": "Special",
       "sub_category_id": 10,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Protection Skill Usage 0%",
       "localized": {
         "localize_id": 21500000000158,
         "sub_category_label": "Protection Skill Usage 0%",
@@ -11856,7 +11856,7 @@
       "category_name": "Special",
       "sub_category_id": 11,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Recover HP",
       "localized": {
         "localize_id": 21500000000159,
         "sub_category_label": "Recover HP",
@@ -12591,7 +12591,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 11,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Continuous Heal",
       "localized": {
         "localize_id": 21500000000160,
         "sub_category_label": "Continuous Heal",
@@ -12666,7 +12666,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 12,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Resurrection",
       "localized": {
         "localize_id": 21500000000161,
         "sub_category_label": "Resurrection",
@@ -12711,7 +12711,7 @@
       "category_name": "Special",
       "sub_category_id": 12,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Max HP UP",
       "localized": {
         "localize_id": 21500000000162,
         "sub_category_label": "Max HP UP",
@@ -12876,7 +12876,7 @@
       "category_name": "GageDown",
       "sub_category_id": 4,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Secret Skill Gauge DOWN",
       "localized": {
         "localize_id": 21500000000163,
         "sub_category_label": "Secret Skill Gauge DOWN",
@@ -13311,7 +13311,7 @@
       "category_name": "GageUP",
       "sub_category_id": 20,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Secret Skill Gauge UP",
       "localized": {
         "localize_id": 21500000000164,
         "sub_category_label": "Secret Skill Gauge UP",
@@ -14586,7 +14586,7 @@
       "category_name": "Special",
       "sub_category_id": 13,
       "release_label": "",
-      "label": "2.1.30_system_common",
+      "label": "Direct Attack",
       "localized": {
         "localize_id": 21500000000165,
         "sub_category_label": "Direct Attack",
@@ -15441,7 +15441,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 61,
       "release_label": "",
-      "label": "202504_lottery_3.5th_anniversary_scout_start",
+      "label": "Magic Attack Damage UP",
       "localized": {
         "localize_id": 21500000000173,
         "sub_category_label": "Magic Attack Damage UP",
@@ -15576,7 +15576,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 62,
       "release_label": "",
-      "label": "202501_lottery_night_festival_scout_part2_start",
+      "label": "Physical Attack Damage UP",
       "localized": {
         "localize_id": 21500000000174,
         "sub_category_label": "Physical Attack Damage UP",
@@ -15711,7 +15711,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 72,
       "release_label": "",
-      "label": "202603_lottery_avenge_flame_scout_start",
+      "label": "Wind+ Damage UP",
       "localized": {
         "localize_id": 21500000000184,
         "sub_category_label": "Wind+ Damage UP",
@@ -15846,7 +15846,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 73,
       "release_label": "",
-      "label": "202506_lottery_azure_phantom_thief_scout_part3_start",
+      "label": "Space+ Damage UP",
       "localized": {
         "localize_id": 21500000000185,
         "sub_category_label": "Space+ Damage UP",
@@ -15891,7 +15891,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 75,
       "release_label": "",
-      "label": "202512_lottery_sao_scout_part2_start",
+      "label": "Light+ Damage UP",
       "localized": {
         "localize_id": 21500000000187,
         "sub_category_label": "Light+ Damage UP",
@@ -16026,7 +16026,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 85,
       "release_label": "",
-      "label": "202504_lottery_kurenai_no_hana_scout_start",
+      "label": "Physical Attack Damage Resistance DOWN",
       "localized": {
         "localize_id": 21500000000197,
         "sub_category_label": "Physical Attack Damage Resistance DOWN",
@@ -16101,7 +16101,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 93,
       "release_label": "",
-      "label": "202602_lottery_epitaph_scout_part2_start",
+      "label": "Fire+<br>Damage Resistance DOWN",
       "localized": {
         "localize_id": 21500000000205,
         "sub_category_label": "Fire+<br>Damage Resistance DOWN",
@@ -16176,7 +16176,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 97,
       "release_label": "",
-      "label": "202512_lottery_holynight_scout_part3_start",
+      "label": "Earth+<br>Damage Resistance DOWN",
       "localized": {
         "localize_id": 21500000000209,
         "sub_category_label": "Earth+<br>Damage Resistance DOWN",
@@ -16251,7 +16251,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 99,
       "release_label": "",
-      "label": "202504_lottery_3.5th_anniversary_scout_start",
+      "label": "Dark+<br>Damage Resistance DOWN",
       "localized": {
         "localize_id": 21500000000211,
         "sub_category_label": "Dark+<br>Damage Resistance DOWN",
@@ -16326,7 +16326,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 13,
       "release_label": "",
-      "label": "202503_lottery_school_chaos_comic_scout_part2_start",
+      "label": "Reckoning",
       "localized": {
         "localize_id": 21500000000251,
         "sub_category_label": "Reckoning",
@@ -16401,7 +16401,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 14,
       "release_label": "",
-      "label": "202503_lottery_school_chaos_comic_scout_part2_start",
+      "label": "Healing Reckoning",
       "localized": {
         "localize_id": 21500000000252,
         "sub_category_label": "Healing Reckoning",
@@ -16476,7 +16476,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 15,
       "release_label": "",
-      "label": "202503_lottery_school_chaos_comic_scout_part2_start",
+      "label": "Damage Absorption",
       "localized": {
         "localize_id": 21500000000253,
         "sub_category_label": "Damage Absorption",
@@ -16551,7 +16551,7 @@
       "category_name": "AbnormalCondition",
       "sub_category_id": 15,
       "release_label": "",
-      "label": "202504_lottery_kurenai_no_hana_scout_start",
+      "label": "Dread",
       "localized": {
         "localize_id": 21500000000254,
         "sub_category_label": "Dread",
@@ -16596,7 +16596,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 100,
       "release_label": "",
-      "label": "202504_lottery_kurenai_no_hana_scout_start",
+      "label": "Super Weakness<br>Resistance DOWN",
       "localized": {
         "localize_id": 21500000000255,
         "sub_category_label": "Super Weakness<br>Resistance DOWN",
@@ -16671,7 +16671,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 101,
       "release_label": "",
-      "label": "202504_lottery_3.5th_anniversary_scout_part2_start",
+      "label": "Aegis Rate UP",
       "localized": {
         "localize_id": 21500000000256,
         "sub_category_label": "Aegis Rate UP",
@@ -16776,7 +16776,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 102,
       "release_label": "",
-      "label": "202504_lottery_3.5th_anniversary_scout_part2_start",
+      "label": "Aegis Power UP",
       "localized": {
         "localize_id": 21500000000257,
         "sub_category_label": "Aegis Power UP",
@@ -16881,7 +16881,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 103,
       "release_label": "",
-      "label": "202504_lottery_3.5th_anniversary_scout_part2_start",
+      "label": "Aegis<br>Resistance DOWN",
       "localized": {
         "localize_id": 21500000000258,
         "sub_category_label": "Aegis<br>Resistance DOWN",
@@ -16956,7 +16956,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 69,
       "release_label": "",
-      "label": "202504_lottery_3.5th_anniversary_scout_part2_start",
+      "label": "Aegis<br>Resistance UP",
       "localized": {
         "localize_id": 21500000000259,
         "sub_category_label": "Aegis<br>Resistance UP",
@@ -17061,7 +17061,7 @@
       "category_name": "DamageDown",
       "sub_category_id": 70,
       "release_label": "",
-      "label": "202504_lottery_3.5th_anniversary_scout_part2_start",
+      "label": "Aegis Power DOWN",
       "localized": {
         "localize_id": 21500000000260,
         "sub_category_label": "Aegis Power DOWN",
@@ -17136,7 +17136,7 @@
       "category_name": "Special",
       "sub_category_id": 14,
       "release_label": "",
-      "label": "202505_lottery_3.5th_anniversary_scout_part3_start",
+      "label": "Soul of Combos<br>Gauge Active",
       "localized": {
         "localize_id": 21500000000261,
         "sub_category_label": "Soul of Combos<br>Gauge Active",
@@ -17271,7 +17271,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 16,
       "release_label": "",
-      "label": "202505_lottery_3.5th_anniversary_scout_part4_start",
+      "label": "Ultimate Manifestation",
       "localized": {
         "localize_id": 21500000000262,
         "sub_category_label": "Ultimate Manifestation",
@@ -17346,7 +17346,7 @@
       "category_name": "Special",
       "sub_category_id": 15,
       "release_label": "",
-      "label": "202505_lottery_azure_phantom_thief_scout_part1_start",
+      "label": "Final Combo Attack",
       "localized": {
         "localize_id": 21500000000263,
         "sub_category_label": "Final Combo Attack",
@@ -17391,7 +17391,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 17,
       "release_label": "",
-      "label": "202506_lottery_tales_of_series_scout_part1_start",
+      "label": "Resurrection (Tales)",
       "localized": {
         "localize_id": 21500000000264,
         "sub_category_label": "Resurrection (Tales)",
@@ -17436,7 +17436,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 104,
       "release_label": "",
-      "label": "202507_lottery_tales_of_series_scout_part2_start",
+      "label": "Apply Attribute",
       "localized": {
         "localize_id": 21500000000265,
         "sub_category_label": "Apply Attribute",
@@ -18081,7 +18081,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 18,
       "release_label": "",
-      "label": "202507_lottery_tales_of_series_scout_part3_start",
+      "label": "Therion",
       "localized": {
         "localize_id": 21500000000266,
         "sub_category_label": "Therion",
@@ -18126,7 +18126,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 19,
       "release_label": "",
-      "label": "202509_lottery_danmachi_scout_part2_start",
+      "label": "Ariel",
       "localized": {
         "localize_id": 21500000000267,
         "sub_category_label": "Ariel",
@@ -18171,7 +18171,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 20,
       "release_label": "",
-      "label": "202508_lottery_danmachi_scout_part1_start",
+      "label": "Unbreakable Spirit",
       "localized": {
         "localize_id": 21500000000268,
         "sub_category_label": "Unbreakable Spirit",
@@ -18216,7 +18216,7 @@
       "category_name": "AbnormalCondition",
       "sub_category_id": 16,
       "release_label": "",
-      "label": "202509_lottery_emperor_hero_wisdom_scout_start",
+      "label": "Chaos",
       "localized": {
         "localize_id": 21500000000269,
         "sub_category_label": "Chaos",
@@ -18261,7 +18261,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 21,
       "release_label": "",
-      "label": "202510_lottery_4th_anniversary_scout_part2_start",
+      "label": "All → Dragon Soul",
       "localized": {
         "localize_id": 21500000000270,
         "sub_category_label": "All → Dragon Soul",
@@ -18306,7 +18306,7 @@
       "category_name": "Special",
       "sub_category_id": 16,
       "release_label": "",
-      "label": "202510_lottery_4th_anniversary_scout_part2_start",
+      "label": "Protection<br> Combo Count UP",
       "localized": {
         "localize_id": 21500000000271,
         "sub_category_label": "Protection<br> Combo Count UP",
@@ -18351,7 +18351,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 105,
       "release_label": "",
-      "label": "202511_lottery_4th_anniversary_scout_part3_start",
+      "label": "Super Critical Rate UP",
       "localized": {
         "localize_id": 21500000000272,
         "sub_category_label": "Super Critical Rate UP",
@@ -18396,7 +18396,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 21,
       "release_label": "",
-      "label": "202511_lottery_4th_anniversary_scout_part4_start",
+      "label": "Dragon's Eye",
       "localized": {
         "localize_id": 21500000000273,
         "sub_category_label": "Dragon's Eye",
@@ -18441,7 +18441,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 106,
       "release_label": "",
-      "label": "202512_lottery_holynight_scout_part3_start",
+      "label": "Damage Resistance<br>Under Status Abnormality DOWN",
       "localized": {
         "localize_id": 21500000000274,
         "sub_category_label": "Damage Resistance<br>Under Status Abnormality DOWN",
@@ -18876,7 +18876,7 @@
       "category_name": "Special",
       "sub_category_id": 17,
       "release_label": "",
-      "label": "202511_lottery_holynight_scout_part1_start",
+      "label": "Instant Generation:<br>Soul of Combos",
       "localized": {
         "localize_id": 21500000000276,
         "sub_category_label": "Instant Generation:<br>Soul of Combos",
@@ -18921,7 +18921,7 @@
       "category_name": "AbnormalCondition",
       "sub_category_id": 17,
       "release_label": "",
-      "label": "202512_lottery_sao_scout_part1_start",
+      "label": "Forced Stun Charge",
       "localized": {
         "localize_id": 21500000000277,
         "sub_category_label": "Forced Stun Charge",
@@ -18996,7 +18996,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 22,
       "release_label": "",
-      "label": "202601_lottery_sao_scout_part3_start",
+      "label": "Sniper's Stance",
       "localized": {
         "localize_id": 21500000000278,
         "sub_category_label": "Sniper's Stance",
@@ -19041,7 +19041,7 @@
       "category_name": "ConditionChange",
       "sub_category_id": 23,
       "release_label": "",
-      "label": "202601_lottery_sao_scout_part4_start",
+      "label": "Perfection's Edge",
       "localized": {
         "localize_id": 21500000000279,
         "sub_category_label": "Perfection's Edge",
@@ -19086,7 +19086,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 107,
       "release_label": "",
-      "label": "202601_lottery_epitaph_scout_part1_start",
+      "label": "Burn Damage UP",
       "localized": {
         "localize_id": 21500000000280,
         "sub_category_label": "Burn Damage UP",
@@ -19161,7 +19161,7 @@
       "category_name": "Special",
       "sub_category_id": 18,
       "release_label": "",
-      "label": "202602_lottery_epitaph_scout_part3_start",
+      "label": "Burn Damage<br>Activation Count UP",
       "localized": {
         "localize_id": 21500000000281,
         "sub_category_label": "Burn Damage<br>Activation Count UP",
@@ -19206,7 +19206,7 @@
       "category_name": "Special",
       "sub_category_id": 19,
       "release_label": "",
-      "label": "202602_lottery_harbinger_scout_part1_start",
+      "label": "Water Dragon Resonance",
       "localized": {
         "localize_id": 21500000000282,
         "sub_category_label": "Water Dragon Resonance",
@@ -19251,7 +19251,7 @@
       "category_name": "DamageUP",
       "sub_category_id": 108,
       "release_label": "",
-      "label": "202603_lottery_harbinger_scout_part2_start",
+      "label": "Super Synergy Rate UP",
       "localized": {
         "localize_id": 21500000000283,
         "sub_category_label": "Super Synergy Rate UP",
@@ -19386,7 +19386,7 @@
       "category_name": "Special",
       "sub_category_id": 20,
       "release_label": "",
-      "label": "202603_lottery_avenge_flame_scout_start",
+      "label": "Status Effects Nullified",
       "localized": {
         "localize_id": 21500000000284,
         "sub_category_label": "Status Effects Nullified",
@@ -19461,7 +19461,7 @@
       "category_name": "Special",
       "sub_category_id": 21,
       "release_label": "",
-      "label": "202604_lottery_4.5th_anniversary_scout_part1_start",
+      "label": "Despot's Dominion",
       "localized": {
         "localize_id": 21500000000285,
         "sub_category_label": "Despot's Dominion",
@@ -19491,7 +19491,7 @@
           "attack_target_type_name": "RivalSideOne",
           "buff_target_type_name": "RivalSideOne",
           "buff_buff_type_name": "Buff",
-          "buff_parameter_type_name": null,
+          "buff_parameter_type_name": "Mimic",
           "card_target_type_name": "NormalTechnique",
           "card_effect_type_name": "BuffAttack",
           "system_system_effectt_type_name": "ChangeHandCardTypeFromTechnique",
@@ -19506,7 +19506,7 @@
       "category_name": "BuffChangeAct",
       "sub_category_id": 22,
       "release_label": "",
-      "label": "202604_lottery_4.5th_anniversary_scout_part1_start",
+      "label": "ALL → 1 Type (No DOWN Effects)",
       "localized": {
         "localize_id": 21500000000286,
         "sub_category_label": "ALL → 1 Type (No DOWN Effects)",
@@ -19539,7 +19539,7 @@
           "buff_parameter_type_name": "Hp",
           "card_target_type_name": "NormalTechnique",
           "card_effect_type_name": "BuffAttack",
-          "system_system_effectt_type_name": null,
+          "system_system_effectt_type_name": "ChangeHandCardTypeNotDebuff",
           "system_normal_card_type_name": "All",
           "condition_condition_effect_type_name": "NotActive"
         }
@@ -19547,7 +19547,7 @@
     }
   ],
   "meta": {
-    "base_dir": "D:\\Slime Isekai Memories Game Files\\Slime_Extractor\\new_folder_16_04_26",
-    "text_asset_dir": "D:\\Slime Isekai Memories Game Files\\Slime_Extractor\\new_folder_16_04_26\\TextAsset"
+    "base_dir": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage",
+    "text_asset_dir": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\TextAsset"
   }
 }

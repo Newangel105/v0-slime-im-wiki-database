@@ -34,9 +34,10 @@ const RARITY_ASSETS: Record<number, string> = {
 }
 
 function getMiniFramePath(tier: number, pfx: string) {
-  if (tier === 8) return `/frame/frame${pfx}M7_Epic.webp`
+  if (tier === 8) return `UI/Texture/CommonRarityAtlas/frame${pfx}M7_Epic.webp`
+  if (tier === 7) return `UI/Texture/CommonRarityAtlas/frame${pfx}M6_SpecialPlus.webp`
   const t = Math.min(Math.max(tier, 3), 7)
-  return `/frame/frame${pfx}M${t}.webp`
+  return `UI/Texture/CommonRarityAtlas/frame${pfx}M${t}.webp`
 }
 
 function getContrastColor(hex?: string) {
@@ -939,7 +940,7 @@ export default function TierMakerPage() {
                           onClick={() => setRoleFilter("protector")}
                           aria-label="Protector"
                         >
-                          <img src="/UI/Texture/CharaInfoAtlas/icSkillBlessLeader.webp" alt="" className="w-5 h-5 object-contain" />
+                          <img src="/UI/Texture/CommonLotteryInfoPanelAtlas/icCharaTypeBless.webp" alt="" className="w-5 h-5 object-contain" />
                         </button>
 
                         <button
@@ -947,7 +948,7 @@ export default function TierMakerPage() {
                           onClick={() => setRoleFilter("attacker")}
                           aria-label="Attacker"
                         >
-                          <img src="/UI/Texture/CharaInfoAtlas/icSkillAttacker.webp" alt="" className="w-5 h-5 object-contain" />
+                          <img src="/UI/Texture/CommonLotteryInfoPanelAtlas/icCharaTypePc.webp" alt="" className="w-5 h-5 object-contain" />
                         </button>
                       </div>
                     </div>

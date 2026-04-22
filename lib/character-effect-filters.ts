@@ -1,11 +1,13 @@
 import { normalizeLabel, stripColorTags } from "@/lib/pc-wiki"
 
+export type CharacterEffectFilterSkill = {
+  name?: string | null
+  description_max_level?: string | null
+}
+
 export type CharacterEffectFilterCharacter = {
   master_pc_id: number
-  skills: Array<{
-    name?: string
-    description_max_level?: string | null
-  }>
+  skills: CharacterEffectFilterSkill[]
   traits: Array<{
     name: string
     description_max_level?: string | null
@@ -290,12 +292,18 @@ function normalizeText(value: string): string {
     .trim()
 }
 
-function buildSegments(character: CharacterEffectFilterCharacter): string[] {
+function splitEffectClauses(value: string): string[] {
+  return value
+    .split(/\r?\n|[.;]+\s+/)
+    .map((part) => part.trim())
+    .filter(Boolean)
+}
+
+function buildSegmentsFromSkills(skills: CharacterEffectFilterSkill[]): string[] {
   return [
-    ...character.skills.flatMap((skill) => [skill.name ?? "", skill.description_max_level ?? ""]),
-    ...character.traits.flatMap((trait) => [trait.name, trait.description_max_level ?? ""]),
-    ...(character.ex_abilities ?? []).flatMap((ability) => [ability.name ?? "", ability.description ?? "", ...(ability.effects ?? [])]),
+    ...skills.flatMap((skill) => [skill.name ?? "", skill.description_max_level ?? ""]),
   ]
+    .flatMap(splitEffectClauses)
     .map(normalizeText)
     .filter(Boolean)
 }
@@ -305,7 +313,7 @@ function hasAlias(text: string, aliases: string[]): boolean {
 }
 
 function hasBuffAllContext(text: string): boolean {
-  return /(increases all allies|for all allies|including rearguard|force characters|all troop members|all vanguard allies)/.test(text)
+  return /(increases all(?: [a-z0-9-]+){0,4} allies|for all(?: [a-z0-9-]+){0,4} allies|including rearguard|force characters|all troop members|all vanguard allies)/.test(text)
 }
 
 function hasBuffSelfContext(text: string): boolean {
@@ -346,19 +354,7 @@ function addContextualMatches(tagSet: Set<string>, segments: string[], group: Gr
   }
 }
 
-export function getCharacterEffectTags(character: CharacterEffectFilterCharacter): Set<string> {
-  const cached = effectTagCache.get(character.master_pc_id)
-  if (cached) {
-    return cached
-  }
-
-  if (character.effect_tags?.length) {
-    const precomputed = new Set(character.effect_tags)
-    effectTagCache.set(character.master_pc_id, precomputed)
-    return precomputed
-  }
-
-  const segments = buildSegments(character)
+function getEffectTagsForSegments(segments: string[]): Set<string> {
   const tagSet = new Set<string>()
 
   for (const segment of segments) {
@@ -395,6 +391,64 @@ export function getCharacterEffectTags(character: CharacterEffectFilterCharacter
   addContextualMatches(tagSet, segments, groupDefinitions[9], hasDebuffSingleContext)
   addContextualMatches(tagSet, segments, groupDefinitions[10], hasHealContext)
 
+  return tagSet
+}
+
+function getEffectTagsForSkills(skills: CharacterEffectFilterSkill[]): Set<string> {
+  return getEffectTagsForSegments(buildSegmentsFromSkills(skills))
+}
+
+function buildFilterGroupsFromTagSets(tagSets: Iterable<Set<string>>): CharacterEffectFilterGroup[] {
+  const available = new Set<string>()
+
+  for (const tagSet of tagSets) {
+    for (const value of tagSet) {
+      available.add(value)
+    }
+  }
+
+  return groupDefinitions
+    .map((group) => ({
+      key: group.key,
+      title: group.title,
+      options: group.entries
+        .map((entry) => ({ label: entry.label, value: makeValue(group.key, entry.label) }))
+        .filter((option) => available.has(option.value)),
+    }))
+    .filter((group) => group.options.length > 0)
+}
+
+export function getSkillEffectTags(skill: CharacterEffectFilterSkill): Set<string> {
+  return getEffectTagsForSkills([skill])
+}
+
+export function skillMatchesEffectFilters(skill: CharacterEffectFilterSkill, selectedValues: string[]): boolean {
+  if (!selectedValues.length) {
+    return true
+  }
+
+  const tagSet = getSkillEffectTags(skill)
+  return selectedValues.every((value) => tagSet.has(value))
+}
+
+export function getSkillEffectFilterGroups(skills: CharacterEffectFilterSkill[]): CharacterEffectFilterGroup[] {
+  return buildFilterGroupsFromTagSets(skills.map((skill) => getSkillEffectTags(skill)))
+}
+
+export function getCharacterEffectTags(character: CharacterEffectFilterCharacter): Set<string> {
+  const cached = effectTagCache.get(character.master_pc_id)
+  if (cached) {
+    return cached
+  }
+
+  if (character.effect_tags?.length) {
+    const precomputed = new Set(character.effect_tags)
+    effectTagCache.set(character.master_pc_id, precomputed)
+    return precomputed
+  }
+
+  const tagSet = getEffectTagsForSkills(character.skills)
+
   effectTagCache.set(character.master_pc_id, tagSet)
   return tagSet
 }
@@ -409,21 +463,5 @@ export function characterMatchesEffectFilters(character: CharacterEffectFilterCh
 }
 
 export function getCharacterEffectFilterGroups(characters: CharacterEffectFilterCharacter[]): CharacterEffectFilterGroup[] {
-  const available = new Set<string>()
-
-  for (const character of characters) {
-    for (const value of getCharacterEffectTags(character)) {
-      available.add(value)
-    }
-  }
-
-  return groupDefinitions
-    .map((group) => ({
-      key: group.key,
-      title: group.title,
-      options: group.entries
-        .map((entry) => ({ label: entry.label, value: makeValue(group.key, entry.label) }))
-        .filter((option) => available.has(option.value)),
-    }))
-    .filter((group) => group.options.length > 0)
+  return buildFilterGroupsFromTagSets(characters.map((character) => getCharacterEffectTags(character)))
 }

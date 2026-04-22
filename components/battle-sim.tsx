@@ -92,10 +92,10 @@ export interface BaseRates {
 
 // ─── Element data ─────────────────────────────────────────────────────────────
 const ELEM_ICON: Record<string, string> = {
-  Fire: "/elements/fire.webp", Water: "/elements/water.webp",
-  Wind: "/elements/wind.webp", Earth: "/elements/earth.webp",
-  Light: "/elements/icElementlight.webp", Dark: "/elements/dark.webp",
-  Space: "/elements/icElementspace.webp",
+  Fire: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementFire.webp", Water: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementWater.webp",
+  Wind: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementWind.webp", Earth: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEarth.webp",
+  Light: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementLight.webp", Dark: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementDark.webp",
+  Space: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementSpace.webp",
 }
 const ELEM_COLOR: Record<string, string> = {
   Fire: "text-red-400", Water: "text-blue-400",
