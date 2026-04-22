@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useDeferredValue, useMemo, useState } from "react"
+import { useDeferredValue, useEffect, useMemo, useState } from "react"
 import { Search } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
@@ -13,6 +13,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import {
   getSkillEffectFilterGroups,
   getSkillEffectTags,
+  primeCharacterEffectFilterHeuristics,
   type CharacterEffectFilterGroup,
 } from "@/lib/character-effect-filters"
 import {
@@ -23,20 +24,41 @@ import {
   type WikiCharacter,
   type WikiSkill,
 } from "@/lib/pc-wiki"
+import { groupSkills, type SkillGroup } from "@/lib/skill-grouping"
 
-type SkillViewerEntry = {
-  character: WikiCharacter
+type SkillViewerVariantKey = "base" | "changed" | "attack" | "support"
+
+type SkillViewerVariant = {
+  key: SkillViewerVariantKey
   skill: WikiSkill
-  isProtector: boolean
   slotLabel: string
   variantNote: string | null
+  toggleLabel: string
   tags: string[]
+  searchText: string
+  tripleMode: "base" | "attack" | "support" | null
+}
+
+type SkillViewerEntry = {
+  id: string
+  character: WikiCharacter
+  isProtector: boolean
+  baseSkill: WikiSkill
+  sortSlot: string
+  changedLabel?: string
+  isSecretSkillSwap: boolean
+  isSecretTriple: boolean
+  variants: SkillViewerVariant[]
   searchText: string
 }
 
 type SkillViewerGroup = {
   character: WikiCharacter
-  entries: SkillViewerEntry[]
+  entries: FilteredSkillViewerEntry[]
+}
+
+type FilteredSkillViewerEntry = SkillViewerEntry & {
+  matchingVariantKeys: SkillViewerVariantKey[]
 }
 
 const STAR_ASSETS: Record<number, string> = {
@@ -108,12 +130,14 @@ function getVariantNote(skill: WikiSkill): string | null {
   return `Replaces ${replacedLabel}`
 }
 
-function buildSkillSearchText(character: WikiCharacter, skill: WikiSkill, slotLabel: string): string {
+function buildSkillSearchText(character: WikiCharacter, skill: WikiSkill, slotLabel: string, variantNote?: string | null): string {
   return normalizeLabel(
     [
       character.name,
       character.affiliation_name,
       slotLabel,
+      variantNote ?? "",
+      skill.special_skill_type ?? "",
       skill.name ?? "",
       stripColorTags(skill.description_max_level ?? ""),
     ].join(" "),
@@ -125,11 +149,11 @@ function sortGroups(groups: SkillViewerGroup[]): SkillViewerGroup[] {
     .map((group) => ({
       ...group,
       entries: [...group.entries].sort((left, right) => {
-        const slotDelta = (SLOT_ORDER[left.skill.slot] ?? 999) - (SLOT_ORDER[right.skill.slot] ?? 999)
+        const slotDelta = (SLOT_ORDER[left.sortSlot] ?? 999) - (SLOT_ORDER[right.sortSlot] ?? 999)
         if (slotDelta !== 0) {
           return slotDelta
         }
-        return left.skill.name.localeCompare(right.skill.name)
+        return left.baseSkill.name.localeCompare(right.baseSkill.name)
       }),
     }))
     .sort((left, right) => left.character.name.localeCompare(right.character.name))
@@ -159,6 +183,176 @@ function SkillIcon({ skill, size = 40 }: { skill: WikiSkill; size?: number }) {
   }
 
   return <img src={src} alt={skill.name} className="rounded-full object-cover flex-shrink-0" style={{ width: size, height: size }} />
+}
+
+const BATTLE_ATLAS = "/UI/Texture/BattleAtlas"
+
+function SecretSkillIcon({
+  skill,
+  tripleMode,
+  rarity,
+  baseSkill,
+}: {
+  skill: WikiSkill
+  tripleMode: "base" | "attack" | "support" | null
+  rarity?: number
+  baseSkill: WikiSkill
+}) {
+  const isAoe = baseSkill.description_max_level?.includes("all-target")
+  const effectiveType = tripleMode === "attack"
+    ? "Attack"
+    : tripleMode === "support"
+      ? "Support"
+      : tripleMode === "base"
+        ? null
+        : skill.special_skill_type
+  const cardFrame = effectiveType === "Attack"
+    ? `${BATTLE_ATLAS}/cardBaseSpAttack.webp`
+    : effectiveType === "Support"
+      ? `${BATTLE_ATLAS}/cardBaseSpSupport.webp`
+      : `${BATTLE_ATLAS}/cardBaseSp.webp`
+  const targetIcon = isAoe ? `${BATTLE_ATLAS}/icSpTypeAll.webp` : `${BATTLE_ATLAS}/icSpTypeSingle.webp`
+  const rarityIcon = rarity === 6 ? `${BATTLE_ATLAS}/icEpicOff.webp` : `${BATTLE_ATLAS}/icUltimateOff.webp`
+
+  return (
+    <div className="relative h-12 w-12 shrink-0">
+      <img src={cardFrame} alt="" className="absolute inset-0 h-full w-full object-contain" aria-hidden />
+      {skill.icon_path && (
+        <div className="absolute inset-[8px] overflow-hidden rounded-full">
+          <img
+            src={toPublicAssetPath(skill.icon_path)}
+            alt={skill.name}
+            className="h-full w-full scale-[1.35] object-cover object-top"
+          />
+        </div>
+      )}
+      <img src={targetIcon} alt={isAoe ? "All targets" : "Single target"} className="absolute bottom-0 left-0 z-[2] h-3.5 w-3.5 object-contain" />
+      <img src={rarityIcon} alt="" className="absolute bottom-0 left-1/2 z-[2] h-3.5 w-3.5 -translate-x-1/2 object-contain" aria-hidden />
+    </div>
+  )
+}
+
+function ViewerSkillIcon({
+  baseSkill,
+  skill,
+  tripleMode,
+  rarity,
+}: {
+  baseSkill: WikiSkill
+  skill: WikiSkill
+  tripleMode: "base" | "attack" | "support" | null
+  rarity?: number
+}) {
+  if (baseSkill.slot.startsWith("special_skill")) {
+    return <SecretSkillIcon skill={skill} tripleMode={tripleMode} rarity={rarity} baseSkill={baseSkill} />
+  }
+
+  return <SkillIcon skill={skill} size={38} />
+}
+
+function getVariantToggleLabel(group: SkillGroup, key: SkillViewerVariantKey, skill: WikiSkill): string {
+  if (group.attackVariant && group.supportVariant) {
+    if (key === "attack") return "Attack"
+    if (key === "support") return "Support"
+    return "Base"
+  }
+
+  if (key === "base") {
+    return group.isSecretSkillSwap ? group.base.special_skill_type ?? "Base" : "Base"
+  }
+
+  if (group.isSecretSkillSwap) {
+    return skill.special_skill_type ?? group.changedLabel ?? "Sub"
+  }
+
+  return group.changedLabel ?? "Skill Change"
+}
+
+function getVariantSlotLabel(group: SkillGroup, key: SkillViewerVariantKey, skill: WikiSkill): string {
+  if (group.base.slot === "special_skill") {
+    return SLOT_LABELS.special_skill
+  }
+
+  if (key === "changed" && group.changedLabel === "Ultimate Manifestation") {
+    return group.changedLabel
+  }
+
+  return getSlotLabel(skill)
+}
+
+function getVariantNoteForGroup(group: SkillGroup, key: SkillViewerVariantKey, skill: WikiSkill): string | null {
+  if (group.attackVariant && group.supportVariant) {
+    if (key === "attack") return "Attack"
+    if (key === "support") return "Support"
+    return null
+  }
+
+  if (group.isSecretSkillSwap) {
+    return key === "base"
+      ? group.base.special_skill_type ?? null
+      : skill.special_skill_type ?? group.changedLabel ?? null
+  }
+
+  if (key === "changed") {
+    return group.changedLabel ?? getVariantNote(skill)
+  }
+
+  return getVariantNote(skill)
+}
+
+function getVariantTripleMode(group: SkillGroup, key: SkillViewerVariantKey): "base" | "attack" | "support" | null {
+  if (!(group.attackVariant && group.supportVariant)) {
+    return null
+  }
+
+  if (key === "attack") return "attack"
+  if (key === "support") return "support"
+  return "base"
+}
+
+function buildSkillViewerVariant(
+  character: WikiCharacter,
+  group: SkillGroup,
+  skill: WikiSkill,
+  key: SkillViewerVariantKey,
+): SkillViewerVariant {
+  const slotLabel = getVariantSlotLabel(group, key, skill)
+  const variantNote = getVariantNoteForGroup(group, key, skill)
+
+  return {
+    key,
+    skill,
+    slotLabel,
+    variantNote,
+    toggleLabel: getVariantToggleLabel(group, key, skill),
+    tags: [...getSkillEffectTags(skill)],
+    searchText: buildSkillSearchText(character, skill, slotLabel, variantNote),
+    tripleMode: getVariantTripleMode(group, key),
+  }
+}
+
+function buildSkillViewerEntry(character: WikiCharacter, isProtector: boolean, group: SkillGroup): SkillViewerEntry {
+  const variants: SkillViewerVariant[] = [buildSkillViewerVariant(character, group, group.base, "base")]
+
+  if (group.attackVariant && group.supportVariant) {
+    variants.push(buildSkillViewerVariant(character, group, group.attackVariant, "attack"))
+    variants.push(buildSkillViewerVariant(character, group, group.supportVariant, "support"))
+  } else if (group.changed) {
+    variants.push(buildSkillViewerVariant(character, group, group.changed, "changed"))
+  }
+
+  return {
+    id: `${character.master_pc_id}:${group.base.slot}:${group.base.label}`,
+    character,
+    isProtector,
+    baseSkill: group.base,
+    sortSlot: group.base.slot,
+    changedLabel: group.changedLabel,
+    isSecretSkillSwap: !!group.isSecretSkillSwap,
+    isSecretTriple: !!(group.attackVariant && group.supportVariant),
+    variants,
+    searchText: normalizeLabel(variants.map((variant) => variant.searchText).join(" ")),
+  }
 }
 
 function RichSkillDesc({ text }: { text: string }) {
@@ -303,6 +497,202 @@ function SecretSkillTypeBadge({ type }: { type: string }) {
   )
 }
 
+function SkillVariantToggle({
+  entry,
+  selectedKey,
+  onSelect,
+}: {
+  entry: SkillViewerEntry
+  selectedKey: SkillViewerVariantKey
+  onSelect: (key: SkillViewerVariantKey) => void
+}) {
+  if (entry.variants.length <= 1) {
+    return null
+  }
+
+  const variantLabel = entry.changedLabel ?? "Skill Change"
+  const isUltManifest = variantLabel === "Ultimate Manifestation"
+  const toggleContainerClass = "flex w-fit items-center gap-1 rounded-xl bg-gray-700/60 p-1"
+
+  if (entry.isSecretTriple) {
+    return (
+      <div className={toggleContainerClass}>
+        {entry.variants.map((variant) => {
+          const isSelected = selectedKey === variant.key
+          const className = variant.key === "attack"
+            ? isSelected
+              ? "bg-orange-500/25 text-orange-300 shadow ring-1 ring-orange-500/40"
+              : "text-gray-500 hover:text-orange-400"
+            : variant.key === "support"
+              ? isSelected
+                ? "bg-blue-500/25 text-blue-300 shadow ring-1 ring-blue-500/40"
+                : "text-gray-500 hover:text-blue-400"
+              : isSelected
+                ? "bg-gray-900/60 text-white shadow"
+                : "text-gray-500 hover:text-gray-300"
+
+          return (
+            <button
+              key={variant.key}
+              onClick={() => onSelect(variant.key)}
+              className={`rounded-lg px-3 py-1 text-xs font-semibold transition-all ${className}`}
+            >
+              {variant.toggleLabel}
+            </button>
+          )
+        })}
+      </div>
+    )
+  }
+
+  if (entry.isSecretSkillSwap) {
+    return (
+      <div className={toggleContainerClass}>
+        {entry.variants.map((variant) => {
+          const isBase = variant.key === "base"
+          const isSelected = selectedKey === variant.key
+          const className = isBase
+            ? isSelected
+              ? "bg-orange-500/25 text-orange-300 shadow ring-1 ring-orange-500/40"
+              : "text-gray-500 hover:text-orange-400"
+            : isSelected
+              ? "bg-blue-500/25 text-blue-300 shadow ring-1 ring-blue-500/40"
+              : "text-gray-500 hover:text-blue-400"
+
+          return (
+            <button
+              key={variant.key}
+              onClick={() => onSelect(variant.key)}
+              className={`rounded-lg px-3 py-1 text-xs font-semibold transition-all ${className}`}
+            >
+              {variant.toggleLabel}
+            </button>
+          )
+        })}
+      </div>
+    )
+  }
+
+  return (
+    <div className={toggleContainerClass}>
+      {entry.variants.map((variant) => {
+        const isBase = variant.key === "base"
+        const isSelected = selectedKey === variant.key
+        const className = isBase
+          ? isSelected
+            ? "bg-gray-700 text-white shadow"
+            : "text-gray-500 hover:text-gray-300"
+          : isSelected
+            ? isUltManifest
+              ? "bg-purple-500/25 text-purple-300 shadow ring-1 ring-purple-500/40"
+              : "bg-amber-500/25 text-amber-300 shadow ring-1 ring-amber-500/40"
+            : isUltManifest
+              ? "text-gray-500 hover:text-purple-400"
+              : "text-gray-500 hover:text-amber-400"
+
+        return (
+          <button
+            key={variant.key}
+            onClick={() => onSelect(variant.key)}
+            className={`flex items-center gap-1.5 rounded-lg px-3 py-1 text-xs font-semibold transition-all ${className}`}
+          >
+            {!isBase && (
+              <span
+                className={`h-1.5 w-1.5 rounded-full ${
+                  isSelected
+                    ? isUltManifest
+                      ? "bg-purple-400"
+                      : "bg-amber-400"
+                    : "bg-gray-600"
+                }`}
+              />
+            )}
+            {variant.toggleLabel}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
+function SkillResultRow({
+  entry,
+  entryIndex,
+  groupSize,
+  showCharacterCells,
+  borderClass,
+}: {
+  entry: FilteredSkillViewerEntry
+  entryIndex: number
+  groupSize: number
+  showCharacterCells: boolean
+  borderClass: string
+}) {
+  const [selectedVariantKey, setSelectedVariantKey] = useState<SkillViewerVariantKey>(entry.matchingVariantKeys[0] ?? entry.variants[0].key)
+  const matchingVariantSignature = entry.matchingVariantKeys.join("|")
+
+  useEffect(() => {
+    setSelectedVariantKey(entry.matchingVariantKeys[0] ?? entry.variants[0].key)
+  }, [entry.id, matchingVariantSignature])
+
+  const selectedVariant = entry.variants.find((variant) => variant.key === selectedVariantKey) ?? entry.variants[0]
+
+  return (
+    <tr
+      className={`${entryIndex % 2 === 0 ? "bg-gray-900" : "bg-gray-900/60"} align-top ${entryIndex === groupSize - 1 ? borderClass : ""}`}
+    >
+      {showCharacterCells && (
+        <>
+          <td className="px-3 py-3" rowSpan={groupSize}>
+            <Link href={`/characters/${entry.character.master_pc_id}`} className="inline-flex">
+              <CharIcon character={entry.character} size={68} />
+            </Link>
+          </td>
+          <td className="px-3 py-3 font-semibold text-white" rowSpan={groupSize}>
+            <Link href={`/characters/${entry.character.master_pc_id}`} className="transition-colors hover:text-cyan-300">
+              {entry.character.name}
+            </Link>
+            <div className="mt-1 text-xs font-normal text-gray-500">{entry.character.affiliation_name}</div>
+          </td>
+        </>
+      )}
+      <td className="px-3 py-3">
+        <ViewerSkillIcon
+          baseSkill={entry.baseSkill}
+          skill={selectedVariant.skill}
+          tripleMode={selectedVariant.tripleMode}
+          rarity={entry.character.rarity}
+        />
+      </td>
+      <td className="px-3 py-3 text-xs font-medium text-yellow-300">
+        <div>{selectedVariant.slotLabel}</div>
+        {selectedVariant.variantNote && <div className="mt-1 text-[11px] text-gray-500">{selectedVariant.variantNote}</div>}
+      </td>
+      <td className="max-w-xl px-3 py-3">
+        <div className="mb-2 flex flex-wrap items-center gap-2">
+          <span className="font-semibold text-white">{selectedVariant.skill.name}</span>
+          {selectedVariant.skill.special_skill_type && <SecretSkillTypeBadge type={selectedVariant.skill.special_skill_type} />}
+          {selectedVariant.skill.skill_change_type && <SkillChangeTypeBadge type={selectedVariant.skill.skill_change_type} />}
+          {selectedVariant.skill.is_skill_change && !selectedVariant.skill.skill_change_type && (
+            <span className="inline-flex items-center rounded border border-amber-700/50 bg-amber-900/40 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-300">
+              Skill Change
+            </span>
+          )}
+        </div>
+        {entry.variants.length > 1 && (
+          <div className="mb-3">
+            <SkillVariantToggle entry={entry} selectedKey={selectedVariantKey} onSelect={setSelectedVariantKey} />
+          </div>
+        )}
+        <RichSkillDesc text={selectedVariant.skill.description_max_level ?? ""} />
+      </td>
+      <td className="px-3 py-3 text-center font-mono text-xs text-gray-300">
+        {selectedVariant.skill.cost != null ? selectedVariant.skill.cost : "—"}
+      </td>
+    </tr>
+  )
+}
+
 function SkillResultsTable({
   title,
   accentClass,
@@ -335,49 +725,14 @@ function SkillResultsTable({
             {groups.map((group, groupIndex) => {
               const borderClass = groupIndex < groups.length - 1 ? "border-b-2 border-gray-700" : ""
               return group.entries.map((entry, entryIndex) => (
-                <tr
-                  key={`${entry.character.master_pc_id}-${entry.skill.label}-${entryIndex}`}
-                  className={`${entryIndex % 2 === 0 ? "bg-gray-900" : "bg-gray-900/60"} align-top ${entryIndex === group.entries.length - 1 ? borderClass : ""}`}
-                >
-                  {entryIndex === 0 && (
-                    <>
-                      <td className="px-3 py-3" rowSpan={group.entries.length}>
-                        <Link href={`/characters/${entry.character.master_pc_id}`} className="inline-flex">
-                          <CharIcon character={entry.character} size={68} />
-                        </Link>
-                      </td>
-                      <td className="px-3 py-3 font-semibold text-white" rowSpan={group.entries.length}>
-                        <Link href={`/characters/${entry.character.master_pc_id}`} className="transition-colors hover:text-cyan-300">
-                          {entry.character.name}
-                        </Link>
-                        <div className="mt-1 text-xs font-normal text-gray-500">{entry.character.affiliation_name}</div>
-                      </td>
-                    </>
-                  )}
-                  <td className="px-3 py-3">
-                    <SkillIcon skill={entry.skill} size={38} />
-                  </td>
-                  <td className="px-3 py-3 text-xs font-medium text-yellow-300">
-                    <div>{entry.slotLabel}</div>
-                    {entry.variantNote && <div className="mt-1 text-[11px] text-gray-500">{entry.variantNote}</div>}
-                  </td>
-                  <td className="max-w-xl px-3 py-3">
-                    <div className="mb-2 flex flex-wrap items-center gap-2">
-                      <span className="font-semibold text-white">{entry.skill.name}</span>
-                      {entry.skill.special_skill_type && <SecretSkillTypeBadge type={entry.skill.special_skill_type} />}
-                      {entry.skill.skill_change_type && <SkillChangeTypeBadge type={entry.skill.skill_change_type} />}
-                      {entry.skill.is_skill_change && !entry.skill.skill_change_type && (
-                        <span className="inline-flex items-center rounded border border-amber-700/50 bg-amber-900/40 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-300">
-                          Skill Change
-                        </span>
-                      )}
-                    </div>
-                    <RichSkillDesc text={entry.skill.description_max_level ?? ""} />
-                  </td>
-                  <td className="px-3 py-3 text-center font-mono text-xs text-gray-300">
-                    {entry.skill.cost != null ? entry.skill.cost : "—"}
-                  </td>
-                </tr>
+                <SkillResultRow
+                  key={entry.id}
+                  entry={entry}
+                  entryIndex={entryIndex}
+                  groupSize={group.entries.length}
+                  showCharacterCells={entryIndex === 0}
+                  borderClass={borderClass}
+                />
               ))
             })}
           </tbody>
@@ -393,33 +748,24 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
   const deferredSearchText = useDeferredValue(searchText)
 
   const allEntries = useMemo<SkillViewerEntry[]>(() => {
+    primeCharacterEffectFilterHeuristics(characters.flatMap((character) => character.skills))
+
     return characters.flatMap((character) => {
       const protector = isProtectorCharacter(character)
-      return character.skills.map((skill) => {
-        const slotLabel = getSlotLabel(skill)
-        return {
-          character,
-          skill,
-          isProtector: protector,
-          slotLabel,
-          variantNote: getVariantNote(skill),
-          tags: [...getSkillEffectTags(skill)],
-          searchText: buildSkillSearchText(character, skill, slotLabel),
-        }
-      })
+      return groupSkills(character.skills).map((group) => buildSkillViewerEntry(character, protector, group))
     })
   }, [characters])
 
   const skillGroups = useMemo(
-    () => getSkillEffectFilterGroups(allEntries.map((entry) => entry.skill)),
+    () => getSkillEffectFilterGroups(allEntries.flatMap((entry) => entry.variants.map((variant) => variant.skill))),
     [allEntries],
   )
 
   const filterLabelMap = useMemo(() => {
-    const map = new Map<string, string>()
+    const map = new Map<string, { groupTitle: string; label: string }>()
     for (const group of skillGroups) {
       for (const option of group.options) {
-        map.set(option.value, option.label)
+        map.set(option.value, { groupTitle: group.title, label: option.label })
       }
     }
     return map
@@ -427,17 +773,28 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
 
   const hasSelectedSkillFilters = selectedSkillFilters.length > 0
   const normalizedQuery = normalizeLabel(deferredSearchText)
-  const filteredEntries = useMemo(() => {
+  const filteredEntries = useMemo<FilteredSkillViewerEntry[]>(() => {
     if (!hasSelectedSkillFilters) {
       return []
     }
 
-    return allEntries.filter((entry) => {
+    return allEntries.flatMap((entry) => {
       if (normalizedQuery && !entry.searchText.includes(normalizedQuery)) {
-        return false
+        return []
       }
 
-      return selectedSkillFilters.every((value) => entry.tags.includes(value))
+      const matchingVariantKeys = entry.variants
+        .filter((variant) => selectedSkillFilters.every((value) => variant.tags.includes(value)))
+        .map((variant) => variant.key)
+
+      if (matchingVariantKeys.length === 0) {
+        return []
+      }
+
+      return [{
+        ...entry,
+        matchingVariantKeys,
+      }]
     })
   }, [allEntries, hasSelectedSkillFilters, normalizedQuery, selectedSkillFilters])
 
@@ -468,7 +825,13 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
   const resultCharacterCount = useMemo(() => new Set(filteredEntries.map((entry) => entry.character.master_pc_id)).size, [filteredEntries])
 
   const activeFilterLabels = useMemo(
-    () => selectedSkillFilters.map((value) => ({ value, label: filterLabelMap.get(value) ?? value })),
+    () => selectedSkillFilters.map((value) => {
+      const info = filterLabelMap.get(value)
+      return {
+        value,
+        label: info ? `${info.groupTitle} ${info.label}` : value,
+      }
+    }),
     [filterLabelMap, selectedSkillFilters],
   )
 
@@ -528,8 +891,6 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
                   onClick={() => toggleSkillFilter(filter.value)}
                   className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-gray-700 px-3 py-1 text-xs text-gray-200 transition-colors hover:border-red-500/40 hover:bg-red-900/40 hover:text-white"
                 >
-                  <span className="text-gray-500">Skill</span>
-                  <span className="text-gray-500">·</span>
                   <span>{filter.label}</span>
                   <span className="ml-0.5 text-gray-400">×</span>
                 </button>

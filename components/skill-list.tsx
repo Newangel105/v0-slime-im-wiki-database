@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
+import { groupSkills, type SkillGroup } from "@/lib/skill-grouping"
 import { type WikiSkill, toPublicAssetPath } from "@/lib/pc-wiki"
 
 /* ── Inline description rendering (mirrors page's RichDescription) ── */
@@ -202,79 +203,6 @@ function SkillDescription({ text }: { text: string }) {
       })}
     </div>
   )
-}
-
-/* ── Grouping logic ── */
-
-type SkillGroup = {
-  base: WikiSkill
-  changed: WikiSkill | null
-  changedLabel?: string // defaults to "Skill Change"
-  isSecretSkillSwap?: boolean
-  // 3-state mode: base (_22) + Attack (_822) + Support (_823)
-  attackVariant?: WikiSkill | null
-  supportVariant?: WikiSkill | null
-}
-
-function groupSkills(skills: WikiSkill[]): SkillGroup[] {
-  // Build a lookup of skill change variants by the label they replace
-  const changesByReplaces = new Map<string, WikiSkill>()
-  for (const skill of skills) {
-    if (skill.is_skill_change && skill.replaces_label) {
-      changesByReplaces.set(skill.replaces_label, skill)
-    }
-  }
-
-  // Pair active_skill_3 with active_skill_1 as Ultimate Manifestation variant
-  const ultManifest = skills.find((s) => s.slot === "active_skill_3") ?? null
-  const skill1 = skills.find((s) => s.slot === "active_skill_1") ?? null
-
-  // Pair special_skill_sub with special_skill as Attack/Support swap (newer chars)
-  const specialSkillSub = skills.find((s) => s.slot === "special_skill_sub") ?? null
-  // 3-state mode for old chars: base (_22) + attack (_822) + support (_823)
-  const specialSkillAttack = skills.find((s) => s.slot === "special_skill_attack") ?? null
-  const specialSkillSupport = skills.find((s) => s.slot === "special_skill_support") ?? null
-
-  const groups: SkillGroup[] = []
-  for (const skill of skills) {
-    if (skill.is_skill_change) continue // handled as part of their base
-    if (skill.slot === "active_skill_3") continue // handled as part of active_skill_1
-    if (skill.slot === "special_skill_sub") continue // handled as part of special_skill
-    if (skill.slot === "special_skill_attack") continue // handled as part of special_skill
-    if (skill.slot === "special_skill_support") continue // handled as part of special_skill
-    if (ultManifest && skill1 && skill.label === skill1.label) {
-      groups.push({
-        base: skill,
-        changed: ultManifest,
-        changedLabel: "Ultimate Manifestation",
-      })
-      continue
-    }
-    if (skill.slot === "special_skill" && specialSkillAttack && specialSkillSupport) {
-      groups.push({
-        base: skill,
-        changed: null,
-        attackVariant: specialSkillAttack,
-        supportVariant: specialSkillSupport,
-      })
-      continue
-    }
-    if (skill.slot === "special_skill" && specialSkillSub) {
-      const subType = specialSkillSub.special_skill_type
-      groups.push({
-        base: skill,
-        changed: specialSkillSub,
-        changedLabel: subType ?? "Sub",
-        isSecretSkillSwap: true,
-      })
-      continue
-    }
-    groups.push({
-      base: skill,
-      changed: changesByReplaces.get(skill.label) ?? null,
-    })
-  }
-  return groups
 }
 
 const SKILL_CHANGE_TYPE_STYLES: Record<string, string> = {

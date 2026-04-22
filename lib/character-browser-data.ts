@@ -1,4 +1,4 @@
-import { getCharacterEffectTags } from "@/lib/character-effect-filters"
+import { getCharacterEffectTags, getSkillEffectTags, primeCharacterEffectFilterHeuristics } from "@/lib/character-effect-filters"
 import { getAllWikiCharacters, getCharMaxStats, normalizeLabel, stripColorTags, toPublicAssetPath, type WikiCharacter } from "@/lib/pc-wiki"
 
 export type BrowserForceEntry = {
@@ -15,6 +15,9 @@ export type BrowserCharacterSkill = {
 export type BrowserCharacterTrait = {
   name: string
   icon_path: string
+  description_max_level?: string
+  skill_filter_groups?: WikiCharacter["traits"][number]["skill_filter_groups"]
+  effect_tags?: string[]
 }
 
 export type BrowserCharacterUltimateType = "aoe" | "single" | null
@@ -179,6 +182,9 @@ function toBrowserCharacter(character: WikiCharacter, forceIconLookup: Map<strin
     traits: character.traits.map((trait) => ({
       name: trait.name,
       icon_path: trait.icon_path,
+      description_max_level: trait.description_max_level,
+      skill_filter_groups: trait.skill_filter_groups,
+      effect_tags: [...getSkillEffectTags(trait)],
     })),
     facilities: character.facilities,
     effect_tags: [...getCharacterEffectTags(character)],
@@ -189,6 +195,7 @@ function toBrowserCharacter(character: WikiCharacter, forceIconLookup: Map<strin
 }
 
 const allWikiCharacters = getAllWikiCharacters()
+primeCharacterEffectFilterHeuristics(allWikiCharacters.flatMap((character) => [...character.skills, ...character.traits]))
 const forceIconLookup = buildForceIconLookup(allWikiCharacters)
 const browserCharacters = allWikiCharacters.map((character) => toBrowserCharacter(character, forceIconLookup))
 

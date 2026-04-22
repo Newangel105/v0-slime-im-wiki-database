@@ -18,6 +18,13 @@ export type SkillFilterGroup = {
   master_skill_filter_group_id: number
   category_name: string
   sub_category_label: string
+  effect_family?: string
+  raw_effect_polarity?: string
+  target_type_name?: string
+  target_team?: string
+  target_scope?: string
+  change_source_label?: string
+  change_target_label?: string
 }
 
 export type WikiSkill = {
@@ -45,6 +52,7 @@ export type WikiTrait = {
   description_max_level: string
   icon_path: string
   unlock: string
+  skill_filter_groups?: SkillFilterGroup[]
 }
 
 export type WikiExAbility = {

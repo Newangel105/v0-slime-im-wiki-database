@@ -12,7 +12,7 @@ export default function SkillViewerPage() {
         <div>
           <h1 className="text-2xl font-extrabold tracking-tight text-white">Skill Viewer</h1>
           <p className="mt-1 text-sm text-gray-400">
-            Browse every character skill through the same heuristic filter groups used on the characters page.
+            Browse every character skill through skill filters
           </p>
         </div>
         <SkillViewerClient characters={characters} />

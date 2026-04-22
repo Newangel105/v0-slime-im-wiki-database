@@ -16,6 +16,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import {
   characterMatchesEffectFilters,
   getCharacterEffectFilterGroups,
+  getSkillEffectFilterGroups,
   type CharacterEffectFilterGroup,
 } from "@/lib/character-effect-filters"
 import { type BrowserCharacter } from "@/lib/character-browser-data"
@@ -36,6 +37,21 @@ type FilterOption = {
   value: string
   icon?: string
 }
+
+const STAR_ASSETS: Record<number, string> = {
+  3: "/stars/starCharaL3A.webp",
+  4: "/stars/starCharaL4A.webp",
+  5: "/stars/starCharaL5A.webp",
+  6: "/stars/starCharaL6A.webp",
+  7: "/stars/starCharaL7A.webp",
+  8: "/stars/starCharaL7_Epic.webp",
+}
+
+const RARITY_OPTIONS: FilterOption[] = [3, 4, 5, 6, 7, 8].map((rarity) => ({
+  label: `${rarity}★`,
+  value: String(rarity),
+  icon: STAR_ASSETS[rarity],
+}))
 
 const elementIconMap: Record<string, string> = {
   air: "/elements/space.webp",
@@ -603,8 +619,8 @@ function buildAllOptions(characters: BrowserCharacter[]) {
     tactics: buildTacticsOptions(characters.map((c) => c.tactics_type)),
     forces: buildForcesOptions(characters),
     skillGroups: getCharacterEffectFilterGroups(characters),
-    traitEffectMap: buildTraitEffectMap(characters, false),
-    valorTraitEffectMap: buildTraitEffectMap(characters, true),
+    traitGroups: getSkillEffectFilterGroups(characters.flatMap((character) => character.traits.filter((trait) => !isValorTrait(trait)))),
+    valorTraitGroups: getSkillEffectFilterGroups(characters.flatMap((character) => character.traits.filter((trait) => isValorTrait(trait)))),
     facilities: buildOptions(characters.flatMap((c) => c.facilities)),
   }
 }
@@ -619,8 +635,8 @@ const EMPTY_OPTIONS: CharacterBrowserOptions = {
   tactics: [],
   forces: [],
   skillGroups: [],
-  traitEffectMap: new Map(),
-  valorTraitEffectMap: new Map(),
+  traitGroups: [],
+  valorTraitGroups: [],
   facilities: [],
 }
 
@@ -840,52 +856,45 @@ function IconToggleBar({
   )
 }
 
+function RarityToggleBar({
+  selectedValues,
+  onToggle,
+  onClear,
+}: {
+  selectedValues: string[]
+  onToggle: (value: string) => void
+  onClear: () => void
+}) {
+  return (
+    <div className="flex flex-wrap items-center gap-2">
+      <button
+        className={`h-8 min-w-10 rounded px-2 text-xs transition-colors ${selectedValues.length === 0 ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
+        onClick={onClear}
+        aria-label="All rarities"
+      >
+        <span className="select-none">All</span>
+      </button>
+      {RARITY_OPTIONS.map((option) => {
+        const isSelected = selectedValues.includes(option.value)
+        return (
+          <button
+            key={option.value}
+            onClick={() => onToggle(option.value)}
+            title={option.label}
+            className={`flex h-8 w-8 items-center justify-center rounded p-0 transition-colors ${isSelected ? "bg-[#2a3444]" : "bg-transparent hover:bg-gray-600"}`}
+          >
+            {option.icon && <img src={option.icon} alt={option.label} className="h-5 w-5 object-contain" />}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
 // --- Trait helpers ---
 
 function isValorTrait(trait: { icon_path: string }): boolean {
   return trait.icon_path.includes("ArenaPassive")
-}
-
-// Strip trigger prefix so "HP - ATK UP" and "Soul Combo - ATK UP" both become "ATK UP"
-function getRegularTraitDisplay(rawName: string): string {
-  return rawName.replace(/^(HP|Soul Combo |Soul Combo|Troop|Effect|Switch)\s*[-–]\s*/i, "").trim()
-}
-
-// Explicit display names for valor traits
-const VALOR_DISPLAY_MAP: Record<string, string> = {
-  "Charge - Protection DOWN":                          "Protection DOWN",
-  "Late Battle - Protection DOWN":                     "Protection DOWN",
-  "Soul Combo - Protection DOWN":                      "Soul Combo Protection DOWN",
-  "Soul Combo - Skill DOWN":                           "Soul Combo Skill DOWN",
-  "Soul Combo - Secret DOWN":                          "Soul Combo Secret DOWN",
-  "Charge - Secret DOWN":                              "Charge Secret DOWN",
-  "Late Battle - Skill DOWN":                          "Skill DOWN",
-  "Switch - Bind":                                     "Bind",
-  "Switch - Skill Seal":                               "Skill Seal",
-  "Soul Combo - Soul of Skills Damage DOWN":           "Soul of Skills Damage DOWN",
-  "Soul Combo - Secret Damage DOWN":                   "Soul of Secret Damage DOWN",
-  "Soul Combo - Secret Soul Damage DOWN":              "Soul of Secret Damage DOWN",
-  "Soul Combo - Soul of Divine Protection Damage DOWN": "Soul of Divine Protection Damage DOWN",
-  "Soul Combo  - Counter Power DOWN":                  "Counterattack Resistance",
-  "Soul Combo - Guard Rate DOWN":                      "Guard Rate DOWN",
-}
-
-type TraitEffectMap = Map<string, string[]> // displayName → rawNames[]
-
-function buildTraitEffectMap(characters: BrowserCharacter[], valor: boolean): TraitEffectMap {
-  const map: TraitEffectMap = new Map()
-  for (const character of characters) {
-    for (const trait of character.traits) {
-      if (isValorTrait(trait) !== valor) continue
-      const display = valor
-        ? (VALOR_DISPLAY_MAP[trait.name] ?? getRegularTraitDisplay(trait.name))
-        : getRegularTraitDisplay(trait.name)
-      if (!map.has(display)) map.set(display, [])
-      const raws = map.get(display)!
-      if (!raws.includes(trait.name)) raws.push(trait.name)
-    }
-  }
-  return map
 }
 
 function GroupedToggleFilter({
@@ -977,6 +986,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   const [selectedWeapons, setSelectedWeapons] = useState<string[]>([])
   const [selectedRoles, setSelectedRoles] = useState<string[]>([])
   const [selectedUltimateTypes, setSelectedUltimateTypes] = useState<string[]>([])
+  const [selectedRarities, setSelectedRarities] = useState<string[]>([])
   const [sortKey, setSortKey] = useState<SortKey>("release_date")
   const [sortAsc, setSortAsc] = useState(false)
   const [showStats, setShowStats] = useState(true)
@@ -1018,6 +1028,9 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     const ulti = sp.get("ulti")
     if (ulti) setSelectedUltimateTypes(ulti.split(","))
 
+    const rarity = sp.get("rarity")
+    if (rarity) setSelectedRarities(rarity.split(","))
+
     const force = sp.get("force")
     if (force) setSelectedForces(force.split(","))
 
@@ -1051,6 +1064,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     if (selectedWeapons.length) params.set("weapon", selectedWeapons.join(","))
     if (selectedRoles.length) params.set("role", selectedRoles.join(","))
     if (selectedUltimateTypes.length) params.set("ulti", selectedUltimateTypes.join(","))
+    if (selectedRarities.length) params.set("rarity", selectedRarities.join(","))
     if (selectedForces.length) params.set("force", selectedForces.join(","))
     if (selectedFacilities.length) params.set("facility", selectedFacilities.join(","))
     if (selectedSkillFilters.length) params.set("skill", selectedSkillFilters.join(","))
@@ -1060,7 +1074,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     if (sortAsc) params.set("asc", "1")
     const qs = params.toString()
     router.replace(qs ? `/characters?${qs}` : "/characters", { scroll: false })
-  }, [searchText, selectedAttackerElements, selectedDefenderElements, selectedAttackTypes, selectedTactics, selectedWeapons, selectedRoles, selectedUltimateTypes, selectedForces, selectedFacilities, selectedSkillFilters, selectedTraitNames, selectedValorTraitNames, sortKey, sortAsc])
+  }, [searchText, selectedAttackerElements, selectedDefenderElements, selectedAttackTypes, selectedTactics, selectedWeapons, selectedRoles, selectedUltimateTypes, selectedRarities, selectedForces, selectedFacilities, selectedSkillFilters, selectedTraitNames, selectedValorTraitNames, sortKey, sortAsc])
 
   const [options, setOptions] = useState<CharacterBrowserOptions>(EMPTY_OPTIONS)
   useEffect(() => {
@@ -1140,6 +1154,12 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
           results.push(!!ultType && ultType === v)
         }
       }
+      if (selectedRarities.length) {
+        const visualTier = String(getCharacterVisualTier(character))
+        for (const v of selectedRarities) {
+          results.push(visualTier === v)
+        }
+      }
 
       // ── Multi-value filters: character can belong to multiple ──
       for (const v of selectedForces) {
@@ -1149,10 +1169,10 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
         results.push(character.facilities.includes(v))
       }
       for (const v of selectedTraitNames) {
-        results.push(character.traits.some((trait) => !isValorTrait(trait) && (options.traitEffectMap.get(v) ?? []).includes(trait.name)))
+        results.push(character.traits.some((trait) => !isValorTrait(trait) && trait.effect_tags?.includes(v)))
       }
       for (const v of selectedValorTraitNames) {
-        results.push(character.traits.some((trait) => isValorTrait(trait) && (options.valorTraitEffectMap.get(v) ?? []).includes(trait.name)))
+        results.push(character.traits.some((trait) => isValorTrait(trait) && trait.effect_tags?.includes(v)))
       }
 
       // Skill effect filters — push each selected value separately so filterMode controls them
@@ -1215,6 +1235,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     selectedWeapons,
     selectedRoles,
     selectedUltimateTypes,
+    selectedRarities,
     sortAsc,
     sortKey,
     options,
@@ -1232,7 +1253,8 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     selectedValorTraitNames.length +
     selectedFacilities.length +
     selectedRoles.length +
-    selectedUltimateTypes.length
+    selectedUltimateTypes.length +
+    selectedRarities.length
 
   const skillFilterLabelMap = useMemo(() => {
     const map = new Map<string, { groupTitle: string; label: string }>()
@@ -1243,6 +1265,26 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     }
     return map
   }, [options.skillGroups])
+
+  const traitFilterLabelMap = useMemo(() => {
+    const map = new Map<string, { groupTitle: string; label: string }>()
+    for (const group of options.traitGroups) {
+      for (const opt of group.options) {
+        map.set(opt.value, { groupTitle: group.title, label: opt.label })
+      }
+    }
+    return map
+  }, [options.traitGroups])
+
+  const valorTraitFilterLabelMap = useMemo(() => {
+    const map = new Map<string, { groupTitle: string; label: string }>()
+    for (const group of options.valorTraitGroups) {
+      for (const opt of group.options) {
+        map.set(opt.value, { groupTitle: group.title, label: opt.label })
+      }
+    }
+    return map
+  }, [options.valorTraitGroups])
 
   const activeFilterChips = useMemo(() => {
     const chips: { key: string; category: string; label: string; icon?: string; remove: () => void }[] = []
@@ -1274,6 +1316,10 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
       const opt = ULTIMATE_TYPE_OPTIONS.find((o) => o.value === v)
       chips.push({ key: `ut:${v}`, category: "Ultimate", label: opt?.label ?? v, icon: opt?.icon, remove: () => setSelectedUltimateTypes((prev) => prev.filter((x) => x !== v)) })
     }
+    for (const v of selectedRarities) {
+      const opt = RARITY_OPTIONS.find((o) => o.value === v)
+      chips.push({ key: `ra:${v}`, category: "Rarity", label: opt?.label ?? v, icon: opt?.icon, remove: () => setSelectedRarities((prev) => prev.filter((x) => x !== v)) })
+    }
     for (const v of selectedForces) {
       const opt = options.forces.find((o) => o.value === v)
       chips.push({ key: `fo:${v}`, category: "Force", label: v, icon: opt?.icon, remove: () => setSelectedForces((prev) => prev.filter((x) => x !== v)) })
@@ -1282,17 +1328,19 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
       chips.push({ key: `fa:${v}`, category: "Facility", label: v, remove: () => setSelectedFacilities((prev) => prev.filter((x) => x !== v)) })
     }
     for (const v of selectedTraitNames) {
-      chips.push({ key: `tr:${v}`, category: "Trait", label: v, remove: () => setSelectedTraitNames((prev) => prev.filter((x) => x !== v)) })
+      const info = traitFilterLabelMap.get(v)
+      chips.push({ key: `tr:${v}`, category: "Trait", label: info ? `${info.groupTitle} · ${info.label}` : v, remove: () => setSelectedTraitNames((prev) => prev.filter((x) => x !== v)) })
     }
     for (const v of selectedValorTraitNames) {
-      chips.push({ key: `vt:${v}`, category: "Valor Trait", label: v, remove: () => setSelectedValorTraitNames((prev) => prev.filter((x) => x !== v)) })
+      const info = valorTraitFilterLabelMap.get(v)
+      chips.push({ key: `vt:${v}`, category: "Valor Trait", label: info ? `${info.groupTitle} · ${info.label}` : v, remove: () => setSelectedValorTraitNames((prev) => prev.filter((x) => x !== v)) })
     }
     for (const v of selectedSkillFilters) {
       const info = skillFilterLabelMap.get(v)
       chips.push({ key: `sk:${v}`, category: "Skills", label: info ? `${info.groupTitle} · ${info.label}` : v, remove: () => setSelectedSkillFilters((prev) => prev.filter((x) => x !== v)) })
     }
     return chips
-  }, [selectedAttackerElements, selectedDefenderElements, selectedAttackTypes, selectedWeapons, selectedTactics, selectedRoles, selectedUltimateTypes, selectedForces, selectedFacilities, selectedTraitNames, selectedValorTraitNames, selectedSkillFilters, options, skillFilterLabelMap])
+  }, [selectedAttackerElements, selectedDefenderElements, selectedAttackTypes, selectedWeapons, selectedTactics, selectedRoles, selectedUltimateTypes, selectedRarities, selectedForces, selectedFacilities, selectedTraitNames, selectedValorTraitNames, selectedSkillFilters, options, skillFilterLabelMap, traitFilterLabelMap, valorTraitFilterLabelMap])
 
   // Virtualization settings
   const gridRef = useRef<HTMLDivElement>(null)
@@ -1790,6 +1838,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     setSelectedWeapons([])
     setSelectedRoles([])
     setSelectedUltimateTypes([])
+    setSelectedRarities([])
     setSortKey("release_date")
     setSortAsc(false)
     setFilterMode("OR")
@@ -1961,8 +2010,8 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
               <ToggleFilter title="Tactics" options={options.tactics} selectedValues={selectedTactics} onToggle={(value) => toggleValue(selectedTactics, setSelectedTactics, value)} />
               <ToggleFilter title="Forces" options={options.forces} selectedValues={selectedForces} onToggle={(value) => toggleValue(selectedForces, setSelectedForces, value)} />
               <GroupedToggleFilter title="Skills" groups={options.skillGroups} selectedValues={selectedSkillFilters} onToggle={(value) => toggleValue(selectedSkillFilters, setSelectedSkillFilters, value)} />
-              <ToggleFilter title="Traits" options={[...options.traitEffectMap.keys()].sort().map((k) => ({ label: k, value: k }))} selectedValues={selectedTraitNames} onToggle={(value) => toggleValue(selectedTraitNames, setSelectedTraitNames, value)} />
-              <ToggleFilter title="Valor Traits" options={[...options.valorTraitEffectMap.keys()].sort().map((k) => ({ label: k, value: k }))} selectedValues={selectedValorTraitNames} onToggle={(value) => toggleValue(selectedValorTraitNames, setSelectedValorTraitNames, value)} />
+              <GroupedToggleFilter title="Traits" groups={options.traitGroups} selectedValues={selectedTraitNames} onToggle={(value) => toggleValue(selectedTraitNames, setSelectedTraitNames, value)} />
+              <GroupedToggleFilter title="Valor Traits" groups={options.valorTraitGroups} selectedValues={selectedValorTraitNames} onToggle={(value) => toggleValue(selectedValorTraitNames, setSelectedValorTraitNames, value)} />
               <ToggleFilter title="Facilities" options={options.facilities} selectedValues={selectedFacilities} onToggle={(value) => toggleValue(selectedFacilities, setSelectedFacilities, value)} />
             </div>
 
@@ -1998,6 +2047,10 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                 <div className="flex items-center gap-2">
                   <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">Ulti</span>
                   <IconToggleBar options={ULTIMATE_TYPE_OPTIONS} selectedValues={selectedUltimateTypes} onToggle={(value) => toggleValue(selectedUltimateTypes, setSelectedUltimateTypes, value)} />
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">Rarity</span>
+                  <RarityToggleBar selectedValues={selectedRarities} onToggle={(value) => toggleValue(selectedRarities, setSelectedRarities, value)} onClear={() => setSelectedRarities([])} />
                 </div>
               </div>
             </div>
