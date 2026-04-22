@@ -39,12 +39,12 @@ type FilterOption = {
 }
 
 const STAR_ASSETS: Record<number, string> = {
-  3: "/stars/starCharaL3A.webp",
-  4: "/stars/starCharaL4A.webp",
-  5: "/stars/starCharaL5A.webp",
-  6: "/stars/starCharaL6A.webp",
-  7: "/stars/starCharaL7A.webp",
-  8: "/stars/starCharaL7_Epic.webp",
+  3: "/UI/Texture/CommonRarityAtlas/starCharaL3.webp",
+  4: "/UI/Texture/CommonRarityAtlas/starCharaL4.webp",
+  5: "/UI/Texture/CommonRarityAtlas/starCharaL5.webp",
+  6: "/UI/Texture/CommonRarityAtlas/starCharaL6.webp",
+  7: "/UI/Texture/CommonRarityAtlas/starCharaL6_SpecialPlus.webp",
+  8: "/UI/Texture/CommonRarityAtlas/starCharaL7_Epic.webp",
 }
 
 const RARITY_OPTIONS: FilterOption[] = [3, 4, 5, 6, 7, 8].map((rarity) => ({
@@ -54,10 +54,10 @@ const RARITY_OPTIONS: FilterOption[] = [3, 4, 5, 6, 7, 8].map((rarity) => ({
 }))
 
 const elementIconMap: Record<string, string> = {
-  air: "/elements/space.webp",
+  air: "/UI/Texture/CommonLotteryInfoPanelAtlas/space.webp",
   all: "/Image/IcElementBless/IcElementBlessAll.webp",
-  dark: "/elements/dark.webp",
-  earth: "/elements/earth.webp",
+  dark: "/UI/Texture/CommonLotteryInfoPanelAtlas/dark.webp",
+  earth: "/UI/Texture/CommonLotteryInfoPanelAtlas/earth.webp",
   enhancedair: "/Image/IcElementBless/IcElementBlessEnhancedAir.webp",
   enhanceddark: "/Image/IcElementBless/IcElementBlessEnhancedDark.webp",
   enhancedearth: "/Image/IcElementBless/IcElementBlessEnhancedEarth.webp",
@@ -65,12 +65,12 @@ const elementIconMap: Record<string, string> = {
   enhancedholy: "/Image/IcElementBless/IcElementBlessEnhancedHoly.webp",
   enhancedwater: "/Image/IcElementBless/IcElementBlessEnhancedWater.webp",
   enhancedwind: "/Image/IcElementBless/IcElementBlessEnhancedWind.webp",
-  fire: "/elements/fire.webp",
-  holy: "/elements/light.webp",
-  light: "/elements/icElementlight.webp",
+  fire: "/UI/Texture/CommonLotteryInfoPanelAtlas/fire.webp",
+  holy: "/UI/Texture/CommonLotteryInfoPanelAtlas/light.webp",
+  light: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementHoly.webp",
   magic: "/Image/IcElementBless/IcElementBlessMagic.webp",
   physics: "/Image/IcElementBless/IcElementBlessPhysics.webp",
-  space: "/elements/icElementspace.webp",
+  space: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementAir.webp",
   special: "/Image/IcElementBless/IcElementBlessSpecial.webp",
   
   specialeffectelementair: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.webp",
@@ -88,58 +88,58 @@ const elementIconMap: Record<string, string> = {
   specialeffectelementnone: "/Image/IcElementBless/IcElementBlessSpecialEffectElementNone.webp",
   specialeffectelementwater: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWater.webp",
   specialeffectelementwind: "/Image/IcElementBless/IcElementBlessSpecialEffectElementWind.webp",
-  water: "/elements/water.webp",
-  wind: "/elements/wind.webp",
+  water: "/UI/Texture/CommonLotteryInfoPanelAtlas/water.webp",
+  wind: "/UI/Texture/CommonLotteryInfoPanelAtlas/wind.webp",
 }
 
 // "Increases <element> ATK by" → base element icon (e.g. wind.webp)
 const defenderBaseElementIconMap: Record<string, string> = {
-  air: "/elements/space.webp",
-  dark: "/elements/dark.webp",
-  earth: "/elements/earth.webp",
-  fire: "/elements/fire.webp",
-  holy: "/elements/light.webp",
-  water: "/elements/water.webp",
-  wind: "/elements/wind.webp",
+  air: "/UI/Texture/CommonLotteryInfoPanelAtlas/space.webp",
+  dark: "/UI/Texture/CommonLotteryInfoPanelAtlas/dark.webp",
+  earth: "/UI/Texture/CommonLotteryInfoPanelAtlas/earth.webp",
+  fire: "/UI/Texture/CommonLotteryInfoPanelAtlas/fire.webp",
+  holy: "/UI/Texture/CommonLotteryInfoPanelAtlas/light.webp",
+  water: "/UI/Texture/CommonLotteryInfoPanelAtlas/water.webp",
+  wind: "/UI/Texture/CommonLotteryInfoPanelAtlas/wind.webp",
 }
 
 // "damage done by ... to <element> attribute enemies" → Anti icon (e.g. Anti-Wind.webp)
 const defenderAntiElementIconMap: Record<string, string> = {
-  air: "/elements/Anti-Space.webp",
-  dark: "/elements/Anti-Dark.webp",
-  earth: "/elements/Anti-Earth.webp",
-  fire: "/elements/Anti-Fire.webp",
-  holy: "/elements/Anti-Light.webp",
-  water: "/elements/Anti-Water.webp",
-  wind: "/elements/Anti-Wind.webp",
+  air: "/UI/Texture/CommonLotteryInfoPanelAtlas/Anti-Space.webp",
+  dark: "/UI/Texture/CommonLotteryInfoPanelAtlas/Anti-Dark.webp",
+  earth: "/UI/Texture/CommonLotteryInfoPanelAtlas/Anti-Earth.webp",
+  fire: "/UI/Texture/CommonLotteryInfoPanelAtlas/Anti-Fire.webp",
+  holy: "/UI/Texture/CommonLotteryInfoPanelAtlas/Anti-Light.webp",
+  water: "/UI/Texture/CommonLotteryInfoPanelAtlas/Anti-Water.webp",
+  wind: "/UI/Texture/CommonLotteryInfoPanelAtlas/Anti-Wind.webp",
 }
 
 // Same as Anti but for EX Unbound protectors → unbound icon (e.g. anti_wind_attribute_unbound.webp)
 const defenderAntiExElementIconMap: Record<string, string> = {
-  air: "/elements/anti_space_attribute_unbound.webp",
-  dark: "/elements/anti_dark_attribute_unbound.webp",
-  earth: "/elements/anti_earth_attribute_unbound.webp",
-  fire: "/elements/anti_fire_attribute_unbound.webp",
-  holy: "/elements/anti_light_attribute_unbound.webp",
-  water: "/elements/anti_water_attribute_unbound.webp",
-  wind: "/elements/anti_wind_attribute_unbound.webp",
+  air: "/UI/Texture/CommonLotteryInfoPanelAtlas/anti_space_attribute_unbound.webp",
+  dark: "/UI/Texture/CommonLotteryInfoPanelAtlas/anti_dark_attribute_unbound.webp",
+  earth: "/UI/Texture/CommonLotteryInfoPanelAtlas/anti_earth_attribute_unbound.webp",
+  fire: "/UI/Texture/CommonLotteryInfoPanelAtlas/anti_fire_attribute_unbound.webp",
+  holy: "/UI/Texture/CommonLotteryInfoPanelAtlas/anti_light_attribute_unbound.webp",
+  water: "/UI/Texture/CommonLotteryInfoPanelAtlas/anti_water_attribute_unbound.webp",
+  wind: "/UI/Texture/CommonLotteryInfoPanelAtlas/anti_wind_attribute_unbound.webp",
 }
 
 const attackerElementIconMap: Record<string, string> = {
-  air: "/elements/icElementspace.webp",
-  dark: "/elements/icElementDark.webp",
-  earth: "/elements/icElementEarth.webp",
-  enhancedair: "/elements/Enhancedspace.webp",
-  enhanceddark: "/elements/Enhanceddark.webp",
-  enhancedearth: "/elements/Enhancedearth.webp",
-  enhancedfire: "/elements/Enhancedfire.webp",
-  enhancedholy: "/elements/Enhancedlight.webp",
-  enhancedwater: "/elements/Enhancedwater.webp",
-  enhancedwind: "/elements/Enhancedwind.webp",
-  fire: "/elements/icElementFire.webp",
-  holy: "/elements/icElementlight.webp",
-  water: "/elements/icElementWater.webp",
-  wind: "/elements/icElementWind.webp",
+  air: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementAir.webp",
+  dark: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementDark.webp",
+  earth: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEarth.webp",
+  enhancedair: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedAir.webp",
+  enhanceddark: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhanceddark.webp",
+  enhancedearth: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedearth.webp",
+  enhancedfire: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedfire.webp",
+  enhancedholy: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedHoly.webp",
+  enhancedwater: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedwater.webp",
+  enhancedwind: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedwind.webp",
+  fire: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementFire.webp",
+  holy: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementHoly.webp",
+  water: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementWater.webp",
+  wind: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementWind.webp",
 }
 
 const leaderSkillElementPatterns: [RegExp, string][] = [
@@ -399,8 +399,8 @@ function getCharacterElementIcons(character: BrowserCharacter): { icon: string; 
 }
 
 const attackTypeIconMap: Record<string, string> = {
-  magic: "/type_dmg/icAttackTypeMagic.webp",
-  physical: "/type_dmg/icAttackTypePhysics.webp",
+  magic: "/UI/Texture/CommonLotteryInfoPanelAtlas/icAttackTypeMagic.webp",
+  physical: "/UI/Texture/CommonLotteryInfoPanelAtlas/icAttackTypePhysical.webp",
 }
 
 const weaponIconMap: Record<string, string> = {
@@ -565,12 +565,12 @@ function getCharacterBase(character: BrowserCharacter): string {
 }
 
 const starAssetMap: Record<number, string> = {
-  3: "/stars/starCharaL3A.webp",
-  4: "/stars/starCharaL4A.webp",
-  5: "/stars/starCharaL5A.webp",
-  6: "/stars/starCharaL6A.webp",
-  7: "/stars/starCharaL7A.webp",
-  8: "/stars/starCharaL7_Epic.webp",
+  3: "/UI/Texture/CommonRarityAtlas/starCharaL3.webp",
+  4: "/UI/Texture/CommonRarityAtlas/starCharaL4.webp",
+  5: "/UI/Texture/CommonRarityAtlas/starCharaL5.webp",
+  6: "/UI/Texture/CommonRarityAtlas/starCharaL6.webp",
+  7: "/UI/Texture/CommonRarityAtlas/starCharaL6_SpecialPlus.webp",
+  8: "/UI/Texture/CommonRarityAtlas/starCharaL7_Epic.webp",
 }
 
 const elementColorMap: Record<string, string> = {

@@ -14,20 +14,20 @@ const statIconMap: Record<string, string> = {
 }
 
 const atkTypeIconMap: Record<string, string> = {
-  "p-": "/type_dmg/icAttackTypePhysics.webp",
-  "m-": "/type_dmg/icAttackTypeMagic.webp",
+  "p-": "/UI/Texture/CommonLotteryInfoPanelAtlas/icAttackTypePhysical.webp",
+  "m-": "/UI/Texture/CommonLotteryInfoPanelAtlas/icAttackTypeMagic.webp",
 }
 
 const inlineElementIconMap: Record<string, string> = {
-  fire: "/elements/icElementFire.webp",
-  water: "/elements/icElementWater.webp",
-  earth: "/elements/icElementEarth.webp",
-  wind: "/elements/icElementWind.webp",
-  dark: "/elements/icElementDark.webp",
-  light: "/elements/icElementlight.webp",
-  holy: "/elements/icElementlight.webp",
-  space: "/elements/icElementspace.webp",
-  air: "/elements/icElementspace.webp",
+  fire: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementFire.webp",
+  water: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementWater.webp",
+  earth: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEarth.webp",
+  wind: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementWind.webp",
+  dark: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementDark.webp",
+  light: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementHoly.webp",
+  holy: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementHoly.webp",
+  space: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementAir.webp",
+  air: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementAir.webp",
 }
 
 type Seg =

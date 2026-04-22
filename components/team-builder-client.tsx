@@ -189,22 +189,22 @@ function elementMatches(charEl: string, filterKey: string): boolean {
 
 // ---- FILTER OPTION DEFINITIONS ----
 const NORMAL_ELEMENTS = [
-  { key: "Air", label: "Air", icon: "/elements/space.webp" },
-  { key: "Holy", label: "Holy", icon: "/elements/light.webp" },
-  { key: "Dark", label: "Dark", icon: "/elements/dark.webp" },
-  { key: "Fire", label: "Fire", icon: "/elements/fire.webp" },
-  { key: "Wind", label: "Wind", icon: "/elements/wind.webp" },
-  { key: "Water", label: "Water", icon: "/elements/water.webp" },
-  { key: "Earth", label: "Earth", icon: "/elements/earth.webp" },
+  { key: "Air", label: "Air", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/space.webp" },
+  { key: "Holy", label: "Holy", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/light.webp" },
+  { key: "Dark", label: "Dark", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/dark.webp" },
+  { key: "Fire", label: "Fire", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/fire.webp" },
+  { key: "Wind", label: "Wind", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/wind.webp" },
+  { key: "Water", label: "Water", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/water.webp" },
+  { key: "Earth", label: "Earth", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/earth.webp" },
 ]
 const ENHANCED_ELEMENTS = [
-  { key: "EnhancedAir", label: "Air+", icon: "/elements/Enhancedspace.webp" },
-  { key: "EnhancedHoly", label: "Holy+", icon: "/elements/Enhancedlight.webp" },
-  { key: "EnhancedDark", label: "Dark+", icon: "/elements/Enhanceddark.webp" },
-  { key: "EnhancedFire", label: "Fire+", icon: "/elements/Enhancedfire.webp" },
-  { key: "EnhancedWind", label: "Wind+", icon: "/elements/Enhancedwind.webp" },
-  { key: "EnhancedWater", label: "Water+", icon: "/elements/Enhancedwater.webp" },
-  { key: "EnhancedEarth", label: "Earth+", icon: "/elements/Enhancedearth.webp" },
+  { key: "EnhancedAir", label: "Air+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedAir.webp" },
+  { key: "EnhancedHoly", label: "Holy+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedHoly.webp" },
+  { key: "EnhancedDark", label: "Dark+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhanceddark.webp" },
+  { key: "EnhancedFire", label: "Fire+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedfire.webp" },
+  { key: "EnhancedWind", label: "Wind+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedwind.webp" },
+  { key: "EnhancedWater", label: "Water+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedwater.webp" },
+  { key: "EnhancedEarth", label: "Earth+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedearth.webp" },
 ]
 const SPECIAL_EFFECT_ELEMENTS = [
   { key: "SpecialEffectElementAir", label: "SE Air", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.webp" },
@@ -231,8 +231,8 @@ const PROT_SUPPORT_TYPES = [
   { key: "special", label: "Special", icon: "/Image/IcElementBless/IcElementBlessSpecial.webp" },
 ]
 const ATTACK_TYPES = [
-  { key: "Physical", label: "Physical", icon: "/type_dmg/icAttackTypePhysics.webp" },
-  { key: "Magic", label: "Magic", icon: "/type_dmg/icAttackTypeMagic.webp" },
+  { key: "Physical", label: "Physical", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icAttackTypePhysical.webp" },
+  { key: "Magic", label: "Magic", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icAttackTypeMagic.webp" },
 ]
 const TACTICS_TYPES = [
   { key: "Speed", label: "Speed", icon: "/L10NAssets/En/Image/Tactics/tactics_002.webp" },
@@ -241,25 +241,25 @@ const TACTICS_TYPES = [
   { key: "Normal", label: "Neutral", icon: "/L10NAssets/En/Image/Tactics/tactics_001.webp" },
 ]
 const STAR_ASSETS: Record<number, string> = {
-  3: "/stars/starCharaL3A.webp", 4: "/stars/starCharaL4A.webp",
-  5: "/stars/starCharaL5A.webp", 6: "/stars/starCharaL6A.webp", 7: "/stars/starCharaL7A.webp",
-  8: "/stars/starCharaL7_Epic.webp",
+  3: "/UI/Texture/CommonRarityAtlas/starCharaL3.webp", 4: "/UI/Texture/CommonRarityAtlas/starCharaL4.webp",
+  5: "/UI/Texture/CommonRarityAtlas/starCharaL5.webp", 6: "/UI/Texture/CommonRarityAtlas/starCharaL6.webp", 7: "/UI/Texture/CommonRarityAtlas/starCharaL6_SpecialPlus.webp",
+  8: "/UI/Texture/CommonRarityAtlas/starCharaL7_Epic.webp",
 }
 
 // Card overlay icons
 const ATTACKER_ELEMENT_ICONS: Record<string, string> = {
-  air: "/elements/icElementspace.webp", dark: "/elements/icElementDark.webp",
-  earth: "/elements/icElementEarth.webp", fire: "/elements/icElementFire.webp",
-  holy: "/elements/icElementlight.webp", water: "/elements/icElementWater.webp",
-  wind: "/elements/icElementWind.webp",
-  enhancedair: "/elements/Enhancedspace.webp", enhanceddark: "/elements/Enhanceddark.webp",
-  enhancedearth: "/elements/Enhancedearth.webp", enhancedfire: "/elements/Enhancedfire.webp",
-  enhancedholy: "/elements/Enhancedlight.webp", enhancedwater: "/elements/Enhancedwater.webp",
-  enhancedwind: "/elements/Enhancedwind.webp",
+  air: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementAir.webp", dark: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementDark.webp",
+  earth: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEarth.webp", fire: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementFire.webp",
+  holy: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementHoly.webp", water: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementWater.webp",
+  wind: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementWind.webp",
+  enhancedair: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedAir.webp", enhanceddark: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhanceddark.webp",
+  enhancedearth: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedearth.webp", enhancedfire: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedfire.webp",
+  enhancedholy: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedHoly.webp", enhancedwater: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedwater.webp",
+  enhancedwind: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedwind.webp",
 }
 const ATK_TYPE_ICONS: Record<string, string> = {
-  physical: "/type_dmg/icAttackTypePhysics.webp",
-  magic: "/type_dmg/icAttackTypeMagic.webp",
+  physical: "/UI/Texture/CommonLotteryInfoPanelAtlas/icAttackTypePhysical.webp",
+  magic: "/UI/Texture/CommonLotteryInfoPanelAtlas/icAttackTypeMagic.webp",
 }
 
 // ---- Protector detection ----

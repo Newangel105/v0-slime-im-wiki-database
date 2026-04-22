@@ -31,20 +31,20 @@ import {
 
 /* ── Attacker element icons (same as character-browser attackerElementIconMap) ── */
 const attackerElementIconMap: Record<string, string> = {
-  air: "/elements/icElementspace.webp",
-  dark: "/elements/icElementDark.webp",
-  earth: "/elements/icElementEarth.webp",
-  enhancedair: "/elements/Enhancedspace.webp",
-  enhanceddark: "/elements/Enhanceddark.webp",
-  enhancedearth: "/elements/Enhancedearth.webp",
-  enhancedfire: "/elements/Enhancedfire.webp",
-  enhancedholy: "/elements/Enhancedlight.webp",
-  enhancedwater: "/elements/Enhancedwater.webp",
-  enhancedwind: "/elements/Enhancedwind.webp",
-  fire: "/elements/icElementFire.webp",
-  holy: "/elements/icElementlight.webp",
-  water: "/elements/icElementWater.webp",
-  wind: "/elements/icElementWind.webp",
+  air: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementAir.webp",
+  dark: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementDark.webp",
+  earth: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEarth.webp",
+  enhancedair: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedAir.webp",
+  enhanceddark: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhanceddark.webp",
+  enhancedearth: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedearth.webp",
+  enhancedfire: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedfire.webp",
+  enhancedholy: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedHoly.webp",
+  enhancedwater: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedwater.webp",
+  enhancedwind: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedwind.webp",
+  fire: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementFire.webp",
+  holy: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementHoly.webp",
+  water: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementWater.webp",
+  wind: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementWind.webp",
 }
 
 /* ── Protector / defender element icons ── */
@@ -59,23 +59,23 @@ const defenderBaseElementIconMap: Record<string, string> = {
 }
 
 const defenderAntiElementIconMap: Record<string, string> = {
-  fire: "/elements/Anti-Fire.webp",
-  water: "/elements/Anti-Water.webp",
-  earth: "/elements/Anti-Earth.webp",
-  air: "/elements/Anti-Space.webp",
-  wind: "/elements/Anti-Wind.webp",
-  dark: "/elements/Anti-Dark.webp",
-  holy: "/elements/Anti-Light.webp",
+  fire: "/UI/Texture/CommonLotteryInfoPanelAtlas/Anti-Fire.webp",
+  water: "/UI/Texture/CommonLotteryInfoPanelAtlas/Anti-Water.webp",
+  earth: "/UI/Texture/CommonLotteryInfoPanelAtlas/Anti-Earth.webp",
+  air: "/UI/Texture/CommonLotteryInfoPanelAtlas/Anti-Space.webp",
+  wind: "/UI/Texture/CommonLotteryInfoPanelAtlas/Anti-Wind.webp",
+  dark: "/UI/Texture/CommonLotteryInfoPanelAtlas/Anti-Dark.webp",
+  holy: "/UI/Texture/CommonLotteryInfoPanelAtlas/Anti-Light.webp",
 }
 
 const defenderAntiExElementIconMap: Record<string, string> = {
-  fire: "/elements/anti_fire_attribute_unbound.webp",
-  water: "/elements/anti_water_attribute_unbound.webp",
-  earth: "/elements/anti_earth_attribute_unbound.webp",
-  air: "/elements/anti_space_attribute_unbound.webp",
-  wind: "/elements/anti_wind_attribute_unbound.webp",
-  dark: "/elements/anti_dark_attribute_unbound.webp",
-  holy: "/elements/anti_light_attribute_unbound.webp",
+  fire: "/UI/Texture/CommonLotteryInfoPanelAtlas/anti_fire_attribute_unbound.webp",
+  water: "/UI/Texture/CommonLotteryInfoPanelAtlas/anti_water_attribute_unbound.webp",
+  earth: "/UI/Texture/CommonLotteryInfoPanelAtlas/anti_earth_attribute_unbound.webp",
+  air: "/UI/Texture/CommonLotteryInfoPanelAtlas/anti_space_attribute_unbound.webp",
+  wind: "/UI/Texture/CommonLotteryInfoPanelAtlas/anti_wind_attribute_unbound.webp",
+  dark: "/UI/Texture/CommonLotteryInfoPanelAtlas/anti_dark_attribute_unbound.webp",
+  holy: "/UI/Texture/CommonLotteryInfoPanelAtlas/anti_light_attribute_unbound.webp",
 }
 
 const defenderGenericIconMap: Record<string, string> = {
@@ -100,8 +100,8 @@ const defenderGenericIconMap: Record<string, string> = {
 }
 
 const attackTypeIconMap: Record<string, string> = {
-  magic: "/type_dmg/icAttackTypeMagic.webp",
-  physical: "/type_dmg/icAttackTypePhysics.webp",
+  magic: "/UI/Texture/CommonLotteryInfoPanelAtlas/icAttackTypeMagic.webp",
+  physical: "/UI/Texture/CommonLotteryInfoPanelAtlas/icAttackTypePhysical.webp",
 }
 
 const tacticsIconMap: Record<string, string> = {
@@ -168,24 +168,24 @@ const leaderSkillElementPatterns: [RegExp, string][] = [
 
 /* ── Element icon for inline description rendering ── */
 const inlineElementIconMap: Record<string, string> = {
-  fire: "/elements/icElementFire.webp",
-  water: "/elements/icElementWater.webp",
-  earth: "/elements/icElementEarth.webp",
-  wind: "/elements/icElementWind.webp",
-  dark: "/elements/icElementDark.webp",
-  light: "/elements/icElementlight.webp",
-  holy: "/elements/icElementlight.webp",
-  space: "/elements/icElementspace.webp",
-  air: "/elements/icElementspace.webp",
+  fire: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementFire.webp",
+  water: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementWater.webp",
+  earth: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEarth.webp",
+  wind: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementWind.webp",
+  dark: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementDark.webp",
+  light: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementHoly.webp",
+  holy: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementHoly.webp",
+  space: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementAir.webp",
+  air: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementAir.webp",
 }
 
 /* ── Star asset map (same as character-browser) ── */
 const starAssetMap: Record<number, string> = {
-  3: "/stars/starCharaL3A.webp",
-  4: "/stars/starCharaL4A.webp",
-  5: "/stars/starCharaL5A.webp",
-  6: "/stars/starCharaL6A.webp",
-  7: "/stars/starCharaL7A.webp",
+  3: "/UI/Texture/CommonRarityAtlas/starCharaL3.webp",
+  4: "/UI/Texture/CommonRarityAtlas/starCharaL4.webp",
+  5: "/UI/Texture/CommonRarityAtlas/starCharaL5.webp",
+  6: "/UI/Texture/CommonRarityAtlas/starCharaL6.webp",
+  7: "/UI/Texture/CommonRarityAtlas/starCharaL6_SpecialPlus.webp",
 }
 
 /* ── Helpers ── */
@@ -344,8 +344,8 @@ const statIconMap: Record<string, string> = {
 }
 
 const atkTypeIconMap: Record<string, string> = {
-  "p-": "/type_dmg/icAttackTypePhysics.webp",
-  "m-": "/type_dmg/icAttackTypeMagic.webp",
+  "p-": "/UI/Texture/CommonLotteryInfoPanelAtlas/icAttackTypePhysical.webp",
+  "m-": "/UI/Texture/CommonLotteryInfoPanelAtlas/icAttackTypeMagic.webp",
 }
 
 type DescSegment =

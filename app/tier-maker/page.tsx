@@ -25,12 +25,12 @@ const LISTS_STORAGE_KEY = "tierLists_v2"
 
 const DEFAULT_TIER_COLORS = ["#dc2626", "#ea580c", "#eab308", "#f59e0b", "#84cc16"]
 const RARITY_ASSETS: Record<number, string> = {
-  3: "/stars/starCharaL3A.webp",
-  4: "/stars/starCharaL4A.webp",
-  5: "/stars/starCharaL5A.webp",
-  6: "/stars/starCharaL6A.webp",
-  7: "/stars/starCharaL7A.webp",
-  8: "/stars/starCharaL7_Epic.webp",
+  3: "/UI/Texture/CommonRarityAtlas/starCharaL3.webp",
+  4: "/UI/Texture/CommonRarityAtlas/starCharaL4.webp",
+  5: "/UI/Texture/CommonRarityAtlas/starCharaL5.webp",
+  6: "/UI/Texture/CommonRarityAtlas/starCharaL6.webp",
+  7: "/UI/Texture/CommonRarityAtlas/starCharaL6_SpecialPlus.webp",
+  8: "/UI/Texture/CommonRarityAtlas/starCharaL7_Epic.webp",
 }
 
 function getMiniFramePath(tier: number, pfx: string) {

@@ -83,7 +83,6 @@ const gaugeEntries: EntryDefinition[] = [
 ]
 
 const buffAllEntries: EntryDefinition[] = [
-  { label: "Damage", aliases: ["damage"] },
   { label: "Pierce Rate", aliases: ["pierce rate"] },
   { label: "Pierce Power", aliases: ["pierce power"] },
   { label: "Critical Rate", aliases: ["critical rate"] },
