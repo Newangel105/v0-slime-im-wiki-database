@@ -875,8 +875,8 @@ export default function TierMakerPage() {
                   </div>
                 </div>
 
-                <div data-tier-index={idx} className="flex-1 min-h-[5rem] border border-gray-700/50 bg-[#0f1b2a]/80 text-white rounded-md flex items-start justify-between px-3 py-3 relative" onDragOver={(e) => e.preventDefault()} onDrop={(e) => handleDropOnTier(e as React.DragEvent, idx)}>
-                  <div className="flex flex-wrap gap-2 items-start">
+                <div data-tier-index={idx} className="flex-1 min-h-[5rem] border border-gray-700/50 bg-[#0f1b2a]/80 text-white rounded-md flex items-start justify-between px-3 py-3 pr-0 md:pr-11 relative" onDragOver={(e) => e.preventDefault()} onDrop={(e) => handleDropOnTier(e as React.DragEvent, idx)}>
+                  <div className="flex-1 min-w-0 flex flex-wrap gap-2 items-start">
                     {tier.items.map((id, itemIndex) => {
                       const [baseId, variant] = String(id).split(":")
                       const c = allChars.find((x) => x.master_pc_id === Number(baseId))
@@ -922,7 +922,7 @@ export default function TierMakerPage() {
 
 
 
-                  <div className="flex gap-3 ml-4 items-start">
+                  <div className="absolute bottom-3 right-3 md:top-3 md:bottom-auto flex flex-col md:flex-row gap-2 items-end md:items-start z-20">
                     <div className="flex flex-col gap-2">
                       <button className="text-xs bg-[#232c3a] text-gray-200 hover:text-white hover:bg-[#2a3444] border border-gray-700 px-2 py-1 rounded" onClick={() => moveTierLeft(idx)} aria-label="Move tier up">▲</button>
                       <button className="text-xs bg-[#232c3a] text-gray-200 hover:text-white hover:bg-[#2a3444] border border-gray-700 px-2 py-1 rounded" onClick={() => moveTierRight(idx)} aria-label="Move tier down">▼</button>
