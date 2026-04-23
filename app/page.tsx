@@ -104,11 +104,11 @@ export default function HomePage() {
     // Use a default video since YouTube RSS requires server-side fetch
     // The video ID can be updated manually or via a CMS in the future
     const defaultVideo: YouTubeVideo = {
-      id: 'YbFIcnUR4z0',
+      id: 'tYANKQ5XvQs',
       title: 'SLIME - ISEKAI Memories Official Stream',
-      url: 'https://youtu.be/YbFIcnUR4z0',
-      embedUrl: 'https://www.youtube.com/embed/YbFIcnUR4z0',
-      thumbnail: 'https://img.youtube.com/vi/YbFIcnUR4z0/maxresdefault.jpg',
+      url: 'https://youtu.be/tYANKQ5XvQs',
+      embedUrl: 'https://www.youtube.com/embed/tYANKQ5XvQs',
+      thumbnail: 'https://img.youtube.com/vi/tYANKQ5XvQs/maxresdefault.jpg',
       published: null,
     }
     setYoutubeVideo(defaultVideo)
@@ -219,7 +219,7 @@ export default function HomePage() {
               <div className="p-6">
                 <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                   <Play className="w-5 h-5 text-red-500" />
-                  RECENT STREAM
+                  UPCOMING STREAM
                 </h2>
                 {loadingVideo ? (
                   <div className="aspect-video bg-[#232c3a] rounded-xl animate-pulse flex items-center justify-center">
@@ -248,7 +248,7 @@ export default function HomePage() {
                                 <Play className="w-6 h-6 text-white" />
                               </div>
                             </div>
-                            <div className="absolute left-3 top-3 bg-yellow-400 text-xs text-black font-semibold px-2 py-1 rounded">Recent</div>
+                            <div className="absolute left-3 top-3 bg-yellow-400 text-xs text-black font-semibold px-2 py-1 rounded">Upcoming</div>
                           </a>
                         ) : (
                           <button onClick={() => setShowEmbed(true)} className="w-full h-full p-0 m-0 block">
