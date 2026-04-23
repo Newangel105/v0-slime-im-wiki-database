@@ -36,9 +36,9 @@ const starAssetMap: Record<number, string> = {
 const attackerElementIconMap: Record<string, string> = {
   air: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementAir.webp", dark: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementDark.webp",
   earth: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEarth.webp", enhancedair: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedAir.webp",
-  enhanceddark: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhanceddark.webp", enhancedearth: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedearth.webp",
-  enhancedfire: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedfire.webp", enhancedholy: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedHoly.webp",
-  enhancedwater: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedwater.webp", enhancedwind: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedwind.webp",
+  enhanceddark: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedDark.webp", enhancedearth: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedEarth.webp",
+  enhancedfire: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedFire.webp", enhancedholy: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedHoly.webp",
+  enhancedwater: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedWater.webp", enhancedwind: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedWind.webp",
   fire: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementFire.webp", holy: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementHoly.webp",
   water: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementWater.webp", wind: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementWind.webp",
 }

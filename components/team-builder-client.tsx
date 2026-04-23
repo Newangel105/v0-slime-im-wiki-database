@@ -200,11 +200,11 @@ const NORMAL_ELEMENTS = [
 const ENHANCED_ELEMENTS = [
   { key: "EnhancedAir", label: "Air+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedAir.webp" },
   { key: "EnhancedHoly", label: "Holy+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedHoly.webp" },
-  { key: "EnhancedDark", label: "Dark+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhanceddark.webp" },
-  { key: "EnhancedFire", label: "Fire+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedfire.webp" },
-  { key: "EnhancedWind", label: "Wind+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedwind.webp" },
-  { key: "EnhancedWater", label: "Water+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedwater.webp" },
-  { key: "EnhancedEarth", label: "Earth+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedearth.webp" },
+  { key: "EnhancedDark", label: "Dark+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedDark.webp" },
+  { key: "EnhancedFire", label: "Fire+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedFire.webp" },
+  { key: "EnhancedWind", label: "Wind+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedWind.webp" },
+  { key: "EnhancedWater", label: "Water+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedWater.webp" },
+  { key: "EnhancedEarth", label: "Earth+", icon: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedEarth.webp" },
 ]
 const SPECIAL_EFFECT_ELEMENTS = [
   { key: "SpecialEffectElementAir", label: "SE Air", icon: "/Image/IcElementBless/IcElementBlessSpecialEffectElementAir.webp" },
@@ -252,10 +252,10 @@ const ATTACKER_ELEMENT_ICONS: Record<string, string> = {
   earth: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEarth.webp", fire: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementFire.webp",
   holy: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementHoly.webp", water: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementWater.webp",
   wind: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementWind.webp",
-  enhancedair: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedAir.webp", enhanceddark: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhanceddark.webp",
-  enhancedearth: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedearth.webp", enhancedfire: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedfire.webp",
-  enhancedholy: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedHoly.webp", enhancedwater: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedwater.webp",
-  enhancedwind: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedwind.webp",
+  enhancedair: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedAir.webp", enhanceddark: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedDark.webp",
+  enhancedearth: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedEarth.webp", enhancedfire: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedFire.webp",
+  enhancedholy: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedHoly.webp", enhancedwater: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedWater.webp",
+  enhancedwind: "/UI/Texture/CommonLotteryInfoPanelAtlas/icElementEnhancedWind.webp",
 }
 const ATK_TYPE_ICONS: Record<string, string> = {
   physical: "/UI/Texture/CommonLotteryInfoPanelAtlas/icAttackTypePhysical.webp",
@@ -580,7 +580,7 @@ export default function TeamBuilderClient({
     for (const group of skillFiltersCatalog.groups) {
       const categoryName = group.category_name
       if (!categoryName || categoryName === "Other") continue
-      const subCategoryLabel = group.sub_category_label ?? group.localized?.sub_category_label ?? group.label
+      const subCategoryLabel = group.localized?.sub_category_label ?? group.label
       if (!subCategoryLabel) continue
       if (!cats.has(categoryName)) cats.set(categoryName, new Map())
       cats.get(categoryName)!.set(subCategoryLabel, group.master_skill_filter_group_id)

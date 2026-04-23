@@ -355,6 +355,12 @@ function buildSkillViewerEntry(character: WikiCharacter, isProtector: boolean, g
   }
 }
 
+function getFilterVariantsForEntry(entry: SkillViewerEntry): SkillViewerVariant[] {
+  return entry.isSecretTriple
+    ? entry.variants.filter((variant) => variant.key === "base")
+    : entry.variants
+}
+
 function RichSkillDesc({ text }: { text: string }) {
   if (!text) {
     return null
@@ -757,7 +763,7 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
   }, [characters])
 
   const skillGroups = useMemo(
-    () => getSkillEffectFilterGroups(allEntries.flatMap((entry) => entry.variants.map((variant) => variant.skill))),
+    () => getSkillEffectFilterGroups(allEntries.flatMap((entry) => getFilterVariantsForEntry(entry).map((variant) => variant.skill))),
     [allEntries],
   )
 
@@ -783,9 +789,12 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
         return []
       }
 
-      const matchingVariantKeys = entry.variants
+      const filterVariants = getFilterVariantsForEntry(entry)
+
+      const matchingVariants = filterVariants
         .filter((variant) => selectedSkillFilters.every((value) => variant.tags.includes(value)))
-        .map((variant) => variant.key)
+
+      const matchingVariantKeys = matchingVariants.map((variant) => variant.key)
 
       if (matchingVariantKeys.length === 0) {
         return []
@@ -793,6 +802,7 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
 
       return [{
         ...entry,
+        variants: matchingVariants,
         matchingVariantKeys,
       }]
     })

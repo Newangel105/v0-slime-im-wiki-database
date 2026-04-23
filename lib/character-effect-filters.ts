@@ -521,14 +521,14 @@ function addMetadataDerivedTags(entry: CharacterEffectFilterSkill, tagSet: Set<s
     }
 
     if (/(gauge|skill point)/i.test(normalizedLabel)) {
-      if (/(soul of|all souls)/i.test(normalizedLabel)) {
+      if (isSoulBuffLabel(normalizedLabel)) {
         addTag(tagSet, "soul_buff", normalizedLabel)
       } else {
         addTag(tagSet, "gauge", normalizedLabel)
       }
     }
 
-    if (/(all souls|soul of)/i.test(rawLabel) && /damage/i.test(rawLabel) && !/^EX? Soul of Combos Damage(?:\s+UP|\s+DOWN)?$/i.test(rawLabel)) {
+    if (isSoulBuffLabel(normalizedLabel) && /damage/i.test(rawLabel) && !/^EX? Soul of Combos Damage(?:\s+UP|\s+DOWN)?$/i.test(rawLabel)) {
       addTag(tagSet, "soul_buff", normalizedLabel)
     }
 
@@ -621,6 +621,11 @@ function hasSoulBuffContext(text: string): boolean {
   return /soul of|all souls|skill point|secret gauge|protection gauge/.test(text)
 }
 
+function isSoulBuffLabel(label: string): boolean {
+  const normalized = normalizeText(label)
+  return /^(all souls|soul of\b)/.test(normalized)
+}
+
 function hasHealContext(text: string): boolean {
   return /(recover|heal|restores|restores hp)/.test(text)
 }
@@ -703,7 +708,7 @@ function inferLearnedGroupKeys(label: string, aliases: string[], segments: strin
     if (hasBuffAllContext(segment)) {
       matchedGroups.add("buff_all")
     }
-    if (!blocksSoulBuffLearning && hasSoulBuffContext(segment)) {
+    if (!blocksSoulBuffLearning && isSoulBuffLabel(label) && hasSoulBuffContext(segment)) {
       matchedGroups.add("soul_buff")
     }
     if (hasDebuffAllContext(segment)) {
@@ -797,6 +802,10 @@ function addContextualMatches(tagSet: Set<string>, segments: string[], group: Gr
     }
 
     for (const entry of getGroupEntries(group)) {
+      if (group.key === "soul_buff" && !isSoulBuffLabel(entry.label)) {
+        continue
+      }
+
       if (requiresDedicatedSoulDamageRule && (entry.label === "Soul of Combos" || entry.label === "EX Soul of Combos")) {
         continue
       }
