@@ -1334,7 +1334,8 @@ function CharPicker({
     if (filterRole === "protector") list = list.filter(c => c.skills.some(s => s.slot === "leader_skill"))
     const lq = q.toLowerCase()
     if (lq) list = list.filter(c => c.name.toLowerCase().includes(lq) || c.element.toLowerCase().includes(lq))
-    return list.slice(0, 60)
+    // show all matching characters (was limited to 60)
+    return list
   }, [characters, q, filterRole])
 
   return (
@@ -1359,8 +1360,8 @@ function CharPicker({
         </button>
       )}
       {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4" onClick={() => setOpen(false)}>
-          <div className="w-full max-w-2xl bg-gray-900 border border-gray-600 rounded-2xl shadow-2xl overflow-hidden" onClick={e => e.stopPropagation()}>
+        <div className="fixed inset-0 z-50 flex items-start md:items-center justify-center bg-black/60 px-4 py-8 overflow-auto" onClick={() => setOpen(false)}>
+          <div className="w-full max-w-2xl bg-gray-900 border border-gray-600 rounded-2xl shadow-2xl overflow-hidden max-h-[90vh]" onClick={e => e.stopPropagation()}>
             <div className="flex items-center gap-3 p-4 border-b border-gray-800">
               <div className="flex-1 flex items-center gap-2 bg-gray-800 rounded-lg px-3">
                 <Search className="w-4 h-4 text-gray-500" />
@@ -1551,12 +1552,13 @@ function EnemyPickerOverlay({
 
   const filteredAvatars = useMemo(() => {
     const lq = q.toLowerCase()
-    if (!lq) return uniqueAvatars.slice(0, 80)
+    // show all avatars (was limited to 80)
+    if (!lq) return uniqueAvatars
     return uniqueAvatars.filter(e =>
       e.name.toLowerCase().includes(lq) ||
       (e.affiliation_name?.toLowerCase() ?? "").includes(lq) ||
       e.avatar_name.toLowerCase().includes(lq)
-    ).slice(0, 80)
+    )
   }, [uniqueAvatars, q])
 
   const tierOptions = useMemo(() =>
@@ -1565,8 +1567,8 @@ function EnemyPickerOverlay({
   )
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70" onClick={onClose}>
-      <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-2xl max-h-[80vh] flex flex-col mx-4" onClick={e => e.stopPropagation()}>
+    <div className="fixed inset-0 z-50 flex items-start md:items-center justify-center bg-black/70 py-8 overflow-auto" onClick={onClose}>
+      <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col mx-4" onClick={e => e.stopPropagation()}>
         <div className="flex items-center gap-3 p-3 border-b border-gray-800">
           <div className="flex-1 flex items-center gap-2 bg-gray-800 rounded-lg px-3">
             <Search className="w-4 h-4 text-gray-500" />
@@ -1917,8 +1919,8 @@ function StatModal({
   const { char, statOverrides, rates } = slot
   const stats = getSlotBattleStats(slot)
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70" onClick={onClose}>
-      <div className="bg-gray-900 border border-gray-700 rounded-2xl w-full max-w-2xl p-5 shadow-2xl mx-4" onClick={e => e.stopPropagation()}>
+    <div className="fixed inset-0 z-50 flex items-start md:items-center justify-center bg-black/70 py-8 overflow-auto" onClick={onClose}>
+      <div className="bg-gray-900 border border-gray-700 rounded-2xl w-full max-w-2xl p-5 shadow-2xl mx-4 max-h-[90vh] overflow-auto" onClick={e => e.stopPropagation()}>
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-2">
             {char && (
