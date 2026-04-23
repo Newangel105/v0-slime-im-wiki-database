@@ -27,6 +27,70 @@ export type SkillFilterGroup = {
   change_target_label?: string
 }
 
+export type WikiBattleAttackEffect = {
+  target_type?: number | null
+  attack_type?: string | null
+  element_type?: string | null
+  attack_calc_type?: number | null
+  attack_base_type?: number | null
+  attack_base_value?: number | null
+  base_effect_value?: number | null
+  level_add_effect_value?: number | null
+  effect_value?: number | null
+}
+
+export type WikiBattleBuffEffect = {
+  target_type?: number | null
+  parameter_type?: number | null
+  buff_type?: number | null
+  base_effect_value?: number | null
+  level_add_effect_value?: number | null
+  effect_value?: number | null
+}
+
+export type WikiBattleConditionEffect = {
+  condition_effect_type?: number | null
+  base_probability?: number | null
+  level_add_probability?: number | null
+  probability?: number | null
+  base_value1?: number | null
+  base_value2?: number | null
+  base_value3?: number | null
+  level_add_value?: number | null
+  effect_value?: number | null
+}
+
+export type WikiBattleCardEffect = {
+  card_target_type?: number | null
+  card_effect_type?: number | null
+  base_effect_value?: number | null
+  level_add_effect_value?: number | null
+  effect_value?: number | null
+  base_effect_max_value?: number | null
+  level_add_effect_max_value?: number | null
+  effect_max_value?: number | null
+}
+
+export type WikiBattleSystemEffect = {
+  system_effect_type?: number | null
+  normal_card_type?: number | null
+  base_effect_value?: number | null
+  level_add_effect_value?: number | null
+  effect_value?: number | null
+  base_probability?: number | null
+  level_add_probability?: number | null
+  probability?: number | null
+}
+
+export type WikiConditionEffectMetadata = {
+  condition_effect_type: number
+  is_positive?: boolean | null
+  buff_magnification_rate?: number | null
+  debuff_magnification_rate?: number | null
+  text_magnification_rate?: number | null
+  text_magnification_polarity?: "enhancement" | "weakening" | null
+}
+
 export type WikiSkill = {
   slot: string
   label: string
@@ -42,6 +106,11 @@ export type WikiSkill = {
   replaces_slot?: string
   skill_filter_groups?: SkillFilterGroup[]
   skill_change_type?: string | null
+  battle_attack_effects?: WikiBattleAttackEffect[]
+  battle_buff_effects?: WikiBattleBuffEffect[]
+  battle_condition_effects?: WikiBattleConditionEffect[]
+  battle_card_effects?: WikiBattleCardEffect[]
+  battle_system_effects?: WikiBattleSystemEffect[]
 }
 
 export type WikiTrait = {
@@ -97,6 +166,8 @@ export type WikiCharacter = {
 
 type WikiPayload = {
   characters: WikiCharacter[]
+  condition_effect_metadata?: Record<string, WikiConditionEffectMetadata>
+  meta?: Record<string, unknown>
 }
 
 const payload = wikiData as WikiPayload
@@ -104,6 +175,7 @@ const WEBSITE_EXCLUDED_CHARACTER_IDS = new Set([100001, 100002, 100003, 180001, 
 const WEBSITE_RELEASE_DATE_OVERRIDES: Record<string, string> = {
   "2019/12/31": "2023/02/28",
 }
+const CONDITION_TEXT_MAGNIFICATION_RE = /increases(?:\s+(?:own|applied))?\s+(enhancement|weakening)\s+effects?\s*(?:by\s*)?x?(\d+(?:\.\d+)?)\s*(?:times?)?/i
 
 const elementLabelMap: Record<string, string> = {
   all: "All",
@@ -161,9 +233,83 @@ const websiteCharacters = payload.characters
   .map(toWebsiteCharacter)
 
 const websiteCharacterById = new Map(websiteCharacters.map((character) => [character.master_pc_id, character]))
+const rawConditionEffectMetadata = payload.condition_effect_metadata ?? {}
+
+function stripBattleTextMarkup(text: string | null | undefined): string {
+  if (!text) {
+    return ""
+  }
+
+  return text.replace(/<color=[^>]+>/gi, "").replace(/<\/color>/gi, "")
+}
+
+const inferredConditionTextMagnification = (() => {
+  const candidates = new Map<number, Array<{ polarity: "enhancement" | "weakening"; rate: number }>>()
+
+  for (const character of websiteCharacters) {
+    for (const skill of character.skills) {
+      const conditionTypes = Array.from(
+        new Set(
+          (skill.battle_condition_effects ?? [])
+            .map((row) => Number(row.condition_effect_type))
+            .filter((value) => Number.isFinite(value) && value >= 0),
+        ),
+      )
+      if (conditionTypes.length !== 1) {
+        continue
+      }
+
+      const match = stripBattleTextMarkup(skill.description_max_level).match(CONDITION_TEXT_MAGNIFICATION_RE)
+      if (!match) {
+        continue
+      }
+
+      const polarity = match[1]?.toLowerCase() === "weakening" ? "weakening" : "enhancement"
+      const multiplier = Number.parseFloat(match[2] ?? "0")
+      if (!Number.isFinite(multiplier) || multiplier <= 1) {
+        continue
+      }
+
+      const rate = Math.round((multiplier - 1) * 10000)
+      const conditionType = conditionTypes[0]
+      const existing = candidates.get(conditionType) ?? []
+      existing.push({ polarity, rate })
+      candidates.set(conditionType, existing)
+    }
+  }
+
+  const resolved = new Map<number, { polarity: "enhancement" | "weakening"; rate: number }>()
+  for (const [conditionType, entries] of candidates.entries()) {
+    if (entries.length === 0) {
+      continue
+    }
+
+    const [first] = entries
+    if (entries.every((entry) => entry.polarity === first.polarity && entry.rate === first.rate)) {
+      resolved.set(conditionType, first)
+    }
+  }
+  return resolved
+})()
 
 export function getAllWikiCharacters(): WikiCharacter[] {
   return websiteCharacters
+}
+
+export function getConditionEffectMetadata(conditionEffectType: number): WikiConditionEffectMetadata | null {
+  const base = rawConditionEffectMetadata[String(conditionEffectType)] ?? null
+  const inferred = inferredConditionTextMagnification.get(conditionEffectType)
+
+  if (!base && !inferred) {
+    return null
+  }
+
+  return {
+    condition_effect_type: conditionEffectType,
+    ...(base ?? {}),
+    text_magnification_rate: inferred?.rate ?? null,
+    text_magnification_polarity: inferred?.polarity ?? null,
+  }
 }
 
 // ---------------------------------------------------------------------------

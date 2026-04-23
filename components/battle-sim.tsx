@@ -2,7 +2,19 @@
 
 import { useMemo, useState, useRef, useEffect } from "react"
 import { Search, X, Plus, ChevronDown, Shield, Swords, Zap } from "lucide-react"
-import { toPublicAssetPath, stripColorTags, type WikiCharacter, type WikiSkill } from "@/lib/pc-wiki"
+import {
+  getConditionEffectMetadata,
+  getCharMaxStats,
+  toPublicAssetPath,
+  stripColorTags,
+  type WikiBattleAttackEffect,
+  type WikiBattleBuffEffect,
+  type WikiBattleCardEffect,
+  type WikiBattleConditionEffect,
+  type WikiBattleSystemEffect,
+  type WikiCharacter,
+  type WikiSkill,
+} from "@/lib/pc-wiki"
 import { type WikiEnemy } from "@/lib/enemies"
 
 // ─── Formula constants (from MasterBattleDefineValue + MasterDefineValue) ────
@@ -22,35 +34,7 @@ const ENHANCE_ELEM_BONUS = 1000 // battle.rate.enhanced.element.add.weak.damage
 // COOP_BASE_EST removed — base coop multiplier comes from EffectCooperation buff value
 
 // ─── Types ────────────────────────────────────────────────────────────────────
-export type BuffType =
-  // ── Base stat multipliers (MasterParameterType: Attack=1, Defense=2) ──────
-  | "Attack" | "Defense"
-  // ── Attack-type multipliers (300-303) — conditional on attacker attack_type ─
-  | "EffectAttackPhysics" | "EffectAttackMagic" | "EffectAttackSingle" | "EffectAttackWhole"
-  // ── Attacker-element ATK multipliers (309-316) — only when attacker.element matches ──
-  | "EffectElementEarth" | "EffectElementSpace" | "EffectElementWind" | "EffectElementWater"
-  | "EffectElementFire" | "EffectElementLight" | "EffectElementDark"
-  // ── Proc damage powers (304-319) ─────────────────────────────────────────────
-  | "EffectCritical" | "EffectPenetration" | "EffectCooperation" | "EffectDefcritical"
-  // ── Proc rates (100-111, 1701, 1808-1809) ────────────────────────────────────
-  | "ProbCritical" | "ProbPenetration" | "ProbCooperation" | "ProbDefcritical"
-  | "ProbCriticalSuper" | "ProbPenetrationSuper" | "ProbCooperationSuper"
-  // ── "X+ damage" buffs (DamageEffect 508-514) — e.g. "space+ damage UP" ──────
-  | "DamageEffectElementEarth" | "DamageEffectElementSpace" | "DamageEffectElementWind"
-  | "DamageEffectElementWater" | "DamageEffectElementFire" | "DamageEffectElementLight"
-  | "DamageEffectElementDark"
-  | "DamageEffectAttackPhysics" | "DamageEffectAttackMagic"
-  // ── Enemy resists (401-420) ──────────────────────────────────────────────────
-  | "ResistCritical" | "ResistPenetration" | "ResistCooperation" | "ResistDefcritical"
-  | "ResistAttackPhysics" | "ResistAttackMagic"
-  // ── "Damage to X enemies" = SpecialEffectElement* (1300-1306) ────────────────
-  | "SpecialEffectElementEarth" | "SpecialEffectElementSpace" | "SpecialEffectElementWind"
-  | "SpecialEffectElementWater" | "SpecialEffectElementFire" | "SpecialEffectElementLight"
-  | "SpecialEffectElementDark"
-  // ── Weakness multipliers (1400-1403) ─────────────────────────────────────────
-  | "SpecialEffectWeakness" | "SpecialEffectSuperWeakness"
-  // ── Misc ──────────────────────────────────────────────────────────────────────
-  | "ComboRate" | "DamageTaken" | "DamageResistSpecial"
+export type BuffType = string
 
 export type ElementWeakness = "normal" | "weak" | "super_weak" | "enhanced_weak" | "enhanced_super_weak"
 export type SoCoType = "none" | "soco" | "ex_soco" | "ex2_soco"
@@ -61,6 +45,14 @@ export interface BuffEntry {
   value: number   // 10000-basis (10000 = 100%)
   source: string
   skillId?: string
+  uses?: number
+  stackingMode?: "limited" | "unlimited"
+}
+
+type StatOverrides = {
+  hp: string
+  atk: string
+  def: string
 }
 
 // Proc rates come from buffs (ProbCritical etc.) + base character rates
@@ -73,7 +65,6 @@ export interface ProcRolls {
   cooperation: boolean
   superCooperation: boolean
   defCritical: boolean
-  drago: boolean
   soco: SoCoType
   weakness: ElementWeakness
 }
@@ -88,6 +79,12 @@ export interface BaseRates {
   probPenetrationSuper: number
   probCooperationSuper: number
   isEnhancedAttacker: boolean
+}
+
+type AttackerSlotState = {
+  char: WikiCharacter | null
+  statOverrides: StatOverrides
+  rates: BaseRates
 }
 
 // ─── Element data ─────────────────────────────────────────────────────────────
@@ -117,7 +114,7 @@ const ELEM_BORDER: Record<string, string> = {
 }
 
 // ─── Buff metadata ────────────────────────────────────────────────────────────
-const BUFF_META: Record<BuffType, { label: string; group: string }> = {
+const BUFF_META: Record<string, { label: string; group: string }> = {
   // Stat
   Attack:                        { label: "ATK %",                       group: "Stat" },
   Defense:                       { label: "Enemy DEF %",                 group: "Stat" },
@@ -175,6 +172,14 @@ const BUFF_META: Record<BuffType, { label: string; group: string }> = {
   // Weakness
   SpecialEffectWeakness:         { label: "Weakness Strike %",           group: "Weakness" },
   SpecialEffectSuperWeakness:    { label: "Super Weakness Strike %",     group: "Weakness" },
+  ConditionDefenceNotActive:     { label: "Damage vs No Condition %",    group: "Condition Bonus" },
+  ConditionDefencePoison:        { label: "Damage vs Poison %",          group: "Condition Bonus" },
+  ConditionDefenceFrostbite:     { label: "Damage vs Frostbite %",       group: "Condition Bonus" },
+  ConditionDefenceCharmed:       { label: "Damage vs Charmed %",         group: "Condition Bonus" },
+  ConditionDefenceDomination:    { label: "Damage vs Domination %",      group: "Condition Bonus" },
+  ConditionDefenceShiver:        { label: "Damage vs Shiver %",          group: "Condition Bonus" },
+  ConditionDefenceBurn:          { label: "Damage vs Burn %",            group: "Condition Bonus" },
+  AttackDamageRate:              { label: "Attack Damage Rate",          group: "System" },
   // Misc
   ComboRate:                     { label: "Combo Rate %",                group: "Combo" },
   DamageTaken:                   { label: "Enemy Dmg Taken %",           group: "Debuff" },
@@ -183,7 +188,76 @@ const BUFF_META: Record<BuffType, { label: string; group: string }> = {
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function sumBuff(buffs: BuffEntry[], type: BuffType) {
-  return buffs.filter(b => b.type === type).reduce((s, b) => s + b.value, 0)
+  const matching = buffs.filter((buff) => buff.type === type)
+  if (matching.length === 0) return 0
+
+  let unlimitedTotal = 0
+  let strongestLimited: BuffEntry | null = null
+  for (const buff of matching) {
+    if (buff.stackingMode === "unlimited") {
+      unlimitedTotal += buff.value
+      continue
+    }
+    if (!strongestLimited || Math.abs(buff.value) > Math.abs(strongestLimited.value)) {
+      strongestLimited = buff
+    }
+  }
+
+  return unlimitedTotal + (strongestLimited?.value ?? 0)
+}
+
+function getBattleStats(char: WikiCharacter | null | undefined) {
+  if (!char) return null
+  return getCharMaxStats(char.master_pc_id) ?? {
+    hp: char.stats.hp,
+    attack: char.stats.attack,
+    defense: char.stats.defense,
+    existence: char.stats.existence,
+  }
+}
+
+function parsePositiveNumberInput(value: string) {
+  const parsed = Number.parseInt(value, 10)
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : null
+}
+
+function getSlotBattleStats(slot: AttackerSlotState | null | undefined) {
+  if (!slot?.char) return null
+  const base = getBattleStats(slot.char) ?? slot.char.stats
+  return {
+    hp: parsePositiveNumberInput(slot.statOverrides.hp) ?? base.hp,
+    attack: parsePositiveNumberInput(slot.statOverrides.atk) ?? base.attack,
+    defense: parsePositiveNumberInput(slot.statOverrides.def) ?? base.defense,
+  }
+}
+
+function createEmptyStatOverrides(): StatOverrides {
+  return { hp: "", atk: "", def: "" }
+}
+
+function inferSkillBuffStackingMode(skill: WikiSkill | null | undefined): "limited" | "unlimited" {
+  if (!skill) return "limited"
+  if (skill.slot === "leader_skill" || skill.slot === "assist_leader_skill") return "unlimited"
+
+  const text = stripColorTags(skill.description_max_level ?? "")
+  if (/(until the end of battle|\bUnlimited\b|\bMax:\b|\bStacks\b|during battle|available in support formation)/i.test(text)) {
+    return "unlimited"
+  }
+
+  return "limited"
+}
+
+function normalizeUseCount(value: number) {
+  if (!Number.isFinite(value)) return 0
+  return Math.max(0, Math.floor(value))
+}
+
+function getAttackerSkillUseKey(slotIdx: number, skillLabel: string) {
+  return `att:${slotIdx}:${skillLabel}`
+}
+
+function getProtectorSkillUseKey(masterPcId: number, slot: string) {
+  return `prot:${masterPcId}:${slot}`
 }
 
 export function parseSkillDamageRate(description: string | null | undefined): number | null {
@@ -205,6 +279,619 @@ const ELEM_NAME_MAP: Record<string, string> = {
 
 function canonElem(raw: string): string | null {
   return ELEM_NAME_MAP[raw.toLowerCase()] ?? null
+}
+
+type TargetTeam = "enemy" | "ally" | "self"
+type AttackScope = "single" | "whole"
+
+type BattleElementInfo = {
+  key: string
+  baseElement: string
+  isEnhanced: boolean
+}
+
+const TARGET_TYPE_TEAM: Record<number, TargetTeam> = {
+  0: "enemy",
+  1: "enemy",
+  2: "ally",
+  3: "ally",
+  4: "ally",
+  5: "self",
+  6: "enemy",
+  7: "enemy",
+  8: "ally",
+  9: "ally",
+  10: "enemy",
+  11: "enemy",
+  12: "ally",
+  13: "ally",
+  14: "ally",
+  15: "ally",
+  16: "ally",
+}
+
+const PARAMETER_TYPE_TO_BUFF: Record<number, BuffType> = {
+  1: "Attack",
+  2: "Defense",
+  100: "ProbCritical",
+  101: "ProbPenetration",
+  110: "ProbCooperation",
+  111: "ProbDefcritical",
+  300: "EffectAttackPhysics",
+  301: "EffectAttackMagic",
+  302: "EffectAttackSingle",
+  303: "EffectAttackWhole",
+  304: "EffectCritical",
+  305: "EffectPenetration",
+  309: "EffectElementEarth",
+  310: "EffectElementSpace",
+  311: "EffectElementWind",
+  312: "EffectElementWater",
+  313: "EffectElementFire",
+  314: "EffectElementLight",
+  315: "EffectElementDark",
+  317: "EffectCooperation",
+  318: "EffectEnhancedWeakDamage",
+  319: "EffectDefcritical",
+  401: "ResistAttackPhysics",
+  402: "ResistAttackMagic",
+  403: "ResistAttackSingle",
+  404: "ResistAttackWhole",
+  405: "ResistCritical",
+  406: "ResistPenetration",
+  410: "ResistElementEarth",
+  411: "ResistElementSpace",
+  412: "ResistElementWind",
+  413: "ResistElementWater",
+  414: "ResistElementFire",
+  415: "ResistElementLight",
+  416: "ResistElementDark",
+  418: "ResistCooperation",
+  419: "ResistEnhancedWeakDamage",
+  420: "ResistDefcritical",
+  500: "DamageEffectAttackPhysics",
+  501: "DamageEffectAttackMagic",
+  502: "DamageEffectAttackSingle",
+  503: "DamageEffectAttackWhole",
+  508: "DamageEffectElementEarth",
+  509: "DamageEffectElementSpace",
+  510: "DamageEffectElementWind",
+  511: "DamageEffectElementWater",
+  512: "DamageEffectElementFire",
+  513: "DamageEffectElementLight",
+  514: "DamageEffectElementDark",
+  600: "DamageResistAttackPhysics",
+  601: "DamageResistAttackMagic",
+  602: "DamageResistAttackSingle",
+  603: "DamageResistAttackWhole",
+  608: "DamageResistElementEarth",
+  609: "DamageResistElementSpace",
+  610: "DamageResistElementWind",
+  611: "DamageResistElementWater",
+  612: "DamageResistElementFire",
+  613: "DamageResistElementLight",
+  614: "DamageResistElementDark",
+  616: "DamageResistSpecial",
+  801: "ComboRate",
+  1300: "SpecialEffectElementEarth",
+  1301: "SpecialEffectElementSpace",
+  1302: "SpecialEffectElementWind",
+  1303: "SpecialEffectElementWater",
+  1304: "SpecialEffectElementFire",
+  1305: "SpecialEffectElementLight",
+  1306: "SpecialEffectElementDark",
+  1400: "SpecialEffectWeakness",
+  1401: "ResistWeakness",
+  1402: "SpecialEffectSuperWeakness",
+  1403: "ResistSuperWeakness",
+  1501: "EffectElementEnhancedFire",
+  1502: "EffectElementEnhancedWater",
+  1503: "EffectElementEnhancedWind",
+  1504: "EffectElementEnhancedSpace",
+  1505: "EffectElementEnhancedEarth",
+  1506: "EffectElementEnhancedLight",
+  1507: "EffectElementEnhancedDark",
+  1508: "ResistElementEnhancedFire",
+  1509: "ResistElementEnhancedWater",
+  1510: "ResistElementEnhancedWind",
+  1511: "ResistElementEnhancedSpace",
+  1512: "ResistElementEnhancedEarth",
+  1513: "ResistElementEnhancedLight",
+  1514: "ResistElementEnhancedDark",
+  1515: "DamageEffectElementEnhancedFire",
+  1516: "DamageEffectElementEnhancedWater",
+  1517: "DamageEffectElementEnhancedWind",
+  1518: "DamageEffectElementEnhancedSpace",
+  1519: "DamageEffectElementEnhancedEarth",
+  1520: "DamageEffectElementEnhancedLight",
+  1521: "DamageEffectElementEnhancedDark",
+  1522: "DamageResistElementEnhancedFire",
+  1523: "DamageResistElementEnhancedWater",
+  1524: "DamageResistElementEnhancedWind",
+  1525: "DamageResistElementEnhancedSpace",
+  1526: "DamageResistElementEnhancedEarth",
+  1527: "DamageResistElementEnhancedLight",
+  1528: "DamageResistElementEnhancedDark",
+  1701: "ProbCriticalSuper",
+  1801: "ConditionDefenceNotActive",
+  1802: "ConditionDefencePoison",
+  1803: "ConditionDefenceFrostbite",
+  1804: "ConditionDefenceCharmed",
+  1805: "ConditionDefenceDomination",
+  1806: "ConditionDefenceShiver",
+  1807: "ConditionDefenceBurn",
+  1808: "ProbPenetrationSuper",
+  1809: "ProbCooperationSuper",
+}
+
+const CONDITION_EFFECT_NAMES: Record<number, string> = {
+  0: "NotActive",
+  1: "Poison",
+  3: "Burn",
+  14: "Frostbite",
+  15: "Drago",
+  33: "Charmed",
+  47: "Domination",
+  57: "Dread",
+  72: "DivinePunishment",
+  73: "DragonEye",
+}
+
+const CONDITION_DAMAGE_BUFF_BY_NAME: Record<string, BuffType> = {
+  NotActive: "ConditionDefenceNotActive",
+  Poison: "ConditionDefencePoison",
+  Frostbite: "ConditionDefenceFrostbite",
+  Charmed: "ConditionDefenceCharmed",
+  Domination: "ConditionDefenceDomination",
+  Dread: "ConditionDefenceShiver",
+  Shiver: "ConditionDefenceShiver",
+  Burn: "ConditionDefenceBurn",
+}
+
+const CARD_TARGET_TYPE_NAMES: Record<number, string> = {
+  0: "NormalTechnique",
+  1: "NormalFriendship",
+  2: "NormalBrave",
+  3: "NormalAll",
+  4: "Special",
+  5: "Ultimate",
+  6: "Mighty",
+  7: "DragonSoul",
+  8: "Epic",
+}
+
+const CARD_EFFECT_TYPE_NAMES: Record<number, string> = {
+  0: "BuffAttack",
+  1: "BuffGauge",
+  2: "BuffComboAttack",
+  3: "BuffComboGauge",
+  4: "BuffSkillGauge",
+  5: "BuffBlessGauge",
+  6: "BuffSpecialGauge",
+  7: "BuffPursuit",
+  8: "BuffAttackUltimate",
+  11: "BuffAttackWhole",
+  12: "BuffMultipleHit",
+  18: "AddCombo",
+  19: "SpecialResonate",
+}
+
+const SYSTEM_EFFECT_TYPE_NAMES: Record<number, string> = {
+  0: "ChangeHandCardTypeFromTechnique",
+  1: "ChangeHandCardTypeFromFriendship",
+  2: "ChangeHandCardTypeFromBrave",
+  3: "ChangeHandCardTypeAll",
+  21: "SkillPoint",
+  22: "SkillPointMax",
+  23: "BlessLock",
+  24: "BlessPoint",
+  31: "IncreasedSkillCostDown",
+  32: "IncreasedSkillCostDownWithDeck",
+  33: "IncreasedSkillCostUp",
+  34: "IncreasedSkillCostUpWithDeck",
+  40: "ExtraTurn",
+  41: "ChangeHandCardTypeFromSpecial",
+  44: "ActiveSkillTurnCountLimitRelease",
+  47: "SkillPointExceedable",
+  50: "HealBlock",
+  51: "AttackDamageRate",
+  52: "InstantGenerateSpecialSkillHand",
+  53: "BurnWeakness",
+}
+
+const ATTACKER_SIDE_BUFF_TYPES = new Set<BuffType>([
+  "Attack",
+  "EffectAttackPhysics",
+  "EffectAttackMagic",
+  "EffectAttackSingle",
+  "EffectAttackWhole",
+  "EffectCritical",
+  "EffectPenetration",
+  "EffectCooperation",
+  "EffectDefcritical",
+  "ProbCritical",
+  "ProbPenetration",
+  "ProbCooperation",
+  "ProbDefcritical",
+  "ProbCriticalSuper",
+  "ProbPenetrationSuper",
+  "ProbCooperationSuper",
+  "ComboRate",
+  "SpecialEffectWeakness",
+  "SpecialEffectSuperWeakness",
+  "EffectEnhancedWeakDamage",
+  "EffectElementEarth",
+  "EffectElementSpace",
+  "EffectElementWind",
+  "EffectElementWater",
+  "EffectElementFire",
+  "EffectElementLight",
+  "EffectElementDark",
+  "EffectElementEnhancedEarth",
+  "EffectElementEnhancedSpace",
+  "EffectElementEnhancedWind",
+  "EffectElementEnhancedWater",
+  "EffectElementEnhancedFire",
+  "EffectElementEnhancedLight",
+  "EffectElementEnhancedDark",
+  "DamageEffectAttackPhysics",
+  "DamageEffectAttackMagic",
+  "DamageEffectAttackSingle",
+  "DamageEffectAttackWhole",
+  "DamageEffectElementEarth",
+  "DamageEffectElementSpace",
+  "DamageEffectElementWind",
+  "DamageEffectElementWater",
+  "DamageEffectElementFire",
+  "DamageEffectElementLight",
+  "DamageEffectElementDark",
+  "DamageEffectElementEnhancedEarth",
+  "DamageEffectElementEnhancedSpace",
+  "DamageEffectElementEnhancedWind",
+  "DamageEffectElementEnhancedWater",
+  "DamageEffectElementEnhancedFire",
+  "DamageEffectElementEnhancedLight",
+  "DamageEffectElementEnhancedDark",
+  "SpecialEffectElementEarth",
+  "SpecialEffectElementSpace",
+  "SpecialEffectElementWind",
+  "SpecialEffectElementWater",
+  "SpecialEffectElementFire",
+  "SpecialEffectElementLight",
+  "SpecialEffectElementDark",
+  "ConditionDefenceNotActive",
+  "ConditionDefencePoison",
+  "ConditionDefenceFrostbite",
+  "ConditionDefenceCharmed",
+  "ConditionDefenceDomination",
+  "ConditionDefenceShiver",
+  "ConditionDefenceBurn",
+])
+
+const ENEMY_SIDE_BUFF_TYPES = new Set<BuffType>([
+  "Defense",
+  "ResistAttackPhysics",
+  "ResistAttackMagic",
+  "ResistAttackSingle",
+  "ResistAttackWhole",
+  "ResistCritical",
+  "ResistPenetration",
+  "ResistCooperation",
+  "ResistDefcritical",
+  "ResistWeakness",
+  "ResistSuperWeakness",
+  "ResistEnhancedWeakDamage",
+  "DamageResistAttackPhysics",
+  "DamageResistAttackMagic",
+  "DamageResistAttackSingle",
+  "DamageResistAttackWhole",
+  "DamageResistSpecial",
+  "ResistElementEarth",
+  "ResistElementSpace",
+  "ResistElementWind",
+  "ResistElementWater",
+  "ResistElementFire",
+  "ResistElementLight",
+  "ResistElementDark",
+  "ResistElementEnhancedEarth",
+  "ResistElementEnhancedSpace",
+  "ResistElementEnhancedWind",
+  "ResistElementEnhancedWater",
+  "ResistElementEnhancedFire",
+  "ResistElementEnhancedLight",
+  "ResistElementEnhancedDark",
+  "DamageResistElementEarth",
+  "DamageResistElementSpace",
+  "DamageResistElementWind",
+  "DamageResistElementWater",
+  "DamageResistElementFire",
+  "DamageResistElementLight",
+  "DamageResistElementDark",
+  "DamageResistElementEnhancedEarth",
+  "DamageResistElementEnhancedSpace",
+  "DamageResistElementEnhancedWind",
+  "DamageResistElementEnhancedWater",
+  "DamageResistElementEnhancedFire",
+  "DamageResistElementEnhancedLight",
+  "DamageResistElementEnhancedDark",
+])
+
+const CONDITION_EFFECT_TYPE_BY_NAME: Record<string, number> = {
+  NotActive: 0,
+  Poison: 1,
+  Burn: 3,
+  Frostbite: 14,
+  Drago: 15,
+  DragonAura: 15,
+  Charmed: 33,
+  Domination: 47,
+  Dread: 57,
+  Shiver: 57,
+  DivinePunishment: 72,
+  DragonEye: 73,
+}
+
+const NON_MAGNIFIED_BUFF_TYPES = new Set<BuffType>(["AttackDamageRate"])
+
+function isWeakeningBuff(buff: BuffEntry) {
+  return (buff.type === "DamageTaken" && buff.value > 0) || (ENEMY_SIDE_BUFF_TYPES.has(buff.type) && buff.value < 0)
+}
+
+function isEnhancementBuff(buff: BuffEntry) {
+  return !NON_MAGNIFIED_BUFF_TYPES.has(buff.type) && ATTACKER_SIDE_BUFF_TYPES.has(buff.type) && buff.value > 0
+}
+
+function applyConditionMagnificationRate(value: number, magnificationRate: number) {
+  if (!magnificationRate) return value
+  return Math.trunc((value * (B + magnificationRate)) / B)
+}
+
+function getConditionMagnificationRate(conditionName: string, polarity: "enhancement" | "weakening") {
+  const conditionEffectType = CONDITION_EFFECT_TYPE_BY_NAME[conditionName]
+  if (conditionEffectType == null) return 0
+
+  const metadata = getConditionEffectMetadata(conditionEffectType)
+  if (!metadata) return 0
+
+  // Positive condition states such as Drago/Ariel store ally-side enhancement scaling here.
+  const masterRate = polarity === "enhancement"
+    ? Number(metadata.debuff_magnification_rate ?? 0)
+    : Number(metadata.buff_magnification_rate ?? 0)
+  if (masterRate) return masterRate
+
+  if (metadata.text_magnification_polarity === polarity) {
+    return Number(metadata.text_magnification_rate ?? 0)
+  }
+
+  return 0
+}
+
+function resolveEffectiveBuffs(
+  buffs: BuffEntry[],
+  activePartyConditions: string[],
+  activeEnemyConditions: string[],
+) {
+  const enhancementRate = activePartyConditions.reduce(
+    (sum, conditionName) => sum + getConditionMagnificationRate(conditionName, "enhancement"),
+    0,
+  )
+  const weakeningRate = activeEnemyConditions.reduce(
+    (sum, conditionName) => sum + getConditionMagnificationRate(conditionName, "weakening"),
+    0,
+  )
+
+  if (!enhancementRate && !weakeningRate) {
+    return buffs
+  }
+
+  return buffs.map((buff) => {
+    if (enhancementRate && isEnhancementBuff(buff)) {
+      const nextValue = applyConditionMagnificationRate(buff.value, enhancementRate)
+      return nextValue === buff.value ? buff : { ...buff, value: nextValue }
+    }
+    if (weakeningRate && isWeakeningBuff(buff)) {
+      const nextValue = applyConditionMagnificationRate(buff.value, weakeningRate)
+      return nextValue === buff.value ? buff : { ...buff, value: nextValue }
+    }
+    return buff
+  })
+}
+
+function getBuffLabel(type: BuffType) {
+  return BUFF_META[type]?.label ?? type.replace(/([a-z0-9])([A-Z])/g, "$1 $2")
+}
+
+function normalizeBattleElementName(raw: string | null | undefined) {
+  if (!raw) return null
+  if (raw === "Air") return "Space"
+  if (raw === "Holy") return "Light"
+  if (raw === "EnhancedAir") return "EnhancedSpace"
+  if (raw === "EnhancedHoly") return "EnhancedLight"
+  return raw
+}
+
+function getBattleElementInfo(raw: string | null | undefined, fallback = "Fire"): BattleElementInfo {
+  const normalized = normalizeBattleElementName(raw) ?? normalizeBattleElementName(fallback) ?? "Fire"
+  const isEnhanced = normalized.startsWith("Enhanced")
+  const baseElement = isEnhanced ? normalized.slice("Enhanced".length) : normalized
+  return {
+    key: normalized,
+    baseElement,
+    isEnhanced,
+  }
+}
+
+function normalizeAttackTypeName(raw: string | null | undefined): "Physical" | "Magic" {
+  return raw === "Magic" ? "Magic" : "Physical"
+}
+
+function getTargetTeam(targetType: number | null | undefined): TargetTeam | null {
+  if (targetType == null) return null
+  return TARGET_TYPE_TEAM[targetType] ?? null
+}
+
+function getAttackScope(attackEffect: WikiBattleAttackEffect | null | undefined): AttackScope {
+  return attackEffect?.target_type === 1 ? "whole" : "single"
+}
+
+function mapStructuredBattleBuff(row: WikiBattleBuffEffect, rowIndex: number): ParsedBuff | null {
+  const parameterType = row.parameter_type ?? null
+  const mappedType = parameterType != null ? PARAMETER_TYPE_TO_BUFF[parameterType] : null
+  if (!mappedType) return null
+
+  const team = getTargetTeam(row.target_type)
+  if (ATTACKER_SIDE_BUFF_TYPES.has(mappedType) && team && team === "enemy") return null
+  if (ENEMY_SIDE_BUFF_TYPES.has(mappedType) && team && team !== "enemy") return null
+
+  const rawValue = Math.abs(Number(row.effect_value ?? 0))
+  if (!rawValue) return null
+
+  const buffType = Number(row.buff_type ?? 0)
+  const sign = buffType === 2 ? -1 : buffType === 1 ? 1 : 0
+  if (!sign) return null
+
+  return {
+    type: mappedType,
+    value: rawValue * sign,
+    note: `structured:${rowIndex + 1}`,
+  }
+}
+
+function getSkillStructuredBuffs(skill: WikiSkill | null | undefined): ParsedBuff[] {
+  if (!skill?.battle_buff_effects?.length) return []
+  return skill.battle_buff_effects
+    .map((row, index) => mapStructuredBattleBuff(row, index))
+    .filter((row): row is ParsedBuff => row !== null)
+}
+
+function getSkillStructuredConditionEffects(skill: WikiSkill | null | undefined): WikiBattleConditionEffect[] {
+  return (skill?.battle_condition_effects ?? []).filter((row) => Number(row.probability ?? 0) !== 0)
+}
+
+function getSkillStructuredCardEffects(skill: WikiSkill | null | undefined): WikiBattleCardEffect[] {
+  return (skill?.battle_card_effects ?? []).filter(
+    (row) => Number(row.effect_value ?? 0) !== 0 || Number(row.effect_max_value ?? 0) !== 0,
+  )
+}
+
+function getSkillStructuredSystemEffects(skill: WikiSkill | null | undefined): WikiBattleSystemEffect[] {
+  return (skill?.battle_system_effects ?? []).filter(
+    (row) => Number(row.effect_value ?? 0) !== 0 || Number(row.probability ?? 0) !== 0,
+  )
+}
+
+function skillHasConditionTarget(skill: WikiSkill | null | undefined, targetTeams: Set<string>) {
+  return (skill?.skill_filter_groups ?? []).some(
+    (group) => group.effect_family === "condition" && !!group.target_team && targetTeams.has(group.target_team),
+  )
+}
+
+function skillHasEnemyConditionTarget(skill: WikiSkill | null | undefined) {
+  return skillHasConditionTarget(skill, new Set(["enemy"]))
+}
+
+function skillHasPartyConditionTarget(skill: WikiSkill | null | undefined) {
+  return skillHasConditionTarget(skill, new Set(["ally", "self"]))
+}
+
+function getConditionEffectName(row: WikiBattleConditionEffect | null | undefined): string | null {
+  const effectType = Number(row?.condition_effect_type ?? -1)
+  return CONDITION_EFFECT_NAMES[effectType] ?? null
+}
+
+function getSkillStructuredEnemyConditions(skill: WikiSkill | null | undefined) {
+  if (!skill || !skillHasEnemyConditionTarget(skill)) return [] as Array<{ name: string; probability: number }>
+  return getSkillStructuredConditionEffects(skill)
+    .map((row) => {
+      const name = getConditionEffectName(row)
+      if (!name) return null
+      return {
+        name,
+        probability: Number(row.probability ?? 0),
+      }
+    })
+    .filter((row): row is { name: string; probability: number } => row !== null)
+}
+
+function getSkillStructuredPartyConditions(skill: WikiSkill | null | undefined) {
+  if (!skill || !skillHasPartyConditionTarget(skill)) return [] as Array<{ name: string; probability: number }>
+  return getSkillStructuredConditionEffects(skill)
+    .map((row) => {
+      const name = getConditionEffectName(row)
+      if (!name) return null
+      return {
+        name,
+        probability: Number(row.probability ?? 0),
+      }
+    })
+    .filter((row): row is { name: string; probability: number } => row !== null)
+}
+
+function mapStructuredSystemBuff(row: WikiBattleSystemEffect, rowIndex: number): ParsedBuff | null {
+  const systemType = Number(row.system_effect_type ?? -1)
+  const effectValue = Number(row.effect_value ?? 0)
+  if (!effectValue) return null
+
+  if (systemType === 51) {
+    return {
+      type: "AttackDamageRate",
+      value: effectValue,
+      note: `structured-system:${rowIndex + 1}`,
+    }
+  }
+
+  return null
+}
+
+function getSkillStructuredSystemBuffs(skill: WikiSkill | null | undefined): ParsedBuff[] {
+  if (!skill?.battle_system_effects?.length) return []
+  return skill.battle_system_effects
+    .map((row, index) => mapStructuredSystemBuff(row, index))
+    .filter((row): row is ParsedBuff => row !== null)
+}
+
+function getStructuredSkillEffectNotes(skill: WikiSkill | null | undefined): string[] {
+  if (!skill) return []
+
+  const notes: string[] = []
+  for (const row of getSkillStructuredSystemEffects(skill)) {
+    const typeName = SYSTEM_EFFECT_TYPE_NAMES[Number(row.system_effect_type ?? -1)]
+    if (typeName === "AttackDamageRate") {
+      notes.push(`All damage x${(Number(row.effect_value ?? 0) / B).toFixed(2)}`)
+    }
+  }
+  for (const row of getSkillStructuredCardEffects(skill)) {
+    const effectName = CARD_EFFECT_TYPE_NAMES[Number(row.card_effect_type ?? -1)]
+    const targetName = CARD_TARGET_TYPE_NAMES[Number(row.card_target_type ?? -1)]
+    if (effectName && targetName && Number(row.effect_value ?? 0) !== 0) {
+      notes.push(`${effectName} ${targetName} ${(Number(row.effect_value ?? 0) / 100).toFixed(0)}%`)
+    }
+  }
+  return notes
+}
+
+function getSkillBuffs(skill: WikiSkill | null | undefined): ParsedBuff[] {
+  if (!skill) return []
+  const structured = [...getSkillStructuredBuffs(skill), ...getSkillStructuredSystemBuffs(skill)]
+  const seenTypes = new Set(structured.map((row) => row.type))
+  const fallback = parseSkillBuffs(skill.description_max_level).filter((row) => !seenTypes.has(row.type))
+  return [...structured, ...fallback]
+}
+
+function getSkillAttackEffects(skill: WikiSkill | null | undefined): WikiBattleAttackEffect[] {
+  return (skill?.battle_attack_effects ?? []).filter((row) => Number(row.effect_value ?? 0) !== 0)
+}
+
+function getSkillPrimaryAttackEffect(skill: WikiSkill | null | undefined): WikiBattleAttackEffect | null {
+  return getSkillAttackEffects(skill)[0] ?? null
+}
+
+function getSkillDamageRate(skill: WikiSkill | null | undefined): number {
+  const attackEffects = getSkillAttackEffects(skill)
+  if (attackEffects.length > 0) {
+    return attackEffects.reduce((sum, row) => sum + Number(row.effect_value ?? 0), 0) / 100
+  }
+  return parseSkillDamageRate(skill?.description_max_level) ?? 0
 }
 
 export function parseSkillBuffs(description: string | null | undefined): ParsedBuff[] {
@@ -396,8 +1083,11 @@ export function runCalc(
   enemyDEF: number,
   skillRate: number,
   attackType: "Physical" | "Magic",
-  attackerElement: string,  // e.g. "Fire", "Dark", "Space"
+  attackElementKey: string,
+  attackBaseElement: string,
+  attackScope: AttackScope,
   buffs: BuffEntry[],
+  activeEnemyConditions: string[],
   rolls: ProcRolls,
   baseRates: BaseRates,
   enemyElement?: string,
@@ -415,13 +1105,11 @@ export function runCalc(
   // ── Step 1b: Attack-type multiplier (300-303) — conditional on attack_type ───
   const physBuff   = attackType === "Physical" ? sumBuff(buffs, "EffectAttackPhysics") : 0
   const magicBuff  = attackType === "Magic"    ? sumBuff(buffs, "EffectAttackMagic")   : 0
-  // include enemy's built-in attack-type resistance (negative = enemy weak = bonus to attacker)
   const enemyTypeResist = getEnemyBaseResist(enemy, attackType)
-  const skillResistBuff = attackType === "Physical" ? sumBuff(buffs, "ResistAttackPhysics") : sumBuff(buffs, "ResistAttackMagic")
-  const phMagResistBuff = skillResistBuff + enemyTypeResist
-  const singleBuff = sumBuff(buffs, "EffectAttackSingle")
-  const wholeBuff  = sumBuff(buffs, "EffectAttackWhole")
-  const atkTypeTot = physBuff + magicBuff + singleBuff + wholeBuff - phMagResistBuff
+  const attackTypeResistBuff = attackType === "Physical" ? sumBuff(buffs, "ResistAttackPhysics") : sumBuff(buffs, "ResistAttackMagic")
+  const scopeBuff = attackScope === "whole" ? sumBuff(buffs, "EffectAttackWhole") : sumBuff(buffs, "EffectAttackSingle")
+  const scopeResistBuff = attackScope === "whole" ? sumBuff(buffs, "ResistAttackWhole") : sumBuff(buffs, "ResistAttackSingle")
+  const atkTypeTot = physBuff + magicBuff + scopeBuff - enemyTypeResist - attackTypeResistBuff - scopeResistBuff
   const atkTypeMult = 1 + atkTypeTot / B
   const effATK2    = effATK1 * atkTypeMult
   if (atkTypeMult !== 1)
@@ -429,26 +1117,31 @@ export function runCalc(
       mult: atkTypeMult, note: `+${(atkTypeTot/100).toFixed(1)}% (${attackType}${enemyTypeResist !== 0 ? ` incl. enemy ${enemyTypeResist < 0 ? "weak" : "resist"} ${(Math.abs(enemyTypeResist)/100).toFixed(0)}%` : ""})` })
 
   // ── Step 1c: Attacker-element ATK buff (309-316) + enemy element resist ─────
-  const elemKey = `EffectElement${attackerElement}` as BuffType
-  const elemATKBuff = (elemKey in BUFF_META) ? sumBuff(buffs, elemKey) : 0
-  const enemyElemResist = getEnemyElemResist(enemy, attackerElement)
-  const elemTotal = elemATKBuff - enemyElemResist
+  const elemBuffKey = `EffectElement${attackElementKey}`
+  const elemResistKey = `ResistElement${attackElementKey}`
+  const dmgResistElemKey = `DamageResistElement${attackElementKey}`
+  const elemATKBuff = sumBuff(buffs, elemBuffKey)
+  const enemyElemBaseResist = getEnemyElemResist(enemy, attackBaseElement)
+  const enemyElemSkillResist = sumBuff(buffs, elemResistKey) + sumBuff(buffs, dmgResistElemKey)
+  const elemTotal = elemATKBuff - enemyElemBaseResist - enemyElemSkillResist
   const elemATKMult = 1 + elemTotal / B
   const effATK3    = effATK2 * elemATKMult
   if (elemTotal !== 0)
-    steps.push({ label: `${attackerElement} ATK %`, mult: elemATKMult,
-      note: `ElemBuff +${(elemATKBuff/100).toFixed(1)}%${enemyElemResist !== 0 ? ` / EnemyElemResist ${(enemyElemResist/100).toFixed(1)}%` : ""}` })
+    steps.push({ label: `${attackElementKey} ATK %`, mult: elemATKMult,
+      note: `ElemBuff +${(elemATKBuff/100).toFixed(1)}%${enemyElemBaseResist !== 0 || enemyElemSkillResist !== 0 ? ` / EnemyElemResist ${((enemyElemBaseResist + enemyElemSkillResist)/100).toFixed(1)}%` : ""}` })
 
   // ── Step 1d: "X+ damage" (DamageEffect 508-514) — separate axis ──────────────
-  const dmgEffKey = `DamageEffectElement${attackerElement}` as BuffType
-  const dmgEffBuff = (dmgEffKey in BUFF_META) ? sumBuff(buffs, dmgEffKey) : 0
-  const dmgEffPhys = attackType === "Physical" ? sumBuff(buffs, "DamageEffectAttackPhysics") : 0
-  const dmgEffMagic= attackType === "Magic"    ? sumBuff(buffs, "DamageEffectAttackMagic")   : 0
-  const dmgEffTot  = dmgEffBuff + dmgEffPhys + dmgEffMagic
+  const dmgEffKey = `DamageEffectElement${attackElementKey}`
+  const dmgEffBuff = sumBuff(buffs, dmgEffKey)
+  const dmgEffAttack = attackType === "Physical" ? sumBuff(buffs, "DamageEffectAttackPhysics") : sumBuff(buffs, "DamageEffectAttackMagic")
+  const dmgEffScope = attackScope === "whole" ? sumBuff(buffs, "DamageEffectAttackWhole") : sumBuff(buffs, "DamageEffectAttackSingle")
+  const dmgResistAttack = attackType === "Physical" ? sumBuff(buffs, "DamageResistAttackPhysics") : sumBuff(buffs, "DamageResistAttackMagic")
+  const dmgResistScope = attackScope === "whole" ? sumBuff(buffs, "DamageResistAttackWhole") : sumBuff(buffs, "DamageResistAttackSingle")
+  const dmgEffTot  = dmgEffBuff + dmgEffAttack + dmgEffScope - dmgResistAttack - dmgResistScope
   const dmgEffMult = 1 + dmgEffTot / B
   const effATK     = effATK3 * dmgEffMult
   if (dmgEffTot !== 0)
-    steps.push({ label: `${attackerElement}+ DMG %`, mult: dmgEffMult,
+    steps.push({ label: `${attackElementKey}+ DMG %`, mult: dmgEffMult,
       note: `DamageEffect +${(dmgEffTot/100).toFixed(1)}%` })
 
   // ── Step 2: Enemy DEF + Penetration ──────────────────────────────────────────
@@ -475,6 +1168,34 @@ export function runCalc(
   const skillMult     = skillRate / 100
   const preMultDamage = baseATK > 0 ? baseDmgRatio * skillMult : null
   steps.push({ label: "Skill Rate", mult: skillMult, note: `${skillRate}% of base` })
+
+  const attackDamageRateValue = sumBuff(buffs, "AttackDamageRate")
+  const attackDamageRateMult = attackDamageRateValue !== 0 ? attackDamageRateValue / B : 1
+  if (attackDamageRateValue !== 0) {
+    steps.push({
+      label: "All Damage Rate",
+      mult: attackDamageRateMult,
+      note: `x${attackDamageRateMult.toFixed(3)}`,
+    })
+  }
+
+  const activeConditionBonus = activeEnemyConditions.reduce((sum, conditionName) => {
+    const buffType = CONDITION_DAMAGE_BUFF_BY_NAME[conditionName]
+    return buffType ? sum + sumBuff(buffs, buffType) : sum
+  }, 0)
+  const inactiveConditionBonus = activeEnemyConditions.length === 0 ? sumBuff(buffs, "ConditionDefenceNotActive") : 0
+  const conditionBonus = activeConditionBonus + inactiveConditionBonus
+  const conditionMult = 1 + conditionBonus / B
+  if (conditionBonus !== 0) {
+    steps.push({
+      label: "Condition Bonus",
+      mult: conditionMult,
+      note:
+        activeEnemyConditions.length > 0
+          ? `${activeEnemyConditions.join(", ")} ${conditionBonus >= 0 ? "+" : ""}${(conditionBonus / 100).toFixed(1)}%`
+          : `${conditionBonus >= 0 ? "+" : ""}${(conditionBonus / 100).toFixed(1)}% vs no condition`,
+    })
+  }
 
   // ── Step 4: SoCo (ComboRate) ──────────────────────────────────────────────────
   const comboRateBuff = sumBuff(buffs, "ComboRate")
@@ -524,34 +1245,31 @@ export function runCalc(
   }
 
   // ── Step 8: Element weakness ──────────────────────────────────────────────────
-  const weakBoost      = sumBuff(buffs, "SpecialEffectWeakness")
-  const superWeakBoost = sumBuff(buffs, "SpecialEffectSuperWeakness")
-  const enhancedBonus  = baseRates.isEnhancedAttacker ? ENHANCE_ELEM_BONUS : 0
+  const weakBoost = sumBuff(buffs, "SpecialEffectWeakness") - sumBuff(buffs, "ResistWeakness")
+  const superWeakBoost = sumBuff(buffs, "SpecialEffectSuperWeakness") - sumBuff(buffs, "ResistSuperWeakness")
+  const enhancedWeakBoost = baseRates.isEnhancedAttacker
+    ? ENHANCE_ELEM_BONUS + sumBuff(buffs, "EffectEnhancedWeakDamage") - sumBuff(buffs, "ResistEnhancedWeakDamage")
+    : 0
   let elemCoeff = 1
   if (rolls.weakness !== "normal") {
     const w = rolls.weakness
-    if      (w === "weak")                elemCoeff = 1 + (WEAK_BONUS + weakBoost + enhancedBonus) / B
-    else if (w === "super_weak")          elemCoeff = 1 + (WEAK_BONUS + SUPER_WEAK_BONUS + superWeakBoost + weakBoost + enhancedBonus) / B
-    else if (w === "enhanced_weak")       elemCoeff = 1 + (WEAK_BONUS + ENHANCE_ELEM_BONUS + weakBoost + enhancedBonus) / B
-    else if (w === "enhanced_super_weak") elemCoeff = 1 + (WEAK_BONUS + SUPER_WEAK_BONUS + ENHANCE_ELEM_BONUS + superWeakBoost + weakBoost + enhancedBonus) / B
+    if      (w === "weak")                elemCoeff = 1 + (WEAK_BONUS + weakBoost) / B
+    else if (w === "super_weak")          elemCoeff = 1 + (WEAK_BONUS + SUPER_WEAK_BONUS + superWeakBoost + weakBoost) / B
+    else if (w === "enhanced_weak")       elemCoeff = 1 + (WEAK_BONUS + enhancedWeakBoost + weakBoost) / B
+    else if (w === "enhanced_super_weak") elemCoeff = 1 + (WEAK_BONUS + SUPER_WEAK_BONUS + enhancedWeakBoost + superWeakBoost + weakBoost) / B
     steps.push({ label: w.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase()),
       mult: elemCoeff, note: `x${elemCoeff.toFixed(3)}` })
   }
 
   // ── Step 9: "Damage to X enemies" (SpecialEffectElement) ─────────────────────
   const specElemKey = enemyElement ? `SpecialEffectElement${enemyElement}` as BuffType : null
-  const specElemBuff = specElemKey && (specElemKey in BUFF_META) ? sumBuff(buffs, specElemKey) : 0
+  const specElemBuff = specElemKey ? sumBuff(buffs, specElemKey) : 0
   const specElemMult = 1 + specElemBuff / B
   if (specElemBuff !== 0)
     steps.push({ label: `DMG vs ${enemyElement}`, mult: specElemMult,
       note: `SpecialEffectElement ${enemyElement} +${(specElemBuff/100).toFixed(1)}%` })
 
-  // ── Step 10: Drago condition (x2.0 est.) ─────────────────────────────────────
-  const dragoMult = rolls.drago ? 2.0 : 1.0
-  if (rolls.drago)
-    steps.push({ label: "Drago", mult: dragoMult, note: "Drago condition (x2.0 est.)" })
-
-  // ── Step 11: Enemy Damage Taken (Dread / debuffs) ────────────────────────────
+  // ── Step 10: Enemy Damage Taken (Dread / debuffs) ────────────────────────────
   const damageTakenBuff = sumBuff(buffs, "DamageTaken")
   const damageTakenMult = 1 + damageTakenBuff / B
   if (damageTakenBuff !== 0)
@@ -566,12 +1284,12 @@ export function runCalc(
 
   const rates = computeProcRates(buffs, baseRates)
 
-  const totalMult = skillMult * socoMult * critMult * coopMult * defCritMult * elemCoeff * specElemMult * dragoMult * damageTakenMult * specialResistMult
+  const totalMult = skillMult * attackDamageRateMult * conditionMult * socoMult * critMult * coopMult * defCritMult * elemCoeff * specElemMult * damageTakenMult * specialResistMult
   return {
     steps,
     totalMult,
     rawDamage: preMultDamage !== null
-      ? preMultDamage * socoMult * critMult * coopMult * defCritMult * elemCoeff * specElemMult * dragoMult * damageTakenMult * specialResistMult
+      ? preMultDamage * attackDamageRateMult * conditionMult * socoMult * critMult * coopMult * defCritMult * elemCoeff * specElemMult * damageTakenMult * specialResistMult
       : null,
     procRolls: rolls,
     critRate:  rates.crit,
@@ -899,14 +1617,16 @@ function EnemyPickerOverlay({
 
 // ─── Skill bubble ─────────────────────────────────────────────────────────────
 function SkillBubble({
-  skill, isActive, isDamageSelected, isDisabled = false, slotBadge, tooltipNote, onHoverChange, onToggle, onSelectDamage,
+  skill, isActive, isDamageSelected, isDisabled = false, slotBadge, tooltipNote, useCount = 0, showUseCountInput = false, onUseCountChange, onHoverChange, onToggle, onSelectDamage,
 }: {
   skill: WikiSkill; isActive: boolean; isDamageSelected: boolean
   isDisabled?: boolean; slotBadge?: string; tooltipNote?: string
+  useCount?: number; showUseCountInput?: boolean
+  onUseCountChange?: (value: number) => void
   onHoverChange?: (payload: { skill: WikiSkill; tooltipNote?: string; rect: DOMRect } | null) => void
   onToggle?: () => void; onSelectDamage?: () => void
 }) {
-  const isDamageSkill = skill.slot === "special_skill" || skill.kind === "special"
+  const isDamageSkill = skill.slot === "special_skill" || skill.slot === "special_skill_attack" || skill.kind === "special"
   const handleClick = () => {
     if (isDisabled) return
     if (isDamageSkill && onSelectDamage) onSelectDamage()
@@ -935,6 +1655,11 @@ function SkillBubble({
         {isDamageSkill && (
           <div className="absolute top-0.5 right-0.5 w-2 h-2 bg-yellow-400 rounded-full border border-yellow-600" />
         )}
+        {!isDamageSkill && useCount > 1 && (
+          <div className="absolute top-0.5 right-0.5 min-w-[18px] px-1 rounded bg-blue-950/90 text-[8px] font-bold text-blue-200 border border-blue-700 text-center">
+            x{useCount}
+          </div>
+        )}
         {!isDamageSkill && isActive && (
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-blue-500" />
         )}
@@ -945,15 +1670,30 @@ function SkillBubble({
       <span className={`text-[9px] text-center leading-tight max-w-[64px] ${isDisabled ? "text-gray-700" : isActive || isDamageSelected ? "text-gray-200" : "text-gray-500"}`}>
         {skill.name}
       </span>
+      {showUseCountInput && !isDamageSkill && (
+        <div className="flex items-center gap-1">
+          <span className="text-[8px] text-gray-500">x</span>
+          <input
+            type="number"
+            min="0"
+            value={useCount}
+            disabled={isDisabled}
+            onClick={(event) => event.stopPropagation()}
+            onChange={(event) => onUseCountChange?.(normalizeUseCount(Number.parseInt(event.target.value || "0", 10)))}
+            className={`w-10 rounded border px-1 py-0.5 text-center text-[9px] font-mono ${isDisabled ? "border-gray-800 bg-gray-900 text-gray-700" : "border-gray-700 bg-gray-800 text-white"}`}
+          />
+        </div>
+      )}
     </div>
   )
 }
 
 // ─── Char Info Panel ──────────────────────────────────────────────────────────
 function CharInfoPanel({
-  char, activeBuffs, onClose,
-}: { char: WikiCharacter; activeBuffs: BuffEntry[]; onClose: () => void }) {
+  char, activeBuffs, displayStats, onClose,
+}: { char: WikiCharacter; activeBuffs: BuffEntry[]; displayStats?: { hp: number; attack: number; defense: number } | null; onClose: () => void }) {
   const charBuffs = activeBuffs.filter(b => b.value !== 0 && b.source.startsWith(`${char.name} - `))
+  const stats = displayStats ?? getBattleStats(char)
   return (
     <div className="bg-gray-900 border border-gray-700 rounded-xl overflow-hidden flex flex-col h-full">
       <div className="relative h-20 bg-gradient-to-br from-gray-800 to-gray-900">
@@ -979,9 +1719,9 @@ function CharInfoPanel({
           <div className="text-gray-400">Attack Type<span className="ml-2 font-semibold text-white">{char.attack_type}</span></div>
           <div className="text-gray-400">Weapon<span className="ml-2 text-gray-300">{char.weapon_type}</span></div>
         </div>
-        {[{ label: "HP", val: char.stats.hp.toLocaleString() },
-          { label: "ATK", val: char.stats.attack.toLocaleString() },
-          { label: "DEF", val: char.stats.defense.toLocaleString() }].map(({ label, val }) => (
+        {[{ label: "HP", val: (stats?.hp ?? char.stats.hp).toLocaleString() },
+          { label: "ATK", val: (stats?.attack ?? char.stats.attack).toLocaleString() },
+          { label: "DEF", val: (stats?.defense ?? char.stats.defense).toLocaleString() }].map(({ label, val }) => (
           <div key={label} className="flex items-center px-3 py-1.5 text-xs">
             <span className="text-gray-400 flex-1">{label}</span>
             <span className="font-mono font-semibold text-white">{val}</span>
@@ -1001,7 +1741,7 @@ function CharInfoPanel({
                 </div>
                 <div className="flex-1 min-w-0">
                   <span className={`font-semibold ${b.value >= 0 ? "text-white" : "text-red-300"}`}>
-                    {BUFF_META[b.type]?.label} {b.value >= 0 ? "+" : ""}{(b.value/100).toFixed(1)}%
+                    {getBuffLabel(b.type)} {b.value >= 0 ? "+" : ""}{(b.value/100).toFixed(1)}%
                   </span>
                   <span className="text-gray-600 text-[10px] ml-1">({b.source})</span>
                 </div>
@@ -1087,7 +1827,7 @@ function EnemyInfoPanel({
                 <div key={b.id} className="flex items-start gap-2 text-xs">
                   <div className="w-4 h-4 rounded shrink-0 mt-0.5 flex items-center justify-center text-[10px] bg-red-900 text-red-300">-</div>
                   <div className="flex-1 min-w-0">
-                    <span className="font-semibold text-red-200">{BUFF_META[b.type]?.label} {b.value >= 0 ? "+" : ""}{(b.value/100).toFixed(1)}%</span>
+                    <span className="font-semibold text-red-200">{getBuffLabel(b.type)} {b.value >= 0 ? "+" : ""}{(b.value/100).toFixed(1)}%</span>
                     <span className="text-gray-600 text-[10px] ml-1">({b.source})</span>
                   </div>
                 </div>
@@ -1166,15 +1906,16 @@ function DamageResultPanel({ result, onReroll, onClose }: { result: CalcResult; 
 
 // ─── Stat override modal ─────────────────────────────────────────────────────
 function StatModal({
-  slot, slotIdx, onClose, onRatesChange, onAtkChange,
+  slot, slotIdx, onClose, onRatesChange, onStatOverridesChange,
 }: {
-  slot: { char: WikiCharacter | null; atkOverride: string; rates: BaseRates }
+  slot: AttackerSlotState
   slotIdx: number
   onClose: () => void
   onRatesChange: (rates: BaseRates) => void
-  onAtkChange: (v: string) => void
+  onStatOverridesChange: (overrides: StatOverrides) => void
 }) {
-  const { char, atkOverride, rates } = slot
+  const { char, statOverrides, rates } = slot
+  const stats = getSlotBattleStats(slot)
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70" onClick={onClose}>
       <div className="bg-gray-900 border border-gray-700 rounded-2xl w-full max-w-2xl p-5 shadow-2xl mx-4" onClick={e => e.stopPropagation()}>
@@ -1192,14 +1933,25 @@ function StatModal({
           <button onClick={onClose}><X className="w-4 h-4 text-gray-400 hover:text-white" /></button>
         </div>
         <div className="space-y-4">
-          <div className="flex items-center gap-2">
-            <label className="text-gray-300 text-sm w-32 font-medium">ATK Override</label>
-            <input type="number" value={atkOverride}
-              onChange={e => onAtkChange(e.target.value)}
-              placeholder={char ? String(char.stats.attack) : "0"}
-              className="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white" />
-            {atkOverride && <button onClick={() => onAtkChange("")} className="text-gray-600 hover:text-red-400"><X className="w-3 h-3" /></button>}
-          </div>
+          {([
+            ["HP Override", "hp", stats?.hp ?? char?.stats.hp ?? 0],
+            ["ATK Override", "atk", stats?.attack ?? char?.stats.attack ?? 0],
+            ["DEF Override", "def", stats?.defense ?? char?.stats.defense ?? 0],
+          ] as const).map(([label, key, fallback]) => (
+            <div key={key} className="flex items-center gap-2">
+              <label className="text-gray-300 text-sm w-32 font-medium">{label}</label>
+              <input
+                type="number"
+                value={statOverrides[key]}
+                onChange={e => onStatOverridesChange({ ...statOverrides, [key]: e.target.value })}
+                placeholder={String(fallback)}
+                className="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white"
+              />
+              {statOverrides[key] && (
+                <button onClick={() => onStatOverridesChange({ ...statOverrides, [key]: "" })} className="text-gray-600 hover:text-red-400"><X className="w-3 h-3" /></button>
+              )}
+            </div>
+          ))}
           <div className="border-t border-gray-800 pt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
             {([
               ["Crit %", "probCritical"],
@@ -1243,15 +1995,13 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
     probCriticalSuper: 0, probPenetrationSuper: 0, probCooperationSuper: 0,
     isEnhancedAttacker: false,
   }
-  const [attackerSlots, setAttackerSlots] = useState<Array<{ char: WikiCharacter | null; atkOverride: string; rates: BaseRates }>>(
-    Array.from({ length: 5 }, () => ({ char: null, atkOverride: "", rates: DEFAULT_RATES }))
+  const [attackerSlots, setAttackerSlots] = useState<AttackerSlotState[]>(
+    Array.from({ length: 5 }, () => ({ char: null, statOverrides: createEmptyStatOverrides(), rates: { ...DEFAULT_RATES } }))
   )
-  const [attackerActiveSkills, setAttackerActiveSkills] = useState<Set<string>[]>(
-    Array.from({ length: 5 }, () => new Set<string>())
-  )
+  const [attackerSkillUses, setAttackerSkillUses] = useState<Record<string, number>>({})
   const [mainProtector, setMainProtector] = useState<WikiCharacter | null>(null)
   const [subProtector,  setSubProtector]  = useState<WikiCharacter | null>(null)
-  const [protSkillToggles, setProtSkillToggles] = useState<Record<string, boolean>>({})
+  const [protectorSkillUses, setProtectorSkillUses] = useState<Record<string, number>>({})
 
   // Enemy state
   const [selectedEnemy, setSelectedEnemy] = useState<WikiEnemy | null>(null)
@@ -1272,139 +2022,306 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
   const [calcSkillLabel, setCalcSkillLabel] = useState<string | null>(null)
   const [statModalSlot, setStatModalSlot] = useState<number | null>(null)
   const [hoveredSkill, setHoveredSkill] = useState<{ skill: WikiSkill; tooltipNote?: string; rect: DOMRect; viewportWidth: number } | null>(null)
+  const [enemyConditionToggles, setEnemyConditionToggles] = useState<Record<string, boolean>>({})
   const [rolls, setRolls] = useState<ProcRolls>({
     critical: false, superCritical: false, penetration: false, superPenetration: false,
     cooperation: false, superCooperation: false, defCritical: false,
-    drago: false, soco: "none", weakness: "normal",
+    soco: "none", weakness: "normal",
   })
 
   // Derived: protector buffs
   const protectorBuffs = useMemo<BuffEntry[]>(() => {
     const result: BuffEntry[] = []
-    function add(char: WikiCharacter, slot: string, alwaysOn: boolean) {
+    function add(char: WikiCharacter, slot: string, uses: number) {
       const skill = char.skills.find(s => s.slot === slot)
-      if (!skill) return
+      const count = normalizeUseCount(uses)
+      if (!skill || count <= 0) return
       const id = `${char.master_pc_id}_${slot}`
-      if (!alwaysOn && !(protSkillToggles[id] ?? true)) return
-      parseSkillBuffs(skill.description_max_level).forEach((pb, i) =>
-        result.push({ id: `${id}_${i}`, type: pb.type, value: pb.value, source: `${char.name} - ${skill.name}`, skillId: id }))
+      const stackingMode = inferSkillBuffStackingMode(skill)
+      getSkillBuffs(skill).forEach((pb, i) =>
+        result.push({
+          id: `${id}_${i}`,
+          type: pb.type,
+          value: pb.value * (stackingMode === "unlimited" ? count : 1),
+          source: `${char.name} - ${skill.name}${count > 1 ? ` x${count}` : ""}`,
+          skillId: id,
+          uses: count,
+          stackingMode,
+        }))
     }
-    if (mainProtector) { add(mainProtector, "leader_skill", false); add(mainProtector, "bless_skill", false) }
-    if (subProtector)  add(subProtector, "assist_leader_skill", true)
+    if (mainProtector) {
+      add(mainProtector, "leader_skill", 1)
+      add(mainProtector, "bless_skill", protectorSkillUses[getProtectorSkillUseKey(mainProtector.master_pc_id, "bless_skill")] ?? 0)
+    }
+    if (subProtector) add(subProtector, "assist_leader_skill", 1)
     return result
-  }, [mainProtector, subProtector, protSkillToggles])
+  }, [mainProtector, subProtector, protectorSkillUses])
 
   // Derived: attacker active-skill buffs
   const attackerBuffs = useMemo<BuffEntry[]>(() => {
     const result: BuffEntry[] = []
     attackerSlots.forEach((slot, si) => {
       if (!slot.char) return
-      const active = attackerActiveSkills[si]
       slot.char.skills.forEach(s => {
         if (!["active_skill_1", "active_skill_2", "active_skill_3"].includes(s.slot)) return
-        if (!active.has(s.label)) return
-        parseSkillBuffs(s.description_max_level).forEach((pb, i) =>
-          result.push({ id: `att_${si}_${s.label}_${i}`, type: pb.type, value: pb.value, source: `${slot.char!.name} - ${s.name}`, skillId: s.label }))
+        const uses = attackerSkillUses[getAttackerSkillUseKey(si, s.label)] ?? 0
+        if (uses <= 0) return
+        const stackingMode = inferSkillBuffStackingMode(s)
+        getSkillBuffs(s).forEach((pb, i) =>
+          result.push({
+            id: `att_${si}_${s.label}_${i}`,
+            type: pb.type,
+            value: pb.value * (stackingMode === "unlimited" ? uses : 1),
+            source: `${slot.char!.name} - ${s.name}${uses > 1 ? ` x${uses}` : ""}`,
+            skillId: s.label,
+            uses,
+            stackingMode,
+          }))
       })
     })
     return result
-  }, [attackerSlots, attackerActiveSkills])
+  }, [attackerSlots, attackerSkillUses])
 
   const allBuffs = useMemo(() => [...protectorBuffs, ...attackerBuffs], [protectorBuffs, attackerBuffs])
 
-  const enemyDebuffs = useMemo(() => allBuffs.filter(b =>
+  const activeSupportSkills = useMemo(() => {
+    const result: Array<{ skill: WikiSkill; source: string }> = []
+
+    if (mainProtector) {
+      const leaderSkill = mainProtector.skills.find((entry) => entry.slot === "leader_skill")
+      if (leaderSkill) result.push({ skill: leaderSkill, source: `${mainProtector.name} - ${leaderSkill.name}` })
+
+      const blessSkill = mainProtector.skills.find((entry) => entry.slot === "bless_skill")
+      const blessUses = protectorSkillUses[getProtectorSkillUseKey(mainProtector.master_pc_id, "bless_skill")] ?? 0
+      if (blessSkill && blessUses > 0) {
+        result.push({ skill: blessSkill, source: `${mainProtector.name} - ${blessSkill.name}${blessUses > 1 ? ` x${blessUses}` : ""}` })
+      }
+    }
+
+    if (subProtector) {
+      const skill = subProtector.skills.find((entry) => entry.slot === "assist_leader_skill")
+      if (skill) result.push({ skill, source: `${subProtector.name} - ${skill.name}` })
+    }
+
+    attackerSlots.forEach((slot, slotIdx) => {
+      if (!slot.char) return
+      slot.char.skills.forEach((skill) => {
+        if (!skill.slot.startsWith("active_skill_")) return
+        const uses = attackerSkillUses[getAttackerSkillUseKey(slotIdx, skill.label)] ?? 0
+        if (uses <= 0) return
+        result.push({ skill, source: `${slot.char!.name} - ${skill.name}${uses > 1 ? ` x${uses}` : ""}` })
+      })
+    })
+
+    return result
+  }, [mainProtector, subProtector, protectorSkillUses, attackerSlots, attackerSkillUses])
+
+  const activePartyConditions = useMemo(() => {
+    const names = new Set<string>()
+
+    activeSupportSkills.forEach(({ skill }) => {
+      getSkillStructuredPartyConditions(skill).forEach(({ name, probability }) => {
+        if (probability >= B) {
+          names.add(name)
+        }
+      })
+    })
+
+    return Array.from(names).sort((left, right) => left.localeCompare(right))
+  }, [activeSupportSkills])
+
+  const enemyConditionOptions = useMemo(() => {
+    const options = new Map<string, { name: string; defaultActive: boolean; notes: string[] }>()
+
+    const upsert = (name: string, defaultActive: boolean, note: string) => {
+      const existing = options.get(name)
+      if (existing) {
+        existing.defaultActive = existing.defaultActive || defaultActive
+        if (note && !existing.notes.includes(note)) existing.notes.push(note)
+        return
+      }
+      options.set(name, { name, defaultActive, notes: note ? [note] : [] })
+    }
+
+    activeSupportSkills.forEach(({ skill, source }) => {
+      getSkillStructuredEnemyConditions(skill).forEach(({ name, probability }) => {
+        upsert(name, probability >= B, `${source}${probability && probability !== B ? ` (${(probability / 100).toFixed(1)}%)` : ""}`)
+      })
+    })
+
+    allBuffs.forEach((buff) => {
+      for (const [conditionName, buffType] of Object.entries(CONDITION_DAMAGE_BUFF_BY_NAME)) {
+        if (buff.type === buffType) {
+          upsert(conditionName, false, getBuffLabel(buff.type))
+        }
+      }
+    })
+
+    return Array.from(options.values()).sort((left, right) => left.name.localeCompare(right.name))
+  }, [activeSupportSkills, allBuffs])
+
+  const activeEnemyConditions = useMemo(
+    () => enemyConditionOptions
+      .filter((option) => enemyConditionToggles[option.name] ?? option.defaultActive)
+      .map((option) => option.name),
+    [enemyConditionOptions, enemyConditionToggles],
+  )
+
+  const effectiveBuffs = useMemo(
+    () => resolveEffectiveBuffs(allBuffs, activePartyConditions, activeEnemyConditions),
+    [allBuffs, activePartyConditions, activeEnemyConditions],
+  )
+
+  const effectiveBuffSummary = useMemo(() => {
+    const grouped = new Map<BuffType, BuffEntry[]>()
+    for (const buff of effectiveBuffs) {
+      const existing = grouped.get(buff.type)
+      if (existing) existing.push(buff)
+      else grouped.set(buff.type, [buff])
+    }
+
+    return Array.from(grouped.entries())
+      .map(([type, entries]) => {
+        const value = sumBuff(effectiveBuffs, type)
+        if (value === 0) return null
+
+        let strongestLimited: BuffEntry | null = null
+        const sources: string[] = []
+        for (const entry of entries) {
+          if (entry.stackingMode === "unlimited") {
+            sources.push(entry.source)
+            continue
+          }
+          if (!strongestLimited || Math.abs(entry.value) > Math.abs(strongestLimited.value)) {
+            strongestLimited = entry
+          }
+        }
+        if (strongestLimited) {
+          sources.push(strongestLimited.source)
+        }
+
+        return {
+          type,
+          value,
+          source: Array.from(new Set(sources)).join(", "),
+        }
+      })
+      .filter((entry): entry is { type: BuffType; value: number; source: string } => entry !== null)
+  }, [effectiveBuffs])
+
+  const enemyDebuffs = useMemo(() => effectiveBuffs.filter((b) =>
     (b.type === "DamageTaken" && b.value > 0) ||
-    (b.type === "DamageResistSpecial" && b.value < 0) ||
-    (b.type === "Defense" && b.value < 0) ||
-    (b.type === "ResistAttackPhysics" && b.value < 0) ||
-    (b.type === "ResistAttackMagic" && b.value < 0) ||
-    (b.type === "ResistCritical" && b.value < 0) ||
-    (b.type === "ResistPenetration" && b.value < 0) ||
-    (b.type === "ResistCooperation" && b.value < 0) ||
-    (b.type === "ResistDefcritical" && b.value < 0)
-  ), [allBuffs])
+    (ENEMY_SIDE_BUFF_TYPES.has(b.type) && b.value < 0)
+  ), [effectiveBuffs])
 
   // Derived calc values
   const calcSlot  = attackerSlots[calcSlotIdx]
   const calcChar  = calcSlot?.char ?? null
-  const baseATK   = parseInt(calcSlot?.atkOverride || "") || calcChar?.stats.attack || 0
+  const calcCharStats = getSlotBattleStats(calcSlot)
+  const baseATK   = calcCharStats?.attack || calcChar?.stats.attack || 0
   const baseDEF   = parseInt(enemyDefOverride || String(selectedEnemy?.defense ?? 0)) || 0
   const baseRates = attackerSlots[calcSlotIdx].rates
-
-  // Auto-detect weakness from enemy element resist vs attacker element
-  const autoWeakness = useMemo((): ElementWeakness => {
-    if (!selectedEnemy || !calcChar) return "normal"
-    const elemResist = getEnemyElemResist(selectedEnemy, calcChar.element)
-    if (elemResist >= 0) return "normal"
-    return attackerSlots[calcSlotIdx].rates.isEnhancedAttacker ? "enhanced_weak" : "weak"
-  }, [selectedEnemy, calcChar, attackerSlots, calcSlotIdx])
-
-  // Auto-detect Drago from any active attacker skill description
-  const autoDrago = useMemo(() => {
-    return attackerSlots.some((slot, si) => {
-      if (!slot.char) return false
-      return slot.char.skills.some(s => {
-        if (!["active_skill_1","active_skill_2","active_skill_3"].includes(s.slot)) return false
-        if (!attackerActiveSkills[si].has(s.label)) return false
-        return /drago/i.test(s.description_max_level ?? "")
-      })
-    })
-  }, [attackerSlots, attackerActiveSkills])
-
-  const effectiveRolls = useMemo<ProcRolls>(() => ({
-    ...rolls,
-    weakness: autoWeakness,
-    drago: autoDrago,
-  }), [rolls, autoWeakness, autoDrago])
 
   const calcCharsSkills = useMemo(() => {
     if (!calcChar) return []
     return calcChar.skills.filter(s =>
-      ["special_skill", "active_skill_1", "active_skill_2", "active_skill_3"].includes(s.slot))
+      ["special_skill", "special_skill_attack", "active_skill_1", "active_skill_2", "active_skill_3"].includes(s.slot))
   }, [calcChar])
 
   const calcSkill = useMemo(() =>
     calcCharsSkills.find(s => s.label === calcSkillLabel) ??
+    calcCharsSkills.find(s => s.slot === "special_skill_attack") ??
+    calcCharsSkills.find(s => getSkillDamageRate(s) > 0) ??
     calcCharsSkills.find(s => s.slot === "special_skill") ?? null,
     [calcCharsSkills, calcSkillLabel]
   )
 
-  const parsedRate  = calcSkill ? (parseSkillDamageRate(calcSkill.description_max_level) ?? 0) : 0
-  const skillRate   = parsedRate || 0
-  const attackType: "Physical" | "Magic" = calcChar?.attack_type === "Physical" ? "Physical" : "Magic"
+  const skillRate = getSkillDamageRate(calcSkill)
+  const calcAttackEffect = getSkillPrimaryAttackEffect(calcSkill)
+  const calcAttackType = normalizeAttackTypeName(calcAttackEffect?.attack_type ?? calcChar?.attack_type)
+  const calcAttackElement = getBattleElementInfo(calcAttackEffect?.element_type ?? calcChar?.element ?? "Fire")
+  const calcAttackScope = getAttackScope(calcAttackEffect)
+  const effectiveBaseRates = useMemo(() => ({
+    ...baseRates,
+    isEnhancedAttacker: baseRates.isEnhancedAttacker || calcAttackElement.isEnhanced,
+  }), [baseRates, calcAttackElement.isEnhanced])
+
+  // Auto-detect weakness from enemy element resist vs attacker element
+  const autoWeakness = useMemo((): ElementWeakness => {
+    if (!selectedEnemy) return "normal"
+    const elemResist = getEnemyElemResist(selectedEnemy, calcAttackElement.baseElement)
+    if (elemResist >= 0) return "normal"
+    return effectiveBaseRates.isEnhancedAttacker ? "enhanced_weak" : "weak"
+  }, [selectedEnemy, calcAttackElement.baseElement, effectiveBaseRates.isEnhancedAttacker])
+
+  const effectiveRolls = useMemo<ProcRolls>(() => ({
+    ...rolls,
+    weakness: autoWeakness,
+  }), [rolls, autoWeakness])
 
   const calcResult = useMemo(() => {
     if (!skillRate || !baseATK) return null
-    const attackerElement = calcChar?.element ?? "Fire"
-    return runCalc(baseATK, baseDEF || 1, skillRate, attackType, attackerElement, allBuffs, effectiveRolls, baseRates, selectedEnemy?.element, selectedEnemy)
-  }, [baseATK, baseDEF, skillRate, attackType, calcChar?.element, allBuffs, effectiveRolls, baseRates, selectedEnemy?.element, selectedEnemy])
+    return runCalc(
+      baseATK,
+      baseDEF || 1,
+      skillRate,
+      calcAttackType,
+      calcAttackElement.key,
+      calcAttackElement.baseElement,
+      calcAttackScope,
+      effectiveBuffs,
+      activeEnemyConditions,
+      effectiveRolls,
+      effectiveBaseRates,
+      selectedEnemy?.element,
+      selectedEnemy,
+    )
+  }, [baseATK, baseDEF, skillRate, calcAttackType, calcAttackElement, calcAttackScope, effectiveBuffs, activeEnemyConditions, effectiveRolls, effectiveBaseRates, selectedEnemy?.element, selectedEnemy])
 
   function rerollProcs() {
-    const rates = computeProcRates(allBuffs, baseRates)
+    const rates = computeProcRates(effectiveBuffs, baseRates)
     setRolls(prev => rollProcs(rates, prev))
   }
 
   // Helpers
-  function toggleProtSkill(id: string) {
-    setProtSkillToggles(prev => ({ ...prev, [id]: !(prev[id] ?? true) }))
-  }
-  function toggleAttackerSkill(slotIdx: number, label: string) {
-    setAttackerActiveSkills(prev => {
-      const next = prev.map((s, i) => i === slotIdx ? new Set(s) : s)
-      if (next[slotIdx].has(label)) {
-        next[slotIdx].delete(label)
-        return next
-      }
-      const char = attackerSlots[slotIdx]?.char
-      const skill = char?.skills.find(s => s.label === label)
-      if (skill?.slot && skill.slot.startsWith("active_skill_")) {
-        char?.skills.forEach(s => {
-          if (s.slot === skill.slot) next[slotIdx].delete(s.label)
-        })
-      }
-      next[slotIdx].add(label)
+  function setProtectorSkillUseCount(masterPcId: number, slot: string, count: number) {
+    const key = getProtectorSkillUseKey(masterPcId, slot)
+    setProtectorSkillUses((prev) => {
+      const next = { ...prev }
+      const normalized = normalizeUseCount(count)
+      if (normalized > 0) next[key] = normalized
+      else delete next[key]
       return next
     })
+  }
+
+  function toggleAttackerSkill(slotIdx: number, label: string) {
+    const currentCount = attackerSkillUses[getAttackerSkillUseKey(slotIdx, label)] ?? 0
+    setAttackerSkillUseCount(slotIdx, label, currentCount > 0 ? 0 : 1)
+  }
+
+  function setAttackerSkillUseCount(slotIdx: number, label: string, count: number) {
+    setAttackerSkillUses(prev => {
+      const next = { ...prev }
+      const char = attackerSlots[slotIdx]?.char
+      const skill = char?.skills.find(s => s.label === label)
+      const normalized = normalizeUseCount(count)
+      if (skill?.slot && skill.slot.startsWith("active_skill_") && normalized > 0) {
+        char?.skills.forEach(s => {
+          if (s.slot === skill.slot && s.label !== label) {
+            delete next[getAttackerSkillUseKey(slotIdx, s.label)]
+          }
+        })
+      }
+      const key = getAttackerSkillUseKey(slotIdx, label)
+      if (normalized > 0) next[key] = normalized
+      else delete next[key]
+      return next
+    })
+  }
+
+  function toggleEnemyCondition(name: string, nextActive: boolean) {
+    setEnemyConditionToggles((prev) => ({ ...prev, [name]: nextActive }))
   }
 
   const inspectedChar = useMemo((): WikiCharacter | null => {
@@ -1430,7 +2347,7 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
       slot.char.skills.forEach(s => {
         const key = `${i}_${s.label}`
         if (seen.has(key)) return
-        if (["active_skill_1", "active_skill_2", "active_skill_3", "special_skill"].includes(s.slot)) {
+        if (["active_skill_1", "active_skill_2", "active_skill_3", "special_skill", "special_skill_attack"].includes(s.slot)) {
           seen.add(key)
           items.push({
             skill: s,
@@ -1446,22 +2363,27 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
   }, [attackerSlots])
 
   const protSkillItems = useMemo(() => {
-    type Item = { skill: WikiSkill; char: WikiCharacter; isAlwaysOn: boolean }
+    type Item = { skill: WikiSkill; char: WikiCharacter; useCount: number; showUseCountInput: boolean }
     const items: Item[] = []
     if (mainProtector) {
       mainProtector.skills.forEach(s => {
         if (["leader_skill", "bless_skill"].includes(s.slot))
-          items.push({ skill: s, char: mainProtector, isAlwaysOn: false })
+          items.push({
+            skill: s,
+            char: mainProtector,
+            useCount: s.slot === "bless_skill" ? (protectorSkillUses[getProtectorSkillUseKey(mainProtector.master_pc_id, "bless_skill")] ?? 0) : 1,
+            showUseCountInput: s.slot === "bless_skill",
+          })
       })
     }
     if (subProtector) {
       subProtector.skills.forEach(s => {
         if (s.slot === "assist_leader_skill")
-          items.push({ skill: s, char: subProtector, isAlwaysOn: true })
+          items.push({ skill: s, char: subProtector, useCount: 1, showUseCountInput: false })
       })
     }
     return items
-  }, [mainProtector, subProtector])
+  }, [mainProtector, subProtector, protectorSkillUses])
 
   return (
     <div className="min-h-screen bg-[#111827] text-white">
@@ -1522,7 +2444,16 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
                     <CharPicker
                       characters={characters}
                       value={slot.char}
-                      onChange={c => setAttackerSlots(prev => prev.map((x, j) => j === i ? { ...x, char: c, atkOverride: "" } : x))}
+                      onChange={c => {
+                        setAttackerSlots(prev => prev.map((x, j) => j === i ? { ...x, char: c, statOverrides: createEmptyStatOverrides() } : x))
+                        setAttackerSkillUses(prev => {
+                          const next = { ...prev }
+                          Object.keys(next).forEach((key) => {
+                            if (key.startsWith(`att:${i}:`)) delete next[key]
+                          })
+                          return next
+                        })
+                      }}
                       placeholder="+"
                     />
                     {slot.char && (
@@ -1551,7 +2482,14 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
                       <CharPicker
                         characters={characters}
                         value={prot}
-                        onChange={c => { if (side === "main") { setMainProtector(c); setProtSkillToggles({}) } else setSubProtector(c) }}
+                        onChange={c => {
+                          if (side === "main") {
+                            setMainProtector(c)
+                            setProtectorSkillUses({})
+                          } else {
+                            setSubProtector(c)
+                          }
+                        }}
                         placeholder="+"
                         filterRole="protector"
                       />
@@ -1566,69 +2504,125 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
           {/* Active effects panel — always visible */}
           <div className="border-t border-gray-800 p-3 bg-gray-900/40 space-y-2">
             <div className="flex items-center gap-3 flex-wrap">
-              {parsedRate > 0 && (
+              {skillRate > 0 && (
                 <span className="text-[10px] px-1.5 py-0.5 rounded border border-gray-700 bg-gray-800 text-gray-300">
-                  Skill Rate {parsedRate}%
+                  Skill Rate {skillRate}%
                 </span>
-              )}
-              {autoDrago && (
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-900/60 border border-amber-700 text-amber-300">⚡ Drago (auto)</span>
               )}
               {autoWeakness !== "normal" && (
                 <span className="text-[10px] px-1.5 py-0.5 rounded bg-orange-900/60 border border-orange-700 text-orange-300">▼ {autoWeakness.replace(/_/g, " ")} (auto)</span>
               )}
+              {getStructuredSkillEffectNotes(calcSkill).map((note) => (
+                <span key={note} className="text-[10px] px-1.5 py-0.5 rounded border border-cyan-700 bg-cyan-950/40 text-cyan-300">
+                  {note}
+                </span>
+              ))}
             </div>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-[10px] text-gray-500 uppercase tracking-wide">Ultimate Soul</span>
+              {([
+                ["none", "None"],
+                ["soco", "SoCo"],
+                ["ex_soco", "EX SoCo"],
+                ["ex2_soco", "EX2 SoCo"],
+              ] as const).map(([value, label]) => {
+                const active = rolls.soco === value
+                return (
+                  <button
+                    key={value}
+                    onClick={() => setRolls((prev) => ({ ...prev, soco: value }))}
+                    className={`rounded-md border px-2 py-1 text-[10px] transition-colors ${active ? "border-blue-600 bg-blue-900/60 text-blue-200" : "border-gray-700 bg-gray-800 text-gray-400 hover:text-gray-200"}`}
+                  >
+                    {label}
+                  </button>
+                )
+              })}
+            </div>
+            {enemyConditionOptions.length > 0 && (
+              <div className="space-y-1">
+                <div className="text-[10px] text-gray-500 uppercase tracking-wide">Enemy Conditions</div>
+                <div className="flex flex-wrap gap-1.5">
+                  {enemyConditionOptions.map((option) => {
+                    const active = enemyConditionToggles[option.name] ?? option.defaultActive
+                    const title = option.notes.join(" | ")
+                    return (
+                      <button
+                        key={option.name}
+                        type="button"
+                        title={title || option.name}
+                        onClick={() => toggleEnemyCondition(option.name, !active)}
+                        className={`rounded-full border px-2 py-1 text-[10px] transition-colors ${active ? "border-emerald-700 bg-emerald-950/50 text-emerald-300" : "border-gray-700 bg-gray-800 text-gray-400 hover:text-gray-200"}`}
+                      >
+                        {option.name}
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+            )}
+            {activePartyConditions.length > 0 && (
+              <div className="text-[10px] text-sky-300">Attacker Conditions: {activePartyConditions.join(", ")}</div>
+            )}
+            {activeEnemyConditions.length > 0 && (
+              <div className="text-[10px] text-emerald-300">Active: {activeEnemyConditions.join(", ")}</div>
+            )}
             <div className="text-[10px] text-gray-600 uppercase tracking-wide">
-              Active Effects {allBuffs.length > 0 ? `(${allBuffs.length})` : ""}
+              Active Effects {effectiveBuffSummary.length > 0 ? `(${effectiveBuffSummary.length})` : ""}
             </div>
-            {allBuffs.length > 0 ? (
+            {effectiveBuffSummary.length > 0 ? (
               <div className="space-y-1 max-h-28 overflow-y-auto">
-                {allBuffs.map(b => (
-                  <div key={b.id} className="flex items-center gap-2 text-xs">
-                    <span className={`font-mono w-14 text-right shrink-0 ${b.value >= 0 ? "text-green-400" : "text-red-400"}`}>
-                      {b.value >= 0 ? "+" : ""}{(b.value/100).toFixed(1)}%
+                {effectiveBuffSummary.map((buff) => (
+                  <div key={buff.type} className="flex items-center gap-2 text-xs">
+                    <span className={`font-mono w-14 text-right shrink-0 ${buff.value >= 0 ? "text-green-400" : "text-red-400"}`}>
+                      {buff.value >= 0 ? "+" : ""}{(buff.value/100).toFixed(1)}%
                     </span>
-                    <span className="text-gray-300 flex-1 truncate">{BUFF_META[b.type]?.label}</span>
-                    <span className="text-gray-600 text-[10px] truncate max-w-[8rem]">{b.source}</span>
+                    <span className="text-gray-300 flex-1 truncate">{getBuffLabel(buff.type)}</span>
+                    <span className="text-gray-600 text-[10px] truncate max-w-[8rem]">{buff.source}</span>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-xs text-gray-700 italic">No active effects — toggle skills below</p>
+              <p className="text-xs text-gray-700 italic">No active effects — set skill uses below</p>
             )}
           </div>
           {/* Skill bar */}
           <div className="border-t border-gray-800 bg-gray-900/70 p-3">
             <div className="flex items-end gap-2 overflow-x-auto overflow-y-visible pt-2 pb-3">
               {/* Protector skills */}
-              {protSkillItems.map(({ skill, char, isAlwaysOn }) => {
-                const id = `${char.master_pc_id}_${skill.slot}`
-                const active = isAlwaysOn || (protSkillToggles[id] ?? true)
+              {protSkillItems.map(({ skill, char, useCount, showUseCountInput }) => {
+                const active = useCount > 0
                 return (
                   <SkillBubble key={skill.label} skill={skill} isActive={active} isDamageSelected={false}
+                    useCount={useCount}
+                    showUseCountInput={showUseCountInput}
                     onHoverChange={payload => setHoveredSkill(payload ? { ...payload, viewportWidth: window.innerWidth } : null)}
-                    onToggle={isAlwaysOn ? undefined : () => toggleProtSkill(id)} />
+                    onToggle={showUseCountInput ? () => setProtectorSkillUseCount(char.master_pc_id, skill.slot, useCount > 0 ? 0 : 1) : undefined}
+                    onUseCountChange={showUseCountInput ? (value) => setProtectorSkillUseCount(char.master_pc_id, skill.slot, value) : undefined} />
                 )
               })}
 
               {/* Attacker skills */}
               {skillBarItems.map(({ skill, slotIdx, variantCount, slotBadge }) => {
-                const isDmg = skill.slot === "special_skill"
+                const isDmg = skill.slot === "special_skill" || skill.slot === "special_skill_attack"
+                const useCount = isDmg ? 0 : (attackerSkillUses[getAttackerSkillUseKey(slotIdx, skill.label)] ?? 0)
                 const isSelected = isDmg
-                  ? slotIdx === calcSlotIdx && (calcSkillLabel === skill.label || (!calcSkillLabel && skill.slot === "special_skill"))
+                  ? slotIdx === calcSlotIdx && (calcSkillLabel === skill.label || (!calcSkillLabel && (skill.slot === "special_skill_attack" || skill.slot === "special_skill")))
                   : false
-                const isActive = isDmg ? isSelected : attackerActiveSkills[slotIdx].has(skill.label)
+                const isActive = isDmg ? isSelected : useCount > 0
                 const isVariantLocked = !isDmg && variantCount > 1 && attackerSlots[slotIdx]?.char?.skills.some(s =>
-                  s.slot === skill.slot && s.label !== skill.label && attackerActiveSkills[slotIdx].has(s.label)
+                  s.slot === skill.slot && s.label !== skill.label && (attackerSkillUses[getAttackerSkillUseKey(slotIdx, s.label)] ?? 0) > 0
                 )
                 return (
                   <SkillBubble key={`${slotIdx}_${skill.label}`} skill={skill}
                     isActive={isActive} isDamageSelected={isDmg && isSelected}
                     isDisabled={isVariantLocked}
                     slotBadge={slotBadge}
+                    useCount={useCount}
+                    showUseCountInput={!isDmg}
                     tooltipNote={isVariantLocked ? `Disabled because another ${skill.slot.replaceAll("_", " ")} variant is active.` : variantCount > 1 ? `This slot has ${variantCount} alternate versions. Only one can be active.` : undefined}
                     onHoverChange={payload => setHoveredSkill(payload ? { ...payload, viewportWidth: window.innerWidth } : null)}
                     onToggle={isDmg ? undefined : () => toggleAttackerSkill(slotIdx, skill.label)}
+                    onUseCountChange={isDmg ? undefined : (value) => setAttackerSkillUseCount(slotIdx, skill.label, value)}
                     onSelectDamage={isDmg ? () => { setCalcSlotIdx(slotIdx); setCalcSkillLabel(skill.label) } : undefined}
                   />
                 )
@@ -1684,31 +2678,47 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
           <div className="xl:w-80 xl:border-l border-t xl:border-t-0 border-gray-800 bg-gray-950/60 flex flex-col" style={{ minHeight: 400 }}>
             <div className="flex-1 p-3">
               {inspecting.kind === "char" && inspectedChar && (
-                <CharInfoPanel char={inspectedChar} activeBuffs={allBuffs} onClose={() => setInspecting(null)} />
+                <CharInfoPanel
+                  char={inspectedChar}
+                  activeBuffs={effectiveBuffs}
+                  displayStats={getSlotBattleStats(attackerSlots[(inspecting as { kind: "char"; slotIdx: number }).slotIdx])}
+                  onClose={() => setInspecting(null)}
+                />
               )}
               {inspecting.kind === "prot" && inspectedChar && (
                 <div className="space-y-3 h-full overflow-y-auto">
-                  <CharInfoPanel char={inspectedChar} activeBuffs={allBuffs} onClose={() => setInspecting(null)} />
+                  <CharInfoPanel char={inspectedChar} activeBuffs={effectiveBuffs} onClose={() => setInspecting(null)} />
                   <div className="space-y-2">
-                    <div className="text-[10px] text-gray-500 uppercase tracking-wide px-1">Skill Toggles</div>
+                    <div className="text-[10px] text-gray-500 uppercase tracking-wide px-1">Skill Uses</div>
                     {inspectedChar.skills
                       .filter(s => ["leader_skill", "bless_skill", "assist_leader_skill"].includes(s.slot))
                       .map(s => {
-                        const id = `${inspectedChar.master_pc_id}_${s.slot}`
-                        const isAlwaysOn = s.slot === "assist_leader_skill"
-                        const active = isAlwaysOn || (protSkillToggles[id] ?? true)
+                        const isFixed = s.slot !== "bless_skill"
+                        const useCount = s.slot === "bless_skill"
+                          ? (protectorSkillUses[getProtectorSkillUseKey(inspectedChar.master_pc_id, "bless_skill")] ?? 0)
+                          : 1
+                        const active = useCount > 0
                         return (
-                          <label key={s.label}
-                            className={`flex items-start gap-2 p-2 rounded-lg border text-xs cursor-pointer transition-colors ${active ? "border-blue-700 bg-blue-950/30" : "border-gray-800 bg-gray-900/30"}`}>
-                            <input type="checkbox" checked={active} onChange={() => !isAlwaysOn && toggleProtSkill(id)}
-                              disabled={isAlwaysOn} className="mt-0.5 accent-blue-500 shrink-0" />
+                          <div key={s.label}
+                            className={`flex items-start gap-2 p-2 rounded-lg border text-xs transition-colors ${active ? "border-blue-700 bg-blue-950/30" : "border-gray-800 bg-gray-900/30"}`}>
                             {s.icon_path && <img src={toPublicAssetPath(s.icon_path)} alt="" className="w-5 h-5 object-contain rounded shrink-0"
                               onError={e => { (e.target as HTMLImageElement).src = "/placeholder.svg" }} />}
-                            <div>
+                            <div className="flex-1 min-w-0">
                               <div className="font-semibold text-white">{s.name}</div>
                               <div className="text-gray-500 text-[10px] mt-0.5">{stripColorTags(s.description_max_level ?? "").slice(0, 120)}</div>
                             </div>
-                          </label>
+                            {isFixed ? (
+                              <div className="shrink-0 rounded border border-gray-700 bg-gray-900 px-2 py-1 text-[10px] text-gray-300">x1</div>
+                            ) : (
+                              <input
+                                type="number"
+                                min="0"
+                                value={useCount}
+                                onChange={(event) => setProtectorSkillUseCount(inspectedChar.master_pc_id, s.slot, normalizeUseCount(Number.parseInt(event.target.value || "0", 10)))}
+                                className="w-14 shrink-0 rounded border border-gray-700 bg-gray-800 px-2 py-1 text-[10px] font-mono text-white"
+                              />
+                            )}
+                          </div>
                         )
                       })}
                   </div>
@@ -1744,7 +2754,7 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
           slot={attackerSlots[statModalSlot]}
           slotIdx={statModalSlot}
           onClose={() => setStatModalSlot(null)}
-          onAtkChange={v => setAttackerSlots(prev => prev.map((x, i) => i === statModalSlot ? { ...x, atkOverride: v } : x))}
+          onStatOverridesChange={statOverrides => setAttackerSlots(prev => prev.map((x, i) => i === statModalSlot ? { ...x, statOverrides } : x))}
           onRatesChange={rates => setAttackerSlots(prev => prev.map((x, i) => i === statModalSlot ? { ...x, rates } : x))}
         />
       )}

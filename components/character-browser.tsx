@@ -14,8 +14,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import {
-  characterMatchesEffectFilters,
-  getCharacterEffectFilterGroups,
+  skillMatchesEffectFilters,
   getSkillEffectFilterGroups,
   type CharacterEffectFilterGroup,
 } from "@/lib/character-effect-filters"
@@ -28,6 +27,7 @@ import {
   isExUnboundCharacter,
   normalizeLabel,
   stripColorTags,
+  getAllWikiCharacters,
 } from "@/lib/pc-wiki"
 
 type SortKey = "name" | "release_date" | "rarity" | "attack" | "hp" | "defense" | "existence"
@@ -611,14 +611,14 @@ const elementColorMap: Record<string, string> = {
 }
 
 function buildAllOptions(characters: BrowserCharacter[]) {
-  return {
+    return {
     attackerElements: buildElementOptions(characters, "attacker"),
     defenderElements: buildElementOptions(characters, "defender"),
     attackTypes: buildAttackTypeOptions(characters.map((c) => c.attack_type)),
     weapons: buildWeaponOptions(characters.map((c) => c.weapon_type)),
     tactics: buildTacticsOptions(characters.map((c) => c.tactics_type)),
     forces: buildForcesOptions(characters),
-    skillGroups: getCharacterEffectFilterGroups(characters),
+    skillGroups: getSkillEffectFilterGroups(getAllWikiCharacters().flatMap((character) => character.skills)),
     traitGroups: getSkillEffectFilterGroups(characters.flatMap((character) => character.traits.filter((trait) => !isValorTrait(trait)))),
     valorTraitGroups: getSkillEffectFilterGroups(characters.flatMap((character) => character.traits.filter((trait) => isValorTrait(trait)))),
     facilities: buildOptions(characters.flatMap((c) => c.facilities)),
@@ -971,6 +971,7 @@ function GroupedToggleFilter({
 
 export function CharacterBrowser({ initialCharacters }: { initialCharacters: BrowserCharacter[] }) {
   const characters = initialCharacters
+  const wikiById = useMemo(() => new Map(getAllWikiCharacters().map((c) => [c.master_pc_id, c])), [])
 
   const router = useRouter()
   const [searchText, setSearchText] = useState("")
@@ -1175,9 +1176,10 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
         results.push(character.traits.some((trait) => isValorTrait(trait) && trait.effect_tags?.includes(v)))
       }
 
-      // Skill effect filters — push each selected value separately so filterMode controls them
+      // Skill effect filters — test selected values against full wiki skills only
       for (const v of selectedSkillFilters) {
-        results.push(characterMatchesEffectFilters(character, [v]))
+        const wiki = wikiById.get(character.master_pc_id)
+        results.push(Boolean(wiki && wiki.skills.some((s) => skillMatchesEffectFilters(s, [v]))))
       }
 
       if (results.length === 0) return true
