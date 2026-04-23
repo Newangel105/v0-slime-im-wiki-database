@@ -637,10 +637,19 @@ export default function TierMakerPage() {
 
       // Replace editable inputs for tier names in the clone with plain centered divs
       try {
-        const nameInputs = (clone.querySelectorAll('[data-tid="tier-name"]') as NodeListOf<HTMLInputElement>) || []
-        nameInputs.forEach((inp) => {
-          const txt = inp.value ?? inp.getAttribute("value") ?? ""
-          const cs = window.getComputedStyle(inp as Element)
+        const nameInputs = clone.querySelectorAll('[data-tid="tier-name"]') || []
+        nameInputs.forEach((el) => {
+          let txt = ""
+          try {
+            if ((el as HTMLInputElement).value !== undefined) {
+              txt = (el as HTMLInputElement).value ?? el.getAttribute("value") ?? ""
+            } else {
+              txt = el.textContent ?? el.getAttribute("value") ?? ""
+            }
+          } catch (e) {
+            txt = el.textContent ?? el.getAttribute("value") ?? ""
+          }
+          const cs = window.getComputedStyle(el as Element)
           const d = document.createElement("div")
           d.textContent = txt
           d.style.display = "flex"
@@ -656,7 +665,7 @@ export default function TierMakerPage() {
           d.style.letterSpacing = cs.letterSpacing
           // ensure no caret or outline
           d.style.userSelect = "none"
-          inp.parentNode?.replaceChild(d, inp)
+          el.parentNode?.replaceChild(d, el)
         })
       } catch (e) {
         // ignore errors during clone transform
@@ -841,16 +850,28 @@ export default function TierMakerPage() {
               <div key={`tier-${idx}`} className="flex items-stretch">
                 <div className={`w-28 min-w-[7rem] flex items-stretch font-bold border border-black/20 rounded-l-md`} style={{ backgroundColor: tier.color ?? DEFAULT_TIER_COLORS[idx % DEFAULT_TIER_COLORS.length] }}>
                   <div className="w-full px-1 flex items-center justify-center relative h-full">
-                    <input
+                    <div
                       data-tid="tier-name"
-                      value={tier.name}
-                      onChange={(e) => {
-                        const name = e.target.value
+                      contentEditable
+                      suppressContentEditableWarning
+                      onInput={(e) => {
+                        const name = (e.target as HTMLElement).innerText
                         setTiers((prev) => prev.map((t, i) => (i === idx ? { ...t, name } : t)))
                       }}
-                      className="bg-transparent text-sm text-center w-full h-full leading-none font-bold"
-                      style={{ color: getContrastColor(tier.color ?? DEFAULT_TIER_COLORS[idx % DEFAULT_TIER_COLORS.length]) }}
-                    />
+                      className="bg-transparent text-sm text-center w-full leading-tight font-bold p-0 m-0 focus:outline-none whitespace-pre-wrap break-words"
+                      style={{
+                        color: getContrastColor(tier.color ?? DEFAULT_TIER_COLORS[idx % DEFAULT_TIER_COLORS.length]),
+                        minHeight: '2rem',
+                        display: 'block',
+                        textAlign: 'center',
+                        padding: 0,
+                        overflowWrap: 'anywhere',
+                        wordBreak: 'break-word',
+                        whiteSpace: 'pre-wrap'
+                      }}
+                    >
+                      {tier.name}
+                    </div>
                   </div>
                 </div>
 
