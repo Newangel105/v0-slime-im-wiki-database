@@ -329,21 +329,42 @@ export function getWikiCharacterById(characterId: number): WikiCharacter | undef
 // ---------------------------------------------------------------------------
 // Max-level stats (base stats + level growth to character max level)
 // ---------------------------------------------------------------------------
-type CharStatsEntry = { max_hp: number; max_atk: number; max_def: number; sb_hp: number; sb_atk: number; sb_def: number; level_group_id: number; statusboard_id: number }
+type CharStatsEntry = {
+  max_hp: number
+  max_atk: number
+  max_def: number
+  sb_hp: number
+  sb_atk: number
+  sb_def: number
+  esb_hp?: number
+  esb_atk?: number
+  esb_def?: number
+  level_group_id: number
+  statusboard_id: number
+  enhanced_statusboard_id?: number
+}
 type CharStatsPayload = { char_stats: Record<string, CharStatsEntry>; bond_max: { hp_pct: number; atk_pct: number; def_pct: number } }
 const charStatsMap = (charStatsRaw as CharStatsPayload).char_stats
 const bondMax = (charStatsRaw as CharStatsPayload).bond_max
 
 type LevelMaxAddEntry = { level: number; add_hp: number; add_attack: number; add_defense: number }
-type TeamStatsPayload = { level_max_add: Record<string, LevelMaxAddEntry> }
-const levelMaxAddMap = (teamStatsRaw as TeamStatsPayload).level_max_add
+type StatBonusEntry = { hp: number; attack: number; defense: number }
+type TeamStatsPayload = {
+  level_max_add: Record<string, LevelMaxAddEntry>
+  statusboard_totals?: Record<string, StatBonusEntry>
+  enhanced_statusboard_totals?: Record<string, StatBonusEntry>
+}
+const teamStatsPayload = teamStatsRaw as TeamStatsPayload
+const levelMaxAddMap = teamStatsPayload.level_max_add
+const statusboardTotalsMap = teamStatsPayload.statusboard_totals ?? {}
+const enhancedStatusboardTotalsMap = teamStatsPayload.enhanced_statusboard_totals ?? {}
 
 export function getCharMaxStats(characterId: number): { hp: number; attack: number; defense: number; existence: number } | null {
   const entry = charStatsMap[String(characterId)]
   if (entry) {
-    const baseWithBoardHp = entry.max_hp + (entry.sb_hp ?? 0)
-    const baseWithBoardAtk = entry.max_atk + (entry.sb_atk ?? 0)
-    const baseWithBoardDef = entry.max_def + (entry.sb_def ?? 0)
+    const baseWithBoardHp = entry.max_hp + (entry.sb_hp ?? 0) + (entry.esb_hp ?? 0)
+    const baseWithBoardAtk = entry.max_atk + (entry.sb_atk ?? 0) + (entry.esb_atk ?? 0)
+    const baseWithBoardDef = entry.max_def + (entry.sb_def ?? 0) + (entry.esb_def ?? 0)
     const hp = Math.floor(baseWithBoardHp * (1 + bondMax.hp_pct / 100))
     const attack = Math.floor(baseWithBoardAtk * (1 + bondMax.atk_pct / 100))
     const defense = Math.floor(baseWithBoardDef * (1 + bondMax.def_pct / 100))
@@ -354,9 +375,11 @@ export function getCharMaxStats(characterId: number): { hp: number; attack: numb
   if (!character?.master_pc_level_group_id) return null
   const add = levelMaxAddMap[String(character.master_pc_level_group_id)]
   if (!add) return null
-  const hp = Math.floor((character.stats.hp + add.add_hp) * (1 + bondMax.hp_pct / 100))
-  const attack = Math.floor((character.stats.attack + add.add_attack) * (1 + bondMax.atk_pct / 100))
-  const defense = Math.floor((character.stats.defense + add.add_defense) * (1 + bondMax.def_pct / 100))
+  const board = statusboardTotalsMap[String(character.master_statusboard_id ?? 0)]
+  const enhancedBoard = enhancedStatusboardTotalsMap[String(character.master_enhanced_statusboard_id ?? 0)]
+  const hp = Math.floor((character.stats.hp + add.add_hp + (board?.hp ?? 0) + (enhancedBoard?.hp ?? 0)) * (1 + bondMax.hp_pct / 100))
+  const attack = Math.floor((character.stats.attack + add.add_attack + (board?.attack ?? 0) + (enhancedBoard?.attack ?? 0)) * (1 + bondMax.atk_pct / 100))
+  const defense = Math.floor((character.stats.defense + add.add_defense + (board?.defense ?? 0) + (enhancedBoard?.defense ?? 0)) * (1 + bondMax.def_pct / 100))
   return { hp, attack, defense, existence: hp + attack + defense }
 }
 
