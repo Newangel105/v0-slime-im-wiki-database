@@ -451,8 +451,6 @@ export default function TierMakerPage() {
     function handlePointerMove(ev: PointerEvent) {
       try {
         if (ev.pointerType === 'touch' && touchDragRef.current) {
-          // Prevent default panning while a drag is active
-          try { ev.preventDefault() } catch (e) {}
           const last = touchLastYRef.current ?? ev.clientY
           const delta = ev.clientY - last
           if (delta !== 0) {
