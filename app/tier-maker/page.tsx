@@ -90,6 +90,15 @@ function decodeBase64ToUnicode(b64: string) {
 }
 
 export default function TierMakerPage() {
+  // Force desktop mode on mobile
+  useEffect(() => {
+    const meta = document.querySelector('meta[name="viewport"]')
+    if (meta) {
+      meta.setAttribute('content', 'width=1024, user-scalable=no')
+    }
+    document.documentElement.style.zoom = window.innerWidth < 1024 ? '100%' : '100%'
+  }, [])
+
   const allChars = useMemo(() => getAllCharacterBrowserData(), [])
   const wikiChars = useMemo(() => getAllWikiCharacters(), [])
 
@@ -939,15 +948,13 @@ export default function TierMakerPage() {
         </div>
 
         <div className="mt-6 mb-2">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-1 mb-2">
-              <div className="flex flex-wrap items-center gap-2">
-                  <div className="flex flex-wrap items-center gap-2">
-                  <div className="flex items-center gap-3 flex-wrap">
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-1">
-                      <span className="text-xs text-gray-300">ROLE</span>
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-4">
+              <div className="flex flex-col gap-3">
+                    <div className="flex flex-row items-center gap-2">
+                      <span className="text-xs text-gray-300 whitespace-nowrap">ROLE</span>
                       <div className="flex items-center gap-2 overflow-x-auto">
                         <button
-                          className={`h-8 w-8 rounded flex items-center justify-center text-xs transition-colors ${roleFilter === "all" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
+                          className={`h-8 w-8 rounded flex items-center justify-center text-xs transition-colors flex-shrink-0 ${roleFilter === "all" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
                           onClick={() => setRoleFilter("all")}
                           aria-label="All roles"
                         >
@@ -955,7 +962,7 @@ export default function TierMakerPage() {
                         </button>
 
                         <button
-                          className={`h-8 w-8 rounded flex items-center justify-center text-sm transition-colors ${roleFilter === "protector" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
+                          className={`h-8 w-8 rounded flex items-center justify-center text-sm transition-colors flex-shrink-0 ${roleFilter === "protector" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
                           onClick={() => setRoleFilter("protector")}
                           aria-label="Protector"
                         >
@@ -963,7 +970,7 @@ export default function TierMakerPage() {
                         </button>
 
                         <button
-                          className={`h-8 w-8 rounded flex items-center justify-center text-sm transition-colors ${roleFilter === "attacker" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
+                          className={`h-8 w-8 rounded flex items-center justify-center text-sm transition-colors flex-shrink-0 ${roleFilter === "attacker" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
                           onClick={() => setRoleFilter("attacker")}
                           aria-label="Attacker"
                         >
@@ -972,11 +979,11 @@ export default function TierMakerPage() {
                       </div>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-                      <span className="text-xs text-gray-300">RARITY</span>
-                      <div className="flex items-center gap-2">
+                    <div className="flex flex-row items-center gap-2">
+                      <span className="text-xs text-gray-300 whitespace-nowrap">RARITY</span>
+                      <div className="flex items-center gap-2 overflow-x-auto">
                         <button
-                          className={`h-8 w-8 rounded flex items-center justify-center text-xs transition-colors ${rarityFilter === null ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
+                          className={`h-8 w-8 rounded flex items-center justify-center text-xs transition-colors flex-shrink-0 ${rarityFilter === null ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
                           onClick={() => setRarityFilter(null)}
                           aria-label="All rarities"
                         >
@@ -987,24 +994,22 @@ export default function TierMakerPage() {
                             key={r}
                             onClick={() => setRarityFilter(r)}
                             title={`${r}★`}
-                            className={`w-8 h-8 rounded p-0 flex items-center justify-center transition-colors ${rarityFilter === r ? "bg-[#2a3444]" : "bg-transparent hover:bg-gray-600"}`}
+                            className={`w-8 h-8 rounded p-0 flex items-center justify-center transition-colors flex-shrink-0 ${rarityFilter === r ? "bg-[#2a3444]" : "bg-transparent hover:bg-gray-600"}`}
                           >
                             <img src={RARITY_ASSETS[r]} alt={`star-${r}`} className="w-5 h-5 object-contain" />
                           </button>
                         ))}
                       </div>
                     </div>
-                  </div>
               </div>
-            </div>
 
-            <div className="relative w-full sm:w-64 lg:w-80 mt-1 sm:mt-0 sm:ml-auto">
+            <div className="relative w-64 lg:w-80 ml-auto">
               <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
               <Input value={imageSearch} onChange={(e) => setImageSearch(e.target.value)} placeholder="Search images" className="h-9 w-full border-gray-600 bg-gray-700 pl-10 text-white placeholder:text-gray-400" />
             </div>
           </div>
 
-          <div data-pins="true" className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-2 max-h-[40vh] overflow-auto image-scroll" onDragOver={(e) => e.preventDefault()} onDrop={(e) => handleDropOnPins(e as React.DragEvent)}>
+          <div data-pins="true" className="grid grid-cols-12 gap-2 max-h-[40vh] overflow-auto image-scroll" onDragOver={(e) => e.preventDefault()} onDrop={(e) => handleDropOnPins(e as React.DragEvent)}>
             {availablePins.map((pin) => {
               const wc = wikiChars.find((w: any) => w.master_pc_id === pin.masterId)
               const visualTier = wc ? getCharacterVisualTier(wc) : 5
