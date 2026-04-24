@@ -96,7 +96,7 @@ export default function TierMakerPage() {
     if (meta) {
       meta.setAttribute('content', 'width=1024, user-scalable=no')
     }
-    document.documentElement.style.zoom = window.innerWidth < 1024 ? '100%' : '100%'
+    document.documentElement.style.zoom = '100%'
   }, [])
 
   const allChars = useMemo(() => getAllCharacterBrowserData(), [])
@@ -380,6 +380,10 @@ export default function TierMakerPage() {
   const touchDragImageRef = useRef<string | null>(null)
   const touchGhostRef = useRef<HTMLElement | null>(null)
   const touchLastYRef = useRef<number | null>(null)
+  const touchStartXRef = useRef<number | null>(null)
+  const touchStartYRef = useRef<number | null>(null)
+  const touchInScrollableRef = useRef<boolean>(false)
+  const touchDragStartedRef = useRef<boolean>(false)
 
   function removeTouchGhost() {
     try {
@@ -428,9 +432,14 @@ export default function TierMakerPage() {
 
   useEffect(() => {
     function handlePointerUp(ev: PointerEvent) {
-      if (!touchDragRef.current) return
+      if (!touchDragRef.current || !touchDragStartedRef.current) {
+        touchDragRef.current = null
+        touchDragStartedRef.current = false
+        return
+      }
       const { charId } = touchDragRef.current
       touchDragRef.current = null
+      touchDragStartedRef.current = false
       touchLastYRef.current = null
       const x = ev.clientX
       const y = ev.clientY
@@ -460,17 +469,36 @@ export default function TierMakerPage() {
     function handlePointerMove(ev: PointerEvent) {
       try {
         if (ev.pointerType === 'touch' && touchDragRef.current) {
-          const last = touchLastYRef.current ?? ev.clientY
-          const delta = ev.clientY - last
-          if (delta !== 0) {
-            try {
-              const se = document.scrollingElement || document.documentElement
-              se.scrollTop = (se.scrollTop || 0) + delta
-            } catch (e) {}
+          const startX = touchStartXRef.current ?? ev.clientX
+          const startY = touchStartYRef.current ?? ev.clientY
+          const dx = Math.abs(ev.clientX - startX)
+          const dy = Math.abs(ev.clientY - startY)
+          const SCROLL_THRESHOLD = 10
+          const DRAG_THRESHOLD = 15
+          
+          // If moving more vertically than horizontally and still below drag threshold, treat as scroll
+          if (dy > dx && dy < DRAG_THRESHOLD) {
+            return
           }
-          touchLastYRef.current = ev.clientY
-          // update ghost position so it follows finger
-          moveTouchGhost(ev.clientX, ev.clientY)
+          
+          // If we've moved enough horizontally or past both thresholds, start drag
+          if (dx >= DRAG_THRESHOLD || dy >= DRAG_THRESHOLD) {
+            touchDragStartedRef.current = true
+          }
+          
+          if (touchDragStartedRef.current) {
+            const last = touchLastYRef.current ?? ev.clientY
+            const delta = ev.clientY - last
+            if (delta !== 0) {
+              try {
+                const se = document.scrollingElement || document.documentElement
+                se.scrollTop = (se.scrollTop || 0) + delta
+              } catch (e) {}
+            }
+            touchLastYRef.current = ev.clientY
+            // update ghost position so it follows finger
+            moveTouchGhost(ev.clientX, ev.clientY)
+          }
         }
       } catch (e) {}
     }
@@ -486,9 +514,14 @@ export default function TierMakerPage() {
   // Touch fallback for browsers that don't emit pointer events (older Safari/Android)
   useEffect(() => {
     function handleTouchEnd(ev: TouchEvent) {
-      if (!touchDragRef.current) return
+      if (!touchDragRef.current || !touchDragStartedRef.current) {
+        touchDragRef.current = null
+        touchDragStartedRef.current = false
+        return
+      }
       const { charId } = touchDragRef.current
       touchDragRef.current = null
+      touchDragStartedRef.current = false
       touchLastYRef.current = null
       const touch = ev.changedTouches && ev.changedTouches[0]
       if (!touch) return
@@ -530,10 +563,29 @@ export default function TierMakerPage() {
   useEffect(() => {
     function handleTouchMove(ev: TouchEvent) {
       if (!touchDragRef.current) return
-      // while dragging on touch, prevent the default panning and manually scroll the page
-      try { ev.preventDefault() } catch (e) {}
       const t = ev.touches && ev.touches[0]
       if (!t) return
+      const startX = touchStartXRef.current ?? t.clientX
+      const startY = touchStartYRef.current ?? t.clientY
+      const dx = Math.abs(t.clientX - startX)
+      const dy = Math.abs(t.clientY - startY)
+      const DRAG_THRESHOLD = 15
+      
+      // If moving more vertically than horizontally and still below drag threshold, don't prevent scroll
+      if (dy > dx && dy < DRAG_THRESHOLD) {
+        return
+      }
+      
+      // If we've moved enough, start drag and prevent default scroll
+      if (dx >= DRAG_THRESHOLD || dy >= DRAG_THRESHOLD) {
+        if (!touchDragStartedRef.current) {
+          touchDragStartedRef.current = true
+        }
+        try { ev.preventDefault() } catch (e) {}
+      } else {
+        return
+      }
+      
       const last = touchLastYRef.current ?? t.clientY
       const delta = t.clientY - last
       if (delta !== 0) {
@@ -808,7 +860,7 @@ export default function TierMakerPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-[#0a1a2f] via-[#0f1f35] to-[#1a2740]">
-      <div className="max-w-7xl mx-auto pl-6 pr-4 sm:pl-8 sm:pr-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-8 py-8">
         
 
         {/* Tier list tabs */}
@@ -1003,7 +1055,7 @@ export default function TierMakerPage() {
                     </div>
               </div>
 
-            <div className="relative w-64 lg:w-80 ml-auto">
+            <div className="relative w-80 ml-auto">
               <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
               <Input value={imageSearch} onChange={(e) => setImageSearch(e.target.value)} placeholder="Search images" className="h-9 w-full border-gray-600 bg-gray-700 pl-10 text-white placeholder:text-gray-400" />
             </div>
