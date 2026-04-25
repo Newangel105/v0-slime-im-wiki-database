@@ -1094,11 +1094,17 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
 
       // Text search always narrows (not subject to AND/OR toggle)
       if (query) {
-        const nameMatch = character.search_text.includes(query)
-        const skillMatch = searchSkills && character.skills.some((s) =>
-          s.slot !== "special_skill" && normalizeLabel(s.name).includes(query)
-        )
-        if (!nameMatch && !skillMatch) return false
+        if (searchSkills) {
+          // Toggle ON: search skill descriptions only
+          const skillMatch = character.skills.some((s) =>
+            s.slot !== "special_skill" && normalizeLabel(s.description_max_level).includes(query)
+          )
+          if (!skillMatch) return false
+        } else {
+          // Toggle OFF: search name and affiliation_name
+          const nameMatch = normalizeLabel(character.name).includes(query) || normalizeLabel(character.affiliation_name).includes(query)
+          if (!nameMatch) return false
+        }
       }
 
       // Each entry is a boolean: does this character satisfy this filter selection?

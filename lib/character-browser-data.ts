@@ -10,6 +10,7 @@ export type BrowserCharacterSkill = {
   slot: string
   kind: string
   name: string
+  description_max_level: string
 }
 
 export type BrowserCharacterTrait = {
@@ -173,11 +174,12 @@ function toBrowserCharacter(character: WikiCharacter, forceIconLookup: Map<strin
     force_names: forceNames,
     force_entries: forceEntries,
     skills: character.skills
-      .filter((skill) => skill.slot === "leader_skill" || skill.slot === "special_skill" || skill.slot === "active_skill" || skill.slot === "bless_skill")
+      .filter((skill) => skill.slot === "leader_skill" || skill.slot === "special_skill" || skill.slot?.startsWith("active_skill") || skill.slot === "bless_skill")
       .map((skill) => ({
         slot: skill.slot,
         kind: skill.kind,
         name: skill.name ?? "",
+        description_max_level: skill.description_max_level ?? "",
       })),
     traits: character.traits.map((trait) => ({
       name: trait.name,
