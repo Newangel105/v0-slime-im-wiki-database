@@ -15,7 +15,10 @@ import {
   DialogClose,
 } from "@/components/ui/dialog"
 import { Search } from "lucide-react"
-import { gzip, ungzip } from 'pako'
+import * as pako from "pako"
+import { compressToEncodedURIComponent } from "lz-string"
+import { decompressFromEncodedURIComponent } from "lz-string"
+
 
 type Tier = { name: string; items: string[]; color?: string }
 type TierListEntry = { name: string; tiers: Tier[] }
@@ -146,13 +149,31 @@ export default function TierMakerPage() {
       const gistParam = params.get("gist")
       if (d) {
         try {
-          const decoded = decodeBase64ToUnicode(d)
-          const parsed = JSON.parse(decoded)
+          let parsed
+
+          try {
+            // NEW (lz-string)
+            const jsonStr = decompressFromEncodedURIComponent(d)
+            if (!jsonStr) throw new Error("Invalid compressed data")
+            parsed = JSON.parse(jsonStr)
+          } catch {
+            // OLD fallback (your gzip links still work)
+            const binary = atob(d)
+            const bytes = new Uint8Array(binary.length)
+            for (let i = 0; i < binary.length; i++) {
+              bytes[i] = binary.charCodeAt(i)
+            }
+
+            const jsonStr = pako.ungzip(bytes, { to: "string" }) as string
+            parsed = JSON.parse(jsonStr)
+          }
+
           if (parsed?.lists && Array.isArray(parsed.lists)) {
             setTierLists(parsed.lists)
             setActiveListIndex(0)
             return
           }
+
           if (Array.isArray(parsed)) {
             setTierLists([{ name: "Shared List", tiers: parsed }])
             setActiveListIndex(0)
@@ -620,16 +641,32 @@ export default function TierMakerPage() {
     URL.revokeObjectURL(url)
   }
 
+  function uint8ToBase64(bytes: Uint8Array) {
+    let binary = ""
+    const chunkSize = 0x8000
+
+    for (let i = 0; i < bytes.length; i += chunkSize) {
+      binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize))
+    }
+
+    return btoa(binary)
+  }
+
   function copyShareLink() {
     try {
       const payload = tierLists.length === 1 ? tiers : { lists: tierLists }
+
       const jsonStr = JSON.stringify(payload)
-      const gzipped = gzip(jsonStr)
-      const encoded = btoa(String.fromCharCode(...gzipped))
-      const url = `${window.location.origin}${window.location.pathname}?d=${encodeURIComponent(encoded)}`
+
+      // compress directly to URL-safe string
+      const encoded = compressToEncodedURIComponent(jsonStr)
+
+      const url = `${window.location.origin}${window.location.pathname}?d=${encoded}`
+
       navigator.clipboard.writeText(url)
       alert("Share link copied to clipboard")
     } catch (e) {
+      console.error(e)
       alert("Failed to copy link")
     }
   }
