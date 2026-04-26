@@ -1084,116 +1084,237 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   }, [characters])
 
   const filteredCharacters = useMemo(() => {
-    if (!Array.isArray(characters)) return [];
+    if (!Array.isArray(characters)) return []
+
     const query = normalizeLabel(deferredSearchText)
-    // isAND: every selected filter must be satisfied; isOR: any selected filter is enough
     const isAND = filterMode === "AND"
 
-    const filtered = characters.filter((character) => {
+    const result = characters.filter((character) => {
       const characterForceNames = character.force_names
 
-      // Text search always narrows (not subject to AND/OR toggle)
+      // ─────────────────────────────
+      // TEXT FILTER
+      // ─────────────────────────────
       if (query) {
         if (searchSkills) {
-          // Toggle ON: search skill descriptions only
-          const skillMatch = character.skills.some((s) =>
-            s.slot !== "special_skill" && normalizeLabel(s.description_max_level).includes(query)
+          const skillMatch = character.skills.some(
+            (s) =>
+              s.slot !== "special_skill" &&
+              normalizeLabel(s.description_max_level).includes(query)
           )
           if (!skillMatch) return false
         } else {
-          // Toggle OFF: search name and affiliation_name
-          const nameMatch = normalizeLabel(character.name).includes(query) || normalizeLabel(character.affiliation_name).includes(query)
+          const nameMatch =
+            normalizeLabel(character.name).includes(query) ||
+            normalizeLabel(character.affiliation_name).includes(query)
+
           if (!nameMatch) return false
         }
       }
 
-      // Each entry is a boolean: does this character satisfy this filter selection?
-      const results: boolean[] = []
+      // ─────────────────────────────
+      // ROLE
+      // ─────────────────────────────
+      const role = isProtectorCharacter(character)
+        ? "protector"
+        : isAttackerCharacter(character)
+          ? "attacker"
+          : null
 
-      // ── Element filters ──
-      // Attacker elements: one element per character — each selected element is its own test
-      if (selectedAttackerElements.length) {
-        if (isProtectorCharacter(character)) {
-          // Protectors don't participate in attacker element filters at all
-          results.push(false)
-        } else if (isAttackerCharacter(character)) {
-          const characterElementValue = getCharacterElementValue(character)
-          for (const el of selectedAttackerElements) {
-            results.push(characterElementValue === el)
-          }
-        } else {
-          results.push(false)
-        }
-      }
-      // Defender elements: protectors can cover multiple elements
-      if (selectedDefenderElements.length) {
-        if (isAttackerCharacter(character)) {
-          results.push(false)
-        } else if (isProtectorCharacter(character)) {
-          const defenderValues = getDefenderElementValues(character)
-          for (const el of selectedDefenderElements) {
-            results.push(defenderValues.includes(el))
-          }
-        } else {
-          results.push(false)
-        }
-      }
-
-      // ── Single-value filters: each selected value is its own test ──
-      for (const v of selectedAttackTypes) {
-        results.push(normalizeLabel(character.attack_type) === v)
-      }
-      for (const v of selectedTactics) {
-        results.push(normalizeLabel(character.tactics_type) === v)
-      }
-      for (const v of selectedWeapons) {
-        results.push(normalizeLabel(character.weapon_type) === v)
-      }
       if (selectedRoles.length) {
-        const role = isProtectorCharacter(character) ? "protector" : isAttackerCharacter(character) ? "attacker" : null
-        for (const v of selectedRoles) {
-          results.push(role === v)
-        }
-      }
-      if (selectedUltimateTypes.length) {
-        const ultType = getCharacterUltimateType(character)
-        for (const v of selectedUltimateTypes) {
-          results.push(!!ultType && ultType === v)
-        }
-      }
-      if (selectedRarities.length) {
-        const visualTier = String(getCharacterVisualTier(character))
-        for (const v of selectedRarities) {
-          results.push(visualTier === v)
-        }
+        if (!role || !selectedRoles.includes(role)) return false
       }
 
-      // ── Multi-value filters: character can belong to multiple ──
-      for (const v of selectedForces) {
-        results.push(characterForceNames.includes(v))
-      }
-      for (const v of selectedFacilities) {
-        results.push(character.facilities.includes(v))
-      }
-      for (const v of selectedTraitNames) {
-        results.push(character.traits.some((trait) => !isValorTrait(trait) && trait.effect_tags?.includes(v)))
-      }
-      for (const v of selectedValorTraitNames) {
-        results.push(character.traits.some((trait) => isValorTrait(trait) && trait.effect_tags?.includes(v)))
-      }
+      // ─────────────────────────────
+      // RARITY
+      // ─────────────────────────────
+      const rarityOk =
+        selectedRarities.length === 0 ||
+        selectedRarities.includes(String(getCharacterVisualTier(character)))
 
-      // Skill effect filters — test selected values against full wiki skills only
-      for (const v of selectedSkillFilters) {
-        const wiki = wikiById.get(character.master_pc_id)
-        results.push(Boolean(wiki && wiki.skills.some((s) => skillMatchesEffectFilters(s, [v]))))
-      }
+      if (!rarityOk) return false
 
-      if (results.length === 0) return true
-      return isAND ? results.every(Boolean) : results.some(Boolean)
+      // ─────────────────────────────
+      // ELEMENTS
+      // ─────────────────────────────
+      const elementOk =
+        selectedAttackerElements.length === 0 &&
+        selectedDefenderElements.length === 0
+          ? true
+          : (() => {
+              // ─────────────────────────────
+              // HARD ROLE SCOPING
+              // ─────────────────────────────
+              if (selectedAttackerElements.length && !isAttackerCharacter(character)) {
+                return false
+              }
+
+              if (selectedDefenderElements.length && !isProtectorCharacter(character)) {
+                return false
+              }
+
+              // ─────────────────────────────
+              // ATTACKER ELEMENTS (single value)
+              // ─────────────────────────────
+              if (isAttackerCharacter(character)) {
+                const el = getCharacterElementValue(character)
+
+                return selectedAttackerElements.length
+                  ? selectedAttackerElements.includes(el)
+                  : true
+              }
+
+              // ─────────────────────────────
+              // PROTECTOR ELEMENTS (MULTI + AND/OR SUPPORT)
+              // ─────────────────────────────
+              if (isProtectorCharacter(character)) {
+                const els = getDefenderElementValues(character)
+
+                if (!selectedDefenderElements.length) return true
+
+                // AND logic: all selected must exist in character
+                if (isAND) {
+                  return selectedDefenderElements.every((e) =>
+                    els.includes(e)
+                  )
+                }
+
+                // OR logic: any match
+                return selectedDefenderElements.some((e) =>
+                  els.includes(e)
+                )
+              }
+
+              return false
+            })()
+
+      if (!elementOk) return false
+
+      // ─────────────────────────────
+      // WEAPONS
+      // ─────────────────────────────
+      const weaponOk =
+        selectedWeapons.length === 0 ||
+        selectedWeapons.includes(normalizeLabel(character.weapon_type))
+
+      if (!weaponOk) return false
+
+      // ─────────────────────────────
+      // ATTACK TYPE
+      // ─────────────────────────────
+      const attackOk =
+        selectedAttackTypes.length === 0 ||
+        selectedAttackTypes.includes(normalizeLabel(character.attack_type))
+
+      if (!attackOk) return false
+
+      // ─────────────────────────────
+      // GROUP FILTERS (AND / OR)
+      // ─────────────────────────────
+
+      const tacticsOk =
+        selectedTactics.length === 0 ||
+        (isAND
+          ? selectedTactics.every(
+              (v) => normalizeLabel(character.tactics_type) === v
+            )
+          : selectedTactics.some(
+              (v) => normalizeLabel(character.tactics_type) === v
+            ))
+
+      if (!tacticsOk) return false
+
+      const forcesOk =
+        selectedForces.length === 0 ||
+        (isAND
+          ? selectedForces.every((v) =>
+              characterForceNames.includes(v)
+            )
+          : selectedForces.some((v) =>
+              characterForceNames.includes(v)
+            ))
+
+      if (!forcesOk) return false
+
+      const facilityOk =
+        selectedFacilities.length === 0 ||
+        (isAND
+          ? selectedFacilities.every((v) =>
+              character.facilities.includes(v)
+            )
+          : selectedFacilities.some((v) =>
+              character.facilities.includes(v)
+            ))
+
+      if (!facilityOk) return false
+
+      const traitOk =
+        selectedTraitNames.length === 0 ||
+        (isAND
+          ? selectedTraitNames.every((v) =>
+              character.traits.some(
+                (trait) =>
+                  !isValorTrait(trait) &&
+                  trait.effect_tags?.includes(v)
+              )
+            )
+          : selectedTraitNames.some((v) =>
+              character.traits.some(
+                (trait) =>
+                  !isValorTrait(trait) &&
+                  trait.effect_tags?.includes(v)
+              )
+            ))
+
+      if (!traitOk) return false
+
+      const valorTraitOk =
+        selectedValorTraitNames.length === 0 ||
+        (isAND
+          ? selectedValorTraitNames.every((v) =>
+              character.traits.some(
+                (trait) =>
+                  isValorTrait(trait) &&
+                  trait.effect_tags?.includes(v)
+              )
+            )
+          : selectedValorTraitNames.some((v) =>
+              character.traits.some(
+                (trait) =>
+                  isValorTrait(trait) &&
+                  trait.effect_tags?.includes(v)
+              )
+            ))
+
+      if (!valorTraitOk) return false
+
+      const skillOk =
+        selectedSkillFilters.length === 0 ||
+        (isAND
+          ? selectedSkillFilters.every((v) => {
+              const wiki = wikiById.get(character.master_pc_id)
+              return wiki?.skills.some((s) =>
+                skillMatchesEffectFilters(s, [v])
+              )
+            })
+          : selectedSkillFilters.some((v) => {
+              const wiki = wikiById.get(character.master_pc_id)
+              return wiki?.skills.some((s) =>
+                skillMatchesEffectFilters(s, [v])
+              )
+            }))
+
+      if (!skillOk) return false
+
+      return true
     })
 
-    return filtered.sort((left, right) => {
-      const dir = sortAsc ? -1 : 1
+    // ─────────────────────────────
+    // SORTING
+    // ─────────────────────────────
+    const dir = sortAsc ? -1 : 1
+
+    return result.sort((left, right) => {
       switch (sortKey) {
         case "attack":
           return dir * (right.stats.attack - left.stats.attack)
@@ -1204,22 +1325,21 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
         case "existence":
           return dir * (right.stats.existence - left.stats.existence)
         case "rarity":
-          return dir * (getCharacterVisualTier(right) - getCharacterVisualTier(left) || right.stats.existence - left.stats.existence)
+          return (
+            dir *
+            (getCharacterVisualTier(right) -
+              getCharacterVisualTier(left) ||
+              right.stats.existence - left.stats.existence)
+          )
         case "release_date": {
-          const leftReleaseDate = left.release_date ?? ""
-          const rightReleaseDate = right.release_date ?? ""
+          const l = left.release_date ?? ""
+          const r = right.release_date ?? ""
 
-          if (!leftReleaseDate && !rightReleaseDate) {
-            return dir * left.name.localeCompare(right.name)
-          }
-          if (!leftReleaseDate) {
-            return 1
-          }
-          if (!rightReleaseDate) {
-            return -1
-          }
+          if (!l && !r) return dir * left.name.localeCompare(right.name)
+          if (!l) return 1
+          if (!r) return -1
 
-          return dir * rightReleaseDate.localeCompare(leftReleaseDate)
+          return dir * r.localeCompare(l)
         }
         case "name":
         default:
@@ -1242,12 +1362,11 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     selectedValorTraitNames,
     selectedWeapons,
     selectedRoles,
-    selectedUltimateTypes,
     selectedRarities,
     sortAsc,
     sortKey,
-    options,
-  ]) || []
+    wikiById,
+  ])
 
   const activeFilterCount =
     selectedAttackerElements.length +
