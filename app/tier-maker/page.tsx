@@ -15,6 +15,7 @@ import {
   DialogClose,
 } from "@/components/ui/dialog"
 import { Search } from "lucide-react"
+import { gzip, ungzip } from 'pako'
 
 type Tier = { name: string; items: string[]; color?: string }
 type TierListEntry = { name: string; tiers: Tier[] }
@@ -622,7 +623,9 @@ export default function TierMakerPage() {
   function copyShareLink() {
     try {
       const payload = tierLists.length === 1 ? tiers : { lists: tierLists }
-      const encoded = encodeUnicodeToBase64(JSON.stringify(payload))
+      const jsonStr = JSON.stringify(payload)
+      const gzipped = gzip(jsonStr)
+      const encoded = btoa(String.fromCharCode(...gzipped))
       const url = `${window.location.origin}${window.location.pathname}?d=${encodeURIComponent(encoded)}`
       navigator.clipboard.writeText(url)
       alert("Share link copied to clipboard")
