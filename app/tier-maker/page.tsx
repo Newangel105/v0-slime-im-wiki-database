@@ -66,33 +66,6 @@ function hexToRgb(hex?: string) {
   return { r, g, b }
 }
 
-function rgbToHex(r: number, g: number, b: number) {
-  const toHex = (n: number) => Math.max(0, Math.min(255, Math.round(n))).toString(16).padStart(2, "0")
-  return `#${toHex(r)}${toHex(g)}${toHex(b)}`
-}
-
-function encodeUnicodeToBase64(str: string) {
-  return btoa(
-    encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function (_m, p1) {
-      return String.fromCharCode(parseInt(p1, 16))
-    }),
-  )
-}
-
-function decodeBase64ToUnicode(b64: string) {
-  try {
-    const bin = atob(b64)
-    const str = Array.prototype.map
-      .call(bin, function (ch: string) {
-        return "%" + ("00" + ch.charCodeAt(0).toString(16)).slice(-2)
-      })
-      .join("")
-    return decodeURIComponent(str)
-  } catch (e) {
-    return ""
-  }
-}
-
 export default function TierMakerPage() {
   // Force desktop mode on mobile
   useEffect(() => {

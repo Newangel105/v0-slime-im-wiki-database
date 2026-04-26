@@ -998,7 +998,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     if (saved === "cards" || saved === "compact") setViewMode(saved)
     if (sessionStorage.getItem("characterBrowserFiltersOpen") === "1") setFiltersOpen(true)
   }, [])
-  const [filterMode, setFilterMode] = useState<"AND" | "OR">("OR")
+  const [filterMode, setFilterMode] = useState<"AND" | "OR">("AND")
   const [searchSkills, setSearchSkills] = useState(false)
   const deferredSearchText = useDeferredValue(searchText)
 
