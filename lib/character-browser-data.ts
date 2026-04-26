@@ -6,7 +6,20 @@ export type BrowserForceEntry = {
   icon?: string
 }
 
+export type BattleAttackEffect = {
+  target_type: number
+  attack_type: string
+  element_type: string
+  attack_calc_type: number
+  attack_base_type: number
+  attack_base_value: number
+  base_effect_value: number
+  level_add_effect_value: number
+  effect_value: number
+}
+
 export type BrowserCharacterSkill = {
+  battle_attack_effects: BattleAttackEffect[]
   slot: string
   kind: string
   name: string
@@ -180,6 +193,17 @@ function toBrowserCharacter(character: WikiCharacter, forceIconLookup: Map<strin
         kind: skill.kind,
         name: skill.name ?? "",
         description_max_level: skill.description_max_level ?? "",
+        battle_attack_effects: (skill.battle_attack_effects ?? []).map((effect) => ({
+          target_type: effect.target_type ?? 0,
+          attack_type: effect.attack_type ?? "",
+          element_type: effect.element_type ?? "",
+          attack_calc_type: effect.attack_calc_type ?? 0,
+          attack_base_type: effect.attack_base_type ?? 0,
+          attack_base_value: effect.attack_base_value ?? 0,
+          base_effect_value: effect.base_effect_value ?? 0,
+          level_add_effect_value: effect.level_add_effect_value ?? 0,
+          effect_value: effect.effect_value ?? 0,
+        })),
       })),
     traits: character.traits.map((trait) => ({
       name: trait.name,

@@ -741,7 +741,19 @@ function buildForcesOptions(characters: BrowserCharacter[]): FilterOption[] {
 }
 
 function getCharacterUltimateType(character: BrowserCharacter): "aoe" | "single" | null {
-  return character.ultimate_type
+  const hasAoE = character.skills.some((skill) =>
+    skill.battle_attack_effects?.some((e) => e.target_type === 1)
+  )
+
+  const hasSingle = character.skills.some((skill) =>
+    skill.battle_attack_effects?.some((e) => e.target_type === 0)
+  )
+
+  if (hasAoE && !hasSingle) return "aoe"
+  if (hasSingle && !hasAoE) return "single"
+
+  // mixed or unknown
+  return hasAoE ? "aoe" : hasSingle ? "single" : null
 }
 
 const ROLE_OPTIONS: FilterOption[] = [
@@ -1133,6 +1145,18 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
         selectedRarities.includes(String(getCharacterVisualTier(character)))
 
       if (!rarityOk) return false
+
+      const ultimateTypeOk =
+        selectedUltimateTypes.length === 0 ||
+        (isAND
+          ? selectedUltimateTypes.every((v) =>
+              getCharacterUltimateType(character) === v
+            )
+          : selectedUltimateTypes.some((v) =>
+              getCharacterUltimateType(character) === v
+            ))
+
+      if (!ultimateTypeOk) return false
 
       // ─────────────────────────────
       // ELEMENTS
