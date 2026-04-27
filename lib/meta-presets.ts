@@ -576,4 +576,12 @@ export const META_PRESETS: MetaPreset[] = [
     battle2: "Blue Sky",
     mini1: "Assiduous Demon Lord",
   },
+  {
+    id: "pre_45anni",
+    name: "Pre 4.5 Anniv meta 7*",
+    protector: "Abyssal Frost Empress",
+    battle1: "Mirror-Realm Chancellor",
+    battle2: "Mirror-Realm Ogre",
+    battle3: "Abyssal Crimson Emperor",
+  }
 ]
