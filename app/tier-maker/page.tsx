@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useMemo, useState, useRef } from "react"
+import React, { useEffect, useMemo, useState, useRef, useCallback } from "react"
 import { getAllCharacterBrowserData } from "@/lib/character-browser-data"
 import { getAllWikiCharacters, getCharacterVisualTier, getAllHeartprints } from "@/lib/pc-wiki"
 import { Input } from "@/components/ui/input"
@@ -95,6 +95,35 @@ export default function TierMakerPage() {
   const [activeListIndex, setActiveListIndex] = useState(0)
   const [mode, setMode] = useState<"characters" | "heartprints">("characters")
 
+  // Helper to create default tier list structure (avoids duplication across 5+ locations)
+  const createDefaultTierList = useCallback((name: string = "Tier List 1"): TierListEntry => ({
+    name,
+    tiers: DEFAULT_TIER_NAMES.map((n, i) => ({
+      name: n,
+      items: [],
+      color: DEFAULT_TIER_COLORS[i % DEFAULT_TIER_COLORS.length]
+    }))
+  }), [])
+
+  // Helper to expand compact tier format (avoids duplication in multiple decode paths)
+  const expandCompactTiers = useCallback((ct: any, i: number) => ({
+    name: ct.n ?? DEFAULT_TIER_NAMES[i] ?? String(i),
+    color: ct.c ?? DEFAULT_TIER_COLORS[i % DEFAULT_TIER_COLORS.length],
+    items: (ct.i ?? []).map(String),
+  }), [])
+
+  // Generic localStorage retrieval (consolidates 3 nearly-identical functions)
+  const getStoredLists = useCallback((key: string): TierListEntry[] => {
+    try {
+      const saved = localStorage.getItem(key)
+      if (saved) {
+        const parsed = JSON.parse(saved)
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed
+      }
+    } catch (e) {}
+    return [createDefaultTierList()]
+  }, [createDefaultTierList])
+
   const tiers = tierLists[activeListIndex]?.tiers ?? []
   const setTiers: React.Dispatch<React.SetStateAction<Tier[]>> = (action) => {
     setTierLists(prev => {
@@ -123,6 +152,9 @@ export default function TierMakerPage() {
       const params = new URLSearchParams(window.location.search)
       const d = params.get("d")
       const gistParam = params.get("gist")
+      const modeParam = params.get("mode")
+      const initMode = modeParam === "heartprints" ? "heartprints" : "characters"
+
       if (d) {
         try {
           let parsed: any
@@ -139,17 +171,44 @@ export default function TierMakerPage() {
             parsed = JSON.parse(pako.ungzip(bytes, { to: "string" }) as string)
           }
 
+          // New shared format: { c: {...}, h: {...} } with both character and heartprint lists
+          if (parsed?.c && parsed?.h) {
+            const expandData = (data: any) => {
+              if (Array.isArray(data)) {
+                return [{ name: "Shared List", tiers: data.map((ct: any, i: number) => expandCompactTiers(ct, i)) }]
+              }
+              if (data?.l && Array.isArray(data.l)) {
+                return data.l.map((tl: any) => ({
+                  name: tl.n ?? "Tier List",
+                  tiers: (tl.t ?? []).map((ct: any, i: number) => expandCompactTiers(ct, i)),
+                }))
+              }
+              return []
+            }
+            const charLists = expandData(parsed.c)
+            const heartLists = expandData(parsed.h)
+            if (initMode === "heartprints") {
+              setTierLists(heartLists.length > 0 ? heartLists : charLists)
+            } else {
+              setTierLists(charLists.length > 0 ? charLists : heartLists)
+            }
+            try {
+              localStorage.setItem(LISTS_STORAGE_KEY, JSON.stringify(charLists))
+              localStorage.setItem(HEART_LISTS_KEY, JSON.stringify(heartLists))
+            } catch (e) {}
+            setActiveListIndex(0)
+            setMode(initMode)
+            return
+          }
+
           // Compact multi: { l: [{n, t}] }
           if (parsed?.l && Array.isArray(parsed.l)) {
             setTierLists(parsed.l.map((tl: any) => ({
               name: tl.n ?? "Tier List",
-              tiers: (tl.t ?? []).map((ct: any, i: number) => ({
-                name: ct.n ?? DEFAULT_TIER_NAMES[i] ?? String(i),
-                color: ct.c ?? DEFAULT_TIER_COLORS[i % DEFAULT_TIER_COLORS.length],
-                items: (ct.i ?? []).map(String),
-              })),
+              tiers: (tl.t ?? []).map((ct: any, i: number) => expandCompactTiers(ct, i)),
             })))
             setActiveListIndex(0)
+            setMode(initMode)
             return
           }
 
@@ -157,22 +216,20 @@ export default function TierMakerPage() {
           if (parsed?.lists && Array.isArray(parsed.lists)) {
             setTierLists(parsed.lists)
             setActiveListIndex(0)
+            setMode(initMode)
             return
           }
 
           if (Array.isArray(parsed) && parsed.length > 0) {
             // Compact single: [{i, n?, c?}]
             if ("i" in parsed[0]) {
-              setTierLists([{ name: "Shared List", tiers: parsed.map((ct: any, i: number) => ({
-                name: ct.n ?? DEFAULT_TIER_NAMES[i] ?? String(i),
-                color: ct.c ?? DEFAULT_TIER_COLORS[i % DEFAULT_TIER_COLORS.length],
-                items: (ct.i ?? []).map(String),
-              })) }])
+              setTierLists([{ name: "Shared List", tiers: parsed.map((ct: any, i: number) => expandCompactTiers(ct, i)) }])
             } else {
               // Legacy single: Tier[] with full keys
               setTierLists([{ name: "Shared List", tiers: parsed }])
             }
             setActiveListIndex(0)
+            setMode(initMode)
             return
           }
         } catch (e) {}
@@ -187,6 +244,7 @@ export default function TierMakerPage() {
               if (json?.tiers) {
                 setTierLists([{ name: "Gist List", tiers: json.tiers }])
                 setActiveListIndex(0)
+                setMode(initMode)
               }
             }
           } catch (e) {}
@@ -681,37 +739,24 @@ export default function TierMakerPage() {
     })
   }
 
-  function encodeSharePayload(lists: TierListEntry[]): string {
-    const compact = lists.length === 1
-      ? _compactTiers(lists[0].tiers)
-      : { l: lists.map((tl) => ({ n: tl.name, t: _compactTiers(tl.tiers) })) }
+
+  function encodeSharePayload(charLists: TierListEntry[], heartLists: TierListEntry[]): string {
+    const compact = {
+      c: charLists.length === 1
+        ? _compactTiers(charLists[0].tiers)
+        : { l: charLists.map((tl) => ({ n: tl.name, t: _compactTiers(tl.tiers) })) },
+      h: heartLists.length === 1
+        ? _compactTiers(heartLists[0].tiers)
+        : { l: heartLists.map((tl) => ({ n: tl.name, t: _compactTiers(tl.tiers) })) }
+    }
     return compressToEncodedURIComponent(JSON.stringify(compact))
   }
 
   async function copyShareLink() {
     try {
-      // Try server-side storage first (returns a short ?gist= URL)
-      try {
-        const payload = tierLists.length === 1 ? tiers : { lists: tierLists }
-        const res = await fetch("/api/tier-list", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        })
-        if (res.ok) {
-          const data = await res.json()
-          if (data.siteUrl) {
-            await navigator.clipboard.writeText(data.siteUrl)
-            alert("Share link copied to clipboard")
-            return
-          }
-        }
-      } catch (_) {
-        // fall through to compressed URL
-      }
-
-      // Fallback: compact lz-string compressed ?d= URL
-      const encoded = encodeSharePayload(tierLists)
+      const charLists = mode === "characters" ? tierLists : getStoredLists(LISTS_STORAGE_KEY)
+      const heartLists = mode === "heartprints" ? tierLists : getStoredLists(HEART_LISTS_KEY)
+      const encoded = encodeSharePayload(charLists, heartLists)
       const url = `${window.location.origin}${window.location.pathname}?d=${encoded}`
       await navigator.clipboard.writeText(url)
       alert("Share link copied to clipboard")

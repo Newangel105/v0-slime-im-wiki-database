@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useDeferredValue, useMemo, useRef, useState, useEffect } from "react"
+import React, { useCallback, useDeferredValue, useMemo, useRef, useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import type { Heartprint, Equipment, Charm } from "@/lib/pc-wiki"
 import type { TeamBuilderCharacter } from "@/lib/team-builder-character-data"
@@ -81,6 +81,10 @@ function formatWikiLabel(label: string): string {
   // Capitalize first letter, rest lowercase, replace underscores with space
   if (!label) return ""
   return label.charAt(0).toUpperCase() + label.slice(1).replace(/_/g, " ").toLowerCase()
+}
+
+function transformIconPath(path: string): string {
+  return path?.replaceAll("{1}", "3").replaceAll("{0}", "L") ?? ""
 }
 
 // ---- Force group display labels ----
@@ -2363,11 +2367,108 @@ export default function TeamBuilderClient({
     link.click()
   }
 
+  const AllAttackerSkillsSection = React.memo(({
+    attackers,
+    isExpanded,
+    onToggleExpand,
+    showingChanged,
+    onToggleChanged,
+  }: {
+    attackers: Array<{ slotIdx: number; atkChar: TeamBuilderCharacter }>
+    isExpanded: boolean
+    onToggleExpand: () => void
+    showingChanged: Set<string>
+    onToggleChanged: (key: string) => void
+  }) => {
+    // Build per-attacker skill groups: pair each base active_skill with its skill change
+    const attackerGroups = useMemo(() =>
+      attackers.map(({ slotIdx, atkChar }) => {
+        const changesBySlot = new Map<string, typeof atkChar.skills[0]>()
+        for (const s of atkChar.skills) {
+          if (s.is_skill_change && s.replaces_slot) {
+            changesBySlot.set(s.replaces_slot, s)
+          }
+        }
+        const baseSkills = atkChar.skills
+          .filter(s => s.slot.startsWith("active_skill") && !s.is_skill_change)
+          .sort((a, b) => parseInt(a.slot.replace("active_skill", "")) - parseInt(b.slot.replace("active_skill", "")))
+        return { slotIdx, atkChar, baseSkills, changesBySlot }
+      }).filter(({ baseSkills, changesBySlot }) => baseSkills.length > 0 || changesBySlot.size > 0),
+      [attackers]
+    )
+
+    if (attackerGroups.length === 0) return null
+
+    return (
+      <div className="mb-2 rounded-lg overflow-hidden text-xs" style={{ width: `calc(4 * (clamp(110px, 12vw, 155px) * ${SIZE_SCALE}) + 2 * (clamp(78px, 8.5vw, 109px) * ${SIZE_SCALE}) + 32px)`, maxWidth: "100%", background: "rgba(8,12,22,0.92)", border: "1px solid rgba(255,255,255,0.08)" }}>
+        <button
+          onClick={onToggleExpand}
+          className="w-full flex items-center gap-2 px-3 py-2 hover:bg-white/5 transition-colors text-left"
+        >
+          <span className="text-white/60 font-semibold text-[10px] uppercase tracking-wide flex-1">Battle Skills</span>
+          <span className="text-white/40">{isExpanded ? "▲" : "▼"}</span>
+        </button>
+        {isExpanded && (
+          <div className="border-t border-white/6">
+            {attackerGroups.map(({ slotIdx, atkChar, baseSkills, changesBySlot }, groupIdx) => (
+              <div key={slotIdx}>
+                {/* Character name sub-header */}
+                <div className="px-3 py-1.5 text-[9px] font-semibold uppercase tracking-widest text-white/35" style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.06)", borderTop: groupIdx > 0 ? "1px solid rgba(255,255,255,0.06)" : undefined }}>
+                  {atkChar.name}
+                </div>
+                {baseSkills.map((skill, idx) => {
+                  const changed = changesBySlot.get(skill.slot)
+                  const changeKey = `${slotIdx}-${skill.slot}`
+                  const viewingChanged = changed && showingChanged.has(changeKey)
+                  const displayed = viewingChanged ? changed : skill
+                  const isLast = idx === baseSkills.length - 1
+                  return (
+                    <div key={skill.slot} style={{ borderBottom: !isLast ? "1px solid rgba(255,255,255,0.06)" : undefined }}>
+                      <div className="flex items-start gap-2 px-3 py-2">
+                        {displayed.icon_path && (
+                          <img src={`/${transformIconPath(displayed.icon_path)}.webp`} alt=""
+                            className="w-8 h-8 flex-shrink-0 object-contain rounded mt-0.5"
+                            onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                        )}
+                        <div className="flex flex-col gap-1 min-w-0 flex-1">
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="text-white/60 font-semibold text-[10px] uppercase tracking-wide">{displayed.name}</span>
+                            {changed && (
+                              <div className="flex items-center gap-0.5 rounded-lg bg-gradient-to-b from-white/15 to-white/10 p-1 border border-white/10">
+                                <button
+                                  onClick={() => viewingChanged && onToggleChanged(changeKey)}
+                                  className={`rounded-md px-2 py-0.5 text-[8px] font-semibold transition-all duration-150 ${!viewingChanged ? "bg-white/25 text-white shadow-md" : "text-white/35 hover:text-white/50"}`}
+                                >Base</button>
+                                <button
+                                  onClick={() => !viewingChanged && onToggleChanged(changeKey)}
+                                  className={`rounded-md px-2 py-0.5 text-[8px] font-semibold transition-all duration-150 ${viewingChanged ? "bg-amber-500/50 text-amber-100 shadow-md shadow-amber-500/20" : "text-white/35 hover:text-amber-300"}`}
+                                >Changed</button>
+                              </div>
+                            )}
+                          </div>
+                          <span className="text-white/80 leading-snug break-words whitespace-pre-line w-full text-[10px]">{renderColoredDesc(displayed.description_max_level ?? "")}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    )
+  })
+
   const protChar = getCharacterById(mainSlots[0])
   const protSubChar = getCharacterById(subSlots[0])
   const leaderSkill = protChar?.skills.find((s) => s.slot === "leader_skill") ?? null
   const assistSkill = protSubChar?.skills.find((s) => s.slot === "assist_leader_skill") ?? null
   const selectedHp = heartPrintId ? heartprints.find(h => h.heartprint_id === heartPrintId) ?? null : null
+
+  // Attacker abilities expansion state
+  const [attackerSkillsExpanded, setAttackerSkillsExpanded] = useState(false)
+  const [skillChangesShowing, setSkillChangesShowing] = useState<Set<string>>(new Set())
 
   // ── EP Calculation ──
   const teamEP = useMemo(() => {
@@ -2465,7 +2566,7 @@ export default function TeamBuilderClient({
             <div className="flex items-start gap-2 px-3 py-2"
               style={{ borderBottom: assistSkill ? "1px solid rgba(255,255,255,0.06)" : undefined }}>
               {leaderSkill.icon_path && (
-                <img src={`/${leaderSkill.icon_path.replaceAll("{1}", "3").replaceAll("{0}", "L")}.webp`} alt=""
+                <img src={`/${transformIconPath(leaderSkill.icon_path)}.webp`} alt=""
                   className="w-8 h-8 flex-shrink-0 object-contain rounded"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
               )}
@@ -2481,7 +2582,7 @@ export default function TeamBuilderClient({
           {assistSkill && (
             <div className="flex items-start gap-2 px-3 py-2">
               {assistSkill.icon_path && (
-                <img src={`/${assistSkill.icon_path.replaceAll("{1}", "3").replaceAll("{0}", "L")}.webp`} alt=""
+                <img src={`/${transformIconPath(assistSkill.icon_path)}.webp`} alt=""
                   className="w-8 h-8 flex-shrink-0 object-contain rounded"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
               )}
@@ -2495,6 +2596,29 @@ export default function TeamBuilderClient({
           )}
         </div>
       )}
+
+      {/* ── ATTACKER BATTLE SKILLS INFO ── */}
+      {(() => {
+        const attackers = ([1, 2, 3] as const).flatMap(slotIdx => {
+          const atkChar = getCharacterById(mainSlots[slotIdx])
+          if (!atkChar || isProtectorChar(atkChar)) return []
+          return [{ slotIdx, atkChar }]
+        })
+        if (attackers.length === 0) return null
+        return (
+          <AllAttackerSkillsSection
+            attackers={attackers}
+            isExpanded={attackerSkillsExpanded}
+            onToggleExpand={() => setAttackerSkillsExpanded(v => !v)}
+            showingChanged={skillChangesShowing}
+            onToggleChanged={(key) => setSkillChangesShowing(prev => {
+              const next = new Set(prev)
+              next.has(key) ? next.delete(key) : next.add(key)
+              return next
+            })}
+          />
+        )
+      })()}
 
         {/* Main container - horizontally scrollable on mobile, centered on desktop */}
         <div className="w-full overflow-x-auto" style={{ WebkitOverflowScrolling: "touch" }}>

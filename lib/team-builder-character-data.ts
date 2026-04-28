@@ -26,6 +26,8 @@ export type TeamBuilderSkill = {
   icon_path: string
   cost: number | null
   skill_filter_groups?: SkillFilterGroup[]
+  is_skill_change?: boolean
+  replaces_slot?: string
 }
 
 export type TeamBuilderTrait = {
@@ -153,6 +155,8 @@ function toTeamBuilderCharacter(character: WikiCharacter, forceIconLookup: Map<s
       icon_path: skill.icon_path,
       cost: skill.cost,
       skill_filter_groups: skill.skill_filter_groups,
+      is_skill_change: skill.is_skill_change,
+      replaces_slot: skill.replaces_slot,
     })),
     traits: character.traits.map((trait) => ({
       name: trait.name,
