@@ -19,6 +19,7 @@ const toolLinks = [
   { href: "/orb-converter", label: "Orb Converters" },
   { href: "/battle-sim", label: "Battle Sim" },
   { href: "/tier-maker", label: "Tier Maker" },
+  { href: "/model-viewer", label: "Model Viewer" },
 ]
 
 const allLinks = [...primaryLinks, ...toolLinks]

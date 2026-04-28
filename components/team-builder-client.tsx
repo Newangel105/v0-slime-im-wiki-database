@@ -2362,7 +2362,7 @@ export default function TeamBuilderClient({
     }
     const canvas = await w.html2canvas(el, { useCORS: true, allowTaint: true, backgroundColor: null })
     const link = document.createElement("a")
-    link.download = "team.webp"
+    link.download = "team.png"
     link.href = canvas.toDataURL("image/png")
     link.click()
   }
@@ -2599,23 +2599,32 @@ export default function TeamBuilderClient({
 
       {/* ── ATTACKER BATTLE SKILLS INFO ── */}
       {(() => {
-        const attackers = ([1, 2, 3] as const).flatMap(slotIdx => {
-          const atkChar = getCharacterById(mainSlots[slotIdx])
+        const allSlots = [
+          ...mainSlots.map((id, idx) => ({ id, slotIdx: idx, type: 'main' })),
+          ...sideSlots.map((id, idx) => ({ id, slotIdx: idx, type: 'side' })),
+        ]
+
+        const attackers = allSlots.flatMap(({ id, slotIdx, type }) => {
+          const atkChar = getCharacterById(id)
           if (!atkChar || isProtectorChar(atkChar)) return []
-          return [{ slotIdx, atkChar }]
+          return [{ slotIdx, atkChar, type }]
         })
+
         if (attackers.length === 0) return null
+
         return (
           <AllAttackerSkillsSection
             attackers={attackers}
             isExpanded={attackerSkillsExpanded}
             onToggleExpand={() => setAttackerSkillsExpanded(v => !v)}
             showingChanged={skillChangesShowing}
-            onToggleChanged={(key) => setSkillChangesShowing(prev => {
-              const next = new Set(prev)
-              next.has(key) ? next.delete(key) : next.add(key)
-              return next
-            })}
+            onToggleChanged={(key) =>
+              setSkillChangesShowing(prev => {
+                const next = new Set(prev)
+                next.has(key) ? next.delete(key) : next.add(key)
+                return next
+              })
+            }
           />
         )
       })()}
