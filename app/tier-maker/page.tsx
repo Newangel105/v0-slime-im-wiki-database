@@ -241,8 +241,22 @@ export default function TierMakerPage() {
             const res = await fetch(`/api/tier-list?gist=${encodeURIComponent(gistParam)}`)
             if (res.ok) {
               const json = await res.json()
-              if (json?.tiers) {
-                setTierLists([{ name: "Gist List", tiers: json.tiers }])
+
+              if (json?.charLists || json?.heartLists) {
+                const charLists = json.charLists || []
+                const heartLists = json.heartLists || []
+
+                try {
+                  localStorage.setItem(LISTS_STORAGE_KEY, JSON.stringify(charLists))
+                  localStorage.setItem(HEART_LISTS_KEY, JSON.stringify(heartLists))
+                } catch (e) {}
+
+                if (initMode === "heartprints") {
+                  setTierLists(heartLists.length > 0 ? heartLists : charLists)
+                } else {
+                  setTierLists(charLists.length > 0 ? charLists : heartLists)
+                }
+
                 setActiveListIndex(0)
                 setMode(initMode)
               }
@@ -754,10 +768,29 @@ export default function TierMakerPage() {
 
   async function copyShareLink() {
     try {
-      const charLists = mode === "characters" ? tierLists : getStoredLists(LISTS_STORAGE_KEY)
-      const heartLists = mode === "heartprints" ? tierLists : getStoredLists(HEART_LISTS_KEY)
-      const encoded = encodeSharePayload(charLists, heartLists)
-      const url = `${window.location.origin}${window.location.pathname}?d=${encoded}`
+      const charLists =
+        mode === "characters" ? tierLists : getStoredLists(LISTS_STORAGE_KEY)
+      const heartLists =
+        mode === "heartprints" ? tierLists : getStoredLists(HEART_LISTS_KEY)
+
+      const res = await fetch("/api/tier-list", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ charLists, heartLists }),
+      })
+
+      if (!res.ok) {
+        const text = await res.text()
+        console.error("API error:", text)
+        throw new Error("API request failed")
+      }
+
+      const data = await res.json()
+
+      const url = `${window.location.origin}${window.location.pathname}?gist=${data.gistId}`
+
       await navigator.clipboard.writeText(url)
       alert("Share link copied to clipboard")
     } catch (e) {
