@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState, useRef } from "react"
 import { getAllCharacterBrowserData } from "@/lib/character-browser-data"
-import { getAllWikiCharacters, getCharacterVisualTier } from "@/lib/pc-wiki"
+import { getAllWikiCharacters, getCharacterVisualTier, getAllHeartprints } from "@/lib/pc-wiki"
 import { Input } from "@/components/ui/input"
 import {
   Dialog,
@@ -26,6 +26,7 @@ type TierListEntry = { name: string; tiers: Tier[] }
 const DEFAULT_TIER_NAMES = ["S", "A", "B", "C", "D"]
 const STORAGE_KEY = "tierList_v1"
 const LISTS_STORAGE_KEY = "tierLists_v2"
+const HEART_LISTS_KEY = "heartTierLists_v1"
 
 const DEFAULT_TIER_COLORS = ["#dc2626", "#ea580c", "#eab308", "#f59e0b", "#84cc16"]
 const RARITY_ASSETS: Record<number, string> = {
@@ -78,6 +79,7 @@ export default function TierMakerPage() {
 
   const allChars = useMemo(() => getAllCharacterBrowserData(), [])
   const wikiChars = useMemo(() => getAllWikiCharacters(), [])
+  const allHearts = useMemo(() => getAllHeartprints(), [])
 
   const skillChangeIds = useMemo(() => {
     const s = new Set<number>()
@@ -91,6 +93,7 @@ export default function TierMakerPage() {
     { name: "Tier List 1", tiers: DEFAULT_TIER_NAMES.map((n, i) => ({ name: n, items: [], color: DEFAULT_TIER_COLORS[i % DEFAULT_TIER_COLORS.length] })) }
   ])
   const [activeListIndex, setActiveListIndex] = useState(0)
+  const [mode, setMode] = useState<"characters" | "heartprints">("characters")
 
   const tiers = tierLists[activeListIndex]?.tiers ?? []
   const setTiers: React.Dispatch<React.SetStateAction<Tier[]>> = (action) => {
@@ -110,9 +113,9 @@ export default function TierMakerPage() {
 
   useEffect(() => {
     try {
-      localStorage.setItem(LISTS_STORAGE_KEY, JSON.stringify(tierLists))
+      localStorage.setItem(mode === "characters" ? LISTS_STORAGE_KEY : HEART_LISTS_KEY, JSON.stringify(tierLists))
     } catch (e) {}
-  }, [tierLists])
+  }, [tierLists, mode])
 
   useEffect(() => {
     try {
@@ -122,33 +125,53 @@ export default function TierMakerPage() {
       const gistParam = params.get("gist")
       if (d) {
         try {
-          let parsed
+          let parsed: any
 
           try {
-            // NEW (lz-string)
             const jsonStr = decompressFromEncodedURIComponent(d)
             if (!jsonStr) throw new Error("Invalid compressed data")
             parsed = JSON.parse(jsonStr)
           } catch {
-            // OLD fallback (your gzip links still work)
+            // Legacy gzip fallback
             const binary = atob(d)
             const bytes = new Uint8Array(binary.length)
-            for (let i = 0; i < binary.length; i++) {
-              bytes[i] = binary.charCodeAt(i)
-            }
-
-            const jsonStr = pako.ungzip(bytes, { to: "string" }) as string
-            parsed = JSON.parse(jsonStr)
+            for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i)
+            parsed = JSON.parse(pako.ungzip(bytes, { to: "string" }) as string)
           }
 
+          // Compact multi: { l: [{n, t}] }
+          if (parsed?.l && Array.isArray(parsed.l)) {
+            setTierLists(parsed.l.map((tl: any) => ({
+              name: tl.n ?? "Tier List",
+              tiers: (tl.t ?? []).map((ct: any, i: number) => ({
+                name: ct.n ?? DEFAULT_TIER_NAMES[i] ?? String(i),
+                color: ct.c ?? DEFAULT_TIER_COLORS[i % DEFAULT_TIER_COLORS.length],
+                items: (ct.i ?? []).map(String),
+              })),
+            })))
+            setActiveListIndex(0)
+            return
+          }
+
+          // Legacy multi: { lists: TierListEntry[] }
           if (parsed?.lists && Array.isArray(parsed.lists)) {
             setTierLists(parsed.lists)
             setActiveListIndex(0)
             return
           }
 
-          if (Array.isArray(parsed)) {
-            setTierLists([{ name: "Shared List", tiers: parsed }])
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            // Compact single: [{i, n?, c?}]
+            if ("i" in parsed[0]) {
+              setTierLists([{ name: "Shared List", tiers: parsed.map((ct: any, i: number) => ({
+                name: ct.n ?? DEFAULT_TIER_NAMES[i] ?? String(i),
+                color: ct.c ?? DEFAULT_TIER_COLORS[i % DEFAULT_TIER_COLORS.length],
+                items: (ct.i ?? []).map(String),
+              })) }])
+            } else {
+              // Legacy single: Tier[] with full keys
+              setTierLists([{ name: "Shared List", tiers: parsed }])
+            }
             setActiveListIndex(0)
             return
           }
@@ -592,6 +615,25 @@ export default function TierMakerPage() {
       })
   }, [pins, assigned, imageSearch, roleFilter, rarityFilter, wikiChars])
 
+  const heartPins = useMemo(() => {
+    const out: Array<{ id: string; masterId: number; name: string; image: string }> = []
+    for (const c of allHearts) {
+      if (c.still_type === "rare")
+        out.push({ id: String(c.heartprint_id), masterId: c.heartprint_id, name: c.title, image: c.picture_path.replace("{0}", "L") + ".webp" })
+    }
+    return out
+  }, [allHearts])
+
+  const heartAvailablePins = useMemo(() => {
+    return heartPins
+      .filter((p) => {
+        if (assigned.has(p.id)) return false
+        if (imageSearch && !p.name.toLowerCase().includes(imageSearch.toLowerCase())) return false
+        return true
+      })
+      .sort((a, b) => a.name.localeCompare(b.name))
+  }, [heartPins, assigned, imageSearch])
+
   
 
   function exportJson() {
@@ -625,18 +667,53 @@ export default function TierMakerPage() {
     return btoa(binary)
   }
 
-  function copyShareLink() {
+  // Compact encode: short keys + integer IDs + omit defaults → smaller ?d= URL
+  function _compactTiers(ts: Tier[]) {
+    return ts.map((tier, i) => {
+      const items = tier.items.map((id) => {
+        const n = Number(id)
+        return Number.isInteger(n) && n >= 0 && String(n) === id ? n : id
+      })
+      const ct: Record<string, unknown> = { i: items }
+      if (tier.name !== DEFAULT_TIER_NAMES[i]) ct.n = tier.name
+      if (tier.color !== DEFAULT_TIER_COLORS[i % DEFAULT_TIER_COLORS.length]) ct.c = tier.color
+      return ct
+    })
+  }
+
+  function encodeSharePayload(lists: TierListEntry[]): string {
+    const compact = lists.length === 1
+      ? _compactTiers(lists[0].tiers)
+      : { l: lists.map((tl) => ({ n: tl.name, t: _compactTiers(tl.tiers) })) }
+    return compressToEncodedURIComponent(JSON.stringify(compact))
+  }
+
+  async function copyShareLink() {
     try {
-      const payload = tierLists.length === 1 ? tiers : { lists: tierLists }
+      // Try server-side storage first (returns a short ?gist= URL)
+      try {
+        const payload = tierLists.length === 1 ? tiers : { lists: tierLists }
+        const res = await fetch("/api/tier-list", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        })
+        if (res.ok) {
+          const data = await res.json()
+          if (data.siteUrl) {
+            await navigator.clipboard.writeText(data.siteUrl)
+            alert("Share link copied to clipboard")
+            return
+          }
+        }
+      } catch (_) {
+        // fall through to compressed URL
+      }
 
-      const jsonStr = JSON.stringify(payload)
-
-      // compress directly to URL-safe string
-      const encoded = compressToEncodedURIComponent(jsonStr)
-
+      // Fallback: compact lz-string compressed ?d= URL
+      const encoded = encodeSharePayload(tierLists)
       const url = `${window.location.origin}${window.location.pathname}?d=${encoded}`
-
-      navigator.clipboard.writeText(url)
+      await navigator.clipboard.writeText(url)
       alert("Share link copied to clipboard")
     } catch (e) {
       console.error(e)
@@ -772,7 +849,10 @@ export default function TierMakerPage() {
     const def: TierListEntry[] = [{ name: "Tier List 1", tiers: DEFAULT_TIER_NAMES.map((n, i) => ({ name: n, items: [], color: DEFAULT_TIER_COLORS[i % DEFAULT_TIER_COLORS.length] })) }]
     setTierLists(def)
     setActiveListIndex(0)
-    try { localStorage.removeItem(LISTS_STORAGE_KEY); localStorage.removeItem(STORAGE_KEY) } catch (e) {}
+    try {
+      localStorage.removeItem(mode === "characters" ? LISTS_STORAGE_KEY : HEART_LISTS_KEY)
+      if (mode === "characters") localStorage.removeItem(STORAGE_KEY)
+    } catch (e) {}
   }
 
   function addTier(afterIndex: number | null = null) {
@@ -822,10 +902,47 @@ export default function TierMakerPage() {
 
   
 
+  function switchMode(newMode: "characters" | "heartprints") {
+    if (newMode === mode) return
+    try { localStorage.setItem(mode === "characters" ? LISTS_STORAGE_KEY : HEART_LISTS_KEY, JSON.stringify(tierLists)) } catch (e) {}
+    const savedKey = newMode === "characters" ? LISTS_STORAGE_KEY : HEART_LISTS_KEY
+    try {
+      const saved = localStorage.getItem(savedKey)
+      if (saved) {
+        const parsed = JSON.parse(saved)
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setTierLists(parsed)
+          setActiveListIndex(0)
+          setMode(newMode)
+          return
+        }
+      }
+    } catch (e) {}
+    setTierLists([{ name: "Tier List 1", tiers: DEFAULT_TIER_NAMES.map((n, i) => ({ name: n, items: [], color: DEFAULT_TIER_COLORS[i % DEFAULT_TIER_COLORS.length] })) }])
+    setActiveListIndex(0)
+    setMode(newMode)
+  }
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-[#0a1a2f] via-[#0f1f35] to-[#1a2740]">
       <div className="max-w-7xl mx-auto pl-6 pr-4 sm:pl-8 sm:pr-6 lg:px-8 py-8">
         
+
+        {/* Mode selector */}
+        <div className="mb-4 flex gap-2 border-b border-gray-700 pb-3">
+          <button
+            onClick={() => switchMode("characters")}
+            className={`px-4 py-1.5 rounded text-sm font-medium border transition-colors ${mode === "characters" ? "bg-[#2a3444] text-white border-gray-500" : "bg-[#232c3a] text-gray-400 border-gray-700 hover:text-white hover:bg-[#2a3444]"}`}
+          >
+            Characters
+          </button>
+          <button
+            onClick={() => switchMode("heartprints")}
+            className={`px-4 py-1.5 rounded text-sm font-medium border transition-colors ${mode === "heartprints" ? "bg-[#2a3444] text-white border-gray-500" : "bg-[#232c3a] text-gray-400 border-gray-700 hover:text-white hover:bg-[#2a3444]"}`}
+          >
+            Heartprints
+          </button>
+        </div>
 
         {/* Tier list tabs */}
         <div className="mb-3 flex items-center gap-2 overflow-x-auto pb-1">
@@ -901,6 +1018,36 @@ export default function TierMakerPage() {
                 <div data-tier-index={idx} className="flex-1 min-h-[140px] md:min-h-[5rem] border border-gray-700/50 bg-[#0f1b2a]/80 text-white rounded-md flex items-start justify-between px-3 py-3 pr-35 md:pr-20 relative overflow-hidden" onDragOver={(e) => e.preventDefault()} onDrop={(e) => handleDropOnTier(e as React.DragEvent, idx)}>
                   <div className="flex-1 min-w-0 flex flex-wrap gap-1 md:gap-2 items-start max-w-[calc(100vw-7rem)] md:max-w-none">
                     {tier.items.map((id, itemIndex) => {
+                      if (mode === "heartprints") {
+                        const h = allHearts.find((x) => x.heartprint_id === Number(id))
+                        if (!h) return null
+                        return (
+                          <div
+                            key={id}
+                            draggable
+                            onDragStart={(e) => handleDragStart(e as React.DragEvent, id, idx)}
+                            onDragOver={(e) => e.preventDefault()}
+                            onDrop={(e) => handleDropOnItem(e as React.DragEvent, idx, itemIndex)}
+                            data-tier-index={idx}
+                            data-item-index={itemIndex}
+                            onPointerDown={(e) => { if ((e as any).pointerType === 'touch') { try { (e as any).preventDefault() } catch (err) {} touchLastYRef.current = (e as any).clientY; touchDragRef.current = { charId: id, fromTierIndex: idx }; touchDragImageRef.current = h.picture_path.replace("{0}", "M") + ".webp"; try { createTouchGhost(h.picture_path.replace("{0}", "M") + ".webp"); moveTouchGhost((e as any).clientX, (e as any).clientY) } catch (err) {} } }}
+                            onTouchStart={(e) => { if ((e as any).touches && (e as any).touches.length === 1) { try { (e as any).preventDefault() } catch (err) {} const t = (e as any).touches[0]; touchLastYRef.current = t.clientY; touchDragRef.current = { charId: id, fromTierIndex: idx }; touchDragImageRef.current = h.picture_path.replace("{0}", "M") + ".webp"; try { createTouchGhost(h.picture_path.replace("{0}", "M") + ".webp"); moveTouchGhost(t.clientX, t.clientY) } catch (err) {} } }}
+                            onTouchCancel={() => { touchDragRef.current = null; touchDragImageRef.current = null; touchLastYRef.current = null; removeTouchGhost() }}
+                            className="relative w-40 h-20 flex-shrink-0"
+                            title={h.title}
+                            style={{ touchAction: 'none' }}
+                          >
+                            <img
+                              src={h.picture_path.replace("{0}", "M") + ".webp"}
+                              alt={h.title}
+                              draggable={false}
+                              onContextMenu={(e) => e.preventDefault()}
+                              className="w-full h-full object-cover"
+                              style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any}
+                            />
+                          </div>
+                        )
+                      }
                       const [baseId, variant] = String(id).split(":")
                       const c = allChars.find((x) => x.master_pc_id === Number(baseId))
                       if (!c) return null
@@ -964,102 +1111,98 @@ export default function TierMakerPage() {
         </div>
 
         <div className="mt-6 mb-2">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-4">
-              <div className="flex flex-col gap-3">
-                    <div className="flex flex-row items-center gap-2">
-                      <span className="text-xs text-gray-300 whitespace-nowrap">ROLE</span>
-                      <div className="flex items-center gap-2 overflow-x-auto">
-                        <button
-                          className={`h-8 w-8 rounded flex items-center justify-center text-xs transition-colors flex-shrink-0 ${roleFilter === "all" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
-                          onClick={() => setRoleFilter("all")}
-                          aria-label="All roles"
-                        >
-                          <span className="select-none">All</span>
-                        </button>
-
-                        <button
-                          className={`h-8 w-8 rounded flex items-center justify-center text-sm transition-colors flex-shrink-0 ${roleFilter === "protector" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
-                          onClick={() => setRoleFilter("protector")}
-                          aria-label="Protector"
-                        >
-                          <img src="/UI/Texture/CommonLotteryInfoPanelAtlas/icCharaTypeBless.webp" alt="" className="w-5 h-5 object-contain" />
-                        </button>
-
-                        <button
-                          className={`h-8 w-8 rounded flex items-center justify-center text-sm transition-colors flex-shrink-0 ${roleFilter === "attacker" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
-                          onClick={() => setRoleFilter("attacker")}
-                          aria-label="Attacker"
-                        >
-                          <img src="/UI/Texture/CommonLotteryInfoPanelAtlas/icCharaTypePc.webp" alt="" className="w-5 h-5 object-contain" />
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-row items-center gap-2">
-                      <span className="text-xs text-gray-300 whitespace-nowrap">RARITY</span>
-                      <div className="flex items-center gap-2 overflow-x-auto">
-                        <button
-                          className={`h-8 w-8 rounded flex items-center justify-center text-xs transition-colors flex-shrink-0 ${rarityFilter === null ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
-                          onClick={() => setRarityFilter(null)}
-                          aria-label="All rarities"
-                        >
-                          <span className="select-none">All</span>
-                        </button>
-                        {[3, 4, 5, 6, 7, 8].map((r) => (
-                          <button
-                            key={r}
-                            onClick={() => setRarityFilter(r)}
-                            title={`${r}★`}
-                            className={`w-8 h-8 rounded p-0 flex items-center justify-center transition-colors flex-shrink-0 ${rarityFilter === r ? "bg-[#2a3444]" : "bg-transparent hover:bg-gray-600"}`}
-                          >
-                            <img src={RARITY_ASSETS[r]} alt={`star-${r}`} className="w-5 h-5 object-contain" />
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-              </div>
-
-            <div className="relative w-64 lg:w-80 ml-auto">
-              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-              <Input value={imageSearch} onChange={(e) => setImageSearch(e.target.value)} placeholder="Search images" className="h-9 w-full border-gray-600 bg-gray-700 pl-10 text-white placeholder:text-gray-400" />
-            </div>
-          </div>
-
-          <div data-pins="true" className="grid grid-cols-12 gap-2 max-h-full lg:overflow-auto image-scroll lg:max-h-[40vh]" onDragOver={(e) => e.preventDefault()} onDrop={(e) => handleDropOnPins(e as React.DragEvent)}>
-            {availablePins.map((pin) => {
-              const wc = wikiChars.find((w: any) => w.master_pc_id === pin.masterId)
-              const visualTier = wc ? getCharacterVisualTier(wc) : 5
-              const pfx = wc && isProtectorChar(wc) ? "Bless" : "Member"
-              const miniFrame = wc ? getMiniFramePath(visualTier, pfx) : null
-              const starAsset = RARITY_ASSETS[visualTier] ?? null
-              return (
-                <div
-                  key={pin.id}
-                  draggable
-                  onDragStart={(e) => handleDragStart(e as React.DragEvent, pin.id, -1)}
-                  onPointerDown={(e) => { if ((e as any).pointerType === 'touch') { try { (e as any).preventDefault() } catch (err) {} touchLastYRef.current = (e as any).clientY; touchDragRef.current = { charId: pin.id, fromTierIndex: -1 }; touchDragImageRef.current = pin.image; try { createTouchGhost(pin.image); moveTouchGhost((e as any).clientX, (e as any).clientY) } catch (err) {} } }}
-                  onTouchStart={(e) => { if ((e as any).touches && (e as any).touches.length === 1) { try { (e as any).preventDefault() } catch (err) {} const t = (e as any).touches[0]; touchLastYRef.current = t.clientY; touchDragRef.current = { charId: pin.id, fromTierIndex: -1 }; touchDragImageRef.current = pin.image; try { createTouchGhost(pin.image); moveTouchGhost(t.clientX, t.clientY) } catch (err) {} } }}
-                  onTouchCancel={() => { touchDragRef.current = null; touchDragImageRef.current = null; touchLastYRef.current = null; removeTouchGhost() }}
-                  data-pin-id={pin.id}
-                  className="relative w-16 h-16 rounded-md p-1 cursor-grab flex items-center justify-center"
-                  title={pin.name}
-                  style={{ backgroundColor: 'rgb(55 65 81)', touchAction: 'none' }}
-                >
-                  <img
-                    src={pin.image}
-                    alt={pin.name}
-                    draggable={false}
-                    onContextMenu={(e) => e.preventDefault()}
-                    className="max-w-full max-h-full object-contain"
-                    style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any}
-                  />
-                  {miniFrame && <img src={miniFrame} alt="rarity-frame" className="pointer-events-none absolute inset-0 w-full h-full object-fill z-10" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />}
-                  {starAsset && <img src={starAsset} alt="" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[33%] object-contain z-20" />}
-                  {pin.variant === "skill" && <img src="/skill-icons/skill_integrated_3400001_ItemM.webp" alt="skill-change" draggable={false} onContextMenu={(e) => e.preventDefault()} className="absolute bottom-1 right-1 w-5 h-5 z-20" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any} />}
+          {mode === "heartprints" ? (
+            <>
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-4">
+                <div className="relative w-64 lg:w-80 ml-auto">
+                  <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <Input value={imageSearch} onChange={(e) => setImageSearch(e.target.value)} placeholder="Search heartprints" className="h-9 w-full border-gray-600 bg-gray-700 pl-10 text-white placeholder:text-gray-400" />
                 </div>
-              )
-            })}
-          </div>
+              </div>
+              <div data-pins="true" className="grid grid-cols-6 gap-2 max-h-full lg:overflow-auto image-scroll lg:max-h-[40vh]" onDragOver={(e) => e.preventDefault()} onDrop={(e) => handleDropOnPins(e as React.DragEvent)}>
+                {heartAvailablePins.map((pin) => (
+                  <div
+                    key={pin.id}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e as React.DragEvent, pin.id, -1)}
+                    onPointerDown={(e) => { if ((e as any).pointerType === 'touch') { try { (e as any).preventDefault() } catch (err) {} touchLastYRef.current = (e as any).clientY; touchDragRef.current = { charId: pin.id, fromTierIndex: -1 }; touchDragImageRef.current = pin.image; try { createTouchGhost(pin.image); moveTouchGhost((e as any).clientX, (e as any).clientY) } catch (err) {} } }}
+                    onTouchStart={(e) => { if ((e as any).touches && (e as any).touches.length === 1) { try { (e as any).preventDefault() } catch (err) {} const t = (e as any).touches[0]; touchLastYRef.current = t.clientY; touchDragRef.current = { charId: pin.id, fromTierIndex: -1 }; touchDragImageRef.current = pin.image; try { createTouchGhost(pin.image); moveTouchGhost(t.clientX, t.clientY) } catch (err) {} } }}
+                    onTouchCancel={() => { touchDragRef.current = null; touchDragImageRef.current = null; touchLastYRef.current = null; removeTouchGhost() }}
+                    data-pin-id={pin.id}
+                    title={pin.name}
+                    style={{ backgroundColor: 'rgb(55 65 81)', touchAction: 'none' }}
+                  >
+                    <img
+                      src={pin.image}
+                      alt={pin.name}
+                      draggable={false}
+                      onContextMenu={(e) => e.preventDefault()}
+                      className="w-full h-full object-cover"
+                      style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any}
+                    />
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-4">
+                <div className="flex flex-col gap-3">
+                  <div className="flex flex-row items-center gap-2">
+                    <span className="text-xs text-gray-300 whitespace-nowrap">ROLE</span>
+                    <div className="flex items-center gap-2 overflow-x-auto">
+                      <button className={`h-8 w-8 rounded flex items-center justify-center text-xs transition-colors flex-shrink-0 ${roleFilter === "all" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`} onClick={() => setRoleFilter("all")} aria-label="All roles"><span className="select-none">All</span></button>
+                      <button className={`h-8 w-8 rounded flex items-center justify-center text-sm transition-colors flex-shrink-0 ${roleFilter === "protector" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`} onClick={() => setRoleFilter("protector")} aria-label="Protector"><img src="/UI/Texture/CommonLotteryInfoPanelAtlas/icCharaTypeBless.webp" alt="" className="w-5 h-5 object-contain" /></button>
+                      <button className={`h-8 w-8 rounded flex items-center justify-center text-sm transition-colors flex-shrink-0 ${roleFilter === "attacker" ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`} onClick={() => setRoleFilter("attacker")} aria-label="Attacker"><img src="/UI/Texture/CommonLotteryInfoPanelAtlas/icCharaTypePc.webp" alt="" className="w-5 h-5 object-contain" /></button>
+                    </div>
+                  </div>
+                  <div className="flex flex-row items-center gap-2">
+                    <span className="text-xs text-gray-300 whitespace-nowrap">RARITY</span>
+                    <div className="flex items-center gap-2 overflow-x-auto">
+                      <button className={`h-8 w-8 rounded flex items-center justify-center text-xs transition-colors flex-shrink-0 ${rarityFilter === null ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`} onClick={() => setRarityFilter(null)} aria-label="All rarities"><span className="select-none">All</span></button>
+                      {[3, 4, 5, 6, 7, 8].map((r) => (
+                        <button key={r} onClick={() => setRarityFilter(r)} title={`${r}★`} className={`w-8 h-8 rounded p-0 flex items-center justify-center transition-colors flex-shrink-0 ${rarityFilter === r ? "bg-[#2a3444]" : "bg-transparent hover:bg-gray-600"}`}>
+                          <img src={RARITY_ASSETS[r]} alt={`star-${r}`} className="w-5 h-5 object-contain" />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="relative w-64 lg:w-80 ml-auto">
+                  <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <Input value={imageSearch} onChange={(e) => setImageSearch(e.target.value)} placeholder="Search images" className="h-9 w-full border-gray-600 bg-gray-700 pl-10 text-white placeholder:text-gray-400" />
+                </div>
+              </div>
+              <div data-pins="true" className="grid grid-cols-12 gap-2 max-h-full lg:overflow-auto image-scroll lg:max-h-[40vh]" onDragOver={(e) => e.preventDefault()} onDrop={(e) => handleDropOnPins(e as React.DragEvent)}>
+                {availablePins.map((pin) => {
+                  const wc = wikiChars.find((w: any) => w.master_pc_id === pin.masterId)
+                  const visualTier = wc ? getCharacterVisualTier(wc) : 5
+                  const pfx = wc && isProtectorChar(wc) ? "Bless" : "Member"
+                  const miniFrame = wc ? getMiniFramePath(visualTier, pfx) : null
+                  const starAsset = RARITY_ASSETS[visualTier] ?? null
+                  return (
+                    <div
+                      key={pin.id}
+                      draggable
+                      onDragStart={(e) => handleDragStart(e as React.DragEvent, pin.id, -1)}
+                      onPointerDown={(e) => { if ((e as any).pointerType === 'touch') { try { (e as any).preventDefault() } catch (err) {} touchLastYRef.current = (e as any).clientY; touchDragRef.current = { charId: pin.id, fromTierIndex: -1 }; touchDragImageRef.current = pin.image; try { createTouchGhost(pin.image); moveTouchGhost((e as any).clientX, (e as any).clientY) } catch (err) {} } }}
+                      onTouchStart={(e) => { if ((e as any).touches && (e as any).touches.length === 1) { try { (e as any).preventDefault() } catch (err) {} const t = (e as any).touches[0]; touchLastYRef.current = t.clientY; touchDragRef.current = { charId: pin.id, fromTierIndex: -1 }; touchDragImageRef.current = pin.image; try { createTouchGhost(pin.image); moveTouchGhost(t.clientX, t.clientY) } catch (err) {} } }}
+                      onTouchCancel={() => { touchDragRef.current = null; touchDragImageRef.current = null; touchLastYRef.current = null; removeTouchGhost() }}
+                      data-pin-id={pin.id}
+                      className="relative w-16 h-16 rounded-md p-1 cursor-grab flex items-center justify-center"
+                      title={pin.name}
+                      style={{ backgroundColor: 'rgb(55 65 81)', touchAction: 'none' }}
+                    >
+                      <img src={pin.image} alt={pin.name} draggable={false} onContextMenu={(e) => e.preventDefault()} className="max-w-full max-h-full object-contain" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any} />
+                      {miniFrame && <img src={miniFrame} alt="rarity-frame" className="pointer-events-none absolute inset-0 w-full h-full object-fill z-10" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />}
+                      {starAsset && <img src={starAsset} alt="" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[33%] object-contain z-20" />}
+                      {pin.variant === "skill" && <img src="/skill-icons/skill_integrated_3400001_ItemM.webp" alt="skill-change" draggable={false} onContextMenu={(e) => e.preventDefault()} className="absolute bottom-1 right-1 w-5 h-5 z-20" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any} />}
+                    </div>
+                  )
+                })}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </main>

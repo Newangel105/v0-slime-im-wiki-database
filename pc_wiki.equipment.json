@@ -2193,6 +2193,23 @@
     "effect2": null
   },
   {
+    "id": 1111270021,
+    "type": "weapon",
+    "name": "Viridian Shade's Magic Tome",
+    "rarity": 8,
+    "base_rarity": 3,
+    "weapon_type": "Magic Tome",
+    "image": "/Image/Equip/Weapon/270021/Weapon_270021_WeaponM.webp",
+    "max_level": 80,
+    "max_atk": 928,
+    "max_def": 0,
+    "max_hp": 0,
+    "level_group_id": 43,
+    "release_label": "202605_event_labyrinth_dungeon_start",
+    "effect1": "When equipped by Dris, the Viridian Shade, increases ATK by <color=#2BE41D>20</color>%",
+    "effect2": null
+  },
+  {
     "id": 1111270023,
     "type": "weapon",
     "name": "Octagram Armament: Nightmare Grimoire",
@@ -4094,6 +4111,23 @@
     "level_group_id": 53,
     "release_label": "202604_event_Blaze_start",
     "effect1": "When equipped by Saare, the Blue Sky, increases DEF by <color=#2BE41D>20</color>%",
+    "effect2": null
+  },
+  {
+    "id": 1121310102,
+    "type": "armor",
+    "name": "Viridian Shade's Outfit",
+    "rarity": 8,
+    "base_rarity": 3,
+    "weapon_type": null,
+    "image": "/Image/Equip/Armor/310102/Armor_310102_ArmorM.webp",
+    "max_level": 80,
+    "max_atk": 0,
+    "max_def": 2158,
+    "max_hp": 0,
+    "level_group_id": 53,
+    "release_label": "202605_event_labyrinth_dungeon_start",
+    "effect1": "When equipped by Dris, the Viridian Shade, increases DEF by <color=#2BE41D>20</color>%",
     "effect2": null
   },
   {
