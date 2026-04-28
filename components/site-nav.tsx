@@ -19,7 +19,6 @@ const toolLinks = [
   { href: "/orb-converter", label: "Orb Converters" },
   { href: "/battle-sim", label: "Battle Sim" },
   { href: "/tier-maker", label: "Tier Maker" },
-  { href: "/tier-maker2", label: "Tier Heartprints" },
 ]
 
 const allLinks = [...primaryLinks, ...toolLinks]
