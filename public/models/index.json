@@ -1,0 +1,11 @@
+{
+  "models": [
+    {
+      "id": "RimuruDefault",
+      "name": "Rimuru Tempest",
+      "affiliation_name": "Chancellor of Tempest",
+      "glb": "/models/Character/PC/RimuruDefault/RimuruDefault.glb",
+      "icon": "/Image/Character/PC/RimuruDefault/5/RimuruDefault_5_CharaPartyM.webp"
+    }
+  ]
+}
