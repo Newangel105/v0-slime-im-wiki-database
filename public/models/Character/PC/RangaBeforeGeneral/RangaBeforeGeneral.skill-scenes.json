@@ -1,0 +1,17 @@
+{
+  "variant": "RangaBeforeGeneral",
+  "scenes": [
+    {
+      "id": "RangaBeforeGeneral_Battle_SpecialSkill_RigurDefault",
+      "name": "Special Skill RigurDefault",
+      "clips": [
+        "RangaBeforeGeneral_Battle_SpecialSkill_RigurDefault_Cut_01",
+        "RangaBeforeGeneral_Battle_SpecialSkill_RigurDefault_Cut_02",
+        "RangaBeforeGeneral_Battle_SpecialSkill_RigurDefault_Cut_03",
+        "RangaBeforeGeneral_Battle_SpecialSkill_RigurDefault_Cut_04",
+        "RangaBeforeGeneral_Battle_SpecialSkill_RigurDefault_Cut_05"
+      ]
+    }
+  ],
+  "cameraTracks": {}
+}

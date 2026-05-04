@@ -1,0 +1,13 @@
+{
+  "variant": "TownYoungMaleDefault_MobGroup",
+  "scenes": [
+    {
+      "id": "MasayukiDefault_Battle_BlessSkill_1_TownYoungMaleC",
+      "name": "Bless Skill 1 TownYoungMaleC",
+      "clips": [
+        "MasayukiDefault_Battle_BlessSkill_1_TownYoungMaleC_Cut_04"
+      ]
+    }
+  ],
+  "cameraTracks": {}
+}

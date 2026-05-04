@@ -1,0 +1,22 @@
+{
+  "variant": "VelgryndSkill",
+  "scenes": [
+    {
+      "id": "VelgryndSkill_Battle_SpecialSkill_MasayukiDevil",
+      "name": "Special Skill MasayukiDevil",
+      "clips": [
+        "VelgryndSkill_Battle_SpecialSkill_MasayukiDevil_Cut_01",
+        "VelgryndSkill_Battle_SpecialSkill_MasayukiDevil_Cut_02",
+        "VelgryndSkill_Battle_SpecialSkill_MasayukiDevil_Cut_03",
+        "VelgryndSkill_Battle_SpecialSkill_MasayukiDevil_Cut_04",
+        "VelgryndSkill_Battle_SpecialSkill_MasayukiDevil_Cut_05",
+        "VelgryndSkill_Battle_SpecialSkill_MasayukiDevil_Cut_06",
+        "VelgryndSkill_Battle_SpecialSkill_MasayukiDevil_Cut_07",
+        "VelgryndSkill_Battle_SpecialSkill_MasayukiDevil_Cut_08",
+        "VelgryndSkill_Battle_SpecialSkill_MasayukiDevil_Cut_09",
+        "VelgryndSkill_Battle_SpecialSkill_MasayukiDevil_Cut_10"
+      ]
+    }
+  ],
+  "cameraTracks": {}
+}

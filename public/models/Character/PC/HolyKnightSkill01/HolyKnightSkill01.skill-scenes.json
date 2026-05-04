@@ -1,0 +1,28 @@
+{
+  "variant": "HolyKnightSkill01",
+  "scenes": [
+    {
+      "id": "LeonardDefault_Battle_BlessSkill_1_HK01_A",
+      "name": "Bless Skill 1 HK01 A",
+      "clips": [
+        "LeonardDefault_Battle_BlessSkill_1_HK01_A_Cut_01",
+        "LeonardDefault_Battle_BlessSkill_1_HK01_A_Cut_02",
+        "LeonardDefault_Battle_BlessSkill_1_HK01_A_Cut_03",
+        "LeonardDefault_Battle_BlessSkill_1_HK01_A_Cut_04",
+        "LeonardDefault_Battle_BlessSkill_1_HK01_A_Cut_05"
+      ]
+    },
+    {
+      "id": "LeonardDefault_Battle_BlessSkill_1_HK01_B",
+      "name": "Bless Skill 1 HK01 B",
+      "clips": [
+        "LeonardDefault_Battle_BlessSkill_1_HK01_B_Cut_01",
+        "LeonardDefault_Battle_BlessSkill_1_HK01_B_Cut_02",
+        "LeonardDefault_Battle_BlessSkill_1_HK01_B_Cut_03",
+        "LeonardDefault_Battle_BlessSkill_1_HK01_B_Cut_04",
+        "LeonardDefault_Battle_BlessSkill_1_HK01_B_Cut_05"
+      ]
+    }
+  ],
+  "cameraTracks": {}
+}

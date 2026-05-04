@@ -591,5 +591,6 @@ export const META_PRESETS: MetaPreset[] = [
     mini1: "Spirit Archfiend",
     battle1: "Labyrinth Storm Dragon",
     battle2: "Viridian Shade",
+    battle3: "Labyrinth Meteor",
   }
 ]

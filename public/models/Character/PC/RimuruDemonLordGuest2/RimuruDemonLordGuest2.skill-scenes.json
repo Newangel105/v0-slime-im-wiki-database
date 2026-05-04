@@ -1,0 +1,20 @@
+{
+  "variant": "RimuruDemonLordGuest2",
+  "scenes": [
+    {
+      "id": "RimuruDemonLordGuest2_Battle_SpecialSkill_Rimuru",
+      "name": "Special Skill Rimuru",
+      "clips": [
+        "RimuruDemonLordGuest2_Battle_SpecialSkill_Rimuru_Cut_01",
+        "RimuruDemonLordGuest2_Battle_SpecialSkill_Rimuru_Cut_02",
+        "RimuruDemonLordGuest2_Battle_SpecialSkill_Rimuru_Cut_03",
+        "RimuruDemonLordGuest2_Battle_SpecialSkill_Rimuru_Cut_04",
+        "RimuruDemonLordGuest2_Battle_SpecialSkill_Rimuru_Cut_05",
+        "RimuruDemonLordGuest2_Battle_SpecialSkill_Rimuru_Cut_06",
+        "RimuruDemonLordGuest2_Battle_SpecialSkill_Rimuru_Cut_07",
+        "RimuruDemonLordGuest2_Battle_SpecialSkill_Rimuru_Cut_08"
+      ]
+    }
+  ],
+  "cameraTracks": {}
+}

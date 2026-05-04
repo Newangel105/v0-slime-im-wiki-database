@@ -1,0 +1,13 @@
+{
+  "variant": "HobgoblinA_MobGroup",
+  "scenes": [
+    {
+      "id": "MasayukiDefault_Battle_BlessSkill_1_HobgoblinaA02",
+      "name": "Bless Skill 1 HobgoblinaA02",
+      "clips": [
+        "MasayukiDefault_Battle_BlessSkill_1_HobgoblinaA02_Cut_04"
+      ]
+    }
+  ],
+  "cameraTracks": {}
+}

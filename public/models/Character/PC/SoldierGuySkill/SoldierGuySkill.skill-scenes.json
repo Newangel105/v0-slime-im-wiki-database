@@ -1,0 +1,46 @@
+{
+  "variant": "SoldierGuySkill",
+  "scenes": [
+    {
+      "id": "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_A",
+      "name": "Bless Skill 1 Guy3Anniv A",
+      "clips": [
+        "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_A_Cut_04",
+        "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_A_Cut_05",
+        "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_A_Cut_06",
+        "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_A_Cut_07"
+      ]
+    },
+    {
+      "id": "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_B",
+      "name": "Bless Skill 1 Guy3Anniv B",
+      "clips": [
+        "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_B_Cut_04",
+        "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_B_Cut_05",
+        "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_B_Cut_06",
+        "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_B_Cut_07"
+      ]
+    },
+    {
+      "id": "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_C",
+      "name": "Bless Skill 1 Guy3Anniv C",
+      "clips": [
+        "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_C_Cut_04",
+        "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_C_Cut_05",
+        "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_C_Cut_06",
+        "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_C_Cut_07"
+      ]
+    },
+    {
+      "id": "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_D",
+      "name": "Bless Skill 1 Guy3Anniv D",
+      "clips": [
+        "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_D_Cut_04",
+        "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_D_Cut_05",
+        "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_D_Cut_06",
+        "SoldierGuySkill_Battle_BlessSkill_1_Guy3Anniv_D_Cut_07"
+      ]
+    }
+  ],
+  "cameraTracks": {}
+}

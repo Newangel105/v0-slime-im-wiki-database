@@ -1,0 +1,13 @@
+{
+  "variant": "LizardManMaleA_MobGroup",
+  "scenes": [
+    {
+      "id": "MasayukiDefault_Battle_BlessSkill_1_LizardManMaleA01",
+      "name": "Bless Skill 1 LizardManMaleA01",
+      "clips": [
+        "MasayukiDefault_Battle_BlessSkill_1_LizardManMaleA01_Cut_04"
+      ]
+    }
+  ],
+  "cameraTracks": {}
+}

@@ -1,0 +1,22 @@
+{
+  "variant": "RangaBeforeGeneralA",
+  "scenes": [
+    {
+      "id": "RangaBeforeGeneralA_Battle_SpecialSkill_Halloween2023_A",
+      "name": "Special Skill Halloween2023 A",
+      "clips": [
+        "RangaBeforeGeneralA_Battle_SpecialSkill_Halloween2023_A_Cut_02",
+        "RangaBeforeGeneralA_Battle_SpecialSkill_Halloween2023_A_Cut_03"
+      ]
+    },
+    {
+      "id": "RangaBeforeGeneralA_Battle_SpecialSkill_Halloween2023_B",
+      "name": "Special Skill Halloween2023 B",
+      "clips": [
+        "RangaBeforeGeneralA_Battle_SpecialSkill_Halloween2023_B_Cut_02",
+        "RangaBeforeGeneralA_Battle_SpecialSkill_Halloween2023_B_Cut_03"
+      ]
+    }
+  ],
+  "cameraTracks": {}
+}

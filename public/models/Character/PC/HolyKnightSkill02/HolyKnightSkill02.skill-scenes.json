@@ -1,0 +1,17 @@
+{
+  "variant": "HolyKnightSkill02",
+  "scenes": [
+    {
+      "id": "LeonardDefault_Battle_BlessSkill_1_HK02",
+      "name": "Bless Skill 1 HK02",
+      "clips": [
+        "LeonardDefault_Battle_BlessSkill_1_HK02_Cut_01",
+        "LeonardDefault_Battle_BlessSkill_1_HK02_Cut_02",
+        "LeonardDefault_Battle_BlessSkill_1_HK02_Cut_03",
+        "LeonardDefault_Battle_BlessSkill_1_HK02_Cut_04",
+        "LeonardDefault_Battle_BlessSkill_1_HK02_Cut_05"
+      ]
+    }
+  ],
+  "cameraTracks": {}
+}

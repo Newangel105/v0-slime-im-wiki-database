@@ -4454,6 +4454,23 @@
     "effect2": null
   },
   {
+    "id": 1121310105,
+    "type": "armor",
+    "name": "Crimson Cloak",
+    "rarity": 1,
+    "base_rarity": 3,
+    "weapon_type": null,
+    "image": "/Image/Equip/Armor/310105/Armor_310105_ArmorM.webp",
+    "max_level": null,
+    "max_atk": 0,
+    "max_def": 1188,
+    "max_hp": 0,
+    "level_group_id": 67,
+    "release_label": "202605_event_labyrinth_milim_start",
+    "effect1": "Armor that also increases ATK. When equipped by Dungeon Crawler Force characters, increases ATK by <color=#2BE41D>5</color>%",
+    "effect2": null
+  },
+  {
     "id": 1131410001,
     "type": "accessory",
     "name": "Pale Blue Earrings",
