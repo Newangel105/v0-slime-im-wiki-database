@@ -937,12 +937,60 @@ export default function TeamBuilderClient({
     return [...phrases].filter(Boolean)
   }
 
+  function getCharacterForcePhrases(char: TeamBuilderCharacter): string[] {
+    const forces = (char as { forces?: { name?: string | null; label?: string | null }[] }).forces ?? []
+    const phrases = new Set<string>()
+
+    for (const force of forces) {
+      const name = normalizeIdentityText(force?.name)
+      const label = normalizeIdentityText(force?.label)
+      if (name) phrases.add(name)
+      if (label) phrases.add(label)
+    }
+
+    return [...phrases].filter(Boolean)
+  }
+
+  function stripEquipmentTargetQualifiers(target: string): string {
+    return normalizeIdentityText(target)
+      .replace(/\b(force|forces|character|characters|ally|allies|team|members|member)\b/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  }
+
+  function equipmentTargetMatchesForce(target: string, char: TeamBuilderCharacter): boolean {
+    const normalizedTarget = normalizeIdentityText(target)
+    const targetSubject = stripEquipmentTargetQualifiers(normalizedTarget)
+    if (!targetSubject) return false
+
+    const forcePhrases = getCharacterForcePhrases(char)
+    return forcePhrases.some(force =>
+      force === normalizedTarget
+      || force === targetSubject
+      || normalizedTarget.includes(`${force} force`)
+      || normalizedTarget.includes(`${force} characters`)
+      || targetSubject.includes(force)
+    )
+  }
+
+  function isForceTargetPhrase(target: string): boolean {
+    const normalizedTarget = normalizeIdentityText(target)
+    const targetSubject = stripEquipmentTargetQualifiers(normalizedTarget)
+    return !!targetSubject && /\b(?:force|forces)\b/.test(normalizedTarget)
+  }
+
+  function equipmentForceMatch(eq: Equipment, char: TeamBuilderCharacter): boolean {
+    const targets = getEquipmentTargetPhrases([eq.effect1 ?? "", eq.effect2 ?? ""].filter(e => !e.toLowerCase().includes("valor cup")))
+    return targets.some(target => equipmentTargetMatchesForce(target, char))
+  }
+
   function scoreEquipment(eq: Equipment, char: TeamBuilderCharacter): number {
     // Strip Valor Cup effects — they only apply in arena and never count here
     const validEffects = [eq.effect1 ?? "", eq.effect2 ?? ""]
       .filter(e => !e.toLowerCase().includes("valor cup"))
     const combined = validEffects.join(" ").toLowerCase()
     const equipmentTargets = getEquipmentTargetPhrases(validEffects)
+    const forceTargetMatch = equipmentTargets.some(target => equipmentTargetMatchesForce(target, char))
 
     const charName  = normalizeIdentityText(char.name)
     const charAffil = normalizeIdentityText(char.affiliation_name)
@@ -979,6 +1027,10 @@ export default function TeamBuilderClient({
       score += 80000   // name match alone (covers e.g. "Megumin")
     } else if (affilInDesc) {
       score += 60000   // affiliation only (still likely dedicated piece)
+    }
+
+    if (forceTargetMatch) {
+      score += 70000   // force/theme match (e.g. Dungeon Crawler Force characters)
     }
 
     return score
@@ -1028,14 +1080,16 @@ export default function TeamBuilderClient({
           const descEffects = [e.effect1 ?? "", e.effect2 ?? ""].filter(s => s.trim().length > 0)
           if (descEffects.length > 0 && descEffects.every(ef => ef.toLowerCase().includes("valor cup"))) return false
 
-          // If the item explicitly targets a specific character (e.g. "When equipped by My Name Is Megumin,..."),
-          // consider it exclusive and only allow it as a candidate for the matching character(s).
+          // If the item targets a force/theme (e.g. "Dungeon Crawler Force characters"),
+          // only allow it for characters that actually have that force.
           const equipmentTargets = getEquipmentTargetPhrases(descEffects)
+          const hasForceTarget = equipmentTargets.some(isForceTargetPhrase)
+          if (hasForceTarget && !equipmentTargets.some(t => equipmentTargetMatchesForce(t, char))) return false
+
           if (equipmentTargets.length > 0) {
-            // If any target is generic (mentions "character"/"force"/"ally"/"team"), allow it —
-            // these are group targets, not single-character exclusives.
+            // Generic target phrases are group rules; force rules were handled above.
             const hasGenericTarget = equipmentTargets.some(t =>
-              t.includes("character") || t.includes("characters") || t.includes("force") || t.includes("ally") || t.includes("allies") || t.includes("team")
+              t.includes("character") || t.includes("characters") || t.includes("ally") || t.includes("allies") || t.includes("team")
             )
             if (!hasGenericTarget) {
               const charName = normalizeIdentityText(char.name)
@@ -1182,7 +1236,28 @@ export default function TeamBuilderClient({
           continue
         }
 
-        // No exclusives — pick by strict matching rules requested:
+        // Force/theme-targeted gear beats generic element gear when the character has the force.
+        const forceMatchedCandidates = candidates.filter(e => equipmentForceMatch(e, char))
+        if (forceMatchedCandidates.length > 0) {
+          if (eqType === "weapon") {
+            const charWt = normalizeWeaponType(char.weapon_type ?? "")
+            const wtForceCandidates = charWt
+              ? forceMatchedCandidates.filter(e => normalizeWeaponType(e.weapon_type ?? "") === charWt)
+              : []
+            const pool = wtForceCandidates.length > 0 ? wtForceCandidates : forceMatchedCandidates
+            pool.sort((a, b) => scoreEquipment(b, char) - scoreEquipment(a, char))
+            const best = pool[0]
+            slotRec[eqType] = best.id
+            continue
+          } else {
+            forceMatchedCandidates.sort((a, b) => scoreEquipment(b, char) - scoreEquipment(a, char))
+            const best = forceMatchedCandidates[0]
+            slotRec[eqType] = best.id
+            continue
+          }
+        }
+
+        // No exclusives/force matches — pick by strict matching rules requested:
         // - Weapon: prefer same weapon type, prefer element within that set
         // - Armor/Accessory: prefer element-matching items
         if (eqType === "weapon") {
