@@ -46,6 +46,10 @@ function isInteractiveDragTarget(target: EventTarget | null): boolean {
   )
 }
 
+function isTextBlock(block: GuideContentBlock): boolean {
+  return block.type === "paragraph" || block.type === "heading" || block.type === "quote" || block.type === "list"
+}
+
 export function GuideEditor({ mode, articleId }: GuideEditorProps) {
   const router = useRouter()
   const [profile, setProfile] = useState<GuideAuthorProfile | null>(null)
@@ -503,6 +507,28 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
                             <option value="full">Full width</option>
                             <option value="half">Half width</option>
                           </select>
+                          {isTextBlock(block) ? (
+                            <>
+                              <select
+                                value={block.textAlign ?? "left"}
+                                onChange={(event) => updateBlock(block.id, { textAlign: event.target.value as "left" | "center" } as Partial<GuideContentBlock>)}
+                                className="h-8 rounded-md border border-white/10 bg-slate-900 px-2 text-xs normal-case tracking-normal text-white"
+                                title="Text horizontal alignment"
+                              >
+                                <option value="left">Text left</option>
+                                <option value="center">Text center</option>
+                              </select>
+                              <select
+                                value={block.verticalAlign ?? "top"}
+                                onChange={(event) => updateBlock(block.id, { verticalAlign: event.target.value as "top" | "center" } as Partial<GuideContentBlock>)}
+                                className="h-8 rounded-md border border-white/10 bg-slate-900 px-2 text-xs normal-case tracking-normal text-white"
+                                title="Text vertical alignment"
+                              >
+                                <option value="top">Top</option>
+                                <option value="center">Middle</option>
+                              </select>
+                            </>
+                          ) : null}
                           <Button
                             size="sm"
                             variant="ghost"
