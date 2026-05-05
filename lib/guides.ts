@@ -3,14 +3,21 @@ import { createClient } from "@supabase/supabase-js"
 export type GuideStatus = "draft" | "published"
 export type GuideAuthorRole = "author" | "admin"
 
+export type GuideBlockLayout = "full" | "half"
+
+type GuideContentBlockBase = {
+  id: string
+  layout?: GuideBlockLayout
+}
+
 export type GuideContentBlock =
-  | { id: string; type: "paragraph"; text: string }
-  | { id: string; type: "heading"; level: 2 | 3; text: string }
-  | { id: string; type: "image"; url: string; alt?: string; caption?: string }
-  | { id: string; type: "youtube"; url?: string; videoId: string; caption?: string }
-  | { id: string; type: "quote"; text: string; cite?: string }
-  | { id: string; type: "list"; items: string[] }
-  | { id: string; type: "divider" }
+  | (GuideContentBlockBase & { type: "paragraph"; text: string })
+  | (GuideContentBlockBase & { type: "heading"; level: 2 | 3; text: string })
+  | (GuideContentBlockBase & { type: "image"; url: string; alt?: string; caption?: string })
+  | (GuideContentBlockBase & { type: "youtube"; url?: string; videoId: string; caption?: string })
+  | (GuideContentBlockBase & { type: "quote"; text: string; cite?: string })
+  | (GuideContentBlockBase & { type: "list"; items: string[] })
+  | (GuideContentBlockBase & { type: "divider" })
 
 export interface GuideContent {
   blocks: GuideContentBlock[]
