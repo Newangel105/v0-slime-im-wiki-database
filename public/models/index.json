@@ -3,6 +3,7 @@
     {
       "id": "AdalmanKingOfWit",
       "name": "AdalmanKingOfWit",
+      "characterType": "PC",
       "glb": "/models/Character/PC/AdalmanKingOfWit/AdalmanKingOfWit.glb",
       "skillScene": {
         "glb": "/models/Character/PC/AdalmanKingOfWit/AdalmanKingOfWit.skill.glb",
@@ -13,6 +14,7 @@
     {
       "id": "AinzDefault",
       "name": "AinzDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/AinzDefault/AinzDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/AinzDefault/AinzDefault.skill.glb",
@@ -23,6 +25,7 @@
     {
       "id": "AisDefault",
       "name": "AisDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/AisDefault/AisDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/AisDefault/AisDefault.skill.glb",
@@ -33,6 +36,7 @@
     {
       "id": "AlbedoDefault",
       "name": "AlbedoDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/AlbedoDefault/AlbedoDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/AlbedoDefault/AlbedoDefault.skill.glb",
@@ -43,6 +47,7 @@
     {
       "id": "AlbisDefault",
       "name": "AlbisDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/AlbisDefault/AlbisDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/AlbisDefault/AlbisDefault.skill.glb",
@@ -53,6 +58,7 @@
     {
       "id": "AlbisSchool2023",
       "name": "AlbisSchool2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/AlbisSchool2023/AlbisSchool2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/AlbisSchool2023/AlbisSchool2023.skill.glb",
@@ -63,6 +69,7 @@
     {
       "id": "AlbisXmas2024",
       "name": "AlbisXmas2024",
+      "characterType": "PC",
       "glb": "/models/Character/PC/AlbisXmas2024/AlbisXmas2024.glb",
       "skillScene": {
         "glb": "/models/Character/PC/AlbisXmas2024/AlbisXmas2024.skill.glb",
@@ -73,6 +80,7 @@
     {
       "id": "AliceDefault",
       "name": "AliceDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/AliceDefault/AliceDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/AliceDefault/AliceDefault.skill.glb",
@@ -83,6 +91,7 @@
     {
       "id": "AliceKnight",
       "name": "AliceKnight",
+      "characterType": "PC",
       "glb": "/models/Character/PC/AliceKnight/AliceKnight.glb",
       "skillScene": {
         "glb": "/models/Character/PC/AliceKnight/AliceKnight.skill.glb",
@@ -93,6 +102,7 @@
     {
       "id": "AlphenDefault",
       "name": "AlphenDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/AlphenDefault/AlphenDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/AlphenDefault/AlphenDefault.skill.glb",
@@ -103,6 +113,7 @@
     {
       "id": "AquaDefault",
       "name": "AquaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/AquaDefault/AquaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/AquaDefault/AquaDefault.skill.glb",
@@ -113,11 +124,13 @@
     {
       "id": "ArmorsaurusDefault",
       "name": "ArmorsaurusDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ArmorsaurusDefault/ArmorsaurusDefault.glb"
     },
     {
       "id": "ArmorsaurusLargeDark",
       "name": "ArmorsaurusLargeDark",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ArmorsaurusLargeDark/ArmorsaurusLargeDark.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ArmorsaurusLargeDark/ArmorsaurusLargeDark.skill.glb",
@@ -128,11 +141,13 @@
     {
       "id": "ArmorsaurusLargeSize",
       "name": "ArmorsaurusLargeSize",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ArmorsaurusLargeSize/ArmorsaurusLargeSize.glb"
     },
     {
       "id": "AsunaDefault",
       "name": "AsunaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/AsunaDefault/AsunaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/AsunaDefault/AsunaDefault.skill.glb",
@@ -143,6 +158,7 @@
     {
       "id": "BellDefault",
       "name": "BellDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BellDefault/BellDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BellDefault/BellDefault.skill.glb",
@@ -153,6 +169,7 @@
     {
       "id": "BenimaruAnother",
       "name": "BenimaruAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BenimaruAnother/BenimaruAnother.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BenimaruAnother/BenimaruAnother.skill.glb",
@@ -163,6 +180,7 @@
     {
       "id": "BenimaruAnotherPC",
       "name": "BenimaruAnotherPC",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BenimaruAnotherPC/BenimaruAnotherPC.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BenimaruAnotherPC/BenimaruAnotherPC.skill.glb",
@@ -173,6 +191,7 @@
     {
       "id": "BenimaruArmor",
       "name": "BenimaruArmor",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BenimaruArmor/BenimaruArmor.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BenimaruArmor/BenimaruArmor.skill.glb",
@@ -183,6 +202,7 @@
     {
       "id": "BenimaruBefore",
       "name": "BenimaruBefore",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BenimaruBefore/BenimaruBefore.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BenimaruBefore/BenimaruBefore.skill.glb",
@@ -193,6 +213,7 @@
     {
       "id": "BenimaruCoschange",
       "name": "BenimaruCoschange",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BenimaruCoschange/BenimaruCoschange.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BenimaruCoschange/BenimaruCoschange.skill.glb",
@@ -203,6 +224,7 @@
     {
       "id": "BenimaruDefault",
       "name": "BenimaruDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BenimaruDefault/BenimaruDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BenimaruDefault/BenimaruDefault.skill.glb",
@@ -213,6 +235,7 @@
     {
       "id": "BenimaruFire",
       "name": "BenimaruFire",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BenimaruFire/BenimaruFire.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BenimaruFire/BenimaruFire.skill.glb",
@@ -223,6 +246,7 @@
     {
       "id": "BenimaruHighRankCostume",
       "name": "BenimaruHighRankCostume",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BenimaruHighRankCostume/BenimaruHighRankCostume.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BenimaruHighRankCostume/BenimaruHighRankCostume.skill.glb",
@@ -233,6 +257,7 @@
     {
       "id": "BenimaruMagician",
       "name": "BenimaruMagician",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BenimaruMagician/BenimaruMagician.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BenimaruMagician/BenimaruMagician.skill.glb",
@@ -243,6 +268,7 @@
     {
       "id": "BenimaruMovie",
       "name": "BenimaruMovie",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BenimaruMovie/BenimaruMovie.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BenimaruMovie/BenimaruMovie.skill.glb",
@@ -253,6 +279,7 @@
     {
       "id": "BenimaruMovieRevival",
       "name": "BenimaruMovieRevival",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BenimaruMovieRevival/BenimaruMovieRevival.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BenimaruMovieRevival/BenimaruMovieRevival.skill.glb",
@@ -263,6 +290,7 @@
     {
       "id": "BenimaruOriginalCostumeKimono",
       "name": "BenimaruOriginalCostumeKimono",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BenimaruOriginalCostumeKimono/BenimaruOriginalCostumeKimono.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BenimaruOriginalCostumeKimono/BenimaruOriginalCostumeKimono.skill.glb",
@@ -273,11 +301,13 @@
     {
       "id": "BenimaruTengu",
       "name": "BenimaruTengu",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BenimaruTengu/BenimaruTengu.glb"
     },
     {
       "id": "BerettaDefault",
       "name": "BerettaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BerettaDefault/BerettaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BerettaDefault/BerettaDefault.skill.glb",
@@ -288,6 +318,7 @@
     {
       "id": "BerettaWind",
       "name": "BerettaWind",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BerettaWind/BerettaWind.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BerettaWind/BerettaWind.skill.glb",
@@ -298,6 +329,7 @@
     {
       "id": "BlackSerpentDefault",
       "name": "BlackSerpentDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BlackSerpentDefault/BlackSerpentDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BlackSerpentDefault/BlackSerpentDefault.skill.glb",
@@ -308,6 +340,7 @@
     {
       "id": "BlackSerpentWind",
       "name": "BlackSerpentWind",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BlackSerpentWind/BlackSerpentWind.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BlackSerpentWind/BlackSerpentWind.skill.glb",
@@ -318,6 +351,7 @@
     {
       "id": "BlackSpiderDefault",
       "name": "BlackSpiderDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BlackSpiderDefault/BlackSpiderDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BlackSpiderDefault/BlackSpiderDefault.skill.glb",
@@ -328,21 +362,25 @@
     {
       "id": "BlinkyClyde",
       "name": "BlinkyClyde",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BlinkyClyde/BlinkyClyde.glb"
     },
     {
       "id": "BlinkyDefault",
       "name": "BlinkyDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BlinkyDefault/BlinkyDefault.glb"
     },
     {
       "id": "BlinkyInky",
       "name": "BlinkyInky",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BlinkyInky/BlinkyInky.glb"
     },
     {
       "id": "Buran2Anniv",
       "name": "Buran2Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Buran2Anniv/Buran2Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Buran2Anniv/Buran2Anniv.skill.glb",
@@ -353,6 +391,7 @@
     {
       "id": "Buran3Anniv",
       "name": "Buran3Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Buran3Anniv/Buran3Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Buran3Anniv/Buran3Anniv.skill.glb",
@@ -363,6 +402,7 @@
     {
       "id": "BuranGothic",
       "name": "BuranGothic",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BuranGothic/BuranGothic.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BuranGothic/BuranGothic.skill.glb",
@@ -373,6 +413,7 @@
     {
       "id": "BuranMilitary",
       "name": "BuranMilitary",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BuranMilitary/BuranMilitary.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BuranMilitary/BuranMilitary.skill.glb",
@@ -383,6 +424,7 @@
     {
       "id": "BuranSwimsuit2025",
       "name": "BuranSwimsuit2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BuranSwimsuit2025/BuranSwimsuit2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BuranSwimsuit2025/BuranSwimsuit2025.skill.glb",
@@ -393,6 +435,7 @@
     {
       "id": "BuranXmas2025",
       "name": "BuranXmas2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/BuranXmas2025/BuranXmas2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/BuranXmas2025/BuranXmas2025.skill.glb",
@@ -403,16 +446,19 @@
     {
       "id": "CabbageDefault",
       "name": "CabbageDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/CabbageDefault/CabbageDefault.glb"
     },
     {
       "id": "CarrionAnother",
       "name": "CarrionAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/CarrionAnother/CarrionAnother.glb"
     },
     {
       "id": "CarrionDefault",
       "name": "CarrionDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/CarrionDefault/CarrionDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/CarrionDefault/CarrionDefault.skill.glb",
@@ -423,6 +469,7 @@
     {
       "id": "CarrionEnemy01",
       "name": "CarrionEnemy01",
+      "characterType": "PC",
       "glb": "/models/Character/PC/CarrionEnemy01/CarrionEnemy01.glb",
       "skillScene": {
         "glb": "/models/Character/PC/CarrionEnemy01/CarrionEnemy01.skill.glb",
@@ -433,6 +480,7 @@
     {
       "id": "CarrionRoyalbeastform",
       "name": "CarrionRoyalbeastform",
+      "characterType": "PC",
       "glb": "/models/Character/PC/CarrionRoyalbeastform/CarrionRoyalbeastform.glb",
       "skillScene": {
         "glb": "/models/Character/PC/CarrionRoyalbeastform/CarrionRoyalbeastform.skill.glb",
@@ -441,8 +489,39 @@
       }
     },
     {
+      "id": "CharybdisCollabo2023",
+      "name": "CharybdisCollabo2023",
+      "characterType": "PC",
+      "glb": "/models/Character/PC/CharybdisCollabo2023/CharybdisCollabo2023.glb"
+    },
+    {
+      "id": "CharybdisDefault",
+      "name": "CharybdisDefault",
+      "characterType": "PC",
+      "glb": "/models/Character/PC/CharybdisDefault/CharybdisDefault.glb"
+    },
+    {
+      "id": "CharybdisHoly02",
+      "name": "CharybdisHoly02",
+      "characterType": "PC",
+      "glb": "/models/Character/PC/CharybdisHoly02/CharybdisHoly02.glb"
+    },
+    {
+      "id": "CharybdisHolyAttribute",
+      "name": "CharybdisHolyAttribute",
+      "characterType": "PC",
+      "glb": "/models/Character/PC/CharybdisHolyAttribute/CharybdisHolyAttribute.glb"
+    },
+    {
+      "id": "CharybdisWater",
+      "name": "CharybdisWater",
+      "characterType": "PC",
+      "glb": "/models/Character/PC/CharybdisWater/CharybdisWater.glb"
+    },
+    {
       "id": "ChloeDefault",
       "name": "ChloeDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ChloeDefault/ChloeDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ChloeDefault/ChloeDefault.skill.glb",
@@ -453,6 +532,7 @@
     {
       "id": "ChloeKnight",
       "name": "ChloeKnight",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ChloeKnight/ChloeKnight.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ChloeKnight/ChloeKnight.skill.glb",
@@ -463,11 +543,13 @@
     {
       "id": "ClaymanAnother",
       "name": "ClaymanAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ClaymanAnother/ClaymanAnother.glb"
     },
     {
       "id": "ClaymanAwaken01",
       "name": "ClaymanAwaken01",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ClaymanAwaken01/ClaymanAwaken01.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ClaymanAwaken01/ClaymanAwaken01.skill.glb",
@@ -478,6 +560,7 @@
     {
       "id": "ClaymanAwaken01PC",
       "name": "ClaymanAwaken01PC",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ClaymanAwaken01PC/ClaymanAwaken01PC.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ClaymanAwaken01PC/ClaymanAwaken01PC.skill.glb",
@@ -488,6 +571,7 @@
     {
       "id": "ClaymanAwaken02",
       "name": "ClaymanAwaken02",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ClaymanAwaken02/ClaymanAwaken02.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ClaymanAwaken02/ClaymanAwaken02.skill.glb",
@@ -498,6 +582,7 @@
     {
       "id": "ClaymanAwaken02PC",
       "name": "ClaymanAwaken02PC",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ClaymanAwaken02PC/ClaymanAwaken02PC.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ClaymanAwaken02PC/ClaymanAwaken02PC.skill.glb",
@@ -508,6 +593,7 @@
     {
       "id": "ClaymanDefault",
       "name": "ClaymanDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ClaymanDefault/ClaymanDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ClaymanDefault/ClaymanDefault.skill.glb",
@@ -518,21 +604,25 @@
     {
       "id": "ClaymanSoldierA01",
       "name": "ClaymanSoldierA01",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ClaymanSoldierA01/ClaymanSoldierA01.glb"
     },
     {
       "id": "ClaymanSoldierB",
       "name": "ClaymanSoldierB",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ClaymanSoldierB/ClaymanSoldierB.glb"
     },
     {
       "id": "ClaymanSoldierDefault01",
       "name": "ClaymanSoldierDefault01",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ClaymanSoldierDefault01/ClaymanSoldierDefault01.glb"
     },
     {
       "id": "ClicheDefault",
       "name": "ClicheDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ClicheDefault/ClicheDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ClicheDefault/ClicheDefault.skill.glb",
@@ -543,6 +633,7 @@
     {
       "id": "ClicheUltimate",
       "name": "ClicheUltimate",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ClicheUltimate/ClicheUltimate.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ClicheUltimate/ClicheUltimate.skill.glb",
@@ -553,6 +644,7 @@
     {
       "id": "CynthiaArmor",
       "name": "CynthiaArmor",
+      "characterType": "PC",
       "glb": "/models/Character/PC/CynthiaArmor/CynthiaArmor.glb",
       "skillScene": {
         "glb": "/models/Character/PC/CynthiaArmor/CynthiaArmor.skill.glb",
@@ -563,6 +655,7 @@
     {
       "id": "CynthiaDefault",
       "name": "CynthiaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/CynthiaDefault/CynthiaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/CynthiaDefault/CynthiaDefault.skill.glb",
@@ -573,6 +666,7 @@
     {
       "id": "CynthiaDefaultPC",
       "name": "CynthiaDefaultPC",
+      "characterType": "PC",
       "glb": "/models/Character/PC/CynthiaDefaultPC/CynthiaDefaultPC.glb",
       "skillScene": {
         "glb": "/models/Character/PC/CynthiaDefaultPC/CynthiaDefaultPC.skill.glb",
@@ -583,6 +677,7 @@
     {
       "id": "CynthiaHalloween2023",
       "name": "CynthiaHalloween2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/CynthiaHalloween2023/CynthiaHalloween2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/CynthiaHalloween2023/CynthiaHalloween2023.skill.glb",
@@ -593,6 +688,7 @@
     {
       "id": "CynthiaPinkForPC",
       "name": "CynthiaPinkForPC",
+      "characterType": "PC",
       "glb": "/models/Character/PC/CynthiaPinkForPC/CynthiaPinkForPC.glb",
       "skillScene": {
         "glb": "/models/Character/PC/CynthiaPinkForPC/CynthiaPinkForPC.skill.glb",
@@ -603,6 +699,7 @@
     {
       "id": "CynthiaPinkHair",
       "name": "CynthiaPinkHair",
+      "characterType": "PC",
       "glb": "/models/Character/PC/CynthiaPinkHair/CynthiaPinkHair.glb",
       "skillScene": {
         "glb": "/models/Character/PC/CynthiaPinkHair/CynthiaPinkHair.skill.glb",
@@ -613,6 +710,7 @@
     {
       "id": "CynthiaUltimate",
       "name": "CynthiaUltimate",
+      "characterType": "PC",
       "glb": "/models/Character/PC/CynthiaUltimate/CynthiaUltimate.glb",
       "skillScene": {
         "glb": "/models/Character/PC/CynthiaUltimate/CynthiaUltimate.skill.glb",
@@ -623,6 +721,7 @@
     {
       "id": "CynthiaValentine2023",
       "name": "CynthiaValentine2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/CynthiaValentine2023/CynthiaValentine2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/CynthiaValentine2023/CynthiaValentine2023.skill.glb",
@@ -633,6 +732,7 @@
     {
       "id": "CynthiaWedding2022",
       "name": "CynthiaWedding2022",
+      "characterType": "PC",
       "glb": "/models/Character/PC/CynthiaWedding2022/CynthiaWedding2022.glb",
       "skillScene": {
         "glb": "/models/Character/PC/CynthiaWedding2022/CynthiaWedding2022.skill.glb",
@@ -643,6 +743,7 @@
     {
       "id": "DagrulDefault",
       "name": "DagrulDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DagrulDefault/DagrulDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DagrulDefault/DagrulDefault.skill.glb",
@@ -653,6 +754,7 @@
     {
       "id": "DagrulDemonLord",
       "name": "DagrulDemonLord",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DagrulDemonLord/DagrulDemonLord.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DagrulDemonLord/DagrulDemonLord.skill.glb",
@@ -663,6 +765,7 @@
     {
       "id": "DarknessDefault",
       "name": "DarknessDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DarknessDefault/DarknessDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DarknessDefault/DarknessDefault.skill.glb",
@@ -673,6 +776,7 @@
     {
       "id": "DeathKnightDefault",
       "name": "DeathKnightDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DeathKnightDefault/DeathKnightDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DeathKnightDefault/DeathKnightDefault.skill.glb",
@@ -683,11 +787,13 @@
     {
       "id": "DemonLordGeldAir",
       "name": "DemonLordGeldAir",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DemonLordGeldAir/DemonLordGeldAir.glb"
     },
     {
       "id": "DemonLordGeldAnother",
       "name": "DemonLordGeldAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DemonLordGeldAnother/DemonLordGeldAnother.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DemonLordGeldAnother/DemonLordGeldAnother.skill.glb",
@@ -698,6 +804,7 @@
     {
       "id": "DemonLordGeldDefault",
       "name": "DemonLordGeldDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DemonLordGeldDefault/DemonLordGeldDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DemonLordGeldDefault/DemonLordGeldDefault.skill.glb",
@@ -708,6 +815,7 @@
     {
       "id": "DemonLordGeldEarth",
       "name": "DemonLordGeldEarth",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DemonLordGeldEarth/DemonLordGeldEarth.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DemonLordGeldEarth/DemonLordGeldEarth.skill.glb",
@@ -718,6 +826,7 @@
     {
       "id": "Diablo1kuji2024",
       "name": "Diablo1kuji2024",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Diablo1kuji2024/Diablo1kuji2024.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Diablo1kuji2024/Diablo1kuji2024.skill.glb",
@@ -728,6 +837,7 @@
     {
       "id": "Diablo2022Summer",
       "name": "Diablo2022Summer",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Diablo2022Summer/Diablo2022Summer.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Diablo2022Summer/Diablo2022Summer.skill.glb",
@@ -738,11 +848,13 @@
     {
       "id": "Diablo2022SummerHome",
       "name": "Diablo2022SummerHome",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Diablo2022SummerHome/Diablo2022SummerHome.glb"
     },
     {
       "id": "Diablo3Anniv",
       "name": "Diablo3Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Diablo3Anniv/Diablo3Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Diablo3Anniv/Diablo3Anniv.skill.glb",
@@ -753,6 +865,7 @@
     {
       "id": "DiabloAnime3rd",
       "name": "DiabloAnime3rd",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DiabloAnime3rd/DiabloAnime3rd.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DiabloAnime3rd/DiabloAnime3rd.skill.glb",
@@ -763,6 +876,7 @@
     {
       "id": "DiabloBlackHero",
       "name": "DiabloBlackHero",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DiabloBlackHero/DiabloBlackHero.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DiabloBlackHero/DiabloBlackHero.skill.glb",
@@ -773,6 +887,7 @@
     {
       "id": "DiabloDark",
       "name": "DiabloDark",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DiabloDark/DiabloDark.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DiabloDark/DiabloDark.skill.glb",
@@ -783,6 +898,7 @@
     {
       "id": "DiabloDefault",
       "name": "DiabloDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DiabloDefault/DiabloDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DiabloDefault/DiabloDefault.skill.glb",
@@ -793,6 +909,7 @@
     {
       "id": "DiabloGothic",
       "name": "DiabloGothic",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DiabloGothic/DiabloGothic.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DiabloGothic/DiabloGothic.skill.glb",
@@ -803,6 +920,7 @@
     {
       "id": "DiabloHighRankCostume",
       "name": "DiabloHighRankCostume",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DiabloHighRankCostume/DiabloHighRankCostume.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DiabloHighRankCostume/DiabloHighRankCostume.skill.glb",
@@ -813,6 +931,7 @@
     {
       "id": "DiabloKingdom2022",
       "name": "DiabloKingdom2022",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DiabloKingdom2022/DiabloKingdom2022.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DiabloKingdom2022/DiabloKingdom2022.skill.glb",
@@ -823,6 +942,7 @@
     {
       "id": "DiabloPhantom",
       "name": "DiabloPhantom",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DiabloPhantom/DiabloPhantom.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DiabloPhantom/DiabloPhantom.skill.glb",
@@ -833,6 +953,7 @@
     {
       "id": "DiabloSchool2023",
       "name": "DiabloSchool2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DiabloSchool2023/DiabloSchool2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DiabloSchool2023/DiabloSchool2023.skill.glb",
@@ -843,6 +964,7 @@
     {
       "id": "DiabloXmas2025",
       "name": "DiabloXmas2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DiabloXmas2025/DiabloXmas2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DiabloXmas2025/DiabloXmas2025.skill.glb",
@@ -853,6 +975,7 @@
     {
       "id": "DinoDefault",
       "name": "DinoDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DinoDefault/DinoDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DinoDefault/DinoDefault.skill.glb",
@@ -863,6 +986,7 @@
     {
       "id": "DinoDemonLord",
       "name": "DinoDemonLord",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DinoDemonLord/DinoDemonLord.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DinoDemonLord/DinoDemonLord.skill.glb",
@@ -873,11 +997,13 @@
     {
       "id": "DonChanDefault",
       "name": "DonChanDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DonChanDefault/DonChanDefault.glb"
     },
     {
       "id": "DorisDefault",
       "name": "DorisDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/DorisDefault/DorisDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/DorisDefault/DorisDefault.skill.glb",
@@ -888,6 +1014,7 @@
     {
       "id": "ElementalColossusDefault",
       "name": "ElementalColossusDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ElementalColossusDefault/ElementalColossusDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ElementalColossusDefault/ElementalColossusDefault.skill.glb",
@@ -898,6 +1025,7 @@
     {
       "id": "ElementalColossusEarth",
       "name": "ElementalColossusEarth",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ElementalColossusEarth/ElementalColossusEarth.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ElementalColossusEarth/ElementalColossusEarth.skill.glb",
@@ -908,6 +1036,7 @@
     {
       "id": "ElementalColossusFire",
       "name": "ElementalColossusFire",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ElementalColossusFire/ElementalColossusFire.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ElementalColossusFire/ElementalColossusFire.skill.glb",
@@ -918,6 +1047,7 @@
     {
       "id": "ElementalColossusProto",
       "name": "ElementalColossusProto",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ElementalColossusProto/ElementalColossusProto.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ElementalColossusProto/ElementalColossusProto.skill.glb",
@@ -928,6 +1058,7 @@
     {
       "id": "ElementalColossusWater",
       "name": "ElementalColossusWater",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ElementalColossusWater/ElementalColossusWater.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ElementalColossusWater/ElementalColossusWater.skill.glb",
@@ -938,6 +1069,7 @@
     {
       "id": "ElementalColossusWind",
       "name": "ElementalColossusWind",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ElementalColossusWind/ElementalColossusWind.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ElementalColossusWind/ElementalColossusWind.skill.glb",
@@ -948,6 +1080,7 @@
     {
       "id": "Elmesia3Anniv",
       "name": "Elmesia3Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Elmesia3Anniv/Elmesia3Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Elmesia3Anniv/Elmesia3Anniv.skill.glb",
@@ -958,6 +1091,7 @@
     {
       "id": "ElmesiaDefault",
       "name": "ElmesiaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ElmesiaDefault/ElmesiaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ElmesiaDefault/ElmesiaDefault.skill.glb",
@@ -968,16 +1102,19 @@
     {
       "id": "ElmesiaDevil",
       "name": "ElmesiaDevil",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ElmesiaDevil/ElmesiaDevil.glb"
     },
     {
       "id": "EnemySymbolDefault",
       "name": "EnemySymbolDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/EnemySymbolDefault/EnemySymbolDefault.glb"
     },
     {
       "id": "ErenDefault",
       "name": "ErenDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ErenDefault/ErenDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ErenDefault/ErenDefault.skill.glb",
@@ -988,21 +1125,25 @@
     {
       "id": "EvilCentipedeAir",
       "name": "EvilCentipedeAir",
+      "characterType": "PC",
       "glb": "/models/Character/PC/EvilCentipedeAir/EvilCentipedeAir.glb"
     },
     {
       "id": "EvilCentipedeDefault",
       "name": "EvilCentipedeDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/EvilCentipedeDefault/EvilCentipedeDefault.glb"
     },
     {
       "id": "EvilCentipedeLargeSize",
       "name": "EvilCentipedeLargeSize",
+      "characterType": "PC",
       "glb": "/models/Character/PC/EvilCentipedeLargeSize/EvilCentipedeLargeSize.glb"
     },
     {
       "id": "FernDefault",
       "name": "FernDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/FernDefault/FernDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/FernDefault/FernDefault.skill.glb",
@@ -1013,6 +1154,7 @@
     {
       "id": "FootmanDefault",
       "name": "FootmanDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/FootmanDefault/FootmanDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/FootmanDefault/FootmanDefault.skill.glb",
@@ -1023,6 +1165,7 @@
     {
       "id": "FreyAmusementPark",
       "name": "FreyAmusementPark",
+      "characterType": "PC",
       "glb": "/models/Character/PC/FreyAmusementPark/FreyAmusementPark.glb",
       "skillScene": {
         "glb": "/models/Character/PC/FreyAmusementPark/FreyAmusementPark.skill.glb",
@@ -1033,6 +1176,7 @@
     {
       "id": "FreyAnother",
       "name": "FreyAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/FreyAnother/FreyAnother.glb",
       "skillScene": {
         "glb": "/models/Character/PC/FreyAnother/FreyAnother.skill.glb",
@@ -1043,6 +1187,7 @@
     {
       "id": "FreyDefault",
       "name": "FreyDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/FreyDefault/FreyDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/FreyDefault/FreyDefault.skill.glb",
@@ -1053,6 +1198,7 @@
     {
       "id": "FreySchool2025",
       "name": "FreySchool2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/FreySchool2025/FreySchool2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/FreySchool2025/FreySchool2025.skill.glb",
@@ -1063,6 +1209,7 @@
     {
       "id": "FreyXmas2025",
       "name": "FreyXmas2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/FreyXmas2025/FreyXmas2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/FreyXmas2025/FreyXmas2025.skill.glb",
@@ -1073,6 +1220,7 @@
     {
       "id": "FrierenDefault",
       "name": "FrierenDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/FrierenDefault/FrierenDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/FrierenDefault/FrierenDefault.skill.glb",
@@ -1083,11 +1231,13 @@
     {
       "id": "FrierenPerfectReplicas",
       "name": "FrierenPerfectReplicas",
+      "characterType": "PC",
       "glb": "/models/Character/PC/FrierenPerfectReplicas/FrierenPerfectReplicas.glb"
     },
     {
       "id": "Gabiru2022Summer",
       "name": "Gabiru2022Summer",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Gabiru2022Summer/Gabiru2022Summer.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Gabiru2022Summer/Gabiru2022Summer.skill.glb",
@@ -1098,6 +1248,7 @@
     {
       "id": "GabiruAmusementPark",
       "name": "GabiruAmusementPark",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GabiruAmusementPark/GabiruAmusementPark.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GabiruAmusementPark/GabiruAmusementPark.skill.glb",
@@ -1108,6 +1259,7 @@
     {
       "id": "GabiruAnother",
       "name": "GabiruAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GabiruAnother/GabiruAnother.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GabiruAnother/GabiruAnother.skill.glb",
@@ -1118,6 +1270,7 @@
     {
       "id": "GabiruAnotherPC",
       "name": "GabiruAnotherPC",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GabiruAnotherPC/GabiruAnotherPC.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GabiruAnotherPC/GabiruAnotherPC.skill.glb",
@@ -1128,11 +1281,13 @@
     {
       "id": "GabiruBefore",
       "name": "GabiruBefore",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GabiruBefore/GabiruBefore.glb"
     },
     {
       "id": "GabiruDefault",
       "name": "GabiruDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GabiruDefault/GabiruDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GabiruDefault/GabiruDefault.skill.glb",
@@ -1143,6 +1298,7 @@
     {
       "id": "GailBlack",
       "name": "GailBlack",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GailBlack/GailBlack.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GailBlack/GailBlack.skill.glb",
@@ -1153,6 +1309,7 @@
     {
       "id": "GailDefault",
       "name": "GailDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GailDefault/GailDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GailDefault/GailDefault.skill.glb",
@@ -1163,6 +1320,7 @@
     {
       "id": "GazelDwargo3Anniv",
       "name": "GazelDwargo3Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GazelDwargo3Anniv/GazelDwargo3Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GazelDwargo3Anniv/GazelDwargo3Anniv.skill.glb",
@@ -1173,6 +1331,7 @@
     {
       "id": "GazelDwargoAnother",
       "name": "GazelDwargoAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GazelDwargoAnother/GazelDwargoAnother.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GazelDwargoAnother/GazelDwargoAnother.skill.glb",
@@ -1183,6 +1342,7 @@
     {
       "id": "GazelDwargoDefault",
       "name": "GazelDwargoDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GazelDwargoDefault/GazelDwargoDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GazelDwargoDefault/GazelDwargoDefault.skill.glb",
@@ -1193,6 +1353,7 @@
     {
       "id": "GazelDwargoHolyAttribute",
       "name": "GazelDwargoHolyAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GazelDwargoHolyAttribute/GazelDwargoHolyAttribute.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GazelDwargoHolyAttribute/GazelDwargoHolyAttribute.skill.glb",
@@ -1203,6 +1364,7 @@
     {
       "id": "Geld2022Summer",
       "name": "Geld2022Summer",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Geld2022Summer/Geld2022Summer.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Geld2022Summer/Geld2022Summer.skill.glb",
@@ -1213,6 +1375,7 @@
     {
       "id": "GeldBattleArmor",
       "name": "GeldBattleArmor",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GeldBattleArmor/GeldBattleArmor.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GeldBattleArmor/GeldBattleArmor.skill.glb",
@@ -1223,6 +1386,7 @@
     {
       "id": "GeldDefault",
       "name": "GeldDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GeldDefault/GeldDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GeldDefault/GeldDefault.skill.glb",
@@ -1233,6 +1397,7 @@
     {
       "id": "GelmudDefault",
       "name": "GelmudDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GelmudDefault/GelmudDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GelmudDefault/GelmudDefault.skill.glb",
@@ -1243,16 +1408,19 @@
     {
       "id": "GhostMushroomDefault",
       "name": "GhostMushroomDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GhostMushroomDefault/GhostMushroomDefault.glb"
     },
     {
       "id": "GhostMushroomEarthAttribute",
       "name": "GhostMushroomEarthAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GhostMushroomEarthAttribute/GhostMushroomEarthAttribute.glb"
     },
     {
       "id": "GhostMushroomEarthLarge",
       "name": "GhostMushroomEarthLarge",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GhostMushroomEarthLarge/GhostMushroomEarthLarge.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GhostMushroomEarthLarge/GhostMushroomEarthLarge.skill.glb",
@@ -1263,16 +1431,19 @@
     {
       "id": "GhostMushroomFireAttribute",
       "name": "GhostMushroomFireAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GhostMushroomFireAttribute/GhostMushroomFireAttribute.glb"
     },
     {
       "id": "GhostMushroomWaterAttribute",
       "name": "GhostMushroomWaterAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GhostMushroomWaterAttribute/GhostMushroomWaterAttribute.glb"
     },
     {
       "id": "GhostMushroomWaterLarge",
       "name": "GhostMushroomWaterLarge",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GhostMushroomWaterLarge/GhostMushroomWaterLarge.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GhostMushroomWaterLarge/GhostMushroomWaterLarge.skill.glb",
@@ -1283,96 +1454,115 @@
     {
       "id": "GhostMushroomWindAttribute",
       "name": "GhostMushroomWindAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GhostMushroomWindAttribute/GhostMushroomWindAttribute.glb"
     },
     {
       "id": "GiantAntAirAttribute",
       "name": "GiantAntAirAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GiantAntAirAttribute/GiantAntAirAttribute.glb"
     },
     {
       "id": "GiantAntDarkAttribute",
       "name": "GiantAntDarkAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GiantAntDarkAttribute/GiantAntDarkAttribute.glb"
     },
     {
       "id": "GiantAntDefault",
       "name": "GiantAntDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GiantAntDefault/GiantAntDefault.glb"
     },
     {
       "id": "GiantAntEarthAttribute",
       "name": "GiantAntEarthAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GiantAntEarthAttribute/GiantAntEarthAttribute.glb"
     },
     {
       "id": "GiantAntFireAttribute",
       "name": "GiantAntFireAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GiantAntFireAttribute/GiantAntFireAttribute.glb"
     },
     {
       "id": "GiantAntHolyAttribute",
       "name": "GiantAntHolyAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GiantAntHolyAttribute/GiantAntHolyAttribute.glb"
     },
     {
       "id": "GiantAntWaterAttribute",
       "name": "GiantAntWaterAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GiantAntWaterAttribute/GiantAntWaterAttribute.glb"
     },
     {
       "id": "GiantAntWindAttribute",
       "name": "GiantAntWindAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GiantAntWindAttribute/GiantAntWindAttribute.glb"
     },
     {
       "id": "GiantBatAirAttribute",
       "name": "GiantBatAirAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GiantBatAirAttribute/GiantBatAirAttribute.glb"
     },
     {
       "id": "GiantBatDarkAttribute",
       "name": "GiantBatDarkAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GiantBatDarkAttribute/GiantBatDarkAttribute.glb"
     },
     {
       "id": "GiantBatDefault",
       "name": "GiantBatDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GiantBatDefault/GiantBatDefault.glb"
     },
     {
       "id": "GiantBatEarthAttribute",
       "name": "GiantBatEarthAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GiantBatEarthAttribute/GiantBatEarthAttribute.glb"
     },
     {
       "id": "GiantBatFireAttribute",
       "name": "GiantBatFireAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GiantBatFireAttribute/GiantBatFireAttribute.glb"
     },
     {
       "id": "GiantBatHolyAttribute",
       "name": "GiantBatHolyAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GiantBatHolyAttribute/GiantBatHolyAttribute.glb"
     },
     {
       "id": "GiantBatWaterAttribute",
       "name": "GiantBatWaterAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GiantBatWaterAttribute/GiantBatWaterAttribute.glb"
     },
     {
       "id": "GiantBatWindAttribute",
       "name": "GiantBatWindAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GiantBatWindAttribute/GiantBatWindAttribute.glb"
     },
     {
       "id": "GidoDefault",
       "name": "GidoDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GidoDefault/GidoDefault.glb"
     },
     {
       "id": "GlendaDefault",
       "name": "GlendaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GlendaDefault/GlendaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GlendaDefault/GlendaDefault.skill.glb",
@@ -1383,6 +1573,7 @@
     {
       "id": "GoblinaA",
       "name": "GoblinaA",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GoblinaA/GoblinaA.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GoblinaA/GoblinaA.skill.glb",
@@ -1393,41 +1584,49 @@
     {
       "id": "GoblinaA_MobGroup",
       "name": "GoblinaA_MobGroup",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GoblinaA_MobGroup/GoblinaA_MobGroup.glb"
     },
     {
       "id": "GoblinaDefault",
       "name": "GoblinaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GoblinaDefault/GoblinaDefault.glb"
     },
     {
       "id": "GoblinaDefault_MobGroup",
       "name": "GoblinaDefault_MobGroup",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GoblinaDefault_MobGroup/GoblinaDefault_MobGroup.glb"
     },
     {
       "id": "GoblinMaleA",
       "name": "GoblinMaleA",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GoblinMaleA/GoblinMaleA.glb"
     },
     {
       "id": "GoblinMaleA_MobGroup",
       "name": "GoblinMaleA_MobGroup",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GoblinMaleA_MobGroup/GoblinMaleA_MobGroup.glb"
     },
     {
       "id": "GoblinMaleDefault",
       "name": "GoblinMaleDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GoblinMaleDefault/GoblinMaleDefault.glb"
     },
     {
       "id": "GoblinMaleDefault_MobGroup",
       "name": "GoblinMaleDefault_MobGroup",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GoblinMaleDefault_MobGroup/GoblinMaleDefault_MobGroup.glb"
     },
     {
       "id": "GobtaAnother",
       "name": "GobtaAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GobtaAnother/GobtaAnother.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GobtaAnother/GobtaAnother.skill.glb",
@@ -1438,11 +1637,13 @@
     {
       "id": "GobtaBefore",
       "name": "GobtaBefore",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GobtaBefore/GobtaBefore.glb"
     },
     {
       "id": "GobtaCoschange",
       "name": "GobtaCoschange",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GobtaCoschange/GobtaCoschange.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GobtaCoschange/GobtaCoschange.skill.glb",
@@ -1453,6 +1654,7 @@
     {
       "id": "GobtaDefault",
       "name": "GobtaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GobtaDefault/GobtaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GobtaDefault/GobtaDefault.skill.glb",
@@ -1463,6 +1665,7 @@
     {
       "id": "GobtaHighRankCostume",
       "name": "GobtaHighRankCostume",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GobtaHighRankCostume/GobtaHighRankCostume.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GobtaHighRankCostume/GobtaHighRankCostume.skill.glb",
@@ -1473,6 +1676,7 @@
     {
       "id": "GobtaMarou",
       "name": "GobtaMarou",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GobtaMarou/GobtaMarou.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GobtaMarou/GobtaMarou.skill.glb",
@@ -1483,6 +1687,7 @@
     {
       "id": "GobtaMovie2",
       "name": "GobtaMovie2",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GobtaMovie2/GobtaMovie2.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GobtaMovie2/GobtaMovie2.skill.glb",
@@ -1493,6 +1698,7 @@
     {
       "id": "GobtaSchool2023",
       "name": "GobtaSchool2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GobtaSchool2023/GobtaSchool2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GobtaSchool2023/GobtaSchool2023.skill.glb",
@@ -1503,11 +1709,13 @@
     {
       "id": "GobuichiDefault",
       "name": "GobuichiDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GobuichiDefault/GobuichiDefault.glb"
     },
     {
       "id": "GobwaDefault",
       "name": "GobwaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GobwaDefault/GobwaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GobwaDefault/GobwaDefault.skill.glb",
@@ -1518,6 +1726,7 @@
     {
       "id": "GruciusDefault",
       "name": "GruciusDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GruciusDefault/GruciusDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GruciusDefault/GruciusDefault.skill.glb",
@@ -1528,6 +1737,7 @@
     {
       "id": "GruciusForPC",
       "name": "GruciusForPC",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GruciusForPC/GruciusForPC.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GruciusForPC/GruciusForPC.skill.glb",
@@ -1538,6 +1748,7 @@
     {
       "id": "Guy3Anniv",
       "name": "Guy3Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Guy3Anniv/Guy3Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Guy3Anniv/Guy3Anniv.skill.glb",
@@ -1548,6 +1759,7 @@
     {
       "id": "GuyBlackHero",
       "name": "GuyBlackHero",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GuyBlackHero/GuyBlackHero.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GuyBlackHero/GuyBlackHero.skill.glb",
@@ -1558,6 +1770,7 @@
     {
       "id": "GuyDark",
       "name": "GuyDark",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GuyDark/GuyDark.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GuyDark/GuyDark.skill.glb",
@@ -1568,6 +1781,7 @@
     {
       "id": "GuyDefault",
       "name": "GuyDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GuyDefault/GuyDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GuyDefault/GuyDefault.skill.glb",
@@ -1578,6 +1792,7 @@
     {
       "id": "GuyDemonLord",
       "name": "GuyDemonLord",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GuyDemonLord/GuyDemonLord.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GuyDemonLord/GuyDemonLord.skill.glb",
@@ -1588,6 +1803,7 @@
     {
       "id": "GuyHA2023",
       "name": "GuyHA2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GuyHA2023/GuyHA2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GuyHA2023/GuyHA2023.skill.glb",
@@ -1598,6 +1814,7 @@
     {
       "id": "GuyHA2024",
       "name": "GuyHA2024",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GuyHA2024/GuyHA2024.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GuyHA2024/GuyHA2024.skill.glb",
@@ -1608,6 +1825,7 @@
     {
       "id": "GuyParty2022",
       "name": "GuyParty2022",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GuyParty2022/GuyParty2022.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GuyParty2022/GuyParty2022.skill.glb",
@@ -1618,6 +1836,7 @@
     {
       "id": "GuySwimsuit2025",
       "name": "GuySwimsuit2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/GuySwimsuit2025/GuySwimsuit2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/GuySwimsuit2025/GuySwimsuit2025.skill.glb",
@@ -1628,6 +1847,7 @@
     {
       "id": "HakuroAir",
       "name": "HakuroAir",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HakuroAir/HakuroAir.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HakuroAir/HakuroAir.skill.glb",
@@ -1638,6 +1858,7 @@
     {
       "id": "HakuroBefore",
       "name": "HakuroBefore",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HakuroBefore/HakuroBefore.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HakuroBefore/HakuroBefore.skill.glb",
@@ -1648,6 +1869,7 @@
     {
       "id": "HakuroBeforeAnother",
       "name": "HakuroBeforeAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HakuroBeforeAnother/HakuroBeforeAnother.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HakuroBeforeAnother/HakuroBeforeAnother.skill.glb",
@@ -1658,6 +1880,7 @@
     {
       "id": "HakuroDefault",
       "name": "HakuroDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HakuroDefault/HakuroDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HakuroDefault/HakuroDefault.skill.glb",
@@ -1668,6 +1891,7 @@
     {
       "id": "HakuroHighRankCostume",
       "name": "HakuroHighRankCostume",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HakuroHighRankCostume/HakuroHighRankCostume.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HakuroHighRankCostume/HakuroHighRankCostume.skill.glb",
@@ -1678,6 +1902,7 @@
     {
       "id": "HakuroTengu",
       "name": "HakuroTengu",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HakuroTengu/HakuroTengu.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HakuroTengu/HakuroTengu.skill.glb",
@@ -1688,6 +1913,7 @@
     {
       "id": "HestiaDefault",
       "name": "HestiaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HestiaDefault/HestiaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HestiaDefault/HestiaDefault.skill.glb",
@@ -1698,6 +1924,7 @@
     {
       "id": "HiiroDefault",
       "name": "HiiroDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HiiroDefault/HiiroDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HiiroDefault/HiiroDefault.skill.glb",
@@ -1708,6 +1935,7 @@
     {
       "id": "HiiroMovieRevival",
       "name": "HiiroMovieRevival",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HiiroMovieRevival/HiiroMovieRevival.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HiiroMovieRevival/HiiroMovieRevival.skill.glb",
@@ -1718,6 +1946,7 @@
     {
       "id": "HimmelDefault",
       "name": "HimmelDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HimmelDefault/HimmelDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HimmelDefault/HimmelDefault.skill.glb",
@@ -1728,6 +1957,7 @@
     {
       "id": "Hinata2Anniv",
       "name": "Hinata2Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Hinata2Anniv/Hinata2Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Hinata2Anniv/Hinata2Anniv.skill.glb",
@@ -1738,6 +1968,7 @@
     {
       "id": "HinataAnime3rd",
       "name": "HinataAnime3rd",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HinataAnime3rd/HinataAnime3rd.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HinataAnime3rd/HinataAnime3rd.skill.glb",
@@ -1748,6 +1979,7 @@
     {
       "id": "HinataCasual",
       "name": "HinataCasual",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HinataCasual/HinataCasual.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HinataCasual/HinataCasual.skill.glb",
@@ -1758,6 +1990,7 @@
     {
       "id": "HinataDefault",
       "name": "HinataDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HinataDefault/HinataDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HinataDefault/HinataDefault.skill.glb",
@@ -1768,6 +2001,7 @@
     {
       "id": "HinataEnemy01",
       "name": "HinataEnemy01",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HinataEnemy01/HinataEnemy01.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HinataEnemy01/HinataEnemy01.skill.glb",
@@ -1778,6 +2012,7 @@
     {
       "id": "HinataHoly",
       "name": "HinataHoly",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HinataHoly/HinataHoly.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HinataHoly/HinataHoly.skill.glb",
@@ -1788,6 +2023,7 @@
     {
       "id": "HinataLightarmor",
       "name": "HinataLightarmor",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HinataLightarmor/HinataLightarmor.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HinataLightarmor/HinataLightarmor.skill.glb",
@@ -1798,6 +2034,7 @@
     {
       "id": "HinataLightarmorAnother",
       "name": "HinataLightarmorAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HinataLightarmorAnother/HinataLightarmorAnother.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HinataLightarmorAnother/HinataLightarmorAnother.skill.glb",
@@ -1808,6 +2045,7 @@
     {
       "id": "HinataPartyDress",
       "name": "HinataPartyDress",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HinataPartyDress/HinataPartyDress.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HinataPartyDress/HinataPartyDress.skill.glb",
@@ -1818,6 +2056,7 @@
     {
       "id": "HinataSchool2025",
       "name": "HinataSchool2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HinataSchool2025/HinataSchool2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HinataSchool2025/HinataSchool2025.skill.glb",
@@ -1828,6 +2067,7 @@
     {
       "id": "HinataSwimsuit2023",
       "name": "HinataSwimsuit2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HinataSwimsuit2023/HinataSwimsuit2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HinataSwimsuit2023/HinataSwimsuit2023.skill.glb",
@@ -1838,6 +2078,7 @@
     {
       "id": "HinataTales",
       "name": "HinataTales",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HinataTales/HinataTales.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HinataTales/HinataTales.skill.glb",
@@ -1848,6 +2089,7 @@
     {
       "id": "HinataXmas2025",
       "name": "HinataXmas2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HinataXmas2025/HinataXmas2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HinataXmas2025/HinataXmas2025.skill.glb",
@@ -1858,11 +2100,13 @@
     {
       "id": "HobgoblinA",
       "name": "HobgoblinA",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HobgoblinA/HobgoblinA.glb"
     },
     {
       "id": "HobgoblinA_MobGroup",
       "name": "HobgoblinA_MobGroup",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HobgoblinA_MobGroup/HobgoblinA_MobGroup.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HobgoblinA_MobGroup/HobgoblinA_MobGroup.skill.glb",
@@ -1873,16 +2117,19 @@
     {
       "id": "HobgoblinDefault",
       "name": "HobgoblinDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HobgoblinDefault/HobgoblinDefault.glb"
     },
     {
       "id": "HobgoblinDefault_MobGroup",
       "name": "HobgoblinDefault_MobGroup",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HobgoblinDefault_MobGroup/HobgoblinDefault_MobGroup.glb"
     },
     {
       "id": "HolyKnightSkill01",
       "name": "HolyKnightSkill01",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HolyKnightSkill01/HolyKnightSkill01.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HolyKnightSkill01/HolyKnightSkill01.skill.glb",
@@ -1893,6 +2140,7 @@
     {
       "id": "HolyKnightSkill02",
       "name": "HolyKnightSkill02",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HolyKnightSkill02/HolyKnightSkill02.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HolyKnightSkill02/HolyKnightSkill02.skill.glb",
@@ -1903,6 +2151,7 @@
     {
       "id": "HolyKnightSkill03",
       "name": "HolyKnightSkill03",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HolyKnightSkill03/HolyKnightSkill03.glb",
       "skillScene": {
         "glb": "/models/Character/PC/HolyKnightSkill03/HolyKnightSkill03.skill.glb",
@@ -1913,21 +2162,25 @@
     {
       "id": "HooliganADefault",
       "name": "HooliganADefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HooliganADefault/HooliganADefault.glb"
     },
     {
       "id": "HooliganBDefault",
       "name": "HooliganBDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/HooliganBDefault/HooliganBDefault.glb"
     },
     {
       "id": "IbukiDefault",
       "name": "IbukiDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/IbukiDefault/IbukiDefault.glb"
     },
     {
       "id": "IfritAir",
       "name": "IfritAir",
+      "characterType": "PC",
       "glb": "/models/Character/PC/IfritAir/IfritAir.glb",
       "skillScene": {
         "glb": "/models/Character/PC/IfritAir/IfritAir.skill.glb",
@@ -1938,6 +2191,7 @@
     {
       "id": "IfritAnother",
       "name": "IfritAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/IfritAnother/IfritAnother.glb",
       "skillScene": {
         "glb": "/models/Character/PC/IfritAnother/IfritAnother.skill.glb",
@@ -1948,6 +2202,7 @@
     {
       "id": "IfritDark",
       "name": "IfritDark",
+      "characterType": "PC",
       "glb": "/models/Character/PC/IfritDark/IfritDark.glb",
       "skillScene": {
         "glb": "/models/Character/PC/IfritDark/IfritDark.skill.glb",
@@ -1958,6 +2213,7 @@
     {
       "id": "IfritDefault",
       "name": "IfritDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/IfritDefault/IfritDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/IfritDefault/IfritDefault.skill.glb",
@@ -1968,6 +2224,7 @@
     {
       "id": "IfritDefaultPC",
       "name": "IfritDefaultPC",
+      "characterType": "PC",
       "glb": "/models/Character/PC/IfritDefaultPC/IfritDefaultPC.glb",
       "skillScene": {
         "glb": "/models/Character/PC/IfritDefaultPC/IfritDefaultPC.skill.glb",
@@ -1978,6 +2235,7 @@
     {
       "id": "IfritRemodel",
       "name": "IfritRemodel",
+      "characterType": "PC",
       "glb": "/models/Character/PC/IfritRemodel/IfritRemodel.glb",
       "skillScene": {
         "glb": "/models/Character/PC/IfritRemodel/IfritRemodel.skill.glb",
@@ -1988,6 +2246,7 @@
     {
       "id": "IzisAwaken01",
       "name": "IzisAwaken01",
+      "characterType": "PC",
       "glb": "/models/Character/PC/IzisAwaken01/IzisAwaken01.glb",
       "skillScene": {
         "glb": "/models/Character/PC/IzisAwaken01/IzisAwaken01.skill.glb",
@@ -1998,6 +2257,7 @@
     {
       "id": "IzisAwakenPC",
       "name": "IzisAwakenPC",
+      "characterType": "PC",
       "glb": "/models/Character/PC/IzisAwakenPC/IzisAwakenPC.glb",
       "skillScene": {
         "glb": "/models/Character/PC/IzisAwakenPC/IzisAwakenPC.skill.glb",
@@ -2008,6 +2268,7 @@
     {
       "id": "IzisDefault",
       "name": "IzisDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/IzisDefault/IzisDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/IzisDefault/IzisDefault.skill.glb",
@@ -2018,11 +2279,13 @@
     {
       "id": "Jaune2Anniv",
       "name": "Jaune2Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Jaune2Anniv/Jaune2Anniv.glb"
     },
     {
       "id": "JauneGothic",
       "name": "JauneGothic",
+      "characterType": "PC",
       "glb": "/models/Character/PC/JauneGothic/JauneGothic.glb",
       "skillScene": {
         "glb": "/models/Character/PC/JauneGothic/JauneGothic.skill.glb",
@@ -2033,6 +2296,7 @@
     {
       "id": "JauneHA2025",
       "name": "JauneHA2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/JauneHA2025/JauneHA2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/JauneHA2025/JauneHA2025.skill.glb",
@@ -2043,6 +2307,7 @@
     {
       "id": "JauneMovie2",
       "name": "JauneMovie2",
+      "characterType": "PC",
       "glb": "/models/Character/PC/JauneMovie2/JauneMovie2.glb",
       "skillScene": {
         "glb": "/models/Character/PC/JauneMovie2/JauneMovie2.skill.glb",
@@ -2053,6 +2318,7 @@
     {
       "id": "JauneSwimsuit2025",
       "name": "JauneSwimsuit2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/JauneSwimsuit2025/JauneSwimsuit2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/JauneSwimsuit2025/JauneSwimsuit2025.skill.glb",
@@ -2065,6 +2331,7 @@
     {
       "id": "KagaliDefault",
       "name": "KagaliDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KagaliDefault/KagaliDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/KagaliDefault/KagaliDefault.skill.glb",
@@ -2075,11 +2342,13 @@
     {
       "id": "KaijinDefault",
       "name": "KaijinDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KaijinDefault/KaijinDefault.glb"
     },
     {
       "id": "KasugaDefault",
       "name": "KasugaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KasugaDefault/KasugaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/KasugaDefault/KasugaDefault.skill.glb",
@@ -2090,16 +2359,19 @@
     {
       "id": "KatamariDefault",
       "name": "KatamariDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KatamariDefault/KatamariDefault.glb"
     },
     {
       "id": "KavalDefault",
       "name": "KavalDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KavalDefault/KavalDefault.glb"
     },
     {
       "id": "KazumaDefault",
       "name": "KazumaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KazumaDefault/KazumaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/KazumaDefault/KazumaDefault.skill.glb",
@@ -2110,16 +2382,19 @@
     {
       "id": "KenyaBlack",
       "name": "KenyaBlack",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KenyaBlack/KenyaBlack.glb"
     },
     {
       "id": "KenyaDefault",
       "name": "KenyaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KenyaDefault/KenyaDefault.glb"
     },
     {
       "id": "KiraraDefault",
       "name": "KiraraDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KiraraDefault/KiraraDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/KiraraDefault/KiraraDefault.skill.glb",
@@ -2130,6 +2405,7 @@
     {
       "id": "KiritoDefault",
       "name": "KiritoDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KiritoDefault/KiritoDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/KiritoDefault/KiritoDefault.skill.glb",
@@ -2140,46 +2416,55 @@
     {
       "id": "KnightSpiderAirAttribute",
       "name": "KnightSpiderAirAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KnightSpiderAirAttribute/KnightSpiderAirAttribute.glb"
     },
     {
       "id": "KnightSpiderDarkAttribute",
       "name": "KnightSpiderDarkAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KnightSpiderDarkAttribute/KnightSpiderDarkAttribute.glb"
     },
     {
       "id": "KnightSpiderDefault",
       "name": "KnightSpiderDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KnightSpiderDefault/KnightSpiderDefault.glb"
     },
     {
       "id": "KnightSpiderEarthAttribute",
       "name": "KnightSpiderEarthAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KnightSpiderEarthAttribute/KnightSpiderEarthAttribute.glb"
     },
     {
       "id": "KnightSpiderFireAttribute",
       "name": "KnightSpiderFireAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KnightSpiderFireAttribute/KnightSpiderFireAttribute.glb"
     },
     {
       "id": "KnightSpiderHolyAttribute",
       "name": "KnightSpiderHolyAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KnightSpiderHolyAttribute/KnightSpiderHolyAttribute.glb"
     },
     {
       "id": "KnightSpiderWaterAttribute",
       "name": "KnightSpiderWaterAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KnightSpiderWaterAttribute/KnightSpiderWaterAttribute.glb"
     },
     {
       "id": "KnightSpiderWindAttribute",
       "name": "KnightSpiderWindAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KnightSpiderWindAttribute/KnightSpiderWindAttribute.glb"
     },
     {
       "id": "KurobeiBefore",
       "name": "KurobeiBefore",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KurobeiBefore/KurobeiBefore.glb",
       "skillScene": {
         "glb": "/models/Character/PC/KurobeiBefore/KurobeiBefore.skill.glb",
@@ -2190,6 +2475,7 @@
     {
       "id": "KurobeiDefault",
       "name": "KurobeiDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KurobeiDefault/KurobeiDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/KurobeiDefault/KurobeiDefault.skill.glb",
@@ -2200,6 +2486,7 @@
     {
       "id": "KyoyaBattleCostume",
       "name": "KyoyaBattleCostume",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KyoyaBattleCostume/KyoyaBattleCostume.glb",
       "skillScene": {
         "glb": "/models/Character/PC/KyoyaBattleCostume/KyoyaBattleCostume.skill.glb",
@@ -2210,6 +2497,7 @@
     {
       "id": "KyoyaDefault",
       "name": "KyoyaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/KyoyaDefault/KyoyaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/KyoyaDefault/KyoyaDefault.skill.glb",
@@ -2220,6 +2508,7 @@
     {
       "id": "LaplaceDefault",
       "name": "LaplaceDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LaplaceDefault/LaplaceDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LaplaceDefault/LaplaceDefault.skill.glb",
@@ -2230,6 +2519,7 @@
     {
       "id": "LeonardDefault",
       "name": "LeonardDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LeonardDefault/LeonardDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LeonardDefault/LeonardDefault.skill.glb",
@@ -2240,6 +2530,7 @@
     {
       "id": "LeonDefault",
       "name": "LeonDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LeonDefault/LeonDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LeonDefault/LeonDefault.skill.glb",
@@ -2250,6 +2541,7 @@
     {
       "id": "LeonDemonLordCostume",
       "name": "LeonDemonLordCostume",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LeonDemonLordCostume/LeonDemonLordCostume.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LeonDemonLordCostume/LeonDemonLordCostume.skill.glb",
@@ -2260,6 +2552,7 @@
     {
       "id": "LeonHA2025",
       "name": "LeonHA2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LeonHA2025/LeonHA2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LeonHA2025/LeonHA2025.skill.glb",
@@ -2270,6 +2563,7 @@
     {
       "id": "LeonParty2022",
       "name": "LeonParty2022",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LeonParty2022/LeonParty2022.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LeonParty2022/LeonParty2022.skill.glb",
@@ -2280,31 +2574,37 @@
     {
       "id": "LizardManFemaleA",
       "name": "LizardManFemaleA",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LizardManFemaleA/LizardManFemaleA.glb"
     },
     {
       "id": "LizardManFemaleA_MobGroup",
       "name": "LizardManFemaleA_MobGroup",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LizardManFemaleA_MobGroup/LizardManFemaleA_MobGroup.glb"
     },
     {
       "id": "LizardManFemaleDefault",
       "name": "LizardManFemaleDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LizardManFemaleDefault/LizardManFemaleDefault.glb"
     },
     {
       "id": "LizardManFemaleDefault_MobGroup",
       "name": "LizardManFemaleDefault_MobGroup",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LizardManFemaleDefault_MobGroup/LizardManFemaleDefault_MobGroup.glb"
     },
     {
       "id": "LizardManMaleA",
       "name": "LizardManMaleA",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LizardManMaleA/LizardManMaleA.glb"
     },
     {
       "id": "LizardManMaleA_MobGroup",
       "name": "LizardManMaleA_MobGroup",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LizardManMaleA_MobGroup/LizardManMaleA_MobGroup.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LizardManMaleA_MobGroup/LizardManMaleA_MobGroup.skill.glb",
@@ -2315,16 +2615,19 @@
     {
       "id": "LizardManMaleDefault",
       "name": "LizardManMaleDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LizardManMaleDefault/LizardManMaleDefault.glb"
     },
     {
       "id": "LizardManMaleDefault_MobGroup",
       "name": "LizardManMaleDefault_MobGroup",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LizardManMaleDefault_MobGroup/LizardManMaleDefault_MobGroup.glb"
     },
     {
       "id": "Luminous2Anniv",
       "name": "Luminous2Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Luminous2Anniv/Luminous2Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Luminous2Anniv/Luminous2Anniv.skill.glb",
@@ -2335,6 +2638,7 @@
     {
       "id": "LuminousAnime3rd",
       "name": "LuminousAnime3rd",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LuminousAnime3rd/LuminousAnime3rd.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LuminousAnime3rd/LuminousAnime3rd.skill.glb",
@@ -2345,6 +2649,7 @@
     {
       "id": "LuminousCreator01",
       "name": "LuminousCreator01",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LuminousCreator01/LuminousCreator01.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LuminousCreator01/LuminousCreator01.skill.glb",
@@ -2355,6 +2660,7 @@
     {
       "id": "LuminousDefault",
       "name": "LuminousDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LuminousDefault/LuminousDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LuminousDefault/LuminousDefault.skill.glb",
@@ -2365,6 +2671,7 @@
     {
       "id": "LuminousDemonLord",
       "name": "LuminousDemonLord",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LuminousDemonLord/LuminousDemonLord.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LuminousDemonLord/LuminousDemonLord.skill.glb",
@@ -2375,6 +2682,7 @@
     {
       "id": "LuminousDevil",
       "name": "LuminousDevil",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LuminousDevil/LuminousDevil.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LuminousDevil/LuminousDevil.skill.glb",
@@ -2385,6 +2693,7 @@
     {
       "id": "LuminousHA2023",
       "name": "LuminousHA2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LuminousHA2023/LuminousHA2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LuminousHA2023/LuminousHA2023.skill.glb",
@@ -2395,6 +2704,7 @@
     {
       "id": "LuminousMaidCostume2021Christmas",
       "name": "LuminousMaidCostume2021Christmas",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LuminousMaidCostume2021Christmas/LuminousMaidCostume2021Christmas.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LuminousMaidCostume2021Christmas/LuminousMaidCostume2021Christmas.skill.glb",
@@ -2405,6 +2715,7 @@
     {
       "id": "LuminousMovie2",
       "name": "LuminousMovie2",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LuminousMovie2/LuminousMovie2.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LuminousMovie2/LuminousMovie2.skill.glb",
@@ -2415,6 +2726,7 @@
     {
       "id": "LuminousMythology",
       "name": "LuminousMythology",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LuminousMythology/LuminousMythology.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LuminousMythology/LuminousMythology.skill.glb",
@@ -2425,6 +2737,7 @@
     {
       "id": "LuminousPhantom",
       "name": "LuminousPhantom",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LuminousPhantom/LuminousPhantom.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LuminousPhantom/LuminousPhantom.skill.glb",
@@ -2435,6 +2748,7 @@
     {
       "id": "LuminousSwimsuit2023",
       "name": "LuminousSwimsuit2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LuminousSwimsuit2023/LuminousSwimsuit2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LuminousSwimsuit2023/LuminousSwimsuit2023.skill.glb",
@@ -2445,6 +2759,7 @@
     {
       "id": "LuminousWind",
       "name": "LuminousWind",
+      "characterType": "PC",
       "glb": "/models/Character/PC/LuminousWind/LuminousWind.glb",
       "skillScene": {
         "glb": "/models/Character/PC/LuminousWind/LuminousWind.skill.glb",
@@ -2455,6 +2770,7 @@
     {
       "id": "MariabellDefault",
       "name": "MariabellDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MariabellDefault/MariabellDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MariabellDefault/MariabellDefault.skill.glb",
@@ -2465,6 +2781,7 @@
     {
       "id": "MariabellXmas2024",
       "name": "MariabellXmas2024",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MariabellXmas2024/MariabellXmas2024.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MariabellXmas2024/MariabellXmas2024.skill.glb",
@@ -2475,6 +2792,7 @@
     {
       "id": "MasayukiDefault",
       "name": "MasayukiDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MasayukiDefault/MasayukiDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MasayukiDefault/MasayukiDefault.skill.glb",
@@ -2485,6 +2803,7 @@
     {
       "id": "MasayukiDevil",
       "name": "MasayukiDevil",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MasayukiDevil/MasayukiDevil.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MasayukiDevil/MasayukiDevil.skill.glb",
@@ -2495,6 +2814,7 @@
     {
       "id": "MasayukiKirito",
       "name": "MasayukiKirito",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MasayukiKirito/MasayukiKirito.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MasayukiKirito/MasayukiKirito.skill.glb",
@@ -2505,6 +2825,7 @@
     {
       "id": "MasayukiSchool2025",
       "name": "MasayukiSchool2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MasayukiSchool2025/MasayukiSchool2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MasayukiSchool2025/MasayukiSchool2025.skill.glb",
@@ -2515,6 +2836,7 @@
     {
       "id": "MaskedHero3Anniv",
       "name": "MaskedHero3Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MaskedHero3Anniv/MaskedHero3Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MaskedHero3Anniv/MaskedHero3Anniv.skill.glb",
@@ -2525,6 +2847,7 @@
     {
       "id": "MaskedHeroDefault",
       "name": "MaskedHeroDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MaskedHeroDefault/MaskedHeroDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MaskedHeroDefault/MaskedHeroDefault.skill.glb",
@@ -2535,6 +2858,7 @@
     {
       "id": "MaskedHeroDevil",
       "name": "MaskedHeroDevil",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MaskedHeroDevil/MaskedHeroDevil.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MaskedHeroDevil/MaskedHeroDevil.skill.glb",
@@ -2545,6 +2869,7 @@
     {
       "id": "MaskedHeroEnemy01",
       "name": "MaskedHeroEnemy01",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MaskedHeroEnemy01/MaskedHeroEnemy01.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MaskedHeroEnemy01/MaskedHeroEnemy01.skill.glb",
@@ -2555,6 +2880,7 @@
     {
       "id": "MaskedHeroHA2023",
       "name": "MaskedHeroHA2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MaskedHeroHA2023/MaskedHeroHA2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MaskedHeroHA2023/MaskedHeroHA2023.skill.glb",
@@ -2565,6 +2891,7 @@
     {
       "id": "MaskedHeroHA2024",
       "name": "MaskedHeroHA2024",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MaskedHeroHA2024/MaskedHeroHA2024.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MaskedHeroHA2024/MaskedHeroHA2024.skill.glb",
@@ -2575,6 +2902,7 @@
     {
       "id": "MaskedHeroHA2025",
       "name": "MaskedHeroHA2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MaskedHeroHA2025/MaskedHeroHA2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MaskedHeroHA2025/MaskedHeroHA2025.skill.glb",
@@ -2585,11 +2913,13 @@
     {
       "id": "MegalodonDefault",
       "name": "MegalodonDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MegalodonDefault/MegalodonDefault.glb"
     },
     {
       "id": "MegalodonFireLarge",
       "name": "MegalodonFireLarge",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MegalodonFireLarge/MegalodonFireLarge.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MegalodonFireLarge/MegalodonFireLarge.skill.glb",
@@ -2600,11 +2930,13 @@
     {
       "id": "MegalodonTuna",
       "name": "MegalodonTuna",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MegalodonTuna/MegalodonTuna.glb"
     },
     {
       "id": "MeguminDefault",
       "name": "MeguminDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MeguminDefault/MeguminDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MeguminDefault/MeguminDefault.skill.glb",
@@ -2615,6 +2947,7 @@
     {
       "id": "MidrayDefault",
       "name": "MidrayDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MidrayDefault/MidrayDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MidrayDefault/MidrayDefault.skill.glb",
@@ -2625,6 +2958,7 @@
     {
       "id": "Milim1kuji2024",
       "name": "Milim1kuji2024",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Milim1kuji2024/Milim1kuji2024.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Milim1kuji2024/Milim1kuji2024.skill.glb",
@@ -2635,6 +2969,7 @@
     {
       "id": "Milim3Anniv",
       "name": "Milim3Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Milim3Anniv/Milim3Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Milim3Anniv/Milim3Anniv.skill.glb",
@@ -2645,6 +2980,7 @@
     {
       "id": "Milim4Anniv",
       "name": "Milim4Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Milim4Anniv/Milim4Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Milim4Anniv/Milim4Anniv.skill.glb",
@@ -2653,8 +2989,15 @@
       }
     },
     {
+      "id": "MilimAmusementPark",
+      "name": "MilimAmusementPark",
+      "characterType": "PC",
+      "glb": "/models/Character/PC/MilimAmusementPark/MilimAmusementPark.glb"
+    },
+    {
       "id": "MilimBattleArmor",
       "name": "MilimBattleArmor",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MilimBattleArmor/MilimBattleArmor.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MilimBattleArmor/MilimBattleArmor.skill.glb",
@@ -2665,6 +3008,7 @@
     {
       "id": "MilimDefault",
       "name": "MilimDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MilimDefault/MilimDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MilimDefault/MilimDefault.skill.glb",
@@ -2675,6 +3019,7 @@
     {
       "id": "MilimDemonLordCostume",
       "name": "MilimDemonLordCostume",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MilimDemonLordCostume/MilimDemonLordCostume.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MilimDemonLordCostume/MilimDemonLordCostume.skill.glb",
@@ -2685,6 +3030,7 @@
     {
       "id": "MilimEarthAttribute",
       "name": "MilimEarthAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MilimEarthAttribute/MilimEarthAttribute.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MilimEarthAttribute/MilimEarthAttribute.skill.glb",
@@ -2695,6 +3041,7 @@
     {
       "id": "MilimHA2024",
       "name": "MilimHA2024",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MilimHA2024/MilimHA2024.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MilimHA2024/MilimHA2024.skill.glb",
@@ -2705,11 +3052,13 @@
     {
       "id": "MilimHA2026",
       "name": "MilimHA2026",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MilimHA2026/MilimHA2026.glb"
     },
     {
       "id": "MilimHalloween2023",
       "name": "MilimHalloween2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MilimHalloween2023/MilimHalloween2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MilimHalloween2023/MilimHalloween2023.skill.glb",
@@ -2720,6 +3069,7 @@
     {
       "id": "MilimHighRank",
       "name": "MilimHighRank",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MilimHighRank/MilimHighRank.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MilimHighRank/MilimHighRank.skill.glb",
@@ -2730,6 +3080,7 @@
     {
       "id": "MilimKimono2022Newyear",
       "name": "MilimKimono2022Newyear",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MilimKimono2022Newyear/MilimKimono2022Newyear.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MilimKimono2022Newyear/MilimKimono2022Newyear.skill.glb",
@@ -2740,6 +3091,7 @@
     {
       "id": "MilimKingdom2022",
       "name": "MilimKingdom2022",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MilimKingdom2022/MilimKingdom2022.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MilimKingdom2022/MilimKingdom2022.skill.glb",
@@ -2750,6 +3102,7 @@
     {
       "id": "MilimMythology",
       "name": "MilimMythology",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MilimMythology/MilimMythology.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MilimMythology/MilimMythology.skill.glb",
@@ -2760,6 +3113,7 @@
     {
       "id": "MilimOriginalArrangeSimple",
       "name": "MilimOriginalArrangeSimple",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MilimOriginalArrangeSimple/MilimOriginalArrangeSimple.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MilimOriginalArrangeSimple/MilimOriginalArrangeSimple.skill.glb",
@@ -2770,6 +3124,7 @@
     {
       "id": "MilimOriginalCostumeWhiteDress",
       "name": "MilimOriginalCostumeWhiteDress",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MilimOriginalCostumeWhiteDress/MilimOriginalCostumeWhiteDress.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MilimOriginalCostumeWhiteDress/MilimOriginalCostumeWhiteDress.skill.glb",
@@ -2780,6 +3135,7 @@
     {
       "id": "MilimSwimsuit2023",
       "name": "MilimSwimsuit2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MilimSwimsuit2023/MilimSwimsuit2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MilimSwimsuit2023/MilimSwimsuit2023.skill.glb",
@@ -2790,6 +3146,7 @@
     {
       "id": "MilimSwimsuitPolkaDots",
       "name": "MilimSwimsuitPolkaDots",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MilimSwimsuitPolkaDots/MilimSwimsuitPolkaDots.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MilimSwimsuitPolkaDots/MilimSwimsuitPolkaDots.skill.glb",
@@ -2800,6 +3157,7 @@
     {
       "id": "MilimWithoutMantle",
       "name": "MilimWithoutMantle",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MilimWithoutMantle/MilimWithoutMantle.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MilimWithoutMantle/MilimWithoutMantle.skill.glb",
@@ -2810,11 +3168,13 @@
     {
       "id": "Mimic",
       "name": "Mimic",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Mimic/Mimic.glb"
     },
     {
       "id": "MiseryDefault",
       "name": "MiseryDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MiseryDefault/MiseryDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MiseryDefault/MiseryDefault.skill.glb",
@@ -2825,6 +3185,7 @@
     {
       "id": "MiseryGothic",
       "name": "MiseryGothic",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MiseryGothic/MiseryGothic.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MiseryGothic/MiseryGothic.skill.glb",
@@ -2835,11 +3196,13 @@
     {
       "id": "MjolmireAdventure",
       "name": "MjolmireAdventure",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MjolmireAdventure/MjolmireAdventure.glb"
     },
     {
       "id": "MjurranDefault",
       "name": "MjurranDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MjurranDefault/MjurranDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MjurranDefault/MjurranDefault.skill.glb",
@@ -2850,6 +3213,7 @@
     {
       "id": "MjurranDefaultPC",
       "name": "MjurranDefaultPC",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MjurranDefaultPC/MjurranDefaultPC.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MjurranDefaultPC/MjurranDefaultPC.skill.glb",
@@ -2860,6 +3224,7 @@
     {
       "id": "MjurranMagician",
       "name": "MjurranMagician",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MjurranMagician/MjurranMagician.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MjurranMagician/MjurranMagician.skill.glb",
@@ -2870,6 +3235,7 @@
     {
       "id": "MjurranMajin",
       "name": "MjurranMajin",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MjurranMajin/MjurranMajin.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MjurranMajin/MjurranMajin.skill.glb",
@@ -2880,6 +3246,7 @@
     {
       "id": "MjurranValentine2022Date",
       "name": "MjurranValentine2022Date",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MjurranValentine2022Date/MjurranValentine2022Date.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MjurranValentine2022Date/MjurranValentine2022Date.skill.glb",
@@ -2890,6 +3257,7 @@
     {
       "id": "MjurranWedding2023",
       "name": "MjurranWedding2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MjurranWedding2023/MjurranWedding2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MjurranWedding2023/MjurranWedding2023.skill.glb",
@@ -2900,6 +3268,7 @@
     {
       "id": "MogamiDefault",
       "name": "MogamiDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MogamiDefault/MogamiDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MogamiDefault/MogamiDefault.skill.glb",
@@ -2910,6 +3279,7 @@
     {
       "id": "MomijiDefault",
       "name": "MomijiDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MomijiDefault/MomijiDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MomijiDefault/MomijiDefault.skill.glb",
@@ -2920,6 +3290,7 @@
     {
       "id": "MomijiXmas2024",
       "name": "MomijiXmas2024",
+      "characterType": "PC",
       "glb": "/models/Character/PC/MomijiXmas2024/MomijiXmas2024.glb",
       "skillScene": {
         "glb": "/models/Character/PC/MomijiXmas2024/MomijiXmas2024.skill.glb",
@@ -2930,6 +3301,7 @@
     {
       "id": "NarberalDefault",
       "name": "NarberalDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/NarberalDefault/NarberalDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/NarberalDefault/NarberalDefault.skill.glb",
@@ -2940,6 +3312,7 @@
     {
       "id": "NineheadDefault",
       "name": "NineheadDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/NineheadDefault/NineheadDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/NineheadDefault/NineheadDefault.skill.glb",
@@ -2950,6 +3323,7 @@
     {
       "id": "NineheadDefaultPC",
       "name": "NineheadDefaultPC",
+      "characterType": "PC",
       "glb": "/models/Character/PC/NineheadDefaultPC/NineheadDefaultPC.glb",
       "skillScene": {
         "glb": "/models/Character/PC/NineheadDefaultPC/NineheadDefaultPC.skill.glb",
@@ -2960,6 +3334,7 @@
     {
       "id": "NueDefault",
       "name": "NueDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/NueDefault/NueDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/NueDefault/NueDefault.skill.glb",
@@ -2970,41 +3345,49 @@
     {
       "id": "OrcGeneralDefault",
       "name": "OrcGeneralDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/OrcGeneralDefault/OrcGeneralDefault.glb"
     },
     {
       "id": "OrcMaleA",
       "name": "OrcMaleA",
+      "characterType": "PC",
       "glb": "/models/Character/PC/OrcMaleA/OrcMaleA.glb"
     },
     {
       "id": "OrcMaleA_MobGroup",
       "name": "OrcMaleA_MobGroup",
+      "characterType": "PC",
       "glb": "/models/Character/PC/OrcMaleA_MobGroup/OrcMaleA_MobGroup.glb"
     },
     {
       "id": "OrcMaleDefault",
       "name": "OrcMaleDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/OrcMaleDefault/OrcMaleDefault.glb"
     },
     {
       "id": "OrcMaleDefault_MobGroup",
       "name": "OrcMaleDefault_MobGroup",
+      "characterType": "PC",
       "glb": "/models/Character/PC/OrcMaleDefault_MobGroup/OrcMaleDefault_MobGroup.glb"
     },
     {
       "id": "OrcSoldierDefault",
       "name": "OrcSoldierDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/OrcSoldierDefault/OrcSoldierDefault.glb"
     },
     {
       "id": "PacmanDefault",
       "name": "PacmanDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/PacmanDefault/PacmanDefault.glb"
     },
     {
       "id": "PhobioDefault",
       "name": "PhobioDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/PhobioDefault/PhobioDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/PhobioDefault/PhobioDefault.skill.glb",
@@ -3015,6 +3398,7 @@
     {
       "id": "RainDefault",
       "name": "RainDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RainDefault/RainDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RainDefault/RainDefault.skill.glb",
@@ -3025,6 +3409,7 @@
     {
       "id": "RainHighDemon",
       "name": "RainHighDemon",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RainHighDemon/RainHighDemon.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RainHighDemon/RainHighDemon.skill.glb",
@@ -3035,6 +3420,7 @@
     {
       "id": "RamirisAnother",
       "name": "RamirisAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RamirisAnother/RamirisAnother.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RamirisAnother/RamirisAnother.skill.glb",
@@ -3045,6 +3431,7 @@
     {
       "id": "RamirisDefault",
       "name": "RamirisDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RamirisDefault/RamirisDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RamirisDefault/RamirisDefault.skill.glb",
@@ -3055,6 +3442,7 @@
     {
       "id": "RamirisDemonLordCostume",
       "name": "RamirisDemonLordCostume",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RamirisDemonLordCostume/RamirisDemonLordCostume.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RamirisDemonLordCostume/RamirisDemonLordCostume.skill.glb",
@@ -3065,6 +3453,7 @@
     {
       "id": "RamirisHA2026",
       "name": "RamirisHA2026",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RamirisHA2026/RamirisHA2026.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RamirisHA2026/RamirisHA2026.skill.glb",
@@ -3075,6 +3464,7 @@
     {
       "id": "RamirisSwimsuit2023",
       "name": "RamirisSwimsuit2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RamirisSwimsuit2023/RamirisSwimsuit2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RamirisSwimsuit2023/RamirisSwimsuit2023.skill.glb",
@@ -3085,6 +3475,7 @@
     {
       "id": "RamirisValentine2023",
       "name": "RamirisValentine2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RamirisValentine2023/RamirisValentine2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RamirisValentine2023/RamirisValentine2023.skill.glb",
@@ -3095,6 +3486,7 @@
     {
       "id": "RangaBefore",
       "name": "RangaBefore",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RangaBefore/RangaBefore.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RangaBefore/RangaBefore.skill.glb",
@@ -3105,6 +3497,7 @@
     {
       "id": "RangaBeforeAnother",
       "name": "RangaBeforeAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RangaBeforeAnother/RangaBeforeAnother.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RangaBeforeAnother/RangaBeforeAnother.skill.glb",
@@ -3115,6 +3508,7 @@
     {
       "id": "RangaBeforeGeneral",
       "name": "RangaBeforeGeneral",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RangaBeforeGeneral/RangaBeforeGeneral.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RangaBeforeGeneral/RangaBeforeGeneral.skill.glb",
@@ -3125,6 +3519,7 @@
     {
       "id": "RangaBeforeGeneralA",
       "name": "RangaBeforeGeneralA",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RangaBeforeGeneralA/RangaBeforeGeneralA.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RangaBeforeGeneralA/RangaBeforeGeneralA.skill.glb",
@@ -3135,6 +3530,7 @@
     {
       "id": "RangaDefault",
       "name": "RangaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RangaDefault/RangaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RangaDefault/RangaDefault.skill.glb",
@@ -3145,16 +3541,19 @@
     {
       "id": "RangaDirewolves",
       "name": "RangaDirewolves",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RangaDirewolves/RangaDirewolves.glb"
     },
     {
       "id": "RangaDirewolvesBoss",
       "name": "RangaDirewolvesBoss",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RangaDirewolvesBoss/RangaDirewolvesBoss.glb"
     },
     {
       "id": "RangaHalloween2023",
       "name": "RangaHalloween2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RangaHalloween2023/RangaHalloween2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RangaHalloween2023/RangaHalloween2023.skill.glb",
@@ -3165,6 +3564,7 @@
     {
       "id": "RangaHighRank",
       "name": "RangaHighRank",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RangaHighRank/RangaHighRank.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RangaHighRank/RangaHighRank.skill.glb",
@@ -3175,6 +3575,7 @@
     {
       "id": "RangaWind",
       "name": "RangaWind",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RangaWind/RangaWind.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RangaWind/RangaWind.skill.glb",
@@ -3185,21 +3586,25 @@
     {
       "id": "RangaWolfDark",
       "name": "RangaWolfDark",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RangaWolfDark/RangaWolfDark.glb"
     },
     {
       "id": "RangaWolfFire",
       "name": "RangaWolfFire",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RangaWolfFire/RangaWolfFire.glb"
     },
     {
       "id": "RangaWolfFireLarge",
       "name": "RangaWolfFireLarge",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RangaWolfFireLarge/RangaWolfFireLarge.glb"
     },
     {
       "id": "Raphael3Anniv",
       "name": "Raphael3Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Raphael3Anniv/Raphael3Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Raphael3Anniv/Raphael3Anniv.skill.glb",
@@ -3210,6 +3615,7 @@
     {
       "id": "RaphaelAsuna",
       "name": "RaphaelAsuna",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RaphaelAsuna/RaphaelAsuna.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RaphaelAsuna/RaphaelAsuna.skill.glb",
@@ -3220,6 +3626,7 @@
     {
       "id": "RaphaelFrieren",
       "name": "RaphaelFrieren",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RaphaelFrieren/RaphaelFrieren.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RaphaelFrieren/RaphaelFrieren.skill.glb",
@@ -3230,6 +3637,7 @@
     {
       "id": "RaphaelMythology",
       "name": "RaphaelMythology",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RaphaelMythology/RaphaelMythology.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RaphaelMythology/RaphaelMythology.skill.glb",
@@ -3240,6 +3648,7 @@
     {
       "id": "RaphaelNordic",
       "name": "RaphaelNordic",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RaphaelNordic/RaphaelNordic.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RaphaelNordic/RaphaelNordic.skill.glb",
@@ -3250,6 +3659,7 @@
     {
       "id": "RaphaelRimuru",
       "name": "RaphaelRimuru",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RaphaelRimuru/RaphaelRimuru.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RaphaelRimuru/RaphaelRimuru.skill.glb",
@@ -3260,16 +3670,19 @@
     {
       "id": "RigurdBefore",
       "name": "RigurdBefore",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RigurdBefore/RigurdBefore.glb"
     },
     {
       "id": "RigurdDefault",
       "name": "RigurdDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RigurdDefault/RigurdDefault.glb"
     },
     {
       "id": "RigurDefault",
       "name": "RigurDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RigurDefault/RigurDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RigurDefault/RigurDefault.skill.glb",
@@ -3280,6 +3693,7 @@
     {
       "id": "RigurdFan",
       "name": "RigurdFan",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RigurdFan/RigurdFan.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RigurdFan/RigurdFan.skill.glb",
@@ -3290,6 +3704,7 @@
     {
       "id": "Rimuru1kuji2024",
       "name": "Rimuru1kuji2024",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Rimuru1kuji2024/Rimuru1kuji2024.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Rimuru1kuji2024/Rimuru1kuji2024.skill.glb",
@@ -3300,6 +3715,7 @@
     {
       "id": "Rimuru2Anniv",
       "name": "Rimuru2Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Rimuru2Anniv/Rimuru2Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Rimuru2Anniv/Rimuru2Anniv.skill.glb",
@@ -3310,11 +3726,13 @@
     {
       "id": "Rimuru3AnnivNovel",
       "name": "Rimuru3AnnivNovel",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Rimuru3AnnivNovel/Rimuru3AnnivNovel.glb"
     },
     {
       "id": "Rimuru4Anniv",
       "name": "Rimuru4Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Rimuru4Anniv/Rimuru4Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Rimuru4Anniv/Rimuru4Anniv.skill.glb",
@@ -3325,6 +3743,7 @@
     {
       "id": "RimuruAinz",
       "name": "RimuruAinz",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruAinz/RimuruAinz.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruAinz/RimuruAinz.skill.glb",
@@ -3335,6 +3754,7 @@
     {
       "id": "RimuruAnother",
       "name": "RimuruAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruAnother/RimuruAnother.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruAnother/RimuruAnother.skill.glb",
@@ -3345,6 +3765,7 @@
     {
       "id": "RimuruAnother4Anniv",
       "name": "RimuruAnother4Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruAnother4Anniv/RimuruAnother4Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruAnother4Anniv/RimuruAnother4Anniv.skill.glb",
@@ -3355,6 +3776,7 @@
     {
       "id": "RimuruAnother4AnnivAfter",
       "name": "RimuruAnother4AnnivAfter",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruAnother4AnnivAfter/RimuruAnother4AnnivAfter.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruAnother4AnnivAfter/RimuruAnother4AnnivAfter.skill.glb",
@@ -3365,6 +3787,7 @@
     {
       "id": "RimuruAnotherHA2026",
       "name": "RimuruAnotherHA2026",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruAnotherHA2026/RimuruAnotherHA2026.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruAnotherHA2026/RimuruAnotherHA2026.skill.glb",
@@ -3375,6 +3798,7 @@
     {
       "id": "RimuruAnotherRe",
       "name": "RimuruAnotherRe",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruAnotherRe/RimuruAnotherRe.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruAnotherRe/RimuruAnotherRe.skill.glb",
@@ -3385,11 +3809,19 @@
     {
       "id": "RimuruAsunaNovel",
       "name": "RimuruAsunaNovel",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruAsunaNovel/RimuruAsunaNovel.glb"
+    },
+    {
+      "id": "RimuruBlack",
+      "name": "RimuruBlack",
+      "characterType": "PC",
+      "glb": "/models/Character/PC/RimuruBlack/RimuruBlack.glb"
     },
     {
       "id": "RimuruCoschange",
       "name": "RimuruCoschange",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruCoschange/RimuruCoschange.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruCoschange/RimuruCoschange.skill.glb",
@@ -3400,6 +3832,7 @@
     {
       "id": "RimuruCreator01",
       "name": "RimuruCreator01",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruCreator01/RimuruCreator01.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruCreator01/RimuruCreator01.skill.glb",
@@ -3410,6 +3843,7 @@
     {
       "id": "RimuruDefault",
       "name": "RimuruDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruDefault/RimuruDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruDefault/RimuruDefault.skill.glb",
@@ -3420,6 +3854,7 @@
     {
       "id": "RimuruDemonLord",
       "name": "RimuruDemonLord",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruDemonLord/RimuruDemonLord.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruDemonLord/RimuruDemonLord.skill.glb",
@@ -3430,6 +3865,7 @@
     {
       "id": "RimuruDemonLord2",
       "name": "RimuruDemonLord2",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruDemonLord2/RimuruDemonLord2.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruDemonLord2/RimuruDemonLord2.skill.glb",
@@ -3440,6 +3876,7 @@
     {
       "id": "RimuruDemonLord3",
       "name": "RimuruDemonLord3",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruDemonLord3/RimuruDemonLord3.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruDemonLord3/RimuruDemonLord3.skill.glb",
@@ -3450,6 +3887,7 @@
     {
       "id": "RimuruDemonLordGuest",
       "name": "RimuruDemonLordGuest",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruDemonLordGuest/RimuruDemonLordGuest.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruDemonLordGuest/RimuruDemonLordGuest.skill.glb",
@@ -3460,6 +3898,7 @@
     {
       "id": "RimuruDemonLordGuest2",
       "name": "RimuruDemonLordGuest2",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruDemonLordGuest2/RimuruDemonLordGuest2.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruDemonLordGuest2/RimuruDemonLordGuest2.skill.glb",
@@ -3470,11 +3909,13 @@
     {
       "id": "RimuruDemonLordNovel",
       "name": "RimuruDemonLordNovel",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruDemonLordNovel/RimuruDemonLordNovel.glb"
     },
     {
       "id": "RimuruFormal",
       "name": "RimuruFormal",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruFormal/RimuruFormal.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruFormal/RimuruFormal.skill.glb",
@@ -3485,6 +3926,7 @@
     {
       "id": "RimuruHA2023",
       "name": "RimuruHA2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruHA2023/RimuruHA2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruHA2023/RimuruHA2023.skill.glb",
@@ -3495,6 +3937,7 @@
     {
       "id": "RimuruHA2024",
       "name": "RimuruHA2024",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruHA2024/RimuruHA2024.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruHA2024/RimuruHA2024.skill.glb",
@@ -3505,6 +3948,7 @@
     {
       "id": "RimuruHA2025",
       "name": "RimuruHA2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruHA2025/RimuruHA2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruHA2025/RimuruHA2025.skill.glb",
@@ -3515,6 +3959,7 @@
     {
       "id": "RimuruHA2025After",
       "name": "RimuruHA2025After",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruHA2025After/RimuruHA2025After.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruHA2025After/RimuruHA2025After.skill.glb",
@@ -3525,6 +3970,7 @@
     {
       "id": "RimuruHA2026",
       "name": "RimuruHA2026",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruHA2026/RimuruHA2026.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruHA2026/RimuruHA2026.skill.glb",
@@ -3535,6 +3981,7 @@
     {
       "id": "RimuruHighRankCostume",
       "name": "RimuruHighRankCostume",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruHighRankCostume/RimuruHighRankCostume.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruHighRankCostume/RimuruHighRankCostume.skill.glb",
@@ -3545,6 +3992,7 @@
     {
       "id": "RimuruImasml",
       "name": "RimuruImasml",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruImasml/RimuruImasml.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruImasml/RimuruImasml.skill.glb",
@@ -3555,6 +4003,7 @@
     {
       "id": "RimuruKimono2022Newyear",
       "name": "RimuruKimono2022Newyear",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruKimono2022Newyear/RimuruKimono2022Newyear.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruKimono2022Newyear/RimuruKimono2022Newyear.skill.glb",
@@ -3565,6 +4014,7 @@
     {
       "id": "RimuruKingdom2022",
       "name": "RimuruKingdom2022",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruKingdom2022/RimuruKingdom2022.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruKingdom2022/RimuruKingdom2022.skill.glb",
@@ -3575,6 +4025,7 @@
     {
       "id": "RimuruMagician",
       "name": "RimuruMagician",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruMagician/RimuruMagician.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruMagician/RimuruMagician.skill.glb",
@@ -3585,11 +4036,13 @@
     {
       "id": "RimuruMaidCostume",
       "name": "RimuruMaidCostume",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruMaidCostume/RimuruMaidCostume.glb"
     },
     {
       "id": "RimuruMaidCostume2021Christmas",
       "name": "RimuruMaidCostume2021Christmas",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruMaidCostume2021Christmas/RimuruMaidCostume2021Christmas.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruMaidCostume2021Christmas/RimuruMaidCostume2021Christmas.skill.glb",
@@ -3600,6 +4053,7 @@
     {
       "id": "RimuruMegumin",
       "name": "RimuruMegumin",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruMegumin/RimuruMegumin.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruMegumin/RimuruMegumin.skill.glb",
@@ -3610,6 +4064,7 @@
     {
       "id": "RimuruMovie2",
       "name": "RimuruMovie2",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruMovie2/RimuruMovie2.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruMovie2/RimuruMovie2.skill.glb",
@@ -3620,11 +4075,13 @@
     {
       "id": "RimuruMythology",
       "name": "RimuruMythology",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruMythology/RimuruMythology.glb"
     },
     {
       "id": "RimuruOriginalCostumeShortSleeve",
       "name": "RimuruOriginalCostumeShortSleeve",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruOriginalCostumeShortSleeve/RimuruOriginalCostumeShortSleeve.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruOriginalCostumeShortSleeve/RimuruOriginalCostumeShortSleeve.skill.glb",
@@ -3635,6 +4092,7 @@
     {
       "id": "RimuruSchool2023",
       "name": "RimuruSchool2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruSchool2023/RimuruSchool2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruSchool2023/RimuruSchool2023.skill.glb",
@@ -3643,23 +4101,33 @@
       }
     },
     {
+      "id": "RimuruShortHair",
+      "name": "RimuruShortHair",
+      "characterType": "PC",
+      "glb": "/models/Character/PC/RimuruShortHair/RimuruShortHair.glb"
+    },
+    {
       "id": "RimuruSlimeAnother",
       "name": "RimuruSlimeAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruSlimeAnother/RimuruSlimeAnother.glb"
     },
     {
       "id": "RimuruSlimeBlack",
       "name": "RimuruSlimeBlack",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruSlimeBlack/RimuruSlimeBlack.glb"
     },
     {
       "id": "RimuruSlimeBlack_MobGroup",
       "name": "RimuruSlimeBlack_MobGroup",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruSlimeBlack_MobGroup/RimuruSlimeBlack_MobGroup.glb"
     },
     {
       "id": "RimuruSlimeDefault",
       "name": "RimuruSlimeDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruSlimeDefault/RimuruSlimeDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruSlimeDefault/RimuruSlimeDefault.skill.glb",
@@ -3670,11 +4138,13 @@
     {
       "id": "RimuruSlimeGold",
       "name": "RimuruSlimeGold",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruSlimeGold/RimuruSlimeGold.glb"
     },
     {
       "id": "RimuruSlimeMovie",
       "name": "RimuruSlimeMovie",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruSlimeMovie/RimuruSlimeMovie.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruSlimeMovie/RimuruSlimeMovie.skill.glb",
@@ -3685,11 +4155,13 @@
     {
       "id": "RimuruSlimeSilver",
       "name": "RimuruSlimeSilver",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruSlimeSilver/RimuruSlimeSilver.glb"
     },
     {
       "id": "RimuruSwimsuitSailor",
       "name": "RimuruSwimsuitSailor",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruSwimsuitSailor/RimuruSwimsuitSailor.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruSwimsuitSailor/RimuruSwimsuitSailor.skill.glb",
@@ -3700,11 +4172,13 @@
     {
       "id": "RimuruSwimsuitSailorHome",
       "name": "RimuruSwimsuitSailorHome",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruSwimsuitSailorHome/RimuruSwimsuitSailorHome.glb"
     },
     {
       "id": "RimuruTales",
       "name": "RimuruTales",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruTales/RimuruTales.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruTales/RimuruTales.skill.glb",
@@ -3715,6 +4189,7 @@
     {
       "id": "RimuruWater",
       "name": "RimuruWater",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruWater/RimuruWater.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruWater/RimuruWater.skill.glb",
@@ -3725,6 +4200,7 @@
     {
       "id": "RimuruWedding2022",
       "name": "RimuruWedding2022",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RimuruWedding2022/RimuruWedding2022.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RimuruWedding2022/RimuruWedding2022.skill.glb",
@@ -3735,6 +4211,7 @@
     {
       "id": "RitusDefault",
       "name": "RitusDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RitusDefault/RitusDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RitusDefault/RitusDefault.skill.glb",
@@ -3745,6 +4222,7 @@
     {
       "id": "RitusXmas2024",
       "name": "RitusXmas2024",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RitusXmas2024/RitusXmas2024.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RitusXmas2024/RitusXmas2024.skill.glb",
@@ -3755,6 +4233,7 @@
     {
       "id": "RyotaBlack",
       "name": "RyotaBlack",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RyotaBlack/RyotaBlack.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RyotaBlack/RyotaBlack.skill.glb",
@@ -3765,6 +4244,7 @@
     {
       "id": "RyotaDefault",
       "name": "RyotaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RyotaDefault/RyotaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RyotaDefault/RyotaDefault.skill.glb",
@@ -3775,6 +4255,7 @@
     {
       "id": "RyuDefault",
       "name": "RyuDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/RyuDefault/RyuDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/RyuDefault/RyuDefault.skill.glb",
@@ -3785,6 +4266,7 @@
     {
       "id": "SaareDefault",
       "name": "SaareDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SaareDefault/SaareDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SaareDefault/SaareDefault.skill.glb",
@@ -3795,16 +4277,19 @@
     {
       "id": "SalamanderDark",
       "name": "SalamanderDark",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SalamanderDark/SalamanderDark.glb"
     },
     {
       "id": "SalamanderDefault",
       "name": "SalamanderDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SalamanderDefault/SalamanderDefault.glb"
     },
     {
       "id": "ShalltearDefault",
       "name": "ShalltearDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShalltearDefault/ShalltearDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShalltearDefault/ShalltearDefault.skill.glb",
@@ -3815,6 +4300,7 @@
     {
       "id": "ShichiyoDefault",
       "name": "ShichiyoDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShichiyoDefault/ShichiyoDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShichiyoDefault/ShichiyoDefault.skill.glb",
@@ -3825,6 +4311,7 @@
     {
       "id": "Shion1kuji2024",
       "name": "Shion1kuji2024",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Shion1kuji2024/Shion1kuji2024.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Shion1kuji2024/Shion1kuji2024.skill.glb",
@@ -3835,6 +4322,7 @@
     {
       "id": "ShionBefore",
       "name": "ShionBefore",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionBefore/ShionBefore.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShionBefore/ShionBefore.skill.glb",
@@ -3845,6 +4333,7 @@
     {
       "id": "ShionBeforeAnother",
       "name": "ShionBeforeAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionBeforeAnother/ShionBeforeAnother.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShionBeforeAnother/ShionBeforeAnother.skill.glb",
@@ -3855,6 +4344,7 @@
     {
       "id": "ShionBeforeAnotherPC",
       "name": "ShionBeforeAnotherPC",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionBeforeAnotherPC/ShionBeforeAnotherPC.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShionBeforeAnotherPC/ShionBeforeAnotherPC.skill.glb",
@@ -3865,6 +4355,7 @@
     {
       "id": "ShionDark",
       "name": "ShionDark",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionDark/ShionDark.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShionDark/ShionDark.skill.glb",
@@ -3875,6 +4366,7 @@
     {
       "id": "ShionDefault",
       "name": "ShionDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionDefault/ShionDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShionDefault/ShionDefault.skill.glb",
@@ -3885,6 +4377,7 @@
     {
       "id": "ShionHA2023",
       "name": "ShionHA2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionHA2023/ShionHA2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShionHA2023/ShionHA2023.skill.glb",
@@ -3895,16 +4388,19 @@
     {
       "id": "ShionMaidCostume",
       "name": "ShionMaidCostume",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionMaidCostume/ShionMaidCostume.glb"
     },
     {
       "id": "ShionMaidCostume2021Christmas",
       "name": "ShionMaidCostume2021Christmas",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionMaidCostume2021Christmas/ShionMaidCostume2021Christmas.glb"
     },
     {
       "id": "ShionMilitary",
       "name": "ShionMilitary",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionMilitary/ShionMilitary.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShionMilitary/ShionMilitary.skill.glb",
@@ -3915,6 +4411,7 @@
     {
       "id": "ShionMovieRevival",
       "name": "ShionMovieRevival",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionMovieRevival/ShionMovieRevival.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShionMovieRevival/ShionMovieRevival.skill.glb",
@@ -3925,6 +4422,7 @@
     {
       "id": "ShionneDefault",
       "name": "ShionneDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionneDefault/ShionneDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShionneDefault/ShionneDefault.skill.glb",
@@ -3935,6 +4433,7 @@
     {
       "id": "ShionOriginalCostumeKimono",
       "name": "ShionOriginalCostumeKimono",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionOriginalCostumeKimono/ShionOriginalCostumeKimono.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShionOriginalCostumeKimono/ShionOriginalCostumeKimono.skill.glb",
@@ -3945,6 +4444,7 @@
     {
       "id": "ShionPartydress",
       "name": "ShionPartydress",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionPartydress/ShionPartydress.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShionPartydress/ShionPartydress.skill.glb",
@@ -3955,6 +4455,7 @@
     {
       "id": "ShionSecretary",
       "name": "ShionSecretary",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionSecretary/ShionSecretary.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShionSecretary/ShionSecretary.skill.glb",
@@ -3965,6 +4466,7 @@
     {
       "id": "ShionSwimsuitLeaf",
       "name": "ShionSwimsuitLeaf",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionSwimsuitLeaf/ShionSwimsuitLeaf.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShionSwimsuitLeaf/ShionSwimsuitLeaf.skill.glb",
@@ -3975,6 +4477,7 @@
     {
       "id": "ShionTales",
       "name": "ShionTales",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionTales/ShionTales.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShionTales/ShionTales.skill.glb",
@@ -3985,6 +4488,7 @@
     {
       "id": "ShionValentine2023",
       "name": "ShionValentine2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionValentine2023/ShionValentine2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShionValentine2023/ShionValentine2023.skill.glb",
@@ -3995,6 +4499,7 @@
     {
       "id": "ShionWedding2022",
       "name": "ShionWedding2022",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShionWedding2022/ShionWedding2022.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShionWedding2022/ShionWedding2022.skill.glb",
@@ -4005,6 +4510,7 @@
     {
       "id": "Shizu2Anniv",
       "name": "Shizu2Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Shizu2Anniv/Shizu2Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Shizu2Anniv/Shizu2Anniv.skill.glb",
@@ -4015,6 +4521,7 @@
     {
       "id": "ShizuAlbedo",
       "name": "ShizuAlbedo",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShizuAlbedo/ShizuAlbedo.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShizuAlbedo/ShizuAlbedo.skill.glb",
@@ -4025,6 +4532,7 @@
     {
       "id": "ShizuAnime3rd",
       "name": "ShizuAnime3rd",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShizuAnime3rd/ShizuAnime3rd.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShizuAnime3rd/ShizuAnime3rd.skill.glb",
@@ -4035,6 +4543,7 @@
     {
       "id": "ShizuBlackHero",
       "name": "ShizuBlackHero",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShizuBlackHero/ShizuBlackHero.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShizuBlackHero/ShizuBlackHero.skill.glb",
@@ -4045,6 +4554,7 @@
     {
       "id": "ShizuDefault",
       "name": "ShizuDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShizuDefault/ShizuDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShizuDefault/ShizuDefault.skill.glb",
@@ -4055,11 +4565,13 @@
     {
       "id": "ShizuDefault2",
       "name": "ShizuDefault2",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShizuDefault2/ShizuDefault2.glb"
     },
     {
       "id": "ShizuFire",
       "name": "ShizuFire",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShizuFire/ShizuFire.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShizuFire/ShizuFire.skill.glb",
@@ -4070,6 +4582,7 @@
     {
       "id": "ShizuLightarmor",
       "name": "ShizuLightarmor",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShizuLightarmor/ShizuLightarmor.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShizuLightarmor/ShizuLightarmor.skill.glb",
@@ -4080,6 +4593,7 @@
     {
       "id": "ShizuSchool2025",
       "name": "ShizuSchool2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShizuSchool2025/ShizuSchool2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShizuSchool2025/ShizuSchool2025.skill.glb",
@@ -4090,6 +4604,7 @@
     {
       "id": "ShizuSwimsuit2023",
       "name": "ShizuSwimsuit2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShizuSwimsuit2023/ShizuSwimsuit2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShizuSwimsuit2023/ShizuSwimsuit2023.skill.glb",
@@ -4100,6 +4615,7 @@
     {
       "id": "ShizuValentine2022Date",
       "name": "ShizuValentine2022Date",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShizuValentine2022Date/ShizuValentine2022Date.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShizuValentine2022Date/ShizuValentine2022Date.skill.glb",
@@ -4110,6 +4626,7 @@
     {
       "id": "ShizuWedding2022",
       "name": "ShizuWedding2022",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShizuWedding2022/ShizuWedding2022.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShizuWedding2022/ShizuWedding2022.skill.glb",
@@ -4120,6 +4637,7 @@
     {
       "id": "ShizuXmas2022",
       "name": "ShizuXmas2022",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShizuXmas2022/ShizuXmas2022.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShizuXmas2022/ShizuXmas2022.skill.glb",
@@ -4130,6 +4648,7 @@
     {
       "id": "ShogoBattleCostume",
       "name": "ShogoBattleCostume",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShogoBattleCostume/ShogoBattleCostume.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShogoBattleCostume/ShogoBattleCostume.skill.glb",
@@ -4140,6 +4659,7 @@
     {
       "id": "ShogoDefault",
       "name": "ShogoDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShogoDefault/ShogoDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShogoDefault/ShogoDefault.skill.glb",
@@ -4150,6 +4670,7 @@
     {
       "id": "ShogoRasenCostume",
       "name": "ShogoRasenCostume",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShogoRasenCostume/ShogoRasenCostume.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShogoRasenCostume/ShogoRasenCostume.skill.glb",
@@ -4160,6 +4681,7 @@
     {
       "id": "ShunaAir",
       "name": "ShunaAir",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShunaAir/ShunaAir.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShunaAir/ShunaAir.skill.glb",
@@ -4170,6 +4692,7 @@
     {
       "id": "ShunaBefore",
       "name": "ShunaBefore",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShunaBefore/ShunaBefore.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShunaBefore/ShunaBefore.skill.glb",
@@ -4180,6 +4703,7 @@
     {
       "id": "ShunaCoschange",
       "name": "ShunaCoschange",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShunaCoschange/ShunaCoschange.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShunaCoschange/ShunaCoschange.skill.glb",
@@ -4190,6 +4714,7 @@
     {
       "id": "ShunaDefault",
       "name": "ShunaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShunaDefault/ShunaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShunaDefault/ShunaDefault.skill.glb",
@@ -4200,6 +4725,7 @@
     {
       "id": "ShunaHestia",
       "name": "ShunaHestia",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShunaHestia/ShunaHestia.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShunaHestia/ShunaHestia.skill.glb",
@@ -4210,6 +4736,7 @@
     {
       "id": "ShunaImasml",
       "name": "ShunaImasml",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShunaImasml/ShunaImasml.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShunaImasml/ShunaImasml.skill.glb",
@@ -4220,6 +4747,7 @@
     {
       "id": "ShunaKimono2022Newyear",
       "name": "ShunaKimono2022Newyear",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShunaKimono2022Newyear/ShunaKimono2022Newyear.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShunaKimono2022Newyear/ShunaKimono2022Newyear.skill.glb",
@@ -4230,11 +4758,13 @@
     {
       "id": "ShunaMaidCostume",
       "name": "ShunaMaidCostume",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShunaMaidCostume/ShunaMaidCostume.glb"
     },
     {
       "id": "ShunaMaidCostume2021Christmas",
       "name": "ShunaMaidCostume2021Christmas",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShunaMaidCostume2021Christmas/ShunaMaidCostume2021Christmas.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShunaMaidCostume2021Christmas/ShunaMaidCostume2021Christmas.skill.glb",
@@ -4245,6 +4775,7 @@
     {
       "id": "ShunaMilitary",
       "name": "ShunaMilitary",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShunaMilitary/ShunaMilitary.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShunaMilitary/ShunaMilitary.skill.glb",
@@ -4255,6 +4786,7 @@
     {
       "id": "ShunaMythology",
       "name": "ShunaMythology",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShunaMythology/ShunaMythology.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShunaMythology/ShunaMythology.skill.glb",
@@ -4265,6 +4797,7 @@
     {
       "id": "ShunaNordic",
       "name": "ShunaNordic",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShunaNordic/ShunaNordic.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShunaNordic/ShunaNordic.skill.glb",
@@ -4275,6 +4808,7 @@
     {
       "id": "ShunaOriginalCostumeKimono",
       "name": "ShunaOriginalCostumeKimono",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShunaOriginalCostumeKimono/ShunaOriginalCostumeKimono.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShunaOriginalCostumeKimono/ShunaOriginalCostumeKimono.skill.glb",
@@ -4283,8 +4817,15 @@
       }
     },
     {
+      "id": "ShunaShrinemaidenRelease",
+      "name": "ShunaShrinemaidenRelease",
+      "characterType": "PC",
+      "glb": "/models/Character/PC/ShunaShrinemaidenRelease/ShunaShrinemaidenRelease.glb"
+    },
+    {
       "id": "ShunaSwimsuitHibiscus",
       "name": "ShunaSwimsuitHibiscus",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShunaSwimsuitHibiscus/ShunaSwimsuitHibiscus.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShunaSwimsuitHibiscus/ShunaSwimsuitHibiscus.skill.glb",
@@ -4295,6 +4836,7 @@
     {
       "id": "ShunaTengu",
       "name": "ShunaTengu",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShunaTengu/ShunaTengu.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShunaTengu/ShunaTengu.skill.glb",
@@ -4305,6 +4847,7 @@
     {
       "id": "ShunaWedding2023",
       "name": "ShunaWedding2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ShunaWedding2023/ShunaWedding2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ShunaWedding2023/ShunaWedding2023.skill.glb",
@@ -4315,6 +4858,7 @@
     {
       "id": "SinonDefault",
       "name": "SinonDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SinonDefault/SinonDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SinonDefault/SinonDefault.skill.glb",
@@ -4325,6 +4869,7 @@
     {
       "id": "SkyDragonAnother",
       "name": "SkyDragonAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SkyDragonAnother/SkyDragonAnother.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SkyDragonAnother/SkyDragonAnother.skill.glb",
@@ -4335,6 +4880,7 @@
     {
       "id": "SkyDragonDefault",
       "name": "SkyDragonDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SkyDragonDefault/SkyDragonDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SkyDragonDefault/SkyDragonDefault.skill.glb",
@@ -4345,6 +4891,7 @@
     {
       "id": "SkyDragonWaterAttribute",
       "name": "SkyDragonWaterAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SkyDragonWaterAttribute/SkyDragonWaterAttribute.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SkyDragonWaterAttribute/SkyDragonWaterAttribute.skill.glb",
@@ -4355,6 +4902,7 @@
     {
       "id": "SoeiBefore",
       "name": "SoeiBefore",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoeiBefore/SoeiBefore.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SoeiBefore/SoeiBefore.skill.glb",
@@ -4365,6 +4913,7 @@
     {
       "id": "SoeiDefault",
       "name": "SoeiDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoeiDefault/SoeiDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SoeiDefault/SoeiDefault.skill.glb",
@@ -4375,6 +4924,7 @@
     {
       "id": "SoeiHighRank",
       "name": "SoeiHighRank",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoeiHighRank/SoeiHighRank.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SoeiHighRank/SoeiHighRank.skill.glb",
@@ -4385,11 +4935,13 @@
     {
       "id": "SoeiHighRankA",
       "name": "SoeiHighRankA",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoeiHighRankA/SoeiHighRankA.glb"
     },
     {
       "id": "SoeiOriginalCostumeKimono",
       "name": "SoeiOriginalCostumeKimono",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoeiOriginalCostumeKimono/SoeiOriginalCostumeKimono.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SoeiOriginalCostumeKimono/SoeiOriginalCostumeKimono.skill.glb",
@@ -4400,6 +4952,7 @@
     {
       "id": "SoeiPhantom",
       "name": "SoeiPhantom",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoeiPhantom/SoeiPhantom.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SoeiPhantom/SoeiPhantom.skill.glb",
@@ -4410,6 +4963,7 @@
     {
       "id": "SoeiTengu",
       "name": "SoeiTengu",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoeiTengu/SoeiTengu.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SoeiTengu/SoeiTengu.skill.glb",
@@ -4420,6 +4974,7 @@
     {
       "id": "SoeiWaterAttribute",
       "name": "SoeiWaterAttribute",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoeiWaterAttribute/SoeiWaterAttribute.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SoeiWaterAttribute/SoeiWaterAttribute.skill.glb",
@@ -4430,16 +4985,19 @@
     {
       "id": "SokaDefault",
       "name": "SokaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SokaDefault/SokaDefault.glb"
     },
     {
       "id": "SokaMic",
       "name": "SokaMic",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SokaMic/SokaMic.glb"
     },
     {
       "id": "SokaMythology",
       "name": "SokaMythology",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SokaMythology/SokaMythology.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SokaMythology/SokaMythology.skill.glb",
@@ -4450,6 +5008,7 @@
     {
       "id": "SokaPhantom",
       "name": "SokaPhantom",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SokaPhantom/SokaPhantom.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SokaPhantom/SokaPhantom.skill.glb",
@@ -4460,6 +5019,7 @@
     {
       "id": "SokaRyu",
       "name": "SokaRyu",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SokaRyu/SokaRyu.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SokaRyu/SokaRyu.skill.glb",
@@ -4470,6 +5030,7 @@
     {
       "id": "SokaValentine2022Date",
       "name": "SokaValentine2022Date",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SokaValentine2022Date/SokaValentine2022Date.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SokaValentine2022Date/SokaValentine2022Date.skill.glb",
@@ -4480,6 +5041,7 @@
     {
       "id": "SokaWedding2023",
       "name": "SokaWedding2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SokaWedding2023/SokaWedding2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SokaWedding2023/SokaWedding2023.skill.glb",
@@ -4490,41 +5052,49 @@
     {
       "id": "SoldierBlack",
       "name": "SoldierBlack",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoldierBlack/SoldierBlack.glb"
     },
     {
       "id": "SoldierBlackFire",
       "name": "SoldierBlackFire",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoldierBlackFire/SoldierBlackFire.glb"
     },
     {
       "id": "SoldierCollabo2023",
       "name": "SoldierCollabo2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoldierCollabo2023/SoldierCollabo2023.glb"
     },
     {
       "id": "SoldierDark",
       "name": "SoldierDark",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoldierDark/SoldierDark.glb"
     },
     {
       "id": "SoldierDefault",
       "name": "SoldierDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoldierDefault/SoldierDefault.glb"
     },
     {
       "id": "SoldierFalmuth",
       "name": "SoldierFalmuth",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoldierFalmuth/SoldierFalmuth.glb"
     },
     {
       "id": "SoldierFalmuthUpperArcher",
       "name": "SoldierFalmuthUpperArcher",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoldierFalmuthUpperArcher/SoldierFalmuthUpperArcher.glb"
     },
     {
       "id": "SoldierGuySkill",
       "name": "SoldierGuySkill",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoldierGuySkill/SoldierGuySkill.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SoldierGuySkill/SoldierGuySkill.skill.glb",
@@ -4535,36 +5105,43 @@
     {
       "id": "SoldierReceptionist",
       "name": "SoldierReceptionist",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoldierReceptionist/SoldierReceptionist.glb"
     },
     {
       "id": "SoldierSecurity",
       "name": "SoldierSecurity",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SoldierSecurity/SoldierSecurity.glb"
     },
     {
       "id": "SorcererBlack",
       "name": "SorcererBlack",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SorcererBlack/SorcererBlack.glb"
     },
     {
       "id": "SorcererBlackFire",
       "name": "SorcererBlackFire",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SorcererBlackFire/SorcererBlackFire.glb"
     },
     {
       "id": "SorcererDefault",
       "name": "SorcererDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SorcererDefault/SorcererDefault.glb"
     },
     {
       "id": "SpiegelMaidenDefault",
       "name": "SpiegelMaidenDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SpiegelMaidenDefault/SpiegelMaidenDefault.glb"
     },
     {
       "id": "StarkDefault",
       "name": "StarkDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/StarkDefault/StarkDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/StarkDefault/StarkDefault.skill.glb",
@@ -4575,11 +5152,13 @@
     {
       "id": "SumireDefault",
       "name": "SumireDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SumireDefault/SumireDefault.glb"
     },
     {
       "id": "SuphiaDefault",
       "name": "SuphiaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SuphiaDefault/SuphiaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SuphiaDefault/SuphiaDefault.skill.glb",
@@ -4590,6 +5169,7 @@
     {
       "id": "SuphiaForPC",
       "name": "SuphiaForPC",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SuphiaForPC/SuphiaForPC.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SuphiaForPC/SuphiaForPC.skill.glb",
@@ -4600,6 +5180,7 @@
     {
       "id": "SuphiaValentine2023",
       "name": "SuphiaValentine2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/SuphiaValentine2023/SuphiaValentine2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/SuphiaValentine2023/SuphiaValentine2023.skill.glb",
@@ -4610,6 +5191,7 @@
     {
       "id": "TearDefault",
       "name": "TearDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/TearDefault/TearDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/TearDefault/TearDefault.skill.glb",
@@ -4620,6 +5202,7 @@
     {
       "id": "TearDefaultPC",
       "name": "TearDefaultPC",
+      "characterType": "PC",
       "glb": "/models/Character/PC/TearDefaultPC/TearDefaultPC.glb",
       "skillScene": {
         "glb": "/models/Character/PC/TearDefaultPC/TearDefaultPC.skill.glb",
@@ -4630,6 +5213,7 @@
     {
       "id": "TowaDefault",
       "name": "TowaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/TowaDefault/TowaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/TowaDefault/TowaDefault.skill.glb",
@@ -4640,26 +5224,31 @@
     {
       "id": "TownYoungFemaleBNovel",
       "name": "TownYoungFemaleBNovel",
+      "characterType": "PC",
       "glb": "/models/Character/PC/TownYoungFemaleBNovel/TownYoungFemaleBNovel.glb"
     },
     {
       "id": "TownYoungFemaleDefault",
       "name": "TownYoungFemaleDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/TownYoungFemaleDefault/TownYoungFemaleDefault.glb"
     },
     {
       "id": "TownYoungFemaleDefault_MobGroup",
       "name": "TownYoungFemaleDefault_MobGroup",
+      "characterType": "PC",
       "glb": "/models/Character/PC/TownYoungFemaleDefault_MobGroup/TownYoungFemaleDefault_MobGroup.glb"
     },
     {
       "id": "TownYoungMaleDefault",
       "name": "TownYoungMaleDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/TownYoungMaleDefault/TownYoungMaleDefault.glb"
     },
     {
       "id": "TownYoungMaleDefault_MobGroup",
       "name": "TownYoungMaleDefault_MobGroup",
+      "characterType": "PC",
       "glb": "/models/Character/PC/TownYoungMaleDefault_MobGroup/TownYoungMaleDefault_MobGroup.glb",
       "skillScene": {
         "glb": "/models/Character/PC/TownYoungMaleDefault_MobGroup/TownYoungMaleDefault_MobGroup.skill.glb",
@@ -4670,21 +5259,25 @@
     {
       "id": "TownYoungMiddleAgedFemaleDefault",
       "name": "TownYoungMiddleAgedFemaleDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/TownYoungMiddleAgedFemaleDefault/TownYoungMiddleAgedFemaleDefault.glb"
     },
     {
       "id": "TownYoungMiddleAgedMaleDefault",
       "name": "TownYoungMiddleAgedMaleDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/TownYoungMiddleAgedMaleDefault/TownYoungMiddleAgedMaleDefault.glb"
     },
     {
       "id": "TownYoungMiddleAgedMaleDefault_MobGroup",
       "name": "TownYoungMiddleAgedMaleDefault_MobGroup",
+      "characterType": "PC",
       "glb": "/models/Character/PC/TownYoungMiddleAgedMaleDefault_MobGroup/TownYoungMiddleAgedMaleDefault_MobGroup.glb"
     },
     {
       "id": "Treyni2022Summer",
       "name": "Treyni2022Summer",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Treyni2022Summer/Treyni2022Summer.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Treyni2022Summer/Treyni2022Summer.skill.glb",
@@ -4695,6 +5288,7 @@
     {
       "id": "TreyniCoschange",
       "name": "TreyniCoschange",
+      "characterType": "PC",
       "glb": "/models/Character/PC/TreyniCoschange/TreyniCoschange.glb",
       "skillScene": {
         "glb": "/models/Character/PC/TreyniCoschange/TreyniCoschange.skill.glb",
@@ -4705,6 +5299,7 @@
     {
       "id": "TreyniDefault",
       "name": "TreyniDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/TreyniDefault/TreyniDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/TreyniDefault/TreyniDefault.skill.glb",
@@ -4715,6 +5310,7 @@
     {
       "id": "TreyniSwimsuit2023",
       "name": "TreyniSwimsuit2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/TreyniSwimsuit2023/TreyniSwimsuit2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/TreyniSwimsuit2023/TreyniSwimsuit2023.skill.glb",
@@ -4725,6 +5321,7 @@
     {
       "id": "TryaDefault",
       "name": "TryaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/TryaDefault/TryaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/TryaDefault/TryaDefault.skill.glb",
@@ -4735,6 +5332,7 @@
     {
       "id": "TryaWedding2023",
       "name": "TryaWedding2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/TryaWedding2023/TryaWedding2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/TryaWedding2023/TryaWedding2023.skill.glb",
@@ -4745,6 +5343,7 @@
     {
       "id": "Veldora4Anniv",
       "name": "Veldora4Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Veldora4Anniv/Veldora4Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Veldora4Anniv/Veldora4Anniv.skill.glb",
@@ -4755,6 +5354,7 @@
     {
       "id": "VeldoraAnother",
       "name": "VeldoraAnother",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VeldoraAnother/VeldoraAnother.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VeldoraAnother/VeldoraAnother.skill.glb",
@@ -4765,6 +5365,7 @@
     {
       "id": "VeldoraButlerCostume2021Christmas",
       "name": "VeldoraButlerCostume2021Christmas",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VeldoraButlerCostume2021Christmas/VeldoraButlerCostume2021Christmas.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VeldoraButlerCostume2021Christmas/VeldoraButlerCostume2021Christmas.skill.glb",
@@ -4775,6 +5376,7 @@
     {
       "id": "VeldoraCreator01",
       "name": "VeldoraCreator01",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VeldoraCreator01/VeldoraCreator01.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VeldoraCreator01/VeldoraCreator01.skill.glb",
@@ -4785,6 +5387,7 @@
     {
       "id": "VeldoraDark",
       "name": "VeldoraDark",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VeldoraDark/VeldoraDark.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VeldoraDark/VeldoraDark.skill.glb",
@@ -4795,6 +5398,7 @@
     {
       "id": "VeldoraDefault",
       "name": "VeldoraDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VeldoraDefault/VeldoraDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VeldoraDefault/VeldoraDefault.skill.glb",
@@ -4805,6 +5409,7 @@
     {
       "id": "VeldoraHA2024",
       "name": "VeldoraHA2024",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VeldoraHA2024/VeldoraHA2024.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VeldoraHA2024/VeldoraHA2024.skill.glb",
@@ -4815,6 +5420,7 @@
     {
       "id": "VeldoraHA2026",
       "name": "VeldoraHA2026",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VeldoraHA2026/VeldoraHA2026.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VeldoraHA2026/VeldoraHA2026.skill.glb",
@@ -4825,6 +5431,7 @@
     {
       "id": "VeldoraHA2026After",
       "name": "VeldoraHA2026After",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VeldoraHA2026After/VeldoraHA2026After.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VeldoraHA2026After/VeldoraHA2026After.skill.glb",
@@ -4835,6 +5442,7 @@
     {
       "id": "VeldoraHighRank",
       "name": "VeldoraHighRank",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VeldoraHighRank/VeldoraHighRank.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VeldoraHighRank/VeldoraHighRank.skill.glb",
@@ -4845,6 +5453,7 @@
     {
       "id": "VeldoraHumanoid",
       "name": "VeldoraHumanoid",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VeldoraHumanoid/VeldoraHumanoid.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VeldoraHumanoid/VeldoraHumanoid.skill.glb",
@@ -4855,6 +5464,7 @@
     {
       "id": "VeldoraHumanoidEarth",
       "name": "VeldoraHumanoidEarth",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VeldoraHumanoidEarth/VeldoraHumanoidEarth.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VeldoraHumanoidEarth/VeldoraHumanoidEarth.skill.glb",
@@ -4865,6 +5475,7 @@
     {
       "id": "VeldoraKingdom2022",
       "name": "VeldoraKingdom2022",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VeldoraKingdom2022/VeldoraKingdom2022.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VeldoraKingdom2022/VeldoraKingdom2022.skill.glb",
@@ -4875,6 +5486,7 @@
     {
       "id": "VeldoraNordic",
       "name": "VeldoraNordic",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VeldoraNordic/VeldoraNordic.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VeldoraNordic/VeldoraNordic.skill.glb",
@@ -4885,6 +5497,7 @@
     {
       "id": "VeldoraWind",
       "name": "VeldoraWind",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VeldoraWind/VeldoraWind.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VeldoraWind/VeldoraWind.skill.glb",
@@ -4895,6 +5508,7 @@
     {
       "id": "VelgryndSkill",
       "name": "VelgryndSkill",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VelgryndSkill/VelgryndSkill.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VelgryndSkill/VelgryndSkill.skill.glb",
@@ -4905,11 +5519,13 @@
     {
       "id": "VestaDefault",
       "name": "VestaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VestaDefault/VestaDefault.glb"
     },
     {
       "id": "ViolaDefault",
       "name": "ViolaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/ViolaDefault/ViolaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/ViolaDefault/ViolaDefault.skill.glb",
@@ -4920,6 +5536,7 @@
     {
       "id": "Violet2Anniv",
       "name": "Violet2Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Violet2Anniv/Violet2Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Violet2Anniv/Violet2Anniv.skill.glb",
@@ -4930,6 +5547,7 @@
     {
       "id": "VioletDefault",
       "name": "VioletDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VioletDefault/VioletDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VioletDefault/VioletDefault.skill.glb",
@@ -4940,6 +5558,7 @@
     {
       "id": "VioletGothic",
       "name": "VioletGothic",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VioletGothic/VioletGothic.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VioletGothic/VioletGothic.skill.glb",
@@ -4950,6 +5569,7 @@
     {
       "id": "VioletHA2023",
       "name": "VioletHA2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VioletHA2023/VioletHA2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VioletHA2023/VioletHA2023.skill.glb",
@@ -4960,6 +5580,7 @@
     {
       "id": "VioletMilitary",
       "name": "VioletMilitary",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VioletMilitary/VioletMilitary.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VioletMilitary/VioletMilitary.skill.glb",
@@ -4970,6 +5591,7 @@
     {
       "id": "VioletMovieRevival",
       "name": "VioletMovieRevival",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VioletMovieRevival/VioletMovieRevival.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VioletMovieRevival/VioletMovieRevival.skill.glb",
@@ -4980,6 +5602,7 @@
     {
       "id": "VioletSwimsuit2025",
       "name": "VioletSwimsuit2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VioletSwimsuit2025/VioletSwimsuit2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VioletSwimsuit2025/VioletSwimsuit2025.skill.glb",
@@ -4990,6 +5613,7 @@
     {
       "id": "VioletXmas2024",
       "name": "VioletXmas2024",
+      "characterType": "PC",
       "glb": "/models/Character/PC/VioletXmas2024/VioletXmas2024.glb",
       "skillScene": {
         "glb": "/models/Character/PC/VioletXmas2024/VioletXmas2024.skill.glb",
@@ -5000,6 +5624,7 @@
     {
       "id": "Werzard4Anniv",
       "name": "Werzard4Anniv",
+      "characterType": "PC",
       "glb": "/models/Character/PC/Werzard4Anniv/Werzard4Anniv.glb",
       "skillScene": {
         "glb": "/models/Character/PC/Werzard4Anniv/Werzard4Anniv.skill.glb",
@@ -5010,6 +5635,7 @@
     {
       "id": "WerzardBlackHero",
       "name": "WerzardBlackHero",
+      "characterType": "PC",
       "glb": "/models/Character/PC/WerzardBlackHero/WerzardBlackHero.glb",
       "skillScene": {
         "glb": "/models/Character/PC/WerzardBlackHero/WerzardBlackHero.skill.glb",
@@ -5020,6 +5646,7 @@
     {
       "id": "WerzardDefault",
       "name": "WerzardDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/WerzardDefault/WerzardDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/WerzardDefault/WerzardDefault.skill.glb",
@@ -5030,6 +5657,7 @@
     {
       "id": "WerzardHA2023",
       "name": "WerzardHA2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/WerzardHA2023/WerzardHA2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/WerzardHA2023/WerzardHA2023.skill.glb",
@@ -5040,6 +5668,7 @@
     {
       "id": "WerzardHA2024",
       "name": "WerzardHA2024",
+      "characterType": "PC",
       "glb": "/models/Character/PC/WerzardHA2024/WerzardHA2024.glb",
       "skillScene": {
         "glb": "/models/Character/PC/WerzardHA2024/WerzardHA2024.skill.glb",
@@ -5050,6 +5679,7 @@
     {
       "id": "WerzardHA2025",
       "name": "WerzardHA2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/WerzardHA2025/WerzardHA2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/WerzardHA2025/WerzardHA2025.skill.glb",
@@ -5060,6 +5690,7 @@
     {
       "id": "WerzardNordic",
       "name": "WerzardNordic",
+      "characterType": "PC",
       "glb": "/models/Character/PC/WerzardNordic/WerzardNordic.glb",
       "skillScene": {
         "glb": "/models/Character/PC/WerzardNordic/WerzardNordic.skill.glb",
@@ -5070,6 +5701,7 @@
     {
       "id": "WerzardParty2022",
       "name": "WerzardParty2022",
+      "characterType": "PC",
       "glb": "/models/Character/PC/WerzardParty2022/WerzardParty2022.glb",
       "skillScene": {
         "glb": "/models/Character/PC/WerzardParty2022/WerzardParty2022.skill.glb",
@@ -5080,6 +5712,7 @@
     {
       "id": "WerzardXmas2022",
       "name": "WerzardXmas2022",
+      "characterType": "PC",
       "glb": "/models/Character/PC/WerzardXmas2022/WerzardXmas2022.glb",
       "skillScene": {
         "glb": "/models/Character/PC/WerzardXmas2022/WerzardXmas2022.skill.glb",
@@ -5090,6 +5723,7 @@
     {
       "id": "YamzaDefault",
       "name": "YamzaDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/YamzaDefault/YamzaDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/YamzaDefault/YamzaDefault.skill.glb",
@@ -5100,6 +5734,7 @@
     {
       "id": "YoumDefault",
       "name": "YoumDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/YoumDefault/YoumDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/YoumDefault/YoumDefault.skill.glb",
@@ -5110,6 +5745,7 @@
     {
       "id": "YoumDefaultPC",
       "name": "YoumDefaultPC",
+      "characterType": "PC",
       "glb": "/models/Character/PC/YoumDefaultPC/YoumDefaultPC.glb",
       "skillScene": {
         "glb": "/models/Character/PC/YoumDefaultPC/YoumDefaultPC.skill.glb",
@@ -5120,6 +5756,7 @@
     {
       "id": "YoumNordic",
       "name": "YoumNordic",
+      "characterType": "PC",
       "glb": "/models/Character/PC/YoumNordic/YoumNordic.glb",
       "skillScene": {
         "glb": "/models/Character/PC/YoumNordic/YoumNordic.skill.glb",
@@ -5130,6 +5767,7 @@
     {
       "id": "YuraDefault",
       "name": "YuraDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/YuraDefault/YuraDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/YuraDefault/YuraDefault.skill.glb",
@@ -5140,6 +5778,7 @@
     {
       "id": "YuukiBattlesuit2023",
       "name": "YuukiBattlesuit2023",
+      "characterType": "PC",
       "glb": "/models/Character/PC/YuukiBattlesuit2023/YuukiBattlesuit2023.glb",
       "skillScene": {
         "glb": "/models/Character/PC/YuukiBattlesuit2023/YuukiBattlesuit2023.skill.glb",
@@ -5150,6 +5789,7 @@
     {
       "id": "YuukiDefault",
       "name": "YuukiDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/YuukiDefault/YuukiDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/YuukiDefault/YuukiDefault.skill.glb",
@@ -5160,6 +5800,7 @@
     {
       "id": "YuukiSaoDefault",
       "name": "YuukiSaoDefault",
+      "characterType": "PC",
       "glb": "/models/Character/PC/YuukiSaoDefault/YuukiSaoDefault.glb",
       "skillScene": {
         "glb": "/models/Character/PC/YuukiSaoDefault/YuukiSaoDefault.skill.glb",
@@ -5170,6 +5811,7 @@
     {
       "id": "YuukiSchool2025",
       "name": "YuukiSchool2025",
+      "characterType": "PC",
       "glb": "/models/Character/PC/YuukiSchool2025/YuukiSchool2025.glb",
       "skillScene": {
         "glb": "/models/Character/PC/YuukiSchool2025/YuukiSchool2025.skill.glb",
