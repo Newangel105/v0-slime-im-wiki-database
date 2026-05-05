@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect, useMemo, useState } from "react"
-import { ArrowLeft, ImagePlus, Lock, Plus, Save, Trash2, Upload, Video } from "lucide-react"
+import { ArrowDown, ArrowLeft, ArrowUp, GripVertical, ImagePlus, Lock, Plus, Save, Trash2, Upload, Video } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -36,6 +36,16 @@ function safeFileName(name: string): string {
     .replace(/^-+|-+$/g, "")
 }
 
+function isInteractiveDragTarget(target: EventTarget | null): boolean {
+  if (!(target instanceof HTMLElement)) return false
+
+  return Boolean(
+    target.closest(
+      'input, textarea, select, button, a, label, [contenteditable="true"], [data-no-drag="true"]',
+    ),
+  )
+}
+
 export function GuideEditor({ mode, articleId }: GuideEditorProps) {
   const router = useRouter()
   const [profile, setProfile] = useState<GuideAuthorProfile | null>(null)
@@ -50,6 +60,7 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [draggedBlockId, setDraggedBlockId] = useState<string | null>(null)
 
   const previewArticle = useMemo<GuideArticle>(() => ({
     id: article?.id || "preview",
@@ -145,6 +156,43 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
 
   function removeBlock(id: string) {
     setContent((current) => ({ blocks: current.blocks.filter((block) => block.id !== id) }))
+  }
+
+  function moveBlockByIndex(fromIndex: number, toIndex: number) {
+    setContent((current) => {
+      if (fromIndex === toIndex) return current
+      if (fromIndex < 0 || fromIndex >= current.blocks.length) return current
+      if (toIndex < 0 || toIndex >= current.blocks.length) return current
+
+      const blocks = [...current.blocks]
+      const [moved] = blocks.splice(fromIndex, 1)
+      blocks.splice(toIndex, 0, moved)
+      return { blocks }
+    })
+  }
+
+  function moveBlockById(id: string, direction: -1 | 1) {
+    const fromIndex = content.blocks.findIndex((block) => block.id === id)
+    if (fromIndex < 0) return
+    moveBlockByIndex(fromIndex, fromIndex + direction)
+  }
+
+  function moveDraggedBlock(draggedId: string | null, targetId: string) {
+    if (!draggedId || draggedId === targetId) return
+
+    setContent((current) => {
+      const fromIndex = current.blocks.findIndex((block) => block.id === draggedId)
+      const toIndex = current.blocks.findIndex((block) => block.id === targetId)
+
+      if (fromIndex < 0 || toIndex < 0 || fromIndex === toIndex) {
+        return current
+      }
+
+      const blocks = [...current.blocks]
+      const [moved] = blocks.splice(fromIndex, 1)
+      blocks.splice(toIndex, 0, moved)
+      return { blocks }
+    })
   }
 
   function addBlock(type: GuideContentBlock["type"]) {
@@ -398,13 +446,69 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
                   <Button size="sm" variant="outline" onClick={() => addBlock("list")} className="border-white/15 bg-white/5 text-white hover:bg-white/10">List</Button>
                   <Button size="sm" variant="outline" onClick={() => addBlock("divider")} className="border-white/15 bg-white/5 text-white hover:bg-white/10">Divider</Button>
                 </div>
+                <p className="mb-4 text-xs text-gray-400">Drag a section card to rearrange it, or use the up/down buttons. Form fields and buttons still behave normally.</p>
 
                 <div className="space-y-4">
                   {content.blocks.map((block, index) => (
-                    <div key={block.id} className="rounded-2xl border border-white/10 bg-slate-950/60 p-4">
+                    <div
+                      key={block.id}
+                      draggable
+                      onDragStart={(event) => {
+                        if (isInteractiveDragTarget(event.target)) {
+                          event.preventDefault()
+                          return
+                        }
+
+                        setDraggedBlockId(block.id)
+                        event.dataTransfer.effectAllowed = "move"
+                        event.dataTransfer.setData("text/plain", block.id)
+                      }}
+                      onDragEnd={() => setDraggedBlockId(null)}
+                      onDragOver={(event) => {
+                        if (draggedBlockId) event.preventDefault()
+                      }}
+                      onDrop={(event) => {
+                        event.preventDefault()
+                        const droppedId = event.dataTransfer.getData("text/plain") || draggedBlockId
+                        moveDraggedBlock(droppedId, block.id)
+                        setDraggedBlockId(null)
+                      }}
+                      className={`cursor-move rounded-2xl border border-white/10 bg-slate-950/60 p-4 transition ${draggedBlockId === block.id ? "opacity-60 ring-1 ring-cyan-400/50" : ""}`}
+                    >
                       <div className="mb-3 flex items-center justify-between gap-3 text-xs uppercase tracking-wider text-gray-400">
-                        <span>{index + 1}. {block.type}</span>
-                        <Button size="sm" variant="ghost" onClick={() => removeBlock(block.id)} className="text-red-300 hover:bg-red-500/10 hover:text-red-200"><Trash2 className="h-4 w-4" /></Button>
+                        <div className="flex items-center gap-2">
+                          <span
+                            className="rounded-md p-1 text-gray-500 hover:bg-white/10 hover:text-cyan-200 active:cursor-grabbing"
+                            title="Drag this section"
+                            aria-label="Drag this section"
+                          >
+                            <GripVertical className="h-4 w-4" />
+                          </span>
+                          <span>{index + 1}. {block.type}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            onClick={() => moveBlockById(block.id, -1)}
+                            disabled={index === 0}
+                            className="text-gray-300 hover:bg-white/10 hover:text-white disabled:opacity-30"
+                            title="Move section up"
+                          >
+                            <ArrowUp className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            onClick={() => moveBlockById(block.id, 1)}
+                            disabled={index === content.blocks.length - 1}
+                            className="text-gray-300 hover:bg-white/10 hover:text-white disabled:opacity-30"
+                            title="Move section down"
+                          >
+                            <ArrowDown className="h-4 w-4" />
+                          </Button>
+                          <Button size="sm" variant="ghost" onClick={() => removeBlock(block.id)} className="text-red-300 hover:bg-red-500/10 hover:text-red-200"><Trash2 className="h-4 w-4" /></Button>
+                        </div>
                       </div>
 
                       {block.type === "paragraph" ? (
