@@ -26,6 +26,9 @@ export interface GuideArticle {
   author_id: string
   author_name: string
   status: GuideStatus
+  is_locked: boolean
+  locked_at: string | null
+  locked_by: string | null
   created_at: string
   updated_at: string
   published_at: string | null
@@ -142,7 +145,16 @@ export async function getCurrentGuideAuthor(): Promise<GuideAuthorProfile | null
   return data as GuideAuthorProfile
 }
 
-export function canEditGuide(profile: GuideAuthorProfile | null, article: Pick<GuideArticle, "author_id"> | null): boolean {
+export function isGuideLocked(article: Pick<GuideArticle, "is_locked"> | null | undefined): boolean {
+  return Boolean(article?.is_locked)
+}
+
+export function canManageGuide(profile: GuideAuthorProfile | null, article: Pick<GuideArticle, "author_id"> | null): boolean {
   if (!profile || !article) return false
   return profile.role === "admin" || article.author_id === profile.id
+}
+
+export function canEditGuide(profile: GuideAuthorProfile | null, article: Pick<GuideArticle, "author_id" | "is_locked"> | null): boolean {
+  if (!canManageGuide(profile, article)) return false
+  return !isGuideLocked(article)
 }

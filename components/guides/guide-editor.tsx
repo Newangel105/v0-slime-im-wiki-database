@@ -3,14 +3,14 @@
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect, useMemo, useState } from "react"
-import { ArrowLeft, ImagePlus, Plus, Save, Trash2, Upload, Video } from "lucide-react"
+import { ArrowLeft, ImagePlus, Lock, Plus, Save, Trash2, Upload, Video } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { extractYouTubeVideoId, guidesSupabase, guidesSupabaseConfigured, makeBlockId, slugifyGuideTitle, type GuideArticle, type GuideAuthorProfile, type GuideContent, type GuideContentBlock, type GuideStatus } from "@/lib/guides"
+import { extractYouTubeVideoId, guidesSupabase, guidesSupabaseConfigured, isGuideLocked, makeBlockId, slugifyGuideTitle, type GuideArticle, type GuideAuthorProfile, type GuideContent, type GuideContentBlock, type GuideStatus } from "@/lib/guides"
 import { GuideRenderer } from "@/components/guides/guide-renderer"
 
 type EditorMode = "new" | "edit"
@@ -61,6 +61,9 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
     author_id: profile?.id || "preview-author",
     author_name: profile?.display_name || "Author",
     status,
+    is_locked: article?.is_locked || false,
+    locked_at: article?.locked_at || null,
+    locked_by: article?.locked_by || null,
     created_at: article?.created_at || new Date().toISOString(),
     updated_at: new Date().toISOString(),
     published_at: status === "published" ? article?.published_at || new Date().toISOString() : null,
@@ -189,6 +192,11 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
   async function save(nextStatus?: GuideStatus) {
     if (!profile) return
 
+    if (article && isGuideLocked(article)) {
+      setError("This article is locked. Unlock it from My Articles before editing.")
+      return
+    }
+
     setSaving(true)
     setError(null)
     setMessage(null)
@@ -285,6 +293,26 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
             <Link href="/guides"><ArrowLeft className="mr-2 h-4 w-4" /> Back to Guides</Link>
           </Button>
           <div className="rounded-2xl border border-red-500/30 bg-red-500/10 p-6 text-red-200">{error}</div>
+        </div>
+      </main>
+    )
+  }
+
+  if (mode === "edit" && article && isGuideLocked(article)) {
+    return (
+      <main className="min-h-screen bg-[#0f172a] text-white">
+        <div className="mx-auto max-w-4xl px-4 py-12">
+          <Button asChild variant="outline" className="mb-6 border-white/15 bg-white/5 text-white hover:bg-white/10">
+            <Link href="/guides/admin"><ArrowLeft className="mr-2 h-4 w-4" /> My Articles</Link>
+          </Button>
+          <div className="rounded-2xl border border-slate-400/30 bg-slate-500/10 p-6 text-slate-100">
+            <div className="mb-2 flex items-center gap-2 text-lg font-bold">
+              <Lock className="h-5 w-5" /> This article is locked
+            </div>
+            <p className="text-sm leading-6 text-slate-300">
+              Unlock “{article.title}” from My Articles before editing it.
+            </p>
+          </div>
         </div>
       </main>
     )

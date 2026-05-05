@@ -2,11 +2,11 @@
 
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { ArrowLeft, Edit } from "lucide-react"
+import { ArrowLeft, Edit, Lock } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { GuideRenderer } from "@/components/guides/guide-renderer"
-import { canEditGuide, formatGuideDate, getCurrentGuideAuthor, guidesSupabase, guidesSupabaseConfigured, type GuideArticle, type GuideAuthorProfile } from "@/lib/guides"
+import { canEditGuide, canManageGuide, formatGuideDate, getCurrentGuideAuthor, guidesSupabase, guidesSupabaseConfigured, isGuideLocked, type GuideArticle, type GuideAuthorProfile } from "@/lib/guides"
 
 export function GuideDetailClient({ slug }: { slug: string }) {
   const [article, setArticle] = useState<GuideArticle | null>(null)
@@ -39,7 +39,7 @@ export function GuideDetailClient({ slug }: { slug: string }) {
         setArticle(null)
       } else {
         const found = data as GuideArticle | null
-        if (!found || (found.status !== "published" && !canEditGuide(author, found))) {
+        if (!found || (found.status !== "published" && !canManageGuide(author, found))) {
           setError("Guide not found.")
           setArticle(null)
         } else {
@@ -82,6 +82,7 @@ export function GuideDetailClient({ slug }: { slug: string }) {
             <div className="mb-4 flex flex-wrap items-center gap-3">
               <Badge className="border-cyan-400/40 bg-cyan-400/10 text-cyan-200 hover:bg-cyan-400/10">Guide</Badge>
               {article.status === "draft" ? <Badge className="border-yellow-400/40 bg-yellow-400/10 text-yellow-200 hover:bg-yellow-400/10">Draft preview</Badge> : null}
+              {isGuideLocked(article) ? <Badge className="border-slate-400/40 bg-slate-400/10 text-slate-200 hover:bg-slate-400/10"><Lock className="mr-1 h-3 w-3" /> Locked</Badge> : null}
             </div>
 
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">{article.title}</h1>
