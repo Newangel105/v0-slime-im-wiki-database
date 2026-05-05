@@ -620,7 +620,7 @@ function buildAllOptions(characters: BrowserCharacter[]) {
     forces: buildForcesOptions(characters),
     skillGroups: getSkillEffectFilterGroups(getAllWikiCharacters().flatMap((character) => character.skills)),
     traitGroups: getSkillEffectFilterGroups(characters.flatMap((character) => character.traits.filter((trait) => !isValorTrait(trait)))),
-    valorTraitGroups: getSkillEffectFilterGroups(characters.flatMap((character) => character.traits.filter((trait) => isValorTrait(trait)))),
+    valorTraitGroups: buildValorTraitGroups(characters),
     facilities: buildOptions(characters.flatMap((c) => c.facilities)),
   }
 }
@@ -905,8 +905,117 @@ function RarityToggleBar({
 
 // --- Trait helpers ---
 
-function isValorTrait(trait: { icon_path: string }): boolean {
-  return trait.icon_path.includes("ArenaPassive")
+type BrowserTrait = BrowserCharacter["traits"][number]
+
+type ValorTraitOption = {
+  label: string
+  value: string
+}
+
+function isValorTrait(trait: { icon_path?: string | null }): boolean {
+  return Boolean(trait.icon_path?.includes("ArenaPassiveSkill") || trait.icon_path?.includes("ArenaPassive"))
+}
+
+function isInitialConditionTrait(trait: { unlock?: string | null; name?: string | null }): boolean {
+  const unlock = normalizeLabel(trait.unlock ?? "")
+  const name = normalizeLabel(trait.name ?? "")
+
+  return unlock === "initialconditions" || name.endsWith("initialconditions")
+}
+
+function isSelectableValorTrait(trait: BrowserTrait): boolean {
+  return isValorTrait(trait) && !isInitialConditionTrait(trait)
+}
+
+function cleanValorTraitName(name: string | null | undefined): string {
+  const cleaned = (name ?? "")
+    .trim()
+    .replace(/\s+Initial Conditions\s*$/i, "")
+    .trim()
+
+  // Keep the full Valor Trait name. Do not collapse
+  // "Soul Combo - Protection DOWN" and "Charge - Protection DOWN"
+  // into the same "Protection DOWN" option.
+  return cleaned || "Unknown Valor Trait"
+}
+
+function getValorTraitValue(trait: BrowserTrait): string | null {
+  if (!isSelectableValorTrait(trait)) return null
+
+  const label = cleanValorTraitName(trait.name)
+  if (!label) return null
+
+  return `valor_trait:${normalizeLabel(label)}`
+}
+
+function getValorTraitLabel(trait: BrowserTrait): string {
+  return cleanValorTraitName(trait.name)
+}
+
+function getSelectableValorTraits(characters: BrowserCharacter[]): BrowserTrait[] {
+  return characters.flatMap((character) =>
+    (character.traits ?? []).filter((trait) => isSelectableValorTrait(trait)),
+  )
+}
+
+function buildValorTraitGroups(characters: BrowserCharacter[]): CharacterEffectFilterGroup[] {
+  const valorTraits = getSelectableValorTraits(characters)
+
+  // Keep the old organization/order for the valor traits that already have
+  // effect tags, e.g. GAUGE / SOUL BUFF / etc.
+  const taggedGroups = getSkillEffectFilterGroups(valorTraits).map((group) => ({
+    ...group,
+    options: group.options.map((option) => ({
+      ...option,
+      label: cleanValorTraitName(option.label),
+    })),
+  }))
+  const taggedValues = new Set(taggedGroups.flatMap((group) => group.options.map((option) => option.value)))
+
+  // Add only the Valor Traits that have no visible tag-backed option. This is
+  // what makes entries such as "Switch - Skill Seal" appear without turning
+  // Initial Conditions into selectable filters.
+  const fallbackOptions = new Map<string, ValorTraitOption>()
+
+  for (const trait of valorTraits) {
+    const alreadyCoveredByTag = (trait.effect_tags ?? []).some((tag) => taggedValues.has(tag))
+    if (alreadyCoveredByTag) continue
+
+    const value = getValorTraitValue(trait)
+    if (!value) continue
+
+    fallbackOptions.set(value, {
+      value,
+      label: getValorTraitLabel(trait),
+    })
+  }
+
+  if (fallbackOptions.size === 0) {
+    return taggedGroups
+  }
+
+  return [
+    ...taggedGroups,
+    {
+      key: "valor_trait_other",
+      title: "Other",
+      options: [...fallbackOptions.values()].sort((left, right) =>
+        left.label.localeCompare(right.label),
+      ),
+    },
+  ]
+}
+
+function characterMatchesValorTrait(character: BrowserCharacter, selectedValue: string): boolean {
+  return (character.traits ?? []).some((trait) => {
+    if (!isSelectableValorTrait(trait)) return false
+
+    if ((trait.effect_tags ?? []).includes(selectedValue)) {
+      return true
+    }
+
+    return getValorTraitValue(trait) === selectedValue
+  })
 }
 
 function GroupedToggleFilter({
@@ -1296,18 +1405,10 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
         selectedValorTraitNames.length === 0 ||
         (isAND
           ? selectedValorTraitNames.every((v) =>
-              character.traits.some(
-                (trait) =>
-                  isValorTrait(trait) &&
-                  trait.effect_tags?.includes(v)
-              )
+              characterMatchesValorTrait(character, v)
             )
           : selectedValorTraitNames.some((v) =>
-              character.traits.some(
-                (trait) =>
-                  isValorTrait(trait) &&
-                  trait.effect_tags?.includes(v)
-              )
+              characterMatchesValorTrait(character, v)
             ))
 
       if (!valorTraitOk) return false

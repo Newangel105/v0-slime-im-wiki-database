@@ -32,6 +32,7 @@ export type BrowserCharacterTrait = {
   description_max_level?: string
   skill_filter_groups?: WikiCharacter["traits"][number]["skill_filter_groups"]
   effect_tags?: string[]
+  unlock: string
 }
 
 export type BrowserCharacterUltimateType = "aoe" | "single" | null
@@ -211,6 +212,7 @@ function toBrowserCharacter(character: WikiCharacter, forceIconLookup: Map<strin
       description_max_level: trait.description_max_level,
       skill_filter_groups: trait.skill_filter_groups,
       effect_tags: [...getSkillEffectTags(trait)],
+      unlock: trait.unlock,
     })),
     facilities: character.facilities,
     effect_tags: [...getCharacterEffectTags(character)],
