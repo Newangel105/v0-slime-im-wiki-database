@@ -195,17 +195,23 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
     })
   }
 
-  function addBlock(type: GuideContentBlock["type"]) {
+  function addBlock(type: GuideContentBlock["type"], layout: "full" | "half" = "full") {
     let block: GuideContentBlock
-    if (type === "paragraph") block = { id: makeBlockId(), type, text: "" }
-    else if (type === "heading") block = { id: makeBlockId(), type, level: 2, text: "" }
-    else if (type === "image") block = { id: makeBlockId(), type, url: "", caption: "", alt: "" }
-    else if (type === "youtube") block = { id: makeBlockId(), type, url: "", videoId: "", caption: "" }
-    else if (type === "quote") block = { id: makeBlockId(), type, text: "", cite: "" }
-    else if (type === "list") block = { id: makeBlockId(), type, items: [""] }
-    else block = { id: makeBlockId(), type: "divider" }
+    if (type === "paragraph") block = { id: makeBlockId(), type, text: "", layout }
+    else if (type === "heading") block = { id: makeBlockId(), type, level: 2, text: "", layout }
+    else if (type === "image") block = { id: makeBlockId(), type, url: "", caption: "", alt: "", layout }
+    else if (type === "youtube") block = { id: makeBlockId(), type, url: "", videoId: "", caption: "", layout }
+    else if (type === "quote") block = { id: makeBlockId(), type, text: "", cite: "", layout }
+    else if (type === "list") block = { id: makeBlockId(), type, items: [""], layout }
+    else block = { id: makeBlockId(), type: "divider", layout }
 
     setContent((current) => ({ blocks: [...current.blocks, block] }))
+  }
+
+  function addSideBySidePair() {
+    const left: GuideContentBlock = { id: makeBlockId(), type: "paragraph", text: "", layout: "half" }
+    const right: GuideContentBlock = { id: makeBlockId(), type: "image", url: "", caption: "", alt: "", layout: "half" }
+    setContent((current) => ({ blocks: [...current.blocks, left, right] }))
   }
 
   async function uploadImage(file: File, purpose: "thumbnail" | "inline"): Promise<string | null> {
@@ -441,12 +447,13 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
                   <Button size="sm" variant="outline" onClick={() => addBlock("paragraph")} className="border-white/15 bg-white/5 text-white hover:bg-white/10"><Plus className="mr-1 h-4 w-4" /> Paragraph</Button>
                   <Button size="sm" variant="outline" onClick={() => addBlock("heading")} className="border-white/15 bg-white/5 text-white hover:bg-white/10"><Plus className="mr-1 h-4 w-4" /> Heading</Button>
                   <Button size="sm" variant="outline" onClick={() => addBlock("image")} className="border-white/15 bg-white/5 text-white hover:bg-white/10"><Plus className="mr-1 h-4 w-4" /> Image</Button>
+                  <Button size="sm" variant="outline" onClick={addSideBySidePair} className="border-cyan-400/30 bg-cyan-400/10 text-cyan-100 hover:bg-cyan-400/15"><Plus className="mr-1 h-4 w-4" /> Side by Side</Button>
                   <Button size="sm" variant="outline" onClick={() => addBlock("youtube")} className="border-white/15 bg-white/5 text-white hover:bg-white/10"><Video className="mr-1 h-4 w-4" /> YouTube</Button>
                   <Button size="sm" variant="outline" onClick={() => addBlock("quote")} className="border-white/15 bg-white/5 text-white hover:bg-white/10">Quote</Button>
                   <Button size="sm" variant="outline" onClick={() => addBlock("list")} className="border-white/15 bg-white/5 text-white hover:bg-white/10">List</Button>
                   <Button size="sm" variant="outline" onClick={() => addBlock("divider")} className="border-white/15 bg-white/5 text-white hover:bg-white/10">Divider</Button>
                 </div>
-                <p className="mb-4 text-xs text-gray-400">Drag a section card to rearrange it, or use the up/down buttons. Form fields and buttons still behave normally.</p>
+                <p className="mb-4 text-xs text-gray-400">Drag a section card to rearrange it, or use the up/down buttons. Set two neighboring sections to Half width to show them side by side.</p>
 
                 <div className="space-y-4">
                   {content.blocks.map((block, index) => (
@@ -486,7 +493,16 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
                           </span>
                           <span>{index + 1}. {block.type}</span>
                         </div>
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-2">
+                          <select
+                            value={block.layout ?? "full"}
+                            onChange={(event) => updateBlock(block.id, { layout: event.target.value as "full" | "half" } as Partial<GuideContentBlock>)}
+                            className="h-8 rounded-md border border-white/10 bg-slate-900 px-2 text-xs normal-case tracking-normal text-white"
+                            title="Section width"
+                          >
+                            <option value="full">Full width</option>
+                            <option value="half">Half width</option>
+                          </select>
                           <Button
                             size="sm"
                             variant="ghost"
