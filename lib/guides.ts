@@ -4,10 +4,14 @@ export type GuideStatus = "draft" | "published"
 export type GuideAuthorRole = "author" | "admin"
 
 export type GuideBlockLayout = "full" | "half"
+export type GuideBlockTextAlign = "left" | "center"
+export type GuideBlockVerticalAlign = "top" | "center"
 
 type GuideContentBlockBase = {
   id: string
   layout?: GuideBlockLayout
+  textAlign?: GuideBlockTextAlign
+  verticalAlign?: GuideBlockVerticalAlign
 }
 
 export type GuideContentBlock =

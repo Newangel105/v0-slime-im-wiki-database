@@ -9,10 +9,30 @@ function blockLayout(block: GuideContentBlock): "full" | "half" {
   return block.layout === "half" ? "half" : "full"
 }
 
+function isTextBlock(block: GuideContentBlock): boolean {
+  return block.type === "paragraph" || block.type === "heading" || block.type === "quote" || block.type === "list"
+}
+
+function textAlignClass(block: GuideContentBlock): string {
+  return block.textAlign === "center" ? "text-center" : "text-left"
+}
+
+function textBlockShellClass(block: GuideContentBlock): string {
+  if (!isTextBlock(block)) return "min-w-0"
+
+  if (block.verticalAlign === "center") {
+    return "flex h-full min-h-[160px] min-w-0 flex-col justify-center"
+  }
+
+  return "min-w-0"
+}
+
 function renderBlock(block: GuideContentBlock, compact = false) {
+  const alignClass = textAlignClass(block)
+
   if (block.type === "paragraph") {
     return (
-      <p className="whitespace-pre-wrap text-base leading-8 text-gray-200">
+      <p className={`${alignClass} whitespace-pre-wrap text-base leading-8 text-gray-200`}>
         {block.text}
       </p>
     )
@@ -21,7 +41,7 @@ function renderBlock(block: GuideContentBlock, compact = false) {
   if (block.type === "heading") {
     const Tag = block.level === 3 ? "h3" : "h2"
     return (
-      <Tag className={block.level === 3 ? "text-xl font-bold text-white" : "text-2xl font-extrabold text-white"}>
+      <Tag className={`${alignClass} ${block.level === 3 ? "text-xl font-bold text-white" : "text-2xl font-extrabold text-white"}`}>
         {block.text}
       </Tag>
     )
@@ -62,7 +82,7 @@ function renderBlock(block: GuideContentBlock, compact = false) {
 
   if (block.type === "quote") {
     return (
-      <blockquote className="rounded-2xl border-l-4 border-cyan-400 bg-cyan-400/10 px-5 py-4 text-gray-100">
+      <blockquote className={`${alignClass} rounded-2xl border-l-4 border-cyan-400 bg-cyan-400/10 px-5 py-4 text-gray-100`}>
         <p className="whitespace-pre-wrap text-lg italic leading-8">“{block.text}”</p>
         {block.cite ? <footer className="mt-3 text-sm font-semibold text-cyan-200">— {block.cite}</footer> : null}
       </blockquote>
@@ -73,7 +93,7 @@ function renderBlock(block: GuideContentBlock, compact = false) {
     const items = block.items.filter((item) => item.trim())
     if (items.length === 0) return null
     return (
-      <ul className="list-disc space-y-2 pl-6 text-gray-200">
+      <ul className={`${alignClass} ${block.textAlign === "center" ? "list-none pl-0" : "list-disc pl-6"} space-y-2 text-gray-200`}>
         {items.map((item, index) => (
           <li key={`${block.id}-${index}`} className="leading-7">
             {item}
@@ -107,9 +127,9 @@ export function GuideRenderer({ content }: GuideRendererProps) {
     halfRow = []
 
     nodes.push(
-      <div key={`row-${row.map((block) => block.id).join("-")}`} className="grid gap-6 md:grid-cols-2">
+      <div key={`row-${row.map((block) => block.id).join("-")}`} className="grid items-stretch gap-6 md:grid-cols-2">
         {row.map((block) => (
-          <div key={block.id} className="min-w-0">
+          <div key={block.id} className={textBlockShellClass(block)}>
             {renderBlock(block, true)}
           </div>
         ))}
@@ -125,7 +145,11 @@ export function GuideRenderer({ content }: GuideRendererProps) {
     }
 
     flushHalfRow()
-    nodes.push(<div key={block.id}>{renderBlock(block)}</div>)
+    nodes.push(
+      <div key={block.id} className={textBlockShellClass(block)}>
+        {renderBlock(block)}
+      </div>,
+    )
   }
 
   flushHalfRow()
