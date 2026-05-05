@@ -1,1 +1,408 @@
-{"defaults": {"BodyMesh": true, "FaceMesh": true, "SwordMesh": true}, "tracks": {"YamzaDefault_Battle_ActiveSkill_Buff": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_ActiveSkill_Debuff": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_Appear": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_BigDamage": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_Damage": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_Die": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_Guard": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_Idle": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_PreAttackIdle_End": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_PreAttackIdle_Loop": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_PreAttackIdle_Start": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_SingleAttack_1_End": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_SingleAttack_1_Shot": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_SingleAttack_1_Start": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_SingleAttack_4_End": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_SingleAttack_4_Shot": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_SingleAttack_4_Start": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_StandUp": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "YamzaDefault_Battle_StartAct": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}}, "visibilityPolicy": {"version": 3, "mode": "data-driven-controlled-mesh-opt-in-normal-track-filtered", "exportedClipCount": 19, "controlledMeshes": ["BodyMesh", "FaceMesh", "SwordMesh"], "alwaysVisibleControlledMeshes": ["BodyMesh", "FaceMesh", "SwordMesh"], "equipmentMeshes": ["SwordMesh"], "strippedNormalVisibilityTrackRefs": 0}}
+﻿{
+    "defaults":  {
+                     "FaceMesh":  true,
+                     "BodyMesh":  true,
+                     "SwordMesh":  false
+                 },
+    "tracks":  {
+                   "YamzaDefault_Battle_ActiveSkill_Buff":  {
+                                                                "SwordMesh":  [
+                                                                                  {
+                                                                                      "time":  0.0,
+                                                                                      "value":  1.0
+                                                                                  }
+                                                                              ],
+                                                                "BodyMesh":  [
+                                                                                 {
+                                                                                     "time":  0.0,
+                                                                                     "value":  1.0
+                                                                                 }
+                                                                             ],
+                                                                "FaceMesh":  [
+                                                                                 {
+                                                                                     "time":  0.0,
+                                                                                     "value":  1.0
+                                                                                 }
+                                                                             ]
+                                                            },
+                   "YamzaDefault_Battle_ActiveSkill_Debuff":  {
+                                                                  "SwordMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ],
+                                                                  "BodyMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ],
+                                                                  "FaceMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ]
+                                                              },
+                   "YamzaDefault_Battle_Appear":  {
+                                                      "SwordMesh":  [
+                                                                        {
+                                                                            "time":  0.0,
+                                                                            "value":  1.0
+                                                                        }
+                                                                    ],
+                                                      "BodyMesh":  [
+                                                                       {
+                                                                           "time":  0.0,
+                                                                           "value":  1.0
+                                                                       }
+                                                                   ],
+                                                      "FaceMesh":  [
+                                                                       {
+                                                                           "time":  0.0,
+                                                                           "value":  1.0
+                                                                       }
+                                                                   ]
+                                                  },
+                   "YamzaDefault_Battle_BigDamage":  {
+                                                         "SwordMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                         "BodyMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ],
+                                                         "FaceMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ]
+                                                     },
+                   "YamzaDefault_Battle_Damage":  {
+                                                      "SwordMesh":  [
+                                                                        {
+                                                                            "time":  0.0,
+                                                                            "value":  1.0
+                                                                        }
+                                                                    ],
+                                                      "BodyMesh":  [
+                                                                       {
+                                                                           "time":  0.0,
+                                                                           "value":  1.0
+                                                                       }
+                                                                   ],
+                                                      "FaceMesh":  [
+                                                                       {
+                                                                           "time":  0.0,
+                                                                           "value":  1.0
+                                                                       }
+                                                                   ]
+                                                  },
+                   "YamzaDefault_Battle_Die":  {
+                                                   "SwordMesh":  [
+                                                                     {
+                                                                         "time":  0.0,
+                                                                         "value":  1.0
+                                                                     }
+                                                                 ],
+                                                   "BodyMesh":  [
+                                                                    {
+                                                                        "time":  0.0,
+                                                                        "value":  1.0
+                                                                    }
+                                                                ],
+                                                   "FaceMesh":  [
+                                                                    {
+                                                                        "time":  0.0,
+                                                                        "value":  1.0
+                                                                    }
+                                                                ]
+                                               },
+                   "YamzaDefault_Battle_Guard":  {
+                                                     "SwordMesh":  [
+                                                                       {
+                                                                           "time":  0.0,
+                                                                           "value":  1.0
+                                                                       }
+                                                                   ],
+                                                     "BodyMesh":  [
+                                                                      {
+                                                                          "time":  0.0,
+                                                                          "value":  1.0
+                                                                      }
+                                                                  ],
+                                                     "FaceMesh":  [
+                                                                      {
+                                                                          "time":  0.0,
+                                                                          "value":  1.0
+                                                                      }
+                                                                  ]
+                                                 },
+                   "YamzaDefault_Battle_Idle":  {
+                                                    "SwordMesh":  [
+                                                                      {
+                                                                          "time":  0.0,
+                                                                          "value":  1.0
+                                                                      }
+                                                                  ],
+                                                    "BodyMesh":  [
+                                                                     {
+                                                                         "time":  0.0,
+                                                                         "value":  1.0
+                                                                     }
+                                                                 ],
+                                                    "FaceMesh":  [
+                                                                     {
+                                                                         "time":  0.0,
+                                                                         "value":  1.0
+                                                                     }
+                                                                 ]
+                                                },
+                   "YamzaDefault_Battle_PreAttackIdle_End":  {
+                                                                 "SwordMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ],
+                                                                 "BodyMesh":  [
+                                                                                  {
+                                                                                      "time":  0.0,
+                                                                                      "value":  1.0
+                                                                                  }
+                                                                              ],
+                                                                 "FaceMesh":  [
+                                                                                  {
+                                                                                      "time":  0.0,
+                                                                                      "value":  1.0
+                                                                                  }
+                                                                              ]
+                                                             },
+                   "YamzaDefault_Battle_PreAttackIdle_Loop":  {
+                                                                  "SwordMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ],
+                                                                  "BodyMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ],
+                                                                  "FaceMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ]
+                                                              },
+                   "YamzaDefault_Battle_PreAttackIdle_Start":  {
+                                                                   "SwordMesh":  [
+                                                                                     {
+                                                                                         "time":  0.0,
+                                                                                         "value":  1.0
+                                                                                     }
+                                                                                 ],
+                                                                   "BodyMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ],
+                                                                   "FaceMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ]
+                                                               },
+                   "YamzaDefault_Battle_SingleAttack_1_End":  {
+                                                                  "SwordMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ],
+                                                                  "BodyMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ],
+                                                                  "FaceMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ]
+                                                              },
+                   "YamzaDefault_Battle_SingleAttack_1_Shot":  {
+                                                                   "SwordMesh":  [
+                                                                                     {
+                                                                                         "time":  0.0,
+                                                                                         "value":  1.0
+                                                                                     }
+                                                                                 ],
+                                                                   "BodyMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ],
+                                                                   "FaceMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ]
+                                                               },
+                   "YamzaDefault_Battle_SingleAttack_1_Start":  {
+                                                                    "SwordMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ],
+                                                                    "BodyMesh":  [
+                                                                                     {
+                                                                                         "time":  0.0,
+                                                                                         "value":  1.0
+                                                                                     }
+                                                                                 ],
+                                                                    "FaceMesh":  [
+                                                                                     {
+                                                                                         "time":  0.0,
+                                                                                         "value":  1.0
+                                                                                     }
+                                                                                 ]
+                                                                },
+                   "YamzaDefault_Battle_SingleAttack_4_End":  {
+                                                                  "SwordMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ],
+                                                                  "BodyMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ],
+                                                                  "FaceMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ]
+                                                              },
+                   "YamzaDefault_Battle_SingleAttack_4_Shot":  {
+                                                                   "SwordMesh":  [
+                                                                                     {
+                                                                                         "time":  0.0,
+                                                                                         "value":  1.0
+                                                                                     }
+                                                                                 ],
+                                                                   "BodyMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ],
+                                                                   "FaceMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ]
+                                                               },
+                   "YamzaDefault_Battle_SingleAttack_4_Start":  {
+                                                                    "SwordMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ],
+                                                                    "BodyMesh":  [
+                                                                                     {
+                                                                                         "time":  0.0,
+                                                                                         "value":  1.0
+                                                                                     }
+                                                                                 ],
+                                                                    "FaceMesh":  [
+                                                                                     {
+                                                                                         "time":  0.0,
+                                                                                         "value":  1.0
+                                                                                     }
+                                                                                 ]
+                                                                },
+                   "YamzaDefault_Battle_StandUp":  {
+                                                       "SwordMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ],
+                                                       "BodyMesh":  [
+                                                                        {
+                                                                            "time":  0.0,
+                                                                            "value":  1.0
+                                                                        }
+                                                                    ],
+                                                       "FaceMesh":  [
+                                                                        {
+                                                                            "time":  0.0,
+                                                                            "value":  1.0
+                                                                        }
+                                                                    ]
+                                                   },
+                   "YamzaDefault_Battle_StartAct":  {
+                                                        "SwordMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ],
+                                                        "BodyMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ],
+                                                        "FaceMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ]
+                                                    }
+               },
+    "visibilityPolicy":  {
+                             "version":  3,
+                             "mode":  "data-driven-controlled-mesh-opt-in-normal-track-filtered",
+                             "exportedClipCount":  19,
+                             "controlledMeshes":  [
+                                                      "BodyMesh",
+                                                      "FaceMesh",
+                                                      "SwordMesh"
+                                                  ],
+                             "alwaysVisibleControlledMeshes":  [
+                                                                   "BodyMesh",
+                                                                   "FaceMesh",
+                                                                   "SwordMesh"
+                                                               ],
+                             "equipmentMeshes":  [
+                                                     "SwordMesh"
+                                                 ],
+                             "strippedNormalVisibilityTrackRefs":  0
+                         }
+}

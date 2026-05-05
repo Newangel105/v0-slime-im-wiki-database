@@ -1,1 +1,568 @@
-{"defaults": {"BodyMesh": true, "FaceMesh": true, "RodMesh": true}, "tracks": {"MjurranDefaultPC_Battle_ActiveSkill_Buff": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_ActiveSkill_Debuff": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_Appear": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_BigDamage": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_Damage": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_Die": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_Guard": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_Idle": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_PreAttackIdle_End": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_PreAttackIdle_Loop": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_PreAttackIdle_Start": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_SingleAttack_1_End": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_SingleAttack_1_Shot": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_SingleAttack_1_Start": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_SingleAttack_2_End": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_SingleAttack_2_Shot": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_SingleAttack_2_Start": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_SingleAttack_3_End": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_SingleAttack_3_Shot": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_SingleAttack_3_Start": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_SingleAttack_4_End": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_SingleAttack_4_Shot": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_SingleAttack_4_Start": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_StandUp": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_Stun": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_Victory_Loop": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "MjurranDefaultPC_Battle_Victory_Start": {"RodMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}}, "visibilityPolicy": {"version": 3, "mode": "data-driven-controlled-mesh-opt-in-normal-track-filtered", "exportedClipCount": 27, "controlledMeshes": ["BodyMesh", "FaceMesh", "RodMesh"], "alwaysVisibleControlledMeshes": ["BodyMesh", "FaceMesh", "RodMesh"], "equipmentMeshes": ["RodMesh"], "strippedNormalVisibilityTrackRefs": 0}}
+﻿{
+    "defaults":  {
+                     "BodyMesh":  true,
+                     "FaceMesh":  true,
+                     "RodMesh":  false
+                 },
+    "tracks":  {
+                   "MjurranDefaultPC_Battle_ActiveSkill_Buff":  {
+                                                                    "RodMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ],
+                                                                    "BodyMesh":  [
+                                                                                     {
+                                                                                         "time":  0.0,
+                                                                                         "value":  1.0
+                                                                                     }
+                                                                                 ],
+                                                                    "FaceMesh":  [
+                                                                                     {
+                                                                                         "time":  0.0,
+                                                                                         "value":  1.0
+                                                                                     }
+                                                                                 ]
+                                                                },
+                   "MjurranDefaultPC_Battle_ActiveSkill_Debuff":  {
+                                                                      "RodMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ],
+                                                                      "BodyMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                      "FaceMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ]
+                                                                  },
+                   "MjurranDefaultPC_Battle_Appear":  {
+                                                          "RodMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ],
+                                                          "BodyMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                          "FaceMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ]
+                                                      },
+                   "MjurranDefaultPC_Battle_BigDamage":  {
+                                                             "RodMesh":  [
+                                                                             {
+                                                                                 "time":  0.0,
+                                                                                 "value":  1.0
+                                                                             }
+                                                                         ],
+                                                             "BodyMesh":  [
+                                                                              {
+                                                                                  "time":  0.0,
+                                                                                  "value":  1.0
+                                                                              }
+                                                                          ],
+                                                             "FaceMesh":  [
+                                                                              {
+                                                                                  "time":  0.0,
+                                                                                  "value":  1.0
+                                                                              }
+                                                                          ]
+                                                         },
+                   "MjurranDefaultPC_Battle_Damage":  {
+                                                          "RodMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ],
+                                                          "BodyMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                          "FaceMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ]
+                                                      },
+                   "MjurranDefaultPC_Battle_Die":  {
+                                                       "RodMesh":  [
+                                                                       {
+                                                                           "time":  0.0,
+                                                                           "value":  1.0
+                                                                       }
+                                                                   ],
+                                                       "BodyMesh":  [
+                                                                        {
+                                                                            "time":  0.0,
+                                                                            "value":  1.0
+                                                                        }
+                                                                    ],
+                                                       "FaceMesh":  [
+                                                                        {
+                                                                            "time":  0.0,
+                                                                            "value":  1.0
+                                                                        }
+                                                                    ]
+                                                   },
+                   "MjurranDefaultPC_Battle_Guard":  {
+                                                         "RodMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ],
+                                                         "BodyMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ],
+                                                         "FaceMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ]
+                                                     },
+                   "MjurranDefaultPC_Battle_Idle":  {
+                                                        "RodMesh":  [
+                                                                        {
+                                                                            "time":  0.0,
+                                                                            "value":  1.0
+                                                                        }
+                                                                    ],
+                                                        "BodyMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ],
+                                                        "FaceMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ]
+                                                    },
+                   "MjurranDefaultPC_Battle_PreAttackIdle_End":  {
+                                                                     "RodMesh":  [
+                                                                                     {
+                                                                                         "time":  0.0,
+                                                                                         "value":  1.0
+                                                                                     }
+                                                                                 ],
+                                                                     "BodyMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ],
+                                                                     "FaceMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ]
+                                                                 },
+                   "MjurranDefaultPC_Battle_PreAttackIdle_Loop":  {
+                                                                      "RodMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ],
+                                                                      "BodyMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                      "FaceMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ]
+                                                                  },
+                   "MjurranDefaultPC_Battle_PreAttackIdle_Start":  {
+                                                                       "RodMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                       "BodyMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                       "FaceMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ]
+                                                                   },
+                   "MjurranDefaultPC_Battle_SingleAttack_1_End":  {
+                                                                      "RodMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ],
+                                                                      "BodyMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                      "FaceMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ]
+                                                                  },
+                   "MjurranDefaultPC_Battle_SingleAttack_1_Shot":  {
+                                                                       "RodMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                       "BodyMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                       "FaceMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ]
+                                                                   },
+                   "MjurranDefaultPC_Battle_SingleAttack_1_Start":  {
+                                                                        "RodMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                        "BodyMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                        "FaceMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ]
+                                                                    },
+                   "MjurranDefaultPC_Battle_SingleAttack_2_End":  {
+                                                                      "RodMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ],
+                                                                      "BodyMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                      "FaceMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ]
+                                                                  },
+                   "MjurranDefaultPC_Battle_SingleAttack_2_Shot":  {
+                                                                       "RodMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                       "BodyMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                       "FaceMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ]
+                                                                   },
+                   "MjurranDefaultPC_Battle_SingleAttack_2_Start":  {
+                                                                        "RodMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                        "BodyMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                        "FaceMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ]
+                                                                    },
+                   "MjurranDefaultPC_Battle_SingleAttack_3_End":  {
+                                                                      "RodMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ],
+                                                                      "BodyMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                      "FaceMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ]
+                                                                  },
+                   "MjurranDefaultPC_Battle_SingleAttack_3_Shot":  {
+                                                                       "RodMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                       "BodyMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                       "FaceMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ]
+                                                                   },
+                   "MjurranDefaultPC_Battle_SingleAttack_3_Start":  {
+                                                                        "RodMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                        "BodyMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                        "FaceMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ]
+                                                                    },
+                   "MjurranDefaultPC_Battle_SingleAttack_4_End":  {
+                                                                      "RodMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ],
+                                                                      "BodyMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                      "FaceMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ]
+                                                                  },
+                   "MjurranDefaultPC_Battle_SingleAttack_4_Shot":  {
+                                                                       "RodMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                       "BodyMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                       "FaceMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ]
+                                                                   },
+                   "MjurranDefaultPC_Battle_SingleAttack_4_Start":  {
+                                                                        "RodMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                        "BodyMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                        "FaceMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ]
+                                                                    },
+                   "MjurranDefaultPC_Battle_StandUp":  {
+                                                           "RodMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                           "BodyMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ],
+                                                           "FaceMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ]
+                                                       },
+                   "MjurranDefaultPC_Battle_Stun":  {
+                                                        "RodMesh":  [
+                                                                        {
+                                                                            "time":  0.0,
+                                                                            "value":  1.0
+                                                                        }
+                                                                    ],
+                                                        "BodyMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ],
+                                                        "FaceMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ]
+                                                    },
+                   "MjurranDefaultPC_Battle_Victory_Loop":  {
+                                                                "RodMesh":  [
+                                                                                {
+                                                                                    "time":  0.0,
+                                                                                    "value":  1.0
+                                                                                }
+                                                                            ],
+                                                                "BodyMesh":  [
+                                                                                 {
+                                                                                     "time":  0.0,
+                                                                                     "value":  1.0
+                                                                                 }
+                                                                             ],
+                                                                "FaceMesh":  [
+                                                                                 {
+                                                                                     "time":  0.0,
+                                                                                     "value":  1.0
+                                                                                 }
+                                                                             ]
+                                                            },
+                   "MjurranDefaultPC_Battle_Victory_Start":  {
+                                                                 "RodMesh":  [
+                                                                                 {
+                                                                                     "time":  0.0,
+                                                                                     "value":  1.0
+                                                                                 }
+                                                                             ],
+                                                                 "BodyMesh":  [
+                                                                                  {
+                                                                                      "time":  0.0,
+                                                                                      "value":  1.0
+                                                                                  }
+                                                                              ],
+                                                                 "FaceMesh":  [
+                                                                                  {
+                                                                                      "time":  0.0,
+                                                                                      "value":  1.0
+                                                                                  }
+                                                                              ]
+                                                             }
+               },
+    "visibilityPolicy":  {
+                             "version":  3,
+                             "mode":  "data-driven-controlled-mesh-opt-in-normal-track-filtered",
+                             "exportedClipCount":  27,
+                             "controlledMeshes":  [
+                                                      "BodyMesh",
+                                                      "FaceMesh",
+                                                      "RodMesh"
+                                                  ],
+                             "alwaysVisibleControlledMeshes":  [
+                                                                   "BodyMesh",
+                                                                   "FaceMesh",
+                                                                   "RodMesh"
+                                                               ],
+                             "equipmentMeshes":  [
+                                                     "RodMesh"
+                                                 ],
+                             "strippedNormalVisibilityTrackRefs":  0
+                         }
+}

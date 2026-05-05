@@ -1,1 +1,804 @@
-{"defaults": {"ScabbardMesh": true, "StringMesh": false, "SwordMesh": false, "FaceMesh": true, "BodyMesh": true}, "tracks": {"SoeiWaterAttribute_Battle_ActiveSkill_Buff": {"SwordMesh": [{"time": 0.0, "value": 0.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_ActiveSkill_Debuff": {"SwordMesh": [{"time": 0.0, "value": 0.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_Appear": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_BigDamage": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_Damage": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_Die": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_Guard": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_Idle": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_PreAttackIdle": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_SingleAttack_1_End": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_SingleAttack_1_Shot": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_SingleAttack_1_Start": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_SingleAttack_2_End": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_SingleAttack_2_Shot": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_SingleAttack_2_Start": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_SingleAttack_3_End": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_SingleAttack_3_Shot": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_SingleAttack_3_Start": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_SingleAttack_4_End": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_SingleAttack_4_Shot": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_SingleAttack_4_Start": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_StandUp": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_StartAct": {"SwordMesh": [{"time": 0.0, "value": 0.0}], "BodyMesh": [{"time": 0.0, "value": 0.0}, {"time": 0.15000000596046448, "value": 0.0}, {"time": 0.1666666716337204, "value": 1.0}, {"time": 3.200000286102295, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 0.0}, {"time": 0.15000000596046448, "value": 0.0}, {"time": 0.1666666716337204, "value": 1.0}, {"time": 3.200000286102295, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 0.0}, {"time": 0.15000000596046448, "value": 0.0}, {"time": 0.1666666716337204, "value": 1.0}, {"time": 3.200000286102295, "value": 1.0}]}, "SoeiWaterAttribute_Battle_StepBackward": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_StepForward": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_Stun": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_Victory_Loop": {"SwordMesh": [{"time": 0.0, "value": 0.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}, "SoeiWaterAttribute_Battle_Victory_Start": {"SwordMesh": [{"time": 0.0, "value": 1.0}, {"time": 2.816666841506958, "value": 1.0}, {"time": 2.8333334922790527, "value": 0.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}], "ScabbardMesh": [{"time": 0.0, "value": 1.0}]}}, "visibilityPolicy": {"version": 3, "mode": "data-driven-controlled-mesh-opt-in-normal-track-filtered", "exportedClipCount": 29, "controlledMeshes": ["BodyMesh", "FaceMesh", "ScabbardMesh", "StringMesh", "SwordMesh"], "alwaysVisibleControlledMeshes": ["BodyMesh", "FaceMesh", "ScabbardMesh"], "equipmentMeshes": ["SwordMesh"], "strippedNormalVisibilityTrackRefs": 28}}
+﻿{
+    "defaults":  {
+                     "BodyMesh":  true,
+                     "FaceMesh":  true,
+                     "SwordMesh":  false,
+                     "StringMesh":  false,
+                     "ScabbardMesh":  false
+                 },
+    "tracks":  {
+                   "SoeiWaterAttribute_Battle_ActiveSkill_Buff":  {
+                                                                      "SwordMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  0.0
+                                                                                        }
+                                                                                    ],
+                                                                      "BodyMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                      "FaceMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                      "ScabbardMesh":  [
+                                                                                           {
+                                                                                               "time":  0.0,
+                                                                                               "value":  1.0
+                                                                                           }
+                                                                                       ]
+                                                                  },
+                   "SoeiWaterAttribute_Battle_ActiveSkill_Debuff":  {
+                                                                        "SwordMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  0.0
+                                                                                          }
+                                                                                      ],
+                                                                        "BodyMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                        "FaceMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                        "ScabbardMesh":  [
+                                                                                             {
+                                                                                                 "time":  0.0,
+                                                                                                 "value":  1.0
+                                                                                             }
+                                                                                         ]
+                                                                    },
+                   "SoeiWaterAttribute_Battle_Appear":  {
+                                                            "SwordMesh":  [
+                                                                              {
+                                                                                  "time":  0.0,
+                                                                                  "value":  1.0
+                                                                              }
+                                                                          ],
+                                                            "BodyMesh":  [
+                                                                             {
+                                                                                 "time":  0.0,
+                                                                                 "value":  1.0
+                                                                             }
+                                                                         ],
+                                                            "FaceMesh":  [
+                                                                             {
+                                                                                 "time":  0.0,
+                                                                                 "value":  1.0
+                                                                             }
+                                                                         ],
+                                                            "ScabbardMesh":  [
+                                                                                 {
+                                                                                     "time":  0.0,
+                                                                                     "value":  1.0
+                                                                                 }
+                                                                             ]
+                                                        },
+                   "SoeiWaterAttribute_Battle_BigDamage":  {
+                                                               "SwordMesh":  [
+                                                                                 {
+                                                                                     "time":  0.0,
+                                                                                     "value":  1.0
+                                                                                 }
+                                                                             ],
+                                                               "BodyMesh":  [
+                                                                                {
+                                                                                    "time":  0.0,
+                                                                                    "value":  1.0
+                                                                                }
+                                                                            ],
+                                                               "FaceMesh":  [
+                                                                                {
+                                                                                    "time":  0.0,
+                                                                                    "value":  1.0
+                                                                                }
+                                                                            ],
+                                                               "ScabbardMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ]
+                                                           },
+                   "SoeiWaterAttribute_Battle_Damage":  {
+                                                            "SwordMesh":  [
+                                                                              {
+                                                                                  "time":  0.0,
+                                                                                  "value":  1.0
+                                                                              }
+                                                                          ],
+                                                            "BodyMesh":  [
+                                                                             {
+                                                                                 "time":  0.0,
+                                                                                 "value":  1.0
+                                                                             }
+                                                                         ],
+                                                            "FaceMesh":  [
+                                                                             {
+                                                                                 "time":  0.0,
+                                                                                 "value":  1.0
+                                                                             }
+                                                                         ],
+                                                            "ScabbardMesh":  [
+                                                                                 {
+                                                                                     "time":  0.0,
+                                                                                     "value":  1.0
+                                                                                 }
+                                                                             ]
+                                                        },
+                   "SoeiWaterAttribute_Battle_Die":  {
+                                                         "SwordMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                         "BodyMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ],
+                                                         "FaceMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ],
+                                                         "ScabbardMesh":  [
+                                                                              {
+                                                                                  "time":  0.0,
+                                                                                  "value":  1.0
+                                                                              }
+                                                                          ]
+                                                     },
+                   "SoeiWaterAttribute_Battle_Guard":  {
+                                                           "SwordMesh":  [
+                                                                             {
+                                                                                 "time":  0.0,
+                                                                                 "value":  1.0
+                                                                             }
+                                                                         ],
+                                                           "BodyMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ],
+                                                           "FaceMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ],
+                                                           "ScabbardMesh":  [
+                                                                                {
+                                                                                    "time":  0.0,
+                                                                                    "value":  1.0
+                                                                                }
+                                                                            ]
+                                                       },
+                   "SoeiWaterAttribute_Battle_Idle":  {
+                                                          "SwordMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ],
+                                                          "BodyMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                          "FaceMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                          "ScabbardMesh":  [
+                                                                               {
+                                                                                   "time":  0.0,
+                                                                                   "value":  1.0
+                                                                               }
+                                                                           ]
+                                                      },
+                   "SoeiWaterAttribute_Battle_PreAttackIdle":  {
+                                                                   "SwordMesh":  [
+                                                                                     {
+                                                                                         "time":  0.0,
+                                                                                         "value":  1.0
+                                                                                     }
+                                                                                 ],
+                                                                   "BodyMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ],
+                                                                   "FaceMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ],
+                                                                   "ScabbardMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ]
+                                                               },
+                   "SoeiWaterAttribute_Battle_SingleAttack_1_End":  {
+                                                                        "SwordMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                        "BodyMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                        "FaceMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                        "ScabbardMesh":  [
+                                                                                             {
+                                                                                                 "time":  0.0,
+                                                                                                 "value":  1.0
+                                                                                             }
+                                                                                         ]
+                                                                    },
+                   "SoeiWaterAttribute_Battle_SingleAttack_1_Shot":  {
+                                                                         "SwordMesh":  [
+                                                                                           {
+                                                                                               "time":  0.0,
+                                                                                               "value":  1.0
+                                                                                           }
+                                                                                       ],
+                                                                         "BodyMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                         "FaceMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                         "ScabbardMesh":  [
+                                                                                              {
+                                                                                                  "time":  0.0,
+                                                                                                  "value":  1.0
+                                                                                              }
+                                                                                          ]
+                                                                     },
+                   "SoeiWaterAttribute_Battle_SingleAttack_1_Start":  {
+                                                                          "SwordMesh":  [
+                                                                                            {
+                                                                                                "time":  0.0,
+                                                                                                "value":  1.0
+                                                                                            }
+                                                                                        ],
+                                                                          "BodyMesh":  [
+                                                                                           {
+                                                                                               "time":  0.0,
+                                                                                               "value":  1.0
+                                                                                           }
+                                                                                       ],
+                                                                          "FaceMesh":  [
+                                                                                           {
+                                                                                               "time":  0.0,
+                                                                                               "value":  1.0
+                                                                                           }
+                                                                                       ],
+                                                                          "ScabbardMesh":  [
+                                                                                               {
+                                                                                                   "time":  0.0,
+                                                                                                   "value":  1.0
+                                                                                               }
+                                                                                           ]
+                                                                      },
+                   "SoeiWaterAttribute_Battle_SingleAttack_2_End":  {
+                                                                        "SwordMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                        "BodyMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                        "FaceMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                        "ScabbardMesh":  [
+                                                                                             {
+                                                                                                 "time":  0.0,
+                                                                                                 "value":  1.0
+                                                                                             }
+                                                                                         ]
+                                                                    },
+                   "SoeiWaterAttribute_Battle_SingleAttack_2_Shot":  {
+                                                                         "SwordMesh":  [
+                                                                                           {
+                                                                                               "time":  0.0,
+                                                                                               "value":  1.0
+                                                                                           }
+                                                                                       ],
+                                                                         "BodyMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                         "FaceMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                         "ScabbardMesh":  [
+                                                                                              {
+                                                                                                  "time":  0.0,
+                                                                                                  "value":  1.0
+                                                                                              }
+                                                                                          ]
+                                                                     },
+                   "SoeiWaterAttribute_Battle_SingleAttack_2_Start":  {
+                                                                          "SwordMesh":  [
+                                                                                            {
+                                                                                                "time":  0.0,
+                                                                                                "value":  1.0
+                                                                                            }
+                                                                                        ],
+                                                                          "BodyMesh":  [
+                                                                                           {
+                                                                                               "time":  0.0,
+                                                                                               "value":  1.0
+                                                                                           }
+                                                                                       ],
+                                                                          "FaceMesh":  [
+                                                                                           {
+                                                                                               "time":  0.0,
+                                                                                               "value":  1.0
+                                                                                           }
+                                                                                       ],
+                                                                          "ScabbardMesh":  [
+                                                                                               {
+                                                                                                   "time":  0.0,
+                                                                                                   "value":  1.0
+                                                                                               }
+                                                                                           ]
+                                                                      },
+                   "SoeiWaterAttribute_Battle_SingleAttack_3_End":  {
+                                                                        "SwordMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                        "BodyMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                        "FaceMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                        "ScabbardMesh":  [
+                                                                                             {
+                                                                                                 "time":  0.0,
+                                                                                                 "value":  1.0
+                                                                                             }
+                                                                                         ]
+                                                                    },
+                   "SoeiWaterAttribute_Battle_SingleAttack_3_Shot":  {
+                                                                         "SwordMesh":  [
+                                                                                           {
+                                                                                               "time":  0.0,
+                                                                                               "value":  1.0
+                                                                                           }
+                                                                                       ],
+                                                                         "BodyMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                         "FaceMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                         "ScabbardMesh":  [
+                                                                                              {
+                                                                                                  "time":  0.0,
+                                                                                                  "value":  1.0
+                                                                                              }
+                                                                                          ]
+                                                                     },
+                   "SoeiWaterAttribute_Battle_SingleAttack_3_Start":  {
+                                                                          "SwordMesh":  [
+                                                                                            {
+                                                                                                "time":  0.0,
+                                                                                                "value":  1.0
+                                                                                            }
+                                                                                        ],
+                                                                          "BodyMesh":  [
+                                                                                           {
+                                                                                               "time":  0.0,
+                                                                                               "value":  1.0
+                                                                                           }
+                                                                                       ],
+                                                                          "FaceMesh":  [
+                                                                                           {
+                                                                                               "time":  0.0,
+                                                                                               "value":  1.0
+                                                                                           }
+                                                                                       ],
+                                                                          "ScabbardMesh":  [
+                                                                                               {
+                                                                                                   "time":  0.0,
+                                                                                                   "value":  1.0
+                                                                                               }
+                                                                                           ]
+                                                                      },
+                   "SoeiWaterAttribute_Battle_SingleAttack_4_End":  {
+                                                                        "SwordMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                        "BodyMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                        "FaceMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                        "ScabbardMesh":  [
+                                                                                             {
+                                                                                                 "time":  0.0,
+                                                                                                 "value":  1.0
+                                                                                             }
+                                                                                         ]
+                                                                    },
+                   "SoeiWaterAttribute_Battle_SingleAttack_4_Shot":  {
+                                                                         "SwordMesh":  [
+                                                                                           {
+                                                                                               "time":  0.0,
+                                                                                               "value":  1.0
+                                                                                           }
+                                                                                       ],
+                                                                         "BodyMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                         "FaceMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                         "ScabbardMesh":  [
+                                                                                              {
+                                                                                                  "time":  0.0,
+                                                                                                  "value":  1.0
+                                                                                              }
+                                                                                          ]
+                                                                     },
+                   "SoeiWaterAttribute_Battle_SingleAttack_4_Start":  {
+                                                                          "SwordMesh":  [
+                                                                                            {
+                                                                                                "time":  0.0,
+                                                                                                "value":  1.0
+                                                                                            }
+                                                                                        ],
+                                                                          "BodyMesh":  [
+                                                                                           {
+                                                                                               "time":  0.0,
+                                                                                               "value":  1.0
+                                                                                           }
+                                                                                       ],
+                                                                          "FaceMesh":  [
+                                                                                           {
+                                                                                               "time":  0.0,
+                                                                                               "value":  1.0
+                                                                                           }
+                                                                                       ],
+                                                                          "ScabbardMesh":  [
+                                                                                               {
+                                                                                                   "time":  0.0,
+                                                                                                   "value":  1.0
+                                                                                               }
+                                                                                           ]
+                                                                      },
+                   "SoeiWaterAttribute_Battle_StandUp":  {
+                                                             "SwordMesh":  [
+                                                                               {
+                                                                                   "time":  0.0,
+                                                                                   "value":  1.0
+                                                                               }
+                                                                           ],
+                                                             "BodyMesh":  [
+                                                                              {
+                                                                                  "time":  0.0,
+                                                                                  "value":  1.0
+                                                                              }
+                                                                          ],
+                                                             "FaceMesh":  [
+                                                                              {
+                                                                                  "time":  0.0,
+                                                                                  "value":  1.0
+                                                                              }
+                                                                          ],
+                                                             "ScabbardMesh":  [
+                                                                                  {
+                                                                                      "time":  0.0,
+                                                                                      "value":  1.0
+                                                                                  }
+                                                                              ]
+                                                         },
+                   "SoeiWaterAttribute_Battle_StartAct":  {
+                                                              "SwordMesh":  [
+                                                                                {
+                                                                                    "time":  0.0,
+                                                                                    "value":  0.0
+                                                                                }
+                                                                            ],
+                                                              "BodyMesh":  [
+                                                                               {
+                                                                                   "time":  0.0,
+                                                                                   "value":  0.0
+                                                                               },
+                                                                               {
+                                                                                   "time":  0.15000000596046448,
+                                                                                   "value":  0.0
+                                                                               },
+                                                                               {
+                                                                                   "time":  0.1666666716337204,
+                                                                                   "value":  1.0
+                                                                               },
+                                                                               {
+                                                                                   "time":  3.200000286102295,
+                                                                                   "value":  1.0
+                                                                               }
+                                                                           ],
+                                                              "FaceMesh":  [
+                                                                               {
+                                                                                   "time":  0.0,
+                                                                                   "value":  0.0
+                                                                               },
+                                                                               {
+                                                                                   "time":  0.15000000596046448,
+                                                                                   "value":  0.0
+                                                                               },
+                                                                               {
+                                                                                   "time":  0.1666666716337204,
+                                                                                   "value":  1.0
+                                                                               },
+                                                                               {
+                                                                                   "time":  3.200000286102295,
+                                                                                   "value":  1.0
+                                                                               }
+                                                                           ],
+                                                              "ScabbardMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  0.0
+                                                                                   },
+                                                                                   {
+                                                                                       "time":  0.15000000596046448,
+                                                                                       "value":  0.0
+                                                                                   },
+                                                                                   {
+                                                                                       "time":  0.1666666716337204,
+                                                                                       "value":  1.0
+                                                                                   },
+                                                                                   {
+                                                                                       "time":  3.200000286102295,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ]
+                                                          },
+                   "SoeiWaterAttribute_Battle_StepBackward":  {
+                                                                  "SwordMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ],
+                                                                  "BodyMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ],
+                                                                  "FaceMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ],
+                                                                  "ScabbardMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ]
+                                                              },
+                   "SoeiWaterAttribute_Battle_StepForward":  {
+                                                                 "SwordMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ],
+                                                                 "BodyMesh":  [
+                                                                                  {
+                                                                                      "time":  0.0,
+                                                                                      "value":  1.0
+                                                                                  }
+                                                                              ],
+                                                                 "FaceMesh":  [
+                                                                                  {
+                                                                                      "time":  0.0,
+                                                                                      "value":  1.0
+                                                                                  }
+                                                                              ],
+                                                                 "ScabbardMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ]
+                                                             },
+                   "SoeiWaterAttribute_Battle_Stun":  {
+                                                          "SwordMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ],
+                                                          "BodyMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                          "FaceMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                          "ScabbardMesh":  [
+                                                                               {
+                                                                                   "time":  0.0,
+                                                                                   "value":  1.0
+                                                                               }
+                                                                           ]
+                                                      },
+                   "SoeiWaterAttribute_Battle_Victory_Loop":  {
+                                                                  "SwordMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  0.0
+                                                                                    }
+                                                                                ],
+                                                                  "BodyMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ],
+                                                                  "FaceMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ],
+                                                                  "ScabbardMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ]
+                                                              },
+                   "SoeiWaterAttribute_Battle_Victory_Start":  {
+                                                                   "SwordMesh":  [
+                                                                                     {
+                                                                                         "time":  0.0,
+                                                                                         "value":  1.0
+                                                                                     },
+                                                                                     {
+                                                                                         "time":  2.816666841506958,
+                                                                                         "value":  1.0
+                                                                                     },
+                                                                                     {
+                                                                                         "time":  2.8333334922790527,
+                                                                                         "value":  0.0
+                                                                                     }
+                                                                                 ],
+                                                                   "BodyMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ],
+                                                                   "FaceMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ],
+                                                                   "ScabbardMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ]
+                                                               }
+               },
+    "visibilityPolicy":  {
+                             "version":  3,
+                             "mode":  "data-driven-controlled-mesh-opt-in-normal-track-filtered",
+                             "exportedClipCount":  29,
+                             "controlledMeshes":  [
+                                                      "BodyMesh",
+                                                      "FaceMesh",
+                                                      "ScabbardMesh",
+                                                      "StringMesh",
+                                                      "SwordMesh"
+                                                  ],
+                             "alwaysVisibleControlledMeshes":  [
+                                                                   "BodyMesh",
+                                                                   "FaceMesh",
+                                                                   "ScabbardMesh"
+                                                               ],
+                             "equipmentMeshes":  [
+                                                     "SwordMesh"
+                                                 ],
+                             "strippedNormalVisibilityTrackRefs":  28
+                         }
+}

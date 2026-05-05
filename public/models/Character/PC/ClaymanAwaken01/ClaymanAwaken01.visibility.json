@@ -1,1 +1,762 @@
-{"defaults": {"BodyMesh": true, "AxeMesh": true, "HammerMesh": true, "SwordMesh": true, "ShieldMesh": true, "FaceMesh": true}, "tracks": {"ClaymanAwaken01_Battle_ActiveSkill_Buff": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_ActiveSkill_Debuff": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_Appear": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_BigDamage": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_Damage": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_Die": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_Guard": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_Idle": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_PreAttackIdle": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_SingleAttack_1_End": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_SingleAttack_1_Shot": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_SingleAttack_1_Start": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_SingleAttack_4_End": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_SingleAttack_4_Shot": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_SingleAttack_4_Start": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_StandUp": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_StartAct": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_StepBackward": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "ClaymanAwaken01_Battle_StepForward": {"SwordMesh": [{"time": 0.0, "value": 1.0}], "AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "HammerMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}}, "visibilityPolicy": {"version": 3, "mode": "data-driven-controlled-mesh-opt-in-normal-track-filtered", "exportedClipCount": 21, "controlledMeshes": ["AxeMesh", "BodyMesh", "FaceMesh", "HammerMesh", "ShieldMesh", "SwordMesh"], "alwaysVisibleControlledMeshes": ["AxeMesh", "BodyMesh", "FaceMesh", "HammerMesh", "ShieldMesh", "SwordMesh"], "equipmentMeshes": ["AxeMesh", "HammerMesh", "ShieldMesh", "SwordMesh"], "strippedNormalVisibilityTrackRefs": 0}}
+﻿{
+    "defaults":  {
+                     "BodyMesh":  true,
+                     "AxeMesh":  false,
+                     "HammerMesh":  false,
+                     "SwordMesh":  false,
+                     "ShieldMesh":  false,
+                     "FaceMesh":  true
+                 },
+    "tracks":  {
+                   "ClaymanAwaken01_Battle_ActiveSkill_Buff":  {
+                                                                   "SwordMesh":  [
+                                                                                     {
+                                                                                         "time":  0.0,
+                                                                                         "value":  1.0
+                                                                                     }
+                                                                                 ],
+                                                                   "AxeMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ],
+                                                                   "ShieldMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ],
+                                                                   "HammerMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ],
+                                                                   "BodyMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ],
+                                                                   "FaceMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ]
+                                                               },
+                   "ClaymanAwaken01_Battle_ActiveSkill_Debuff":  {
+                                                                     "SwordMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                     "AxeMesh":  [
+                                                                                     {
+                                                                                         "time":  0.0,
+                                                                                         "value":  1.0
+                                                                                     }
+                                                                                 ],
+                                                                     "ShieldMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                     "HammerMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                     "BodyMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ],
+                                                                     "FaceMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ]
+                                                                 },
+                   "ClaymanAwaken01_Battle_Appear":  {
+                                                         "SwordMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                         "AxeMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ],
+                                                         "ShieldMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ],
+                                                         "HammerMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ],
+                                                         "BodyMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ],
+                                                         "FaceMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ]
+                                                     },
+                   "ClaymanAwaken01_Battle_BigDamage":  {
+                                                            "SwordMesh":  [
+                                                                              {
+                                                                                  "time":  0.0,
+                                                                                  "value":  1.0
+                                                                              }
+                                                                          ],
+                                                            "AxeMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ],
+                                                            "ShieldMesh":  [
+                                                                               {
+                                                                                   "time":  0.0,
+                                                                                   "value":  1.0
+                                                                               }
+                                                                           ],
+                                                            "HammerMesh":  [
+                                                                               {
+                                                                                   "time":  0.0,
+                                                                                   "value":  1.0
+                                                                               }
+                                                                           ],
+                                                            "BodyMesh":  [
+                                                                             {
+                                                                                 "time":  0.0,
+                                                                                 "value":  1.0
+                                                                             }
+                                                                         ],
+                                                            "FaceMesh":  [
+                                                                             {
+                                                                                 "time":  0.0,
+                                                                                 "value":  1.0
+                                                                             }
+                                                                         ]
+                                                        },
+                   "ClaymanAwaken01_Battle_Damage":  {
+                                                         "SwordMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                         "AxeMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ],
+                                                         "ShieldMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ],
+                                                         "HammerMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ],
+                                                         "BodyMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ],
+                                                         "FaceMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ]
+                                                     },
+                   "ClaymanAwaken01_Battle_Die":  {
+                                                      "SwordMesh":  [
+                                                                        {
+                                                                            "time":  0.0,
+                                                                            "value":  1.0
+                                                                        }
+                                                                    ],
+                                                      "AxeMesh":  [
+                                                                      {
+                                                                          "time":  0.0,
+                                                                          "value":  1.0
+                                                                      }
+                                                                  ],
+                                                      "ShieldMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ],
+                                                      "HammerMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ],
+                                                      "BodyMesh":  [
+                                                                       {
+                                                                           "time":  0.0,
+                                                                           "value":  1.0
+                                                                       }
+                                                                   ],
+                                                      "FaceMesh":  [
+                                                                       {
+                                                                           "time":  0.0,
+                                                                           "value":  1.0
+                                                                       }
+                                                                   ]
+                                                  },
+                   "ClaymanAwaken01_Battle_Guard":  {
+                                                        "SwordMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ],
+                                                        "AxeMesh":  [
+                                                                        {
+                                                                            "time":  0.0,
+                                                                            "value":  1.0
+                                                                        }
+                                                                    ],
+                                                        "ShieldMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                        "HammerMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                        "BodyMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ],
+                                                        "FaceMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ]
+                                                    },
+                   "ClaymanAwaken01_Battle_Idle":  {
+                                                       "SwordMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ],
+                                                       "AxeMesh":  [
+                                                                       {
+                                                                           "time":  0.0,
+                                                                           "value":  1.0
+                                                                       }
+                                                                   ],
+                                                       "ShieldMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ],
+                                                       "HammerMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ],
+                                                       "BodyMesh":  [
+                                                                        {
+                                                                            "time":  0.0,
+                                                                            "value":  1.0
+                                                                        }
+                                                                    ],
+                                                       "FaceMesh":  [
+                                                                        {
+                                                                            "time":  0.0,
+                                                                            "value":  1.0
+                                                                        }
+                                                                    ]
+                                                   },
+                   "ClaymanAwaken01_Battle_PreAttackIdle":  {
+                                                                "SwordMesh":  [
+                                                                                  {
+                                                                                      "time":  0.0,
+                                                                                      "value":  1.0
+                                                                                  }
+                                                                              ],
+                                                                "AxeMesh":  [
+                                                                                {
+                                                                                    "time":  0.0,
+                                                                                    "value":  1.0
+                                                                                }
+                                                                            ],
+                                                                "ShieldMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ],
+                                                                "HammerMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ],
+                                                                "BodyMesh":  [
+                                                                                 {
+                                                                                     "time":  0.0,
+                                                                                     "value":  1.0
+                                                                                 }
+                                                                             ],
+                                                                "FaceMesh":  [
+                                                                                 {
+                                                                                     "time":  0.0,
+                                                                                     "value":  1.0
+                                                                                 }
+                                                                             ]
+                                                            },
+                   "ClaymanAwaken01_Battle_SingleAttack_1_End":  {
+                                                                     "SwordMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                     "AxeMesh":  [
+                                                                                     {
+                                                                                         "time":  0.0,
+                                                                                         "value":  1.0
+                                                                                     }
+                                                                                 ],
+                                                                     "ShieldMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                     "HammerMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                     "BodyMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ],
+                                                                     "FaceMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ]
+                                                                 },
+                   "ClaymanAwaken01_Battle_SingleAttack_1_Shot":  {
+                                                                      "SwordMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                      "AxeMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ],
+                                                                      "ShieldMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                      "HammerMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                      "BodyMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                      "FaceMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ]
+                                                                  },
+                   "ClaymanAwaken01_Battle_SingleAttack_1_Start":  {
+                                                                       "SwordMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                       "AxeMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                       "ShieldMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                       "HammerMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                       "BodyMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                       "FaceMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ]
+                                                                   },
+                   "ClaymanAwaken01_Battle_SingleAttack_4_End":  {
+                                                                     "SwordMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                     "AxeMesh":  [
+                                                                                     {
+                                                                                         "time":  0.0,
+                                                                                         "value":  1.0
+                                                                                     }
+                                                                                 ],
+                                                                     "ShieldMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                     "HammerMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                     "BodyMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ],
+                                                                     "FaceMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ]
+                                                                 },
+                   "ClaymanAwaken01_Battle_SingleAttack_4_Shot":  {
+                                                                      "SwordMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                      "AxeMesh":  [
+                                                                                      {
+                                                                                          "time":  0.0,
+                                                                                          "value":  1.0
+                                                                                      }
+                                                                                  ],
+                                                                      "ShieldMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                      "HammerMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                      "BodyMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                      "FaceMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ]
+                                                                  },
+                   "ClaymanAwaken01_Battle_SingleAttack_4_Start":  {
+                                                                       "SwordMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                       "AxeMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                       "ShieldMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                       "HammerMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                       "BodyMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                       "FaceMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ]
+                                                                   },
+                   "ClaymanAwaken01_Battle_StandUp":  {
+                                                          "SwordMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ],
+                                                          "AxeMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ],
+                                                          "ShieldMesh":  [
+                                                                             {
+                                                                                 "time":  0.0,
+                                                                                 "value":  1.0
+                                                                             }
+                                                                         ],
+                                                          "HammerMesh":  [
+                                                                             {
+                                                                                 "time":  0.0,
+                                                                                 "value":  1.0
+                                                                             }
+                                                                         ],
+                                                          "BodyMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                          "FaceMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ]
+                                                      },
+                   "ClaymanAwaken01_Battle_StartAct":  {
+                                                           "SwordMesh":  [
+                                                                             {
+                                                                                 "time":  0.0,
+                                                                                 "value":  1.0
+                                                                             }
+                                                                         ],
+                                                           "AxeMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                           "ShieldMesh":  [
+                                                                              {
+                                                                                  "time":  0.0,
+                                                                                  "value":  1.0
+                                                                              }
+                                                                          ],
+                                                           "HammerMesh":  [
+                                                                              {
+                                                                                  "time":  0.0,
+                                                                                  "value":  1.0
+                                                                              }
+                                                                          ],
+                                                           "BodyMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ],
+                                                           "FaceMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ]
+                                                       },
+                   "ClaymanAwaken01_Battle_StepBackward":  {
+                                                               "SwordMesh":  [
+                                                                                 {
+                                                                                     "time":  0.0,
+                                                                                     "value":  1.0
+                                                                                 }
+                                                                             ],
+                                                               "AxeMesh":  [
+                                                                               {
+                                                                                   "time":  0.0,
+                                                                                   "value":  1.0
+                                                                               }
+                                                                           ],
+                                                               "ShieldMesh":  [
+                                                                                  {
+                                                                                      "time":  0.0,
+                                                                                      "value":  1.0
+                                                                                  }
+                                                                              ],
+                                                               "HammerMesh":  [
+                                                                                  {
+                                                                                      "time":  0.0,
+                                                                                      "value":  1.0
+                                                                                  }
+                                                                              ],
+                                                               "BodyMesh":  [
+                                                                                {
+                                                                                    "time":  0.0,
+                                                                                    "value":  1.0
+                                                                                }
+                                                                            ],
+                                                               "FaceMesh":  [
+                                                                                {
+                                                                                    "time":  0.0,
+                                                                                    "value":  1.0
+                                                                                }
+                                                                            ]
+                                                           },
+                   "ClaymanAwaken01_Battle_StepForward":  {
+                                                              "SwordMesh":  [
+                                                                                {
+                                                                                    "time":  0.0,
+                                                                                    "value":  1.0
+                                                                                }
+                                                                            ],
+                                                              "AxeMesh":  [
+                                                                              {
+                                                                                  "time":  0.0,
+                                                                                  "value":  1.0
+                                                                              }
+                                                                          ],
+                                                              "ShieldMesh":  [
+                                                                                 {
+                                                                                     "time":  0.0,
+                                                                                     "value":  1.0
+                                                                                 }
+                                                                             ],
+                                                              "HammerMesh":  [
+                                                                                 {
+                                                                                     "time":  0.0,
+                                                                                     "value":  1.0
+                                                                                 }
+                                                                             ],
+                                                              "BodyMesh":  [
+                                                                               {
+                                                                                   "time":  0.0,
+                                                                                   "value":  1.0
+                                                                               }
+                                                                           ],
+                                                              "FaceMesh":  [
+                                                                               {
+                                                                                   "time":  0.0,
+                                                                                   "value":  1.0
+                                                                               }
+                                                                           ]
+                                                          }
+               },
+    "visibilityPolicy":  {
+                             "version":  3,
+                             "mode":  "data-driven-controlled-mesh-opt-in-normal-track-filtered",
+                             "exportedClipCount":  21,
+                             "controlledMeshes":  [
+                                                      "AxeMesh",
+                                                      "BodyMesh",
+                                                      "FaceMesh",
+                                                      "HammerMesh",
+                                                      "ShieldMesh",
+                                                      "SwordMesh"
+                                                  ],
+                             "alwaysVisibleControlledMeshes":  [
+                                                                   "AxeMesh",
+                                                                   "BodyMesh",
+                                                                   "FaceMesh",
+                                                                   "HammerMesh",
+                                                                   "ShieldMesh",
+                                                                   "SwordMesh"
+                                                               ],
+                             "equipmentMeshes":  [
+                                                     "AxeMesh",
+                                                     "HammerMesh",
+                                                     "ShieldMesh",
+                                                     "SwordMesh"
+                                                 ],
+                             "strippedNormalVisibilityTrackRefs":  0
+                         }
+}

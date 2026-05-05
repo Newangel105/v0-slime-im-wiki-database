@@ -1,1 +1,448 @@
-{"defaults": {"ShieldMesh": true, "FaceMesh": true, "BodyMesh": true, "AxeMesh": true}, "tracks": {"OrcGeneralDefault_Battle_BigDamage": {"AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "OrcGeneralDefault_Battle_Damage": {"AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "OrcGeneralDefault_Battle_Die": {"AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "OrcGeneralDefault_Battle_Guard": {"AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "OrcGeneralDefault_Battle_Idle": {"AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "OrcGeneralDefault_Battle_PreAttackIdle": {"AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "OrcGeneralDefault_Battle_SingleAttack_1_End": {"AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "OrcGeneralDefault_Battle_SingleAttack_1_Shot": {"AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "OrcGeneralDefault_Battle_SingleAttack_1_Start": {"AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "OrcGeneralDefault_Battle_SingleAttack_4_End": {"AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "OrcGeneralDefault_Battle_SingleAttack_4_Shot": {"AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "OrcGeneralDefault_Battle_SingleAttack_4_Start": {"AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "OrcGeneralDefault_Battle_StandUp": {"AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "OrcGeneralDefault_Battle_StepBackward": {"AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "OrcGeneralDefault_Battle_StepForward": {"AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}, "OrcGeneralDefault_Battle_Stun": {"AxeMesh": [{"time": 0.0, "value": 1.0}], "ShieldMesh": [{"time": 0.0, "value": 1.0}], "BodyMesh": [{"time": 0.0, "value": 1.0}], "FaceMesh": [{"time": 0.0, "value": 1.0}]}}, "visibilityPolicy": {"version": 3, "mode": "data-driven-controlled-mesh-opt-in-normal-track-filtered", "exportedClipCount": 16, "controlledMeshes": ["AxeMesh", "BodyMesh", "FaceMesh", "ShieldMesh"], "alwaysVisibleControlledMeshes": ["AxeMesh", "BodyMesh", "FaceMesh", "ShieldMesh"], "equipmentMeshes": ["AxeMesh", "ShieldMesh"], "strippedNormalVisibilityTrackRefs": 0}}
+﻿{
+    "defaults":  {
+                     "ShieldMesh":  false,
+                     "FaceMesh":  true,
+                     "BodyMesh":  true,
+                     "AxeMesh":  false
+                 },
+    "tracks":  {
+                   "OrcGeneralDefault_Battle_BigDamage":  {
+                                                              "AxeMesh":  [
+                                                                              {
+                                                                                  "time":  0.0,
+                                                                                  "value":  1.0
+                                                                              }
+                                                                          ],
+                                                              "ShieldMesh":  [
+                                                                                 {
+                                                                                     "time":  0.0,
+                                                                                     "value":  1.0
+                                                                                 }
+                                                                             ],
+                                                              "BodyMesh":  [
+                                                                               {
+                                                                                   "time":  0.0,
+                                                                                   "value":  1.0
+                                                                               }
+                                                                           ],
+                                                              "FaceMesh":  [
+                                                                               {
+                                                                                   "time":  0.0,
+                                                                                   "value":  1.0
+                                                                               }
+                                                                           ]
+                                                          },
+                   "OrcGeneralDefault_Battle_Damage":  {
+                                                           "AxeMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                           "ShieldMesh":  [
+                                                                              {
+                                                                                  "time":  0.0,
+                                                                                  "value":  1.0
+                                                                              }
+                                                                          ],
+                                                           "BodyMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ],
+                                                           "FaceMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ]
+                                                       },
+                   "OrcGeneralDefault_Battle_Die":  {
+                                                        "AxeMesh":  [
+                                                                        {
+                                                                            "time":  0.0,
+                                                                            "value":  1.0
+                                                                        }
+                                                                    ],
+                                                        "ShieldMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                        "BodyMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ],
+                                                        "FaceMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ]
+                                                    },
+                   "OrcGeneralDefault_Battle_Guard":  {
+                                                          "AxeMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ],
+                                                          "ShieldMesh":  [
+                                                                             {
+                                                                                 "time":  0.0,
+                                                                                 "value":  1.0
+                                                                             }
+                                                                         ],
+                                                          "BodyMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ],
+                                                          "FaceMesh":  [
+                                                                           {
+                                                                               "time":  0.0,
+                                                                               "value":  1.0
+                                                                           }
+                                                                       ]
+                                                      },
+                   "OrcGeneralDefault_Battle_Idle":  {
+                                                         "AxeMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ],
+                                                         "ShieldMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ],
+                                                         "BodyMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ],
+                                                         "FaceMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ]
+                                                     },
+                   "OrcGeneralDefault_Battle_PreAttackIdle":  {
+                                                                  "AxeMesh":  [
+                                                                                  {
+                                                                                      "time":  0.0,
+                                                                                      "value":  1.0
+                                                                                  }
+                                                                              ],
+                                                                  "ShieldMesh":  [
+                                                                                     {
+                                                                                         "time":  0.0,
+                                                                                         "value":  1.0
+                                                                                     }
+                                                                                 ],
+                                                                  "BodyMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ],
+                                                                  "FaceMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ]
+                                                              },
+                   "OrcGeneralDefault_Battle_SingleAttack_1_End":  {
+                                                                       "AxeMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                       "ShieldMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                       "BodyMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                       "FaceMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ]
+                                                                   },
+                   "OrcGeneralDefault_Battle_SingleAttack_1_Shot":  {
+                                                                        "AxeMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                        "ShieldMesh":  [
+                                                                                           {
+                                                                                               "time":  0.0,
+                                                                                               "value":  1.0
+                                                                                           }
+                                                                                       ],
+                                                                        "BodyMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                        "FaceMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ]
+                                                                    },
+                   "OrcGeneralDefault_Battle_SingleAttack_1_Start":  {
+                                                                         "AxeMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                         "ShieldMesh":  [
+                                                                                            {
+                                                                                                "time":  0.0,
+                                                                                                "value":  1.0
+                                                                                            }
+                                                                                        ],
+                                                                         "BodyMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                         "FaceMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ]
+                                                                     },
+                   "OrcGeneralDefault_Battle_SingleAttack_4_End":  {
+                                                                       "AxeMesh":  [
+                                                                                       {
+                                                                                           "time":  0.0,
+                                                                                           "value":  1.0
+                                                                                       }
+                                                                                   ],
+                                                                       "ShieldMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                       "BodyMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                       "FaceMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ]
+                                                                   },
+                   "OrcGeneralDefault_Battle_SingleAttack_4_Shot":  {
+                                                                        "AxeMesh":  [
+                                                                                        {
+                                                                                            "time":  0.0,
+                                                                                            "value":  1.0
+                                                                                        }
+                                                                                    ],
+                                                                        "ShieldMesh":  [
+                                                                                           {
+                                                                                               "time":  0.0,
+                                                                                               "value":  1.0
+                                                                                           }
+                                                                                       ],
+                                                                        "BodyMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                        "FaceMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ]
+                                                                    },
+                   "OrcGeneralDefault_Battle_SingleAttack_4_Start":  {
+                                                                         "AxeMesh":  [
+                                                                                         {
+                                                                                             "time":  0.0,
+                                                                                             "value":  1.0
+                                                                                         }
+                                                                                     ],
+                                                                         "ShieldMesh":  [
+                                                                                            {
+                                                                                                "time":  0.0,
+                                                                                                "value":  1.0
+                                                                                            }
+                                                                                        ],
+                                                                         "BodyMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ],
+                                                                         "FaceMesh":  [
+                                                                                          {
+                                                                                              "time":  0.0,
+                                                                                              "value":  1.0
+                                                                                          }
+                                                                                      ]
+                                                                     },
+                   "OrcGeneralDefault_Battle_StandUp":  {
+                                                            "AxeMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ],
+                                                            "ShieldMesh":  [
+                                                                               {
+                                                                                   "time":  0.0,
+                                                                                   "value":  1.0
+                                                                               }
+                                                                           ],
+                                                            "BodyMesh":  [
+                                                                             {
+                                                                                 "time":  0.0,
+                                                                                 "value":  1.0
+                                                                             }
+                                                                         ],
+                                                            "FaceMesh":  [
+                                                                             {
+                                                                                 "time":  0.0,
+                                                                                 "value":  1.0
+                                                                             }
+                                                                         ]
+                                                        },
+                   "OrcGeneralDefault_Battle_StepBackward":  {
+                                                                 "AxeMesh":  [
+                                                                                 {
+                                                                                     "time":  0.0,
+                                                                                     "value":  1.0
+                                                                                 }
+                                                                             ],
+                                                                 "ShieldMesh":  [
+                                                                                    {
+                                                                                        "time":  0.0,
+                                                                                        "value":  1.0
+                                                                                    }
+                                                                                ],
+                                                                 "BodyMesh":  [
+                                                                                  {
+                                                                                      "time":  0.0,
+                                                                                      "value":  1.0
+                                                                                  }
+                                                                              ],
+                                                                 "FaceMesh":  [
+                                                                                  {
+                                                                                      "time":  0.0,
+                                                                                      "value":  1.0
+                                                                                  }
+                                                                              ]
+                                                             },
+                   "OrcGeneralDefault_Battle_StepForward":  {
+                                                                "AxeMesh":  [
+                                                                                {
+                                                                                    "time":  0.0,
+                                                                                    "value":  1.0
+                                                                                }
+                                                                            ],
+                                                                "ShieldMesh":  [
+                                                                                   {
+                                                                                       "time":  0.0,
+                                                                                       "value":  1.0
+                                                                                   }
+                                                                               ],
+                                                                "BodyMesh":  [
+                                                                                 {
+                                                                                     "time":  0.0,
+                                                                                     "value":  1.0
+                                                                                 }
+                                                                             ],
+                                                                "FaceMesh":  [
+                                                                                 {
+                                                                                     "time":  0.0,
+                                                                                     "value":  1.0
+                                                                                 }
+                                                                             ]
+                                                            },
+                   "OrcGeneralDefault_Battle_Stun":  {
+                                                         "AxeMesh":  [
+                                                                         {
+                                                                             "time":  0.0,
+                                                                             "value":  1.0
+                                                                         }
+                                                                     ],
+                                                         "ShieldMesh":  [
+                                                                            {
+                                                                                "time":  0.0,
+                                                                                "value":  1.0
+                                                                            }
+                                                                        ],
+                                                         "BodyMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ],
+                                                         "FaceMesh":  [
+                                                                          {
+                                                                              "time":  0.0,
+                                                                              "value":  1.0
+                                                                          }
+                                                                      ]
+                                                     }
+               },
+    "visibilityPolicy":  {
+                             "version":  3,
+                             "mode":  "data-driven-controlled-mesh-opt-in-normal-track-filtered",
+                             "exportedClipCount":  16,
+                             "controlledMeshes":  [
+                                                      "AxeMesh",
+                                                      "BodyMesh",
+                                                      "FaceMesh",
+                                                      "ShieldMesh"
+                                                  ],
+                             "alwaysVisibleControlledMeshes":  [
+                                                                   "AxeMesh",
+                                                                   "BodyMesh",
+                                                                   "FaceMesh",
+                                                                   "ShieldMesh"
+                                                               ],
+                             "equipmentMeshes":  [
+                                                     "AxeMesh",
+                                                     "ShieldMesh"
+                                                 ],
+                             "strippedNormalVisibilityTrackRefs":  0
+                         }
+}
