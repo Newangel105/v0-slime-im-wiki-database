@@ -2,17 +2,19 @@
 
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { ArrowLeft, Edit, Plus, RefreshCw } from "lucide-react"
+import { ArrowLeft, Edit, Lock, Plus, RefreshCw, Trash2, Unlock } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { formatGuideDate, getCurrentGuideAuthor, getGuideCover, guidesSupabase, guidesSupabaseConfigured, type GuideArticle, type GuideAuthorProfile } from "@/lib/guides"
+import { canEditGuide, formatGuideDate, getCurrentGuideAuthor, getGuideCover, guidesSupabase, guidesSupabaseConfigured, isGuideLocked, type GuideArticle, type GuideAuthorProfile } from "@/lib/guides"
 
 export function GuidesAdminClient() {
   const [profile, setProfile] = useState<GuideAuthorProfile | null>(null)
   const [articles, setArticles] = useState<GuideArticle[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [deletingId, setDeletingId] = useState<string | null>(null)
+  const [lockingId, setLockingId] = useState<string | null>(null)
 
   async function load() {
     if (!guidesSupabaseConfigured) {
@@ -52,6 +54,72 @@ export function GuidesAdminClient() {
     }
 
     setLoading(false)
+  }
+
+  async function deleteArticle(article: GuideArticle) {
+    if (!profile) return
+
+    const confirmed = window.confirm(
+      `Delete "${article.title}"?\n\nThis cannot be undone.`,
+    )
+
+    if (!confirmed) return
+
+    setDeletingId(article.id)
+    setError(null)
+
+    const { error: deleteError } = await guidesSupabase
+      .from("guide_articles")
+      .delete()
+      .eq("id", article.id)
+
+    if (deleteError) {
+      setError(deleteError.message)
+    } else {
+      setArticles((current) => current.filter((item) => item.id !== article.id))
+    }
+
+    setDeletingId(null)
+  }
+
+  async function toggleArticleLock(article: GuideArticle) {
+    if (!profile) return
+
+    const currentlyLocked = isGuideLocked(article)
+    const confirmed = window.confirm(
+      currentlyLocked
+        ? `Unlock "${article.title}"?
+
+After unlocking, it can be edited again.`
+        : `Lock "${article.title}"?
+
+Locked articles cannot be edited until they are unlocked.`,
+    )
+
+    if (!confirmed) return
+
+    setLockingId(article.id)
+    setError(null)
+
+    const payload = currentlyLocked
+      ? { is_locked: false, locked_at: null, locked_by: null }
+      : { is_locked: true, locked_at: new Date().toISOString(), locked_by: profile.id }
+
+    const { data, error: lockError } = await guidesSupabase
+      .from("guide_articles")
+      .update(payload)
+      .eq("id", article.id)
+      .select("*")
+      .single()
+
+    if (lockError) {
+      setError(lockError.message)
+    } else if (data) {
+      const updated = data as GuideArticle
+      setArticles((current) => current.map((item) => (item.id === updated.id ? updated : item)))
+    }
+
+    setLockingId(null)
   }
 
   useEffect(() => {
@@ -108,6 +176,11 @@ export function GuidesAdminClient() {
                   <div className="min-w-0 py-1">
                     <div className="mb-2 flex flex-wrap items-center gap-2">
                       <Badge className={article.status === "published" ? "border-green-400/40 bg-green-400/10 text-green-200 hover:bg-green-400/10" : "border-yellow-400/40 bg-yellow-400/10 text-yellow-200 hover:bg-yellow-400/10"}>{article.status}</Badge>
+                      {isGuideLocked(article) ? (
+                        <Badge className="border-slate-400/40 bg-slate-400/10 text-slate-200 hover:bg-slate-400/10">
+                          <Lock className="mr-1 h-3 w-3" /> Locked
+                        </Badge>
+                      ) : null}
                       <span className="text-xs uppercase tracking-wider text-gray-500">Updated {formatGuideDate(article.updated_at)}</span>
                     </div>
                     <h2 className="line-clamp-2 text-xl font-bold">{article.title}</h2>
@@ -116,9 +189,39 @@ export function GuidesAdminClient() {
                   </div>
                 </div>
 
-                <div className="flex shrink-0 gap-2 md:pl-4">
-                  <Button asChild variant="outline" className="border-white/15 bg-white/5 text-white hover:bg-white/10"><Link href={`/guides/${article.slug}`}>View</Link></Button>
-                  <Button asChild className="bg-cyan-500 text-slate-950 hover:bg-cyan-400"><Link href={`/guides/admin/${article.id}/edit`}><Edit className="mr-2 h-4 w-4" /> Edit</Link></Button>
+                <div className="flex shrink-0 flex-wrap gap-2 md:justify-end md:pl-4">
+                  <Button asChild variant="outline" className="border-white/15 bg-white/5 text-white hover:bg-white/10">
+                    <Link href={`/guides/${article.slug}`}>View</Link>
+                  </Button>
+                  {canEditGuide(profile, article) ? (
+                    <Button asChild className="bg-cyan-500 text-slate-950 hover:bg-cyan-400">
+                      <Link href={`/guides/admin/${article.id}/edit`}><Edit className="mr-2 h-4 w-4" /> Edit</Link>
+                    </Button>
+                  ) : (
+                    <Button disabled className="bg-slate-700 text-slate-300 opacity-80">
+                      <Lock className="mr-2 h-4 w-4" /> Locked
+                    </Button>
+                  )}
+                  <Button
+                    type="button"
+                    variant="outline"
+                    disabled={lockingId === article.id}
+                    onClick={() => toggleArticleLock(article)}
+                    className={isGuideLocked(article) ? "border-cyan-400/30 bg-cyan-500/10 text-cyan-200 hover:bg-cyan-500/20 hover:text-cyan-100" : "border-white/15 bg-white/5 text-white hover:bg-white/10"}
+                  >
+                    {isGuideLocked(article) ? <Unlock className="mr-2 h-4 w-4" /> : <Lock className="mr-2 h-4 w-4" />}
+                    {lockingId === article.id ? "Updating..." : isGuideLocked(article) ? "Unlock" : "Lock"}
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    disabled={deletingId === article.id}
+                    onClick={() => deleteArticle(article)}
+                    className="border-red-400/30 bg-red-500/10 text-red-200 hover:bg-red-500/20 hover:text-red-100"
+                  >
+                    <Trash2 className="mr-2 h-4 w-4" />
+                    {deletingId === article.id ? "Deleting..." : "Delete"}
+                  </Button>
                 </div>
               </CardContent>
             </Card>
