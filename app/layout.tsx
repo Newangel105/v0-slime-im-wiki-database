@@ -15,9 +15,9 @@ export const metadata: Metadata = {
   title: "SLIME.WIKI - Character Database",
   description: "Character database for SLIME - Isekai Memories",
   icons: {
-    icon: "/icons/logo.webp",
-    shortcut: "/icons/logo.webp",
-    apple: "/icons/logo.webp",
+    icon: "/icons/logo2.webp",
+    shortcut: "/icons/logo2.webp",
+    apple: "/icons/logo2.webp",
   },
   generator: 'v0.dev',
 }
