@@ -1002,9 +1002,12 @@ export default function TierMakerPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-[#0a1a2f] via-[#0f1f35] to-[#1a2740]">
+    <main className="site-page">
       <div className="max-w-7xl mx-auto pl-6 pr-4 sm:pl-8 sm:pr-6 lg:px-8 py-8">
-        
+        <div className="mb-6">
+          <p className="section-kicker">Community Tool</p>
+          <h1 className="section-title mt-2">Tier Maker</h1>
+        </div>
 
         {/* Mode selector */}
         <div className="mb-4 flex gap-2 border-b border-gray-700 pb-3">

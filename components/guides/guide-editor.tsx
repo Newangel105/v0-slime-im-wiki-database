@@ -4,9 +4,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useEffect, useMemo, useState } from "react"
 import { ArrowDown, ArrowLeft, ArrowUp, GripVertical, ImagePlus, Lock, Plus, Save, Trash2, Upload, Video } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
@@ -434,18 +432,33 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
     setSaving(false)
   }
 
+  const panelClass = "glass-panel"
+  const strongPanelClass = "glass-panel-strong"
+  const fieldLabelClass = "mb-2 block text-[11px] font-bold uppercase tracking-[0.22em] text-slate-400"
+  const fieldClass = "theme-input"
+  const textareaClass = "min-h-[120px] border-white/10 bg-[#1b1c20]/90 text-white placeholder:text-slate-500"
+  const selectClass = "h-10 rounded-md border border-white/10 bg-[#1b1c20]/90 px-3 text-sm text-white outline-none transition focus:border-[#da3e44]/40 focus:ring-2 focus:ring-[#da3e44]/30"
+  const tinySelectClass = "h-9 rounded-md border border-white/10 bg-[#1b1c20]/90 px-2.5 text-xs text-white outline-none transition focus:border-[#da3e44]/40 focus:ring-2 focus:ring-[#da3e44]/30"
+  const controlBoxClass = "rounded-xl border border-white/10 bg-[#1b1c20]/70 p-3"
+
   if (loading) {
-    return <main className="min-h-screen bg-[#0f172a] p-8 text-gray-300">Loading editor...</main>
+    return (
+      <main className="site-page">
+        <div className="site-container text-slate-300">Loading editor...</div>
+      </main>
+    )
   }
 
   if (error && !profile) {
     return (
-      <main className="min-h-screen bg-[#0f172a] text-white">
-        <div className="mx-auto max-w-4xl px-4 py-12">
-          <Button asChild variant="outline" className="mb-6 border-white/15 bg-white/5 text-white hover:bg-white/10">
-            <Link href="/guides"><ArrowLeft className="mr-2 h-4 w-4" /> Back to Guides</Link>
+      <main className="site-page">
+        <div className="site-container max-w-4xl">
+          <Button asChild variant="outline" className="mb-6">
+            <Link href="/guides">
+              <ArrowLeft className="mr-2 h-4 w-4" /> Back to Guides
+            </Link>
           </Button>
-          <div className="rounded-2xl border border-red-500/30 bg-red-500/10 p-6 text-red-200">{error}</div>
+          <div className="glass-panel border-red-500/30 bg-red-500/10 p-6 text-red-200">{error}</div>
         </div>
       </main>
     )
@@ -453,14 +466,16 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
 
   if (mode === "edit" && article && isGuideLocked(article)) {
     return (
-      <main className="min-h-screen bg-[#0f172a] text-white">
-        <div className="mx-auto max-w-4xl px-4 py-12">
-          <Button asChild variant="outline" className="mb-6 border-white/15 bg-white/5 text-white hover:bg-white/10">
-            <Link href="/guides/admin"><ArrowLeft className="mr-2 h-4 w-4" /> My Articles</Link>
+      <main className="site-page">
+        <div className="site-container max-w-4xl">
+          <Button asChild variant="outline" className="mb-6">
+            <Link href="/guides/admin">
+              <ArrowLeft className="mr-2 h-4 w-4" /> My Articles
+            </Link>
           </Button>
-          <div className="rounded-2xl border border-slate-400/30 bg-slate-500/10 p-6 text-slate-100">
-            <div className="mb-2 flex items-center gap-2 text-lg font-bold">
-              <Lock className="h-5 w-5" /> This article is locked
+          <div className="glass-panel border-white/10 p-6 text-slate-100">
+            <div className="mb-2 flex items-center gap-2 text-lg font-bold text-white">
+              <Lock className="h-5 w-5 text-[#ff8a98]" /> This article is locked
             </div>
             <p className="text-sm leading-6 text-slate-300">
               Unlock “{article.title}” from My Articles before editing it.
@@ -472,32 +487,57 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
   }
 
   return (
-    <main className="min-h-screen bg-[#0f172a] text-white">
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-          <Button asChild variant="outline" className="border-white/15 bg-white/5 text-white hover:bg-white/10">
-            <Link href="/guides/admin"><ArrowLeft className="mr-2 h-4 w-4" /> My Articles</Link>
-          </Button>
-          <div className="flex flex-wrap gap-2">
-            <Button onClick={() => save("draft")} disabled={saving} variant="outline" className="border-white/15 bg-white/5 text-white hover:bg-white/10">
-              <Save className="mr-2 h-4 w-4" /> Save Draft
-            </Button>
-            <Button onClick={() => save("published")} disabled={saving} className="bg-cyan-500 text-slate-950 hover:bg-cyan-400">
-              <Upload className="mr-2 h-4 w-4" /> Publish
-            </Button>
-          </div>
-        </div>
+    <main className="site-page">
+      <div className="site-container space-y-6">
+        <section className={`${strongPanelClass} overflow-hidden p-6 sm:p-8`}>
+          <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
+            <div className="max-w-3xl">
+              <Button asChild variant="outline" className="mb-6">
+                <Link href="/guides/admin">
+                  <ArrowLeft className="mr-2 h-4 w-4" /> My Articles
+                </Link>
+              </Button>
+              <div className="section-kicker">Guide Studio</div>
+              <h1 className="section-title mt-3 text-4xl sm:text-5xl">
+                {mode === "edit" ? "Edit guide" : "Create guide"}
+              </h1>
+              <div className="accent-rule my-5 max-w-md" />
+              <div className="flex flex-wrap items-center gap-3 text-sm text-slate-300">
+                <span className="inline-flex items-center rounded-full border border-[#da3e44]/25 bg-[#da3e44]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#ff8a98]">
+                  {status}
+                </span>
+                <span>Writing as <span className="font-semibold text-white">{profile?.display_name}</span></span>
+                <span className="text-slate-500">•</span>
+                <span>{content.blocks.length} section{content.blocks.length === 1 ? "" : "s"}</span>
+              </div>
+            </div>
 
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_420px]">
+            <div className="flex flex-wrap gap-3">
+              <Button onClick={() => save("draft")} disabled={saving} variant="outline">
+                <Save className="mr-2 h-4 w-4" /> {saving && status === "draft" ? "Saving..." : "Save Draft"}
+              </Button>
+              <Button onClick={() => save("published")} disabled={saving}>
+                <Upload className="mr-2 h-4 w-4" /> {saving && status === "published" ? "Publishing..." : "Publish"}
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_430px]">
           <div className="space-y-6">
-            <Card className="border-white/10 bg-slate-900/80 text-white">
-              <CardContent className="space-y-4 p-5">
-                <div className="flex items-center gap-2">
-                  <Badge className="border-cyan-400/40 bg-cyan-400/10 text-cyan-200 hover:bg-cyan-400/10">{status}</Badge>
-                  <span className="text-sm text-gray-400">Writing as {profile?.display_name}</span>
-                </div>
+            <section className={`${panelClass} p-5 sm:p-6`}>
+              <div className="mb-5 flex items-center justify-between gap-3">
                 <div>
-                  <Label>Title</Label>
+                  <div className="section-kicker">Guide details</div>
+                  <h2 className="mt-2 text-2xl font-black text-white">Article metadata</h2>
+                </div>
+                <span className="rounded-full border border-white/10 bg-[#222327] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-400">
+                  Live autoset slug
+                </span>
+              </div>
+              <div className="grid gap-5 lg:grid-cols-2">
+                <div className="lg:col-span-2">
+                  <Label className={fieldLabelClass}>Title</Label>
                   <Input
                     value={title}
                     onChange={(event) => {
@@ -505,23 +545,50 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
                       setTitle(value)
                       if (!article && !slug) setSlug(slugifyGuideTitle(value))
                     }}
-                    className="mt-2 border-white/10 bg-slate-950/70 text-white"
+                    placeholder="Enter guide title"
+                    className={fieldClass}
                   />
                 </div>
+
                 <div>
-                  <Label>Slug</Label>
-                  <Input value={slug} onChange={(event) => setSlug(slugifyGuideTitle(event.target.value))} className="mt-2 border-white/10 bg-slate-950/70 text-white" />
+                  <Label className={fieldLabelClass}>Slug</Label>
+                  <Input
+                    value={slug}
+                    onChange={(event) => setSlug(slugifyGuideTitle(event.target.value))}
+                    placeholder="guide-url-slug"
+                    className={fieldClass}
+                  />
                 </div>
+
                 <div>
-                  <Label>Summary</Label>
-                  <Textarea value={summary} onChange={(event) => setSummary(event.target.value)} rows={3} className="mt-2 border-white/10 bg-slate-950/70 text-white" />
+                  <Label className={fieldLabelClass}>Status</Label>
+                  <div className="h-10 rounded-md border border-white/10 bg-[#1b1c20]/90 px-3 text-sm text-white flex items-center">
+                    {status}
+                  </div>
                 </div>
-                <div>
-                  <Label>Thumbnail URL</Label>
-                  <div className="mt-2 flex gap-2">
-                    <Input value={thumbnailUrl} onChange={(event) => setThumbnailUrl(event.target.value)} className="border-white/10 bg-slate-950/70 text-white" />
-                    <label className="inline-flex cursor-pointer items-center justify-center rounded-md bg-white/10 px-3 text-sm font-semibold text-white hover:bg-white/15">
-                      <ImagePlus className="h-4 w-4" />
+
+                <div className="lg:col-span-2">
+                  <Label className={fieldLabelClass}>Summary</Label>
+                  <Textarea
+                    value={summary}
+                    onChange={(event) => setSummary(event.target.value)}
+                    rows={4}
+                    placeholder="Add a short summary for the guide card and hero section"
+                    className={textareaClass}
+                  />
+                </div>
+
+                <div className="lg:col-span-2">
+                  <Label className={fieldLabelClass}>Thumbnail</Label>
+                  <div className="flex flex-col gap-3 sm:flex-row">
+                    <Input
+                      value={thumbnailUrl}
+                      onChange={(event) => setThumbnailUrl(event.target.value)}
+                      placeholder="Paste image URL or upload"
+                      className={`${fieldClass} flex-1`}
+                    />
+                    <label className="quiet-button cursor-pointer">
+                      <ImagePlus className="h-4 w-4" /> Upload image
                       <input
                         type="file"
                         accept="image/*"
@@ -537,265 +604,345 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
                     </label>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </section>
 
-            <Card className="border-white/10 bg-slate-900/80 text-white">
-              <CardContent className="p-5">
-                <div className="mb-4 flex flex-wrap gap-2">
-                  <Button size="sm" variant="outline" onClick={() => addBlock("paragraph")} className="border-white/15 bg-white/5 text-white hover:bg-white/10"><Plus className="mr-1 h-4 w-4" /> Paragraph</Button>
-                  <Button size="sm" variant="outline" onClick={() => addBlock("heading")} className="border-white/15 bg-white/5 text-white hover:bg-white/10"><Plus className="mr-1 h-4 w-4" /> Heading</Button>
-                  <Button size="sm" variant="outline" onClick={() => addBlock("image")} className="border-white/15 bg-white/5 text-white hover:bg-white/10"><Plus className="mr-1 h-4 w-4" /> Image</Button>
-                  <Button size="sm" variant="outline" onClick={addSideBySidePair} className="border-cyan-400/30 bg-cyan-400/10 text-cyan-100 hover:bg-cyan-400/15"><Plus className="mr-1 h-4 w-4" /> Side by Side</Button>
-                  <Button size="sm" variant="outline" onClick={() => addBlock("youtube")} className="border-white/15 bg-white/5 text-white hover:bg-white/10"><Video className="mr-1 h-4 w-4" /> YouTube</Button>
-                  <Button size="sm" variant="outline" onClick={() => addBlock("quote")} className="border-white/15 bg-white/5 text-white hover:bg-white/10">Quote</Button>
-                  <Button size="sm" variant="outline" onClick={() => addBlock("list")} className="border-white/15 bg-white/5 text-white hover:bg-white/10">List</Button>
-                  <Button size="sm" variant="outline" onClick={() => addBlock("divider")} className="border-white/15 bg-white/5 text-white hover:bg-white/10">Divider</Button>
+            <section className={`${panelClass} p-5 sm:p-6`}>
+              <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <div className="section-kicker">Composer</div>
+                  <h2 className="mt-2 text-2xl font-black text-white">Build content blocks</h2>
+                  <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
+                    Create modular content rows. Blocks can be mixed in flexible widths from 25% to 100%.
+                  </p>
                 </div>
-                <p className="mb-4 text-xs text-gray-400">Use the up/down buttons to rearrange sections. Sections flow into rows automatically. A row can contain up to four elements, and their widths can be any value from 25% to 100% as long as the row total fits inside 100%.</p>
+              </div>
 
-                <div className="space-y-4">
-                  {content.blocks.map((block, index) => (
-                    <div
-                      key={block.id}
-                      className="rounded-2xl border border-white/10 bg-slate-950/60 p-4 transition"
-                    >
-                      <div className="mb-3 flex items-center gap-2 text-xs uppercase tracking-wider text-gray-400">
-                        <div className={`flex ${getBlockHeightPercent(block) === "auto" ? "w-[108px]" : "w-[48px]"} shrink-0 items-center gap-1.5`}>
-                          <span
-                            className="rounded-md p-1 text-gray-500"
-                            title="Use the up/down arrows to move this section"
-                            aria-label="Section reorder marker"
-                          >
-                            <GripVertical className="h-4 w-4" />
-                          </span>
-                          <span className="truncate whitespace-nowrap text-[10px] leading-none" title={`${index + 1}. ${block.type}`}>{index + 1}. {block.type}</span>
+              <div className="mb-5 flex flex-wrap gap-2">
+                <Button size="sm" variant="outline" onClick={() => addBlock("paragraph")}><Plus className="mr-1 h-4 w-4" /> Paragraph</Button>
+                <Button size="sm" variant="outline" onClick={() => addBlock("heading")}><Plus className="mr-1 h-4 w-4" /> Heading</Button>
+                <Button size="sm" variant="outline" onClick={() => addBlock("image")}><Plus className="mr-1 h-4 w-4" /> Image</Button>
+                <Button size="sm" variant="outline" onClick={addSideBySidePair} className="border-[#da3e44]/30 bg-[#da3e44]/10 text-[#ff97a3] hover:bg-[#da3e44]/15 hover:text-white"><Plus className="mr-1 h-4 w-4" /> Side by Side</Button>
+                <Button size="sm" variant="outline" onClick={() => addBlock("youtube")}><Video className="mr-1 h-4 w-4" /> YouTube</Button>
+                <Button size="sm" variant="outline" onClick={() => addBlock("quote")}>Quote</Button>
+                <Button size="sm" variant="outline" onClick={() => addBlock("list")}>List</Button>
+                <Button size="sm" variant="outline" onClick={() => addBlock("divider")}>Divider</Button>
+              </div>
+
+              <div className="space-y-4">
+                {content.blocks.map((block, index) => {
+                  const blockHeight = getBlockHeightPercent(block)
+                  const widthValue = getBlockWidthPercent(block)
+                  return (
+                    <div key={block.id} className="overflow-hidden rounded-[20px] border border-white/10 bg-[#18191d]/88 shadow-[0_14px_40px_rgba(0,0,0,0.16)]">
+                      <div className="border-b border-white/10 bg-[linear-gradient(135deg,rgba(218,62,68,0.08),transparent_44%,rgba(255,255,255,0.02)_100%)] px-4 py-3 sm:px-5">
+                        <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
+                          <div className="flex min-w-0 items-center gap-3">
+                            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-white/10 bg-[#222327] text-slate-400">
+                              <GripVertical className="h-4 w-4" />
+                            </span>
+                            <div className="min-w-0">
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className="rounded-full border border-white/10 bg-[#222327] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-400">
+                                  Section {index + 1}
+                                </span>
+                                <span className="rounded-full border border-[#da3e44]/25 bg-[#da3e44]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#ff8a98]">
+                                  {block.type}
+                                </span>
+                              </div>
+                              <p className="mt-2 text-xs text-slate-500">
+                                Adjust width, height, and alignment, then fill the block content below.
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="flex shrink-0 gap-2 self-start xl:self-center">
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              onClick={() => moveBlockById(block.id, -1)}
+                              disabled={index === 0}
+                              className="h-9 w-9 p-0 text-slate-300 hover:bg-white/10 hover:text-white disabled:opacity-30"
+                              title="Move section up"
+                            >
+                              <ArrowUp className="h-4 w-4" />
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              onClick={() => moveBlockById(block.id, 1)}
+                              disabled={index === content.blocks.length - 1}
+                              className="h-9 w-9 p-0 text-slate-300 hover:bg-white/10 hover:text-white disabled:opacity-30"
+                              title="Move section down"
+                            >
+                              <ArrowDown className="h-4 w-4" />
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              onClick={() => removeBlock(block.id)}
+                              className="h-9 w-9 p-0 text-red-300 hover:bg-red-500/10 hover:text-red-200"
+                              title="Delete section"
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
+                          </div>
                         </div>
-                        <div className="flex min-w-0 flex-1 items-center justify-start gap-1.5 overflow-hidden">
-                          <div className="inline-flex h-8 min-w-[112px] max-w-[158px] flex-[1_1_150px] items-center gap-1.5 rounded-md border border-white/10 bg-slate-900 px-2 normal-case tracking-normal" title="Section width">
-                            <span className="w-3 shrink-0 text-[11px] font-semibold text-cyan-200">W</span>
+                      </div>
+
+                      <div className="space-y-4 p-4 sm:p-5">
+                        <div className="grid gap-3 lg:grid-cols-2 xl:grid-cols-4">
+                          <div className={controlBoxClass}>
+                            <div className="mb-2 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500">
+                              <span>Width</span>
+                              <span>{widthValue}%</span>
+                            </div>
                             <input
                               type="range"
                               min={25}
                               max={100}
                               step={1}
-                              value={getBlockWidthPercent(block)}
+                              value={widthValue}
                               onChange={(event) => updateBlock(block.id, widthPatch(Number(event.target.value)))}
-                              className="h-2 min-w-[24px] flex-1 cursor-pointer accent-cyan-400"
-                              aria-label="Section width percentage"
+                              className="w-full accent-[#da3e44]"
                             />
-                            <span className="w-9 shrink-0 whitespace-nowrap text-right text-[11px] font-semibold text-white">{getBlockWidthPercent(block)}%</span>
                           </div>
-                          <div className={`inline-flex h-8 ${getBlockHeightPercent(block) === "auto" ? "min-w-[100px] flex-[0_1_112px]" : "min-w-[116px] max-w-[150px] flex-[1_1_145px]"} items-center gap-1.5 rounded-md border border-white/10 bg-slate-900 px-2 normal-case tracking-normal`} title="Section visual height">
-                            <span className="w-3 shrink-0 text-[11px] font-semibold text-cyan-200">H</span>
-                            {getBlockHeightPercent(block) === "auto" ? (
-                              <>
-                                <button
-                                  type="button"
-                                  className="inline-flex h-6 w-[34px] shrink-0 items-center justify-center rounded bg-cyan-400/20 px-1 text-[10px] font-semibold leading-none text-cyan-100 ring-1 ring-cyan-400/40"
-                                  aria-label="Section height is automatic"
-                                >
-                                  Auto
-                                </button>
-                                <button
-                                  type="button"
-                                  onClick={() => updateBlock(block.id, heightPatch(100))}
-                                  className="inline-flex h-6 w-[44px] shrink-0 items-center justify-center rounded bg-white/5 px-1 text-[10px] font-semibold leading-none text-gray-300 hover:bg-white/10"
-                                  aria-label="Use custom section height"
-                                >
-                                  Custom
-                                </button>
-                              </>
-                            ) : (
-                              <>
-                                <button
-                                  type="button"
-                                  onClick={() => updateBlock(block.id, heightPatch("auto"))}
-                                  className="inline-flex h-6 w-[34px] shrink-0 items-center justify-center rounded bg-white/5 px-1 text-[10px] font-semibold leading-none text-gray-300 hover:bg-white/10"
-                                  aria-label="Set section height to auto"
-                                >
-                                  Auto
-                                </button>
-                                <input
-                                  type="range"
-                                  min={50}
-                                  max={250}
-                                  step={5}
-                                  value={getBlockHeightPercent(block)}
-                                  onChange={(event) => updateBlock(block.id, heightPatch(Number(event.target.value)))}
-                                  className="h-2 min-w-[22px] flex-1 cursor-pointer accent-cyan-400"
-                                  aria-label="Section height percentage"
-                                />
-                                <span className="w-9 shrink-0 whitespace-nowrap text-right text-[11px] font-semibold text-white">{getBlockHeightPercent(block)}%</span>
-                              </>
-                            )}
+
+                          <div className={controlBoxClass}>
+                            <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500">Height</div>
+                            <select
+                              value={blockHeight === "auto" ? "auto" : String(blockHeight)}
+                              onChange={(event) => {
+                                const value = event.target.value
+                                updateBlock(block.id, heightPatch(value === "auto" ? "auto" : Number(value)))
+                              }}
+                              className={`${tinySelectClass} w-full`}
+                            >
+                              <option value="auto">Auto</option>
+                              <option value="50">50%</option>
+                              <option value="75">75%</option>
+                              <option value="100">100%</option>
+                              <option value="125">125%</option>
+                              <option value="150">150%</option>
+                              <option value="200">200%</option>
+                            </select>
                           </div>
+
                           {isTextBlock(block) ? (
                             <>
-                              <select
-                                value={getContentPosition(block)}
-                                onChange={(event) => {
-                                  const contentPosition = event.target.value as EditorContentPosition
-                                  updateBlock(block.id, {
-                                    contentPosition,
-                                    verticalAlign: contentPosition === "center" || contentPosition.startsWith("middle") ? "center" : "top",
-                                  } as Partial<GuideContentBlock>)
-                                }}
-                                className="h-8 min-w-[70px] flex-[0_1_92px] rounded-md border border-white/10 bg-slate-900 px-1.5 text-[11px] normal-case tracking-normal text-white"
-                                title="Text box position inside this section"
-                              >
-                                <option value="top-left">Top left</option>
-                                <option value="top-center">Top center</option>
-                                <option value="top-right">Top right</option>
-                                <option value="middle-left">Middle left</option>
-                                <option value="center">Center</option>
-                                <option value="middle-right">Middle right</option>
-                                <option value="bottom-left">Bottom left</option>
-                                <option value="bottom-center">Bottom center</option>
-                                <option value="bottom-right">Bottom right</option>
-                              </select>
-                              <select
-                                value={block.textAlign ?? "left"}
-                                onChange={(event) => updateBlock(block.id, { textAlign: event.target.value as EditorTextAlign } as Partial<GuideContentBlock>)}
-                                className="h-8 min-w-[66px] flex-[0_1_84px] rounded-md border border-white/10 bg-slate-900 px-1.5 text-[11px] normal-case tracking-normal text-white"
-                                title="Text alignment"
-                              >
-                                <option value="left">Text left</option>
-                                <option value="center">Text center</option>
-                                <option value="right">Text right</option>
-                              </select>
+                              <div className={controlBoxClass}>
+                                <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500">Content position</div>
+                                <select
+                                  value={getContentPosition(block)}
+                                  onChange={(event) => updateBlock(block.id, { contentPosition: event.target.value as EditorContentPosition } as Partial<GuideContentBlock>)}
+                                  className={`${tinySelectClass} w-full`}
+                                >
+                                  <option value="top-left">Top left</option>
+                                  <option value="top-center">Top center</option>
+                                  <option value="top-right">Top right</option>
+                                  <option value="middle-left">Middle left</option>
+                                  <option value="center">Center</option>
+                                  <option value="middle-right">Middle right</option>
+                                  <option value="bottom-left">Bottom left</option>
+                                  <option value="bottom-center">Bottom center</option>
+                                  <option value="bottom-right">Bottom right</option>
+                                </select>
+                              </div>
+
+                              <div className={controlBoxClass}>
+                                <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500">Text align</div>
+                                <select
+                                  value={block.textAlign ?? "left"}
+                                  onChange={(event) => updateBlock(block.id, { textAlign: event.target.value as EditorTextAlign } as Partial<GuideContentBlock>)}
+                                  className={`${tinySelectClass} w-full`}
+                                >
+                                  <option value="left">Left</option>
+                                  <option value="center">Center</option>
+                                  <option value="right">Right</option>
+                                </select>
+                              </div>
                             </>
                           ) : null}
+
                           {block.type === "image" ? (
-                            <select
-                              value={(block.imageFit ?? "contain") as EditorImageFit}
-                              onChange={(event) => updateBlock(block.id, { imageFit: event.target.value as EditorImageFit } as Partial<GuideContentBlock>)}
-                              className="h-8 min-w-[58px] flex-[0_1_76px] rounded-md border border-white/10 bg-slate-900 px-1.5 text-[11px] normal-case tracking-normal text-white"
-                              title="Fit keeps the image ratio. Stretch fit resizes the image to the selected width and height."
-                            >
-                              <option value="contain">Fit image</option>
-                              <option value="cover">Stretch fit</option>
-                            </select>
+                            <div className={controlBoxClass}>
+                              <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500">Image fit</div>
+                              <select
+                                value={(block.imageFit ?? "contain") as EditorImageFit}
+                                onChange={(event) => updateBlock(block.id, { imageFit: event.target.value as EditorImageFit } as Partial<GuideContentBlock>)}
+                                className={`${tinySelectClass} w-full`}
+                                title="Fit keeps the image ratio. Stretch fit resizes the image to the selected width and height."
+                              >
+                                <option value="contain">Fit image</option>
+                                <option value="cover">Stretch fit</option>
+                              </select>
+                            </div>
                           ) : null}
-                          <Button
-                            size="sm"
-                            variant="ghost"
-                            onClick={() => moveBlockById(block.id, -1)}
-                            disabled={index === 0}
-                            className="h-8 w-6 shrink-0 p-0 text-gray-300 hover:bg-white/10 hover:text-white disabled:opacity-30"
-                            title="Move section up"
-                          >
-                            <ArrowUp className="h-4 w-4" />
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="ghost"
-                            onClick={() => moveBlockById(block.id, 1)}
-                            disabled={index === content.blocks.length - 1}
-                            className="h-8 w-6 shrink-0 p-0 text-gray-300 hover:bg-white/10 hover:text-white disabled:opacity-30"
-                            title="Move section down"
-                          >
-                            <ArrowDown className="h-4 w-4" />
-                          </Button>
-                          <Button size="sm" variant="ghost" onClick={() => removeBlock(block.id)} className="h-8 w-6 shrink-0 p-0 text-red-300 hover:bg-red-500/10 hover:text-red-200"><Trash2 className="h-4 w-4" /></Button>
                         </div>
-                      </div>
 
-                      {block.type === "paragraph" ? (
-                        <Textarea value={block.text} onChange={(event) => updateBlock(block.id, { text: event.target.value } as Partial<GuideContentBlock>)} rows={5} className="border-white/10 bg-slate-900 text-white" />
-                      ) : null}
-
-                      {block.type === "heading" ? (
-                        <div className="grid gap-3 md:grid-cols-[120px_1fr]">
-                          <select value={block.level} onChange={(event) => updateBlock(block.id, { level: Number(event.target.value) as 2 | 3 } as Partial<GuideContentBlock>)} className="rounded-md border border-white/10 bg-slate-900 px-3 text-white">
-                            <option value={2}>Heading 2</option>
-                            <option value={3}>Heading 3</option>
-                          </select>
-                          <Input value={block.text} onChange={(event) => updateBlock(block.id, { text: event.target.value } as Partial<GuideContentBlock>)} className="border-white/10 bg-slate-900 text-white" />
-                        </div>
-                      ) : null}
-
-                      {block.type === "image" ? (
-                        <div className="space-y-3">
-                          <div className="flex gap-2">
-                            <Input value={block.url} onChange={(event) => updateBlock(block.id, { url: event.target.value } as Partial<GuideContentBlock>)} placeholder="Image URL" className="border-white/10 bg-slate-900 text-white" />
-                            <label className="inline-flex cursor-pointer items-center justify-center rounded-md bg-white/10 px-3 text-sm font-semibold text-white hover:bg-white/15">
-                              <ImagePlus className="h-4 w-4" />
-                              <input
-                                type="file"
-                                accept="image/*"
-                                className="hidden"
-                                onChange={async (event) => {
-                                  const file = event.target.files?.[0]
-                                  if (!file) return
-                                  const url = await uploadImage(file, "inline")
-                                  if (url) updateBlock(block.id, { url } as Partial<GuideContentBlock>)
-                                  event.target.value = ""
-                                }}
-                              />
-                            </label>
-                          </div>
-                          <Input value={block.caption || ""} onChange={(event) => updateBlock(block.id, { caption: event.target.value } as Partial<GuideContentBlock>)} placeholder="Caption" className="border-white/10 bg-slate-900 text-white" />
-                        </div>
-                      ) : null}
-
-                      {block.type === "youtube" ? (
-                        <div className="space-y-3">
-                          <Input
-                            value={block.url || block.videoId || ""}
-                            onChange={(event) => {
-                              const value = event.target.value
-                              updateBlock(block.id, { url: value, videoId: extractYouTubeVideoId(value) || value } as Partial<GuideContentBlock>)
-                            }}
-                            placeholder="YouTube URL or video id"
-                            className="border-white/10 bg-slate-900 text-white"
+                        {block.type === "paragraph" ? (
+                          <Textarea
+                            value={block.text}
+                            onChange={(event) => updateBlock(block.id, { text: event.target.value } as Partial<GuideContentBlock>)}
+                            rows={6}
+                            placeholder="Write paragraph text..."
+                            className={textareaClass}
                           />
-                          <Input value={block.caption || ""} onChange={(event) => updateBlock(block.id, { caption: event.target.value } as Partial<GuideContentBlock>)} placeholder="Caption" className="border-white/10 bg-slate-900 text-white" />
-                        </div>
-                      ) : null}
+                        ) : null}
 
-                      {block.type === "quote" ? (
-                        <div className="space-y-3">
-                          <Textarea value={block.text} onChange={(event) => updateBlock(block.id, { text: event.target.value } as Partial<GuideContentBlock>)} rows={3} className="border-white/10 bg-slate-900 text-white" />
-                          <Input value={block.cite || ""} onChange={(event) => updateBlock(block.id, { cite: event.target.value } as Partial<GuideContentBlock>)} placeholder="Citation / source" className="border-white/10 bg-slate-900 text-white" />
-                        </div>
-                      ) : null}
+                        {block.type === "heading" ? (
+                          <div className="grid gap-3 md:grid-cols-[160px_1fr]">
+                            <select
+                              value={block.level}
+                              onChange={(event) => updateBlock(block.id, { level: Number(event.target.value) as 2 | 3 } as Partial<GuideContentBlock>)}
+                              className={selectClass}
+                            >
+                              <option value={2}>Heading 2</option>
+                              <option value={3}>Heading 3</option>
+                            </select>
+                            <Input
+                              value={block.text}
+                              onChange={(event) => updateBlock(block.id, { text: event.target.value } as Partial<GuideContentBlock>)}
+                              placeholder="Heading text"
+                              className={fieldClass}
+                            />
+                          </div>
+                        ) : null}
 
-                      {block.type === "list" ? (
-                        <Textarea
-                          value={block.items.join("\n")}
-                          onChange={(event) => updateBlock(block.id, { items: event.target.value.split("\n") } as Partial<GuideContentBlock>)}
-                          rows={5}
-                          placeholder="One item per line"
-                          className="border-white/10 bg-slate-900 text-white"
-                        />
-                      ) : null}
+                        {block.type === "image" ? (
+                          <div className="space-y-3">
+                            <div className="flex flex-col gap-3 sm:flex-row">
+                              <Input
+                                value={block.url}
+                                onChange={(event) => updateBlock(block.id, { url: event.target.value } as Partial<GuideContentBlock>)}
+                                placeholder="Image URL"
+                                className={`${fieldClass} flex-1`}
+                              />
+                              <label className="quiet-button cursor-pointer">
+                                <ImagePlus className="h-4 w-4" /> Upload
+                                <input
+                                  type="file"
+                                  accept="image/*"
+                                  className="hidden"
+                                  onChange={async (event) => {
+                                    const file = event.target.files?.[0]
+                                    if (!file) return
+                                    const url = await uploadImage(file, "inline")
+                                    if (url) updateBlock(block.id, { url } as Partial<GuideContentBlock>)
+                                    event.target.value = ""
+                                  }}
+                                />
+                              </label>
+                            </div>
+                            <Input
+                              value={block.caption || ""}
+                              onChange={(event) => updateBlock(block.id, { caption: event.target.value } as Partial<GuideContentBlock>)}
+                              placeholder="Caption"
+                              className={fieldClass}
+                            />
+                          </div>
+                        ) : null}
 
-                      {block.type === "divider" ? <div className="py-4 text-center text-gray-500">Horizontal divider</div> : null}
+                        {block.type === "youtube" ? (
+                          <div className="space-y-3">
+                            <Input
+                              value={block.url || block.videoId || ""}
+                              onChange={(event) => {
+                                const value = event.target.value
+                                updateBlock(block.id, { url: value, videoId: extractYouTubeVideoId(value) || value } as Partial<GuideContentBlock>)
+                              }}
+                              placeholder="YouTube URL or video id"
+                              className={fieldClass}
+                            />
+                            <Input
+                              value={block.caption || ""}
+                              onChange={(event) => updateBlock(block.id, { caption: event.target.value } as Partial<GuideContentBlock>)}
+                              placeholder="Caption"
+                              className={fieldClass}
+                            />
+                          </div>
+                        ) : null}
+
+                        {block.type === "quote" ? (
+                          <div className="space-y-3">
+                            <Textarea
+                              value={block.text}
+                              onChange={(event) => updateBlock(block.id, { text: event.target.value } as Partial<GuideContentBlock>)}
+                              rows={4}
+                              placeholder="Quote text"
+                              className={textareaClass}
+                            />
+                            <Input
+                              value={block.cite || ""}
+                              onChange={(event) => updateBlock(block.id, { cite: event.target.value } as Partial<GuideContentBlock>)}
+                              placeholder="Citation / source"
+                              className={fieldClass}
+                            />
+                          </div>
+                        ) : null}
+
+                        {block.type === "list" ? (
+                          <Textarea
+                            value={block.items.join("\n")}
+                            onChange={(event) => updateBlock(block.id, { items: event.target.value.split("\n") } as Partial<GuideContentBlock>)}
+                            rows={6}
+                            placeholder="One item per line"
+                            className={textareaClass}
+                          />
+                        ) : null}
+
+                        {block.type === "divider" ? (
+                          <div className="rounded-xl border border-dashed border-white/10 bg-[#111216] px-4 py-8 text-center text-slate-500">
+                            Horizontal divider
+                          </div>
+                        ) : null}
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                  )
+                })}
+              </div>
+            </section>
 
-            {error ? <div className="rounded-2xl border border-red-500/30 bg-red-500/10 p-4 text-red-200">{error}</div> : null}
-            {message ? <div className="rounded-2xl border border-green-500/30 bg-green-500/10 p-4 text-green-200">{message}</div> : null}
+            {error ? <div className="glass-panel border-red-500/30 bg-red-500/10 p-4 text-red-200">{error}</div> : null}
+            {message ? <div className="glass-panel border-emerald-500/30 bg-emerald-500/10 p-4 text-emerald-200">{message}</div> : null}
           </div>
 
-          <aside className="lg:sticky lg:top-24 lg:self-start">
-            <Card className="border-white/10 bg-slate-900/80 text-white">
-              <CardContent className="p-5">
-                <h2 className="mb-4 text-lg font-bold">Preview</h2>
-                <div className="mb-4 overflow-hidden rounded-xl border border-white/10 bg-slate-950">
-                  {previewArticle.thumbnail_url ? <img src={previewArticle.thumbnail_url} alt="Preview thumbnail" className="h-48 w-full object-cover" /> : <div className="flex h-48 items-center justify-center text-gray-500">No thumbnail</div>}
+          <aside className="space-y-6 xl:sticky xl:top-24 xl:self-start">
+            <section className={`${strongPanelClass} overflow-hidden p-5`}>
+              <div className="section-kicker">Live Preview</div>
+              <h2 className="mt-2 text-2xl font-black text-white">Guide preview</h2>
+              <div className="accent-rule my-4" />
+
+              <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#111216]">
+                {previewArticle.thumbnail_url ? (
+                  <img src={previewArticle.thumbnail_url} alt="Preview thumbnail" className="h-52 w-full object-cover" />
+                ) : (
+                  <div className="flex h-52 items-center justify-center bg-[radial-gradient(circle_at_18%_-8%,rgba(218,62,68,0.16),transparent_22rem),linear-gradient(135deg,#191a1e_0%,#1f2024_46%,#242529_100%)] text-sm font-semibold text-slate-500">
+                    No thumbnail selected
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-5 rounded-2xl border border-white/10 bg-[#18191d]/88 p-4">
+                <div className="mb-2 flex items-center gap-2">
+                  <span className="inline-flex items-center rounded-full border border-[#da3e44]/25 bg-[#da3e44]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#ff8a98]">
+                    {previewArticle.status}
+                  </span>
+                  <span className="text-xs text-slate-400">/{previewArticle.slug}</span>
                 </div>
-                <h3 className="text-2xl font-extrabold">{previewArticle.title}</h3>
-                {previewArticle.summary ? <p className="mt-2 text-sm text-gray-300">{previewArticle.summary}</p> : null}
-                <div className="mt-5 max-h-[680px] overflow-auto rounded-xl border border-white/10 bg-slate-950/60 p-4">
-                  <GuideRenderer content={previewArticle.content} />
+                <h3 className="text-2xl font-black text-white">{previewArticle.title}</h3>
+                {previewArticle.summary ? <p className="mt-3 text-sm leading-6 text-slate-300">{previewArticle.summary}</p> : null}
+                <div className="mt-4 flex items-center gap-2 text-xs text-slate-500">
+                  <span>By {previewArticle.author_name}</span>
+                  <span>•</span>
+                  <span>{content.blocks.length} section{content.blocks.length === 1 ? "" : "s"}</span>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+
+              <div className="mt-5 max-h-[720px] overflow-auto rounded-2xl border border-white/10 bg-[#121319]/70 p-4 image-scroll">
+                <GuideRenderer content={previewArticle.content} />
+              </div>
+            </section>
           </aside>
         </div>
       </div>

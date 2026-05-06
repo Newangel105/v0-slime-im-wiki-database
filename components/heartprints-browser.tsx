@@ -68,7 +68,7 @@ function HeartprintCard({ hp, onClick }: { hp: Heartprint; onClick: () => void }
   return (
     <button
       onClick={onClick}
-      className="group flex flex-col bg-gray-800 border border-gray-700 rounded-lg overflow-hidden hover:border-blue-500/60 transition-all text-left w-full"
+      className="glass-panel group flex w-full flex-col overflow-hidden text-left transition-all hover:border-cyan-300/50"
     >
       <div className="relative w-full aspect-video bg-gray-900 overflow-hidden">
         <img src={thumb} alt={hp.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
@@ -410,7 +410,7 @@ function EquipableFilterDropdown({
               {selectedValues.map((v) => {
                 const opt = EX_FILTER_OPTIONS.find((o) => o.key === v)
                 return (
-                  <span key={v} className="inline-flex items-center gap-1 rounded-full bg-white/15 px-2 py-0.5 text-xs font-medium">
+                    <span key={v} className="inline-flex items-center gap-1 rounded-full bg-white/20 px-2 py-0.5 text-xs font-medium">
                     {opt?.label ?? v}
                   </span>
                 )
@@ -488,10 +488,11 @@ export function HeartprintsBrowser({ heartprints }: { heartprints: Heartprint[] 
   const notEquipable = filtered.filter((hp) => hp.still_type === "normal").sort((a, b) => a.order - b.order)
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="site-page text-white">
       <div className="max-w-7xl mx-auto pl-6 pr-4 sm:pl-8 sm:pr-6 lg:px-8 py-8">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-300 uppercase tracking-wider">HEARTPRINTS</h1>
+        <div className="mb-8 text-center">
+          <p className="section-kicker">Memory Archive</p>
+          <h1 className="section-title mt-2">Heartprints</h1>
         </div>
 
         <div className="max-w-md mx-auto mb-10">

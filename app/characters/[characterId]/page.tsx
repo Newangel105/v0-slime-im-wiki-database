@@ -280,9 +280,10 @@ function getProtectorIconTags(character: WikiCharacter): IconTag[] {
 
 function DetailSection({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <section className="space-y-4 rounded-2xl border border-gray-700 bg-gray-800 p-6 shadow-[0_0_24px_rgba(255,255,255,0.08)]">
+    <section className="glass-panel-strong space-y-5 p-6">
       <div>
-        <p className="text-xs uppercase tracking-[0.25em] text-gray-400">{title}</p>
+        <p className="section-kicker">{title}</p>
+        <div className="accent-rule mt-4" />
       </div>
       {children}
     </section>
@@ -638,18 +639,18 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
   const tacticsIcon = tacticsIconMap[tacticsKey]
 
   return (
-    <main className="min-h-screen bg-[#111827] px-4 py-8 text-white sm:px-6">
+    <main className="site-page px-4 py-8 text-white sm:px-6">
       <div className="mx-auto flex max-w-7xl flex-col gap-8">
         <div className="flex items-center justify-between gap-4">
           <BackButton />
-          <Badge className="bg-gray-700 text-white hover:bg-gray-700">#{character.master_pc_id}</Badge>
+          <Badge className="border-white/10 bg-[#222327] text-white hover:bg-[#222327]">#{character.master_pc_id}</Badge>
         </div>
 
-        <section className="overflow-hidden rounded-2xl border border-gray-700 bg-gray-800 shadow-[0_0_24px_rgba(255,255,255,0.08)]">
+        <section className="glass-panel-strong overflow-hidden">
           <div className="grid gap-8 px-8 py-10 lg:grid-cols-[1.1fr_0.9fr] lg:px-10">
             <div className="space-y-5">
-              <Badge className="bg-gray-700 text-white hover:bg-gray-700">{character.affiliation_name}</Badge>
-              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">{character.name}</h1>
+              <Badge className="border-white/10 bg-[#222327] text-white hover:bg-[#222327]">{character.affiliation_name}</Badge>
+              <h1 className="text-4xl font-black uppercase tracking-tight text-white sm:text-5xl">{character.name}</h1>
 
               {/* Icon row: role-specific element icons + tactics — all clickable, selecting actual filter icons */}
               <div className="flex flex-wrap items-center gap-2">
@@ -662,7 +663,7 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
               </div>
 
               {/* Stats with progress bars */}
-              <div className="space-y-3 rounded-xl border border-gray-700 bg-gray-900/50 p-4">
+              <div className="space-y-3 rounded-x1 border border-white/10 bg-[#141519]/70 p-4">
                 <StatBar label="Health" value={displayStats.hp} max={statMaxes.hp} icon="/stats/hp.webp" color="#34d399" />
                 <StatBar label="Attack" value={displayStats.attack} max={statMaxes.attack} icon="/stats/attack.webp" color="#f87171" />
                 <StatBar label="Defense" value={displayStats.defense} max={statMaxes.defense} icon="/stats/defense.webp" color="#60a5fa" />
@@ -680,14 +681,14 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
               </div>
 
               {releaseDateLabel ? (
-                <div className="inline-flex items-center gap-2 rounded-full bg-gray-700 px-4 py-2 text-sm text-white">
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#222327] px-4 py-2 text-sm text-white">
                   <CalendarDays className="h-4 w-4" />
                   <span>Released {releaseDateLabel}</span>
                 </div>
               ) : null}
             </div>
 
-            <div className="rounded-2xl bg-gray-900 p-4 shadow-inner">
+            <div className="rounded-x1 border border-white/10 bg-[#141519]/70 p-4 shadow-inner shadow-black/40">
               <img src={toPublicAssetPath(character.images.full)} alt={character.name} className="mx-auto h-full max-h-[480px] w-full object-contain" />
             </div>
           </div>
@@ -695,10 +696,29 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
 
         <DetailSection title="Combat Data">
           <Tabs defaultValue="skills" className="w-full">
-            <TabsList className={`grid w-full ${tabCount === 2 ? "grid-cols-2" : "grid-cols-3"} bg-gray-900 text-white`}>
-              <TabsTrigger value="skills">Skills</TabsTrigger>
-              <TabsTrigger value="traits">Traits</TabsTrigger>
-              {tabCount === 3 && <TabsTrigger value="ex">EX Abilities</TabsTrigger>}
+            <TabsList
+              className={`grid h-10 w-full ${tabCount === 2 ? "grid-cols-2" : "grid-cols-3"} overflow-hidden rounded-x1 border border-white/10 bg-[#222327] p-0 text-slate-300`}
+            >
+              <TabsTrigger
+                value="skills"
+                className="grid h-full w-full place-items-center rounded-none border-r border-white/10 p-0 text-center text-sm font-black leading-none text-slate-300 transition-all hover:bg-white/[0.03] data-[state=active]:bg-[#da3e44] data-[state=active]:text-white data-[state=active]:shadow-none"
+              >
+                <span className="block w-full text-center">Skills</span>
+              </TabsTrigger>
+              <TabsTrigger
+                value="traits"
+                className="grid h-full w-full place-items-center rounded-none border-r border-white/10 p-0 text-center text-sm font-black leading-none text-slate-300 transition-all hover:bg-white/[0.03] data-[state=active]:bg-[#da3e44] data-[state=active]:text-white data-[state=active]:shadow-none"
+              >
+                <span className="block w-full text-center">Traits</span>
+              </TabsTrigger>
+              {tabCount === 3 && (
+                <TabsTrigger
+                  value="ex"
+                  className="grid h-full w-full place-items-center rounded-none p-0 text-center text-sm font-black leading-none text-slate-300 transition-all hover:bg-white/[0.03] data-[state=active]:bg-[#da3e44] data-[state=active]:text-white data-[state=active]:shadow-none"
+                >
+                  <span className="block w-full text-center">EX Abilities</span>
+                </TabsTrigger>
+              )}
             </TabsList>
             <TabsContent value="skills" className="mt-6">
               <SkillList skills={character.skills} rarity={character.rarity} />
@@ -710,12 +730,12 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
               <TabsContent value="ex" className="mt-6">
                 <div className="grid gap-4 lg:grid-cols-2">
                   {character.ex_abilities.map((ability) => (
-                    <Card key={ability.name} className="rounded-2xl border-gray-600 bg-gray-700 shadow-none">
+                    <Card key={ability.name} className="border-white/10 bg-[#222327]/80 text-white shadow-none">
                           <CardContent className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 p-5 items-start">
                             {/* Mobile header: icon + title inline */}
                             <div className="flex items-center gap-4 sm:hidden">
                               {ability.name === "Individual Mercy" && (
-                                <img src="/skills/e1.webp" alt={ability.name} className="h-14 w-14 shrink-0 rounded-xl bg-gray-900 p-1.5 object-contain" />
+                                <img src="/skills/e1.webp" alt={ability.name} className="h-10 w-14 shrink-0 rounded-xl border border-white/10 bg-[#1a1a1e] p-1.5 object-contain" />
                               )}
                               <div className="min-w-0">
                                 <h3 className="text-base font-bold text-white">{ability.name}</h3>
@@ -724,7 +744,7 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
 
                             {/* Desktop image column */}
                             {ability.name === "Individual Mercy" && (
-                              <img src="/skills/e1.webp" alt={ability.name} className="hidden sm:block h-14 w-14 shrink-0 rounded-xl bg-gray-900 p-1.5 object-contain" />
+                              <img src="/skills/e1.webp" alt={ability.name} className="hidden h-10 w-14 shrink-0 rounded-xl border border-white/10 bg-[#1a1a1e] p-1.5 object-contain sm:block" />
                             )}
 
                             {/* Desktop content column */}
@@ -735,7 +755,7 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
                               </div>
                               <ul className="space-y-2 text-sm text-gray-300">
                                 {ability.effects.map((effect) => (
-                                  <li key={effect} className="rounded-xl bg-gray-900 px-4 py-3">
+                                  <li key={effect} className="rounded-xl border border-white/10 bg-[#1a1a1e] px-4 py-3">
                                     <RichDescription text={stripColorTags(effect)} />
                                   </li>
                                 ))}
@@ -747,7 +767,7 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
                               <RichDescription text={ability.description} />
                               <ul className="space-y-2 text-sm text-gray-300 mt-3">
                                 {ability.effects.map((effect) => (
-                                  <li key={effect} className="rounded-xl bg-gray-900 px-4 py-3">
+                                  <li key={effect} className="rounded-xl border border-white/10 bg-[#1a1a1e] px-4 py-3">
                                     <RichDescription text={stripColorTags(effect)} />
                                   </li>
                                 ))}
@@ -774,7 +794,7 @@ export default async function CharacterDetailPage({ params }: { params: Promise<
                   <Link
                     key={v.master_pc_id}
                     href={`/characters/${v.master_pc_id}`}
-                    className="group flex w-32 flex-col items-center gap-1.5 rounded-xl border border-gray-700 bg-gray-900/50 p-3 transition-all hover:border-gray-500 hover:bg-gray-700/50"
+                    className="group flex w-32 flex-col items-center gap-1.5 rounded-xl border border-white/10 bg-[#222327]/70 p-3 transition-all hover:border-[#da3e44]/40 hover:bg-[#2b2c31]"
                   >
                     <div className="relative">
                       <img

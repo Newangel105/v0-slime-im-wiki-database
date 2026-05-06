@@ -3,10 +3,20 @@
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { ArrowLeft, Edit, Lock } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { GuideRenderer } from "@/components/guides/guide-renderer"
-import { canEditGuide, canManageGuide, formatGuideDate, getCurrentGuideAuthor, guidesSupabase, guidesSupabaseConfigured, isGuideLocked, type GuideArticle, type GuideAuthorProfile } from "@/lib/guides"
+import {
+  canEditGuide,
+  canManageGuide,
+  formatGuideDate,
+  getCurrentGuideAuthor,
+  getGuideCover,
+  guidesSupabase,
+  guidesSupabaseConfigured,
+  isGuideLocked,
+  type GuideArticle,
+  type GuideAuthorProfile,
+} from "@/lib/guides"
 
 export function GuideDetailClient({ slug }: { slug: string }) {
   const [article, setArticle] = useState<GuideArticle | null>(null)
@@ -54,56 +64,88 @@ export function GuideDetailClient({ slug }: { slug: string }) {
   }, [slug])
 
   if (loading) {
-    return <main className="min-h-screen bg-[#0f172a] p-8 text-gray-300">Loading guide...</main>
+    return (
+      <main className="site-page">
+        <div className="site-container text-slate-300">Loading guide...</div>
+      </main>
+    )
   }
 
   if (error || !article) {
     return (
-      <main className="min-h-screen bg-[#0f172a] text-white">
-        <div className="mx-auto max-w-7xl px-4 py-12">
-          <Button asChild variant="outline" className="mb-6 border-white/15 bg-white/5 text-white hover:bg-white/10">
-            <Link href="/guides"><ArrowLeft className="mr-2 h-4 w-4" /> Back to Guides</Link>
+      <main className="site-page">
+        <div className="site-container">
+          <Button asChild variant="outline" className="mb-6">
+            <Link href="/guides">
+              <ArrowLeft className="mr-2 h-4 w-4" /> Back to Guides
+            </Link>
           </Button>
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-gray-300">{error || "Guide not found."}</div>
+          <div className="glass-panel p-8 text-slate-300">{error || "Guide not found."}</div>
         </div>
       </main>
     )
   }
 
   return (
-    <main className="min-h-screen bg-[#0f172a] text-white">
-      <article>
-        <header className="border-b border-white/10 bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950/40">
-          <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-            <Button asChild variant="outline" className="mb-6 border-white/15 bg-white/5 text-white hover:bg-white/10">
-              <Link href="/guides"><ArrowLeft className="mr-2 h-4 w-4" /> Back to Guides</Link>
-            </Button>
-
-            <div className="mb-4 flex flex-wrap items-center gap-3">
-              <Badge className="border-cyan-400/40 bg-cyan-400/10 text-cyan-200 hover:bg-cyan-400/10">Guide</Badge>
-              {article.status === "draft" ? <Badge className="border-yellow-400/40 bg-yellow-400/10 text-yellow-200 hover:bg-yellow-400/10">Draft preview</Badge> : null}
-              {isGuideLocked(article) ? <Badge className="border-slate-400/40 bg-slate-400/10 text-slate-200 hover:bg-slate-400/10"><Lock className="mr-1 h-3 w-3" /> Locked</Badge> : null}
-            </div>
-
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">{article.title}</h1>
-            {article.summary ? <p className="mt-4 text-lg leading-8 text-gray-300">{article.summary}</p> : null}
-
-            <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-sm text-gray-400">
-              <div>
-                Written by <span className="font-semibold text-white">{article.author_name}</span> · {formatGuideDate(article.published_at || article.created_at)}
+    <main className="site-page">
+      <article className="site-container space-y-8">
+        <section className="glass-panel-strong overflow-hidden">
+          <div className="relative">
+            {article.thumbnail_url ? (
+              <div className="relative h-56 w-full overflow-hidden sm:h-72">
+                <img src={getGuideCover(article)} alt={article.title} className="h-full w-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#121319] via-[#121319]/55 to-transparent" />
               </div>
-              {canEditGuide(profile, article) ? (
-                <Button asChild className="bg-cyan-500 text-slate-950 hover:bg-cyan-400">
-                  <Link href={`/guides/admin/${article.id}/edit`}><Edit className="mr-2 h-4 w-4" /> Edit</Link>
-                </Button>
-              ) : null}
+            ) : null}
+
+            <div className="relative p-6 sm:p-8">
+              {!article.thumbnail_url ? <div className="section-kicker">Guide</div> : null}
+
+              <Button asChild variant="outline" className="mb-6">
+                <Link href="/guides">
+                  <ArrowLeft className="mr-2 h-4 w-4" /> Back to Guides
+                </Link>
+              </Button>
+
+              <div className="mb-4 flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center rounded-full border border-[#da3e44]/30 bg-[#da3e44]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#ff8a98]">
+                  Guide
+                </span>
+                {article.status === "draft" ? (
+                  <span className="inline-flex items-center rounded-full border border-yellow-400/30 bg-yellow-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-yellow-200">
+                    Draft preview
+                  </span>
+                ) : null}
+                {isGuideLocked(article) ? (
+                  <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-300">
+                    <Lock className="mr-1 h-3 w-3" /> Locked
+                  </span>
+                ) : null}
+              </div>
+
+              <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl">{article.title}</h1>
+              <div className="accent-rule my-5" />
+              {article.summary ? <p className="max-w-3xl text-lg leading-8 text-slate-300">{article.summary}</p> : null}
+
+              <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-sm text-slate-400">
+                <div>
+                  Written by <span className="font-semibold text-white">{article.author_name}</span> · {formatGuideDate(article.published_at || article.created_at)}
+                </div>
+                {canEditGuide(profile, article) ? (
+                  <Button asChild>
+                    <Link href={`/guides/admin/${article.id}/edit`}>
+                      <Edit className="mr-2 h-4 w-4" /> Edit
+                    </Link>
+                  </Button>
+                ) : null}
+              </div>
             </div>
           </div>
-        </header>
+        </section>
 
-        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <section className="glass-panel p-6 sm:p-8">
           <GuideRenderer content={article.content} />
-        </div>
+        </section>
       </article>
     </main>
   )

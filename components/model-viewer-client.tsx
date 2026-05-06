@@ -217,15 +217,26 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
   }, [])
 
   if (!selected) {
-    return <p className="text-gray-400">No models available yet.</p>
+    return (
+      <div className="glass-panel p-8 text-center text-slate-400">
+        No models available yet.
+      </div>
+    )
   }
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[260px_1fr]">
-      <aside className="rounded-xl border border-gray-700 bg-[#0d1320] p-3 max-h-[70vh] overflow-hidden flex flex-col">
-        <label className="text-xs uppercase tracking-wider text-gray-400 mb-2" htmlFor="model-search">
-          Models
+    <div className="grid gap-5 lg:grid-cols-[300px_minmax(0,1fr)]">
+      <aside className="glass-panel flex max-h-[78vh] min-h-[520px] flex-col overflow-hidden p-4">
+        <div className="mb-4">
+          <div className="section-kicker">Model Library</div>
+          <h2 className="mt-2 text-2xl font-black tracking-tight text-white">Archive</h2>
+          <div className="accent-rule mt-4" />
+        </div>
+
+        <label className="mb-2 text-[11px] font-bold uppercase tracking-[0.22em] text-slate-500" htmlFor="model-search">
+          Search models
         </label>
+
         <div className="relative mb-3">
           <input
             id="model-search"
@@ -233,23 +244,28 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
             value={modelSearch}
             onChange={e => setModelSearch(e.target.value)}
             placeholder="Search models..."
-            className="w-full rounded-md border border-gray-700 bg-[#111827] px-3 py-2 pr-8 text-sm text-white placeholder:text-gray-500 outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400"
+            className="theme-input h-10 w-full rounded-md px-3 py-2 pr-9 text-sm"
           />
           {modelSearch && (
             <button
               type="button"
               onClick={() => setModelSearch("")}
-              className="absolute right-2 top-1/2 -translate-y-1/2 rounded px-1 text-gray-400 hover:bg-white/10 hover:text-white"
+              className="absolute right-2 top-1/2 grid h-6 w-6 -translate-y-1/2 place-items-center rounded-md text-slate-500 transition hover:bg-white/10 hover:text-white"
               aria-label="Clear model search"
             >
               ×
             </button>
           )}
         </div>
-        <div className="mb-2 text-xs text-gray-500">
-          {filteredModels.length} / {models.length} models
+
+        <div className="mb-3 flex items-center justify-between rounded-xl border border-white/10 bg-[#222327]/80 px-3 py-2">
+          <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500">Models</span>
+          <span className="text-xs font-semibold text-slate-300">
+            {filteredModels.length} / {models.length}
+          </span>
         </div>
-        <ul className="space-y-1 overflow-y-auto pr-1">
+
+        <ul className="image-scroll space-y-1.5 overflow-y-auto pr-1">
           {filteredModels.map(m => {
             const active = m.id === selected.id
             return (
@@ -257,53 +273,85 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
                 <button
                   type="button"
                   onClick={() => setSelectedId(m.id)}
-                  className={`w-full text-left rounded-md px-2 py-1.5 text-sm transition-colors ${active ? "bg-white/15 text-white" : "text-gray-300 hover:bg-white/5 hover:text-white"}`}
+                  className={`group w-full rounded-xl border px-3 py-2.5 text-left text-sm transition-all ${
+                    active
+                      ? "border-[#da3e44]/40 bg-[#222327] text-white shadow-[0_0_24px_rgba(218,62,68,0.12)]"
+                      : "border-transparent text-slate-300 hover:border-white/10 hover:bg-[#222327]/70 hover:text-white"
+                  }`}
                 >
-                  <div className="font-medium">{m.name}</div>
-                  {m.affiliation_name && (
-                    <div className="text-[11px] text-gray-400">{m.affiliation_name}</div>
-                  )}
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={`h-2 w-2 shrink-0 rounded-full ${
+                        active ? "bg-[#da3e44] shadow-[0_0_14px_rgba(218,62,68,0.65)]" : "bg-slate-700 group-hover:bg-slate-500"
+                      }`}
+                    />
+                    <div className="min-w-0 flex-1">
+                      <div className="truncate font-bold">{m.name}</div>
+                      {m.affiliation_name && (
+                        <div className="mt-0.5 truncate text-[11px] text-slate-500">{m.affiliation_name}</div>
+                      )}
+                    </div>
+                  </div>
                 </button>
               </li>
             )
           })}
+
           {filteredModels.length === 0 && (
-            <li className="rounded-md border border-dashed border-gray-700 px-3 py-4 text-center text-sm text-gray-400">
+            <li className="rounded-xl border border-dashed border-white/10 bg-[#222327]/40 px-4 py-8 text-center text-sm text-slate-400">
               No models found.
             </li>
           )}
         </ul>
       </aside>
 
-      <div className="rounded-xl border border-gray-700 bg-[#0d1320] overflow-hidden">
-        <div className="flex flex-wrap items-center gap-3 border-b border-gray-800 px-3 py-2 text-sm">
-          <div className="font-semibold text-white">{selected.name}</div>
-          <div className="ml-auto flex flex-wrap items-center gap-3">
+      <section className="glass-panel-strong overflow-hidden">
+        <div className="grid gap-4 border-b border-white/10 bg-[#1a1a1e]/95 px-4 py-4 xl:grid-cols-[minmax(0,1fr)_auto] xl:items-start">
+          <div className="min-w-0 xl:pr-6">
+            <div className="section-kicker">Active Model</div>
+              <h2 className="mt-1 max-w-[26rem] truncate text-[clamp(1.35rem,1.1vw,2rem)] font-black leading-[1.02] tracking-tight text-white">
+                {selected.name}
+              </h2>
+            {selected.affiliation_name ? (
+              <p className="mt-1 max-w-[28rem] whitespace-normal break-words text-xs font-bold uppercase tracking-[0.22em] text-slate-500">{selected.affiliation_name}</p>
+            ) : null}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 text-sm xl:flex-nowrap xl:justify-end">
             {hasSkillScene && (
-              <div className="flex rounded-md border border-gray-700 bg-[#111827] p-0.5">
+              <div className="flex rounded-xl border border-white/10 bg-[#222327] p-1">
                 <button
                   type="button"
                   onClick={() => setViewerMode("character")}
-                  className={`rounded px-2 py-1 text-sm ${activeMode === "character" ? "bg-white/15 text-white" : "text-gray-300 hover:text-white"}`}
+                  className={`rounded-lg px-3 py-1.5 text-sm font-semibold transition ${
+                    activeMode === "character"
+                      ? "bg-[#da3e44] text-white shadow-[0_0_18px_rgba(218,62,68,0.24)]"
+                      : "text-slate-300 hover:bg-white/5 hover:text-white"
+                  }`}
                 >
                   Character
                 </button>
                 <button
                   type="button"
                   onClick={() => setViewerMode("skill")}
-                  className={`rounded px-2 py-1 text-sm ${activeMode === "skill" ? "bg-white/15 text-white" : "text-gray-300 hover:text-white"}`}
+                  className={`rounded-lg px-3 py-1.5 text-sm font-semibold transition ${
+                    activeMode === "skill"
+                      ? "bg-[#da3e44] text-white shadow-[0_0_18px_rgba(218,62,68,0.24)]"
+                      : "text-slate-300 hover:bg-white/5 hover:text-white"
+                  }`}
                 >
                   Skill Scene
                 </button>
               </div>
             )}
+
             {activeMode === "skill" ? (
-              <label className="flex items-center gap-1.5 text-gray-300">
-                Scene
+              <label className="flex items-center gap-2 text-slate-300">
+                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Scene</span>
                 <select
                   value={String(selectedVideoIndex)}
                   onChange={e => setSelectedVideoIndex(Number(e.target.value))}
-                  className="rounded-md bg-[#111827] border border-gray-700 px-2 py-1 text-sm text-white max-w-[260px]"
+                  className="h-10 max-w-[260px] rounded-md border border-white/10 bg-[#222327] px-3 text-sm text-white outline-none focus:border-[#da3e44]/40 focus:ring-2 focus:ring-[#da3e44]/30"
                   disabled={videosForVariant.length <= 1}
                 >
                   {videosForVariant.map((v, i) => (
@@ -312,12 +360,12 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
                 </select>
               </label>
             ) : (
-              <label className="flex items-center gap-1.5 text-gray-300">
-                Animation
+              <label className="flex items-center gap-2 text-slate-300">
+                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Animation</span>
                 <select
                   value={animationName}
                   onChange={e => setAnimationName(e.target.value)}
-                  className="rounded-md bg-[#111827] border border-gray-700 px-2 py-1 text-sm text-white max-w-[260px]"
+                  className="h-10 max-w-[260px] rounded-md border border-white/10 bg-[#222327] px-3 text-sm text-white outline-none focus:border-[#da3e44]/40 focus:ring-2 focus:ring-[#da3e44]/30"
                   disabled={animationList.length === 0}
                 >
                   <option value="">-- rest pose --</option>
@@ -327,17 +375,20 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
                 </select>
               </label>
             )}
-            <label className="flex items-center gap-1.5 text-gray-300">
+
+            <label className="flex h-10 items-center gap-2 rounded-xl border border-white/10 bg-[#222327] px-3 text-slate-300">
               <input
                 type="checkbox"
                 checked={autoRotate}
                 onChange={e => setAutoRotate(e.target.checked)}
                 disabled={activeMode === "skill"}
+                className="accent-[#da3e44]"
               />
-              Auto-rotate
+              <span className="text-sm font-semibold">Auto-rotate</span>
             </label>
-            <label className="flex items-center gap-1.5 text-gray-300">
-              Scale
+
+            <label className="flex h-10 items-center gap-2 rounded-xl border border-white/10 bg-[#222327] px-3 text-slate-300">
+              <span className="text-sm font-semibold">Scale</span>
               <input
                 type="range"
                 min={0.25}
@@ -346,24 +397,33 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
                 value={scale}
                 onChange={e => setScale(Number(e.target.value))}
                 disabled={activeMode === "skill"}
-                className="w-28"
+                className="w-28 accent-[#da3e44]"
               />
-              <span className="w-8 tabular-nums text-right">{(activeMode === "skill" ? 1 : scale).toFixed(2)}</span>
+              <span className="w-9 text-right text-sm tabular-nums text-white">{(activeMode === "skill" ? 1 : scale).toFixed(2)}</span>
             </label>
           </div>
         </div>
 
         <div
-          className={`relative overflow-hidden bg-gradient-to-b from-[#1a2438] to-[#0a0f1c] ${activeMode === "skill" ? "aspect-video" : "h-[78vh]"}`}
+          className={`relative overflow-hidden ${
+            activeMode === "skill" ? "aspect-video" : "h-[78vh]"
+          }`}
+          style={{
+            background:
+              "radial-gradient(circle at 50% 4%, rgba(218,62,68,0.10), transparent 24rem), linear-gradient(180deg, #1a1a1e 0%, #111216 52%, #0c0d10 100%)",
+          }}
         >
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(180deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:52px_52px] opacity-40" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#da3e44]/70 to-transparent" />
+
           {activeMode === "skill" && activeVideo ? (
             <SkillSceneVideo entry={activeVideo} />
           ) : (
             <Canvas className="relative z-10" camera={{ position: [0, 1.4, 2.6], fov: 38 }} dpr={[1, 2]} gl={{ alpha: true }}>
-              <ambientLight intensity={0.6} />
-              <hemisphereLight intensity={0.4} groundColor={"#202b40"} />
-              <directionalLight position={[3, 5, 2]} intensity={1.2} />
-              <directionalLight position={[-3, 2, -2]} intensity={0.4} />
+              <ambientLight intensity={0.65} />
+              <hemisphereLight intensity={0.35} groundColor={"#1a1a1e"} />
+              <directionalLight position={[3, 5, 2]} intensity={1.15} />
+              <directionalLight position={[-3, 2, -2]} intensity={0.35} />
               <Suspense fallback={null}>
                 <Model
                   key={modelUrl}
@@ -390,10 +450,14 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
             </Canvas>
           )}
         </div>
-        <div className="px-3 py-2 text-xs text-gray-400 border-t border-gray-800">
-          Left-drag rotate · Right-drag (or Shift+drag) pan · Scroll zoom
+
+        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-white/10 bg-[#1a1a1e]/95 px-4 py-3 text-xs text-slate-500">
+          <span>Left-drag rotate · Right-drag or Shift-drag pan · Scroll zoom</span>
+          <span className="rounded-full border border-[#da3e44]/25 bg-[#da3e44]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#ff8a98]">
+            3D Viewer
+          </span>
         </div>
-      </div>
+      </section>
     </div>
   )
 }

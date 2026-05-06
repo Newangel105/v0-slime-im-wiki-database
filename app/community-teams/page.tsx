@@ -76,7 +76,7 @@ function CharSlotIcon({
 function TeamCard({ team, chars, wikiChars, onLoad }: { team: TeamMeta; chars: ReturnType<typeof getAllCharacterBrowserData>; wikiChars: any[]; onLoad: (team: TeamMeta) => void }) {
   const { mainSlots, subSlots, sideSlots, sideSubSlots } = team.slots ?? { mainSlots: [], subSlots: [], sideSlots: [], sideSubSlots: [] }
   return (
-    <div className="flex flex-col gap-3 rounded-2xl border border-gray-700 bg-gray-800 p-4">
+    <div className="glass-panel flex flex-col gap-3 p-4 transition-colors hover:border-cyan-300/40">
       <div className="flex items-start justify-between gap-2">
         <div>
           <h2 className="font-semibold text-white">{team.name}</h2>
@@ -110,7 +110,7 @@ function TeamCard({ team, chars, wikiChars, onLoad }: { team: TeamMeta; chars: R
 
       <button
         onClick={() => onLoad(team)}
-        className="mt-auto w-full rounded-lg bg-blue-600 py-2 text-sm font-semibold text-white hover:bg-blue-500 transition-colors"
+        className="neon-button mt-auto w-full py-2"
       >
         Open in Team Builder
       </button>
@@ -177,15 +177,16 @@ export default function CommunityTeamsPage() {
   const totalPages = Math.ceil(total / limit)
 
   return (
-    <main className="min-h-screen bg-[#111827] px-4 py-8 text-white sm:px-6">
+    <main className="site-page px-4 py-8 text-white sm:px-6">
       <div className="mx-auto max-w-6xl flex flex-col gap-6">
         <div>
-          <h1 className="text-3xl font-bold">Community Teams</h1>
-          <p className="mt-1 text-gray-400 text-sm">Browse team compositions shared by other players. Filter by character to find teams featuring them.</p>
+          <p className="section-kicker">Community</p>
+          <h1 className="section-title mt-2">Teams</h1>
+          <p className="mt-2 text-sm text-slate-400">Browse team compositions shared by other players. Filter by character to find teams featuring them.</p>
         </div>
 
         {/* Character filter */}
-        <div className="rounded-2xl border border-gray-700 bg-gray-800 p-4 flex flex-col gap-3">
+        <div className="glass-panel flex flex-col gap-3 p-4">
           <div className="flex items-center justify-between">
             <span className="text-sm font-semibold text-gray-300">Filter by character</span>
             {filterCharId && (

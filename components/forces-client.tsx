@@ -51,10 +51,11 @@ export default function ForcesClient({ forceGroups }: { forceGroups: SlimForceGr
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="site-page text-white">
       <div className="max-w-7xl mx-auto pl-6 pr-4 sm:pl-8 sm:pr-6 lg:px-8 py-8">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-300 uppercase tracking-wider">FORCES</h1>
+        <div className="mb-8 text-center">
+          <p className="section-kicker">Team Affinities</p>
+          <h1 className="section-title mt-2">Forces</h1>
         </div>
 
         <div className="max-w-md mx-auto mb-8">
@@ -64,7 +65,7 @@ export default function ForcesClient({ forceGroups }: { forceGroups: SlimForceGr
               placeholder="Search..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 bg-gray-700 border-gray-600 text-white"
+              className="pl-10 bg-[#080d18]/80 border-white/10 text-white"
             />
           </div>
         </div>
@@ -73,11 +74,11 @@ export default function ForcesClient({ forceGroups }: { forceGroups: SlimForceGr
           {filteredGroups.map((group) => {
             const isExpanded = expandedForces.has(group.name)
             return (
-              <Card key={group.name} className="bg-gray-800 border-gray-700">
+              <Card key={group.name} className="glass-panel overflow-hidden">
                 <CardContent className="p-0">
                   <button
                     onClick={() => toggleForce(group.name)}
-                    className="w-full flex items-center justify-between px-6 py-5 hover:bg-gray-700 transition-colors"
+                    className="w-full flex items-center justify-between px-6 py-5 hover:bg-white/[0.06] transition-colors"
                   >
                     <div className="flex-1 min-w-0 flex items-center gap-3">
                       {group.forceIcon && (
