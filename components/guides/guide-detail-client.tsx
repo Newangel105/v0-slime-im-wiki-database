@@ -60,7 +60,7 @@ export function GuideDetailClient({ slug }: { slug: string }) {
   if (error || !article) {
     return (
       <main className="min-h-screen bg-[#0f172a] text-white">
-        <div className="mx-auto max-w-4xl px-4 py-12">
+        <div className="mx-auto max-w-7xl px-4 py-12">
           <Button asChild variant="outline" className="mb-6 border-white/15 bg-white/5 text-white hover:bg-white/10">
             <Link href="/guides"><ArrowLeft className="mr-2 h-4 w-4" /> Back to Guides</Link>
           </Button>
@@ -74,7 +74,7 @@ export function GuideDetailClient({ slug }: { slug: string }) {
     <main className="min-h-screen bg-[#0f172a] text-white">
       <article>
         <header className="border-b border-white/10 bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950/40">
-          <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
             <Button asChild variant="outline" className="mb-6 border-white/15 bg-white/5 text-white hover:bg-white/10">
               <Link href="/guides"><ArrowLeft className="mr-2 h-4 w-4" /> Back to Guides</Link>
             </Button>
@@ -101,7 +101,7 @@ export function GuideDetailClient({ slug }: { slug: string }) {
           </div>
         </header>
 
-        <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           <GuideRenderer content={article.content} />
         </div>
       </article>
