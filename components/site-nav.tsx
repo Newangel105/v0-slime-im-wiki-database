@@ -53,13 +53,19 @@ export function SiteNav() {
     <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#222327]/95 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-8 px-4 py-2.5 sm:px-6">
         <div className="flex items-center gap-6">
-          <div className="relative h-10 w-10 overflow-visible flex items-center justify-center">
-            <img
-              src="/icons/logo2.webp"
-              alt="SLIME.WIKI logo"
-              className="h-14 w-14 max-w-none object-contain -m-3 transition-transform duration-300 group-hover:scale-110"
-            />
-          </div>
+          <Link href="/" className="group flex items-center gap-3">
+            <div className="relative h-10 w-10 overflow-visible flex items-center justify-center">
+              <img 
+                src="/icons/logo2.webp" 
+                alt="SLIME.WIKI logo" 
+                className="h-14 w-14 max-w-none object-contain -m-3 transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 rounded-full bg-rose-500/30 blur-lg opacity-0 transition-opacity group-hover:opacity-100" />
+            </div>
+            <span className="text-xl font-bold tracking-tight text-white">
+              SLIME<span className="text-rose-500">.</span>WIKI
+            </span>
+          </Link>
 
           <div className="hidden md:flex items-center gap-5 lg:gap-7">
             {primaryLinks.map((link) => {
