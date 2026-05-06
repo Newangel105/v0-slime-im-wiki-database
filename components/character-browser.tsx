@@ -586,6 +586,7 @@ const elementColorMap: Record<string, string> = {
   enhancedwater: "#93c5fd",
   enhancedwind: "#5eead4",
   fire: "#f97316",
+  holy: "#facc15",
   light: "#facc15",
   magic: "#60a5fa",
   physics: "#f87171",
@@ -608,6 +609,16 @@ const elementColorMap: Record<string, string> = {
   specialeffectelementwind: "#2dd4bf",
   water: "#60a5fa",
   wind: "#2dd4bf",
+}
+
+function colorWithAlpha(hex: string, alpha: number): string {
+  const value = hex.replace("#", "")
+  if (value.length !== 6) return `rgba(255, 255, 255, ${alpha})`
+
+  const red = parseInt(value.slice(0, 2), 16)
+  const green = parseInt(value.slice(2, 4), 16)
+  const blue = parseInt(value.slice(4, 6), 16)
+  return `rgba(${red}, ${green}, ${blue}, ${alpha})`
 }
 
 function buildAllOptions(characters: BrowserCharacter[]) {
@@ -784,15 +795,15 @@ function ToggleFilter({
   return (
     <Popover onOpenChange={() => setDropdownSearch("")}>      
       <PopoverTrigger asChild>
-        <Button variant="outline" className="justify-between gap-2 border-gray-600 bg-gray-700 text-white hover:bg-gray-600">
+        <Button variant="outline" className="h-10 justify-between gap-3 rounded-md border-white/10 bg-[#101116] px-4 text-white hover:border-[#ff2f5f]/45 hover:bg-[#171821]">
           <span className="text-sm">{title}</span>
-          <Badge variant="secondary" className="ml-1 shrink-0 bg-gray-900 text-white">
+          <Badge variant="secondary" className="ml-1 shrink-0 border-[#ff2f5f]/25 bg-[#ff2f5f]/10 text-[#ff8aa5]">
             {selectedValues.length}
           </Badge>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-72 border-gray-600 bg-gray-700 p-0 text-white" align="start">
-        <div className="border-b border-gray-600 px-4 py-3">
+      <PopoverContent className="w-72 border-white/10 bg-[#080808] p-0 text-white shadow-2xl shadow-black/60" align="start">
+        <div className="border-b border-white/10 px-4 py-3">
           <p className="text-sm font-semibold text-white mb-2">{title}</p>
           <div className="relative">
             <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 w-3.5 h-3.5" />
@@ -800,7 +811,7 @@ function ToggleFilter({
               placeholder="Search..."
               value={dropdownSearch}
               onChange={(e) => setDropdownSearch(e.target.value)}
-              className="h-7 pl-8 text-xs bg-gray-800 border-gray-600 text-white placeholder:text-gray-500"
+              className="h-8 rounded-md border-white/10 bg-[#0c0d12] pl-8 text-xs text-white placeholder:text-slate-500 focus-visible:ring-[#ff2f5f]/45"
             />
           </div>
         </div>
@@ -810,7 +821,7 @@ function ToggleFilter({
               const checked = selectedValues.includes(option.value)
               return (
                 <label key={option.value} className={`flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm transition-colors ${
-                  checked ? "bg-white/10 text-white" : "text-gray-300 hover:bg-white/5"
+                  checked ? "bg-[#ff2f5f]/10 text-white ring-1 ring-[#ff2f5f]/25" : "text-gray-300 hover:bg-white/5"
                 }`}>
                   <Checkbox checked={checked} onCheckedChange={() => onToggle(option.value)} />
                   {option.icon && <img src={option.icon} alt="" className="h-6 w-auto max-w-[80px] shrink-0 object-contain" />}
@@ -838,7 +849,7 @@ function IconToggleBar({
   onToggle: (value: string) => void
 }) {
   return (
-    <div className="flex flex-wrap gap-1">
+    <div className="flex flex-wrap gap-1.5">
       {options.map((opt) => {
         const isSelected = selectedValues.includes(opt.value)
         return (
@@ -846,18 +857,18 @@ function IconToggleBar({
             key={opt.value}
             onClick={() => onToggle(opt.value)}
             title={opt.label}
-            className={`flex h-10 w-10 items-center justify-center rounded-xl transition-all ${
-              isSelected ? "bg-white/20 ring-2 ring-white/70" : "bg-white/5 hover:bg-white/10"
+            className={`flex h-10 w-10 items-center justify-center rounded-xl border transition-all ${
+              isSelected ? "border-white/40 bg-white/10 shadow-[0_0_14px_rgba(255,255,255,0.12)]" : "border-white/5 bg-[#151515] hover:border-white/15 hover:bg-[#1f1f1f]"
             }`}
           >
             {opt.icon ? (
               <img
                 src={opt.icon}
                 alt={opt.label}
-                className={`h-7 w-7 object-contain transition-opacity ${isSelected ? "opacity-100" : "opacity-50"}`}
+                className={`h-7 w-7 object-contain transition-opacity ${isSelected ? "opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]" : "opacity-70 hover:opacity-100"}`}
               />
             ) : (
-              <span className={`px-1 text-center text-[11px] font-bold leading-tight ${isSelected ? "text-white" : "text-gray-400"}`}>
+                <span className={`px-1 text-center text-[11px] font-bold leading-tight ${isSelected ? "text-white" : "text-gray-400"}`}>
                 {opt.label}
               </span>
             )}
@@ -880,7 +891,7 @@ function RarityToggleBar({
   return (
     <div className="flex flex-wrap items-center gap-2">
       <button
-        className={`h-8 min-w-10 rounded px-2 text-xs transition-colors ${selectedValues.length === 0 ? "bg-[#2a3444] text-white" : "text-gray-400 hover:bg-gray-600 hover:text-white"}`}
+        className={`h-8 min-w-10 rounded px-2 text-xs transition-colors ${selectedValues.length === 0 ? "bg-[#ff2f5f]/10 text-white ring-1 ring-[#ff2f5f]/35" : "text-gray-400 hover:bg-white/10 hover:text-white"}`}
         onClick={onClear}
         aria-label="All rarities"
       >
@@ -893,7 +904,7 @@ function RarityToggleBar({
             key={option.value}
             onClick={() => onToggle(option.value)}
             title={option.label}
-            className={`flex h-8 w-8 items-center justify-center rounded p-0 transition-colors ${isSelected ? "bg-[#2a3444]" : "bg-transparent hover:bg-gray-600"}`}
+            className={`flex h-8 w-8 items-center justify-center rounded p-0 transition-colors ${isSelected ? "bg-[#ff2f5f]/10 ring-1 ring-[#ff2f5f]/35" : "bg-transparent hover:bg-white/10"}`}
           >
             {option.icon && <img src={option.icon} alt={option.label} className="h-5 w-5 object-contain" />}
           </button>
@@ -1039,15 +1050,15 @@ function GroupedToggleFilter({
   return (
     <Popover onOpenChange={() => setDropdownSearch("")}>
       <PopoverTrigger asChild>
-        <Button variant="outline" className="justify-between gap-2 border-gray-600 bg-gray-700 text-white hover:bg-gray-600">
+        <Button variant="outline" className="h-10 justify-between gap-3 rounded-md border-white/10 bg-[#101116] px-4 text-white hover:border-[#ff2f5f]/45 hover:bg-[#171821]">
           <span>{title}</span>
-          <Badge variant="secondary" className="bg-gray-900 text-white">
+          <Badge variant="secondary" className="border-[#ff2f5f]/25 bg-[#ff2f5f]/10 text-[#ff8aa5]">
             {selectedValues.length}
           </Badge>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-80 border-gray-600 bg-gray-700 p-0 text-white" align="start">
-        <div className="border-b border-gray-600 px-4 py-3">
+      <PopoverContent className="w-80 border-white/10 bg-[#080808] p-0 text-white shadow-2xl shadow-black/60" align="start">
+        <div className="border-b border-white/10 px-4 py-3">
           <p className="text-sm font-semibold text-white mb-2">{title}</p>
           <div className="relative">
             <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 w-3.5 h-3.5" />
@@ -1055,7 +1066,7 @@ function GroupedToggleFilter({
               placeholder="Search..."
               value={dropdownSearch}
               onChange={(e) => setDropdownSearch(e.target.value)}
-              className="h-7 pl-8 text-xs bg-gray-800 border-gray-600 text-white placeholder:text-gray-500"
+              className="h-8 rounded-md border-white/10 bg-[#0c0d12] pl-8 text-xs text-white placeholder:text-slate-500 focus-visible:ring-[#ff2f5f]/45"
             />
           </div>
         </div>
@@ -1065,8 +1076,8 @@ function GroupedToggleFilter({
               <p className="py-4 text-center text-xs text-gray-500">No results</p>
             )}
             {filteredGroups.map((group) => (
-              <div key={group.key} className="border-b border-gray-600 last:border-b-0">
-                <div className="bg-gray-600/70 px-4 py-2 text-xs font-semibold tracking-[0.18em] text-gray-100">
+              <div key={group.key} className="border-b border-white/10 last:border-b-0">
+                <div className="bg-white/[0.045] px-4 py-2 text-xs font-semibold tracking-[0.18em] text-gray-300">
                   {group.title}
                 </div>
                 <div className="space-y-3 px-4 py-3">
@@ -1074,7 +1085,7 @@ function GroupedToggleFilter({
                     const checked = selectedValues.includes(option.value)
 
                     return (
-                      <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-gray-200">
+                      <label key={option.value} className={`flex cursor-pointer items-center gap-3 rounded-md px-2 py-1.5 text-sm transition-colors ${checked ? "bg-[#ff2f5f]/10 text-white" : "text-gray-200 hover:bg-white/5"}`}>
                         <Checkbox checked={checked} onCheckedChange={() => onToggle(option.value)} />
                         <span>{option.label}</span>
                       </label>
@@ -1113,10 +1124,9 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   const [sortAsc, setSortAsc] = useState(false)
   const [showStats, setShowStats] = useState(true)
   const [viewMode, setViewMode] = useState<"cards" | "compact">("compact")
-  const [filtersOpen, setFiltersOpen] = useState(false)
+  const [filtersOpen, setFiltersOpen] = useState(true)
   useEffect(() => {
-    const saved = sessionStorage.getItem("characterBrowserViewMode")
-    if (saved === "cards" || saved === "compact") setViewMode(saved)
+    sessionStorage.removeItem("characterBrowserViewMode")
     if (sessionStorage.getItem("characterBrowserFiltersOpen") === "1") setFiltersOpen(true)
   }, [])
   const [filterMode, setFilterMode] = useState<"AND" | "OR">("AND")
@@ -1617,9 +1627,9 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   const MOBILE_GAP = 8
   const GAP = containerWidth && containerWidth < 640 ? MOBILE_GAP : DEFAULT_GAP
   const DESIRED_CARD_WIDTH = 320
-  const DESKTOP_CARD_HEIGHT = 340
+  const DESKTOP_CARD_HEIGHT = 320
   const MOBILE_CARD_HEIGHT = 320
-  const STATS_HEIGHT = 55 // Height of the stats section (grid + padding)
+  const STATS_HEIGHT = 60 // Height removed when stats are hidden
   const ADJUSTED_DESKTOP_HEIGHT = showStats ? DESKTOP_CARD_HEIGHT : DESKTOP_CARD_HEIGHT - STATS_HEIGHT
   const ADJUSTED_MOBILE_HEIGHT = showStats ? MOBILE_CARD_HEIGHT : MOBILE_CARD_HEIGHT - STATS_HEIGHT
   const CARD_HEIGHT = containerWidth && containerWidth < 640 ? ADJUSTED_MOBILE_HEIGHT : ADJUSTED_DESKTOP_HEIGHT
@@ -1684,7 +1694,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   const getRowHeight = () => ROW_HEIGHT
 
   // Compact grid sizing (mirrors the responsive CSS grid breakpoints)
-  const COMPACT_GAP = 8
+  const COMPACT_GAP = 10
   const compactColumnCount = !containerWidth ? 12
     : containerWidth >= 1280 ? 12
     : containerWidth >= 1024 ? 10
@@ -1695,6 +1705,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   const compactCellHeight = compactCellWidth + COMPACT_GAP
   const compactRowCount = Math.ceil(filteredCharacters.length / compactColumnCount)
   const compactGridHeight = Math.min(8, compactRowCount) * compactCellHeight + 10
+  const compactTileClass = "group relative w-full overflow-hidden rounded-md border border-white/10 bg-[#101116] pt-[100%] shadow-[0_12px_30px_rgba(0,0,0,0.34)] transition-all duration-200 hover:border-[#ff2f5f]/70 hover:shadow-[0_0_18px_rgba(255,47,95,0.18)]"
 
   function CompactCard({ character, index }: { character: BrowserCharacter; index: number }) {
     const visualTier = getCharacterVisualTier(character)
@@ -1721,12 +1732,14 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
 
     return (
       <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="min-w-0">
-        <div className="relative w-full pt-[100%] overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white transition-all">
+        <div className={compactTileClass}>
           <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
-          <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={index < 3 ? "high" : "low"} className="absolute inset-0 w-full h-full object-cover object-top" />
+          <div className={`absolute overflow-hidden ${visualTier >= 8 ? "inset-[8%] rounded-[12%]" : "inset-[7%] rounded-[10%]"}`}>
+            <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={index < 3 ? "high" : "low"} className="h-full w-full object-cover object-top" />
+          </div>
           <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
           {/* Name top-left */}
-          <div className="absolute top-1 left-1 bg-black bg-opacity-80 text-white text-[9px] px-1 py-0.5 rounded z-10 leading-tight max-w-[70%] line-clamp-2">
+          <div className="absolute top-1 left-1 z-10 max-w-[72%] rounded border border-white/10 bg-black/80 px-1.5 py-0.5 text-[9px] font-semibold leading-tight text-white backdrop-blur-sm line-clamp-2">
             {character.name}
           </div>
           {/* Stars bottom-left */}
@@ -1777,13 +1790,15 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
         {/* paddingBottom creates the row gap; pt-[100%] maintains a 1:1 square aspect ratio */}
         <div style={{ paddingBottom: COMPACT_GAP }}>
           <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="block w-full min-w-0">
-            <div className="relative w-full pt-[100%] overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white transition-all">
-              <div className={`absolute overflow-hidden ${visualTier >= 8 ? "inset-[8%] rounded-[12%]" : "inset-0"}`}>
+            <div className={compactTileClass}>
+              <div className="absolute inset-0">
                 <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
-                <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={index < 3 ? "high" : "low"} className="absolute inset-0 w-full h-full object-cover object-top" />
+                <div className={`absolute overflow-hidden ${visualTier >= 8 ? "inset-[8%] rounded-[12%]" : "inset-[7%] rounded-[10%]"}`}>
+                  <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={index < 3 ? "high" : "low"} className="h-full w-full object-cover object-top" />
+                </div>
               </div>
               <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
-              <div className="absolute top-1 left-1 bg-black bg-opacity-80 text-white text-[9px] px-1 py-0.5 rounded z-10 leading-tight max-w-[70%] line-clamp-2">
+              <div className="absolute top-1 left-1 z-10 max-w-[72%] rounded border border-white/10 bg-black/80 px-1.5 py-0.5 text-[9px] font-semibold leading-tight text-white backdrop-blur-sm line-clamp-2">
                 {character.name}
               </div>
               <img src={starsSrc} alt="" loading="lazy" decoding="async" className="absolute bottom-1 left-1 h-5 object-contain z-10" />
@@ -1800,7 +1815,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     )
   }
 
-  function MobileCard({ character, index }: { character: BrowserCharacter; index: number }) {
+  function CharacterCardSurface({ character, index, fill = false }: { character: BrowserCharacter; index: number; fill?: boolean }) {
     const visualTier = getCharacterVisualTier(character)
     const frameSrc = getCharacterFrame(character)
     const baseSrc = getCharacterBase(character)
@@ -1814,112 +1829,154 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     const tacticsIcon = tacticsIconMap[normalizeLabel(character.tactics_type || "Normal")]
     const attackTypeLabel = formatWikiLabel(character.attack_type)
     const weaponLabel = formatWikiLabel(character.weapon_type)
+    const tacticsLabel = character.tactics_type || "Normal"
     const rarityLabel = getCharacterRarityLabel(character)
     const isPriorityCard = index < 6
     const imageLoading = isPriorityCard ? "eager" : "lazy"
-    const elementAccentColor = elementColorMap[normalizeLabel(characterElementValue)] ?? "#4b5563"
+    const elementAccentColor = elementColorMap[normalizeLabel(characterElementValue)] ?? "#ff2f5f"
     const facilityIcons = [
       ...new Set(character.facilities.map((f) => f.replace(/ \+\d+%$/, "").trim())),
     ]
       .map((name) => ({ name, icon: facilityIconMap[name] }))
       .filter((entry) => entry.icon)
-      .slice(0, 5)
+      .slice(0, 3)
 
     return (
-      <div style={{ paddingLeft: GAP / 2, paddingRight: GAP / 2, boxSizing: "border-box" }} key={character.master_pc_id}>
-        <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="block w-full min-w-0">
+      <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className={`block w-full min-w-0 ${fill ? "h-full" : ""}`}>
+        <div
+          className={`group relative w-full min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-[#16171b] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#ff2f5f]/40 ${fill ? "h-full" : showStats ? "min-h-[300px]" : "min-h-[230px]"}`}
+          style={{
+            boxShadow: "0 16px 48px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04)",
+            contentVisibility: "auto",
+            containIntrinsicSize: `${CARD_HEIGHT}px`,
+          }}
+        >
+          {/* Element accent bar on the left edge */}
           <div
-            className="w-full min-w-0 group h-auto overflow-hidden rounded-2xl bg-gradient-to-b from-[#1d2d44] to-[#0f1924] shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-2xl"
-            style={{ borderTop: `4px solid ${elementAccentColor}`, contentVisibility: "auto", containIntrinsicSize: `${CARD_HEIGHT}px` }}
-          >
-            <div>
-              <div className="flex gap-4 p-4 pb-3">
-                <div className="relative h-24 w-24 md:h-[148px] md:w-[148px] shrink-0">
-                  {visualTier >= 8 ? (
-                    <div className="absolute inset-[8%] rounded-[12%] overflow-hidden">
-                      <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
-                      <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={isPriorityCard ? "high" : "low"} className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110" />
-                    </div>
-                  ) : (
-                    <>
-                      <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
-                      <div className="absolute inset-[10px] rounded-[18px] overflow-hidden">
-                        <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={isPriorityCard ? "high" : "low"} className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110" />
-                      </div>
-                    </>
-                  )}
-                  <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
+            className="pointer-events-none absolute inset-y-0 left-0 w-[3px]"
+            style={{ background: `linear-gradient(180deg, ${elementAccentColor} 0%, ${colorWithAlpha(elementAccentColor, 0.25)} 100%)` }}
+          />
+          {/* Top accent line revealed on hover */}
+          <div
+            className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            style={{ background: `linear-gradient(90deg, transparent, ${elementAccentColor}, transparent)` }}
+          />
+          {/* Subtle ambient glow keyed to element */}
+          <div
+            className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full blur-3xl opacity-[0.12] transition-opacity duration-300 group-hover:opacity-25"
+            style={{ backgroundColor: elementAccentColor }}
+          />
+
+          <div className="relative flex h-full flex-col p-4 pl-5 sm:p-5 sm:pl-6">
+            {/* Header: portrait + identity (with meta icons inline under the stars) */}
+            <div className="flex items-start gap-4">
+              <div className="relative h-[100px] w-[100px] shrink-0">
+                <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
+                <div className={`absolute overflow-hidden ${visualTier >= 8 ? "inset-[8%] rounded-[14%]" : "inset-[7%] rounded-[10%]"}`}>
+                  <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={isPriorityCard ? "high" : "low"} className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105" />
                 </div>
-                <div className="flex min-w-0 flex-1 flex-col md:min-h-[148px]">
-                  <div className="flex items-start justify-between gap-2">
-                    <h2 className="line-clamp-2 text-[1rem] font-bold leading-snug text-white">{character.name}</h2>
-                    <img src={starsSrc} alt={rarityLabel} loading={imageLoading} decoding="async" className="mt-0.5 h-6 shrink-0 object-contain drop-shadow" />
-                  </div>
-                  <p className="mt-1 truncate text-[10px] uppercase tracking-[0.18em] text-gray-500">{character.affiliation_name}</p>
-                  {(tacticsIcon || facilityIcons.length > 0) && (
-                    <div className="mt-2 flex items-center gap-2">
-                      {tacticsIcon && (
-                        <img
-                          src={tacticsIcon}
-                          alt={character.tactics_type || "Normal"}
-                          title={character.tactics_type || "Normal"}
-                          className="h-10 w-auto max-w-[110px] shrink-0 object-contain drop-shadow"
-                        />
-                      )}
-                      {facilityIcons.map(({ name, icon }) => (
-                        <img key={name} src={icon} alt={name} title={name} className="h-8 w-8 object-contain" />
-                      ))}
-                    </div>
-                  )}
-                  <div className="mt-auto flex flex-wrap gap-2 pt-1">
-                    {elementIcons.map((entry) => (
-                      <img key={entry.icon} src={entry.icon} alt={entry.label} title={entry.label} className="h-8 w-8 object-contain" />
-                    ))}
-                    {attackTypeIcon && (
-                      <img src={attackTypeIcon} alt={attackTypeLabel} title={attackTypeLabel} className="h-8 w-8 object-contain" />
-                    )}
-                    {weaponIcon && (
-                      <img src={weaponIcon} alt={weaponLabel} title={weaponLabel} className="h-8 w-8 object-contain" />
-                    )}
-                  </div>
-                </div>
+                <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
               </div>
-              {showStats && (
-              <div className="px-4 grid grid-cols-4 divide-x divide-white/5 rounded-xl bg-white/10 py-2.5 w-full min-w-0">
-                <div className="px-2 text-center">
-                  <p className="text-[9px] font-semibold uppercase tracking-wider text-white">HP</p>
-                  <p className="mt-1 text-[1.1rem] font-bold leading-none text-emerald-300">{character.stats.hp}</p>
-                </div>
-                <div className="px-2 text-center">
-                  <p className="text-[9px] font-semibold uppercase tracking-wider text-white">ATK</p>
-                  <p className="mt-1 text-[1.1rem] font-bold leading-none text-rose-300">{character.stats.attack}</p>
-                </div>
-                <div className="px-2 text-center">
-                  <p className="text-[9px] font-semibold uppercase tracking-wider text-white">DEF</p>
-                  <p className="mt-1 text-[1.1rem] font-bold leading-none text-sky-300">{character.stats.defense}</p>
-                </div>
-                <div className="px-2 text-center">
-                  <p className="text-[9px] font-semibold uppercase tracking-wider text-white">EXI</p>
-                  <p className="mt-1 text-[1.1rem] font-bold leading-none text-amber-200">{character.stats.existence}</p>
-                </div>
-              </div>
-              )}
-              {forceEntries.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 px-4 py-3">
-                  {forceEntries.slice(0, 4).map((force) => (
-                    <span
-                      key={force.name}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-2.5 py-1 text-[10px] text-gray-400 ring-1 ring-white/10"
-                    >
-                      {force.icon && <img src={force.icon} alt={force.name} className="h-5 w-5 shrink-0 object-contain" />}
-                      {force.name}
+
+              <div className="flex min-w-0 flex-1 flex-col">
+                <h2 className="line-clamp-2 text-[1.55rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-[1.7rem]">
+                  {character.name}
+                </h2>
+                <p className="mt-1 truncate text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">
+                  {character.affiliation_name}
+                </p>
+                <img src={starsSrc} alt={rarityLabel} loading={imageLoading} decoding="async" className="mt-1.5 h-5 w-fit object-contain" />
+
+                {/* Meta strip: tactics pill + element/type/weapon + facilities */}
+                <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                  {tacticsIcon && (
+                    <img
+                      src={tacticsIcon}
+                      alt={tacticsLabel}
+                      title={tacticsLabel}
+                      className="h-6 w-auto max-w-[78px] shrink-0 object-contain drop-shadow"
+                    />
+                  )}
+                  {elementIcons.map((entry) => (
+                    <span key={entry.icon} className="grid h-6 w-6 place-items-center rounded bg-white/[0.04] ring-1 ring-white/[0.06]" title={entry.label}>
+                      <img src={entry.icon} alt={entry.label} className="h-[18px] w-[18px] object-contain" />
+                    </span>
+                  ))}
+                  {attackTypeIcon && (
+                    <span className="grid h-6 w-6 place-items-center rounded bg-white/[0.04] ring-1 ring-white/[0.06]" title={attackTypeLabel}>
+                      <img src={attackTypeIcon} alt={attackTypeLabel} className="h-[18px] w-[18px] object-contain" />
+                    </span>
+                  )}
+                  {weaponIcon && (
+                    <span className="grid h-6 w-6 place-items-center rounded bg-white/[0.04] ring-1 ring-white/[0.06]" title={weaponLabel}>
+                      <img src={weaponIcon} alt={weaponLabel} className="h-[18px] w-[18px] object-contain" />
+                    </span>
+                  )}
+                  {facilityIcons.length > 0 && <span className="mx-0.5 h-4 w-px bg-white/10" />}
+                  {facilityIcons.map(({ name, icon }) => (
+                    <span key={name} className="grid h-6 w-6 place-items-center rounded bg-white/[0.04] ring-1 ring-white/[0.06]" title={name}>
+                      <img src={icon} alt={name} className="h-[18px] w-[18px] object-contain" />
                     </span>
                   ))}
                 </div>
-              )}
+              </div>
             </div>
+
+            {/* Stats: connected bar with dividers */}
+            {showStats && (
+              <div className="mt-3 grid grid-cols-4 overflow-hidden rounded-lg border border-white/10 bg-[#0c0d12]">
+                <StatPill label="HP" value={character.stats.hp} />
+                <StatPill label="ATK" value={character.stats.attack} accent />
+                <StatPill label="DEF" value={character.stats.defense} />
+                <StatPill label="EXI" value={character.stats.existence} accent />
+              </div>
+            )}
+
+            {/* Forces */}
+            {forceEntries.length > 0 && (
+              <div className="mt-3">
+                <div className="mb-1.5 flex items-center gap-2">
+                  <span className="text-[9px] font-bold uppercase tracking-[0.28em] text-slate-500">Forces</span>
+                  <span className="h-px flex-1 bg-white/5" />
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {forceEntries.slice(0, 3).map((force) => (
+                    <span
+                      key={force.name}
+                      className="inline-flex max-w-full items-center gap-1.5 truncate rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-1 text-[11px] text-slate-300"
+                    >
+                      {force.icon && <img src={force.icon} alt="" className="h-4 w-4 shrink-0 object-contain" />}
+                      <span className="truncate">{force.name}</span>
+                    </span>
+                  ))}
+                  {forceEntries.length > 3 && (
+                    <span className="inline-flex items-center rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-1 text-[11px] text-slate-400">
+                      +{forceEntries.length - 3}
+                    </span>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
-        </Link>
+        </div>
+      </Link>
+    )
+  }
+
+  function StatPill({ label, value, accent = false }: { label: string; value: number; accent?: boolean }) {
+    return (
+      <div className="border-r border-white/5 px-2 py-2.5 text-center last:border-r-0">
+        <p className={`text-[9px] font-bold uppercase tracking-[0.22em] ${accent ? "text-[#ff8aa5]" : "text-slate-500"}`}>{label}</p>
+        <p className="mt-1 text-[0.95rem] font-black leading-none text-white">{value.toLocaleString()}</p>
+      </div>
+    )
+  }
+
+
+  function MobileCard({ character, index }: { character: BrowserCharacter; index: number }) {
+    return (
+      <div style={{ paddingLeft: GAP / 2, paddingRight: GAP / 2, boxSizing: "border-box" }} key={character.master_pc_id}>
+        <CharacterCardSurface character={character} index={index} />
       </div>
     )
   }
@@ -1929,29 +1986,6 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     const index = rowIndex * columnCount + columnIndex
     if (index >= filteredCharacters.length) return null
     const character = filteredCharacters[index]
-    const visualTier = getCharacterVisualTier(character)
-    const frameSrc = getCharacterFrame(character)
-    const baseSrc = getCharacterBase(character)
-    const starsSrc = starAssetMap[visualTier] ?? starAssetMap[5]
-    const iconSrc = character.images.icon?.replace(/\.webp$/i, ".webp")
-    const characterElementValue = getCharacterElementValue(character)
-    const elementIcons = getCharacterElementIcons(character)
-    const forceEntries = character.force_entries
-    const attackTypeIcon = attackTypeIconMap[normalizeLabel(character.attack_type)]
-    const weaponIcon = weaponIconMap[normalizeLabel(character.weapon_type)]
-    const tacticsIcon = tacticsIconMap[normalizeLabel(character.tactics_type || "Normal")]
-    const attackTypeLabel = formatWikiLabel(character.attack_type)
-    const weaponLabel = formatWikiLabel(character.weapon_type)
-    const rarityLabel = getCharacterRarityLabel(character)
-    const isPriorityCard = index < 6
-    const imageLoading = isPriorityCard ? "eager" : "lazy"
-    const elementAccentColor = elementColorMap[normalizeLabel(characterElementValue)] ?? "#4b5563"
-    const facilityIcons = [
-      ...new Set(character.facilities.map((f) => f.replace(/ \+\d+%$/, "").trim())),
-    ]
-      .map((name) => ({ name, icon: facilityIconMap[name] }))
-      .filter((entry) => entry.icon)
-      .slice(0, 5)
     const rawLeft = (style as any).left ?? 0
     const rawWidth = (style as any).width ?? columnWidth
     const adjustedLeft = rawLeft + GAP / 2
@@ -1971,106 +2005,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
             paddingRight: isLastColumn ? GAP / 2 + EXTRA_LAST_COLUMN_SPACE : GAP / 2,
           }}
         >
-          <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="block w-full h-full min-w-0">
-            <div
-              className="w-full min-w-0 group h-full overflow-hidden rounded-2xl bg-gradient-to-b from-[#1d2d44] to-[#0f1924] shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-2xl"
-              style={{ borderTop: `4px solid ${elementAccentColor}`, contentVisibility: "auto", containIntrinsicSize: `${CARD_HEIGHT}px` }}
-            >
-              <div>
-                {/* Portrait + info row */}
-                <div className="flex gap-4 p-4 pb-3">
-                  {/* Portrait */}
-                  <div className="relative h-24 w-24 md:h-[148px] md:w-[148px] shrink-0">
-                    {visualTier >= 8 ? (
-                      <div className="absolute inset-[8%] rounded-[12%] overflow-hidden">
-                        <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
-                        <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={isPriorityCard ? "high" : "low"} className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110" />
-                      </div>
-                    ) : (
-                      <>
-                        <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
-                        <div className="absolute inset-[10px] rounded-[18px] overflow-hidden">
-                          <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={isPriorityCard ? "high" : "low"} className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-110" />
-                        </div>
-                      </>
-                    )}
-                    <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
-                  </div>
-                  {/* Info column */}
-                  <div className="flex min-w-0 flex-1 flex-col md:min-h-[148px]">
-                    <div className="flex items-start justify-between gap-2">
-                      <h2 className="line-clamp-2 text-[1rem] font-bold leading-snug text-white">{character.name}</h2>
-                      <img src={starsSrc} alt={rarityLabel} loading={imageLoading} decoding="async" className="mt-0.5 h-6 shrink-0 object-contain drop-shadow" />
-                    </div>
-                    <p className="mt-1 truncate text-[10px] uppercase tracking-[0.18em] text-gray-500">{character.affiliation_name}</p>
-                    {/* Tactics badge + facility icons on same row */}
-                    {(tacticsIcon || facilityIcons.length > 0) && (
-                      <div className="mt-2 flex items-center gap-2">
-                        {tacticsIcon && (
-                          <img
-                            src={tacticsIcon}
-                            alt={character.tactics_type || "Normal"}
-                            title={character.tactics_type || "Normal"}
-                            className="h-10 w-auto max-w-[110px] shrink-0 object-contain drop-shadow"
-                          />
-                        )}
-                        {facilityIcons.map(({ name, icon }) => (
-                          <img key={name} src={icon} alt={name} title={name} className="h-8 w-8 object-contain" />
-                        ))}
-                      </div>
-                    )}
-                    {/* Element / attack type / weapon icons */}
-                    <div className="mt-auto flex flex-wrap gap-2 pt-1">
-                      {elementIcons.map((entry) => (
-                        <img key={entry.icon} src={entry.icon} alt={entry.label} title={entry.label} className="h-8 w-8 object-contain" />
-                      ))}
-                      {attackTypeIcon && (
-                        <img src={attackTypeIcon} alt={attackTypeLabel} title={attackTypeLabel} className="h-8 w-8 object-contain" />
-                      )}
-                      {weaponIcon && (
-                        <img src={weaponIcon} alt={weaponLabel} title={weaponLabel} className="h-8 w-8 object-contain" />
-                      )}
-                    </div>
-                  </div>
-                </div>
-                {/* Stats bar */}
-                {showStats && (
-                <div className="px-4 grid grid-cols-4 divide-x divide-white/5 rounded-xl bg-white/10 py-2.5 w-full min-w-0">
-                  <div className="px-2 text-center">
-                    <p className="text-[9px] font-semibold uppercase tracking-wider text-white">HP</p>
-                    <p className="mt-1 text-[1.1rem] font-bold leading-none text-emerald-300">{character.stats.hp}</p>
-                  </div>
-                  <div className="px-2 text-center">
-                    <p className="text-[9px] font-semibold uppercase tracking-wider text-white">ATK</p>
-                    <p className="mt-1 text-[1.1rem] font-bold leading-none text-rose-300">{character.stats.attack}</p>
-                  </div>
-                  <div className="px-2 text-center">
-                    <p className="text-[9px] font-semibold uppercase tracking-wider text-white">DEF</p>
-                    <p className="mt-1 text-[1.1rem] font-bold leading-none text-sky-300">{character.stats.defense}</p>
-                  </div>
-                  <div className="px-2 text-center">
-                    <p className="text-[9px] font-semibold uppercase tracking-wider text-white">EXI</p>
-                    <p className="mt-1 text-[1.1rem] font-bold leading-none text-amber-200">{character.stats.existence}</p>
-                  </div>
-                </div>
-                )}
-                {/* Forces */}
-                {forceEntries.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5 px-4 py-3">
-                    {forceEntries.slice(0, 4).map((force) => (
-                      <span
-                        key={force.name}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-2.5 py-1 text-[10px] text-gray-400 ring-1 ring-white/10"
-                      >
-                        {force.icon && <img src={force.icon} alt={force.name} className="h-5 w-5 shrink-0 object-contain" />}
-                        {force.name}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          </Link>
+          <CharacterCardSurface character={character} index={index} fill />
         </div>
       </div>
     )
@@ -2101,7 +2036,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   }
 
   return (
-    <main className="min-h-screen bg-[#111827] px-4 py-8 text-white sm:px-6">
+    <main className="min-h-screen bg-[#090a0f] px-4 py-8 text-white sm:px-6">
       <style jsx global>{`
         .hide-scrollbar {
           -ms-overflow-style: none; /* IE and Edge */
@@ -2115,36 +2050,36 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
 
         /* Keep the thin .image-scroll scrollbar visible on small screens */
       `}</style>
-      <div className="mx-auto flex max-w-7xl flex-col gap-8">
-        <section className="rounded-2xl border border-gray-700 bg-gray-800 p-5 shadow-[0_0_24px_rgba(255,255,255,0.08)]">
-          <div className="flex flex-col gap-4">
+      <div className="mx-auto flex max-w-7xl flex-col gap-7">
+        <section className="rounded-3xl border border-white/10 bg-[#121318] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.3)] sm:p-6">
+          <div className="flex flex-col gap-5">
             <div>
-              <h1 className="text-3xl font-bold text-white sm:text-4xl">Characters</h1>
+              <h1 className="text-4xl font-extrabold tracking-normal text-white sm:text-5xl">Characters</h1>
             </div>
             <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
               <div className="relative w-full lg:max-w-xl flex items-center">
                 <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-                <Input value={searchText} onChange={(event) => setSearchText(event.target.value)} placeholder="Search names, affiliations, effects, forces, towns" className="h-12 rounded-full border-gray-600 bg-gray-700 pl-11 pr-36 text-white placeholder:text-gray-400 flex-1" />
+                <Input value={searchText} onChange={(event) => setSearchText(event.target.value)} placeholder="Search names, affiliations, effects, forces, towns" className="h-12 flex-1 rounded-full border-white/10 bg-[#0c0d12] pl-11 pr-16 text-white shadow-inner shadow-white/[0.02] placeholder:text-slate-500 focus-visible:ring-[#ff2f5f]/40 sm:pr-36" />
                 {/* Skills toggle embedded at right of search bar */}
                 <button
                   onClick={() => setSearchSkills((prev) => !prev)}
                   title={searchSkills ? "Also searching skill names & descriptions" : "Click to also search skill names & descriptions"}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition-all select-none"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1.5 rounded-full px-2 py-1.5 text-xs font-semibold transition-all select-none sm:px-3"
                   style={searchSkills
-                    ? { background: "linear-gradient(135deg,#1e40af,#2563eb)", color: "#fff", boxShadow: "0 0 8px rgba(59,130,246,0.5)" }
+                    ? { background: "linear-gradient(135deg,rgba(255,47,95,0.28),rgba(255,47,95,0.12))", color: "#ffffff", boxShadow: "0 0 12px rgba(255,47,95,0.28)", border: "1px solid rgba(255,47,95,0.42)" }
                     : { background: "rgba(255,255,255,0.07)", color: "#9ca3af", border: "1px solid rgba(255,255,255,0.1)" }}
                 >
                   {/* mini toggle pill */}
                   <span
                     className="relative inline-flex h-3.5 w-6 shrink-0 rounded-full transition-colors"
-                    style={{ background: searchSkills ? "#60a5fa" : "#374151" }}
+                    style={{ background: searchSkills ? "#ff2f5f" : "#374151" }}
                   >
                     <span
                       className="absolute top-0.5 h-2.5 w-2.5 rounded-full bg-white shadow transition-transform"
                       style={{ transform: searchSkills ? "translateX(13px)" : "translateX(2px)" }}
                     />
                   </span>
-                  Search Skills
+                  <span className="hidden sm:inline">Search Skills</span>
                 </button>
               </div>
               {filtersOpen && (
@@ -2153,15 +2088,15 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                   <button
                     onClick={() => setSortAsc((prev) => !prev)}
                     title={sortAsc ? "Ascending" : "Descending"}
-                    className="rounded p-1 text-gray-400 transition-colors hover:bg-gray-600 hover:text-white"
+                    className="rounded-md border border-white/10 bg-[#0c0d12] p-2 text-gray-400 transition-colors hover:border-[#ff2f5f]/45 hover:bg-[#171821] hover:text-white"
                   >
                     <ArrowDownUp className={`h-4 w-4 transition-transform ${sortAsc ? "rotate-180" : ""}`} />
                   </button>
                   <Select value={sortKey} onValueChange={(value) => setSortKey(value as SortKey)}>
-                    <SelectTrigger className="w-[170px] border-gray-600 bg-gray-700 text-white">
+                    <SelectTrigger className="w-[170px] border-white/10 bg-[#0c0d12] text-white focus:ring-[#ff2f5f]/40">
                       <SelectValue placeholder="Sort by" />
                     </SelectTrigger>
-                    <SelectContent className="border-gray-600 bg-gray-700 text-white">
+                    <SelectContent className="border-white/10 bg-[#080808] text-white">
                       <SelectItem value="existence">Existence</SelectItem>
                       <SelectItem value="attack">Attack</SelectItem>
                       <SelectItem value="hp">Health</SelectItem>
@@ -2172,7 +2107,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                     </SelectContent>
                   </Select>
                 </div>
-                <Button variant="outline" onClick={resetFilters} className="border-gray-600 bg-gray-700 text-white hover:bg-gray-600">
+                <Button variant="outline" onClick={resetFilters} className="border-white/10 bg-[#0c0d12] text-white hover:border-[#ff2f5f]/45 hover:bg-[#171821]">
                   Reset
                 </Button>
               </div>
@@ -2186,12 +2121,12 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                   setFiltersOpen(next)
                   sessionStorage.setItem("characterBrowserFiltersOpen", next ? "1" : "0")
                 }}
-                className="inline-flex items-center rounded-full bg-gray-700 px-4 py-2 text-xs font-semibold text-gray-300 hover:bg-gray-600 hover:text-white transition-all"
+                className="inline-flex items-center rounded-full border border-white/10 bg-[#151515] px-4 py-2 text-xs font-semibold text-gray-300 transition-all hover:border-[#ff2f5f]/45 hover:bg-[#1f1f1f] hover:text-white"
               >
                 {filtersOpen ? "Hide Filters" : "Show Filters"}
               </button>
               {activeFilterCount > 0 && (
-                <div className="inline-flex items-center gap-2 rounded-full bg-gray-700 px-4 py-2 text-white">
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#ff2f5f]/25 bg-[#ff2f5f]/10 px-4 py-2 text-white">
                   <span>{activeFilterCount} active filters</span>
                 </div>
               )}
@@ -2201,27 +2136,27 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                   title={filterMode === "AND" ? "AND: character must match ALL filters — click for OR" : "OR: character matches ANY filter — click for AND"}
                   className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold transition-all select-none"
                   style={filterMode === "AND"
-                    ? { background: "linear-gradient(135deg,#14532d,#16a34a)", color: "#fff", boxShadow: "0 0 10px rgba(34,197,94,0.4)", border: "1px solid rgba(74,222,128,0.4)" }
+                    ? { background: "linear-gradient(135deg,rgba(255,47,95,0.24),rgba(255,47,95,0.1))", color: "#ffffff", boxShadow: "0 0 12px rgba(255,47,95,0.24)", border: "1px solid rgba(255,47,95,0.36)" }
                     : { background: "rgba(255,255,255,0.07)", color: "#9ca3af", border: "1px solid rgba(255,255,255,0.1)" }}
                 >
                   {/* Switch track */}
                   <span
                     className="relative inline-flex h-4 w-8 shrink-0 items-center rounded-full transition-colors"
-                    style={{ background: filterMode === "AND" ? "#22c55e" : "#374151" }}
+                    style={{ background: filterMode === "AND" ? "#ff2f5f" : "#374151" }}
                   >
                     <span
                       className="absolute top-0.5 h-3 w-3 rounded-full bg-white shadow transition-transform"
                       style={{ transform: filterMode === "AND" ? "translateX(18px)" : "translateX(2px)" }}
                     />
                   </span>
-                  <span className="font-bold tracking-widest" style={{ color: filterMode === "AND" ? "#bbf7d0" : "#6b7280" }}>
+                  <span className="font-bold tracking-widest" style={{ color: filterMode === "AND" ? "#ffffff" : "#6b7280" }}>
                     {filterMode}
                   </span>
                 </button>
               )}
               <button
                 onClick={() => setShowStats(!showStats)}
-                className="inline-flex items-center rounded-full bg-gray-700 px-4 py-2 text-xs font-semibold text-gray-300 hover:bg-gray-600 hover:text-white transition-all"
+                className="inline-flex items-center rounded-full border border-white/10 bg-[#151515] px-4 py-2 text-xs font-semibold text-gray-300 transition-all hover:border-[#ff2f5f]/45 hover:bg-[#1f1f1f] hover:text-white"
               >
                 {showStats ? "Hide Stats" : "Show Stats"}
               </button>
@@ -2229,10 +2164,9 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                 onClick={() => {
                   const next = viewMode === "cards" ? "compact" : "cards"
                   setViewMode(next)
-                  sessionStorage.setItem("characterBrowserViewMode", next)
                 }}
                 title={viewMode === "cards" ? "Switch to compact grid view" : "Switch to card view"}
-                className="inline-flex items-center gap-1.5 rounded-full bg-gray-700 px-3 py-2 text-xs font-semibold text-gray-300 hover:bg-gray-600 hover:text-white transition-all"
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-[#151515] px-3 py-2 text-xs font-semibold text-gray-300 transition-all hover:border-[#ff2f5f]/45 hover:bg-[#1f1f1f] hover:text-white"
               >
                 {viewMode === "cards" ? <LayoutGrid className="h-4 w-4" /> : <List className="h-4 w-4" />}
               </button>
@@ -2244,7 +2178,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                   <button
                     key={chip.key}
                     onClick={chip.remove}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-gray-700 px-3 py-1 text-xs text-gray-200 hover:bg-red-900/40 hover:border-red-500/40 hover:text-white transition-colors"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-[#151515] px-3 py-1 text-xs text-gray-200 transition-colors hover:border-[#ff2f5f]/45 hover:bg-[#ff2f5f]/10 hover:text-white"
                   >
                     <span className="text-gray-500">{chip.category}</span>
                     <span className="text-gray-500">·</span>
@@ -2268,7 +2202,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
             </div>
 
             {/* Icon-bar strip: Element, Weapon, Attack Type, Role, Ultimate */}
-            <div className="flex flex-col gap-3 rounded-xl border border-white/5 bg-white/3 p-3">
+            <div className="flex flex-col gap-3 rounded-xl border border-white/10 bg-[#0c0d12] p-3">
               <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
                 <div className="flex items-center gap-2">
                   <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">Attacker</span>

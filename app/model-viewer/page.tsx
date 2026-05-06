@@ -5,11 +5,12 @@ export const metadata = { title: "Model Viewer | SLIME-WIKI" }
 
 export default function ModelViewerPage() {
   return (
-    <main className="min-h-screen bg-[#111827] px-4 py-8 text-white sm:px-6">
+    <main className="site-page px-4 py-8 text-white sm:px-6">
       <div className="mx-auto w-full max-w-7xl space-y-4">
         <div>
-          <h1 className="text-2xl font-extrabold tracking-tight text-white">Model Viewer</h1>
-          <p className="text-sm text-gray-400 mt-1">
+          <p className="section-kicker">3D Archive</p>
+          <h1 className="section-title mt-2">Model Viewer</h1>
+          <p className="mt-2 text-sm text-slate-400">
             Rotate, zoom, and inspect in-game character models. Drag to orbit, scroll to zoom.
           </p>
         </div>

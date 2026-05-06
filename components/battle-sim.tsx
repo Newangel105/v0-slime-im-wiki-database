@@ -2388,9 +2388,9 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
   }, [mainProtector, subProtector, protectorSkillUses])
 
   return (
-    <div className="min-h-screen bg-[#111827] text-white">
+    <div className="site-page text-white">
       {/* Header bar */}
-      <div className="bg-gray-900/80 border-b border-gray-800 px-4 py-2 flex items-center gap-3">
+      <div className="border-b border-white/10 bg-[#050811]/80 px-4 py-2 flex items-center gap-3 backdrop-blur-xl">
         <span className="text-gray-300 text-xs font-bold">Battle Sim WIP</span>
         <span className="text-amber-300/90 text-xs ml-auto hidden md:block">Work in progress: calculation flow is usable, but there are still bugs and missing edge cases to fix.</span>
       </div>

@@ -7,11 +7,12 @@ export default function SkillViewerPage() {
   const characters = getAllWikiCharacters()
 
   return (
-    <main className="min-h-screen bg-[#111827] px-4 py-8 text-white sm:px-6">
+    <main className="site-page px-4 py-8 text-white sm:px-6">
       <div className="mx-auto w-full max-w-7xl space-y-6">
         <div>
-          <h1 className="text-2xl font-extrabold tracking-tight text-white">Skill Viewer</h1>
-          <p className="mt-1 text-sm text-gray-400">
+          <p className="section-kicker">Tool Archive</p>
+          <h1 className="section-title mt-2">Skill Viewer</h1>
+          <p className="mt-2 text-sm text-slate-400">
             Browse every character skill through skill filters
           </p>
         </div>

@@ -1,7 +1,8 @@
 "use client"
+
+import Link from "next/link"
 import { useEffect, useState } from "react"
-import { Card } from "@/components/ui/card"
-import { Play, ExternalLink } from "lucide-react"
+import { ChevronRight, Clock3, Database, ExternalLink, Newspaper, Play, Sparkles, Users, Video } from "lucide-react"
 
 function getNextUtcTime(hour: number, minute = 0, second = 0) {
   const now = new Date()
@@ -13,28 +14,31 @@ function getNextUtcTime(hour: number, minute = 0, second = 0) {
 
 function formatLocalTime(date: Date) {
   return date.toLocaleString(undefined, {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
   })
 }
 
 function useCountdown(targetDate: Date) {
   const [timeLeft, setTimeLeft] = useState(() => targetDate.getTime() - new Date().getTime())
+
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeLeft(targetDate.getTime() - new Date().getTime())
     }, 1000)
     return () => clearInterval(interval)
   }, [targetDate])
+
   const totalSeconds = Math.max(0, Math.floor(timeLeft / 1000))
   const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, "0")
   const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0")
   const seconds = String(totalSeconds % 60).padStart(2, "0")
+
   return `${hours}:${minutes}:${seconds}`
 }
 
@@ -47,18 +51,29 @@ interface YouTubeVideo {
   published: string | null
 }
 
-export default function HomePage() {
-  // Hydration fix: only show timers after mount
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => { setMounted(true) }, [])
+const timerRegionOptions = [
+  { key: "NA", label: "NA", reset: { hour: 11, minute: 0 }, update: { hour: 2, minute: 0 } },
+  { key: "EU", label: "EU", reset: { hour: 4, minute: 0 }, update: { hour: 2, minute: 0 } },
+  { key: "Asia", label: "Asia", reset: { hour: 19, minute: 0 }, update: { hour: 2, minute: 0 } },
+]
 
-  // Timer region selection (NA, EU, Asia)
-  const timerRegionOptions = [
-    { key: "NA", label: "NA", reset: { hour: 11, minute: 0 }, update: { hour: 2, minute: 0 } },
-    { key: "EU", label: "EU", reset: { hour: 4, minute: 0 }, update: { hour: 2, minute: 0 } },
-    { key: "Asia", label: "Asia", reset: { hour: 19, minute: 0 }, update: { hour: 2, minute: 0 } },
-  ]
-  
+const languageOptions = [
+  { key: "EN", language: 2, label: "English" },
+  { key: "JP", language: 1, label: "Japanese" },
+  { key: "CN", language: 3, label: "Chinese" },
+  { key: "KR", language: 4, label: "Korean" },
+]
+
+const heroStats = [
+  { label: "Characters", value: "Database", icon: Database },
+  { label: "Community", value: "Guides", icon: Users },
+  { label: "Live Tools", value: "Data", icon: Sparkles },
+]
+
+export default function HomePage() {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
   const [timerRegion, setTimerRegion] = useState(timerRegionOptions[0])
   const [resetTarget, setResetTarget] = useState(() => getNextUtcTime(timerRegionOptions[0].reset.hour, timerRegionOptions[0].reset.minute, 0))
   const [updateTarget, setUpdateTarget] = useState(() => getNextUtcTime(timerRegionOptions[0].update.hour, timerRegionOptions[0].update.minute, 0))
@@ -73,27 +88,17 @@ export default function HomePage() {
   const resetLocal = formatLocalTime(resetTarget)
   const updateLocal = formatLocalTime(updateTarget)
 
-  // News state and language selection
-  const languageOptions = [
-    { key: "EN", language: 2, label: "English" },
-    { key: "JP", language: 1, label: "Japanese" },
-    { key: "CN", language: 3, label: "Chinese" },
-    { key: "KR", language: 4, label: "Korean" },
-  ]
   const [selectedLanguage, setSelectedLanguage] = useState(languageOptions[0])
   const [loadingNews, setLoadingNews] = useState(true)
 
-  // Generate the official news URL for embedding - only language changes
   const getNewsUrl = () => {
     return `https://api-us.ten-sura-m.wfs.games/web/announcement?language=${selectedLanguage.language}`
   }
 
   useEffect(() => {
-    // News is loaded via iframe, so we just set loading to false
     setLoadingNews(false)
   }, [selectedLanguage])
 
-  // YouTube video state - automatically fetched from RSS feed
   const [youtubeVideo, setYoutubeVideo] = useState<YouTubeVideo | null>(null)
   const [loadingVideo, setLoadingVideo] = useState(true)
   const [showEmbed, setShowEmbed] = useState(false)
@@ -101,21 +106,18 @@ export default function HomePage() {
   const [thumbAttempt, setThumbAttempt] = useState(0)
 
   useEffect(() => {
-    // Use a default video since YouTube RSS requires server-side fetch
-    // The video ID can be updated manually or via a CMS in the future
     const defaultVideo: YouTubeVideo = {
-      id: 'tYANKQ5XvQs',
-      title: 'SLIME - ISEKAI Memories Official Stream',
-      url: 'https://youtu.be/tYANKQ5XvQs',
-      embedUrl: 'https://www.youtube.com/embed/tYANKQ5XvQs',
-      thumbnail: 'https://img.youtube.com/vi/tYANKQ5XvQs/maxresdefault.jpg',
+      id: "tYANKQ5XvQs",
+      title: "SLIME - ISEKAI Memories Official Stream",
+      url: "https://youtu.be/tYANKQ5XvQs",
+      embedUrl: "https://www.youtube.com/embed/tYANKQ5XvQs",
+      thumbnail: "https://img.youtube.com/vi/tYANKQ5XvQs/maxresdefault.jpg",
       published: null,
     }
     setYoutubeVideo(defaultVideo)
     setLoadingVideo(false)
   }, [])
 
-  // Thumbnail fallback list for different YouTube sizes
   const thumbFallbacks = (id: string) => [
     `https://img.youtube.com/vi/${id}/maxresdefault.jpg`,
     `https://img.youtube.com/vi/${id}/sddefault.jpg`,
@@ -144,210 +146,231 @@ export default function HomePage() {
   const isUpcoming = !!(youtubeVideo && !youtubeVideo.published)
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-[#0a1a2f] via-[#0f1f35] to-[#1a2740]">
-      <div className="mx-auto max-w-6xl px-4 py-8">
-        {/* About Section */}
-        <section className="mb-8">
-          <Card className="bg-[#181f2a]/80 border border-gray-700/50 backdrop-blur-sm overflow-hidden">
-            <div className="p-6">
-              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                <span className="h-1 w-8 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"></span>
-                ABOUT
-              </h2>
-              <p className="text-gray-300 leading-relaxed mb-4">
-                Welcome to <span className="text-cyan-400 font-semibold">SLIME.WIKI</span> - The comprehensive database for 
-                <span className="text-blue-400 font-medium"> SLIME - Isekai Memories</span>, the official That Time I Got Reincarnated as a Slime 
-                mobile game developed by WFS and published by Bandai Namco Entertainment.
-              </p>
-              <div className="flex flex-wrap gap-4 text-xs text-gray-500 pt-4 border-t border-gray-700/50">
-                <span>Database maintained by the community</span>
-                <span className="text-gray-600">|</span>
-                <span>All game assets and content are property of WFS and Bandai Namco Entertainment</span>
-                <span className="text-gray-600">|</span>
-                <span>This is an unofficial fan-made resource</span>
-              </div>
-            </div>
-          </Card>
-        </section>
-
-        {/* Main Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-          {/* Timers Section - Left Column */}
-          <section className="lg:col-span-2">
-            <Card className="bg-[#181f2a]/80 border border-gray-700/50 backdrop-blur-sm h-full">
-              <div className="p-6">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
-                  <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                    <span className="h-1 w-6 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"></span>
-                    TIMERS
-                  </h2>
-                  <div className="flex gap-2">
-                    {timerRegionOptions.map((opt) => (
-                      <button
-                        key={opt.key}
-                        className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
-                          timerRegion.key === opt.key
-                            ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-500/25'
-                            : 'bg-[#232c3a] text-gray-400 hover:text-white hover:bg-[#2a3444]'
-                        }`}
-                        onClick={() => setTimerRegion(opt)}
-                      >
-                        {opt.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-gradient-to-br from-[#232c3a] to-[#1a222d] rounded-xl p-5 border border-gray-700/30">
-                    <span className="text-gray-400 text-sm font-medium mb-1 block">Daily Reset</span>
-                    <span className="text-gray-500 text-xs mb-3 block">{mounted ? resetLocal : "--"}</span>
-                    <span className="text-4xl font-mono font-bold text-white tracking-wider">{mounted ? resetCountdown : "--:--:--"}</span>
-                  </div>
-                  <div className="bg-gradient-to-br from-[#232c3a] to-[#1a222d] rounded-xl p-5 border border-gray-700/30">
-                    <span className="text-gray-400 text-sm font-medium mb-1 block">Weekly Update</span>
-                    <span className="text-gray-500 text-xs mb-3 block">{mounted ? updateLocal : "--"}</span>
-                    <span className="text-4xl font-mono font-bold text-white tracking-wider">{mounted ? updateCountdown : "--:--:--"}</span>
-                  </div>
-                </div>
-              </div>
-            </Card>
-          </section>
-
-          {/* Upcoming Stream Section - Right Column */}
-          <section className="lg:col-span-1">
-            <Card className="bg-[#181f2a]/80 border border-gray-700/50 backdrop-blur-sm h-full">
-              <div className="p-6">
-                <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                  <Play className="w-5 h-5 text-red-500" />
-                  UPCOMING STREAM
-                </h2>
-                {loadingVideo ? (
-                  <div className="aspect-video bg-[#232c3a] rounded-xl animate-pulse flex items-center justify-center">
-                    <span className="text-gray-500">Loading...</span>
-                  </div>
-                ) : youtubeVideo ? (
-                  <div className="space-y-3">
-                    <div className="relative aspect-video rounded-xl overflow-hidden border border-gray-700/30 bg-black">
-                      {!showEmbed ? (
-                        isUpcoming ? (
-                          <a
-                            href={youtubeVideo.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-full h-full block p-0 m-0"
-                            aria-label={`Open ${youtubeVideo.title} on YouTube`}
-                          >
-                            <img
-                              src={thumbnailSrc || youtubeVideo.thumbnail}
-                              alt={youtubeVideo.title}
-                              onError={onThumbError}
-                              className="w-full h-full object-cover"
-                            />
-                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                              <div className="bg-red-600/95 rounded-full p-3 shadow-lg">
-                                <Play className="w-6 h-6 text-white" />
-                              </div>
-                            </div>
-                            <div className="absolute left-3 top-3 bg-yellow-400 text-xs text-black font-semibold px-2 py-1 rounded">Upcoming</div>
-                          </a>
-                        ) : (
-                          <button onClick={() => setShowEmbed(true)} className="w-full h-full p-0 m-0 block">
-                            <img
-                              src={thumbnailSrc || youtubeVideo.thumbnail}
-                              alt={youtubeVideo.title}
-                              onError={onThumbError}
-                              className="w-full h-full object-cover"
-                            />
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <div className="bg-red-600/95 rounded-full p-3 shadow-lg">
-                                <Play className="w-6 h-6 text-white" />
-                              </div>
-                            </div>
-                          </button>
-                        )
-                      ) : (
-                        <iframe
-                          src={youtubeVideo.embedUrl}
-                          title={youtubeVideo.title}
-                          frameBorder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          className="w-full h-full"
-                        />
-                      )}
-                    </div>
-                    <div className="flex items-start justify-between gap-2">
-                      <p className="text-sm text-gray-300 line-clamp-2 flex-1">{youtubeVideo.title}</p>
-                      <a 
-                        href={youtubeVideo.url} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-cyan-400 transition-colors flex-shrink-0"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    </div>
-                  </div>
-                ) : null}
-              </div>
-            </Card>
-          </section>
+    <main className="site-page">
+      <section className="relative isolate overflow-hidden border-b border-white/10">
+        <div className="absolute inset-0 -z-30 bg-[#050811]" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_22%_24%,rgba(255,45,91,0.26),transparent_24rem),radial-gradient(circle_at_78%_18%,rgba(45,216,255,0.2),transparent_24rem)]" />
+        <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,#050811_0%,rgba(5,8,17,0.95)_38%,rgba(5,8,17,0.35)_68%,rgba(5,8,17,0.08)_100%)]" />
+        <div className="absolute bottom-0 right-[2%] -z-20 h-[76%] max-h-[680px]">
+          <img
+            src="/Image/Character/PC/RimuruAnotherHA2026/7/RimuruAnotherHA2026_7_CharaCutin.webp"
+            alt=""
+            className="h-full object-contain opacity-65 [filter:brightness(1.15)_saturate(1.4)_contrast(1.08)_drop-shadow(0_0_12px_rgba(255,255,255,0.34))_drop-shadow(0_0_34px_rgba(255,255,255,0.24))_drop-shadow(0_0_58px_rgba(120,210,255,0.20))]"
+          />
         </div>
 
-        {/* News Section - Full Width */}
-        <section>
-          <Card className="bg-[#181f2a]/80 border border-gray-700/50 backdrop-blur-sm">
-            <div className="p-6">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
-                <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                  <span className="h-1 w-6 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"></span>
-                  LATEST NEWS
-                </h2>
-                <div className="flex gap-2 flex-wrap">
-                  {languageOptions.map((opt) => (
-                    <button
-                      key={opt.key}
-                      className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
-                        selectedLanguage.key === opt.key 
-                          ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-500/25' 
-                          : 'bg-[#232c3a] text-gray-400 hover:text-white hover:bg-[#2a3444]'
-                      }`}
-                      onClick={() => setSelectedLanguage(opt)}
-                    >
-                      {opt.label}
-                    </button>
-                  ))}
-                </div>
+
+        <div className="site-container flex min-h-[calc(100svh-88px)] flex-col justify-center pb-24 pt-14">
+          <div className="max-w-3xl">
+            <div className="mb-6 flex items-center gap-3">
+              <img src="/brand/Logo.webp" alt="SLIME ISEKAI Memories" className="h-16 w-auto max-w-[260px] object-contain sm:h-20" />
+              <span className="hidden h-10 w-px bg-white/20 sm:block" />
+              <span className="section-kicker hidden sm:inline">Community Archive</span>
+            </div>
+            <h1 className="max-w-2xl text-5xl font-black uppercase leading-[0.95] text-white sm:text-7xl">
+              SLIME.WIKI
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
+              A clean, fast database for characters, forces, heartprints, team planning, skill lookup, and community builds.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/characters" className="neon-button">
+                Characters
+                <ChevronRight className="h-4 w-4" />
+              </Link>
+              <Link href="/team-builder" className="quiet-button">
+                Team Builder
+                <ChevronRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-12 grid max-w-3xl gap-3 sm:grid-cols-3">
+            {heroStats.map(({ label, value, icon: Icon }) => (
+              <div key={label} className="stat-tile">
+                <Icon className="mb-4 h-5 w-5 text-cyan-200" />
+                <div className="text-xl font-black text-white">{value}</div>
+                <div className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{label}</div>
               </div>
-              {/* Embedded News via iframe */}
-              <div className="rounded-xl overflow-hidden border border-gray-700/30">
-                {loadingNews ? (
-                  <div className="h-96 bg-[#232c3a] animate-pulse flex items-center justify-center">
-                    <span className="text-gray-500">Loading news...</span>
-                  </div>
-                ) : (
-                  <iframe
-                    src={getNewsUrl()}
-                    title="Game News"
-                    className="w-full max-w-full h-[500px] border-0"
-                    sandbox="allow-scripts allow-same-origin"
-                  />
-                )}
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="site-container space-y-8">
+        <section className="grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.65fr)]">
+          <div className="rounded-2xl border border-white/10 bg-[#121318]/88 p-5 shadow-[0_22px_70px_rgba(0,0,0,0.34)] sm:p-6">
+            <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-4">
+                <span className="grid h-10 w-10 place-items-center rounded-xl border border-[#ff3d68]/20 bg-[#ff3d68]/10 text-[#ff6f8f]">
+                  <Clock3 className="h-5 w-5" />
+                </span>
+                <h2 className="text-xl font-black tracking-tight text-white">Game Timers</h2>
+              </div>
+              <div className="flex rounded-lg border border-white/5 bg-[#0d0e13] p-1">
+                {timerRegionOptions.map((opt) => (
+                  <button
+                    key={opt.key}
+                    className={`rounded-md px-4 py-2 text-sm font-bold transition-all ${
+                      timerRegion.key === opt.key
+                        ? "bg-[#ff3d68] text-white shadow-lg shadow-[#ff3d68]/20"
+                        : "text-slate-400 hover:bg-white/[0.055] hover:text-white"
+                    }`}
+                    onClick={() => setTimerRegion(opt)}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
               </div>
             </div>
-          </Card>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              <TimerTile title="Daily Reset" localTime={mounted ? resetLocal : "--"} countdown={mounted ? resetCountdown : "--:--:--"} tone="red" />
+              <TimerTile title="Weekly Update" localTime={mounted ? updateLocal : "--"} countdown={mounted ? updateCountdown : "--:--:--"} tone="cyan" />
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-[#121318]/88 p-5 shadow-[0_22px_70px_rgba(0,0,0,0.34)] sm:p-6">
+            <div className="mb-5 flex items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <span className="grid h-10 w-10 place-items-center rounded-xl border border-[#ff3d68]/20 bg-[#ff3d68]/10 text-[#ff6f8f]">
+                  <Video className="h-5 w-5" />
+                </span>
+                <h2 className="text-xl font-black tracking-tight text-white">Latest Stream</h2>
+              </div>
+            </div>
+
+            {loadingVideo ? (
+              <div className="aspect-video animate-pulse rounded-xl border border-white/10 bg-white/[0.055]" />
+            ) : youtubeVideo ? (
+              <div className="space-y-3">
+                <div className="relative aspect-video overflow-hidden rounded-xl border border-white/10 bg-[#0a0b0f]">
+                  {!showEmbed ? (
+                    isUpcoming ? (
+                      <a
+                        href={youtubeVideo.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block h-full w-full"
+                        aria-label={`Open ${youtubeVideo.title} on YouTube`}
+                      >
+                        <img
+                          src={thumbnailSrc || youtubeVideo.thumbnail}
+                          alt={youtubeVideo.title}
+                          onError={onThumbError}
+                          className="h-full w-full object-cover opacity-90"
+                        />
+                        <StreamOverlay label="Upcoming" />
+                      </a>
+                    ) : (
+                      <button onClick={() => setShowEmbed(true)} className="block h-full w-full">
+                        <img
+                          src={thumbnailSrc || youtubeVideo.thumbnail}
+                          alt={youtubeVideo.title}
+                          onError={onThumbError}
+                          className="h-full w-full object-cover opacity-90"
+                        />
+                        <StreamOverlay label="Watch" />
+                      </button>
+                    )
+                  ) : (
+                    <iframe
+                      src={youtubeVideo.embedUrl}
+                      title={youtubeVideo.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="h-full w-full"
+                    />
+                  )}
+                </div>
+                <div className="flex items-start justify-between gap-3">
+                  <p className="line-clamp-2 flex-1 text-sm font-medium text-slate-200">{youtubeVideo.title}</p>
+                  <a href={youtubeVideo.url} target="_blank" rel="noopener noreferrer" className="quiet-button px-2 py-2" aria-label="Open stream on YouTube">
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+            ) : null}
+          </div>
         </section>
 
-        {/* Footer */}
-        <footer className="mt-12 pt-6 border-t border-gray-700/30 text-center">
-          <p className="text-gray-500 text-sm">
-            SLIME.WIKI is a fan-made database. All rights reserved to WFS and Bandai Namco Entertainment.
-          </p>
-          <p className="text-gray-600 text-xs mt-2">
-            That Time I Got Reincarnated as a Slime is a trademark of the respective owners.
-          </p>
+        <section className="overflow-hidden rounded-2xl border border-white/10 bg-[#121318]/88 p-5 shadow-[0_22px_70px_rgba(0,0,0,0.34)] sm:p-6">
+          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-4">
+              <span className="grid h-10 w-10 place-items-center rounded-xl border border-[#ff3d68]/20 bg-[#ff3d68]/10 text-[#ff6f8f]">
+                <Newspaper className="h-5 w-5" />
+              </span>
+              <h2 className="text-xl font-black tracking-tight text-white">Latest News</h2>
+            </div>
+            <div className="flex rounded-lg border border-white/5 bg-[#0d0e13] p-1">
+              {languageOptions.map((opt) => (
+                <button
+                  key={opt.key}
+                  className={`rounded-md px-4 py-2 text-sm font-bold transition-all ${
+                    selectedLanguage.key === opt.key
+                      ? "bg-[#ff3d68] text-white shadow-lg shadow-[#ff3d68]/20"
+                      : "text-slate-400 hover:bg-white/[0.055] hover:text-white"
+                  }`}
+                  onClick={() => setSelectedLanguage(opt)}
+                >
+                  {opt.key}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {loadingNews ? (
+            <div className="flex h-96 items-center justify-center text-slate-500">Loading news...</div>
+          ) : (
+            <iframe
+              src={getNewsUrl()}
+              title="Game News"
+              className="h-[560px] w-full rounded-xl border border-white/10 bg-[#0a0b0f]"
+              sandbox="allow-scripts allow-same-origin"
+            />
+          )}
+        </section>
+
+        <footer className="border-t border-white/10 py-8 text-center text-xs text-slate-500">
+          <p>SLIME.WIKI is an unofficial fan-made database. Game assets and content belong to WFS and Bandai Namco Entertainment.</p>
         </footer>
       </div>
     </main>
+  )
+}
+
+function TimerTile({
+  title,
+  localTime,
+  countdown,
+  tone,
+}: {
+  title: string
+  localTime: string
+  countdown: string
+  tone: "red" | "cyan"
+}) {
+  const accent = tone === "red" ? "from-red-400/80 to-red-500/5 text-red-200" : "from-cyan-300/80 to-cyan-500/5 text-cyan-100"
+
+  return (
+    <div className="relative overflow-hidden rounded-xl border border-white/10 bg-[#0c0d12] p-5 shadow-inner shadow-white/[0.02]">
+      <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${accent}`} />
+      <span className="block text-sm font-bold text-slate-400">{title}</span>
+      <span className="mt-2 block min-h-5 text-xs text-slate-500">{localTime}</span>
+      <span className="mt-4 block font-mono text-4xl font-black tracking-tight text-white sm:text-5xl">{countdown}</span>
+    </div>
+  )
+}
+
+function StreamOverlay({ label }: { label: string }) {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center bg-black/18">
+      <div className="grid h-14 w-14 place-items-center rounded-full bg-[#ff3d68] text-white shadow-xl shadow-[#ff3d68]/30">
+        <Play className="h-6 w-6 fill-current" />
+      </div>
+      <span className="absolute left-3 top-3 rounded-md bg-yellow-400 px-2.5 py-1 text-xs font-black text-black">{label}</span>
+    </div>
   )
 }

@@ -39,8 +39,6 @@ function blockWidthPercent(block: GuideContentBlock): number {
   if (block.width === "50" || block.width === "half") return 50
   if (block.width === "66") return 66
   if (block.width === "75" || block.width === "three-quarter") return 75
-
-  // Backwards compatibility with older saved articles.
   return block.layout === "half" ? 50 : 100
 }
 
@@ -79,8 +77,6 @@ function textAlignClass(block: GuideContentBlock): string {
 
 function contentPosition(block: GuideContentBlock): ContentPosition {
   if (block.contentPosition) return block.contentPosition as ContentPosition
-
-  // Backwards compatibility for the old verticalAlign field.
   if (block.verticalAlign === "center") return "center"
   return "top-left"
 }
@@ -116,39 +112,31 @@ function mediaBoxStyle(block: GuideContentBlock): React.CSSProperties | undefine
 }
 
 function wrapperClass(block: GuideContentBlock): string {
-  if (!isTextBlock(block)) {
-    return "min-w-0"
-  }
-
-  // Text blocks become flex containers so their content can be placed at
-  // top/bottom/center and left/right/center independently from text alignment.
+  if (!isTextBlock(block)) return "min-w-0"
   return `flex min-w-0 flex-col ${contentPositionClass(block)}`
 }
 
 function imageFitClass(block: GuideContentBlock): string {
-  // "cover" is kept as the stored value for backwards compatibility with old guides,
-  // but in the UI it now means "Stretch fit": resize the image itself to the selected
-  // width/height instead of cropping it.
   return block.imageFit === "cover" ? "object-fill" : "object-contain"
+}
+
+function textPanel(inner: React.ReactNode) {
+  return <div className="rounded-2xl border border-white/10 bg-[#202126]/70 p-5">{inner}</div>
 }
 
 function renderBlock(block: GuideContentBlock) {
   const alignClass = textAlignClass(block)
 
   if (block.type === "paragraph") {
-    return (
-      <p className={`${alignClass} max-w-full whitespace-pre-wrap text-base leading-8 text-gray-200`}>
-        {block.text}
-      </p>
-    )
+    return textPanel(<p className={`${alignClass} max-w-full whitespace-pre-wrap text-base leading-8 text-slate-200`}>{block.text}</p>)
   }
 
   if (block.type === "heading") {
     const Tag = block.level === 3 ? "h3" : "h2"
-    return (
-      <Tag className={`${alignClass} max-w-full ${block.level === 3 ? "text-xl font-bold text-white" : "text-2xl font-extrabold text-white"}`}>
+    return textPanel(
+      <Tag className={`${alignClass} max-w-full ${block.level === 3 ? "text-xl font-black text-white" : "text-3xl font-black text-white"}`}>
         {block.text}
-      </Tag>
+      </Tag>,
     )
   }
 
@@ -157,13 +145,13 @@ function renderBlock(block: GuideContentBlock) {
     const fixedHeight = Boolean(blockHeightPx(block))
 
     return (
-      <figure className="rounded-2xl" style={fixedHeight ? mediaBoxStyle(block) : undefined}>
+      <figure className="overflow-hidden rounded-2xl border border-white/10 bg-[#202126]/55" style={fixedHeight ? mediaBoxStyle(block) : undefined}>
         <img
           src={block.url}
           alt={block.alt || block.caption || "Guide image"}
           className={`${fixedHeight ? "h-full" : "h-auto"} w-full rounded-2xl ${imageFitClass(block)}`}
         />
-        {block.caption ? <figcaption className="mt-2 px-1 text-sm text-gray-300">{block.caption}</figcaption> : null}
+        {block.caption ? <figcaption className="border-t border-white/10 px-4 py-3 text-sm text-slate-300">{block.caption}</figcaption> : null}
       </figure>
     )
   }
@@ -183,16 +171,16 @@ function renderBlock(block: GuideContentBlock) {
             allowFullScreen
           />
         </div>
-        {block.caption ? <figcaption className="border-t border-white/10 px-4 py-3 text-sm text-gray-300">{block.caption}</figcaption> : null}
+        {block.caption ? <figcaption className="border-t border-white/10 px-4 py-3 text-sm text-slate-300">{block.caption}</figcaption> : null}
       </figure>
     )
   }
 
   if (block.type === "quote") {
     return (
-      <blockquote className={`${alignClass} max-w-full rounded-2xl border-l-4 border-cyan-400 bg-cyan-400/10 px-5 py-4 text-gray-100`}>
+      <blockquote className={`${alignClass} max-w-full rounded-2xl border border-[#da3e44]/25 bg-[#da3e44]/10 px-5 py-5 text-slate-100 shadow-[0_0_24px_rgba(218,62,68,0.08)]`}>
         <p className="whitespace-pre-wrap text-lg italic leading-8">“{block.text}”</p>
-        {block.cite ? <footer className="mt-3 text-sm font-semibold text-cyan-200">— {block.cite}</footer> : null}
+        {block.cite ? <footer className="mt-3 text-sm font-semibold text-[#ff97a3]">— {block.cite}</footer> : null}
       </blockquote>
     )
   }
@@ -200,14 +188,14 @@ function renderBlock(block: GuideContentBlock) {
   if (block.type === "list") {
     const items = block.items.filter((item) => item.trim())
     if (items.length === 0) return null
-    return (
-      <ul className={`${alignClass} ${block.textAlign === "center" || block.textAlign === "right" ? "list-none pl-0" : "list-disc pl-6"} max-w-full space-y-2 text-gray-200`}>
+    return textPanel(
+      <ul className={`${alignClass} ${block.textAlign === "center" || block.textAlign === "right" ? "list-none pl-0" : "list-disc pl-6"} max-w-full space-y-2 text-slate-200`}>
         {items.map((item, index) => (
           <li key={`${block.id}-${index}`} className="leading-7">
             {item}
           </li>
         ))}
-      </ul>
+      </ul>,
     )
   }
 
@@ -224,11 +212,7 @@ function renderFlowRow(row: GuideContentBlock[]) {
       {row.map((block) => {
         const width = blockWidthPercent(block)
         return (
-          <div
-            key={block.id}
-            className="min-w-0 p-3"
-            style={{ width: `${width}%` }}
-          >
+          <div key={block.id} className="min-w-0 p-3" style={{ width: `${width}%` }}>
             <div className={wrapperClass(block)} style={blockWrapperStyle(block)}>
               {renderBlock(block)}
             </div>
@@ -243,7 +227,7 @@ export function GuideRenderer({ content }: GuideRendererProps) {
   const blocks = Array.isArray(content?.blocks) ? content.blocks : []
 
   if (blocks.length === 0) {
-    return <p className="text-gray-400">This guide does not have content yet.</p>
+    return <p className="text-slate-400">This guide does not have content yet.</p>
   }
 
   const nodes: React.ReactNode[] = []
@@ -268,7 +252,6 @@ export function GuideRenderer({ content }: GuideRendererProps) {
       continue
     }
 
-    // A row can have up to four elements, and their widths cannot exceed 100%.
     if (row.length >= 4 || usedWidth + width > 100) {
       flushRow()
     }
@@ -283,5 +266,5 @@ export function GuideRenderer({ content }: GuideRendererProps) {
 
   flushRow()
 
-  return <div className="space-y-6 text-gray-100">{nodes}</div>
+  return <div className="space-y-6 text-slate-100">{nodes}</div>
 }

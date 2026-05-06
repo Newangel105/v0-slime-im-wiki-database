@@ -858,7 +858,7 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
 
   return (
     <div className="space-y-6">
-      <section className="rounded-2xl border border-gray-700/60 bg-[#181f2a]/80 backdrop-blur-sm">
+      <section className="glass-panel-strong">
         <div className="space-y-4 p-5">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <div className="relative w-full max-w-xl">
@@ -867,7 +867,7 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
                 value={searchText}
                 onChange={(event) => setSearchText(event.target.value)}
                 placeholder="Search characters, skills, or descriptions..."
-                className="border-gray-600 bg-gray-800 pl-10 text-white placeholder:text-gray-500"
+                className="pl-10"
               />
             </div>
             <div className="flex flex-wrap gap-3">
@@ -879,7 +879,7 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
               />
               <Button
                 variant="outline"
-                className="border-gray-600 bg-gray-700 text-white hover:bg-gray-600"
+                className="text-white"
                 onClick={clearFilters}
               >
                 Clear
@@ -911,7 +911,7 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
       </section>
 
       {filteredEntries.length === 0 ? (
-        <section className="rounded-2xl border border-dashed border-gray-700 bg-[#181f2a]/60 px-6 py-14 text-center">
+        <section className="rounded-lg border border-dashed border-white/10 bg-white/[0.04] px-6 py-14 text-center">
           <p className="text-base font-semibold text-white">
             {hasSelectedSkillFilters ? "No matching skills" : "Select at least one skill filter"}
           </p>
