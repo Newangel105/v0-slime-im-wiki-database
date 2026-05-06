@@ -4,14 +4,50 @@ export type GuideStatus = "draft" | "published"
 export type GuideAuthorRole = "author" | "admin"
 
 export type GuideBlockLayout = "full" | "half"
-export type GuideBlockTextAlign = "left" | "center"
-export type GuideBlockVerticalAlign = "top" | "center"
+export type GuideBlockWidth = "full" | "three-quarter" | "half" | "quarter" | "100" | "75" | "66" | "50" | "33" | "25"
+export type GuideBlockHeight = "auto" | "short" | "medium" | "tall" | "extra-tall" | "50" | "75" | "100" | "125" | "150" | "200"
+export type GuideBlockImageFit = "contain" | "cover"
+export type GuideBlockTextAlign = "left" | "center" | "right"
+export type GuideBlockContentPosition =
+  | "top-left"
+  | "top-center"
+  | "top-right"
+  | "middle-left"
+  | "center"
+  | "middle-right"
+  | "bottom-left"
+  | "bottom-center"
+  | "bottom-right"
 
 type GuideContentBlockBase = {
   id: string
+
+  /** Legacy field kept so old saved guides keep rendering correctly. */
   layout?: GuideBlockLayout
+
+  /** Legacy/editor width token. */
+  width?: GuideBlockWidth
+
+  /** Percent width from 25 to 100. Neighboring sections flow into a row while their total stays <= 100. */
+  widthPercent?: number
+
+  /** Legacy/editor height token. */
+  height?: GuideBlockHeight
+
+  /** Visual height as a percent of the guide block base height. */
+  heightPercent?: number
+
+  /** Image display behavior when the section has a fixed height. */
+  imageFit?: GuideBlockImageFit
+
+  /** Text alignment inside text-based sections. */
   textAlign?: GuideBlockTextAlign
-  verticalAlign?: GuideBlockVerticalAlign
+
+  /** Legacy vertical field kept for old saved guides. */
+  verticalAlign?: "top" | "center"
+
+  /** Position of text content inside its section box. */
+  contentPosition?: GuideBlockContentPosition
 }
 
 export type GuideContentBlock =
