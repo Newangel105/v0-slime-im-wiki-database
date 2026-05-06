@@ -120,23 +120,21 @@ function imageFitClass(block: GuideContentBlock): string {
   return block.imageFit === "cover" ? "object-fill" : "object-contain"
 }
 
-function textPanel(inner: React.ReactNode) {
-  return <div className="rounded-2xl border border-white/10 bg-[#202126]/70 p-5">{inner}</div>
-}
-
 function renderBlock(block: GuideContentBlock) {
   const alignClass = textAlignClass(block)
 
   if (block.type === "paragraph") {
-    return textPanel(<p className={`${alignClass} max-w-full whitespace-pre-wrap text-base leading-8 text-slate-200`}>{block.text}</p>)
+    if (!block.text || !block.text.trim()) return null
+    return <p className={`${alignClass} max-w-full whitespace-pre-wrap text-base leading-8 text-slate-200`}>{block.text}</p>
   }
 
   if (block.type === "heading") {
+    if (!block.text || !block.text.trim()) return null
     const Tag = block.level === 3 ? "h3" : "h2"
-    return textPanel(
+    return (
       <Tag className={`${alignClass} max-w-full ${block.level === 3 ? "text-xl font-black text-white" : "text-3xl font-black text-white"}`}>
         {block.text}
-      </Tag>,
+      </Tag>
     )
   }
 
@@ -145,13 +143,13 @@ function renderBlock(block: GuideContentBlock) {
     const fixedHeight = Boolean(blockHeightPx(block))
 
     return (
-      <figure className="overflow-hidden rounded-2xl border border-white/10 bg-[#202126]/55" style={fixedHeight ? mediaBoxStyle(block) : undefined}>
+      <figure className="overflow-hidden" style={fixedHeight ? mediaBoxStyle(block) : undefined}>
         <img
           src={block.url}
           alt={block.alt || block.caption || "Guide image"}
-          className={`${fixedHeight ? "h-full" : "h-auto"} w-full rounded-2xl ${imageFitClass(block)}`}
+          className={`${fixedHeight ? "h-full" : "h-auto"} w-full ${imageFitClass(block)}`}
         />
-        {block.caption ? <figcaption className="border-t border-white/10 px-4 py-3 text-sm text-slate-300">{block.caption}</figcaption> : null}
+        {block.caption ? <figcaption className="mt-2 text-sm text-slate-300">{block.caption}</figcaption> : null}
       </figure>
     )
   }
@@ -188,14 +186,14 @@ function renderBlock(block: GuideContentBlock) {
   if (block.type === "list") {
     const items = block.items.filter((item) => item.trim())
     if (items.length === 0) return null
-    return textPanel(
+    return (
       <ul className={`${alignClass} ${block.textAlign === "center" || block.textAlign === "right" ? "list-none pl-0" : "list-disc pl-6"} max-w-full space-y-2 text-slate-200`}>
         {items.map((item, index) => (
           <li key={`${block.id}-${index}`} className="leading-7">
             {item}
           </li>
         ))}
-      </ul>,
+      </ul>
     )
   }
 
