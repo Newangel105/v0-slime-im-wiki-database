@@ -64,10 +64,10 @@ const languageOptions = [
   { key: "KR", language: 4, label: "Korean" },
 ]
 
-const heroStats = [
-  { label: "Characters", value: "Database", icon: Database },
-  { label: "Community", value: "Guides", icon: Users },
-  { label: "Live Tools", value: "Data", icon: Sparkles },
+const heroFeatures = [
+  { label: "Character Database", icon: Database },
+  { label: "Community Guides", icon: Users },
+  { label: "Live Tools & Data", icon: Sparkles },
 ]
 
 export default function HomePage() {
@@ -149,51 +149,75 @@ export default function HomePage() {
     <main className="site-page">
       <section className="relative isolate overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 -z-30 bg-[#050811]" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_22%_24%,rgba(255,45,91,0.26),transparent_24rem),radial-gradient(circle_at_78%_18%,rgba(45,216,255,0.2),transparent_24rem)]" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_22%_24%,rgba(255,45,91,0.26),transparent_24rem),radial-gradient(circle_at_78%_18%,rgba(45,216,255,0.2),transparent_24rem),radial-gradient(ellipse_at_72%_72%,rgba(180,80,200,0.22),transparent_30rem)]" />
         <div className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,#050811_0%,rgba(5,8,17,0.95)_38%,rgba(5,8,17,0.35)_68%,rgba(5,8,17,0.08)_100%)]" />
-        <div className="absolute bottom-0 right-[2%] -z-20 h-[76%] max-h-[680px]">
+        <div className="absolute bottom-0 right-[-4%] -z-20 h-[82%] max-h-[720px]">
           <img
             src="/Image/Character/PC/RimuruAnotherHA2026/7/RimuruAnotherHA2026_7_CharaCutin.webp"
             alt=""
-            className="h-full object-contain opacity-65 [filter:brightness(1.15)_saturate(1.4)_contrast(1.08)_drop-shadow(0_0_12px_rgba(255,255,255,0.34))_drop-shadow(0_0_34px_rgba(255,255,255,0.24))_drop-shadow(0_0_58px_rgba(120,210,255,0.20))]"
+            className="h-full object-contain opacity-70 [filter:brightness(1.15)_saturate(1.4)_contrast(1.08)_drop-shadow(0_0_12px_rgba(255,255,255,0.34))_drop-shadow(0_0_34px_rgba(255,255,255,0.24))_drop-shadow(0_0_58px_rgba(120,210,255,0.20))]"
           />
         </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-[#050811] via-[#050811]/40 to-transparent" />
 
 
-        <div className="site-container flex min-h-[calc(100svh-88px)] flex-col justify-center pb-24 pt-14">
+        <div className="site-container flex min-h-[680px] flex-col justify-start pb-20 pt-20 sm:pt-24">
           <div className="max-w-3xl">
-            <div className="mb-6 flex items-center gap-3">
-              <img src="/brand/Logo.webp" alt="SLIME ISEKAI Memories" className="h-16 w-auto max-w-[260px] object-contain sm:h-20" />
-              <span className="hidden h-10 w-px bg-white/20 sm:block" />
-              <span className="section-kicker hidden sm:inline">Community Archive</span>
+            <div className="mb-12 flex flex-wrap items-center gap-4">
+              <div className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 backdrop-blur-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#ff3d68] opacity-60" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#ff3d68] shadow-[0_0_8px_rgba(255,61,104,0.8)]" />
+                </span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-slate-200">Community Archive</span>
+              </div>
             </div>
-            <h1 className="max-w-2xl text-5xl font-black uppercase leading-[0.95] text-white sm:text-7xl">
-              SLIME.WIKI
+            <h1 className="flex max-w-2xl items-center text-6xl font-black uppercase leading-[0.9] tracking-[-0.02em] sm:text-[5.5rem]">
+              <span className="bg-gradient-to-b from-white to-white/75 bg-clip-text text-transparent [text-shadow:0_2px_30px_rgba(255,255,255,0.08)]">SLIME</span>
+              <span aria-hidden="true" className="relative mx-2.5 inline-flex h-3 w-3 items-center justify-center sm:mx-4 sm:h-4 sm:w-4">
+                <span className="absolute inset-0 animate-ping rounded-full bg-[#ff3d68] opacity-30" />
+                <span className="relative h-full w-full rounded-full bg-[#ff3d68] shadow-[0_0_22px_rgba(255,61,104,0.85),0_0_44px_rgba(255,61,104,0.35)]" />
+              </span>
+              <span className="sr-only">.</span>
+              <span className="bg-gradient-to-b from-white to-white/75 bg-clip-text text-transparent [text-shadow:0_2px_30px_rgba(255,255,255,0.08)]">WIKI</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
-              A clean, fast database for characters, forces, heartprints, team planning, skill lookup, and community builds.
-            </p>
+            <div className="mt-6 flex max-w-xl items-start gap-4">
+              <span className="mt-1.5 hidden h-14 w-[3px] rounded-full bg-gradient-to-b from-[#ff3d68] via-[#ff3d68]/70 to-transparent shadow-[0_0_14px_rgba(255,61,104,0.55)] sm:block" />
+              <p className="text-base leading-7 text-slate-300/90 sm:text-lg">
+                A clean, fast database for characters, forces, heartprints, team planning, skill lookup, and community builds.
+              </p>
+            </div>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/characters" className="neon-button">
-                Characters
-                <ChevronRight className="h-4 w-4" />
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link
+                href="/characters"
+                className="group relative inline-flex min-w-[210px] items-center justify-center gap-2 overflow-hidden rounded-lg bg-gradient-to-br from-[#ff5079] to-[#e02555] px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-[0_8px_24px_-6px_rgba(255,61,104,0.55),inset_0_1px_0_rgba(255,255,255,0.18)] ring-1 ring-inset ring-white/15 transition-all hover:from-[#ff6489] hover:to-[#ef3868] hover:shadow-[0_12px_32px_-6px_rgba(255,61,104,0.7),inset_0_1px_0_rgba(255,255,255,0.22)] hover:-translate-y-0.5"
+              >
+                <span className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-white/[0.12] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                Browse Characters
+                <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
-              <Link href="/team-builder" className="quiet-button">
+              <Link
+                href="/team-builder"
+                className="group inline-flex min-w-[210px] items-center justify-center gap-2 rounded-lg border border-white/15 bg-white/[0.03] px-6 py-3 text-sm font-bold uppercase tracking-wide text-slate-200 backdrop-blur-sm transition-all hover:border-white/30 hover:bg-white/[0.07] hover:text-white"
+              >
                 Team Builder
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
             </div>
           </div>
 
-          <div className="mt-12 grid max-w-3xl gap-3 sm:grid-cols-3">
-            {heroStats.map(({ label, value, icon: Icon }) => (
-              <div key={label} className="stat-tile">
-                <Icon className="mb-4 h-5 w-5 text-cyan-200" />
-                <div className="text-xl font-black text-white">{value}</div>
-                <div className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{label}</div>
-              </div>
-            ))}
+          <div className="mt-14 max-w-3xl border-t border-white/[0.06] pt-8">
+            <div className="flex flex-wrap items-center gap-y-5 divide-x divide-white/[0.07]">
+              {heroFeatures.map(({ label, icon: Icon }) => (
+                <div key={label} className="flex items-center gap-3 pl-6 pr-6 first:pl-0">
+                  <span className="grid h-8 w-8 place-items-center rounded-md bg-white/[0.04] text-cyan-200/90 ring-1 ring-inset ring-white/[0.06]">
+                    <Icon className="h-4 w-4" />
+                  </span>
+                  <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-slate-300">{label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
