@@ -590,7 +590,8 @@ export const META_PRESETS: MetaPreset[] = [
     protector: "Labyrinth Berserker",
     mini1: "Spirit Archfiend",
     battle1: "Labyrinth Storm Dragon",
-    battle2: "Viridian Shade",
+    battle2: "Labyrinth Thaumaturge",
     battle3: "Labyrinth Meteor",
+    battle4: "Viridian Shade",
   }
 ]

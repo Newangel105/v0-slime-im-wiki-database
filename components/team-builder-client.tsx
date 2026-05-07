@@ -370,10 +370,11 @@ function getMiniCardIcons(char: TeamBuilderCharacter): [string | null, string | 
     const allKeys = getProtectorElementKeys(char)
     const QUALIFIERS = new Set(["physics", "magic", "all"])
     const elKeys = allKeys.filter(k => !QUALIFIERS.has(k))
-    const qualKey = allKeys.find(k => QUALIFIERS.has(k)) ?? null
+    const qualKeys = allKeys.filter(k => QUALIFIERS.has(k))
     const elIcon1 = elKeys[0] ? (FULL_ELEMENT_ICON_MAP[elKeys[0]] ?? null) : null
     const elIcon2 = elKeys[1] ? (FULL_ELEMENT_ICON_MAP[elKeys[1]] ?? null) : null
-    const qualIcon = qualKey ? (FULL_ELEMENT_ICON_MAP[qualKey] ?? null) : null
+    const qualIcon = qualKeys[0] ? (FULL_ELEMENT_ICON_MAP[qualKeys[0]] ?? null) : null
+    const qualIcon2 = qualKeys[1] ? (FULL_ELEMENT_ICON_MAP[qualKeys[1]] ?? null) : null
     if (forceIcon) {
       const elementIcon = FULL_ELEMENT_ICON_MAP[normalizeLabel(char.element)] ?? null
       return [forceIcon, elementIcon]
@@ -381,6 +382,7 @@ function getMiniCardIcons(char: TeamBuilderCharacter): [string | null, string | 
     if (elIcon1 && elIcon2) return [elIcon1, elIcon2]
     if (elIcon1 && qualIcon) return [elIcon1, qualIcon]
     if (elIcon1) return [elIcon1, null]
+    if (qualIcon && qualIcon2) return [qualIcon, qualIcon2]
     return [qualIcon, null]
   }
   const elKey = normalizeLabel(char.element)
@@ -1428,23 +1430,27 @@ export default function TeamBuilderClient({
             bottom: "4%", left: "27%",
             borderRadius: "4px",
             border: subChar ? "none" : "1.5px solid rgba(140,140,150,0.5)",
-            background: "rgba(10,12,18,0.8)",
+            background: subChar ? "transparent" : "rgba(10,12,18,0.8)",
           }}
         >
           {subChar ? (
             <>
-              <div className="absolute inset-0" style={{ backgroundImage: `url('${toPublicAssetPath(subChar.images.icon)}')`, backgroundSize: 'cover', backgroundPosition: 'top center' }} />
               {(() => {
                 const t = getCharacterVisualTier(subChar)
                 const r: "bless" | "member" = isProtectorChar(subChar) ? "bless" : "member"
-                const { frame } = getMiniFramePaths(t, r)
-                return <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                const { base, frame } = getMiniFramePaths(t, r)
+                return <>
+                  {t >= 8
+                    ? <div className="absolute inset-[7%]"><img src={base} alt="" className="w-full h-full object-fill pointer-events-none" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} /></div>
+                    : <img src={base} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />}
+                  <div className={`absolute overflow-hidden ${t >= 8 ? "inset-[4%] rounded-[6%]" : "inset-0"}`} style={{ backgroundImage: `url('${toPublicAssetPath(subChar.images.icon)}')`, backgroundSize: 'cover', backgroundPosition: 'top center' }} />
+                  <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                </>
               })()}
               {(subIcon1 || subIcon2) && (
                 <div className="absolute top-0.5 right-0.5 z-20 flex flex-col gap-0.5">
-                  {subIcon1 && <img src={subIcon1} alt="" className="w-5 h-5 sm:w-6 sm:h-6 object-contain drop-shadow" />}
-                  {subIcon2 && <img src={subIcon2} alt="" className="w-5 h-5 sm:w-6 sm:h-6 object-contain drop-shadow" />}
+                  {subIcon1 && <img src={subIcon1} alt="" className="w-5 h-5 sm:w-7 sm:h-7 object-contain drop-shadow" />}
+                  {subIcon2 && <img src={subIcon2} alt="" className="w-5 h-5 sm:w-7 sm:h-7 object-contain drop-shadow" />}
                 </div>
               )}
             </>
@@ -1568,18 +1574,22 @@ export default function TeamBuilderClient({
                 bottom: "4%", left: "27%",
                 borderRadius: "4px",
                 border: sideSubChar ? "none" : "1.5px solid rgba(140,140,150,0.5)",
-                background: "rgba(10,12,18,0.8)",
+                background: sideSubChar ? "transparent" : "rgba(10,12,18,0.8)",
               }}
             >
               {sideSubChar ? (
                 <>
-                  <div className="absolute inset-0" style={{ backgroundImage: `url('${toPublicAssetPath(sideSubChar.images.icon)}')`, backgroundSize: 'cover', backgroundPosition: 'top center' }} />
                   {(() => {
                     const t = getCharacterVisualTier(sideSubChar)
                     const r: "bless" | "member" = isProtectorChar(sideSubChar) ? "bless" : "member"
-                    const { frame: subFrame } = getMiniFramePaths(t, r)
-                    return <img src={subFrame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
-                      onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                    const { base: subBase, frame: subFrame } = getMiniFramePaths(t, r)
+                    return <>
+                      {t >= 8
+                        ? <div className="absolute inset-[7%]"><img src={subBase} alt="" className="w-full h-full object-fill pointer-events-none" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} /></div>
+                        : <img src={subBase} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />}
+                      <div className={`absolute overflow-hidden ${t >= 8 ? "inset-[4%] rounded-[6%]" : "inset-0"}`} style={{ backgroundImage: `url('${toPublicAssetPath(sideSubChar.images.icon)}')`, backgroundSize: 'cover', backgroundPosition: 'top center' }} />
+                      <img src={subFrame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />
+                    </>
                   })()}
                   {(sideSubIcon1 || sideSubIcon2) && (
                     <div className="absolute top-0.5 right-0.5 z-20 flex flex-col gap-0.5">
@@ -1808,18 +1818,22 @@ export default function TeamBuilderClient({
                     style={{
                       width: "42%", aspectRatio: "1",
                       bottom: "5%", left: "29%",
-                      background: "rgba(10,12,18,0.85)",
+                      background: slotSubChar ? "transparent" : "rgba(10,12,18,0.85)",
                     }}
                   >
                     {slotSubChar ? (
                       <>
-                        <div className="absolute inset-0" style={{ backgroundImage: `url('${toPublicAssetPath(slotSubChar.images.icon)}')`, backgroundSize: 'cover', backgroundPosition: 'top center' }} />
                         {(() => {
                           const t = getCharacterVisualTier(slotSubChar)
                           const r: "bless" | "member" = isProtectorChar(slotSubChar) ? "bless" : "member"
-                          const { frame } = getMiniFramePaths(t, r)
-                          return <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
-                            onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                          const { base, frame } = getMiniFramePaths(t, r)
+                          return <>
+                            {t >= 8
+                              ? <div className="absolute inset-[7%]"><img src={base} alt="" className="w-full h-full object-fill pointer-events-none" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} /></div>
+                              : <img src={base} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />}
+                            <div className={`absolute overflow-hidden ${t >= 8 ? "inset-[4%] rounded-[6%]" : "inset-0"}`} style={{ backgroundImage: `url('${toPublicAssetPath(slotSubChar.images.icon)}')`, backgroundSize: 'cover', backgroundPosition: 'top center' }} />
+                            <img src={frame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
+                          </>
                         })()}
                         {(() => {
                           const [si1, si2] = getMiniCardIcons(slotSubChar)
@@ -1883,18 +1897,20 @@ export default function TeamBuilderClient({
                         <div key={c.master_pc_id} className="flex flex-col items-center gap-0.5 p-1 rounded hover:bg-white/5 cursor-pointer transition-colors"
                           style={{ contentVisibility: "auto", containIntrinsicSize: "72px" }}
                           onClick={() => selectChar(pickerOpenFor, c.master_pc_id)}>
-                          <div className="relative w-full" style={{ aspectRatio: "1" }}>
-                            <img src={base} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
-                            <img src={toPublicAssetPath(c.images.icon)} alt={c.name} className="absolute inset-0 w-full h-full object-cover object-top"
-                              loading={imageLoading} decoding="async"
-                              onError={e => { (e.target as HTMLImageElement).src = toPublicAssetPath(c.images.full) }} />
-                            <img src={frame} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 w-full h-full object-contain"
+                          <div className="relative w-full overflow-hidden rounded-md" style={{ aspectRatio: "1" }}>
+                            {t >= 8
+                              ? <div className="absolute inset-[7%]"><img src={base} alt="" loading={imageLoading} decoding="async" className="w-full h-full object-fill" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} /></div>
+                              : <img src={base} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-fill" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />}
+                            {t >= 8
+                              ? <div className="absolute inset-[4%] rounded-[6%] overflow-hidden"><img src={toPublicAssetPath(c.images.icon)} alt={c.name} className="w-full h-full object-cover object-top" loading={imageLoading} decoding="async" onError={e => { (e.target as HTMLImageElement).src = toPublicAssetPath(c.images.full) }} /></div>
+                              : <img src={toPublicAssetPath(c.images.icon)} alt={c.name} className="absolute inset-0 w-full h-full object-cover object-top" loading={imageLoading} decoding="async" onError={e => { (e.target as HTMLImageElement).src = toPublicAssetPath(c.images.full) }} />}
+                            <img src={frame} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 w-full h-full object-fill"
                               onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
                             <img src={STAR_ASSETS[t] ?? STAR_ASSETS[5]} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[24%] object-contain" />
                             {(ci1 || ci2) && (
                               <div className="absolute top-0.5 right-0.5 z-10 flex flex-col gap-0.5">
-                                {ci1 && <img src={ci1} alt="" className="w-4 h-4 sm:w-6 sm:h-6 object-contain drop-shadow" />}
-                                {ci2 && <img src={ci2} alt="" className="w-4 h-4 sm:w-6 sm:h-6 object-contain drop-shadow" />}
+                                {ci1 && <img src={ci1} alt="" className={`w-4 h-4 ${r === "bless" ? "sm:w-6 sm:h-6" : "sm:w-7 sm:h-7"} object-contain drop-shadow`} />}
+                                {ci2 && <img src={ci2} alt="" className={`w-4 h-4 ${r === "bless" ? "sm:w-6 sm:h-6" : "sm:w-7 sm:h-7"} object-contain drop-shadow`} />}
                               </div>
                             )}
                           </div>
