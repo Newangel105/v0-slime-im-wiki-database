@@ -41,8 +41,17 @@ const RARITY_ASSETS: Record<number, string> = {
 function getMiniFramePath(tier: number, pfx: string) {
   if (tier === 8) return `UI/Texture/CommonRarityAtlas/frame${pfx}M7_Epic.webp`
   if (tier === 7) return `UI/Texture/CommonRarityAtlas/frame${pfx}M6_SpecialPlus.webp`
-  const t = Math.min(Math.max(tier, 3), 7)
+  if (tier === 6) return `UI/Texture/CommonRarityAtlas/frame${pfx}M6_Special.webp`
+  const t = Math.min(Math.max(tier, 3), 5)
   return `UI/Texture/CommonRarityAtlas/frame${pfx}M${t}.webp`
+}
+
+function getMiniBasePath(tier: number, pfx: string) {
+  if (tier === 8) return `UI/Texture/CommonRarityAtlas/base${pfx}M7_Epic.webp`
+  if (tier === 7) return `UI/Texture/CommonRarityAtlas/base${pfx}M6_SpecialPlus.webp`
+  if (tier === 6) return `UI/Texture/CommonRarityAtlas/base${pfx}M6_Special.webp`
+  const t = Math.min(Math.max(tier, 3), 5)
+  return `UI/Texture/CommonRarityAtlas/base${pfx}M${t}.webp`
 }
 
 function getContrastColor(hex?: string) {
@@ -1153,16 +1162,12 @@ export default function TierMakerPage() {
                           title={c.name}
                           style={{ touchAction: 'none' }}
                         >
-                          <div className="w-full h-full flex items-center justify-center bg-[#0b1220] rounded-md p-1">
-                            <img
-                              src={c.images.icon}
-                              alt={c.name}
-                              draggable={false}
-                              onContextMenu={(e) => e.preventDefault()}
-                              className="max-w-full max-h-full object-contain"
-                              style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any}
-                            />
-                          </div>
+                          {visualTier >= 8
+                            ? <div className="absolute inset-[7%]"><img src={getMiniBasePath(visualTier, pfx)} alt="" className="pointer-events-none w-full h-full object-fill" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} /></div>
+                            : <img src={getMiniBasePath(visualTier, pfx)} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />}
+                          {visualTier >= 8
+                            ? <div className="absolute inset-[4%] rounded-[6%] overflow-hidden"><img src={c.images.icon} alt={c.name} draggable={false} onContextMenu={(e) => e.preventDefault()} className="w-full h-full object-cover object-top" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any} /></div>
+                            : <img src={c.images.icon} alt={c.name} draggable={false} onContextMenu={(e) => e.preventDefault()} className="absolute inset-0 w-full h-full object-cover object-top" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any} />}
                           {miniFrame && <img src={miniFrame} alt="rarity-frame" className="pointer-events-none absolute inset-0 w-full h-full object-fill z-10" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />}
                           {starAsset && <img src={starAsset} alt="" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[28%] object-contain z-20" />}
                           {variant === "skill" && <img src="/skill-icons/skill_integrated_3400001_ItemM.webp" alt="skill-change" draggable={false} onContextMenu={(e) => e.preventDefault()} className="absolute bottom-1 right-1 w-5 h-5 z-20" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any} />}
@@ -1270,11 +1275,16 @@ export default function TierMakerPage() {
                       onTouchStart={(e) => { if ((e as any).touches && (e as any).touches.length === 1) { try { (e as any).preventDefault() } catch (err) {} const t = (e as any).touches[0]; touchLastYRef.current = t.clientY; touchDragRef.current = { charId: pin.id, fromTierIndex: -1 }; touchDragImageRef.current = pin.image; try { createTouchGhost(pin.image); moveTouchGhost(t.clientX, t.clientY) } catch (err) {} } }}
                       onTouchCancel={() => { touchDragRef.current = null; touchDragImageRef.current = null; touchLastYRef.current = null; removeTouchGhost() }}
                       data-pin-id={pin.id}
-                      className="relative w-16 h-16 rounded-md p-1 cursor-grab flex items-center justify-center"
+                      className="relative w-16 h-16 rounded-md cursor-grab overflow-hidden"
                       title={pin.name}
-                      style={{ backgroundColor: 'rgb(55 65 81)', touchAction: 'none' }}
+                      style={{ touchAction: 'none' }}
                     >
-                      <img src={pin.image} alt={pin.name} draggable={false} onContextMenu={(e) => e.preventDefault()} className="max-w-full max-h-full object-contain" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any} />
+                      {visualTier >= 8
+                        ? <div className="absolute inset-[7%]"><img src={getMiniBasePath(visualTier, pfx)} alt="" className="pointer-events-none w-full h-full object-fill" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} /></div>
+                        : <img src={getMiniBasePath(visualTier, pfx)} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />}
+                      {visualTier >= 8
+                        ? <div className="absolute inset-[4%] rounded-[6%] overflow-hidden"><img src={pin.image} alt={pin.name} draggable={false} onContextMenu={(e) => e.preventDefault()} className="w-full h-full object-cover object-top" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any} /></div>
+                        : <img src={pin.image} alt={pin.name} draggable={false} onContextMenu={(e) => e.preventDefault()} className="absolute inset-0 w-full h-full object-cover object-top" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any} />}
                       {miniFrame && <img src={miniFrame} alt="rarity-frame" className="pointer-events-none absolute inset-0 w-full h-full object-fill z-10" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} />}
                       {starAsset && <img src={starAsset} alt="" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[33%] object-contain z-20" />}
                       {pin.variant === "skill" && <img src="/skill-icons/skill_integrated_3400001_ItemM.webp" alt="skill-change" draggable={false} onContextMenu={(e) => e.preventDefault()} className="absolute bottom-1 right-1 w-5 h-5 z-20" style={{ WebkitTouchCallout: "none", userSelect: "none", WebkitUserDrag: "none" } as any} />}

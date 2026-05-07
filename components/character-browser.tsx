@@ -520,7 +520,7 @@ const rarityFrameMap: Record<number, string> = {
   3: "UI/Texture/CommonRarityAtlas/frameMemberM3.webp",
   4: "UI/Texture/CommonRarityAtlas/frameMemberM4.webp",
   5: "UI/Texture/CommonRarityAtlas/frameMemberM5.webp",
-  6: "UI/Texture/CommonRarityAtlas/frameMemberM6.webp",
+  6: "UI/Texture/CommonRarityAtlas/frameMemberM6_Special.webp",
   7: "UI/Texture/CommonRarityAtlas/frameMemberM6_SpecialPlus.webp",
   8: "UI/Texture/CommonRarityAtlas/frameMemberM7_Epic.webp",
 }
@@ -529,7 +529,7 @@ const blessFrameMap: Record<number, string> = {
   3: "UI/Texture/CommonRarityAtlas/frameBlessM3.webp",
   4: "UI/Texture/CommonRarityAtlas/frameBlessM4.webp",
   5: "UI/Texture/CommonRarityAtlas/frameBlessM5.webp",
-  6: "UI/Texture/CommonRarityAtlas/frameBlessM6.webp",
+  6: "UI/Texture/CommonRarityAtlas/frameBlessM6_Special.webp",
   7: "UI/Texture/CommonRarityAtlas/frameBlessM6_SpecialPlus.webp",
   8: "UI/Texture/CommonRarityAtlas/frameBlessM7_Epic.webp",
 }
@@ -538,7 +538,7 @@ const baseRarityMap: Record<number, string> = {
   3: "UI/Texture/CommonRarityAtlas/baseMemberM3.webp",
   4: "UI/Texture/CommonRarityAtlas/baseMemberM4.webp",
   5: "UI/Texture/CommonRarityAtlas/baseMemberM5.webp",
-  6: "UI/Texture/CommonRarityAtlas/baseMemberM6.webp",
+  6: "UI/Texture/CommonRarityAtlas/baseMemberM6_Special.webp",
   7: "UI/Texture/CommonRarityAtlas/baseMemberM6_SpecialPlus.webp",
   8: "UI/Texture/CommonRarityAtlas/baseMemberM7_Epic.webp",
 }
@@ -547,7 +547,7 @@ const baseBlessMap: Record<number, string> = {
   3: "UI/Texture/CommonRarityAtlas/baseBlessM3.webp",
   4: "UI/Texture/CommonRarityAtlas/baseBlessM4.webp",
   5: "UI/Texture/CommonRarityAtlas/baseBlessM5.webp",
-  6: "UI/Texture/CommonRarityAtlas/baseBlessM6.webp",
+  6: "UI/Texture/CommonRarityAtlas/baseBlessM6_Special.webp",
   7: "UI/Texture/CommonRarityAtlas/baseBlessM6_SpecialPlus.webp",
   8: "UI/Texture/CommonRarityAtlas/baseBlessM7_Epic.webp",
 }
@@ -1705,7 +1705,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   const compactCellHeight = compactCellWidth + COMPACT_GAP
   const compactRowCount = Math.ceil(filteredCharacters.length / compactColumnCount)
   const compactGridHeight = Math.min(8, compactRowCount) * compactCellHeight + 10
-  const compactTileClass = "group relative w-full overflow-hidden rounded-md border border-white/10 bg-[#101116] pt-[100%] shadow-[0_12px_30px_rgba(0,0,0,0.34)] transition-all duration-200 hover:border-[#ff2f5f]/70 hover:shadow-[0_0_18px_rgba(255,47,95,0.18)]"
+  const compactTileClass = "group relative w-full overflow-hidden rounded-md pt-[100%] transition-all duration-200"
 
   function CompactCard({ character, index }: { character: BrowserCharacter; index: number }) {
     const visualTier = getCharacterVisualTier(character)
@@ -1733,11 +1733,13 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     return (
       <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="min-w-0">
         <div className={compactTileClass}>
-          <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
-          <div className={`absolute overflow-hidden ${visualTier >= 8 ? "inset-[8%] rounded-[12%]" : "inset-[7%] rounded-[10%]"}`}>
+          {visualTier >= 8
+            ? <div className="absolute inset-[7%]"><img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="w-full h-full object-fill pointer-events-none" /></div>
+            : <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-fill pointer-events-none" />}
+          <div className={`absolute overflow-hidden ${visualTier >= 8 ? "inset-[4%] rounded-[6%]" : "inset-[7%] rounded-[10%]"}`}>
             <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={index < 3 ? "high" : "low"} className="h-full w-full object-cover object-top" />
           </div>
-          <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
+          <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-fill pointer-events-none" />
           {/* Name top-left */}
           <div className="absolute top-1 left-1 z-10 max-w-[72%] rounded border border-white/10 bg-black/80 px-1.5 py-0.5 text-[9px] font-semibold leading-tight text-white backdrop-blur-sm line-clamp-2">
             {character.name}
@@ -1747,8 +1749,8 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
           {/* Icons top-right */}
           {(firstIcon || secondIcon) && (
             <div className="absolute top-1 right-1 z-20 flex flex-col items-end gap-0.5">
-              {firstIcon && <img src={firstIcon} alt="" className="w-5 h-5 object-contain" />}
-              {secondIcon && <img src={secondIcon} alt={attackTypeLabel} className="w-5 h-5 object-contain" />}
+              {firstIcon && <img src={firstIcon} alt="" className={`${isAttackerCharacter(character) ? "w-6 h-6" : "w-6 h-6"} object-contain`} />}
+              {secondIcon && <img src={secondIcon} alt={attackTypeLabel} className={`${isAttackerCharacter(character) ? "w-6 h-6" : "w-6 h-6"} object-contain`} />}
             </div>
           )}
         </div>
@@ -1792,20 +1794,22 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
           <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="block w-full min-w-0">
             <div className={compactTileClass}>
               <div className="absolute inset-0">
-                <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
-                <div className={`absolute overflow-hidden ${visualTier >= 8 ? "inset-[8%] rounded-[12%]" : "inset-[7%] rounded-[10%]"}`}>
+                {visualTier >= 8
+                  ? <div className="absolute inset-[7%]"><img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="w-full h-full object-fill pointer-events-none" /></div>
+                  : <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-fill pointer-events-none" />}
+                <div className={`absolute overflow-hidden ${visualTier >= 8 ? "inset-[4%] rounded-[6%]" : "inset-[7%] rounded-[10%]"}`}>
                   <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={index < 3 ? "high" : "low"} className="h-full w-full object-cover object-top" />
                 </div>
               </div>
-              <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
+              <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-fill pointer-events-none" />
               <div className="absolute top-1 left-1 z-10 max-w-[72%] rounded border border-white/10 bg-black/80 px-1.5 py-0.5 text-[9px] font-semibold leading-tight text-white backdrop-blur-sm line-clamp-2">
                 {character.name}
               </div>
               <img src={starsSrc} alt="" loading="lazy" decoding="async" className="absolute bottom-1 left-1 h-5 object-contain z-10" />
               {(firstIcon || secondIcon) && (
                 <div className="absolute top-1 right-1 z-20 flex flex-col items-end gap-0.5">
-                  {firstIcon && <img src={firstIcon} alt="" className="w-5 h-5 object-contain" />}
-                  {secondIcon && <img src={secondIcon} alt={attackTypeLabel} className="w-5 h-5 object-contain" />}
+                  {firstIcon && <img src={firstIcon} alt="" className={`${isAttackerCharacter(character) ? "w-6 h-6" : "w-6 h-6"} object-contain`} />}
+                  {secondIcon && <img src={secondIcon} alt={attackTypeLabel} className={`${isAttackerCharacter(character) ? "w-6 h-6" : "w-6 h-6"} object-contain`} />}
                 </div>
               )}
             </div>
@@ -1844,7 +1848,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     return (
       <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className={`block w-full min-w-0 ${fill ? "h-full" : ""}`}>
         <div
-          className={`group relative w-full min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-[#16171b] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#ff2f5f]/40 ${fill ? "h-full" : showStats ? "min-h-[300px]" : "min-h-[230px]"}`}
+          className={`group relative w-full min-w-0 overflow-hidden rounded-2xl bg-[#16171b] transition-all duration-200 hover:-translate-y-0.5 ${fill ? "h-full" : showStats ? "min-h-[300px]" : "min-h-[230px]"}`}
           style={{
             boxShadow: "0 16px 48px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04)",
             contentVisibility: "auto",
@@ -1871,11 +1875,13 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
             {/* Header: portrait + identity (with meta icons inline under the stars) */}
             <div className="flex items-start gap-4">
               <div className="relative h-[100px] w-[100px] shrink-0">
-                <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
-                <div className={`absolute overflow-hidden ${visualTier >= 8 ? "inset-[8%] rounded-[14%]" : "inset-[7%] rounded-[10%]"}`}>
+                {visualTier >= 8
+                  ? <div className="absolute inset-[7%]"><img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="w-full h-full object-fill pointer-events-none" /></div>
+                  : <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />}
+                <div className={`absolute overflow-hidden ${visualTier >= 8 ? "inset-[4%] rounded-[6%]" : "inset-[7%] rounded-[10%]"}`}>
                   <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={isPriorityCard ? "high" : "low"} className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105" />
                 </div>
-                <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />
+                <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-fill" />
               </div>
 
               <div className="flex min-w-0 flex-1 flex-col">

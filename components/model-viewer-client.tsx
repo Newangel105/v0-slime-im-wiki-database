@@ -404,6 +404,17 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
           </div>
         </div>
 
+        {activeMode !== "skill" && (
+          <div className="flex items-center gap-2 border-b border-white/10 bg-[#111216]/80 px-4 py-2 text-xs text-slate-400">
+            <span className="text-slate-500">🖱️</span>
+            <span>Left-drag <span className="font-semibold text-slate-200">rotate</span></span>
+            <span className="text-white/20">·</span>
+            <span><kbd className="rounded border border-white/15 bg-white/8 px-1.5 py-0.5 font-mono font-semibold text-slate-200">Shift</kbd> + drag or Right-drag <span className="font-semibold text-slate-200">pan</span></span>
+            <span className="text-white/20">·</span>
+            <span>Scroll <span className="font-semibold text-slate-200">zoom</span></span>
+          </div>
+        )}
+
         <div
           className={`relative overflow-hidden ${
             activeMode === "skill" ? "aspect-video" : "h-[78vh]"
@@ -451,8 +462,7 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
           )}
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-white/10 bg-[#1a1a1e]/95 px-4 py-3 text-xs text-slate-500">
-          <span>Left-drag rotate · Right-drag or Shift-drag pan · Scroll zoom</span>
+        <div className="flex items-center justify-end border-t border-white/10 bg-[#1a1a1e]/95 px-4 py-3">
           <span className="rounded-full border border-[#da3e44]/25 bg-[#da3e44]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#ff8a98]">
             3D Viewer
           </span>

@@ -62,9 +62,13 @@ function CharIcon({ char, size = 72 }: { char: WikiCharacter; size?: number }) {
 
   return (
     <div className="relative flex-shrink-0" style={{ width: size, height: size }}>
-      <img src={base} alt="" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
-      {iconSrc && <img src={iconSrc} alt={char.name} className="absolute inset-0 w-full h-full object-contain" style={{ padding: "8%" }} />}
-      <img src={frame} alt="" className="absolute inset-0 w-full h-full object-contain pointer-events-none" />
+      {tier >= 8
+        ? <div className="absolute inset-[7%]"><img src={base} alt="" className="w-full h-full object-fill pointer-events-none" /></div>
+        : <img src={base} alt="" className="absolute inset-0 w-full h-full object-fill pointer-events-none" />}
+      {iconSrc && (tier >= 8
+        ? <div className="absolute inset-[4%] rounded-[6%] overflow-hidden"><img src={iconSrc} alt={char.name} className="w-full h-full object-cover object-top" /></div>
+        : <img src={iconSrc} alt={char.name} className="absolute inset-0 w-full h-full object-contain" style={{ padding: "8%" }} />)}
+      <img src={frame} alt="" className="absolute inset-0 w-full h-full object-fill pointer-events-none" />
       {starSrc && (
         <img src={starSrc} alt="" className="absolute bottom-0 left-0 object-contain pointer-events-none" style={{ height: "38%", width: "38%" }} />
       )}
