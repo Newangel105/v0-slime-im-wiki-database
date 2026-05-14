@@ -589,9 +589,10 @@ export const META_PRESETS: MetaPreset[] = [
     name: "Dungeon Crawler 2",
     protector: "Labyrinth Berserker",
     mini1: "Spirit Archfiend",
-    battle1: "Labyrinth Storm Dragon",
+    battle4: "Labyrinth Storm Dragon",
     battle2: "Labyrinth Thaumaturge",
     battle3: "Labyrinth Meteor",
-    battle4: "Viridian Shade",
+    battle5: "Viridian Shade",
+    battle1: "Celestial Sovereign",
   }
 ]

@@ -1,0 +1,171 @@
+
+> my-v0-project@0.1.0 dev
+> next dev -p 3000
+
+   ▲ Next.js 15.5.14
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.68.103:3000
+   - Environments: .env.local, .env
+
+ ✓ Starting...
+ ✓ Ready in 4s
+ ○ Compiling /model-viewer ...
+ ✓ Compiled /model-viewer in 4.6s (1760 modules)
+ GET /model-viewer 200 in 7168ms
+ ✓ Compiled in 2.6s (815 modules)
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1784ms (1751 modules)
+ GET /skill-videos/catalog.json 404 in 2319ms
+ GET /model-viewer 200 in 665ms
+ GET /skill-videos/catalog.json 404 in 50ms
+ ✓ Compiled in 1939ms (815 modules)
+ GET /model-viewer 200 in 161ms
+ GET /model-viewer 200 in 604ms
+ ✓ Compiled /_not-found in 480ms (1751 modules)
+ GET /skill-videos/catalog.json 404 in 833ms
+ GET /model-viewer 200 in 797ms
+ GET /skill-videos/catalog.json 404 in 74ms
+ GET /model-viewer 200 in 593ms
+ GET /skill-videos/catalog.json 404 in 68ms
+ GET /model-viewer 200 in 587ms
+ GET /skill-videos/catalog.json 404 in 143ms
+ GET /model-viewer 200 in 586ms
+ GET /skill-videos/catalog.json 404 in 147ms
+ GET /model-viewer 200 in 588ms
+ GET /skill-videos/catalog.json 404 in 56ms
+ GET /model-viewer 200 in 620ms
+ GET /skill-videos/catalog.json 404 in 58ms
+ ✓ Compiled in 565ms (815 modules)
+ ✓ Compiled in 320ms (815 modules)
+ GET /model-viewer 200 in 425ms
+ ✓ Compiled /_not-found in 302ms (1751 modules)
+ GET /skill-videos/catalog.json 404 in 839ms
+ GET /model-viewer 200 in 723ms
+ GET /model-viewer 200 in 704ms
+ GET /model-viewer 200 in 664ms
+ GET /skill-videos/catalog.json 404 in 52ms
+ GET /model-viewer 200 in 662ms
+ GET /model-viewer 200 in 2379ms
+ GET /skill-videos/catalog.json 404 in 56ms
+ GET /model-viewer 200 in 625ms
+ GET /skill-videos/catalog.json 404 in 115ms
+ ✓ Compiled in 2.4s (1760 modules)
+ ✓ Compiled in 804ms (1760 modules)
+ ✓ Compiled in 729ms (1760 modules)
+ ✓ Compiled in 451ms (815 modules)
+ ✓ Compiled in 575ms (1760 modules)
+ ✓ Compiled in 893ms (1760 modules)
+ ✓ Compiled in 374ms (815 modules)
+ GET /model-viewer 200 in 875ms
+ GET /model-viewer 200 in 610ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1499ms (1765 modules)
+ GET /skill-videos/catalog.json 404 in 1754ms
+ GET /model-viewer 200 in 287ms
+ GET /model-viewer 200 in 890ms
+ GET /skill-videos/catalog.json 404 in 46ms
+ ✓ Compiled in 627ms (815 modules)
+ GET /model-viewer 200 in 664ms
+ ✓ Compiled /_not-found in 416ms (1751 modules)
+ GET /skill-videos/catalog.json 404 in 697ms
+ ✓ Compiled in 442ms (819 modules)
+ GET /model-viewer 200 in 681ms
+ GET /skill-videos/catalog.json 404 in 44ms
+ ✓ Compiled in 502ms (819 modules)
+ ✓ Compiled in 447ms (819 modules)
+ GET /model-viewer 200 in 519ms
+ GET /skill-videos/catalog.json 404 in 45ms
+ ✓ Compiled in 496ms (819 modules)
+ ✓ Compiled in 900ms (1765 modules)
+ ✓ Compiled in 776ms (1765 modules)
+ GET /model-viewer 200 in 848ms
+ GET /model-viewer 200 in 479ms
+ GET /skill-videos/catalog.json 404 in 54ms
+ ✓ Compiled in 787ms (815 modules)
+ GET /model-viewer 200 in 608ms
+ ✓ Compiled /_not-found in 386ms (1751 modules)
+ GET /skill-videos/catalog.json 404 in 634ms
+ ✓ Compiled in 568ms (819 modules)
+ ✓ Compiled in 456ms (819 modules)
+ GET /model-viewer 200 in 683ms
+ GET /skill-videos/catalog.json 404 in 53ms
+ ✓ Compiled in 734ms (819 modules)
+ ✓ Compiled in 745ms (1760 modules)
+ ✓ Compiled in 611ms (1760 modules)
+ ✓ Compiled in 693ms (1760 modules)
+ GET /model-viewer 200 in 934ms
+ GET /model-viewer 200 in 486ms
+ ✓ Compiled /_not-found in 351ms (1751 modules)
+ GET /skill-videos/catalog.json 404 in 611ms
+ ✓ Compiled in 629ms (819 modules)
+ ✓ Compiled in 400ms (819 modules)
+ GET /model-viewer 200 in 729ms
+ GET /skill-videos/catalog.json 404 in 60ms
+ ✓ Compiled in 645ms (819 modules)
+ GET /model-viewer 200 in 632ms
+ GET /skill-videos/catalog.json 404 in 47ms
+ ✓ Compiled in 3s (819 modules)
+ ✓ Compiled in 366ms (819 modules)
+ ✓ Compiled in 639ms (815 modules)
+ ✓ Compiled in 525ms (815 modules)
+ GET /model-viewer 200 in 481ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 661ms (1765 modules)
+ GET /skill-videos/catalog.json 404 in 935ms
+ GET /model-viewer 200 in 302ms
+ ✓ Compiled in 1191ms (819 modules)
+ ✓ Compiled in 382ms (819 modules)
+ ✓ Compiled in 667ms (815 modules)
+ ✓ Compiled in 614ms (815 modules)
+ GET /model-viewer 200 in 643ms
+ ✓ Compiled /_not-found in 232ms (1751 modules)
+ GET /skill-videos/catalog.json 404 in 465ms
+ ✓ Compiled in 1527ms (819 modules)
+ ✓ Compiled in 432ms (819 modules)
+ ✓ Compiled in 715ms (815 modules)
+ ✓ Compiled in 467ms (815 modules)
+ ✓ Compiled in 632ms (815 modules)
+ ✓ Compiled in 473ms (815 modules)
+ GET /model-viewer 200 in 657ms
+ ✓ Compiled /_not-found in 415ms (1751 modules)
+ GET /skill-videos/catalog.json 404 in 653ms
+ ✓ Compiled in 542ms (819 modules)
+ ✓ Compiled in 401ms (819 modules)
+ ✓ Compiled in 1202ms (1760 modules)
+ GET /model-viewer 200 in 804ms
+ ✓ Compiled /_not-found in 264ms (1751 modules)
+ GET /skill-videos/catalog.json 404 in 495ms
+ ✓ Compiled in 685ms (819 modules)
+ ✓ Compiled in 392ms (819 modules)
+ ✓ Compiled in 563ms (815 modules)
+ GET /model-viewer 200 in 761ms
+ ✓ Compiled /_not-found in 417ms (1751 modules)
+ GET /skill-videos/catalog.json 404 in 649ms
+ ✓ Compiled in 502ms (819 modules)
+ ✓ Compiled in 395ms (819 modules)
+ ✓ Compiled in 951ms (1760 modules)
+ GET /model-viewer 200 in 806ms
+ ✓ Compiled /_not-found in 311ms (1751 modules)
+ GET /skill-videos/catalog.json 404 in 592ms
+ ✓ Compiled in 593ms (819 modules)
+ ✓ Compiled in 410ms (819 modules)
+ GET /model-viewer 200 in 637ms
+ GET /skill-videos/catalog.json 404 in 65ms
+ ✓ Compiled in 680ms (819 modules)
+ ✓ Compiled in 411ms (819 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 1382ms (1783 modules)
+ GET / 200 in 2024ms
+ ✓ Compiled in 674ms (825 modules)
+ GET /model-viewer 200 in 53ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 776ms (1788 modules)
+ GET /skill-videos/catalog.json 404 in 1038ms
+ GET /skill-videos/catalog.json 404 in 1036ms
+ GET /model-viewer 200 in 287ms
+ ○ Compiling /loup-loupe ...
+ ✓ Compiled /loup-loupe in 2.6s (1961 modules)
+ ✓ Compiled in 829ms (910 modules)
+ GET /loup-loupe 200 in 3510ms
+ GET /loup-loupe 200 in 208ms
+ GET /loup-loupe 200 in 193ms

@@ -53503,6 +53503,1434 @@
       }
     },
     {
+      "heartprint_id": 1400406,
+      "still_type": "normal",
+      "master_still_id": 210000000000056,
+      "tab_type": 156,
+      "order": 987,
+      "picture_path": "Image/SkillStill/1400406/skill_still_1400406_{0}",
+      "release_label": "202604_event_questioner_and_answerer_start",
+      "title": "Anime Tie-in Quiz Part 6",
+      "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
+      "display_character_id": 210000002000001,
+      "episode_id": 0,
+      "season": null,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": {
+        "quest_name": "Anime Tie-in Quiz Question 6",
+        "event_id": 10000000110050,
+        "is_missable": true
+      },
+      "passive_skill": {
+        "passive_skill_id": 210000007000007,
+        "target_type": 7,
+        "levels": [
+          {
+            "level": 1,
+            "hp": 50,
+            "attack": 50,
+            "defense": 50,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 2,
+            "hp": 100,
+            "attack": 100,
+            "defense": 100,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 3,
+            "hp": 150,
+            "attack": 150,
+            "defense": 150,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 4,
+            "hp": 200,
+            "attack": 200,
+            "defense": 200,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 5,
+            "hp": 400,
+            "attack": 400,
+            "defense": 400,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 6,
+            "hp": 450,
+            "attack": 450,
+            "defense": 450,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 7,
+            "hp": 500,
+            "attack": 500,
+            "defense": 500,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 8,
+            "hp": 550,
+            "attack": 550,
+            "defense": 550,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 9,
+            "hp": 600,
+            "attack": 600,
+            "defense": 600,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 10,
+            "hp": 800,
+            "attack": 800,
+            "defense": 800,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 11,
+            "hp": 850,
+            "attack": 850,
+            "defense": 850,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 12,
+            "hp": 900,
+            "attack": 900,
+            "defense": 900,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 13,
+            "hp": 950,
+            "attack": 950,
+            "defense": 950,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 14,
+            "hp": 1000,
+            "attack": 1000,
+            "defense": 1000,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 15,
+            "hp": 1200,
+            "attack": 1200,
+            "defense": 1200,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 16,
+            "hp": 1250,
+            "attack": 1250,
+            "defense": 1250,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 17,
+            "hp": 1300,
+            "attack": 1300,
+            "defense": 1300,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 18,
+            "hp": 1350,
+            "attack": 1350,
+            "defense": 1350,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 19,
+            "hp": 1400,
+            "attack": 1400,
+            "defense": 1400,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 20,
+            "hp": 1600,
+            "attack": 1600,
+            "defense": 1600,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 21,
+            "hp": 1650,
+            "attack": 1650,
+            "defense": 1650,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 22,
+            "hp": 1700,
+            "attack": 1700,
+            "defense": 1700,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 23,
+            "hp": 1750,
+            "attack": 1750,
+            "defense": 1750,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 24,
+            "hp": 1800,
+            "attack": 1800,
+            "defense": 1800,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 25,
+            "hp": 2000,
+            "attack": 2000,
+            "defense": 2000,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 26,
+            "hp": 2050,
+            "attack": 2050,
+            "defense": 2050,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 27,
+            "hp": 2100,
+            "attack": 2100,
+            "defense": 2100,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 28,
+            "hp": 2150,
+            "attack": 2150,
+            "defense": 2150,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 29,
+            "hp": 2200,
+            "attack": 2200,
+            "defense": 2200,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 30,
+            "hp": 2400,
+            "attack": 2400,
+            "defense": 2400,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 31,
+            "hp": 2450,
+            "attack": 2450,
+            "defense": 2450,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 32,
+            "hp": 2500,
+            "attack": 2500,
+            "defense": 2500,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 33,
+            "hp": 2550,
+            "attack": 2550,
+            "defense": 2550,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 34,
+            "hp": 2600,
+            "attack": 2600,
+            "defense": 2600,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 35,
+            "hp": 2800,
+            "attack": 2800,
+            "defense": 2800,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 36,
+            "hp": 2850,
+            "attack": 2850,
+            "defense": 2850,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 37,
+            "hp": 2900,
+            "attack": 2900,
+            "defense": 2900,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 38,
+            "hp": 2950,
+            "attack": 2950,
+            "defense": 2950,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 39,
+            "hp": 3000,
+            "attack": 3000,
+            "defense": 3000,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 40,
+            "hp": 3200,
+            "attack": 3200,
+            "defense": 3200,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          }
+        ],
+        "bless_levels": [
+          {
+            "level": 1,
+            "hp": 50,
+            "attack": 50,
+            "defense": 50
+          },
+          {
+            "level": 2,
+            "hp": 100,
+            "attack": 100,
+            "defense": 100
+          },
+          {
+            "level": 3,
+            "hp": 150,
+            "attack": 150,
+            "defense": 150
+          },
+          {
+            "level": 4,
+            "hp": 200,
+            "attack": 200,
+            "defense": 200
+          },
+          {
+            "level": 5,
+            "hp": 400,
+            "attack": 400,
+            "defense": 400
+          },
+          {
+            "level": 6,
+            "hp": 450,
+            "attack": 450,
+            "defense": 450
+          },
+          {
+            "level": 7,
+            "hp": 500,
+            "attack": 500,
+            "defense": 500
+          },
+          {
+            "level": 8,
+            "hp": 550,
+            "attack": 550,
+            "defense": 550
+          },
+          {
+            "level": 9,
+            "hp": 600,
+            "attack": 600,
+            "defense": 600
+          },
+          {
+            "level": 10,
+            "hp": 800,
+            "attack": 800,
+            "defense": 800
+          },
+          {
+            "level": 11,
+            "hp": 850,
+            "attack": 850,
+            "defense": 850
+          },
+          {
+            "level": 12,
+            "hp": 900,
+            "attack": 900,
+            "defense": 900
+          },
+          {
+            "level": 13,
+            "hp": 950,
+            "attack": 950,
+            "defense": 950
+          },
+          {
+            "level": 14,
+            "hp": 1000,
+            "attack": 1000,
+            "defense": 1000
+          },
+          {
+            "level": 15,
+            "hp": 1200,
+            "attack": 1200,
+            "defense": 1200
+          },
+          {
+            "level": 16,
+            "hp": 1250,
+            "attack": 1250,
+            "defense": 1250
+          },
+          {
+            "level": 17,
+            "hp": 1300,
+            "attack": 1300,
+            "defense": 1300
+          },
+          {
+            "level": 18,
+            "hp": 1350,
+            "attack": 1350,
+            "defense": 1350
+          },
+          {
+            "level": 19,
+            "hp": 1400,
+            "attack": 1400,
+            "defense": 1400
+          },
+          {
+            "level": 20,
+            "hp": 1600,
+            "attack": 1600,
+            "defense": 1600
+          },
+          {
+            "level": 21,
+            "hp": 1650,
+            "attack": 1650,
+            "defense": 1650
+          },
+          {
+            "level": 22,
+            "hp": 1700,
+            "attack": 1700,
+            "defense": 1700
+          },
+          {
+            "level": 23,
+            "hp": 1750,
+            "attack": 1750,
+            "defense": 1750
+          },
+          {
+            "level": 24,
+            "hp": 1800,
+            "attack": 1800,
+            "defense": 1800
+          },
+          {
+            "level": 25,
+            "hp": 2000,
+            "attack": 2000,
+            "defense": 2000
+          },
+          {
+            "level": 26,
+            "hp": 2050,
+            "attack": 2050,
+            "defense": 2050
+          },
+          {
+            "level": 27,
+            "hp": 2100,
+            "attack": 2100,
+            "defense": 2100
+          },
+          {
+            "level": 28,
+            "hp": 2150,
+            "attack": 2150,
+            "defense": 2150
+          },
+          {
+            "level": 29,
+            "hp": 2200,
+            "attack": 2200,
+            "defense": 2200
+          },
+          {
+            "level": 30,
+            "hp": 2400,
+            "attack": 2400,
+            "defense": 2400
+          },
+          {
+            "level": 31,
+            "hp": 2450,
+            "attack": 2450,
+            "defense": 2450
+          },
+          {
+            "level": 32,
+            "hp": 2500,
+            "attack": 2500,
+            "defense": 2500
+          },
+          {
+            "level": 33,
+            "hp": 2550,
+            "attack": 2550,
+            "defense": 2550
+          },
+          {
+            "level": 34,
+            "hp": 2600,
+            "attack": 2600,
+            "defense": 2600
+          },
+          {
+            "level": 35,
+            "hp": 2800,
+            "attack": 2800,
+            "defense": 2800
+          },
+          {
+            "level": 36,
+            "hp": 2850,
+            "attack": 2850,
+            "defense": 2850
+          },
+          {
+            "level": 37,
+            "hp": 2900,
+            "attack": 2900,
+            "defense": 2900
+          },
+          {
+            "level": 38,
+            "hp": 2950,
+            "attack": 2950,
+            "defense": 2950
+          },
+          {
+            "level": 39,
+            "hp": 3000,
+            "attack": 3000,
+            "defense": 3000
+          },
+          {
+            "level": 40,
+            "hp": 3200,
+            "attack": 3200,
+            "defense": 3200
+          }
+        ],
+        "ex_effects": [
+          {
+            "level": 1,
+            "critical": 200,
+            "penetration": 0,
+            "cooperation": 0,
+            "defcritical": 0,
+            "element": 0
+          },
+          {
+            "level": 5,
+            "critical": 0,
+            "penetration": 200,
+            "cooperation": 0,
+            "defcritical": 0,
+            "element": 0
+          },
+          {
+            "level": 10,
+            "critical": 0,
+            "penetration": 0,
+            "cooperation": 200,
+            "defcritical": 0,
+            "element": 0
+          },
+          {
+            "level": 15,
+            "critical": 0,
+            "penetration": 0,
+            "cooperation": 0,
+            "defcritical": 200,
+            "element": 0
+          },
+          {
+            "level": 20,
+            "critical": 400,
+            "penetration": 0,
+            "cooperation": 0,
+            "defcritical": 0,
+            "element": 0
+          },
+          {
+            "level": 25,
+            "critical": 0,
+            "penetration": 400,
+            "cooperation": 0,
+            "defcritical": 0,
+            "element": 0
+          },
+          {
+            "level": 30,
+            "critical": 0,
+            "penetration": 0,
+            "cooperation": 400,
+            "defcritical": 0,
+            "element": 0
+          },
+          {
+            "level": 35,
+            "critical": 0,
+            "penetration": 0,
+            "cooperation": 0,
+            "defcritical": 400,
+            "element": 0
+          },
+          {
+            "level": 40,
+            "critical": 600,
+            "penetration": 0,
+            "cooperation": 0,
+            "defcritical": 0,
+            "element": 0
+          }
+        ]
+      }
+    },
+    {
+      "heartprint_id": 1400407,
+      "still_type": "normal",
+      "master_still_id": 210000000000057,
+      "tab_type": 156,
+      "order": 986,
+      "picture_path": "Image/SkillStill/1400407/skill_still_1400407_{0}",
+      "release_label": "202604_event_questioner_and_answerer_start",
+      "title": "en_still_N/A",
+      "skill_description": "Lv.40 passive: HP+3200 / ATK+3200 / DEF+3200",
+      "passive_skill_level": 1,
+      "display_character_id": 210000002000001,
+      "episode_id": 0,
+      "season": null,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": null,
+      "passive_skill": {
+        "passive_skill_id": 210000007000002,
+        "target_type": 2,
+        "levels": [
+          {
+            "level": 1,
+            "hp": 50,
+            "attack": 50,
+            "defense": 50,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 2,
+            "hp": 100,
+            "attack": 100,
+            "defense": 100,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 3,
+            "hp": 150,
+            "attack": 150,
+            "defense": 150,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 4,
+            "hp": 200,
+            "attack": 200,
+            "defense": 200,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 5,
+            "hp": 400,
+            "attack": 400,
+            "defense": 400,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 6,
+            "hp": 450,
+            "attack": 450,
+            "defense": 450,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 7,
+            "hp": 500,
+            "attack": 500,
+            "defense": 500,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 8,
+            "hp": 550,
+            "attack": 550,
+            "defense": 550,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 9,
+            "hp": 600,
+            "attack": 600,
+            "defense": 600,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 10,
+            "hp": 800,
+            "attack": 800,
+            "defense": 800,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 11,
+            "hp": 850,
+            "attack": 850,
+            "defense": 850,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 12,
+            "hp": 900,
+            "attack": 900,
+            "defense": 900,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 13,
+            "hp": 950,
+            "attack": 950,
+            "defense": 950,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 14,
+            "hp": 1000,
+            "attack": 1000,
+            "defense": 1000,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 15,
+            "hp": 1200,
+            "attack": 1200,
+            "defense": 1200,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 16,
+            "hp": 1250,
+            "attack": 1250,
+            "defense": 1250,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 17,
+            "hp": 1300,
+            "attack": 1300,
+            "defense": 1300,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 18,
+            "hp": 1350,
+            "attack": 1350,
+            "defense": 1350,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 19,
+            "hp": 1400,
+            "attack": 1400,
+            "defense": 1400,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 20,
+            "hp": 1600,
+            "attack": 1600,
+            "defense": 1600,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 21,
+            "hp": 1650,
+            "attack": 1650,
+            "defense": 1650,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 22,
+            "hp": 1700,
+            "attack": 1700,
+            "defense": 1700,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 23,
+            "hp": 1750,
+            "attack": 1750,
+            "defense": 1750,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 24,
+            "hp": 1800,
+            "attack": 1800,
+            "defense": 1800,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 25,
+            "hp": 2000,
+            "attack": 2000,
+            "defense": 2000,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 26,
+            "hp": 2050,
+            "attack": 2050,
+            "defense": 2050,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 27,
+            "hp": 2100,
+            "attack": 2100,
+            "defense": 2100,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 28,
+            "hp": 2150,
+            "attack": 2150,
+            "defense": 2150,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 29,
+            "hp": 2200,
+            "attack": 2200,
+            "defense": 2200,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 30,
+            "hp": 2400,
+            "attack": 2400,
+            "defense": 2400,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 31,
+            "hp": 2450,
+            "attack": 2450,
+            "defense": 2450,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 32,
+            "hp": 2500,
+            "attack": 2500,
+            "defense": 2500,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 33,
+            "hp": 2550,
+            "attack": 2550,
+            "defense": 2550,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 34,
+            "hp": 2600,
+            "attack": 2600,
+            "defense": 2600,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 35,
+            "hp": 2800,
+            "attack": 2800,
+            "defense": 2800,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 36,
+            "hp": 2850,
+            "attack": 2850,
+            "defense": 2850,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 37,
+            "hp": 2900,
+            "attack": 2900,
+            "defense": 2900,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 38,
+            "hp": 2950,
+            "attack": 2950,
+            "defense": 2950,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 39,
+            "hp": 3000,
+            "attack": 3000,
+            "defense": 3000,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          },
+          {
+            "level": 40,
+            "hp": 3200,
+            "attack": 3200,
+            "defense": 3200,
+            "show_hp": false,
+            "show_attack": false,
+            "show_defense": false
+          }
+        ],
+        "bless_levels": [
+          {
+            "level": 1,
+            "hp": 50,
+            "attack": 50,
+            "defense": 50
+          },
+          {
+            "level": 2,
+            "hp": 100,
+            "attack": 100,
+            "defense": 100
+          },
+          {
+            "level": 3,
+            "hp": 150,
+            "attack": 150,
+            "defense": 150
+          },
+          {
+            "level": 4,
+            "hp": 200,
+            "attack": 200,
+            "defense": 200
+          },
+          {
+            "level": 5,
+            "hp": 400,
+            "attack": 400,
+            "defense": 400
+          },
+          {
+            "level": 6,
+            "hp": 450,
+            "attack": 450,
+            "defense": 450
+          },
+          {
+            "level": 7,
+            "hp": 500,
+            "attack": 500,
+            "defense": 500
+          },
+          {
+            "level": 8,
+            "hp": 550,
+            "attack": 550,
+            "defense": 550
+          },
+          {
+            "level": 9,
+            "hp": 600,
+            "attack": 600,
+            "defense": 600
+          },
+          {
+            "level": 10,
+            "hp": 800,
+            "attack": 800,
+            "defense": 800
+          },
+          {
+            "level": 11,
+            "hp": 850,
+            "attack": 850,
+            "defense": 850
+          },
+          {
+            "level": 12,
+            "hp": 900,
+            "attack": 900,
+            "defense": 900
+          },
+          {
+            "level": 13,
+            "hp": 950,
+            "attack": 950,
+            "defense": 950
+          },
+          {
+            "level": 14,
+            "hp": 1000,
+            "attack": 1000,
+            "defense": 1000
+          },
+          {
+            "level": 15,
+            "hp": 1200,
+            "attack": 1200,
+            "defense": 1200
+          },
+          {
+            "level": 16,
+            "hp": 1250,
+            "attack": 1250,
+            "defense": 1250
+          },
+          {
+            "level": 17,
+            "hp": 1300,
+            "attack": 1300,
+            "defense": 1300
+          },
+          {
+            "level": 18,
+            "hp": 1350,
+            "attack": 1350,
+            "defense": 1350
+          },
+          {
+            "level": 19,
+            "hp": 1400,
+            "attack": 1400,
+            "defense": 1400
+          },
+          {
+            "level": 20,
+            "hp": 1600,
+            "attack": 1600,
+            "defense": 1600
+          },
+          {
+            "level": 21,
+            "hp": 1650,
+            "attack": 1650,
+            "defense": 1650
+          },
+          {
+            "level": 22,
+            "hp": 1700,
+            "attack": 1700,
+            "defense": 1700
+          },
+          {
+            "level": 23,
+            "hp": 1750,
+            "attack": 1750,
+            "defense": 1750
+          },
+          {
+            "level": 24,
+            "hp": 1800,
+            "attack": 1800,
+            "defense": 1800
+          },
+          {
+            "level": 25,
+            "hp": 2000,
+            "attack": 2000,
+            "defense": 2000
+          },
+          {
+            "level": 26,
+            "hp": 2050,
+            "attack": 2050,
+            "defense": 2050
+          },
+          {
+            "level": 27,
+            "hp": 2100,
+            "attack": 2100,
+            "defense": 2100
+          },
+          {
+            "level": 28,
+            "hp": 2150,
+            "attack": 2150,
+            "defense": 2150
+          },
+          {
+            "level": 29,
+            "hp": 2200,
+            "attack": 2200,
+            "defense": 2200
+          },
+          {
+            "level": 30,
+            "hp": 2400,
+            "attack": 2400,
+            "defense": 2400
+          },
+          {
+            "level": 31,
+            "hp": 2450,
+            "attack": 2450,
+            "defense": 2450
+          },
+          {
+            "level": 32,
+            "hp": 2500,
+            "attack": 2500,
+            "defense": 2500
+          },
+          {
+            "level": 33,
+            "hp": 2550,
+            "attack": 2550,
+            "defense": 2550
+          },
+          {
+            "level": 34,
+            "hp": 2600,
+            "attack": 2600,
+            "defense": 2600
+          },
+          {
+            "level": 35,
+            "hp": 2800,
+            "attack": 2800,
+            "defense": 2800
+          },
+          {
+            "level": 36,
+            "hp": 2850,
+            "attack": 2850,
+            "defense": 2850
+          },
+          {
+            "level": 37,
+            "hp": 2900,
+            "attack": 2900,
+            "defense": 2900
+          },
+          {
+            "level": 38,
+            "hp": 2950,
+            "attack": 2950,
+            "defense": 2950
+          },
+          {
+            "level": 39,
+            "hp": 3000,
+            "attack": 3000,
+            "defense": 3000
+          },
+          {
+            "level": 40,
+            "hp": 3200,
+            "attack": 3200,
+            "defense": 3200
+          }
+        ],
+        "ex_effects": [
+          {
+            "level": 1,
+            "critical": 200,
+            "penetration": 0,
+            "cooperation": 0,
+            "defcritical": 0,
+            "element": 0
+          },
+          {
+            "level": 5,
+            "critical": 0,
+            "penetration": 200,
+            "cooperation": 0,
+            "defcritical": 0,
+            "element": 0
+          },
+          {
+            "level": 10,
+            "critical": 0,
+            "penetration": 0,
+            "cooperation": 200,
+            "defcritical": 0,
+            "element": 0
+          },
+          {
+            "level": 15,
+            "critical": 0,
+            "penetration": 0,
+            "cooperation": 0,
+            "defcritical": 200,
+            "element": 0
+          },
+          {
+            "level": 20,
+            "critical": 400,
+            "penetration": 0,
+            "cooperation": 0,
+            "defcritical": 0,
+            "element": 0
+          },
+          {
+            "level": 25,
+            "critical": 0,
+            "penetration": 400,
+            "cooperation": 0,
+            "defcritical": 0,
+            "element": 0
+          },
+          {
+            "level": 30,
+            "critical": 0,
+            "penetration": 0,
+            "cooperation": 400,
+            "defcritical": 0,
+            "element": 0
+          },
+          {
+            "level": 35,
+            "critical": 0,
+            "penetration": 0,
+            "cooperation": 0,
+            "defcritical": 400,
+            "element": 0
+          },
+          {
+            "level": 40,
+            "critical": 600,
+            "penetration": 0,
+            "cooperation": 0,
+            "defcritical": 0,
+            "element": 0
+          }
+        ]
+      }
+    },
+    {
       "heartprint_id": 2100101,
       "still_type": "rare",
       "master_still_rare_id": 210000001000001,

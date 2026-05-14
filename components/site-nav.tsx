@@ -9,6 +9,7 @@ const primaryLinks = [
   { href: "/characters", label: "Characters" },
   { href: "/forces", label: "Forces" },
   { href: "/heartprints", label: "Heartprints" },
+  { href: "/loup-loupe", label: "Loup Loupe" },
   { href: "/guides", label: "Guides" },
 ]
 

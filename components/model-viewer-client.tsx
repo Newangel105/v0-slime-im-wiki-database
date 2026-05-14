@@ -2,8 +2,9 @@
 
 import { Suspense, useEffect, useMemo, useRef, useState } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
-import { OrbitControls, useGLTF, useAnimations, Environment } from "@react-three/drei"
+import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei"
 import * as THREE from "three"
+import SkillSceneThreePlayer, { type SkillSceneManifest } from "@/components/skill-scene-three-client"
 
 export type ModelEntry = {
   id: string
@@ -11,6 +12,23 @@ export type ModelEntry = {
   affiliation_name?: string
   glb: string
   icon?: string
+  skillScene?: SkillSceneAssetEntry
+}
+
+type SkillSceneAssetEntry = {
+  glb: string
+  manifest: string
+  visibility?: string
+  scene?: string
+  sceneActivationTrack?: string
+  battleField?: string
+  battleFieldActivationTrack?: string
+  fieldLayers?: {
+    url: string
+    activationTrack?: string
+    defaultVisible?: boolean
+  }[]
+  cinematic?: string
 }
 
 // Per-mesh fallback visibility (used when an anim doesn't author the mesh)
@@ -155,21 +173,31 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
   const [animationName, setAnimationName] = useState<string>("")
   const [animationList, setAnimationList] = useState<string[]>([])
   const [visibility, setVisibility] = useState<VisibilityData>({ defaults: {}, tracks: {} })
+  const [skillSceneManifest, setSkillSceneManifest] = useState<SkillSceneManifest | null>(null)
   const [videoCatalog, setVideoCatalog] = useState<SkillSceneVideoCatalog | null>(null)
-  const [selectedVideoIndex, setSelectedVideoIndex] = useState(0)
+  const [selectedSceneIndex, setSelectedSceneIndex] = useState(0)
   const [assetVersion, setAssetVersion] = useState(() => Date.now())
 
   const selected = models.find(m => m.id === selectedId) ?? models[0]
-  const modelUrl = selected
-    ? (process.env.NODE_ENV === "development" ? `${selected.glb}?v=${assetVersion}` : selected.glb)
-    : ""
+  const versionAsset = (url?: string) =>
+    url ? (process.env.NODE_ENV === "development" ? `${url}?v=${assetVersion}` : url) : ""
+  const modelUrl = selected ? versionAsset(selected.glb) : ""
   const videosForVariant = useMemo(
     () => (videoCatalog?.videos ?? []).filter(v => v.variant === selected?.id && (v.mp4 || v.webm)),
     [videoCatalog, selected?.id],
   )
-  const activeVideo = videosForVariant[selectedVideoIndex] ?? videosForVariant[0]
-  const hasSkillScene = videosForVariant.length > 0
+  const skillScenes = skillSceneManifest?.scenes ?? []
+  const activeVideo = videosForVariant[selectedSceneIndex] ?? videosForVariant[0]
+  const hasSkillVideo = videosForVariant.length > 0
+  const hasSkillGlb = Boolean(selected?.skillScene?.glb && selected?.skillScene?.manifest)
+  const useSkillVideo = hasSkillVideo
+  const activeSkillScene = useSkillVideo ? undefined : skillScenes[selectedSceneIndex] ?? skillScenes[0]
+  const canRenderGeneratedSkillScene = Boolean(!useSkillVideo && hasSkillGlb && skillSceneManifest && activeSkillScene && selected?.skillScene)
+  const hasSkillScene = hasSkillVideo || hasSkillGlb
   const activeMode = viewerMode === "skill" && hasSkillScene ? "skill" : "character"
+  const skillSceneOptions = useSkillVideo
+    ? videosForVariant.map(v => ({ id: v.scene, name: v.scene }))
+    : skillScenes.map(s => ({ id: s.id, name: s.name || s.id }))
 
   const normalizedModelSearch = modelSearch.trim().toLowerCase()
   const filteredModels = useMemo(() => {
@@ -190,6 +218,7 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
     setAnimationName("")
     setAnimationList([])
     setVisibility({ defaults: {}, tracks: {} })
+    setSkillSceneManifest(null)
     setAssetVersion(Date.now())
     if (!selected) return
     const sidecarUrl = selected.glb.replace(/\.glb$/i, ".visibility.json")
@@ -202,12 +231,28 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
         else setVisibility({ defaults: {}, tracks: j })
       })
       .catch(() => {})
+
+    if (selected.skillScene?.manifest) {
+      fetch(selected.skillScene.manifest, { cache: "no-store" })
+        .then(r => (r.ok ? r.json() : null))
+        .then((j: SkillSceneManifest | null) => {
+          if (j?.scenes) setSkillSceneManifest(j)
+        })
+        .catch(() => setSkillSceneManifest(null))
+    }
+
   }, [selectedId, selected])
 
   useEffect(() => {
     setViewerMode("character")
-    setSelectedVideoIndex(0)
+    setSelectedSceneIndex(0)
   }, [selectedId])
+
+  useEffect(() => {
+    if (skillSceneOptions.length > 0 && selectedSceneIndex >= skillSceneOptions.length) {
+      setSelectedSceneIndex(0)
+    }
+  }, [selectedSceneIndex, skillSceneOptions.length])
 
   useEffect(() => {
     fetch("/skill-videos/catalog.json", { cache: "no-store" })
@@ -318,44 +363,20 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
           </div>
 
           <div className="flex flex-wrap items-center gap-3 text-sm xl:flex-nowrap xl:justify-end">
-            {hasSkillScene && (
-              <div className="flex rounded-xl border border-white/10 bg-[#222327] p-1">
-                <button
-                  type="button"
-                  onClick={() => setViewerMode("character")}
-                  className={`rounded-lg px-3 py-1.5 text-sm font-semibold transition ${
-                    activeMode === "character"
-                      ? "bg-[#da3e44] text-white shadow-[0_0_18px_rgba(218,62,68,0.24)]"
-                      : "text-slate-300 hover:bg-white/5 hover:text-white"
-                  }`}
-                >
-                  Character
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setViewerMode("skill")}
-                  className={`rounded-lg px-3 py-1.5 text-sm font-semibold transition ${
-                    activeMode === "skill"
-                      ? "bg-[#da3e44] text-white shadow-[0_0_18px_rgba(218,62,68,0.24)]"
-                      : "text-slate-300 hover:bg-white/5 hover:text-white"
-                  }`}
-                >
-                  Skill Scene
-                </button>
-              </div>
-            )}
-
             {activeMode === "skill" ? (
               <label className="flex items-center gap-2 text-slate-300">
                 <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Scene</span>
                 <select
-                  value={String(selectedVideoIndex)}
-                  onChange={e => setSelectedVideoIndex(Number(e.target.value))}
+                  value={String(selectedSceneIndex)}
+                  onChange={e => setSelectedSceneIndex(Number(e.target.value))}
                   className="h-10 max-w-[260px] rounded-md border border-white/10 bg-[#222327] px-3 text-sm text-white outline-none focus:border-[#da3e44]/40 focus:ring-2 focus:ring-[#da3e44]/30"
-                  disabled={videosForVariant.length <= 1}
+                  disabled={skillSceneOptions.length <= 1}
                 >
-                  {videosForVariant.map((v, i) => (
-                    <option key={`${v.scene}-${i}`} value={i}>{v.scene}</option>
+                  {skillSceneOptions.length === 0 && (
+                    <option value={0}>Loading...</option>
+                  )}
+                  {skillSceneOptions.map((scene, i) => (
+                    <option key={`${scene.id}-${i}`} value={i}>{scene.name}</option>
                   ))}
                 </select>
               </label>
@@ -427,8 +448,19 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(180deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:52px_52px] opacity-40" />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#da3e44]/70 to-transparent" />
 
-          {activeMode === "skill" && activeVideo ? (
+          {activeMode === "skill" && useSkillVideo && activeVideo ? (
             <SkillSceneVideo entry={activeVideo} />
+          ) : activeMode === "skill" && canRenderGeneratedSkillScene && selected.skillScene && skillSceneManifest && activeSkillScene ? (
+            <SkillSceneThreePlayer
+              assets={selected.skillScene}
+              manifest={skillSceneManifest}
+              scene={activeSkillScene}
+              assetVersion={assetVersion}
+            />
+          ) : activeMode === "skill" ? (
+            <div className="absolute inset-0 grid place-items-center text-sm font-semibold text-slate-400">
+              Loading skill scene...
+            </div>
           ) : (
             <Canvas className="relative z-10" camera={{ position: [0, 1.4, 2.6], fov: 38 }} dpr={[1, 2]} gl={{ alpha: true }}>
               <ambientLight intensity={0.65} />
@@ -445,7 +477,6 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
                   visibility={visibility}
                   onAnimationsList={setAnimationList}
                 />
-                <Environment preset="city" />
               </Suspense>
               <OrbitControls
                 makeDefault
