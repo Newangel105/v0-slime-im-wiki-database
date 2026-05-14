@@ -7219,13 +7219,6 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
       </aside>
 
       <div className="relative z-10 min-h-[calc(100vh-11rem)] overflow-hidden px-2 py-5 md:pl-44 md:pr-4">
-        {ENABLE_ROUTE_EDITOR && !routeEditorEnabled && routeEditorAccess !== "checking" && !selectedRoute ? (
-          <div className="pointer-events-none absolute right-4 top-4 z-20 hidden max-w-xs rounded-lg border border-white/10 bg-black/45 p-3 text-xs font-semibold text-slate-300 backdrop-blur md:block">
-            {routeEditorAccess === "unconfigured"
-              ? "Route editing needs the Guides Supabase auth configuration."
-              : "Log in from Guides to edit and export manual routes."}
-          </div>
-        ) : null}
         <div className="mx-auto flex w-full max-w-[78rem] flex-col items-center gap-4">
           <TowerBoard
             floor={floor}
