@@ -30,6 +30,31 @@ create table if not exists public.guide_articles (
 create index if not exists guide_articles_status_published_idx on public.guide_articles (status, published_at desc);
 create index if not exists guide_articles_author_idx on public.guide_articles (author_id, updated_at desc);
 
+create table if not exists public.loup_loupe_route_sets (
+  key text primary key,
+  routes jsonb not null default '[]'::jsonb,
+  updated_by uuid references auth.users(id) on delete set null,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  check (jsonb_typeof(routes) = 'array')
+);
+
+create or replace function public.set_loup_loupe_route_set_updated_at()
+returns trigger
+language plpgsql
+as $$
+begin
+  new.updated_at = now();
+  return new;
+end;
+$$;
+
+drop trigger if exists set_loup_loupe_route_set_updated_at on public.loup_loupe_route_sets;
+create trigger set_loup_loupe_route_set_updated_at
+before update on public.loup_loupe_route_sets
+for each row
+execute function public.set_loup_loupe_route_set_updated_at();
+
 create or replace function public.set_guide_article_updated_at()
 returns trigger
 language plpgsql
@@ -54,6 +79,7 @@ execute function public.set_guide_article_updated_at();
 
 alter table public.guide_author_profiles enable row level security;
 alter table public.guide_articles enable row level security;
+alter table public.loup_loupe_route_sets enable row level security;
 
 -- Profiles: public can read display names. Only admins should manage rows manually.
 drop policy if exists "Guide profiles are publicly readable" on public.guide_author_profiles;
@@ -129,6 +155,44 @@ using (
   or exists (
     select 1 from public.guide_author_profiles p
     where p.id = auth.uid() and p.role = 'admin'
+  )
+);
+
+-- Loup Loupe route JSON: public can read the currently published route set.
+drop policy if exists "Loup Loupe routes are publicly readable" on public.loup_loupe_route_sets;
+create policy "Loup Loupe routes are publicly readable"
+on public.loup_loupe_route_sets
+for select
+using (true);
+
+-- Registered guide authors/admins can maintain route JSON through the board editor.
+drop policy if exists "Guide authors can create Loup Loupe routes" on public.loup_loupe_route_sets;
+create policy "Guide authors can create Loup Loupe routes"
+on public.loup_loupe_route_sets
+for insert
+to authenticated
+with check (
+  exists (
+    select 1 from public.guide_author_profiles p
+    where p.id = auth.uid() and p.role in ('author', 'admin')
+  )
+);
+
+drop policy if exists "Guide authors can update Loup Loupe routes" on public.loup_loupe_route_sets;
+create policy "Guide authors can update Loup Loupe routes"
+on public.loup_loupe_route_sets
+for update
+to authenticated
+using (
+  exists (
+    select 1 from public.guide_author_profiles p
+    where p.id = auth.uid() and p.role in ('author', 'admin')
+  )
+)
+with check (
+  exists (
+    select 1 from public.guide_author_profiles p
+    where p.id = auth.uid() and p.role in ('author', 'admin')
   )
 );
 
