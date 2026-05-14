@@ -511,9 +511,9 @@ export function getCharMaxStats(characterId: number): { hp: number; attack: numb
     const baseWithBoardHp = entry.max_hp + (entry.sb_hp ?? 0) + (entry.esb_hp ?? 0)
     const baseWithBoardAtk = entry.max_atk + (entry.sb_atk ?? 0) + (entry.esb_atk ?? 0)
     const baseWithBoardDef = entry.max_def + (entry.sb_def ?? 0) + (entry.esb_def ?? 0)
-    const hp = Math.floor(baseWithBoardHp * (1 + bondMax.hp_pct / 100))
-    const attack = Math.floor(baseWithBoardAtk * (1 + bondMax.atk_pct / 100))
-    const defense = Math.floor(baseWithBoardDef * (1 + bondMax.def_pct / 100))
+    const hp = Math.floor(baseWithBoardHp)
+    const attack = Math.floor(baseWithBoardAtk)
+    const defense = Math.floor(baseWithBoardDef)
     return { hp, attack, defense, existence: hp + attack + defense }
   }
   // Fallback: compute from base stats + level_max_add for characters missing from char_stats
@@ -523,9 +523,9 @@ export function getCharMaxStats(characterId: number): { hp: number; attack: numb
   if (!add) return null
   const board = statusboardTotalsMap[String(character.master_statusboard_id ?? 0)]
   const enhancedBoard = enhancedStatusboardTotalsMap[String(character.master_enhanced_statusboard_id ?? 0)]
-  const hp = Math.floor((character.stats.hp + add.add_hp + (board?.hp ?? 0) + (enhancedBoard?.hp ?? 0)) * (1 + bondMax.hp_pct / 100))
-  const attack = Math.floor((character.stats.attack + add.add_attack + (board?.attack ?? 0) + (enhancedBoard?.attack ?? 0)) * (1 + bondMax.atk_pct / 100))
-  const defense = Math.floor((character.stats.defense + add.add_defense + (board?.defense ?? 0) + (enhancedBoard?.defense ?? 0)) * (1 + bondMax.def_pct / 100))
+  const hp = Math.floor((character.stats.hp + add.add_hp + (board?.hp ?? 0) + (enhancedBoard?.hp ?? 0)))
+  const attack = Math.floor((character.stats.attack + add.add_attack + (board?.attack ?? 0) + (enhancedBoard?.attack ?? 0)))
+  const defense = Math.floor((character.stats.defense + add.add_defense + (board?.defense ?? 0) + (enhancedBoard?.defense ?? 0)))
   return { hp, attack, defense, existence: hp + attack + defense }
 }
 
