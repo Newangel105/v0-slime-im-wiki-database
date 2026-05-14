@@ -8,7 +8,7 @@ from pathlib import Path
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Embed exported Loup Loupe manual routes into loup-loupe-browser.tsx and disable the editor."
+        description="Embed exported Loup Loupe manual routes into loup-loupe-browser.tsx."
     )
     parser.add_argument("routes_json", type=Path, help="JSON exported from the Route Editor")
     parser.add_argument("tsx_file", type=Path, help="Path to loup-loupe-browser.tsx")
@@ -32,15 +32,6 @@ def main() -> None:
     )
     if count != 1:
         raise SystemExit("Could not find HARD_CODED_ROUTES in the TSX file.")
-
-    tsx, count = re.subn(
-        r"const ENABLE_ROUTE_EDITOR = true;",
-        "const ENABLE_ROUTE_EDITOR = false;",
-        tsx,
-        count=1,
-    )
-    if count != 1:
-        raise SystemExit("Could not find ENABLE_ROUTE_EDITOR = true in the TSX file.")
 
     output = args.output or args.tsx_file
     output.write_text(tsx, encoding="utf-8")

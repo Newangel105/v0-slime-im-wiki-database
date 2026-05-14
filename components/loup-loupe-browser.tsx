@@ -13,10 +13,19 @@ import {
   ChevronLeft,
   ChevronRight,
   Gem,
+  LogIn,
+  LogOut,
   MapPinned,
+  Plus,
+  RotateCcw,
+  Save,
   Sparkles,
+  StickyNote,
+  Trash2,
   Trophy,
+  Undo2,
 } from "lucide-react";
+import { Html } from "@react-three/drei";
 import * as THREE from "three";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
 
@@ -35,6 +44,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import type { WikiEnemy } from "@/lib/enemies";
+import { getCurrentGuideAuthor, guidesSupabase, guidesSupabaseConfigured } from "@/lib/guides";
 import towerAssetManifest from "@/lib/loup-loupe-assets.generated.json";
 import type {
   LoupLoupeChallengeReward,
@@ -70,12 +80,18 @@ type RouteDefinition = {
   floorNumber: number;
   label: string;
   description?: string;
+  notes?: string;
+  tileNotes?: Record<string, string>;
   tileNumbers: number[];
+  branches?: number[][];
   color: string;
 };
 
+type RoutePathId = "main" | `branch-${number}`;
+
 type RouteEditorPointerHandlers = {
   active: boolean;
+  onTileClick?: (tile: LoupLoupeTile) => void;
   onPointerDown: (tile: LoupLoupeTile) => void;
   onPointerEnter: (tile: LoupLoupeTile) => void;
   onPointerUp: () => void;
@@ -2918,10 +2934,32 @@ const HARD_CODED_ROUTES: RouteDefinition[] = [
   }
 ];
 
-const ENABLE_ROUTE_EDITOR = false;
+const ENABLE_ROUTE_EDITOR = true;
 const ROUTE_EDITOR_STORAGE_KEY = "loup-loupe-manual-routes-v1";
+const ROUTE_SET_STORAGE_KEY = "manual-routes";
 const DEFAULT_ROUTE_COLORS = ["#84f75d", "#ff9f5a", "#62e6ff", "#ff5e80", "#f7e85d", "#c084fc"];
 const NO_ROUTE_SELECT_VALUE = "__no_route__";
+type RouteEditorAccessState = "checking" | "allowed" | "signed-out" | "unconfigured";
+type RouteStoreStatus = "loading" | "ready" | "unconfigured" | "error";
+
+function normalizeOptionalRouteText(value: unknown): string | undefined {
+  if (typeof value !== "string") return undefined;
+  const normalized = value.trim();
+  return normalized ? normalized : undefined;
+}
+
+function normalizeRoutePath(value: unknown): number[] {
+  if (!Array.isArray(value)) return [];
+  return value.filter((tileNumber): tileNumber is number => Number.isFinite(tileNumber));
+}
+
+function normalizeRouteBranches(value: unknown): number[][] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map(normalizeRoutePath)
+    .filter((path) => path.length > 0);
+}
+
 function isMapTileMaterial(materialName: string): boolean {
   return /^(Chip_|Ground_|TowerIzisMapHexagon|TowerIzisMapBaseFrame|WarpBase)/i.test(materialName);
 }
@@ -2934,28 +2972,35 @@ function shouldUseLitMaterial(materialInfo?: TowerMaterialInfo): boolean {
   if (!materialInfo) return false;
   const cls = classifyShaderFamily(materialInfo);
   if (cls.isInvisible || cls.isShadow || cls.isAdditive || cls.isDistortion) return false;
-  return (
-    cls.family === "urpLit" ||
-    cls.family === "tempestTower" ||
-    isMapTileMaterial(materialInfo.name)
-  );
+  return false;
 }
 
-// Identity: brightness now comes from the real scene RenderSettings and
-// scene-level Light components (see SceneLightingFromGame).  No more
-// multiplicative compensation baked into baseColor.
-function brightenMapMaterialColor(color: THREE.Color, _materialInfo: TowerMaterialInfo): THREE.Color {
+function brightenMapMaterialColor(color: THREE.Color, materialInfo: TowerMaterialInfo): THREE.Color {
+  const cls = classifyShaderFamily(materialInfo);
+  if (isMapTileMaterial(materialInfo.name)) return color.clone().multiplyScalar(1.28);
+  if (cls.family === "urpLit" || cls.family === "tempestTower") return color.clone().multiplyScalar(1.18);
   return color;
 }
 
 function cleanRouteForExport(route: RouteDefinition): RouteDefinition {
+  const description = normalizeOptionalRouteText(route.description);
+  const notes = normalizeOptionalRouteText(route.notes ?? route.description);
+  const branches = normalizeRouteBranches(route.branches);
+  const tileNotes = Object.fromEntries(
+    Object.entries(route.tileNotes ?? {})
+      .map(([tileNumber, note]) => [tileNumber, normalizeOptionalRouteText(note)])
+      .filter((entry): entry is [string, string] => Boolean(entry[1])),
+  );
   return {
     id: route.id,
     floorNumber: route.floorNumber,
     label: route.label,
-    description: route.description || undefined,
+    description,
+    notes,
+    tileNotes: Object.keys(tileNotes).length ? tileNotes : undefined,
     color: route.color,
-    tileNumbers: route.tileNumbers,
+    tileNumbers: normalizeRoutePath(route.tileNumbers),
+    branches: branches.length > 0 ? branches : undefined,
   };
 }
 
@@ -2973,10 +3018,22 @@ function isRouteDefinition(value: unknown): value is RouteDefinition {
 
 function normalizeRouteDefinitions(value: unknown): RouteDefinition[] {
   if (!Array.isArray(value)) return [];
-  return value.filter(isRouteDefinition).map((route) => ({
+  const normalized = value.filter(isRouteDefinition).map((route) => ({
     ...cleanRouteForExport(route),
-    tileNumbers: route.tileNumbers.filter((tileNumber) => Number.isFinite(tileNumber)),
+    tileNumbers: normalizeRoutePath(route.tileNumbers),
+    branches: normalizeRouteBranches(route.branches),
   }));
+  return dedupeRouteDefinitions(normalized);
+}
+
+function getRouteNotes(route: RouteDefinition | null | undefined): string {
+  return normalizeOptionalRouteText(route?.notes ?? route?.description) ?? "";
+}
+
+function dedupeRouteDefinitions(routes: RouteDefinition[]): RouteDefinition[] {
+  const byId = new Map<string, RouteDefinition>();
+  for (const route of routes) byId.set(route.id, route);
+  return Array.from(byId.values());
 }
 
 function makeManualRouteId(floorNumber: number, label: string): string {
@@ -2988,20 +3045,20 @@ function makeManualRouteId(floorNumber: number, label: string): string {
   return `manual-${floorNumber}-${slug}-${Date.now().toString(36)}`;
 }
 
-function downloadTextFile(filename: string, contents: string) {
-  const blob = new Blob([contents], { type: "application/json;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
-}
-
 function getRouteDefinitionsForFloor(floorNumber: number): RouteDefinition[] {
   return HARD_CODED_ROUTES.filter((route) => route.floorNumber === floorNumber);
+}
+
+function getMergedRouteDefinitionsForFloor(
+  floorNumber: number,
+  editorRoutes: RouteDefinition[],
+): RouteDefinition[] {
+  const byId = new Map<string, RouteDefinition>();
+  for (const route of getRouteDefinitionsForFloor(floorNumber)) byId.set(route.id, route);
+  for (const route of editorRoutes) {
+    if (route.floorNumber === floorNumber) byId.set(route.id, route);
+  }
+  return Array.from(byId.values());
 }
 
 function getTileByMapNumber(
@@ -3016,9 +3073,110 @@ function getRouteTiles(
   route: RouteDefinition | null,
 ): LoupLoupeTile[] {
   if (!route) return [];
-  return route.tileNumbers
+  return getRouteTileNumbers(route)
     .map((mapNumber) => getTileByMapNumber(floor, mapNumber))
     .filter(Boolean) as LoupLoupeTile[];
+}
+
+function getRoutePaths(route: RouteDefinition | null | undefined): Array<{
+  id: RoutePathId;
+  label: string;
+  tileNumbers: number[];
+}> {
+  if (!route) return [];
+  return [
+    { id: "main", label: "Main Path", tileNumbers: normalizeRoutePath(route.tileNumbers) },
+    ...normalizeRouteBranches(route.branches).map((tileNumbers, index) => ({
+      id: `branch-${index}` as RoutePathId,
+      label: `Fork ${index + 1}`,
+      tileNumbers,
+    })),
+  ];
+}
+
+function getRouteTileNumbers(route: RouteDefinition | null | undefined): number[] {
+  const seen = new Set<number>();
+  const tileNumbers: number[] = [];
+  for (const path of getRoutePaths(route)) {
+    for (const tileNumber of path.tileNumbers) {
+      if (seen.has(tileNumber)) continue;
+      seen.add(tileNumber);
+      tileNumbers.push(tileNumber);
+    }
+  }
+  return tileNumbers;
+}
+
+function routeHasTile(route: RouteDefinition | null | undefined, tileNumber: number): boolean {
+  return getRoutePaths(route).some((path) => path.tileNumbers.includes(tileNumber));
+}
+
+function getRoutePathTileNumbers(route: RouteDefinition, pathId: RoutePathId): number[] {
+  if (pathId === "main") return route.tileNumbers;
+  const branchIndex = Number(pathId.replace("branch-", ""));
+  return route.branches?.[branchIndex] ?? route.tileNumbers;
+}
+
+function updateRoutePath(
+  route: RouteDefinition,
+  pathId: RoutePathId,
+  updater: (tileNumbers: number[]) => number[],
+): RouteDefinition {
+  if (pathId === "main") {
+    return { ...route, tileNumbers: updater(route.tileNumbers) };
+  }
+  const branchIndex = Number(pathId.replace("branch-", ""));
+  if (!Number.isInteger(branchIndex) || branchIndex < 0) {
+    return { ...route, tileNumbers: updater(route.tileNumbers) };
+  }
+  const branches = normalizeRouteBranches(route.branches);
+  branches[branchIndex] = updater(branches[branchIndex] ?? []);
+  return {
+    ...route,
+    branches: branches.filter((path) => path.length > 0),
+  };
+}
+
+type RouteTileNoteDisplay = {
+  tile: LoupLoupeTile;
+  tileNumber: number;
+  note: string;
+  noteIndex: number;
+};
+
+function getRouteTileNoteDisplays(
+  floor: LoupLoupeFloor,
+  route: RouteDefinition | null,
+): RouteTileNoteDisplay[] {
+  if (!route?.tileNotes) return [];
+  const firstVisitByTile = new Map<number, number>();
+  let visitIndex = 0;
+  for (const path of getRoutePaths(route)) {
+    for (const tileNumber of path.tileNumbers) {
+      if (!firstVisitByTile.has(tileNumber)) firstVisitByTile.set(tileNumber, visitIndex);
+      visitIndex += 1;
+    }
+  }
+
+  return Object.entries(route.tileNotes)
+    .map(([tileNumberText, note]) => {
+      const tileNumber = Number(tileNumberText);
+      const normalizedNote = normalizeOptionalRouteText(note);
+      const tile = getTileByMapNumber(floor, tileNumber);
+      if (!tile || !normalizedNote) return null;
+      return {
+        tile,
+        tileNumber,
+        note: normalizedNote,
+        firstVisit: firstVisitByTile.get(tileNumber) ?? Number.MAX_SAFE_INTEGER,
+      };
+    })
+    .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry))
+    .sort((a, b) => a.firstVisit - b.firstVisit || a.tileNumber - b.tileNumber)
+    .map(({ firstVisit: _firstVisit, ...entry }, index) => ({
+      ...entry,
+      noteIndex: index + 1,
+    }));
 }
 
 function getWarpHighlightColor(warpPointColor: number): string {
@@ -3747,9 +3905,14 @@ function PlainSubmesh({
     const base = new THREE.Color(...(materialInfo?.baseColor.slice(0, 3) ?? [1, 1, 1]));
     return materialInfo ? brightenMapMaterialColor(base, materialInfo) : base;
   }, [materialInfo]);
+  const lit = shouldUseLitMaterial(materialInfo);
   return (
     <mesh geometry={geometry} dispose={null}>
-      <meshBasicMaterial color={color} side={THREE.DoubleSide} />
+      {lit ? (
+        <meshLambertMaterial color={color} side={THREE.DoubleSide} />
+      ) : (
+        <meshBasicMaterial color={color} side={THREE.DoubleSide} />
+      )}
     </mesh>
   );
 }
@@ -3798,7 +3961,12 @@ function TexturedSubmesh({
   );
   const additive = usesAdditiveTexture(materialInfo.name, materialInfo);
   const alpha = materialInfo.baseColor[3];
-  const materialRef = useRef<THREE.MeshBasicMaterial>(null);
+  // Use a lit material for URP/Lit and Tempest/Tower/* shader families so
+  // the scene lights actually contribute (the way they do in Unity at
+  // runtime) instead of multiplying baseColor by a magic number.  Additive,
+  // distortion, invisible, and shadow shaders remain unlit.
+  const lit = !additive && shouldUseLitMaterial(materialInfo);
+  const materialRef = useRef<THREE.MeshBasicMaterial | THREE.MeshLambertMaterial>(null);
   const emissionMaterialRef = useRef<THREE.MeshBasicMaterial>(null);
   // Only treat as transparent when the material explicitly uses the alpha channel
   // for transparency (composited/mask textures) or sits in the transparent render
@@ -3853,19 +4021,32 @@ function TexturedSubmesh({
   return (
     <group>
       <mesh geometry={geometry} dispose={null}>
-        <meshBasicMaterial
-          ref={materialRef}
-          alphaTest={needsTransparency ? 0.04 : 0}
-          blending={additive ? THREE.AdditiveBlending : THREE.NormalBlending}
-          color={colorOverride ?? baseColor}
-          depthWrite={!additive && !colorClip}
-          map={texture}
-          opacity={
-            opacityOverride ?? (additive ? 0.58 : materialInfo.baseColor[3])
-          }
-          side={THREE.DoubleSide}
-          transparent={needsTransparency}
-        />
+        {lit ? (
+          <meshLambertMaterial
+            ref={materialRef as React.Ref<THREE.MeshLambertMaterial>}
+            alphaTest={needsTransparency ? 0.04 : 0}
+            color={colorOverride ?? baseColor}
+            depthWrite={!colorClip}
+            map={texture}
+            opacity={opacityOverride ?? materialInfo.baseColor[3]}
+            side={THREE.DoubleSide}
+            transparent={needsTransparency}
+          />
+        ) : (
+          <meshBasicMaterial
+            ref={materialRef as React.Ref<THREE.MeshBasicMaterial>}
+            alphaTest={needsTransparency ? 0.04 : 0}
+            blending={additive ? THREE.AdditiveBlending : THREE.NormalBlending}
+            color={colorOverride ?? baseColor}
+            depthWrite={!additive && !colorClip}
+            map={texture}
+            opacity={
+              opacityOverride ?? (additive ? 0.58 : materialInfo.baseColor[3])
+            }
+            side={THREE.DoubleSide}
+            transparent={needsTransparency}
+          />
+        )}
       </mesh>
       {emissionTexture ? (
         <mesh geometry={geometry} dispose={null} renderOrder={2}>
@@ -4300,26 +4481,6 @@ function shouldRenderPrefabParticle(
   return true;
 }
 
-function getUnityLightTarget(
-  position: [number, number, number],
-  rotation: [number, number, number, number] | null | undefined,
-  distance = 10,
-): [number, number, number] {
-  const q = rotation
-    ? new THREE.Quaternion(rotation[0], rotation[1], rotation[2], rotation[3])
-    : new THREE.Quaternion();
-  // Unity spot/directional lights point along transform.forward, i.e. local +Z.
-  // Use the exported rotation to aim the target instead of sending every light
-  // toward the board center.
-  const direction = new THREE.Vector3(0, 0, 1).applyQuaternion(q).normalize();
-  const length = Math.max(1, distance);
-  return [
-    position[0] + direction.x * length,
-    position[1] + direction.y * length,
-    position[2] + direction.z * length,
-  ];
-}
-
 function PrefabInstance({
   prefabKey,
   position = [0, 0, 0],
@@ -4374,7 +4535,18 @@ function PrefabInstance({
         const color = new THREE.Color(light.color[0], light.color[1], light.color[2]);
         const key = `${light.name}-${index}`;
         if (light.type === 0) {
-          const target = getUnityLightTarget(light.position, light.rotation, light.range || 10);
+          const q = new THREE.Quaternion(
+            light.rotation[0],
+            light.rotation[1],
+            light.rotation[2],
+            light.rotation[3],
+          );
+          const forward = new THREE.Vector3(0, 0, 1).applyQuaternion(q);
+          const target: [number, number, number] = [
+            light.position[0] + forward.x,
+            light.position[1] + forward.y,
+            light.position[2] + forward.z,
+          ];
           return (
             <SpotLightWithTarget
               key={key}
@@ -4390,12 +4562,11 @@ function PrefabInstance({
         }
         if (light.type === 1) {
           return (
-            <DirectionalLightWithTarget
+            <directionalLight
               key={key}
               color={color}
               intensity={light.intensity}
               position={light.position}
-              target={getUnityLightTarget(light.position, light.rotation, 10)}
             />
           );
         }
@@ -4421,119 +4592,99 @@ function PrefabInstance({
 // components, with the Unity LightType enum converted to the matching
 // THREE light primitive (0=Spot→spotLight, 1=Directional→directionalLight,
 // 2=Point→pointLight, 3=Area→rectAreaLight).
-function SceneLightingFromGame({ floor }: { floor: LoupLoupeFloor }) {
-  const sceneName = floor.map_scene_name as string | undefined;
-  const lighting = sceneName ? towerAssetManifest.sceneLighting?.[sceneName] : undefined;
-  if (!lighting) {
-    // Fallback to a minimal neutral setup only when no scene lighting was
-    // extracted for this floor.  Should not happen for known floors.
-    return (
-      <>
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[0, 10, 0]} intensity={1} />
-      </>
-    );
-  }
-  const rs = lighting.renderSettings;
-  const ambSky = rs?.ambientSkyColor;
-  const ambEq = rs?.ambientEquatorColor;
-  const ambGr = rs?.ambientGroundColor;
-  // ambientMode 0 = Skybox, 1 = Trilight (sky/equator/ground gradient),
-  // 3 = Flat (single colour).  Three's <ambientLight> is flat, so for
-  // Trilight we approximate with one ambientLight (equator colour) plus
-  // a <hemisphereLight> for the sky/ground gradient term.
+const UNITY_TOWER_LIGHT_X_UNIT = 1.447633;
+const UNITY_TOWER_LIGHT_Z_UNIT = 0.928425;
+const MAX_BOARD_SCENE_LIGHTS = 16;
+
+function getFloorBoardCenterZ(floor: LoupLoupeFloor): number {
+  const { zOffset } = towerAssets.tileLayout;
+  return (floor.map_side - 1) / 2 + zOffset;
+}
+
+function getUnityToBoardLightScale(): { x: number; y: number; z: number; uniform: number } {
+  const { xPitch, zPitch } = towerAssets.tileLayout;
+  const x = xPitch / UNITY_TOWER_LIGHT_X_UNIT;
+  const z = zPitch / UNITY_TOWER_LIGHT_Z_UNIT;
+  const uniform = (x + z) / 2;
+  return { x, y: uniform, z, uniform };
+}
+
+function unityScenePositionToBoard(
+  floor: LoupLoupeFloor,
+  position: [number, number, number],
+): [number, number, number] {
+  const scale = getUnityToBoardLightScale();
+  return [
+    -position[0] * scale.x,
+    position[1] * scale.y,
+    position[2] * scale.z + getFloorBoardCenterZ(floor),
+  ];
+}
+
+function unitySceneDirectionToBoard(direction: THREE.Vector3): THREE.Vector3 {
+  const scale = getUnityToBoardLightScale();
+  const mapped = new THREE.Vector3(
+    -direction.x * scale.x,
+    direction.y * scale.y,
+    direction.z * scale.z,
+  );
+  if (mapped.lengthSq() === 0) return new THREE.Vector3(0, -1, 0);
+  return mapped.normalize();
+}
+
+function unityLightForward(rotation: [number, number, number, number] | null): THREE.Vector3 {
+  if (!rotation) return new THREE.Vector3(0, -1, 0);
+  const q = new THREE.Quaternion(rotation[0], rotation[1], rotation[2], rotation[3]);
+  return new THREE.Vector3(0, 0, 1).applyQuaternion(q).normalize();
+}
+
+function lightTargetFromDirection(
+  position: [number, number, number],
+  direction: THREE.Vector3,
+): [number, number, number] {
+  const distanceToBoard = direction.y < -0.001 ? Math.max(1, position[1] / -direction.y) : 8;
+  return [
+    position[0] + direction.x * distanceToBoard,
+    position[1] + direction.y * distanceToBoard,
+    position[2] + direction.z * distanceToBoard,
+  ];
+}
+
+function BoardFillLights({ ambientColor }: { floor: LoupLoupeFloor; ambientColor?: THREE.Color }) {
+  const baseAmbient = ambientColor ?? new THREE.Color("#e5f1ff");
+
   return (
     <>
-      {ambEq ? (
-        <ambientLight
-          intensity={rs?.ambientIntensity ?? 1}
-          color={new THREE.Color(ambEq[0], ambEq[1], ambEq[2])}
-        />
-      ) : (
-        <ambientLight intensity={rs?.ambientIntensity ?? 1} />
-      )}
-      {rs?.ambientMode === 1 && ambSky && ambGr ? (
-        <hemisphereLight
-          intensity={rs.ambientIntensity ?? 1}
-          color={new THREE.Color(ambSky[0], ambSky[1], ambSky[2])}
-          groundColor={new THREE.Color(ambGr[0], ambGr[1], ambGr[2])}
-        />
-      ) : null}
-
-      {lighting.lights.map((light, index) => {
-        const color = light.color
-          ? new THREE.Color(light.color[0], light.color[1], light.color[2])
-          : new THREE.Color(1, 1, 1);
-        const position = light.position ?? [0, 0, 0];
-        const rotation = light.rotation ?? null;
-        const key = `${light.name}-${index}`;
-
-        // type=0 = Spot
-        if (light.type === 0) {
-          const target = getUnityLightTarget(
-            position as [number, number, number],
-            rotation,
-            light.range || 10,
-          );
-          return (
-            <SpotLightWithTarget
-              key={key}
-              color={color}
-              intensity={light.intensity}
-              position={position as [number, number, number]}
-              target={target}
-              distance={light.range}
-              angle={THREE.MathUtils.degToRad(light.spotAngle / 2)}
-              penumbra={Math.max(0, 1 - light.innerSpotAngle / Math.max(light.spotAngle, 0.001))}
-            />
-          );
-        }
-
-        // type=1 = Directional
-        if (light.type === 1) {
-          const lightPosition = position as [number, number, number];
-          return (
-            <DirectionalLightWithTarget
-              key={key}
-              color={color}
-              intensity={light.intensity}
-              position={lightPosition}
-              target={getUnityLightTarget(lightPosition, rotation, 10)}
-            />
-          );
-        }
-
-        // type=2 = Point
-        if (light.type === 2) {
-          return (
-            <pointLight
-              key={key}
-              color={color}
-              intensity={light.intensity}
-              position={position as [number, number, number]}
-              distance={light.range}
-              decay={0}
-            />
-          );
-        }
-
-        // type=3 = Area / Rectangle - THREE has rectAreaLight but it
-        // needs RectAreaLightUniformsLib initialization; skip for now
-        // and approximate as a pointLight.  TODO: wire up rectAreaLight
-        // properly once we know if it materially affects the look.
-        return (
-          <pointLight
-            key={key}
-            color={color}
-            intensity={light.intensity * 0.5}
-            position={position as [number, number, number]}
-            distance={light.range || 10}
-            decay={0}
-          />
-        );
-      })}
+      <ambientLight color={baseAmbient} intensity={1.25} />
     </>
   );
+}
+
+function getBoardSceneLights(lighting: TowerSceneLighting): TowerSceneLight[] {
+  return [...lighting.lights]
+    .filter((light) => light.intensity > 0)
+    .sort((a, b) => {
+      const priority = (light: TowerSceneLight) => {
+        const typeWeight = light.type === 1 ? 1000 : light.type === 0 ? 650 : light.type === 3 ? 320 : 0;
+        return typeWeight + light.intensity * Math.max(1, light.range || 1);
+      };
+      return priority(b) - priority(a);
+    })
+    .slice(0, MAX_BOARD_SCENE_LIGHTS);
+}
+
+function SceneLightingFromGame({ floor }: { floor: LoupLoupeFloor }) {
+  const sceneName = floor.map_scene_name as string | undefined;
+  const lighting = sceneName ? towerAssets.sceneLighting?.[sceneName] : undefined;
+  if (!lighting) {
+    return <BoardFillLights floor={floor} />;
+  }
+  const rs = lighting.renderSettings;
+  const ambEq = rs?.ambientEquatorColor;
+  const ambientColor = ambEq
+    ? new THREE.Color(ambEq[0], ambEq[1], ambEq[2]).lerp(new THREE.Color("#e5f1ff"), 0.62)
+    : undefined;
+  return <BoardFillLights floor={floor} ambientColor={ambientColor} />;
 }
 
 function DirectionalLightWithTarget({
@@ -4552,7 +4703,6 @@ function DirectionalLightWithTarget({
   useEffect(() => {
     if (lightRef.current && targetRef.current) {
       lightRef.current.target = targetRef.current;
-      targetRef.current.updateMatrixWorld();
     }
   }, []);
   return (
@@ -4585,7 +4735,6 @@ function SpotLightWithTarget({
   useEffect(() => {
     if (lightRef.current && targetRef.current) {
       lightRef.current.target = targetRef.current;
-      targetRef.current.updateMatrixWorld();
     }
   }, []);
   // decay=0 matches Unity's non-physical (gamma-space) light model where
@@ -4654,7 +4803,10 @@ function TileHitTarget({
       rotation={[-Math.PI / 2, 0, Math.PI / 6]}
       onClick={(event) => {
         event.stopPropagation();
-        if (routeEditorActive) return;
+        if (routeEditorActive) {
+          routeEditor?.onTileClick?.(tile);
+          return;
+        }
         onTileClick(tile);
       }}
       onPointerDown={(event) => {
@@ -5088,22 +5240,294 @@ function RouteSegment({
   from,
   to,
   color,
+  offset,
+  repeated,
 }: {
   from: LoupLoupeTile;
   to: LoupLoupeTile;
   color: string;
+  offset: number;
+  repeated: boolean;
 }) {
+  const { start, end } = getOffsetRoutePoints(from, to, offset, 0.3);
+
+  return (
+    <group>
+      <CylinderBetween
+        start={start}
+        end={end}
+        radius={repeated ? 0.095 : 0.082}
+        color="#02060f"
+        opacity={0.62}
+        renderOrder={88}
+      />
+      <CylinderBetween
+        start={start}
+        end={end}
+        radius={repeated ? 0.071 : 0.062}
+        color={color}
+        opacity={0.24}
+        renderOrder={89}
+      />
+      <CylinderBetween
+        start={start}
+        end={end}
+        radius={repeated ? 0.041 : 0.036}
+        color={color}
+        opacity={0.94}
+        renderOrder={90}
+      />
+      <RouteArrowHead start={start} end={end} color={color} renderOrder={91} />
+    </group>
+  );
+}
+
+function RouteTileMarker({
+  tile,
+  color,
+  isStart,
+  isEnd,
+  visitCount,
+}: {
+  tile: LoupLoupeTile;
+  color: string;
+  isStart: boolean;
+  isEnd: boolean;
+  visitCount: number;
+}) {
+  const position = getTilePosition(tile);
+  const endpoint = isStart || isEnd;
+  const label = isStart ? "Start" : isEnd ? "End" : "";
+  const visitPips = Array.from({ length: Math.min(visitCount, 5) });
+  return (
+    <group position={[position[0], 0.31, position[2]]}>
+      <mesh renderOrder={95}>
+        <cylinderGeometry args={[endpoint ? 0.29 : 0.22, endpoint ? 0.29 : 0.22, 0.035, 32]} />
+        <meshBasicMaterial
+          color={color}
+          transparent
+          opacity={endpoint ? 0.72 : 0.34}
+          depthTest={false}
+          depthWrite={false}
+        />
+      </mesh>
+      <mesh position={[0, 0.034, 0]} rotation={[-Math.PI / 2, 0, 0]} renderOrder={96}>
+        <ringGeometry args={[endpoint ? 0.29 : 0.22, endpoint ? 0.37 : 0.29, 32]} />
+        <meshBasicMaterial
+          color={color}
+          transparent
+          opacity={endpoint ? 0.96 : 0.7}
+          depthTest={false}
+          depthWrite={false}
+          side={THREE.DoubleSide}
+        />
+      </mesh>
+      {visitCount > 1
+        ? visitPips.map((_, index) => {
+            const angle = -Math.PI / 2 + (index - (visitPips.length - 1) / 2) * 0.42;
+            return (
+              <mesh
+                key={`visit-pip-${tile.master_tower_map_id}-${index}`}
+                position={[Math.cos(angle) * 0.28, 0.075, Math.sin(angle) * 0.28]}
+                renderOrder={98}
+              >
+                <sphereGeometry args={[0.045, 12, 8]} />
+                <meshBasicMaterial color={color} transparent opacity={0.95} depthTest={false} depthWrite={false} />
+              </mesh>
+            );
+          })
+        : null}
+      {label ? (
+        <Html center position={[0, 0.24, 0]} style={{ pointerEvents: "none" }}>
+          <span
+            className="whitespace-nowrap rounded-md border bg-[#050914]/85 px-1.5 py-0.5 text-[10px] font-black uppercase tracking-[0.08em] text-white shadow-lg"
+            style={{
+              borderColor: `${color}99`,
+              boxShadow: `0 0 16px ${color}66`,
+            }}
+          >
+            {label}
+          </span>
+        </Html>
+      ) : null}
+    </group>
+  );
+}
+
+function RouteTileNoteMarker({
+  tile,
+  color,
+  noteIndex,
+}: {
+  tile: LoupLoupeTile;
+  color: string;
+  noteIndex: number;
+}) {
+  const position = getTilePosition(tile);
+  return (
+    <Html center position={[position[0] + 0.28, 0.78, position[2] - 0.24]} style={{ pointerEvents: "none" }}>
+      <span
+        className="flex h-7 min-w-7 items-center justify-center rounded-full border-2 bg-[#05101d] px-1 text-[12px] font-black leading-none text-white shadow-2xl"
+        style={{
+          borderColor: color,
+          boxShadow: `0 0 0 2px rgba(0,0,0,0.75), 0 0 18px ${color}aa`,
+        }}
+      >
+        {noteIndex}
+      </span>
+    </Html>
+  );
+}
+
+type RouteSegmentRenderInfo = {
+  from: LoupLoupeTile;
+  to: LoupLoupeTile;
+  pathId: RoutePathId;
+  index: number;
+  offset: number;
+  repeated: boolean;
+  warp: LoupLoupeEvent["warp_points"][number] | null;
+};
+
+type RouteMarkerRenderInfo = {
+  tile: LoupLoupeTile;
+  firstIndex: number;
+  lastIndex: number;
+  visitCount: number;
+};
+
+function routeSegmentKey(from: LoupLoupeTile, to: LoupLoupeTile): string {
+  const a = from.map_number;
+  const b = to.map_number;
+  return a < b ? `${a}:${b}` : `${b}:${a}`;
+}
+
+function findWarpConnection(
+  floor: LoupLoupeFloor,
+  from: LoupLoupeTile,
+  to: LoupLoupeTile,
+): LoupLoupeEvent["warp_points"][number] | null {
+  for (const warp of from.event?.warp_points ?? []) {
+    if (resolveWarpDestinations(floor, from, warp).some((tile) => tile.master_tower_map_id === to.master_tower_map_id)) {
+      return warp;
+    }
+  }
+  for (const warp of to.event?.warp_points ?? []) {
+    if (resolveWarpDestinations(floor, to, warp).some((tile) => tile.master_tower_map_id === from.master_tower_map_id)) {
+      return warp;
+    }
+  }
+  return null;
+}
+
+function getRouteSegmentRenderInfo(
+  floor: LoupLoupeFloor,
+  routePaths: Array<{ id: RoutePathId; tiles: LoupLoupeTile[] }>,
+): RouteSegmentRenderInfo[] {
+  const baseSegments = routePaths.flatMap((path) =>
+    path.tiles.slice(0, -1).map((tile, index) => ({
+      from: tile,
+      to: path.tiles[index + 1],
+      pathId: path.id,
+      index,
+      key: routeSegmentKey(tile, path.tiles[index + 1]),
+    })),
+  );
+  const segmentCounts = new Map<string, number>();
+  for (const segment of baseSegments) {
+    segmentCounts.set(segment.key, (segmentCounts.get(segment.key) ?? 0) + 1);
+  }
+
+  const seenSegments = new Map<string, number>();
+  return baseSegments.map((segment) => {
+    const count = segmentCounts.get(segment.key) ?? 1;
+    const occurrence = seenSegments.get(segment.key) ?? 0;
+    seenSegments.set(segment.key, occurrence + 1);
+    const offset = count > 1 ? (occurrence - (count - 1) / 2) * 0.24 : 0;
+    return {
+      from: segment.from,
+      to: segment.to,
+      pathId: segment.pathId,
+      index: segment.index,
+      offset,
+      repeated: count > 1,
+      warp: findWarpConnection(floor, segment.from, segment.to),
+    };
+  });
+}
+
+function getRouteMarkerRenderInfo(routePaths: Array<{ tiles: LoupLoupeTile[] }>): RouteMarkerRenderInfo[] {
+  const markerByTile = new Map<number, RouteMarkerRenderInfo>();
+  let visitIndex = 0;
+  for (const path of routePaths) {
+    path.tiles.forEach((tile, pathIndex) => {
+      const existing = markerByTile.get(tile.map_number);
+      if (existing) {
+        existing.lastIndex = visitIndex;
+        existing.visitCount += 1;
+      } else {
+        markerByTile.set(tile.map_number, {
+          tile,
+          firstIndex: visitIndex,
+          lastIndex: visitIndex,
+          visitCount: 1,
+        });
+      }
+      visitIndex += 1;
+      if (pathIndex === path.tiles.length - 1) visitIndex += 0.25;
+    });
+  }
+  return Array.from(markerByTile.values()).sort((a, b) => a.firstIndex - b.firstIndex);
+}
+
+function getOffsetRoutePoints(
+  from: LoupLoupeTile,
+  to: LoupLoupeTile,
+  offset: number,
+  y: number,
+): { start: THREE.Vector3; end: THREE.Vector3 } {
   const fromPosition = getTilePosition(from);
   const toPosition = getTilePosition(to);
-  const start = new THREE.Vector3(fromPosition[0], 0.24, fromPosition[2]);
-  const end = new THREE.Vector3(toPosition[0], 0.24, toPosition[2]);
+  const start = new THREE.Vector3(fromPosition[0], y, fromPosition[2]);
+  const end = new THREE.Vector3(toPosition[0], y, toPosition[2]);
+  const stableStart = from.map_number <= to.map_number ? fromPosition : toPosition;
+  const stableEnd = from.map_number <= to.map_number ? toPosition : fromPosition;
+  const stableDirection = new THREE.Vector3(
+    stableEnd[0] - stableStart[0],
+    0,
+    stableEnd[2] - stableStart[2],
+  );
+  const normal = new THREE.Vector3(-stableDirection.z, 0, stableDirection.x);
+  if (normal.lengthSq() > 0.0001 && offset !== 0) {
+    normal.normalize().multiplyScalar(offset);
+    start.add(normal);
+    end.add(normal);
+  }
+  return { start, end };
+}
+
+function CylinderBetween({
+  start,
+  end,
+  radius,
+  color,
+  opacity,
+  renderOrder,
+  radialSegments = 14,
+}: {
+  start: THREE.Vector3;
+  end: THREE.Vector3;
+  radius: number;
+  color: string;
+  opacity: number;
+  renderOrder: number;
+  radialSegments?: number;
+}) {
   const direction = new THREE.Vector3().subVectors(end, start);
   const length = direction.length();
   if (length <= 0.001) return null;
 
-  const midpoint = new THREE.Vector3()
-    .addVectors(start, end)
-    .multiplyScalar(0.5);
+  const midpoint = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5);
   const quaternion = new THREE.Quaternion().setFromUnitVectors(
     new THREE.Vector3(0, 1, 0),
     direction.normalize(),
@@ -5113,50 +5537,47 @@ function RouteSegment({
     <mesh
       position={[midpoint.x, midpoint.y, midpoint.z]}
       quaternion={quaternion}
-      renderOrder={90}
+      renderOrder={renderOrder}
     >
-      <cylinderGeometry args={[0.055, 0.055, length, 12]} />
+      <cylinderGeometry args={[radius, radius, length, radialSegments]} />
       <meshBasicMaterial
         color={color}
         transparent
-        opacity={0.82}
+        opacity={opacity}
         depthTest={false}
+        depthWrite={false}
       />
     </mesh>
   );
 }
 
-function RouteTileMarker({
-  tile,
+function RouteArrowHead({
+  start,
+  end,
   color,
-  index,
+  renderOrder,
 }: {
-  tile: LoupLoupeTile;
+  start: THREE.Vector3;
+  end: THREE.Vector3;
   color: string;
-  index: number;
+  renderOrder: number;
 }) {
-  const position = getTilePosition(tile);
+  const direction = new THREE.Vector3().subVectors(end, start);
+  const length = direction.length();
+  if (length <= 0.35) return null;
+  const normalized = direction.normalize();
+  const position = end.clone().addScaledVector(normalized, -0.18);
+  const quaternion = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), normalized);
+
   return (
-    <group position={[position[0], 0.28, position[2]]}>
-      <mesh renderOrder={95}>
-        <cylinderGeometry args={[0.24, 0.24, 0.035, 32]} />
-        <meshBasicMaterial
-          color={color}
-          transparent
-          opacity={index === 0 ? 0.95 : 0.38}
-          depthTest={false}
-        />
-      </mesh>
-      <mesh position={[0, 0.03, 0]} renderOrder={96}>
-        <torusGeometry args={[0.27, 0.032, 8, 32]} />
-        <meshBasicMaterial
-          color={color}
-          transparent
-          opacity={0.92}
-          depthTest={false}
-        />
-      </mesh>
-    </group>
+    <mesh
+      position={[position.x, position.y, position.z]}
+      quaternion={quaternion}
+      renderOrder={renderOrder}
+    >
+      <coneGeometry args={[0.105, 0.24, 18]} />
+      <meshBasicMaterial color={color} transparent opacity={0.96} depthTest={false} depthWrite={false} />
+    </mesh>
   );
 }
 
@@ -5167,25 +5588,59 @@ function RouteOverlay({
   floor: LoupLoupeFloor;
   route: RouteDefinition | null;
 }) {
-  const routeTiles = getRouteTiles(floor, route);
-  if (!route || routeTiles.length === 0) return null;
+  const routePaths = getRoutePaths(route)
+    .map((path) => ({
+      ...path,
+      tiles: path.tileNumbers
+        .map((tileNumber) => getTileByMapNumber(floor, tileNumber))
+        .filter(Boolean) as LoupLoupeTile[],
+    }))
+    .filter((path) => path.tiles.length > 0);
+  if (!route || routePaths.length === 0) return null;
+  const segments = getRouteSegmentRenderInfo(floor, routePaths);
+  const markers = getRouteMarkerRenderInfo(routePaths);
+  const lastMarkerIndex = markers.reduce((max, marker) => Math.max(max, marker.lastIndex), -1);
+  const tileNotes = getRouteTileNoteDisplays(floor, route);
 
   return (
     <group>
-      {routeTiles.slice(0, -1).map((tile, index) => (
-        <RouteSegment
-          key={`${route.id}-segment-${tile.master_tower_map_id}-${index}`}
-          from={tile}
-          to={routeTiles[index + 1]}
+      {segments.map((segment) =>
+        segment.warp ? (
+          <RouteWarpSegment
+            key={`${route.id}-warp-segment-${segment.pathId}-${segment.from.master_tower_map_id}-${segment.index}`}
+            from={segment.from}
+            to={segment.to}
+            color={route.color}
+            offset={segment.offset}
+            warp={segment.warp}
+          />
+        ) : (
+          <RouteSegment
+            key={`${route.id}-segment-${segment.pathId}-${segment.from.master_tower_map_id}-${segment.index}`}
+            from={segment.from}
+            to={segment.to}
+            color={route.color}
+            offset={segment.offset}
+            repeated={segment.repeated}
+          />
+        ),
+      )}
+      {markers.map((marker) => (
+        <RouteTileMarker
+          key={`${route.id}-marker-${marker.tile.master_tower_map_id}`}
+          tile={marker.tile}
           color={route.color}
+          isStart={marker.firstIndex === 0}
+          isEnd={marker.lastIndex === lastMarkerIndex}
+          visitCount={marker.visitCount}
         />
       ))}
-      {routeTiles.map((tile, index) => (
-        <RouteTileMarker
-          key={`${route.id}-marker-${tile.master_tower_map_id}-${index}`}
+      {tileNotes.map(({ tile, noteIndex }) => (
+        <RouteTileNoteMarker
+          key={`${route.id}-tile-note-${tile.master_tower_map_id}`}
           tile={tile}
           color={route.color}
-          index={index}
+          noteIndex={noteIndex}
         />
       ))}
     </group>
@@ -5201,50 +5656,129 @@ function WarpLinkSegment({
   to: LoupLoupeTile;
   color: string;
 }) {
-  const fromPosition = getTilePosition(from);
-  const toPosition = getTilePosition(to);
-  const start = new THREE.Vector3(fromPosition[0], 0.16, fromPosition[2]);
-  const end = new THREE.Vector3(toPosition[0], 0.16, toPosition[2]);
-  const midpoint = start.clone().lerp(end, 0.5);
-  const direction = end.clone().sub(start);
-  const length = direction.length();
-  const quaternion = new THREE.Quaternion().setFromUnitVectors(
-    new THREE.Vector3(0, 1, 0),
-    direction.clone().normalize(),
-  );
+  return <DashedWarpArc from={from} to={to} color={color} secondaryColor={color} offset={0} />;
+}
 
+function RouteWarpSegment({
+  from,
+  to,
+  color,
+  offset,
+  warp,
+}: {
+  from: LoupLoupeTile;
+  to: LoupLoupeTile;
+  color: string;
+  offset: number;
+  warp: LoupLoupeEvent["warp_points"][number];
+}) {
+  const warpColor = getWarpHighlightColor(warp.warp_point_color);
+  const label = `W${warp.warp_number}`;
   return (
-    <group position={[midpoint.x, midpoint.y, midpoint.z]} quaternion={quaternion} renderOrder={96}>
-      <mesh renderOrder={96}>
-        <cylinderGeometry args={[0.05, 0.05, length, 12]} />
-        <meshBasicMaterial color={color} transparent opacity={0.88} depthTest={false} />
-      </mesh>
-      <mesh position={[0, length * 0.5 - 0.13, 0]} renderOrder={97}>
-        <coneGeometry args={[0.16, 0.28, 16]} />
-        <meshBasicMaterial color={color} transparent opacity={0.95} depthTest={false} />
-      </mesh>
+    <group>
+      <DashedWarpArc from={from} to={to} color={color} secondaryColor={warpColor} offset={offset} />
+      <WarpPortalMarker tile={from} color={warpColor} label={label} />
+      <WarpPortalMarker tile={to} color={warpColor} label={label} />
     </group>
   );
 }
 
-function WarpDestinationMarker({
+function DashedWarpArc({
+  from,
+  to,
+  color,
+  secondaryColor,
+  offset,
+}: {
+  from: LoupLoupeTile;
+  to: LoupLoupeTile;
+  color: string;
+  secondaryColor: string;
+  offset: number;
+}) {
+  const { start, end } = getOffsetRoutePoints(from, to, offset, 0.5);
+  const direction = new THREE.Vector3().subVectors(end, start);
+  const length = direction.length();
+  if (length <= 0.001) return null;
+
+  const normal = new THREE.Vector3(-direction.z, 0, direction.x);
+  if (normal.lengthSq() > 0.0001) {
+    normal.normalize().multiplyScalar(Math.min(0.5, Math.max(0.16, length * 0.045)));
+  }
+  const midpoint = start.clone().lerp(end, 0.5);
+  const control = midpoint.clone().add(normal);
+  control.y += Math.min(1.35, Math.max(0.58, length * 0.12));
+  const curve = new THREE.QuadraticBezierCurve3(start, control, end);
+  const points = curve.getPoints(34);
+  const dashPairs: Array<[THREE.Vector3, THREE.Vector3]> = [];
+  for (let index = 0; index < points.length - 1; index += 2) {
+    dashPairs.push([points[index], points[index + 1]]);
+  }
+
+  return (
+    <group>
+      {dashPairs.map(([dashStart, dashEnd], index) => (
+        <group key={`warp-dash-${from.master_tower_map_id}-${to.master_tower_map_id}-${index}`}>
+          <CylinderBetween
+            start={dashStart}
+            end={dashEnd}
+            radius={0.064}
+            color={secondaryColor}
+            opacity={0.2}
+            renderOrder={92}
+          />
+          <CylinderBetween
+            start={dashStart}
+            end={dashEnd}
+            radius={0.034}
+            color={color}
+            opacity={0.92}
+            renderOrder={93}
+          />
+        </group>
+      ))}
+      <RouteArrowHead start={points[Math.max(0, points.length - 4)]} end={end} color={color} renderOrder={94} />
+    </group>
+  );
+}
+
+function WarpPortalMarker({
   tile,
   color,
+  label,
 }: {
   tile: LoupLoupeTile;
   color: string;
+  label?: string;
 }) {
   const position = getTilePosition(tile);
   return (
-    <group position={position} renderOrder={97}>
-      <mesh position={[0, 0.06, 0]} renderOrder={97}>
-        <ringGeometry args={[0.2, 0.29, 24]} />
-        <meshBasicMaterial color={color} transparent opacity={0.96} depthTest={false} side={THREE.DoubleSide} />
+    <group position={[position[0], 0.35, position[2]]} renderOrder={97}>
+      <mesh renderOrder={96}>
+        <cylinderGeometry args={[0.34, 0.34, 0.032, 32]} />
+        <meshBasicMaterial color={color} transparent opacity={0.18} depthTest={false} depthWrite={false} />
       </mesh>
-      <mesh position={[0, 0.061, 0]} rotation={[-Math.PI / 2, 0, 0]} renderOrder={97}>
-        <ringGeometry args={[0.32, 0.38, 24]} />
-        <meshBasicMaterial color={color} transparent opacity={0.5} depthTest={false} side={THREE.DoubleSide} />
+      <mesh position={[0, 0.04, 0]} rotation={[-Math.PI / 2, 0, 0]} renderOrder={97}>
+        <ringGeometry args={[0.23, 0.34, 28]} />
+        <meshBasicMaterial color={color} transparent opacity={0.96} depthTest={false} depthWrite={false} side={THREE.DoubleSide} />
       </mesh>
+      <mesh position={[0, 0.045, 0]} rotation={[-Math.PI / 2, 0, 0]} renderOrder={98}>
+        <ringGeometry args={[0.39, 0.46, 28]} />
+        <meshBasicMaterial color={color} transparent opacity={0.42} depthTest={false} depthWrite={false} side={THREE.DoubleSide} />
+      </mesh>
+      {label ? (
+        <Html center position={[0, 0.26, 0]} style={{ pointerEvents: "none" }}>
+          <span
+            className="rounded-full border bg-[#050914]/90 px-1.5 py-0.5 text-[10px] font-black uppercase tracking-[0.08em] text-white shadow-lg"
+            style={{
+              borderColor: `${color}aa`,
+              boxShadow: `0 0 18px ${color}66`,
+            }}
+          >
+            {label}
+          </span>
+        </Html>
+      ) : null}
     </group>
   );
 }
@@ -5257,8 +5791,9 @@ function WarpOverlay({
   destinations: LoupLoupeTile[];
 }) {
   if (!sourceTile || destinations.length === 0) return null;
-  const warpColor = sourceTile.event?.warp_points?.[0]?.warp_point_color ?? 0;
-  const color = getWarpHighlightColor(warpColor);
+  const warp = sourceTile.event?.warp_points?.[0] ?? null;
+  const color = getWarpHighlightColor(warp?.warp_point_color ?? 0);
+  const label = warp ? `W${warp.warp_number}` : "Warp";
 
   return (
     <group>
@@ -5270,11 +5805,13 @@ function WarpOverlay({
           color={color}
         />
       ))}
+      <WarpPortalMarker tile={sourceTile} color={color} label={label} />
       {destinations.map((destination) => (
-        <WarpDestinationMarker
+        <WarpPortalMarker
           key={`warp-marker-${destination.master_tower_map_id}`}
           tile={destination}
           color={color}
+          label={label}
         />
       ))}
     </group>
@@ -5313,9 +5850,6 @@ function TowerBoardScene({
   return (
     <>
       <BoardCamera floor={floor} />
-      <ambientLight intensity={0.72} />
-      <directionalLight position={[-4.4, 7.2, -5.8]} intensity={1.3} />
-      <directionalLight position={[4.4, 5.5, 7.2]} intensity={0.55} color="#8fc7ff" />
       <SceneLightingFromGame floor={floor} />
       <group>
         {groundPrefabKey ? (
@@ -5356,6 +5890,10 @@ function TowerBoard({
   routeEditor: RouteEditorPointerHandlers | null;
   onTileClick: (tile: LoupLoupeTile) => void;
 }) {
+  const routeNotes = getRouteNotes(selectedRoute);
+  const tileNotes = getRouteTileNoteDisplays(floor, selectedRoute);
+  const hasNotes = Boolean(routeNotes || tileNotes.length > 0);
+
   return (
     <div className="relative h-[min(72vh,48rem)] min-h-[30rem] w-full overflow-hidden">
       <Canvas
@@ -5378,6 +5916,51 @@ function TowerBoard({
           />
         </Suspense>
       </Canvas>
+      {hasNotes && selectedRoute ? (
+        <div className="pointer-events-none absolute left-3 top-3 z-10 max-h-[calc(100%-1.5rem)] w-[min(24rem,calc(100%-1.5rem))] overflow-auto rounded-lg border border-cyan-100/20 bg-[#06101c]/82 p-3 text-white shadow-2xl shadow-black/50 backdrop-blur image-scroll">
+          <div className="flex items-start gap-2">
+            <span
+              className="mt-1 h-3 w-3 shrink-0 rounded-full shadow-[0_0_14px_currentColor]"
+              style={{ color: selectedRoute.color, backgroundColor: selectedRoute.color }}
+            />
+            <div className="min-w-0">
+              <p className="text-[10px] font-black uppercase tracking-[0.16em] text-cyan-100">
+                Route Notes
+              </p>
+              <p className="truncate text-sm font-black text-white">{selectedRoute.label}</p>
+            </div>
+          </div>
+          {routeNotes ? (
+            <p className="mt-2 whitespace-pre-line rounded-md border border-white/10 bg-black/25 p-2 text-xs font-semibold leading-relaxed text-slate-100">
+              {routeNotes}
+            </p>
+          ) : null}
+          {tileNotes.length > 0 ? (
+            <div className="mt-2 space-y-1.5">
+              {tileNotes.map(({ tileNumber, note, noteIndex }) => (
+                <div
+                  key={`board-note-${selectedRoute.id}-${tileNumber}`}
+                  className="grid grid-cols-[1.5rem_1fr] gap-2 rounded-md border border-white/10 bg-white/[0.04] p-2 text-xs font-semibold leading-snug text-slate-100"
+                >
+                  <span
+                    className="flex h-6 w-6 items-center justify-center rounded-full border text-[11px] font-black text-white"
+                    style={{
+                      borderColor: selectedRoute.color,
+                      boxShadow: `0 0 12px ${selectedRoute.color}66`,
+                    }}
+                  >
+                    {noteIndex}
+                  </span>
+                  <span>
+                    <span className="mr-1 font-black text-cyan-100">Tile {tileNumber}</span>
+                    {note}
+                  </span>
+                </div>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/35 to-transparent" />
     </div>
   );
@@ -5678,54 +6261,94 @@ function RouteEditorPanel({
   selectedRouteId,
   routeName,
   routeColor,
-  exportText,
+  routeNotes,
+  selectedNoteTileNumber,
+  selectedPathId,
+  routeStoreStatus,
+  routeStoreMessage,
+  isSavingRoutes,
   onRouteNameChange,
   onRouteColorChange,
+  onRouteNotesChange,
+  onSelectNoteTile,
+  onUpdateTileNote,
+  onSelectPath,
+  onForkPath,
   onAddRoute,
   onSelectRoute,
-  onRenameSelectedRoute,
+  onUpdateSelectedRoute,
   onUndoTile,
   onClearTiles,
   onDeleteRoute,
-  onCopyExport,
-  onDownloadExport,
-  onImportRoutes,
+  onSaveRoutes,
 }: {
   floor: LoupLoupeFloor;
   editorRoutes: RouteDefinition[];
   selectedRouteId: string;
   routeName: string;
   routeColor: string;
-  exportText: string;
+  routeNotes: string;
+  selectedNoteTileNumber: string;
+  selectedPathId: RoutePathId;
+  routeStoreStatus: RouteStoreStatus;
+  routeStoreMessage: string | null;
+  isSavingRoutes: boolean;
   onRouteNameChange: (value: string) => void;
   onRouteColorChange: (value: string) => void;
+  onRouteNotesChange: (value: string) => void;
+  onSelectNoteTile: (value: string) => void;
+  onUpdateTileNote: (tileNumber: number, note: string) => void;
+  onSelectPath: (value: RoutePathId) => void;
+  onForkPath: (tileNumber: number) => void;
   onAddRoute: () => void;
   onSelectRoute: (value: string) => void;
-  onRenameSelectedRoute: () => void;
+  onUpdateSelectedRoute: () => void;
   onUndoTile: () => void;
   onClearTiles: () => void;
   onDeleteRoute: () => void;
-  onCopyExport: () => void;
-  onDownloadExport: () => void;
-  onImportRoutes: (value: string) => void;
+  onSaveRoutes: () => void;
 }) {
   const floorRoutes = editorRoutes.filter((route) => route.floorNumber === floor.floor_number);
   const selectedRoute = floorRoutes.find((route) => route.id === selectedRouteId) ?? null;
-  const tileCount = selectedRoute?.tileNumbers.length ?? 0;
+  const routePaths = getRoutePaths(selectedRoute);
+  const selectedPath = routePaths.find((path) => path.id === selectedPathId) ?? routePaths[0] ?? null;
+  const tileCount = selectedPath?.tileNumbers.length ?? 0;
+  const selectedRouteTileKey = getRouteTileNumbers(selectedRoute).join(",");
+  const uniqueRouteTileNumbers = useMemo(
+    () => getRouteTileNumbers(selectedRoute),
+    [selectedRouteTileKey],
+  );
+  const selectedTileNote = selectedNoteTileNumber
+    ? selectedRoute?.tileNotes?.[selectedNoteTileNumber] ?? ""
+    : "";
+  const routeTileNotes = Object.entries(selectedRoute?.tileNotes ?? {})
+    .map(([tileNumber, note]) => ({
+      tileNumber: Number(tileNumber),
+      note: normalizeOptionalRouteText(note),
+    }))
+    .filter((entry): entry is { tileNumber: number; note: string } =>
+      Number.isFinite(entry.tileNumber) && Boolean(entry.note),
+    )
+    .sort((a, b) => a.tileNumber - b.tileNumber);
 
   return (
-    <aside className="absolute bottom-4 right-4 z-30 w-[min(26rem,calc(100vw-2rem))] rounded-lg border border-cyan-100/20 bg-[#07101c]/90 p-4 text-white shadow-2xl shadow-black/60 backdrop-blur image-scroll">
+    <aside className="relative z-20 max-h-[calc(100vh-11rem)] w-full overflow-y-auto rounded-lg border border-cyan-100/20 bg-[#07101c]/92 p-4 text-white shadow-2xl shadow-black/60 backdrop-blur image-scroll">
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-[11px] font-black uppercase tracking-[0.18em] text-cyan-100">Route Editor</p>
           <p className="mt-1 text-xs font-semibold text-slate-300">
-            Hold and drag across tiles to build a route. Toggle off by setting <code>ENABLE_ROUTE_EDITOR</code> to false.
+            Drag across tiles to build a route. Click a routed tile to edit its note.
           </p>
         </div>
         <span className="rounded-full border border-cyan-100/20 bg-cyan-200/10 px-2 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-cyan-100">
-          DEV
+          {isSavingRoutes ? "Saving" : routeStoreStatus === "ready" ? "Supabase" : routeStoreStatus === "loading" ? "Loading" : "Local"}
         </span>
       </div>
+      {routeStoreMessage ? (
+        <p className="mt-3 rounded-md border border-amber-100/20 bg-amber-200/10 p-2 text-[11px] font-semibold text-amber-100">
+          Route store: {routeStoreMessage}
+        </p>
+      ) : null}
 
       <div className="mt-4 grid gap-2 sm:grid-cols-[1fr_auto]">
         <input
@@ -5747,17 +6370,19 @@ function RouteEditorPanel({
         <button
           type="button"
           onClick={onAddRoute}
-          className="rounded-md border border-cyan-100/20 bg-cyan-200/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-cyan-100 transition hover:border-cyan-100/50 hover:bg-cyan-200/20"
+          className="inline-flex items-center gap-2 rounded-md border border-cyan-100/20 bg-cyan-200/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-cyan-100 transition hover:border-cyan-100/50 hover:bg-cyan-200/20"
         >
+          <Plus className="h-3.5 w-3.5" />
           Add Route
         </button>
         <button
           type="button"
           disabled={!selectedRoute}
-          onClick={onRenameSelectedRoute}
-          className="rounded-md border border-white/15 bg-white/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-white transition hover:border-white/40 disabled:cursor-not-allowed disabled:opacity-40"
+          onClick={onUpdateSelectedRoute}
+          className="inline-flex items-center gap-2 rounded-md border border-white/15 bg-white/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-white transition hover:border-white/40 disabled:cursor-not-allowed disabled:opacity-40"
         >
-          Update Name/Color
+          <Save className="h-3.5 w-3.5" />
+          Save Details
         </button>
       </div>
 
@@ -5771,40 +6396,138 @@ function RouteEditorPanel({
               <SelectItem value={NO_ROUTE_SELECT_VALUE}>No route</SelectItem>
               {floorRoutes.map((route) => (
                 <SelectItem key={route.id} value={route.id}>
-                  {route.label} · {route.tileNumbers.length} tiles
+                  {route.label} - {getRouteTileNumbers(route).length} tiles
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
+          {selectedRoute ? (
+            <div className="grid gap-2 md:grid-cols-[1fr_auto]">
+              <Select value={selectedPath?.id ?? "main"} onValueChange={(value) => onSelectPath(value as RoutePathId)}>
+                <SelectTrigger className="h-9 border-white/15 bg-[#07101c]/90 text-xs font-black text-white">
+                  <SelectValue placeholder="Path" />
+                </SelectTrigger>
+                <SelectContent className="border-white/10 bg-[#10131b] text-white">
+                  {routePaths.map((path) => (
+                    <SelectItem key={path.id} value={path.id}>
+                      {path.label} - {path.tileNumbers.length} tiles
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <button
+                type="button"
+                disabled={!selectedNoteTileNumber || !routeHasTile(selectedRoute, Number(selectedNoteTileNumber))}
+                onClick={() => onForkPath(Number(selectedNoteTileNumber))}
+                className="inline-flex h-9 items-center justify-center gap-2 rounded-md border border-cyan-100/20 bg-cyan-200/10 px-3 text-xs font-black uppercase tracking-[0.14em] text-cyan-100 transition hover:border-cyan-100/50 disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                <Plus className="h-3.5 w-3.5" />
+                Fork From Tile {selectedNoteTileNumber || ""}
+              </button>
+            </div>
+          ) : null}
           <p className="text-xs font-semibold text-slate-300">
-            Selected: <span className="font-black text-white">{selectedRoute?.label ?? "None"}</span> · {tileCount} tile{tileCount === 1 ? "" : "s"}
+            Selected: <span className="font-black text-white">{selectedRoute?.label ?? "None"}</span>
+            {selectedPath ? ` - ${selectedPath.label}` : ""} - {tileCount} tile{tileCount === 1 ? "" : "s"}
           </p>
           <p className="max-h-16 overflow-auto rounded-md border border-white/10 bg-black/25 p-2 text-[11px] font-semibold leading-relaxed text-slate-300 image-scroll">
-            {selectedRoute?.tileNumbers.length ? selectedRoute.tileNumbers.join(" → ") : "Drag across the map to add tiles."}
+            {selectedPath?.tileNumbers.length ? selectedPath.tileNumbers.join(" -> ") : "Drag across the map to add tiles."}
           </p>
+          <label className="block space-y-1">
+            <span className="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.14em] text-cyan-100">
+              <StickyNote className="h-3.5 w-3.5" />
+              Notes for {selectedRoute?.label ?? "selected route"}
+            </span>
+            <textarea
+              value={routeNotes}
+              disabled={!selectedRoute}
+              onChange={(event) => onRouteNotesChange(event.target.value)}
+              placeholder="Add route notes, warnings, rewards, or strategy reminders."
+              className="h-20 w-full rounded-md border border-white/10 bg-black/25 p-2 text-xs font-semibold leading-relaxed text-slate-100 outline-none placeholder:text-slate-500 focus:border-cyan-100/50 disabled:cursor-not-allowed disabled:opacity-45 image-scroll"
+            />
+          </label>
+          <div className="rounded-md border border-white/10 bg-black/20 p-2">
+            <div className="mb-2 flex items-center justify-between gap-2">
+              <span className="text-[11px] font-black uppercase tracking-[0.14em] text-cyan-100">
+                Tile note
+              </span>
+              <span className="rounded-full border border-cyan-100/15 bg-cyan-100/10 px-2 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-cyan-100">
+                {selectedNoteTileNumber ? `Tile ${selectedNoteTileNumber}` : "No tile"}
+              </span>
+            </div>
+            {uniqueRouteTileNumbers.length > 0 ? (
+              <div className="mb-2 flex max-h-20 flex-wrap gap-1.5 overflow-auto pr-1 image-scroll">
+                {uniqueRouteTileNumbers.map((tileNumber) => {
+                  const value = String(tileNumber);
+                  const hasNote = Boolean(normalizeOptionalRouteText(selectedRoute?.tileNotes?.[value]));
+                  const active = selectedNoteTileNumber === value;
+                  return (
+                    <button
+                      key={tileNumber}
+                      type="button"
+                      onClick={() => onSelectNoteTile(value)}
+                      className={`inline-flex h-7 items-center gap-1 rounded-md border px-2 text-[10px] font-black uppercase tracking-[0.08em] transition ${
+                        active
+                          ? "border-cyan-100/60 bg-cyan-100/15 text-cyan-50"
+                          : "border-white/10 bg-white/[0.04] text-slate-300 hover:border-cyan-100/35"
+                      }`}
+                    >
+                      {hasNote ? <StickyNote className="h-3 w-3" /> : null}
+                      {tileNumber}
+                    </button>
+                  );
+                })}
+              </div>
+            ) : null}
+            <textarea
+              value={selectedTileNote}
+              disabled={!selectedRoute || !selectedNoteTileNumber}
+              onChange={(event) => onUpdateTileNote(Number(selectedNoteTileNumber), event.target.value)}
+              placeholder="Add a note for this tile."
+              className="h-16 w-full rounded-md border border-white/10 bg-black/25 p-2 text-xs font-semibold leading-relaxed text-slate-100 outline-none placeholder:text-slate-500 focus:border-cyan-100/50 disabled:cursor-not-allowed disabled:opacity-45 image-scroll"
+            />
+            {routeTileNotes.length > 0 ? (
+              <div className="mt-2 max-h-28 space-y-1 overflow-auto pr-1 image-scroll">
+                {routeTileNotes.map(({ tileNumber, note }) => (
+                  <button
+                    key={`note-${tileNumber}`}
+                    type="button"
+                    onClick={() => onSelectNoteTile(String(tileNumber))}
+                    className="block w-full rounded-md border border-white/10 bg-white/[0.04] px-2 py-1.5 text-left text-[11px] font-semibold leading-snug text-slate-200 transition hover:border-cyan-100/35"
+                  >
+                    <span className="mr-1 font-black text-cyan-100">Tile {tileNumber}</span>
+                    {note}
+                  </button>
+                ))}
+              </div>
+            ) : null}
+          </div>
           <div className="flex flex-wrap gap-2">
             <button
               type="button"
               disabled={!selectedRoute || tileCount === 0}
               onClick={onUndoTile}
-              className="rounded-md border border-white/15 bg-white/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-white transition hover:border-white/40 disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex items-center gap-2 rounded-md border border-white/15 bg-white/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-white transition hover:border-white/40 disabled:cursor-not-allowed disabled:opacity-40"
             >
+              <Undo2 className="h-3.5 w-3.5" />
               Undo Tile
             </button>
             <button
               type="button"
               disabled={!selectedRoute || tileCount === 0}
               onClick={onClearTiles}
-              className="rounded-md border border-amber-100/20 bg-amber-200/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-amber-100 transition hover:border-amber-100/50 disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex items-center gap-2 rounded-md border border-amber-100/20 bg-amber-200/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-amber-100 transition hover:border-amber-100/50 disabled:cursor-not-allowed disabled:opacity-40"
             >
+              <RotateCcw className="h-3.5 w-3.5" />
               Clear Path
             </button>
             <button
               type="button"
               disabled={!selectedRoute}
               onClick={onDeleteRoute}
-              className="rounded-md border border-rose-200/20 bg-rose-300/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-rose-100 transition hover:border-rose-100/50 disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex items-center gap-2 rounded-md border border-rose-200/20 bg-rose-300/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-rose-100 transition hover:border-rose-100/50 disabled:cursor-not-allowed disabled:opacity-40"
             >
+              <Trash2 className="h-3.5 w-3.5" />
               Delete Route
             </button>
           </div>
@@ -5815,35 +6538,76 @@ function RouteEditorPanel({
         </p>
       )}
 
-      <div className="mt-4 space-y-2">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <p className="text-[11px] font-black uppercase tracking-[0.18em] text-cyan-100">Exported Routes</p>
-          <div className="flex gap-2">
-            <button type="button" onClick={onCopyExport} className="rounded-md border border-white/15 bg-white/10 px-2.5 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-white transition hover:border-white/40">
-              Copy
-            </button>
-            <button type="button" onClick={onDownloadExport} className="rounded-md border border-white/15 bg-white/10 px-2.5 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-white transition hover:border-white/40">
-              Download
-            </button>
-          </div>
-        </div>
-        <textarea
-          readOnly
-          value={exportText}
-          className="h-32 w-full rounded-md border border-white/10 bg-black/35 p-2 font-mono text-[11px] text-slate-200 outline-none image-scroll"
-        />
-        <textarea
-          placeholder="Paste exported JSON here to import/restore routes."
-          onBlur={(event) => {
-            const value = event.currentTarget.value.trim();
-            if (!value) return;
-            onImportRoutes(value);
-            event.currentTarget.value = "";
-          }}
-          className="h-16 w-full rounded-md border border-white/10 bg-black/20 p-2 text-[11px] text-slate-200 outline-none placeholder:text-slate-500 image-scroll"
-        />
+      <div className="mt-4">
+        <button
+          type="button"
+          onClick={onSaveRoutes}
+          disabled={isSavingRoutes || routeStoreStatus === "unconfigured"}
+          className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-cyan-100/20 bg-cyan-200/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-cyan-100 transition hover:border-cyan-100/50 hover:bg-cyan-200/20 disabled:cursor-not-allowed disabled:opacity-45"
+        >
+          <Save className="h-3.5 w-3.5" />
+          {isSavingRoutes ? "Saving Route Table" : "Save Route Table"}
+        </button>
       </div>
     </aside>
+  );
+}
+
+function RouteSummaryPanel({ floor, route }: { floor: LoupLoupeFloor; route: RouteDefinition }) {
+  const routeNotes = getRouteNotes(route);
+  const tileNotes = Object.entries(route.tileNotes ?? {})
+    .map(([tileNumber, note]) => ({
+      tileNumber: Number(tileNumber),
+      note: normalizeOptionalRouteText(note),
+    }))
+    .filter((entry): entry is { tileNumber: number; note: string } =>
+      Number.isFinite(entry.tileNumber) && Boolean(entry.note),
+    )
+    .sort((a, b) => a.tileNumber - b.tileNumber);
+
+  return (
+    <section className="w-full rounded-lg border border-white/10 bg-black/35 p-4 text-white shadow-xl shadow-black/40 backdrop-blur">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex min-w-0 items-center gap-2">
+          <span
+            className="h-3 w-3 shrink-0 rounded-full shadow-[0_0_14px_currentColor]"
+            style={{ color: route.color, backgroundColor: route.color }}
+          />
+          <div className="min-w-0">
+            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-cyan-100">
+              Route Notes
+            </p>
+            <h2 className="truncate text-base font-black text-white">
+              {route.label}
+            </h2>
+          </div>
+        </div>
+        <span className="rounded-full border border-white/10 bg-white/[0.05] px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-200">
+          {floor.floor_name}
+        </span>
+      </div>
+      {routeNotes ? (
+        <p className="mt-3 whitespace-pre-line rounded-md border border-cyan-100/15 bg-cyan-100/10 p-3 text-sm font-semibold leading-relaxed text-slate-100">
+          {routeNotes}
+        </p>
+      ) : null}
+      {tileNotes.length > 0 ? (
+        <div className="mt-3 grid gap-2 md:grid-cols-2">
+          {tileNotes.map(({ tileNumber, note }) => (
+            <div
+              key={`route-summary-note-${route.id}-${tileNumber}`}
+              className="rounded-md border border-white/10 bg-white/[0.04] p-3 text-sm font-semibold leading-relaxed text-slate-200"
+            >
+              <p className="mb-1 flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.14em] text-cyan-100">
+                <StickyNote className="h-3.5 w-3.5" />
+                Tile {tileNumber}
+              </p>
+              <p className="whitespace-pre-line">{note}</p>
+            </div>
+          ))}
+        </div>
+      ) : null}
+    </section>
   );
 }
 
@@ -5858,8 +6622,26 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
   const [hasLoadedEditorRoutes, setHasLoadedEditorRoutes] = useState(false);
   const [routeName, setRouteName] = useState("");
   const [routeColor, setRouteColor] = useState(DEFAULT_ROUTE_COLORS[0]);
+  const [routeNotes, setRouteNotes] = useState("");
+  const [selectedRouteNoteTileNumber, setSelectedRouteNoteTileNumber] = useState("");
+  const [selectedRoutePathId, setSelectedRoutePathId] = useState<RoutePathId>("main");
+  const [routeEditorAccess, setRouteEditorAccess] = useState<RouteEditorAccessState>(
+    ENABLE_ROUTE_EDITOR ? "checking" : "signed-out",
+  );
+  const [routeStoreStatus, setRouteStoreStatus] = useState<RouteStoreStatus>(
+    guidesSupabaseConfigured ? "loading" : "unconfigured",
+  );
+  const [routeStoreMessage, setRouteStoreMessage] = useState<string | null>(null);
+  const [isSavingRoutes, setIsSavingRoutes] = useState(false);
+  const [routeAuthorName, setRouteAuthorName] = useState<string | null>(null);
+  const [showRouteLogin, setShowRouteLogin] = useState(false);
+  const [routeLoginEmail, setRouteLoginEmail] = useState("");
+  const [routeLoginPassword, setRouteLoginPassword] = useState("");
+  const [routeLoginMessage, setRouteLoginMessage] = useState<string | null>(null);
+  const [routeLoginLoading, setRouteLoginLoading] = useState(false);
   const [isRouteDrawing, setIsRouteDrawing] = useState(false);
   const isRouteDrawingRef = useRef(false);
+  const routeEditorEnabled = ENABLE_ROUTE_EDITOR && routeEditorAccess === "allowed";
 
   const enemyById = useMemo(() => {
     const map = new Map<number, WikiEnemy>();
@@ -5876,10 +6658,7 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
   );
   const routes = useMemo(() => {
     const floorNumber = floor?.floor_number ?? 0;
-    return [
-      ...getRouteDefinitionsForFloor(floorNumber),
-      ...editorRoutes.filter((route) => route.floorNumber === floorNumber),
-    ];
+    return getMergedRouteDefinitionsForFloor(floorNumber, editorRoutes);
   }, [editorRoutes, floor]);
   const selectedRoute =
     selectedRouteId === NO_ROUTE_SELECT_VALUE ? null : (routes.find((route) => route.id === selectedRouteId) ?? null);
@@ -5897,32 +6676,54 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
         array.findIndex((candidate) => candidate.master_tower_map_id === tile.master_tower_map_id) === index,
     );
   }, [floor, warpSourceTile]);
-  const editorRoutesExportText = useMemo(
-    () => JSON.stringify(editorRoutes.map(cleanRouteForExport), null, 2),
-    [editorRoutes],
-  );
-
   const selectedEditorRoute = editorRoutes.find((route) => route.id === selectedRouteId) ?? null;
 
-  const appendTileToSelectedRoute = (tile: LoupLoupeTile) => {
-    if (!ENABLE_ROUTE_EDITOR || !selectedEditorRoute || tile.master_tower_floor_id !== floor.master_tower_floor_id) return;
+  useEffect(() => {
+    if (!selectedEditorRoute) {
+      setSelectedRoutePathId("main");
+      return;
+    }
+    if (!getRoutePaths(selectedEditorRoute).some((path) => path.id === selectedRoutePathId)) {
+      setSelectedRoutePathId("main");
+    }
+  }, [selectedEditorRoute, selectedRoutePathId]);
+
+  const selectRouteNoteTile = (tile: LoupLoupeTile) => {
+    setSelectedRouteNoteTileNumber(String(tile.map_number));
+    setSelectedTileId(tile.master_tower_map_id);
+    setModal(null);
+  };
+
+  const appendTileToSelectedRoute = (
+    tile: LoupLoupeTile,
+    options: { skipExistingStart?: boolean } = {},
+  ) => {
+    if (!floor || !routeEditorEnabled || !selectedEditorRoute || tile.master_tower_floor_id !== floor.master_tower_floor_id) return;
+    const activePathId = selectedRoutePathId;
+    selectRouteNoteTile(tile);
+    if (options.skipExistingStart && getRoutePathTileNumbers(selectedEditorRoute, activePathId).includes(tile.map_number)) return;
     setEditorRoutes((currentRoutes) =>
       currentRoutes.map((route) => {
         if (route.id !== selectedEditorRoute.id) return route;
-        const lastTileNumber = route.tileNumbers[route.tileNumbers.length - 1];
-        if (lastTileNumber === tile.map_number) return route;
-        return { ...route, tileNumbers: [...route.tileNumbers, tile.map_number] };
+        return updateRoutePath(route, activePathId, (tileNumbers) => {
+          const lastTileNumber = tileNumbers[tileNumbers.length - 1];
+          if (lastTileNumber === tile.map_number) return tileNumbers;
+          return [...tileNumbers, tile.map_number];
+        });
       }),
     );
   };
 
-  const routeEditorHandlers: RouteEditorPointerHandlers | null = ENABLE_ROUTE_EDITOR
+  const routeEditorHandlers: RouteEditorPointerHandlers | null = routeEditorEnabled
     ? {
         active: Boolean(selectedEditorRoute),
+        onTileClick: (tile) => {
+          selectRouteNoteTile(tile);
+        },
         onPointerDown: (tile) => {
           isRouteDrawingRef.current = true;
           setIsRouteDrawing(true);
-          appendTileToSelectedRoute(tile);
+          appendTileToSelectedRoute(tile, { skipExistingStart: true });
         },
         onPointerEnter: (tile) => {
           if (!isRouteDrawingRef.current) return;
@@ -5935,6 +6736,41 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
       }
     : null;
 
+  const saveRoutesToSupabase = async (routesToSave: RouteDefinition[]) => {
+    if (!guidesSupabaseConfigured) {
+      setRouteStoreStatus("unconfigured");
+      return;
+    }
+    setIsSavingRoutes(true);
+    setRouteStoreMessage(null);
+    const {
+      data: { user },
+    } = await guidesSupabase.auth.getUser();
+    if (!user) {
+      setIsSavingRoutes(false);
+      return;
+    }
+    const { error } = await guidesSupabase
+      .from("loup_loupe_route_sets")
+      .upsert(
+        {
+          key: ROUTE_SET_STORAGE_KEY,
+          routes: routesToSave.map(cleanRouteForExport),
+          updated_by: user.id,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: "key" },
+      );
+    if (error) {
+      console.warn("Failed to save Loup Loupe routes to Supabase", error);
+      setRouteStoreStatus("error");
+      setRouteStoreMessage(error.message);
+    } else {
+      setRouteStoreStatus("ready");
+    }
+    setIsSavingRoutes(false);
+  };
+
 
   useEffect(() => {
     if (!floor) return;
@@ -5943,29 +6779,114 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
     setSelectedRouteId(NO_ROUTE_SELECT_VALUE);
     setRouteName("");
     setRouteColor(DEFAULT_ROUTE_COLORS[(floor.floor_number - 1) % DEFAULT_ROUTE_COLORS.length]);
+    setRouteNotes("");
+    setSelectedRouteNoteTileNumber("");
+    setSelectedRoutePathId("main");
   }, [floor]);
 
   // Do not auto-select routes. The default view should show no route until the user chooses one.
 
+  const selectedEditorRouteTileKey = selectedEditorRoute ? getRouteTileNumbers(selectedEditorRoute).join(",") : "";
   useEffect(() => {
-    if (!ENABLE_ROUTE_EDITOR) {
-      setHasLoadedEditorRoutes(true);
+    if (!selectedEditorRoute) {
+      setSelectedRouteNoteTileNumber("");
       return;
     }
-    try {
-      const storedRoutes = window.localStorage.getItem(ROUTE_EDITOR_STORAGE_KEY);
-      if (storedRoutes) setEditorRoutes(normalizeRouteDefinitions(JSON.parse(storedRoutes)));
-    } catch (error) {
-      console.warn("Failed to load Loup Loupe manual routes", error);
-    } finally {
-      setHasLoadedEditorRoutes(true);
+    const routeTileNumbers = getRouteTileNumbers(selectedEditorRoute);
+    const currentTileNumber = Number(selectedRouteNoteTileNumber);
+    if (routeHasTile(selectedEditorRoute, currentTileNumber)) return;
+    const firstTileWithNote = routeTileNumbers.find((tileNumber) =>
+      normalizeOptionalRouteText(selectedEditorRoute.tileNotes?.[String(tileNumber)]),
+    );
+    setSelectedRouteNoteTileNumber(String(firstTileWithNote ?? routeTileNumbers[0] ?? ""));
+  }, [selectedEditorRoute?.id, selectedEditorRouteTileKey, selectedRouteNoteTileNumber, selectedEditorRoute]);
+
+  useEffect(() => {
+    if (!ENABLE_ROUTE_EDITOR) {
+      setRouteEditorAccess("signed-out");
+      return;
     }
+    if (!guidesSupabaseConfigured) {
+      setRouteEditorAccess("unconfigured");
+      return;
+    }
+
+    let active = true;
+    const loadRouteEditorAccess = async () => {
+      const author = await getCurrentGuideAuthor();
+      if (active) {
+        setRouteEditorAccess(author ? "allowed" : "signed-out");
+        setRouteAuthorName(author?.display_name ?? null);
+      }
+    };
+
+    loadRouteEditorAccess();
+    const { data } = guidesSupabase.auth.onAuthStateChange(() => {
+      void loadRouteEditorAccess();
+    });
+
+    return () => {
+      active = false;
+      data.subscription.unsubscribe();
+    };
   }, []);
 
   useEffect(() => {
-    if (!ENABLE_ROUTE_EDITOR || !hasLoadedEditorRoutes) return;
-    window.localStorage.setItem(ROUTE_EDITOR_STORAGE_KEY, editorRoutesExportText);
-  }, [editorRoutesExportText, hasLoadedEditorRoutes]);
+    let active = true;
+    const loadRoutes = async () => {
+      if (!guidesSupabaseConfigured) {
+        setRouteStoreStatus("unconfigured");
+        setHasLoadedEditorRoutes(true);
+        return;
+      }
+
+      setRouteStoreStatus("loading");
+      setRouteStoreMessage(null);
+      setHasLoadedEditorRoutes(false);
+      const { data, error } = await guidesSupabase
+        .from("loup_loupe_route_sets")
+        .select("routes")
+        .eq("key", ROUTE_SET_STORAGE_KEY)
+        .maybeSingle();
+
+      if (!active) return;
+
+      if (error) {
+        console.warn("Failed to load Loup Loupe routes from Supabase", error);
+        setRouteStoreStatus("error");
+        setRouteStoreMessage(error.message);
+        try {
+          const storedRoutes = window.localStorage.getItem(ROUTE_EDITOR_STORAGE_KEY);
+          if (storedRoutes) setEditorRoutes(normalizeRouteDefinitions(JSON.parse(storedRoutes)));
+        } catch (storageError) {
+          console.warn("Failed to load legacy Loup Loupe manual routes", storageError);
+        } finally {
+          setHasLoadedEditorRoutes(true);
+        }
+        return;
+      }
+
+      const remoteRoutes = normalizeRouteDefinitions((data as { routes?: unknown } | null)?.routes ?? []);
+      setEditorRoutes(remoteRoutes.length > 0 ? remoteRoutes : HARD_CODED_ROUTES.map(cleanRouteForExport));
+      setRouteStoreStatus("ready");
+      setHasLoadedEditorRoutes(true);
+    };
+
+    void loadRoutes();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!routeEditorEnabled || !hasLoadedEditorRoutes || !guidesSupabaseConfigured) return;
+    const timeout = window.setTimeout(async () => {
+      await saveRoutesToSupabase(editorRoutes);
+    }, 700);
+
+    return () => window.clearTimeout(timeout);
+  }, [editorRoutes, hasLoadedEditorRoutes, routeEditorEnabled]);
 
   useEffect(() => {
     if (!isRouteDrawing) return;
@@ -6007,6 +6928,8 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
     };
     setEditorRoutes((currentRoutes) => [...currentRoutes, route]);
     setSelectedRouteId(route.id);
+    setRouteNotes("");
+    setSelectedRoutePathId("main");
   };
 
   const updateSelectedManualRoute = () => {
@@ -6014,7 +6937,49 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
     setEditorRoutes((currentRoutes) =>
       currentRoutes.map((route) =>
         route.id === selectedEditorRoute.id
-          ? { ...route, label: routeName.trim() || route.label, color: routeColor }
+          ? {
+              ...route,
+              label: routeName.trim() || route.label,
+              color: routeColor,
+              description: undefined,
+              notes: normalizeOptionalRouteText(routeNotes),
+            }
+          : route,
+      ),
+    );
+  };
+
+  const updateSelectedRouteTileNote = (tileNumber: number, note: string) => {
+    if (!selectedEditorRoute || !Number.isFinite(tileNumber)) return;
+    setEditorRoutes((currentRoutes) =>
+      currentRoutes.map((route) => {
+        if (route.id !== selectedEditorRoute.id) return route;
+        const tileNotes = { ...(route.tileNotes ?? {}) };
+        const normalized = normalizeOptionalRouteText(note);
+        if (normalized) {
+          tileNotes[String(tileNumber)] = note;
+        } else {
+          delete tileNotes[String(tileNumber)];
+        }
+        return {
+          ...route,
+          tileNotes: Object.keys(tileNotes).length ? tileNotes : undefined,
+        };
+      }),
+    );
+  };
+
+  const updateRouteNotesDraft = (value: string) => {
+    setRouteNotes(value);
+    if (!selectedEditorRoute) return;
+    setEditorRoutes((currentRoutes) =>
+      currentRoutes.map((route) =>
+        route.id === selectedEditorRoute.id
+          ? {
+              ...route,
+              description: undefined,
+              notes: normalizeOptionalRouteText(value),
+            }
           : route,
       ),
     );
@@ -6024,7 +6989,9 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
     if (!selectedEditorRoute) return;
     setEditorRoutes((currentRoutes) =>
       currentRoutes.map((route) =>
-        route.id === selectedEditorRoute.id ? { ...route, tileNumbers: route.tileNumbers.slice(0, -1) } : route,
+        route.id === selectedEditorRoute.id
+          ? updateRoutePath(route, selectedRoutePathId, (tileNumbers) => tileNumbers.slice(0, -1))
+          : route,
       ),
     );
   };
@@ -6032,28 +6999,60 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
   const clearManualRouteTiles = () => {
     if (!selectedEditorRoute) return;
     setEditorRoutes((currentRoutes) =>
-      currentRoutes.map((route) => (route.id === selectedEditorRoute.id ? { ...route, tileNumbers: [] } : route)),
+      currentRoutes.map((route) =>
+        route.id === selectedEditorRoute.id
+          ? updateRoutePath(route, selectedRoutePathId, () => [])
+          : route,
+      ),
     );
+  };
+
+  const forkSelectedRoutePath = (tileNumber: number) => {
+    if (!selectedEditorRoute || !Number.isFinite(tileNumber) || !routeHasTile(selectedEditorRoute, tileNumber)) return;
+    const nextBranchIndex = normalizeRouteBranches(selectedEditorRoute.branches).length;
+    const nextPathId = `branch-${nextBranchIndex}` as RoutePathId;
+    setEditorRoutes((currentRoutes) =>
+      currentRoutes.map((route) => {
+        if (route.id !== selectedEditorRoute.id) return route;
+        const branches = normalizeRouteBranches(route.branches);
+        return { ...route, branches: [...branches, [tileNumber]] };
+      }),
+    );
+    setSelectedRoutePathId(nextPathId);
+    setSelectedRouteNoteTileNumber(String(tileNumber));
   };
 
   const deleteManualRoute = () => {
     if (!selectedEditorRoute) return;
     setEditorRoutes((currentRoutes) => currentRoutes.filter((route) => route.id !== selectedEditorRoute.id));
     setSelectedRouteId("");
+    setRouteNotes("");
+    setSelectedRouteNoteTileNumber("");
+    setSelectedRoutePathId("main");
   };
 
-  const copyManualRoutes = async () => {
-    await navigator.clipboard?.writeText(editorRoutesExportText);
-  };
-
-  const importManualRoutes = (value: string) => {
-    try {
-      const parsedRoutes = normalizeRouteDefinitions(JSON.parse(value));
-      setEditorRoutes(parsedRoutes);
-      setSelectedRouteId(parsedRoutes.find((route) => route.floorNumber === floor.floor_number)?.id ?? "");
-    } catch (error) {
-      console.warn("Failed to import Loup Loupe manual routes", error);
+  const signInRouteEditor = async () => {
+    setRouteLoginLoading(true);
+    setRouteLoginMessage(null);
+    const { error } = await guidesSupabase.auth.signInWithPassword({
+      email: routeLoginEmail.trim(),
+      password: routeLoginPassword,
+    });
+    setRouteLoginLoading(false);
+    if (error) {
+      setRouteLoginMessage(error.message);
+      return;
     }
+    setRouteLoginEmail("");
+    setRouteLoginPassword("");
+    setShowRouteLogin(false);
+  };
+
+  const signOutRouteEditor = async () => {
+    await guidesSupabase.auth.signOut();
+    setRouteAuthorName(null);
+    setRouteEditorAccess(guidesSupabaseConfigured ? "signed-out" : "unconfigured");
+    setShowRouteLogin(false);
   };
 
   return (
@@ -6151,18 +7150,49 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
             <Gem className="h-4 w-4 text-cyan-100" />
             Challenge
           </button>
+          {ENABLE_ROUTE_EDITOR ? (
+            routeEditorEnabled ? (
+              <button
+                type="button"
+                className="flex h-11 items-center gap-2 rounded-md border border-cyan-100/20 bg-cyan-200/10 px-3 text-sm font-black text-cyan-100 transition hover:border-cyan-100/60"
+                onClick={signOutRouteEditor}
+                title={routeAuthorName ? `Signed in as ${routeAuthorName}` : "Signed in"}
+              >
+                <LogOut className="h-4 w-4" />
+                Sign out
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="flex h-11 items-center gap-2 rounded-md border border-white/15 bg-black/35 px-3 text-sm font-black text-white transition hover:border-cyan-100/60"
+                onClick={() => setShowRouteLogin((value) => !value)}
+              >
+                <LogIn className="h-4 w-4 text-cyan-100" />
+                Login
+              </button>
+            )
+          ) : null}
           {routes.length > 0 ? (
             <Select
               value={selectedRouteId || NO_ROUTE_SELECT_VALUE}
               onValueChange={(routeId) => {
                 setSelectedRouteId(routeId);
-                if (routeId === NO_ROUTE_SELECT_VALUE) return;
-                const route = routes.find((candidate) => candidate.id === routeId);
-                if (route) {
-                  setRouteName(route.label);
-                  setRouteColor(route.color);
-                }
-              }}
+                if (routeId === NO_ROUTE_SELECT_VALUE) {
+                setRouteNotes("");
+                setSelectedRouteNoteTileNumber("");
+                return;
+              }
+              const route = routes.find((candidate) => candidate.id === routeId);
+              if (route) {
+                setRouteName(route.label);
+                setRouteColor(route.color);
+                setRouteNotes(getRouteNotes(route));
+                const firstTileWithNote = route.tileNumbers.find((tileNumber) =>
+                  normalizeOptionalRouteText(route.tileNotes?.[String(tileNumber)]),
+                );
+                setSelectedRouteNoteTileNumber(String(firstTileWithNote ?? route.tileNumbers[0] ?? ""));
+              }
+            }}
             >
               <SelectTrigger className="h-11 w-44 border-white/15 bg-[#07101c]/90 text-sm font-black text-white">
                 <SelectValue placeholder="Route" />
@@ -6180,6 +7210,45 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
         </div>
       </header>
 
+      {showRouteLogin ? (
+        <div className="relative z-20 border-b border-white/10 bg-black/45 px-4 py-3 backdrop-blur">
+          <div className="ml-auto grid max-w-2xl gap-2 md:grid-cols-[1fr_1fr_auto]">
+            <input
+              value={routeLoginEmail}
+              onChange={(event) => setRouteLoginEmail(event.target.value)}
+              placeholder="Email"
+              autoComplete="email"
+              className="h-10 rounded-md border border-white/15 bg-black/35 px-3 text-sm font-bold text-white outline-none placeholder:text-slate-500 focus:border-cyan-100/50"
+            />
+            <input
+              value={routeLoginPassword}
+              onChange={(event) => setRouteLoginPassword(event.target.value)}
+              placeholder="Password"
+              type="password"
+              autoComplete="current-password"
+              onKeyDown={(event) => {
+                if (event.key === "Enter") void signInRouteEditor();
+              }}
+              className="h-10 rounded-md border border-white/15 bg-black/35 px-3 text-sm font-bold text-white outline-none placeholder:text-slate-500 focus:border-cyan-100/50"
+            />
+            <button
+              type="button"
+              disabled={routeLoginLoading || !routeLoginEmail.trim() || !routeLoginPassword}
+              onClick={() => void signInRouteEditor()}
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-cyan-100/20 bg-cyan-200/10 px-4 text-xs font-black uppercase tracking-[0.14em] text-cyan-100 transition hover:border-cyan-100/50 disabled:cursor-not-allowed disabled:opacity-45"
+            >
+              <LogIn className="h-3.5 w-3.5" />
+              {routeLoginLoading ? "Signing in" : "Login"}
+            </button>
+          </div>
+          {routeLoginMessage ? (
+            <p className="ml-auto mt-2 max-w-2xl rounded-md border border-rose-200/20 bg-rose-300/10 p-2 text-xs font-semibold text-rose-100">
+              {routeLoginMessage}
+            </p>
+          ) : null}
+        </div>
+      ) : null}
+
       <div className="relative z-20 flex gap-2 overflow-x-auto border-b border-white/10 bg-black/25 px-3 py-2 image-scroll md:hidden">
         <FloorTowerStackHorizontal
           floors={floors}
@@ -6196,71 +7265,79 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
         />
       </aside>
 
-      <div className="relative z-10 flex min-h-[calc(100vh-11rem)] items-center justify-center overflow-hidden px-2 py-5 md:pl-44 md:pr-4">
-        {ENABLE_ROUTE_EDITOR ? (
-          <RouteEditorPanel
+      <div className="relative z-10 min-h-[calc(100vh-11rem)] overflow-hidden px-2 py-5 md:pl-44 md:pr-4">
+        <div className="mx-auto flex w-full max-w-[78rem] flex-col items-center gap-4">
+          <TowerBoard
             floor={floor}
-            editorRoutes={editorRoutes}
-            selectedRouteId={selectedRouteId || NO_ROUTE_SELECT_VALUE}
-            routeName={routeName}
-            routeColor={routeColor}
-            exportText={editorRoutesExportText}
-            onRouteNameChange={setRouteName}
-            onRouteColorChange={setRouteColor}
-            onAddRoute={addManualRoute}
-            onSelectRoute={(routeId) => {
-              setSelectedRouteId(routeId);
-              if (routeId === NO_ROUTE_SELECT_VALUE) return;
-              const route = editorRoutes.find((candidate) => candidate.id === routeId);
-              if (route) {
-                setRouteName(route.label);
-                setRouteColor(route.color);
+            selectedTileId={selectedTileId}
+            selectedRoute={selectedRoute}
+            warpSourceTile={warpSourceTile}
+            warpDestinations={warpDestinations}
+            routeEditor={routeEditorHandlers}
+            onTileClick={(tile) => {
+              if (!isInteractiveTile(tile)) return;
+              if (tile.event?.warp_points.length) {
+                setSelectedTileId((currentTileId) =>
+                  currentTileId === tile.master_tower_map_id ? null : tile.master_tower_map_id,
+                );
+                setModal(null);
+                return;
               }
+              setSelectedTileId(tile.master_tower_map_id);
+              setModal({ kind: "tile", tile });
             }}
-            onRenameSelectedRoute={updateSelectedManualRoute}
-            onUndoTile={undoManualRouteTile}
-            onClearTiles={clearManualRouteTiles}
-            onDeleteRoute={deleteManualRoute}
-            onCopyExport={copyManualRoutes}
-            onDownloadExport={() => downloadTextFile("loup-loupe-manual-routes.json", editorRoutesExportText)}
-            onImportRoutes={importManualRoutes}
           />
-        ) : null}
-        {selectedRoute ? (
-          <div className="pointer-events-none absolute right-4 top-4 z-20 hidden max-w-sm rounded-lg border border-white/10 bg-black/50 p-3 backdrop-blur md:block">
-            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-cyan-100">
-              Route Highlight
-            </p>
-            <p className="mt-1 text-sm font-black text-white">
-              {selectedRoute.label}
-            </p>
-            {selectedRoute.description ? (
-              <p className="mt-1 text-xs font-semibold text-slate-300">
-                {selectedRoute.description}
-              </p>
-            ) : null}
-          </div>
-        ) : null}
-        <TowerBoard
-          floor={floor}
-          selectedTileId={selectedTileId}
-          selectedRoute={selectedRoute}
-          warpSourceTile={warpSourceTile}
-          warpDestinations={warpDestinations}
-          routeEditor={routeEditorHandlers}
-          onTileClick={(tile) => {
-            if (!isInteractiveTile(tile)) return;
-            if (tile.event?.warp_points.length) {
-              setSelectedTileId((currentTileId) =>
-                currentTileId === tile.master_tower_map_id ? null : tile.master_tower_map_id,
-              );
-              setModal(null);
-              return;
-            }
-            setSelectedTileId(tile.master_tower_map_id);
-            setModal({ kind: "tile", tile });
-          }}
-        />
+          {routeEditorEnabled ? (
+            <RouteEditorPanel
+              floor={floor}
+              editorRoutes={editorRoutes}
+              selectedRouteId={selectedRouteId || NO_ROUTE_SELECT_VALUE}
+              routeName={routeName}
+              routeColor={routeColor}
+              routeNotes={routeNotes}
+              selectedNoteTileNumber={selectedRouteNoteTileNumber}
+              selectedPathId={selectedRoutePathId}
+              routeStoreStatus={routeStoreStatus}
+              routeStoreMessage={routeStoreMessage}
+              isSavingRoutes={isSavingRoutes}
+              onRouteNameChange={setRouteName}
+              onRouteColorChange={setRouteColor}
+              onRouteNotesChange={updateRouteNotesDraft}
+              onSelectNoteTile={setSelectedRouteNoteTileNumber}
+              onUpdateTileNote={updateSelectedRouteTileNote}
+              onSelectPath={setSelectedRoutePathId}
+              onForkPath={forkSelectedRoutePath}
+              onAddRoute={addManualRoute}
+              onSelectRoute={(routeId) => {
+                setSelectedRouteId(routeId);
+                setSelectedRoutePathId("main");
+                if (routeId === NO_ROUTE_SELECT_VALUE) {
+                  setRouteNotes("");
+                  setSelectedRouteNoteTileNumber("");
+                  return;
+                }
+                const route = editorRoutes.find((candidate) => candidate.id === routeId);
+                if (route) {
+                  setRouteName(route.label);
+                  setRouteColor(route.color);
+                  setRouteNotes(getRouteNotes(route));
+                  const routeTileNumbers = getRouteTileNumbers(route);
+                  const firstTileWithNote = routeTileNumbers.find((tileNumber) =>
+                    normalizeOptionalRouteText(route.tileNotes?.[String(tileNumber)]),
+                  );
+                  setSelectedRouteNoteTileNumber(String(firstTileWithNote ?? routeTileNumbers[0] ?? ""));
+                }
+              }}
+              onUpdateSelectedRoute={updateSelectedManualRoute}
+              onUndoTile={undoManualRouteTile}
+              onClearTiles={clearManualRouteTiles}
+              onDeleteRoute={deleteManualRoute}
+              onSaveRoutes={() => void saveRoutesToSupabase(editorRoutes)}
+            />
+          ) : selectedRoute ? (
+            <RouteSummaryPanel floor={floor} route={selectedRoute} />
+          ) : null}
+        </div>
       </div>
 
       <TileDialog
