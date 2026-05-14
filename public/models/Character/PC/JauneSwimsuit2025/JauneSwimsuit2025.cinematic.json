@@ -1,46 +1,53 @@
 {
   "variant": "JauneSwimsuit2025",
   "textures": {
-    "FieldBattle_SkillField15_A": "fx/FieldBattle_SkillField15_A.png",
-    "FieldBattle_SkillField15_B": "fx/FieldBattle_SkillField15_B.png",
-    "t_c_aura_uv_01": "fx/t_c_aura_uv_01.png",
-    "t_c_aura_uv_05": "fx/t_c_aura_uv_05.png",
-    "t_c_aura_uv_00": "fx/t_c_aura_uv_00.png",
-    "t_c_aura_uv_04": "fx/t_c_aura_uv_04.png",
+    "t_CynthiaArmor_msk_uv_00": "fx/t_CynthiaArmor_msk_uv_00.png",
+    "t_ShunaSwimsuitHibiscus_sonic_uv_00": "fx/t_ShunaSwimsuitHibiscus_sonic_uv_00.png",
     "t_c_bubble_cla_00": "fx/t_c_bubble_cla_00.png",
-    "t_c_flash_cla_10": "fx/t_c_flash_cla_10.png",
-    "t_c_flash_cla_07": "fx/t_c_flash_cla_07.png",
-    "t_c_flash_cla_01": "fx/t_c_flash_cla_01.png",
-    "t_c_flash_cla_05": "fx/t_c_flash_cla_05.png",
+    "t_ShunaTengu_Battle_Grad_00": "fx/t_ShunaTengu_Battle_Grad_00.png",
     "t_c_noise_uv_03": "fx/t_c_noise_uv_03.png",
     "t_c_noise_uv_02": "fx/t_c_noise_uv_02.png",
     "t_c_noise_uv_04": "fx/t_c_noise_uv_04.png",
     "t_c_noise_uv_01": "fx/t_c_noise_uv_01.png",
     "t_c_noise_uv_00": "fx/t_c_noise_uv_00.png",
-    "Default-Particle": "fx/Default-Particle.png",
-    "t_ShunaSwimsuitHibiscus_sonic_uv_00": "fx/t_ShunaSwimsuitHibiscus_sonic_uv_00.png",
-    "t_LuminousSwimsuit2023_Dissolve": "fx/t_LuminousSwimsuit2023_Dissolve.png",
-    "t_LuminousSwimsuit2023_AlphaMask": "fx/t_LuminousSwimsuit2023_AlphaMask.png",
-    "t_c_thunder_uv_04": "fx/t_c_thunder_uv_04.png",
-    "t_c_water_uv_01": "fx/t_c_water_uv_01.png",
-    "t_c_water_uv_04": "fx/t_c_water_uv_04.png",
-    "t_c_water_cla_02": "fx/t_c_water_cla_02.png",
-    "t_c_water_uv_00": "fx/t_c_water_uv_00.png",
-    "t_c_water_cla_00": "fx/t_c_water_cla_00.png",
-    "t_c_water_uv_03": "fx/t_c_water_uv_03.png",
-    "t_c_water_uv_06": "fx/t_c_water_uv_06.png",
-    "t_c_water_uv_05": "fx/t_c_water_uv_05.png",
-    "t_c_water_cla_01": "fx/t_c_water_cla_01.png",
     "t_c_dust_uv_03": "fx/t_c_dust_uv_03.png",
     "t_c_dust_uv_02": "fx/t_c_dust_uv_02.png",
     "t_c_dust_uv_01": "fx/t_c_dust_uv_01.png",
     "t_c_dust_uv_04": "fx/t_c_dust_uv_04.png",
     "t_c_dust_uv_00": "fx/t_c_dust_uv_00.png",
+    "t_c_fire_uv_07": "fx/t_c_fire_uv_07.png",
+    "t_c_fire_uv_01": "fx/t_c_fire_uv_01.png",
+    "t_c_fire_uv_06": "fx/t_c_fire_uv_06.png",
+    "t_c_rock_uv_01": "fx/t_c_rock_uv_01.png",
+    "t_c_rock_uv_00": "fx/t_c_rock_uv_00.png",
     "t_c_prism_uv_04_nomip": "fx/t_c_prism_uv_04_nomip.png",
     "t_c_prism_uv_03": "fx/t_c_prism_uv_03.png",
     "t_c_prism_uv_02": "fx/t_c_prism_uv_02.png",
     "t_c_prism_uv_01": "fx/t_c_prism_uv_01.png",
     "t_c_prism_cla_00": "fx/t_c_prism_cla_00.png",
+    "t_c_anger_cla_00": "fx/t_c_anger_cla_00.png",
+    "t_LuminousSwimsuit2023_Dissolve": "fx/t_LuminousSwimsuit2023_Dissolve.png",
+    "t_LuminousSwimsuit2023_AlphaMask": "fx/t_LuminousSwimsuit2023_AlphaMask.png",
+    "t_c_glow_cla_03": "fx/t_c_glow_cla_03.png",
+    "t_c_glow_cla_00": "fx/t_c_glow_cla_00.png",
+    "t_c_glow_cla_01": "fx/t_c_glow_cla_01.png",
+    "t_c_glow_cla_05": "fx/t_c_glow_cla_05.png",
+    "t_c_glow_cla_00_nomip": "fx/t_c_glow_cla_00_nomip.png",
+    "t_c_glow_cla_07": "fx/t_c_glow_cla_07.png",
+    "t_c_lensflare_cla_01": "fx/t_c_lensflare_cla_01.png",
+    "t_c_aura_uv_01": "fx/t_c_aura_uv_01.png",
+    "t_c_aura_uv_05": "fx/t_c_aura_uv_05.png",
+    "t_c_aura_uv_00": "fx/t_c_aura_uv_00.png",
+    "t_c_aura_uv_04": "fx/t_c_aura_uv_04.png",
+    "t_TreyniSwimsuit2023_Color": "fx/t_TreyniSwimsuit2023_Color.png",
+    "t_c_grad_cla_00": "fx/t_c_grad_cla_00.png",
+    "t_c_grad_cla_01": "fx/t_c_grad_cla_01.png",
+    "t_c_grad_cla_02": "fx/t_c_grad_cla_02.png",
+    "FieldBattle_SkillField15_A": "fx/FieldBattle_SkillField15_A.png",
+    "FieldBattle_SkillField15_B": "fx/FieldBattle_SkillField15_B.png",
+    "t_c_line_uv_04": "fx/t_c_line_uv_04.png",
+    "t_c_line_uv_02": "fx/t_c_line_uv_02.png",
+    "t_c_line_cla_00": "fx/t_c_line_cla_00.png",
     "t_c_smk_uv_03": "fx/t_c_smk_uv_03.png",
     "t_c_smk_uv_10": "fx/t_c_smk_uv_10.png",
     "t_c_smk_uv_02": "fx/t_c_smk_uv_02.png",
@@ -52,33 +59,16 @@
     "t_c_smk_uv_00": "fx/t_c_smk_uv_00.png",
     "t_c_smk_uv_08": "fx/t_c_smk_uv_08.png",
     "t_c_smk_cla_02": "fx/t_c_smk_cla_02.png",
-    "t_c_line_uv_04": "fx/t_c_line_uv_04.png",
-    "t_c_line_uv_02": "fx/t_c_line_uv_02.png",
-    "t_c_line_cla_00": "fx/t_c_line_cla_00.png",
-    "t_c_rock_uv_01": "fx/t_c_rock_uv_01.png",
-    "t_c_rock_uv_00": "fx/t_c_rock_uv_00.png",
-    "t_c_fire_uv_07": "fx/t_c_fire_uv_07.png",
-    "t_c_fire_uv_01": "fx/t_c_fire_uv_01.png",
-    "t_c_fire_uv_06": "fx/t_c_fire_uv_06.png",
-    "t_c_grad_cla_00": "fx/t_c_grad_cla_00.png",
-    "t_c_grad_cla_01": "fx/t_c_grad_cla_01.png",
-    "t_c_grad_cla_02": "fx/t_c_grad_cla_02.png",
-    "t_TreyniSwimsuit2023_Color": "fx/t_TreyniSwimsuit2023_Color.png",
-    "t_c_lensflare_cla_01": "fx/t_c_lensflare_cla_01.png",
-    "t_c_ring_cla_00": "fx/t_c_ring_cla_00.png",
-    "FieldBattle_SkillField01_Skybox1": "fx/FieldBattle_SkillField01_Skybox1.png",
-    "FieldBattle_SkillField01_Terrain": "fx/FieldBattle_SkillField01_Terrain.png",
-    "t_c_pixel_white": "fx/t_c_pixel_white.png",
-    "t_c_pixel_black": "fx/t_c_pixel_black.png",
-    "t_ShunaTengu_Battle_Grad_00": "fx/t_ShunaTengu_Battle_Grad_00.png",
-    "t_CynthiaArmor_msk_uv_00": "fx/t_CynthiaArmor_msk_uv_00.png",
-    "t_c_anger_cla_00": "fx/t_c_anger_cla_00.png",
-    "t_c_glow_cla_03": "fx/t_c_glow_cla_03.png",
-    "t_c_glow_cla_00": "fx/t_c_glow_cla_00.png",
-    "t_c_glow_cla_01": "fx/t_c_glow_cla_01.png",
-    "t_c_glow_cla_05": "fx/t_c_glow_cla_05.png",
-    "t_c_glow_cla_00_nomip": "fx/t_c_glow_cla_00_nomip.png",
-    "t_c_glow_cla_07": "fx/t_c_glow_cla_07.png",
+    "t_c_thunder_uv_04": "fx/t_c_thunder_uv_04.png",
+    "t_c_water_uv_01": "fx/t_c_water_uv_01.png",
+    "t_c_water_uv_04": "fx/t_c_water_uv_04.png",
+    "t_c_water_cla_02": "fx/t_c_water_cla_02.png",
+    "t_c_water_uv_00": "fx/t_c_water_uv_00.png",
+    "t_c_water_cla_00": "fx/t_c_water_cla_00.png",
+    "t_c_water_uv_03": "fx/t_c_water_uv_03.png",
+    "t_c_water_uv_06": "fx/t_c_water_uv_06.png",
+    "t_c_water_uv_05": "fx/t_c_water_uv_05.png",
+    "t_c_water_cla_01": "fx/t_c_water_cla_01.png",
     "t_c_sonic_uv_02": "fx/t_c_sonic_uv_02.png",
     "t_c_sonic_uv_12": "fx/t_c_sonic_uv_12.png",
     "t_c_sonic_uv_01": "fx/t_c_sonic_uv_01.png",
@@ -87,7 +77,17 @@
     "t_c_sonic_uv_08_left": "fx/t_c_sonic_uv_08_left.png",
     "t_c_sonic_uv_10": "fx/t_c_sonic_uv_10.png",
     "t_c_sonic_uv_08_right": "fx/t_c_sonic_uv_08_right.png",
-    "t_c_sonic_uv_06": "fx/t_c_sonic_uv_06.png"
+    "t_c_sonic_uv_06": "fx/t_c_sonic_uv_06.png",
+    "FieldBattle_SkillField01_Skybox1": "fx/FieldBattle_SkillField01_Skybox1.png",
+    "FieldBattle_SkillField01_Terrain": "fx/FieldBattle_SkillField01_Terrain.png",
+    "t_c_ring_cla_00": "fx/t_c_ring_cla_00.png",
+    "Default-Particle": "fx/Default-Particle.png",
+    "t_c_pixel_white": "fx/t_c_pixel_white.png",
+    "t_c_pixel_black": "fx/t_c_pixel_black.png",
+    "t_c_flash_cla_10": "fx/t_c_flash_cla_10.png",
+    "t_c_flash_cla_07": "fx/t_c_flash_cla_07.png",
+    "t_c_flash_cla_01": "fx/t_c_flash_cla_01.png",
+    "t_c_flash_cla_05": "fx/t_c_flash_cla_05.png"
   },
   "particleGroups": {
     "S_JauneSwimsuit2025_C08_Line": [
@@ -594,7 +594,9 @@
           "lengthScale": 20.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": null,
+          "meshes": []
         }
       },
       {
@@ -1113,7 +1115,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_03",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Line_FlashRing_disk_03_b0a991bb6fbd.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_03",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Line_FlashRing_disk_03_b0a991bb6fbd.obj"
+            }
+          ]
         }
       },
       {
@@ -1632,7 +1646,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Line_RingShine_disk_00_ea12acf14436.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Line_RingShine_disk_00_ea12acf14436.obj"
+            }
+          ]
         }
       },
       {
@@ -2151,7 +2177,19 @@
           "lengthScale": 1.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_07",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Line_Flash_plane_07_8e20aac408d8.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_07",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Line_Flash_plane_07_8e20aac408d8.obj"
+            }
+          ]
         }
       },
       {
@@ -2674,7 +2712,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_08",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Line_Ring_disk_08_2ed1ebe8f9aa.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_08",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Line_Ring_disk_08_2ed1ebe8f9aa.obj"
+            }
+          ]
         }
       }
     ],
@@ -3190,7 +3240,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "sphere_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_SF_BG_Black_sphere_01_72dbc7d032f3.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "sphere_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_SF_BG_Black_sphere_01_72dbc7d032f3.obj"
+            }
+          ]
         }
       }
     ],
@@ -3748,7 +3810,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C05_Anger_Anger00_plane_02_d5b2b5da50fe.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C05_Anger_Anger00_plane_02_d5b2b5da50fe.obj"
+            }
+          ]
         }
       },
       {
@@ -4304,7 +4378,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C05_Anger_Anger01_plane_02_d4416ba61f7a.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C05_Anger_Anger01_plane_02_d4416ba61f7a.obj"
+            }
+          ]
         }
       }
     ],
@@ -4815,7 +4901,9 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": null,
+          "meshes": []
         }
       },
       {
@@ -5345,7 +5433,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "sphere_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C02_Jump_Sonic_sphere_01_33e8e80673f5.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "sphere_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C02_Jump_Sonic_sphere_01_33e8e80673f5.obj"
+            }
+          ]
         }
       },
       {
@@ -5854,7 +5954,9 @@
           "lengthScale": 2.0,
           "renderAlignment": 3,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": null,
+          "meshes": []
         }
       }
     ],
@@ -6296,7 +6398,9 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": null,
+          "meshes": []
         }
       },
       {
@@ -7118,7 +7222,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 3,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Ball_Flashline00_A_plane_00_513621f7737f.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Ball_Flashline00_A_plane_00_513621f7737f.obj"
+            }
+          ]
         }
       },
       {
@@ -7708,7 +7824,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "pSphere1",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Ball_Core_pSphere1_22bc80bd34b3.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "pSphere1",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Ball_Core_pSphere1_22bc80bd34b3.obj"
+            }
+          ]
         }
       },
       {
@@ -8530,7 +8658,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 3,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Ball_Flashline00_B_plane_00_c05ff2982587.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Ball_Flashline00_B_plane_00_c05ff2982587.obj"
+            }
+          ]
         }
       },
       {
@@ -9120,7 +9260,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "pSphere1",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Ball_Light_pSphere1_e7bf5067cbba.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "pSphere1",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Ball_Light_pSphere1_e7bf5067cbba.obj"
+            }
+          ]
         }
       },
       {
@@ -9625,7 +9777,19 @@
           "lengthScale": 13.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Ball_Hinoko_plane_01_b5c08279a917.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Ball_Hinoko_plane_01_b5c08279a917.obj"
+            }
+          ]
         }
       }
     ],
@@ -10129,7 +10293,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_04",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Laser00_D_disk_04_06c2430213bc.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_04",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Laser00_D_disk_04_06c2430213bc.obj"
+            }
+          ]
         }
       },
       {
@@ -10631,7 +10807,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_04",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Laser00_C_disk_04_8e610a7890ef.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_04",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Laser00_C_disk_04_8e610a7890ef.obj"
+            }
+          ]
         }
       },
       {
@@ -11128,7 +11316,19 @@
           "lengthScale": 13.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_03",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Ring00_disk_03_6efbe3e2b844.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_03",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Ring00_disk_03_6efbe3e2b844.obj"
+            }
+          ]
         }
       },
       {
@@ -11658,7 +11858,19 @@
           "lengthScale": 1.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Particle00_plane_01_b9eb416d1588.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Particle00_plane_01_b9eb416d1588.obj"
+            }
+          ]
         }
       },
       {
@@ -12197,7 +12409,19 @@
           "lengthScale": 1.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_07",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Flash00_plane_07_c43afdafc546.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_07",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Flash00_plane_07_c43afdafc546.obj"
+            }
+          ]
         }
       },
       {
@@ -12699,7 +12923,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_04",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Laser00_B_disk_04_d71de617ba9d.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_04",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Laser00_B_disk_04_d71de617ba9d.obj"
+            }
+          ]
         }
       },
       {
@@ -13229,7 +13465,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Electric00_disk_00_1891b61addcb.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Electric00_disk_00_1891b61addcb.obj"
+            }
+          ]
         }
       },
       {
@@ -13731,7 +13979,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_04",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Laser00_A_disk_04_14e633142ea5.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_04",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Laser00_A_disk_04_14e633142ea5.obj"
+            }
+          ]
         }
       },
       {
@@ -14268,7 +14528,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "pSphere_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Core00_pSphere_02_882a2f5dc9f8.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "pSphere_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Core00_pSphere_02_882a2f5dc9f8.obj"
+            }
+          ]
         }
       },
       {
@@ -14799,7 +15071,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_04",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Aura00_disk_04_53915d8b82a4.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_04",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Aura00_disk_04_53915d8b82a4.obj"
+            }
+          ]
         }
       },
       {
@@ -15287,7 +15571,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Aura01_disk_00_a3d28abe014b.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Aura01_disk_00_a3d28abe014b.obj"
+            }
+          ]
         }
       },
       {
@@ -15838,7 +16134,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_04",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Core_Ball00_disk_04_3a65bcd373da.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_04",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_Charge_Core_Ball00_disk_04_3a65bcd373da.obj"
+            }
+          ]
         }
       }
     ],
@@ -16383,7 +16691,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_White_In_White_In_plane_02_8e74359d39e9.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_White_In_White_In_plane_02_8e74359d39e9.obj"
+            }
+          ]
         }
       }
     ],
@@ -16893,7 +17213,19 @@
           "lengthScale": 13.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C05_Cam_Water_Bubble_plane_01_5028da629a7f.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C05_Cam_Water_Bubble_plane_01_5028da629a7f.obj"
+            }
+          ]
         }
       },
       {
@@ -17419,7 +17751,19 @@
           "lengthScale": 3.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C05_Cam_Water_RainDrop_plane_01_264803328a4e.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C05_Cam_Water_RainDrop_plane_01_264803328a4e.obj"
+            }
+          ]
         }
       },
       {
@@ -17918,7 +18262,19 @@
           "lengthScale": 13.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C05_Cam_Water_Star_plane_01_30027a4c08d6.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C05_Cam_Water_Star_plane_01_30027a4c08d6.obj"
+            }
+          ]
         }
       }
     ],
@@ -18456,7 +18812,19 @@
           "lengthScale": 13.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C09_Light_Glow00_plane_02_69bc9e28b22f.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C09_Light_Glow00_plane_02_69bc9e28b22f.obj"
+            }
+          ]
         }
       },
       {
@@ -19023,7 +19391,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_13",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C09_Light_Flash01_plane_13_75644f4e1804.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_13",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C09_Light_Flash01_plane_13_75644f4e1804.obj"
+            }
+          ]
         }
       },
       {
@@ -19590,7 +19970,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_13",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C09_Light_Flash00_plane_13_530121f6882a.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_13",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C09_Light_Flash00_plane_13_530121f6882a.obj"
+            }
+          ]
         }
       }
     ],
@@ -20083,7 +20475,19 @@
           "lengthScale": 1.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C04_SF_BG_Particle_plane_01_c44fc97b9300.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C04_SF_BG_Particle_plane_01_c44fc97b9300.obj"
+            }
+          ]
         }
       },
       {
@@ -20610,7 +21014,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "sphere_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C04_SF_BG_SF_Universe_sphere_01_9655348be065.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "sphere_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C04_SF_BG_SF_Universe_sphere_01_9655348be065.obj"
+            }
+          ]
         }
       },
       {
@@ -21145,7 +21561,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C04_SF_BG_White_In_plane_02_c58a33799095.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C04_SF_BG_White_In_plane_02_c58a33799095.obj"
+            }
+          ]
         }
       },
       {
@@ -21664,7 +22092,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "sphere_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C04_SF_BG_SF_Dust_sphere_01_5d063123a929.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "sphere_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C04_SF_BG_SF_Dust_sphere_01_5d063123a929.obj"
+            }
+          ]
         }
       }
     ],
@@ -22179,7 +22619,19 @@
           "lengthScale": 6.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Particle00_plane_01_cb05c5fb1d7e.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Particle00_plane_01_cb05c5fb1d7e.obj"
+            }
+          ]
         }
       },
       {
@@ -22692,7 +23144,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Impact00_disk_02_d3d6ba5c7462.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Impact00_disk_02_d3d6ba5c7462.obj"
+            }
+          ]
         }
       },
       {
@@ -23192,7 +23656,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "other_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Ground_Rock01_other_01_375b561d3fa9.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "other_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Ground_Rock01_other_01_375b561d3fa9.obj"
+            }
+          ]
         }
       },
       {
@@ -23692,7 +24168,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "other_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Ground_Rock00_other_01_e1be410243a2.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "other_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Ground_Rock00_other_01_e1be410243a2.obj"
+            }
+          ]
         }
       },
       {
@@ -24220,7 +24708,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Dust00_plane_00_0df88091301c.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Dust00_plane_00_0df88091301c.obj"
+            }
+          ]
         }
       },
       {
@@ -24738,7 +25238,9 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": null,
+          "meshes": []
         }
       },
       {
@@ -25273,7 +25775,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "Ifritdefault_twist_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Wind00_Ifritdefault_twist_00_1a4ddc672709.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "Ifritdefault_twist_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Wind00_Ifritdefault_twist_00_1a4ddc672709.obj"
+            }
+          ]
         }
       },
       {
@@ -25812,7 +26326,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_10",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Ground00_disk_10_78fbb8347ce1.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_10",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Ground00_disk_10_78fbb8347ce1.obj"
+            }
+          ]
         }
       },
       {
@@ -26334,7 +26860,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "rock_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Rock00_rock_01_c414368699c7.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "rock_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Rock00_rock_01_c414368699c7.obj"
+            }
+          ]
         }
       },
       {
@@ -26847,7 +27385,9 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": null,
+          "meshes": []
         }
       },
       {
@@ -27360,7 +27900,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "cylinder_06",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Sonic00_cylinder_06_b98a3d9dfd55.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "cylinder_06",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C06_Explosion_Sonic00_cylinder_06_b98a3d9dfd55.obj"
+            }
+          ]
         }
       }
     ],
@@ -27908,7 +28460,9 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": null,
+          "meshes": []
         }
       },
       {
@@ -28455,7 +29009,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "sphere_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C06_Wind_Shock_sphere_01_ffab879874ec.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "sphere_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C06_Wind_Shock_sphere_01_ffab879874ec.obj"
+            }
+          ]
         }
       },
       {
@@ -28974,7 +29540,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C06_Wind_Dust_plane_00_6f41025ea461.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C06_Wind_Dust_plane_00_6f41025ea461.obj"
+            }
+          ]
         }
       },
       {
@@ -29513,7 +30091,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "ShogoRasen_sphere_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C06_Wind_Burst_ShogoRasen_sphere_00_8d0122d7aa55.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "ShogoRasen_sphere_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C06_Wind_Burst_ShogoRasen_sphere_00_8d0122d7aa55.obj"
+            }
+          ]
         }
       }
     ],
@@ -30042,7 +30632,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C03_Flare_Attribute_Rainbow_plane_02_7bb3c9db7d9a.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C03_Flare_Attribute_Rainbow_plane_02_7bb3c9db7d9a.obj"
+            }
+          ]
         }
       },
       {
@@ -30574,7 +31176,19 @@
           "lengthScale": 13.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C03_Flare_LensFlare_plane_01_cb19030cc3a6.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C03_Flare_LensFlare_plane_01_cb19030cc3a6.obj"
+            }
+          ]
         }
       },
       {
@@ -31085,7 +31699,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "cylinder_06",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C03_Flare_BG_Up_cylinder_06_b3d0b0efc252.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "cylinder_06",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C03_Flare_BG_Up_cylinder_06_b3d0b0efc252.obj"
+            }
+          ]
         }
       }
     ],
@@ -31615,7 +32241,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C03_Cam_Water_Shock01_disk_01_aeb56370402a.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C03_Cam_Water_Shock01_disk_01_aeb56370402a.obj"
+            }
+          ]
         }
       },
       {
@@ -32160,7 +32798,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "cylinder_07",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C03_Cam_Water_Dust00_cylinder_07_28a15cffb729.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "cylinder_07",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C03_Cam_Water_Dust00_cylinder_07_28a15cffb729.obj"
+            }
+          ]
         }
       },
       {
@@ -32679,7 +33329,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "cylinder_06",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C03_Cam_Water_Base01_cylinder_06_d680652a358d.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "cylinder_06",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C03_Cam_Water_Base01_cylinder_06_d680652a358d.obj"
+            }
+          ]
         }
       },
       {
@@ -33178,7 +33840,19 @@
           "lengthScale": 13.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C03_Cam_Water_Star00_plane_01_7cf5caacd982.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C03_Cam_Water_Star00_plane_01_7cf5caacd982.obj"
+            }
+          ]
         }
       },
       {
@@ -33686,7 +34360,19 @@
           "lengthScale": 13.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C03_Cam_Water_Bubble01_plane_01_3e7cdf620e61.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C03_Cam_Water_Bubble01_plane_01_3e7cdf620e61.obj"
+            }
+          ]
         }
       },
       {
@@ -34205,7 +34891,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "cylinder_06",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C03_Cam_Water_Base00_cylinder_06_355bb9db8362.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "cylinder_06",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C03_Cam_Water_Base00_cylinder_06_355bb9db8362.obj"
+            }
+          ]
         }
       },
       {
@@ -34733,7 +35431,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C03_Cam_Water_Shock00_disk_01_7f575b455fb9.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C03_Cam_Water_Shock00_disk_01_7f575b455fb9.obj"
+            }
+          ]
         }
       },
       {
@@ -35250,7 +35960,19 @@
           "lengthScale": 13.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C03_Cam_Water_Bubble00_plane_01_54d7b400600d.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C03_Cam_Water_Bubble00_plane_01_54d7b400600d.obj"
+            }
+          ]
         }
       }
     ],
@@ -35784,7 +36506,19 @@
           "lengthScale": 13.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C01_Flare_LensFlare_plane_01_dd13594064aa.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C01_Flare_LensFlare_plane_01_dd13594064aa.obj"
+            }
+          ]
         }
       },
       {
@@ -36295,7 +37029,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "cylinder_06",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C01_Flare_BG_Up_cylinder_06_7d43f035ce09.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "cylinder_06",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C01_Flare_BG_Up_cylinder_06_7d43f035ce09.obj"
+            }
+          ]
         }
       },
       {
@@ -36822,7 +37568,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C01_Flare_Attribute_Rainbow_plane_02_b3b2f0330a31.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C01_Flare_Attribute_Rainbow_plane_02_b3b2f0330a31.obj"
+            }
+          ]
         }
       }
     ],
@@ -37343,7 +38101,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C05_Wind_Dust_plane_00_8f09dab62d4a.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C05_Wind_Dust_plane_00_8f09dab62d4a.obj"
+            }
+          ]
         }
       },
       {
@@ -37893,7 +38663,9 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": null,
+          "meshes": []
         }
       },
       {
@@ -38432,7 +39204,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "ShogoRasen_sphere_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C05_Wind_Burst_ShogoRasen_sphere_00_e63ad0745f8c.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "ShogoRasen_sphere_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C05_Wind_Burst_ShogoRasen_sphere_00_e63ad0745f8c.obj"
+            }
+          ]
         }
       },
       {
@@ -38983,7 +39767,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "sphere_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C05_Wind_Shock_sphere_01_ba0b07fa8ed9.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "sphere_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C05_Wind_Shock_sphere_01_ba0b07fa8ed9.obj"
+            }
+          ]
         }
       }
     ],
@@ -39493,7 +40289,9 @@
           "lengthScale": 2.0,
           "renderAlignment": 3,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": null,
+          "meshes": []
         }
       }
     ],
@@ -40010,7 +40808,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "cylinder_08",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C05_CamLine_BG00_cylinder_08_c59f2c3c3e32.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "cylinder_08",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C05_CamLine_BG00_cylinder_08_c59f2c3c3e32.obj"
+            }
+          ]
         }
       },
       {
@@ -40533,7 +41343,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "cylinder_06",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C05_CamLine_FlashLine00_cylinder_06_1246f9e2b061.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "cylinder_06",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C05_CamLine_FlashLine00_cylinder_06_1246f9e2b061.obj"
+            }
+          ]
         }
       },
       {
@@ -41056,7 +41878,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "cylinder_06",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C05_CamLine_FlashLine01_cylinder_06_358c54d44b18.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "cylinder_06",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C05_CamLine_FlashLine01_cylinder_06_358c54d44b18.obj"
+            }
+          ]
         }
       }
     ],
@@ -41498,7 +42332,9 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": null,
+          "meshes": []
         }
       },
       {
@@ -42094,7 +42930,9 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": null,
+          "meshes": []
         }
       },
       {
@@ -42607,7 +43445,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Impact00_disk_01_f67336705fe8.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Impact00_disk_01_f67336705fe8.obj"
+            }
+          ]
         }
       },
       {
@@ -43128,7 +43978,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "rock_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Rock02_rock_01_893745ef4a70.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "rock_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Rock02_rock_01_893745ef4a70.obj"
+            }
+          ]
         }
       },
       {
@@ -43631,7 +44493,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_10",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Smoke_A_plane_10_bbeabdda0ad8.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_10",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Smoke_A_plane_10_bbeabdda0ad8.obj"
+            }
+          ]
         }
       },
       {
@@ -44166,7 +45040,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "Ifritdefault_twist_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Wind01_Ifritdefault_twist_00_902eb9bc92ca.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "Ifritdefault_twist_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Wind01_Ifritdefault_twist_00_902eb9bc92ca.obj"
+            }
+          ]
         }
       },
       {
@@ -44665,7 +45551,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_10",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Sonic_B_plane_10_a8517b4f7ce0.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_10",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Sonic_B_plane_10_a8517b4f7ce0.obj"
+            }
+          ]
         }
       },
       {
@@ -45182,7 +46080,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "cylinder_06",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Sonic00_cylinder_06_69c2631a4baa.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "cylinder_06",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Sonic00_cylinder_06_69c2631a4baa.obj"
+            }
+          ]
         }
       },
       {
@@ -45705,7 +46615,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_03",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_GroundSonic00_disk_03_891e7c6559e1.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_03",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_GroundSonic00_disk_03_891e7c6559e1.obj"
+            }
+          ]
         }
       },
       {
@@ -46210,7 +47132,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "Crack_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Clack00_Crack_01_5445046c1796.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "Crack_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Clack00_Crack_01_5445046c1796.obj"
+            }
+          ]
         }
       },
       {
@@ -46716,7 +47650,19 @@
           "lengthScale": 30.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Line01_plane_00_7a0a5587835f.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Line01_plane_00_7a0a5587835f.obj"
+            }
+          ]
         }
       },
       {
@@ -47235,7 +48181,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "Sphere_04",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_BGDust00_Sphere_04_f7875e55e1d3.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "Sphere_04",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_BGDust00_Sphere_04_f7875e55e1d3.obj"
+            }
+          ]
         }
       },
       {
@@ -47738,7 +48696,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_10",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Smoke_B_plane_10_d2fe111b55c6.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_10",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Smoke_B_plane_10_d2fe111b55c6.obj"
+            }
+          ]
         }
       },
       {
@@ -48248,7 +49218,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "sphere_05",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Sphere00_sphere_05_da45f502299c.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "sphere_05",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Sphere00_sphere_05_da45f502299c.obj"
+            }
+          ]
         }
       },
       {
@@ -48742,7 +49724,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Glow00_plane_02_6b9633e72bcf.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Glow00_plane_02_6b9633e72bcf.obj"
+            }
+          ]
         }
       },
       {
@@ -49252,7 +50246,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "rock_03",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_RockBig00_rock_03_e1068dbe137d.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "rock_03",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_RockBig00_rock_03_e1068dbe137d.obj"
+            }
+          ]
         }
       },
       {
@@ -49793,7 +50799,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "sphere_05",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Dome00_sphere_05_1cb1c17fc476.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "sphere_05",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Dome00_sphere_05_1cb1c17fc476.obj"
+            }
+          ]
         }
       },
       {
@@ -50324,7 +51342,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "cylinder_07",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_DustWave00_cylinder_07_0591d8233e64.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "cylinder_07",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_DustWave00_cylinder_07_0591d8233e64.obj"
+            }
+          ]
         }
       },
       {
@@ -50853,7 +51883,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_08",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Glow01_plane_08_97d3a49dc8f0.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_08",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Glow01_plane_08_97d3a49dc8f0.obj"
+            }
+          ]
         }
       },
       {
@@ -51366,7 +52408,19 @@
           "lengthScale": 3.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Particle01_plane_01_bc1fc2f251c7.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Particle01_plane_01_bc1fc2f251c7.obj"
+            }
+          ]
         }
       },
       {
@@ -51879,7 +52933,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "sphere_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_DomeFront00_sphere_00_9ad81d5e6b3a.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "sphere_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_DomeFront00_sphere_00_9ad81d5e6b3a.obj"
+            }
+          ]
         }
       },
       {
@@ -52388,7 +53454,19 @@
           "lengthScale": 13.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "line_03",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_WindLine00_line_03_911d1b73033b.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "line_03",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_WindLine00_line_03_911d1b73033b.obj"
+            }
+          ]
         }
       },
       {
@@ -52905,7 +53983,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "rock_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Rock00_rock_00_fcc0a82def71.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "rock_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Rock00_rock_00_fcc0a82def71.obj"
+            }
+          ]
         }
       },
       {
@@ -53457,7 +54547,19 @@
           "lengthScale": 10.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Particle00_plane_00_b365eba09d42.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Particle00_plane_00_b365eba09d42.obj"
+            }
+          ]
         }
       },
       {
@@ -53972,7 +55074,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "sphere_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_SonicGlow00_sphere_01_3503b45cf4b5.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "sphere_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_SonicGlow00_sphere_01_3503b45cf4b5.obj"
+            }
+          ]
         }
       },
       {
@@ -54493,7 +55607,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "rock_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Rock01_rock_01_c216f6b463cb.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "rock_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Rock01_rock_01_c216f6b463cb.obj"
+            }
+          ]
         }
       },
       {
@@ -54999,7 +56125,19 @@
           "lengthScale": 30.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Line00_plane_00_d6c851194af2.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Line00_plane_00_d6c851194af2.obj"
+            }
+          ]
         }
       },
       {
@@ -55516,7 +56654,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "elec_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Electrical00_elec_00_95c3a649c3d8.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "elec_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Electrical00_elec_00_95c3a649c3d8.obj"
+            }
+          ]
         }
       },
       {
@@ -56026,7 +57176,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Ground00_plane_02_874856819819.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Ground00_plane_02_874856819819.obj"
+            }
+          ]
         }
       },
       {
@@ -56570,7 +57732,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "elec_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Electrical01_elec_00_b568900dec7a.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "elec_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Electrical01_elec_00_b568900dec7a.obj"
+            }
+          ]
         }
       },
       {
@@ -57113,7 +58287,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "cylinder_07",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_SonicWave00_cylinder_07_4641d3e36311.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "cylinder_07",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_SonicWave00_cylinder_07_4641d3e36311.obj"
+            }
+          ]
         }
       },
       {
@@ -57640,7 +58826,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "cylinder_06",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Wind00_cylinder_06_3244dfd972c0.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "cylinder_06",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Wind00_cylinder_06_3244dfd972c0.obj"
+            }
+          ]
         }
       },
       {
@@ -58139,7 +59337,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_10",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Sonic_A_plane_10_ee10882e365c.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_10",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_Sonic_A_plane_10_ee10882e365c.obj"
+            }
+          ]
         }
       },
       {
@@ -58659,7 +59869,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "cylinder_06",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_SonicRing00_cylinder_06_10c3a969eaa0.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "cylinder_06",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Explosion_SonicRing00_cylinder_06_10c3a969eaa0.obj"
+            }
+          ]
         }
       }
     ],
@@ -59115,7 +60337,9 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": null,
+          "meshes": []
         }
       },
       {
@@ -59630,7 +60854,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_Cam_Glow_Glow00_plane_02_5e0d0dfdda20.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_Cam_Glow_Glow00_plane_02_5e0d0dfdda20.obj"
+            }
+          ]
         }
       }
     ],
@@ -60160,7 +61396,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C01_Shibuki_Shock00_disk_01_3eeada14aa7d.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C01_Shibuki_Shock00_disk_01_3eeada14aa7d.obj"
+            }
+          ]
         }
       },
       {
@@ -60664,7 +61912,19 @@
           "lengthScale": 13.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C01_Shibuki_Bubble00_plane_01_57cb6eb183de.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C01_Shibuki_Bubble00_plane_01_57cb6eb183de.obj"
+            }
+          ]
         }
       }
     ],
@@ -61210,7 +62470,9 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": null,
+          "meshes": []
         }
       },
       {
@@ -61749,7 +63011,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_BG_SkillField_Sealevel01_plane_02_05b63d0c5caf.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_BG_SkillField_Sealevel01_plane_02_05b63d0c5caf.obj"
+            }
+          ]
         }
       },
       {
@@ -62239,7 +63513,19 @@
           "lengthScale": 13.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_BG_Particle00_plane_01_c4212307d62a.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_BG_Particle00_plane_01_c4212307d62a.obj"
+            }
+          ]
         }
       },
       {
@@ -62778,7 +64064,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_BG_SkillField_Sealevel02_plane_02_dceb33fa5f7f.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_BG_SkillField_Sealevel02_plane_02_dceb33fa5f7f.obj"
+            }
+          ]
         }
       },
       {
@@ -63317,7 +64615,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_BG_SkillField_Sealevel00_plane_02_10fc236f88c8.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_BG_SkillField_Sealevel00_plane_02_10fc236f88c8.obj"
+            }
+          ]
         }
       }
     ],
@@ -63819,7 +65129,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "other_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Smoke_GroundRock00_other_01_7faad7833658.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "other_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Smoke_GroundRock00_other_01_7faad7833658.obj"
+            }
+          ]
         }
       },
       {
@@ -64319,7 +65641,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "other_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Smoke_GroundRock01_other_01_d6d73929b15a.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "other_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Smoke_GroundRock01_other_01_d6d73929b15a.obj"
+            }
+          ]
         }
       },
       {
@@ -64842,7 +66176,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_03",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Smoke_GroundSonic00_disk_03_2e90c4b6203e.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_03",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Smoke_GroundSonic00_disk_03_2e90c4b6203e.obj"
+            }
+          ]
         }
       },
       {
@@ -65365,7 +66711,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_04",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Smoke_ScreenSonic00_disk_04_a66b1a6e29d6.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_04",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Smoke_ScreenSonic00_disk_04_a66b1a6e29d6.obj"
+            }
+          ]
         }
       },
       {
@@ -65888,7 +67246,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_03",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Smoke_Glow01_disk_03_c0a7cdc86471.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_03",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Smoke_Glow01_disk_03_c0a7cdc86471.obj"
+            }
+          ]
         }
       },
       {
@@ -66410,7 +67780,9 @@
           "lengthScale": 2.0,
           "renderAlignment": 3,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": null,
+          "meshes": []
         }
       },
       {
@@ -66933,7 +68305,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Smoke_GroundGlow00_plane_02_66c07fb933b1.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Smoke_GroundGlow00_plane_02_66c07fb933b1.obj"
+            }
+          ]
         }
       },
       {
@@ -67452,7 +68836,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 1,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_03",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C08_Smoke_Glow00_disk_03_1391900a8988.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_03",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C08_Smoke_Glow00_disk_03_1391900a8988.obj"
+            }
+          ]
         }
       }
     ],
@@ -68001,7 +69397,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C06_EyeFlash_Flash00_A_plane_02_b62cfbbfa156.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C06_EyeFlash_Flash00_A_plane_02_b62cfbbfa156.obj"
+            }
+          ]
         }
       },
       {
@@ -68548,7 +69956,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C06_EyeFlash_Flash00_B_plane_02_b62e60259795.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C06_EyeFlash_Flash00_B_plane_02_b62e60259795.obj"
+            }
+          ]
         }
       }
     ],
@@ -69059,7 +70479,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_ChargeFirst_Dome00_plane_02_8e9a71673840.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_ChargeFirst_Dome00_plane_02_8e9a71673840.obj"
+            }
+          ]
         }
       },
       {
@@ -69584,7 +71016,19 @@
           "lengthScale": 1.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_07",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_ChargeFirst_Flash00_plane_07_faeeb2977fab.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_07",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_ChargeFirst_Flash00_plane_07_faeeb2977fab.obj"
+            }
+          ]
         }
       },
       {
@@ -70075,7 +71519,19 @@
           "lengthScale": 1.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_00",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_ChargeFirst_Particle00_plane_00_1ef872b3e7ac.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_00",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_ChargeFirst_Particle00_plane_00_1ef872b3e7ac.obj"
+            }
+          ]
         }
       },
       {
@@ -70628,7 +72084,19 @@
           "lengthScale": 20.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "pSphere_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_ChargeFirst_Core00_pSphere_02_eef1f5fc11ea.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "pSphere_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_ChargeFirst_Core00_pSphere_02_eef1f5fc11ea.obj"
+            }
+          ]
         }
       },
       {
@@ -71155,7 +72623,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 2,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_04",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_ChargeFirst_Aura00_disk_04_b6dabd32f5aa.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_04",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_ChargeFirst_Aura00_disk_04_b6dabd32f5aa.obj"
+            }
+          ]
         }
       },
       {
@@ -71657,7 +73137,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_04",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_ChargeFirst_Laser00_disk_04_6738330e2f69.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_04",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_ChargeFirst_Laser00_disk_04_6738330e2f69.obj"
+            }
+          ]
         }
       },
       {
@@ -72140,7 +73632,19 @@
           "lengthScale": 13.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "disk_03",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C07_ChargeFirst_Ring00_disk_03_ce3571faa29d.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "disk_03",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C07_ChargeFirst_Ring00_disk_03_ce3571faa29d.obj"
+            }
+          ]
         }
       }
     ],
@@ -72669,7 +74173,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_02",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C09_Flare_Attribute_Rainbow_plane_02_6d09819d8310.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_02",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C09_Flare_Attribute_Rainbow_plane_02_6d09819d8310.obj"
+            }
+          ]
         }
       },
       {
@@ -73180,7 +74696,19 @@
           "lengthScale": 2.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "cylinder_06",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C09_Flare_BG_Up_cylinder_06_000ca3a10cdb.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "cylinder_06",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C09_Flare_BG_Up_cylinder_06_000ca3a10cdb.obj"
+            }
+          ]
         }
       },
       {
@@ -73712,7 +75240,19 @@
           "lengthScale": 13.0,
           "renderAlignment": 0,
           "allowRoll": true,
-          "rotateWithStretchDirection": true
+          "rotateWithStretchDirection": true,
+          "mesh": {
+            "slot": "m_Mesh",
+            "name": "plane_01",
+            "source": "particle_meshes/S_JauneSwimsuit2025_C09_Flare_LensFlare_plane_01_57d5a33e544a.obj"
+          },
+          "meshes": [
+            {
+              "slot": "m_Mesh",
+              "name": "plane_01",
+              "source": "particle_meshes/S_JauneSwimsuit2025_C09_Flare_LensFlare_plane_01_57d5a33e544a.obj"
+            }
+          ]
         }
       }
     ]

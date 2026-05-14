@@ -8,6 +8,7 @@ import Link from "next/link"
 export type SlimForceCharacter = {
   master_pc_id: number
   name: string
+  visualTier: number
   baseSrc: string
   frameSrc: string
   starsSrc: string
@@ -105,20 +106,40 @@ export default function ForcesClient({ forceGroups }: { forceGroups: SlimForceGr
                         {group.characters.map((character) => (
                           <Link key={character.master_pc_id} href={`/characters/${character.master_pc_id}`} className="min-w-0">
                             <div className="relative w-full pt-[100%] overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white transition-all">
-                              <img
-                                src={character.baseSrc}
-                                alt=""
-                                className="absolute inset-0 w-full h-full object-contain pointer-events-none"
-                              />
-                              <img
-                                src={character.iconSrc}
-                                alt={character.name}
-                                className="absolute inset-0 w-full h-full object-cover object-top"
-                              />
+                              {character.visualTier >= 8 ? (
+                                <div className="absolute inset-[7%]">
+                                  <img
+                                    src={character.baseSrc}
+                                    alt=""
+                                    loading="lazy"
+                                    decoding="async"
+                                    className="w-full h-full object-fill pointer-events-none"
+                                  />
+                                </div>
+                              ) : (
+                                <img
+                                  src={character.baseSrc}
+                                  alt=""
+                                  loading="lazy"
+                                  decoding="async"
+                                  className="absolute inset-0 w-full h-full object-fill pointer-events-none"
+                                />
+                              )}
+                              <div className={`absolute overflow-hidden ${character.visualTier >= 8 ? "inset-[4%] rounded-[6%]" : "inset-[7%] rounded-[10%]"}`}>
+                                <img
+                                  src={character.iconSrc}
+                                  alt={character.name}
+                                  loading="lazy"
+                                  decoding="async"
+                                  className="h-full w-full object-cover object-top"
+                                />
+                              </div>
                               <img
                                 src={character.frameSrc}
                                 alt=""
-                                className="absolute inset-0 w-full h-full object-contain pointer-events-none"
+                                loading="lazy"
+                                decoding="async"
+                                className="absolute inset-0 w-full h-full object-fill pointer-events-none"
                               />
                               <div className="absolute top-1 left-1 bg-black bg-opacity-80 text-white text-[10px] px-1 py-0.5 rounded z-10">
                                 {character.name}

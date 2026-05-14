@@ -13,9 +13,8 @@
       ]
     }
   ],
-  "cameraTracks": [
-    {
-      "name": "RimuruHA2026_Battle_SpecialSkill_Cut_01",
+  "cameraTracks": {
+    "RimuruHA2026_Battle_SpecialSkill_Cut_01": {
       "source": "RimuruHA2026_Battle_SpecialSkill_Camera_Cut_01",
       "position": [
         {
@@ -2045,8 +2044,7 @@
         }
       ]
     },
-    {
-      "name": "RimuruHA2026_Battle_SpecialSkill_Cut_02",
+    "RimuruHA2026_Battle_SpecialSkill_Cut_02": {
       "source": "RimuruHA2026_Battle_SpecialSkill_Camera_Cut_02",
       "position": [
         {
@@ -4144,8 +4142,7 @@
         }
       ]
     },
-    {
-      "name": "RimuruHA2026_Battle_SpecialSkill_Cut_03",
+    "RimuruHA2026_Battle_SpecialSkill_Cut_03": {
       "source": "RimuruHA2026_Battle_SpecialSkill_Camera_Cut_03",
       "position": [
         {
@@ -9915,8 +9912,7 @@
         }
       ]
     },
-    {
-      "name": "RimuruHA2026_Battle_SpecialSkill_Cut_04",
+    "RimuruHA2026_Battle_SpecialSkill_Cut_04": {
       "source": "RimuruHA2026_Battle_SpecialSkill_Camera_Cut_04",
       "position": [
         {
@@ -14938,8 +14934,7 @@
         }
       ]
     },
-    {
-      "name": "RimuruHA2026_Battle_SpecialSkill_Cut_05",
+    "RimuruHA2026_Battle_SpecialSkill_Cut_05": {
       "source": "RimuruHA2026_Battle_SpecialSkill_Camera_Cut_05",
       "position": [
         {
@@ -18108,5 +18103,5 @@
         }
       ]
     }
-  ]
+  }
 }

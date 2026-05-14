@@ -1,0 +1,2228 @@
+[
+  {
+    "id": "manual-1-challenge-route-mp5j5192",
+    "floorNumber": 1,
+    "label": "Challenge Route",
+    "color": "#84f75d",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      11,
+      19,
+      11,
+      19,
+      20,
+      30,
+      20,
+      30,
+      31,
+      30,
+      31
+    ]
+  },
+  {
+    "id": "manual-1-main-route-mp5j730t",
+    "floorNumber": 1,
+    "label": "Main Route",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      3,
+      8,
+      15,
+      23,
+      22,
+      21,
+      31,
+      21,
+      31
+    ]
+  },
+  {
+    "id": "manual-2-challenge-route-mp5jb3jo",
+    "floorNumber": 2,
+    "label": "Challenge Route",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      3,
+      7,
+      13,
+      21,
+      13,
+      21,
+      31,
+      21,
+      31,
+      1
+    ]
+  },
+  {
+    "id": "manual-2-main-route-mp5jbwak",
+    "floorNumber": 2,
+    "label": "Main Route",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      15,
+      23,
+      15,
+      23,
+      22,
+      23,
+      22,
+      32,
+      22,
+      32,
+      22,
+      32,
+      31
+    ]
+  },
+  {
+    "id": "manual-3-challenge-route-mp5jdpy8",
+    "floorNumber": 3,
+    "label": "Challenge Route",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      3,
+      1,
+      3,
+      8,
+      15,
+      23,
+      22,
+      32,
+      31
+    ]
+  },
+  {
+    "id": "manual-3-main-route-mp5jesw3",
+    "floorNumber": 3,
+    "label": "Main Route",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      16,
+      24,
+      23,
+      33,
+      31
+    ]
+  },
+  {
+    "id": "manual-4-challenge-route-mp5jidut",
+    "floorNumber": 4,
+    "label": "Challenge Route",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      3,
+      7,
+      3,
+      7,
+      13,
+      21,
+      31
+    ]
+  },
+  {
+    "id": "manual-4-main-route-mp5jizz6",
+    "floorNumber": 4,
+    "label": "Main Route",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      3,
+      1,
+      3,
+      1,
+      3,
+      7,
+      19,
+      29,
+      31
+    ]
+  },
+  {
+    "id": "manual-5-challenge-route-mp5jjtiu",
+    "floorNumber": 5,
+    "label": "Challenge Route",
+    "color": "#f7e85d",
+    "tileNumbers": [
+      1,
+      3,
+      7,
+      13,
+      21,
+      31,
+      21,
+      31,
+      1
+    ]
+  },
+  {
+    "id": "manual-5-route-1-mp5jkddf",
+    "floorNumber": 5,
+    "label": "Route 1",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      10,
+      5,
+      10,
+      28,
+      31
+    ]
+  },
+  {
+    "id": "manual-5-route-2-mp5jkwmj",
+    "floorNumber": 5,
+    "label": "Route 2",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      16,
+      25,
+      35,
+      31
+    ]
+  },
+  {
+    "id": "manual-6-route-1-mp5jn30h",
+    "floorNumber": 6,
+    "label": "Route 1",
+    "color": "#fff689",
+    "tileNumbers": [
+      1,
+      17,
+      27,
+      31
+    ]
+  },
+  {
+    "id": "manual-6-route-2-mp5jnl5f",
+    "floorNumber": 6,
+    "label": "Route 2",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      33,
+      31
+    ]
+  },
+  {
+    "id": "manual-7-route-1-mp5joj70",
+    "floorNumber": 7,
+    "label": "Route 1",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      19,
+      20,
+      30,
+      31
+    ]
+  },
+  {
+    "id": "manual-7-route-2-mp5jp34k",
+    "floorNumber": 7,
+    "label": "Route 2",
+    "color": "#8dfff1",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      16,
+      25,
+      36,
+      31
+    ]
+  },
+  {
+    "id": "manual-7-route-3-mp5jrlx2",
+    "floorNumber": 7,
+    "label": "Route 3",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      33,
+      31
+    ]
+  },
+  {
+    "id": "manual-8-route-1-mp5jsse0",
+    "floorNumber": 8,
+    "label": "Route 1",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      36,
+      31
+    ]
+  },
+  {
+    "id": "manual-8-challenge-route-mp5jthia",
+    "floorNumber": 8,
+    "label": "Challenge Route",
+    "color": "#8dfff1",
+    "tileNumbers": [
+      1,
+      3,
+      7,
+      13,
+      21,
+      31
+    ]
+  },
+  {
+    "id": "manual-9-route-1-mp5ju0vd",
+    "floorNumber": 9,
+    "label": "Route 1",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      2,
+      12,
+      19,
+      29,
+      31
+    ]
+  },
+  {
+    "id": "manual-9-route-2-mp5jumq3",
+    "floorNumber": 9,
+    "label": "Route 2",
+    "color": "#8dfff1",
+    "tileNumbers": [
+      1,
+      2,
+      30,
+      31
+    ]
+  },
+  {
+    "id": "manual-10-route-1-mp5jvcne",
+    "floorNumber": 10,
+    "label": "Route 1",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      9,
+      15,
+      23,
+      34,
+      33,
+      22,
+      32,
+      31
+    ]
+  },
+  {
+    "id": "manual-10-route-2-mp5jw28o",
+    "floorNumber": 10,
+    "label": "Route 2",
+    "color": "#8dfff1",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      11,
+      19,
+      28,
+      31
+    ]
+  },
+  {
+    "id": "manual-10-route-3-mp5jwjqx",
+    "floorNumber": 10,
+    "label": "Route 3",
+    "color": "#ffa9ec",
+    "tileNumbers": [
+      1,
+      2,
+      30,
+      31
+    ]
+  },
+  {
+    "id": "manual-11-route-1-mp5jy7ga",
+    "floorNumber": 11,
+    "label": "Route 1",
+    "color": "#8dfff1",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      15,
+      24,
+      46,
+      43,
+      57
+    ]
+  },
+  {
+    "id": "manual-11-route-2-mp5jyza1",
+    "floorNumber": 11,
+    "label": "Route 2",
+    "color": "#fff789",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      10,
+      28,
+      52,
+      57
+    ]
+  },
+  {
+    "id": "manual-11-route-3-mp5jzi64",
+    "floorNumber": 11,
+    "label": "Route 3",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      23,
+      34,
+      33,
+      45,
+      43,
+      57
+    ]
+  },
+  {
+    "id": "manual-12-route-1-mp5k0gzh",
+    "floorNumber": 12,
+    "label": "Route 1",
+    "color": "#7cd7ff",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      10,
+      28,
+      29,
+      30,
+      42,
+      56,
+      57
+    ]
+  },
+  {
+    "id": "manual-12-route-2-mp5k1a4f",
+    "floorNumber": 12,
+    "label": "Route 2",
+    "color": "#ff9e62",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      33,
+      45,
+      44,
+      58,
+      57
+    ]
+  },
+  {
+    "id": "manual-12-route-3-mp5k1vqr",
+    "floorNumber": 12,
+    "label": "Route 3",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      59,
+      57
+    ]
+  },
+  {
+    "id": "manual-13-route-1-mp5k2oos",
+    "floorNumber": 13,
+    "label": "Route 1",
+    "color": "#fff789",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      16,
+      24,
+      22,
+      33,
+      45,
+      43,
+      57
+    ]
+  },
+  {
+    "id": "manual-13-route-2-mp5k39ep",
+    "floorNumber": 13,
+    "label": "Route 2",
+    "color": "#7cd7ff",
+    "tileNumbers": [
+      1,
+      5,
+      11,
+      27,
+      39,
+      43,
+      57
+    ]
+  },
+  {
+    "id": "manual-13-route-3-mp5k3vzk",
+    "floorNumber": 13,
+    "label": "Route 3",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      16,
+      60,
+      57
+    ]
+  },
+  {
+    "id": "manual-14-route-1-mp5k4h74",
+    "floorNumber": 14,
+    "label": "Route 1",
+    "color": "#ff9f5a",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      8,
+      14,
+      34,
+      46,
+      43,
+      57
+    ]
+  },
+  {
+    "id": "manual-14-route-2-mp5k55hn",
+    "floorNumber": 14,
+    "label": "Route 2",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      2,
+      42,
+      43,
+      57
+    ]
+  },
+  {
+    "id": "manual-15-route-1-mp5k5lxi",
+    "floorNumber": 15,
+    "label": "Route 1",
+    "color": "#62e6ff",
+    "tileNumbers": [
+      1,
+      3,
+      1,
+      3,
+      35,
+      32,
+      58,
+      57
+    ]
+  },
+  {
+    "id": "manual-15-route-2-mp5k6aow",
+    "floorNumber": 15,
+    "label": "Route 2",
+    "color": "#a5fd56",
+    "tileNumbers": [
+      1,
+      2,
+      10,
+      17,
+      27,
+      30,
+      42,
+      56,
+      57
+    ]
+  },
+  {
+    "id": "manual-15-route-3-mp5k6we6",
+    "floorNumber": 15,
+    "label": "Route 3",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      7,
+      21,
+      31,
+      43,
+      57
+    ]
+  },
+  {
+    "id": "manual-16-route-1-mp5k7w30",
+    "floorNumber": 16,
+    "label": "Route 1",
+    "color": "#7cd7ff",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      11,
+      18,
+      21,
+      41,
+      43,
+      57
+    ]
+  },
+  {
+    "id": "manual-16-route-2-mp5k8rho",
+    "floorNumber": 16,
+    "label": "Route 2",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      5,
+      11,
+      18,
+      28,
+      40,
+      41,
+      43,
+      57
+    ]
+  },
+  {
+    "id": "manual-16-route-3-mp5k9lul",
+    "floorNumber": 16,
+    "label": "Route 3",
+    "color": "#a5fe56",
+    "tileNumbers": [
+      1,
+      4,
+      22,
+      21,
+      32,
+      44,
+      43,
+      57
+    ]
+  },
+  {
+    "id": "manual-16-route-4-mp5kab6j",
+    "floorNumber": 16,
+    "label": "Route 4",
+    "color": "#8dfff1",
+    "tileNumbers": [
+      1,
+      4,
+      44,
+      43,
+      57
+    ]
+  },
+  {
+    "id": "manual-16-route-5-mp5kbbmg",
+    "floorNumber": 16,
+    "label": "Route 5",
+    "color": "#ffa9ec",
+    "tileNumbers": [
+      1,
+      2,
+      42,
+      43,
+      57
+    ]
+  },
+  {
+    "id": "manual-17-route-1-mp5kc56b",
+    "floorNumber": 17,
+    "label": "Route 1",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      16,
+      25,
+      36,
+      33,
+      45,
+      60,
+      57
+    ]
+  },
+  {
+    "id": "manual-17-route-2-mp5kcm38",
+    "floorNumber": 17,
+    "label": "Route 2",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      3,
+      8,
+      14,
+      40,
+      42,
+      56,
+      57
+    ]
+  },
+  {
+    "id": "manual-17-route-3-mp5kdg5q",
+    "floorNumber": 17,
+    "label": "Route 3",
+    "color": "#fff789",
+    "tileNumbers": [
+      1,
+      3,
+      8,
+      58,
+      57
+    ]
+  },
+  {
+    "id": "manual-18-route-1-mp5kenm1",
+    "floorNumber": 18,
+    "label": "Route 1",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      15,
+      24,
+      22,
+      33,
+      45,
+      59,
+      45,
+      44,
+      43,
+      44,
+      43,
+      44,
+      43,
+      57,
+      59,
+      58
+    ]
+  },
+  {
+    "id": "manual-19-route-1-mp5kg4i2",
+    "floorNumber": 19,
+    "label": "Route 1",
+    "color": "#7cd7ff",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      11,
+      5,
+      11,
+      27,
+      39,
+      41,
+      42,
+      56,
+      57
+    ]
+  },
+  {
+    "id": "manual-19-route-2-mp5kgu9y",
+    "floorNumber": 19,
+    "label": "Route 2",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      11,
+      13,
+      21,
+      32,
+      31,
+      57
+    ]
+  },
+  {
+    "id": "manual-20-route-1-mp5khjdf",
+    "floorNumber": 20,
+    "label": "Route 1",
+    "color": "#fff789",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      11,
+      27,
+      29,
+      41,
+      43,
+      57
+    ]
+  },
+  {
+    "id": "manual-20-route-2-mp5ki6ul",
+    "floorNumber": 20,
+    "label": "Route 2",
+    "color": "#fe9655",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      45,
+      44,
+      58,
+      57
+    ]
+  },
+  {
+    "id": "manual-21-route-1-mp5kisyw",
+    "floorNumber": 21,
+    "label": "Route 1",
+    "color": "#ffa9ec",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      16,
+      25,
+      36,
+      48,
+      62,
+      61,
+      95,
+      91
+    ]
+  },
+  {
+    "id": "manual-21-route-2-mp5kjegb",
+    "floorNumber": 21,
+    "label": "Route 2",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      3,
+      7,
+      52,
+      54,
+      70,
+      72,
+      90,
+      91
+    ]
+  },
+  {
+    "id": "manual-21-route-3-mp5kk3bl",
+    "floorNumber": 21,
+    "label": "Route 3",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      3,
+      7,
+      19,
+      29,
+      30,
+      54,
+      55,
+      71,
+      72,
+      90,
+      91
+    ]
+  },
+  {
+    "id": "manual-21-route-4-mp5kkxv4",
+    "floorNumber": 21,
+    "label": "Route 4",
+    "color": "#8dfff1",
+    "tileNumbers": [
+      1,
+      3,
+      7,
+      19,
+      41,
+      54,
+      55,
+      71,
+      72,
+      90,
+      91
+    ]
+  },
+  {
+    "id": "manual-22-route-1-mp5kmhxq",
+    "floorNumber": 22,
+    "label": "Route 1",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      16,
+      24,
+      23,
+      45,
+      77,
+      76,
+      94,
+      91
+    ]
+  },
+  {
+    "id": "manual-22-route-2-mp5kn0rv",
+    "floorNumber": 22,
+    "label": "Route 2",
+    "color": "#fff789",
+    "tileNumbers": [
+      1,
+      9,
+      16,
+      24,
+      23,
+      33,
+      31,
+      76,
+      94,
+      91
+    ]
+  },
+  {
+    "id": "manual-22-route-3-mp5knpr4",
+    "floorNumber": 22,
+    "label": "Route 3",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      29,
+      41,
+      54,
+      70,
+      72,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-23-route-1-mp5koi3j",
+    "floorNumber": 23,
+    "label": "Route 1",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      11,
+      27,
+      53,
+      85,
+      91
+    ]
+  },
+  {
+    "id": "manual-23-route-2-mp5kp9tm",
+    "floorNumber": 23,
+    "label": "Route 2",
+    "color": "#7cd7ff",
+    "tileNumbers": [
+      1,
+      9,
+      16,
+      25,
+      47,
+      62,
+      78,
+      97,
+      91
+    ]
+  },
+  {
+    "id": "manual-23-route-3-mp5kq1gy",
+    "floorNumber": 23,
+    "label": "Route 3",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      55,
+      57,
+      91
+    ]
+  },
+  {
+    "id": "manual-23-route-4-mp5krci7",
+    "floorNumber": 23,
+    "label": "Route 4",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      9,
+      16,
+      46,
+      45,
+      59,
+      57,
+      91
+    ]
+  },
+  {
+    "id": "manual-24-route-1-mp5ks9t3",
+    "floorNumber": 24,
+    "label": "Route 1",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      9,
+      23,
+      34,
+      31,
+      76,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-24-route-2-mp5ksw5a",
+    "floorNumber": 24,
+    "label": "Route 2",
+    "color": "#fcf487",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      71,
+      88,
+      91
+    ]
+  },
+  {
+    "id": "manual-24-route-3-mp5ktcac",
+    "floorNumber": 24,
+    "label": "Route 3",
+    "color": "#7bd3fa",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      89,
+      91
+    ]
+  },
+  {
+    "id": "manual-25-route-1-mp5ku503",
+    "floorNumber": 25,
+    "label": "Route 1",
+    "color": "#ff9955",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      11,
+      18,
+      40,
+      41,
+      54,
+      70,
+      71,
+      88,
+      90,
+      91
+    ]
+  },
+  {
+    "id": "manual-25-route-2-mp5kuv70",
+    "floorNumber": 25,
+    "label": "Route 2",
+    "color": "#7cd7ff",
+    "tileNumbers": [
+      1,
+      25,
+      24,
+      34,
+      47,
+      77,
+      96,
+      91
+    ]
+  },
+  {
+    "id": "manual-25-route-3-mp5kveoa",
+    "floorNumber": 25,
+    "label": "Route 3",
+    "color": "#a6ff4d",
+    "tileNumbers": [
+      1,
+      3,
+      8,
+      14,
+      23,
+      33,
+      32,
+      45,
+      75,
+      74,
+      92,
+      91
+    ]
+  },
+  {
+    "id": "manual-26-route-1-mp5kwi7x",
+    "floorNumber": 26,
+    "label": "Route 1",
+    "color": "#ff9f5a",
+    "tileNumbers": [
+      1,
+      3,
+      11,
+      19,
+      84,
+      67,
+      70,
+      88,
+      91
+    ]
+  },
+  {
+    "id": "manual-26-route-2-mp5kxm0u",
+    "floorNumber": 26,
+    "label": "Route 2",
+    "color": "#a4fe56",
+    "tileNumbers": [
+      1,
+      3,
+      11,
+      41,
+      42,
+      56,
+      74,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-26-route-3-mp5kylps",
+    "floorNumber": 26,
+    "label": "Route 3",
+    "color": "#fff789",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      23,
+      33,
+      46,
+      44,
+      58,
+      57,
+      91
+    ]
+  },
+  {
+    "id": "manual-26-route-4-mp5kzb4d",
+    "floorNumber": 26,
+    "label": "Route 4",
+    "color": "#7cd7ff",
+    "tileNumbers": [
+      1,
+      16,
+      25,
+      77,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-27-route-1-mp5l0jvc",
+    "floorNumber": 27,
+    "label": "Route 1",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      10,
+      17,
+      26,
+      86,
+      91
+    ]
+  },
+  {
+    "id": "manual-27-route-2-mp5l11ed",
+    "floorNumber": 27,
+    "label": "Route 2",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      16,
+      25,
+      22,
+      33,
+      45,
+      44,
+      95,
+      91
+    ]
+  },
+  {
+    "id": "manual-27-route-3-mp5l1iok",
+    "floorNumber": 27,
+    "label": "Route 3",
+    "color": "#7cd5fd",
+    "tileNumbers": [
+      1,
+      2,
+      6,
+      11,
+      19,
+      20,
+      29,
+      41,
+      42,
+      70,
+      88,
+      91
+    ]
+  },
+  {
+    "id": "manual-28-route-1-mp5l2kx9",
+    "floorNumber": 28,
+    "label": "Route 1",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      2,
+      10,
+      17,
+      27,
+      51,
+      67,
+      72,
+      90,
+      91
+    ]
+  },
+  {
+    "id": "manual-28-route-2-mp5l3hs2",
+    "floorNumber": 28,
+    "label": "Route 2",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      19,
+      20,
+      30,
+      31,
+      55,
+      71,
+      72,
+      90,
+      91
+    ]
+  },
+  {
+    "id": "manual-28-route-3-mp5l46ya",
+    "floorNumber": 28,
+    "label": "Route 3",
+    "color": "#fff789",
+    "tileNumbers": [
+      1,
+      36,
+      49,
+      97,
+      91
+    ]
+  },
+  {
+    "id": "manual-28-route-4-mp5l4rix",
+    "floorNumber": 28,
+    "label": "Route 4",
+    "color": "#d88bfe",
+    "tileNumbers": [
+      1,
+      2,
+      17,
+      27,
+      29,
+      55,
+      70,
+      72,
+      90,
+      91
+    ]
+  },
+  {
+    "id": "manual-29-route-1-mp5l5o22",
+    "floorNumber": 29,
+    "label": "Route 1",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      11,
+      51,
+      67,
+      70,
+      88,
+      91
+    ]
+  },
+  {
+    "id": "manual-29-route-2-mp5l6rj3",
+    "floorNumber": 29,
+    "label": "Route 2",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      16,
+      25,
+      36,
+      48,
+      63,
+      62,
+      96,
+      91
+    ]
+  },
+  {
+    "id": "manual-29-route-3-mp5l76xv",
+    "floorNumber": 29,
+    "label": "Route 3",
+    "color": "#7cd7ff",
+    "tileNumbers": [
+      1,
+      2,
+      30,
+      31,
+      42,
+      72,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-30-route-1-mp5l8036",
+    "floorNumber": 30,
+    "label": "Route 1",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      16,
+      36,
+      49,
+      64,
+      81,
+      78,
+      97,
+      95,
+      76,
+      74,
+      92,
+      91
+    ]
+  },
+  {
+    "id": "manual-30-route-2-mp5l8igk",
+    "floorNumber": 30,
+    "label": "Route 2",
+    "color": "#7cd7ff",
+    "tileNumbers": [
+      1,
+      3,
+      24,
+      34,
+      55,
+      71,
+      72,
+      90,
+      91
+    ]
+  },
+  {
+    "id": "manual-30-route-3-mp5l98rr",
+    "floorNumber": 30,
+    "label": "Route 3",
+    "color": "#fff789",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      75,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-32-route-1-mp5la6cs",
+    "floorNumber": 32,
+    "label": "Route 1",
+    "color": "#a6ff55",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      33,
+      46,
+      88,
+      89,
+      72,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-32-route-2-mp5lazku",
+    "floorNumber": 32,
+    "label": "Route 2",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      19,
+      20,
+      40,
+      42,
+      72,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-32-route-3-mp5lbv1b",
+    "floorNumber": 32,
+    "label": "Route 3",
+    "color": "#7dd7fe",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      10,
+      17,
+      26,
+      27,
+      66,
+      68,
+      86,
+      69,
+      87,
+      89,
+      72,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-32-route-4-mp5lcf6a",
+    "floorNumber": 32,
+    "label": "Route 4",
+    "color": "#7dd7fe",
+    "tileNumbers": [
+      1,
+      9,
+      25,
+      36,
+      35,
+      80,
+      78,
+      96,
+      94,
+      75,
+      93,
+      91
+    ]
+  },
+  {
+    "id": "manual-33-route-1-mp5ldf3g",
+    "floorNumber": 33,
+    "label": "Route 1",
+    "color": "#a5ff54",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      7,
+      12,
+      20,
+      21,
+      30,
+      42,
+      43,
+      56,
+      90,
+      91
+    ]
+  },
+  {
+    "id": "manual-33-route-2-mp5leh17",
+    "floorNumber": 33,
+    "label": "Route 2",
+    "color": "#ff9654",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      7,
+      84,
+      67,
+      68,
+      86,
+      69,
+      70,
+      88,
+      71,
+      72,
+      90,
+      91
+    ]
+  },
+  {
+    "id": "manual-33-route-3-mp5lfjkv",
+    "floorNumber": 33,
+    "label": "Route 3",
+    "color": "#fff789",
+    "tileNumbers": [
+      1,
+      25,
+      24,
+      34,
+      98,
+      79,
+      78,
+      96,
+      77,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-33-route-4-mp5lg6x8",
+    "floorNumber": 33,
+    "label": "Route 4",
+    "color": "#ffc2f7",
+    "tileNumbers": [
+      1,
+      2,
+      90,
+      91
+    ]
+  },
+  {
+    "id": "manual-34-route-1-mp5lgqnd",
+    "floorNumber": 34,
+    "label": "Route 1",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      10,
+      17,
+      27,
+      66,
+      84,
+      85,
+      68,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-34-route-2-mp5lh7oi",
+    "floorNumber": 34,
+    "label": "Route 2",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      9,
+      25,
+      35,
+      80,
+      98,
+      97,
+      78,
+      77,
+      95,
+      76,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-34-route-3-mp5lhyoj",
+    "floorNumber": 34,
+    "label": "Route 3",
+    "color": "#7cd7ff",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      10,
+      18,
+      19,
+      28,
+      40,
+      54,
+      55,
+      71,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-35-route-1-mp5linap",
+    "floorNumber": 35,
+    "label": "Route 1",
+    "color": "#a5ff55",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      49,
+      63,
+      80,
+      79,
+      97,
+      91
+    ]
+  },
+  {
+    "id": "manual-35-route-2-mp5lj2po",
+    "floorNumber": 35,
+    "label": "Route 2",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      2,
+      10,
+      17,
+      26,
+      37,
+      38,
+      66,
+      67,
+      85,
+      90,
+      91
+    ]
+  },
+  {
+    "id": "manual-35-route-3-mp5ljkb9",
+    "floorNumber": 35,
+    "label": "Route 3",
+    "color": "#8bc3ff",
+    "tileNumbers": [
+      1,
+      9,
+      16,
+      25,
+      47,
+      46,
+      60,
+      58,
+      92,
+      91
+    ]
+  },
+  {
+    "id": "manual-36-route-1-mp5lk34r",
+    "floorNumber": 36,
+    "label": "Route 1",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      16,
+      25,
+      36,
+      48,
+      63,
+      57
+    ]
+  },
+  {
+    "id": "manual-36-route-2-mp5lkjd9",
+    "floorNumber": 36,
+    "label": "Route 2",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      2,
+      6,
+      7,
+      19,
+      29,
+      30,
+      41,
+      55,
+      42,
+      43,
+      57
+    ]
+  },
+  {
+    "id": "manual-36-route-3-mp5ll70k",
+    "floorNumber": 36,
+    "label": "Route 3",
+    "color": "#7cd6fe",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      29,
+      40,
+      41,
+      55,
+      42,
+      43,
+      57
+    ]
+  },
+  {
+    "id": "manual-37-route-1-mp5lm5vp",
+    "floorNumber": 37,
+    "label": "Route 1",
+    "color": "#ff9655",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      16,
+      24,
+      21,
+      31,
+      95,
+      94,
+      75,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-37-route-2-mp5lmomt",
+    "floorNumber": 37,
+    "label": "Route 2",
+    "color": "#7cd7ff",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      23,
+      21,
+      31,
+      55,
+      71,
+      72,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-37-route-3-mp5ln6en",
+    "floorNumber": 37,
+    "label": "Route 3",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      11,
+      38,
+      39,
+      67,
+      69,
+      87,
+      89,
+      72,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-38-route-1-mp5lo5kl",
+    "floorNumber": 38,
+    "label": "Route 1",
+    "color": "#ff9f5a",
+    "tileNumbers": [
+      1,
+      5,
+      10,
+      17,
+      26,
+      29,
+      41,
+      86,
+      69,
+      70,
+      88,
+      90,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-38-route-2-mp5losst",
+    "floorNumber": 38,
+    "label": "Route 2",
+    "color": "#7ad7ff",
+    "tileNumbers": [
+      1,
+      3,
+      7,
+      13,
+      21,
+      60,
+      94,
+      92,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-38-route-3-mp5lph17",
+    "floorNumber": 38,
+    "label": "Route 3",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      16,
+      25,
+      36,
+      33,
+      45,
+      60,
+      94,
+      92,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-39-route-1-mp5lq8y2",
+    "floorNumber": 39,
+    "label": "Route 1",
+    "color": "#c448fe",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      16,
+      24,
+      30,
+      95,
+      93,
+      74,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-39-route-2-mp5lr4a3",
+    "floorNumber": 39,
+    "label": "Route 2",
+    "color": "#ffa9ec",
+    "tileNumbers": [
+      1,
+      2,
+      10,
+      65,
+      82,
+      65,
+      72,
+      90,
+      91
+    ]
+  },
+  {
+    "id": "manual-39-route-3-mp5lrkur",
+    "floorNumber": 39,
+    "label": "Route 3",
+    "color": "#9bef51",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      10,
+      17,
+      53,
+      54,
+      70,
+      72,
+      90,
+      91
+    ]
+  },
+  {
+    "id": "manual-39-route-4-mp5ls1pw",
+    "floorNumber": 39,
+    "label": "Route 4",
+    "color": "#7cd6fe",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      29,
+      40,
+      70,
+      72,
+      90,
+      91
+    ]
+  },
+  {
+    "id": "manual-40-route-1-mp5lsvv2",
+    "floorNumber": 40,
+    "label": "Route 1",
+    "color": "#ff9755",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      49,
+      81,
+      100,
+      98,
+      79,
+      78,
+      96,
+      77,
+      76,
+      94,
+      93,
+      74,
+      92,
+      91
+    ]
+  },
+  {
+    "id": "manual-40-route-2-mp5lte14",
+    "floorNumber": 40,
+    "label": "Route 2",
+    "color": "#7cd7ff",
+    "tileNumbers": [
+      1,
+      2,
+      12,
+      22,
+      21,
+      31,
+      70,
+      88,
+      91
+    ]
+  },
+  {
+    "id": "manual-40-route-3-mp5ltxso",
+    "floorNumber": 40,
+    "label": "Route 3",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      5,
+      10,
+      17,
+      27,
+      51,
+      67,
+      84,
+      67,
+      70,
+      88,
+      91
+    ]
+  },
+  {
+    "id": "manual-42-route-1-mp5lv2gw",
+    "floorNumber": 42,
+    "label": "Route 1",
+    "color": "#a4fc56",
+    "tileNumbers": [
+      1,
+      64,
+      81,
+      99,
+      97,
+      78,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-42-route-2-mp5lvnkc",
+    "floorNumber": 42,
+    "label": "Route 2",
+    "color": "#7cd7ff",
+    "tileNumbers": [
+      1,
+      10,
+      26,
+      50,
+      65,
+      82,
+      85,
+      68,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-42-route-3-mp5lwce6",
+    "floorNumber": 42,
+    "label": "Route 3",
+    "color": "#7cd7ff",
+    "tileNumbers": [
+      1,
+      5,
+      10,
+      54,
+      57,
+      91
+    ]
+  },
+  {
+    "id": "manual-42-route-4-mp5lws1s",
+    "floorNumber": 42,
+    "label": "Route 4",
+    "color": "#d88bff",
+    "tileNumbers": [
+      1,
+      9,
+      16,
+      60,
+      57,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-43-route-1-mp5lxcsb",
+    "floorNumber": 43,
+    "label": "Route 1",
+    "color": "#84f75d",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      10,
+      5,
+      10,
+      40,
+      41,
+      71,
+      89,
+      91
+    ]
+  },
+  {
+    "id": "manual-43-route-2-mp5lxv5w",
+    "floorNumber": 43,
+    "label": "Route 2",
+    "color": "#8dfff1",
+    "tileNumbers": [
+      1,
+      2,
+      1,
+      4,
+      2,
+      3,
+      4,
+      3,
+      7,
+      3,
+      7,
+      14,
+      23,
+      21,
+      31,
+      44,
+      59,
+      75,
+      94,
+      93,
+      74,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-43-route-3-mp5lz15o",
+    "floorNumber": 43,
+    "label": "Route 3",
+    "color": "#7cdaff",
+    "tileNumbers": [
+      1,
+      4,
+      16,
+      25,
+      36,
+      96,
+      77,
+      76,
+      94,
+      93,
+      74,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-44-route-1-mp5lzts1",
+    "floorNumber": 44,
+    "label": "Route 1",
+    "color": "#90fffb",
+    "tileNumbers": [
+      1,
+      4,
+      9,
+      16,
+      46,
+      78,
+      76,
+      94,
+      75,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-44-route-2-mp5m0bbe",
+    "floorNumber": 44,
+    "label": "Route 2",
+    "color": "#fff789",
+    "tileNumbers": [
+      1,
+      3,
+      8,
+      74,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-44-route-3-mp5m0wf8",
+    "floorNumber": 44,
+    "label": "Route 3",
+    "color": "#a6ff56",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      29,
+      68,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-45-route-1-mp5m1gdj",
+    "floorNumber": 45,
+    "label": "Route 1",
+    "color": "#62e6ff",
+    "tileNumbers": [
+      1,
+      4,
+      49,
+      64,
+      81,
+      78,
+      96,
+      94,
+      93,
+      74,
+      73,
+      91
+    ]
+  },
+  {
+    "id": "manual-45-route-2-mp5m1w48",
+    "floorNumber": 45,
+    "label": "Route 2",
+    "color": "#a5ff56",
+    "tileNumbers": [
+      1,
+      2,
+      5,
+      10,
+      5,
+      10,
+      18,
+      38,
+      52,
+      53,
+      69,
+      71,
+      89,
+      91
+    ]
+  },
+  {
+    "id": "manual-45-route-3-mp5m2gvk",
+    "floorNumber": 45,
+    "label": "Route 3",
+    "color": "#d88bfe",
+    "tileNumbers": [
+      1,
+      2,
+      10,
+      37,
+      50,
+      65,
+      66,
+      84,
+      91
+    ]
+  },
+  {
+    "id": "manual-45-route-4-mp5m2uh1",
+    "floorNumber": 45,
+    "label": "Route 4",
+    "color": "#ff00ff",
+    "tileNumbers": [
+      1,
+      25,
+      35,
+      80,
+      98,
+      91
+    ]
+  }
+]
