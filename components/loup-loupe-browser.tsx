@@ -5890,10 +5890,6 @@ function TowerBoard({
   routeEditor: RouteEditorPointerHandlers | null;
   onTileClick: (tile: LoupLoupeTile) => void;
 }) {
-  const routeNotes = getRouteNotes(selectedRoute);
-  const tileNotes = getRouteTileNoteDisplays(floor, selectedRoute);
-  const hasNotes = Boolean(routeNotes || tileNotes.length > 0);
-
   return (
     <div className="relative h-[min(72vh,48rem)] min-h-[30rem] w-full overflow-hidden">
       <Canvas
@@ -5916,51 +5912,6 @@ function TowerBoard({
           />
         </Suspense>
       </Canvas>
-      {hasNotes && selectedRoute ? (
-        <div className="pointer-events-none absolute left-3 top-3 z-10 max-h-[calc(100%-1.5rem)] w-[min(24rem,calc(100%-1.5rem))] overflow-auto rounded-lg border border-cyan-100/20 bg-[#06101c]/82 p-3 text-white shadow-2xl shadow-black/50 backdrop-blur image-scroll">
-          <div className="flex items-start gap-2">
-            <span
-              className="mt-1 h-3 w-3 shrink-0 rounded-full shadow-[0_0_14px_currentColor]"
-              style={{ color: selectedRoute.color, backgroundColor: selectedRoute.color }}
-            />
-            <div className="min-w-0">
-              <p className="text-[10px] font-black uppercase tracking-[0.16em] text-cyan-100">
-                Route Notes
-              </p>
-              <p className="truncate text-sm font-black text-white">{selectedRoute.label}</p>
-            </div>
-          </div>
-          {routeNotes ? (
-            <p className="mt-2 whitespace-pre-line rounded-md border border-white/10 bg-black/25 p-2 text-xs font-semibold leading-relaxed text-slate-100">
-              {routeNotes}
-            </p>
-          ) : null}
-          {tileNotes.length > 0 ? (
-            <div className="mt-2 space-y-1.5">
-              {tileNotes.map(({ tileNumber, note, noteIndex }) => (
-                <div
-                  key={`board-note-${selectedRoute.id}-${tileNumber}`}
-                  className="grid grid-cols-[1.5rem_1fr] gap-2 rounded-md border border-white/10 bg-white/[0.04] p-2 text-xs font-semibold leading-snug text-slate-100"
-                >
-                  <span
-                    className="flex h-6 w-6 items-center justify-center rounded-full border text-[11px] font-black text-white"
-                    style={{
-                      borderColor: selectedRoute.color,
-                      boxShadow: `0 0 12px ${selectedRoute.color}66`,
-                    }}
-                  >
-                    {noteIndex}
-                  </span>
-                  <span>
-                    <span className="mr-1 font-black text-cyan-100">Tile {tileNumber}</span>
-                    {note}
-                  </span>
-                </div>
-              ))}
-            </div>
-          ) : null}
-        </div>
-      ) : null}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/35 to-transparent" />
     </div>
   );
@@ -6555,15 +6506,7 @@ function RouteEditorPanel({
 
 function RouteSummaryPanel({ floor, route }: { floor: LoupLoupeFloor; route: RouteDefinition }) {
   const routeNotes = getRouteNotes(route);
-  const tileNotes = Object.entries(route.tileNotes ?? {})
-    .map(([tileNumber, note]) => ({
-      tileNumber: Number(tileNumber),
-      note: normalizeOptionalRouteText(note),
-    }))
-    .filter((entry): entry is { tileNumber: number; note: string } =>
-      Number.isFinite(entry.tileNumber) && Boolean(entry.note),
-    )
-    .sort((a, b) => a.tileNumber - b.tileNumber);
+  const tileNotes = getRouteTileNoteDisplays(floor, route);
 
   return (
     <section className="w-full rounded-lg border border-white/10 bg-black/35 p-4 text-white shadow-xl shadow-black/40 backdrop-blur">
@@ -6593,16 +6536,26 @@ function RouteSummaryPanel({ floor, route }: { floor: LoupLoupeFloor; route: Rou
       ) : null}
       {tileNotes.length > 0 ? (
         <div className="mt-3 grid gap-2 md:grid-cols-2">
-          {tileNotes.map(({ tileNumber, note }) => (
+          {tileNotes.map(({ tileNumber, note, noteIndex }) => (
             <div
               key={`route-summary-note-${route.id}-${tileNumber}`}
-              className="rounded-md border border-white/10 bg-white/[0.04] p-3 text-sm font-semibold leading-relaxed text-slate-200"
+              className="grid grid-cols-[2rem_1fr] gap-3 rounded-md border border-white/10 bg-white/[0.04] p-3 text-sm font-semibold leading-relaxed text-slate-200"
             >
-              <p className="mb-1 flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.14em] text-cyan-100">
-                <StickyNote className="h-3.5 w-3.5" />
-                Tile {tileNumber}
-              </p>
-              <p className="whitespace-pre-line">{note}</p>
+              <span
+                className="flex h-7 w-7 items-center justify-center rounded-full border text-xs font-black text-white"
+                style={{
+                  borderColor: route.color,
+                  boxShadow: `0 0 12px ${route.color}66`,
+                }}
+              >
+                {noteIndex}
+              </span>
+              <div className="min-w-0">
+                <p className="mb-1 text-[10px] font-black uppercase tracking-[0.14em] text-cyan-100">
+                  Tile {tileNumber}
+                </p>
+                <p className="whitespace-pre-line">{note}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -7266,6 +7219,13 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
       </aside>
 
       <div className="relative z-10 min-h-[calc(100vh-11rem)] overflow-hidden px-2 py-5 md:pl-44 md:pr-4">
+        {ENABLE_ROUTE_EDITOR && !routeEditorEnabled && routeEditorAccess !== "checking" && !selectedRoute ? (
+          <div className="pointer-events-none absolute right-4 top-4 z-20 hidden max-w-xs rounded-lg border border-white/10 bg-black/45 p-3 text-xs font-semibold text-slate-300 backdrop-blur md:block">
+            {routeEditorAccess === "unconfigured"
+              ? "Route editing needs the Guides Supabase auth configuration."
+              : "Log in from Guides to edit and export manual routes."}
+          </div>
+        ) : null}
         <div className="mx-auto flex w-full max-w-[78rem] flex-col items-center gap-4">
           <TowerBoard
             floor={floor}
