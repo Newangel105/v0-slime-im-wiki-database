@@ -3182,14 +3182,16 @@ function getRouteTileNoteDisplays(
 function getWarpHighlightColor(warpPointColor: number): string {
   switch (warpPointColor) {
     case 1:
-      return "#67ff9d";
+      return "#ff7272";
     case 2:
-      return "#ffd84d";
+      return "#67ff9d";
     case 3:
       return "#59a8ff";
     case 4:
-      return "#ff7272";
+      return "#ffd84d";
     case 5:
+      return "#ffae57";
+    case 6:
       return "#d18cff";
     default:
       return "#7be8ff";
@@ -3201,6 +3203,16 @@ function resolveWarpDestinations(
   tile: LoupLoupeTile,
   warp: LoupLoupeEvent["warp_points"][number],
 ): LoupLoupeTile[] {
+  const directDestination = floor.tiles.find(
+    (candidate) =>
+      candidate.master_tower_map_id !== tile.master_tower_map_id &&
+      candidate.map_number === warp.warp_number,
+  );
+
+  if (directDestination) return [directDestination];
+
+  // Destination portals often share the same warp group as their incoming
+  // source, so use the group as a reverse link when the direct target is self.
   const exactMatches = floor.tiles.filter(
     (candidate) =>
       candidate.master_tower_map_id !== tile.master_tower_map_id &&
