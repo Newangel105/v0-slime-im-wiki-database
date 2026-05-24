@@ -2656,7 +2656,7 @@ function ResultsPanelPrefab({
                         // `UILotteryResult/container/modalContainer/modalFront/
                         // resultList/resultTemplate/container/cardContainer/
                         // thumbReward` — using just `thumbReward` is the
-                        // documented PrefabTree.slotsReplaceSubtree behaviour
+                        // documented PrefabTree.slotsReplaceSubtree behaviour 
                         // (checks `n.path` first, then `n.name`).
                         thumbReward: (
                           <RuntimeThumbReward character={result.character} mode="base" />
