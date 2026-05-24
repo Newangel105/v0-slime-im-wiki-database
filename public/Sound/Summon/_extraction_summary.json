@@ -1,0 +1,65 @@
+{
+  "UILotteryCharacterAppear": {
+    "status": "found",
+    "players": [
+      {
+        "path_id": 8741054962070649668,
+        "script_name": "XIUISEPlayer",
+        "groups": [
+          {
+            "groupName": "",
+            "entries": []
+          },
+          {
+            "groupName": "",
+            "entries": []
+          },
+          {
+            "groupName": "",
+            "entries": []
+          },
+          {
+            "groupName": "",
+            "entries": []
+          },
+          {
+            "groupName": "",
+            "entries": []
+          },
+          {
+            "groupName": "",
+            "entries": []
+          },
+          {
+            "groupName": "",
+            "entries": []
+          },
+          {
+            "groupName": "",
+            "entries": []
+          },
+          {
+            "groupName": "",
+            "entries": []
+          },
+          {
+            "groupName": "",
+            "entries": []
+          },
+          {
+            "groupName": "",
+            "entries": []
+          },
+          {
+            "groupName": "",
+            "entries": []
+          },
+          {
+            "groupName": "",
+            "entries": []
+          }
+        ]
+      }
+    ]
+  }
+}
