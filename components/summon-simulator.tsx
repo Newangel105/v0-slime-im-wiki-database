@@ -20,6 +20,7 @@ import {
   RESULT_PARTICLE_MATERIALS,
 } from "@/lib/summon-ui/lottery-particle-data"
 import { SPECS, SUMMON_UI_BASE, VIEW_RULES } from "@/lib/summon-ui/specs"
+import { mediaUrl } from "@/lib/media-cdn"
 import type { CharacterAppearViewRarity, PromotionViewRarity, ResultCardRarityKey, PrefabSpec } from "@/lib/summon-ui/specs"
 import promotionBindingsRaw from "@/lib/summon-ui/lottery_runtime_data/UILotteryPromotion.bindings.json"
 import analysisCutPrerenderRaw from "@/lib/summon-ui/lottery_runtime_data/analysis_cut_prerender_manifest.json"
@@ -2519,7 +2520,7 @@ function ResultsPanelPrefab({
           video supplies the moving lensFlare / sage gradient backdrop in
           one shot. Muted + autoplay + loop satisfies browser policy. */}
       <video
-        src="/Video/result_ui/result_ui_loop.webm"
+        src={mediaUrl("/Video/result_ui/result_ui_loop.webm")}
         autoPlay
         muted
         playsInline
@@ -3180,7 +3181,7 @@ function SummonCutscene({ steps, onFinish }: { steps: CutsceneStep[]; onFinish: 
       <video
         ref={videoRef}
         key={step.src}
-        src={step.src}
+        src={mediaUrl(step.src)}
         className="h-full w-full object-contain"
         autoPlay
         // Special-skill movies are extracted from the game's original USM
@@ -3929,7 +3930,7 @@ function AnalysisCutPrerenderRevealScreen({
         <video
           ref={videoRef}
           key={src}
-          src={src}
+          src={mediaUrl(src)}
           className="h-full w-full object-cover"
           // object-cover: cloak video is 1920x864 (phone's 2.22:1 native). On
           // a 16:9 stage, object-cover scales by 1.25x to fill height, with
@@ -3990,7 +3991,7 @@ function PromotionPrerenderRevealScreen({
         <video
           ref={videoRef}
           key={src}
-          src={src}
+          src={mediaUrl(src)}
           className="h-full w-full object-contain"
           autoPlay
           muted
@@ -4078,7 +4079,7 @@ function CharacterAppearVfxPrerenderLayer({
     >
       <video
         ref={videoRef}
-        src={src}
+        src={mediaUrl(src)}
         className="h-full w-full object-cover"
         autoPlay
         muted
@@ -4692,7 +4693,7 @@ function AcquisitionMovieReveal({
             <video
               ref={videoRef}
               key={src}
-              src={src}
+              src={mediaUrl(src)}
               className="h-full w-full object-contain"
               autoPlay
               playsInline
@@ -6188,7 +6189,7 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
             {showMovie ? (
               <video
                 key={movieSources.join("|")}
-                src={movieSources[0]}
+                src={mediaUrl(movieSources[0])}
                 autoPlay
                 muted
                 loop

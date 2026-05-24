@@ -5,6 +5,7 @@ import { Canvas, useFrame } from "@react-three/fiber"
 import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei"
 import * as THREE from "three"
 import SkillSceneThreePlayer, { type SkillSceneManifest } from "@/components/skill-scene-three-client"
+import { mediaUrl } from "@/lib/media-cdn"
 
 export type ModelEntry = {
   id: string
@@ -158,8 +159,8 @@ function SkillSceneVideo({ entry }: { entry: SkillSceneVideoEntry }) {
       playsInline
       preload="metadata"
     >
-      {entry.webm && <source src={entry.webm} type="video/webm" />}
-      {entry.mp4 && <source src={entry.mp4} type="video/mp4" />}
+      {entry.webm && <source src={mediaUrl(entry.webm)} type="video/webm" />}
+      {entry.mp4 && <source src={mediaUrl(entry.mp4)} type="video/mp4" />}
     </video>
   )
 }

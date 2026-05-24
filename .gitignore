@@ -18,6 +18,13 @@ yarn-error.log*
 
 # env files
 .env*
+!.env.example
+
+# Large media hosted externally on Cloudflare R2 (see lib/media-cdn.ts).
+# These directories are NOT committed because they blow past Vercel's
+# build container disk quota. Upload them to R2 instead.
+/public/Movie/
+/public/Video/
 
 # vercel
 .vercel
