@@ -28,15 +28,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Vercel Hobby's 8 GB build container OOMs when Next.js spawns parallel
-  // workers because summon.generated.json (55 MB) gets pulled into webpack
-  // and balloons per-worker heap. cpus:1 forces sequential builds so peak
-  // memory stays bounded. The proper fix is to lazy-load that JSON instead
-  // of import-ing it, but until that refactor lands this keeps deploys green.
-  experimental: {
-    workerThreads: false,
-    cpus: 1,
-  },
   async headers() {
     return [
       {
