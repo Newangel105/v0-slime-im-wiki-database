@@ -1,4 +1,6 @@
-import summonData from "../summon.generated.json"
+import fs from "node:fs"
+import path from "node:path"
+import { cache } from "react"
 
 // Mirrors `XIUIThumbReward.ThumbType` enum (`dump.cs:517627`). Determines
 // which sub-set of `XIUIThumbReward`'s SerializeFields gets activated when
@@ -258,6 +260,17 @@ export type SummonPayload = {
   banners: SummonBanner[]
 }
 
-export function getSummonData(): SummonPayload {
-  return summonData as SummonPayload
-}
+// Lazy-loaded so webpack doesn't try to bundle this 55 MB JSON into the
+// build output — that was blowing Vercel's 8 GB build heap. Reading via fs
+// at request time keeps the JSON out of webpack entirely. `React.cache`
+// memoizes per server request, and the file is read once per server
+// process after that (Node caches the parsed result through this closure).
+let cached: SummonPayload | null = null
+
+export const getSummonData = cache((): SummonPayload => {
+  if (cached) return cached
+  const filepath = path.join(process.cwd(), "summon.generated.json")
+  const raw = fs.readFileSync(filepath, "utf-8")
+  cached = JSON.parse(raw) as SummonPayload
+  return cached
+})
