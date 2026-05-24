@@ -1,0 +1,403 @@
+{
+  "_meta": "resultTemplate AnimatorController (controller name 'Result') clip data — Default/In/InLoop/Change/ChangeLoop. Decoded via streamedClip muscle-clip; binding paths use Unity CRC32. Source bundle CAB-1b2709493d2b9e2f1606716859e9976d.",
+  "clips": {
+    "In": {
+      "stopTime": 0.5333333611488342,
+      "sampleRate": 60.0,
+      "streamedCurves": 17,
+      "constantCurves": 9,
+      "bindings": [
+        {
+          "i": 0,
+          "pathHash": 4244011871,
+          "attr": "hash:00000003",
+          "typeID": 4
+        },
+        {
+          "i": 1,
+          "pathHash": 1601368247,
+          "attr": "hash:00000003",
+          "typeID": 4
+        },
+        {
+          "i": 2,
+          "pathHash": 3349343259,
+          "attr": "hash:dee9c86f",
+          "typeID": 225
+        },
+        {
+          "i": 3,
+          "pathHash": 2505748156,
+          "attr": "m_Alpha",
+          "typeID": 225
+        },
+        {
+          "i": 4,
+          "pathHash": 2505748156,
+          "attr": "hash:dee9c86f",
+          "typeID": 225
+        },
+        {
+          "i": 5,
+          "pathHash": 4045433841,
+          "attr": "m_IsActive",
+          "typeID": 1
+        },
+        {
+          "i": 6,
+          "pathHash": 734681016,
+          "attr": "m_IsActive",
+          "typeID": 1
+        },
+        {
+          "i": 7,
+          "pathHash": 2999125506,
+          "attr": "m_IsActive",
+          "typeID": 1
+        },
+        {
+          "i": 8,
+          "pathHash": 3695161771,
+          "attr": "m_Alpha",
+          "typeID": 225
+        },
+        {
+          "i": 9,
+          "pathHash": 3695161771,
+          "attr": "m_IsActive",
+          "typeID": 1
+        },
+        {
+          "i": 10,
+          "pathHash": 1773262480,
+          "attr": "m_Alpha",
+          "typeID": 225
+        },
+        {
+          "i": 11,
+          "pathHash": 1773262480,
+          "attr": "m_IsActive",
+          "typeID": 1
+        },
+        {
+          "i": 12,
+          "pathHash": 2921663296,
+          "attr": "m_Alpha",
+          "typeID": 225
+        },
+        {
+          "i": 13,
+          "pathHash": 3625018221,
+          "attr": "hash:00000003",
+          "typeID": 4
+        },
+        {
+          "i": 14,
+          "pathHash": 1157366048,
+          "attr": "hash:00000003",
+          "typeID": 4
+        },
+        {
+          "i": 15,
+          "pathHash": 3349343259,
+          "attr": "m_Alpha",
+          "typeID": 225
+        },
+        {
+          "i": 16,
+          "pathHash": 3695161771,
+          "attr": "m_AnchoredPosition.x",
+          "typeID": 224
+        },
+        {
+          "i": 17,
+          "pathHash": 1773262480,
+          "attr": "m_AnchoredPosition.x",
+          "typeID": 224
+        }
+      ],
+      "streamedKeys": {
+        "0": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.2,
+            1.0
+          ]
+        ],
+        "1": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.2,
+            1.0
+          ]
+        ],
+        "2": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.2,
+            1.0
+          ]
+        ],
+        "3": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.2,
+            1.0
+          ]
+        ],
+        "4": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.2,
+            1.0
+          ]
+        ],
+        "5": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.2,
+            1.0
+          ]
+        ],
+        "6": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.5333,
+            1.0
+          ]
+        ],
+        "7": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0833,
+            1.0
+          ]
+        ],
+        "8": [
+          [
+            0.0,
+            1.0
+          ]
+        ],
+        "9": [
+          [
+            0.0,
+            1.0
+          ]
+        ],
+        "10": [
+          [
+            0.0,
+            1.0
+          ]
+        ],
+        "11": [
+          [
+            0.0,
+            1.0
+          ]
+        ],
+        "12": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0167,
+            0.0
+          ],
+          [
+            0.1667,
+            0.9
+          ]
+        ],
+        "13": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.2,
+            1.0
+          ]
+        ],
+        "14": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0167,
+            0.0
+          ],
+          [
+            0.1667,
+            0.9
+          ]
+        ],
+        "15": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.2,
+            1.0
+          ]
+        ],
+        "16": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.15,
+            0.0
+          ],
+          [
+            0.2,
+            1.0
+          ]
+        ]
+      },
+      "constantValues": {
+        "17": 0.2
+      }
+    },
+    "Default": {
+      "stopTime": 0.0,
+      "sampleRate": 60.0,
+      "streamedCurves": 5,
+      "constantCurves": 2,
+      "bindings": [
+        {
+          "i": 0,
+          "pathHash": 3349343259,
+          "attr": "hash:dee9c86f",
+          "typeID": 225
+        },
+        {
+          "i": 1,
+          "pathHash": 2505748156,
+          "attr": "hash:dee9c86f",
+          "typeID": 225
+        },
+        {
+          "i": 2,
+          "pathHash": 4045433841,
+          "attr": "m_IsActive",
+          "typeID": 1
+        },
+        {
+          "i": 3,
+          "pathHash": 3695161771,
+          "attr": "m_IsActive",
+          "typeID": 1
+        },
+        {
+          "i": 4,
+          "pathHash": 1773262480,
+          "attr": "m_IsActive",
+          "typeID": 1
+        },
+        {
+          "i": 5,
+          "pathHash": 3349343259,
+          "attr": "m_Alpha",
+          "typeID": 225
+        },
+        {
+          "i": 6,
+          "pathHash": 2505748156,
+          "attr": "m_Alpha",
+          "typeID": 225
+        }
+      ],
+      "streamedKeys": {
+        "0": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "1": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "2": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "3": [
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "4": [
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "constantValues": {
+        "5": 0.0,
+        "6": 0.0
+      }
+    },
+    "Change": {
+      "stopTime": 0.4166666567325592,
+      "sampleRate": 60.0,
+      "streamedCurves": 0,
+      "constantCurves": 2,
+      "bindings": [
+        {
+          "i": 0,
+          "pathHash": 3695161771,
+          "attr": "m_Alpha",
+          "typeID": 225
+        },
+        {
+          "i": 1,
+          "pathHash": 1773262480,
+          "attr": "m_Alpha",
+          "typeID": 225
+        }
+      ],
+      "streamedKeys": {},
+      "constantValues": {
+        "0": 0.9,
+        "1": 0.9
+      }
+    }
+  }
+}

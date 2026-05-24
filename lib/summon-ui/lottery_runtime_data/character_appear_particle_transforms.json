@@ -1,0 +1,1274 @@
+{
+  "_meta": "Per-emitter scale + spawn origin for every ParticleSystem in UILotteryCharacterAppear. canvas_origin_*_design_px is the emitter's centre in design-canvas coordinates (1920x1080); the css_y_design_px field flips Y for top-left origin. unit_px is the nearest UIParticle ancestor's m_Scale3D.x, falling back to 1.0 for ef_sageBg world-space emitters (their startSize values are already in design-pixel range).",
+  "emitters": [
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg",
+      "canvas_origin_x_design_px": 2960.0,
+      "canvas_origin_y_design_px": 533.0,
+      "css_y_design_px": 547.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_aura00",
+      "canvas_origin_x_design_px": 2000.0,
+      "canvas_origin_y_design_px": -7.0,
+      "css_y_design_px": 1087.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_aura01",
+      "canvas_origin_x_design_px": 2000.0,
+      "canvas_origin_y_design_px": -7.0,
+      "css_y_design_px": 1087.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_circle00",
+      "canvas_origin_x_design_px": 2000.0,
+      "canvas_origin_y_design_px": -7.0,
+      "css_y_design_px": 1087.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_circle01",
+      "canvas_origin_x_design_px": 2000.0,
+      "canvas_origin_y_design_px": -7.0,
+      "css_y_design_px": 1087.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_circle02",
+      "canvas_origin_x_design_px": 2000.0,
+      "canvas_origin_y_design_px": -7.0,
+      "css_y_design_px": 1087.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_circleCore00",
+      "canvas_origin_x_design_px": 2000.0,
+      "canvas_origin_y_design_px": -7.0,
+      "css_y_design_px": 1087.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_particle00",
+      "canvas_origin_x_design_px": 2000.0,
+      "canvas_origin_y_design_px": -7.0,
+      "css_y_design_px": 1087.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_smoke00",
+      "canvas_origin_x_design_px": 2000.0,
+      "canvas_origin_y_design_px": -7.0,
+      "css_y_design_px": 1087.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_smoke01",
+      "canvas_origin_x_design_px": 2000.0,
+      "canvas_origin_y_design_px": -7.0,
+      "css_y_design_px": 1087.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_R",
+      "canvas_origin_x_design_px": 2960.0,
+      "canvas_origin_y_design_px": 526.0,
+      "css_y_design_px": 554.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_R/ef_e_appearAura00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_R/ef_e_circleSmoke00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SR",
+      "canvas_origin_x_design_px": 2960.0,
+      "canvas_origin_y_design_px": 526.0,
+      "css_y_design_px": 554.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SR/ef_e_appearAura00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SR/ef_e_circleCore00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SR/ef_e_circleSmoke00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSR",
+      "canvas_origin_x_design_px": 2960.0,
+      "canvas_origin_y_design_px": 526.0,
+      "css_y_design_px": 554.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSR/ef_e_Light00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSR/ef_e_appearAura00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSR/ef_e_circleSmoke00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSR/ef_e_kirakira01",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate",
+      "canvas_origin_x_design_px": 2960.0,
+      "canvas_origin_y_design_px": 526.0,
+      "css_y_design_px": 554.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_Light00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_LightCircle00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_appearAura00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_circle00_2",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_circle00_3",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_circle01_3",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_circle02_2",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_circle02_3",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_kirakira00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_particle01",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx",
+      "canvas_origin_x_design_px": 2960.0,
+      "canvas_origin_y_design_px": 526.0,
+      "css_y_design_px": 554.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_Light00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_LightCircle00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_appearAura00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_circle00_2",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_circle00_3",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_circle01_3",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_circle02_2",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_circle02_3",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_kirakira00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_particle01",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate",
+      "canvas_origin_x_design_px": 2960.0,
+      "canvas_origin_y_design_px": 526.0,
+      "css_y_design_px": 554.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_LightBurst00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_Light00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_LightCircle00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_Liner01",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_Liner02",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_appearAura00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_circle00",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_circle01",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_circle02",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_particle02",
+      "canvas_origin_x_design_px": 2910.0,
+      "canvas_origin_y_design_px": 476.0,
+      "css_y_design_px": 604.0,
+      "unit_px": 1.0,
+      "unit_px_source": "fallback (no UIParticle ancestor)",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/SSRUltimateParticle",
+      "canvas_origin_x_design_px": 424.0,
+      "canvas_origin_y_design_px": 141.0,
+      "css_y_design_px": 939.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/SSRUltimateParticle",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/SSRUltimateParticle/ef_e_particle_00",
+      "canvas_origin_x_design_px": 424.0,
+      "canvas_origin_y_design_px": 141.0,
+      "css_y_design_px": 939.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/SSRUltimateParticle",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_circle_04",
+      "canvas_origin_x_design_px": 480.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_flash_00",
+      "canvas_origin_x_design_px": 480.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_flash_01",
+      "canvas_origin_x_design_px": 480.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_particle_00_a",
+      "canvas_origin_x_design_px": 480.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_particle_00_b",
+      "canvas_origin_x_design_px": 480.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_particle_00_c",
+      "canvas_origin_x_design_px": 480.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_particle_00_d",
+      "canvas_origin_x_design_px": 480.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_shine00",
+      "canvas_origin_x_design_px": 480.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_shine01",
+      "canvas_origin_x_design_px": 480.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_circle_04",
+      "canvas_origin_x_design_px": 543.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_flash_00",
+      "canvas_origin_x_design_px": 543.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_flash_01",
+      "canvas_origin_x_design_px": 543.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_particle_00_a",
+      "canvas_origin_x_design_px": 543.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_particle_00_b",
+      "canvas_origin_x_design_px": 543.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_particle_00_c",
+      "canvas_origin_x_design_px": 543.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_particle_00_d",
+      "canvas_origin_x_design_px": 543.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_shine00",
+      "canvas_origin_x_design_px": 543.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_shine01",
+      "canvas_origin_x_design_px": 543.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_circle_04",
+      "canvas_origin_x_design_px": 605.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_flash_00",
+      "canvas_origin_x_design_px": 605.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_flash_01",
+      "canvas_origin_x_design_px": 605.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_particle_00_a",
+      "canvas_origin_x_design_px": 605.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_particle_00_b",
+      "canvas_origin_x_design_px": 605.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_particle_00_c",
+      "canvas_origin_x_design_px": 605.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_particle_00_d",
+      "canvas_origin_x_design_px": 605.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_shine00",
+      "canvas_origin_x_design_px": 605.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_shine01",
+      "canvas_origin_x_design_px": 605.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_circle_04",
+      "canvas_origin_x_design_px": 667.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_flash_00",
+      "canvas_origin_x_design_px": 667.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_flash_01",
+      "canvas_origin_x_design_px": 667.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_particle_00_a",
+      "canvas_origin_x_design_px": 667.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_particle_00_b",
+      "canvas_origin_x_design_px": 667.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_particle_00_c",
+      "canvas_origin_x_design_px": 667.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_particle_00_d",
+      "canvas_origin_x_design_px": 667.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_shine00",
+      "canvas_origin_x_design_px": 667.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_shine01",
+      "canvas_origin_x_design_px": 667.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_circle_04",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_flash_00",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_flash_01",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_particle_00_a",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_particle_00_b",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_particle_00_c",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_particle_00_d",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_shine00",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_shine01",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_circle_04",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_flash_00",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_flash_01",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_particle_00_a",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_particle_00_b",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_particle_00_c",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_particle_00_d",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_shine00",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_shine01",
+      "canvas_origin_x_design_px": 728.0,
+      "canvas_origin_y_design_px": 151.0,
+      "css_y_design_px": 929.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear",
+      "canvas_origin_x_design_px": 960.0,
+      "canvas_origin_y_design_px": 640.0,
+      "css_y_design_px": 440.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Cicle00",
+      "canvas_origin_x_design_px": 960.0,
+      "canvas_origin_y_design_px": 640.0,
+      "css_y_design_px": 440.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Cross00_a",
+      "canvas_origin_x_design_px": 960.0,
+      "canvas_origin_y_design_px": 640.0,
+      "css_y_design_px": 440.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Cross00_b",
+      "canvas_origin_x_design_px": 960.0,
+      "canvas_origin_y_design_px": 640.0,
+      "css_y_design_px": 440.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Light00_a",
+      "canvas_origin_x_design_px": 960.0,
+      "canvas_origin_y_design_px": 640.0,
+      "css_y_design_px": 440.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Light00_b",
+      "canvas_origin_x_design_px": 960.0,
+      "canvas_origin_y_design_px": 640.0,
+      "css_y_design_px": 440.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Line01_a",
+      "canvas_origin_x_design_px": 960.0,
+      "canvas_origin_y_design_px": 640.0,
+      "css_y_design_px": 440.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Line01_b",
+      "canvas_origin_x_design_px": 960.0,
+      "canvas_origin_y_design_px": 640.0,
+      "css_y_design_px": 440.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Line01_c",
+      "canvas_origin_x_design_px": 960.0,
+      "canvas_origin_y_design_px": 640.0,
+      "css_y_design_px": 440.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Particle01",
+      "canvas_origin_x_design_px": 910.0,
+      "canvas_origin_y_design_px": 590.0,
+      "css_y_design_px": 490.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Ring00",
+      "canvas_origin_x_design_px": 910.0,
+      "canvas_origin_y_design_px": 590.0,
+      "css_y_design_px": 490.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_R",
+      "canvas_origin_x_design_px": 960.0,
+      "canvas_origin_y_design_px": 640.0,
+      "css_y_design_px": 440.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_R/ef_Aura02_R",
+      "canvas_origin_x_design_px": 910.0,
+      "canvas_origin_y_design_px": 590.0,
+      "css_y_design_px": 490.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_R/ef_MagicCiecle01_R",
+      "canvas_origin_x_design_px": 910.0,
+      "canvas_origin_y_design_px": 590.0,
+      "css_y_design_px": 490.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SR",
+      "canvas_origin_x_design_px": 960.0,
+      "canvas_origin_y_design_px": 640.0,
+      "css_y_design_px": 440.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SR/ef_Aura02_SR",
+      "canvas_origin_x_design_px": 910.0,
+      "canvas_origin_y_design_px": 590.0,
+      "css_y_design_px": 490.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SR/ef_MagicCiecle01_SR",
+      "canvas_origin_x_design_px": 910.0,
+      "canvas_origin_y_design_px": 590.0,
+      "css_y_design_px": 490.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SSR",
+      "canvas_origin_x_design_px": 960.0,
+      "canvas_origin_y_design_px": 640.0,
+      "css_y_design_px": 440.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SSR/ef_Aura01_SSR",
+      "canvas_origin_x_design_px": 910.0,
+      "canvas_origin_y_design_px": 590.0,
+      "css_y_design_px": 490.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SSR/ef_MagicCiecle00_SSR",
+      "canvas_origin_x_design_px": 910.0,
+      "canvas_origin_y_design_px": 590.0,
+      "css_y_design_px": 490.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SSRUltimate",
+      "canvas_origin_x_design_px": 960.0,
+      "canvas_origin_y_design_px": 640.0,
+      "css_y_design_px": 440.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SSRUltimate/ef_Aura01_SSR",
+      "canvas_origin_x_design_px": 910.0,
+      "canvas_origin_y_design_px": 590.0,
+      "css_y_design_px": 490.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SSRUltimate/ef_MagicCiecle00_SSR",
+      "canvas_origin_x_design_px": 910.0,
+      "canvas_origin_y_design_px": 590.0,
+      "css_y_design_px": 490.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_UREx",
+      "canvas_origin_x_design_px": 960.0,
+      "canvas_origin_y_design_px": 640.0,
+      "css_y_design_px": 440.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_UREx/ef_Aura01_SSR",
+      "canvas_origin_x_design_px": 910.0,
+      "canvas_origin_y_design_px": 590.0,
+      "css_y_design_px": 490.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_UREx/ef_MagicCiecle00_SSR",
+      "canvas_origin_x_design_px": 910.0,
+      "canvas_origin_y_design_px": 590.0,
+      "css_y_design_px": 490.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_URUltimate",
+      "canvas_origin_x_design_px": 960.0,
+      "canvas_origin_y_design_px": 640.0,
+      "css_y_design_px": 440.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_URUltimate/ef_Aura01_UR",
+      "canvas_origin_x_design_px": 910.0,
+      "canvas_origin_y_design_px": 590.0,
+      "css_y_design_px": 490.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_URUltimate/ef_MagicCiecle00_UR",
+      "canvas_origin_x_design_px": 910.0,
+      "canvas_origin_y_design_px": 590.0,
+      "css_y_design_px": 490.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_URUltimate/ef_e_particle03",
+      "canvas_origin_x_design_px": 910.0,
+      "canvas_origin_y_design_px": 590.0,
+      "css_y_design_px": 490.0,
+      "unit_px": 108.0,
+      "unit_px_source": "UIParticle m_Scale3D @ UILotteryCharacterAppear/container/ef_appear",
+      "simulation_space_raw": null
+    }
+  ]
+}

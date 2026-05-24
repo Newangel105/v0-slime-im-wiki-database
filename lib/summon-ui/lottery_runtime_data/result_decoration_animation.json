@@ -1,0 +1,125 @@
+{
+  "_meta": "AnimationClip data for UILotteryResult decorationContainer (topLight/underLight lensFlare). Decoded streamedClip keyframes from CAB-16b4e8f219d856a050fb1fc8f99ece2c bundle. Binding 0: lensFlare RectTransform m_AnchoredPosition.x; Binding 1: lensFlare CanvasGroup m_Alpha. Both clips loop, 33-second period. DecorationTopLight and DecorationUnderLight are mirror images (x signs flipped).",
+  "controllers": {
+    "DecorationTopLight": {
+      "stopTime": 33.0,
+      "sampleRate": 60.0,
+      "lensFlare_anchoredPosition_x": {
+        "type": "keys",
+        "data": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            640.0
+          ],
+          [
+            17.0,
+            -640.0
+          ],
+          [
+            33.0,
+            0.0
+          ]
+        ]
+      },
+      "lensFlare_canvasGroup_alpha": {
+        "type": "keys",
+        "data": [
+          [
+            15.0,
+            1.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            17.0,
+            0.0
+          ],
+          [
+            18.0,
+            1.0
+          ]
+        ]
+      },
+      "bindings_resolved": [
+        {
+          "path": "lensFlare",
+          "attr": "m_AnchoredPosition.x",
+          "typeID": 224,
+          "curve": 0
+        },
+        {
+          "path": "lensFlare",
+          "attr": "m_Alpha (CanvasGroup)",
+          "typeID": 225,
+          "curve": 1
+        }
+      ]
+    },
+    "DecorationUnderLight": {
+      "stopTime": 33.0,
+      "sampleRate": 60.0,
+      "lensFlare_anchoredPosition_x": {
+        "type": "keys",
+        "data": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            16.0,
+            -640.0
+          ],
+          [
+            17.0,
+            640.0
+          ],
+          [
+            33.0,
+            0.0
+          ]
+        ]
+      },
+      "lensFlare_canvasGroup_alpha": {
+        "type": "keys",
+        "data": [
+          [
+            15.0,
+            1.0
+          ],
+          [
+            16.0,
+            0.0
+          ],
+          [
+            17.0,
+            0.0
+          ],
+          [
+            18.0,
+            1.0
+          ]
+        ]
+      },
+      "bindings_resolved": [
+        {
+          "path": "lensFlare",
+          "attr": "m_AnchoredPosition.x",
+          "typeID": 224,
+          "curve": 0
+        },
+        {
+          "path": "lensFlare",
+          "attr": "m_Alpha (CanvasGroup)",
+          "typeID": 225,
+          "curve": 1
+        }
+      ]
+    }
+  }
+}

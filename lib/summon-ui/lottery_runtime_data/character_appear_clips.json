@@ -1,0 +1,106 @@
+{
+ "_meta": "Appear<Rarity> AnimationClip curves from UILotteryCharacterAppear deps",
+ "clips": {
+  "Default": {
+   "length": null,
+   "floatCurves": [],
+   "pptrCurves": [],
+   "p019_eulerCurves": []
+  },
+  "AppearR": {
+   "length": null,
+   "floatCurves": [],
+   "pptrCurves": [],
+   "p019_eulerCurves": []
+  },
+  "Out": {
+   "length": null,
+   "floatCurves": [],
+   "pptrCurves": [],
+   "p019_eulerCurves": []
+  },
+  "AppearSR": {
+   "length": null,
+   "floatCurves": [],
+   "pptrCurves": [],
+   "p019_eulerCurves": []
+  },
+  "AppearSSRUltimate": {
+   "length": null,
+   "floatCurves": [],
+   "pptrCurves": [],
+   "p019_eulerCurves": []
+  },
+  "AppearURUltimate": {
+   "length": null,
+   "floatCurves": [],
+   "pptrCurves": [],
+   "p019_eulerCurves": []
+  },
+  "In": {
+   "length": null,
+   "floatCurves": [],
+   "pptrCurves": [],
+   "p019_eulerCurves": []
+  },
+  "AppearSSR": {
+   "length": null,
+   "floatCurves": [],
+   "pptrCurves": [],
+   "p019_eulerCurves": []
+  },
+  "AppearUREx": {
+   "length": null,
+   "floatCurves": [],
+   "pptrCurves": [],
+   "p019_eulerCurves": []
+  }
+ },
+ "summary": {
+  "Default": {
+   "length": null,
+   "attrs": {},
+   "pptr": []
+  },
+  "AppearR": {
+   "length": null,
+   "attrs": {},
+   "pptr": []
+  },
+  "Out": {
+   "length": null,
+   "attrs": {},
+   "pptr": []
+  },
+  "AppearSR": {
+   "length": null,
+   "attrs": {},
+   "pptr": []
+  },
+  "AppearSSRUltimate": {
+   "length": null,
+   "attrs": {},
+   "pptr": []
+  },
+  "AppearURUltimate": {
+   "length": null,
+   "attrs": {},
+   "pptr": []
+  },
+  "In": {
+   "length": null,
+   "attrs": {},
+   "pptr": []
+  },
+  "AppearSSR": {
+   "length": null,
+   "attrs": {},
+   "pptr": []
+  },
+  "AppearUREx": {
+   "length": null,
+   "attrs": {},
+   "pptr": []
+  }
+ }
+}

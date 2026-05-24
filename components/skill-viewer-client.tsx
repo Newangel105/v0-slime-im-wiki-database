@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useDeferredValue, useEffect, useMemo, useState } from "react"
-import { Search } from "lucide-react"
+import { ChevronDown, ChevronRight, Search } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -10,6 +10,18 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { RangeSlider } from "@/components/ui/range-slider"
+
+// Skill cost (SP) filter: 0..85 with 85 acting as a "85+" ceiling. Mirrors
+// the character browser's slider so both pages stay in sync.
+const SKILL_COST_MIN = 0
+const SKILL_COST_MAX = 85
+
+function skillCostInRange(cost: number | null | undefined, min: number, max: number) {
+  if (cost == null) return false
+  if (max >= SKILL_COST_MAX) return cost >= min
+  return cost >= min && cost <= max
+}
 import {
   getSkillEffectFilterGroups,
   getSkillEffectTags,
@@ -27,6 +39,7 @@ import {
 import { groupSkills, type SkillGroup } from "@/lib/skill-grouping"
 
 type SkillViewerVariantKey = "base" | "changed" | "attack" | "support"
+type ValueSortDirection = "default" | "desc" | "asc"
 
 type SkillViewerVariant = {
   key: SkillViewerVariantKey
@@ -59,6 +72,18 @@ type SkillViewerGroup = {
 
 type FilteredSkillViewerEntry = SkillViewerEntry & {
   matchingVariantKeys: SkillViewerVariantKey[]
+  sortValue: number | null
+}
+
+type FilterLabelInfo = {
+  groupTitle: string
+  label: string
+}
+
+type SkillValueSortTarget = {
+  value: string
+  groupKey: string
+  label: string
 }
 
 const STAR_ASSETS: Record<number, string> = {
@@ -144,19 +169,238 @@ function buildSkillSearchText(character: WikiCharacter, skill: WikiSkill, slotLa
   )
 }
 
-function sortGroups(groups: SkillViewerGroup[]): SkillViewerGroup[] {
+function getFilterGroupKey(value: string): string {
+  const separatorIndex = value.indexOf(":")
+  return separatorIndex > 0 ? value.slice(0, separatorIndex) : value
+}
+
+function normalizeSortableText(value: string): string {
+  return normalizeLabel(stripColorTags(value))
+    .replace(/[%％]/g, "%")
+    .replace(/[-/]/g, " ")
+    .replace(/[^a-z0-9+%.\sx]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+}
+
+function splitSortableSkillText(value: string): string[] {
+  return stripColorTags(value)
+    .split(/\r?\n|\.(?:\s+|$)/)
+    .map(normalizeSortableText)
+    .filter(Boolean)
+}
+
+function getSortTargetPhrases(target: SkillValueSortTarget): string[] {
+  const phrases = new Set<string>([target.label])
+
+  phrases.add(target.label.replace(/\bP-ATK\b/gi, "Physical ATK"))
+  phrases.add(target.label.replace(/\bM-ATK\b/gi, "Magic ATK"))
+  phrases.add(target.label.replace(/\bP-ATK\b/gi, "P ATK"))
+  phrases.add(target.label.replace(/\bM-ATK\b/gi, "M ATK"))
+
+  if (target.groupKey === "gauge" && /^Skill Points?$/i.test(target.label)) {
+    phrases.add("skill point")
+    phrases.add("skill points")
+  }
+
+  if (target.groupKey === "gauge" && /^Secret Skill Gauge$/i.test(target.label)) {
+    phrases.add("secret gauge")
+  }
+
+  if (/^Critical Damage$/i.test(target.label)) {
+    phrases.add("critical power")
+  }
+
+  if (/^Pierce Power$/i.test(target.label)) {
+    phrases.add("pierce damage")
+  }
+
+  if (target.groupKey === "special" && /^Deals Damage$/i.test(target.label)) {
+    phrases.add("damage")
+  }
+
+  if (target.groupKey === "heal") {
+    phrases.add("hp")
+    phrases.add("heal")
+    phrases.add("heals")
+    phrases.add("recover")
+    phrases.add("recovers")
+  }
+
+  if (target.groupKey === "soul_amount") {
+    phrases.add(target.label.toLowerCase())
+    if (/^all$/i.test(target.label)) {
+      phrases.add("all souls")
+      phrases.add("allies' souls")
+      phrases.add("newly added")
+    }
+  }
+
+  return [...phrases]
+    .map(normalizeSortableText)
+    .filter(Boolean)
+}
+
+function findPhraseIndex(text: string, phrase: string): number {
+  if (!phrase) {
+    return -1
+  }
+
+  const match = text.match(new RegExp(`(?:^|\\s)${phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?:\\s|$)`))
+  return match?.index ?? -1
+}
+
+function extractNumbersFromText(value: string): number[] {
+  const numbers: number[] = []
+
+  for (const match of value.matchAll(/\bx\s*(\d+(?:\.\d+)?)/gi)) {
+    const parsed = Number.parseFloat(match[1] ?? "")
+    if (Number.isFinite(parsed)) {
+      numbers.push(parsed)
+    }
+  }
+
+  for (const match of value.matchAll(/[-+]?\d+(?:\.\d+)?\s*%?/g)) {
+    const parsed = Number.parseFloat(match[0] ?? "")
+    if (Number.isFinite(parsed)) {
+      numbers.push(parsed)
+    }
+  }
+
+  return numbers
+}
+
+function getLineSortValue(line: string, target: SkillValueSortTarget): number | null {
+  if (target.groupKey === "soul_amount") {
+    const amountMatch = target.label.match(/x\s*(\d+(?:\.\d+)?)/i)
+    if (amountMatch) {
+      const parsed = Number.parseFloat(amountMatch[1] ?? "")
+      return Number.isFinite(parsed) ? parsed : null
+    }
+  }
+
+  const phrases = getSortTargetPhrases(target)
+  const phraseIndex = phrases.reduce((bestIndex, phrase) => {
+    const index = findPhraseIndex(line, phrase)
+    if (index < 0) {
+      return bestIndex
+    }
+
+    return bestIndex < 0 ? index : Math.min(bestIndex, index)
+  }, -1)
+
+  if (phraseIndex < 0) {
+    return null
+  }
+
+  const numbersAfterPhrase = extractNumbersFromText(line.slice(phraseIndex))
+  if (numbersAfterPhrase.length > 0) {
+    return Math.max(...numbersAfterPhrase)
+  }
+
+  const allNumbers = extractNumbersFromText(line)
+  return allNumbers.length > 0 ? Math.max(...allNumbers) : null
+}
+
+function getSkillVariantSortValue(variant: SkillViewerVariant, targets: SkillValueSortTarget[]): number | null {
+  const matchingTargets = targets.filter((target) => variant.tags.includes(target.value))
+  if (matchingTargets.length === 0) {
+    return null
+  }
+
+  const lines = splitSortableSkillText(variant.skill.description_max_level ?? "")
+  const values: number[] = []
+
+  for (const target of matchingTargets) {
+    for (const line of lines) {
+      const value = getLineSortValue(line, target)
+      if (value != null) {
+        values.push(value)
+      }
+    }
+  }
+
+  return values.length > 0 ? Math.max(...values) : null
+}
+
+function getEntrySortValue(variants: SkillViewerVariant[], targets: SkillValueSortTarget[]): number | null {
+  const values = variants
+    .map((variant) => getSkillVariantSortValue(variant, targets))
+    .filter((value): value is number => value != null)
+
+  return values.length > 0 ? Math.max(...values) : null
+}
+
+function compareEntriesByDefault(left: FilteredSkillViewerEntry, right: FilteredSkillViewerEntry): number {
+  const slotDelta = (SLOT_ORDER[left.sortSlot] ?? 999) - (SLOT_ORDER[right.sortSlot] ?? 999)
+  if (slotDelta !== 0) {
+    return slotDelta
+  }
+
+  return left.baseSkill.name.localeCompare(right.baseSkill.name)
+}
+
+function compareNullableSortValues(left: number | null, right: number | null, direction: Exclude<ValueSortDirection, "default">): number {
+  if (left == null && right == null) {
+    return 0
+  }
+
+  if (left == null) {
+    return 1
+  }
+
+  if (right == null) {
+    return -1
+  }
+
+  return direction === "desc" ? right - left : left - right
+}
+
+function compareEntries(left: FilteredSkillViewerEntry, right: FilteredSkillViewerEntry, valueSortDirection: ValueSortDirection): number {
+  if (valueSortDirection !== "default") {
+    const valueDelta = compareNullableSortValues(left.sortValue, right.sortValue, valueSortDirection)
+    if (valueDelta !== 0) {
+      return valueDelta
+    }
+  }
+
+  return compareEntriesByDefault(left, right)
+}
+
+function getGroupSortValue(group: SkillViewerGroup, direction: Exclude<ValueSortDirection, "default">): number | null {
+  const values = group.entries
+    .map((entry) => entry.sortValue)
+    .filter((value): value is number => value != null)
+
+  if (values.length === 0) {
+    return null
+  }
+
+  return direction === "desc" ? Math.max(...values) : Math.min(...values)
+}
+
+function compareGroups(left: SkillViewerGroup, right: SkillViewerGroup, valueSortDirection: ValueSortDirection): number {
+  if (valueSortDirection !== "default") {
+    const valueDelta = compareNullableSortValues(
+      getGroupSortValue(left, valueSortDirection),
+      getGroupSortValue(right, valueSortDirection),
+      valueSortDirection,
+    )
+    if (valueDelta !== 0) {
+      return valueDelta
+    }
+  }
+
+  return left.character.name.localeCompare(right.character.name)
+}
+
+function sortGroups(groups: SkillViewerGroup[], valueSortDirection: ValueSortDirection): SkillViewerGroup[] {
   return groups
     .map((group) => ({
       ...group,
-      entries: [...group.entries].sort((left, right) => {
-        const slotDelta = (SLOT_ORDER[left.sortSlot] ?? 999) - (SLOT_ORDER[right.sortSlot] ?? 999)
-        if (slotDelta !== 0) {
-          return slotDelta
-        }
-        return left.baseSkill.name.localeCompare(right.baseSkill.name)
-      }),
+      entries: [...group.entries].sort((left, right) => compareEntries(left, right, valueSortDirection)),
     }))
-    .sort((left, right) => left.character.name.localeCompare(right.character.name))
+    .sort((left, right) => compareGroups(left, right, valueSortDirection))
 }
 
 function CharIcon({ character, size = 72 }: { character: WikiCharacter; size?: number }) {
@@ -712,13 +956,30 @@ function SkillResultsTable({
   accentClass: string
   groups: SkillViewerGroup[]
 }) {
+  const [isCollapsed, setIsCollapsed] = useState(false)
+  const skillCount = groups.reduce((total, group) => total + group.entries.length, 0)
+
   if (groups.length === 0) {
     return null
   }
 
   return (
     <section>
-      <h2 className={`mb-3 text-xs font-bold uppercase tracking-widest ${accentClass}`}>{title}</h2>
+      <button
+        type="button"
+        onClick={() => setIsCollapsed((collapsed) => !collapsed)}
+        className="mb-3 flex w-full items-center justify-between rounded-lg border border-gray-700 bg-gray-800/70 px-3 py-2 text-left transition-colors hover:border-gray-600 hover:bg-gray-800"
+        aria-expanded={!isCollapsed}
+      >
+        <span className="flex items-center gap-2">
+          {isCollapsed ? <ChevronRight className="h-4 w-4 text-gray-400" /> : <ChevronDown className="h-4 w-4 text-gray-400" />}
+          <span className={`text-xs font-bold uppercase tracking-widest ${accentClass}`}>{title}</span>
+        </span>
+        <span className="text-xs font-medium text-gray-400">
+          {skillCount} {skillCount === 1 ? "skill" : "skills"}
+        </span>
+      </button>
+      {isCollapsed ? null : (
       <div className="overflow-x-auto rounded-xl border border-gray-700">
         <table className="w-full border-collapse text-sm">
           <thead>
@@ -748,6 +1009,7 @@ function SkillResultsTable({
           </tbody>
         </table>
       </div>
+      )}
     </section>
   )
 }
@@ -755,6 +1017,10 @@ function SkillResultsTable({
 export default function SkillViewerClient({ characters }: { characters: WikiCharacter[] }) {
   const [searchText, setSearchText] = useState("")
   const [selectedSkillFilters, setSelectedSkillFilters] = useState<string[]>([])
+  const [valueSortDirection, setValueSortDirection] = useState<ValueSortDirection>("default")
+  const [skillCostMin, setSkillCostMin] = useState<number>(SKILL_COST_MIN)
+  const [skillCostMax, setSkillCostMax] = useState<number>(SKILL_COST_MAX)
+  const skillCostFilterActive = skillCostMin > SKILL_COST_MIN || skillCostMax < SKILL_COST_MAX
   const deferredSearchText = useDeferredValue(searchText)
 
   const allEntries = useMemo<SkillViewerEntry[]>(() => {
@@ -772,7 +1038,7 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
   )
 
   const filterLabelMap = useMemo(() => {
-    const map = new Map<string, { groupTitle: string; label: string }>()
+    const map = new Map<string, FilterLabelInfo>()
     for (const group of skillGroups) {
       for (const option of group.options) {
         map.set(option.value, { groupTitle: group.title, label: option.label })
@@ -782,6 +1048,19 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
   }, [skillGroups])
 
   const hasSelectedSkillFilters = selectedSkillFilters.length > 0
+  const valueSortTargets = useMemo<SkillValueSortTarget[]>(
+    () => selectedSkillFilters.map((value) => {
+      const info = filterLabelMap.get(value)
+      const separatorIndex = value.indexOf(":")
+
+      return {
+        value,
+        groupKey: getFilterGroupKey(value),
+        label: info?.label ?? (separatorIndex >= 0 ? value.slice(separatorIndex + 1) : value),
+      }
+    }),
+    [filterLabelMap, selectedSkillFilters],
+  )
   const normalizedQuery = normalizeLabel(deferredSearchText)
   const filteredEntries = useMemo<FilteredSkillViewerEntry[]>(() => {
     if (!hasSelectedSkillFilters) {
@@ -797,6 +1076,7 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
 
       const matchingVariants = filterVariants
         .filter((variant) => selectedSkillFilters.every((value) => variant.tags.includes(value)))
+        .filter((variant) => !skillCostFilterActive || skillCostInRange(variant.skill.cost, skillCostMin, skillCostMax))
 
       const matchingVariantKeys = matchingVariants.map((variant) => variant.key)
 
@@ -808,9 +1088,10 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
         ...entry,
         variants: matchingVariants,
         matchingVariantKeys,
+        sortValue: getEntrySortValue(matchingVariants, valueSortTargets),
       }]
     })
-  }, [allEntries, hasSelectedSkillFilters, normalizedQuery, selectedSkillFilters])
+  }, [allEntries, hasSelectedSkillFilters, normalizedQuery, selectedSkillFilters, valueSortTargets, skillCostFilterActive, skillCostMin, skillCostMax])
 
   const groupedResults = useMemo(() => {
     const regularMap = new Map<number, SkillViewerGroup>()
@@ -831,10 +1112,10 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
     }
 
     return {
-      protectors: sortGroups([...protectorMap.values()]),
-      regulars: sortGroups([...regularMap.values()]),
+      protectors: sortGroups([...protectorMap.values()], valueSortDirection),
+      regulars: sortGroups([...regularMap.values()], valueSortDirection),
     }
-  }, [filteredEntries])
+  }, [filteredEntries, valueSortDirection])
 
   const resultCharacterCount = useMemo(() => new Set(filteredEntries.map((entry) => entry.character.master_pc_id)).size, [filteredEntries])
 
@@ -858,6 +1139,9 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
   function clearFilters() {
     setSearchText("")
     setSelectedSkillFilters([])
+    setValueSortDirection("default")
+    setSkillCostMin(SKILL_COST_MIN)
+    setSkillCostMax(SKILL_COST_MAX)
   }
 
   return (
@@ -881,6 +1165,20 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
                 selectedValues={selectedSkillFilters}
                 onToggle={toggleSkillFilter}
               />
+              <label className="flex items-center gap-2 rounded-md border border-gray-600 bg-gray-700 px-3 py-2 text-sm text-white">
+                <span className="text-xs font-semibold uppercase tracking-wider text-gray-300">Order</span>
+                <select
+                  value={valueSortDirection}
+                  onChange={(event) => setValueSortDirection(event.target.value as ValueSortDirection)}
+                  disabled={!hasSelectedSkillFilters}
+                  className="bg-transparent text-sm text-white outline-none disabled:cursor-not-allowed disabled:text-gray-500"
+                  aria-label="Order matching skills"
+                >
+                  <option className="bg-gray-800 text-white" value="default">Default</option>
+                  <option className="bg-gray-800 text-white" value="desc">Highest value</option>
+                  <option className="bg-gray-800 text-white" value="asc">Lowest value</option>
+                </select>
+              </label>
               <Button
                 variant="outline"
                 className="text-white"
@@ -888,6 +1186,40 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
               >
                 Clear
               </Button>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 rounded-md border border-white/10 bg-[#0c0d12] px-3 py-2">
+            <span className="shrink-0 text-[10px] font-semibold uppercase tracking-wider text-gray-500">SP Cost</span>
+            <div className="flex flex-1 items-center gap-3 min-w-[220px]">
+              <RangeSlider
+                min={SKILL_COST_MIN}
+                max={SKILL_COST_MAX}
+                step={1}
+                value={[skillCostMin, skillCostMax]}
+                onValueChange={([lo, hi]) => {
+                  setSkillCostMin(lo)
+                  setSkillCostMax(hi)
+                }}
+                className="max-w-[420px]"
+              />
+              <span className="shrink-0 text-xs font-semibold tabular-nums text-gray-300">
+                {skillCostMin}
+                <span className="px-1 text-gray-500">–</span>
+                {skillCostMax >= SKILL_COST_MAX ? `${SKILL_COST_MAX}+` : skillCostMax}
+              </span>
+              {skillCostFilterActive && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSkillCostMin(SKILL_COST_MIN)
+                    setSkillCostMax(SKILL_COST_MAX)
+                  }}
+                  className="shrink-0 rounded-md border border-white/10 bg-[#151515] px-2 py-1 text-[10px] font-semibold text-gray-400 transition hover:border-[#ff2f5f]/45 hover:text-white"
+                >
+                  Clear
+                </button>
+              )}
             </div>
           </div>
 

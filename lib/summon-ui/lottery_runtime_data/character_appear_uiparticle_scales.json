@@ -1,0 +1,101 @@
+{
+  "_meta": "UIParticle.m_Scale3D per emitter — converts particle world units to canvas pixels",
+  "uiparticles": [
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect",
+      "m_Scale3D": {
+        "x": 108.0,
+        "y": 108.0,
+        "z": 108.0
+      },
+      "m_AbsoluteMode": 0,
+      "m_AutoScaling": 0,
+      "m_PositionMode": 0,
+      "m_IgnoreCanvasScaler": 0
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect",
+      "m_Scale3D": {
+        "x": 108.0,
+        "y": 108.0,
+        "z": 108.0
+      },
+      "m_AbsoluteMode": 0,
+      "m_AutoScaling": 0,
+      "m_PositionMode": 0,
+      "m_IgnoreCanvasScaler": 0
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/SSRUltimateParticle",
+      "m_Scale3D": {
+        "x": 108.0,
+        "y": 108.0,
+        "z": 108.0
+      },
+      "m_AbsoluteMode": 0,
+      "m_AutoScaling": 0,
+      "m_PositionMode": 0,
+      "m_IgnoreCanvasScaler": 0
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect",
+      "m_Scale3D": {
+        "x": 108.0,
+        "y": 108.0,
+        "z": 108.0
+      },
+      "m_AbsoluteMode": 0,
+      "m_AutoScaling": 0,
+      "m_PositionMode": 0,
+      "m_IgnoreCanvasScaler": 0
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear",
+      "m_Scale3D": {
+        "x": 108.0,
+        "y": 108.0,
+        "z": 108.0
+      },
+      "m_AbsoluteMode": 0,
+      "m_AutoScaling": 0,
+      "m_PositionMode": 0,
+      "m_IgnoreCanvasScaler": 0
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect",
+      "m_Scale3D": {
+        "x": 108.0,
+        "y": 108.0,
+        "z": 108.0
+      },
+      "m_AbsoluteMode": 0,
+      "m_AutoScaling": 0,
+      "m_PositionMode": 0,
+      "m_IgnoreCanvasScaler": 0
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect",
+      "m_Scale3D": {
+        "x": 108.0,
+        "y": 108.0,
+        "z": 108.0
+      },
+      "m_AbsoluteMode": 0,
+      "m_AutoScaling": 0,
+      "m_PositionMode": 0,
+      "m_IgnoreCanvasScaler": 0
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect",
+      "m_Scale3D": {
+        "x": 108.0,
+        "y": 108.0,
+        "z": 108.0
+      },
+      "m_AbsoluteMode": 0,
+      "m_AutoScaling": 0,
+      "m_PositionMode": 0,
+      "m_IgnoreCanvasScaler": 0
+    }
+  ]
+}

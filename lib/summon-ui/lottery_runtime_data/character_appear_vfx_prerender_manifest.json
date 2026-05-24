@@ -1,0 +1,154 @@
+{
+  "_meta": "CharacterAppear bg-only prerender manifest (Pass-10). Per-viewRarity prerendered BACKGROUND VFX layers only \u2014 cosmic galaxy, central radial burst, URP bloom, gradation/frame URP shaders, ef_sageBg particles. Composited BEHIND PrefabTree/DOM in FullArtRevealStage. The DOM foreground renders: character d2 art + plate body/frame + character name/title text + per-star sprites + per-star scale-pop animation + per-star burst particle VFX via LotteryParticles. Plate+stars are NOT in the video (Pass-10 layer split \u2014 plate must render IN FRONT of character, which is impossible if it's baked into the bg). When a clip is null, the website falls back to the full CSS LotteryParticles pipeline for that rarity.",
+  "_schema_version": "1.0.0",
+  "_clip_shape": {
+    "clip_path": "absolute path from /public, e.g. /Video/character_appear/vfx_R.webm",
+    "duration_s": "clip duration in seconds (~= Appear<rarity>.stopTime)",
+    "alpha_mode": "alpha-webm | premultiplied-on-black-mp4 | straight-on-black-mp4 \u2014 how the clip encodes transparency. alpha-webm = VP9-alpha (yuva420p); -on-black-* = no alpha channel, composite via mix-blend-mode in CSS",
+    "composite_mode": "normal | screen | plus-lighter \u2014 CSS mix-blend-mode used to composite the video onto the stage backdrop. 'normal' for alpha-webm; 'plus-lighter' (additive) or 'screen' for on-black variants. Note: CSS uses 'plus-lighter' for additive, NOT 'lighter' (which is a canvas-only globalCompositeOperation value).",
+    "design_resolution": "[1920, 1080] \u2014 native 16:9. Captured at 1920x1080 logical phone screen via `adb shell wm size 1080x1920` override (forces the phone to report a 16:9 screen to the game's CanvasScaler, so the prefab's 1920x1080 container fills the entire phone screen with no gutters). screenrecord --size 1920x1080 captures the logical area directly.",
+    "start_offset_s": "offset from CharacterAppear In() start to first visible frame in the clip (usually 0)",
+    "capture_method": "unity-editor | phone-arm64-frida-hidehook | phone-arm64-gpgd | other (describe)",
+    "source_prefab": "UILotteryCharacterAppear",
+    "source_state": "Appear<rarity>",
+    "included_paths": "array of GameObject paths visible in the prerender (informational; the source of truth is character_appear_vfx_prerender_layer_split.md \u00a7INCLUDED)",
+    "hidden_paths": "array of GameObject paths hidden at capture time (informational; see character_appear_vfx_prerender_layer_split.md \u00a7HIDDEN)",
+    "captured_at": "ISO date of capture",
+    "notes": "free-text notes (capture device, codec, any deviations from protocol)"
+  },
+  "_common_capture_metadata": {
+    "capture_method": "phone-arm64-frida-hidehook + adb wm size 1080x1920 override (force game canvas to 16:9, container fills screen, no gutters/SKIP-overflow) + adb screenrecord --size 1920x1080 ~21Mbps + ffmpeg trim only (source is already 16:9) + vp9 4Mbps yuv420p",
+    "encode_filter_chain": "(none \u2014 source is already 16:9 native; just -ss/-t trim)",
+    "encode_rationale": "Pass-11: forced phone to report 1080x1920 via `adb shell wm size 1080x1920`. The game's CanvasScaler computes a 16:9 logical canvas matching the prefab's 1920x1080 container \u2014 no DefaultCanvas-extension gutters, all UI (including the SKIP button at the top-right) fits within the captured 16:9 frame. No letterbox needed in the encode.",
+    "source_prefab": "UILotteryCharacterAppear",
+    "captured_at": "2026-05-22T15:00:00Z",
+    "agent_version": "_work/frida_il2cpp/src/vfx_hidehook_agent.ts (Pass 7b)",
+    "force_rarity_method": "Set/Initialize hook + raw-memory write at Entity+0x40 (RarityType enum int)",
+    "hide_method": "Interceptor.attach on UILotteryCharacterAppear.In() + Transform.Find(relPath) + SetActive(false) on 7 paths (Pass-10 bg mode)",
+    "included_paths_summary": [
+      "container/centers/bgBase",
+      "container/centers/ef_sageBg/*",
+      "container/centers/PostProcess00",
+      "container/ef_appear/*",
+      "container/bgPattern, bgPatternAdd, noise, shadow, gradation*, frameURUltimate",
+      "container/letterBox",
+      "URP Bloom + ColorAdjustments + Vignette (baked into frames)"
+    ],
+    "hidden_paths_summary": [
+      "container/charaModel (DOM)",
+      "container/characterName/base (DOM \u2014 plate body+frame)",
+      "container/characterName/rarityStar (DOM \u2014 star sprites + per-star scale curve + per-star burst LotteryParticles)",
+      "container/characterName/characterName (DOM \u2014 name text)",
+      "container/characterName/characterTitle (DOM \u2014 title text)",
+      "container/btnSkip/ic, container/btnSkip/label (DOM \u2014 replaced by website SKIP button)"
+    ],
+    "known_residual_artifacts": [
+      "Tiny rarity1/rarity2 star sprites briefly appear in some captures because the Appear<rarity> AnimationClip's m_IsActive curves re-activate them ~50-100ms after our SetActive(false). The website's DOM star sprites overlay these exactly (same prefab RectTransform anchors), so they're hidden behind the DOM stars in compositing.",
+      "Skip arrow icon (>>) at top-right corner remains visible in all captures (we only hide btnSkip/label, not btnSkip/ic). DOM SKIP button will overlay it cleanly."
+    ]
+  },
+  "clips": {
+    "R": {
+      "clip_path": "/Video/character_appear/vfx_bg_R.webm",
+      "duration_s": 27.8,
+      "loop_start_s": 0.6,
+      "alpha_mode": "straight-on-black-mp4",
+      "composite_mode": "plus-lighter",
+      "design_resolution": [
+        1920,
+        1080
+      ],
+      "start_offset_s": 0,
+      "capture_method": "phone-arm64-frida-hidehook + adb wm size 1080x1920 override (force game canvas to 16:9, container fills screen, no gutters/SKIP-overflow) + adb screenrecord --size 1920x1080 ~21Mbps + ffmpeg trim only (source is already 16:9) + vp9 3.5Mbps yuv420p",
+      "source_prefab": "UILotteryCharacterAppear",
+      "source_state": "AppearR",
+      "captured_at": "2026-05-24T12:13:00Z",
+      "notes": "Long-tail re-capture (2026-05-24): 28s clip with multi-rotation idle tail. loop_start_s=0.8s marks post-burst settle; player seeks here on `ended` and keeps playing forward indefinitely so the idle drift loops naturally."
+    },
+    "SR": {
+      "clip_path": "/Video/character_appear/vfx_bg_SR.webm",
+      "duration_s": 29.82,
+      "loop_start_s": 0.8,
+      "alpha_mode": "straight-on-black-mp4",
+      "composite_mode": "plus-lighter",
+      "design_resolution": [
+        1920,
+        1080
+      ],
+      "start_offset_s": 0,
+      "capture_method": "phone-arm64-frida-hidehook + adb wm size 1080x1920 override + adb screenrecord --size 1920x1080 ~21Mbps + ffmpeg trim + vp9 3.5Mbps yuv420p",
+      "source_prefab": "UILotteryCharacterAppear",
+      "source_state": "AppearSR",
+      "captured_at": "2026-05-24T12:13:00Z",
+      "notes": "Long-tail re-capture (2026-05-24): 29.8s clip with multi-rotation idle tail. loop_start_s=0.8s."
+    },
+    "SSR": {
+      "clip_path": "/Video/character_appear/vfx_bg_SSR.webm",
+      "duration_s": 35.82,
+      "loop_start_s": 1.2,
+      "alpha_mode": "straight-on-black-mp4",
+      "composite_mode": "plus-lighter",
+      "design_resolution": [
+        1920,
+        1080
+      ],
+      "start_offset_s": 0,
+      "capture_method": "phone-arm64-frida-hidehook + adb wm size 1080x1920 override + adb screenrecord --size 1920x1080 ~21Mbps + ffmpeg trim + vp9 3.5Mbps yuv420p",
+      "source_prefab": "UILotteryCharacterAppear",
+      "source_state": "AppearSSR",
+      "captured_at": "2026-05-24T12:13:00Z",
+      "notes": "Long-tail re-capture (2026-05-24): 35.8s clip with multi-rotation idle tail. loop_start_s=1.2s."
+    },
+    "SSRUltimate": {
+      "clip_path": "/Video/character_appear/vfx_bg_SSRUltimate.webm",
+      "duration_s": 17.62,
+      "loop_start_s": 1.2,
+      "alpha_mode": "straight-on-black-mp4",
+      "composite_mode": "plus-lighter",
+      "design_resolution": [
+        1920,
+        1080
+      ],
+      "start_offset_s": 0,
+      "capture_method": "phone-arm64-frida-hidehook + adb wm size 1080x1920 override + adb screenrecord --size 1920x1080 ~21Mbps + ffmpeg trim + vp9 3.5Mbps yuv420p",
+      "source_prefab": "UILotteryCharacterAppear",
+      "source_state": "AppearSSRUltimate",
+      "captured_at": "2026-05-24T12:13:00Z",
+      "notes": "Long-tail re-capture (2026-05-24): 17.6s clip with idle tail. loop_start_s=1.2s. Shortest of the 6 because the user moved past it faster during recording."
+    },
+    "UREx": {
+      "clip_path": "/Video/character_appear/vfx_bg_UREx.webm",
+      "duration_s": 40.0,
+      "loop_start_s": 1.0,
+      "alpha_mode": "straight-on-black-mp4",
+      "composite_mode": "plus-lighter",
+      "design_resolution": [
+        1920,
+        1080
+      ],
+      "start_offset_s": 0,
+      "capture_method": "phone-arm64-frida-hidehook + adb wm size 1080x1920 override + adb screenrecord --size 1920x1080 ~21Mbps + ffmpeg trim + vp9 3.5Mbps yuv420p",
+      "source_prefab": "UILotteryCharacterAppear",
+      "source_state": "AppearUREx",
+      "captured_at": "2026-05-24T12:31:00Z",
+      "notes": "Long-tail re-capture (second session, 2026-05-24 12:31): 40.4s clip with ~4 full rotations of the kanji ring (~10s rotation period). loop_start_s=1.4s."
+    },
+    "URUltimate": {
+      "clip_path": "/Video/character_appear/vfx_bg_URUltimate.webm",
+      "duration_s": 40.02,
+      "loop_start_s": 0.8,
+      "alpha_mode": "straight-on-black-mp4",
+      "composite_mode": "plus-lighter",
+      "design_resolution": [
+        1920,
+        1080
+      ],
+      "start_offset_s": 0,
+      "capture_method": "phone-arm64-frida-hidehook + adb wm size 1080x1920 override + adb screenrecord --size 1920x1080 ~21Mbps + ffmpeg trim + vp9 3.5Mbps yuv420p",
+      "source_prefab": "UILotteryCharacterAppear",
+      "source_state": "AppearURUltimate",
+      "captured_at": "2026-05-24T12:31:00Z",
+      "notes": "Long-tail re-capture (second session, 2026-05-24 12:31): 40.0s clip with ~4 full rotations of the hieroglyph ring (~10s rotation period). loop_start_s=0.8s."
+    }
+  }
+}

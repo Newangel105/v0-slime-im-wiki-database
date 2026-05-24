@@ -351,18 +351,52 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
       </aside>
 
       <section className="glass-panel-strong overflow-hidden">
-        <div className="grid gap-4 border-b border-white/10 bg-[#1a1a1e]/95 px-4 py-4 xl:grid-cols-[minmax(0,1fr)_auto] xl:items-start">
-          <div className="min-w-0 xl:pr-6">
+        <div className="flex flex-col gap-3 border-b border-white/10 bg-[#1a1a1e]/95 px-4 py-4">
+          <div className="min-w-0">
             <div className="section-kicker">Active Model</div>
-              <h2 className="mt-1 max-w-[26rem] truncate text-[clamp(1.35rem,1.1vw,2rem)] font-black leading-[1.02] tracking-tight text-white">
-                {selected.name}
-              </h2>
+            <h2 className="mt-1 truncate text-[clamp(1.35rem,1.1vw,2rem)] font-black leading-[1.02] tracking-tight text-white">
+              {selected.name}
+            </h2>
             {selected.affiliation_name ? (
-              <p className="mt-1 max-w-[28rem] whitespace-normal break-words text-xs font-bold uppercase tracking-[0.22em] text-slate-500">{selected.affiliation_name}</p>
+              <p className="mt-1 truncate text-xs font-bold uppercase tracking-[0.22em] text-slate-500">{selected.affiliation_name}</p>
             ) : null}
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 text-sm xl:flex-nowrap xl:justify-end">
+          <div className="flex flex-wrap items-center gap-3 text-sm">
+            {hasSkillScene && (
+              <div
+                role="tablist"
+                aria-label="Viewer mode"
+                className="inline-flex h-10 shrink-0 items-center rounded-xl border border-white/10 bg-[#222327] p-1"
+              >
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={activeMode === "character"}
+                  onClick={() => setViewerMode("character")}
+                  className={`h-8 whitespace-nowrap rounded-lg px-2.5 text-[10px] font-bold uppercase tracking-[0.14em] transition ${
+                    activeMode === "character"
+                      ? "bg-[#da3e44]/20 text-white shadow-[0_0_0_1px_rgba(218,62,68,0.45)]"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  Model
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={activeMode === "skill"}
+                  onClick={() => setViewerMode("skill")}
+                  className={`h-8 whitespace-nowrap rounded-lg px-2.5 text-[10px] font-bold uppercase tracking-[0.14em] transition ${
+                    activeMode === "skill"
+                      ? "bg-[#da3e44]/20 text-white shadow-[0_0_0_1px_rgba(218,62,68,0.45)]"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                >
+                  {useSkillVideo ? "Movie" : "Skill"}
+                </button>
+              </div>
+            )}
             {activeMode === "skill" ? (
               <label className="flex items-center gap-2 text-slate-300">
                 <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">Scene</span>

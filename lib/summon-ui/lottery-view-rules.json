@@ -1,0 +1,278 @@
+{
+  "_meta": {
+    "description": "Per-rarity visibility + sprite-variant rules transcribed from the full prefab tree dump in C:/Users/Angel105/Documents/cenas/_work/prefab_out/. Every entry below is a GameObject name that exists in the actual game prefab; the rule simply records which ViewRarity activates which sub-tree (the prefab has them all as siblings, the IL2CPP Set() switches them).",
+    "sources": {
+      "characterAppear": {
+        "prefab": "UILotteryCharacterAppear",
+        "il2cpp_class": "OniUI.UILotteryCharacterAppear (TypeDefIndex 17854)",
+        "il2cpp_entity": "UILotteryCharacterAppear.Entity (TypeDefIndex 17852)",
+        "il2cpp_enum": "UILotteryCharacterAppear.RarityType (TypeDefIndex 17853)",
+        "prefab_dump": "C:/Users/Angel105/Documents/cenas/_work/prefab_out/UILotteryCharacterAppear.json"
+      },
+      "promotion": {
+        "prefab": "UILotteryPromotion",
+        "il2cpp_class": "OniUI.UILotteryPromotion (TypeDefIndex 17914)",
+        "il2cpp_entity": "UILotteryPromotion.Entity (TypeDefIndex 17912)",
+        "il2cpp_enum": "UILotteryPromotion.Entity.ViewRarity (TypeDefIndex 17911)",
+        "prefab_dump": "C:/Users/Angel105/Documents/cenas/_work/prefab_out/UILotteryPromotion.json"
+      },
+      "textAnnounce": {
+        "prefab": "UILotteryTextAnnounce",
+        "il2cpp_class": "OniUI.UILotteryTextAnnounce (TypeDefIndex 17925)",
+        "il2cpp_entity": "UILotteryTextAnnounce.Entity (TypeDefIndex 17923)",
+        "prefab_dump": "C:/Users/Angel105/Documents/cenas/_work/prefab_out/UILotteryTextAnnounce.json"
+      },
+      "movie": {
+        "prefab": "UILotteryMovie",
+        "il2cpp_class": "OniUI.UILotteryMovie (TypeDefIndex 17891)",
+        "il2cpp_entity": "UILotteryMovie.Entity (TypeDefIndex 17890)",
+        "prefab_dump": "C:/Users/Angel105/Documents/cenas/_work/prefab_out/UILotteryMovie.json"
+      },
+      "result": {
+        "prefab": "UILotteryResult",
+        "il2cpp_class": "OniUI.UILotteryResult (TypeDefIndex 17918)",
+        "il2cpp_entity": "UILotteryResult.Entity (TypeDefIndex 17916)",
+        "result_card_class": "OniUI.XIUILotteryResult (TypeDefIndex 17921)",
+        "result_card_entity": "XIUILotteryResult.Entity (TypeDefIndex 17920)",
+        "prefab_dump": "C:/Users/Angel105/Documents/cenas/_work/prefab_out/UILotteryResult.json"
+      },
+      "presenter": {
+        "il2cpp_class": "UICharacterAcquisitionAnimationPresenter (TypeDefIndex 9849)",
+        "il2cpp_setting_entity": "UICharacterAcquisitionAnimationPresenter.ISettingEntity (TypeDefIndex 9834)",
+        "il2cpp_element": "CharacterAcquisitionElement (TypeDefIndex 9832)",
+        "play_async_order": ["ShowLotteryPromotionAsync (5★+ only)", "ShowLotteryTextAnnounceAsync (every element with announce)", "ShowLotteryMovieAsync (5★+ with IsPlayMovie)", "ShowLotteryCharacterAppearAsync (every element)"]
+      },
+      "master_pc_lottery_message": {
+        "il2cpp_class": "Tempest.MasterPcLotteryMessage (TypeDefIndex 21661)",
+        "fields": ["MasterPcLotteryMessageId", "MasterPcId", "VoicePath", "MoviePath", "ReleaseLabel"],
+        "dat_file": "_work/summon_textassets/MasterPcLotteryMessage.dat",
+        "l10n_file": "_work/summon_textassets/L10NPcLotteryMessage.dat"
+      }
+    }
+  },
+
+  "characterAppear": {
+    "rarities": ["R", "SR", "SSR", "SSRUltimate", "UREx", "URUltimate"],
+    "starCount": {"R": 3, "SR": 4, "SSR": 5, "SSRUltimate": 5, "UREx": 5, "URUltimate": 6},
+    "frameURUltimate_visible_for": ["URUltimate"],
+    "addURUltimateEffectContainer_visible_for": ["URUltimate"],
+    "gradationUltimate_visible_for": ["SSRUltimate", "UREx", "URUltimate"],
+    "gradationSSR_visible_for": ["SSR"],
+    "gradation_visible_for": ["R", "SR"],
+    "_shadow_tint_note": "The prefab `shadow` Image bakes ONE m_Color: rgba(0.9597,0.2311,1.0,0.251) (the URUltimate magenta). Per-rarity variation is applied at runtime by the UILotteryCharacterAppear Animator clips, which live in a dependency bundle not present locally (extraction gap — see SUMMON_REVEAL_STATUS.md). Until those clips are pulled, every rarity uses the prefab's real baked value rather than an invented per-rarity colour.",
+    "shadow_tint_per_rarity": {
+      "R": [0.9597, 0.2311, 1.0, 0.251],
+      "SR": [0.9597, 0.2311, 1.0, 0.251],
+      "SSR": [0.9597, 0.2311, 1.0, 0.251],
+      "SSRUltimate": [0.9597, 0.2311, 1.0, 0.251],
+      "UREx": [0.9597, 0.2311, 1.0, 0.251],
+      "URUltimate": [0.9597, 0.2311, 1.0, 0.251]
+    },
+    "particle_groups": {
+      "ef_sageBg": {
+        "R": "ef_view_R",
+        "SR": "ef_view_SR",
+        "SSR": "ef_view_SSR",
+        "SSRUltimate": "ef_view_SSRUltimate",
+        "UREx": "ef_view_UREx",
+        "URUltimate": "ef_view_URUltimate"
+      },
+      "ef_appear": {
+        "R": "ef_view_R",
+        "SR": "ef_view_SR",
+        "SSR": "ef_view_SSR",
+        "SSRUltimate": "ef_view_SSRUltimate",
+        "UREx": "ef_view_UREx",
+        "URUltimate": "ef_view_URUltimate"
+      }
+    },
+    "post_process": {
+      "bloom_default": ["R", "SR", "SSR", "SSRUltimate", "UREx"],
+      "bloomURUltimate": ["URUltimate"],
+      "blur_default": ["R", "SR", "SSR", "SSRUltimate", "UREx", "URUltimate"]
+    },
+    "nameplate_sprites_per_rarity": {
+      "R": {
+        "base": "baseCharacterAppear",
+        "line": "baseLineCharacterAppear",
+        "rimuru": "decoRimuruCharacterAppearRarity3",
+        "star": "decoStarCharacterAppearRarity3"
+      },
+      "SR": {
+        "base": "baseCharacterAppear",
+        "line": "baseLineCharacterAppear",
+        "rimuru": "decoRimuruCharacterAppearRarity4",
+        "star": "decoStarCharacterAppearRarity4"
+      },
+      "SSR": {
+        "base": "baseCharacterAppearBig",
+        "line": "baseLineCharacterAppear",
+        "rimuru": "decoRimuruCharacterAppearRarity5",
+        "star": "decoStarCharacterAppearRarity5"
+      },
+      "SSRUltimate": {
+        "base": "baseCharacterAppearBig",
+        "line": "baseLineCharacterAppearUltimate",
+        "rimuru": "decoRimuruCharacterAppearRarity5Ultimate",
+        "star": "decoStarCharacterAppearRarity5Ultimate"
+      },
+      "UREx": {
+        "base": "baseCharacterAppearBigUREx",
+        "line": "baseLineCharacterAppearUREx",
+        "rimuru": "decoRimuruCharacterAppearRarity5Ultimate",
+        "star": "decoStarCharacterAppearRarity5Ultimate"
+      },
+      "URUltimate": {
+        "base": "baseCharacterAppearBigURUltimate",
+        "line": "baseLineCharacterAppearURUltimate",
+        "rimuru": "decoRimuruCharacterAppearRarity6Ultimate",
+        "star": "decoStarCharacterAppearRarity6Ultimate"
+      }
+    },
+    "background_per_rarity": {
+      "R": {"bg": "bgBaseRarity3", "magicCircle": "t_Lottery_MagicCircle_cla_03"},
+      "SR": {"bg": "bgBaseRarity4", "magicCircle": "t_Lottery_MagicCircle_cla_04"},
+      "SSR": {"bg": "bgBaseRarity5", "magicCircle": "t_Lottery_MagicCircle_cla_06"},
+      "SSRUltimate": {"bg": "bgBaseRarity5Ultimate", "magicCircle": "t_Lottery_MagicCircle_cla_06"},
+      "UREx": {"bg": "bgBaseRarity5Ultimate", "magicCircle": "t_Lottery_MagicCircle_cla_06"},
+      "URUltimate": {"bg": "bgBaseRarity6Ultimate", "magicCircle": "t_Lottery_MagicCircle_cla_06"}
+    }
+  },
+
+  "promotion": {
+    "rarities": ["R", "SR", "SSR", "SSRUltimatePlusPU"],
+    "text_groups_per_rarity": {
+      "R": "rerity3",
+      "SR": "rerity4",
+      "SSR": "rerity5",
+      "SSRUltimatePlusPU": "rerity5UltimatePlusPU"
+    },
+    "particle_per_rarity": {
+      "R": [],
+      "SR": ["uiparticle_SR"],
+      "SSR": ["uiparticle_SSR", "uiparticle_SSR_ad"],
+      "SSRUltimatePlusPU": ["uiparticle_SSRUltimatePlusPU", "uiparticle_SSRUltimatePlusPU_ad"]
+    },
+    "post_process": {
+      "rarity3_Bloom": ["R"],
+      "rarity5UltimatePlusPU_Bloom": ["SSRUltimatePlusPU"],
+      "rarity5UltimatePlusPU_Noise": ["SSRUltimatePlusPU"],
+      "rarity_SpikeNoise": ["SR", "SSR", "SSRUltimatePlusPU"],
+      "rarity_SpikeNoise_add": ["SSR", "SSRUltimatePlusPU"]
+    },
+    "color_gradient_atlas_per_rarity": {
+      "R": null,
+      "SR": null,
+      "SSR": "t_promo_grad_uv_00",
+      "SSRUltimatePlusPU": "t_promo_grad_uv_01"
+    },
+    "_notes": {
+      "rarity_promotion_logic": "Tempest.LotteryPattern.LotteryPatterMovieUtility.IsPromotionFiveStar returns (patternAnimationType & 0xfffffffe) == 2, i.e. types 2 and 3 only. UILotteryPromotion is only shown when IsPromotionFiveStar.",
+      "rarity_morph": "UILotteryPromotion.Entity has startRarity and fixRarity; the prefab animator transitions startRarity→fixRarity to produce the rarity-ascending effect (e.g. start SR, fix SSR). UILotteryPromotion.CheckFixRarity (RVA 0xA397BC8) drives the swap.",
+      "irregular_label": "The 'Irregular' label in the detectRog sub-tree fires when text-animation detection finds an out-of-bounds character; it is debug UI, not user-facing."
+    }
+  },
+
+  "textAnnounce": {
+    "tmp_field": "announceLabel",
+    "animation": {
+      "wave_curve_field": "animationCurve",
+      "duration_field": "duration",
+      "wave_time_field": "waveTime",
+      "wait_time_field": "waitTime",
+      "il2cpp_setter": "UILotteryTextAnnounce.Set (RVA 0xA399DF8) writes entity.announceText to targetText.text and the In()/Update() loop fades each character per the animation curve."
+    },
+    "color_per_rarity_hint": {
+      "_notes": "The TMP color is white by default (#FFFFFF). Some rarity variants have a tint applied through the bloom volume; the announce text colour comes from the TMP m_fontColor field, which is the same #FFFFFF for every rarity. The visible 'silver vs gold' difference is the bloom intensity + the announceText content (e.g. 'íì' for 4★, 'ùìü' for 5★) sourced from MasterPcLotteryMessage.LotteryMessage."
+    },
+    "voice": {
+      "source": "MasterPcLotteryMessage.VoicePath (FlatBuffer field 3)",
+      "voice_path_pattern": "Sound/AudioClip/VOICE/<charName>/voice_<charName>_<NNN>_gacha.wav",
+      "audio_bundle_format": "CRI ACB/AWB; voice_*.wav is the friendly name baked into the bundle but the actual audio is HCA-encoded in the AWB and indexed via the ACB.",
+      "extraction_status": "PENDING — see scripts/extract_special_skill_voice.py for the CRI ACB/HCA → ogg pipeline (vgmstream-cli)."
+    }
+  },
+
+  "movie": {
+    "cri_movie_render_target": "criMovie.screen (RawImage with CriManaMovieControllerForUI)",
+    "skip_button": "btnSkip",
+    "tap_screen_prompt": "labelTap (CanvasGroup with animator anmTap)",
+    "branch_rule": {
+      "source": "CharacterAcquisitionElement.IsPlayMovie = !string.IsNullOrEmpty(MoviePath)",
+      "frontend_must": "Only call ShowLotteryMovieAsync when element.is_play_movie === true. If false, skip directly from phrase → character appear."
+    },
+    "movie_path_pattern": "Movie/SpecialSkill/<charName>_Battle_SpecialSkill/<charName>_SpecialSkill_<NNN>.usm",
+    "extraction_status": "PENDING — use scripts/extract_special_skill_movies.py; CRI key 0096EE8646D6F935 already verified against Movie/Lottery USMs."
+  },
+
+  "result": {
+    "modal_root": "modalContainer",
+    "modal_front_root": "modalFront",
+    "title_label": "RESULT",
+    "result_list_field": "resultList",
+    "result_list_layout": "GridLayoutGroup",
+    "result_template": "resultTemplate (XIUILotteryResult)",
+    "card_root": "cardContainer",
+    "card_thumb_reward": "thumbReward (XIUIThumbReward)",
+    "card_in_effects_per_rarity": {
+      "_3": "inEffectsRarity3 (sprite cardGlow)",
+      "_4": "inEffectsRarity4 (sprite cardGlow)",
+      "_5": "inEffectsRarity5 (sprite cardGlow)",
+      "_5_6_Ultimate": "inEffectsRarity5-6Ultimate (sprite cardGlowUltimate, with sonic/particleKirakira/shineAuraRing)",
+      "_5_6_UltimatePlus": "inEffectsRarity5-6UltimatePlus (sprite cardGlowUltimatePlus, with sonic/particleKirakira/shineAuraRing)",
+      "_6_Epic": "inEffectsRarity6Epic (sprite cardGlowEpic, with particleKirakiraStar/shineAuraSwirl)"
+    },
+    "card_short_effects_per_rarity": {
+      "_3": "inShortEffectsRarity3",
+      "_4": "inShortEffectsRarity4",
+      "_5": "inShortEffectsRarity5",
+      "_5_6_Ultimate": "inShortEffectsRarity5-6Ultimate",
+      "_5_6_UltimatePlus": "inShortEffectsRarity5-6UltimatePlus",
+      "_6_Epic": "inShortEffectsRarity6Epic"
+    },
+    "item_effects_per_rarity": {
+      "_5_6_Ultimate": "itemEffectsRarity5-6Ultimate",
+      "_5_6_UltimatePlus": "itemEffectsRarity5-6UltimatePlus",
+      "_6_Epic": "itemEffectsRarity6Epic"
+    },
+    "ic_new_badge": "icNew (XIUINew)",
+    "badge_class_up": "badgeClassUp (XIUIBadgeClassUp)",
+    "modal_btn_return_label": "戻る",
+    "modal_btn_decision": {
+      "normal_sprite": "btnDecision2Normal",
+      "paid_sprite": "btnDecisionPaid2Normal",
+      "label_normal": "もう1回スカウト (Recruit once more)",
+      "label_paid": "有償 (Paid)"
+    },
+    "modal_decoration_animators": {
+      "topLight": "Animator + lensFlare + glow + light + aura",
+      "underLight": "Animator + lensFlare + glow + light + aura"
+    }
+  },
+
+  "rarity_resolution": {
+    "_notes": "Maps the CharacterAcquisitionElement.Rarity + ArousalType to the right ViewRarity for each prefab. Mirrors UICommonData.GetUICommonRarityType + the per-prefab Set() switches.",
+    "characterAppear_RarityType": {
+      "R": {"rarity": [3], "arousal_type": null},
+      "SR": {"rarity": [4], "arousal_type": null},
+      "SSR": {"rarity": [5], "arousal_type": [0, null]},
+      "SSRUltimate": {"rarity": [5], "arousal_type": [1]},
+      "UREx": {"rarity": [5, 6], "arousal_type": [2]},
+      "URUltimate": {"rarity": [6, 7], "arousal_type": [3]}
+    },
+    "promotion_ViewRarity": {
+      "R": {"rarity": [3]},
+      "SR": {"rarity": [4]},
+      "SSR": {"rarity": [5], "arousal_type": [0, 1, null]},
+      "SSRUltimatePlusPU": {"rarity": [5, 6, 7], "arousal_type": [2, 3], "and_is_pickup": true}
+    },
+    "card_RarityType": {
+      "_3": {"rarity": 3},
+      "_4": {"rarity": 4},
+      "_5": {"rarity": 5, "arousal_type": [0, null]},
+      "_5_6_Ultimate": {"rarity": [5], "arousal_type": [1]},
+      "_5_6_UltimatePlus": {"rarity": [5, 6], "arousal_type": [2, 3]},
+      "_6_Epic": {"rarity": [6, 7], "arousal_type": [3]}
+    }
+  }
+}

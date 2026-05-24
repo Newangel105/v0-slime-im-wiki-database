@@ -1,0 +1,101 @@
+{
+  "Default": {
+    "stop_time": 0.0,
+    "start_time": 0.0,
+    "sample_rate": 60.0,
+    "wrap_mode": 0,
+    "loop_time": false,
+    "is_looping": null,
+    "binding_count": 3,
+    "bindings": [
+      {
+        "path": 3349343259,
+        "attribute": 3739863151,
+        "type": 225,
+        "script": 0
+      },
+      {
+        "path": 2505748156,
+        "attribute": 4228073214,
+        "type": 114,
+        "script": 350208831926335389
+      },
+      {
+        "path": 3349343259,
+        "attribute": 1574349066,
+        "type": 225,
+        "script": 0
+      }
+    ],
+    "pptr_curve_count": 0,
+    "dense_curves": 0,
+    "constant_curves": 0,
+    "streamed_size": 0
+  },
+  "Out": {
+    "stop_time": 0.0,
+    "start_time": 0.0,
+    "sample_rate": 60.0,
+    "wrap_mode": 0,
+    "loop_time": false,
+    "is_looping": null,
+    "binding_count": 3,
+    "bindings": [
+      {
+        "path": 2505748156,
+        "attribute": 4228073214,
+        "type": 114,
+        "script": 350208831926335389
+      },
+      {
+        "path": 3349343259,
+        "attribute": 3739863151,
+        "type": 225,
+        "script": 0
+      },
+      {
+        "path": 3349343259,
+        "attribute": 1574349066,
+        "type": 225,
+        "script": 0
+      }
+    ],
+    "pptr_curve_count": 0,
+    "dense_curves": 0,
+    "constant_curves": 0,
+    "streamed_size": 0
+  },
+  "In": {
+    "stop_time": 0.0,
+    "start_time": 0.0,
+    "sample_rate": 60.0,
+    "wrap_mode": 0,
+    "loop_time": false,
+    "is_looping": null,
+    "binding_count": 3,
+    "bindings": [
+      {
+        "path": 2505748156,
+        "attribute": 4228073214,
+        "type": 114,
+        "script": 350208831926335389
+      },
+      {
+        "path": 3349343259,
+        "attribute": 3739863151,
+        "type": 225,
+        "script": 0
+      },
+      {
+        "path": 3349343259,
+        "attribute": 1574349066,
+        "type": 225,
+        "script": 0
+      }
+    ],
+    "pptr_curve_count": 0,
+    "dense_curves": 0,
+    "constant_curves": 0,
+    "streamed_size": 0
+  }
+}

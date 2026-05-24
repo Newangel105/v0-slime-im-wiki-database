@@ -1,0 +1,1560 @@
+{
+  "_meta": "Gacha-voice extraction catalog. wav files in /public/Voice/Lottery/voice_<stem>.wav; frontend probes both .ogg and .wav.",
+  "entries": {
+    "voice_sys_Adalman_Default_038_gacha": {
+      "status": "exists",
+      "wav": "public/Voice/Lottery/voice_sys_Adalman_Default_038_gacha.wav"
+    },
+    "voice_sys_Ainz_Default_037_gacha": {
+      "status": "exists",
+      "wav": "public/Voice/Lottery/voice_sys_Ainz_Default_037_gacha.wav"
+    },
+    "voice_sys_Ais_Default_037_gacha": {
+      "status": "exists",
+      "wav": "public/Voice/Lottery/voice_sys_Ais_Default_037_gacha.wav"
+    },
+    "voice_sys_Albedo_Default_037_gacha": {
+      "status": "exists",
+      "wav": "public/Voice/Lottery/voice_sys_Albedo_Default_037_gacha.wav"
+    },
+    "voice_sys_Albis_School2023_002_gacha": {
+      "status": "exists",
+      "wav": "public/Voice/Lottery/voice_sys_Albis_School2023_002_gacha.wav"
+    },
+    "voice_sys_Albis_Xmas2024_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/AlbisXmas2024/voice_sys_Albis_Xmas2024_013_gacha.wav",
+      "size": 712824,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Albis_Xmas2024_013_gacha.wav"
+    },
+    "voice_sys_Alice_Knight_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/AliceKnight/voice_sys_Alice_Knight_002_gacha.wav",
+      "size": 430704,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Alice_Knight_002_gacha.wav"
+    },
+    "voice_sys_Aqua_Default_039_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/AquaDefault/voice_sys_Aqua_Default_039_gacha.wav",
+      "size": 668684,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Aqua_Default_039_gacha.wav"
+    },
+    "voice_sys_Asuna_Default_041_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/AsunaDefault/voice_sys_Asuna_Default_041_gacha.wav",
+      "size": 467370,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Asuna_Default_041_gacha.wav"
+    },
+    "voice_sys_Bell_Default_038_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/BellDefault/voice_sys_Bell_Default_038_gacha.wav",
+      "size": 659156,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Bell_Default_038_gacha.wav"
+    },
+    "voice_sys_Benimaru_AnotherPC_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/BenimaruAnotherPC/voice_sys_Benimaru_AnotherPC_037_gacha.wav",
+      "size": 722508,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Benimaru_AnotherPC_037_gacha.wav"
+    },
+    "voice_sys_Benimaru_Coschange_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/BenimaruCoschange/voice_sys_Benimaru_Coschange_002_gacha.wav",
+      "size": 574064,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Benimaru_Coschange_002_gacha.wav"
+    },
+    "voice_sys_Benimaru_MovieRevival_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/BenimaruMovieRevival/voice_sys_Benimaru_MovieRevival_037_gacha.wav",
+      "size": 234608,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Benimaru_MovieRevival_037_gacha.wav"
+    },
+    "voice_sys_Benimaru_Movie_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/BenimaruMovie/voice_sys_Benimaru_Movie_002_gacha.wav",
+      "size": 728032,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Benimaru_Movie_002_gacha.wav"
+    },
+    "voice_sys_Benimaru_Tengu_012_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/BenimaruTengu/voice_sys_Benimaru_Tengu_012_gacha.wav",
+      "size": 636610,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Benimaru_Tengu_012_gacha.wav"
+    },
+    "voice_sys_Buran_2Anniv_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Buran2Anniv/voice_sys_Buran_2Anniv_037_gacha.wav",
+      "size": 481690,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Buran_2Anniv_037_gacha.wav"
+    },
+    "voice_sys_Buran_3Anniv_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Buran3Anniv/voice_sys_Buran_3Anniv_013_gacha.wav",
+      "size": 222598,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Buran_3Anniv_013_gacha.wav"
+    },
+    "voice_sys_Buran_Gothic_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/BuranGothic/voice_sys_Buran_Gothic_002_gacha.wav",
+      "size": 499184,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Buran_Gothic_002_gacha.wav"
+    },
+    "voice_sys_Buran_Military_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/BuranMilitary/voice_sys_Buran_Military_013_gacha.wav",
+      "size": 253914,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Buran_Military_013_gacha.wav"
+    },
+    "voice_sys_Buran_Swimsuit2025_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/BuranSwimsuit2025/voice_sys_Buran_Swimsuit2025_037_gacha.wav",
+      "size": 823542,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Buran_Swimsuit2025_037_gacha.wav"
+    },
+    "voice_sys_Buran_Xmas2025_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/BuranXmas2025/voice_sys_Buran_Xmas2025_013_gacha.wav",
+      "size": 536196,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Buran_Xmas2025_013_gacha.wav"
+    },
+    "voice_sys_Chloe_Knight_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ChloeKnight/voice_sys_Chloe_Knight_002_gacha.wav",
+      "size": 322776,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Chloe_Knight_002_gacha.wav"
+    },
+    "voice_sys_Clayman_Awaken02PC_034_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ClaymanAwaken02PC/voice_sys_Clayman_Awaken02PC_034_gacha.wav",
+      "size": 366448,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Clayman_Awaken02PC_034_gacha.wav"
+    },
+    "voice_sys_Clayman_Default_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ClaymanDefault/voice_sys_Clayman_Default_037_gacha.wav",
+      "size": 877446,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Clayman_Default_037_gacha.wav"
+    },
+    "voice_sys_Cynthia_Armor_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/CynthiaArmor/voice_sys_Cynthia_Armor_002_gacha.wav",
+      "size": 471730,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Cynthia_Armor_002_gacha.wav"
+    },
+    "voice_sys_Cynthia_Default_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/CynthiaDefault/voice_sys_Cynthia_Default_002_gacha.wav",
+      "size": 386200,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Cynthia_Default_002_gacha.wav"
+    },
+    "voice_sys_Cynthia_Halloween2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/CynthiaHalloween2023/voice_sys_Cynthia_Halloween2023_002_gacha.wav",
+      "size": 434528,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Cynthia_Halloween2023_002_gacha.wav"
+    },
+    "voice_sys_Cynthia_Valentine2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/CynthiaValentine2023/voice_sys_Cynthia_Valentine2023_002_gacha.wav",
+      "size": 447874,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Cynthia_Valentine2023_002_gacha.wav"
+    },
+    "voice_sys_Diablo_2022Summer_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Diablo2022Summer/voice_sys_Diablo_2022Summer_002_gacha.wav",
+      "size": 399888,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Diablo_2022Summer_002_gacha.wav"
+    },
+    "voice_sys_Diablo_3Anniv_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Diablo3Anniv/voice_sys_Diablo_3Anniv_013_gacha.wav",
+      "size": 348250,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Diablo_3Anniv_013_gacha.wav"
+    },
+    "voice_sys_Diablo_Anime3rd_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/DiabloAnime3rd/voice_sys_Diablo_Anime3rd_002_gacha.wav",
+      "size": 486070,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Diablo_Anime3rd_002_gacha.wav"
+    },
+    "voice_sys_Diablo_BlackHero_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/DiabloBlackHero/voice_sys_Diablo_BlackHero_013_gacha.wav",
+      "size": 455508,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Diablo_BlackHero_013_gacha.wav"
+    },
+    "voice_sys_Diablo_Gothic_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/DiabloGothic/voice_sys_Diablo_Gothic_002_gacha.wav",
+      "size": 212154,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Diablo_Gothic_002_gacha.wav"
+    },
+    "voice_sys_Diablo_Kingdom2022_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/DiabloKingdom2022/voice_sys_Diablo_Kingdom2022_002_gacha.wav",
+      "size": 434102,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Diablo_Kingdom2022_002_gacha.wav"
+    },
+    "voice_sys_Diablo_Phantom_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/DiabloPhantom/voice_sys_Diablo_Phantom_013_gacha.wav",
+      "size": 826824,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Diablo_Phantom_013_gacha.wav"
+    },
+    "voice_sys_Diablo_School2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/DiabloSchool2023/voice_sys_Diablo_School2023_002_gacha.wav",
+      "size": 566990,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Diablo_School2023_002_gacha.wav"
+    },
+    "voice_sys_Elmesia_Default_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ElmesiaDefault/voice_sys_Elmesia_Default_037_gacha.wav",
+      "size": 450112,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Elmesia_Default_037_gacha.wav"
+    },
+    "voice_sys_Elmesia_Default_039_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ElmesiaDefault/voice_sys_Elmesia_Default_039_gacha.wav",
+      "size": 442400,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Elmesia_Default_039_gacha.wav"
+    },
+    "voice_sys_Elmesia_Devil_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ElmesiaDevil/voice_sys_Elmesia_Devil_013_gacha.wav",
+      "size": 376684,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Elmesia_Devil_013_gacha.wav"
+    },
+    "voice_sys_Elmesia_HA2026_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ElmesiaHA2026/voice_sys_Elmesia_HA2026_013_gacha.wav",
+      "size": 463074,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Elmesia_HA2026_013_gacha.wav"
+    },
+    "voice_sys_Fern_Default_038_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/FernDefault/voice_sys_Fern_Default_038_gacha.wav",
+      "size": 654430,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Fern_Default_038_gacha.wav"
+    },
+    "voice_sys_Frey_AmusementPark_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/FreyAmusementPark/voice_sys_Frey_AmusementPark_002_gacha.wav",
+      "size": 419978,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Frey_AmusementPark_002_gacha.wav"
+    },
+    "voice_sys_Frey_School2025_036_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/FreySchool2025/voice_sys_Frey_School2025_036_gacha.wav",
+      "size": 596784,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Frey_School2025_036_gacha.wav"
+    },
+    "voice_sys_Frey_Xmas2025_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/FreyXmas2025/voice_sys_Frey_Xmas2025_013_gacha.wav",
+      "size": 155886,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Frey_Xmas2025_013_gacha.wav"
+    },
+    "voice_sys_Frieren_Default_040_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/FrierenDefault/voice_sys_Frieren_Default_040_gacha.wav",
+      "size": 464424,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Frieren_Default_040_gacha.wav"
+    },
+    "voice_sys_Gabiru_2022Summer_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Gabiru2022Summer/voice_sys_Gabiru_2022Summer_002_gacha.wav",
+      "size": 227346,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Gabiru_2022Summer_002_gacha.wav"
+    },
+    "voice_sys_Gobta_Marou_035_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/GobtaMarou/voice_sys_Gobta_Marou_035_gacha.wav",
+      "size": 442752,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Gobta_Marou_035_gacha.wav"
+    },
+    "voice_sys_Gobwa_Default_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/GobwaDefault/voice_sys_Gobwa_Default_037_gacha.wav",
+      "size": 311478,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Gobwa_Default_037_gacha.wav"
+    },
+    "voice_sys_Guy_3Anniv_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Guy3Anniv/voice_sys_Guy_3Anniv_013_gacha.wav",
+      "size": 308708,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Guy_3Anniv_013_gacha.wav"
+    },
+    "voice_sys_Guy_BlackHero_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/GuyBlackHero/voice_sys_Guy_BlackHero_013_gacha.wav",
+      "size": 348088,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Guy_BlackHero_013_gacha.wav"
+    },
+    "voice_sys_Guy_HA2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/GuyHA2023/voice_sys_Guy_HA2023_002_gacha.wav",
+      "size": 516528,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Guy_HA2023_002_gacha.wav"
+    },
+    "voice_sys_Guy_HA2024_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/GuyHA2024/voice_sys_Guy_HA2024_002_gacha.wav",
+      "size": 657516,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Guy_HA2024_002_gacha.wav"
+    },
+    "voice_sys_Guy_Swimsuit2025_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/GuySwimsuit2025/voice_sys_Guy_Swimsuit2025_037_gacha.wav",
+      "size": 408940,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Guy_Swimsuit2025_037_gacha.wav"
+    },
+    "voice_sys_Hestia_Default_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/HestiaDefault/voice_sys_Hestia_Default_037_gacha.wav",
+      "size": 612240,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Hestia_Default_037_gacha.wav"
+    },
+    "voice_sys_Hiiro_MovieRevival_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/HiiroMovieRevival/voice_sys_Hiiro_MovieRevival_037_gacha.wav",
+      "size": 313850,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Hiiro_MovieRevival_037_gacha.wav"
+    },
+    "voice_sys_Himmel_Default_038_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/HimmelDefault/voice_sys_Himmel_Default_038_gacha.wav",
+      "size": 774372,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Himmel_Default_038_gacha.wav"
+    },
+    "voice_sys_Hinata_Anime3rd_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/HinataAnime3rd/voice_sys_Hinata_Anime3rd_002_gacha.wav",
+      "size": 653254,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Hinata_Anime3rd_002_gacha.wav"
+    },
+    "voice_sys_Hinata_PartyDress_036_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/HinataPartyDress/voice_sys_Hinata_PartyDress_036_gacha.wav",
+      "size": 293826,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Hinata_PartyDress_036_gacha.wav"
+    },
+    "voice_sys_Hinata_School2025_036_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/HinataSchool2025/voice_sys_Hinata_School2025_036_gacha.wav",
+      "size": 510662,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Hinata_School2025_036_gacha.wav"
+    },
+    "voice_sys_Hinata_Swimsuit2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/HinataSwimsuit2023/voice_sys_Hinata_Swimsuit2023_002_gacha.wav",
+      "size": 662304,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Hinata_Swimsuit2023_002_gacha.wav"
+    },
+    "voice_sys_Hinata_Tales_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/HinataTales/voice_sys_Hinata_Tales_013_gacha.wav",
+      "size": 439834,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Hinata_Tales_013_gacha.wav"
+    },
+    "voice_sys_Hinata_Xmas2025_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/HinataXmas2025/voice_sys_Hinata_Xmas2025_013_gacha.wav",
+      "size": 332502,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Hinata_Xmas2025_013_gacha.wav"
+    },
+    "voice_sys_Izis_AwakenPC_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/IzisAwakenPC/voice_sys_Izis_AwakenPC_013_gacha.wav",
+      "size": 381262,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Izis_AwakenPC_013_gacha.wav"
+    },
+    "voice_sys_Jaune_2Anniv_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Jaune2Anniv/voice_sys_Jaune_2Anniv_037_gacha.wav",
+      "size": 274708,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Jaune_2Anniv_037_gacha.wav"
+    },
+    "voice_sys_Jaune_Gothic_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/JauneGothic/voice_sys_Jaune_Gothic_002_gacha.wav",
+      "size": 576098,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Jaune_Gothic_002_gacha.wav"
+    },
+    "voice_sys_Jaune_HA2025_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/JauneHA2025/voice_sys_Jaune_HA2025_013_gacha.wav",
+      "size": 417480,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Jaune_HA2025_013_gacha.wav"
+    },
+    "voice_sys_Jaune_Movie2_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/JauneMovie2/voice_sys_Jaune_Movie2_013_gacha.wav",
+      "size": 231872,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Jaune_Movie2_013_gacha.wav"
+    },
+    "voice_sys_Jaune_Swimsuit2025_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/JauneSwimsuit2025/voice_sys_Jaune_Swimsuit2025_037_gacha.wav",
+      "size": 472492,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Jaune_Swimsuit2025_037_gacha.wav"
+    },
+    "voice_sys_Kasuga_Default_038_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/KasugaDefault/voice_sys_Kasuga_Default_038_gacha.wav",
+      "size": 756030,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Kasuga_Default_038_gacha.wav"
+    },
+    "voice_sys_Kazuma_Default_038_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/KazumaDefault/voice_sys_Kazuma_Default_038_gacha.wav",
+      "size": 445454,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Kazuma_Default_038_gacha.wav"
+    },
+    "voice_sys_Kirito_Default_041_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/KiritoDefault/voice_sys_Kirito_Default_041_gacha.wav",
+      "size": 553574,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Kirito_Default_041_gacha.wav"
+    },
+    "voice_sys_Leon_HA2025_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/LeonHA2025/voice_sys_Leon_HA2025_013_gacha.wav",
+      "size": 289974,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Leon_HA2025_013_gacha.wav"
+    },
+    "voice_sys_Leonard_Default_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/LeonardDefault/voice_sys_Leonard_Default_037_gacha.wav",
+      "size": 491732,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Leonard_Default_037_gacha.wav"
+    },
+    "voice_sys_Luminous_2Anniv_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Luminous2Anniv/voice_sys_Luminous_2Anniv_002_gacha.wav",
+      "size": 530432,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Luminous_2Anniv_002_gacha.wav"
+    },
+    "voice_sys_Luminous_Anime3rd_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/LuminousAnime3rd/voice_sys_Luminous_Anime3rd_013_gacha.wav",
+      "size": 519586,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Luminous_Anime3rd_013_gacha.wav"
+    },
+    "voice_sys_Luminous_Creator01_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/LuminousCreator01/voice_sys_Luminous_Creator01_013_gacha.wav",
+      "size": 508470,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Luminous_Creator01_013_gacha.wav"
+    },
+    "voice_sys_Luminous_Devil_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/LuminousDevil/voice_sys_Luminous_Devil_013_gacha.wav",
+      "size": 493286,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Luminous_Devil_013_gacha.wav"
+    },
+    "voice_sys_Luminous_HA2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/LuminousHA2023/voice_sys_Luminous_HA2023_002_gacha.wav",
+      "size": 358540,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Luminous_HA2023_002_gacha.wav"
+    },
+    "voice_sys_Luminous_Movie2_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/LuminousMovie2/voice_sys_Luminous_Movie2_013_gacha.wav",
+      "size": 272344,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Luminous_Movie2_013_gacha.wav"
+    },
+    "voice_sys_Luminous_Phantom_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/LuminousPhantom/voice_sys_Luminous_Phantom_013_gacha.wav",
+      "size": 797124,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Luminous_Phantom_013_gacha.wav"
+    },
+    "voice_sys_Luminous_Swimsuit2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/LuminousSwimsuit2023/voice_sys_Luminous_Swimsuit2023_002_gacha.wav",
+      "size": 313208,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Luminous_Swimsuit2023_002_gacha.wav"
+    },
+    "voice_sys_Mariabell_Default_041_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MariabellDefault/voice_sys_Mariabell_Default_041_gacha.wav",
+      "size": 312832,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Mariabell_Default_041_gacha.wav"
+    },
+    "voice_sys_Mariabell_Xmas2024_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MariabellXmas2024/voice_sys_Mariabell_Xmas2024_013_gacha.wav",
+      "size": 568538,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Mariabell_Xmas2024_013_gacha.wav"
+    },
+    "voice_sys_Masayuki_Devil_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MasayukiDevil/voice_sys_Masayuki_Devil_013_gacha.wav",
+      "size": 256676,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Masayuki_Devil_013_gacha.wav"
+    },
+    "voice_sys_Masayuki_School2025_036_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MasayukiSchool2025/voice_sys_Masayuki_School2025_036_gacha.wav",
+      "size": 472514,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Masayuki_School2025_036_gacha.wav"
+    },
+    "voice_sys_MaskedHero_3Anniv_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MaskedHero3Anniv/voice_sys_MaskedHero_3Anniv_013_gacha.wav",
+      "size": 341396,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_MaskedHero_3Anniv_013_gacha.wav"
+    },
+    "voice_sys_MaskedHero_Devil_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MaskedHeroDevil/voice_sys_MaskedHero_Devil_013_gacha.wav",
+      "size": 240040,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_MaskedHero_Devil_013_gacha.wav"
+    },
+    "voice_sys_MaskedHero_HA2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MaskedHeroHA2023/voice_sys_MaskedHero_HA2023_002_gacha.wav",
+      "size": 323114,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_MaskedHero_HA2023_002_gacha.wav"
+    },
+    "voice_sys_MaskedHero_HA2024_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MaskedHeroHA2024/voice_sys_MaskedHero_HA2024_002_gacha.wav",
+      "size": 333186,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_MaskedHero_HA2024_002_gacha.wav"
+    },
+    "voice_sys_MaskedHero_HA2025_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MaskedHeroHA2025/voice_sys_MaskedHero_HA2025_013_gacha.wav",
+      "size": 346034,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_MaskedHero_HA2025_013_gacha.wav"
+    },
+    "voice_sys_Megumin_Default_040_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MeguminDefault/voice_sys_Megumin_Default_040_gacha.wav",
+      "size": 710054,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Megumin_Default_040_gacha.wav"
+    },
+    "voice_sys_Milim_1kuji2024_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Milim1kuji2024/voice_sys_Milim_1kuji2024_002_gacha.wav",
+      "size": 435176,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Milim_1kuji2024_002_gacha.wav"
+    },
+    "voice_sys_Milim_3Anniv_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Milim3Anniv/voice_sys_Milim_3Anniv_013_gacha.wav",
+      "size": 281556,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Milim_3Anniv_013_gacha.wav"
+    },
+    "voice_sys_Milim_4Anniv_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Milim4Anniv/voice_sys_Milim_4Anniv_013_gacha.wav",
+      "size": 229432,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Milim_4Anniv_013_gacha.wav"
+    },
+    "voice_sys_Milim_AmusementPark_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MilimAmusementPark/voice_sys_Milim_AmusementPark_002_gacha.wav",
+      "size": 574414,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Milim_AmusementPark_002_gacha.wav"
+    },
+    "voice_sys_Milim_HA2024_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MilimHA2024/voice_sys_Milim_HA2024_002_gacha.wav",
+      "size": 581140,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Milim_HA2024_002_gacha.wav"
+    },
+    "voice_sys_Milim_HA2026_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MilimHA2026/voice_sys_Milim_HA2026_013_gacha.wav",
+      "size": 227140,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Milim_HA2026_013_gacha.wav"
+    },
+    "voice_sys_Milim_Halloween2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MilimHalloween2023/voice_sys_Milim_Halloween2023_002_gacha.wav",
+      "size": 497472,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Milim_Halloween2023_002_gacha.wav"
+    },
+    "voice_sys_Milim_Kingdom2022_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MilimKingdom2022/voice_sys_Milim_Kingdom2022_002_gacha.wav",
+      "size": 375894,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Milim_Kingdom2022_002_gacha.wav"
+    },
+    "voice_sys_Milim_Mythology_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MilimMythology/voice_sys_Milim_Mythology_002_gacha.wav",
+      "size": 493268,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Milim_Mythology_002_gacha.wav"
+    },
+    "voice_sys_Milim_Swimsuit2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MilimSwimsuit2023/voice_sys_Milim_Swimsuit2023_002_gacha.wav",
+      "size": 230884,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Milim_Swimsuit2023_002_gacha.wav"
+    },
+    "voice_sys_Milim_SwimsuitPolkaDots_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MilimSwimsuitPolkaDots/voice_sys_Milim_SwimsuitPolkaDots_002_gacha.wav",
+      "size": 361170,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Milim_SwimsuitPolkaDots_002_gacha.wav"
+    },
+    "voice_sys_Mjurran_Wedding2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MjurranWedding2023/voice_sys_Mjurran_Wedding2023_002_gacha.wav",
+      "size": 361752,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Mjurran_Wedding2023_002_gacha.wav"
+    },
+    "voice_sys_Mogami_Default_038_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MogamiDefault/voice_sys_Mogami_Default_038_gacha.wav",
+      "size": 614058,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Mogami_Default_038_gacha.wav"
+    },
+    "voice_sys_Momiji_Default_041_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MomijiDefault/voice_sys_Momiji_Default_041_gacha.wav",
+      "size": 603124,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Momiji_Default_041_gacha.wav"
+    },
+    "voice_sys_Momiji_Xmas2024_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MomijiXmas2024/voice_sys_Momiji_Xmas2024_013_gacha.wav",
+      "size": 392496,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Momiji_Xmas2024_013_gacha.wav"
+    },
+    "voice_sys_Rain_HighDemon_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RainHighDemon/voice_sys_Rain_HighDemon_002_gacha.wav",
+      "size": 352686,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rain_HighDemon_002_gacha.wav"
+    },
+    "voice_sys_Ramiris_HA2026_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RamirisHA2026/voice_sys_Ramiris_HA2026_013_gacha.wav",
+      "size": 555042,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Ramiris_HA2026_013_gacha.wav"
+    },
+    "voice_sys_Raphael_3Anniv_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Raphael3Anniv/voice_sys_Raphael_3Anniv_013_gacha.wav",
+      "size": 348350,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Raphael_3Anniv_013_gacha.wav"
+    },
+    "voice_sys_Raphael_Asuna_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RaphaelAsuna/voice_sys_Raphael_Asuna_013_gacha.wav",
+      "size": 181774,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Raphael_Asuna_013_gacha.wav"
+    },
+    "voice_sys_Raphael_Frieren_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RaphaelFrieren/voice_sys_Raphael_Frieren_013_gacha.wav",
+      "size": 349264,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Raphael_Frieren_013_gacha.wav"
+    },
+    "voice_sys_Raphael_Mythology_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RaphaelMythology/voice_sys_Raphael_Mythology_002_gacha.wav",
+      "size": 706352,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Raphael_Mythology_002_gacha.wav"
+    },
+    "voice_sys_Raphael_Nordic_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RaphaelNordic/voice_sys_Raphael_Nordic_002_gacha.wav",
+      "size": 481432,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Raphael_Nordic_002_gacha.wav"
+    },
+    "voice_sys_Rimuru_1kuji2024_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Rimuru1kuji2024/voice_sys_Rimuru_1kuji2024_002_gacha.wav",
+      "size": 412568,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_1kuji2024_002_gacha.wav"
+    },
+    "voice_sys_Rimuru_2Anniv_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Rimuru2Anniv/voice_sys_Rimuru_2Anniv_002_gacha.wav",
+      "size": 258074,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_2Anniv_002_gacha.wav"
+    },
+    "voice_sys_Rimuru_4Anniv_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Rimuru4Anniv/voice_sys_Rimuru_4Anniv_013_gacha.wav",
+      "size": 725950,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_4Anniv_013_gacha.wav"
+    },
+    "voice_sys_Rimuru_Ainz_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruAinz/voice_sys_Rimuru_Ainz_002_gacha.wav",
+      "size": 300532,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_Ainz_002_gacha.wav"
+    },
+    "voice_sys_Rimuru_Another4Anniv_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruAnother4Anniv/voice_sys_Rimuru_Another4Anniv_013_gacha.wav",
+      "size": 481536,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_Another4Anniv_013_gacha.wav"
+    },
+    "voice_sys_Rimuru_AnotherHA2026_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruAnotherHA2026/voice_sys_Rimuru_AnotherHA2026_013_gacha.wav",
+      "size": 532102,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_AnotherHA2026_013_gacha.wav"
+    },
+    "voice_sys_Rimuru_AnotherRe_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruAnotherRe/voice_sys_Rimuru_AnotherRe_037_gacha.wav",
+      "size": 581844,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_AnotherRe_037_gacha.wav"
+    },
+    "voice_sys_Rimuru_Creator01_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruCreator01/voice_sys_Rimuru_Creator01_013_gacha.wav",
+      "size": 837172,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_Creator01_013_gacha.wav"
+    },
+    "voice_sys_Rimuru_DemonLord3_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruDemonLord3/voice_sys_Rimuru_DemonLord3_013_gacha.wav",
+      "size": 473012,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_DemonLord3_013_gacha.wav"
+    },
+    "voice_sys_Rimuru_Formal_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruFormal/voice_sys_Rimuru_Formal_013_gacha.wav",
+      "size": 357550,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_Formal_013_gacha.wav"
+    },
+    "voice_sys_Rimuru_HA2023_036_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruHA2023/voice_sys_Rimuru_HA2023_036_gacha.wav",
+      "size": 314088,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_HA2023_036_gacha.wav"
+    },
+    "voice_sys_Rimuru_HA2024_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruHA2024/voice_sys_Rimuru_HA2024_002_gacha.wav",
+      "size": 523460,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_HA2024_002_gacha.wav"
+    },
+    "voice_sys_Rimuru_HA2025_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruHA2025/voice_sys_Rimuru_HA2025_013_gacha.wav",
+      "size": 349326,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_HA2025_013_gacha.wav"
+    },
+    "voice_sys_Rimuru_HA2026_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruHA2026/voice_sys_Rimuru_HA2026_013_gacha.wav",
+      "size": 441638,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_HA2026_013_gacha.wav"
+    },
+    "voice_sys_Rimuru_Imasml_003_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruImasml/voice_sys_Rimuru_Imasml_003_gacha.wav",
+      "size": 259918,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_Imasml_003_gacha.wav"
+    },
+    "voice_sys_Rimuru_Kingdom2022_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruKingdom2022/voice_sys_Rimuru_Kingdom2022_002_gacha.wav",
+      "size": 850754,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_Kingdom2022_002_gacha.wav"
+    },
+    "voice_sys_Rimuru_Megumin_005_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruMegumin/voice_sys_Rimuru_Megumin_005_gacha.wav",
+      "size": 357620,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_Megumin_005_gacha.wav"
+    },
+    "voice_sys_Rimuru_Movie2_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruMovie2/voice_sys_Rimuru_Movie2_013_gacha.wav",
+      "size": 347016,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_Movie2_013_gacha.wav"
+    },
+    "voice_sys_Rimuru_Raphael_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RaphaelRimuru/voice_sys_Rimuru_Raphael_037_gacha.wav",
+      "size": 245608,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_Raphael_037_gacha.wav"
+    },
+    "voice_sys_Rimuru_School2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruSchool2023/voice_sys_Rimuru_School2023_002_gacha.wav",
+      "size": 267324,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_School2023_002_gacha.wav"
+    },
+    "voice_sys_Rimuru_Tales_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruTales/voice_sys_Rimuru_Tales_013_gacha.wav",
+      "size": 230144,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Rimuru_Tales_013_gacha.wav"
+    },
+    "voice_sys_Ryu_Default_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RyuDefault/voice_sys_Ryu_Default_037_gacha.wav",
+      "size": 385498,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Ryu_Default_037_gacha.wav"
+    },
+    "voice_sys_Shalltear_Default_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShalltearDefault/voice_sys_Shalltear_Default_037_gacha.wav",
+      "size": 797900,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shalltear_Default_037_gacha.wav"
+    },
+    "voice_sys_Shion_1kuji2024_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Shion1kuji2024/voice_sys_Shion_1kuji2024_002_gacha.wav",
+      "size": 354368,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shion_1kuji2024_002_gacha.wav"
+    },
+    "voice_sys_Shion_BeforeAnotherPC_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShionBeforeAnotherPC/voice_sys_Shion_BeforeAnotherPC_037_gacha.wav",
+      "size": 169312,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shion_BeforeAnotherPC_037_gacha.wav"
+    },
+    "voice_sys_Shion_MovieRevival_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShionMovieRevival/voice_sys_Shion_MovieRevival_037_gacha.wav",
+      "size": 486188,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shion_MovieRevival_037_gacha.wav"
+    },
+    "voice_sys_Shion_Partydress_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShionPartydress/voice_sys_Shion_Partydress_013_gacha.wav",
+      "size": 379682,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shion_Partydress_013_gacha.wav"
+    },
+    "voice_sys_Shion_Tales_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShionTales/voice_sys_Shion_Tales_013_gacha.wav",
+      "size": 462712,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shion_Tales_013_gacha.wav"
+    },
+    "voice_sys_Shion_Valentine2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShionValentine2023/voice_sys_Shion_Valentine2023_002_gacha.wav",
+      "size": 219960,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shion_Valentine2023_002_gacha.wav"
+    },
+    "voice_sys_Shionne_Default_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShionneDefault/voice_sys_Shionne_Default_037_gacha.wav",
+      "size": 283758,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shionne_Default_037_gacha.wav"
+    },
+    "voice_sys_Shizu_Albedo_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShizuAlbedo/voice_sys_Shizu_Albedo_002_gacha.wav",
+      "size": 322216,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shizu_Albedo_002_gacha.wav"
+    },
+    "voice_sys_Shizu_Anime3rd_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShizuAnime3rd/voice_sys_Shizu_Anime3rd_002_gacha.wav",
+      "size": 399310,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shizu_Anime3rd_002_gacha.wav"
+    },
+    "voice_sys_Shizu_BlackHero_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShizuBlackHero/voice_sys_Shizu_BlackHero_013_gacha.wav",
+      "size": 448738,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shizu_BlackHero_013_gacha.wav"
+    },
+    "voice_sys_Shizu_Lightarmor_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShizuLightarmor/voice_sys_Shizu_Lightarmor_002_gacha.wav",
+      "size": 278636,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shizu_Lightarmor_002_gacha.wav"
+    },
+    "voice_sys_Shizu_Swimsuit2023_003_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShizuSwimsuit2023/voice_sys_Shizu_Swimsuit2023_003_gacha.wav",
+      "size": 279232,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shizu_Swimsuit2023_003_gacha.wav"
+    },
+    "voice_sys_Shuna_Coschange_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShunaCoschange/voice_sys_Shuna_Coschange_002_gacha.wav",
+      "size": 674782,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shuna_Coschange_002_gacha.wav"
+    },
+    "voice_sys_Shuna_Hestia_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShunaHestia/voice_sys_Shuna_Hestia_037_gacha.wav",
+      "size": 309004,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shuna_Hestia_037_gacha.wav"
+    },
+    "voice_sys_Shuna_Imasml_003_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShunaImasml/voice_sys_Shuna_Imasml_003_gacha.wav",
+      "size": 706174,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shuna_Imasml_003_gacha.wav"
+    },
+    "voice_sys_Shuna_Nordic_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShunaNordic/voice_sys_Shuna_Nordic_002_gacha.wav",
+      "size": 345630,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shuna_Nordic_002_gacha.wav"
+    },
+    "voice_sys_Shuna_Tengu_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShunaTengu/voice_sys_Shuna_Tengu_013_gacha.wav",
+      "size": 479264,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shuna_Tengu_013_gacha.wav"
+    },
+    "voice_sys_Shuna_Wedding2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShunaWedding2023/voice_sys_Shuna_Wedding2023_002_gacha.wav",
+      "size": 298368,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Shuna_Wedding2023_002_gacha.wav"
+    },
+    "voice_sys_Sinon_Default_038_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/SinonDefault/voice_sys_Sinon_Default_038_gacha.wav",
+      "size": 650742,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Sinon_Default_038_gacha.wav"
+    },
+    "voice_sys_Soei_Phantom_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/SoeiPhantom/voice_sys_Soei_Phantom_013_gacha.wav",
+      "size": 322524,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Soei_Phantom_013_gacha.wav"
+    },
+    "voice_sys_Soei_Tengu_014_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/SoeiTengu/voice_sys_Soei_Tengu_014_gacha.wav",
+      "size": 371874,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Soei_Tengu_014_gacha.wav"
+    },
+    "voice_sys_Tear_DefaultPC_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/TearDefaultPC/voice_sys_Tear_DefaultPC_037_gacha.wav",
+      "size": 437614,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Tear_DefaultPC_037_gacha.wav"
+    },
+    "voice_sys_Towa_Default_039_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/TowaDefault/voice_sys_Towa_Default_039_gacha.wav",
+      "size": 534628,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Towa_Default_039_gacha.wav"
+    },
+    "voice_sys_Treyni_2022Summer_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Treyni2022Summer/voice_sys_Treyni_2022Summer_002_gacha.wav",
+      "size": 315044,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Treyni_2022Summer_002_gacha.wav"
+    },
+    "voice_sys_Treyni_Swimsuit2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/TreyniSwimsuit2023/voice_sys_Treyni_Swimsuit2023_002_gacha.wav",
+      "size": 426198,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Treyni_Swimsuit2023_002_gacha.wav"
+    },
+    "voice_sys_Veldora_4Anniv_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Veldora4Anniv/voice_sys_Veldora_4Anniv_013_gacha.wav",
+      "size": 291156,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Veldora_4Anniv_013_gacha.wav"
+    },
+    "voice_sys_Veldora_Creator01_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/VeldoraCreator01/voice_sys_Veldora_Creator01_013_gacha.wav",
+      "size": 678080,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Veldora_Creator01_013_gacha.wav"
+    },
+    "voice_sys_Veldora_HA2026_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/VeldoraHA2026/voice_sys_Veldora_HA2026_013_gacha.wav",
+      "size": 600740,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Veldora_HA2026_013_gacha.wav"
+    },
+    "voice_sys_Veldora_HighRank_004_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/VeldoraHighRank/voice_sys_Veldora_HighRank_004_gacha.wav",
+      "size": 450904,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Veldora_HighRank_004_gacha.wav"
+    },
+    "voice_sys_Veldora_Kingdom2022_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/VeldoraKingdom2022/voice_sys_Veldora_Kingdom2022_002_gacha.wav",
+      "size": 809292,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Veldora_Kingdom2022_002_gacha.wav"
+    },
+    "voice_sys_Veldora_Nordic_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/VeldoraNordic/voice_sys_Veldora_Nordic_002_gacha.wav",
+      "size": 400478,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Veldora_Nordic_002_gacha.wav"
+    },
+    "voice_sys_Violet_2Anniv_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Violet2Anniv/voice_sys_Violet_2Anniv_002_gacha.wav",
+      "size": 377346,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Violet_2Anniv_002_gacha.wav"
+    },
+    "voice_sys_Violet_Default_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/VioletDefault/voice_sys_Violet_Default_037_gacha.wav",
+      "size": 513076,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Violet_Default_037_gacha.wav"
+    },
+    "voice_sys_Violet_Default_039_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/VioletDefault/voice_sys_Violet_Default_039_gacha.wav",
+      "size": 406130,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Violet_Default_039_gacha.wav"
+    },
+    "voice_sys_Violet_Gothic_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/VioletGothic/voice_sys_Violet_Gothic_002_gacha.wav",
+      "size": 449070,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Violet_Gothic_002_gacha.wav"
+    },
+    "voice_sys_Violet_HA2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/VioletHA2023/voice_sys_Violet_HA2023_002_gacha.wav",
+      "size": 541604,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Violet_HA2023_002_gacha.wav"
+    },
+    "voice_sys_Violet_Military_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/VioletMilitary/voice_sys_Violet_Military_013_gacha.wav",
+      "size": 445248,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Violet_Military_013_gacha.wav"
+    },
+    "voice_sys_Violet_Swimsuit2025_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/VioletSwimsuit2025/voice_sys_Violet_Swimsuit2025_037_gacha.wav",
+      "size": 453708,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Violet_Swimsuit2025_037_gacha.wav"
+    },
+    "voice_sys_Violet_Xmas2024_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/VioletXmas2024/voice_sys_Violet_Xmas2024_013_gacha.wav",
+      "size": 422482,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Violet_Xmas2024_013_gacha.wav"
+    },
+    "voice_sys_Werzard_4Anniv_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/Werzard4Anniv/voice_sys_Werzard_4Anniv_013_gacha.wav",
+      "size": 565504,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Werzard_4Anniv_013_gacha.wav"
+    },
+    "voice_sys_Werzard_BlackHero_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/WerzardBlackHero/voice_sys_Werzard_BlackHero_013_gacha.wav",
+      "size": 309624,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Werzard_BlackHero_013_gacha.wav"
+    },
+    "voice_sys_Werzard_HA2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/WerzardHA2023/voice_sys_Werzard_HA2023_002_gacha.wav",
+      "size": 745108,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Werzard_HA2023_002_gacha.wav"
+    },
+    "voice_sys_Werzard_HA2024_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/WerzardHA2024/voice_sys_Werzard_HA2024_002_gacha.wav",
+      "size": 401684,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Werzard_HA2024_002_gacha.wav"
+    },
+    "voice_sys_Werzard_HA2025_013_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/WerzardHA2025/voice_sys_Werzard_HA2025_013_gacha.wav",
+      "size": 314424,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Werzard_HA2025_013_gacha.wav"
+    },
+    "voice_sys_Werzard_Nordic_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/WerzardNordic/voice_sys_Werzard_Nordic_002_gacha.wav",
+      "size": 565164,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Werzard_Nordic_002_gacha.wav"
+    },
+    "voice_sys_Yura_Default_040_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/YuraDefault/voice_sys_Yura_Default_040_gacha.wav",
+      "size": 875122,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Yura_Default_040_gacha.wav"
+    },
+    "voice_sys_YuukiSao_Default_040_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/YuukiSaoDefault/voice_sys_YuukiSao_Default_040_gacha.wav",
+      "size": 279686,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_YuukiSao_Default_040_gacha.wav"
+    },
+    "voice_sys_Yuuki_Battlesuit2023_002_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/YuukiBattlesuit2023/voice_sys_Yuuki_Battlesuit2023_002_gacha.wav",
+      "size": 429122,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_Yuuki_Battlesuit2023_002_gacha.wav"
+    },
+    "voice_sys_benimaru_038_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/benimaru/voice_sys_benimaru_038_gacha.wav",
+      "size": 464842,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_benimaru_038_gacha.wav"
+    },
+    "voice_sys_benimaru_039_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/benimaru/voice_sys_benimaru_039_gacha.wav",
+      "size": 225034,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_benimaru_039_gacha.wav"
+    },
+    "voice_sys_benimaru_041_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/benimaru/voice_sys_benimaru_041_gacha.wav",
+      "size": 333112,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_benimaru_041_gacha.wav"
+    },
+    "voice_sys_beretta_39_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/beretta/voice_sys_beretta_39_gacha.wav",
+      "size": 400932,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_beretta_39_gacha.wav"
+    },
+    "voice_sys_carrion_039_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/CarrionDefault/voice_sys_carrion_039_gacha.wav",
+      "size": 406918,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_carrion_039_gacha.wav"
+    },
+    "voice_sys_charybdis_001_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/charybdis/voice_sys_charybdis_001_gacha.wav",
+      "size": 1207680,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_charybdis_001_gacha.wav"
+    },
+    "voice_sys_cynthia_041_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/cynthia/voice_sys_cynthia_041_gacha.wav",
+      "size": 432180,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_cynthia_041_gacha.wav"
+    },
+    "voice_sys_dagrul_039_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/DagrulDefault/voice_sys_dagrul_039_gacha.wav",
+      "size": 463852,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_dagrul_039_gacha.wav"
+    },
+    "voice_sys_diablo_041_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/diablo/voice_sys_diablo_041_gacha.wav",
+      "size": 400120,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_diablo_041_gacha.wav"
+    },
+    "voice_sys_dino_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/DinoDefault/voice_sys_dino_037_gacha.wav",
+      "size": 296688,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_dino_037_gacha.wav"
+    },
+    "voice_sys_elementalcolossus_001_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/elementalcolossus/voice_sys_elementalcolossus_001_gacha.wav",
+      "size": 220966,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_elementalcolossus_001_gacha.wav"
+    },
+    "voice_sys_gazeldwargo_041_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/gazeldwargo/voice_sys_gazeldwargo_041_gacha.wav",
+      "size": 335670,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_gazeldwargo_041_gacha.wav"
+    },
+    "voice_sys_gobta_039_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/gobta/voice_sys_gobta_039_gacha.wav",
+      "size": 273338,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_gobta_039_gacha.wav"
+    },
+    "voice_sys_guy_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/GuyDefault/voice_sys_guy_037_gacha.wav",
+      "size": 519840,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_guy_037_gacha.wav"
+    },
+    "voice_sys_guy_038_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/GuyDefault/voice_sys_guy_038_gacha.wav",
+      "size": 460222,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_guy_038_gacha.wav"
+    },
+    "voice_sys_hakuro_039_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/hakuro/voice_sys_hakuro_039_gacha.wav",
+      "size": 682122,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_hakuro_039_gacha.wav"
+    },
+    "voice_sys_hakuro_040_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/hakuro/voice_sys_hakuro_040_gacha.wav",
+      "size": 488378,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_hakuro_040_gacha.wav"
+    },
+    "voice_sys_hinata_37_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/hinata/voice_sys_hinata_37_gacha.wav",
+      "size": 413318,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_hinata_37_gacha.wav"
+    },
+    "voice_sys_hinata_39_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/hinata/voice_sys_hinata_39_gacha.wav",
+      "size": 285806,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_hinata_39_gacha.wav"
+    },
+    "voice_sys_hinata_40_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/hinata/voice_sys_hinata_40_gacha.wav",
+      "size": 720664,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_hinata_40_gacha.wav"
+    },
+    "voice_sys_hinata_41_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/hinata/voice_sys_hinata_41_gacha.wav",
+      "size": 172566,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_hinata_41_gacha.wav"
+    },
+    "voice_sys_ifrit_001_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ifrit/voice_sys_ifrit_001_gacha.wav",
+      "size": 322120,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_ifrit_001_gacha.wav"
+    },
+    "voice_sys_leon_039_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/LeonDefault/voice_sys_leon_039_gacha.wav",
+      "size": 230844,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_leon_039_gacha.wav"
+    },
+    "voice_sys_leon_041_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/LeonDefault/voice_sys_leon_041_gacha.wav",
+      "size": 266568,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_leon_041_gacha.wav"
+    },
+    "voice_sys_luminous_039_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/LuminousMaidCostume2021Christmas/voice_sys_luminous_039_gacha.wav",
+      "size": 841314,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_luminous_039_gacha.wav"
+    },
+    "voice_sys_luminous_041_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/LuminousMaidCostume2021Christmas/voice_sys_luminous_041_gacha.wav",
+      "size": 442760,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_luminous_041_gacha.wav"
+    },
+    "voice_sys_luminous_042_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/LuminousMaidCostume2021Christmas/voice_sys_luminous_042_gacha.wav",
+      "size": 575684,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_luminous_042_gacha.wav"
+    },
+    "voice_sys_milim_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/milim/voice_sys_milim_037_gacha.wav",
+      "size": 855950,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_milim_037_gacha.wav"
+    },
+    "voice_sys_milim_039_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/milim/voice_sys_milim_039_gacha.wav",
+      "size": 431688,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_milim_039_gacha.wav"
+    },
+    "voice_sys_milim_040_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/milim/voice_sys_milim_040_gacha.wav",
+      "size": 350750,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_milim_040_gacha.wav"
+    },
+    "voice_sys_milim_041_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/milim/voice_sys_milim_041_gacha.wav",
+      "size": 287186,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_milim_041_gacha.wav"
+    },
+    "voice_sys_milim_061_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MilimBattleArmor/voice_sys_milim_061_gacha.wav",
+      "size": 555640,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_milim_061_gacha.wav"
+    },
+    "voice_sys_milim_062_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MilimKimono2022Newyear/voice_sys_milim_062_gacha.wav",
+      "size": 280218,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_milim_062_gacha.wav"
+    },
+    "voice_sys_mjurran_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MjurranDefault/voice_sys_mjurran_037_gacha.wav",
+      "size": 617812,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_mjurran_037_gacha.wav"
+    },
+    "voice_sys_mjurran_038_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/MjurranDefault/voice_sys_mjurran_038_gacha.wav",
+      "size": 542340,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_mjurran_038_gacha.wav"
+    },
+    "voice_sys_orcdisaster_001_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/orcdisaster/voice_sys_orcdisaster_001_gacha.wav",
+      "size": 437400,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_orcdisaster_001_gacha.wav"
+    },
+    "voice_sys_rain_Default_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RainDefault/voice_sys_rain_Default_037_gacha.wav",
+      "size": 510368,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_rain_Default_037_gacha.wav"
+    },
+    "voice_sys_ramiris_038_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ramiris/voice_sys_ramiris_038_gacha.wav",
+      "size": 492994,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_ramiris_038_gacha.wav"
+    },
+    "voice_sys_ramiris_040_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ramiris/voice_sys_ramiris_040_gacha.wav",
+      "size": 417216,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_ramiris_040_gacha.wav"
+    },
+    "voice_sys_ranga_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ranga/voice_sys_ranga_037_gacha.wav",
+      "size": 358280,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_ranga_037_gacha.wav"
+    },
+    "voice_sys_rimuru_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/rimuru/voice_sys_rimuru_037_gacha.wav",
+      "size": 443000,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_rimuru_037_gacha.wav"
+    },
+    "voice_sys_rimuru_040_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/rimuru/voice_sys_rimuru_040_gacha.wav",
+      "size": 502436,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_rimuru_040_gacha.wav"
+    },
+    "voice_sys_rimuru_041_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/rimuru/voice_sys_rimuru_041_gacha.wav",
+      "size": 357490,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_rimuru_041_gacha.wav"
+    },
+    "voice_sys_rimuru_074_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/rimuru/voice_sys_rimuru_074_gacha.wav",
+      "size": 536012,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_rimuru_074_gacha.wav"
+    },
+    "voice_sys_rimuru_075_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/rimuru/voice_sys_rimuru_075_gacha.wav",
+      "size": 201024,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_rimuru_075_gacha.wav"
+    },
+    "voice_sys_rimuru_080_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruMaidCostume2021Christmas/voice_sys_rimuru_080_gacha.wav",
+      "size": 738202,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_rimuru_080_gacha.wav"
+    },
+    "voice_sys_rimuru_082_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruKimono2022Newyear/voice_sys_rimuru_082_gacha.wav",
+      "size": 340054,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_rimuru_082_gacha.wav"
+    },
+    "voice_sys_rimuru_083_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/RimuruWedding2022/voice_sys_rimuru_083_gacha.wav",
+      "size": 230272,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_rimuru_083_gacha.wav"
+    },
+    "voice_sys_shion_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/shion/voice_sys_shion_037_gacha.wav",
+      "size": 313544,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_shion_037_gacha.wav"
+    },
+    "voice_sys_shion_039_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/shion/voice_sys_shion_039_gacha.wav",
+      "size": 383372,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_shion_039_gacha.wav"
+    },
+    "voice_sys_shion_040_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/shion/voice_sys_shion_040_gacha.wav",
+      "size": 335112,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_shion_040_gacha.wav"
+    },
+    "voice_sys_shion_061_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShionSecretary/voice_sys_shion_061_gacha.wav",
+      "size": 343970,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_shion_061_gacha.wav"
+    },
+    "voice_sys_shizu_038_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/shizu/voice_sys_shizu_038_gacha.wav",
+      "size": 548184,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_shizu_038_gacha.wav"
+    },
+    "voice_sys_shizu_039_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/shizu/voice_sys_shizu_039_gacha.wav",
+      "size": 489382,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_shizu_039_gacha.wav"
+    },
+    "voice_sys_shizu_040_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/shizu/voice_sys_shizu_040_gacha.wav",
+      "size": 861730,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_shizu_040_gacha.wav"
+    },
+    "voice_sys_shizu_041_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/shizu/voice_sys_shizu_041_gacha.wav",
+      "size": 631748,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_shizu_041_gacha.wav"
+    },
+    "voice_sys_shizu_valentine2022date_001_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShizuValentine2022Date/voice_sys_shizu_valentine2022date_001_gacha.wav",
+      "size": 589882,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_shizu_valentine2022date_001_gacha.wav"
+    },
+    "voice_sys_shuna_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/shuna/voice_sys_shuna_037_gacha.wav",
+      "size": 508606,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_shuna_037_gacha.wav"
+    },
+    "voice_sys_shuna_038_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/shuna/voice_sys_shuna_038_gacha.wav",
+      "size": 246564,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_shuna_038_gacha.wav"
+    },
+    "voice_sys_shuna_039_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/shuna/voice_sys_shuna_039_gacha.wav",
+      "size": 262852,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_shuna_039_gacha.wav"
+    },
+    "voice_sys_shuna_040_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/shuna/voice_sys_shuna_040_gacha.wav",
+      "size": 178886,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_shuna_040_gacha.wav"
+    },
+    "voice_sys_shuna_072_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/ShunaMaidCostume2021Christmas/voice_sys_shuna_072_gacha.wav",
+      "size": 397792,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_shuna_072_gacha.wav"
+    },
+    "voice_sys_soei_039_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/soei/voice_sys_soei_039_gacha.wav",
+      "size": 449566,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_soei_039_gacha.wav"
+    },
+    "voice_sys_soei_041_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/soei/voice_sys_soei_041_gacha.wav",
+      "size": 174446,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_soei_041_gacha.wav"
+    },
+    "voice_sys_soka_040_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/SokaValentine2022Date/voice_sys_soka_040_gacha.wav",
+      "size": 290130,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_soka_040_gacha.wav"
+    },
+    "voice_sys_soka_valentine2022date_001_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/SokaValentine2022Date/voice_sys_soka_valentine2022date_001_gacha.wav",
+      "size": 255832,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_soka_valentine2022date_001_gacha.wav"
+    },
+    "voice_sys_treyni_040_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/treyni/voice_sys_treyni_040_gacha.wav",
+      "size": 380126,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_treyni_040_gacha.wav"
+    },
+    "voice_sys_veldora_044_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/VeldoraButlerCostume2021Christmas/voice_sys_veldora_044_gacha.wav",
+      "size": 341588,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_veldora_044_gacha.wav"
+    },
+    "voice_sys_veldora_045_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/veldora/voice_sys_veldora_045_gacha.wav",
+      "size": 510610,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_veldora_045_gacha.wav"
+    },
+    "voice_sys_veldora_humanoid_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/veldora_humanoid/voice_sys_veldora_humanoid_037_gacha.wav",
+      "size": 620354,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_veldora_humanoid_037_gacha.wav"
+    },
+    "voice_sys_werzard_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/WerzardDefault/voice_sys_werzard_037_gacha.wav",
+      "size": 457598,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_werzard_037_gacha.wav"
+    },
+    "voice_sys_werzard_038_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/WerzardDefault/voice_sys_werzard_038_gacha.wav",
+      "size": 632662,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_werzard_038_gacha.wav"
+    },
+    "voice_sys_werzard_041_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/WerzardDefault/voice_sys_werzard_041_gacha.wav",
+      "size": 957380,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_werzard_041_gacha.wav"
+    },
+    "voice_sys_youm_037_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/YoumDefault/voice_sys_youm_037_gacha.wav",
+      "size": 158862,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_youm_037_gacha.wav"
+    },
+    "voice_sys_yuuki_039_gacha": {
+      "container": "Assets/AssetBundles/Sound/AudioClip/VOICE/sys/yuuki/voice_sys_yuuki_039_gacha.wav",
+      "size": 403890,
+      "status": "extracted",
+      "wav": "public/Voice/Lottery/voice_sys_yuuki_039_gacha.wav"
+    }
+  },
+  "extracted": 254,
+  "failed": 0,
+  "missing_from_cab": [
+    "voice_sys_Diablo_HighRankCostume_004_gacha_A",
+    "voice_sys_Diablo_Xmas2025_013_gacha_B",
+    "voice_sys_Masayuki_Default_037_gacha_B",
+    "voice_sys_MaskedHero_038_gacha_A",
+    "voice_sys_Soka_Phantom_013_gacha_B",
+    "voice_sys_Treyni_Coschange_002_gacha_A"
+  ],
+  "skipped_existing": 5
+}

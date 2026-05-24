@@ -1,0 +1,13234 @@
+{
+ "prefab": "UILotteryResult",
+ "_meta": "extracted by extract_lottery_runtime_data.py",
+ "simpleTweenTMPSage": [],
+ "uiLotteryTextAnimation": [],
+ "textMeshes": [
+  {
+   "go": "label",
+   "text": "引き直す",
+   "fontSize": 50.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "numLove",
+   "text": "99999",
+   "fontSize": 37.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.611764705882353,
+    "b": 0.8156862745098039,
+    "a": 0.2235294117647059
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "label",
+   "text": "特定商取引法表示",
+   "fontSize": 28.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "countPaid",
+   "text": "もう1回スカウト",
+   "fontSize": 34.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "cost",
+   "text": "3,000",
+   "fontSize": 30.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "lv",
+   "text": "Lv.99",
+   "fontSize": 48.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "lv",
+   "text": "Lv.99",
+   "fontSize": 48.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "label",
+   "text": "戻る",
+   "fontSize": 50.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "pointsAmount",
+   "text": "交換Pt 999,999",
+   "fontSize": 32.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "lvEngrave",
+   "text": "Lv.5",
+   "fontSize": 38.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "label2",
+   "text": "3<size=72%>回スカウト</size>",
+   "fontSize": 50.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "lvEngrave",
+   "text": "Lv.5",
+   "fontSize": 38.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "num",
+   "text": "9999",
+   "fontSize": 68.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "label2",
+   "text": "14159 26535 89793 23846 2643383279 50288 419\n71 69399 3751058209 74944 5\n9230 78164 0628620899 86280 34825 34211 \n7067982148 08651 32823 06647 0\n938446095 50582 23172 53594 0812848111 745\n02 84102 701",
+   "fontSize": 18.0,
+   "fontColor": {
+    "r": 0.0784313725490196,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "count",
+   "text": "もう1回スカウト",
+   "fontSize": 38.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "param",
+   "text": "",
+   "fontSize": 48.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "label1",
+   "text": "もう3回スカウト",
+   "fontSize": 30.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.4627450980392157,
+    "b": 0.49019607843137253,
+    "a": 0.5019607843137255
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "textBalloon",
+   "text": "あと00回",
+   "fontSize": 28.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.10588235294117647,
+    "b": 0.11372549019607843,
+    "a": 0.11764705882352941
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "label",
+   "text": "CMスキップ中",
+   "fontSize": 30.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.10588235294117647,
+    "b": 0.11372549019607843,
+    "a": 0.11764705882352941
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "label1",
+   "text": "14159 26535 89793 23846 2643383279 50288 419\n71 69399 3751058209 74944 5\n9230 78164 0628620899 86280 34825 34211 \n7067982148 08651 32823 06647 0\n938446095 50582 23172 53594 0812848111 745\n02 84102 701",
+   "fontSize": 18.0,
+   "fontColor": {
+    "r": 0.0784313725490196,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "label",
+   "text": "動画準備中",
+   "fontSize": 44.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.7254901960784313,
+    "b": 0.8117647058823529,
+    "a": 0.8392156862745098
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "label",
+   "text": "有償",
+   "fontSize": 30.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "num",
+   "text": "9999",
+   "fontSize": 68.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "textCaution",
+   "text": "魔晶石が不足しているため、スカウトできません",
+   "fontSize": 32.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.2235294117647059,
+    "b": 0.29411764705882354,
+    "a": 0.9294117647058824
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "numLove",
+   "text": "99999",
+   "fontSize": 37.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.611764705882353,
+    "b": 0.8156862745098039,
+    "a": 0.2235294117647059
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "label",
+   "text": "確定する",
+   "fontSize": 50.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "param",
+   "text": "",
+   "fontSize": 48.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "label",
+   "text": "CMで無料",
+   "fontSize": 44.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "title",
+   "text": "RESULT",
+   "fontSize": 60.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  }
+ ],
+ "particleSystems": [
+  {
+   "go": "shineAuraSwirl",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "sonic2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakiraStar",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraSwirl",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "sonic",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "kirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "sonic",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakiraStar",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraSwirl",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "sonic2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakiraStar",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "kirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "kirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakiraStar",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "rainbowFlare",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "kirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "sonic",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraSwirl",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "rainbowFlare",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "sonic",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "light",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "light",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "kirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "sonic",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "sonic",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraSwirl",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "kirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "sonic",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "sonic2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "kirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "sonic2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "light",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "kirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "rainbowFlare",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "sonic2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "kirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "flare",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "flare",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraSwirl",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "kirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "light",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "kirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "sonic2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakiraStar",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "kirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "kirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "kirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "sonic2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "rainbowFlare",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakiraStar",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "particleKirakira",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "circle",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "sonic",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "rainbowFlare",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "circle",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "light",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "rainbowFlare",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "sonic2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "light",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shine2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "shineAuraRing",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  }
+ ],
+ "rectTransforms": {
+  "exchangePoints": [
+   {
+    "anchoredPosition": [
+     1.0,
+     309.0
+    ],
+    "sizeDelta": [
+     389.0,
+     56.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.0
+    ],
+    "anchorMax": [
+     0.5,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "inShortEffectsRarity3": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "itemEffectsRarity5-6UltimatePlus": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "particleKirakiraStar": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "sonic2": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "base": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -3.0
+    ],
+    "sizeDelta": [
+     379.0,
+     54.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "lvBase": [
+   {
+    "anchoredPosition": [
+     -109.0,
+     103.0
+    ],
+    "sizeDelta": [
+     173.0,
+     47.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -109.0,
+     103.0
+    ],
+    "sizeDelta": [
+     173.0,
+     47.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     0.5
+    ]
+   }
+  ],
+  "buttonImage": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -70.0,
+     -70.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -70.0,
+     -70.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "shineAuraRing": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "mask": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -75.0
+    ],
+    "sizeDelta": [
+     150.0,
+     40.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     -75.0
+    ],
+    "sizeDelta": [
+     150.0,
+     40.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     -110.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     -3.0
+    ],
+    "sizeDelta": [
+     0.0,
+     -6.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "uiParticle": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "deco": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     1391.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "inShortEffectsRarity5-6Ultimate": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rgb": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "shine2": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     7.0,
+     -45.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     7.0,
+     -45.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     7.0,
+     -45.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     7.0,
+     -45.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     7.0,
+     -45.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     7.0,
+     -45.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "glow": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     3000.0,
+     2400.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     3000.0,
+     2400.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "inEffectsRarity5-6UltimatePlus": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "maskImage": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     180.0,
+     180.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     180.0,
+     180.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "IcBlessSkill": [
+   {
+    "anchoredPosition": [
+     -95.0,
+     96.0
+    ],
+    "sizeDelta": [
+     92.0,
+     92.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -95.0,
+     96.0
+    ],
+    "sizeDelta": [
+     92.0,
+     92.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "star5": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     54.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     29.0,
+     28.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     54.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     29.0,
+     28.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "particleKirakira": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "label": [
+   {
+    "anchoredPosition": [
+     0.0,
+     6.0
+    ],
+    "sizeDelta": [
+     260.0,
+     36.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -108.0,
+     -108.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -108.0,
+     -108.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -76.0,
+     24.0
+    ],
+    "sizeDelta": [
+     70.0,
+     44.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -44.0,
+     -44.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -44.0,
+     -44.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -44.0,
+     -44.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -44.0,
+     -44.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "baseElement": [
+   {
+    "anchoredPosition": [
+     92.0,
+     66.0
+    ],
+    "sizeDelta": [
+     70.0,
+     123.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     92.0,
+     66.0
+    ],
+    "sizeDelta": [
+     70.0,
+     123.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "shine": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     7.0,
+     35.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     7.0,
+     35.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     7.0,
+     35.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     7.0,
+     35.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     7.0,
+     35.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     7.0,
+     35.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "label2": [
+   {
+    "anchoredPosition": [
+     900.0,
+     -42.0
+    ],
+    "sizeDelta": [
+     480.0,
+     320.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -108.0,
+     -108.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "decorationContainer": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "kirakira": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "starLimitBreakBaseBless": [
+   {
+    "anchoredPosition": [
+     27.0,
+     7.0
+    ],
+    "sizeDelta": [
+     198.0,
+     36.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     27.0,
+     7.0
+    ],
+    "sizeDelta": [
+     198.0,
+     36.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "star4": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     54.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     29.0,
+     28.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     29.0,
+     28.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     54.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "shineAuraSwirl": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     63.0,
+     63.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "targetImage": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     60.0,
+     60.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     60.0,
+     60.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     60.0,
+     60.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     60.0,
+     60.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "maskImageBlessR": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     180.0,
+     180.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     180.0,
+     180.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "btnRetry": [
+   {
+    "anchoredPosition": [
+     -200.0,
+     174.0
+    ],
+    "sizeDelta": [
+     356.0,
+     136.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.0
+    ],
+    "anchorMax": [
+     0.5,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "imgLight_01": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     35.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     35.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     35.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     35.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     35.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     35.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "inShortEffectsRarity4": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "inShortEffectsRarity5": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "thumbReward": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     256.0,
+     256.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     256.0,
+     256.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "resultTemplate": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "balloon": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -26.0
+    ],
+    "sizeDelta": [
+     282.0,
+     81.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     -32.0
+    ],
+    "sizeDelta": [
+     281.0,
+     66.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "light": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     900.0,
+     900.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     900.0,
+     900.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "cardGlow": [
+   {
+    "anchoredPosition": [
+     -2.384185791015625e-05,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -2.384185791015625e-05,
+     0.0
+    ],
+    "sizeDelta": [
+     196.0,
+     196.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "itemImage": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     180.0,
+     180.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     180.0,
+     180.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "modalBackground": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "star1": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     29.0,
+     28.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     54.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     54.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     29.0,
+     28.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "flare": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     256.0,
+     256.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     256.0,
+     256.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "loveContainer": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     2.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     2.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "equipLamp": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "button": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "star2": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     54.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     54.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     29.0,
+     28.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     29.0,
+     28.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "cardContainer": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     256.0,
+     256.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     256.0,
+     256.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "imgLight_00": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     35.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     35.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     35.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     35.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     35.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     35.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "inEffectsRarity6Epic": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "IcElementBless2": [
+   {
+    "anchoredPosition": [
+     96.0,
+     34.0
+    ],
+    "sizeDelta": [
+     60.0,
+     60.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     96.0,
+     34.0
+    ],
+    "sizeDelta": [
+     60.0,
+     60.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "badgeEvent": [
+   {
+    "anchoredPosition": [
+     0.0,
+     105.0
+    ],
+    "sizeDelta": [
+     254.0,
+     120.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     105.0
+    ],
+    "sizeDelta": [
+     254.0,
+     120.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarityChara": [
+   {
+    "anchoredPosition": [
+     2.0,
+     0.0
+    ],
+    "sizeDelta": [
+     127.0,
+     104.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     2.0,
+     0.0
+    ],
+    "sizeDelta": [
+     127.0,
+     104.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "target0": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     32.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     32.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   }
+  ],
+  "sonic": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "skip": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "lensFlare": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     4000.0,
+     600.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     4000.0,
+     600.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "paid": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "image": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     150.0
+    ],
+    "sizeDelta": [
+     500.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     23.0,
+     -7.0
+    ],
+    "sizeDelta": [
+     71.0,
+     34.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     23.0,
+     -7.0
+    ],
+    "sizeDelta": [
+     71.0,
+     34.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -32.0,
+     -28.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -32.0,
+     -28.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -32.0,
+     -28.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     150.0
+    ],
+    "sizeDelta": [
+     500.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     150.0
+    ],
+    "sizeDelta": [
+     500.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     150.0
+    ],
+    "sizeDelta": [
+     200.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     150.0
+    ],
+    "sizeDelta": [
+     500.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     150.0
+    ],
+    "sizeDelta": [
+     500.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -32.0,
+     -28.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     150.0
+    ],
+    "sizeDelta": [
+     500.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     150.0
+    ],
+    "sizeDelta": [
+     500.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     150.0
+    ],
+    "sizeDelta": [
+     200.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     150.0
+    ],
+    "sizeDelta": [
+     500.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "touchDisablePanel": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "container": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     174.0
+    ],
+    "sizeDelta": [
+     1024.0,
+     190.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.0
+    ],
+    "anchorMax": [
+     0.5,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "badgeCharaImage": [
+   {
+    "anchoredPosition": [
+     7.0,
+     7.0
+    ],
+    "sizeDelta": [
+     134.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     7.0,
+     7.0
+    ],
+    "sizeDelta": [
+     134.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "effectEpicArousal": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "touchArea": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -70.0,
+     -52.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "limitBreakMax": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     16.0,
+     16.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     16.0,
+     16.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     16.0,
+     16.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     16.0,
+     16.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     16.0,
+     16.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     16.0,
+     16.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     16.0,
+     16.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     16.0,
+     16.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     16.0,
+     16.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     16.0,
+     16.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "baseImage": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     256.0,
+     256.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     256.0,
+     256.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "icLove": [
+   {
+    "anchoredPosition": [
+     -3.0,
+     0.0
+    ],
+    "sizeDelta": [
+     47.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -3.0,
+     0.0
+    ],
+    "sizeDelta": [
+     47.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "rainbowFlare": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "lvEngrave": [
+   {
+    "anchoredPosition": [
+     72.0,
+     0.0
+    ],
+    "sizeDelta": [
+     132.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     72.0,
+     0.0
+    ],
+    "sizeDelta": [
+     132.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "inEffectsRarity5": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "target2": [
+   {
+    "anchoredPosition": [
+     16.0,
+     -21.0
+    ],
+    "sizeDelta": [
+     32.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     16.0,
+     -21.0
+    ],
+    "sizeDelta": [
+     32.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   }
+  ],
+  "touchDisabledPanelDL": [
+   {
+    "anchoredPosition": [
+     -2.0,
+     11.0
+    ],
+    "sizeDelta": [
+     410.0,
+     84.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "maskImageBlessEpic": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     180.0,
+     180.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     180.0,
+     180.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "tutorialTouchScreen": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "inEffectsRarity3": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "engraveContainer": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "lamp1": [
+   {
+    "anchoredPosition": [
+     29.0,
+     -68.0
+    ],
+    "sizeDelta": [
+     30.0,
+     30.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     29.0,
+     -68.0
+    ],
+    "sizeDelta": [
+     30.0,
+     30.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "deco2": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     18.0,
+     18.0
+    ],
+    "anchorMin": [
+     1.0,
+     0.5
+    ],
+    "anchorMax": [
+     1.0,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "IcElementBless": [
+   {
+    "anchoredPosition": [
+     96.0,
+     96.0
+    ],
+    "sizeDelta": [
+     64.0,
+     64.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     96.0,
+     96.0
+    ],
+    "sizeDelta": [
+     64.0,
+     64.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "inShortEffectsRarity5-6UltimatePlus": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "btnCommercialTransaction": [
+   {
+    "anchoredPosition": [
+     -260.0,
+     151.0
+    ],
+    "sizeDelta": [
+     346.0,
+     84.0
+    ],
+    "anchorMin": [
+     1.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "touchDisabledPanelUL": [
+   {
+    "anchoredPosition": [
+     -2.0,
+     -11.0
+    ],
+    "sizeDelta": [
+     410.0,
+     84.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "star3": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     54.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     29.0,
+     28.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     54.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     29.0,
+     28.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "normal": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "highlight": [
+   {
+    "anchoredPosition": [
+     37.50001525878906,
+     64.95191192626953
+    ],
+    "sizeDelta": [
+     80.0,
+     84.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     37.50001525878906,
+     64.95191192626953
+    ],
+    "sizeDelta": [
+     80.0,
+     84.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "deco1": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     19.0,
+     18.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.5
+    ],
+    "anchorMax": [
+     0.0,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "star8": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     54.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     54.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "itemEffectsRarity5-6Ultimate": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "label1": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -108.0,
+     -108.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -902.0,
+     -139.0
+    ],
+    "sizeDelta": [
+     480.0,
+     320.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "countPaid": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -19.0
+    ],
+    "sizeDelta": [
+     -104.0,
+     52.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.5
+    ],
+    "anchorMax": [
+     1.0,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "bgContainer": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "badgeBarrier": [
+   {
+    "anchoredPosition": [
+     102.0,
+     -69.0
+    ],
+    "sizeDelta": [
+     88.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     102.0,
+     -69.0
+    ],
+    "sizeDelta": [
+     88.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "scaleCotainer": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "textBalloon": [
+   {
+    "anchoredPosition": [
+     0.0,
+     7.0
+    ],
+    "sizeDelta": [
+     -20.0,
+     64.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.5
+    ],
+    "anchorMax": [
+     1.0,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "limitBreakChara": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     256.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     256.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "topLight": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -56.0
+    ],
+    "sizeDelta": [
+     256.0,
+     102.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "tutorialWindowArea": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -280.0
+    ],
+    "sizeDelta": [
+     870.0,
+     335.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "lamp2": [
+   {
+    "anchoredPosition": [
+     56.0,
+     -68.0
+    ],
+    "sizeDelta": [
+     30.0,
+     30.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     56.0,
+     -68.0
+    ],
+    "sizeDelta": [
+     30.0,
+     30.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "figure": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "pointsAmount": [
+   {
+    "anchoredPosition": [
+     12.0,
+     -2.0
+    ],
+    "sizeDelta": [
+     278.0,
+     45.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "specialize": [
+   {
+    "anchoredPosition": [
+     -36.0,
+     -126.0
+    ],
+    "sizeDelta": [
+     70.0,
+     60.0
+    ],
+    "anchorMin": [
+     1.0,
+     1.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -36.0,
+     -126.0
+    ],
+    "sizeDelta": [
+     70.0,
+     60.0
+    ],
+    "anchorMin": [
+     1.0,
+     1.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   }
+  ],
+  "target1": [
+   {
+    "anchoredPosition": [
+     -16.0,
+     -21.0
+    ],
+    "sizeDelta": [
+     32.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -16.0,
+     -21.0
+    ],
+    "sizeDelta": [
+     32.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   }
+  ],
+  "badgeChara": [
+   {
+    "anchoredPosition": [
+     78.0,
+     75.0
+    ],
+    "sizeDelta": [
+     134.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     78.0,
+     75.0
+    ],
+    "sizeDelta": [
+     134.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "touchDisabledPanelDR": [
+   {
+    "anchoredPosition": [
+     -2.0,
+     11.0
+    ],
+    "sizeDelta": [
+     410.0,
+     84.0
+    ],
+    "anchorMin": [
+     1.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     0.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "rarityStar": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     -197.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     -197.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "btnReturn": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     356.0,
+     136.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "buttonType": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "starLimitBreakBaseChara": [
+   {
+    "anchoredPosition": [
+     7.0,
+     7.0
+    ],
+    "sizeDelta": [
+     212.0,
+     36.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.0,
+     0.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     7.0,
+     7.0
+    ],
+    "sizeDelta": [
+     212.0,
+     36.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.0,
+     0.0
+    ]
+   }
+  ],
+  "touchDisabledPanel": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     -136.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "icon": [
+   {
+    "anchoredPosition": [
+     -94.0,
+     24.0
+    ],
+    "sizeDelta": [
+     44.0,
+     44.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "underLight": [
+   {
+    "anchoredPosition": [
+     0.0,
+     56.0
+    ],
+    "sizeDelta": [
+     256.0,
+     102.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.0
+    ],
+    "anchorMax": [
+     0.5,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "icNew": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     51.0,
+     84.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     51.0,
+     84.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "btnQuestion": [
+   {
+    "anchoredPosition": [
+     -350.0,
+     25.0
+    ],
+    "sizeDelta": [
+     88.0,
+     80.0
+    ],
+    "anchorMin": [
+     1.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "inEffectsRarity4": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "changeEffects": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "icAttackType": [
+   {
+    "anchoredPosition": [
+     92.0,
+     32.0
+    ],
+    "sizeDelta": [
+     48.0,
+     48.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     92.0,
+     32.0
+    ],
+    "sizeDelta": [
+     48.0,
+     48.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "itemEffectsRarity6Epic": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "textCaution": [
+   {
+    "anchoredPosition": [
+     0.0,
+     374.0
+    ],
+    "sizeDelta": [
+     1600.0,
+     64.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.0
+    ],
+    "anchorMax": [
+     0.5,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "btnSkip": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "numLove": [
+   {
+    "anchoredPosition": [
+     42.0,
+     -3.0
+    ],
+    "sizeDelta": [
+     150.0,
+     38.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     42.0,
+     -3.0
+    ],
+    "sizeDelta": [
+     150.0,
+     38.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "badgeClassUp": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     80.0,
+     84.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     80.0,
+     84.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "touchDisabledPanelUR": [
+   {
+    "anchoredPosition": [
+     -2.0,
+     -11.0
+    ],
+    "sizeDelta": [
+     410.0,
+     84.0
+    ],
+    "anchorMin": [
+     1.0,
+     1.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "inEffectsRarity5-6Ultimate": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "effectSR0": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     32.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     32.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   }
+  ],
+  "btnDecision": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     408.0,
+     190.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "effectSR2": [
+   {
+    "anchoredPosition": [
+     16.0,
+     -21.0
+    ],
+    "sizeDelta": [
+     32.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     16.0,
+     -21.0
+    ],
+    "sizeDelta": [
+     32.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   }
+  ],
+  "resultList": [
+   {
+    "anchoredPosition": [
+     -590.0,
+     271.0
+    ],
+    "sizeDelta": [
+     1200.0,
+     400.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "star6": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     54.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     54.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "title": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -158.0
+    ],
+    "sizeDelta": [
+     1500.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "maskImageBlessSSR": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     180.0,
+     180.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     180.0,
+     180.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "buttonDisabled": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "lv": [
+   {
+    "anchoredPosition": [
+     7.0,
+     -4.0
+    ],
+    "sizeDelta": [
+     176.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     7.0,
+     -4.0
+    ],
+    "sizeDelta": [
+     176.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "effectSR1": [
+   {
+    "anchoredPosition": [
+     -16.0,
+     -21.0
+    ],
+    "sizeDelta": [
+     32.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -16.0,
+     -21.0
+    ],
+    "sizeDelta": [
+     32.0,
+     35.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   }
+  ],
+  "icLove2": [
+   {
+    "anchoredPosition": [
+     -104.0,
+     103.0
+    ],
+    "sizeDelta": [
+     60.0,
+     56.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -104.0,
+     103.0
+    ],
+    "sizeDelta": [
+     60.0,
+     56.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "icElement": [
+   {
+    "anchoredPosition": [
+     -36.0,
+     -36.0
+    ],
+    "sizeDelta": [
+     62.0,
+     0.0
+    ],
+    "anchorMin": [
+     1.0,
+     1.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -36.0,
+     -36.0
+    ],
+    "sizeDelta": [
+     62.0,
+     0.0
+    ],
+    "anchorMin": [
+     1.0,
+     1.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "cost": [
+   {
+    "anchoredPosition": [
+     112.0,
+     24.0
+    ],
+    "sizeDelta": [
+     124.0,
+     38.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     1.0,
+     0.5
+    ]
+   }
+  ],
+  "tvScroll": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "modalContainer": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -12.0
+    ],
+    "sizeDelta": [
+     0.0,
+     1060.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.5
+    ],
+    "anchorMax": [
+     1.0,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "btnConfirm": [
+   {
+    "anchoredPosition": [
+     200.0,
+     174.0
+    ],
+    "sizeDelta": [
+     356.0,
+     136.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.0
+    ],
+    "anchorMax": [
+     0.5,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "UILotteryResult": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "aura": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     1000.0,
+     1000.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     1000.0,
+     1000.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "num": [
+   {
+    "anchoredPosition": [
+     -7.0,
+     0.0
+    ],
+    "sizeDelta": [
+     248.0,
+     68.0
+    ],
+    "anchorMin": [
+     1.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     0.0
+    ],
+    "pivot": [
+     1.0,
+     0.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -7.0,
+     0.0
+    ],
+    "sizeDelta": [
+     248.0,
+     68.0
+    ],
+    "anchorMin": [
+     1.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     0.0
+    ],
+    "pivot": [
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "inShortEffectsRarity6Epic": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "lamp3": [
+   {
+    "anchoredPosition": [
+     83.0,
+     -68.0
+    ],
+    "sizeDelta": [
+     30.0,
+     30.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     83.0,
+     -68.0
+    ],
+    "sizeDelta": [
+     30.0,
+     30.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "star7": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     54.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     54.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "sage": [
+   {
+    "anchoredPosition": [
+     -18.65753173828125,
+     -15.695159912109375
+    ],
+    "sizeDelta": [
+     1024.0,
+     1024.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.47999998927116394,
+     0.48500001430511475
+    ]
+   }
+  ],
+  "cornerDR": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     1.0,
+     0.0
+    ]
+   }
+  ],
+  "param": [
+   {
+    "anchoredPosition": [
+     7.0,
+     -4.0
+    ],
+    "sizeDelta": [
+     176.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     7.0,
+     -4.0
+    ],
+    "sizeDelta": [
+     176.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "maskImageBlessSR": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     180.0,
+     180.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     180.0,
+     180.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "tutorialRetry": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "itemContainer": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "gradation": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "modalFront": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "decisionContainer": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "btnAdvertisement": [
+   {
+    "anchoredPosition": [
+     1000.0,
+     -95.0
+    ],
+    "sizeDelta": [
+     408.0,
+     188.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     0.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "count": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -19.0
+    ],
+    "sizeDelta": [
+     -104.0,
+     52.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.5
+    ],
+    "anchorMax": [
+     1.0,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "lineH": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -211.0
+    ],
+    "sizeDelta": [
+     -188.0,
+     14.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "cornerUR": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "preparation": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "badgeContainer": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "cornerUL": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "decorationBgContainer": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "circle": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     1412.0,
+     1412.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "frameImage": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     256.0,
+     256.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     256.0,
+     256.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "wrapper": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     408.0,
+     190.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "tutorialData": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "cornerDL": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.0,
+     0.0
+    ]
+   }
+  ]
+ }
+}

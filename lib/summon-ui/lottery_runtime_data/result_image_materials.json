@@ -1,0 +1,1265 @@
+{
+  "_meta": "Per-component blend mode + material data for every Image / RawImage in UILotteryResult. Resolves shader Pass blend state (rtBlend0) factoring in property-driven references (e.g., UI-VFXDefault's _Src/_Dst). PrefabTree applies the blend mode from data — no name heuristics.",
+  "components": [
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/rarityStar/star1",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/tutorialTouchScreen",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/container/btnAdvertisement/skip/btnSkip/buttonImage",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/decorationContainer/scaleCotainer/topLight/lensFlare/aura",
+      "component": "RawImage",
+      "material_pid": 3720122754303832539,
+      "material_name": "modal_aura_00",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity4/glow",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/container/btnDecision/button/icon",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/bgContainer/touchDisabledPanelDR",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/badgeContainer/badgeClassUp/mask/highlight",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5/glow",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/badgeContainer/badgeClassUp/image",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/rarityStar/star3",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/badgeChara/badgeCharaImage",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/bgContainer/cornerDL",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/engraveContainer/lvBase",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/container/btnAdvertisement/skip/btnSkip",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/rarityStar/star2",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/container/btnAdvertisement/button/buttonImage",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/specialize/target0",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/specialize/effectSR0/imgLight_01",
+      "component": "RawImage",
+      "material_pid": -8861141954301438855,
+      "material_name": "Ui_thumbEquipSR_light_01",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/tutorialRetry/btnRetry",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemContainer/itemImage",
+      "component": "Image",
+      "material_pid": -6724997910278235496,
+      "material_name": "Value",
+      "shader_name": "UI/Value",
+      "src_blend": 5.0,
+      "dst_blend": 10.0,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/tutorialRetry/btnConfirm/figure/image",
+      "component": "RawImage",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/starLimitBreakBaseBless",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/loveContainer/icLove",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/bgContainer/cornerDR",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/frameImage",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/container/btnAdvertisement/skip/balloon",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/equipLamp/lamp2",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity4/glow",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5-6UltimatePlus/glow",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/bgContainer/touchDisabledPanelUR",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/specialize/target1",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/badgeEvent",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/limitBreakChara/star3",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/changeEffects/flare",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5-6Ultimate/glow",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/IcElementBless",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/tutorialRetry/btnConfirm",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/decorationContainer/scaleCotainer/underLight/lensFlare",
+      "component": "RawImage",
+      "material_pid": -5829507372036359697,
+      "material_name": "modal_lensFlare_00",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/decorationContainer/scaleCotainer/topLight/lensFlare",
+      "component": "RawImage",
+      "material_pid": -5829507372036359697,
+      "material_name": "modal_lensFlare_00",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemContainer/maskImageBlessSR",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/container/btnAdvertisement/balloon",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemContainer/maskImage",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/limitBreakChara/star2",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/container/btnDecision/button/buttonDisabled",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/badgeContainer/badgeClassUp/mask",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/bgContainer/touchDisabledPanel",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemContainer/maskImageBlessR",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/specialize/effectSR2/imgLight_01",
+      "component": "RawImage",
+      "material_pid": -8861141954301438855,
+      "material_name": "Ui_thumbEquipSR_light_01",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/icElement",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/IcElementBless2/targetImage",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/baseImage",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity6Epic/glow",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/equipLamp/lamp3",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/rarityChara",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/limitBreakChara/star1",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/container/wrapper/btnReturn/figure/image",
+      "component": "RawImage",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/bgContainer/touchDisabledPanelDL",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/rarityStar/star4",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity3/glow",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/specialize/effectSR2/imgLight_00",
+      "component": "RawImage",
+      "material_pid": -4439622598215086772,
+      "material_name": "Ui_thumbEquipSR_light_00",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/lineH",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/bgContainer/cornerUL",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/bgContainer/mask/gradation",
+      "component": "Image",
+      "material_pid": 6278059570955788896,
+      "material_name": "GlobalMenuBackground",
+      "shader_name": "UI/Gradation",
+      "src_blend": 5.0,
+      "dst_blend": 10.0,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/container/btnDecision/button/buttonType/paid",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5-6Ultimate/glow",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/IcElementBless2",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/engraveContainer/IcBlessSkill",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/btnCommercialTransaction/figure/image",
+      "component": "RawImage",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/rarityStar/star7",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/container/btnAdvertisement/button",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/limitBreakChara/star4",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/container/btnDecision/button/buttonType/normal",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/rarityStar/star8",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/targetImage",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/limitBreakChara/star2/limitBreakMax",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/starLimitBreakBaseChara",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/touchDisablePanel/tvScroll",
+      "component": "Image",
+      "material_pid": -3462321906320849869,
+      "material_name": "ModalTvScroll",
+      "shader_name": "UI/NoiseTvScroll",
+      "src_blend": 5.0,
+      "dst_blend": 10.0,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/tutorialRetry/btnRetry/figure/image",
+      "component": "RawImage",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/icAttackType",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/bgContainer/mask",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/exchangePoints/btnQuestion",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/specialize/effectSR1/imgLight_00",
+      "component": "RawImage",
+      "material_pid": -4439622598215086772,
+      "material_name": "Ui_thumbEquipSR_light_00",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/loveContainer/icLove2",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/limitBreakChara/star3/limitBreakMax",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/limitBreakChara/star5",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/decorationContainer/scaleCotainer/underLight/lensFlare/light",
+      "component": "RawImage",
+      "material_pid": -9004438629950840328,
+      "material_name": "modal_light_00",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/decorationContainer/scaleCotainer/topLight/lensFlare/light",
+      "component": "RawImage",
+      "material_pid": -9004438629950840328,
+      "material_name": "modal_light_00",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/limitBreakChara/star1/limitBreakMax",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/specialize/effectSR0/imgLight_00",
+      "component": "RawImage",
+      "material_pid": -4439622598215086772,
+      "material_name": "Ui_thumbEquipSR_light_00",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/container/wrapper/btnReturn",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/decorationContainer/scaleCotainer/underLight/lensFlare/aura",
+      "component": "RawImage",
+      "material_pid": 3720122754303832539,
+      "material_name": "modal_aura_00",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity6Epic/glow",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/container/btnAdvertisement/preparation",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemContainer/maskImageBlessSSR",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/IcElementBless/targetImage",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/limitBreakChara/star4/limitBreakMax",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/btnCommercialTransaction",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/specialize/target2",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/equipLamp/lamp1",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity3/glow",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/rarityStar/star5",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/decorationContainer/scaleCotainer/mask/decorationBgContainer/deco/deco1",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/container/btnDecision/button/touchArea",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/badgeContainer/icNew/image",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5-6UltimatePlus/glow",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/bgContainer/touchDisabledPanelUL",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/bgContainer/cornerUR",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/cardGlow",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemContainer/maskImageBlessEpic",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/badgeChara",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/limitBreakChara/star5/limitBreakMax",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryResult/touchDisablePanel",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/decorationContainer/scaleCotainer/topLight/lensFlare/glow",
+      "component": "RawImage",
+      "material_pid": -2399778245504712062,
+      "material_name": "modal_glow_00",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/specialize/effectSR1/imgLight_01",
+      "component": "RawImage",
+      "material_pid": -8861141954301438855,
+      "material_name": "Ui_thumbEquipSR_light_01",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/touchDisablePanel/rgb",
+      "component": "Image",
+      "material_pid": -3021252972724286451,
+      "material_name": "ModalRGB",
+      "shader_name": "UI/NoiseRGB",
+      "src_blend": 5.0,
+      "dst_blend": 10.0,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/decorationContainer/scaleCotainer/mask/decorationBgContainer/sage",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/decorationContainer/scaleCotainer/mask/decorationBgContainer/circle",
+      "component": "Image",
+      "material_pid": -1418249944893247512,
+      "material_name": "CircleOutlineRGBNoiseModal",
+      "shader_name": "UI/CircleOutlineRGBNoise",
+      "src_blend": 5.0,
+      "dst_blend": 10.0,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/rarityStar/star6",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5/glow",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/badgeBarrier",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/decisionContainer/normal/exchangePoints/base",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/decorationContainer/scaleCotainer/mask/decorationBgContainer/deco/deco2",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/button",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalBackground/decorationContainer/scaleCotainer/underLight/lensFlare/glow",
+      "component": "RawImage",
+      "material_pid": -2399778245504712062,
+      "material_name": "modal_glow_00",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/baseElement",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    }
+  ]
+}

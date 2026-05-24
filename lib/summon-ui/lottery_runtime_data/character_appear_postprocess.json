@@ -1,0 +1,41 @@
+{
+  "_meta": "URP Volume profile attached to UILotteryCharacterAppear/container/centers/PostProcess00. Source: VolumeProfile asset 'LotteryCharacterAppear_00' (pid -1517929857935513794) in CAB-f9e508424271ae846079d01ada5df0b8 (assetpack 98ca982a31f9b719913f248b5f0d5e51). The Volume's m_IsGlobal=1, so the profile applies to the URP camera globally during CharacterAppear (weight=0 at Default, weight=1 at In, weight=0 at Out — see character_appear_anim.json controller states). Five VolumeComponents are present; only those with active=1 are listed in `enabledOverrides`. SplitToning and RadialBlur are active=0 in the asset and are intentionally disabled.",
+  "volume": {
+    "isGlobal": true,
+    "priority": 0.0,
+    "blendDistance": 0.0,
+    "weight": 1.0,
+    "sharedProfileName": "LotteryCharacterAppear_00",
+    "stateWeight": {
+      "Default": 0.0,
+      "In": 1.0,
+      "Out": 0.0
+    }
+  },
+  "enabledOverrides": {
+    "Bloom": {
+      "active": true,
+      "threshold": 0.97,
+      "intensity": 3.0,
+      "scatter": 0.342,
+      "tint": { "r": 0.8157, "g": 0.9137, "b": 0.8902, "a": 1.0 },
+      "note": "URP Bloom is an HDR-threshold radial-blur-add pass — only pixels with luminance >= threshold are bloomed. Browser CSS has no direct equivalent. A CSS `filter: blur(...)` over a tonemapped layer is a partial approximation but cannot match Unity's HDR-based selection. Pre-rendering or a WebGL post-process pass is the only exact route."
+    },
+    "ColorAdjustments": {
+      "active": true,
+      "postExposure": 0.0,
+      "contrast": 43.0,
+      "note": "URP ColorAdjustments contrast slider is in [-100, 100] range; value 43 maps to approximately CSS `filter: contrast(1.43)` (the Unity slider linearly biases the contrast curve)."
+    },
+    "Vignette": {
+      "active": true,
+      "color": { "r": 0.0172, "g": 0.1792, "b": 0.0, "a": 1.0 },
+      "center": { "x": 0.5, "y": 0.5 },
+      "intensity": 0.534,
+      "smoothness": 0.20,
+      "rounded": false,
+      "note": "Vignette: dark-green tinted radial-falloff overlay centered at screen midpoint. Intensity 0.534 means the corners reach ~53% of the tint color. Reproducible in CSS via an absolute-positioned radial-gradient overlay."
+    }
+  },
+  "disabledOverrides": ["SplitToning", "RadialBlur"]
+}

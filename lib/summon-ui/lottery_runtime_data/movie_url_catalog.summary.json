@@ -1,0 +1,32 @@
+{
+  "by_category": {
+    "Announce": {
+      "by_status": {
+        "converted": 3
+      },
+      "total": 3
+    },
+    "BlessSkill": {
+      "by_status": {
+        "converted": 65
+      },
+      "total": 65
+    },
+    "Lottery": {
+      "by_status": {
+        "converted": 29
+      },
+      "total": 29
+    },
+    "SpecialSkill": {
+      "by_status": {
+        "converted": 200
+      },
+      "total": 200
+    }
+  },
+  "by_status": {
+    "converted": 297
+  },
+  "total": 297
+}

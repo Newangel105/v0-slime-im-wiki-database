@@ -1,0 +1,133 @@
+{
+  "_meta": "Per-slot render rules for UILotteryCharacterAppear. Source: prefab_out/UILotteryCharacterAppear.json (full GameObject + RectTransform tree). All anchPos/sizeDelta are in canvas pixels (canvas 1920x1080). Sprite hashes match files in /public/UI/summon/.",
+  "canvas": [1920, 1080],
+  "slots": {
+    "shadow": {
+      "anchPos": [0, 0],
+      "sizeDelta": [0, 100],
+      "anchorMin": [0, 0],
+      "anchorMax": [1, 1],
+      "pivot": [0.5, 1],
+      "spriteName": "shadow",
+      "spriteHash": "2901538d38c52c3d.png",
+      "defaultColor": {"r": 0.9597, "g": 0.2311, "b": 1.0, "a": 0.251, "_role": "URUltimate magenta (the prefab's only baked-in shadow color)"}
+    },
+    "frameURUltimate": {
+      "anchPos": [0, -15],
+      "sizeDelta": [-62, -31],
+      "anchorMin": [0, 0],
+      "anchorMax": [1, 1],
+      "pivot": [0.5, 1],
+      "spriteName": "frameCharacterAppearURUltimate",
+      "spriteHash": "a0fce83bad772f16.png",
+      "defaultColor": {"r": 1, "g": 1, "b": 1, "a": 1}
+    },
+    "addURUltimateEffectContainer": {
+      "anchPos": [0, -40],
+      "sizeDelta": [100, 100],
+      "anchorMin": [0.5, 0.5],
+      "anchorMax": [0.5, 0.5],
+      "pivot": [0.5, 0.5]
+    },
+    "gradationUltimate": {
+      "anchPos": [0, 0],
+      "sizeDelta": [1200, 350],
+      "anchorMin": [0.5, 1],
+      "anchorMax": [0.5, 1],
+      "pivot": [0.5, 1]
+    },
+    "gradationSSR": {
+      "anchPos": [-100, 0],
+      "sizeDelta": [1800, 350],
+      "anchorMin": [0.5, 0],
+      "anchorMax": [0.5, 0],
+      "pivot": [0.5, 0]
+    },
+    "gradation": {
+      "anchPos": [0, 0],
+      "sizeDelta": [0, 300],
+      "anchorMin": [0, 1],
+      "anchorMax": [1, 1],
+      "pivot": [0.5, 1],
+      "spriteName": "baseGradationRarity3",
+      "spriteHash": "ccd7e40dc8bc7282.png"
+    },
+    "charaModel": {
+      "anchPos": [0, 0],
+      "sizeDelta": [1024, 1376],
+      "anchorMin": [0.5, 0.5],
+      "anchorMax": [0.5, 0.5],
+      "pivot": [0.5, 0.5],
+      "_role": "Parent box for d2Container.d2 (the character art slot)"
+    },
+    "d2": {
+      "anchPos": [0, -20],
+      "sizeDelta": [0, 0],
+      "anchorMin": [0, 0],
+      "anchorMax": [1, 1],
+      "pivot": [0.5, 0.5],
+      "_role": "FULL-SIZE child of charaModel (anchors stretch). The character art fills this rect with AspectRatioFitter."
+    },
+    "base": {
+      "anchPos": [24, 0],
+      "sizeDelta": [876, 428],
+      "anchorMin": [0.5, 0.5],
+      "anchorMax": [0.5, 0.5],
+      "pivot": [0.5, 0.5],
+      "spriteName": "baseCharacterAppearBigURUltimate",
+      "spriteHash": "a7784776e363fbc8.png",
+      "defaultColor": {"r": 0.502, "g": 0.502, "b": 0.502, "a": 1, "_role": "50% gray tint applied to nameplate base"},
+      "_role": "Nameplate base (876x428 px centered, slight right offset)"
+    },
+    "line": {
+      "anchPos": [0, 0],
+      "sizeDelta": [835, 386],
+      "anchorMin": [0.5, 0.5],
+      "anchorMax": [0.5, 0.5],
+      "pivot": [0.5, 0.5],
+      "spriteName": "baseLineCharacterAppearURUltimate",
+      "spriteHash": "e3b99e18e490a17f.png",
+      "defaultColor": {"r": 1, "g": 1, "b": 1, "a": 1}
+    },
+    "rimuru": {
+      "anchPos": [0, 87],
+      "sizeDelta": [224, 141],
+      "anchorMin": [0.5, 0.5],
+      "anchorMax": [0.5, 0.5],
+      "pivot": [0.5, 0.5],
+      "spriteName": "decoRimuruCharacterAppearRarity6Ultimate",
+      "spriteHash": "6ed9a4289387db42.png",
+      "_role": "Top emblem on nameplate (crown/slime icon per rarity)"
+    },
+    "characterName": {
+      "anchPos": [19, -19],
+      "sizeDelta": [688, 76],
+      "anchorMin": [0.5, 0.5],
+      "anchorMax": [0.5, 0.5],
+      "pivot": [0.5, 0.5],
+      "fontSize": 55,
+      "defaultColor": {"r": 1, "g": 1, "b": 1, "a": 1}
+    },
+    "characterTitle": {
+      "anchPos": [23, -72],
+      "sizeDelta": [670, 50],
+      "anchorMin": [0.5, 0.5],
+      "anchorMax": [0.5, 0.5],
+      "pivot": [0.5, 0.5],
+      "fontSize": 40,
+      "defaultColor": {"r": 1, "g": 1, "b": 1, "a": 1}
+    },
+    "rarity1": {"anchPos": [-99, -125], "sizeDelta": [78, 74], "anchorMin": [0.5, 0.5], "anchorMax": [0.5, 0.5], "pivot": [0.5, 0.5], "spriteName": "decoStarCharacterAppearRarity5"},
+    "rarity2": {"anchPos": [-36, -125], "sizeDelta": [78, 74], "anchorMin": [0.5, 0.5], "anchorMax": [0.5, 0.5], "pivot": [0.5, 0.5], "spriteName": "decoStarCharacterAppearRarity5"},
+    "rarity3": {"anchPos": [26,  -125], "sizeDelta": [78, 74], "anchorMin": [0.5, 0.5], "anchorMax": [0.5, 0.5], "pivot": [0.5, 0.5], "spriteName": "decoStarCharacterAppearRarity5"},
+    "rarity4": {"anchPos": [88,  -125], "sizeDelta": [78, 74], "anchorMin": [0.5, 0.5], "anchorMax": [0.5, 0.5], "pivot": [0.5, 0.5], "spriteName": "decoStarCharacterAppearRarity5"},
+    "rarity5": {"anchPos": [149, -125], "sizeDelta": [78, 74], "anchorMin": [0.5, 0.5], "anchorMax": [0.5, 0.5], "pivot": [0.5, 0.5], "spriteName": "decoStarCharacterAppearRarity5"},
+    "rarity6": {"anchPos": [149, -125], "sizeDelta": [78, 74], "anchorMin": [0.5, 0.5], "anchorMax": [0.5, 0.5], "pivot": [0.5, 0.5], "spriteName": "decoStarCharacterAppearRarity5", "_role": "Same anchor as rarity5 by default; the animator clip displaces it when starCount==6"}
+  },
+  "remaining_gaps": [
+    "Animator clips that drive shadow tint per rarity (only URUltimate baked in prefab) — gradient color sequence in `gradationUltimate`/`gradationSSR`/`gradation` and the per-rarity shadow tint come from the animator state machine on the UILotteryCharacterAppear root.",
+    "Star pop-in stagger/timing comes from each `rarity<N>` GameObject's child Animator (CharaRarityLanguageController on UILotteryThumbReward). Not extracted.",
+    "ef_view_<rarity>/ef_appear ParticleSystem main/colorOverLifetime/emission — Unity ParticleSystem data is not directly renderable in browser; would require a per-rarity WebGL particle emitter.",
+    "AspectRatioFitter mode on charaModel.d2Container — controls how the character image scales relative to d2's stretched bounds. Default mode/values not extracted."
+  ]
+}

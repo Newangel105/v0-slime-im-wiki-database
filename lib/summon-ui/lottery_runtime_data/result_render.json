@@ -1,0 +1,48 @@
+{
+  "_meta": "UILotteryResult layout data extracted from prefab. resultList GridLayoutGroup MonoBehaviour parsed from raw serialized bytes (Unity GridLayoutGroup field order: padding[4 ints] + childAlignment + startCorner + startAxis + cellSize[Vec2] + spacing[Vec2] + constraint + constraintCount).",
+  "canvas": [1080, 1060],
+  "modal_root": "modalContainer",
+  "modal_front": "modalFront",
+  "grid": {
+    "_source": "GridLayoutGroup MonoBehaviour on `resultList` GO (pid 5956564375158510425), raw bytes parsed at offsets 60-83",
+    "cellSize": [160, 160],
+    "spacing": [96, 50],
+    "constraint": "FixedColumnCount",
+    "constraintCount": 5,
+    "padding": [0, 0, 0, 0],
+    "childAlignment": "UpperLeft",
+    "startCorner": "UpperLeft",
+    "startAxis": "Horizontal"
+  },
+  "resultList_rect": {
+    "_source": "resultList RectTransform from prefab_out/UILotteryResult.json",
+    "anchoredPosition": [-590, 271],
+    "sizeDelta": [1200, 400],
+    "anchorMin": [0.5, 0.5],
+    "anchorMax": [0.5, 0.5],
+    "pivot": [0, 1],
+    "_derived_css_pct": {
+      "_note": "Computed against canvas 1080x1060. pivot=[0,1] so topLeft = canvasCenter + anchPos. canvasCenter=(540,530). topLeftUnity=(540-590, 530+271)=(-50,801). CSS y-down: top=1060-801=259.",
+      "leftPct": -4.63,
+      "topPct": 24.43,
+      "widthPct": 111.11,
+      "heightPct": 37.74
+    }
+  },
+  "card_template": "resultTemplate (XIUILotteryResult MonoBehaviour). Each cell renders a thumbReward (XIUIThumbReward), an icNew badge, a badgeClassUp, and one of the per-rarity inEffectsRarity<N>/inShortEffectsRarity<N> sub-trees.",
+  "per_rarity_in_effects": {
+    "_3": "inEffectsRarity3 (sprite cardGlow / hash 5f30cfecfee854ef.png)",
+    "_4": "inEffectsRarity4 (sprite cardGlow / hash 5f30cfecfee854ef.png)",
+    "_5": "inEffectsRarity5 (sprite cardGlow / hash 5f30cfecfee854ef.png)",
+    "_5_6_Ultimate": "inEffectsRarity5-6Ultimate (sprite cardGlowUltimate / hash e4d8c08d31e57835.png) + sonic + particleKirakira + shineAuraRing",
+    "_5_6_UltimatePlus": "inEffectsRarity5-6UltimatePlus (sprite cardGlowUltimatePlus / hash 2af75184c34b968f.png) + same particles",
+    "_6_Epic": "inEffectsRarity6Epic (sprite cardGlowEpic / hash 2c7b81397a15314a.png) + particleKirakiraStar + shineAuraSwirl"
+  },
+  "remaining_gaps": [
+    "resultList RectTransform anchors (need to confirm position in modalFront).",
+    "resultTemplate.cardContainer thumbReward sub-tree positions (use existing flat lottery_card.json spec).",
+    "Per-rarity in-effects' ParticleSystem main module (Unity ParticleSystem — not browser-renderable).",
+    "icNew badge sprite + position (need extraction from prefab GO `icNew`).",
+    "Decoration animator clips: topLight/underLight rotation timings."
+  ]
+}

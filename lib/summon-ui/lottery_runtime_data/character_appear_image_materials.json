@@ -1,0 +1,615 @@
+{
+  "_meta": "Per-component blend mode + material data for every Image / RawImage in UILotteryCharacterAppear. Resolves m_Material → m_SavedProperties.m_Floats._SrcBlend/_DstBlend → standard blend-mode label. PrefabTree applies the actual blend mode from data here instead of guessing from node names.",
+  "components": [
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/flareImage_2",
+      "component": "RawImage",
+      "material_pid": -8930098846370315038,
+      "material_name": "rarityStarFlare_SSRUltimate",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/flareImage_2",
+      "component": "RawImage",
+      "material_pid": -8930098846370315038,
+      "material_name": "rarityStarFlare_SSRUltimate",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1/starLight",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/charaModel/d3",
+      "component": "RawImage",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1/effect",
+      "component": "RawImage",
+      "material_pid": -1022676183670165560,
+      "material_name": "rarityStarLight_SSRUltimate",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 6.0,
+      "blend_mode": "alpha_minus_color"
+    },
+    {
+      "path": "UILotteryCharacterAppear/touchDisablePanel",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/flareImage_2",
+      "component": "RawImage",
+      "material_pid": -8930098846370315038,
+      "material_name": "rarityStarFlare_SSRUltimate",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/base",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/flareImage_2",
+      "component": "RawImage",
+      "material_pid": -8930098846370315038,
+      "material_name": "rarityStarFlare_SSRUltimate",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/effect",
+      "component": "RawImage",
+      "material_pid": 2611202440352155250,
+      "material_name": "rarityStarEffect",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/flareImage_2",
+      "component": "RawImage",
+      "material_pid": -8930098846370315038,
+      "material_name": "rarityStarFlare_SSRUltimate",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/flareImage_2",
+      "component": "RawImage",
+      "material_pid": -8930098846370315038,
+      "material_name": "rarityStarFlare_SSRUltimate",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4/starLight",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/letterBox/left",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/letterBox/right",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6/starLight",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/noise",
+      "component": "Image",
+      "material_pid": -8890295300014701025,
+      "material_name": "NoiseLottery",
+      "shader_name": "UI/NoiseTvScroll",
+      "src_blend": 5.0,
+      "dst_blend": 10.0,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/effect",
+      "component": "RawImage",
+      "material_pid": 2611202440352155250,
+      "material_name": "rarityStarEffect",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/addURUltimateEffectContainer/efOutsideLine",
+      "component": "RawImage",
+      "material_pid": -2251600010923571398,
+      "material_name": "outsideLine",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/btnScreen",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/effect",
+      "component": "RawImage",
+      "material_pid": 2611202440352155250,
+      "material_name": "rarityStarEffect",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/base/efUltimate",
+      "component": "RawImage",
+      "material_pid": -119243317633035994,
+      "material_name": "baseEffectUltimate",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/letterBox/bottom",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/flareImage",
+      "component": "RawImage",
+      "material_pid": -8930098846370315038,
+      "material_name": "rarityStarFlare_SSRUltimate",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/bgPattern",
+      "component": "RawImage",
+      "material_pid": -1548345823850089541,
+      "material_name": "bgPattern",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 10.0,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/btnSkip/touchArea",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/flareImage",
+      "component": "RawImage",
+      "material_pid": -8930098846370315038,
+      "material_name": "rarityStarFlare_SSRUltimate",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/base/rimuru",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3/starLight",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/btnSkip/ic",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/charaModel/d2Container/d2",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6/effect",
+      "component": "RawImage",
+      "material_pid": -1022676183670165560,
+      "material_name": "rarityStarLight_SSRUltimate",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 6.0,
+      "blend_mode": "alpha_minus_color"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/flareImage",
+      "component": "RawImage",
+      "material_pid": -8930098846370315038,
+      "material_name": "rarityStarFlare_SSRUltimate",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3/effect",
+      "component": "RawImage",
+      "material_pid": -1022676183670165560,
+      "material_name": "rarityStarLight_SSRUltimate",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 6.0,
+      "blend_mode": "alpha_minus_color"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/base/line",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5/effect",
+      "component": "RawImage",
+      "material_pid": -1022676183670165560,
+      "material_name": "rarityStarLight_SSRUltimate",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 6.0,
+      "blend_mode": "alpha_minus_color"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5/starLight",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/shadow",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/effect",
+      "component": "RawImage",
+      "material_pid": 2611202440352155250,
+      "material_name": "rarityStarEffect",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/base/gradation",
+      "component": "RawImage",
+      "material_pid": 8034865867730475027,
+      "material_name": "baseMask",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 10.0,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/flareImage",
+      "component": "RawImage",
+      "material_pid": -8930098846370315038,
+      "material_name": "rarityStarFlare_SSRUltimate",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/bgBlack",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/addURUltimateEffectContainer/efRaphaelMagicCircle",
+      "component": "RawImage",
+      "material_pid": -6558178204026702765,
+      "material_name": "raphaelMagicCircle",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2/starLight",
+      "component": "Image",
+      "material_pid": 5464461154765861609,
+      "material_name": "Addition",
+      "shader_name": "UI/Addition",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/frameURUltimate",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3",
+      "component": "Image",
+      "material_pid": -7479084630982911718,
+      "material_name": "FillColor",
+      "shader_name": "UI/FillColor",
+      "src_blend": 1.0,
+      "dst_blend": 10.0,
+      "blend_mode": "premultiplied"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/bgPatternAdd",
+      "component": "RawImage",
+      "material_pid": -4443755122938299591,
+      "material_name": "bgPatternAdd",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/flareImage",
+      "component": "RawImage",
+      "material_pid": -8930098846370315038,
+      "material_name": "rarityStarFlare_SSRUltimate",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4/effect",
+      "component": "RawImage",
+      "material_pid": -6955547848551600805,
+      "material_name": "rarityStarLight_SSRUltimate2",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 6.0,
+      "blend_mode": "alpha_minus_color"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/effect",
+      "component": "RawImage",
+      "material_pid": 2611202440352155250,
+      "material_name": "rarityStarEffect",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/flareImage",
+      "component": "RawImage",
+      "material_pid": -8930098846370315038,
+      "material_name": "rarityStarFlare_SSRUltimate",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/letterBox/top",
+      "component": "Image",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2/effect",
+      "component": "RawImage",
+      "material_pid": -6955547848551600805,
+      "material_name": "rarityStarLight_SSRUltimate2",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 6.0,
+      "blend_mode": "alpha_minus_color"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/effect",
+      "component": "RawImage",
+      "material_pid": 2611202440352155250,
+      "material_name": "rarityStarEffect",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 1.0,
+      "blend_mode": "additive_alpha_weighted"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/base/pattern",
+      "component": "RawImage",
+      "material_pid": 8034865867730475027,
+      "material_name": "baseMask",
+      "shader_name": "UI-VFXDefault",
+      "src_blend": 5.0,
+      "dst_blend": 10.0,
+      "blend_mode": "alpha"
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/renderTexture",
+      "component": "RawImage",
+      "material_pid": 0,
+      "material_name": null,
+      "shader_name": "(default canvas material)",
+      "src_blend": 5,
+      "dst_blend": 10,
+      "blend_mode": "alpha"
+    }
+  ]
+}

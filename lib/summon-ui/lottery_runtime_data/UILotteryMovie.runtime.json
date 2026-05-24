@@ -1,0 +1,345 @@
+{
+ "prefab": "UILotteryMovie",
+ "_meta": "extracted by extract_lottery_runtime_data.py",
+ "simpleTweenTMPSage": [],
+ "uiLotteryTextAnimation": [],
+ "textMeshes": [
+  {
+   "go": "label",
+   "text": "<mspace=1.15em>画面をタップ",
+   "fontSize": 70.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "label",
+   "text": "SKIP",
+   "fontSize": 38.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  }
+ ],
+ "particleSystems": [],
+ "rectTransforms": {
+  "criMovie": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     2560.0,
+     1440.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "btnSkip": [
+   {
+    "anchoredPosition": [
+     -206.0,
+     -124.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     1.0,
+     1.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "label": [
+   {
+    "anchoredPosition": [
+     -42.0,
+     0.0
+    ],
+    "sizeDelta": [
+     380.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     1.0,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     52.0,
+     0.0
+    ],
+    "sizeDelta": [
+     710.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "touchArea": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     460.0,
+     128.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "touchDisablePanel": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "btnScreen": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ic": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     71.0,
+     48.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "labelTap": [
+   {
+    "anchoredPosition": [
+     0.0,
+     102.0
+    ],
+    "sizeDelta": [
+     826.0,
+     102.0
+    ],
+    "anchorMin": [
+     1.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     0.0
+    ],
+    "pivot": [
+     1.0,
+     0.5
+    ]
+   }
+  ],
+  "background": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "screen": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "UILotteryMovie": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "container": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ]
+ }
+}

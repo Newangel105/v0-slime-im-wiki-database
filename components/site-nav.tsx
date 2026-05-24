@@ -17,6 +17,7 @@ const toolLinks = [
   { href: "/team-builder", label: "Team Builder" },
   { href: "/preset-viewer", label: "Preset Viewer" },
   { href: "/skill-viewer", label: "Skill Viewer" },
+  { href: "/summon", label: "Summon Sim" },
   { href: "/gauge-builder", label: "Trait Chart" },
   { href: "/orb-converter", label: "Orb Converters" },
   { href: "/battle-sim", label: "Battle Sim" },
@@ -51,7 +52,7 @@ export function SiteNav() {
   const isToolActive = toolLinks.some((l) => pathname === l.href || pathname.startsWith(l.href + "/"))
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-white/10 bg-[#222327]/95 backdrop-blur-xl">
+    <nav className="sticky top-0 z-[100] border-b border-white/10 bg-[#222327]/95 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-8 px-4 py-2.5 sm:px-6">
         <div className="flex items-center gap-6">
           <Link href="/" className="group flex items-center gap-3">

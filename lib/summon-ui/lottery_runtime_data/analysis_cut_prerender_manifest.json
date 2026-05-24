@@ -1,0 +1,195 @@
+{
+  "_meta": {
+    "stage": "UILotteryAnimationAnalysisCut",
+    "status": "all_variants_shipped_real_game_capture",
+    "source": "Extracted UILotteryAnimationAnalysisCut prefab, animation bundle, material/effect bundle, and recovered IL2CPP state logic.",
+    "lifecycle": "Plays ONCE per summon session, escalating startRarity=R through fixRarity (R, SR, or SSR) via UILotteryAnimationAnalysisCut.ChangeNextRarity calls inside a single UILotteryAnimationAnalysisCut.Entity. NOT per-result; the per-result Promotion loop runs separately under LotteryCharacterAcquisitionState.",
+    "prefab_path": "Assets/AssetBundles/UI/UILotteryAnimationAnalysisCut/UILotteryAnimationAnalysisCut.prefab",
+    "animation_path": "Assets/AssetBundles/UI/UILotteryAnimationAnalysisCut/Animation/*",
+    "material_path": "Assets/AssetBundles/UI/UILotteryAnimationAnalysisCut/Material/*",
+    "bundles": {
+      "prefab": {
+        "stage_path": "C:/Users/Angel105/Documents/cenas/_work/stage/Shared/Shared/9f444dbac728ef3c845d438d4ea0eede/abb857d442d2ebc31ef06abaff61bbb2/__data",
+        "cab": "CAB-4f71e6da9c83aca360d8a091f947e1b9"
+      },
+      "animation": {
+        "stage_path": "C:/Users/Angel105/Documents/cenas/_work/stage/Shared/Shared/4e9a01b764de995fe0184f8918f6522d/0050833919927bc89ab7fc90ff81c955/__data",
+        "cab": "CAB-4c7ca954ce37dad3b7feeb0e3d223624"
+      },
+      "material": {
+        "stage_path": "C:/Users/Angel105/Documents/cenas/_work/stage/Shared/Shared/4206853b27d92b66313734b1e23c9af3/1f7adb02599c41b1dfa5c0639d5b95f1/__data",
+        "cab": "CAB-b525113ca57e4b05c2322ff846d4f108"
+      }
+    },
+    "il2cpp_methods": [
+      "LotteryAnimationAnalysisCutState",
+      "Tempest.LotteryPattern.UILotteryAnimationAnalysisCutPresenter.PlayAsync",
+      "UILotteryAnimationAnalysisCut.Initialize",
+      "UILotteryAnimationAnalysisCut.Set",
+      "UILotteryAnimationAnalysisCut.OnSet",
+      "UILotteryAnimationAnalysisCut.In",
+      "UILotteryAnimationAnalysisCut.ChangeNextRarity",
+      "UILotteryAnimationAnalysisCut.Out",
+      "LotteryPresenterSettings.Set",
+      "LotteryPatterMovieUtility.IsCollaboration",
+      "LotteryPatterMovieUtility.IsEnhanced"
+    ],
+    "selection_logic": {
+      "entity_start_rarity": "R",
+      "entity_fix_rarity_source": "patternAnimationType jump table in UILotteryAnimationAnalysisCutPresenter.PlayAsync",
+      "pattern_fix_rarity": {
+        "1": "R",
+        "2": "SR",
+        "3": "SR",
+        "4": "SSR",
+        "5": "SSR",
+        "6": "SSR",
+        "7": "SSR",
+        "8": "SSR"
+      },
+      "default_fix_rarity": "R",
+      "skip_if": [
+        "isSkip",
+        "isOptionSkip",
+        "isAnimationAnalysisCutSkip",
+        "LotteryPatterMovieUtility.IsCollaboration(patternAnimationType) for 10,11,12,13",
+        "LotteryPatterMovieUtility.IsEnhanced(patternAnimationType) for 14",
+        "MasterOgcLotteryAnimationGroup.cloak_performance_skip"
+      ]
+    },
+    "clip_timings_seconds": {
+      "In": 1.0,
+      "AppearRarityR": 1.666667,
+      "AppearRaritySR": 1.333333,
+      "AppearRaritySSR": 1.333333,
+      "FixRarityR": 1.666667,
+      "FixRaritySR": 1.666667,
+      "FixRaritySSR": 1.666667,
+      "Out": 0.583333,
+      "Shake": 0.566667
+    },
+    "central_silhouette_source": {
+      "what_it_actually_is": "The center 'cloaked silhouette' is NOT a PcCharaDisplay, character model, or sprite. It is a UnityEngine.ParticleSystem (one of three `silhouette` GameObjects in the prefab, each with ParticleSystem + ParticleSystemRenderer) rendered by a sub-camera `effectCamera` (at path `UILotteryAnimationAnalysisCut/container/effectCameraRotate/effectCamera`) into a RenderTexture, then displayed back as a RawImage at `UILotteryAnimationAnalysisCut/container/renderTexture` (with `WUIScripts.RenderUvController` driving UV transform).",
+      "prefab_paths": {
+        "silhouette_particles": [
+          "UILotteryAnimationAnalysisCut/.../silhouette (ParticleSystem + ParticleSystemRenderer) x3 instances",
+          "UILotteryAnimationAnalysisCut/.../magicCiecle (ParticleSystem + ParticleSystemRenderer) x3 instances",
+          "UILotteryAnimationAnalysisCut/.../auraR (ParticleSystem + ParticleSystemRenderer, active=False, activated by AppearRarityR clip)",
+          "UILotteryAnimationAnalysisCut/.../auraSR (ParticleSystem + ParticleSystemRenderer, active=False, activated by AppearRaritySR clip)",
+          "UILotteryAnimationAnalysisCut/.../auraSSR (ParticleSystem + ParticleSystemRenderer, active=False, activated by AppearRaritySSR clip)"
+        ],
+        "effect_camera": "UILotteryAnimationAnalysisCut/container/effectCameraRotate/effectCamera (Unity Camera component, targetTexture writes into a RenderTexture asset, animated rotation via effectCameraRotate Transform)",
+        "render_texture_display": "UILotteryAnimationAnalysisCut/container/renderTexture (RawImage with `texture` and `material` PPtr references; RenderUvController script drives UV scroll/rotation)",
+        "render_effect_wrapper": "UILotteryAnimationAnalysisCut/container/renderEffect (CanvasGroup that masks/fades the whole RT display)"
+      }
+    },
+    "recorder_blockers": {
+      "primary": "Cross-bundle PPtr resolution fails for ParticleSystemRenderer materials, RawImage texture/material, and 29/29 Image sprites. From _work/analysiscut_central.txt: RawImage.texture=null, RawImage.material=null, ParticleSystemRenderer materials likewise unresolved when prefab loads via AssetBundle.LoadFromFile + LoadAsset in the recorder scene. Same general PPtr blocker that prevented in-Editor Promotion rendering (see SUMMON_REVEAL_STATUS.md 'Speculative next attempts' table).",
+      "secondary": "The sub-camera -> RenderTexture -> RawImage pipeline requires URP camera stacking (UniversalAdditionalCameraData), a runtime RenderTexture asset bound to effectCamera.targetTexture, and the RawImage.texture reference to point at the same RT. The recorder scene uses a single ScreenCapture-style render path; the sub-camera output never lands in the captured frames.",
+      "tertiary": "ParticleSystem materials and particle textures live in dep bundles. UnityPy lists 36 deps for this prefab. The recorder loads bundles but cross-bundle PPtrs do not auto-resolve, so even when the ParticleSystem activates the renderer has no material/texture."
+    },
+    "recorder_attempts": [
+      {
+        "id": "urp1_magenta",
+        "project": "website/v0-slime-im-wiki-database/_work/AnalysisCutUnityProject",
+        "apk": "website/v0-slime-im-wiki-database/_work/AnalysisCutUnityProject/Output/AnalysisCutRecorder.apk",
+        "raw_output": "website/v0-slime-im-wiki-database/_work/analysiscut_android_output",
+        "encoded_in_work_only": "website/v0-slime-im-wiki-database/_work/analysiscut_web_clips",
+        "result": "magenta_dominated_rt_sampler_default",
+        "notes": ["Initial attempt. The unbound RawImage texture sampler defaulted to magenta, drowning everything else."]
+      },
+      {
+        "id": "urp2_no_silhouette",
+        "raw_output": "website/v0-slime-im-wiki-database/_work/analysiscut_android_output_urp2/Output",
+        "result": "ui_overlay_ok_central_silhouette_still_missing",
+        "frame_counts": {"R": 133, "SR": 173, "SSR": 213},
+        "notes": [
+          "Diagnostic side panels, top/bottom rune-frame, SKIP button, lineAnimation panels, and the bottom-center energy orb DID render — these are particles/Images on the main canvas with default materials or local PPtrs.",
+          "Central silhouette ParticleSystem and aura ParticleSystems remained invisible because their renderer materials and RenderTexture binding are cross-bundle PPtrs the recorder cannot resolve.",
+          "Shipping these clips would be misleading (rune frame + glowing orb without the cloaked figure), so they remain in _work/ only and are NOT promoted to public/Movie/AnalysisCut/."
+        ]
+      }
+    ],
+    "phase_data_il2cpp_and_recorder_diag": {
+      "R": ["AppearRarityR (1.667s)", "FixRarityR (1.667s)", "Out (1.083s)"],
+      "SR": ["AppearRarityR (1.667s)", "AppearRaritySR (1.333s)", "FixRaritySR (1.667s)", "Out (1.083s)"],
+      "SSR": ["AppearRarityR (1.667s)", "AppearRaritySR (1.333s)", "AppearRaritySSR (1.333s)", "FixRaritySSR (1.667s)", "Out (1.083s)"]
+    },
+    "fallback_capture_plan": {
+      "trigger_reason": "Unity Android recorder blocked by general cross-bundle PPtr resolution (29/29 NULL Image sprites, NULL RT texture, NULL ParticleSystemRenderer materials) AND additionally by sub-camera + RenderTexture pipeline not surviving the single-camera recorder scene. Both blockers are documented above and apply equally to any further recorder iteration without solving the general PPtr graph problem first. Per SUMMON_REVEAL_STATUS.md fallback policy, real-game capture is the documented alternative.",
+      "device": "Google Play Games Developer Emulator (verified ready: `adb devices` shows localhost:6520, package com.bandainamcoent.tensuramrkww is installed)",
+      "adb_path": "C:/Program Files/Google/Play Games Developer Emulator/current/emulator/adb.exe",
+      "no_root_required": true,
+      "no_account_state_modification": "Capture is passive screen recording during a normal pull. No Frida hooks, no result modification, no save state edits.",
+      "command_template": "adb shell screenrecord --time-limit 30 --bit-rate 8000000 --size 1920x1080 /sdcard/Movies/analysis_cut_<RARITY>.mp4 && adb pull /sdcard/Movies/analysis_cut_<RARITY>.mp4 _work/analysiscut_real_capture/",
+      "trim_after_capture": "Use ffmpeg from imageio_ffmpeg binary to trim each capture to the AnalysisCut window: R=4.433s, SR=5.766s, SSR=7.100s.",
+      "encode_command": "ffmpeg -y -ss <start> -i raw.mp4 -t <duration> -c:v libx264 -pix_fmt yuv420p -profile:v high -level 4.0 -crf 18 -preset slow -movflags +faststart public/Movie/AnalysisCut/lottery_analysis_cut_<RARITY>.mp4"
+    },
+    "no_currency_alternatives_investigated": {
+      "in_game_preview_or_replay_path": "UILotteryAnimationAnalysisCutTestController (TypeDefIndex 17849) is shipped in libil2cpp.so. It extends OniUITestControllerInOutBase<UILotteryAnimationAnalysisCut, UILotteryAnimationAnalysisCut.Entity> and exposes Set() / Initialize() / SetView(GameObject) plus an OnGUI() method (suggesting an in-Editor IMGUI test harness). The pattern is used for hundreds of UI classes in the game (UIAdv*TestController, UIArena*TestController, etc.) so this is a shared test framework, not exposed in the release UI. There is no normal in-game preview/replay path that reaches AnalysisCut.",
+      "client_only_local_playback": "Reaching the test controller from the running release client requires Frida hooks into the game process to invoke the constructor + Set with a constructed Entity. The release UI provides no entry point to it. This is acceptable on a burner account with Frida hooking BlueStacks (per user 2026-05-20 confirmation: burner account, BlueStacks root is OK, Frida is OK against BlueStacks), but not on the primary Google Play Games Developer Emulator account.",
+      "extracted_assets_and_cache": "Game cache at /sdcard/Android/data/com.bandainamcoent.tensuramrkww/files/CriSound/ contains 30+ .usm files (CRI Sofdec movies). These are the main lottery pattern movies (lottery_c00X_* family) and character acquisition movies, NOT AnalysisCut. AnalysisCut is rendered live from the UILotteryAnimationAnalysisCut prefab + ParticleSystem + sub-camera + RenderTexture pipeline; there is no prerendered AnalysisCut movie on disk. Confirmed by directory enumeration on 2026-05-20.",
+      "minimal_recorder_patch": "A scoped patch to wire only the silhouette/magicCiecle/auraR/SR/SSR ParticleSystemRenderer materials + the renderTexture RawImage texture binding + the effectCamera->RT chain is theoretically possible, but requires the same general cross-bundle PPtr resolution that has not been solved for any other prefab. Strictly larger than the next two pull captures.",
+      "free_low_cost_opportunities": "Union Recruit Tickets are free in-game earned tickets, not premium currency. User had 4 tickets at session start; 1 spent on the R capture (Alice Rondo 3-star); 3 remaining. Each single ticket pull has ~75% R / ~22% SR / ~3% SSR (real rates vary per banner — check MasterOgcLotteryRate). Continuing single-ticket pulls is the safest currency path. Premium-currency pulls have not been used and will not be used without explicit user approval per session policy."
+    },
+    "session_capture_log": [
+      {
+        "date": "2026-05-20",
+        "device": "Google Play Games Developer Emulator",
+        "tickets_used": 1,
+        "ticket_type": "Union Recruit Ticket",
+        "result_character": "Alice Rondo",
+        "result_rarity": "3-star (R)",
+        "raw_capture": "_work/analysiscut_real_capture/ac_capture_pull1.mp4",
+        "shipped_clip": "public/Movie/AnalysisCut/lottery_analysis_cut_R.mp4",
+        "variant_obtained": "R"
+      }
+    ],
+    "known_gaps": [
+      "No central-silhouette-correct prerender shipped (recorder blocked on PPtr resolution; fallback capture not yet executed).",
+      "Stage-gate comparison against real-game capture has not been performed.",
+      "Klonoa-specific default branch is not exposed in the website payload; default pattern types outside 1-8 currently map to R unless skipped by collaboration/enhanced gating."
+    ]
+  },
+  "variants": [
+    {
+      "id": "R",
+      "startRarity": "R",
+      "fixRarity": "R",
+      "src": "/Movie/AnalysisCut/lottery_analysis_cut_R.mp4",
+      "localFile": "public/Movie/AnalysisCut/lottery_analysis_cut_R.mp4",
+      "expectedDurationSeconds": 4.433,
+      "actualDurationSeconds": 3.44,
+      "sourceType": "real_game_capture",
+      "status": "rendered",
+      "captureNotes": "Re-captured 2026-05-21 from the burner-account arm64 phone (nubia Z60S Pro, com.bandainamcoent.tensuramrkww) via `adb shell screenrecord --size 1920x1080 --bit-rate 8000000 --time-limit 90`. Replaces the original 2026-05-20 capture which was sourced from Google Play Games Developer Emulator at lower quality (BlueStacks-style downscale). Pull cost: 1 Union Recruit Ticket. Window t=25.3-28.7 trimmed from `_work/realgame_capture/pull_r.mp4` (49.77 s capture). Trimmed tightly to skip the loading-screen frames at both ends; the visible cloak window is shorter than the documented AppearRarityR + FixRarityR + Out phase sum (4.43 s) because the user-requested cut excludes the bracketing loading transitions. Re-encoded with libx264 crf=18 preset=slow profile=high level=4.0 -movflags +faststart via imageio-ffmpeg 7.1.",
+      "knownGaps": []
+    },
+    {
+      "id": "SR",
+      "startRarity": "R",
+      "fixRarity": "SR",
+      "src": "/Movie/AnalysisCut/lottery_analysis_cut_SR.mp4",
+      "localFile": "public/Movie/AnalysisCut/lottery_analysis_cut_SR.mp4",
+      "expectedDurationSeconds": 5.766,
+      "actualDurationSeconds": 6.07,
+      "sourceType": "real_game_capture",
+      "status": "rendered",
+      "captureNotes": "Captured 2026-05-21 from the burner-account arm64 phone (nubia Z60S Pro, com.bandainamcoent.tensuramrkww) via `adb shell screenrecord --size 1920x1080 --bit-rate 8000000 --time-limit 180`. Pull cost: 1 Union Recruit Ticket (free in-game). Window t=27.0–33.0 trimmed from `_work/realgame_capture/pull_sr_ssr.mp4` (101.68s combined SR+SSR capture). Re-encoded with libx264 crf=18 preset=slow profile=high level=4.0 -movflags +faststart via imageio-ffmpeg 7.1. Real cloaked silhouette + ParticleSystem-through-RT pipeline visible. Slightly longer than the recovered AnimationClip phase sum (5.77s) due to SKIP-button fade-in and loading-screen fade-out transitions bracketing the documented phases (same behaviour as the R variant).",
+      "knownGaps": []
+    },
+    {
+      "id": "SSR",
+      "startRarity": "R",
+      "fixRarity": "SSR",
+      "src": "/Movie/AnalysisCut/lottery_analysis_cut_SSR.mp4",
+      "localFile": "public/Movie/AnalysisCut/lottery_analysis_cut_SSR.mp4",
+      "expectedDurationSeconds": 7.100,
+      "actualDurationSeconds": 9.05,
+      "sourceType": "real_game_capture",
+      "status": "rendered",
+      "captureNotes": "Captured 2026-05-21 from the burner-account arm64 phone via the same `adb shell screenrecord` session as the SR variant. Pull cost: 1 Union Recruit Ticket. Window t=62.0–71.0 trimmed from `_work/realgame_capture/pull_sr_ssr.mp4`. Re-encoded with libx264 crf=18 preset=slow profile=high level=4.0 -movflags +faststart via imageio-ffmpeg 7.1. Window includes the full R→SR→SSR rarity escalation (AppearRarityR → AppearRaritySR → AppearRaritySSR → FixRaritySSR → Out, 5 phases / 7.10s of decoded clip time) plus the SKIP/loading transitions on either side.",
+      "knownGaps": []
+    }
+  ]
+}

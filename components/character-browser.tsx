@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { RangeSlider } from "@/components/ui/range-slider"
 import {
   skillMatchesEffectFilters,
   getSkillEffectFilterGroups,
@@ -30,12 +31,145 @@ import {
   getAllWikiCharacters,
 } from "@/lib/pc-wiki"
 
-type SortKey = "name" | "release_date" | "rarity" | "attack" | "hp" | "defense" | "existence"
+type SortKey = "name" | "release_date" | "rarity" | "attack" | "hp" | "defense" | "existence" | "skill_cost"
+
+// Skill cost (SP) filter: sliders go from 0 to 85, where 85 acts as a
+// "+ ceiling" (matches any cost >= 85). Real data ranges 0..100, with a
+// cluster of high-cost skills (86..100); 85+ surfaces them as one bucket.
+const SKILL_COST_MIN = 0
+const SKILL_COST_MAX = 85
+
+function skillCostInRange(cost: number | null | undefined, min: number, max: number) {
+  if (cost == null) return false
+  if (max >= SKILL_COST_MAX) return cost >= min
+  return cost >= min && cost <= max
+}
+type FilterMode = "AND" | "OR"
+type CharacterViewMode = "cards" | "compact"
 
 type FilterOption = {
   label: string
   value: string
   icon?: string
+}
+
+type CharacterBrowserStoredState = {
+  filtersOpen?: boolean
+  searchText?: string
+  selectedAttackerElements?: string[]
+  selectedDefenderElements?: string[]
+  selectedAttackTypes?: string[]
+  selectedTactics?: string[]
+  selectedForces?: string[]
+  selectedSkillFilters?: string[]
+  selectedTraitNames?: string[]
+  selectedValorTraitNames?: string[]
+  selectedFacilities?: string[]
+  selectedWeapons?: string[]
+  selectedRoles?: string[]
+  selectedUltimateTypes?: string[]
+  selectedRarities?: string[]
+  sortKey?: SortKey
+  sortAsc?: boolean
+  showStats?: boolean
+  viewMode?: CharacterViewMode
+  filterMode?: FilterMode
+  searchSkills?: boolean
+  skillCostMin?: number
+  skillCostMax?: number
+}
+
+const CHARACTER_BROWSER_STORAGE_KEY = "slimeWiki.characterBrowserState.v1"
+const CHARACTER_BROWSER_QUERY_KEYS = [
+  "tag",
+  "attacker",
+  "defender",
+  "type",
+  "tactics",
+  "weapon",
+  "role",
+  "ulti",
+  "rarity",
+  "force",
+  "facility",
+  "skill",
+  "trait",
+  "valor",
+  "sort",
+  "asc",
+  "mode",
+  "skills",
+  "cmin",
+  "cmax",
+]
+const SORT_KEYS = new Set<SortKey>(["name", "release_date", "rarity", "attack", "hp", "defense", "existence", "skill_cost"])
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value)
+}
+
+function readStringList(value: unknown): string[] {
+  if (!Array.isArray(value)) return []
+  return value.filter((entry): entry is string => typeof entry === "string" && entry.length > 0)
+}
+
+function isSortKey(value: unknown): value is SortKey {
+  return typeof value === "string" && SORT_KEYS.has(value as SortKey)
+}
+
+function isFilterMode(value: unknown): value is FilterMode {
+  return value === "AND" || value === "OR"
+}
+
+function isCharacterViewMode(value: unknown): value is CharacterViewMode {
+  return value === "cards" || value === "compact"
+}
+
+function readCharacterBrowserState(): CharacterBrowserStoredState | null {
+  if (typeof window === "undefined") return null
+
+  try {
+    const raw = window.localStorage.getItem(CHARACTER_BROWSER_STORAGE_KEY)
+    if (!raw) return null
+    const parsed: unknown = JSON.parse(raw)
+    if (!isRecord(parsed)) return null
+
+    return {
+      filtersOpen: typeof parsed.filtersOpen === "boolean" ? parsed.filtersOpen : undefined,
+      searchText: typeof parsed.searchText === "string" ? parsed.searchText : undefined,
+      selectedAttackerElements: readStringList(parsed.selectedAttackerElements),
+      selectedDefenderElements: readStringList(parsed.selectedDefenderElements),
+      selectedAttackTypes: readStringList(parsed.selectedAttackTypes),
+      selectedTactics: readStringList(parsed.selectedTactics),
+      selectedForces: readStringList(parsed.selectedForces),
+      selectedSkillFilters: readStringList(parsed.selectedSkillFilters),
+      selectedTraitNames: readStringList(parsed.selectedTraitNames),
+      selectedValorTraitNames: readStringList(parsed.selectedValorTraitNames),
+      selectedFacilities: readStringList(parsed.selectedFacilities),
+      selectedWeapons: readStringList(parsed.selectedWeapons),
+      selectedRoles: readStringList(parsed.selectedRoles),
+      selectedUltimateTypes: readStringList(parsed.selectedUltimateTypes),
+      selectedRarities: readStringList(parsed.selectedRarities),
+      sortKey: isSortKey(parsed.sortKey) ? parsed.sortKey : undefined,
+      sortAsc: typeof parsed.sortAsc === "boolean" ? parsed.sortAsc : undefined,
+      showStats: typeof parsed.showStats === "boolean" ? parsed.showStats : undefined,
+      viewMode: isCharacterViewMode(parsed.viewMode) ? parsed.viewMode : undefined,
+      filterMode: isFilterMode(parsed.filterMode) ? parsed.filterMode : undefined,
+      searchSkills: typeof parsed.searchSkills === "boolean" ? parsed.searchSkills : undefined,
+      skillCostMin: typeof parsed.skillCostMin === "number" ? parsed.skillCostMin : undefined,
+      skillCostMax: typeof parsed.skillCostMax === "number" ? parsed.skillCostMax : undefined,
+    }
+  } catch {
+    return null
+  }
+}
+
+function getQueryList(params: URLSearchParams, key: string): string[] {
+  return params.get(key)?.split(",").map((entry) => entry.trim()).filter(Boolean) ?? []
+}
+
+function hasCharacterBrowserQueryState(params: URLSearchParams) {
+  return CHARACTER_BROWSER_QUERY_KEYS.some((key) => params.has(key))
 }
 
 const STAR_ASSETS: Record<number, string> = {
@@ -1123,70 +1257,84 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   const [sortKey, setSortKey] = useState<SortKey>("release_date")
   const [sortAsc, setSortAsc] = useState(false)
   const [showStats, setShowStats] = useState(true)
-  const [viewMode, setViewMode] = useState<"cards" | "compact">("compact")
-  const [filtersOpen, setFiltersOpen] = useState(true)
-  useEffect(() => {
-    sessionStorage.removeItem("characterBrowserViewMode")
-    if (sessionStorage.getItem("characterBrowserFiltersOpen") === "1") setFiltersOpen(true)
-  }, [])
-  const [filterMode, setFilterMode] = useState<"AND" | "OR">("AND")
+  const [viewMode, setViewMode] = useState<CharacterViewMode>("compact")
+  const [filtersOpen, setFiltersOpen] = useState(false)
+  const [filterStateLoaded, setFilterStateLoaded] = useState(false)
+  const [filterMode, setFilterMode] = useState<FilterMode>("AND")
   const [searchSkills, setSearchSkills] = useState(false)
+  const [skillCostMin, setSkillCostMin] = useState<number>(SKILL_COST_MIN)
+  const [skillCostMax, setSkillCostMax] = useState<number>(SKILL_COST_MAX)
   const deferredSearchText = useDeferredValue(searchText)
 
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search)
+    const storedState = readCharacterBrowserState()
+    const hasQueryState = hasCharacterBrowserQueryState(sp)
 
-    const tag = sp.get("tag")
-    if (tag) setSearchText(tag)
+    if (storedState) {
+      if (typeof storedState.filtersOpen === "boolean") setFiltersOpen(storedState.filtersOpen)
+      if (typeof storedState.showStats === "boolean") setShowStats(storedState.showStats)
+      if (storedState.viewMode) setViewMode(storedState.viewMode)
+      if (storedState.filterMode) setFilterMode(storedState.filterMode)
+      if (typeof storedState.searchSkills === "boolean") setSearchSkills(storedState.searchSkills)
+    }
 
-    const attacker = sp.get("attacker")
-    if (attacker) setSelectedAttackerElements(attacker.split(","))
+    if (hasQueryState) {
+      setSearchText(sp.get("tag") ?? "")
+      setSelectedAttackerElements(getQueryList(sp, "attacker"))
+      setSelectedDefenderElements(getQueryList(sp, "defender"))
+      setSelectedAttackTypes(getQueryList(sp, "type"))
+      setSelectedTactics(getQueryList(sp, "tactics"))
+      setSelectedWeapons(getQueryList(sp, "weapon"))
+      setSelectedRoles(getQueryList(sp, "role"))
+      setSelectedUltimateTypes(getQueryList(sp, "ulti"))
+      setSelectedRarities(getQueryList(sp, "rarity"))
+      setSelectedForces(getQueryList(sp, "force"))
+      setSelectedFacilities(getQueryList(sp, "facility"))
+      setSelectedSkillFilters(getQueryList(sp, "skill"))
+      setSelectedTraitNames(getQueryList(sp, "trait"))
+      setSelectedValorTraitNames(getQueryList(sp, "valor"))
 
-    const defender = sp.get("defender")
-    if (defender) setSelectedDefenderElements(defender.split(","))
+      const sort = sp.get("sort")
+      setSortKey(isSortKey(sort) ? sort : "release_date")
+      setSortAsc(sp.get("asc") === "1")
 
-    const type = sp.get("type")
-    if (type) setSelectedAttackTypes(type.split(","))
+      const mode = sp.get("mode")?.toUpperCase()
+      setFilterMode(isFilterMode(mode) ? mode : "AND")
+      setSearchSkills(sp.get("skills") === "1")
 
-    const tactics = sp.get("tactics")
-    if (tactics) setSelectedTactics(tactics.split(","))
+      const cMin = Number(sp.get("cmin"))
+      const cMax = Number(sp.get("cmax"))
+      setSkillCostMin(Number.isFinite(cMin) ? Math.max(SKILL_COST_MIN, Math.min(SKILL_COST_MAX, cMin)) : SKILL_COST_MIN)
+      setSkillCostMax(Number.isFinite(cMax) ? Math.max(SKILL_COST_MIN, Math.min(SKILL_COST_MAX, cMax)) : SKILL_COST_MAX)
+    } else if (storedState) {
+      setSearchText(storedState.searchText ?? "")
+      setSelectedAttackerElements(storedState.selectedAttackerElements ?? [])
+      setSelectedDefenderElements(storedState.selectedDefenderElements ?? [])
+      setSelectedAttackTypes(storedState.selectedAttackTypes ?? [])
+      setSelectedTactics(storedState.selectedTactics ?? [])
+      setSelectedForces(storedState.selectedForces ?? [])
+      setSelectedSkillFilters(storedState.selectedSkillFilters ?? [])
+      setSelectedTraitNames(storedState.selectedTraitNames ?? [])
+      setSelectedValorTraitNames(storedState.selectedValorTraitNames ?? [])
+      setSelectedFacilities(storedState.selectedFacilities ?? [])
+      setSelectedWeapons(storedState.selectedWeapons ?? [])
+      setSelectedRoles(storedState.selectedRoles ?? [])
+      setSelectedUltimateTypes(storedState.selectedUltimateTypes ?? [])
+      setSelectedRarities(storedState.selectedRarities ?? [])
+      setSortKey(storedState.sortKey ?? "release_date")
+      setSortAsc(storedState.sortAsc ?? false)
+      if (typeof storedState.skillCostMin === "number") setSkillCostMin(storedState.skillCostMin)
+      if (typeof storedState.skillCostMax === "number") setSkillCostMax(storedState.skillCostMax)
+    }
 
-    const weapon = sp.get("weapon")
-    if (weapon) setSelectedWeapons(weapon.split(","))
-
-    const role = sp.get("role")
-    if (role) setSelectedRoles(role.split(","))
-
-    const ulti = sp.get("ulti")
-    if (ulti) setSelectedUltimateTypes(ulti.split(","))
-
-    const rarity = sp.get("rarity")
-    if (rarity) setSelectedRarities(rarity.split(","))
-
-    const force = sp.get("force")
-    if (force) setSelectedForces(force.split(","))
-
-    const facility = sp.get("facility")
-    if (facility) setSelectedFacilities(facility.split(","))
-
-    const skill = sp.get("skill")
-    if (skill) setSelectedSkillFilters(skill.split(","))
-
-    const trait = sp.get("trait")
-    if (trait) setSelectedTraitNames(trait.split(","))
-
-    const valor = sp.get("valor")
-    if (valor) setSelectedValorTraitNames(valor.split(","))
-
-    const sort = sp.get("sort")
-    if (sort) setSortKey(sort as SortKey)
-
-    const asc = sp.get("asc")
-    if (asc === "1") setSortAsc(true)
+    setFilterStateLoaded(true)
   }, [])
 
   // Sync filter state back to URL so "Back" button restores filters
   useEffect(() => {
+    if (!filterStateLoaded) return
+
     const params = new URLSearchParams()
     if (searchText) params.set("tag", searchText)
     if (selectedAttackerElements.length) params.set("attacker", selectedAttackerElements.join(","))
@@ -1204,9 +1352,68 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     if (selectedValorTraitNames.length) params.set("valor", selectedValorTraitNames.join(","))
     if (sortKey !== "release_date") params.set("sort", sortKey)
     if (sortAsc) params.set("asc", "1")
+    if (skillCostMin > SKILL_COST_MIN) params.set("cmin", String(skillCostMin))
+    if (skillCostMax < SKILL_COST_MAX) params.set("cmax", String(skillCostMax))
+
+    const hasDiscreteFilterState =
+      selectedAttackerElements.length > 0 ||
+      selectedDefenderElements.length > 0 ||
+      selectedAttackTypes.length > 0 ||
+      selectedTactics.length > 0 ||
+      selectedWeapons.length > 0 ||
+      selectedRoles.length > 0 ||
+      selectedUltimateTypes.length > 0 ||
+      selectedRarities.length > 0 ||
+      selectedForces.length > 0 ||
+      selectedFacilities.length > 0 ||
+      selectedSkillFilters.length > 0 ||
+      selectedTraitNames.length > 0 ||
+      selectedValorTraitNames.length > 0 ||
+      skillCostMin > SKILL_COST_MIN ||
+      skillCostMax < SKILL_COST_MAX
+
+    if (hasDiscreteFilterState && filterMode !== "AND") params.set("mode", filterMode.toLowerCase())
+    if (searchText && searchSkills) params.set("skills", "1")
+
     const qs = params.toString()
     router.replace(qs ? `/characters?${qs}` : "/characters", { scroll: false })
-  }, [searchText, selectedAttackerElements, selectedDefenderElements, selectedAttackTypes, selectedTactics, selectedWeapons, selectedRoles, selectedUltimateTypes, selectedRarities, selectedForces, selectedFacilities, selectedSkillFilters, selectedTraitNames, selectedValorTraitNames, sortKey, sortAsc])
+  }, [filterStateLoaded, router, searchText, selectedAttackerElements, selectedDefenderElements, selectedAttackTypes, selectedTactics, selectedWeapons, selectedRoles, selectedUltimateTypes, selectedRarities, selectedForces, selectedFacilities, selectedSkillFilters, selectedTraitNames, selectedValorTraitNames, sortKey, sortAsc, filterMode, searchSkills, skillCostMin, skillCostMax])
+
+  useEffect(() => {
+    if (!filterStateLoaded) return
+
+    const state: CharacterBrowserStoredState = {
+      filtersOpen,
+      searchText,
+      selectedAttackerElements,
+      selectedDefenderElements,
+      selectedAttackTypes,
+      selectedTactics,
+      selectedForces,
+      selectedSkillFilters,
+      selectedTraitNames,
+      selectedValorTraitNames,
+      selectedFacilities,
+      selectedWeapons,
+      selectedRoles,
+      selectedUltimateTypes,
+      selectedRarities,
+      sortKey,
+      sortAsc,
+      showStats,
+      viewMode,
+      filterMode,
+      searchSkills,
+      skillCostMin,
+      skillCostMax,
+    }
+
+    try {
+      window.localStorage.setItem(CHARACTER_BROWSER_STORAGE_KEY, JSON.stringify(state))
+    } catch {
+      // Ignore storage errors so private-mode/quota restrictions don't break browsing.
+    }
+  }, [filterStateLoaded, filtersOpen, searchText, selectedAttackerElements, selectedDefenderElements, selectedAttackTypes, selectedTactics, selectedForces, selectedSkillFilters, selectedTraitNames, selectedValorTraitNames, selectedFacilities, selectedWeapons, selectedRoles, selectedUltimateTypes, selectedRarities, sortKey, sortAsc, showStats, viewMode, filterMode, searchSkills, skillCostMin, skillCostMax])
 
   const [options, setOptions] = useState<CharacterBrowserOptions>(EMPTY_OPTIONS)
   useEffect(() => {
@@ -1423,21 +1630,26 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
 
       if (!valorTraitOk) return false
 
-      const skillOk =
-        selectedSkillFilters.length === 0 ||
-        (isAND
-          ? selectedSkillFilters.every((v) => {
-              const wiki = wikiById.get(character.master_pc_id)
-              return wiki?.skills.some((s) =>
-                skillMatchesEffectFilters(s, [v])
-              )
-            })
-          : selectedSkillFilters.some((v) => {
-              const wiki = wikiById.get(character.master_pc_id)
-              return wiki?.skills.some((s) =>
-                skillMatchesEffectFilters(s, [v])
-              )
-            }))
+      // Combined skill filter: when a cost range is active alongside the
+      // effect filters, the SAME skill must satisfy both. When only one is
+      // active, the unused side is a no-op.
+      const costFilterActive = skillCostMin > SKILL_COST_MIN || skillCostMax < SKILL_COST_MAX
+      const characterSkills = wikiById.get(character.master_pc_id)?.skills ?? []
+      const skillPasses = (s: typeof characterSkills[number], v: string | null) => {
+        const effectsOk = v === null || skillMatchesEffectFilters(s, [v])
+        const costOk = !costFilterActive || skillCostInRange(s.cost, skillCostMin, skillCostMax)
+        return effectsOk && costOk
+      }
+
+      let skillOk: boolean
+      if (selectedSkillFilters.length === 0) {
+        // Cost-only filter (or neither): at least one skill must pass.
+        skillOk = !costFilterActive || characterSkills.some((s) => skillPasses(s, null))
+      } else {
+        skillOk = isAND
+          ? selectedSkillFilters.every((v) => characterSkills.some((s) => skillPasses(s, v)))
+          : selectedSkillFilters.some((v) => characterSkills.some((s) => skillPasses(s, v)))
+      }
 
       if (!skillOk) return false
 
@@ -1449,6 +1661,15 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     // ─────────────────────────────
     const dir = sortAsc ? -1 : 1
 
+    const maxSkillCost = (c: BrowserCharacter): number => {
+      const skills = wikiById.get(c.master_pc_id)?.skills ?? []
+      let max = -1
+      for (const s of skills) {
+        if (typeof s.cost === "number" && s.cost > max) max = s.cost
+      }
+      return max
+    }
+
     return result.sort((left, right) => {
       switch (sortKey) {
         case "attack":
@@ -1459,6 +1680,11 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
           return dir * (right.stats.defense - left.stats.defense)
         case "existence":
           return dir * (right.stats.existence - left.stats.existence)
+        case "skill_cost":
+          return (
+            dir * (maxSkillCost(right) - maxSkillCost(left)) ||
+            left.name.localeCompare(right.name)
+          )
         case "rarity":
           return (
             dir *
@@ -1500,9 +1726,12 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     selectedRarities,
     sortAsc,
     sortKey,
+    skillCostMin,
+    skillCostMax,
     wikiById,
   ])
 
+  const skillCostFilterActive = skillCostMin > SKILL_COST_MIN || skillCostMax < SKILL_COST_MAX
   const activeFilterCount =
     selectedAttackerElements.length +
     selectedDefenderElements.length +
@@ -1516,7 +1745,8 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     selectedFacilities.length +
     selectedRoles.length +
     selectedUltimateTypes.length +
-    selectedRarities.length
+    selectedRarities.length +
+    (skillCostFilterActive ? 1 : 0)
 
   const skillFilterLabelMap = useMemo(() => {
     const map = new Map<string, { groupTitle: string; label: string }>()
@@ -1734,9 +1964,9 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
       <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="min-w-0">
         <div className={compactTileClass}>
           {visualTier >= 8
-            ? <div className="absolute inset-[7%]"><img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="w-full h-full object-fill pointer-events-none" /></div>
-            : <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-fill pointer-events-none" />}
-          <div className={`absolute overflow-hidden ${visualTier >= 8 ? "inset-[4%] rounded-[6%]" : "inset-[7%] rounded-[10%]"}`}>
+            ? <div className="absolute inset-[7%]"><img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="h-full w-full object-fill pointer-events-none" /></div>
+            : <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 h-full w-full object-fill pointer-events-none" />}
+          <div className="absolute inset-[4%] overflow-hidden rounded-[6%]">
             <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={index < 3 ? "high" : "low"} className="h-full w-full object-cover object-top" />
           </div>
           <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-fill pointer-events-none" />
@@ -1795,9 +2025,9 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
             <div className={compactTileClass}>
               <div className="absolute inset-0">
                 {visualTier >= 8
-                  ? <div className="absolute inset-[7%]"><img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="w-full h-full object-fill pointer-events-none" /></div>
-                  : <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-fill pointer-events-none" />}
-                <div className={`absolute overflow-hidden ${visualTier >= 8 ? "inset-[4%] rounded-[6%]" : "inset-[7%] rounded-[10%]"}`}>
+                  ? <div className="absolute inset-[7%]"><img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="h-full w-full object-fill pointer-events-none" /></div>
+                  : <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 h-full w-full object-fill pointer-events-none" />}
+                <div className="absolute inset-[4%] overflow-hidden rounded-[6%]">
                   <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={index < 3 ? "high" : "low"} className="h-full w-full object-cover object-top" />
                 </div>
               </div>
@@ -1876,9 +2106,9 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
             <div className="flex items-start gap-4">
               <div className="relative h-[100px] w-[100px] shrink-0">
                 {visualTier >= 8
-                  ? <div className="absolute inset-[7%]"><img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="w-full h-full object-fill pointer-events-none" /></div>
+                  ? <div className="absolute inset-[7%]"><img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="h-full w-full object-fill pointer-events-none" /></div>
                   : <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />}
-                <div className={`absolute overflow-hidden ${visualTier >= 8 ? "inset-[4%] rounded-[6%]" : "inset-[7%] rounded-[10%]"}`}>
+                <div className="absolute inset-[4%] overflow-hidden rounded-[6%]">
                   <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={isPriorityCard ? "high" : "low"} className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105" />
                 </div>
                 <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-fill" />
@@ -2035,6 +2265,8 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     setSortKey("release_date")
     setSortAsc(false)
     setFilterMode("OR")
+    setSkillCostMin(SKILL_COST_MIN)
+    setSkillCostMax(SKILL_COST_MAX)
   }
 
   function toggleValue(values: string[], setter: (next: string[]) => void, value: string) {
@@ -2107,6 +2339,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                       <SelectItem value="attack">Attack</SelectItem>
                       <SelectItem value="hp">Health</SelectItem>
                       <SelectItem value="defense">Defense</SelectItem>
+                      <SelectItem value="skill_cost">Skill cost</SelectItem>
                       <SelectItem value="rarity">Rarity</SelectItem>
                       <SelectItem value="release_date">Release date</SelectItem>
                       <SelectItem value="name">Name</SelectItem>
@@ -2122,11 +2355,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
 
             <div className="flex flex-wrap items-center gap-3 text-sm text-gray-300">
               <button
-                onClick={() => {
-                  const next = !filtersOpen
-                  setFiltersOpen(next)
-                  sessionStorage.setItem("characterBrowserFiltersOpen", next ? "1" : "0")
-                }}
+                onClick={() => setFiltersOpen((open) => !open)}
                 className="inline-flex items-center rounded-full border border-white/10 bg-[#151515] px-4 py-2 text-xs font-semibold text-gray-300 transition-all hover:border-[#ff2f5f]/45 hover:bg-[#1f1f1f] hover:text-white"
               >
                 {filtersOpen ? "Hide Filters" : "Show Filters"}
@@ -2243,6 +2472,39 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                 <div className="flex items-center gap-2">
                   <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">Rarity</span>
                   <RarityToggleBar selectedValues={selectedRarities} onToggle={(value) => toggleValue(selectedRarities, setSelectedRarities, value)} onClear={() => setSelectedRarities([])} />
+                </div>
+              </div>
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+                <div className="flex flex-1 items-center gap-3 min-w-[260px]">
+                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">SP Cost</span>
+                  <RangeSlider
+                    min={SKILL_COST_MIN}
+                    max={SKILL_COST_MAX}
+                    step={1}
+                    value={[skillCostMin, skillCostMax]}
+                    onValueChange={([lo, hi]) => {
+                      setSkillCostMin(lo)
+                      setSkillCostMax(hi)
+                    }}
+                    className="max-w-[420px]"
+                  />
+                  <span className="shrink-0 text-xs font-semibold tabular-nums text-gray-300">
+                    {skillCostMin}
+                    <span className="px-1 text-gray-500">–</span>
+                    {skillCostMax >= SKILL_COST_MAX ? `${SKILL_COST_MAX}+` : skillCostMax}
+                  </span>
+                  {(skillCostMin > SKILL_COST_MIN || skillCostMax < SKILL_COST_MAX) && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSkillCostMin(SKILL_COST_MIN)
+                        setSkillCostMax(SKILL_COST_MAX)
+                      }}
+                      className="shrink-0 rounded-md border border-white/10 bg-[#151515] px-2 py-1 text-[10px] font-semibold text-gray-400 transition hover:border-[#ff2f5f]/45 hover:text-white"
+                    >
+                      Clear
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

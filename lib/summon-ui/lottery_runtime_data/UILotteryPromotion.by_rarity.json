@@ -1,0 +1,919 @@
+{
+ "_meta": "extracted from UILotteryPromotion full-tree dump; per-rerity TMP panels with real m_fontColor and RectTransform",
+ "rerity_containers": {
+  "rerity5": {
+   "anchoredPosition": [
+    0.0,
+    0.0
+   ],
+   "sizeDelta": [
+    100.0,
+    100.0
+   ],
+   "anchorMin": [
+    0.5,
+    0.5
+   ],
+   "anchorMax": [
+    0.5,
+    0.5
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ]
+  },
+  "rerity4": {
+   "anchoredPosition": [
+    0.0,
+    0.0
+   ],
+   "sizeDelta": [
+    100.0,
+    100.0
+   ],
+   "anchorMin": [
+    0.5,
+    0.5
+   ],
+   "anchorMax": [
+    0.5,
+    0.5
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ]
+  },
+  "rerity3": {
+   "anchoredPosition": [
+    0.0,
+    0.0
+   ],
+   "sizeDelta": [
+    100.0,
+    100.0
+   ],
+   "anchorMin": [
+    0.5,
+    0.5
+   ],
+   "anchorMax": [
+    0.5,
+    0.5
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ]
+  },
+  "rerity5UltimatePlusPU": {
+   "anchoredPosition": [
+    0.0,
+    0.0
+   ],
+   "sizeDelta": [
+    100.0,
+    100.0
+   ],
+   "anchorMin": [
+    0.5,
+    0.5
+   ],
+   "anchorMax": [
+    0.5,
+    0.5
+   ],
+   "pivot": [
+    0.5,
+    0.5
+   ]
+  }
+ },
+ "panels_by_rerity": {
+  "rerity5": [
+   {
+    "go": "Back00",
+    "panel": "BackText",
+    "text": "milim\nhakainoboukun nofutatsunawomotsuryuumajin\nsaikonomaounohitori rimurugatadamonodenaikotowominuki\nmizukarasugatawoarawasu\ntempestwo otozuretasai　rimurutoyuugiwomusubi\"mabudachi\"tonaru\nrimurunisukkarinatsuiteori\n\n\n\ntokunipresentsareta doragonknuckle nitsuiteha\niryokuwoosaerukoukagaaruga mirimunoo",
+    "fontSize": 32.900001525878906,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      777.0,
+      285.0
+     ],
+     "sizeDelta": [
+      1000.0,
+      2000.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Front00",
+    "panel": "FrontText",
+    "text": "gobta\r\ngoblinmuranogoblin\r\nochoushimonono moodmakerde \r\nyarutokinihayarutaipu　\r\nrimuruni namaewotsuketemorai\r\ngoblinkara hobgoblinni shinkashita\r\nrimurutohatachibawokoeta\r\nakuyuunoyounakankeininaru\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngoblinkara shinkashita\r\nrimurutohatachibawokoeta\r\nakuyuunoyounakankeininaru\ngoblinmura",
+    "fontSize": 72.12000274658203,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      -512.0,
+      355.0
+     ],
+     "sizeDelta": [
+      1207.0,
+      3400.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Front01",
+    "panel": "FrontText",
+    "text": "shion\nmitameha coolbeautydaga\nsonosentouryokuhatakai\nrimurukaramoratta gourikimaru toiunanodaitouwo aiyoushiteiru\n\n\n\n\n\n\n\n\n\n\nmitameha coolbeautydaga\nsonosentouryokuhatakai\ngourikimaru",
+    "fontSize": 72.12000274658203,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      1330.0,
+      -360.0
+     ],
+     "sizeDelta": [
+      2203.0,
+      1500.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Middle00",
+    "panel": "MiddleText",
+    "text": "\nrimuru tempest\nsalaryman mikamisatoruha jikennimakikomare\nisekainitenseishite slimeni\ntenseijiniminitsuita uniqueskill daikenja to\nhoshokusha wotayorini\nsamazamananouryokuwokakutokushiteiku\n\njikennimakikomare\n\n\nisekainitenseishite\ndaikenja to\n\nhoshokusha wotayorini\n\n\n\n\n\n\n\n\n\ntenseijiniminitsuita uni",
+    "fontSize": 46.849998474121094,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      85.0,
+      -15.000000953674316
+     ],
+     "sizeDelta": [
+      927.0,
+      1700.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Back01",
+    "panel": "BackText",
+    "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nbenimaru\noakzokuniyotte horobosareta ogrezokuzokuchounomusuko\nshinkunokamitohitomi shikkokunotsunowomotsu\nseigikannotsuyoiseikakude\nyurusenaikotonihamassugunitachimukau\nrimurunamaewomorai kijinzokuhetoshinkasuru\n\nogrezokuzokuchounomusuko\nshinkunokamitohitomi \nseigikanno",
+    "fontSize": 31.950000762939453,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      -380.0,
+      -350.0
+     ],
+     "sizeDelta": [
+      810.0,
+      2700.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Middle01",
+    "panel": "MiddleText",
+    "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrigurud\ngoblinmuranosonchou\ngarouzokunoshuugekiniatamawonayamase\nsonotatakaidemusukomohitoriushinatteiru\nrimurukaranadukerare hobgoblinninattakotode\nkinkotsuryuuryuunosugatahetohenkashita\ntempestno naiseiwo torishikitteori\nsonoshuwannitsuite rimurukaranoshinraihaatsui\n\n\n\n\n\n\n\n\n\n\n\n\n\nson",
+    "fontSize": 43.900001525878906,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      -845.0,
+      -517.0
+     ],
+     "sizeDelta": [
+      966.0,
+      2000.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   }
+  ],
+  "rerity4": [
+   {
+    "go": "Front01",
+    "panel": "FrontText",
+    "text": "shion\nmitameha coolbeautydaga\nsonosentouryokuhatakai\nrimurukaramoratta gourikimaru toiunanodaitouwo aiyoushiteiru\n\n\n\n\n\n\n\n\n\n\nmitameha coolbeautydaga\nsonosentouryokuhatakai\ngourikimaru",
+    "fontSize": 72.12000274658203,
+    "fontColor": {
+     "r": 1.0,
+     "g": 0.9607843137254902,
+     "b": 0.3607843137254902,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      1330.0,
+      -360.0
+     ],
+     "sizeDelta": [
+      2203.0,
+      1500.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Back01",
+    "panel": "BackText",
+    "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nbenimaru\noakzokuniyotte horobosareta ogrezokuzokuchounomusuko\nshinkunokamitohitomi shikkokunotsunowomotsu\nseigikannotsuyoiseikakude\nyurusenaikotonihamassugunitachimukau\nrimurunamaewomorai kijinzokuhetoshinkasuru\n\nogrezokuzokuchounomusuko\nshinkunokamitohitomi \nseigikanno",
+    "fontSize": 31.950000762939453,
+    "fontColor": {
+     "r": 1.0,
+     "g": 0.9647058823529412,
+     "b": 0.48627450980392156,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      -380.0,
+      -1500.0
+     ],
+     "sizeDelta": [
+      810.0,
+      2700.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Back00",
+    "panel": "BackText",
+    "text": "milim\nhakainoboukun nofutatsunawomotsuryuumajin\nsaikonomaounohitori rimurugatadamonodenaikotowominuki\nmizukarasugatawoarawasu\ntempestwo otozuretasai　rimurutoyuugiwomusubi\"mabudachi\"tonaru\nrimurunisukkarinatsuiteori\n\n\n\ntokunipresentsareta doragonknuckle nitsuiteha\niryokuwoosaerukoukagaaruga mirimunoo",
+    "fontSize": 32.900001525878906,
+    "fontColor": {
+     "r": 1.0,
+     "g": 0.9647058823529412,
+     "b": 0.48627450980392156,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      775.0,
+      285.0
+     ],
+     "sizeDelta": [
+      1000.0,
+      2250.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Middle00",
+    "panel": "MiddleText",
+    "text": "\nrimuru tempest\nsalaryman mikamisatoruha jikennimakikomare\nisekainitenseishite slimeni\ntenseijiniminitsuita uniqueskill daikenja to\nhoshokusha wotayorini\nsamazamananouryokuwokakutokushiteiku\n\njikennimakikomare\n\n\nisekainitenseishite\ndaikenja to\n\nhoshokusha wotayorini\n\n\n\n\n\n\n\n\n\ntenseijiniminitsuita uni",
+    "fontSize": 46.849998474121094,
+    "fontColor": {
+     "r": 1.0,
+     "g": 0.9607843137254902,
+     "b": 0.3607843137254902,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      85.0,
+      -15.000000953674316
+     ],
+     "sizeDelta": [
+      927.0,
+      1700.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Middle01",
+    "panel": "MiddleText",
+    "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrigurud\ngoblinmuranosonchou\ngarouzokunoshuugekiniatamawonayamase\nsonotatakaidemusukomohitoriushinatteiru\nrimurukaranadukerare hobgoblinninattakotode\nkinkotsuryuuryuunosugatahetohenkashita\ntempestno naiseiwo torishikitteori\nsonoshuwannitsuite rimurukaranoshinraihaatsui\n\n\n\n\n\n\n\n\n\n\n\n\n\nson",
+    "fontSize": 43.900001525878906,
+    "fontColor": {
+     "r": 1.0,
+     "g": 0.9607843137254902,
+     "b": 0.3607843137254902,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      -845.0,
+      -517.0
+     ],
+     "sizeDelta": [
+      966.0,
+      2000.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Front00",
+    "panel": "FrontText",
+    "text": "gobta\r\ngoblinmuranogoblin\r\nochoushimonono moodmakerde \r\nyarutokinihayarutaipu　\r\nrimuruni namaewotsuketemorai\r\ngoblinkara hobgoblinni shinkashita\r\nrimurutohatachibawokoeta\r\nakuyuunoyounakankeininaru\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngoblinkara shinkashita\r\nrimurutohatachibawokoeta\r\nakuyuunoyounakankeininaru\ngoblinmura",
+    "fontSize": 72.12000274658203,
+    "fontColor": {
+     "r": 1.0,
+     "g": 0.9607843137254902,
+     "b": 0.3607843137254902,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      -512.0,
+      355.0
+     ],
+     "sizeDelta": [
+      1207.0,
+      3400.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   }
+  ],
+  "rerity5UltimatePlusPU": [
+   {
+    "go": "Back01",
+    "panel": "BackText",
+    "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nbenimaru\noakzokuniyotte horobosareta ogrezokuzokuchounomusuko\nshinkunokamitohitomi shikkokunotsunowomotsu\nseigikannotsuyoiseikakude\nyurusenaikotonihamassugunitachimukau\nrimurunamaewomorai kijinzokuhetoshinkasuru\n\nogrezokuzokuchounomusuko\nshinkunokamitohitomi \nseigikanno",
+    "fontSize": 31.950000762939453,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      -380.0,
+      -350.0
+     ],
+     "sizeDelta": [
+      810.0,
+      2700.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Front01",
+    "panel": "FrontText",
+    "text": "shion\nmitameha coolbeautydaga\nsonosentouryokuhatakai\nrimurukaramoratta gourikimaru toiunanodaitouwo aiyoushiteiru\n\n\n\n\n\n\n\n\n\n\nmitameha coolbeautydaga\nsonosentouryokuhatakai\ngourikimaru",
+    "fontSize": 72.12000274658203,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      1330.0,
+      -360.0
+     ],
+     "sizeDelta": [
+      2203.0,
+      1500.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Middle00",
+    "panel": "MiddleText",
+    "text": "\nrimuru tempest\nsalaryman mikamisatoruha jikennimakikomare\nisekainitenseishite slimeni\ntenseijiniminitsuita uniqueskill daikenja to\nhoshokusha wotayorini\nsamazamananouryokuwokakutokushiteiku\n\njikennimakikomare\n\n\nisekainitenseishite\ndaikenja to\n\nhoshokusha wotayorini\n\n\n\n\n\n\n\n\n\ntenseijiniminitsuita uni",
+    "fontSize": 46.849998474121094,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      85.0,
+      -15.000000953674316
+     ],
+     "sizeDelta": [
+      927.0,
+      1700.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Front00",
+    "panel": "FrontText",
+    "text": "gobta\r\ngoblinmuranogoblin\r\nochoushimonono moodmakerde \r\nyarutokinihayarutaipu　\r\nrimuruni namaewotsuketemorai\r\ngoblinkara hobgoblinni shinkashita\r\nrimurutohatachibawokoeta\r\nakuyuunoyounakankeininaru\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngoblinkara shinkashita\r\nrimurutohatachibawokoeta\r\nakuyuunoyounakankeininaru\ngoblinmura",
+    "fontSize": 72.12000274658203,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      -512.0,
+      355.0
+     ],
+     "sizeDelta": [
+      1207.0,
+      3400.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Middle01",
+    "panel": "MiddleText",
+    "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrigurud\ngoblinmuranosonchou\ngarouzokunoshuugekiniatamawonayamase\nsonotatakaidemusukomohitoriushinatteiru\nrimurukaranadukerare hobgoblinninattakotode\nkinkotsuryuuryuunosugatahetohenkashita\ntempestno naiseiwo torishikitteori\nsonoshuwannitsuite rimurukaranoshinraihaatsui\n\n\n\n\n\n\n\n\n\n\n\n\n\nson",
+    "fontSize": 43.900001525878906,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      -845.0,
+      -517.0
+     ],
+     "sizeDelta": [
+      966.0,
+      2000.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Back00",
+    "panel": "BackText",
+    "text": "milim\nhakainoboukun nofutatsunawomotsuryuumajin\nsaikonomaounohitori rimurugatadamonodenaikotowominuki\nmizukarasugatawoarawasu\ntempestwo otozuretasai　rimurutoyuugiwomusubi\"mabudachi\"tonaru\nrimurunisukkarinatsuiteori\n\n\n\ntokunipresentsareta doragonknuckle nitsuiteha\niryokuwoosaerukoukagaaruga mirimunoo",
+    "fontSize": 32.900001525878906,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      777.0,
+      285.0
+     ],
+     "sizeDelta": [
+      1000.0,
+      2000.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   }
+  ],
+  "rerity3": [
+   {
+    "go": "Middle00",
+    "panel": "MiddleText",
+    "text": "\nrimuru tempest\nsalaryman mikamisatoruha jikennimakikomare\nisekainitenseishite slimeni\ntenseijiniminitsuita uniqueskill daikenja to\nhoshokusha wotayorini\nsamazamananouryokuwokakutokushiteiku\n\njikennimakikomare\n\n\nisekainitenseishite\ndaikenja to\n\nhoshokusha wotayorini\n\n\n\n\n\n\n\n\n\ntenseijiniminitsuita uni",
+    "fontSize": 46.849998474121094,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      85.0,
+      -15.000000953674316
+     ],
+     "sizeDelta": [
+      927.0,
+      1700.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Middle01",
+    "panel": "MiddleText",
+    "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrigurud\ngoblinmuranosonchou\ngarouzokunoshuugekiniatamawonayamase\nsonotatakaidemusukomohitoriushinatteiru\nrimurukaranadukerare hobgoblinninattakotode\nkinkotsuryuuryuunosugatahetohenkashita\ntempestno naiseiwo torishikitteori\nsonoshuwannitsuite rimurukaranoshinraihaatsui\n\n\n\n\n\n\n\n\n\n\n\n\n\nson",
+    "fontSize": 43.900001525878906,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      -845.0,
+      -517.0
+     ],
+     "sizeDelta": [
+      966.0,
+      2000.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Front00",
+    "panel": "FrontText",
+    "text": "gobta\r\ngoblinmuranogoblin\r\nochoushimonono moodmakerde \r\nyarutokinihayarutaipu　\r\nrimuruni namaewotsuketemorai\r\ngoblinkara hobgoblinni shinkashita\r\nrimurutohatachibawokoeta\r\nakuyuunoyounakankeininaru\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ngoblinkara shinkashita\r\nrimurutohatachibawokoeta\r\nakuyuunoyounakankeininaru\ngoblinmura",
+    "fontSize": 72.12000274658203,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      -512.0,
+      355.0
+     ],
+     "sizeDelta": [
+      1207.0,
+      3400.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Back01",
+    "panel": "BackText",
+    "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nbenimaru\noakzokuniyotte horobosareta ogrezokuzokuchounomusuko\nshinkunokamitohitomi shikkokunotsunowomotsu\nseigikannotsuyoiseikakude\nyurusenaikotonihamassugunitachimukau\nrimurunamaewomorai kijinzokuhetoshinkasuru\n\nogrezokuzokuchounomusuko\nshinkunokamitohitomi \nseigikanno",
+    "fontSize": 31.950000762939453,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      -380.0,
+      -1500.0
+     ],
+     "sizeDelta": [
+      810.0,
+      2700.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Back00",
+    "panel": "BackText",
+    "text": "milim\nhakainoboukun nofutatsunawomotsuryuumajin\nsaikonomaounohitori rimurugatadamonodenaikotowominuki\nmizukarasugatawoarawasu\ntempestwo otozuretasai　rimurutoyuugiwomusubi\"mabudachi\"tonaru\nrimurunisukkarinatsuiteori\n\n\n\ntokunipresentsareta doragonknuckle nitsuiteha\niryokuwoosaerukoukagaaruga mirimunoo",
+    "fontSize": 32.900001525878906,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      775.0,
+      285.0
+     ],
+     "sizeDelta": [
+      1000.0,
+      2250.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   },
+   {
+    "go": "Front01",
+    "panel": "FrontText",
+    "text": "shion\nmitameha coolbeautydaga\nsonosentouryokuhatakai\nrimurukaramoratta gourikimaru toiunanodaitouwo aiyoushiteiru\n\n\n\n\n\n\n\n\n\n\nmitameha coolbeautydaga\nsonosentouryokuhatakai\ngourikimaru",
+    "fontSize": 72.12000274658203,
+    "fontColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "rect": {
+     "anchoredPosition": [
+      1330.0,
+      -360.0
+     ],
+     "sizeDelta": [
+      2203.0,
+      1500.0
+     ],
+     "anchorMin": [
+      0.5,
+      0.5
+     ],
+     "anchorMax": [
+      0.5,
+      0.5
+     ],
+     "pivot": [
+      0.5,
+      0.5
+     ]
+    }
+   }
+  ]
+ }
+}

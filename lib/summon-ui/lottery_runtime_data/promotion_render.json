@@ -1,0 +1,58 @@
+{
+  "_meta": "Per-rerity render rules extracted from UILotteryPromotion prefab. Source: prefab_out/UILotteryPromotion.json TextMeshProUGUI components + RectTransform anchors, grouped by their rerity<N> ancestor.",
+  "canvas": [1920, 1080],
+  "background_sprites": {
+    "background_a": {"img": "t_golw_other_cla_00", "z": 22, "_role": "bloom gradient overlay"},
+    "background_b": {"img": "t_board_other_cla_00", "z": 23, "_role": "board overlay"},
+    "background_c": {"img": "t_grad_uv_03_mir", "z": 24, "_role": "radial gradient (RawImage with CircleImage)"}
+  },
+  "rerity_to_view_rarity": {
+    "rerity3": "R",
+    "rerity4": "SR",
+    "rerity5": "SSR",
+    "rerity5UltimatePlusPU": "SSRUltimatePlusPU"
+  },
+  "color_gradient_sprite_per_rarity": {
+    "R": null,
+    "SR": null,
+    "SSR": "t_promo_grad_uv_00",
+    "SSRUltimatePlusPU": "t_promo_grad_uv_01"
+  },
+  "per_rerity_face_color": {
+    "rerity3": {"r": 1.0, "g": 1.0, "b": 1.0, "a": 1.0, "_role": "plain WHITE"},
+    "rerity4": {"r": 1.0, "g": 0.961, "b": 0.361, "a": 1.0, "_role": "GOLD-YELLOW"},
+    "rerity5": {"r": 1.0, "g": 1.0, "b": 1.0, "a": 1.0, "_role": "WHITE with ColorGradient_*/spr=t_promo_grad_uv_00 mask overlay (gold)"},
+    "rerity5UltimatePlusPU": {"r": 1.0, "g": 1.0, "b": 1.0, "a": 1.0, "_role": "WHITE with ColorGradient_*/spr=t_promo_grad_uv_01 mask overlay (rainbow)"}
+  },
+  "panels": {
+    "_note": "Per-panel RectTransform: anchoredPosition in CANVAS pixels (anchorMin/Max=0.5,0.5 pivot=0.5,0.5), sizeDelta in pixels. The panels are LARGER than the canvas and overflow — the CanvasGroup parent (rerity container) clips them.",
+    "BackText.Back00":    {"anchPos": [777,  285],  "sizeDelta": [1000, 2000], "fontSize": 32.90},
+    "BackText.Back01":    {"anchPos": [-380, -350], "sizeDelta": [810,  2700], "fontSize": 31.95},
+    "MiddleText.Middle00":{"anchPos": [85,   -15],  "sizeDelta": [927,  1700], "fontSize": 46.85},
+    "MiddleText.Middle01":{"anchPos": [-845, -517], "sizeDelta": [966,  2000], "fontSize": 43.90},
+    "FrontText.Front00":  {"anchPos": [-512, 355],  "sizeDelta": [1207, 3400], "fontSize": 72.12},
+    "FrontText.Front01":  {"anchPos": [1330, -360], "sizeDelta": [2203, 1500], "fontSize": 72.12}
+  },
+  "simpletween": {
+    "_source": "parse_simpletween.py — manual byte-decode of the 8 SimpleTweenTMPSage MonoBehaviours on UILotteryPromotion (UnityPy TypeTree fails on this subclassed MonoBehaviour). Values in SECONDS.",
+    "_note": "limitDuration=0 (no cap), isOnlyAlpha=false, isRandom=false on all. The animationCurve is a linear 0→1 (keys [0,0]→[1,1], slopes 1).",
+    "dominant": {"charDuration": 0.02, "interval": 0.0075},
+    "observed_sets": [
+      {"charDuration": 0.02, "limitDuration": 0.0, "interval": 0.0075, "count": 3},
+      {"charDuration": 0.02, "limitDuration": 0.0, "interval": 0.008, "count": 1},
+      {"charDuration": 0.02, "limitDuration": 0.0, "interval": 0.0085, "count": 1},
+      {"charDuration": 0.05, "limitDuration": 0.0, "interval": 0.02, "count": 1},
+      {"charDuration": 0.01, "limitDuration": 0.0, "interval": 0.005, "count": 1},
+      {"charDuration": 0.02, "limitDuration": 0.0, "interval": 0.02, "count": 1}
+    ]
+  },
+  "panel_text_per_rerity": {
+    "_note": "TextMeshProUGUI m_text strings from each rerity<N>.BackText/MiddleText/FrontText.<Back/Middle/Front><N>. Identical across rerity sub-trees in the prefab.",
+    "BackText.Back00": "milim\nhakainoboukun nofutatsunawomotsuryuumajin\nsaikonomaounohitori rimurugatadamonodenaikotowominuki\nmizukarasugatawoarawasu\ntempestwo otozuretasai　rimurutoyuugiwomusubi\"mabudachi\"tonaru\nrimurunisukkarinatsuiteori\n\n\n\ntokunipresentsareta doragonknuckle nitsuiteha\niryokuwoosaerukoukagaaruga mirimunookiniiritonatteiru",
+    "BackText.Back01": "benimaru\noakzokuniyotte horobosareta ogrezokuzokuchounomusuko\nshinkunokamitohitomi shikkokunotsunowomotsu\nseigikannotsuyoiseikakude\nyurusenaikotonihamassugunitachimukau\nrimurunamaewomorai kijinzokuhetoshinkasuru",
+    "MiddleText.Middle00": "rimuru tempest\nsalaryman mikamisatoruha jikennimakikomare\nisekainitenseishite slimeni\ntenseijiniminitsuita uniqueskill daikenja to\nhoshokusha wotayorini\nsamazamananouryokuwokakutokushiteiku",
+    "MiddleText.Middle01": "rigurud\ngoblinmuranosonchou\ngarouzokunoshuugekiniatamawonayamase\nsonotatakaidemusukomohitoriushinatteiru\nrimurukaranadukerare hobgoblinninattakotode\nkinkotsuryuuryuunosugatahetohenkashita\ntempestno naiseiwo torishikitteori\nsonoshuwannitsuite rimurukaranoshinraihaatsui",
+    "FrontText.Front00": "gobta\ngoblinmuranogoblin\nochoushimonono moodmakerde\nyarutokinihayarutaipu　\nrimuruni namaewotsuketemorai\ngoblinkara hobgoblinni shinkashita\nrimurutohatachibawokoeta\nakuyuunoyounakankeininaru",
+    "FrontText.Front01": "shion\nmitameha coolbeautydaga\nsonosentouryokuhatakai\nrimurukaramoratta gourikimaru toiunanodaitouwo aiyoushiteiru"
+  }
+}

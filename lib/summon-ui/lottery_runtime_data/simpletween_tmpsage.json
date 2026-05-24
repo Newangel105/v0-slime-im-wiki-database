@@ -1,0 +1,330 @@
+[
+ {
+  "runType": 0,
+  "tweenType": 0,
+  "direction": 0,
+  "isSimultaneous": false,
+  "animationCurve": {
+   "keys": [
+    {
+     "time": 0.0,
+     "value": 0.0,
+     "inSlope": 1.0,
+     "outSlope": 1.0
+    },
+    {
+     "time": 1.0,
+     "value": 1.0,
+     "inSlope": 1.0,
+     "outSlope": 1.0
+    }
+   ],
+   "preInfinity": 2,
+   "postInfinity": 2
+  },
+  "_duration": 0.1,
+  "onFinishCalls": 0,
+  "charDuration": 0.02,
+  "limitDuration": 0.0,
+  "interval": 0.008,
+  "gradient": {
+   "colorKeys": [],
+   "numColorKeys": 0,
+   "numAlphaKeys": 0,
+   "mode": 0
+  },
+  "isOnlyAlpha": false,
+  "isAlphaRelative": false,
+  "isRandom": false,
+  "_consumed_bytes": 231,
+  "_total_bytes": 328,
+  "pid": -5539642853544852271
+ },
+ {
+  "runType": 0,
+  "tweenType": 0,
+  "direction": 0,
+  "isSimultaneous": false,
+  "animationCurve": {
+   "keys": [
+    {
+     "time": 0.0,
+     "value": 0.0,
+     "inSlope": 1.0,
+     "outSlope": 1.0
+    },
+    {
+     "time": 1.0,
+     "value": 1.0,
+     "inSlope": 1.0,
+     "outSlope": 1.0
+    }
+   ],
+   "preInfinity": 2,
+   "postInfinity": 2
+  },
+  "_duration": 0.1,
+  "onFinishCalls": 0,
+  "charDuration": 0.02,
+  "limitDuration": 0.0,
+  "interval": 0.0075,
+  "gradient": {
+   "colorKeys": [],
+   "numColorKeys": 0,
+   "numAlphaKeys": 0,
+   "mode": 0
+  },
+  "isOnlyAlpha": false,
+  "isAlphaRelative": false,
+  "isRandom": false,
+  "_consumed_bytes": 231,
+  "_total_bytes": 328,
+  "pid": -4815311792078551855
+ },
+ {
+  "runType": 0,
+  "tweenType": 0,
+  "direction": 0,
+  "isSimultaneous": false,
+  "animationCurve": {
+   "keys": [
+    {
+     "time": 0.0,
+     "value": 0.0,
+     "inSlope": 1.0,
+     "outSlope": 1.0
+    },
+    {
+     "time": 1.0,
+     "value": 1.0,
+     "inSlope": 1.0,
+     "outSlope": 1.0
+    }
+   ],
+   "preInfinity": 2,
+   "postInfinity": 2
+  },
+  "_duration": 0.1,
+  "onFinishCalls": 0,
+  "charDuration": 0.02,
+  "limitDuration": 0.0,
+  "interval": 0.0085,
+  "gradient": {
+   "colorKeys": [],
+   "numColorKeys": 0,
+   "numAlphaKeys": 0,
+   "mode": 0
+  },
+  "isOnlyAlpha": false,
+  "isAlphaRelative": false,
+  "isRandom": false,
+  "_consumed_bytes": 231,
+  "_total_bytes": 328,
+  "pid": -4526718939019770671
+ },
+ {
+  "runType": 0,
+  "tweenType": 0,
+  "direction": 0,
+  "isSimultaneous": false,
+  "animationCurve": {
+   "keys": [
+    {
+     "time": 0.0,
+     "value": 0.0,
+     "inSlope": 1.0,
+     "outSlope": 1.0
+    },
+    {
+     "time": 1.0,
+     "value": 1.0,
+     "inSlope": 1.0,
+     "outSlope": 1.0
+    }
+   ],
+   "preInfinity": 2,
+   "postInfinity": 2
+  },
+  "_duration": 0.1,
+  "onFinishCalls": 0,
+  "charDuration": 0.02,
+  "limitDuration": 0.0,
+  "interval": 0.0075,
+  "gradient": {
+   "colorKeys": [],
+   "numColorKeys": 0,
+   "numAlphaKeys": 0,
+   "mode": 0
+  },
+  "isOnlyAlpha": false,
+  "isAlphaRelative": false,
+  "isRandom": false,
+  "_consumed_bytes": 231,
+  "_total_bytes": 328,
+  "pid": -4428055766316120879
+ },
+ {
+  "runType": 0,
+  "tweenType": 0,
+  "direction": 0,
+  "isSimultaneous": false,
+  "animationCurve": {
+   "keys": [
+    {
+     "time": 0.0,
+     "value": 0.0,
+     "inSlope": 1.0,
+     "outSlope": 1.0
+    },
+    {
+     "time": 1.0,
+     "value": 1.0,
+     "inSlope": 1.0,
+     "outSlope": 1.0
+    }
+   ],
+   "preInfinity": 2,
+   "postInfinity": 2
+  },
+  "_duration": 0.1,
+  "onFinishCalls": 0,
+  "charDuration": 0.05,
+  "limitDuration": 0.0,
+  "interval": 0.02,
+  "gradient": {
+   "colorKeys": [],
+   "numColorKeys": 0,
+   "numAlphaKeys": 0,
+   "mode": 0
+  },
+  "isOnlyAlpha": false,
+  "isAlphaRelative": false,
+  "isRandom": false,
+  "_consumed_bytes": 231,
+  "_total_bytes": 328,
+  "pid": -3080034489908165423
+ },
+ {
+  "runType": 0,
+  "tweenType": 0,
+  "direction": 0,
+  "isSimultaneous": false,
+  "animationCurve": {
+   "keys": [
+    {
+     "time": 0.0,
+     "value": 0.0,
+     "inSlope": 1.0,
+     "outSlope": 1.0
+    },
+    {
+     "time": 1.0,
+     "value": 1.0,
+     "inSlope": 1.0,
+     "outSlope": 1.0
+    }
+   ],
+   "preInfinity": 2,
+   "postInfinity": 2
+  },
+  "_duration": 0.1,
+  "onFinishCalls": 0,
+  "charDuration": 0.01,
+  "limitDuration": 0.0,
+  "interval": 0.005,
+  "gradient": {
+   "colorKeys": [],
+   "numColorKeys": 0,
+   "numAlphaKeys": 0,
+   "mode": 0
+  },
+  "isOnlyAlpha": false,
+  "isAlphaRelative": false,
+  "isRandom": false,
+  "_consumed_bytes": 231,
+  "_total_bytes": 328,
+  "pid": 1403024101350868177
+ },
+ {
+  "runType": 0,
+  "tweenType": 0,
+  "direction": 0,
+  "isSimultaneous": false,
+  "animationCurve": {
+   "keys": [
+    {
+     "time": 0.0,
+     "value": 0.0,
+     "inSlope": 1.0,
+     "outSlope": 1.0
+    },
+    {
+     "time": 1.0,
+     "value": 1.0,
+     "inSlope": 1.0,
+     "outSlope": 1.0
+    }
+   ],
+   "preInfinity": 2,
+   "postInfinity": 2
+  },
+  "_duration": 0.1,
+  "onFinishCalls": 0,
+  "charDuration": 0.02,
+  "limitDuration": 0.0,
+  "interval": 0.02,
+  "gradient": {
+   "colorKeys": [],
+   "numColorKeys": 0,
+   "numAlphaKeys": 0,
+   "mode": 0
+  },
+  "isOnlyAlpha": false,
+  "isAlphaRelative": false,
+  "isRandom": false,
+  "_consumed_bytes": 231,
+  "_total_bytes": 328,
+  "pid": 1913306233269748945
+ },
+ {
+  "runType": 0,
+  "tweenType": 0,
+  "direction": 0,
+  "isSimultaneous": false,
+  "animationCurve": {
+   "keys": [
+    {
+     "time": 0.0,
+     "value": 0.0,
+     "inSlope": 1.0,
+     "outSlope": 1.0
+    },
+    {
+     "time": 1.0,
+     "value": 1.0,
+     "inSlope": 1.0,
+     "outSlope": 1.0
+    }
+   ],
+   "preInfinity": 2,
+   "postInfinity": 2
+  },
+  "_duration": 0.1,
+  "onFinishCalls": 0,
+  "charDuration": 0.02,
+  "limitDuration": 0.0,
+  "interval": 0.0075,
+  "gradient": {
+   "colorKeys": [],
+   "numColorKeys": 0,
+   "numAlphaKeys": 0,
+   "mode": 0
+  },
+  "isOnlyAlpha": false,
+  "isAlphaRelative": false,
+  "isRandom": false,
+  "_consumed_bytes": 231,
+  "_total_bytes": 328,
+  "pid": 7635561340964144337
+ }
+]

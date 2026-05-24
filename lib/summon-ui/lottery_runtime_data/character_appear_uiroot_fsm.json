@@ -1,0 +1,246 @@
+{
+  "_meta": "UIRoot AnimatorController for UILotteryCharacterAppear. Unity 2021 encodes the FSM in a binary m_Controller blob (not in typetree), so m_AnimatorLayers is empty. The TOS path-hash table recovers ALL state names; the transitions are reconstructed from the standard UI-Animator pattern + the IL2CPP UILotteryCharacterAppear.In() flow. Use this structure to drive the website's sequence; clip stop_time is the per-state duration.",
+  "controller_pid": 2270362759361997012,
+  "parameters": [],
+  "tos_total": 21,
+  "states": [
+    {
+      "hash": 481016768,
+      "name": "AppearSR",
+      "clip": {
+        "pid": -1492641740012140092,
+        "name": "AppearSR",
+        "sample_rate": 60.0,
+        "stop_time": 2.2333333492279053,
+        "wrap_mode": 0
+      }
+    },
+    {
+      "hash": 3573843743,
+      "name": "AppearSSR",
+      "clip": {
+        "pid": 6037772821060024808,
+        "name": "AppearSSR",
+        "sample_rate": 60.0,
+        "stop_time": 2.2833333015441895,
+        "wrap_mode": 0
+      }
+    },
+    {
+      "hash": 1169182425,
+      "name": "AppearURUltimate",
+      "clip": {
+        "pid": 5251679645018731740,
+        "name": "AppearURUltimate",
+        "sample_rate": 60.0,
+        "stop_time": 3.183333396911621,
+        "wrap_mode": 0
+      }
+    },
+    {
+      "hash": 3216499379,
+      "name": "AppearR",
+      "clip": {
+        "pid": -4206757738801694909,
+        "name": "AppearR",
+        "sample_rate": 60.0,
+        "stop_time": 2.0833332538604736,
+        "wrap_mode": 0
+      }
+    },
+    {
+      "hash": 3858084937,
+      "name": "In",
+      "clip": {
+        "pid": 6027212259694401483,
+        "name": "In",
+        "sample_rate": 60.0,
+        "stop_time": 0.0,
+        "wrap_mode": 0
+      }
+    },
+    {
+      "hash": 3275037383,
+      "name": "Default",
+      "clip": {
+        "pid": -4383133734852806131,
+        "name": "Default",
+        "sample_rate": 60.0,
+        "stop_time": 0.0,
+        "wrap_mode": 0
+      }
+    },
+    {
+      "hash": 4095720601,
+      "name": "AppearSSRUltimate",
+      "clip": {
+        "pid": 1063750719693294585,
+        "name": "AppearSSRUltimate",
+        "sample_rate": 60.0,
+        "stop_time": 3.0,
+        "wrap_mode": 0
+      }
+    },
+    {
+      "hash": 657776896,
+      "name": "Out",
+      "clip": {
+        "pid": -3393073338721737321,
+        "name": "Out",
+        "sample_rate": 60.0,
+        "stop_time": 0.01666666753590107,
+        "wrap_mode": 0
+      }
+    },
+    {
+      "hash": 539733644,
+      "name": "AppearUREx",
+      "clip": {
+        "pid": 7138237962393125600,
+        "name": "AppearUREx",
+        "sample_rate": 60.0,
+        "stop_time": 3.183333396911621,
+        "wrap_mode": 0
+      }
+    }
+  ],
+  "clips": [
+    {
+      "pid": -4383133734852806131,
+      "name": "Default",
+      "sample_rate": 60.0,
+      "stop_time": 0.0,
+      "wrap_mode": 0
+    },
+    {
+      "pid": 6027212259694401483,
+      "name": "In",
+      "sample_rate": 60.0,
+      "stop_time": 0.0,
+      "wrap_mode": 0
+    },
+    {
+      "pid": 6037772821060024808,
+      "name": "AppearSSR",
+      "sample_rate": 60.0,
+      "stop_time": 2.2833333015441895,
+      "wrap_mode": 0
+    },
+    {
+      "pid": -1492641740012140092,
+      "name": "AppearSR",
+      "sample_rate": 60.0,
+      "stop_time": 2.2333333492279053,
+      "wrap_mode": 0
+    },
+    {
+      "pid": -4206757738801694909,
+      "name": "AppearR",
+      "sample_rate": 60.0,
+      "stop_time": 2.0833332538604736,
+      "wrap_mode": 0
+    },
+    {
+      "pid": -3393073338721737321,
+      "name": "Out",
+      "sample_rate": 60.0,
+      "stop_time": 0.01666666753590107,
+      "wrap_mode": 0
+    },
+    {
+      "pid": 1063750719693294585,
+      "name": "AppearSSRUltimate",
+      "sample_rate": 60.0,
+      "stop_time": 3.0,
+      "wrap_mode": 0
+    },
+    {
+      "pid": 7138237962393125600,
+      "name": "AppearUREx",
+      "sample_rate": 60.0,
+      "stop_time": 3.183333396911621,
+      "wrap_mode": 0
+    },
+    {
+      "pid": 5251679645018731740,
+      "name": "AppearURUltimate",
+      "sample_rate": 60.0,
+      "stop_time": 3.183333396911621,
+      "wrap_mode": 0
+    }
+  ],
+  "inferred_transitions": [
+    {
+      "from": "In",
+      "to": "AppearSR",
+      "trigger": "rarity param == SR",
+      "has_exit_time": true
+    },
+    {
+      "from": "AppearSR",
+      "to": "Default",
+      "trigger": "clip end (has_exit_time)"
+    },
+    {
+      "from": "In",
+      "to": "AppearSSR",
+      "trigger": "rarity param == SSR",
+      "has_exit_time": true
+    },
+    {
+      "from": "AppearSSR",
+      "to": "Default",
+      "trigger": "clip end (has_exit_time)"
+    },
+    {
+      "from": "In",
+      "to": "AppearURUltimate",
+      "trigger": "rarity param == URUltimate",
+      "has_exit_time": true
+    },
+    {
+      "from": "AppearURUltimate",
+      "to": "Default",
+      "trigger": "clip end (has_exit_time)"
+    },
+    {
+      "from": "In",
+      "to": "AppearR",
+      "trigger": "rarity param == R",
+      "has_exit_time": true
+    },
+    {
+      "from": "AppearR",
+      "to": "Default",
+      "trigger": "clip end (has_exit_time)"
+    },
+    {
+      "from": "In",
+      "to": "AppearSSRUltimate",
+      "trigger": "rarity param == SSRUltimate",
+      "has_exit_time": true
+    },
+    {
+      "from": "AppearSSRUltimate",
+      "to": "Default",
+      "trigger": "clip end (has_exit_time)"
+    },
+    {
+      "from": "In",
+      "to": "AppearUREx",
+      "trigger": "rarity param == UREx",
+      "has_exit_time": true
+    },
+    {
+      "from": "AppearUREx",
+      "to": "Default",
+      "trigger": "clip end (has_exit_time)"
+    },
+    {
+      "from": "Default",
+      "to": "Out",
+      "trigger": "skip/tap button"
+    }
+  ],
+  "raw_typetree_layers": []
+}

@@ -1,0 +1,329 @@
+{
+  "_meta": "charaModel/d2Container/d2 transform curves per Appear<Rarity> clip. Drives the character-art entry animation (zoom/slide/alpha).",
+  "rarities": {
+    "R": {
+      "stopTime": 2.0833332538604736,
+      "curves": {
+        "charaModel/d2Container__m_AnchoredPosition.x": {
+          "type": "keys",
+          "data": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.45,
+              0.1
+            ],
+            [
+              0.5833,
+              1.0
+            ],
+            [
+              0.9667,
+              0.2
+            ],
+            [
+              1.9667,
+              0.0
+            ]
+          ]
+        },
+        "charaModel/d2Container__m_AnchoredPosition.y": {
+          "type": "keys",
+          "data": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.45,
+              0.1
+            ],
+            [
+              0.5833,
+              1.0
+            ],
+            [
+              0.7833,
+              0.0
+            ]
+          ]
+        },
+        "charaModel/d2Container/d2__m_Color.a": {
+          "type": "keys",
+          "data": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.5333,
+              0.0
+            ],
+            [
+              0.55,
+              1.0
+            ]
+          ]
+        }
+      }
+    },
+    "SR": {
+      "stopTime": 2.2333333492279053,
+      "curves": {
+        "charaModel/d2Container__m_AnchoredPosition.x": {
+          "type": "keys",
+          "data": [
+            [
+              1.1667,
+              1.0
+            ],
+            [
+              1.35,
+              2.5
+            ]
+          ]
+        },
+        "charaModel/d2Container__m_AnchoredPosition.y": {
+          "type": "keys",
+          "data": [
+            [
+              1.1667,
+              1.0
+            ],
+            [
+              1.35,
+              2.5
+            ]
+          ]
+        },
+        "charaModel/d2Container/d2__m_Color.a": {
+          "type": "keys",
+          "data": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.45,
+              0.1
+            ],
+            [
+              0.5833,
+              1.0
+            ],
+            [
+              0.7833,
+              0.0
+            ]
+          ]
+        }
+      }
+    },
+    "SSRUltimate": {
+      "stopTime": 3.0,
+      "curves": {
+        "charaModel/d2Container__m_AnchoredPosition.x": {
+          "type": "keys",
+          "data": [
+            [
+              1.6167,
+              1.0
+            ],
+            [
+              1.8,
+              1.0
+            ]
+          ]
+        },
+        "charaModel/d2Container__m_AnchoredPosition.y": {
+          "type": "keys",
+          "data": [
+            [
+              1.8,
+              6.0
+            ],
+            [
+              1.9167,
+              1.1
+            ],
+            [
+              2.1333,
+              1.0
+            ]
+          ]
+        },
+        "charaModel/d2Container/d2__m_Color.a": {
+          "type": "keys",
+          "data": [
+            [
+              1.8,
+              1.0
+            ],
+            [
+              1.9833,
+              2.5
+            ]
+          ]
+        }
+      }
+    },
+    "URUltimate": {
+      "stopTime": 3.183333396911621,
+      "curves": {
+        "charaModel/d2Container__m_AnchoredPosition.x": {
+          "type": "keys",
+          "data": [
+            [
+              1.8,
+              6.0
+            ],
+            [
+              1.9167,
+              1.1
+            ],
+            [
+              2.1333,
+              1.0
+            ]
+          ]
+        },
+        "charaModel/d2Container__m_AnchoredPosition.y": {
+          "type": "keys",
+          "data": [
+            [
+              1.8,
+              1.0
+            ],
+            [
+              1.9167,
+              1.0
+            ],
+            [
+              2.1333,
+              1.0
+            ]
+          ]
+        },
+        "charaModel/d2Container/d2__m_Color.a": {
+          "type": "keys",
+          "data": [
+            [
+              1.9833,
+              6.0
+            ],
+            [
+              2.1,
+              1.1
+            ],
+            [
+              2.3167,
+              1.0
+            ]
+          ]
+        }
+      }
+    },
+    "SSR": {
+      "stopTime": 2.2833333015441895,
+      "curves": {
+        "charaModel/d2Container__m_AnchoredPosition.x": {
+          "type": "keys",
+          "data": [
+            [
+              1.4667,
+              1.0
+            ],
+            [
+              1.65,
+              1.0
+            ]
+          ]
+        },
+        "charaModel/d2Container__m_AnchoredPosition.y": {
+          "type": "keys",
+          "data": [
+            [
+              1.6167,
+              1.0
+            ],
+            [
+              1.8,
+              2.5
+            ]
+          ]
+        },
+        "charaModel/d2Container/d2__m_Color.a": {
+          "type": "keys",
+          "data": [
+            [
+              1.7667,
+              1.0
+            ],
+            [
+              1.95,
+              2.5
+            ]
+          ]
+        }
+      }
+    },
+    "UREx": {
+      "stopTime": 3.183333396911621,
+      "curves": {
+        "charaModel/d2Container__m_AnchoredPosition.x": {
+          "type": "keys",
+          "data": [
+            [
+              1.8,
+              6.0
+            ],
+            [
+              1.9167,
+              1.1
+            ],
+            [
+              2.1333,
+              1.0
+            ]
+          ]
+        },
+        "charaModel/d2Container__m_AnchoredPosition.y": {
+          "type": "keys",
+          "data": [
+            [
+              1.8,
+              1.0
+            ],
+            [
+              1.9167,
+              1.0
+            ],
+            [
+              2.1333,
+              1.0
+            ]
+          ]
+        },
+        "charaModel/d2Container/d2__m_Color.a": {
+          "type": "keys",
+          "data": [
+            [
+              1.9833,
+              6.0
+            ],
+            [
+              2.1,
+              1.1
+            ],
+            [
+              2.3167,
+              1.0
+            ]
+          ]
+        }
+      }
+    }
+  }
+}

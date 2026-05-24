@@ -1,0 +1,3142 @@
+{
+  "target1": {
+    "path": "resultTemplate/container/cardContainer/thumbReward/specialize/target1",
+    "groups": [
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "OniUI.UICommonData+SpecializeRarityType",
+        "frameCategory": 2,
+        "num": 3,
+        "label": "specializeRarityBlank",
+        "sprites": [
+          {
+            "pid": 8169939711675570456,
+            "name": "specializeRarityCommon",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -252064676237477655,
+            "name": "specializeRarityR",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6959551554644232687,
+            "name": "specializeRaritySR",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5208986132717134968,
+            "name": "specializeRarityBlank",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "OniUI.UICommonData+SpecializeRarityType",
+        "frameCategory": 2,
+        "num": 3,
+        "label": "specializeRarityBlank",
+        "sprites": [
+          {
+            "pid": 8169939711675570456,
+            "name": "specializeRarityCommon",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -252064676237477655,
+            "name": "specializeRarityR",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6959551554644232687,
+            "name": "specializeRaritySR",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5208986132717134968,
+            "name": "specializeRarityBlank",
+            "kind": "Sprite"
+          }
+        ]
+      }
+    ]
+  },
+  "icElement": {
+    "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/icElement",
+    "groups": [
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "OniUI.UICommonData+Element",
+        "frameCategory": 2,
+        "num": 1,
+        "label": "icElementEarth",
+        "sprites": [
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 8669747206015222432,
+            "name": "icElementEarth",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -9115558060629216969,
+            "name": "icElementAir",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 3690475619736096592,
+            "name": "icElementWind",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6032282267098692541,
+            "name": "icElementWater",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 2413461561523549611,
+            "name": "icElementFire",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -3466246169087964990,
+            "name": "icElementHoly",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 3648267140974813933,
+            "name": "icElementDark",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 2880742759473519235,
+            "name": "icElementEnhancedEarth",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 8146986398435981912,
+            "name": "icElementEnhancedAir",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -3332936932721878349,
+            "name": "icElementEnhancedWind",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 5612930654229484019,
+            "name": "icElementEnhancedWater",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2113168657421398807,
+            "name": "icElementEnhancedFire",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -3500067156021998313,
+            "name": "icElementEnhancedHoly",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 953075012121822547,
+            "name": "icElementEnhancedDark",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "OniUI.UICommonData+Element",
+        "frameCategory": 2,
+        "num": 1,
+        "label": "icElementEarth",
+        "sprites": [
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 8669747206015222432,
+            "name": "icElementEarth",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -9115558060629216969,
+            "name": "icElementAir",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 3690475619736096592,
+            "name": "icElementWind",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6032282267098692541,
+            "name": "icElementWater",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 2413461561523549611,
+            "name": "icElementFire",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -3466246169087964990,
+            "name": "icElementHoly",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 3648267140974813933,
+            "name": "icElementDark",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 2880742759473519235,
+            "name": "icElementEnhancedEarth",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 8146986398435981912,
+            "name": "icElementEnhancedAir",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -3332936932721878349,
+            "name": "icElementEnhancedWind",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 5612930654229484019,
+            "name": "icElementEnhancedWater",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2113168657421398807,
+            "name": "icElementEnhancedFire",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -3500067156021998313,
+            "name": "icElementEnhancedHoly",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 953075012121822547,
+            "name": "icElementEnhancedDark",
+            "kind": "Sprite"
+          }
+        ]
+      }
+    ]
+  },
+  "frameImage": {
+    "path": "resultTemplate/container/cardContainer/thumbReward/frameImage",
+    "groups": [
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 0,
+        "label": "frameMemberM3",
+        "sprites": [
+          {
+            "pid": -2431999704212517174,
+            "name": "frameMemberM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2431999704212517174,
+            "name": "frameMemberM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2431999704212517174,
+            "name": "frameMemberM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2431999704212517174,
+            "name": "frameMemberM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 6661487120665644229,
+            "name": "frameMemberM4",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 2414477087317250109,
+            "name": "frameMemberM5",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5482746119770567721,
+            "name": "frameMemberM6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5482746119770567721,
+            "name": "frameMemberM6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -2582246663173294937,
+            "name": "frameMemberM5_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 7586524411435506329,
+            "name": "frameMemberM6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 7586524411435506329,
+            "name": "frameMemberM6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 4025987518214427126,
+            "name": "frameMemberM5_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -353571690658799436,
+            "name": "frameMemberM6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -353571690658799436,
+            "name": "frameMemberM6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 7881617495491016503,
+            "name": "frameMemberM7_Epic",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 7881617495491016503,
+            "name": "frameMemberM7_Epic",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 0,
+        "label": "frameBlessM3",
+        "sprites": [
+          {
+            "pid": -6407089769222377917,
+            "name": "frameBlessM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6407089769222377917,
+            "name": "frameBlessM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6407089769222377917,
+            "name": "frameBlessM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6407089769222377917,
+            "name": "frameBlessM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 2130257922042339326,
+            "name": "frameBlessM4",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 3682592769528663487,
+            "name": "frameBlessM5",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 8497767819021437087,
+            "name": "frameBlessM6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 8497767819021437087,
+            "name": "frameBlessM6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -7473513539705998826,
+            "name": "frameBlessM5_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 2171001567256253829,
+            "name": "frameBlessM6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 2171001567256253829,
+            "name": "frameBlessM6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 4255158820215134929,
+            "name": "frameBlessM5_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 1899920833468305471,
+            "name": "frameBlessM6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 1899920833468305471,
+            "name": "frameBlessM6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 3063242570968627308,
+            "name": "frameBlessM7_Epic",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 3063242570968627308,
+            "name": "frameBlessM7_Epic",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 0,
+        "label": "frameMemberM3",
+        "sprites": [
+          {
+            "pid": -2431999704212517174,
+            "name": "frameMemberM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2431999704212517174,
+            "name": "frameMemberM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2431999704212517174,
+            "name": "frameMemberM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2431999704212517174,
+            "name": "frameMemberM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 6661487120665644229,
+            "name": "frameMemberM4",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 2414477087317250109,
+            "name": "frameMemberM5",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5482746119770567721,
+            "name": "frameMemberM6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5482746119770567721,
+            "name": "frameMemberM6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -2582246663173294937,
+            "name": "frameMemberM5_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 7586524411435506329,
+            "name": "frameMemberM6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 7586524411435506329,
+            "name": "frameMemberM6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 4025987518214427126,
+            "name": "frameMemberM5_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -353571690658799436,
+            "name": "frameMemberM6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -353571690658799436,
+            "name": "frameMemberM6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 7881617495491016503,
+            "name": "frameMemberM7_Epic",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 7881617495491016503,
+            "name": "frameMemberM7_Epic",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 0,
+        "label": "frameBlessM3",
+        "sprites": [
+          {
+            "pid": -6407089769222377917,
+            "name": "frameBlessM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6407089769222377917,
+            "name": "frameBlessM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6407089769222377917,
+            "name": "frameBlessM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6407089769222377917,
+            "name": "frameBlessM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 2130257922042339326,
+            "name": "frameBlessM4",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 3682592769528663487,
+            "name": "frameBlessM5",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 8497767819021437087,
+            "name": "frameBlessM6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 8497767819021437087,
+            "name": "frameBlessM6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -7473513539705998826,
+            "name": "frameBlessM5_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 2171001567256253829,
+            "name": "frameBlessM6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 2171001567256253829,
+            "name": "frameBlessM6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 4255158820215134929,
+            "name": "frameBlessM5_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 1899920833468305471,
+            "name": "frameBlessM6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 1899920833468305471,
+            "name": "frameBlessM6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 3063242570968627308,
+            "name": "frameBlessM7_Epic",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 3063242570968627308,
+            "name": "frameBlessM7_Epic",
+            "kind": "Sprite"
+          }
+        ]
+      }
+    ]
+  },
+  "badgeBarrier": {
+    "path": "resultTemplate/container/cardContainer/thumbReward/badgeBarrier",
+    "groups": [
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "OniUI.XIUIThumbReward+BarrierType",
+        "frameCategory": 2,
+        "num": 0,
+        "label": "badgeBarrierBattle",
+        "sprites": [
+          {
+            "pid": -7691337550030571621,
+            "name": "badgeBarrierBattle",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 6024474435515241135,
+            "name": "badgeBarrierGet",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "OniUI.XIUIThumbReward+BarrierType",
+        "frameCategory": 2,
+        "num": 0,
+        "label": "badgeBarrierBattle",
+        "sprites": [
+          {
+            "pid": -7691337550030571621,
+            "name": "badgeBarrierBattle",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 6024474435515241135,
+            "name": "badgeBarrierGet",
+            "kind": "Sprite"
+          }
+        ]
+      }
+    ]
+  },
+  "limitBreakChara/__rarity_sprites": {
+    "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/limitBreakChara",
+    "kind": "XIUIRarityStar.raritySpriteList",
+    "rarity_sprites": [
+      {
+        "pid": 4672379765565237562,
+        "name": "starLimitBreakOff",
+        "kind": "Sprite"
+      },
+      {
+        "pid": -6380903171475228334,
+        "name": "starLimitBreakOn",
+        "kind": "Sprite"
+      },
+      {
+        "pid": -6380903171475228334,
+        "name": "starLimitBreakOn",
+        "kind": "Sprite"
+      }
+    ]
+  },
+  "rarityStar/__rarity_sprites": {
+    "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/rarityStar",
+    "kind": "XIUIRarityStar.raritySpriteList",
+    "rarity_sprites": [
+      {
+        "pid": -8710003463283802935,
+        "name": "starOff",
+        "kind": "Sprite"
+      },
+      {
+        "pid": -3250454406175751660,
+        "name": "starOn",
+        "kind": "Sprite"
+      },
+      {
+        "pid": 6980412892061527041,
+        "name": "starOn_Arousal",
+        "kind": "Sprite"
+      }
+    ]
+  },
+  "baseImage": {
+    "path": "resultTemplate/container/cardContainer/thumbReward/baseImage",
+    "groups": [
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 0,
+        "label": "equipRarity4",
+        "sprites": [
+          {
+            "pid": 9075066139382126024,
+            "name": "equipRarity1",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 9075066139382126024,
+            "name": "equipRarity1",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 8471561305618544048,
+            "name": "equipRarity4",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2204382100982662167,
+            "name": "equipRarity6",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 0,
+        "label": "baseBlessM3",
+        "sprites": [
+          {
+            "pid": 63203591174951040,
+            "name": "baseBlessM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 63203591174951040,
+            "name": "baseBlessM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 63203591174951040,
+            "name": "baseBlessM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 63203591174951040,
+            "name": "baseBlessM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 5922214159067026100,
+            "name": "baseBlessM4",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -1115500241046349998,
+            "name": "baseBlessM5",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 7904401006120026194,
+            "name": "baseBlessM6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 7904401006120026194,
+            "name": "baseBlessM6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -8722619617004038167,
+            "name": "baseBlessM5_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -4731333800407824555,
+            "name": "baseBlessM6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -4731333800407824555,
+            "name": "baseBlessM6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -1044450089571612773,
+            "name": "baseBlessM5_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2877760769846995344,
+            "name": "baseBlessM6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2877760769846995344,
+            "name": "baseBlessM6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -8538453608652182711,
+            "name": "baseBlessM7_Epic",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -8538453608652182711,
+            "name": "baseBlessM7_Epic",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 0,
+        "label": "itemRrarity1",
+        "sprites": [
+          {
+            "pid": -8714341632492996287,
+            "name": "itemRrarity1",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -8714341632492996287,
+            "name": "itemRrarity1",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 1900565165024266872,
+            "name": "itemRrarity2",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5872589848587350525,
+            "name": "itemRrarity3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 42270829724463417,
+            "name": "itemRrarity4",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 2563723682933659543,
+            "name": "itemRrarity5",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 0,
+        "label": "baseMemberM3",
+        "sprites": [
+          {
+            "pid": -1290158141258484117,
+            "name": "baseMemberM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -1290158141258484117,
+            "name": "baseMemberM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -1290158141258484117,
+            "name": "baseMemberM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -1290158141258484117,
+            "name": "baseMemberM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -1589319755548245479,
+            "name": "baseMemberM4",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6856196983993535935,
+            "name": "baseMemberM5",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 5363306768041886969,
+            "name": "baseMemberM6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 5363306768041886969,
+            "name": "baseMemberM6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 5692325292801276846,
+            "name": "baseMemberM5_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -4235755390661650018,
+            "name": "baseMemberM6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -4235755390661650018,
+            "name": "baseMemberM6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -2471710398087529462,
+            "name": "baseMemberM5_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 7912389046902002833,
+            "name": "baseMemberM6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 7912389046902002833,
+            "name": "baseMemberM6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -1863601182446000043,
+            "name": "baseMemberM7_Epic",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -1863601182446000043,
+            "name": "baseMemberM7_Epic",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 0,
+        "label": "itemRrarity1",
+        "sprites": [
+          {
+            "pid": -8714341632492996287,
+            "name": "itemRrarity1",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -8714341632492996287,
+            "name": "itemRrarity1",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 1900565165024266872,
+            "name": "itemRrarity2",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5872589848587350525,
+            "name": "itemRrarity3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 42270829724463417,
+            "name": "itemRrarity4",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 0,
+        "label": "equipRarity1",
+        "sprites": [
+          {
+            "pid": 9075066139382126024,
+            "name": "equipRarity1",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 9075066139382126024,
+            "name": "equipRarity1",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 6679273852599687345,
+            "name": "equipRarity2",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -8342958316473070105,
+            "name": "equipRarity3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 8471561305618544048,
+            "name": "equipRarity4",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 7748112554405432540,
+            "name": "equipRarity5",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2204382100982662167,
+            "name": "equipRarity6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 4081909817094532788,
+            "name": "equipRarity78",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 4081909817094532788,
+            "name": "equipRarity78",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 4970022892459001150,
+            "name": "equipRarity4_Arousal",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 4970022892459001150,
+            "name": "equipRarity4_Arousal",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 4970022892459001150,
+            "name": "equipRarity4_Arousal",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 4970022892459001150,
+            "name": "equipRarity4_Arousal",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 4970022892459001150,
+            "name": "equipRarity4_Arousal",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2089747065627702525,
+            "name": "equipRarity5_Arousal",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -7949969046595897523,
+            "name": "equipRarity6_Arousal",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 4081909817094532788,
+            "name": "equipRarity78",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 4081909817094532788,
+            "name": "equipRarity78",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 0,
+        "label": "equipRarity4",
+        "sprites": [
+          {
+            "pid": 9075066139382126024,
+            "name": "equipRarity1",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 9075066139382126024,
+            "name": "equipRarity1",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 8471561305618544048,
+            "name": "equipRarity4",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2204382100982662167,
+            "name": "equipRarity6",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 3,
+        "label": "itemRrarity4",
+        "sprites": [
+          {
+            "pid": 1900565165024266872,
+            "name": "itemRrarity2",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 1900565165024266872,
+            "name": "itemRrarity2",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5872589848587350525,
+            "name": "itemRrarity3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 42270829724463417,
+            "name": "itemRrarity4",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 0,
+        "label": "itemRrarity1",
+        "sprites": [
+          {
+            "pid": -8714341632492996287,
+            "name": "itemRrarity1",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -8714341632492996287,
+            "name": "itemRrarity1",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 1900565165024266872,
+            "name": "itemRrarity2",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5872589848587350525,
+            "name": "itemRrarity3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 42270829724463417,
+            "name": "itemRrarity4",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 2563723682933659543,
+            "name": "itemRrarity5",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 0,
+        "label": "equipRarity1",
+        "sprites": [
+          {
+            "pid": 9075066139382126024,
+            "name": "equipRarity1",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 9075066139382126024,
+            "name": "equipRarity1",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 6679273852599687345,
+            "name": "equipRarity2",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -8342958316473070105,
+            "name": "equipRarity3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 8471561305618544048,
+            "name": "equipRarity4",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 7748112554405432540,
+            "name": "equipRarity5",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2204382100982662167,
+            "name": "equipRarity6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 4081909817094532788,
+            "name": "equipRarity78",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 4081909817094532788,
+            "name": "equipRarity78",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 4970022892459001150,
+            "name": "equipRarity4_Arousal",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 4970022892459001150,
+            "name": "equipRarity4_Arousal",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 4970022892459001150,
+            "name": "equipRarity4_Arousal",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 4970022892459001150,
+            "name": "equipRarity4_Arousal",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 4970022892459001150,
+            "name": "equipRarity4_Arousal",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2089747065627702525,
+            "name": "equipRarity5_Arousal",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -7949969046595897523,
+            "name": "equipRarity6_Arousal",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 4081909817094532788,
+            "name": "equipRarity78",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 4081909817094532788,
+            "name": "equipRarity78",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 3,
+        "label": "itemRrarity4",
+        "sprites": [
+          {
+            "pid": 1900565165024266872,
+            "name": "itemRrarity2",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 1900565165024266872,
+            "name": "itemRrarity2",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5872589848587350525,
+            "name": "itemRrarity3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 42270829724463417,
+            "name": "itemRrarity4",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 0,
+        "label": "baseMemberM3",
+        "sprites": [
+          {
+            "pid": -1290158141258484117,
+            "name": "baseMemberM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -1290158141258484117,
+            "name": "baseMemberM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -1290158141258484117,
+            "name": "baseMemberM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -1290158141258484117,
+            "name": "baseMemberM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -1589319755548245479,
+            "name": "baseMemberM4",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6856196983993535935,
+            "name": "baseMemberM5",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 5363306768041886969,
+            "name": "baseMemberM6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 5363306768041886969,
+            "name": "baseMemberM6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 5692325292801276846,
+            "name": "baseMemberM5_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -4235755390661650018,
+            "name": "baseMemberM6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -4235755390661650018,
+            "name": "baseMemberM6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -2471710398087529462,
+            "name": "baseMemberM5_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 7912389046902002833,
+            "name": "baseMemberM6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 7912389046902002833,
+            "name": "baseMemberM6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -1863601182446000043,
+            "name": "baseMemberM7_Epic",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -1863601182446000043,
+            "name": "baseMemberM7_Epic",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 0,
+        "label": "itemRrarity1",
+        "sprites": [
+          {
+            "pid": -8714341632492996287,
+            "name": "itemRrarity1",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -8714341632492996287,
+            "name": "itemRrarity1",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 1900565165024266872,
+            "name": "itemRrarity2",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5872589848587350525,
+            "name": "itemRrarity3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 42270829724463417,
+            "name": "itemRrarity4",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 0,
+        "label": "baseBlessM3",
+        "sprites": [
+          {
+            "pid": 63203591174951040,
+            "name": "baseBlessM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 63203591174951040,
+            "name": "baseBlessM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 63203591174951040,
+            "name": "baseBlessM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 63203591174951040,
+            "name": "baseBlessM3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 5922214159067026100,
+            "name": "baseBlessM4",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -1115500241046349998,
+            "name": "baseBlessM5",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 7904401006120026194,
+            "name": "baseBlessM6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 7904401006120026194,
+            "name": "baseBlessM6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -8722619617004038167,
+            "name": "baseBlessM5_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -4731333800407824555,
+            "name": "baseBlessM6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -4731333800407824555,
+            "name": "baseBlessM6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -1044450089571612773,
+            "name": "baseBlessM5_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2877760769846995344,
+            "name": "baseBlessM6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2877760769846995344,
+            "name": "baseBlessM6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -8538453608652182711,
+            "name": "baseBlessM7_Epic",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -8538453608652182711,
+            "name": "baseBlessM7_Epic",
+            "kind": "Sprite"
+          }
+        ]
+      }
+    ]
+  },
+  "target2": {
+    "path": "resultTemplate/container/cardContainer/thumbReward/specialize/target2",
+    "groups": [
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "OniUI.UICommonData+SpecializeRarityType",
+        "frameCategory": 2,
+        "num": 3,
+        "label": "specializeRarityBlank",
+        "sprites": [
+          {
+            "pid": 8169939711675570456,
+            "name": "specializeRarityCommon",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -252064676237477655,
+            "name": "specializeRarityR",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6959551554644232687,
+            "name": "specializeRaritySR",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5208986132717134968,
+            "name": "specializeRarityBlank",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "OniUI.UICommonData+SpecializeRarityType",
+        "frameCategory": 2,
+        "num": 3,
+        "label": "specializeRarityBlank",
+        "sprites": [
+          {
+            "pid": 8169939711675570456,
+            "name": "specializeRarityCommon",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -252064676237477655,
+            "name": "specializeRarityR",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6959551554644232687,
+            "name": "specializeRaritySR",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5208986132717134968,
+            "name": "specializeRarityBlank",
+            "kind": "Sprite"
+          }
+        ]
+      }
+    ]
+  },
+  "rarityChara": {
+    "path": "resultTemplate/container/cardContainer/thumbReward/rarityChara",
+    "groups": [
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 3,
+        "label": "starCharaS3",
+        "sprites": [
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 3222437803034534048,
+            "name": "starCharaS3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 3566596440724248224,
+            "name": "starCharaS4",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -7934710814596397972,
+            "name": "starCharaS5",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -3126170069978297123,
+            "name": "starCharaS6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 3036773350999021011,
+            "name": "starCharaS7",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -6273354249049821889,
+            "name": "starCharaS5_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 1354078941508367613,
+            "name": "starCharaS6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -3341072210162575836,
+            "name": "starCharaS7_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -8219509477063823629,
+            "name": "starCharaS5_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2523567686488373714,
+            "name": "starCharaS6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -8818691511100642464,
+            "name": "starCharaS7_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -3376651809135266868,
+            "name": "starCharaS6_Epic",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 5452174284812821160,
+            "name": "starCharaS7_Epic",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": null,
+        "frameCategory": null,
+        "num": null,
+        "label": null,
+        "sprites": [
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -7220140626131341956,
+            "name": "starCharaS3_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5019732899871131507,
+            "name": "starCharaS4_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -3429126115898113581,
+            "name": "starCharaS5_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2006782311921295348,
+            "name": "starCharaS6_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 6527643746730565251,
+            "name": "starCharaS7_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 2730276771865281495,
+            "name": "starCharaS5_Special_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -743662137430733173,
+            "name": "starCharaS6_Special_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -1367003572540367264,
+            "name": "starCharaS7_Special_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 7631977024510937264,
+            "name": "starCharaS5_SpecialPlus_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6831305931643639249,
+            "name": "starCharaS6_SpecialPlus_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -268772191170523146,
+            "name": "starCharaS7_SpecialPlus_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -5485270881280996311,
+            "name": "starCharaS6_Epic_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -201466621427701685,
+            "name": "starCharaS7_Epic_Alphabet",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "",
+        "frameCategory": 1,
+        "num": 3,
+        "label": "starCharaS3",
+        "sprites": [
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 3222437803034534048,
+            "name": "starCharaS3",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 3566596440724248224,
+            "name": "starCharaS4",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -7934710814596397972,
+            "name": "starCharaS5",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -3126170069978297123,
+            "name": "starCharaS6",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 3036773350999021011,
+            "name": "starCharaS7",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -6273354249049821889,
+            "name": "starCharaS5_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 1354078941508367613,
+            "name": "starCharaS6_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -3341072210162575836,
+            "name": "starCharaS7_Special",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -8219509477063823629,
+            "name": "starCharaS5_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2523567686488373714,
+            "name": "starCharaS6_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -8818691511100642464,
+            "name": "starCharaS7_SpecialPlus",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -3376651809135266868,
+            "name": "starCharaS6_Epic",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 5452174284812821160,
+            "name": "starCharaS7_Epic",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": null,
+        "frameCategory": null,
+        "num": null,
+        "label": null,
+        "sprites": [
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -7220140626131341956,
+            "name": "starCharaS3_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5019732899871131507,
+            "name": "starCharaS4_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -3429126115898113581,
+            "name": "starCharaS5_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -2006782311921295348,
+            "name": "starCharaS6_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 6527643746730565251,
+            "name": "starCharaS7_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 2730276771865281495,
+            "name": "starCharaS5_Special_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -743662137430733173,
+            "name": "starCharaS6_Special_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -1367003572540367264,
+            "name": "starCharaS7_Special_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 7631977024510937264,
+            "name": "starCharaS5_SpecialPlus_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6831305931643639249,
+            "name": "starCharaS6_SpecialPlus_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -268772191170523146,
+            "name": "starCharaS7_SpecialPlus_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": -5485270881280996311,
+            "name": "starCharaS6_Epic_Alphabet",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -201466621427701685,
+            "name": "starCharaS7_Epic_Alphabet",
+            "kind": "Sprite"
+          }
+        ]
+      }
+    ]
+  },
+  "loveContainer": {
+    "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/loveContainer",
+    "groups": [
+      {
+        "kind": "XIUIFrame",
+        "enumTypeString": "OniUI.XIUIHomePresent+LoveType",
+        "num": 0,
+        "label": "icLove",
+        "frame_key_gameobject_names": [
+          "icLove",
+          "icLove2"
+        ]
+      },
+      {
+        "kind": "XIUIFrame",
+        "enumTypeString": "OniUI.XIUIHomePresent+LoveType",
+        "num": 0,
+        "label": "icLove",
+        "frame_key_gameobject_names": [
+          "icLove",
+          "icLove2"
+        ]
+      }
+    ]
+  },
+  "icAttackType": {
+    "path": "resultTemplate/container/cardContainer/thumbReward/icAttackType",
+    "groups": [
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "OniUI.UICommonData+AttackType",
+        "frameCategory": 2,
+        "num": 0,
+        "label": "",
+        "sprites": [
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 8351038841418685466,
+            "name": "icAttackTypePhysical",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 8202362127266928681,
+            "name": "icAttackTypeMagic",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "OniUI.UICommonData+AttackType",
+        "frameCategory": 2,
+        "num": 0,
+        "label": "",
+        "sprites": [
+          {
+            "pid": 0,
+            "name": null
+          },
+          {
+            "pid": 8351038841418685466,
+            "name": "icAttackTypePhysical",
+            "kind": "Sprite"
+          },
+          {
+            "pid": 8202362127266928681,
+            "name": "icAttackTypeMagic",
+            "kind": "Sprite"
+          }
+        ]
+      }
+    ]
+  },
+  "target0": {
+    "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/specialize/target0",
+    "groups": [
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "OniUI.UICommonData+SpecializeRarityType",
+        "frameCategory": 2,
+        "num": 3,
+        "label": "specializeRarityBlank",
+        "sprites": [
+          {
+            "pid": 8169939711675570456,
+            "name": "specializeRarityCommon",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -252064676237477655,
+            "name": "specializeRarityR",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6959551554644232687,
+            "name": "specializeRaritySR",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5208986132717134968,
+            "name": "specializeRarityBlank",
+            "kind": "Sprite"
+          }
+        ]
+      },
+      {
+        "kind": "XIUIImageChanger",
+        "enumTypeString": "OniUI.UICommonData+SpecializeRarityType",
+        "frameCategory": 2,
+        "num": 3,
+        "label": "specializeRarityBlank",
+        "sprites": [
+          {
+            "pid": 8169939711675570456,
+            "name": "specializeRarityCommon",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -252064676237477655,
+            "name": "specializeRarityR",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -6959551554644232687,
+            "name": "specializeRaritySR",
+            "kind": "Sprite"
+          },
+          {
+            "pid": -5208986132717134968,
+            "name": "specializeRarityBlank",
+            "kind": "Sprite"
+          }
+        ]
+      }
+    ]
+  },
+  "equipLamp/__rarity_sprites": {
+    "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/cardContainer/thumbReward/equipLamp",
+    "kind": "XIUIRarityStar.raritySpriteList",
+    "rarity_sprites": [
+      {
+        "pid": -7105773541948313819,
+        "name": "pagerOff",
+        "kind": "Sprite"
+      },
+      {
+        "pid": 1998240610441487230,
+        "name": "pagerOn",
+        "kind": "Sprite"
+      }
+    ]
+  }
+}
