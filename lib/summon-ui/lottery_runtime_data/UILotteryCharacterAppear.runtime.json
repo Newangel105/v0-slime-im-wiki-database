@@ -1,0 +1,4758 @@
+{
+ "prefab": "UILotteryCharacterAppear",
+ "_meta": "extracted by extract_lottery_runtime_data.py",
+ "simpleTweenTMPSage": [],
+ "uiLotteryTextAnimation": [],
+ "textMeshes": [
+  {
+   "go": "characterName",
+   "text": "<cspace=-0.072em>お名前は最大十二文字まで</cspace>",
+   "fontSize": 55.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "label",
+   "text": "SKIP",
+   "fontSize": 38.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "characterTitle",
+   "text": "<cspace=-0.02em>[ 二つ名最大八文字 ]</cspace>",
+   "fontSize": 40.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  }
+ ],
+ "particleSystems": [
+  {
+   "go": "ef_e_shine00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_appearAura00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_shine00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle02_3",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_c",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_Aura01_SSR",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle_04",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_a",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_flash_01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_c",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_MagicCiecle01_SR",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_appearAura00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_Aura01_UR",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_smoke00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_flash_00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_a",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_flash_00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle00_2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Liner02",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle03",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circleSmoke00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Light00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_shine00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_view_SR",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_kirakira01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_Cicle00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_Aura02_SR",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_c",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_a",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle_04",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circleSmoke00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_d",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_view_URUltimate",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Liner01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_appearAura00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_MagicCiecle00_SSR",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_MagicCiecle00_SSR",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle00_3",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle_04",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_Cross00_a",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_flash_01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_MagicCiecle01_R",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_shine01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle02_2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_b",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_shine01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_d",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_flash_01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle02",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_a",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle_04",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_sageBg",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_Aura01_SSR",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_view_SSRUltimate",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_d",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle02_2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_shine00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle02_3",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_flash_00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Light00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_LightCircle00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_b",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_shine01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle_04",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_a",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_MagicCiecle00_SSR",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Light00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_Line01_b",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_view_UREx",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_b",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_flash_01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_view_SSR",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_appearAura00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_d",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_flash_01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle02",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle01_3",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_view_SSRUltimate",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_Line01_c",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_Line01_a",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_kirakira00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_flash_00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_Particle01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_shine00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_Ring00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_b",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle00_3",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_view_URUltimate",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_Light00_b",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_MagicCiecle00_UR",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_smoke01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Light00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_aura00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_c",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_appear",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_Light00_a",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_c",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_b",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_LightBurst00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle_04",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_flash_01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle02",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_shine01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_Aura02_R",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_Aura01_SSR",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_view_R",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circleCore00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_shine01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circleSmoke00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_b",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_view_UREx",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_shine01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_aura01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_appearAura00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_a",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_flash_00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_LightCircle00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_view_SSR",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_shine00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_d",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle01_3",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_Cross00_b",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "SSRUltimateParticle",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_view_R",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circle00_2",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_appearAura00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_d",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_flash_00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_particle_00_c",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_view_SR",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_LightCircle00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_circleCore00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_kirakira00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  }
+ ],
+ "rectTransforms": {
+  "ef_e_particle_00_d": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "top": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     2556.0,
+     -190.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   }
+  ],
+  "ef_e_particle_00_b": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_view_SSRUltimate": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     -7.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "label": [
+   {
+    "anchoredPosition": [
+     -42.0,
+     0.0
+    ],
+    "sizeDelta": [
+     380.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     1.0,
+     0.5
+    ]
+   }
+  ],
+  "ef_e_particle_00": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "PostProcess00": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "bloomURUltimate": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "flareImage": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     382.0,
+     402.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     382.0,
+     402.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     382.0,
+     402.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     382.0,
+     402.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     382.0,
+     402.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     382.0,
+     402.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_view_SR": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -7.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_e_flash_00": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_Cicle00": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_e_particle_00_a": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "shadow": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   }
+  ],
+  "base": [
+   {
+    "anchoredPosition": [
+     24.0,
+     0.0
+    ],
+    "sizeDelta": [
+     876.0,
+     428.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_e_particle_00_c": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_e_flash_01": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_sageBg": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -7.0
+    ],
+    "sizeDelta": [
+     1920.0,
+     1080.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.49000000953674316
+    ]
+   }
+  ],
+  "rarity5": [
+   {
+    "anchoredPosition": [
+     149.0,
+     -125.0
+    ],
+    "sizeDelta": [
+     78.0,
+     74.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "gradation": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     300.0
+    ],
+    "anchorMin": [
+     0.0,
+     1.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -25.99999237060547,
+     -26.0000057220459
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "flareImage_2": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     678.0,
+     714.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     678.0,
+     714.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     678.0,
+     714.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     678.0,
+     714.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     678.0,
+     714.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     678.0,
+     714.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarity6": [
+   {
+    "anchoredPosition": [
+     149.0,
+     -125.0
+    ],
+    "sizeDelta": [
+     78.0,
+     74.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "efUltimate": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -25.99999237060547,
+     -26.0000057220459
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "postprocess": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "touchArea": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     460.0,
+     128.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "starLight": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -4.0,
+     -10.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -4.0,
+     -10.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -4.0,
+     -10.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -4.0,
+     -10.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -4.0,
+     -10.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -4.0,
+     -10.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "efOutsideLine": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     2600.0,
+     2600.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "effect": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -3.0
+    ],
+    "sizeDelta": [
+     140.0,
+     140.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     78.0,
+     74.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     78.0,
+     74.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     -3.0
+    ],
+    "sizeDelta": [
+     140.0,
+     140.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     78.0,
+     74.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     78.0,
+     74.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     -3.0
+    ],
+    "sizeDelta": [
+     140.0,
+     140.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     78.0,
+     74.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     -3.0
+    ],
+    "sizeDelta": [
+     140.0,
+     140.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     -3.0
+    ],
+    "sizeDelta": [
+     140.0,
+     140.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     78.0,
+     74.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     -3.0
+    ],
+    "sizeDelta": [
+     140.0,
+     140.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarity1": [
+   {
+    "anchoredPosition": [
+     -99.0,
+     -125.0
+    ],
+    "sizeDelta": [
+     78.0,
+     74.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "touchDisablePanel": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_e_circle_04": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_Light00_a": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "characterName": [
+   {
+    "anchoredPosition": [
+     19.0,
+     -19.0
+    ],
+    "sizeDelta": [
+     688.0,
+     76.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     579.0,
+     276.0
+    ],
+    "sizeDelta": [
+     1501.0,
+     213.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     0.0,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_appear": [
+   {
+    "anchoredPosition": [
+     0.0,
+     100.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_view_SSR": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     -7.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_view_URUltimate": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -7.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "d3": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarity3": [
+   {
+    "anchoredPosition": [
+     26.0,
+     -125.0
+    ],
+    "sizeDelta": [
+     78.0,
+     74.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "bgPattern": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     40.0,
+     40.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_view_R": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     -7.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "line": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     835.0,
+     386.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "bottom": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     2556.0,
+     -190.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.0
+    ],
+    "anchorMax": [
+     0.5,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.0
+    ]
+   }
+  ],
+  "ef_Line01_c": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "characterTitle": [
+   {
+    "anchoredPosition": [
+     23.0,
+     -72.0
+    ],
+    "sizeDelta": [
+     670.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarity1Effect": [
+   {
+    "anchoredPosition": [
+     -99.00003051757812,
+     -125.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "charaModel": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     1024.0,
+     1376.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "SSRUltimateParticle": [
+   {
+    "anchoredPosition": [
+     -155.0,
+     -135.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "bgBlack": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     40.0,
+     40.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "frameURUltimate": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -15.0
+    ],
+    "sizeDelta": [
+     -62.000003814697266,
+     -31.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   }
+  ],
+  "ef_view_UREx": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     -7.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "btnSkip": [
+   {
+    "anchoredPosition": [
+     -206.0,
+     -124.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     1.0,
+     1.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "bgBase": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -28.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarity2Effect": [
+   {
+    "anchoredPosition": [
+     -36.0,
+     -125.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "blur": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "pattern": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -25.99999237060547,
+     -26.0000057220459
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "btnScreen": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "letterBox": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     2556.0,
+     1460.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "bloom": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "bgPatternAdd": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     40.0,
+     40.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "container": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     1920.0,
+     1080.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "noise": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "d2Container": [
+   {
+    "anchoredPosition": [
+     -11.0,
+     -262.0
+    ],
+    "sizeDelta": [
+     1024.0,
+     1376.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "d2": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -20.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarity6Effect": [
+   {
+    "anchoredPosition": [
+     149.00001525878906,
+     -125.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarity4Effect": [
+   {
+    "anchoredPosition": [
+     88.0,
+     -125.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_Light00_b": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarity5Effect": [
+   {
+    "anchoredPosition": [
+     149.00001525878906,
+     -125.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "UILotteryCharacterAppear": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_Line01_b": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "efRaphaelMagicCircle": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     1668.0,
+     1668.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "gradationSSR": [
+   {
+    "anchoredPosition": [
+     -100.0,
+     0.0
+    ],
+    "sizeDelta": [
+     1800.0,
+     350.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.0
+    ],
+    "anchorMax": [
+     0.5,
+     0.0
+    ],
+    "pivot": [
+     0.5,
+     0.0
+    ]
+   }
+  ],
+  "ef_Cross00_a": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "left": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -318.0,
+     1080.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.5
+    ],
+    "anchorMax": [
+     0.0,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     0.5
+    ]
+   }
+  ],
+  "renderTexture": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     2554.0,
+     1460.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarity3Effect": [
+   {
+    "anchoredPosition": [
+     26.0,
+     -125.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarity2": [
+   {
+    "anchoredPosition": [
+     -36.0,
+     -125.0
+    ],
+    "sizeDelta": [
+     78.0,
+     74.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarity4": [
+   {
+    "anchoredPosition": [
+     88.0,
+     -125.0
+    ],
+    "sizeDelta": [
+     78.0,
+     74.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "right": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -318.0,
+     1080.0
+    ],
+    "anchorMin": [
+     1.0,
+     0.5
+    ],
+    "anchorMax": [
+     1.0,
+     0.5
+    ],
+    "pivot": [
+     1.0,
+     0.5
+    ]
+   }
+  ],
+  "ef_Cross00_b": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "addURUltimateEffectContainer": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -40.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rimuru": [
+   {
+    "anchoredPosition": [
+     0.0,
+     87.0
+    ],
+    "sizeDelta": [
+     224.0,
+     141.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "gradationUltimate": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     1200.0,
+     350.0
+    ],
+    "anchorMin": [
+     0.5,
+     1.0
+    ],
+    "anchorMax": [
+     0.5,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     1.0
+    ]
+   }
+  ],
+  "ef_Line01_a": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarityStar": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "centers": [
+   {
+    "anchoredPosition": [
+     2000.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ic": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     71.0,
+     48.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ]
+ }
+}

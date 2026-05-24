@@ -1,0 +1,7285 @@
+{
+  "_meta": "Per-emitter world transform + ParticleSystemRenderer params for UILotteryCharacterAppear. local_position is the Transform.localPosition value (the position Unity's world-space simulation uses, distinct from the RectTransform anchored-position cascade). cascaded_world_position is the sum of localPositions up the chain — what particles spawn at in the canvas's local world frame.",
+  "canvas_components_in_prefab": [],
+  "canvas_scalers_in_prefab": [],
+  "emitters": [
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": -7.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 1920.0,
+        "y": 1080.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_aura00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_aura01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_circle00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_circle01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_circle02",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_circleCore00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_particle00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_smoke00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_e_smoke01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_R",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": -7.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_R/ef_e_appearAura00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.1799999475479126,
+        "y": 1.1799999475479126,
+        "z": 1.1799999475479126
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_R/ef_e_circleSmoke00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SR",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": -7.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SR/ef_e_appearAura00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.1799999475479126,
+        "y": 1.1799999475479126,
+        "z": 1.1799999475479126
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SR/ef_e_circleCore00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SR/ef_e_circleSmoke00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSR",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": -7.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSR/ef_e_Light00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSR/ef_e_appearAura00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.1799999475479126,
+        "y": 1.1799999475479126,
+        "z": 1.1799999475479126
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSR/ef_e_circleSmoke00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSR/ef_e_kirakira01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": -7.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_Light00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_LightCircle00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_appearAura00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.1799999475479126,
+        "y": 1.1799999475479126,
+        "z": 1.1799999475479126
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_circle00_2",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 0.9800000786781311,
+        "y": 0.9800000786781311,
+        "z": 0.9800000786781311
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_circle00_3",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 0.800000011920929,
+        "y": 0.800000011920929,
+        "z": 0.800000011920929
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_circle01_3",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 0.800000011920929,
+        "y": 0.800000011920929,
+        "z": 0.800000011920929
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_circle02_2",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 0.9800000190734863,
+        "y": 0.9800000786781311,
+        "z": 0.9800000786781311
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_circle02_3",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 0.800000011920929,
+        "y": 0.800000011920929,
+        "z": 0.800000011920929
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_kirakira00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate/ef_e_particle01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": -7.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_Light00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_LightCircle00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_appearAura00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.1799999475479126,
+        "y": 1.1799999475479126,
+        "z": 1.1799999475479126
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_circle00_2",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 0.9800000786781311,
+        "y": 0.9800000786781311,
+        "z": 0.9800000786781311
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_circle00_3",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 0.800000011920929,
+        "y": 0.800000011920929,
+        "z": 0.800000011920929
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_circle01_3",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 0.800000011920929,
+        "y": 0.800000011920929,
+        "z": 0.800000011920929
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_circle02_2",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 0.9800000190734863,
+        "y": 0.9800000786781311,
+        "z": 0.9800000786781311
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_circle02_3",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 0.800000011920929,
+        "y": 0.800000011920929,
+        "z": 0.800000011920929
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_kirakira00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx/ef_e_particle01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": -7.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_LightBurst00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 1,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_Light00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_LightCircle00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_Liner01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 3,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_Liner02",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 3,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_appearAura00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.1799999475479126,
+        "y": 1.1799999475479126,
+        "z": 1.1799999475479126
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_circle00",
+      "local_position": {
+        "x": 0.0,
+        "y": -3.5,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": -3.5,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_circle01",
+      "local_position": {
+        "x": 0.0,
+        "y": -3.5,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": -3.5,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_circle02",
+      "local_position": {
+        "x": 0.0,
+        "y": -3.5,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": -3.5,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate/ef_e_particle02",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 220.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/SSRUltimateParticle",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": -155.0,
+        "y": -135.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/SSRUltimateParticle/ef_e_particle_00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_circle_04",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_flash_00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_flash_01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_particle_00_a",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_particle_00_b",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_particle_00_c",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_particle_00_d",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_shine00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity1Effect/ef_e_shine01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_circle_04",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_flash_00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_flash_01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_particle_00_a",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_particle_00_b",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_particle_00_c",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_particle_00_d",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_shine00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity2Effect/ef_e_shine01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_circle_04",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_flash_00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_flash_01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_particle_00_a",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_particle_00_b",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_particle_00_c",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_particle_00_d",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_shine00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity3Effect/ef_e_shine01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_circle_04",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_flash_00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_flash_01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_particle_00_a",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_particle_00_b",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_particle_00_c",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_particle_00_d",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_shine00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity4Effect/ef_e_shine01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_circle_04",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_flash_00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_flash_01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_particle_00_a",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_particle_00_b",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_particle_00_c",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_particle_00_d",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_shine00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity5Effect/ef_e_shine01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_circle_04",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_flash_00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_flash_01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_particle_00_a",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_particle_00_b",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_particle_00_c",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_particle_00_d",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_shine00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/characterName/rarityStar/rarity6Effect/ef_e_shine01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 100.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Cicle00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 1,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Cross00_a",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 9,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Cross00_b",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 9,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Light00_a",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 1,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Light00_b",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 1,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Line01_a",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 1,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Line01_b",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 1,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Line01_c",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 1,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Particle01",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_Ring00",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_R",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_R/ef_Aura02_R",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 3,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_R/ef_MagicCiecle01_R",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SR",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SR/ef_Aura02_SR",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 3,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SR/ef_MagicCiecle01_SR",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SSR",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SSR/ef_Aura01_SSR",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 3,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SSR/ef_MagicCiecle00_SSR",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SSRUltimate",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SSRUltimate/ef_Aura01_SSR",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 3,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SSRUltimate/ef_MagicCiecle00_SSR",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_UREx",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_UREx/ef_Aura01_SSR",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 3,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_UREx/ef_MagicCiecle00_SSR",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_URUltimate",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {
+        "x": 0.0,
+        "y": 0.0
+      },
+      "anchor_min": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchor_max": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "size_delta": {
+        "x": 100.0,
+        "y": 100.0
+      },
+      "is_rect_transform": true,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_URUltimate/ef_Aura01_UR",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.7071068286895752,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 0.7071068286895752
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 3,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_URUltimate/ef_MagicCiecle00_UR",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": -0.0,
+        "y": -0.0,
+        "z": -0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_URUltimate/ef_e_particle03",
+      "local_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "local_rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "local_scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "cascaded_world_position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "anchored_position": {},
+      "anchor_min": {},
+      "anchor_max": {},
+      "size_delta": {},
+      "is_rect_transform": false,
+      "main_simulationSpace": null,
+      "main_scalingMode": null,
+      "renderer": {
+        "renderMode": null,
+        "normalDirection": null,
+        "minParticleSize": null,
+        "maxParticleSize": null,
+        "pivot": null,
+        "renderAlignment": null,
+        "sortingOrder": 0,
+        "sortingLayerID": 0,
+        "sortingFudge": null,
+        "useCustomVertexStreams": null,
+        "cameraVelocityScale": null,
+        "velocityScale": null,
+        "lengthScale": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "_meta": {
+    "stage": "UILotteryPromotion",
+    "status": "regenerated_not_stage_gate_verified",
+    "source": "Android Unity 2021.3.25f1 recorder built from extracted UILotteryPromotion prefab/bundles",
+    "recorder_project": "C:/Users/Angel105/Documents/cenas/_work/PromotionUnityProject",
+    "frame_output": "_work/promotion_android_output_codex_tmpmeshrefresh",
+    "build_log": "C:/Users/Angel105/Documents/cenas/_work/PromotionUnityProject/_unity_build_codex_tmpmeshrefresh.log",
+    "adb": "C:/Program Files/Google/Play Games Developer Emulator/current/emulator/adb.exe",
+    "capture": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "same_rarity_frames": 70,
+      "same_rarity_duration_seconds": 2.333333,
+      "upgrade_frames": 120,
+      "upgrade_duration_seconds": 4.0
+    },
+    "raw_png_check": {
+      "checked_output": "_work/promotion_android_output_codex_tmpmeshrefresh",
+      "result": "clean_for_square_artifact",
+      "notes": [
+        "Large SSR / SSRUltimatePlusPU pink rectangle artifacts were present in older raw PNGs, so the bug was in the Unity recorder reconstruction, not MP4 encoding or browser playback.",
+        "Adding TextMesh Pro Essential Resources restored TMP runtime settings/fallback/style assets and removed the unmasked ColorGradient_* rectangle output.",
+        "Normalizing U+3000 ideographic spaces to ASCII spaces and forcing TMP mesh refresh removed remaining exact #ff00ff missing-glyph square components.",
+        "Threshold magenta remains in SSR/Ultimate variants because it is the intended gradient TMP glyph color, not connected square artifacts."
+      ]
+    },
+    "artifact_root_cause": {
+      "cause": "missing TMP runtime resources plus stale TMP mesh data for U+3000 ideographic spaces",
+      "type": "missing Unity component/resource and TMP fallback glyph issue",
+      "source_paths": [
+        "UILotteryPromotion/container/rerity5/BackText/Back00",
+        "UILotteryPromotion/container/rerity5/FrontText/Front00",
+        "UILotteryPromotion/container/rerity5UltimatePlusPU/BackText/Back00",
+        "UILotteryPromotion/container/rerity5UltimatePlusPU/FrontText/Front00"
+      ],
+      "fix": [
+        "Copied TextMesh Pro Essential Resources into the Android recorder project.",
+        "Replaced U+3000 and U+25A1 in TMP_Text contents before capture.",
+        "Called TMP_Text.SetAllDirty and TMP_Text.ForceMeshUpdate after normalization."
+      ]
+    },
+    "il2cpp_methods": [
+      "UICharacterAcquisitionAnimationPresenter.ShowLotteryPromotionAsync",
+      "UILotteryPromotion.Set",
+      "UILotteryPromotion.OnSet",
+      "UILotteryPromotion.CheckFixRarity",
+      "UILotteryPromotion.PlayBackTextanim",
+      "UILotteryPromotion.PlayFrontTextanim",
+      "UILotteryPromotion.PlayMiddleTextanim",
+      "UILotteryPromotion.StopAllTextAnim"
+    ],
+    "prefab_roots": [
+      "UILotteryPromotion/container/rerity3",
+      "UILotteryPromotion/container/rerity4",
+      "UILotteryPromotion/container/rerity5",
+      "UILotteryPromotion/container/rerity5UltimatePlusPU"
+    ],
+    "known_gaps": [
+      "No real-game stage-gate capture comparison has passed yet.",
+      "Recorder still lacks game-specific MonoBehaviours such as Coffee.UIExtensions.UIParticle, UILotteryTextAnimation, WUIScripts.SimpleTweenTMPSage, CircleImage, and UnityEngine.Rendering.Volume.",
+      "Reference captures mix the preceding lottery movie silhouette/floor frames with the later UILotteryPromotion glyph layer; runtime tracing is still needed to confirm the exact stage boundary and composition.",
+      "SR_to_SSRUltimatePlusPU is available in the manifest, but the website payload still does not expose the real RandomStringRainbow outcome that selects that SR-start branch for pickup ArousalType >= 2."
+    ]
+  },
+  "variants": [
+    {
+      "id": "R",
+      "startRarity": "R",
+      "fixRarity": "R",
+      "rootClip": "FixRarityR",
+      "src": "/Movie/Promotion/lottery_promotion_R.mp4",
+      "localFile": "public/Movie/Promotion/lottery_promotion_R.mp4",
+      "bytes": 1187810,
+      "frames": 70,
+      "duration_seconds": 2.333333,
+      "status": "regenerated_not_stage_gate_verified"
+    },
+    {
+      "id": "SR",
+      "startRarity": "SR",
+      "fixRarity": "SR",
+      "rootClip": "FixRaritySR",
+      "src": "/Movie/Promotion/lottery_promotion_SR.mp4",
+      "localFile": "public/Movie/Promotion/lottery_promotion_SR.mp4",
+      "bytes": 1377554,
+      "frames": 70,
+      "duration_seconds": 2.333333,
+      "status": "regenerated_not_stage_gate_verified"
+    },
+    {
+      "id": "SSR",
+      "startRarity": "SSR",
+      "fixRarity": "SSR",
+      "rootClip": "FixRaritySSR",
+      "src": "/Movie/Promotion/lottery_promotion_SSR.mp4",
+      "localFile": "public/Movie/Promotion/lottery_promotion_SSR.mp4",
+      "bytes": 1682315,
+      "frames": 70,
+      "duration_seconds": 2.333333,
+      "status": "regenerated_not_stage_gate_verified"
+    },
+    {
+      "id": "SSRUltimatePlusPU",
+      "startRarity": "SSRUltimatePlusPU",
+      "fixRarity": "SSRUltimatePlusPU",
+      "rootClip": "FixRaritySSRUltimatePlusPU",
+      "src": "/Movie/Promotion/lottery_promotion_SSRUltimatePlusPU.mp4",
+      "localFile": "public/Movie/Promotion/lottery_promotion_SSRUltimatePlusPU.mp4",
+      "bytes": 1805252,
+      "frames": 70,
+      "duration_seconds": 2.333333,
+      "status": "regenerated_not_stage_gate_verified"
+    },
+    {
+      "id": "SR_to_SSR",
+      "startRarity": "SR",
+      "fixRarity": "SSR",
+      "rootClip": "SSRPromotion",
+      "src": "/Movie/Promotion/lottery_promotion_SR_to_SSR.mp4",
+      "localFile": "public/Movie/Promotion/lottery_promotion_SR_to_SSR.mp4",
+      "bytes": 2352306,
+      "frames": 120,
+      "duration_seconds": 4.0,
+      "status": "regenerated_not_stage_gate_verified"
+    },
+    {
+      "id": "SR_to_SSRUltimatePlusPU",
+      "startRarity": "SR",
+      "fixRarity": "SSRUltimatePlusPU",
+      "rootClip": "SSRUltimatePlusPUPromotion",
+      "src": "/Movie/Promotion/lottery_promotion_SR_to_SSRUltimatePlusPU.mp4",
+      "localFile": "public/Movie/Promotion/lottery_promotion_SR_to_SSRUltimatePlusPU.mp4",
+      "bytes": 4419008,
+      "frames": 120,
+      "duration_seconds": 4.0,
+      "status": "regenerated_not_stage_gate_verified",
+      "selection_note": "Game reaches this branch only when arousal_type >= 2, the unit is pickup, and RandomStringRainbow returns the SR-start outcome. Current frontend payload does not expose that runtime random outcome."
+    }
+  ]
+}

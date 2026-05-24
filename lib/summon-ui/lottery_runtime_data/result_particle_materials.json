@@ -1,0 +1,1011 @@
+{
+  "_meta": "Per-card UILotteryResult inEffectsRarity / inShortEffectsRarity / itemEffectsRarity ParticleSystemRenderer material/texture bindings. Same chain as character_appear_particle_materials.json — Material → m_SavedProperties.m_TexEnvs.[_MainTex|_Color|_Alpha] → Texture2D PPtr, resolved across prefab bundle + transitive dep graph.",
+  "systems": [
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5-6UltimatePlus/uiParticle/particleKirakira",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity5-6Ultimate/uiParticle/shine2",
+      "material_name": "itemShineRainbowUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity5-6Ultimate/uiParticle/light",
+      "material_name": "itemLight",
+      "blend_mode": "alpha",
+      "texture_slot": "_Alpha",
+      "texture_file": "68ed34fae4763200.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity3/uiParticle/kirakira",
+      "material_name": "kirakira",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "0e5a8520f395f704.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity5-6UltimatePlus/uiParticle/particleKirakira",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity6Epic/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity6Epic/uiParticle/shine2",
+      "material_name": "itemShineRainbowEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5-6UltimatePlus/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5-6UltimatePlus/uiParticle/sonic",
+      "material_name": "shineStarSonicUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity5-6UltimatePlus/uiParticle/sonic2",
+      "material_name": "shineStarSonicUltimatePlus_2",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity5-6Ultimate/uiParticle/light",
+      "material_name": "itemLight",
+      "blend_mode": "alpha",
+      "texture_slot": "_Alpha",
+      "texture_file": "68ed34fae4763200.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5-6Ultimate/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity5-6Ultimate/uiParticle/shine2",
+      "material_name": "shineRainbowUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity5-6UltimatePlus/uiParticle/sonic2",
+      "material_name": "shineStarSonicUltimatePlus_2",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity3/uiParticle/shine",
+      "material_name": "shine",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "42958257f552a3c3.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity6Epic/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity4/uiParticle/shine2",
+      "material_name": "shine",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "42958257f552a3c3.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5/uiParticle/shine2",
+      "material_name": "shineRainbow",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "08fba1f9347874b5.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity3/uiParticle/shine",
+      "material_name": "shine",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "42958257f552a3c3.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity5-6UltimatePlus/uiParticle/shine",
+      "material_name": "shineRainbowUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity5-6Ultimate/uiParticle/sonic2",
+      "material_name": "shineStarSonicUltimate_2",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity5-6UltimatePlus/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity3/uiParticle/shine",
+      "material_name": "shine",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "42958257f552a3c3.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5-6Ultimate/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity6Epic/uiParticle/particleKirakiraStar",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity5/uiParticle/kirakira",
+      "material_name": "kirakira",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "0e5a8520f395f704.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5-6Ultimate/uiParticle/particleKirakira",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity6Epic/uiParticle/shine",
+      "material_name": "shineRainbowEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity4/uiParticle/shine2",
+      "material_name": "shine",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "42958257f552a3c3.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity6Epic/uiParticle/shine2",
+      "material_name": "shineRainbowEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity6Epic/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity3/uiParticle/kirakira",
+      "material_name": "kirakira",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "0e5a8520f395f704.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity5-6Ultimate/uiParticle/shine",
+      "material_name": "itemShineRainbowUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5-6UltimatePlus/uiParticle/shine2",
+      "material_name": "shineRainbowUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity6Epic/uiParticle/shineAuraSwirl",
+      "material_name": "shineAuraSwirlEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "16677e5a92c2b1b4.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity4/uiParticle/kirakira",
+      "material_name": "kirakira",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "0e5a8520f395f704.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity5-6Ultimate/uiParticle/rainbowFlare",
+      "material_name": "itemRainbowFlare",
+      "blend_mode": "alpha",
+      "texture_slot": "_Color",
+      "texture_file": "0c4ee8d1a056aec2.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5/uiParticle/kirakira",
+      "material_name": "kirakira",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "0e5a8520f395f704.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity5-6Ultimate/uiParticle/shine",
+      "material_name": "shineRainbowUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity6Epic/uiParticle/particleKirakiraStar",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity6Epic/uiParticle/particleKirakiraStar",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity5-6Ultimate/uiParticle/particleKirakira",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5-6UltimatePlus/uiParticle/sonic",
+      "material_name": "shineStarSonicUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity6Epic/uiParticle/shine2",
+      "material_name": "itemShineRainbowEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5-6Ultimate/uiParticle/sonic",
+      "material_name": "shineStarSonicUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity6Epic/uiParticle/shineAuraSwirl",
+      "material_name": "shineAuraSwirlEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "16677e5a92c2b1b4.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity5-6UltimatePlus/uiParticle/sonic",
+      "material_name": "shineStarSonicUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity5-6UltimatePlus/uiParticle/shine",
+      "material_name": "itemShineRainbowUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity4/uiParticle/shine",
+      "material_name": "shine",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "42958257f552a3c3.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity5-6Ultimate/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity5-6UltimatePlus/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity5/uiParticle/shine",
+      "material_name": "shineRainbow",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "08fba1f9347874b5.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity5-6Ultimate/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity3/uiParticle/kirakira",
+      "material_name": "kirakira",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "0e5a8520f395f704.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity5-6Ultimate/uiParticle/particleKirakira",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5-6Ultimate/uiParticle/shine2",
+      "material_name": "shineRainbowUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity4/uiParticle/shine",
+      "material_name": "shine",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "42958257f552a3c3.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity3/uiParticle/shine2",
+      "material_name": "shine",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "42958257f552a3c3.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity6Epic/uiParticle/shine2",
+      "material_name": "shineRainbowEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity5-6Ultimate/uiParticle/particleKirakira",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity6Epic/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity5-6UltimatePlus/uiParticle/shine2",
+      "material_name": "shineRainbowUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity4/uiParticle/shine",
+      "material_name": "shine",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "42958257f552a3c3.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5-6UltimatePlus/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity5-6UltimatePlus/uiParticle/particleKirakira",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5-6Ultimate/uiParticle/sonic",
+      "material_name": "shineStarSonicUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity6Epic/uiParticle/shine2",
+      "material_name": "shineRainbowEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity5-6UltimatePlus/uiParticle/rainbowFlare",
+      "material_name": "itemRainbowFlare",
+      "blend_mode": "alpha",
+      "texture_slot": "_Color",
+      "texture_file": "0c4ee8d1a056aec2.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity6Epic/uiParticle/light",
+      "material_name": "itemLight",
+      "blend_mode": "alpha",
+      "texture_slot": "_Alpha",
+      "texture_file": "68ed34fae4763200.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity6Epic/uiParticle/shineAuraSwirl",
+      "material_name": "shineAuraSwirlEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "16677e5a92c2b1b4.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5/uiParticle/shine",
+      "material_name": "shineRainbow",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "08fba1f9347874b5.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5-6UltimatePlus/uiParticle/shine",
+      "material_name": "shineRainbowUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity5-6Ultimate/uiParticle/shine2",
+      "material_name": "shineRainbowUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity3/uiParticle/kirakira",
+      "material_name": "kirakira",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "0e5a8520f395f704.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity6Epic/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity5-6Ultimate/uiParticle/shine",
+      "material_name": "shineRainbowUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity5-6UltimatePlus/uiParticle/particleKirakira",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity4/uiParticle/shine",
+      "material_name": "shine",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "42958257f552a3c3.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity3/uiParticle/shine2",
+      "material_name": "shine",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "42958257f552a3c3.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity5-6Ultimate/uiParticle/rainbowFlare",
+      "material_name": "itemRainbowFlare",
+      "blend_mode": "alpha",
+      "texture_slot": "_Color",
+      "texture_file": "0c4ee8d1a056aec2.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5-6UltimatePlus/uiParticle/sonic2",
+      "material_name": "shineStarSonicUltimatePlus_2",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5-6UltimatePlus/uiParticle/sonic2",
+      "material_name": "shineStarSonicUltimatePlus_2",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5-6UltimatePlus/uiParticle/shine2",
+      "material_name": "shineRainbowUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity5-6Ultimate/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity5-6UltimatePlus/uiParticle/shine2",
+      "material_name": "itemShineRainbowUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity4/uiParticle/shine2",
+      "material_name": "shine",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "42958257f552a3c3.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity6Epic/uiParticle/shine",
+      "material_name": "itemShineRainbowEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5/uiParticle/shine2",
+      "material_name": "shineRainbow",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "08fba1f9347874b5.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity5-6Ultimate/uiParticle/sonic",
+      "material_name": "shineStarSonicUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity6Epic/uiParticle/shine",
+      "material_name": "itemShineRainbowEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity6Epic/uiParticle/shineAuraSwirl",
+      "material_name": "shineAuraSwirlEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "16677e5a92c2b1b4.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity5-6UltimatePlus/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity4/uiParticle/shine2",
+      "material_name": "shine",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "42958257f552a3c3.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5-6UltimatePlus/uiParticle/shine",
+      "material_name": "shineRainbowUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity5-6UltimatePlus/uiParticle/sonic",
+      "material_name": "shineStarSonicUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity5-6Ultimate/uiParticle/particleKirakira",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity3/uiParticle/shine2",
+      "material_name": "shine",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "42958257f552a3c3.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5/uiParticle/shine",
+      "material_name": "shineRainbow",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "08fba1f9347874b5.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity5-6UltimatePlus/uiParticle/shine",
+      "material_name": "shineRainbowUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity3/uiParticle/shine",
+      "material_name": "shine",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "42958257f552a3c3.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5-6Ultimate/uiParticle/sonic2",
+      "material_name": "shineStarSonicUltimate_2",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity5-6UltimatePlus/uiParticle/shine2",
+      "material_name": "itemShineRainbowUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity5-6Ultimate/uiParticle/shine",
+      "material_name": "itemShineRainbowUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity5/uiParticle/shine2",
+      "material_name": "shineRainbow",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "08fba1f9347874b5.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity5-6Ultimate/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5-6Ultimate/uiParticle/shine",
+      "material_name": "shineRainbowUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity6Epic/uiParticle/shine",
+      "material_name": "shineRainbowEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity6Epic/uiParticle/rainbowFlare",
+      "material_name": "itemRainbowFlare",
+      "blend_mode": "alpha",
+      "texture_slot": "_Color",
+      "texture_file": "0c4ee8d1a056aec2.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5-6Ultimate/uiParticle/shine",
+      "material_name": "shineRainbowUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity5/uiParticle/shine",
+      "material_name": "shineRainbow",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "08fba1f9347874b5.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity6Epic/uiParticle/rainbowFlare",
+      "material_name": "itemRainbowFlare",
+      "blend_mode": "alpha",
+      "texture_slot": "_Color",
+      "texture_file": "0c4ee8d1a056aec2.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5-6Ultimate/uiParticle/sonic2",
+      "material_name": "shineStarSonicUltimate_2",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity5-6Ultimate/uiParticle/sonic",
+      "material_name": "shineStarSonicUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity5-6UltimatePlus/uiParticle/particleKirakira",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity4/uiParticle/kirakira",
+      "material_name": "kirakira",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "0e5a8520f395f704.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity6Epic/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity4/uiParticle/kirakira",
+      "material_name": "kirakira",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "0e5a8520f395f704.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity3/uiParticle/shine2",
+      "material_name": "shine",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "42958257f552a3c3.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity6Epic/uiParticle/light",
+      "material_name": "itemLight",
+      "blend_mode": "alpha",
+      "texture_slot": "_Alpha",
+      "texture_file": "68ed34fae4763200.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity6Epic/uiParticle/particleKirakiraStar",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity5-6Ultimate/uiParticle/sonic2",
+      "material_name": "shineStarSonicUltimate_2",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity5-6UltimatePlus/uiParticle/shine2",
+      "material_name": "shineRainbowUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity6Epic/uiParticle/shineAuraSwirl",
+      "material_name": "shineAuraSwirlEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "16677e5a92c2b1b4.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity6Epic/uiParticle/particleKirakiraStar",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity6Epic/uiParticle/shine",
+      "material_name": "shineRainbowEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity6Epic/uiParticle/shine",
+      "material_name": "shineRainbowEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity5-6UltimatePlus/uiParticle/shine",
+      "material_name": "itemShineRainbowUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity6Epic/uiParticle/shine2",
+      "material_name": "shineRainbowEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "1dd59686d121e364.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity5-6UltimatePlus/uiParticle/light",
+      "material_name": "itemLight",
+      "blend_mode": "alpha",
+      "texture_slot": "_Alpha",
+      "texture_file": "68ed34fae4763200.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity5-6UltimatePlus/uiParticle/shineAuraRing",
+      "material_name": "shineAuraRingUltimatePlus",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "339014b3395c7f3e.png"
+    },
+    {
+      "path": "resultTemplate/container/inEffectsRarity6Epic/uiParticle/shineAuraSwirl",
+      "material_name": "shineAuraSwirlEpic",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "16677e5a92c2b1b4.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity4/uiParticle/kirakira",
+      "material_name": "kirakira",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "0e5a8520f395f704.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5/uiParticle/kirakira",
+      "material_name": "kirakira",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "0e5a8520f395f704.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5-6UltimatePlus/uiParticle/particleKirakira",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity5/uiParticle/kirakira",
+      "material_name": "kirakira",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "0e5a8520f395f704.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inShortEffectsRarity5-6Ultimate/uiParticle/particleKirakira",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/itemEffectsRarity5-6UltimatePlus/uiParticle/light",
+      "material_name": "itemLight",
+      "blend_mode": "alpha",
+      "texture_slot": "_Alpha",
+      "texture_file": "68ed34fae4763200.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity6Epic/uiParticle/particleKirakiraStar",
+      "material_name": "kirakiraStar",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "2b4da7d33c7c3ec0.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity5-6Ultimate/uiParticle/shine2",
+      "material_name": "itemShineRainbowUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "UILotteryResult/container/modalContainer/modalFront/resultList/resultTemplate/container/inEffectsRarity5-6Ultimate/uiParticle/shine2",
+      "material_name": "shineRainbowUltimate",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "6cc7f87daad163be.png"
+    },
+    {
+      "path": "resultTemplate/container/itemEffectsRarity5-6UltimatePlus/uiParticle/rainbowFlare",
+      "material_name": "itemRainbowFlare",
+      "blend_mode": "alpha",
+      "texture_slot": "_Color",
+      "texture_file": "0c4ee8d1a056aec2.png"
+    },
+    {
+      "path": "resultTemplate/container/inShortEffectsRarity5/uiParticle/shine2",
+      "material_name": "shineRainbow",
+      "blend_mode": "custom(1.0,0.0)",
+      "texture_slot": "_Color",
+      "texture_file": "08fba1f9347874b5.png"
+    }
+  ],
+  "texture_files": {
+    "-3120334642532335296": "2b4da7d33c7c3ec0.png",
+    "7838506895082087358": "6cc7f87daad163be.png",
+    "-7560757601604350464": "68ed34fae4763200.png",
+    "1034285441007089412": "0e5a8520f395f704.png",
+    "-2149789902917722980": "1dd59686d121e364.png",
+    "3715492452574723902": "339014b3395c7f3e.png",
+    "-4797884292322730947": "42958257f552a3c3.png",
+    "-647289063157036213": "08fba1f9347874b5.png",
+    "1614397918910001588": "16677e5a92c2b1b4.png",
+    "886902163674410690": "0c4ee8d1a056aec2.png"
+  }
+}

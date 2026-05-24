@@ -1,0 +1,139 @@
+{
+  "_meta": "XIUIThumbReward sprite mappings — extracted via UnityPy typetree read on UILotteryResult/.../thumbReward MonoBehaviours. base_sprite_by_rarity_index + frame_sprite_by_rarity_index keys are ui_thumb.rarity_index (0..37); the index follows MEMBER_RARITY_ASSETS' arousal-tier formula: 30+rarity for arousal_type_raw=3 (Epic), 20+rarity for raw=2 (SpecialPlus), 10+rarity for raw=1 (Special), rarity itself for raw=0/None.",
+  "base_sprite_by_rarity_index": {
+    "Chara": {
+      "0": "baseMemberM3",
+      "1": "baseMemberM3",
+      "2": "baseMemberM3",
+      "3": "baseMemberM3",
+      "4": "baseMemberM4",
+      "5": "baseMemberM5",
+      "6": "baseMemberM6",
+      "7": "baseMemberM6",
+      "15": "baseMemberM5_Special",
+      "16": "baseMemberM6_Special",
+      "17": "baseMemberM6_Special",
+      "25": "baseMemberM5_SpecialPlus",
+      "26": "baseMemberM6_SpecialPlus",
+      "27": "baseMemberM6_SpecialPlus",
+      "36": "baseMemberM7_Epic",
+      "37": "baseMemberM7_Epic"
+    },
+    "Bless": {
+      "0": "baseBlessM3",
+      "1": "baseBlessM3",
+      "2": "baseBlessM3",
+      "3": "baseBlessM3",
+      "4": "baseBlessM4",
+      "5": "baseBlessM5",
+      "6": "baseBlessM6",
+      "7": "baseBlessM6",
+      "15": "baseBlessM5_Special",
+      "16": "baseBlessM6_Special",
+      "17": "baseBlessM6_Special",
+      "25": "baseBlessM5_SpecialPlus",
+      "26": "baseBlessM6_SpecialPlus",
+      "27": "baseBlessM6_SpecialPlus",
+      "36": "baseBlessM7_Epic",
+      "37": "baseBlessM7_Epic"
+    }
+  },
+  "frame_sprite_by_rarity_index": {
+    "Chara": {
+      "0": "frameMemberM3",
+      "1": "frameMemberM3",
+      "2": "frameMemberM3",
+      "3": "frameMemberM3",
+      "4": "frameMemberM4",
+      "5": "frameMemberM5",
+      "6": "frameMemberM6",
+      "7": "frameMemberM6",
+      "15": "frameMemberM5_Special",
+      "16": "frameMemberM6_Special",
+      "17": "frameMemberM6_Special",
+      "25": "frameMemberM5_SpecialPlus",
+      "26": "frameMemberM6_SpecialPlus",
+      "27": "frameMemberM6_SpecialPlus",
+      "36": "frameMemberM7_Epic",
+      "37": "frameMemberM7_Epic"
+    },
+    "Bless": {
+      "0": "frameBlessM3",
+      "1": "frameBlessM3",
+      "2": "frameBlessM3",
+      "3": "frameBlessM3",
+      "4": "frameBlessM4",
+      "5": "frameBlessM5",
+      "6": "frameBlessM6",
+      "7": "frameBlessM6",
+      "15": "frameBlessM5_Special",
+      "16": "frameBlessM6_Special",
+      "17": "frameBlessM6_Special",
+      "25": "frameBlessM5_SpecialPlus",
+      "26": "frameBlessM6_SpecialPlus",
+      "27": "frameBlessM6_SpecialPlus",
+      "36": "frameBlessM7_Epic",
+      "37": "frameBlessM7_Epic"
+    }
+  },
+  "rarity_star_sprites": [
+    "starOff",
+    "starOn",
+    "starOn_Arousal"
+  ],
+  "limit_break_star_sprites": [
+    "starLimitBreakOff",
+    "starLimitBreakOn",
+    "starLimitBreakOn"
+  ],
+  "rarity_chara_alphabet_by_rarity_index": {
+    "3": "starCharaS3_Alphabet",
+    "4": "starCharaS4_Alphabet",
+    "5": "starCharaS5_Alphabet",
+    "6": "starCharaS6_Alphabet",
+    "7": "starCharaS7_Alphabet",
+    "15": "starCharaS5_Special_Alphabet",
+    "16": "starCharaS6_Special_Alphabet",
+    "17": "starCharaS7_Special_Alphabet",
+    "25": "starCharaS5_SpecialPlus_Alphabet",
+    "26": "starCharaS6_SpecialPlus_Alphabet",
+    "27": "starCharaS7_SpecialPlus_Alphabet",
+    "36": "starCharaS6_Epic_Alphabet",
+    "37": "starCharaS7_Epic_Alphabet"
+  },
+  "rarity_chara_unsuffixed_by_rarity_index": {
+    "3": "starCharaS3",
+    "4": "starCharaS4",
+    "5": "starCharaS5",
+    "6": "starCharaS6",
+    "7": "starCharaS7",
+    "15": "starCharaS5_Special",
+    "16": "starCharaS6_Special",
+    "17": "starCharaS7_Special",
+    "25": "starCharaS5_SpecialPlus",
+    "26": "starCharaS6_SpecialPlus",
+    "27": "starCharaS7_SpecialPlus",
+    "36": "starCharaS6_Epic",
+    "37": "starCharaS7_Epic"
+  },
+  "element_sprite_by_index": {
+    "1": "icElementEarth",
+    "2": "icElementAir",
+    "3": "icElementWind",
+    "4": "icElementWater",
+    "5": "icElementFire",
+    "6": "icElementHoly",
+    "7": "icElementDark",
+    "9": "icElementEnhancedEarth",
+    "10": "icElementEnhancedAir",
+    "11": "icElementEnhancedWind",
+    "12": "icElementEnhancedWater",
+    "13": "icElementEnhancedFire",
+    "14": "icElementEnhancedHoly",
+    "15": "icElementEnhancedDark"
+  },
+  "attack_type_sprite_by_index": {
+    "1": "icAttackTypePhysical",
+    "2": "icAttackTypeMagic"
+  }
+}

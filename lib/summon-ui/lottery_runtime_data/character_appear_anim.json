@@ -1,0 +1,1488 @@
+{
+  "_meta": "Per-rarity UILotteryCharacterAppear animation, 1:1 from Appear<Rarity> clips. gradationActive includes ALL nameplate/star overlay m_IsActive flags (binary, thresholded at 0.5 from the streamed clip first/last samples): base/{gradation,pattern,efUltimate,line,rimuru} + rarity<N>/{effect,starLight} for N in 1..6. gradationActive.__colorA__ holds per-overlay m_Color.a const values where the clip animates the sprite tint alpha. starScale/starEffectScale/bgPattern/tmpText blocks remain as before.",
+  "rarities": {
+    "R": {
+      "clip": "AppearR",
+      "startTime": 0.0,
+      "stopTime": 2.08333,
+      "shadowColor": {
+        "r": 0.164721,
+        "g": 0.0,
+        "b": 1.0,
+        "a": 0.8
+      },
+      "gradationActive": {
+        "gradation": 1,
+        "gradationUltimate": 0,
+        "gradationSSR": 0,
+        "frameURUltimate": 0,
+        "base/gradation": 0,
+        "base/efUltimate": 1,
+        "rarity5/effect": 0,
+        "rarity4/effect": 0,
+        "rarity3/effect": 0,
+        "rarity2/effect": 0,
+        "rarity1/effect": 0,
+        "rarity5/starLight": 0,
+        "rarity4/starLight": 0,
+        "rarity3/starLight": 0,
+        "rarity2/starLight": 0,
+        "rarity1/starLight": 0
+      },
+      "starScale": {
+        "rarity3": [
+          [
+            0.0,
+            3.0
+          ],
+          [
+            1.46667,
+            3.0
+          ],
+          [
+            1.58333,
+            1.1
+          ],
+          [
+            1.8,
+            1.0
+          ]
+        ],
+        "rarity2": [
+          [
+            0.0,
+            3.0
+          ],
+          [
+            1.26667,
+            3.0
+          ],
+          [
+            1.38333,
+            1.1
+          ],
+          [
+            1.6,
+            1.0
+          ]
+        ],
+        "rarity1": [
+          [
+            0.0,
+            3.0
+          ],
+          [
+            1.06667,
+            3.0
+          ],
+          [
+            1.18333,
+            1.1
+          ],
+          [
+            1.4,
+            1.0
+          ]
+        ]
+      },
+      "starEffectScale": {
+        "rarity1Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.16667,
+            1.0
+          ],
+          [
+            1.35,
+            2.5
+          ]
+        ],
+        "rarity2Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.36667,
+            1.0
+          ],
+          [
+            1.55,
+            2.5
+          ]
+        ],
+        "rarity3Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.56667,
+            1.0
+          ],
+          [
+            1.75,
+            2.5
+          ]
+        ]
+      },
+      "bgPattern": {
+        "bgPatternAlphaKeys": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.5833,
+            0.0
+          ],
+          [
+            0.7,
+            1.0
+          ]
+        ],
+        "bgPatternAddAlphaKeys": [
+          [
+            1.0667,
+            0.0
+          ],
+          [
+            1.1,
+            1.0
+          ],
+          [
+            1.4,
+            1.0
+          ]
+        ],
+        "bgPatternColorTint": 1.0
+      },
+      "tmpText": {
+        "characterName": {
+          "fontColorAlphaKeys": [
+            [
+              1.5667,
+              1.0
+            ],
+            [
+              1.75,
+              1.0
+            ]
+          ],
+          "anchoredPositionYConst": -37.0
+        },
+        "characterTitle": {
+          "fontColorAlphaKeys": [
+            [
+              0.0,
+              1.0
+            ]
+          ],
+          "anchoredPositionYConst": 26.0
+        }
+      }
+    },
+    "SR": {
+      "clip": "AppearSR",
+      "startTime": 0.0,
+      "stopTime": 2.23333,
+      "shadowColor": {
+        "r": 0.556604,
+        "g": 0.510859,
+        "b": 0.364943,
+        "a": 0.8
+      },
+      "gradationActive": {
+        "gradation": 1,
+        "gradationUltimate": 0,
+        "gradationSSR": 0,
+        "frameURUltimate": 0,
+        "base/gradation": 1,
+        "base/efUltimate": 1,
+        "rarity5/effect": 0,
+        "rarity4/effect": 0,
+        "rarity3/effect": 0,
+        "rarity2/effect": 0,
+        "rarity1/effect": 0,
+        "rarity5/starLight": 0,
+        "rarity4/starLight": 0,
+        "rarity3/starLight": 0,
+        "rarity2/starLight": 0,
+        "rarity1/starLight": 0
+      },
+      "starScale": {
+        "rarity3": [
+          [
+            0.0,
+            3.0
+          ],
+          [
+            1.43333,
+            3.0
+          ],
+          [
+            1.55,
+            1.1
+          ],
+          [
+            1.76667,
+            1.0
+          ]
+        ],
+        "rarity2": [
+          [
+            0.0,
+            3.0
+          ],
+          [
+            1.25,
+            3.0
+          ],
+          [
+            1.36667,
+            1.1
+          ],
+          [
+            1.58333,
+            1.0
+          ]
+        ],
+        "rarity1": [
+          [
+            0.0,
+            3.0
+          ],
+          [
+            1.06667,
+            3.0
+          ],
+          [
+            1.18333,
+            1.1
+          ],
+          [
+            1.4,
+            1.0
+          ]
+        ],
+        "rarity4": [
+          [
+            0.0,
+            3.0
+          ],
+          [
+            1.61667,
+            3.0
+          ],
+          [
+            1.73333,
+            1.1
+          ],
+          [
+            1.95,
+            1.0
+          ]
+        ]
+      },
+      "starEffectScale": {
+        "rarity2Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.35,
+            1.0
+          ],
+          [
+            1.53333,
+            2.5
+          ]
+        ],
+        "rarity3Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.53333,
+            1.0
+          ],
+          [
+            1.71667,
+            2.5
+          ]
+        ],
+        "rarity4Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.71667,
+            1.0
+          ],
+          [
+            1.9,
+            2.5
+          ]
+        ],
+        "rarity1Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.16667,
+            1.0
+          ],
+          [
+            1.35,
+            2.5
+          ]
+        ]
+      },
+      "bgPattern": {
+        "bgPatternAlphaKeys": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.5333,
+            0.0
+          ],
+          [
+            0.55,
+            1.0
+          ]
+        ],
+        "bgPatternAddAlphaKeys": [
+          [
+            1.0667,
+            0.0
+          ],
+          [
+            1.1,
+            1.0
+          ],
+          [
+            1.4,
+            1.0
+          ]
+        ],
+        "bgPatternColorTint": 1.0
+      },
+      "tmpText": {
+        "characterName": {
+          "fontColorAlphaKeys": [
+            [
+              1.7167,
+              1.0
+            ],
+            [
+              1.9,
+              2.5
+            ]
+          ],
+          "anchoredPositionYConst": -68.0
+        },
+        "characterTitle": {
+          "fontColorAlphaKeys": [
+            [
+              1.7167,
+              1.0
+            ],
+            [
+              1.9,
+              1.0
+            ]
+          ],
+          "anchoredPositionYConst": -5.0
+        }
+      }
+    },
+    "SSRUltimate": {
+      "clip": "AppearSSRUltimate",
+      "startTime": 0.0,
+      "stopTime": 3.0,
+      "shadowColor": {
+        "r": 0.959738,
+        "g": 0.231132,
+        "b": 1.0,
+        "a": 0.25098
+      },
+      "gradationActive": {
+        "gradation": 0,
+        "gradationUltimate": 1,
+        "gradationSSR": 0,
+        "frameURUltimate": 0,
+        "base/gradation": 1,
+        "base/efUltimate": 1,
+        "rarity5/effect": 1,
+        "rarity4/effect": 1,
+        "rarity3/effect": 1,
+        "rarity2/effect": 1,
+        "rarity1/effect": 0,
+        "rarity5/starLight": 0,
+        "rarity4/starLight": 1,
+        "rarity3/starLight": 1,
+        "rarity2/starLight": 1,
+        "rarity1/starLight": 1
+      },
+      "starScale": {
+        "rarity3": [
+          [
+            0.0,
+            6.0
+          ],
+          [
+            1.43333,
+            6.0
+          ],
+          [
+            1.55,
+            1.1
+          ],
+          [
+            1.76667,
+            1.0
+          ]
+        ],
+        "rarity2": [
+          [
+            0.0,
+            6.0
+          ],
+          [
+            1.25,
+            6.0
+          ],
+          [
+            1.36667,
+            1.1
+          ],
+          [
+            1.58333,
+            1.0
+          ]
+        ],
+        "rarity1": [
+          [
+            0.0,
+            6.0
+          ],
+          [
+            1.06667,
+            6.0
+          ],
+          [
+            1.18333,
+            1.1
+          ],
+          [
+            1.4,
+            1.0
+          ]
+        ],
+        "rarity4": [
+          [
+            0.0,
+            6.0
+          ],
+          [
+            1.61667,
+            6.0
+          ],
+          [
+            1.73333,
+            1.1
+          ],
+          [
+            1.95,
+            1.0
+          ]
+        ],
+        "rarity5": [
+          [
+            0.0,
+            6.0
+          ],
+          [
+            1.8,
+            6.0
+          ],
+          [
+            1.91667,
+            1.1
+          ],
+          [
+            2.13333,
+            1.0
+          ]
+        ]
+      },
+      "starEffectScale": {
+        "rarity1Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.06667,
+            1.0
+          ],
+          [
+            1.25,
+            2.5
+          ]
+        ],
+        "rarity2Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.25,
+            1.0
+          ],
+          [
+            1.43333,
+            2.5
+          ]
+        ],
+        "rarity3Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.43333,
+            1.0
+          ],
+          [
+            1.61667,
+            2.5
+          ]
+        ],
+        "rarity4Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.61667,
+            1.0
+          ],
+          [
+            1.8,
+            2.5
+          ]
+        ],
+        "rarity5Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.8,
+            1.0
+          ],
+          [
+            1.98333,
+            2.5
+          ]
+        ]
+      },
+      "bgPattern": {
+        "bgPatternAlphaKeys": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.45,
+            0.10000000149011612
+          ],
+          [
+            0.5833,
+            1.0
+          ],
+          [
+            0.7833,
+            0.0
+          ]
+        ],
+        "bgPatternAddAlphaKeys": [
+          [
+            1.0667,
+            1.0
+          ],
+          [
+            1.4,
+            0.6320754289627075
+          ],
+          [
+            1.7667,
+            0.501960813999176
+          ]
+        ],
+        "bgPatternAddColorAlphaConst": 1.0,
+        "bgPatternColorTint": 1.1799999475479126
+      },
+      "tmpText": {
+        "characterName": {
+          "fontColorAlphaKeys": [
+            [
+              1.6167,
+              1.0
+            ],
+            [
+              1.8,
+              2.5
+            ]
+          ],
+          "anchoredPositionYConst": -129.0
+        },
+        "characterTitle": {
+          "fontColorAlphaKeys": [
+            [
+              1.6167,
+              1.0
+            ],
+            [
+              1.8,
+              2.5
+            ]
+          ],
+          "anchoredPositionYConst": -129.0
+        }
+      }
+    },
+    "URUltimate": {
+      "clip": "AppearURUltimate",
+      "startTime": 0.0,
+      "stopTime": 3.18333,
+      "shadowColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 0.705882
+      },
+      "gradationActive": {
+        "gradation": 0,
+        "gradationUltimate": 0,
+        "gradationSSR": 0,
+        "frameURUltimate": 1,
+        "base/gradation": 1,
+        "base/efUltimate": 1,
+        "rarity5/effect": 0,
+        "rarity4/effect": 1,
+        "rarity3/effect": 1,
+        "rarity2/effect": 1,
+        "rarity1/effect": 1,
+        "rarity5/starLight": 0,
+        "rarity4/starLight": 0,
+        "rarity3/starLight": 1,
+        "rarity2/starLight": 0,
+        "rarity1/starLight": 1,
+        "rarity6/effect": 1,
+        "rarity6/starLight": 1,
+        "__colorA__": {
+          "base/efUltimate": 0.0
+        }
+      },
+      "starScale": {
+        "rarity3": [
+          [
+            0.0,
+            6.0
+          ],
+          [
+            1.43333,
+            6.0
+          ],
+          [
+            1.55,
+            1.1
+          ],
+          [
+            1.76667,
+            1.0
+          ]
+        ],
+        "rarity2": [
+          [
+            0.0,
+            6.0
+          ],
+          [
+            1.25,
+            6.0
+          ],
+          [
+            1.36667,
+            1.1
+          ],
+          [
+            1.58333,
+            1.0
+          ]
+        ],
+        "rarity1": [
+          [
+            0.0,
+            6.0
+          ],
+          [
+            1.06667,
+            6.0
+          ],
+          [
+            1.18333,
+            1.1
+          ],
+          [
+            1.4,
+            1.0
+          ]
+        ],
+        "rarity4": [
+          [
+            0.0,
+            6.0
+          ],
+          [
+            1.61667,
+            6.0
+          ],
+          [
+            1.73333,
+            1.1
+          ],
+          [
+            1.95,
+            1.0
+          ]
+        ],
+        "rarity5": [
+          [
+            0.0,
+            6.0
+          ],
+          [
+            1.8,
+            6.0
+          ],
+          [
+            1.91667,
+            1.1
+          ],
+          [
+            2.13333,
+            1.0
+          ]
+        ],
+        "rarity6": [
+          [
+            0.0,
+            6.0
+          ],
+          [
+            1.98333,
+            6.0
+          ],
+          [
+            2.1,
+            1.1
+          ],
+          [
+            2.31667,
+            1.0
+          ]
+        ]
+      },
+      "starEffectScale": {
+        "rarity1Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.06667,
+            1.0
+          ],
+          [
+            1.25,
+            2.5
+          ]
+        ],
+        "rarity2Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.25,
+            1.0
+          ],
+          [
+            1.43333,
+            2.5
+          ]
+        ],
+        "rarity3Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.43333,
+            1.0
+          ],
+          [
+            1.61667,
+            2.5
+          ]
+        ],
+        "rarity4Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.61667,
+            1.0
+          ],
+          [
+            1.8,
+            2.5
+          ]
+        ],
+        "rarity5Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.8,
+            1.0
+          ],
+          [
+            1.98333,
+            2.5
+          ]
+        ],
+        "rarity6Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.98333,
+            1.0
+          ],
+          [
+            2.16667,
+            2.5
+          ]
+        ]
+      },
+      "bgPattern": {
+        "bgPatternAlphaConst": 1.1799999475479126,
+        "bgPatternAddAlphaConst": -129.0,
+        "bgPatternAddColorAlphaConst": 0.501960813999176,
+        "bgPatternColorTint": 1.1799999475479126
+      },
+      "tmpText": {
+        "characterName": {
+          "fontColorAlphaKeys": [
+            [
+              1.6167,
+              1.0
+            ],
+            [
+              1.8,
+              1.0
+            ]
+          ],
+          "anchoredPositionYConst": 112.0
+        },
+        "characterTitle": {
+          "fontColorAlphaKeys": [
+            [
+              1.8,
+              6.0
+            ],
+            [
+              1.9167,
+              1.100000023841858
+            ],
+            [
+              2.1333,
+              1.0
+            ]
+          ],
+          "anchoredPositionYConst": 112.0
+        }
+      }
+    },
+    "SSR": {
+      "clip": "AppearSSR",
+      "startTime": 0.0,
+      "stopTime": 2.28333,
+      "shadowColor": {
+        "r": 0.164721,
+        "g": 0.0,
+        "b": 1.0,
+        "a": 0.8
+      },
+      "gradationActive": {
+        "gradation": 1,
+        "gradationUltimate": 0,
+        "gradationSSR": 1,
+        "frameURUltimate": 0,
+        "base/gradation": 1,
+        "base/efUltimate": 1,
+        "rarity5/effect": 0,
+        "rarity4/effect": 0,
+        "rarity3/effect": 0,
+        "rarity2/effect": 0,
+        "rarity1/effect": 0,
+        "rarity5/starLight": 0,
+        "rarity4/starLight": 0,
+        "rarity3/starLight": 0,
+        "rarity2/starLight": 0,
+        "rarity1/starLight": 0
+      },
+      "starScale": {
+        "rarity3": [
+          [
+            0.0,
+            3.0
+          ],
+          [
+            1.36667,
+            3.0
+          ],
+          [
+            1.48333,
+            1.1
+          ],
+          [
+            1.7,
+            1.0
+          ]
+        ],
+        "rarity2": [
+          [
+            0.0,
+            3.0
+          ],
+          [
+            1.21667,
+            3.0
+          ],
+          [
+            1.33333,
+            1.1
+          ],
+          [
+            1.55,
+            1.0
+          ]
+        ],
+        "rarity1": [
+          [
+            0.0,
+            3.0
+          ],
+          [
+            1.06667,
+            3.0
+          ],
+          [
+            1.18333,
+            1.1
+          ],
+          [
+            1.4,
+            1.0
+          ]
+        ],
+        "rarity4": [
+          [
+            0.0,
+            3.0
+          ],
+          [
+            1.51667,
+            3.0
+          ],
+          [
+            1.63333,
+            1.1
+          ],
+          [
+            1.85,
+            1.0
+          ]
+        ],
+        "rarity5": [
+          [
+            0.0,
+            3.0
+          ],
+          [
+            1.66667,
+            3.0
+          ],
+          [
+            1.78333,
+            1.1
+          ],
+          [
+            2.0,
+            1.0
+          ]
+        ]
+      },
+      "starEffectScale": {
+        "rarity1Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.16667,
+            1.0
+          ],
+          [
+            1.35,
+            2.5
+          ]
+        ],
+        "rarity2Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.31667,
+            1.0
+          ],
+          [
+            1.5,
+            2.5
+          ]
+        ],
+        "rarity3Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.46667,
+            1.0
+          ],
+          [
+            1.65,
+            2.5
+          ]
+        ],
+        "rarity4Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.61667,
+            1.0
+          ],
+          [
+            1.8,
+            2.5
+          ]
+        ],
+        "rarity5Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.76667,
+            1.0
+          ],
+          [
+            1.95,
+            2.5
+          ]
+        ]
+      },
+      "bgPattern": {
+        "bgPatternAlphaKeys": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.45,
+            0.10000000149011612
+          ],
+          [
+            0.5833,
+            1.0
+          ],
+          [
+            0.7833,
+            0.0
+          ]
+        ],
+        "bgPatternAddAlphaKeys": [
+          [
+            1.0667,
+            0.0
+          ],
+          [
+            1.1,
+            1.0
+          ],
+          [
+            1.4,
+            1.0
+          ]
+        ]
+      },
+      "tmpText": {
+        "characterName": {
+          "fontColorAlphaKeys": [
+            [
+              1.4667,
+              1.0
+            ],
+            [
+              1.65,
+              2.5
+            ]
+          ],
+          "anchoredPositionYConst": 1.0
+        },
+        "characterTitle": {
+          "fontColorAlphaKeys": [
+            [
+              1.4667,
+              1.0
+            ],
+            [
+              1.65,
+              2.5
+            ]
+          ],
+          "anchoredPositionYConst": 1.0
+        }
+      }
+    },
+    "UREx": {
+      "clip": "AppearUREx",
+      "startTime": 0.0,
+      "stopTime": 3.18333,
+      "shadowColor": {
+        "r": 0.959738,
+        "g": 0.231132,
+        "b": 1.0,
+        "a": 0.25098
+      },
+      "gradationActive": {
+        "gradation": 0,
+        "gradationUltimate": 1,
+        "gradationSSR": 0,
+        "frameURUltimate": 0,
+        "base/gradation": 1,
+        "base/efUltimate": 1,
+        "rarity5/effect": 1,
+        "rarity4/effect": 1,
+        "rarity3/effect": 1,
+        "rarity2/effect": 0,
+        "rarity1/effect": 1,
+        "rarity5/starLight": 1,
+        "rarity4/starLight": 1,
+        "rarity3/starLight": 1,
+        "rarity2/starLight": 1,
+        "rarity1/starLight": 0,
+        "rarity6/effect": 1,
+        "rarity6/starLight": 1
+      },
+      "starScale": {
+        "rarity3": [
+          [
+            0.0,
+            6.0
+          ],
+          [
+            1.43333,
+            6.0
+          ],
+          [
+            1.55,
+            1.1
+          ],
+          [
+            1.76667,
+            1.0
+          ]
+        ],
+        "rarity2": [
+          [
+            0.0,
+            6.0
+          ],
+          [
+            1.25,
+            6.0
+          ],
+          [
+            1.36667,
+            1.1
+          ],
+          [
+            1.58333,
+            1.0
+          ]
+        ],
+        "rarity1": [
+          [
+            0.0,
+            6.0
+          ],
+          [
+            1.06667,
+            6.0
+          ],
+          [
+            1.18333,
+            1.1
+          ],
+          [
+            1.4,
+            1.0
+          ]
+        ],
+        "rarity4": [
+          [
+            0.0,
+            6.0
+          ],
+          [
+            1.61667,
+            6.0
+          ],
+          [
+            1.73333,
+            1.1
+          ],
+          [
+            1.95,
+            1.0
+          ]
+        ],
+        "rarity5": [
+          [
+            0.0,
+            6.0
+          ],
+          [
+            1.8,
+            6.0
+          ],
+          [
+            1.91667,
+            1.1
+          ],
+          [
+            2.13333,
+            1.0
+          ]
+        ],
+        "rarity6": [
+          [
+            0.0,
+            6.0
+          ],
+          [
+            1.98333,
+            6.0
+          ],
+          [
+            2.1,
+            1.1
+          ],
+          [
+            2.31667,
+            1.0
+          ]
+        ]
+      },
+      "starEffectScale": {
+        "rarity1Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.06667,
+            1.0
+          ],
+          [
+            1.25,
+            2.5
+          ]
+        ],
+        "rarity2Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.25,
+            1.0
+          ],
+          [
+            1.43333,
+            2.5
+          ]
+        ],
+        "rarity3Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.43333,
+            1.0
+          ],
+          [
+            1.61667,
+            2.5
+          ]
+        ],
+        "rarity4Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.61667,
+            1.0
+          ],
+          [
+            1.8,
+            2.5
+          ]
+        ],
+        "rarity5Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.8,
+            1.0
+          ],
+          [
+            1.98333,
+            2.5
+          ]
+        ],
+        "rarity6Effect": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.98333,
+            1.0
+          ],
+          [
+            2.16667,
+            2.5
+          ]
+        ]
+      },
+      "bgPattern": {
+        "bgPatternAlphaKeys": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            1.9833,
+            1.0
+          ],
+          [
+            2.1667,
+            2.5
+          ]
+        ],
+        "bgPatternAddAlphaKeys": [
+          [
+            1.25,
+            0.0
+          ],
+          [
+            1.2833,
+            1.0
+          ],
+          [
+            1.5833,
+            1.0
+          ]
+        ],
+        "bgPatternAddColorAlphaConst": 1.0,
+        "bgPatternColorTint": 1.1799999475479126
+      },
+      "tmpText": {
+        "characterName": {
+          "fontColorAlphaKeys": [
+            [
+              1.6167,
+              1.0
+            ],
+            [
+              1.8,
+              1.0
+            ]
+          ],
+          "anchoredPositionYConst": -129.0
+        },
+        "characterTitle": {
+          "fontColorAlphaKeys": [
+            [
+              1.8,
+              6.0
+            ],
+            [
+              1.9167,
+              1.100000023841858
+            ],
+            [
+              2.1333,
+              1.0
+            ]
+          ],
+          "anchoredPositionYConst": -129.0
+        }
+      }
+    }
+  }
+}

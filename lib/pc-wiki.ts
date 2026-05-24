@@ -42,6 +42,7 @@ export type WikiBattleAttackEffect = {
 export type WikiBattleBuffEffect = {
   target_type?: number | null
   parameter_type?: number | null
+  value_type?: number | null
   buff_type?: number | null
   base_effect_value?: number | null
   level_add_effect_value?: number | null

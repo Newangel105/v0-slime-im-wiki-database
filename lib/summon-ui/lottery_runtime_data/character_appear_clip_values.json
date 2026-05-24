@@ -1,0 +1,2123 @@
+{
+ "_meta": "muscle-clip v2 (binding-walk). value=coef[3] streamed / data[k] constant.",
+ "clips": {
+  "AppearR": {
+   "stopTime": 2.0833332538604736,
+   "streamedCurves": 126,
+   "denseCurves": 0,
+   "constantCurves": 149,
+   "totalSlots": 275,
+   "bindings": 259,
+   "cursorEnd": 275,
+   "interesting": [
+    {
+     "slot": 6,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 7,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 8,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 9,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 10,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 11,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 12,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 13,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 14,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 15,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 16,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 17,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 18,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 19,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 20,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 21,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 22,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 23,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 67,
+     "binding": 51,
+     "path": "container/characterName/base/gradation",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 68,
+     "binding": 52,
+     "path": "container/gradation",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 73,
+     "binding": 57,
+     "path": "container/gradationUltimate",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 74,
+     "binding": 58,
+     "path": "container/gradationSSR",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 119,
+     "binding": 103,
+     "path": "container/frameURUltimate",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 175,
+     "binding": 159,
+     "path": "container/shadow",
+     "attr": "m_Color.r",
+     "typeID": 114,
+     "first": 0.16472101211547852,
+     "last": 0.16472101211547852
+    },
+    {
+     "slot": 176,
+     "binding": 160,
+     "path": "container/shadow",
+     "attr": "m_Color.g",
+     "typeID": 114,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 177,
+     "binding": 161,
+     "path": "container/shadow",
+     "attr": "m_Color.b",
+     "typeID": 114,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 178,
+     "binding": 162,
+     "path": "container/shadow",
+     "attr": "m_Color.a",
+     "typeID": 114,
+     "first": 0.800000011920929,
+     "last": 0.800000011920929
+    }
+   ]
+  },
+  "AppearSR": {
+   "stopTime": 2.2333333492279053,
+   "streamedCurves": 149,
+   "denseCurves": 0,
+   "constantCurves": 212,
+   "totalSlots": 361,
+   "bindings": 342,
+   "cursorEnd": 361,
+   "interesting": [
+    {
+     "slot": 6,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 7,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 8,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 9,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 10,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 11,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 12,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 13,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 14,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 15,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity4",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 16,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity4",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 17,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity4",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 18,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 19,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 20,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 21,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 22,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 23,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 24,
+     "binding": 8,
+     "path": "container/characterName/rarityStar/rarity4Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 25,
+     "binding": 8,
+     "path": "container/characterName/rarityStar/rarity4Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 26,
+     "binding": 8,
+     "path": "container/characterName/rarityStar/rarity4Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 27,
+     "binding": 9,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 28,
+     "binding": 9,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 29,
+     "binding": 9,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 77,
+     "binding": 57,
+     "path": "container/characterName/base/gradation",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 78,
+     "binding": 58,
+     "path": "container/gradation",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 83,
+     "binding": 63,
+     "path": "container/gradationUltimate",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 84,
+     "binding": 64,
+     "path": "container/gradationSSR",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 142,
+     "binding": 122,
+     "path": "container/frameURUltimate",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 227,
+     "binding": 208,
+     "path": "container/shadow",
+     "attr": "m_Color.r",
+     "typeID": 114,
+     "first": 0.5566037893295288,
+     "last": 0.5566037893295288
+    },
+    {
+     "slot": 228,
+     "binding": 209,
+     "path": "container/shadow",
+     "attr": "m_Color.g",
+     "typeID": 114,
+     "first": 0.5108587741851807,
+     "last": 0.5108587741851807
+    },
+    {
+     "slot": 229,
+     "binding": 210,
+     "path": "container/shadow",
+     "attr": "m_Color.b",
+     "typeID": 114,
+     "first": 0.3649430572986603,
+     "last": 0.3649430572986603
+    },
+    {
+     "slot": 230,
+     "binding": 211,
+     "path": "container/shadow",
+     "attr": "m_Color.a",
+     "typeID": 114,
+     "first": 0.800000011920929,
+     "last": 0.800000011920929
+    }
+   ]
+  },
+  "AppearSSRUltimate": {
+   "stopTime": 3.0,
+   "streamedCurves": 138,
+   "denseCurves": 0,
+   "constantCurves": 93,
+   "totalSlots": 231,
+   "bindings": 216,
+   "cursorEnd": 231,
+   "interesting": [
+    {
+     "slot": 6,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 7,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 8,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 9,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 10,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 11,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 12,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 13,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 14,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 15,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 16,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 17,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 18,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 19,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 20,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 21,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 22,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 23,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 24,
+     "binding": 8,
+     "path": "container/characterName/rarityStar/rarity4",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 25,
+     "binding": 8,
+     "path": "container/characterName/rarityStar/rarity4",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 26,
+     "binding": 8,
+     "path": "container/characterName/rarityStar/rarity4",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 27,
+     "binding": 9,
+     "path": "container/characterName/rarityStar/rarity4Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 28,
+     "binding": 9,
+     "path": "container/characterName/rarityStar/rarity4Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 29,
+     "binding": 9,
+     "path": "container/characterName/rarityStar/rarity4Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 30,
+     "binding": 10,
+     "path": "container/characterName/rarityStar/rarity5",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 31,
+     "binding": 10,
+     "path": "container/characterName/rarityStar/rarity5",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 32,
+     "binding": 10,
+     "path": "container/characterName/rarityStar/rarity5",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 33,
+     "binding": 11,
+     "path": "container/characterName/rarityStar/rarity5Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 34,
+     "binding": 11,
+     "path": "container/characterName/rarityStar/rarity5Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 35,
+     "binding": 11,
+     "path": "container/characterName/rarityStar/rarity5Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 92,
+     "binding": 68,
+     "path": "container/characterName/base/gradation",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 93,
+     "binding": 69,
+     "path": "container/gradation",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 96,
+     "binding": 72,
+     "path": "container/gradationUltimate",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 99,
+     "binding": 75,
+     "path": "container/gradationSSR",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 131,
+     "binding": 107,
+     "path": "container/frameURUltimate",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 204,
+     "binding": 189,
+     "path": "container/shadow",
+     "attr": "m_Color.r",
+     "typeID": 114,
+     "first": 0.9597383737564087,
+     "last": 0.9597383737564087
+    },
+    {
+     "slot": 205,
+     "binding": 190,
+     "path": "container/shadow",
+     "attr": "m_Color.g",
+     "typeID": 114,
+     "first": 0.23113209009170532,
+     "last": 0.23113209009170532
+    },
+    {
+     "slot": 206,
+     "binding": 191,
+     "path": "container/shadow",
+     "attr": "m_Color.b",
+     "typeID": 114,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 207,
+     "binding": 192,
+     "path": "container/shadow",
+     "attr": "m_Color.a",
+     "typeID": 114,
+     "first": 0.250980406999588,
+     "last": 0.250980406999588
+    }
+   ]
+  },
+  "AppearURUltimate": {
+   "stopTime": 3.183333396911621,
+   "streamedCurves": 156,
+   "denseCurves": 0,
+   "constantCurves": 348,
+   "totalSlots": 504,
+   "bindings": 486,
+   "cursorEnd": 504,
+   "interesting": [
+    {
+     "slot": 6,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 7,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 8,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 9,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 10,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 11,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 12,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 13,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 14,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 15,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 16,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 17,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 18,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 19,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 20,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 21,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 22,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 23,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 24,
+     "binding": 8,
+     "path": "container/characterName/rarityStar/rarity4",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 25,
+     "binding": 8,
+     "path": "container/characterName/rarityStar/rarity4",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 26,
+     "binding": 8,
+     "path": "container/characterName/rarityStar/rarity4",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 27,
+     "binding": 9,
+     "path": "container/characterName/rarityStar/rarity4Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 28,
+     "binding": 9,
+     "path": "container/characterName/rarityStar/rarity4Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 29,
+     "binding": 9,
+     "path": "container/characterName/rarityStar/rarity4Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 30,
+     "binding": 10,
+     "path": "container/characterName/rarityStar/rarity5",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 31,
+     "binding": 10,
+     "path": "container/characterName/rarityStar/rarity5",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 32,
+     "binding": 10,
+     "path": "container/characterName/rarityStar/rarity5",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 33,
+     "binding": 11,
+     "path": "container/characterName/rarityStar/rarity5Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 34,
+     "binding": 11,
+     "path": "container/characterName/rarityStar/rarity5Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 35,
+     "binding": 11,
+     "path": "container/characterName/rarityStar/rarity5Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 36,
+     "binding": 12,
+     "path": "container/characterName/rarityStar/rarity6",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 37,
+     "binding": 12,
+     "path": "container/characterName/rarityStar/rarity6",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 38,
+     "binding": 12,
+     "path": "container/characterName/rarityStar/rarity6",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 39,
+     "binding": 13,
+     "path": "container/characterName/rarityStar/rarity6Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 40,
+     "binding": 13,
+     "path": "container/characterName/rarityStar/rarity6Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 41,
+     "binding": 13,
+     "path": "container/characterName/rarityStar/rarity6Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 99,
+     "binding": 69,
+     "path": "container/characterName/base/gradation",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 100,
+     "binding": 70,
+     "path": "container/gradation",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 102,
+     "binding": 72,
+     "path": "container/gradationUltimate",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 105,
+     "binding": 75,
+     "path": "container/gradationSSR",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 146,
+     "binding": 116,
+     "path": "container/frameURUltimate",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 224,
+     "binding": 206,
+     "path": "container/shadow",
+     "attr": "m_Color.r",
+     "typeID": 114,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 225,
+     "binding": 207,
+     "path": "container/shadow",
+     "attr": "m_Color.g",
+     "typeID": 114,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 226,
+     "binding": 208,
+     "path": "container/shadow",
+     "attr": "m_Color.b",
+     "typeID": 114,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 227,
+     "binding": 209,
+     "path": "container/shadow",
+     "attr": "m_Color.a",
+     "typeID": 114,
+     "first": 0.7058823704719543,
+     "last": 0.7058823704719543
+    }
+   ]
+  },
+  "AppearSSR": {
+   "stopTime": 2.2833333015441895,
+   "streamedCurves": 163,
+   "denseCurves": 0,
+   "constantCurves": 110,
+   "totalSlots": 273,
+   "bindings": 243,
+   "cursorEnd": 273,
+   "interesting": [
+    {
+     "slot": 6,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 7,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 8,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 9,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 10,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 11,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 12,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 13,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 14,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 15,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity4",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 16,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity4",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 17,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity4",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 18,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity5",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 19,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity5",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 3.0,
+     "last": 1.0
+    },
+    {
+     "slot": 20,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity5",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 21,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 22,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 23,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 24,
+     "binding": 8,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 25,
+     "binding": 8,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 26,
+     "binding": 8,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 27,
+     "binding": 9,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 28,
+     "binding": 9,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 29,
+     "binding": 9,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 30,
+     "binding": 10,
+     "path": "container/characterName/rarityStar/rarity4Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 31,
+     "binding": 10,
+     "path": "container/characterName/rarityStar/rarity4Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 32,
+     "binding": 10,
+     "path": "container/characterName/rarityStar/rarity4Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 33,
+     "binding": 11,
+     "path": "container/characterName/rarityStar/rarity5Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 34,
+     "binding": 11,
+     "path": "container/characterName/rarityStar/rarity5Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 35,
+     "binding": 11,
+     "path": "container/characterName/rarityStar/rarity5Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 87,
+     "binding": 63,
+     "path": "container/characterName/base/gradation",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 88,
+     "binding": 64,
+     "path": "container/gradation",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 93,
+     "binding": 69,
+     "path": "container/gradationUltimate",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 94,
+     "binding": 70,
+     "path": "container/gradationSSR",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 156,
+     "binding": 132,
+     "path": "container/frameURUltimate",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 220,
+     "binding": 190,
+     "path": "container/shadow",
+     "attr": "m_Color.r",
+     "typeID": 114,
+     "first": 0.16472101211547852,
+     "last": 0.16472101211547852
+    },
+    {
+     "slot": 221,
+     "binding": 191,
+     "path": "container/shadow",
+     "attr": "m_Color.g",
+     "typeID": 114,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 222,
+     "binding": 192,
+     "path": "container/shadow",
+     "attr": "m_Color.b",
+     "typeID": 114,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 223,
+     "binding": 193,
+     "path": "container/shadow",
+     "attr": "m_Color.a",
+     "typeID": 114,
+     "first": 0.800000011920929,
+     "last": 0.800000011920929
+    }
+   ]
+  },
+  "AppearUREx": {
+   "stopTime": 3.183333396911621,
+   "streamedCurves": 154,
+   "denseCurves": 0,
+   "constantCurves": 103,
+   "totalSlots": 257,
+   "bindings": 241,
+   "cursorEnd": 257,
+   "interesting": [
+    {
+     "slot": 6,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 7,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 8,
+     "binding": 2,
+     "path": "container/characterName/rarityStar/rarity3",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 9,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 10,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 11,
+     "binding": 3,
+     "path": "container/characterName/rarityStar/rarity2",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 12,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 13,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 14,
+     "binding": 4,
+     "path": "container/characterName/rarityStar/rarity1",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 15,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 16,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 17,
+     "binding": 5,
+     "path": "container/characterName/rarityStar/rarity1Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 18,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 19,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 20,
+     "binding": 6,
+     "path": "container/characterName/rarityStar/rarity2Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 21,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 22,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 23,
+     "binding": 7,
+     "path": "container/characterName/rarityStar/rarity3Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 24,
+     "binding": 8,
+     "path": "container/characterName/rarityStar/rarity4",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 25,
+     "binding": 8,
+     "path": "container/characterName/rarityStar/rarity4",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 26,
+     "binding": 8,
+     "path": "container/characterName/rarityStar/rarity4",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 27,
+     "binding": 9,
+     "path": "container/characterName/rarityStar/rarity4Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 28,
+     "binding": 9,
+     "path": "container/characterName/rarityStar/rarity4Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 29,
+     "binding": 9,
+     "path": "container/characterName/rarityStar/rarity4Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 30,
+     "binding": 10,
+     "path": "container/characterName/rarityStar/rarity5",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 31,
+     "binding": 10,
+     "path": "container/characterName/rarityStar/rarity5",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 32,
+     "binding": 10,
+     "path": "container/characterName/rarityStar/rarity5",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 33,
+     "binding": 11,
+     "path": "container/characterName/rarityStar/rarity5Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 34,
+     "binding": 11,
+     "path": "container/characterName/rarityStar/rarity5Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 35,
+     "binding": 11,
+     "path": "container/characterName/rarityStar/rarity5Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 36,
+     "binding": 12,
+     "path": "container/characterName/rarityStar/rarity6",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 37,
+     "binding": 12,
+     "path": "container/characterName/rarityStar/rarity6",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 6.0,
+     "last": 1.0
+    },
+    {
+     "slot": 38,
+     "binding": 12,
+     "path": "container/characterName/rarityStar/rarity6",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 39,
+     "binding": 13,
+     "path": "container/characterName/rarityStar/rarity6Effect/effect",
+     "attr": "m_LocalScale.x",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 40,
+     "binding": 13,
+     "path": "container/characterName/rarityStar/rarity6Effect/effect",
+     "attr": "m_LocalScale.y",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 2.5
+    },
+    {
+     "slot": 41,
+     "binding": 13,
+     "path": "container/characterName/rarityStar/rarity6Effect/effect",
+     "attr": "m_LocalScale.z",
+     "typeID": 4,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 98,
+     "binding": 70,
+     "path": "container/characterName/base/gradation",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 99,
+     "binding": 71,
+     "path": "container/gradation",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 102,
+     "binding": 74,
+     "path": "container/gradationUltimate",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 105,
+     "binding": 77,
+     "path": "container/gradationSSR",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 147,
+     "binding": 119,
+     "path": "container/frameURUltimate",
+     "attr": "m_IsActive",
+     "typeID": 1,
+     "first": 0.0,
+     "last": 0.0
+    },
+    {
+     "slot": 220,
+     "binding": 204,
+     "path": "container/shadow",
+     "attr": "m_Color.r",
+     "typeID": 114,
+     "first": 0.9597383737564087,
+     "last": 0.9597383737564087
+    },
+    {
+     "slot": 221,
+     "binding": 205,
+     "path": "container/shadow",
+     "attr": "m_Color.g",
+     "typeID": 114,
+     "first": 0.23113209009170532,
+     "last": 0.23113209009170532
+    },
+    {
+     "slot": 222,
+     "binding": 206,
+     "path": "container/shadow",
+     "attr": "m_Color.b",
+     "typeID": 114,
+     "first": 1.0,
+     "last": 1.0
+    },
+    {
+     "slot": 223,
+     "binding": 207,
+     "path": "container/shadow",
+     "attr": "m_Color.a",
+     "typeID": 114,
+     "first": 0.250980406999588,
+     "last": 0.250980406999588
+    }
+   ]
+  }
+ }
+}

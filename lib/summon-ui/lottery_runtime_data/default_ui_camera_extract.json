@@ -1,0 +1,408 @@
+{
+  "cameras": [
+    {
+      "bundle": "level0",
+      "go_path": "AdHocCamera",
+      "go_name": "AdHocCamera",
+      "go_pid": 2,
+      "camera_pid": 16,
+      "m_Enabled": 1,
+      "m_ClearFlags": 2,
+      "m_BackGroundColor": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 0.0
+      },
+      "m_projectionMatrixMode": 1,
+      "m_GateFitMode": 2,
+      "m_NormalizedViewPortRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1.0,
+        "height": 1.0
+      },
+      "near_clip_plane": 0.30000001192092896,
+      "far_clip_plane": 1000.0,
+      "field of view": 60.0,
+      "orthographic": false,
+      "orthographic size": 5.0,
+      "m_Depth": 0.0,
+      "m_CullingMask": {
+        "m_Bits": 4294967295
+      },
+      "m_TargetTexture": 0,
+      "m_TargetDisplay": 0,
+      "m_TargetEye": 3,
+      "m_HDR": true,
+      "m_AllowMSAA": true,
+      "m_StereoConvergence": 10.0,
+      "m_StereoSeparation": 0.02199999988079071
+    },
+    {
+      "bundle": "level1",
+      "go_path": "LuaCamera",
+      "go_name": "LuaCamera",
+      "go_pid": 2,
+      "camera_pid": 16,
+      "m_Enabled": 1,
+      "m_ClearFlags": 2,
+      "m_BackGroundColor": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 0.0
+      },
+      "m_projectionMatrixMode": 1,
+      "m_GateFitMode": 2,
+      "m_NormalizedViewPortRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1.0,
+        "height": 1.0
+      },
+      "near_clip_plane": 0.30000001192092896,
+      "far_clip_plane": 1000.0,
+      "field of view": 15.0,
+      "orthographic": false,
+      "orthographic size": 5.0,
+      "m_Depth": -1.0,
+      "m_CullingMask": {
+        "m_Bits": 4294967295
+      },
+      "m_TargetTexture": 0,
+      "m_TargetDisplay": 0,
+      "m_TargetEye": 3,
+      "m_HDR": true,
+      "m_AllowMSAA": true,
+      "m_StereoConvergence": 10.0,
+      "m_StereoSeparation": 0.02199999988079071
+    },
+    {
+      "bundle": "sharedassets0.assets",
+      "go_path": "OtherCountriesCamera",
+      "go_name": "OtherCountriesCamera",
+      "go_pid": 225,
+      "camera_pid": 776,
+      "m_Enabled": 1,
+      "m_ClearFlags": 1,
+      "m_BackGroundColor": {
+        "r": 0.1921568661928177,
+        "g": 0.3019607961177826,
+        "b": 0.4745098054409027,
+        "a": 0.0
+      },
+      "m_projectionMatrixMode": 1,
+      "m_GateFitMode": 2,
+      "m_NormalizedViewPortRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1.0,
+        "height": 1.0
+      },
+      "near_clip_plane": 0.30000001192092896,
+      "far_clip_plane": 1000.0,
+      "field of view": 40.0,
+      "orthographic": false,
+      "orthographic size": 5.0,
+      "m_Depth": -1.0,
+      "m_CullingMask": {
+        "m_Bits": 279
+      },
+      "m_TargetTexture": 0,
+      "m_TargetDisplay": 0,
+      "m_TargetEye": 3,
+      "m_HDR": true,
+      "m_AllowMSAA": true,
+      "m_StereoConvergence": 10.0,
+      "m_StereoSeparation": 0.02199999988079071
+    },
+    {
+      "bundle": "sharedassets0.assets",
+      "go_path": "GuildBarrierStoneCamera",
+      "go_name": "GuildBarrierStoneCamera",
+      "go_pid": 226,
+      "camera_pid": 777,
+      "m_Enabled": 1,
+      "m_ClearFlags": 1,
+      "m_BackGroundColor": {
+        "r": 0.1921568661928177,
+        "g": 0.3019607961177826,
+        "b": 0.4745098054409027,
+        "a": 0.0
+      },
+      "m_projectionMatrixMode": 1,
+      "m_GateFitMode": 2,
+      "m_NormalizedViewPortRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1.0,
+        "height": 1.0
+      },
+      "near_clip_plane": 0.30000001192092896,
+      "far_clip_plane": 1000.0,
+      "field of view": 40.0,
+      "orthographic": false,
+      "orthographic size": 5.0,
+      "m_Depth": -1.0,
+      "m_CullingMask": {
+        "m_Bits": 279
+      },
+      "m_TargetTexture": 0,
+      "m_TargetDisplay": 0,
+      "m_TargetEye": 3,
+      "m_HDR": true,
+      "m_AllowMSAA": true,
+      "m_StereoConvergence": 10.0,
+      "m_StereoSeparation": 0.02199999988079071
+    },
+    {
+      "bundle": "sharedassets0.assets",
+      "go_path": "ArenaCamera",
+      "go_name": "ArenaCamera",
+      "go_pid": 227,
+      "camera_pid": 778,
+      "m_Enabled": 1,
+      "m_ClearFlags": 1,
+      "m_BackGroundColor": {
+        "r": 0.1921568661928177,
+        "g": 0.3019607961177826,
+        "b": 0.4745098054409027,
+        "a": 0.0
+      },
+      "m_projectionMatrixMode": 1,
+      "m_GateFitMode": 2,
+      "m_NormalizedViewPortRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1.0,
+        "height": 1.0
+      },
+      "near_clip_plane": 0.30000001192092896,
+      "far_clip_plane": 1000.0,
+      "field of view": 40.0,
+      "orthographic": false,
+      "orthographic size": 5.0,
+      "m_Depth": -1.0,
+      "m_CullingMask": {
+        "m_Bits": 279
+      },
+      "m_TargetTexture": 0,
+      "m_TargetDisplay": 0,
+      "m_TargetEye": 3,
+      "m_HDR": true,
+      "m_AllowMSAA": true,
+      "m_StereoConvergence": 10.0,
+      "m_StereoSeparation": 0.02199999988079071
+    },
+    {
+      "bundle": "sharedassets0.assets",
+      "go_path": "PcStatusboardCamera",
+      "go_name": "PcStatusboardCamera",
+      "go_pid": 462,
+      "camera_pid": 779,
+      "m_Enabled": 1,
+      "m_ClearFlags": 2,
+      "m_BackGroundColor": {
+        "r": 0.1921568661928177,
+        "g": 0.3019607961177826,
+        "b": 0.4745098054409027,
+        "a": 0.0
+      },
+      "m_projectionMatrixMode": 1,
+      "m_GateFitMode": 2,
+      "m_NormalizedViewPortRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1.0,
+        "height": 1.0
+      },
+      "near_clip_plane": 0.30000001192092896,
+      "far_clip_plane": 1000.0,
+      "field of view": 60.0,
+      "orthographic": true,
+      "orthographic size": 1.2000000476837158,
+      "m_Depth": 0.0,
+      "m_CullingMask": {
+        "m_Bits": 512
+      },
+      "m_TargetTexture": 0,
+      "m_TargetDisplay": 0,
+      "m_TargetEye": 3,
+      "m_HDR": true,
+      "m_AllowMSAA": true,
+      "m_StereoConvergence": 10.0,
+      "m_StereoSeparation": 0.02199999988079071
+    },
+    {
+      "bundle": "sharedassets0.assets",
+      "go_path": "BattleVirtualCameraBrain",
+      "go_name": "BattleVirtualCameraBrain",
+      "go_pid": 436,
+      "camera_pid": 780,
+      "m_Enabled": 1,
+      "m_ClearFlags": 1,
+      "m_BackGroundColor": {
+        "r": 0.1921568661928177,
+        "g": 0.3019607961177826,
+        "b": 0.4745098054409027,
+        "a": 0.0
+      },
+      "m_projectionMatrixMode": 1,
+      "m_GateFitMode": 2,
+      "m_NormalizedViewPortRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1.0,
+        "height": 1.0
+      },
+      "near_clip_plane": 0.30000001192092896,
+      "far_clip_plane": 1000.0,
+      "field of view": 60.0,
+      "orthographic": false,
+      "orthographic size": 5.0,
+      "m_Depth": -1.0,
+      "m_CullingMask": {
+        "m_Bits": 31
+      },
+      "m_TargetTexture": 0,
+      "m_TargetDisplay": 0,
+      "m_TargetEye": 3,
+      "m_HDR": true,
+      "m_AllowMSAA": true,
+      "m_StereoConvergence": 10.0,
+      "m_StereoSeparation": 0.02199999988079071
+    },
+    {
+      "bundle": "sharedassets0.assets",
+      "go_path": "Quest2DBackgroundHandler/2DQuestCameraBrain",
+      "go_name": "2DQuestCameraBrain",
+      "go_pid": 383,
+      "camera_pid": 781,
+      "m_Enabled": 1,
+      "m_ClearFlags": 1,
+      "m_BackGroundColor": {
+        "r": 0.1921568661928177,
+        "g": 0.3019607961177826,
+        "b": 0.4745098054409027,
+        "a": 0.0
+      },
+      "m_projectionMatrixMode": 1,
+      "m_GateFitMode": 2,
+      "m_NormalizedViewPortRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1.0,
+        "height": 1.0
+      },
+      "near_clip_plane": 0.10000000149011612,
+      "far_clip_plane": 5000.0,
+      "field of view": 20.0,
+      "orthographic": false,
+      "orthographic size": 5.0,
+      "m_Depth": -1.0,
+      "m_CullingMask": {
+        "m_Bits": 279
+      },
+      "m_TargetTexture": 0,
+      "m_TargetDisplay": 0,
+      "m_TargetEye": 3,
+      "m_HDR": true,
+      "m_AllowMSAA": true,
+      "m_StereoConvergence": 10.0,
+      "m_StereoSeparation": 0.02199999988079071
+    },
+    {
+      "bundle": "sharedassets0.assets",
+      "go_path": "HomeCamera",
+      "go_name": "HomeCamera",
+      "go_pid": 451,
+      "camera_pid": 782,
+      "m_Enabled": 1,
+      "m_ClearFlags": 2,
+      "m_BackGroundColor": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 0.0
+      },
+      "m_projectionMatrixMode": 1,
+      "m_GateFitMode": 2,
+      "m_NormalizedViewPortRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1.0,
+        "height": 1.0
+      },
+      "near_clip_plane": 0.30000001192092896,
+      "far_clip_plane": 1000.0,
+      "field of view": 40.0,
+      "orthographic": false,
+      "orthographic size": 5.0,
+      "m_Depth": -1.0,
+      "m_CullingMask": {
+        "m_Bits": 279
+      },
+      "m_TargetTexture": 0,
+      "m_TargetDisplay": 0,
+      "m_TargetEye": 3,
+      "m_HDR": true,
+      "m_AllowMSAA": true,
+      "m_StereoConvergence": 10.0,
+      "m_StereoSeparation": 0.02199999988079071
+    },
+    {
+      "bundle": "sharedassets0.assets",
+      "go_path": "FoundingCamera",
+      "go_name": "FoundingCamera",
+      "go_pid": 452,
+      "camera_pid": 783,
+      "m_Enabled": 1,
+      "m_ClearFlags": 1,
+      "m_BackGroundColor": {
+        "r": 0.1921568661928177,
+        "g": 0.3019607961177826,
+        "b": 0.4745098054409027,
+        "a": 0.0
+      },
+      "m_projectionMatrixMode": 1,
+      "m_GateFitMode": 2,
+      "m_NormalizedViewPortRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 1.0,
+        "height": 1.0
+      },
+      "near_clip_plane": 1.0,
+      "far_clip_plane": 600.0,
+      "field of view": 40.0,
+      "orthographic": false,
+      "orthographic size": 5.0,
+      "m_Depth": -1.0,
+      "m_CullingMask": {
+        "m_Bits": 279
+      },
+      "m_TargetTexture": 0,
+      "m_TargetDisplay": 0,
+      "m_TargetEye": 3,
+      "m_HDR": true,
+      "m_AllowMSAA": true,
+      "m_StereoConvergence": 10.0,
+      "m_StereoSeparation": 0.02199999988079071
+    }
+  ],
+  "monobehaviours": {},
+  "canvases": [
+    {
+      "bundle": "sharedassets0.assets",
+      "go_path": "Quest2DBackgroundHandler/2DQuestBackgroundCanvas",
+      "go_name": "2DQuestBackgroundCanvas",
+      "renderMode": 1,
+      "camera_pid": 781,
+      "sortingLayer": null,
+      "sortingOrder": 0,
+      "planeDistance": 100.0,
+      "pixelPerfect": false
+    }
+  ]
+}

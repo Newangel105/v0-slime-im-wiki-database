@@ -1,0 +1,124 @@
+{
+  "_meta": "UILotteryCharacterAppear IL2CPP-derived wiring: which child GameObject each MonoBehaviour field points to, and the XIUIFrame.FrameKeys lists that drive per-rarity activation (FrameKeys[viewRarity] is the only one active at runtime).",
+  "RarityType_enum": {
+    "R": 0,
+    "SR": 1,
+    "SSR": 2,
+    "SSRUltimate": 3,
+    "UREx": 4,
+    "URUltimate": 5
+  },
+  "UILotteryCharacterAppear": {
+    "path": "UILotteryCharacterAppear",
+    "fields": {
+      "animationModule": {
+        "parent": {
+          "m_FileID": 0,
+          "m_PathID": 0
+        },
+        "resetAnimatorList": [],
+        "isPlayableIgnoreState": 0
+      },
+      "triggerAnimationModule": {
+        "inOutTriggerAnimators": []
+      },
+      "autoTouchEnableChange": 1,
+      "sePlayer": {
+        "pptr_pid": 8741054962070649668,
+        "path": ""
+      },
+      "rarityEffectView": {
+        "pptr_pid": -901155861986608316,
+        "path": ""
+      },
+      "rarityEffectAppearView": {
+        "pptr_pid": 1323250413747632964,
+        "path": ""
+      },
+      "charaModel": {
+        "pptr_pid": 1472009382720240452,
+        "path": ""
+      },
+      "characterName": {
+        "pptr_pid": -2920504911725659324,
+        "path": ""
+      },
+      "characterTitle": {
+        "pptr_pid": -7087454121218999484,
+        "path": ""
+      },
+      "btnScreen": {
+        "pptr_pid": -2726979285094892732,
+        "path": ""
+      },
+      "btnSkip": {
+        "pptr_pid": -1761121874164647100,
+        "path": ""
+      }
+    }
+  },
+  "XIUIFrame_instances": [
+    {
+      "path": "UILotteryCharacterAppear/container/centers/ef_sageBg",
+      "FrameKeys": [
+        {
+          "pptr_pid": 1106546418989660996,
+          "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_R"
+        },
+        {
+          "pptr_pid": 6854383656741829444,
+          "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SR"
+        },
+        {
+          "pptr_pid": 174322702264040260,
+          "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSR"
+        },
+        {
+          "pptr_pid": 7801077072724687684,
+          "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_SSRUltimate"
+        },
+        {
+          "pptr_pid": -866430589969695932,
+          "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_UREx"
+        },
+        {
+          "pptr_pid": 6087464318082349892,
+          "path": "UILotteryCharacterAppear/container/centers/ef_sageBg/ef_view_URUltimate"
+        }
+      ],
+      "FrameKeys_count": 6
+    },
+    {
+      "path": "UILotteryCharacterAppear/container/ef_appear",
+      "FrameKeys": [
+        {
+          "pptr_pid": -3134365694199923900,
+          "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_R"
+        },
+        {
+          "pptr_pid": 3085434931655473988,
+          "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SR"
+        },
+        {
+          "pptr_pid": -8438994619761951932,
+          "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SSR"
+        },
+        {
+          "pptr_pid": 526006489805159236,
+          "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_SSRUltimate"
+        },
+        {
+          "pptr_pid": -1161468126756013244,
+          "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_UREx"
+        },
+        {
+          "pptr_pid": -6532463035450197180,
+          "path": "UILotteryCharacterAppear/container/ef_appear/ef_view_URUltimate"
+        }
+      ],
+      "FrameKeys_count": 6
+    }
+  ],
+  "rarityEffectView_FrameKeys": [],
+  "rarityEffectAppearView_FrameKeys": []
+}

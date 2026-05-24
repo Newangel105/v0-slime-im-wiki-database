@@ -1,0 +1,3197 @@
+{
+ "prefab": "UILotteryPromotion",
+ "_meta": "extracted by extract_lottery_runtime_data.py",
+ "simpleTweenTMPSage": [],
+ "uiLotteryTextAnimation": [
+  {
+   "go": "FrontText",
+   "TweenListCount": 0
+  },
+  {
+   "go": "MiddleText",
+   "TweenListCount": 0
+  },
+  {
+   "go": "FrontText",
+   "TweenListCount": 0
+  },
+  {
+   "go": "MiddleText",
+   "TweenListCount": 0
+  },
+  {
+   "go": "BackText",
+   "TweenListCount": 0
+  },
+  {
+   "go": "BackText",
+   "TweenListCount": 2
+  },
+  {
+   "go": "BackText",
+   "TweenListCount": 2
+  },
+  {
+   "go": "FrontText",
+   "TweenListCount": 2
+  },
+  {
+   "go": "MiddleText",
+   "TweenListCount": 2
+  },
+  {
+   "go": "BackText",
+   "TweenListCount": 0
+  },
+  {
+   "go": "MiddleText",
+   "TweenListCount": 2
+  },
+  {
+   "go": "FrontText",
+   "TweenListCount": 2
+  }
+ ],
+ "textMeshes": [
+  {
+   "go": "Back00",
+   "text": "milim\nhakainoboukun nofutatsunawomotsuryuumajin\nsaikonomaounohitori rimurugatadamonodenaikotowominuki\nmizukarasugatawoarawasu\ntempestwo otozuretasai　rimurutoyuugiwomusubi\"mabudachi\"tonaru\nrimurunisukk",
+   "fontSize": 32.900001525878906,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Front01",
+   "text": "shion\nmitameha coolbeautydaga\nsonosentouryokuhatakai\nrimurukaramoratta gourikimaru toiunanodaitouwo aiyoushiteiru\n\n\n\n\n\n\n\n\n\n\nmitameha coolbeautydaga\nsonosentouryokuhatakai\ngourikimaru",
+   "fontSize": 72.12000274658203,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.3607843137254902,
+    "b": 0.9607843137254902,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Back01",
+   "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nbenimaru\noakzokuniyotte horobosareta ogrezokuzokuchounomusuko\nshinkunokamitohitomi shikkokunotsunowomotsu\nseigikannotsuyoiseikakude\nyurusenaikotonihamassugunitachimukau\nr",
+   "fontSize": 31.950000762939453,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Middle00",
+   "text": "\nrimuru tempest\nsalaryman mikamisatoruha jikennimakikomare\nisekainitenseishite slimeni\ntenseijiniminitsuita uniqueskill daikenja to\nhoshokusha wotayorini\nsamazamananouryokuwokakutokushiteiku\n\njikennim",
+   "fontSize": 46.849998474121094,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Middle01",
+   "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrigurud\ngoblinmuranosonchou\ngarouzokunoshuugekiniatamawonayamase\nsonotatakaidemusukomohitoriushinatteiru\nrimurukaranadukerare hobgoblinninattakotode\nkinkotsuryuuryuunosugatahetohenkashi",
+   "fontSize": 43.900001525878906,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "label01",
+   "text": "\rIrregular\n",
+   "fontSize": 120.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Front00",
+   "text": "gobta\r\ngoblinmuranogoblin\r\nochoushimonono moodmakerde \r\nyarutokinihayarutaipu　\r\nrimuruni namaewotsuketemorai\r\ngoblinkara hobgoblinni shinkashita\r\nrimurutohatachibawokoeta\r\nakuyuunoyounakankeininaru\n\n\n",
+   "fontSize": 72.12000274658203,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Front00",
+   "text": "gobta\r\ngoblinmuranogoblin\r\nochoushimonono moodmakerde \r\nyarutokinihayarutaipu　\r\nrimuruni namaewotsuketemorai\r\ngoblinkara hobgoblinni shinkashita\r\nrimurutohatachibawokoeta\r\nakuyuunoyounakankeininaru\n\n\n",
+   "fontSize": 72.12000274658203,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Back01",
+   "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nbenimaru\noakzokuniyotte horobosareta ogrezokuzokuchounomusuko\nshinkunokamitohitomi shikkokunotsunowomotsu\nseigikannotsuyoiseikakude\nyurusenaikotonihamassugunitachimukau\nr",
+   "fontSize": 31.950000762939453,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.48627450980392156,
+    "b": 0.9647058823529412,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Back00",
+   "text": "milim\nhakainoboukun nofutatsunawomotsuryuumajin\nsaikonomaounohitori rimurugatadamonodenaikotowominuki\nmizukarasugatawoarawasu\ntempestwo otozuretasai　rimurutoyuugiwomusubi\"mabudachi\"tonaru\nrimurunisukk",
+   "fontSize": 32.900001525878906,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.48627450980392156,
+    "b": 0.9647058823529412,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Front01",
+   "text": "shion\nmitameha coolbeautydaga\nsonosentouryokuhatakai\nrimurukaramoratta gourikimaru toiunanodaitouwo aiyoushiteiru\n\n\n\n\n\n\n\n\n\n\nmitameha coolbeautydaga\nsonosentouryokuhatakai\ngourikimaru",
+   "fontSize": 72.12000274658203,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Middle00",
+   "text": "\nrimuru tempest\nsalaryman mikamisatoruha jikennimakikomare\nisekainitenseishite slimeni\ntenseijiniminitsuita uniqueskill daikenja to\nhoshokusha wotayorini\nsamazamananouryokuwokakutokushiteiku\n\njikennim",
+   "fontSize": 46.849998474121094,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Middle00",
+   "text": "\nrimuru tempest\nsalaryman mikamisatoruha jikennimakikomare\nisekainitenseishite slimeni\ntenseijiniminitsuita uniqueskill daikenja to\nhoshokusha wotayorini\nsamazamananouryokuwokakutokushiteiku\n\njikennim",
+   "fontSize": 46.849998474121094,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.3607843137254902,
+    "b": 0.9607843137254902,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Back01",
+   "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nbenimaru\noakzokuniyotte horobosareta ogrezokuzokuchounomusuko\nshinkunokamitohitomi shikkokunotsunowomotsu\nseigikannotsuyoiseikakude\nyurusenaikotonihamassugunitachimukau\nr",
+   "fontSize": 31.950000762939453,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Back00",
+   "text": "milim\nhakainoboukun nofutatsunawomotsuryuumajin\nsaikonomaounohitori rimurugatadamonodenaikotowominuki\nmizukarasugatawoarawasu\ntempestwo otozuretasai　rimurutoyuugiwomusubi\"mabudachi\"tonaru\nrimurunisukk",
+   "fontSize": 32.900001525878906,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Front01",
+   "text": "shion\nmitameha coolbeautydaga\nsonosentouryokuhatakai\nrimurukaramoratta gourikimaru toiunanodaitouwo aiyoushiteiru\n\n\n\n\n\n\n\n\n\n\nmitameha coolbeautydaga\nsonosentouryokuhatakai\ngourikimaru",
+   "fontSize": 72.12000274658203,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "label02",
+   "text": "\rIrregular\n",
+   "fontSize": 120.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Front01",
+   "text": "shion\nmitameha coolbeautydaga\nsonosentouryokuhatakai\nrimurukaramoratta gourikimaru toiunanodaitouwo aiyoushiteiru\n\n\n\n\n\n\n\n\n\n\nmitameha coolbeautydaga\nsonosentouryokuhatakai\ngourikimaru",
+   "fontSize": 72.12000274658203,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Front00",
+   "text": "gobta\r\ngoblinmuranogoblin\r\nochoushimonono moodmakerde \r\nyarutokinihayarutaipu　\r\nrimuruni namaewotsuketemorai\r\ngoblinkara hobgoblinni shinkashita\r\nrimurutohatachibawokoeta\r\nakuyuunoyounakankeininaru\n\n\n",
+   "fontSize": 72.12000274658203,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Middle01",
+   "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrigurud\ngoblinmuranosonchou\ngarouzokunoshuugekiniatamawonayamase\nsonotatakaidemusukomohitoriushinatteiru\nrimurukaranadukerare hobgoblinninattakotode\nkinkotsuryuuryuunosugatahetohenkashi",
+   "fontSize": 43.900001525878906,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.3607843137254902,
+    "b": 0.9607843137254902,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Middle00",
+   "text": "\nrimuru tempest\nsalaryman mikamisatoruha jikennimakikomare\nisekainitenseishite slimeni\ntenseijiniminitsuita uniqueskill daikenja to\nhoshokusha wotayorini\nsamazamananouryokuwokakutokushiteiku\n\njikennim",
+   "fontSize": 46.849998474121094,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Middle01",
+   "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrigurud\ngoblinmuranosonchou\ngarouzokunoshuugekiniatamawonayamase\nsonotatakaidemusukomohitoriushinatteiru\nrimurukaranadukerare hobgoblinninattakotode\nkinkotsuryuuryuunosugatahetohenkashi",
+   "fontSize": 43.900001525878906,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "label",
+   "text": "SKIP",
+   "fontSize": 38.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.9254901960784314,
+    "b": 0.9803921568627451,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Back01",
+   "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nbenimaru\noakzokuniyotte horobosareta ogrezokuzokuchounomusuko\nshinkunokamitohitomi shikkokunotsunowomotsu\nseigikannotsuyoiseikakude\nyurusenaikotonihamassugunitachimukau\nr",
+   "fontSize": 31.950000762939453,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Front00",
+   "text": "gobta\r\ngoblinmuranogoblin\r\nochoushimonono moodmakerde \r\nyarutokinihayarutaipu　\r\nrimuruni namaewotsuketemorai\r\ngoblinkara hobgoblinni shinkashita\r\nrimurutohatachibawokoeta\r\nakuyuunoyounakankeininaru\n\n\n",
+   "fontSize": 72.12000274658203,
+   "fontColor": {
+    "r": 1.0,
+    "g": 0.3607843137254902,
+    "b": 0.9607843137254902,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Back00",
+   "text": "milim\nhakainoboukun nofutatsunawomotsuryuumajin\nsaikonomaounohitori rimurugatadamonodenaikotowominuki\nmizukarasugatawoarawasu\ntempestwo otozuretasai　rimurutoyuugiwomusubi\"mabudachi\"tonaru\nrimurunisukk",
+   "fontSize": 32.900001525878906,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "Middle01",
+   "text": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrigurud\ngoblinmuranosonchou\ngarouzokunoshuugekiniatamawonayamase\nsonotatakaidemusukomohitoriushinatteiru\nrimurukaranadukerare hobgoblinninattakotode\nkinkotsuryuuryuunosugatahetohenkashi",
+   "fontSize": 43.900001525878906,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  },
+  {
+   "go": "label00",
+   "text": "\rIrregular\n",
+   "fontSize": 120.0,
+   "fontColor": {
+    "r": 1.0,
+    "g": 1.0,
+    "b": 1.0,
+    "a": 1.0
+   },
+   "fontMaterial": null
+  }
+ ],
+ "particleSystems": [
+  {
+   "go": "ef_e_Glow02",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Glow03",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "uiparticle_SSR",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Glow01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "uiparticle_SSRUltimatePlusPU",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Glow02",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Glow02",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Glow03",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Glow03",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Glow00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Glow00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Glow00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "uiparticle_SR",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Glow02",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "uiparticle_SSRUltimatePlusPU_ad",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Glow03",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Glow00",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Glow01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Glow01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "uiparticle_SSR_ad",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  },
+  {
+   "go": "ef_e_Glow01",
+   "duration": null,
+   "looping": null,
+   "startLifetime": null,
+   "startSpeed": null,
+   "startColor": null
+  }
+ ],
+ "rectTransforms": {
+  "ef_e_Glow03": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "noiseTvScrollBlack": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "Middle01": [
+   {
+    "anchoredPosition": [
+     -845.0,
+     -517.0
+    ],
+    "sizeDelta": [
+     966.0,
+     2000.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -845.0,
+     -517.0
+    ],
+    "sizeDelta": [
+     966.0,
+     2000.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -845.0,
+     -517.0
+    ],
+    "sizeDelta": [
+     966.0,
+     2000.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -845.0,
+     -517.0
+    ],
+    "sizeDelta": [
+     966.0,
+     2000.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ColorGradient_d02": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_e_Glow00": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "Middle00": [
+   {
+    "anchoredPosition": [
+     85.0,
+     -15.000000953674316
+    ],
+    "sizeDelta": [
+     927.0,
+     1700.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     85.0,
+     -15.000000953674316
+    ],
+    "sizeDelta": [
+     927.0,
+     1700.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     85.0,
+     -15.000000953674316
+    ],
+    "sizeDelta": [
+     927.0,
+     1700.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     85.0,
+     -15.000000953674316
+    ],
+    "sizeDelta": [
+     927.0,
+     1700.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "label01": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     512.0,
+     120.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "Front00": [
+   {
+    "anchoredPosition": [
+     -512.0,
+     355.0
+    ],
+    "sizeDelta": [
+     1207.0,
+     3400.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -512.0,
+     355.0
+    ],
+    "sizeDelta": [
+     1207.0,
+     3400.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -512.0,
+     355.0
+    ],
+    "sizeDelta": [
+     1207.0,
+     3400.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -512.0,
+     355.0
+    ],
+    "sizeDelta": [
+     1207.0,
+     3400.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_e_Glow02": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ColorGradient_d03": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ColorGradient_c01": [
+   {
+    "anchoredPosition": [
+     -464.0,
+     490.0
+    ],
+    "sizeDelta": [
+     504.0,
+     376.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -483.0,
+     -726.0
+    ],
+    "sizeDelta": [
+     966.0,
+     274.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "Back01": [
+   {
+    "anchoredPosition": [
+     -380.0,
+     -1500.0
+    ],
+    "sizeDelta": [
+     810.0,
+     2700.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -380.0,
+     -350.0
+    ],
+    "sizeDelta": [
+     810.0,
+     2700.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -380.0,
+     -1500.0
+    ],
+    "sizeDelta": [
+     810.0,
+     2700.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -380.0,
+     -350.0
+    ],
+    "sizeDelta": [
+     810.0,
+     2700.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rerity5UltimatePlusPU": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "Back00": [
+   {
+    "anchoredPosition": [
+     775.0,
+     285.0
+    ],
+    "sizeDelta": [
+     1000.0,
+     2250.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     775.0,
+     285.0
+    ],
+    "sizeDelta": [
+     1000.0,
+     2250.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     777.0,
+     285.0
+    ],
+    "sizeDelta": [
+     1000.0,
+     2000.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     777.0,
+     285.0
+    ],
+    "sizeDelta": [
+     1000.0,
+     2000.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "uiparticle_SSRUltimatePlusPU": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -390.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ColorGradient_a00": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     -150.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -499.9999694824219,
+     925.0
+    ],
+    "sizeDelta": [
+     1000.0,
+     477.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -405.0,
+     301.0
+    ],
+    "sizeDelta": [
+     803.0,
+     444.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "MiddleText": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rerity4": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "UILotteryPromotion": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ColorGradient_c00": [
+   {
+    "anchoredPosition": [
+     -464.0,
+     850.0
+    ],
+    "sizeDelta": [
+     928.0,
+     356.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -483.0,
+     278.0
+    ],
+    "sizeDelta": [
+     966.0,
+     400.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "container": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "background_a": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ColorGradient_d01": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "Front01": [
+   {
+    "anchoredPosition": [
+     1330.0,
+     -360.0
+    ],
+    "sizeDelta": [
+     2203.0,
+     1500.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     1330.0,
+     -360.0
+    ],
+    "sizeDelta": [
+     2203.0,
+     1500.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     1330.0,
+     -360.0
+    ],
+    "sizeDelta": [
+     2203.0,
+     1500.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     1330.0,
+     -360.0
+    ],
+    "sizeDelta": [
+     2203.0,
+     1500.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ef_e_Glow01": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "uiparticle_SR": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -390.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ColorGradient_b01": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -604.0,
+     -167.0
+    ],
+    "sizeDelta": [
+     895.0,
+     502.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -1102.0,
+     -391.0
+    ],
+    "sizeDelta": [
+     813.0,
+     296.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "rerity5": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "frame": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     -1000.0,
+     -400.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "FrontText": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ColorGradient_c02": [
+   {
+    "anchoredPosition": [
+     -464.0,
+     -328.0
+    ],
+    "sizeDelta": [
+     685.0,
+     324.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "rerity3": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarity_SpikeNoise_add": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "uiparticle_SSR": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -390.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "frameMsak": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "BackText": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ColorGradient_a02": [
+   {
+    "anchoredPosition": [
+     -405.0,
+     -1101.0
+    ],
+    "sizeDelta": [
+     810.0,
+     192.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -499.9999694824219,
+     -199.0
+    ],
+    "sizeDelta": [
+     422.0,
+     138.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "background_c": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     3600.0,
+     3600.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ColorGradient_b00": [
+   {
+    "anchoredPosition": [
+     -604.0,
+     1700.0
+    ],
+    "sizeDelta": [
+     1146.0,
+     640.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -1102.0,
+     750.0
+    ],
+    "sizeDelta": [
+     2077.0,
+     423.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "black": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ColorGradient_c03": [
+   {
+    "anchoredPosition": [
+     -464.0,
+     -681.0
+    ],
+    "sizeDelta": [
+     924.0,
+     170.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "ic": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     71.0,
+     48.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ColorGradient_a03": [
+   {
+    "anchoredPosition": [
+     -499.9999694824219,
+     -627.0
+    ],
+    "sizeDelta": [
+     970.0,
+     414.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "btnScreen": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarity_SpikeNoise": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ColorGradient_a01": [
+   {
+    "anchoredPosition": [
+     -405.0,
+     -814.0
+    ],
+    "sizeDelta": [
+     632.0,
+     202.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   },
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   },
+   {
+    "anchoredPosition": [
+     -499.9999694824219,
+     53.0
+    ],
+    "sizeDelta": [
+     422.0,
+     138.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "touchArea": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     460.0,
+     128.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "uiparticle_SSRUltimatePlusPU_ad": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -800.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "uiparticle_SSR_ad": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -800.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarity3_Bloom": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarity5UltimatePlusPU_Bloom": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "label00": [
+   {
+    "anchoredPosition": [
+     0.0,
+     150.0
+    ],
+    "sizeDelta": [
+     512.0,
+     120.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "detectRog": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ColorGradient_b02": [
+   {
+    "anchoredPosition": [
+     -604.0,
+     -1342.0
+    ],
+    "sizeDelta": [
+     906.0,
+     351.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.0,
+     1.0
+    ]
+   }
+  ],
+  "btnSkip": [
+   {
+    "anchoredPosition": [
+     -206.0,
+     -124.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     1.0,
+     1.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "label": [
+   {
+    "anchoredPosition": [
+     -42.0,
+     0.0
+    ],
+    "sizeDelta": [
+     380.0,
+     50.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     1.0,
+     0.5
+    ]
+   }
+  ],
+  "background_b": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "label02": [
+   {
+    "anchoredPosition": [
+     0.0,
+     -150.0
+    ],
+    "sizeDelta": [
+     512.0,
+     120.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "white": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "background": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "ColorGradient_d00": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     0.0,
+     0.0
+    ],
+    "anchorMin": [
+     0.0,
+     0.0
+    ],
+    "anchorMax": [
+     1.0,
+     1.0
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "rarity5UltimatePlusPU_Noise": [
+   {
+    "anchoredPosition": [
+     0.0,
+     0.0
+    ],
+    "sizeDelta": [
+     100.0,
+     100.0
+    ],
+    "anchorMin": [
+     0.5,
+     0.5
+    ],
+    "anchorMax": [
+     0.5,
+     0.5
+    ],
+    "pivot": [
+     0.5,
+     0.5
+    ]
+   }
+  ]
+ }
+}

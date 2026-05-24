@@ -1,0 +1,5027 @@
+{
+  "_meta": "ParticleSystem field dump for all rarity<N>Effect children of UILotteryCharacterAppear (sprite ef_e_flash_00..01, ef_e_shine00..01, ef_e_particle_00_a..d, ef_e_circle_04 etc). Read via UnityPy typetree from CAB-bdff9c06e980c4448a3ee9fe4b059617. Path is the part after characterName/rarityStar/.",
+  "particles": [
+    {
+      "go_pid": -8430379527017596092,
+      "go_name": "ef_e_shine00",
+      "path": "rarity2Effect/ef_e_shine00",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 10.0,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.2000000476837158,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 0.5279319286346436,
+          "b": 0.31603771448135376,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": true,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 4,
+      "shapeRadius": {
+        "value": 0.5,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.780000686645508,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 1797353675787129325
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -8892221112524866748,
+      "go_name": "ef_e_shine00",
+      "path": "rarity6Effect/ef_e_shine00",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 10.0,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.2000000476837158,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 0.5279319286346436,
+          "b": 0.31603771448135376,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": true,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 4,
+      "shapeRadius": {
+        "value": 0.5,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.780000686645508,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 1797353675787129325
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 8030645955351870276,
+      "go_name": "ef_e_particle_00_c",
+      "path": "rarity3Effect/ef_e_particle_00_c",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -812151133025797308,
+      "go_name": "ef_e_circle_04",
+      "path": "rarity2Effect/ef_e_circle_04",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 0.3199999928474426,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.600000023841858,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": -1046273864503845315
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -987398151803700412,
+      "go_name": "ef_e_particle_00_a",
+      "path": "rarity6Effect/ef_e_particle_00_a",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -1584791627361813692,
+      "go_name": "ef_e_flash_01",
+      "path": "rarity1Effect/ef_e_flash_01",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 0.4000000059604645,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 3.200000047683716,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 4353878072350294147
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -3218755057369613500,
+      "go_name": "ef_e_particle_00_c",
+      "path": "rarity4Effect/ef_e_particle_00_c",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -8276098893893207228,
+      "go_name": "ef_e_flash_00",
+      "path": "rarity5Effect/ef_e_flash_00",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 1.25,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 2.0999999046325684,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": -6644144718702666339
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 2710255322976615236,
+      "go_name": "ef_e_particle_00_a",
+      "path": "rarity2Effect/ef_e_particle_00_a",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 2759243538489998148,
+      "go_name": "ef_e_flash_00",
+      "path": "rarity1Effect/ef_e_flash_00",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 0.3125,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 2.0999999046325684,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": -6644144718702666339
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -6646441492163069116,
+      "go_name": "ef_e_shine00",
+      "path": "rarity1Effect/ef_e_shine00",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 10.0,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.2000000476837158,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 0.5279319286346436,
+          "b": 0.31603771448135376,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": true,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 4,
+      "shapeRadius": {
+        "value": 0.5,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.780000686645508,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 1797353675787129325
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 632054660997708612,
+      "go_name": "ef_e_particle_00_c",
+      "path": "rarity5Effect/ef_e_particle_00_c",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -2737596796191638716,
+      "go_name": "ef_e_particle_00_a",
+      "path": "rarity1Effect/ef_e_particle_00_a",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 1420249728158071620,
+      "go_name": "ef_e_circle_04",
+      "path": "rarity6Effect/ef_e_circle_04",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 0.3199999928474426,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.600000023841858,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": -1046273864503845315
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -4832367952131065020,
+      "go_name": "ef_e_particle_00_d",
+      "path": "rarity2Effect/ef_e_particle_00_d",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -706896696492295356,
+      "go_name": "ef_e_circle_04",
+      "path": "rarity1Effect/ef_e_circle_04",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 0.3199999928474426,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.600000023841858,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": -1046273864503845315
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -7570383424165446844,
+      "go_name": "ef_e_flash_01",
+      "path": "rarity3Effect/ef_e_flash_01",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 1.600000023841858,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 3.200000047683716,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 4353878072350294147
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 5955097209770212164,
+      "go_name": "ef_e_shine01",
+      "path": "rarity3Effect/ef_e_shine01",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 10.0,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 0.5279319286346436,
+          "b": 0.31603771448135376,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": true,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 4,
+      "shapeRadius": {
+        "value": 0.5,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.780000686645508,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 1361672373198825902
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 5559398184340159300,
+      "go_name": "ef_e_particle_00_b",
+      "path": "rarity6Effect/ef_e_particle_00_b",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 7923015179952782148,
+      "go_name": "ef_e_shine01",
+      "path": "rarity4Effect/ef_e_shine01",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 10.0,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 0.5279319286346436,
+          "b": 0.31603771448135376,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": true,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 4,
+      "shapeRadius": {
+        "value": 0.5,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.780000686645508,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 1361672373198825902
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -8892288688929178812,
+      "go_name": "ef_e_particle_00_d",
+      "path": "rarity1Effect/ef_e_particle_00_d",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 1690333442580413252,
+      "go_name": "ef_e_flash_01",
+      "path": "rarity4Effect/ef_e_flash_01",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 1.600000023841858,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 3.200000047683716,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 4353878072350294147
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 7569585695946242884,
+      "go_name": "ef_e_particle_00_a",
+      "path": "rarity3Effect/ef_e_particle_00_a",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -2219033449369044156,
+      "go_name": "ef_e_circle_04",
+      "path": "rarity4Effect/ef_e_circle_04",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 0.3199999928474426,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.600000023841858,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": -1046273864503845315
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -5483765066496935100,
+      "go_name": "ef_e_particle_00_d",
+      "path": "rarity5Effect/ef_e_particle_00_d",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 7429933283288283972,
+      "go_name": "ef_e_shine00",
+      "path": "rarity3Effect/ef_e_shine00",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 10.0,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.2000000476837158,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 0.5279319286346436,
+          "b": 0.31603771448135376,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": true,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 4,
+      "shapeRadius": {
+        "value": 0.5,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.780000686645508,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 1797353675787129325
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 6611017251436559172,
+      "go_name": "ef_e_flash_00",
+      "path": "rarity2Effect/ef_e_flash_00",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 1.25,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 2.0999999046325684,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": -6644144718702666339
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 4380084398774418244,
+      "go_name": "ef_e_particle_00_b",
+      "path": "rarity1Effect/ef_e_particle_00_b",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 1136191254688955204,
+      "go_name": "ef_e_shine01",
+      "path": "rarity6Effect/ef_e_shine01",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 10.0,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 0.5279319286346436,
+          "b": 0.31603771448135376,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": true,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 4,
+      "shapeRadius": {
+        "value": 0.5,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.780000686645508,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 1361672373198825902
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 7307612740363549508,
+      "go_name": "ef_e_circle_04",
+      "path": "rarity5Effect/ef_e_circle_04",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 0.3199999928474426,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.600000023841858,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": -1046273864503845315
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 3301835891247938372,
+      "go_name": "ef_e_particle_00_a",
+      "path": "rarity5Effect/ef_e_particle_00_a",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -6184209215606162620,
+      "go_name": "ef_e_particle_00_b",
+      "path": "rarity2Effect/ef_e_particle_00_b",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 7517365167034202948,
+      "go_name": "ef_e_flash_01",
+      "path": "rarity2Effect/ef_e_flash_01",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 1.600000023841858,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 3.200000047683716,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 4353878072350294147
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 3925099509907454788,
+      "go_name": "ef_e_particle_00_d",
+      "path": "rarity3Effect/ef_e_particle_00_d",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 8055848116530051908,
+      "go_name": "ef_e_flash_01",
+      "path": "rarity6Effect/ef_e_flash_01",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 1.600000023841858,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 3.200000047683716,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 4353878072350294147
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -6589639727257355452,
+      "go_name": "ef_e_flash_00",
+      "path": "rarity6Effect/ef_e_flash_00",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 1.25,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 2.0999999046325684,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": -6644144718702666339
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 65804205006388036,
+      "go_name": "ef_e_shine00",
+      "path": "rarity4Effect/ef_e_shine00",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 10.0,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.2000000476837158,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 0.5279319286346436,
+          "b": 0.31603771448135376,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": true,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 4,
+      "shapeRadius": {
+        "value": 0.5,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.780000686645508,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 1797353675787129325
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 7488113582906276676,
+      "go_name": "ef_e_particle_00_b",
+      "path": "rarity3Effect/ef_e_particle_00_b",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -6580031746419918012,
+      "go_name": "ef_e_particle_00_c",
+      "path": "rarity6Effect/ef_e_particle_00_c",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -1556371569367254204,
+      "go_name": "ef_e_particle_00_c",
+      "path": "rarity2Effect/ef_e_particle_00_c",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -5908619777583875260,
+      "go_name": "ef_e_particle_00_b",
+      "path": "rarity5Effect/ef_e_particle_00_b",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -3660519162090226876,
+      "go_name": "ef_e_circle_04",
+      "path": "rarity3Effect/ef_e_circle_04",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 0.3199999928474426,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.600000023841858,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": -1046273864503845315
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 1006741116141042500,
+      "go_name": "ef_e_flash_01",
+      "path": "rarity5Effect/ef_e_flash_01",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 1.600000023841858,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 3.200000047683716,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 4353878072350294147
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 3702942646542662468,
+      "go_name": "ef_e_shine01",
+      "path": "rarity1Effect/ef_e_shine01",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 10.0,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 0.5279319286346436,
+          "b": 0.31603771448135376,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": true,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 4,
+      "shapeRadius": {
+        "value": 0.5,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.780000686645508,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 1361672373198825902
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -5410108718287684796,
+      "go_name": "ef_e_shine01",
+      "path": "rarity5Effect/ef_e_shine01",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 10.0,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 0.5279319286346436,
+          "b": 0.31603771448135376,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": true,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 4,
+      "shapeRadius": {
+        "value": 0.5,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.780000686645508,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 1361672373198825902
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 5676594410679630660,
+      "go_name": "ef_e_particle_00_b",
+      "path": "rarity4Effect/ef_e_particle_00_b",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -3078946011246625980,
+      "go_name": "ef_e_shine01",
+      "path": "rarity2Effect/ef_e_shine01",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 10.0,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 0.5279319286346436,
+          "b": 0.31603771448135376,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": true,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 4,
+      "shapeRadius": {
+        "value": 0.5,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.780000686645508,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 1361672373198825902
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -4268677441394836668,
+      "go_name": "ef_e_particle_00_a",
+      "path": "rarity4Effect/ef_e_particle_00_a",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -6527621269912749244,
+      "go_name": "ef_e_flash_00",
+      "path": "rarity4Effect/ef_e_flash_00",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 1.25,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 2.0999999046325684,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": -6644144718702666339
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 2681289289735863108,
+      "go_name": "ef_e_shine00",
+      "path": "rarity5Effect/ef_e_shine00",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 10.0,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 1.2000000476837158,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 0.5279319286346436,
+          "b": 0.31603771448135376,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": true,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 4,
+      "shapeRadius": {
+        "value": 0.5,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.780000686645508,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 1797353675787129325
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 5014205069214808900,
+      "go_name": "ef_e_particle_00_d",
+      "path": "rarity6Effect/ef_e_particle_00_d",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": 3421625223286750020,
+      "go_name": "ef_e_particle_00_d",
+      "path": "rarity4Effect/ef_e_particle_00_d",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -5704130779150025916,
+      "go_name": "ef_e_flash_00",
+      "path": "rarity3Effect/ef_e_flash_00",
+      "startLifetime": {
+        "minMaxState": 0,
+        "scalar": 1.25,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 5.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 0,
+        "scalar": 2.0999999046325684,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 0,
+        "minColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 500,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 0,
+      "shapeRadius": {
+        "value": 1.0,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": -6644144718702666339
+        }
+      ],
+      "renderMode": 4,
+      "sortMode": 0
+    },
+    {
+      "go_pid": -7559784108032459964,
+      "go_name": "ef_e_particle_00_c",
+      "path": "rarity1Effect/ef_e_particle_00_c",
+      "startLifetime": {
+        "minMaxState": 3,
+        "scalar": 1.25,
+        "minScalar": 0.5,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSpeed": {
+        "minMaxState": 3,
+        "scalar": 5.0,
+        "minScalar": 0.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startSize": {
+        "minMaxState": 3,
+        "scalar": 1.5,
+        "minScalar": 1.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "startColor": {
+        "minMaxState": 2,
+        "minColor": {
+          "r": 0.933813214302063,
+          "g": 0.4470587968826294,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "maxColor": {
+          "r": 0.3058823347091675,
+          "g": 0.7626195549964905,
+          "b": 1.0,
+          "a": 1.0
+        }
+      },
+      "duration": null,
+      "looping": false,
+      "playOnAwake": true,
+      "maxNumParticles": 1000,
+      "rateOverTime": {
+        "minMaxState": 0,
+        "scalar": 0.0,
+        "minScalar": 10.0,
+        "maxCurve": [],
+        "minCurve": []
+      },
+      "bursts": [
+        {
+          "time": 0.0,
+          "countMin": null,
+          "countMax": null,
+          "cycleCount": 1,
+          "repeatInterval": 0.009999999776482582
+        }
+      ],
+      "shapeType": 10,
+      "shapeRadius": {
+        "value": 0.44999998807907104,
+        "mode": 0,
+        "spread": 0.0,
+        "speed": {
+          "minMaxState": 0,
+          "scalar": 1.0,
+          "minScalar": 1.0,
+          "maxCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          },
+          "minCurve": {
+            "m_Curve": [],
+            "m_PreInfinity": 2,
+            "m_PostInfinity": 2,
+            "m_RotationOrder": 4
+          }
+        }
+      },
+      "shapeAngle": 25.0,
+      "materialRefs": [
+        {
+          "m_FileID": 4,
+          "m_PathID": 671192121740413280
+        }
+      ],
+      "renderMode": 0,
+      "sortMode": 0
+    }
+  ]
+}

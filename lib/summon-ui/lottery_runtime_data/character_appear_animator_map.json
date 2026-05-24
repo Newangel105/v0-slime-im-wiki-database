@@ -1,0 +1,100 @@
+{
+  "animators": [
+    {
+      "go_path": "UILotteryCharacterAppear",
+      "enabled": 1,
+      "controller": {
+        "pid": 2270362759361997012,
+        "name": "UIRoot",
+        "type": "AnimatorController",
+        "layer_count": 0,
+        "parameters": [],
+        "states": []
+      }
+    },
+    {
+      "go_path": "UILotteryCharacterAppear/container/btnSkip",
+      "enabled": 1,
+      "controller": {
+        "pid": -454850087427536535,
+        "name": "Skip",
+        "type": "AnimatorController",
+        "layer_count": 0,
+        "parameters": [],
+        "states": []
+      }
+    }
+  ],
+  "animations": [],
+  "all_clips_by_name": [
+    {
+      "pid": 5769187307329995278,
+      "name": "Default"
+    },
+    {
+      "pid": -4206757738801694909,
+      "name": "AppearR"
+    },
+    {
+      "pid": -3801320392857287148,
+      "name": "Out"
+    },
+    {
+      "pid": -1492641740012140092,
+      "name": "AppearSR"
+    },
+    {
+      "pid": 1063750719693294585,
+      "name": "AppearSSRUltimate"
+    },
+    {
+      "pid": 5251679645018731740,
+      "name": "AppearURUltimate"
+    },
+    {
+      "pid": 7963784876069438807,
+      "name": "In"
+    },
+    {
+      "pid": 6037772821060024808,
+      "name": "AppearSSR"
+    },
+    {
+      "pid": 7138237962393125600,
+      "name": "AppearUREx"
+    },
+    {
+      "pid": -4787756667109633062,
+      "name": "TapOut"
+    },
+    {
+      "pid": -3668742444937274042,
+      "name": "TapDefault"
+    },
+    {
+      "pid": -2375965891218348489,
+      "name": "SkipInvisible"
+    },
+    {
+      "pid": -2369393475833536061,
+      "name": "TapInvisible"
+    },
+    {
+      "pid": -940318054666036421,
+      "name": "SkipIn"
+    },
+    {
+      "pid": -645789284189860547,
+      "name": "SkipDefault"
+    },
+    {
+      "pid": -533356115809746951,
+      "name": "TapIn"
+    },
+    {
+      "pid": -6501135914015383,
+      "name": "SkipOut"
+    }
+  ],
+  "all_clips_count": 17
+}

@@ -1,0 +1,4683 @@
+{
+ "_meta": "ParticleSystem modules for UILotteryPromotion (1:1 from prefab typetree).",
+ "count": 21,
+ "systems": [
+  {
+   "go": "ef_e_Glow02",
+   "duration": 2.3499999046325684,
+   "looping": false,
+   "main": {
+    "startLifetime": 1.0,
+    "startSpeed": 0.0,
+    "startSize": [
+     0.75,
+     0.10000000149011612
+    ],
+    "startColor": {
+     "r": 0.9708669185638428,
+     "g": 0.7396225929260254,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": -2.0,
+    "maxParticles": 40
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 20.0,
+    "bursts": [
+     {
+      "time": 0.0,
+      "countCurve": {
+       "minMaxState": 0,
+       "scalar": 1.0,
+       "minScalar": 30.0,
+       "maxCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       },
+       "minCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       }
+      },
+      "cycleCount": 1,
+      "repeatInterval": 0.009999999776482582,
+      "probability": 1.0
+     }
+    ]
+   },
+   "shape": {
+    "enabled": true,
+    "type": 5,
+    "radius": 9.999999747378752e-05,
+    "angle": 0.8999999761581421
+   },
+   "colorOverLifetime": {
+    "enabled": true,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 65535,
+      "ctime3": 65535,
+      "ctime4": 65535,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 56212,
+      "atime2": 65535,
+      "atime3": 65535,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 3
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": true,
+    "curve": {
+     "scalar": 0.9979143738746643,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": true
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "ef_e_Glow03",
+   "duration": 0.75,
+   "looping": true,
+   "main": {
+    "startLifetime": [
+     2.0,
+     0.5
+    ],
+    "startSpeed": 0.0,
+    "startSize": [
+     0.75,
+     0.10000000149011612
+    ],
+    "startColor": {
+     "r": 0.9371081590652466,
+     "g": 0.43773579597473145,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": -2.0,
+    "maxParticles": 40
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 8.0,
+    "bursts": [
+     {
+      "time": 0.0,
+      "countCurve": {
+       "minMaxState": 0,
+       "scalar": 1.0,
+       "minScalar": 30.0,
+       "maxCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       },
+       "minCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       }
+      },
+      "cycleCount": 1,
+      "repeatInterval": 0.009999999776482582,
+      "probability": 1.0
+     }
+    ]
+   },
+   "shape": {
+    "enabled": true,
+    "type": 5,
+    "radius": 9.999999747378752e-05,
+    "angle": 0.8999999761581421
+   },
+   "colorOverLifetime": {
+    "enabled": true,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 65535,
+      "ctime3": 65535,
+      "ctime4": 65535,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 16384,
+      "atime2": 65535,
+      "atime3": 65535,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 3
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": true,
+    "curve": {
+     "scalar": 0.9979143738746643,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": true
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "uiparticle_SSR",
+   "duration": 1.0,
+   "looping": false,
+   "main": {
+    "startLifetime": 1.0,
+    "startSpeed": 0.0,
+    "startSize": 1.0,
+    "startColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": 0.0,
+    "maxParticles": 1
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 1.0,
+    "bursts": null
+   },
+   "shape": {
+    "enabled": false,
+    "type": 4,
+    "radius": 1.0,
+    "angle": 25.0
+   },
+   "colorOverLifetime": {
+    "enabled": false,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": false,
+    "curve": {
+     "scalar": 1.0,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": false
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "ef_e_Glow01",
+   "duration": 0.75,
+   "looping": true,
+   "main": {
+    "startLifetime": [
+     2.0,
+     3.0
+    ],
+    "startSpeed": 0.0,
+    "startSize": [
+     0.5,
+     1.0
+    ],
+    "startColor": {
+     "r": 0.9371081590652466,
+     "g": 0.43773579597473145,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": [
+     -0.25,
+     -1.0
+    ],
+    "maxParticles": 20
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 2.0,
+    "bursts": [
+     {
+      "time": 0.0,
+      "countCurve": {
+       "minMaxState": 0,
+       "scalar": 1.0,
+       "minScalar": 30.0,
+       "maxCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       },
+       "minCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       }
+      },
+      "cycleCount": 1,
+      "repeatInterval": 0.009999999776482582,
+      "probability": 1.0
+     }
+    ]
+   },
+   "shape": {
+    "enabled": true,
+    "type": 5,
+    "radius": 9.999999747378752e-05,
+    "angle": 0.8999999761581421
+   },
+   "colorOverLifetime": {
+    "enabled": true,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 65535,
+      "ctime3": 65535,
+      "ctime4": 65535,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 32768,
+      "atime2": 65535,
+      "atime3": 65535,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 3
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": true,
+    "curve": {
+     "scalar": 0.9979143738746643,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": true
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "uiparticle_SSRUltimatePlusPU",
+   "duration": 1.0,
+   "looping": false,
+   "main": {
+    "startLifetime": 1.0,
+    "startSpeed": 0.0,
+    "startSize": 1.0,
+    "startColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": 0.0,
+    "maxParticles": 1
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 1.0,
+    "bursts": null
+   },
+   "shape": {
+    "enabled": false,
+    "type": 4,
+    "radius": 1.0,
+    "angle": 25.0
+   },
+   "colorOverLifetime": {
+    "enabled": false,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": false,
+    "curve": {
+     "scalar": 1.0,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": false
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "ef_e_Glow02",
+   "duration": 0.75,
+   "looping": true,
+   "main": {
+    "startLifetime": [
+     3.0,
+     2.0
+    ],
+    "startSpeed": 0.0,
+    "startSize": [
+     0.75,
+     0.10000000149011612
+    ],
+    "startColor": {
+     "r": 0.9371081590652466,
+     "g": 0.43773579597473145,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": -2.0,
+    "maxParticles": 40
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 8.0,
+    "bursts": [
+     {
+      "time": 0.0,
+      "countCurve": {
+       "minMaxState": 0,
+       "scalar": 1.0,
+       "minScalar": 30.0,
+       "maxCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       },
+       "minCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       }
+      },
+      "cycleCount": 1,
+      "repeatInterval": 0.009999999776482582,
+      "probability": 1.0
+     }
+    ]
+   },
+   "shape": {
+    "enabled": true,
+    "type": 5,
+    "radius": 9.999999747378752e-05,
+    "angle": 0.8999999761581421
+   },
+   "colorOverLifetime": {
+    "enabled": true,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 65535,
+      "ctime3": 65535,
+      "ctime4": 65535,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 16384,
+      "atime2": 65535,
+      "atime3": 65535,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 3
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": true,
+    "curve": {
+     "scalar": 0.9979143738746643,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": true
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "ef_e_Glow02",
+   "duration": 1.0,
+   "looping": false,
+   "main": {
+    "startLifetime": 1.0,
+    "startSpeed": 0.0,
+    "startSize": [
+     0.75,
+     0.10000000149011612
+    ],
+    "startColor": {
+     "r": 0.9708669185638428,
+     "g": 0.7396225929260254,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": -2.0,
+    "maxParticles": 40
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 20.0,
+    "bursts": [
+     {
+      "time": 0.0,
+      "countCurve": {
+       "minMaxState": 0,
+       "scalar": 1.0,
+       "minScalar": 30.0,
+       "maxCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       },
+       "minCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       }
+      },
+      "cycleCount": 1,
+      "repeatInterval": 0.009999999776482582,
+      "probability": 1.0
+     }
+    ]
+   },
+   "shape": {
+    "enabled": true,
+    "type": 5,
+    "radius": 9.999999747378752e-05,
+    "angle": 0.8999999761581421
+   },
+   "colorOverLifetime": {
+    "enabled": true,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 65535,
+      "ctime3": 65535,
+      "ctime4": 65535,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 56212,
+      "atime2": 65535,
+      "atime3": 65535,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 3
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": true,
+    "curve": {
+     "scalar": 0.9979143738746643,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": true
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "ef_e_Glow03",
+   "duration": 0.75,
+   "looping": true,
+   "main": {
+    "startLifetime": [
+     2.0,
+     0.5
+    ],
+    "startSpeed": 0.0,
+    "startSize": [
+     0.75,
+     0.10000000149011612
+    ],
+    "startColor": {
+     "r": 0.9371081590652466,
+     "g": 0.43773579597473145,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": -2.0,
+    "maxParticles": 40
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 8.0,
+    "bursts": [
+     {
+      "time": 0.0,
+      "countCurve": {
+       "minMaxState": 0,
+       "scalar": 1.0,
+       "minScalar": 30.0,
+       "maxCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       },
+       "minCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       }
+      },
+      "cycleCount": 1,
+      "repeatInterval": 0.009999999776482582,
+      "probability": 1.0
+     }
+    ]
+   },
+   "shape": {
+    "enabled": true,
+    "type": 5,
+    "radius": 9.999999747378752e-05,
+    "angle": 0.8999999761581421
+   },
+   "colorOverLifetime": {
+    "enabled": true,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 65535,
+      "ctime3": 65535,
+      "ctime4": 65535,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 16384,
+      "atime2": 65535,
+      "atime3": 65535,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 3
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": true,
+    "curve": {
+     "scalar": 0.9979143738746643,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": true
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "ef_e_Glow03",
+   "duration": 2.3499999046325684,
+   "looping": false,
+   "main": {
+    "startLifetime": 1.0,
+    "startSpeed": 0.0,
+    "startSize": [
+     0.75,
+     0.10000000149011612
+    ],
+    "startColor": {
+     "r": 0.9708669185638428,
+     "g": 0.7396225929260254,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": -2.0,
+    "maxParticles": 40
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 20.0,
+    "bursts": [
+     {
+      "time": 0.0,
+      "countCurve": {
+       "minMaxState": 0,
+       "scalar": 1.0,
+       "minScalar": 30.0,
+       "maxCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       },
+       "minCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       }
+      },
+      "cycleCount": 1,
+      "repeatInterval": 0.009999999776482582,
+      "probability": 1.0
+     }
+    ]
+   },
+   "shape": {
+    "enabled": true,
+    "type": 5,
+    "radius": 9.999999747378752e-05,
+    "angle": 0.8999999761581421
+   },
+   "colorOverLifetime": {
+    "enabled": true,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 65535,
+      "ctime3": 65535,
+      "ctime4": 65535,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 56212,
+      "atime2": 65535,
+      "atime3": 65535,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 3
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": true,
+    "curve": {
+     "scalar": 0.9979143738746643,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": true
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "ef_e_Glow00",
+   "duration": 0.75,
+   "looping": true,
+   "main": {
+    "startLifetime": [
+     2.0,
+     1.0
+    ],
+    "startSpeed": 0.0,
+    "startSize": [
+     0.05000000074505806,
+     0.25
+    ],
+    "startColor": {
+     "r": 0.9371081590652466,
+     "g": 0.43773579597473145,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": -2.0,
+    "maxParticles": 60
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 10.0,
+    "bursts": [
+     {
+      "time": 0.0,
+      "countCurve": {
+       "minMaxState": 0,
+       "scalar": 1.0,
+       "minScalar": 30.0,
+       "maxCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       },
+       "minCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       }
+      },
+      "cycleCount": 1,
+      "repeatInterval": 0.009999999776482582,
+      "probability": 1.0
+     }
+    ]
+   },
+   "shape": {
+    "enabled": true,
+    "type": 5,
+    "radius": 9.999999747378752e-05,
+    "angle": 0.8999999761581421
+   },
+   "colorOverLifetime": {
+    "enabled": true,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 65535,
+      "ctime3": 65535,
+      "ctime4": 65535,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 16384,
+      "atime2": 65535,
+      "atime3": 65535,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 3
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": true,
+    "curve": {
+     "scalar": 0.9979143738746643,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": true
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "ef_e_Glow00",
+   "duration": 0.75,
+   "looping": true,
+   "main": {
+    "startLifetime": [
+     2.0,
+     3.0
+    ],
+    "startSpeed": 0.0,
+    "startSize": [
+     0.5,
+     1.0
+    ],
+    "startColor": {
+     "r": 0.9371081590652466,
+     "g": 0.43773579597473145,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": [
+     -0.25,
+     -1.0
+    ],
+    "maxParticles": 20
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 2.0,
+    "bursts": [
+     {
+      "time": 0.0,
+      "countCurve": {
+       "minMaxState": 0,
+       "scalar": 1.0,
+       "minScalar": 30.0,
+       "maxCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       },
+       "minCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       }
+      },
+      "cycleCount": 1,
+      "repeatInterval": 0.009999999776482582,
+      "probability": 1.0
+     }
+    ]
+   },
+   "shape": {
+    "enabled": true,
+    "type": 5,
+    "radius": 9.999999747378752e-05,
+    "angle": 0.8999999761581421
+   },
+   "colorOverLifetime": {
+    "enabled": true,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 65535,
+      "ctime3": 65535,
+      "ctime4": 65535,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 32768,
+      "atime2": 65535,
+      "atime3": 65535,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 3
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": true,
+    "curve": {
+     "scalar": 0.9979143738746643,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": true
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "ef_e_Glow00",
+   "duration": 0.75,
+   "looping": true,
+   "main": {
+    "startLifetime": [
+     3.0,
+     2.0
+    ],
+    "startSpeed": 0.0,
+    "startSize": [
+     0.05000000074505806,
+     0.25
+    ],
+    "startColor": {
+     "r": 0.9371081590652466,
+     "g": 0.43773579597473145,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": -2.0,
+    "maxParticles": 60
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 20.0,
+    "bursts": [
+     {
+      "time": 0.0,
+      "countCurve": {
+       "minMaxState": 0,
+       "scalar": 1.0,
+       "minScalar": 30.0,
+       "maxCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       },
+       "minCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       }
+      },
+      "cycleCount": 1,
+      "repeatInterval": 0.009999999776482582,
+      "probability": 1.0
+     }
+    ]
+   },
+   "shape": {
+    "enabled": true,
+    "type": 5,
+    "radius": 9.999999747378752e-05,
+    "angle": 0.8999999761581421
+   },
+   "colorOverLifetime": {
+    "enabled": true,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 65535,
+      "ctime3": 65535,
+      "ctime4": 65535,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 16384,
+      "atime2": 65535,
+      "atime3": 65535,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 3
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": true,
+    "curve": {
+     "scalar": 0.9979143738746643,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": true
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "uiparticle_SR",
+   "duration": 1.0,
+   "looping": false,
+   "main": {
+    "startLifetime": 1.0,
+    "startSpeed": 0.0,
+    "startSize": 1.0,
+    "startColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": 0.0,
+    "maxParticles": 1
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 1.0,
+    "bursts": null
+   },
+   "shape": {
+    "enabled": false,
+    "type": 4,
+    "radius": 1.0,
+    "angle": 25.0
+   },
+   "colorOverLifetime": {
+    "enabled": false,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": false,
+    "curve": {
+     "scalar": 1.0,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": false
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "ef_e_Glow02",
+   "duration": 0.75,
+   "looping": true,
+   "main": {
+    "startLifetime": [
+     3.0,
+     2.0
+    ],
+    "startSpeed": 0.0,
+    "startSize": [
+     0.75,
+     0.10000000149011612
+    ],
+    "startColor": {
+     "r": 0.9371081590652466,
+     "g": 0.43773579597473145,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": -2.0,
+    "maxParticles": 40
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 8.0,
+    "bursts": [
+     {
+      "time": 0.0,
+      "countCurve": {
+       "minMaxState": 0,
+       "scalar": 1.0,
+       "minScalar": 30.0,
+       "maxCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       },
+       "minCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       }
+      },
+      "cycleCount": 1,
+      "repeatInterval": 0.009999999776482582,
+      "probability": 1.0
+     }
+    ]
+   },
+   "shape": {
+    "enabled": true,
+    "type": 5,
+    "radius": 9.999999747378752e-05,
+    "angle": 0.8999999761581421
+   },
+   "colorOverLifetime": {
+    "enabled": true,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 65535,
+      "ctime3": 65535,
+      "ctime4": 65535,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 16384,
+      "atime2": 65535,
+      "atime3": 65535,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 3
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": true,
+    "curve": {
+     "scalar": 0.9979143738746643,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": true
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "uiparticle_SSRUltimatePlusPU_ad",
+   "duration": 1.0,
+   "looping": false,
+   "main": {
+    "startLifetime": 1.0,
+    "startSpeed": 0.0,
+    "startSize": 1.0,
+    "startColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": 0.0,
+    "maxParticles": 1
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 1.0,
+    "bursts": null
+   },
+   "shape": {
+    "enabled": false,
+    "type": 4,
+    "radius": 1.0,
+    "angle": 25.0
+   },
+   "colorOverLifetime": {
+    "enabled": false,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": false,
+    "curve": {
+     "scalar": 1.0,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": false
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "ef_e_Glow03",
+   "duration": 1.0,
+   "looping": false,
+   "main": {
+    "startLifetime": 1.0,
+    "startSpeed": 0.0,
+    "startSize": [
+     0.75,
+     0.10000000149011612
+    ],
+    "startColor": {
+     "r": 0.9708669185638428,
+     "g": 0.7396225929260254,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": -2.0,
+    "maxParticles": 40
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 20.0,
+    "bursts": [
+     {
+      "time": 0.0,
+      "countCurve": {
+       "minMaxState": 0,
+       "scalar": 1.0,
+       "minScalar": 30.0,
+       "maxCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       },
+       "minCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       }
+      },
+      "cycleCount": 1,
+      "repeatInterval": 0.009999999776482582,
+      "probability": 1.0
+     }
+    ]
+   },
+   "shape": {
+    "enabled": true,
+    "type": 5,
+    "radius": 9.999999747378752e-05,
+    "angle": 0.8999999761581421
+   },
+   "colorOverLifetime": {
+    "enabled": true,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 65535,
+      "ctime3": 65535,
+      "ctime4": 65535,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 56212,
+      "atime2": 65535,
+      "atime3": 65535,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 3
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": true,
+    "curve": {
+     "scalar": 0.9979143738746643,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": true
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "ef_e_Glow00",
+   "duration": 0.75,
+   "looping": true,
+   "main": {
+    "startLifetime": [
+     2.0,
+     1.0
+    ],
+    "startSpeed": 0.0,
+    "startSize": [
+     0.05000000074505806,
+     0.25
+    ],
+    "startColor": {
+     "r": 0.9371081590652466,
+     "g": 0.43773579597473145,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": -2.0,
+    "maxParticles": 60
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 10.0,
+    "bursts": [
+     {
+      "time": 0.0,
+      "countCurve": {
+       "minMaxState": 0,
+       "scalar": 1.0,
+       "minScalar": 30.0,
+       "maxCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       },
+       "minCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       }
+      },
+      "cycleCount": 1,
+      "repeatInterval": 0.009999999776482582,
+      "probability": 1.0
+     }
+    ]
+   },
+   "shape": {
+    "enabled": true,
+    "type": 5,
+    "radius": 9.999999747378752e-05,
+    "angle": 0.8999999761581421
+   },
+   "colorOverLifetime": {
+    "enabled": true,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 65535,
+      "ctime3": 65535,
+      "ctime4": 65535,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 16384,
+      "atime2": 65535,
+      "atime3": 65535,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 3
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": true,
+    "curve": {
+     "scalar": 0.9979143738746643,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": true
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "ef_e_Glow01",
+   "duration": 0.75,
+   "looping": true,
+   "main": {
+    "startLifetime": [
+     2.0,
+     3.0
+    ],
+    "startSpeed": 0.0,
+    "startSize": [
+     0.5,
+     1.0
+    ],
+    "startColor": {
+     "r": 0.9371081590652466,
+     "g": 0.43773579597473145,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": [
+     -0.25,
+     -1.0
+    ],
+    "maxParticles": 20
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 2.0,
+    "bursts": [
+     {
+      "time": 0.0,
+      "countCurve": {
+       "minMaxState": 0,
+       "scalar": 1.0,
+       "minScalar": 30.0,
+       "maxCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       },
+       "minCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       }
+      },
+      "cycleCount": 1,
+      "repeatInterval": 0.009999999776482582,
+      "probability": 1.0
+     }
+    ]
+   },
+   "shape": {
+    "enabled": true,
+    "type": 5,
+    "radius": 9.999999747378752e-05,
+    "angle": 0.8999999761581421
+   },
+   "colorOverLifetime": {
+    "enabled": true,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 65535,
+      "ctime3": 65535,
+      "ctime4": 65535,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 32768,
+      "atime2": 65535,
+      "atime3": 65535,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 3
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": true,
+    "curve": {
+     "scalar": 0.9979143738746643,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": true
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "ef_e_Glow01",
+   "duration": 2.3499999046325684,
+   "looping": false,
+   "main": {
+    "startLifetime": 1.0,
+    "startSpeed": 0.0,
+    "startSize": [
+     0.5,
+     1.0
+    ],
+    "startColor": {
+     "r": 0.9708669185638428,
+     "g": 0.7396225929260254,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": [
+     -0.25,
+     -1.0
+    ],
+    "maxParticles": 20
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 8.0,
+    "bursts": [
+     {
+      "time": 0.0,
+      "countCurve": {
+       "minMaxState": 0,
+       "scalar": 1.0,
+       "minScalar": 30.0,
+       "maxCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       },
+       "minCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       }
+      },
+      "cycleCount": 1,
+      "repeatInterval": 0.009999999776482582,
+      "probability": 1.0
+     }
+    ]
+   },
+   "shape": {
+    "enabled": true,
+    "type": 5,
+    "radius": 9.999999747378752e-05,
+    "angle": 0.8999999761581421
+   },
+   "colorOverLifetime": {
+    "enabled": true,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 65535,
+      "ctime3": 65535,
+      "ctime4": 65535,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 56212,
+      "atime2": 65535,
+      "atime3": 65535,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 3
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": true,
+    "curve": {
+     "scalar": 0.9979143738746643,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": true
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "uiparticle_SSR_ad",
+   "duration": 1.0,
+   "looping": false,
+   "main": {
+    "startLifetime": 1.0,
+    "startSpeed": 0.0,
+    "startSize": 1.0,
+    "startColor": {
+     "r": 1.0,
+     "g": 1.0,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": 0.0,
+    "maxParticles": 1
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 1.0,
+    "bursts": null
+   },
+   "shape": {
+    "enabled": false,
+    "type": 4,
+    "radius": 1.0,
+    "angle": 25.0
+   },
+   "colorOverLifetime": {
+    "enabled": false,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": false,
+    "curve": {
+     "scalar": 1.0,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": false
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  },
+  {
+   "go": "ef_e_Glow01",
+   "duration": 1.0,
+   "looping": false,
+   "main": {
+    "startLifetime": 1.0,
+    "startSpeed": 0.0,
+    "startSize": [
+     0.5,
+     1.0
+    ],
+    "startColor": {
+     "r": 0.9708669185638428,
+     "g": 0.7396225929260254,
+     "b": 1.0,
+     "a": 1.0
+    },
+    "gravityModifier": [
+     -0.25,
+     -1.0
+    ],
+    "maxParticles": 20
+   },
+   "emission": {
+    "enabled": true,
+    "rateOverTime": 8.0,
+    "bursts": [
+     {
+      "time": 0.0,
+      "countCurve": {
+       "minMaxState": 0,
+       "scalar": 1.0,
+       "minScalar": 30.0,
+       "maxCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       },
+       "minCurve": {
+        "m_Curve": [],
+        "m_PreInfinity": 2,
+        "m_PostInfinity": 2,
+        "m_RotationOrder": 4
+       }
+      },
+      "cycleCount": 1,
+      "repeatInterval": 0.009999999776482582,
+      "probability": 1.0
+     }
+    ]
+   },
+   "shape": {
+    "enabled": true,
+    "type": 5,
+    "radius": 9.999999747378752e-05,
+    "angle": 0.8999999761581421
+   },
+   "colorOverLifetime": {
+    "enabled": true,
+    "gradient": {
+     "minMaxState": 1,
+     "minColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxColor": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+     },
+     "maxGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 65535,
+      "ctime3": 65535,
+      "ctime4": 65535,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 56212,
+      "atime2": 65535,
+      "atime3": 65535,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 3
+     },
+     "minGradient": {
+      "key0": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key1": {
+       "r": 1.0,
+       "g": 1.0,
+       "b": 1.0,
+       "a": 1.0
+      },
+      "key2": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key3": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key4": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key5": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key6": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "key7": {
+       "r": 0.0,
+       "g": 0.0,
+       "b": 0.0,
+       "a": 0.0
+      },
+      "ctime0": 0,
+      "ctime1": 65535,
+      "ctime2": 0,
+      "ctime3": 0,
+      "ctime4": 0,
+      "ctime5": 0,
+      "ctime6": 0,
+      "ctime7": 0,
+      "atime0": 0,
+      "atime1": 65535,
+      "atime2": 0,
+      "atime3": 0,
+      "atime4": 0,
+      "atime5": 0,
+      "atime6": 0,
+      "atime7": 0,
+      "m_Mode": 0,
+      "m_ColorSpace": -1,
+      "m_NumColorKeys": 2,
+      "m_NumAlphaKeys": 2
+     }
+    }
+   },
+   "sizeOverLifetime": {
+    "enabled": true,
+    "curve": {
+     "scalar": 0.9979143738746643,
+     "curve": true
+    }
+   },
+   "velocityOverLifetime": {
+    "enabled": true
+   },
+   "rotationOverLifetime": {
+    "enabled": false
+   }
+  }
+ ]
+}

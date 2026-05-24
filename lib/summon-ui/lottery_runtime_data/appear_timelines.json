@@ -1,0 +1,2901 @@
+{
+  "_meta": "Per-character appear_timeline_path Timeline summary. NOTE: per the actual asset paths (Setting/Cutscene/Battle/StartAct/<Variant>/<Variant>StartAct), these are BATTLE START ACT cutscenes (character intro on battle start), NOT the lottery CharacterAppear animation. The lottery animation is driven by the UIRoot AnimatorController (see step D). We capture this anyway because the master field is explicit per-character and we need parity with the IL2CPP data flow.",
+  "timelines_by_pc": [
+    {
+      "master_pc_id": 100001,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruDefault/RimuruDefaultStartAct",
+      "variant": "RimuruDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 3.0,
+      "duration_mode": 1,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\assetpack\\4b61174785fb0befdc664ffdb56e3db9\\93aae7e95d424bf4ab5c6d02510dc652.bundle"
+    },
+    {
+      "master_pc_id": 100002,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Benimaru/BenimaruDefault/BenimaruDefaultStartAct",
+      "variant": "BenimaruDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 3.0,
+      "duration_mode": 1,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\assetpack\\bdd15804cc94f20958f92a68e376672f\\ea9e08ecab48d3a4285765e92c67a813.bundle"
+    },
+    {
+      "master_pc_id": 100003,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shion/ShionDefault/ShionDefaultStartAct",
+      "variant": "ShionDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 3.0,
+      "duration_mode": 1,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\assetpack\\b4c21bc5d48ebbc51458cc2af75e9bee\\5c188f89a372d214da3ea1e8ae2a7666.bundle"
+    },
+    {
+      "master_pc_id": 130001,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rigurd/RigurdDefault/RigurdDefaultStartAct",
+      "variant": "RigurdDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\161814926acba7d2954bef22911f6014\\8abe3037d002f6f77327b273867851bc\\__data"
+    },
+    {
+      "master_pc_id": 130002,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Alice/AliceDefault/AliceDefaultStartAct",
+      "variant": "AliceDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\2edd1424cb1e706c3dd7e5c7438d48df\\132555f7fa88e807863a8dd7d8d22de5\\__data"
+    },
+    {
+      "master_pc_id": 130003,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Kenya/KenyaDefault/KenyaDefaultStartAct",
+      "variant": "KenyaDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\438f9f32389efb09608eaf6b2ee02ee2\\77da5fbe525fed85196a9ccea0d00ec7\\__data"
+    },
+    {
+      "master_pc_id": 130004,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Ryota/RyotaDefault/RyotaDefaultStartAct",
+      "variant": "RyotaDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\3b630c8ccc62d40defdd27acda2e0d43\\32571dd295b64f69ff23ea3a1f82f1f7\\__data"
+    },
+    {
+      "master_pc_id": 130005,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Kurobei/KurobeiBefore/KurobeiBeforeStartAct",
+      "variant": "KurobeiBeforeStartAct",
+      "track_count": 4,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\c7c1b4bbeeb23c239e9a878262b41cab\\f1619f6eff6bd6b42055c1745919b936\\__data"
+    },
+    {
+      "master_pc_id": 130006,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Gail/GailDefault/GailDefaultStartAct",
+      "variant": "GailDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\cfd4c780d996f76936ab17e153fa3a0a\\ce506ca4b0d1e52b9275bbbb69a59256\\__data"
+    },
+    {
+      "master_pc_id": 140001,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Gobta/GobtaDefault/GobtaDefaultStartAct",
+      "variant": "GobtaDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 2.5,
+      "duration_mode": 1,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\e72b0effba3cb56a7054cce2687ee225\\80b472e1f77db1997e55f18595fe5181\\__data"
+    },
+    {
+      "master_pc_id": 140002,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/RimuruSlime/RimuruSlimeDefault/RimuruSlimeDefaultStartAct",
+      "variant": "RimuruSlimeDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\4b74a381e0f9b62854faddeb8d9cb34a\\22927fda90012ca5be389198f1a70c64\\__data"
+    },
+    {
+      "master_pc_id": 140003,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Gabiru/GabiruDefault/GabiruDefaultStartAct",
+      "variant": "GabiruDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\5276c3b21c336da559a85eb7d954abd5\\f035dd4563451b3ec2d2464f36a61e9d\\__data"
+    },
+    {
+      "master_pc_id": 140004,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Yuuki/YuukiDefault/YuukiDefaultStartAct",
+      "variant": "YuukiDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\425f051ca35c855bf24ee372964bf189\\f4f7931b58ff4072cb73352f64f89007\\__data"
+    },
+    {
+      "master_pc_id": 140005,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Trya/TryaDefault/TryaDefaultStartAct",
+      "variant": "TryaDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\6230607fd48c4f88dfbf066a884a7d51\\70e09b502f31b716ddb8cf394cc75874\\__data"
+    },
+    {
+      "master_pc_id": 140006,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Kurobei/KurobeiDefault/KurobeiDefaultStartAct",
+      "variant": "KurobeiDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\83517e548150c7b3609783eff1affdd4\\de250e2b3cd0e06775d943c472132f1e\\__data"
+    },
+    {
+      "master_pc_id": 140007,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Gelmud/GelmudDefault/GelmudDefaultStartAct",
+      "variant": "GelmudDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\85fbce11a2c2bf4b6e33f4a28c89d9b5\\aaf327f47f3de0795b9c41e409ca13f8\\__data"
+    },
+    {
+      "master_pc_id": 140008,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Chloe/ChloeDefault/ChloeDefaultStartAct",
+      "variant": "ChloeDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\7bbd16765a9d222a6013e5de26880aa5\\9fa99b877dd105fbc26aa28c9984450f\\__data"
+    },
+    {
+      "master_pc_id": 140009,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Benimaru/BenimaruBefore/BenimaruBeforeStartAct",
+      "variant": "BenimaruBeforeStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\c33587c4658ccc56fd9cd067b9d33372\\04df8efdc1169ab066539620f90fdc82\\__data"
+    },
+    {
+      "master_pc_id": 140010,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Soei/SoeiBefore/SoeiBeforeStartAct",
+      "variant": "SoeiBeforeStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\7172efb9f7385d422b9b6d8e42388589\\6b119932ad1c102fe031a42a8dd271aa\\__data"
+    },
+    {
+      "master_pc_id": 140011,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Geld/GeldDefault/GeldDefaultStartAct",
+      "variant": "GeldDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\8884457c261c5dc1ce597c55342a1077\\5ce6f8816e1ca1b5133ac98f5fe0b35c\\__data"
+    },
+    {
+      "master_pc_id": 140012,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Ranga/RangaBefore/RangaBeforeStartAct",
+      "variant": "RangaBeforeStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\277cea89405288d184828aef70f05453\\dbefe466bd52e2527840e29a99b2bea5\\__data"
+    },
+    {
+      "master_pc_id": 140013,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Phobio/PhobioDefault/PhobioDefaultStartAct",
+      "variant": "PhobioDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\363400cd50da3b6784464a9728c712a8\\b8b8f47b31a752b39be841ec66c96c04\\__data"
+    },
+    {
+      "master_pc_id": 140014,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shion/ShionBefore/ShionBeforeStartAct",
+      "variant": "ShionBeforeStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\fb51f08042dd1907ad461c4809ac5085\\19428b468a45e5bb0ae92c2c147e8f1b\\__data"
+    },
+    {
+      "master_pc_id": 140015,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Hakuro/HakuroBefore/HakuroBeforeStartAct",
+      "variant": "HakuroBeforeStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\0a248e459efc80ab88266e2d17741447\\d1af928b8a7da96f9037c975ea7d20cc\\__data"
+    },
+    {
+      "master_pc_id": 140016,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shuna/ShunaBefore/ShunaBeforeStartAct",
+      "variant": "ShunaBeforeStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\a6109f9a757bc0d5cb3abc59e27c89c9\\821ed76d59d9a8e9e7f34b1f12d570dc\\__data"
+    },
+    {
+      "master_pc_id": 140017,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Soei/SoeiOriginalCostumeKimono/SoeiOriginalCostumeKimonoStartAct",
+      "variant": "SoeiOriginalCostumeKimonoStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\c434ab2a3926199020f29bbf3e398969\\5601d0fe82dfd9b8de60256b797fb616\\__data"
+    },
+    {
+      "master_pc_id": 140018,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruOriginalCostumeShortSleeve/RimuruOriginalCostumeShortSleeveStartAct",
+      "variant": "RimuruOriginalCostumeShortSleeveStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\ce49457dc5b714bcfadbdc02c8d7df04\\89ff439e3a2303f8b2bfa48e7891b506\\__data"
+    },
+    {
+      "master_pc_id": 140019,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Benimaru/BenimaruOriginalCostumeKimono/BenimaruOriginalCostumeKimonoStartAct",
+      "variant": "BenimaruOriginalCostumeKimonoStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\537b9283dc360b442d6baaa183285f74\\7061a8afeb37127df10ef4e7bb97af8b\\__data"
+    },
+    {
+      "master_pc_id": 140020,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shuna/ShunaOriginalCostumeKimono/ShunaOriginalCostumeKimonoStartAct",
+      "variant": "ShunaOriginalCostumeKimonoStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\6ca7e973f1eea594b670f89026b99c93\\7e7fb64afffee54476336d43633a2fc5\\__data"
+    },
+    {
+      "master_pc_id": 140021,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shion/ShionOriginalCostumeKimono/ShionOriginalCostumeKimonoStartAct",
+      "variant": "ShionOriginalCostumeKimonoStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\6ea62c1e44443975d988a62914e5515f\\d1625650281eccd9c5efee620a722839\\__data"
+    },
+    {
+      "master_pc_id": 140022,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Milim/MilimOriginalArrangeSimple/MilimOriginalArrangeSimpleStartAct",
+      "variant": "MilimOriginalArrangeSimpleStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\80290953936e75091197dc2a630d5329\\7901758a7476fd5b71a0e8e7336fe16c\\__data"
+    },
+    {
+      "master_pc_id": 140023,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Benimaru/BenimaruArmor/BenimaruArmorStartAct",
+      "variant": "BenimaruArmorStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\7c50ebca910049471dbd9e48dc878cb4\\a5a1f2e569e10e621c3ceb643d12a29e\\__data"
+    },
+    {
+      "master_pc_id": 140024,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Albis/AlbisDefault/AlbisDefaultStartAct",
+      "variant": "AlbisDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\4f2ec2e73dcb009d6ae18425c129c488\\054de8679ff23d2fd97610632f5733a2\\__data"
+    },
+    {
+      "master_pc_id": 140026,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shuna/ShunaKimono2022Newyear/ShunaKimono2022NewyearStartAct",
+      "variant": "ShunaKimono2022NewyearStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\5519972660f5e4591a280c2fb8a634a4\\9e834ed29f46f1a70d625915bbeabf12\\__data"
+    },
+    {
+      "master_pc_id": 140027,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shion/ShionMaidCostume2021Christmas/ShionMaidCostume2021ChristmasStartAct",
+      "variant": "ShionMaidCostume2021ChristmasStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\a1b1b4162f18271331e7bee7462e7bad\\3d9d8525694b02b7f7b9a826e381c6ae\\__data"
+    },
+    {
+      "master_pc_id": 140080,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Izis/IzisDefault/IzisDefaultStartAct",
+      "variant": "IzisDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\69ffc86eea6c9b3a26734fc03935959e\\06ed9d70ceb8c7edb3e80fbfd7f132f1\\__data"
+    },
+    {
+      "master_pc_id": 140100,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruSwimsuitSailor/RimuruSwimsuitSailorStartAct",
+      "variant": "RimuruSwimsuitSailorStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\18ca46bef4280f7409ba553f585b4acf\\272bc259969af97092c81083c1c5670c\\__data"
+    },
+    {
+      "master_pc_id": 140257,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Mjurran/MjurranValentine2022Date/MjurranValentine2022DateStartAct",
+      "variant": "MjurranValentine2022DateStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\a38cebac10f8c53f3c9fc645f153fbe9\\8eb092900da55b927a9910d3917183a0\\__data"
+    },
+    {
+      "master_pc_id": 140265,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Ranga/RangaHighRank/RangaHighRankStartAct",
+      "variant": "RangaHighRankStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\78e5bbf70408ae68c330dc1d3cbb33e9\\4f6ab852ff4336008f69ab9e3cee789c\\__data"
+    },
+    {
+      "master_pc_id": 140296,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Suphia/SuphiaForPC/SuphiaForPCStartAct",
+      "variant": "SuphiaForPCStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\40a09e2a7ec95c561ea16551a62665cb\\a72497c4cf70fb2c4b119dc6fde176f5\\__data"
+    },
+    {
+      "master_pc_id": 140297,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Grucius/GruciusForPC/GruciusForPCStartAct",
+      "variant": "GruciusForPCStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\14e4146e7c62554abb2e400a992a103d\\e261cef6352a91ce7c155d235a6d775e\\__data"
+    },
+    {
+      "master_pc_id": 140300,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Cynthia/CynthiaWedding2022/CynthiaWedding2022StartAct",
+      "variant": "CynthiaWedding2022StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\b8cb044b0f6f7953f0ca0d45f6b63647\\ab5b84dc2db5a4aa1e99dd26eb42c97c\\__data"
+    },
+    {
+      "master_pc_id": 140307,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Geld/Geld2022Summer/Geld2022SummerStartAct",
+      "variant": "Geld2022SummerStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\853ea454ae07f817cddf5d56ddecb290\\2caf4504fee5dff451f37f21d87eec9e\\__data"
+    },
+    {
+      "master_pc_id": 140319,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Misery/MiseryDefault/MiseryDefaultStartAct",
+      "variant": "MiseryDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\0d5ba3ea7372375648d1a41496b9c5b5\\3750901c2cf7ebfbbb99cb6c8b4ec7cf\\__data"
+    },
+    {
+      "master_pc_id": 140331,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Eren/ErenDefault/ErenDefaultStartAct",
+      "variant": "ErenDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\a8d2fb7e6db1fd9185b7acb57f401857\\0691c156107bdaa77c3899435ebf8479\\__data"
+    },
+    {
+      "master_pc_id": 140348,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Hiiro/HiiroDefault/HiiroDefaultStartAct",
+      "variant": "HiiroDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\a056f2e65c4cf93d7b8e42f8026094f6\\c9864a556d248d8f466736f2b1828c0b\\__data"
+    },
+    {
+      "master_pc_id": 140349,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/RimuruSlime/RimuruSlimeMovie/RimuruSlimeMovieStartAct",
+      "variant": "RimuruSlimeMovieStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\45dcda65ea9b13d639c1c4be598f7747\\478c27a97ee4c5dd59a63c1ed874bafd\\__data"
+    },
+    {
+      "master_pc_id": 140366,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Soka/SokaMythology/SokaMythologyStartAct",
+      "variant": "SokaMythologyStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\463a3b3de7861069e04fbce3d3fd02ed\\2fa9c95e513c6303b0826c6d5a08a095\\__data"
+    },
+    {
+      "master_pc_id": 140375,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Suphia/SuphiaValentine2023/SuphiaValentine2023StartAct",
+      "variant": "SuphiaValentine2023StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\b6525bcd184049030aa86ef5b2199ecf\\eb46e05b4d712967c8543e9c56f8a853\\__data"
+    },
+    {
+      "master_pc_id": 150001,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Benimaru/BenimaruDefault/BenimaruDefaultStartAct",
+      "variant": "BenimaruDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 3.0,
+      "duration_mode": 1,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\assetpack\\bdd15804cc94f20958f92a68e376672f\\ea9e08ecab48d3a4285765e92c67a813.bundle"
+    },
+    {
+      "master_pc_id": 150002,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shion/ShionDefault/ShionDefaultStartAct",
+      "variant": "ShionDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 3.0,
+      "duration_mode": 1,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\assetpack\\b4c21bc5d48ebbc51458cc2af75e9bee\\5c188f89a372d214da3ea1e8ae2a7666.bundle"
+    },
+    {
+      "master_pc_id": 150003,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruMagician/RimuruMagicianStartAct",
+      "variant": "RimuruMagicianStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\b4d637d91f68bfc80a1abbba4cac7b8a\\24af71d301bea058c455ccbb3d54aae1\\__data"
+    },
+    {
+      "master_pc_id": 150004,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Soei/SoeiDefault/SoeiDefaultStartAct",
+      "variant": "SoeiDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\9350bab354108481975a2b8344697d84\\6cc04c573e2b1f049cbf6e19447c331f\\__data"
+    },
+    {
+      "master_pc_id": 150005,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/GazelDwargo/GazelDwargoDefault/GazelDwargoDefaultStartAct",
+      "variant": "GazelDwargoDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\09d016b74bdf55fb3a02d8f3caa134bc\\c6a4ea1801b8147920742792867ceafa\\__data"
+    },
+    {
+      "master_pc_id": 150006,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Ranga/RangaDefault/RangaDefaultStartAct",
+      "variant": "RangaDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\aff3ca69d11dc8e6a8f3f328aca23fed\\eebf892161c051bc49d1bfa1d340cbad\\__data"
+    },
+    {
+      "master_pc_id": 150007,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shizu/ShizuDefault/ShizuDefaultStartAct",
+      "variant": "ShizuDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\76927296232fc82d5c22922a636d46fa\\0eac9062290624bb303a36df4e114bb2\\__data"
+    },
+    {
+      "master_pc_id": 150008,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shuna/ShunaDefault/ShunaDefaultStartAct",
+      "variant": "ShunaDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\52832cfc24290138773e21b1f90d0bac\\afb98491a27c79f144476c6c27f120e8\\__data"
+    },
+    {
+      "master_pc_id": 150009,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Treyni/TreyniDefault/TreyniDefaultStartAct",
+      "variant": "TreyniDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\1e6d2e7be5f90e390f0aa22f4bb32097\\48e2e898fb90caadb2077c02565a7a11\\__data"
+    },
+    {
+      "master_pc_id": 150010,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Milim/MilimDefault/MilimDefaultStartAct",
+      "variant": "MilimDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\ecfcf5f0feeb1a7e323f0211509216ca\\566673c9b94b057a31167418aa483a28\\__data"
+    },
+    {
+      "master_pc_id": 150011,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Hakuro/HakuroDefault/HakuroDefaultStartAct",
+      "variant": "HakuroDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\22a519bd31ac65dcd12182a3cf0bc02c\\92d87e7b5f68c0043e5d4abd581aeb0e\\__data"
+    },
+    {
+      "master_pc_id": 150012,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Beretta/BerettaDefault/BerettaDefaultStartAct",
+      "variant": "BerettaDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\0944104f44b1e0c00d54f86618701d2c\\1689e0c67bedc37ff51a5dd0a078efe9\\__data"
+    },
+    {
+      "master_pc_id": 150013,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shuna/ShunaShrinemaidenRelease/ShunaShrinemaidenReleaseStartAct",
+      "variant": "ShunaShrinemaidenReleaseStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\f70835f925deaf86b29be93db130245a\\e411d176555bf280d56d4a2966c3b250\\__data"
+    },
+    {
+      "master_pc_id": 150014,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Milim/MilimWithoutMantle/MilimWithoutMantleStartAct",
+      "variant": "MilimWithoutMantleStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\2c01c3338034997beee4522ae9f1dd2c\\6e3d62c0694056082026a7867601f267\\__data"
+    },
+    {
+      "master_pc_id": 150015,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruDefault/RimuruDefaultStartAct",
+      "variant": "RimuruDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 3.0,
+      "duration_mode": 1,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\assetpack\\4b61174785fb0befdc664ffdb56e3db9\\93aae7e95d424bf4ab5c6d02510dc652.bundle"
+    },
+    {
+      "master_pc_id": 150016,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Hinata/HinataDefault/HinataDefaultStartAct",
+      "variant": "HinataDefaultStartAct",
+      "track_count": 4,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\66f6cd390891fcebb2a3ad582aeaf57d\\a4e6f251ec999773f5bd4d25990d721d\\__data"
+    },
+    {
+      "master_pc_id": 150017,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Diablo/DiabloDefault/DiabloDefaultStartAct",
+      "variant": "DiabloDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\8adae7e0fd78387396369a22f4caf25f\\a5ea9396bcb7d1c530447c8f7a2d2ec9\\__data"
+    },
+    {
+      "master_pc_id": 150018,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Leon/LeonDefault/LeonDefaultStartAct",
+      "variant": "LeonDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\5a0f12f08aafcaf7ad1c60397d5abd83\\b3a2a0f86d5d06d26fb829958caa9e42\\__data"
+    },
+    {
+      "master_pc_id": 150019,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shuna/ShunaSwimsuitHibiscus/ShunaSwimsuitHibiscusStartAct",
+      "variant": "ShunaSwimsuitHibiscusStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\84b0158d4e6312592f646e6531f2da13\\39d63b9612300949f7db971dc3f961d7\\__data"
+    },
+    {
+      "master_pc_id": 150021,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shion/ShionSwimsuitLeaf/ShionSwimsuitLeafStartAct",
+      "variant": "ShionSwimsuitLeafStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\e24dd677d096d64d3f899992cd0a8ce6\\eef49c6d6f1d40b77a1afecd54b25fe0\\__data"
+    },
+    {
+      "master_pc_id": 150022,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Frey/FreyDefault/FreyDefaultStartAct",
+      "variant": "FreyDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\98594b7b99768f9897bc1f4c2fe62991\\a13cd0a71eb5171ae69d716eba970ed7\\__data"
+    },
+    {
+      "master_pc_id": 150023,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Carrion/CarrionDefault/CarrionDefaultStartAct",
+      "variant": "CarrionDefaultStartAct",
+      "track_count": 4,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\7e3f5932193fb61dd9dc90a84c18fdb9\\726d590071afd93595768c5b4385e6fc\\__data"
+    },
+    {
+      "master_pc_id": 150024,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Veldora/VeldoraHumanoid/VeldoraHumanoidStartAct",
+      "variant": "VeldoraHumanoidStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\dbc1fbe4b89030a4c680f8b7bf82b140\\f2e749d0a4ed349babdfee95d860c235\\__data"
+    },
+    {
+      "master_pc_id": 150027,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Milim/MilimBattleArmor/MilimBattleArmorStartAct",
+      "variant": "MilimBattleArmorStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\839fa45131e71f60b6a7ce062b9878e1\\baee4be77d9f3029091efa6c752810cf\\__data"
+    },
+    {
+      "master_pc_id": 150028,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruDemonLord/RimuruDemonLordStartAct",
+      "variant": "RimuruDemonLordStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\14990b295d4f59ec2615d55d9d08753a\\d3784ddb7fc41c06105e5b51721b592d\\__data"
+    },
+    {
+      "master_pc_id": 150029,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Milim/MilimKimono2022Newyear/MilimKimono2022NewyearStartAct",
+      "variant": "MilimKimono2022NewyearStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\e101f4cfb80b3b0091f677c41bb97f36\\a3bc9461bfa313959d82551d744231ad\\__data"
+    },
+    {
+      "master_pc_id": 150030,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Luminous/LuminousMaidCostume2021Christmas/LuminousMaidCostume2021ChristmasStartAct",
+      "variant": "LuminousMaidCostume2021ChristmasStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\7a656bd2d69c2c074b21b5a6ad092eeb\\afa7625d2e268c762d35f1e1f536aa02\\__data"
+    },
+    {
+      "master_pc_id": 150031,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruMaidCostume2021Christmas/RimuruMaidCostume2021ChristmasStartAct",
+      "variant": "RimuruMaidCostume2021ChristmasStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\cbb65d9996415b5c7e891abb804556f9\\2d1b53f2f5c40425b2faa9326cc81ec1\\__data"
+    },
+    {
+      "master_pc_id": 150032,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Diablo/Diablo2022Summer/Diablo2022SummerStartAct",
+      "variant": "Diablo2022SummerStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\093425695660be646bd0fafc7a97c489\\561516ab2ba3280cccd9b6ab6a55d7b1\\__data"
+    },
+    {
+      "master_pc_id": 150033,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Milim/MilimDemonLordCostume/MilimDemonLordCostumeStartAct",
+      "variant": "MilimDemonLordCostumeStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\b506296adcf060321d3713cc32dd2445\\516a880312d2019f4e69c536b4953cd6\\__data"
+    },
+    {
+      "master_pc_id": 150034,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Veldora/VeldoraButlerCostume2021Christmas/VeldoraButlerCostume2021ChristmasStartAct",
+      "variant": "VeldoraButlerCostume2021ChristmasStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\eaf81d5be3852db6e45b1b1119027035\\c93552739fa1517fc8d4f164ead5f076\\__data"
+    },
+    {
+      "master_pc_id": 150035,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Leon/LeonDemonLordCostume/LeonDemonLordCostumeStartAct",
+      "variant": "LeonDemonLordCostumeStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\30bed91b001a718558c9cbd86ab8bc5d\\510f65d21f1aed0ff74456eb9b2e1c57\\__data"
+    },
+    {
+      "master_pc_id": 150036,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Raphael/RaphaelRimuru/RaphaelRimuruStartAct",
+      "variant": "RaphaelRimuruStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\63434b258f785d69846472b56bc1e206\\e5b5f14f491af7104fb50b2cb05050c4\\__data"
+    },
+    {
+      "master_pc_id": 150037,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shizu/ShizuValentine2022Date/ShizuValentine2022DateStartAct",
+      "variant": "ShizuValentine2022DateStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\272ab609464428d9a13706eca4b0d318\\f28f0038c3ded1148cccca2189456c87\\__data"
+    },
+    {
+      "master_pc_id": 150038,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Dino/DinoDefault/DinoDefaultStartAct",
+      "variant": "DinoDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\85b543a0927886a57ffc5afe873b6b29\\a482d0ea0c5614c220cb90f8d1ee8862\\__data"
+    },
+    {
+      "master_pc_id": 150039,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Luminous/LuminousDefault/LuminousDefaultStartAct",
+      "variant": "LuminousDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\9be105cbe1956604dd16e7c0cc242357\\fa186bdf7c93516b856eb43a640d4fad\\__data"
+    },
+    {
+      "master_pc_id": 150058,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rigur/RigurDefault/RigurDefaultStartAct",
+      "variant": "RigurDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\51606d09ee89fefff0059c51200f63cc\\bdda46837e77919efcd7e34426eedc71\\__data"
+    },
+    {
+      "master_pc_id": 150089,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Clayman/ClaymanDefault/ClaymanDefaultStartAct",
+      "variant": "ClaymanDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\597e685d97faa3ad6b613f3c11c7499f\\4fcdb9d1695ae796c3fda40cda5deafc\\__data"
+    },
+    {
+      "master_pc_id": 150207,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/MaskedHero/MaskedHeroDefault/MaskedHeroDefaultStartAct",
+      "variant": "MaskedHeroDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\9b9ecae7c5a7fa0a0a5e3b1a5544cd85\\ab8dac6d86fe52b0c719617287a2d55e\\__data"
+    },
+    {
+      "master_pc_id": 150220,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Treyni/Treyni2022Summer/Treyni2022SummerStartAct",
+      "variant": "Treyni2022SummerStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\b30af3de29673dca73934e282ffa101b\\0856d0fb032fc64be5da140cf0e62614\\__data"
+    },
+    {
+      "master_pc_id": 150253,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Ramiris/RamirisDemonLordCostume/RamirisDemonLordCostumeStartAct",
+      "variant": "RamirisDemonLordCostumeStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\edf3451511c3f5f6d628775fa7cd58a8\\feccd1c7b80239a1bd6f45bd1689f5cf\\__data"
+    },
+    {
+      "master_pc_id": 150254,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Gobta/GobtaHighRankCostume/GobtaHighRankCostumeStartAct",
+      "variant": "GobtaHighRankCostumeStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\84dd7027cf39c0b7230f22ecf3228e2f\\fe7bb521f9325d653dabdcda5c3cb531\\__data"
+    },
+    {
+      "master_pc_id": 150255,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Guy/GuyDefault/GuyDefaultStartAct",
+      "variant": "GuyDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\29452084fd83e1d9179dc4e0776737ff\\70c7c06092eaae3628b13ac5eea41858\\__data"
+    },
+    {
+      "master_pc_id": 150263,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Alice/AliceKnight/AliceKnightStartAct",
+      "variant": "AliceKnightStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\48f4ca933bc3e27a9ff445dedbce524c\\03f68cfe5c98b0f89d62d150bb478b95\\__data"
+    },
+    {
+      "master_pc_id": 150266,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Guy/GuyDemonLord/GuyDemonLordStartAct",
+      "variant": "GuyDemonLordStartAct",
+      "track_count": 4,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\04a7890616655f50dbf9bd965f4ab40b\\96fd615decf8167b6af67fbed42fa5f7\\__data"
+    },
+    {
+      "master_pc_id": 150267,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Werzard/WerzardDefault/WerzardDefaultStartAct",
+      "variant": "WerzardDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\5c316d8eb96a76ae359846d5fdc38389\\f2eb3ddc4a8377d7632252dd7e46736b\\__data"
+    },
+    {
+      "master_pc_id": 150268,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Benimaru/BenimaruHighRankCostume/BenimaruHighRankCostumeStartAct",
+      "variant": "BenimaruHighRankCostumeStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\f6daeb0450c55434321bbd8c6932dd75\\5080152443d4e1ff2963209d82776e3f\\__data"
+    },
+    {
+      "master_pc_id": 150269,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Soei/SoeiHighRank/SoeiHighRankStartAct",
+      "variant": "SoeiHighRankStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\5e213976f5a7d65419ccd87ac201b883\\274b053900a29d6d19111630ea05342a\\__data"
+    },
+    {
+      "master_pc_id": 150289,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Dagrul/DagrulDefault/DagrulDefaultStartAct",
+      "variant": "DagrulDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\2e7145235ccaf5f40eb0f29bfc1e8ae0\\3521ec7026bcbd17f921763715e6666f\\__data"
+    },
+    {
+      "master_pc_id": 150290,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Milim/MilimHighRank/MilimHighRankStartAct",
+      "variant": "MilimHighRankStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\42a154c9735f90b0d7b0cec5fce27817\\825abeaba46664ee8371fd5aa1d1da55\\__data"
+    },
+    {
+      "master_pc_id": 150292,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Diablo/DiabloHighRankCostume/DiabloHighRankCostumeStartAct",
+      "variant": "DiabloHighRankCostumeStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\b268ffef6ac172d49512af0fd197cccb\\7e1d9688b7cf8e58d432c582e3f29e2e\\__data"
+    },
+    {
+      "master_pc_id": 150299,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shion/ShionWedding2022/ShionWedding2022StartAct",
+      "variant": "ShionWedding2022StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\8412b4f79690cc1808c9aebf2be66c74\\9e4f6b65346ed033ce9bce41b882b012\\__data"
+    },
+    {
+      "master_pc_id": 150301,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruWedding2022/RimuruWedding2022StartAct",
+      "variant": "RimuruWedding2022StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\5b2c25b25eac6b487804acd784bac347\\9928c5ac11403d0f408b97520f877214\\__data"
+    },
+    {
+      "master_pc_id": 150308,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Luminous/LuminousDemonLord/LuminousDemonLordStartAct",
+      "variant": "LuminousDemonLordStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\3499d71ad91a0632cbaf6bb47fe46127\\c92a6c3c2a0b98cd0c85eefab3d01aad\\__data"
+    },
+    {
+      "master_pc_id": 150315,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Hinata/HinataLightarmor/HinataLightarmorStartAct",
+      "variant": "HinataLightarmorStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\1db537848edc26dd87febd11ce41883a\\ffce26c91b11844d9d7606acfac39fcd\\__data"
+    },
+    {
+      "master_pc_id": 150316,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Dagrul/DagrulDemonLord/DagrulDemonLordStartAct",
+      "variant": "DagrulDemonLordStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\a76f20e535aef0ade84bde76c7373545\\2f74aa66edea4f17deb29c0e21245862\\__data"
+    },
+    {
+      "master_pc_id": 150317,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Werzard/WerzardParty2022/WerzardParty2022StartAct",
+      "variant": "WerzardParty2022StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\9b8dcebcb8d4fe32817be7d2170ba4f6\\2ab7886065ac98c59b572f4e7bc70134\\__data"
+    },
+    {
+      "master_pc_id": 150320,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rain/RainDefault/RainDefaultStartAct",
+      "variant": "RainDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\369290bd6062080be05d4211b5bac774\\bad33ad7cb4f8d839518dfe76fbc8eec\\__data"
+    },
+    {
+      "master_pc_id": 150322,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Leon/LeonParty2022/LeonParty2022StartAct",
+      "variant": "LeonParty2022StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\0e5bfb7ee334617c6ebfe126a1fca311\\9747dc35417fe8e76dd457ba2fdc4fe8\\__data"
+    },
+    {
+      "master_pc_id": 150330,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Mjurran/MjurranMagician/MjurranMagicianStartAct",
+      "variant": "MjurranMagicianStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\f6c1326a472d44e2ce391856cac418d8\\d7cf5e216bc4758b09ed6a48ab797c91\\__data"
+    },
+    {
+      "master_pc_id": 150332,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Adalman/AdalmanKingOfWit/AdalmanKingOfWitStartAct",
+      "variant": "AdalmanKingOfWitStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\20995c16a70b3af793fdce8c49d96c3d\\acaaefcda27a5722b318f01583df2285\\__data"
+    },
+    {
+      "master_pc_id": 150334,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruKingdom2022/RimuruKingdom2022StartAct",
+      "variant": "RimuruKingdom2022StartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\0b27ce365742ffb1cecbf97063637957\\efcfb3c9fb6c087615b3ed1217caf94d\\__data"
+    },
+    {
+      "master_pc_id": 150336,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Milim/MilimKingdom2022/MilimKingdom2022StartAct",
+      "variant": "MilimKingdom2022StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\48938dd11f4d8e200db7db6c9dbe68de\\dddec3b58d8d37d341ce19e9c897354d\\__data"
+    },
+    {
+      "master_pc_id": 150337,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Cynthia/CynthiaPinkForPC/CynthiaPinkForPCStartAct",
+      "variant": "CynthiaPinkForPCStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\afba90482e5e8e3a1fa552b6b5eb74e8\\d3353858b33a32675453e33b2fa49427\\__data"
+    },
+    {
+      "master_pc_id": 150338,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Diablo/DiabloKingdom2022/DiabloKingdom2022StartAct",
+      "variant": "DiabloKingdom2022StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\6a6420198b148db54c37049ac13760b8\\afe95831482809e774a79720758f15c8\\__data"
+    },
+    {
+      "master_pc_id": 150345,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Dino/DinoDemonLord/DinoDemonLordStartAct",
+      "variant": "DinoDemonLordStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\56cddea48fde585896f90172d924bc81\\fc3d782929d4270438b91839a70e7cdb\\__data"
+    },
+    {
+      "master_pc_id": 150346,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Benimaru/BenimaruMovie/BenimaruMovieStartAct",
+      "variant": "BenimaruMovieStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\fb9f7496ef35ddbf9103c7fc03f344cb\\55379900f3568abe5a90abb8d20b5711\\__data"
+    },
+    {
+      "master_pc_id": 150350,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Violet/VioletDefault/VioletDefaultStartAct",
+      "variant": "VioletDefaultStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\74b3224c027a413112ad5c97bdbd732c\\14163cc1a7ec4ed7b61b2fd754dd9da6\\__data"
+    },
+    {
+      "master_pc_id": 150351,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shizu/ShizuXmas2022/ShizuXmas2022StartAct",
+      "variant": "ShizuXmas2022StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\7424fc59dfae60cf1ed717e0d13532f8\\bb3e0cbb9f79d646be451f9e89eade98\\__data"
+    },
+    {
+      "master_pc_id": 150361,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Werzard/WerzardXmas2022/WerzardXmas2022StartAct",
+      "variant": "WerzardXmas2022StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\956daa92101e2fa9f098c7a94f9067b7\\0038d3f3ef105508614cf8da93f149f2\\__data"
+    },
+    {
+      "master_pc_id": 150363,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Milim/MilimMythology/MilimMythologyStartAct",
+      "variant": "MilimMythologyStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\7925e03ca7ab6f0e11f504b2c27538f7\\6ff42350a9f92c94f38ad579f15004de\\__data"
+    },
+    {
+      "master_pc_id": 150364,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Raphael/RaphaelMythology/RaphaelMythologyStartAct",
+      "variant": "RaphaelMythologyStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\3a67a7f478f0c1a1943bf0b86ceaa24f\\75e33c76ceff0b83a3b979d2d8eb4129\\__data"
+    },
+    {
+      "master_pc_id": 150367,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Luminous/LuminousMythology/LuminousMythologyStartAct",
+      "variant": "LuminousMythologyStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\13cf9c6d4b0924e7137f069a6c14a617\\5c430c865d7f6356947e78f4469c9054\\__data"
+    },
+    {
+      "master_pc_id": 150371,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Mjurran/MjurranDefaultPC/MjurranDefaultPCStartAct",
+      "variant": "MjurranDefaultPCStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\f8618beef0c0ecaaeb8c960ed7e6b7ae\\b38c9185b6ac3c3dd65112734f1b5621\\__data"
+    },
+    {
+      "master_pc_id": 150372,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Youm/YoumDefaultPC/YoumDefaultPCStartAct",
+      "variant": "YoumDefaultPCStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\c6086dbf620810fde7c9e58083d84871\\c8508a6794fdf550c12e3defe32298e8\\__data"
+    },
+    {
+      "master_pc_id": 150373,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shion/ShionValentine2023/ShionValentine2023StartAct",
+      "variant": "ShionValentine2023StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\965fcf4057c3749d56bfe91ceeab8ecd\\092b6568665a6404755c53bc9715ceb8\\__data"
+    },
+    {
+      "master_pc_id": 150376,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Cynthia/CynthiaValentine2023/CynthiaValentine2023StartAct",
+      "variant": "CynthiaValentine2023StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\6bf7023ce1fe8f139721d8727286d63a\\479a65a5fadaa9f06cdb3abd7b17a1da\\__data"
+    },
+    {
+      "master_pc_id": 150377,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Hinata/HinataCasual/HinataCasualStartAct",
+      "variant": "HinataCasualStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\7c4305f6b91dfd8c6c2f864249331d45\\da06f355a4d622d33d1544088e435744\\__data"
+    },
+    {
+      "master_pc_id": 150378,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruSchool2023/RimuruSchool2023StartAct",
+      "variant": "RimuruSchool2023StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\1334d5f3465e3a83b88a9df185b8f9da\\d565298621905d2ec6e054bfb8ffe951\\__data"
+    },
+    {
+      "master_pc_id": 150380,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Gobta/GobtaSchool2023/GobtaSchool2023StartAct",
+      "variant": "GobtaSchool2023StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\ec862e82e693e75f673938e532dade01\\1125d548f9ea3563c6c0ae67394dc6ed\\__data"
+    },
+    {
+      "master_pc_id": 150381,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Albis/AlbisSchool2023/AlbisSchool2023StartAct",
+      "variant": "AlbisSchool2023StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\7cda67b7222b6e3570c91fb2fd97655b\\820ad0a83f0e6ad7196c2ce37beeed29\\__data"
+    },
+    {
+      "master_pc_id": 150382,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Yuuki/YuukiBattlesuit2023/YuukiBattlesuit2023StartAct",
+      "variant": "YuukiBattlesuit2023StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\1a2fc829b7dbe071941723ff0e6846d0\\ffcee7fe71aa5425c6263062b6efdfcc\\__data"
+    },
+    {
+      "master_pc_id": 150383,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Milim/MilimAmusementPark/MilimAmusementParkStartAct",
+      "variant": "MilimAmusementParkStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\8975cad5ee83b3c8d73258b83d7aff07\\f1975853817abf8f650d1cf5d14e8e42\\__data"
+    },
+    {
+      "master_pc_id": 150385,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Gabiru/GabiruAmusementPark/GabiruAmusementParkStartAct",
+      "variant": "GabiruAmusementParkStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\cc0e8675d4d98dc9a39b8202f9221581\\3471d2fcbebc8d88e1ee5be5d25ed26d\\__data"
+    },
+    {
+      "master_pc_id": 150386,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shizu/ShizuLightarmor/ShizuLightarmorStartAct",
+      "variant": "ShizuLightarmorStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\4c3accffa4a9c000d76e62deda39fb8c\\1da552c994c7ba6a16231bbff2e846c5\\__data"
+    },
+    {
+      "master_pc_id": 150388,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Guy/GuyHA2023/GuyHA2023StartAct",
+      "variant": "GuyHA2023StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\4819494233814a03f98db53378de27d3\\ebe848ab3f73c0c908fc132022e89c57\\__data"
+    },
+    {
+      "master_pc_id": 150389,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Luminous/LuminousHA2023/LuminousHA2023StartAct",
+      "variant": "LuminousHA2023StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\9824bbc2c9b3e5bb3a3441db29bceac8\\5c1ff36a14c40edfac78aeb064999ed4\\__data"
+    },
+    {
+      "master_pc_id": 150391,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shion/ShionHA2023/ShionHA2023StartAct",
+      "variant": "ShionHA2023StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\8c943fd6211d0446d4d78855466614ef\\c7ad0ea7d8de9987f316eccdf56fa596\\__data"
+    },
+    {
+      "master_pc_id": 150392,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Violet/VioletHA2023/VioletHA2023StartAct",
+      "variant": "VioletHA2023StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\652c41f154b4e5743cf5a97542c3a139\\d39bab13ca2e22bb5b17581ad5e0d941\\__data"
+    },
+    {
+      "master_pc_id": 150393,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruHA2023/RimuruHA2023StartAct",
+      "variant": "RimuruHA2023StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\dd35cf5b62c103157b1445c1ae13752f\\5279b396a68057b5fcd710d40af9dbf7\\__data"
+    },
+    {
+      "master_pc_id": 150394,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/MaskedHero/MaskedHeroHA2023/MaskedHeroHA2023StartAct",
+      "variant": "MaskedHeroHA2023StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\05a7b3b2560b51e254002f2a772e2495\\df298360246f041a5a4bafbbea26fc4c\\__data"
+    },
+    {
+      "master_pc_id": 150402,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shuna/ShunaWedding2023/ShunaWedding2023StartAct",
+      "variant": "ShunaWedding2023StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\d9bc77c694f4b17f79eb4391fe2e5b14\\635d86a8d20c4d67caa72c9cec5ef59b\\__data"
+    },
+    {
+      "master_pc_id": 150404,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Trya/TryaWedding2023/TryaWedding2023StartAct",
+      "variant": "TryaWedding2023StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\2282c21289ecd7bead11f068b6ffc5f1\\68b0368c043062fb1204859c71ba482a\\__data"
+    },
+    {
+      "master_pc_id": 150405,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Soka/SokaWedding2023/SokaWedding2023StartAct",
+      "variant": "SokaWedding2023StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\93a57d1fba5f072af598380ec0ef032e\\d1d5e5cf8d59efc0982786e57bf3643a\\__data"
+    },
+    {
+      "master_pc_id": 150406,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rain/RainHighDemon/RainHighDemonStartAct",
+      "variant": "RainHighDemonStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\9ee7356b6c3eeb09b9e2e612d9ed5727\\687089fa93160ded8690d7e35db7eb53\\__data"
+    },
+    {
+      "master_pc_id": 150407,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Megumin/MeguminDefault/MeguminDefaultStartAct",
+      "variant": "MeguminDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\0894d26d5fae0e256c6f13f2e9891d3f\\a5be67dc04df502701e373ccaa02c822\\__data"
+    },
+    {
+      "master_pc_id": 150408,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Aqua/AquaDefault/AquaDefaultStartAct",
+      "variant": "AquaDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\1ec1f0ecbf8a4d4f017906809bf9f454\\35d7d2af31ec4f6c09f85860a4c10708\\__data"
+    },
+    {
+      "master_pc_id": 150409,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Kazuma/KazumaDefault/KazumaDefaultStartAct",
+      "variant": "KazumaDefaultStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\9b1141330b5a449534857a6640855967\\bf8fa233d7071a6777e69b2ece0c992a\\__data"
+    },
+    {
+      "master_pc_id": 150410,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Darkness/DarknessDefault/DarknessDefaultStartAct",
+      "variant": "DarknessDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\7eec42431e296e7abf960dc46703b7a2\\ab88a7768370ca0b1d8519cccdc2c823\\__data"
+    },
+    {
+      "master_pc_id": 150412,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shizu/ShizuSwimsuit2023/ShizuSwimsuit2023StartAct",
+      "variant": "ShizuSwimsuit2023StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\200e48e6adec4085fc299ee719e06206\\e5ec1fe01be86e6ad8ba632f01c56364\\__data"
+    },
+    {
+      "master_pc_id": 150413,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Milim/MilimSwimsuit2023/MilimSwimsuit2023StartAct",
+      "variant": "MilimSwimsuit2023StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\54a5e768bc76c749c3761562d68ea6c3\\4911ff87091c130725d7295c356a170a\\__data"
+    },
+    {
+      "master_pc_id": 150415,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Ramiris/RamirisSwimsuit2023/RamirisSwimsuit2023StartAct",
+      "variant": "RamirisSwimsuit2023StartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\c41aa572afba1fffc2ae7dcc04203465\\0a81e600363c071243042c60a75622fd\\__data"
+    },
+    {
+      "master_pc_id": 150416,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Luminous/LuminousSwimsuit2023/LuminousSwimsuit2023StartAct",
+      "variant": "LuminousSwimsuit2023StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\468ed1f58aec94444b252f4063da5fd4\\61f44a11703b3b2faf33a5d6e638c076\\__data"
+    },
+    {
+      "master_pc_id": 150417,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Hinata/HinataSwimsuit2023/HinataSwimsuit2023StartAct",
+      "variant": "HinataSwimsuit2023StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\4499b61a88ba03646b4d76f91ab7f9ff\\fc2036c404bab727435704e3bef50045\\__data"
+    },
+    {
+      "master_pc_id": 150429,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shuna/ShunaImasml/ShunaImasmlStartAct",
+      "variant": "ShunaImasmlStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\64ee03b5ec5e91bdd7b83fd5acfd424a\\6243ae61b4160d8be7c07cb6276f845d\\__data"
+    },
+    {
+      "master_pc_id": 150433,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Raphael/RaphaelNordic/RaphaelNordicStartAct",
+      "variant": "RaphaelNordicStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\6cb9c1936226d0653cb7ab521f91b74c\\24f27132ac5217ad66509fb1f62850a8\\__data"
+    },
+    {
+      "master_pc_id": 150435,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Youm/YoumNordic/YoumNordicStartAct",
+      "variant": "YoumNordicStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\ec3364f71229c4a3820c7acca51040ea\\90c2aa45a8ebda51bda9d5bcdeecb651\\__data"
+    },
+    {
+      "master_pc_id": 150436,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shuna/ShunaNordic/ShunaNordicStartAct",
+      "variant": "ShunaNordicStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\d3f9822e17615361b003cc05aa97cd07\\9403a3738bf31759676b9f771eb7746a\\__data"
+    },
+    {
+      "master_pc_id": 150437,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Veldora/VeldoraNordic/VeldoraNordicStartAct",
+      "variant": "VeldoraNordicStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\4587e18545cd5547c631f8f74339027c\\040555e0bf590645daedaf1ea08952ee\\__data"
+    },
+    {
+      "master_pc_id": 150438,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Cynthia/CynthiaHalloween2023/CynthiaHalloween2023StartAct",
+      "variant": "CynthiaHalloween2023StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\d77fb641400f7d171d8775adb288c147\\8bade1b8767106b0d630a6169955c141\\__data"
+    },
+    {
+      "master_pc_id": 150440,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Ranga/RangaHalloween2023/RangaHalloween2023StartAct",
+      "variant": "RangaHalloween2023StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\9dfb476383e258226e81ae3bf7772863\\4edd7f68b1b50327e495fbf556e54c16\\__data"
+    },
+    {
+      "master_pc_id": 150441,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Hinata/Hinata2Anniv/Hinata2AnnivStartAct",
+      "variant": "Hinata2AnnivStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\9ff2fc8ece434dea2292481d126529cb\\4eff25b0bf556f814acb5e09c0741867\\__data"
+    },
+    {
+      "master_pc_id": 150442,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shizu/Shizu2Anniv/Shizu2AnnivStartAct",
+      "variant": "Shizu2AnnivStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\a2eeef9c9c279003c33c6345bac179fb\\3afab77051379ec40b7bb4f17e7b21fc\\__data"
+    },
+    {
+      "master_pc_id": 150443,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/Rimuru2Anniv/Rimuru2AnnivStartAct",
+      "variant": "Rimuru2AnnivStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\f0afc93ea2880cc9515151a938c0bcda\\2ba41c16031819ef9cf0ba8364ddbf6a\\__data"
+    },
+    {
+      "master_pc_id": 150445,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Violet/Violet2Anniv/Violet2AnnivStartAct",
+      "variant": "Violet2AnnivStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\d3a2a084538c1c6f06d6c18df8941b27\\eb06497b2df598df9c52b1937b75099e\\__data"
+    },
+    {
+      "master_pc_id": 150446,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Buran/Buran2Anniv/Buran2AnnivStartAct",
+      "variant": "Buran2AnnivStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\4aa95a1d03b8ed7e45263b30344ce02c\\e7cab53682202ceb579d79d6a2899269\\__data"
+    },
+    {
+      "master_pc_id": 150447,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Jaune/Jaune2Anniv/Jaune2AnnivStartAct",
+      "variant": "Jaune2AnnivStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\caab2007d90898d07e8117f71108dca9\\481c6b2242635dbfc09f1b4c30a42d02\\__data"
+    },
+    {
+      "master_pc_id": 150450,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Cliche/ClicheDefault/ClicheDefaultStartAct",
+      "variant": "ClicheDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\f5456e31186e1e2e618e4f77ecacc6e7\\e0c070e7ced0e8982c503c022dd00631\\__data"
+    },
+    {
+      "master_pc_id": 150451,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Kasuga/KasugaDefault/KasugaDefaultStartAct",
+      "variant": "KasugaDefaultStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\94c3c2c4aea8dd2e663a787301988cd6\\b5ff85e9e1c35cb2425b751eaad04ed6\\__data"
+    },
+    {
+      "master_pc_id": 150453,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Ibuki/IbukiDefault/IbukiDefaultStartAct",
+      "variant": "IbukiDefaultStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\e15e9f1cc17798ce96cfb6aa16ce9fdf\\bb81019ea2d563de6dfa24e7d2d59e09\\__data"
+    },
+    {
+      "master_pc_id": 150455,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Mogami/MogamiDefault/MogamiDefaultStartAct",
+      "variant": "MogamiDefaultStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\2f192c64d9727ff20f4707d3961c3b54\\4dbee772c67e38478c16df443e152cf8\\__data"
+    },
+    {
+      "master_pc_id": 150456,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/Rimuru1kuji2024/Rimuru1kuji2024StartAct",
+      "variant": "Rimuru1kuji2024StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\6339e01865e41c2162005045a461594e\\a2013dfcf2a64d3f0ef3769de3a797d4\\__data"
+    },
+    {
+      "master_pc_id": 150458,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Diablo/Diablo1kuji2024/Diablo1kuji2024StartAct",
+      "variant": "Diablo1kuji2024StartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\70f02e6f053a151d4798abc491f4c18e\\8cbb89e8583bf7add4d93a0ce8983f87\\__data"
+    },
+    {
+      "master_pc_id": 150459,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Milim/Milim1kuji2024/Milim1kuji2024StartAct",
+      "variant": "Milim1kuji2024StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\c81a3dec025344db32e83edb9f71a697\\c904106511f25fc617919df0af1e2e91\\__data"
+    },
+    {
+      "master_pc_id": 150461,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Cynthia/CynthiaArmor/CynthiaArmorStartAct",
+      "variant": "CynthiaArmorStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\95a9310a1d7d9b8e812fab4ae0a17ae9\\5767f74175fb831f9d2763c9ff10b6a5\\__data"
+    },
+    {
+      "master_pc_id": 150462,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Ainz/AinzDefault/AinzDefaultStartAct",
+      "variant": "AinzDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\7486310c5a00ae106f012ad957a7d014\\a40d7757c50a3334e264b33272f35a0e\\__data"
+    },
+    {
+      "master_pc_id": 150464,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Narberal/NarberalDefault/NarberalDefaultStartAct",
+      "variant": "NarberalDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\8487762b1333c93b769afbcec125225c\\ba7a9ae388be2e3666b3bf00fa2161e4\\__data"
+    },
+    {
+      "master_pc_id": 150465,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Albedo/AlbedoDefault/AlbedoDefaultStartAct",
+      "variant": "AlbedoDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\801b939cd10db08f9db4f609ef22e17a\\08bfdcf798e08badcbcc50fa19f5d0d6\\__data"
+    },
+    {
+      "master_pc_id": 150466,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shizu/ShizuAlbedo/ShizuAlbedoStartAct",
+      "variant": "ShizuAlbedoStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\bccd435617409c93b0f1046f1a3f8ef2\\b1b2f41d9c565b7ca1a369ac8778da3d\\__data"
+    },
+    {
+      "master_pc_id": 150467,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shalltear/ShalltearDefault/ShalltearDefaultStartAct",
+      "variant": "ShalltearDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\72a1d4d5980bcc98a213b144c111c237\\b819a2a9ac2e7df9a007b50f40618702\\__data"
+    },
+    {
+      "master_pc_id": 150471,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shuna/ShunaCoschange/ShunaCoschangeStartAct",
+      "variant": "ShunaCoschangeStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\debf29607c077cdf478ac7a5b65cd5e9\\9b4fa3c39912fefcc10b63266d04f4dc\\__data"
+    },
+    {
+      "master_pc_id": 150473,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Gobta/GobtaCoschange/GobtaCoschangeStartAct",
+      "variant": "GobtaCoschangeStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\925e1806431126d55953e7bc6aefc1ae\\ba7a162a661bbb1e8546d9f31c0dae26\\__data"
+    },
+    {
+      "master_pc_id": 150474,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruCoschange/RimuruCoschangeStartAct",
+      "variant": "RimuruCoschangeStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\bb9e8271988f8a2aecb55d41f8881215\\ef1a4b8edbea92e064cff1d3824d5193\\__data"
+    },
+    {
+      "master_pc_id": 150475,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Benimaru/BenimaruCoschange/BenimaruCoschangeStartAct",
+      "variant": "BenimaruCoschangeStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\12a0ab5d4fbf3857d2e3304a98d276f0\\e29f3a43703bfc24c6bdce6379752e9c\\__data"
+    },
+    {
+      "master_pc_id": 150477,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Diablo/DiabloGothic/DiabloGothicStartAct",
+      "variant": "DiabloGothicStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\cefc59c3b969c0933b74a7b69ba192fb\\c3975832942747bafb3da78ce4cdf8d2\\__data"
+    },
+    {
+      "master_pc_id": 150479,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Misery/MiseryGothic/MiseryGothicStartAct",
+      "variant": "MiseryGothicStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\917e115037bbeabe7a48d1de86d531cc\\ca169d429348202f3be899836307d0ec\\__data"
+    },
+    {
+      "master_pc_id": 150480,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Jaune/JauneGothic/JauneGothicStartAct",
+      "variant": "JauneGothicStartAct",
+      "track_count": 13,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\6a0f957972d9554627bb0eec17193587\\56e1d009ffba58e8b5ccf65a598603c2\\__data"
+    },
+    {
+      "master_pc_id": 150481,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Buran/BuranGothic/BuranGothicStartAct",
+      "variant": "BuranGothicStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\38fbbb5db648aeb98a1dc6b8edf1cdbd\\caaecfb3fec6320d79515c7968298f1a\\__data"
+    },
+    {
+      "master_pc_id": 150483,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Cynthia/CynthiaUltimate/CynthiaUltimateStartAct",
+      "variant": "CynthiaUltimateStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\02eb76b4039065b1bdc85413c529f61c\\e9231b385ce3cb0b09f16d4557286504\\__data"
+    },
+    {
+      "master_pc_id": 150484,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Cliche/ClicheUltimate/ClicheUltimateStartAct",
+      "variant": "ClicheUltimateStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\111f7e7b11759039ec76b4eed023a7e7\\3694c36f8dae86284eb00607db3ae08f\\__data"
+    },
+    {
+      "master_pc_id": 150485,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Milim/MilimHA2024/MilimHA2024StartAct",
+      "variant": "MilimHA2024StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\ae4721e09cdd193757bdb7e086c56ba0\\a12613518e6c5e75548af2a3aec13b1b\\__data"
+    },
+    {
+      "master_pc_id": 150486,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Guy/GuyHA2024/GuyHA2024StartAct",
+      "variant": "GuyHA2024StartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\7ba3bcb6d8961fcfb0ee7669f9ce4db8\\8be0fbc641819557db60b6a04ac555cd\\__data"
+    },
+    {
+      "master_pc_id": 150488,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Veldora/VeldoraHA2024/VeldoraHA2024StartAct",
+      "variant": "VeldoraHA2024StartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\a61c036f3be39917ef550da557637350\\dd12b783d556ff00c45ea137608ce167\\__data"
+    },
+    {
+      "master_pc_id": 150489,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruHA2024/RimuruHA2024StartAct",
+      "variant": "RimuruHA2024StartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\841bac42ebaa2e433a6339a708e9e7c6\\780f728ffdc46f410e847aad86bdc061\\__data"
+    },
+    {
+      "master_pc_id": 150490,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/MaskedHero/MaskedHeroHA2024/MaskedHeroHA2024StartAct",
+      "variant": "MaskedHeroHA2024StartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\11bfb1065d221ab9176084e798c1111f\\e9b037a3bc77848cb74c48943dfdca2a\\__data"
+    },
+    {
+      "master_pc_id": 150492,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Hinata/HinataAnime3rd/HinataAnime3rdStartAct",
+      "variant": "HinataAnime3rdStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\789b688ea7b6441283ed9bfeba28d907\\65e521102d45e9c10403860aaf6df400\\__data"
+    },
+    {
+      "master_pc_id": 150498,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shizu/ShizuAnime3rd/ShizuAnime3rdStartAct",
+      "variant": "ShizuAnime3rdStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\bebb541049a0f10148cae5832afd9a1e\\cd9a757b71da1f1330c8b34c6e76bfce\\__data"
+    },
+    {
+      "master_pc_id": 150499,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Diablo/DiabloAnime3rd/DiabloAnime3rdStartAct",
+      "variant": "DiabloAnime3rdStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\a4d879ee7fcfdee74f64499e15cc997f\\1bc23eb550c5df02680714e9ee9e43c7\\__data"
+    },
+    {
+      "master_pc_id": 150500,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Glenda/GlendaDefault/GlendaDefaultStartAct",
+      "variant": "GlendaDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\efbf9e5e71fb4e639ff712058999180a\\f6d7422dd17ab86a12df8dfa5ede7749\\__data"
+    },
+    {
+      "master_pc_id": 150501,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Luminous/LuminousAnime3rd/LuminousAnime3rdStartAct",
+      "variant": "LuminousAnime3rdStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\32d7010fd826e8a3b847be3b50f551eb\\0f5bdf73bafc990378c70fd4a0fdbc40\\__data"
+    },
+    {
+      "master_pc_id": 150503,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Elmesia/ElmesiaDefault/ElmesiaDefaultStartAct",
+      "variant": "ElmesiaDefaultStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\5cbe87b2d4c8ebb973f1a58cbe985369\\01249f5592b461f5e3b890823e076357\\__data"
+    },
+    {
+      "master_pc_id": 150504,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Momiji/MomijiDefault/MomijiDefaultStartAct",
+      "variant": "MomijiDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\bc2cd03cecca276960e810a3e50c9f0a\\a28452a3107b07db27b4af5df0296c10\\__data"
+    },
+    {
+      "master_pc_id": 150506,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Hakuro/HakuroTengu/HakuroTenguStartAct",
+      "variant": "HakuroTenguStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\f138163ae77cb7176507068ef3160e7e\\e240b15c91abcfaa771493d3e1aef3c8\\__data"
+    },
+    {
+      "master_pc_id": 150507,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shuna/ShunaTengu/ShunaTenguStartAct",
+      "variant": "ShunaTenguStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\53913dedca3f418e4634d33b38269b30\\ea53c0c9aaec98cacbe496c4f7de6286\\__data"
+    },
+    {
+      "master_pc_id": 150508,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Soei/SoeiTengu/SoeiTenguStartAct",
+      "variant": "SoeiTenguStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\cf82332125021b463e51f1f30fe394a1\\417e5d0f2fba7bcfb780231ff118a816\\__data"
+    },
+    {
+      "master_pc_id": 150510,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruFormal/RimuruFormalStartAct",
+      "variant": "RimuruFormalStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\0d3882bb7f711b612488b63077ae5af2\\9a7bc22dff3c675cba76cbab69625efb\\__data"
+    },
+    {
+      "master_pc_id": 150513,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Geld/GeldBattleArmor/GeldBattleArmorStartAct",
+      "variant": "GeldBattleArmorStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\a14e3da6743e70311ec9bb099a00f9ce\\e359614c5f370c8b85daf8fbafb12e96\\__data"
+    },
+    {
+      "master_pc_id": 150514,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Hinata/HinataPartyDress/HinataPartyDressStartAct",
+      "variant": "HinataPartyDressStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\406392e9be4ac4abfb3a2115456cdebc\\a70d710e86c674971a5964498a88eb78\\__data"
+    },
+    {
+      "master_pc_id": 150515,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shion/ShionPartydress/ShionPartydressStartAct",
+      "variant": "ShionPartydressStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\bb8d27d116b05dfd425f3e76edad721e\\4c2dce1eaacf44da13017411472a7b61\\__data"
+    },
+    {
+      "master_pc_id": 150521,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Milim/Milim3Anniv/Milim3AnnivStartAct",
+      "variant": "Milim3AnnivStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\c6464d1ba80004a0c7657362ca1bda6f\\b86d5ab05fb9d253490ec783e5b4615b\\__data"
+    },
+    {
+      "master_pc_id": 150522,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Diablo/Diablo3Anniv/Diablo3AnnivStartAct",
+      "variant": "Diablo3AnnivStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\bc0b7989e09393bc72516b2e69692eb0\\184881acdd2ecd309a0d187fdbc47044\\__data"
+    },
+    {
+      "master_pc_id": 150523,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Raphael/Raphael3Anniv/Raphael3AnnivStartAct",
+      "variant": "Raphael3AnnivStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\698860b47dd40aee26575bcbf4527c1f\\488d31db71a61533f08c2fd7e4dca605\\__data"
+    },
+    {
+      "master_pc_id": 150526,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/GazelDwargo/GazelDwargo3Anniv/GazelDwargo3AnnivStartAct",
+      "variant": "GazelDwargo3AnnivStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\c41e99cdcd30740c97149838060ae9b6\\2df5f4ea2f4b9ab59b025c50bc03f7e8\\__data"
+    },
+    {
+      "master_pc_id": 150527,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/MaskedHero/MaskedHero3Anniv/MaskedHero3AnnivStartAct",
+      "variant": "MaskedHero3AnnivStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\db827e50c9f72813fc9d60492b40dbd2\\c2014a3c8025c399a09e78a570a2f9f8\\__data"
+    },
+    {
+      "master_pc_id": 150528,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Buran/Buran3Anniv/Buran3AnnivStartAct",
+      "variant": "Buran3AnnivStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\61a09ca95b795c438cbfd7bd13acf186\\315e0ff013d726ecc3a6035027b6c73c\\__data"
+    },
+    {
+      "master_pc_id": 150529,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Izis/IzisAwakenPC/IzisAwakenPCStartAct",
+      "variant": "IzisAwakenPCStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\9c0bc13af0d668ea414ebe69b51b2699\\d38a2f91b7cff758844962d35af8c64a\\__data"
+    },
+    {
+      "master_pc_id": 150530,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Clayman/ClaymanAwaken02PC/ClaymanAwaken02PCStartAct",
+      "variant": "ClaymanAwaken02PCStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\efa0ca8829f73e36a846c87077683455\\c284052bea184a51b10020b6f66fab7a\\__data"
+    },
+    {
+      "master_pc_id": 150532,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Tear/TearDefaultPC/TearDefaultPCStartAct",
+      "variant": "TearDefaultPCStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\6646735366c2402d6625716402ef8e9e\\4b9481ee539f2549fcb7a6c04d67aeb9\\__data"
+    },
+    {
+      "master_pc_id": 150533,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruDemonLord3/RimuruDemonLord3StartAct",
+      "variant": "RimuruDemonLord3StartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\9a3b77be092946602bd8d0e7548fcf52\\cd03c5406529e639469a757ea8d0dce0\\__data"
+    },
+    {
+      "master_pc_id": 150534,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Benimaru/BenimaruAnotherPC/BenimaruAnotherPCStartAct",
+      "variant": "BenimaruAnotherPCStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\624a7a7078005fd725d8298ed0f62402\\45b669d4bb8d2c43b470c6b5fd83b8fe\\__data"
+    },
+    {
+      "master_pc_id": 150535,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Momiji/MomijiXmas2024/MomijiXmas2024StartAct",
+      "variant": "MomijiXmas2024StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\07ff65ce4602af36a11a565bf8138bc8\\53d4c5215fede11e59b0398c673d48ad\\__data"
+    },
+    {
+      "master_pc_id": 150538,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Ritus/RitusXmas2024/RitusXmas2024StartAct",
+      "variant": "RitusXmas2024StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\eaa35938f9888880ed81b2e416be0ba2\\24787efea05799f9e5ff2a3682393de2\\__data"
+    },
+    {
+      "master_pc_id": 150539,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Mariabell/MariabellXmas2024/MariabellXmas2024StartAct",
+      "variant": "MariabellXmas2024StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\c2d3a2e90cbd1d30b20cf91fda0bd6cf\\22f1602426a7a2fc11d78d594a9b9b8e\\__data"
+    },
+    {
+      "master_pc_id": 150540,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Violet/VioletXmas2024/VioletXmas2024StartAct",
+      "variant": "VioletXmas2024StartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\faa9730738e8556ff24459c13b92d738\\d996268a56259040ace52101ad1bd5b1\\__data"
+    },
+    {
+      "master_pc_id": 150546,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Luminous/LuminousCreator01/LuminousCreator01StartAct",
+      "variant": "LuminousCreator01StartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\df27613923212fa51f4e738c1550f5e2\\8cae272a17067889efec8dea3ff2b91e\\__data"
+    },
+    {
+      "master_pc_id": 150547,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Cynthia/CynthiaDefaultPC/CynthiaDefaultPCStartAct",
+      "variant": "CynthiaDefaultPCStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\c2387070b40707438df97ac5e2b9dab9\\7835fb1c00b565b89d17a8a6ca3c456c\\__data"
+    },
+    {
+      "master_pc_id": 150549,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruCreator01/RimuruCreator01StartAct",
+      "variant": "RimuruCreator01StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\23b1af1d0b2c9ef8649714022e0bbeea\\3ec447725db6ec3a7907c11d576ba35f\\__data"
+    },
+    {
+      "master_pc_id": 150550,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Gobta/GobtaMarou/GobtaMarouStartAct",
+      "variant": "GobtaMarouStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\32e99d2a0d5f7cd03f3972a549426d3a\\12efbc787a2fd370ad2d7bf4fc4559da\\__data"
+    },
+    {
+      "master_pc_id": 150551,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Frieren/FrierenDefault/FrierenDefaultStartAct",
+      "variant": "FrierenDefaultStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\68b33bc39228e3b6b4db0a2679f613fb\\d0166978ba1a8018acf87a477cf5f7a0\\__data"
+    },
+    {
+      "master_pc_id": 150553,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Stark/StarkDefault/StarkDefaultStartAct",
+      "variant": "StarkDefaultStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\7258bd8de79cfeb376c406900a024ace\\8fc7c1bab3a1bb2bea868c2543c0a33d\\__data"
+    },
+    {
+      "master_pc_id": 150554,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Raphael/RaphaelFrieren/RaphaelFrierenStartAct",
+      "variant": "RaphaelFrierenStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\bb097c597b1c2da077d1bf20c4d44b9e\\f05899b975ddf25adf9073310574a429\\__data"
+    },
+    {
+      "master_pc_id": 150562,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Hinata/HinataSchool2025/HinataSchool2025StartAct",
+      "variant": "HinataSchool2025StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\969571cf3e3ba78f4c9d703e955be95e\\4f7a242b763a8466b2f84d8c41680fac\\__data"
+    },
+    {
+      "master_pc_id": 150563,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shizu/ShizuSchool2025/ShizuSchool2025StartAct",
+      "variant": "ShizuSchool2025StartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\870fa4f9dc87e56204967e2001ff0fc1\\951a5d8420942bd4e0a220d8cfd0cfc0\\__data"
+    },
+    {
+      "master_pc_id": 150564,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Yuuki/YuukiSchool2025/YuukiSchool2025StartAct",
+      "variant": "YuukiSchool2025StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\51c92b67c8bb598790bb3373c9498eae\\3fe58bb36cc4fcfd18e7f6dd0d6fba1f\\__data"
+    },
+    {
+      "master_pc_id": 150565,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Frey/FreySchool2025/FreySchool2025StartAct",
+      "variant": "FreySchool2025StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\66aac675636413a910ef67f5f2c57b5e\\7e51076a7223fdb6e2e127b50b231ff1\\__data"
+    },
+    {
+      "master_pc_id": 150568,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shion/ShionMilitary/ShionMilitaryStartAct",
+      "variant": "ShionMilitaryStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\264eddff2daf52f09f6c217a61c56af8\\4ed38b8b69fa4ca54a135db907622bbd\\__data"
+    },
+    {
+      "master_pc_id": 150569,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Gobwa/GobwaDefault/GobwaDefaultStartAct",
+      "variant": "GobwaDefaultStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\dc1b6db5385338b52cdfd80541b7f882\\3a9b2cec3b3ea2fc53cf9fb7631a9c19\\__data"
+    },
+    {
+      "master_pc_id": 150570,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Violet/VioletMilitary/VioletMilitaryStartAct",
+      "variant": "VioletMilitaryStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\1535fdbcaa2ff6aeb05a3748f8470f9d\\1722413dd3c75d113f283f884984d691\\__data"
+    },
+    {
+      "master_pc_id": 150571,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Buran/BuranMilitary/BuranMilitaryStartAct",
+      "variant": "BuranMilitaryStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\d6a6fa1518979635106262aaded50eb7\\c7eb0cce42ee24eeca12831bccf4656f\\__data"
+    },
+    {
+      "master_pc_id": 150574,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Leon/LeonHA2025/LeonHA2025StartAct",
+      "variant": "LeonHA2025StartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\d909b6db1a82be940371e3c59a3c6fde\\6640a903ab90e6682fe710e8dd46e40c\\__data"
+    },
+    {
+      "master_pc_id": 150575,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Werzard/WerzardHA2025/WerzardHA2025StartAct",
+      "variant": "WerzardHA2025StartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\b1936fe14796f7d1a32b52696d92f867\\6f10123100b34be62d57a851a37f7d85\\__data"
+    },
+    {
+      "master_pc_id": 150576,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Ritus/RitusDefault/RitusDefaultStartAct",
+      "variant": "RitusDefaultStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\7b115a895e0a817fa21a60b501783f45\\05f4f112ade3dd4d11331a6c1ee7a878\\__data"
+    },
+    {
+      "master_pc_id": 150577,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Jaune/JauneHA2025/JauneHA2025StartAct",
+      "variant": "JauneHA2025StartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\23abea134d137bf0446b923c4f6b6703\\cfbdacd921a97c48bbb028bc077f2c77\\__data"
+    },
+    {
+      "master_pc_id": 150581,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Laplace/LaplaceDefault/LaplaceDefaultStartAct",
+      "variant": "LaplaceDefaultStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\3fe0890dfdf1817bd37039447a283b06\\5825ac04ec111c84bfa2fbf6cdb5a46b\\__data"
+    },
+    {
+      "master_pc_id": 150583,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Luminous/LuminousPhantom/LuminousPhantomStartAct",
+      "variant": "LuminousPhantomStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\3d0e51eb8f9e172e8a8fa1e8321a1f93\\fd9a6d16bd7b6cb7fa6052ae79d3acc1\\__data"
+    },
+    {
+      "master_pc_id": 150584,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Diablo/DiabloPhantom/DiabloPhantomStartAct",
+      "variant": "DiabloPhantomStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\444147e5d0c5af4f864ad4eec0bb5af1\\52849a3ed674105ed1b4ae3586ca898b\\__data"
+    },
+    {
+      "master_pc_id": 150587,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shionne/ShionneDefault/ShionneDefaultStartAct",
+      "variant": "ShionneDefaultStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\228545bd2bc16073cd3f6e1fcf689047\\0aa32ae8009057812c46f1a1744e9a83\\__data"
+    },
+    {
+      "master_pc_id": 150588,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Alphen/AlphenDefault/AlphenDefaultStartAct",
+      "variant": "AlphenDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\6028761470061074034f592c505d0c12\\04017b60401540efc42618e2599b948a\\__data"
+    },
+    {
+      "master_pc_id": 150590,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Hinata/HinataTales/HinataTalesStartAct",
+      "variant": "HinataTalesStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\262c47f11ec0c563f825b90cdc660588\\5350c2c553ffc58d9e85f34359a619b6\\__data"
+    },
+    {
+      "master_pc_id": 150593,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Ifrit/IfritDefaultPC/IfritDefaultPCStartAct",
+      "variant": "IfritDefaultPCStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\44773c14459a6ee21730c2eb22d4f45b\\70f66e7e419b59d103c9fe5442cca199\\__data"
+    },
+    {
+      "master_pc_id": 150594,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Buran/BuranSwimsuit2025/BuranSwimsuit2025StartAct",
+      "variant": "BuranSwimsuit2025StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\afb6052e9ec7309b9dfbaa988b957238\\b2ce83a567d84f3994bd181a26de7786\\__data"
+    },
+    {
+      "master_pc_id": 150595,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Violet/VioletSwimsuit2025/VioletSwimsuit2025StartAct",
+      "variant": "VioletSwimsuit2025StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\fe9e0bcf7f954efd7fff2b6f3faa6a1d\\23f1134dd3cf23dca826f3723c69c718\\__data"
+    },
+    {
+      "master_pc_id": 150596,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Jaune/JauneSwimsuit2025/JauneSwimsuit2025StartAct",
+      "variant": "JauneSwimsuit2025StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\9dbabea684cdb45e7c9c3cf8a4cc07d1\\3be5bd026cbe52b026d831e8f65780e4\\__data"
+    },
+    {
+      "master_pc_id": 150598,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shuna/ShunaHestia/ShunaHestiaStartAct",
+      "variant": "ShunaHestiaStartAct",
+      "track_count": 6,
+      "fixed_duration": 2.633333333333,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\da0fda75d8f883f3eb2abe14708fee5a\\6167acae42acee754a1caceaca18845b\\__data"
+    },
+    {
+      "master_pc_id": 150599,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Bell/BellDefault/BellDefaultStartAct",
+      "variant": "BellDefaultStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\044c45b32d29b6f2143e6534ebb535f5\\3eb37d60f4256e6cedac685c06604df1\\__data"
+    },
+    {
+      "master_pc_id": 150601,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Ais/AisDefault/AisDefaultStartAct",
+      "variant": "AisDefaultStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\2534749583cde6b287142342f3799392\\6c38464e272ffe0695028fb60e6faf72\\__data"
+    },
+    {
+      "master_pc_id": 150602,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Ryu/RyuDefault/RyuDefaultStartAct",
+      "variant": "RyuDefaultStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\bd9c1377dd4af902f31949ec284ac82a\\be2ae2dcf5d8951eb78939598ea236db\\__data"
+    },
+    {
+      "master_pc_id": 150603,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Soka/SokaRyu/SokaRyuStartAct",
+      "variant": "SokaRyuStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\b0d7cfe72127f2c52ecb4af78393fc02\\75298fe72617a684c9bd478beae8bca6\\__data"
+    },
+    {
+      "master_pc_id": 150608,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Kagali/KagaliDefault/KagaliDefaultStartAct",
+      "variant": "KagaliDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\2e811498f2823bb894631e747afd89e4\\c5775a1b218f5e7c0e50073006afbad1\\__data"
+    },
+    {
+      "master_pc_id": 150610,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Masayuki/MasayukiDevil/MasayukiDevilStartAct",
+      "variant": "MasayukiDevilStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\97cdb29fb2f892e5c4796dfc232469d1\\4a55772fe2aa1c30cf05b50ec8676369\\__data"
+    },
+    {
+      "master_pc_id": 150611,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/MaskedHero/MaskedHeroDevil/MaskedHeroDevilStartAct",
+      "variant": "MaskedHeroDevilStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\52dbc7d424157cad572f6bafaa98fab7\\f6d253a232543dc9b1c36fd23fd43582\\__data"
+    },
+    {
+      "master_pc_id": 150612,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Luminous/LuminousDevil/LuminousDevilStartAct",
+      "variant": "LuminousDevilStartAct",
+      "track_count": 8,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\e73dd8aa187505843924298c211a23eb\\fac429ee2065208df3dd0ccbf43bd867\\__data"
+    },
+    {
+      "master_pc_id": 150613,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/Rimuru4Anniv/Rimuru4AnnivStartAct",
+      "variant": "Rimuru4AnnivStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\f35e0756fccd9e9e96877bd1951501e4\\f9c7a544503f5bd04428374d10be6e9a\\__data"
+    },
+    {
+      "master_pc_id": 150615,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Gabiru/GabiruAnotherPC/GabiruAnotherPCStartAct",
+      "variant": "GabiruAnotherPCStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\f10f2641d16a595116e8d5486d52692b\\043b2cf5522f4c9c9c66b18295ed053c\\__data"
+    },
+    {
+      "master_pc_id": 150617,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Werzard/Werzard4Anniv/Werzard4AnnivStartAct",
+      "variant": "Werzard4AnnivStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\93bd35d0f6f4ffc7837c3e938981c8e5\\cf117aa7c7d907050c43ec7cf9b28f03\\__data"
+    },
+    {
+      "master_pc_id": 150618,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Milim/Milim4Anniv/Milim4AnnivStartAct",
+      "variant": "Milim4AnnivStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\1fb3a28c7c71af9180cedb063c0c660f\\6c9f84c582d3ecacdeb7e1ef710a7b3b\\__data"
+    },
+    {
+      "master_pc_id": 150619,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruAnother4Anniv/RimuruAnother4AnnivStartAct",
+      "variant": "RimuruAnother4AnnivStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\eb41cf6f82c711540d882684363904ac\\47f783c7f8576cf0bc0f4a070bf0017f\\__data"
+    },
+    {
+      "master_pc_id": 150621,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Ninehead/NineheadDefaultPC/NineheadDefaultPCStartAct",
+      "variant": "NineheadDefaultPCStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\fa65b8753bfa8661afaeaf9913ffc731\\3701a603df4dc156f6aa57d60ecfd4c0\\__data"
+    },
+    {
+      "master_pc_id": 150623,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Frey/FreyXmas2025/FreyXmas2025StartAct",
+      "variant": "FreyXmas2025StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\035ea01123f94003a1e37fc5517a421a\\98fb9287c56c06bcbd76d15f8a641577\\__data"
+    },
+    {
+      "master_pc_id": 150624,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Hinata/HinataXmas2025/HinataXmas2025StartAct",
+      "variant": "HinataXmas2025StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\28b7638696fbb1714fa0a7dedfaba386\\98a9ec888730202104bc4b7fc024371e\\__data"
+    },
+    {
+      "master_pc_id": 150625,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Buran/BuranXmas2025/BuranXmas2025StartAct",
+      "variant": "BuranXmas2025StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\1c59e3d66ccd11ee3f2020ea201e64f8\\2698d859af3c57e83992fd0510b78323\\__data"
+    },
+    {
+      "master_pc_id": 150628,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Masayuki/MasayukiKirito/MasayukiKiritoStartAct",
+      "variant": "MasayukiKiritoStartAct",
+      "track_count": 7,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\18f8be9464f1739990de5c86ac958daa\\c1c5c6a46fa98e01f54b2c23453bf878\\__data"
+    },
+    {
+      "master_pc_id": 150630,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Asuna/AsunaDefault/AsunaDefaultStartAct",
+      "variant": "AsunaDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\8dfab7be7d28ef0b5d1c2aed19776704\\b784206ba1c3f7dd0d1d33e1904b2773\\__data"
+    },
+    {
+      "master_pc_id": 150631,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Sinon/SinonDefault/SinonDefaultStartAct",
+      "variant": "SinonDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\824c5f9175b7c94e9396143e5286e12b\\13cd9aa470338b61707b2f7244ee21e4\\__data"
+    },
+    {
+      "master_pc_id": 150632,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/YuukiSao/YuukiSaoDefault/YuukiSaoDefaultStartAct",
+      "variant": "YuukiSaoDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\2a78c2f4dae20116e036727e3204e407\\11d69e3affd73feed218dbc0b88274c3\\__data"
+    },
+    {
+      "master_pc_id": 150635,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Clayman/ClaymanAwaken01PC/ClaymanAwaken01PCStartAct",
+      "variant": "ClaymanAwaken01PCStartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\4239fc7aec9ddb87ce7215c8c762162d\\2155c349844c59d8fe0e67051f5ccaef\\__data"
+    },
+    {
+      "master_pc_id": 150636,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Benimaru/BenimaruMovieRevival/BenimaruMovieRevivalStartAct",
+      "variant": "BenimaruMovieRevivalStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\c996824d24f0e790fec92e30c5c7549e\\430d6fdfe4d7bc4ab8d8b508b34ea425\\__data"
+    },
+    {
+      "master_pc_id": 150637,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Hiiro/HiiroMovieRevival/HiiroMovieRevivalStartAct",
+      "variant": "HiiroMovieRevivalStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\fc924c14fd8781d451a66eb6f8ccd802\\8d26f8521b091ea2dd143845f649bd06\\__data"
+    },
+    {
+      "master_pc_id": 150641,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Gobta/GobtaMovie2/GobtaMovie2StartAct",
+      "variant": "GobtaMovie2StartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\a2fb8fac79f3ff375d216860788492f4\\5f04bc084f5e304359601d1e5bb93a55\\__data"
+    },
+    {
+      "master_pc_id": 150642,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruMovie2/RimuruMovie2StartAct",
+      "variant": "RimuruMovie2StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\d32d0e6210c51209189ae6e6ce71600e\\7c30875254f8f09007b54c75d2c41740\\__data"
+    },
+    {
+      "master_pc_id": 150643,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Luminous/LuminousMovie2/LuminousMovie2StartAct",
+      "variant": "LuminousMovie2StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\31a82126522c94976a8faf19b0193948\\204b1be8dc2ffd8e5daa5ef3bf9a3016\\__data"
+    },
+    {
+      "master_pc_id": 150644,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Jaune/JauneMovie2/JauneMovie2StartAct",
+      "variant": "JauneMovie2StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\7145ece5849382224932ec689acde47c\\9115b9058b2b6416080b6293e8cbd29d\\__data"
+    },
+    {
+      "master_pc_id": 150648,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Diablo/DiabloBlackHero/DiabloBlackHeroStartAct",
+      "variant": "DiabloBlackHeroStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\780e1216b044189a3e593f1a22b68109\\8c66110687814b40e5eb8f49ea37153a\\__data"
+    },
+    {
+      "master_pc_id": 150649,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Saare/SaareDefault/SaareDefaultStartAct",
+      "variant": "SaareDefaultStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\16969ecc8177316e27404c4430c8a7d0\\cdc6ad0ac98f33311c9b3b5a36369c81\\__data"
+    },
+    {
+      "master_pc_id": 160651,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Guy/GuyBlackHero/GuyBlackHeroStartAct",
+      "variant": "GuyBlackHeroStartAct",
+      "track_count": 6,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\1730c258f27b8cb6209b69a1ea96274a\\bb344ce180c243f86bf1d31c01204096\\__data"
+    },
+    {
+      "master_pc_id": 160653,
+      "name": "",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruAnotherHA2026/RimuruAnotherHA2026StartAct",
+      "variant": "RimuruAnotherHA2026StartAct",
+      "track_count": 5,
+      "fixed_duration": 0.0,
+      "duration_mode": 0,
+      "bundle": "C:\\Users\\Angel105\\Documents\\cenas\\_work\\stage\\Shared\\Shared\\911090a7246c8f935938af0120882b10\\e8730f3cc05099df06efa99b45596639\\__data"
+    }
+  ],
+  "missing": [
+    {
+      "master_pc_id": 150552,
+      "name": "",
+      "variant": "FernDefaultStartAct",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Fern/FernDefault/FernDefaultStartAct"
+    },
+    {
+      "master_pc_id": 150578,
+      "name": "",
+      "variant": "RimuruHA2025StartAct",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Rimuru/RimuruHA2025/RimuruHA2025StartAct"
+    },
+    {
+      "master_pc_id": 150582,
+      "name": "",
+      "variant": "SokaPhantomStartAct",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Soka/SokaPhantom/SokaPhantomStartAct"
+    },
+    {
+      "master_pc_id": 150589,
+      "name": "",
+      "variant": "ShionTalesStartAct",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shion/ShionTales/ShionTalesStartAct"
+    },
+    {
+      "master_pc_id": 150629,
+      "name": "",
+      "variant": "KiritoDefaultStartAct",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Kirito/KiritoDefault/KiritoDefaultStartAct"
+    },
+    {
+      "master_pc_id": 150638,
+      "name": "",
+      "variant": "VioletMovieRevivalStartAct",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Violet/VioletMovieRevival/VioletMovieRevivalStartAct"
+    },
+    {
+      "master_pc_id": 160652,
+      "name": "",
+      "variant": "ShionBeforeAnotherPCStartAct",
+      "appear_timeline_path": "Setting/Cutscene/Battle/StartAct/Shion/ShionBeforeAnotherPC/ShionBeforeAnotherPCStartAct"
+    }
+  ],
+  "missing_count": 7,
+  "found_count": 285
+}

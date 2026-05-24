@@ -1,0 +1,20 @@
+{
+  "_meta": "Ultimate-tier Appear clip swaps: when AppearSSRUltimate/UREx/URUltimate plays, it SWAPS base/efUltimate (and possibly others) m_Texture + m_Material PPtrs from the prefab defaults to tier-specific assets. URUltimate also animates m_Color over time. This JSON lets the renderer apply the correct sprite + tint per tier.",
+  "clips": {
+    "AppearSSRUltimate": {
+      "stopTime": 0,
+      "swaps": {},
+      "color_curves": {}
+    },
+    "AppearURUltimate": {
+      "stopTime": 0,
+      "swaps": {},
+      "color_curves": {}
+    },
+    "AppearUREx": {
+      "stopTime": 0,
+      "swaps": {},
+      "color_curves": {}
+    }
+  }
+}

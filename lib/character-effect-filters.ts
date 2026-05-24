@@ -347,7 +347,7 @@ function isSoulConversionSegment(segment: string): boolean {
 
 function buildSegmentsFromSkills(skills: CharacterEffectFilterSkill[]): string[] {
   return [
-    ...skills.flatMap((skill) => [skill.name ?? "", skill.description_max_level ?? ""]),
+    ...skills.map((skill) => skill.description_max_level ?? ""),
   ]
     .flatMap(splitEffectClauses)
     .map(normalizeText)
@@ -493,7 +493,7 @@ function addMetadataDerivedTags(entry: CharacterEffectFilterSkill, tagSet: Set<s
     const rawLabel = filterGroup.sub_category_label ?? ""
     const isLeaderStyleSkill = entry.slot === "leader_skill" || entry.slot === "assist_leader_skill"
     const targetTeam = normalizeMetadataValue(filterGroup.target_team) ?? (isLeaderStyleSkill ? "ally" : null)
-    const targetScope = normalizeMetadataValue(filterGroup.target_scope) ?? (isLeaderStyleSkill ? "all" : null)
+    const targetScope = normalizeMetadataValue(filterGroup.target_scope) ?? "all"
 
     if (categoryName === "BuffChangeAct") {
       const fromLabel = mapChangeSourceToFilterLabel(filterGroup.change_source_label)
@@ -594,15 +594,105 @@ function mergeHeuristicTags(metadataTagSet: Set<string>, heuristicTagSet: Set<st
     merged.add(value)
   }
 
+  const specialLabels = new Set(
+    [...merged]
+      .filter((value) => value.startsWith("special:"))
+      .map((value) => value.slice("special:".length)),
+  )
+
+  if (specialLabels.size > 0) {
+    for (const value of [...merged]) {
+      const separatorIndex = value.indexOf(":")
+      if (separatorIndex <= 0) {
+        continue
+      }
+
+      const groupKey = value.slice(0, separatorIndex)
+      const labelKey = value.slice(separatorIndex + 1)
+      if (scopeClassificationGroupKeys.has(groupKey) && specialLabels.has(labelKey)) {
+        merged.delete(value)
+      }
+    }
+  }
+
   return merged
 }
 
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+}
+
+function hasPhrase(text: string, phrase: string): boolean {
+  const normalizedPhrase = normalizeText(phrase)
+  if (!normalizedPhrase) {
+    return false
+  }
+
+  return new RegExp(`(?:^|\\s)${escapeRegExp(normalizedPhrase)}(?:\\s|$)`).test(text)
+}
+
 function hasAlias(text: string, aliases: string[]): boolean {
-  return aliases.some((alias) => text.includes(normalizeText(alias)))
+  return aliases.some((alias) => hasPhrase(text, alias))
+}
+
+const qualifiedAtkPreviousTokens = new Set([
+  "air",
+  "all",
+  "attribute",
+  "charge",
+  "dark",
+  "defense",
+  "earth",
+  "fire",
+  "holy",
+  "light",
+  "m",
+  "magic",
+  "p",
+  "physical",
+  "space",
+  "speed",
+  "water",
+  "wind",
+])
+
+const qualifiedDefPreviousTokens = new Set([
+  "m",
+  "magic",
+  "p",
+  "physical",
+  "seal",
+])
+
+function hasUnqualifiedStatToken(text: string, stat: "atk" | "def"): boolean {
+  const tokens = text.split(/\s+/).filter(Boolean)
+  const qualifiedPreviousTokens = stat === "atk" ? qualifiedAtkPreviousTokens : qualifiedDefPreviousTokens
+
+  return tokens.some((token, index) => {
+    if (token !== stat) {
+      return false
+    }
+
+    const previousToken = tokens[index - 1]
+    return !previousToken || !qualifiedPreviousTokens.has(previousToken)
+  })
+}
+
+function hasEntryAlias(text: string, entry: EntryDefinition): boolean {
+  switch (entry.label) {
+    case "ATK":
+      return hasUnqualifiedStatToken(text, "atk")
+    case "DEF":
+      return hasUnqualifiedStatToken(text, "def")
+    case "Max HP":
+      return /\bincreases?\b.*\bmax hp\b|\bmax hp\b.*\b(?:increase|up)\b/.test(text)
+    default:
+      return hasAlias(text, entry.aliases)
+  }
 }
 
 function hasBuffAllContext(text: string): boolean {
-  return /(increases all(?: [a-z0-9-]+){0,4} allies|for all(?: [a-z0-9-]+){0,4} allies|including rearguard|force characters|all troop members|all vanguard allies)/.test(text)
+  return /\b(?:increases?|raises?|boosts?|applies?|chance to apply|decreases?)\b.*(?:all(?: [a-z0-9-]+){0,4} allies|for all(?: [a-z0-9-]+){0,4} allies|including rearguard|force characters'?|all troop members|all vanguard allies)/.test(text)
 }
 
 function hasBuffSelfContext(text: string): boolean {
@@ -610,6 +700,14 @@ function hasBuffSelfContext(text: string): boolean {
 }
 
 function hasDebuffAllContext(text: string): boolean {
+  if (
+    /^(?:deals|unleashes)\b/.test(text) &&
+    /(?:damage to all targets|all-target .* attack)/.test(text) &&
+    !/\b(?:decreases?|inflicts?|applies?|chance to|enemy is afflicted|targets'|enemies')\b/.test(text)
+  ) {
+    return false
+  }
+
   return /(decreases all targets|decreases all enemies|all enemies|all targets|enemy is afflicted)/.test(text)
 }
 
@@ -632,6 +730,14 @@ function hasHealContext(text: string): boolean {
 
 function hasSpecialContext(text: string): boolean {
   return /(barrier|redraw|taunt|burn|absorb secret skill|make another move|second move|skill cost reset|multi hit soul|deals damage|inspire|grit|invincible|resurrection|continuous heal|secret skill vitalization|reckoning|damage absorption|unlimited skill use|live mode|status effects nullified|seeking soul|lords ambition|lord.s ambition)/.test(text)
+}
+
+function hasGaugeGainContext(text: string): boolean {
+  if (/^use \d+% of secret skill gauge to change/.test(text)) {
+    return false
+  }
+
+  return /\b(?:increase|increases|increased|gain|gains|gained|raise|raises|raised|boost|boosts|boosted|fill|fills|filled|charge|charges|charged)\b/.test(text)
 }
 
 function normalizeSkillFilterGroupLabel(label: string | null | undefined): string | null {
@@ -701,7 +807,7 @@ function inferLearnedGroupKeys(label: string, aliases: string[], segments: strin
       }
     }
 
-    if (!hasAlias(segment, aliases)) {
+    if (!hasEntryAlias(segment, { label, aliases })) {
       continue
     }
 
@@ -810,7 +916,7 @@ function addContextualMatches(tagSet: Set<string>, segments: string[], group: Gr
         continue
       }
 
-      if (hasAlias(segment, entry.aliases)) {
+      if (hasEntryAlias(segment, entry)) {
         addTag(tagSet, group.key, entry.label)
       }
     }
@@ -862,7 +968,7 @@ function getEffectTagsForSegments(segments: string[]): Set<string> {
     }
 
     for (const entry of gaugeEntries) {
-      if (hasAlias(segment, entry.aliases)) {
+      if (hasGaugeGainContext(segment) && hasAlias(segment, entry.aliases)) {
         addTag(tagSet, "gauge", entry.label)
       }
     }
