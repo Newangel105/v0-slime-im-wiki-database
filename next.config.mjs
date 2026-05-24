@@ -10,6 +10,15 @@ const nextConfig = {
   // directory (an unrelated experiment), which mis-routes serverless file
   // tracing.
   outputFileTracingRoot: __dirname,
+  // summon-data.ts reads summon.generated.json via fs at runtime (not via
+  // `import`, to keep webpack out of it). Next's tracing can't see that
+  // implicit dependency, so list it explicitly for every route that uses
+  // getSummonData() — otherwise the JSON won't be packaged into the
+  // serverless function and fs.readFileSync throws ENOENT.
+  outputFileTracingIncludes: {
+    "/summon": ["./summon.generated.json"],
+    "/summon/diag": ["./summon.generated.json"],
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
