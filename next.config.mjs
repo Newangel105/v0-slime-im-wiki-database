@@ -19,14 +19,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Vercel Hobby's 8 GB build container OOMs when Next.js spawns parallel
-  // build workers — each worker process gets its own ~4 GB heap and the
-  // 2-core machine ends up trying to allocate >8 GB. Force the build to
-  // a single process so peak memory stays bounded.
-  experimental: {
-    workerThreads: false,
-    cpus: 1,
-  },
   async headers() {
     return [
       {
