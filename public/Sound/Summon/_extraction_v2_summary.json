@@ -1,0 +1,74 @@
+[
+  {
+    "cutscene": "UILotteryCharacterAppear",
+    "bundle": "Shared/Shared/ce19a580e0fe01f3f50f67b39b5e1c67/56b90a103ce4e4b51075092840f51c27/__data",
+    "status": "done",
+    "extracted": [],
+    "failed": [
+      {
+        "idx": 0,
+        "name": "bgm_fanfare_gacha_get1",
+        "reason": "AudioClip pid 3183773365034483035 (fid 1) not found"
+      },
+      {
+        "idx": 1,
+        "name": "se_gasya_3-0-0_newappear_r",
+        "reason": "AudioClip pid 3426416674643414612 (fid 1) not found"
+      },
+      {
+        "idx": 2,
+        "name": "bgm_fanfare_gacha_get2",
+        "reason": "AudioClip pid -7546442114273961223 (fid 1) not found"
+      },
+      {
+        "idx": 3,
+        "name": "se_gasya_3-0-0_newappear_sr",
+        "reason": "AudioClip pid 6193615148130916426 (fid 1) not found"
+      },
+      {
+        "idx": 4,
+        "name": "bgm_fanfare_gacha_get3",
+        "reason": "AudioClip pid 2582454368375998385 (fid 1) not found"
+      },
+      {
+        "idx": 5,
+        "name": "se_gasya_3-0-0_newappear_ssr",
+        "reason": "AudioClip pid -7056164197388757786 (fid 1) not found"
+      },
+      {
+        "idx": 6,
+        "name": "bgm_fanfare_gacha_get3",
+        "reason": "AudioClip pid 2582454368375998385 (fid 1) not found"
+      },
+      {
+        "idx": 7,
+        "name": "se_gasya_3-0-0_newappear_ssrultimate",
+        "reason": "AudioClip pid 2597007673852810095 (fid 1) not found"
+      },
+      {
+        "idx": 8,
+        "name": "bgm_fanfare_gacha_get3",
+        "reason": "AudioClip pid 2582454368375998385 (fid 1) not found"
+      },
+      {
+        "idx": 9,
+        "name": "se_gasya_4-0-0_newappear_urex",
+        "reason": "AudioClip pid 675309789434014684 (fid 1) not found"
+      },
+      {
+        "idx": 10,
+        "name": "bgm_fanfare_gacha_get4",
+        "reason": "AudioClip pid -9015930226372445207 (fid 1) not found"
+      },
+      {
+        "idx": 11,
+        "name": "se_gasya_4-0-0_newappear_urultimate",
+        "reason": "AudioClip pid 3999724212242265857 (fid 1) not found"
+      },
+      {
+        "idx": 12,
+        "reason": "AudioClipSource pid 431752047848225876 not found"
+      }
+    ]
+  }
+]

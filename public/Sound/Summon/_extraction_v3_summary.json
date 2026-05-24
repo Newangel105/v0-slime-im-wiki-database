@@ -1,0 +1,156 @@
+[
+  {
+    "cutscene": "UILotteryCharacterAppear",
+    "bundle": "Shared/Shared/ce19a580e0fe01f3f50f67b39b5e1c67/56b90a103ce4e4b51075092840f51c27/__data",
+    "status": "done",
+    "extracted": [
+      {
+        "idx": 0,
+        "name": "bgm_fanfare_gacha_get1",
+        "path": "public/Sound/Summon/UILotteryCharacterAppear/00_bgm_fanfare_gacha_get1.wav"
+      },
+      {
+        "idx": 1,
+        "name": "se_gasya_3-0-0_newappear_r",
+        "path": "public/Sound/Summon/UILotteryCharacterAppear/01_se_gasya_3-0-0_newappear_r.wav"
+      },
+      {
+        "idx": 2,
+        "name": "bgm_fanfare_gacha_get2",
+        "path": "public/Sound/Summon/UILotteryCharacterAppear/02_bgm_fanfare_gacha_get2.wav"
+      },
+      {
+        "idx": 3,
+        "name": "se_gasya_3-0-0_newappear_sr",
+        "path": "public/Sound/Summon/UILotteryCharacterAppear/03_se_gasya_3-0-0_newappear_sr.wav"
+      },
+      {
+        "idx": 4,
+        "name": "bgm_fanfare_gacha_get3",
+        "path": "public/Sound/Summon/UILotteryCharacterAppear/04_bgm_fanfare_gacha_get3.wav"
+      },
+      {
+        "idx": 5,
+        "name": "se_gasya_3-0-0_newappear_ssr",
+        "path": "public/Sound/Summon/UILotteryCharacterAppear/05_se_gasya_3-0-0_newappear_ssr.wav"
+      },
+      {
+        "idx": 6,
+        "name": "bgm_fanfare_gacha_get3",
+        "path": "public/Sound/Summon/UILotteryCharacterAppear/06_bgm_fanfare_gacha_get3.wav"
+      },
+      {
+        "idx": 7,
+        "name": "se_gasya_3-0-0_newappear_ssrultimate",
+        "path": "public/Sound/Summon/UILotteryCharacterAppear/07_se_gasya_3-0-0_newappear_ssrultimate.wav"
+      },
+      {
+        "idx": 8,
+        "name": "bgm_fanfare_gacha_get3",
+        "path": "public/Sound/Summon/UILotteryCharacterAppear/08_bgm_fanfare_gacha_get3.wav"
+      },
+      {
+        "idx": 9,
+        "name": "se_gasya_4-0-0_newappear_urex",
+        "path": "public/Sound/Summon/UILotteryCharacterAppear/09_se_gasya_4-0-0_newappear_urex.wav"
+      },
+      {
+        "idx": 10,
+        "name": "bgm_fanfare_gacha_get4",
+        "path": "public/Sound/Summon/UILotteryCharacterAppear/10_bgm_fanfare_gacha_get4.wav"
+      },
+      {
+        "idx": 11,
+        "name": "se_gasya_4-0-0_newappear_urultimate",
+        "path": "public/Sound/Summon/UILotteryCharacterAppear/11_se_gasya_4-0-0_newappear_urultimate.wav"
+      }
+    ],
+    "failed": [
+      {
+        "idx": 12,
+        "reason": "can't resolve AudioClipSource fid=29"
+      }
+    ]
+  },
+  {
+    "cutscene": "UILotteryAnimationAnalysisCut",
+    "bundle": "Shared/Shared/9f444dbac728ef3c845d438d4ea0eede/abb857d442d2ebc31ef06abaff61bbb2/__data",
+    "status": "done",
+    "extracted": [
+      {
+        "idx": 0,
+        "name": "se_gasya_R2R",
+        "path": "public/Sound/Summon/UILotteryAnimationAnalysisCut/00_se_gasya_R2R.wav"
+      },
+      {
+        "idx": 1,
+        "name": "se_gasya_R2SR",
+        "path": "public/Sound/Summon/UILotteryAnimationAnalysisCut/01_se_gasya_R2SR.wav"
+      },
+      {
+        "idx": 2,
+        "name": "se_gasya_R2SSR",
+        "path": "public/Sound/Summon/UILotteryAnimationAnalysisCut/02_se_gasya_R2SSR.wav"
+      },
+      {
+        "idx": 3,
+        "name": "se_gasya_SR2SR",
+        "path": "public/Sound/Summon/UILotteryAnimationAnalysisCut/03_se_gasya_SR2SR.wav"
+      },
+      {
+        "idx": 4,
+        "name": "se_gasya_SR2SSR",
+        "path": "public/Sound/Summon/UILotteryAnimationAnalysisCut/04_se_gasya_SR2SSR.wav"
+      },
+      {
+        "idx": 5,
+        "name": "se_gasya_SSR2SSR",
+        "path": "public/Sound/Summon/UILotteryAnimationAnalysisCut/05_se_gasya_SSR2SSR.wav"
+      }
+    ],
+    "failed": [
+      {
+        "idx": 6,
+        "reason": "can't resolve AudioClipSource fid=25"
+      }
+    ]
+  },
+  {
+    "cutscene": "UILotteryPromotion",
+    "bundle": "Shared/Shared/d564bd543429035c7f06b9e9fa3060ee/e17ea043eaf6a1fa07aa6d0407d07d7f/__data",
+    "status": "done",
+    "extracted": [
+      {
+        "idx": 0,
+        "name": "se_gasya_measurement_R",
+        "path": "public/Sound/Summon/UILotteryPromotion/00_se_gasya_measurement_R.wav"
+      },
+      {
+        "idx": 1,
+        "name": "se_gasya_measurement_SR",
+        "path": "public/Sound/Summon/UILotteryPromotion/01_se_gasya_measurement_SR.wav"
+      },
+      {
+        "idx": 2,
+        "name": "se_gasya_measurement_SSR",
+        "path": "public/Sound/Summon/UILotteryPromotion/02_se_gasya_measurement_SSR.wav"
+      },
+      {
+        "idx": 3,
+        "name": "se_gasya_measurement_SR2SSR",
+        "path": "public/Sound/Summon/UILotteryPromotion/03_se_gasya_measurement_SR2SSR.wav"
+      },
+      {
+        "idx": 4,
+        "name": "se_gasya_3-0-0_measurement_ur2",
+        "path": "public/Sound/Summon/UILotteryPromotion/04_se_gasya_3-0-0_measurement_ur2.wav"
+      },
+      {
+        "idx": 5,
+        "name": "se_gasya_3-0-0_measurement_sr2ur2",
+        "path": "public/Sound/Summon/UILotteryPromotion/05_se_gasya_3-0-0_measurement_sr2ur2.wav"
+      }
+    ],
+    "failed": []
+  }
+]

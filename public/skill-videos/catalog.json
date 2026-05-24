@@ -1,0 +1,1847 @@
+{
+  "generatedAt": "2026-05-23T22:26:01Z",
+  "source": "scripts/build_skill_videos_catalog.py",
+  "videos": [
+    {
+      "variant": "AdalmanKingOfWit",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/AdalmanKingOfWit_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "AinzDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/AinzDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "AisDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/AisDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "AlbedoDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/AlbedoDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "AlbisSchool2023",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/AlbisSchool2023_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "AlbisXmas2024",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/AlbisXmas2024_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "AliceKnight",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/AliceKnight_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "AquaDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/AquaDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "AsunaDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/AsunaDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "BellDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/BellDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "BenimaruAnotherPC",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/BenimaruAnotherPC_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "BenimaruCoschange",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/BenimaruCoschange_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "BenimaruDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/BenimaruDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "BenimaruMagician",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/BenimaruMagician_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "BenimaruMovie",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/BenimaruMovie_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "BenimaruMovieRevival",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/BenimaruMovieRevival_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "BenimaruTengu",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/BenimaruTengu_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "BerettaDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/BerettaDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "Buran2Anniv",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/Buran2Anniv_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "Buran3Anniv",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/Buran3Anniv_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "BuranGothic",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/BuranGothic_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "BuranMilitary",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/BuranMilitary_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "BuranSwimsuit2025",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/BuranSwimsuit2025_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "BuranXmas2025",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/BuranXmas2025_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "CarrionDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/CarrionDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "CharybdisDefault",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/CharybdisDefault_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "ChloeKnight",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/ChloeKnight_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "ClaymanAwaken02PC",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ClaymanAwaken02PC_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ClaymanDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ClaymanDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "CynthiaArmor",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/CynthiaArmor_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "CynthiaHalloween2023",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/CynthiaHalloween2023_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "CynthiaPinkForPC",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/CynthiaPinkForPC_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "CynthiaUltimate",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/CynthiaUltimate_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "CynthiaValentine2023",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/CynthiaValentine2023_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "DagrulDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/DagrulDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "DemonLordGeldDefault",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/DemonLordGeldDefault_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "Diablo2022Summer",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/Diablo2022Summer_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "Diablo3Anniv",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/Diablo3Anniv_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "DiabloAnime3rd",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/DiabloAnime3rd_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "DiabloBlackHero",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/DiabloBlackHero_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "DiabloDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/DiabloDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "DiabloGothic",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/DiabloGothic_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "DiabloHighRankCostume",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/DiabloHighRankCostume_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "DiabloKingdom2022",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/DiabloKingdom2022_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "DiabloPhantom",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/DiabloPhantom_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "DiabloSchool2023",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/DiabloSchool2023_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "DiabloXmas2025",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/DiabloXmas2025_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "DinoDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/DinoDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ElementalColossusDefault",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/ElementalColossusDefault_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "Elmesia3Anniv",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/Elmesia3Anniv_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "ElmesiaDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ElmesiaDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ElmesiaDevil",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/ElmesiaDevil_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "ElmesiaHA2026",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ElmesiaHA2026_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "FernDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/FernDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "FreyAmusementPark",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/FreyAmusementPark_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "FreySchool2025",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/FreySchool2025_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "FreyXmas2025",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/FreyXmas2025_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "FrierenDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/FrierenDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "Gabiru2022Summer",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/Gabiru2022Summer_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "GazelDwargoDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/GazelDwargoDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "GobtaHighRankCostume",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/GobtaHighRankCostume_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "GobtaMarou",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/GobtaMarou_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "GobwaDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/GobwaDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "Guy3Anniv",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/Guy3Anniv_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "GuyBlackHero",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/GuyBlackHero_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "GuyDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/GuyDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "GuyHA2023",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/GuyHA2023_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "GuyHA2024",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/GuyHA2024_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "GuyParty2022",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/GuyParty2022_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "GuySwimsuit2025",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/GuySwimsuit2025_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "HakuroDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/HakuroDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "HestiaDefault",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/HestiaDefault_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "HiiroMovieRevival",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/HiiroMovieRevival_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "HimmelDefault",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/HimmelDefault_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "Hinata2Anniv",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/Hinata2Anniv_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "HinataAnime3rd",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/HinataAnime3rd_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "HinataCasual",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/HinataCasual_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "HinataDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/HinataDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "HinataLightarmor",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/HinataLightarmor_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "HinataPartyDress",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/HinataPartyDress_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "HinataSchool2025",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/HinataSchool2025_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "HinataSwimsuit2023",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/HinataSwimsuit2023_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "HinataTales",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/HinataTales_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "HinataXmas2025",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/HinataXmas2025_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "IfritDefault",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/IfritDefault_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "IzisAwakenPC",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/IzisAwakenPC_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "Jaune2Anniv",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/Jaune2Anniv_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "JauneGothic",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/JauneGothic_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "JauneHA2025",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/JauneHA2025_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "JauneMovie2",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/JauneMovie2_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "JauneSwimsuit2025",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/JauneSwimsuit2025_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "KasugaDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/KasugaDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "KazumaDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/KazumaDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "KiritoDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/KiritoDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "LeonDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/LeonDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "LeonHA2025",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/LeonHA2025_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "LeonParty2022",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/LeonParty2022_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "LeonardDefault",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/LeonardDefault_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "Luminous2Anniv",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/Luminous2Anniv_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "LuminousAnime3rd",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/LuminousAnime3rd_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "LuminousCreator01",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/LuminousCreator01_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "LuminousDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/LuminousDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "LuminousDevil",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/LuminousDevil_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "LuminousHA2023",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/LuminousHA2023_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "LuminousMaidCostume2021Christmas",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/LuminousMaidCostume2021Christmas_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "LuminousMovie2",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/LuminousMovie2_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "LuminousMythology",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/LuminousMythology_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "LuminousPhantom",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/LuminousPhantom_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "LuminousSwimsuit2023",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/LuminousSwimsuit2023_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MariabellDefault",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/MariabellDefault_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "MariabellXmas2024",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MariabellXmas2024_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MasayukiDefault",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/MasayukiDefault_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "MasayukiDevil",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MasayukiDevil_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MasayukiSchool2025",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/MasayukiSchool2025_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "MaskedHero3Anniv",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MaskedHero3Anniv_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MaskedHeroDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MaskedHeroDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MaskedHeroDevil",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MaskedHeroDevil_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MaskedHeroHA2023",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MaskedHeroHA2023_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MaskedHeroHA2024",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MaskedHeroHA2024_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MaskedHeroHA2025",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/MaskedHeroHA2025_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "MeguminDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MeguminDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "Milim1kuji2024",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/Milim1kuji2024_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "Milim3Anniv",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/Milim3Anniv_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "Milim4Anniv",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/Milim4Anniv_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MilimAmusementPark",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MilimAmusementPark_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MilimBattleArmor",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MilimBattleArmor_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MilimDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MilimDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MilimHA2024",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MilimHA2024_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MilimHA2026",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MilimHA2026_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MilimHalloween2023",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/MilimHalloween2023_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "MilimHighRank",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MilimHighRank_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MilimKimono2022Newyear",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MilimKimono2022Newyear_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MilimKingdom2022",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MilimKingdom2022_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MilimMythology",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MilimMythology_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MilimOriginalCostumeWhiteDress",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/MilimOriginalCostumeWhiteDress_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "MilimSwimsuit2023",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MilimSwimsuit2023_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MilimSwimsuitPolkaDots",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/MilimSwimsuitPolkaDots_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "MilimWithoutMantle",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MilimWithoutMantle_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MjurranDefaultPC",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MjurranDefaultPC_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MjurranMagician",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MjurranMagician_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MjurranWedding2023",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/MjurranWedding2023_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "MogamiDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MogamiDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MomijiDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MomijiDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "MomijiXmas2024",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/MomijiXmas2024_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RainDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RainDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RainHighDemon",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RainHighDemon_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RamirisDefault",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/RamirisDefault_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "RamirisHA2026",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/RamirisHA2026_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "RamirisValentine2023",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/RamirisValentine2023_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "RangaDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RangaDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "Raphael3Anniv",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/Raphael3Anniv_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RaphaelAsuna",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/RaphaelAsuna_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "RaphaelFrieren",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RaphaelFrieren_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RaphaelMythology",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RaphaelMythology_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RaphaelNordic",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RaphaelNordic_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RaphaelRimuru",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RaphaelRimuru_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "Rimuru1kuji2024",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/Rimuru1kuji2024_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "Rimuru2Anniv",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/Rimuru2Anniv_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "Rimuru4Anniv",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/Rimuru4Anniv_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruAinz",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/RimuruAinz_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "RimuruAnother4AnnivAfter",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruAnother4AnnivAfter_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruAnotherHA2026",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruAnotherHA2026_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruAnotherRe",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/RimuruAnotherRe_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "RimuruCoschange",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruCoschange_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruCreator01",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruCreator01_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruDemonLord",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruDemonLord_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruDemonLord3",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruDemonLord3_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruFormal",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruFormal_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruHA2023",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruHA2023_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruHA2024",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruHA2024_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruHA2025",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruHA2025_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruHA2026",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruHA2026_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruHighRankCostume",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/RimuruHighRankCostume_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "RimuruImasml",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/RimuruImasml_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "RimuruKimono2022Newyear",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/RimuruKimono2022Newyear_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "RimuruKingdom2022",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruKingdom2022_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruMagician",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruMagician_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruMaidCostume2021Christmas",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruMaidCostume2021Christmas_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruMegumin",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/RimuruMegumin_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "RimuruMovie2",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruMovie2_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruSchool2023",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruSchool2023_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RimuruTales",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/RimuruTales_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "RimuruWedding2022",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruWedding2022_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RyuDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RyuDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShalltearDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShalltearDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "Shion1kuji2024",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/Shion1kuji2024_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "ShionBeforeAnotherPC",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShionBeforeAnotherPC_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShionDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShionDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShionMovieRevival",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/ShionMovieRevival_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "ShionPartydress",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShionPartydress_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShionSecretary",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/ShionSecretary_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "ShionSwimsuitLeaf",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShionSwimsuitLeaf_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShionTales",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShionTales_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShionValentine2023",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShionValentine2023_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShionWedding2022",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShionWedding2022_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShionneDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShionneDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "Shizu2Anniv",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/Shizu2Anniv_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShizuAlbedo",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShizuAlbedo_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShizuAnime3rd",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShizuAnime3rd_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShizuBlackHero",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/ShizuBlackHero_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "ShizuDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShizuDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShizuLightarmor",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShizuLightarmor_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShizuSwimsuit2023",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShizuSwimsuit2023_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShizuValentine2022Date",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShizuValentine2022Date_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShizuWedding2022",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/ShizuWedding2022_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "ShizuXmas2022",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShizuXmas2022_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShunaCoschange",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShunaCoschange_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShunaDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShunaDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShunaHestia",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShunaHestia_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShunaImasml",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShunaImasml_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShunaMaidCostume2021Christmas",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/ShunaMaidCostume2021Christmas_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "ShunaMilitary",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/ShunaMilitary_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "ShunaMythology",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/ShunaMythology_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "ShunaNordic",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShunaNordic_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShunaSwimsuitHibiscus",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShunaSwimsuitHibiscus_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShunaTengu",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShunaTengu_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ShunaWedding2023",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ShunaWedding2023_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "SinonDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/SinonDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "SoeiDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/SoeiDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "SoeiHighRank",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/SoeiHighRank_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "SoeiPhantom",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/SoeiPhantom_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "SoeiTengu",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/SoeiTengu_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "SokaPhantom",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/SokaPhantom_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "SokaValentine2022Date",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/SokaValentine2022Date_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "SokaWedding2023",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/SokaWedding2023_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "TearDefaultPC",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/TearDefaultPC_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "TowaDefault",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/TowaDefault_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "Treyni2022Summer",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/Treyni2022Summer_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "TreyniCoschange",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/TreyniCoschange_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "TreyniDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/TreyniDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "TreyniSwimsuit2023",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/TreyniSwimsuit2023_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "Veldora4Anniv",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/Veldora4Anniv_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "VeldoraButlerCostume2021Christmas",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/VeldoraButlerCostume2021Christmas_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "VeldoraCreator01",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/VeldoraCreator01_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "VeldoraDefault",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/VeldoraDefault_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "VeldoraHA2026After",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/VeldoraHA2026After_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "VeldoraHighRank",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/VeldoraHighRank_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "VeldoraHumanoid",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/VeldoraHumanoid_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "VeldoraKingdom2022",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/VeldoraKingdom2022_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "VeldoraNordic",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/VeldoraNordic_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "Violet2Anniv",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/Violet2Anniv_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "VioletDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/VioletDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "VioletGothic",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/VioletGothic_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "VioletHA2023",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/VioletHA2023_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "VioletMilitary",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/VioletMilitary_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "VioletMovieRevival",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/VioletMovieRevival_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "VioletSwimsuit2025",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/VioletSwimsuit2025_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "VioletXmas2024",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/VioletXmas2024_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "Werzard4Anniv",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/Werzard4Anniv_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "WerzardBlackHero",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/WerzardBlackHero_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "WerzardDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/WerzardDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "WerzardHA2023",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/WerzardHA2023_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "WerzardHA2024",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/WerzardHA2024_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "WerzardHA2025",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/WerzardHA2025_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "WerzardNordic",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/WerzardNordic_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "WerzardParty2022",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/WerzardParty2022_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "WerzardXmas2022",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/WerzardXmas2022_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "YoumDefaultPC",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/YoumDefaultPC_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "YuraDefault",
+      "kind": "BlessSkill",
+      "group": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/YuraDefault_Battle_BlessSkill.mp4"
+    },
+    {
+      "variant": "YuukiBattlesuit2023",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/YuukiBattlesuit2023_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "YuukiSaoDefault",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/YuukiSaoDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "YuukiSchool2025",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/YuukiSchool2025_Battle_SpecialSkill.mp4"
+    }
+  ]
+}
