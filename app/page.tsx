@@ -107,11 +107,11 @@ export default function HomePage() {
 
   useEffect(() => {
     const defaultVideo: YouTubeVideo = {
-      id: "tYANKQ5XvQs",
+      id: "lZ1robJuS8M",
       title: "SLIME - ISEKAI Memories Official Stream",
-      url: "https://youtu.be/tYANKQ5XvQs",
-      embedUrl: "https://www.youtube.com/embed/tYANKQ5XvQs",
-      thumbnail: "https://img.youtube.com/vi/tYANKQ5XvQs/maxresdefault.jpg",
+      url: "https://youtu.be/lZ1robJuS8M",
+      embedUrl: "https://www.youtube.com/embed/lZ1robJuS8M",
+      thumbnail: "https://img.youtube.com/vi/lZ1robJuS8M/maxresdefault.jpg",
       published: null,
     }
     setYoutubeVideo(defaultVideo)
@@ -261,7 +261,7 @@ export default function HomePage() {
                 <span className="grid h-10 w-10 place-items-center rounded-xl border border-[#ff3d68]/20 bg-[#ff3d68]/10 text-[#ff6f8f]">
                   <Video className="h-5 w-5" />
                 </span>
-                <h2 className="text-xl font-black tracking-tight text-white">Latest Stream</h2>
+                <h2 className="text-xl font-black tracking-tight text-white">Upcoming Stream</h2>
               </div>
             </div>
 
