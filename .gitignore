@@ -25,6 +25,8 @@ yarn-error.log*
 # build container disk quota. Upload them to R2 instead.
 /public/Movie/
 /public/Video/
+/public/models/
+/summon.generated.json
 
 # vercel
 .vercel

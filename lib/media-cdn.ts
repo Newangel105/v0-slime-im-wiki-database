@@ -22,6 +22,7 @@ const CDN_BASE = (process.env.NEXT_PUBLIC_MEDIA_CDN || "").replace(/\/+$/, "")
 const CDN_PREFIXES = [
   "/Movie/",
   "/Video/",
+  "/models/",
 ]
 
 export function mediaUrl(path: string | null | undefined): string {
