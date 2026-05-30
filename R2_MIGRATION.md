@@ -16,7 +16,7 @@ sites). What's left is the operational migration.
    URL (free) OR connect a custom domain like `media.slimewiki.app` if you
    have one in Cloudflare DNS (also free, prettier).
 3. Note the public base URL — e.g. `https://pub-abc123.r2.dev` or
-   `https://media.slimewiki.app`.
+   `https://media.slimewiki.app`. 
 
 ## 2. Upload the media
 
