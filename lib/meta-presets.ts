@@ -594,5 +594,13 @@ export const META_PRESETS: MetaPreset[] = [
     battle3: "Labyrinth Meteor",
     battle5: "Viridian Shade",
     battle1: "Celestial Sovereign",
-  }
+  },
+    {
+    id: "tears2",
+    name: "Tears of the Azure Sea 2.0",
+    protector: "Paradise Princess",
+    battle1: "Midsummer Purple Ogre",
+    battle2: "Shoreline Scales",
+    mini1: "Summer's Grace",
+  },
 ]
