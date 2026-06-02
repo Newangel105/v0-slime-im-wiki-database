@@ -2043,11 +2043,11 @@ export default function SkillSceneThreePlayer({
       </Canvas>
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/75 via-black/30 to-transparent p-3">
-        <div className="pointer-events-auto mx-auto flex max-w-4xl flex-wrap items-center gap-2 rounded-lg border border-border bg-[#111216]/88 px-3 py-2 shadow-2xl shadow-black/30 backdrop-blur">
+        <div className="pointer-events-auto mx-auto flex max-w-4xl flex-wrap items-center gap-2 rounded-lg border border-white/10 bg-[#111216]/88 px-3 py-2 shadow-2xl shadow-black/30 backdrop-blur">
           <button
             type="button"
             onClick={() => setPlaying(value => !value)}
-            className="inline-flex h-9 items-center gap-2 rounded-md border border-border bg-card px-3 text-sm font-bold text-foreground transition hover:border-[#da3e44]/40 hover:bg-accent"
+            className="inline-flex h-9 items-center gap-2 rounded-md border border-white/10 bg-[#222327] px-3 text-sm font-bold text-white transition hover:border-[#da3e44]/40 hover:bg-[#2a2b30]"
             aria-label={playing ? "Pause skill scene" : "Play skill scene"}
           >
             {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
@@ -2059,7 +2059,7 @@ export default function SkillSceneThreePlayer({
               setSeekTime(null)
               setRestartToken(token => token + 1)
             }}
-            className="grid h-9 w-9 place-items-center rounded-md border border-border bg-card text-foreground transition hover:border-[#da3e44]/40 hover:bg-accent"
+            className="grid h-9 w-9 place-items-center rounded-md border border-white/10 bg-[#222327] text-white transition hover:border-[#da3e44]/40 hover:bg-[#2a2b30]"
             aria-label="Restart skill scene"
           >
             <RotateCcw className="h-4 w-4" />
@@ -2069,8 +2069,8 @@ export default function SkillSceneThreePlayer({
             onClick={() => setCameraLocked(value => !value)}
             className={`inline-flex h-9 items-center gap-2 rounded-md border px-3 text-sm font-bold transition ${
               cameraLocked
-                ? "border-[#da3e44]/40 bg-[#da3e44]/18 text-foreground"
-                : "border-border bg-card text-muted-foreground hover:border-[#da3e44]/40 hover:text-foreground"
+                ? "border-[#da3e44]/40 bg-[#da3e44]/18 text-white"
+                : "border-white/10 bg-[#222327] text-slate-300 hover:border-[#da3e44]/40 hover:text-white"
             }`}
             aria-label="Toggle authored camera"
           >
@@ -2082,8 +2082,8 @@ export default function SkillSceneThreePlayer({
             onClick={() => setFxEnabled(value => !value)}
             className={`inline-flex h-9 items-center gap-2 rounded-md border px-3 text-sm font-bold transition ${
               fxEnabled
-                ? "border-[#da3e44]/40 bg-[#da3e44]/18 text-foreground"
-                : "border-border bg-card text-muted-foreground hover:border-[#da3e44]/40 hover:text-foreground"
+                ? "border-[#da3e44]/40 bg-[#da3e44]/18 text-white"
+                : "border-white/10 bg-[#222327] text-slate-300 hover:border-[#da3e44]/40 hover:text-white"
             }`}
             aria-label="Toggle cinematic effects"
           >
@@ -2093,7 +2093,7 @@ export default function SkillSceneThreePlayer({
           <select
             value={playbackSpeed}
             onChange={event => setPlaybackSpeed(Number(event.target.value))}
-            className="h-9 rounded-md border border-border bg-card px-2 text-sm font-bold text-foreground outline-none focus:border-[#da3e44]/40 focus:ring-2 focus:ring-[#da3e44]/30"
+            className="h-9 rounded-md border border-white/10 bg-[#222327] px-2 text-sm font-bold text-white outline-none focus:border-[#da3e44]/40 focus:ring-2 focus:ring-[#da3e44]/30"
             aria-label="Playback speed"
           >
             <option value={0.5}>0.5x</option>
@@ -2118,11 +2118,11 @@ export default function SkillSceneThreePlayer({
                 aria-label="Skill timeline"
               />
             </div>
-            <div className="mt-1 truncate text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
+            <div className="mt-1 truncate text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">
               {playback.clip.replace(`${manifest.variant}_Battle_`, "")}
             </div>
           </div>
-          <div className="w-24 text-right text-xs font-semibold tabular-nums text-muted-foreground">
+          <div className="w-24 text-right text-xs font-semibold tabular-nums text-slate-300">
             {playback.time.toFixed(1)} / {playback.total.toFixed(1)}s
           </div>
         </div>

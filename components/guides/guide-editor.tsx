@@ -434,24 +434,24 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
 
   const panelClass = "glass-panel"
   const strongPanelClass = "glass-panel-strong"
-  const fieldLabelClass = "mb-2 block text-[11px] font-bold uppercase tracking-[0.22em] text-muted-foreground"
+  const fieldLabelClass = "mb-2 block text-[11px] font-bold uppercase tracking-[0.22em] text-slate-400"
   const fieldClass = "theme-input"
-  const textareaClass = "min-h-[120px] border-border bg-muted/90 text-foreground placeholder:text-muted-foreground"
-  const selectClass = "h-10 rounded-md border border-border bg-muted/90 px-3 text-sm text-foreground outline-none transition focus:border-accent/40 focus:ring-2 focus:ring-accent/30"
-  const tinySelectClass = "h-9 rounded-md border border-border bg-muted/90 px-2.5 text-xs text-foreground outline-none transition focus:border-accent/40 focus:ring-2 focus:ring-accent/30"
-  const controlBoxClass = "rounded-xl border border-border bg-muted/70 p-3"
+  const textareaClass = "min-h-[120px] border-white/10 bg-[#1b1c20]/90 text-white placeholder:text-slate-500"
+  const selectClass = "h-10 rounded-md border border-white/10 bg-[#1b1c20]/90 px-3 text-sm text-white outline-none transition focus:border-[#da3e44]/40 focus:ring-2 focus:ring-[#da3e44]/30"
+  const tinySelectClass = "h-9 rounded-md border border-white/10 bg-[#1b1c20]/90 px-2.5 text-xs text-white outline-none transition focus:border-[#da3e44]/40 focus:ring-2 focus:ring-[#da3e44]/30"
+  const controlBoxClass = "rounded-xl border border-white/10 bg-[#1b1c20]/70 p-3"
 
   if (loading) {
     return (
-      <main className="site-page slime-page-guides">
-        <div className="site-container text-muted-foreground">Loading editor...</div>
+      <main className="site-page">
+        <div className="site-container text-slate-300">Loading editor...</div>
       </main>
     )
   }
 
   if (error && !profile) {
     return (
-      <main className="site-page slime-page-guides">
+      <main className="site-page">
         <div className="site-container max-w-4xl">
           <Button asChild variant="outline" className="mb-6">
             <Link href="/guides">
@@ -466,18 +466,18 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
 
   if (mode === "edit" && article && isGuideLocked(article)) {
     return (
-      <main className="site-page slime-page-guides">
+      <main className="site-page">
         <div className="site-container max-w-4xl">
           <Button asChild variant="outline" className="mb-6">
             <Link href="/guides/admin">
               <ArrowLeft className="mr-2 h-4 w-4" /> My Articles
             </Link>
           </Button>
-          <div className="glass-panel border-border p-6 text-foreground">
-            <div className="mb-2 flex items-center gap-2 text-lg font-bold text-foreground">
-              <Lock className="h-5 w-5 text-accent" /> This article is locked
+          <div className="glass-panel border-white/10 p-6 text-slate-100">
+            <div className="mb-2 flex items-center gap-2 text-lg font-bold text-white">
+              <Lock className="h-5 w-5 text-[#ff8a98]" /> This article is locked
             </div>
-            <p className="text-sm leading-6 text-muted-foreground">
+            <p className="text-sm leading-6 text-slate-300">
               Unlock “{article.title}” from My Articles before editing it.
             </p>
           </div>
@@ -487,7 +487,7 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
   }
 
   return (
-    <main className="site-page slime-page-guides">
+    <main className="site-page">
       <div className="site-container space-y-6">
         <section className={`${strongPanelClass} overflow-hidden p-6 sm:p-8`}>
           <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
@@ -502,12 +502,12 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
                 {mode === "edit" ? "Edit guide" : "Create guide"}
               </h1>
               <div className="accent-rule my-5 max-w-md" />
-              <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-                <span className="inline-flex items-center rounded-full border border-accent/25 bg-accent/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-accent">
+              <div className="flex flex-wrap items-center gap-3 text-sm text-slate-300">
+                <span className="inline-flex items-center rounded-full border border-[#da3e44]/25 bg-[#da3e44]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#ff8a98]">
                   {status}
                 </span>
-                <span>Writing as <span className="font-semibold text-foreground">{profile?.display_name}</span></span>
-                <span className="text-muted-foreground">•</span>
+                <span>Writing as <span className="font-semibold text-white">{profile?.display_name}</span></span>
+                <span className="text-slate-500">•</span>
                 <span>{content.blocks.length} section{content.blocks.length === 1 ? "" : "s"}</span>
               </div>
             </div>
@@ -529,9 +529,9 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
               <div className="mb-5 flex items-center justify-between gap-3">
                 <div>
                   <div className="section-kicker">Guide details</div>
-                  <h2 className="mt-2 text-2xl font-black text-foreground">Article metadata</h2>
+                  <h2 className="mt-2 text-2xl font-black text-white">Article metadata</h2>
                 </div>
-                <span className="rounded-full border border-border bg-card px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-muted-foreground">
+                <span className="rounded-full border border-white/10 bg-[#222327] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-400">
                   Live autoset slug
                 </span>
               </div>
@@ -562,7 +562,7 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
 
                 <div>
                   <Label className={fieldLabelClass}>Status</Label>
-                  <div className="h-10 rounded-md border border-border bg-muted/90 px-3 text-sm text-foreground flex items-center">
+                  <div className="h-10 rounded-md border border-white/10 bg-[#1b1c20]/90 px-3 text-sm text-white flex items-center">
                     {status}
                   </div>
                 </div>
@@ -611,8 +611,8 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
               <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
                 <div>
                   <div className="section-kicker">Composer</div>
-                  <h2 className="mt-2 text-2xl font-black text-foreground">Build content blocks</h2>
-                  <p className="mt-2 max-w-3xl text-sm leading-6 text-muted-foreground">
+                  <h2 className="mt-2 text-2xl font-black text-white">Build content blocks</h2>
+                  <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
                     Create modular content rows. Blocks can be mixed in flexible widths from 25% to 100%.
                   </p>
                 </div>
@@ -622,7 +622,7 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
                 <Button size="sm" variant="outline" onClick={() => addBlock("paragraph")}><Plus className="mr-1 h-4 w-4" /> Paragraph</Button>
                 <Button size="sm" variant="outline" onClick={() => addBlock("heading")}><Plus className="mr-1 h-4 w-4" /> Heading</Button>
                 <Button size="sm" variant="outline" onClick={() => addBlock("image")}><Plus className="mr-1 h-4 w-4" /> Image</Button>
-                <Button size="sm" variant="outline" onClick={addSideBySidePair} className="border-accent/30 bg-accent/10 text-accent hover:bg-accent/15 hover:text-foreground"><Plus className="mr-1 h-4 w-4" /> Side by Side</Button>
+                <Button size="sm" variant="outline" onClick={addSideBySidePair} className="border-[#da3e44]/30 bg-[#da3e44]/10 text-[#ff97a3] hover:bg-[#da3e44]/15 hover:text-white"><Plus className="mr-1 h-4 w-4" /> Side by Side</Button>
                 <Button size="sm" variant="outline" onClick={() => addBlock("youtube")}><Video className="mr-1 h-4 w-4" /> YouTube</Button>
                 <Button size="sm" variant="outline" onClick={() => addBlock("quote")}>Quote</Button>
                 <Button size="sm" variant="outline" onClick={() => addBlock("list")}>List</Button>
@@ -634,23 +634,23 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
                   const blockHeight = getBlockHeightPercent(block)
                   const widthValue = getBlockWidthPercent(block)
                   return (
-                    <div key={block.id} className="overflow-hidden rounded-[20px] border border-border bg-card/[0.88] shadow-[0_14px_40px_rgba(0,0,0,0.16)]">
-                      <div className="border-b border-border bg-[linear-gradient(135deg,rgba(52,208,221,0.08),transparent_44%,rgba(110,175,205,0.05)_100%)] px-4 py-3 sm:px-5">
+                    <div key={block.id} className="overflow-hidden rounded-[20px] border border-white/10 bg-[#18191d]/88 shadow-[0_14px_40px_rgba(0,0,0,0.16)]">
+                      <div className="border-b border-white/10 bg-[linear-gradient(135deg,rgba(218,62,68,0.08),transparent_44%,rgba(255,255,255,0.02)_100%)] px-4 py-3 sm:px-5">
                         <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
                           <div className="flex min-w-0 items-center gap-3">
-                            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-border bg-card text-muted-foreground">
+                            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-white/10 bg-[#222327] text-slate-400">
                               <GripVertical className="h-4 w-4" />
                             </span>
                             <div className="min-w-0">
                               <div className="flex flex-wrap items-center gap-2">
-                                <span className="rounded-full border border-border bg-card px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-muted-foreground">
+                                <span className="rounded-full border border-white/10 bg-[#222327] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-400">
                                   Section {index + 1}
                                 </span>
-                                <span className="rounded-full border border-accent/25 bg-accent/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-accent">
+                                <span className="rounded-full border border-[#da3e44]/25 bg-[#da3e44]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#ff8a98]">
                                   {block.type}
                                 </span>
                               </div>
-                              <p className="mt-2 text-xs text-muted-foreground">
+                              <p className="mt-2 text-xs text-slate-500">
                                 Adjust width, height, and alignment, then fill the block content below.
                               </p>
                             </div>
@@ -662,7 +662,7 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
                               variant="ghost"
                               onClick={() => moveBlockById(block.id, -1)}
                               disabled={index === 0}
-                              className="h-9 w-9 p-0 text-muted-foreground hover:bg-accent/50 hover:text-foreground disabled:opacity-30"
+                              className="h-9 w-9 p-0 text-slate-300 hover:bg-white/10 hover:text-white disabled:opacity-30"
                               title="Move section up"
                             >
                               <ArrowUp className="h-4 w-4" />
@@ -672,7 +672,7 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
                               variant="ghost"
                               onClick={() => moveBlockById(block.id, 1)}
                               disabled={index === content.blocks.length - 1}
-                              className="h-9 w-9 p-0 text-muted-foreground hover:bg-accent/50 hover:text-foreground disabled:opacity-30"
+                              className="h-9 w-9 p-0 text-slate-300 hover:bg-white/10 hover:text-white disabled:opacity-30"
                               title="Move section down"
                             >
                               <ArrowDown className="h-4 w-4" />
@@ -693,7 +693,7 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
                       <div className="space-y-4 p-4 sm:p-5">
                         <div className="grid gap-3 lg:grid-cols-2 xl:grid-cols-4">
                           <div className={controlBoxClass}>
-                            <div className="mb-2 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.22em] text-muted-foreground">
+                            <div className="mb-2 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500">
                               <span>Width</span>
                               <span>{widthValue}%</span>
                             </div>
@@ -704,12 +704,12 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
                               step={1}
                               value={widthValue}
                               onChange={(event) => updateBlock(block.id, widthPatch(Number(event.target.value)))}
-                              className="w-full accent-[#34d0dd]"
+                              className="w-full accent-[#da3e44]"
                             />
                           </div>
 
                           <div className={controlBoxClass}>
-                            <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-muted-foreground">Height</div>
+                            <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500">Height</div>
                             <select
                               value={blockHeight === "auto" ? "auto" : String(blockHeight)}
                               onChange={(event) => {
@@ -731,7 +731,7 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
                           {isTextBlock(block) ? (
                             <>
                               <div className={controlBoxClass}>
-                                <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-muted-foreground">Content position</div>
+                                <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500">Content position</div>
                                 <select
                                   value={getContentPosition(block)}
                                   onChange={(event) => updateBlock(block.id, { contentPosition: event.target.value as EditorContentPosition } as Partial<GuideContentBlock>)}
@@ -750,7 +750,7 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
                               </div>
 
                               <div className={controlBoxClass}>
-                                <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-muted-foreground">Text align</div>
+                                <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500">Text align</div>
                                 <select
                                   value={block.textAlign ?? "left"}
                                   onChange={(event) => updateBlock(block.id, { textAlign: event.target.value as EditorTextAlign } as Partial<GuideContentBlock>)}
@@ -766,7 +766,7 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
 
                           {block.type === "image" ? (
                             <div className={controlBoxClass}>
-                              <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-muted-foreground">Image fit</div>
+                              <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500">Image fit</div>
                               <select
                                 value={(block.imageFit ?? "contain") as EditorImageFit}
                                 onChange={(event) => updateBlock(block.id, { imageFit: event.target.value as EditorImageFit } as Partial<GuideContentBlock>)}
@@ -892,7 +892,7 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
                         ) : null}
 
                         {block.type === "divider" ? (
-                          <div className="rounded-xl border border-dashed border-border bg-background px-4 py-8 text-center text-muted-foreground">
+                          <div className="rounded-xl border border-dashed border-white/10 bg-[#111216] px-4 py-8 text-center text-slate-500">
                             Horizontal divider
                           </div>
                         ) : null}
@@ -910,36 +910,36 @@ export function GuideEditor({ mode, articleId }: GuideEditorProps) {
           <aside className="space-y-6 xl:sticky xl:top-24 xl:self-start">
             <section className={`${strongPanelClass} overflow-hidden p-5`}>
               <div className="section-kicker">Live Preview</div>
-              <h2 className="mt-2 text-2xl font-black text-foreground">Guide preview</h2>
+              <h2 className="mt-2 text-2xl font-black text-white">Guide preview</h2>
               <div className="accent-rule my-4" />
 
-              <div className="overflow-hidden rounded-2xl border border-border bg-background">
+              <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#111216]">
                 {previewArticle.thumbnail_url ? (
                   <img src={previewArticle.thumbnail_url} alt="Preview thumbnail" className="h-52 w-full object-cover" />
                 ) : (
-                  <div className="flex h-52 items-center justify-center bg-[radial-gradient(circle_at_18%_-8%,rgba(52,208,221,0.16),transparent_22rem),linear-gradient(135deg,#143552_0%,#16395a_46%,#1A4466_100%)] text-sm font-semibold text-muted-foreground">
+                  <div className="flex h-52 items-center justify-center bg-[radial-gradient(circle_at_18%_-8%,rgba(218,62,68,0.16),transparent_22rem),linear-gradient(135deg,#191a1e_0%,#1f2024_46%,#242529_100%)] text-sm font-semibold text-slate-500">
                     No thumbnail selected
                   </div>
                 )}
               </div>
 
-              <div className="mt-5 rounded-2xl border border-border bg-card/[0.88] p-4">
+              <div className="mt-5 rounded-2xl border border-white/10 bg-[#18191d]/88 p-4">
                 <div className="mb-2 flex items-center gap-2">
-                  <span className="inline-flex items-center rounded-full border border-accent/25 bg-accent/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-accent">
+                  <span className="inline-flex items-center rounded-full border border-[#da3e44]/25 bg-[#da3e44]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#ff8a98]">
                     {previewArticle.status}
                   </span>
-                  <span className="text-xs text-muted-foreground">/{previewArticle.slug}</span>
+                  <span className="text-xs text-slate-400">/{previewArticle.slug}</span>
                 </div>
-                <h3 className="text-2xl font-black text-foreground">{previewArticle.title}</h3>
-                {previewArticle.summary ? <p className="mt-3 text-sm leading-6 text-muted-foreground">{previewArticle.summary}</p> : null}
-                <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
+                <h3 className="text-2xl font-black text-white">{previewArticle.title}</h3>
+                {previewArticle.summary ? <p className="mt-3 text-sm leading-6 text-slate-300">{previewArticle.summary}</p> : null}
+                <div className="mt-4 flex items-center gap-2 text-xs text-slate-500">
                   <span>By {previewArticle.author_name}</span>
                   <span>•</span>
                   <span>{content.blocks.length} section{content.blocks.length === 1 ? "" : "s"}</span>
                 </div>
               </div>
 
-              <div className="mt-5 max-h-[720px] overflow-auto rounded-2xl border border-border bg-background/70 p-4 image-scroll">
+              <div className="mt-5 max-h-[720px] overflow-auto rounded-2xl border border-white/10 bg-[#121319]/70 p-4 image-scroll">
                 <GuideRenderer content={previewArticle.content} />
               </div>
             </section>

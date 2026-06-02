@@ -28,16 +28,16 @@ const RangeSlider = React.forwardRef<
     )}
     {...props}
   >
-    <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-muted">
+    <SliderPrimitive.Track className="relative h-2 w-full grow overflow-hidden rounded-full bg-[#1f2230]">
       <SliderPrimitive.Range className="absolute h-full bg-[#ff2f5f]" />
     </SliderPrimitive.Track>
     <SliderPrimitive.Thumb
       aria-label="Lower bound"
-      className="block h-4 w-4 rounded-full border-2 border-[#ff2f5f] bg-background ring-offset-[#0c0d12] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff2f5f]/60 disabled:pointer-events-none disabled:opacity-50"
+      className="block h-4 w-4 rounded-full border-2 border-[#ff2f5f] bg-[#0c0d12] ring-offset-[#0c0d12] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff2f5f]/60 disabled:pointer-events-none disabled:opacity-50"
     />
     <SliderPrimitive.Thumb
       aria-label="Upper bound"
-      className="block h-4 w-4 rounded-full border-2 border-[#ff2f5f] bg-background ring-offset-[#0c0d12] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff2f5f]/60 disabled:pointer-events-none disabled:opacity-50"
+      className="block h-4 w-4 rounded-full border-2 border-[#ff2f5f] bg-[#0c0d12] ring-offset-[#0c0d12] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff2f5f]/60 disabled:pointer-events-none disabled:opacity-50"
     />
   </SliderPrimitive.Root>
 ))

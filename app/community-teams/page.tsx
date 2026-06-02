@@ -54,7 +54,7 @@ function CharSlotIcon({
   size?: number
 }) {
   if (!charId) {
-    return <div className="rounded bg-muted/40 border border-border" style={{ width: size, height: size }} />
+    return <div className="rounded bg-gray-700/40 border border-gray-700" style={{ width: size, height: size }} />
   }
   const c = chars.find((x) => x.master_pc_id === charId)
   if (!c) return null
@@ -65,7 +65,7 @@ function CharSlotIcon({
   const starAsset = RARITY_ASSETS[visualTier]
 
   return (
-    <div className="relative rounded bg-background" style={{ width: size, height: size }}>
+    <div className="relative rounded bg-[#0b1220]" style={{ width: size, height: size }}>
       <img src={c.images.icon} alt={c.name} title={c.name} className="w-full h-full object-cover object-top rounded" />
       {miniFrame && <img src={miniFrame} alt="" className="pointer-events-none absolute inset-0 w-full h-full object-fill z-10" onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }} />}
       {starAsset && <img src={starAsset} alt="" className="pointer-events-none absolute bottom-0 left-0 right-0 h-[14%] object-contain z-20" />}
@@ -79,11 +79,11 @@ function TeamCard({ team, chars, wikiChars, onLoad }: { team: TeamMeta; chars: R
     <div className="glass-panel flex flex-col gap-3 p-4 transition-colors hover:border-cyan-300/40">
       <div className="flex items-start justify-between gap-2">
         <div>
-          <h2 className="font-semibold text-foreground">{team.name}</h2>
-          <p className="text-xs text-muted-foreground">by {team.author}</p>
-          {team.description && <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{team.description}</p>}
+          <h2 className="font-semibold text-white">{team.name}</h2>
+          <p className="text-xs text-gray-400">by {team.author}</p>
+          {team.description && <p className="text-xs text-gray-500 mt-1 line-clamp-2">{team.description}</p>}
         </div>
-        <span className="text-xs text-muted-foreground shrink-0">{new Date(team.created_at).toLocaleDateString()}</span>
+        <span className="text-xs text-gray-500 shrink-0">{new Date(team.created_at).toLocaleDateString()}</span>
       </div>
 
       {/* Main row: 4 main slots with their sub slots below */}
@@ -177,18 +177,18 @@ export default function CommunityTeamsPage() {
   const totalPages = Math.ceil(total / limit)
 
   return (
-    <main className="site-page px-4 py-8 text-foreground sm:px-6">
+    <main className="site-page px-4 py-8 text-white sm:px-6">
       <div className="mx-auto max-w-6xl flex flex-col gap-6">
         <div>
           <p className="section-kicker">Community</p>
           <h1 className="section-title mt-2">Teams</h1>
-          <p className="mt-2 text-sm text-muted-foreground">Browse team compositions shared by other players. Filter by character to find teams featuring them.</p>
+          <p className="mt-2 text-sm text-slate-400">Browse team compositions shared by other players. Filter by character to find teams featuring them.</p>
         </div>
 
         {/* Character filter */}
         <div className="glass-panel flex flex-col gap-3 p-4">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-semibold text-muted-foreground">Filter by character</span>
+            <span className="text-sm font-semibold text-gray-300">Filter by character</span>
             {filterCharId && (
               <button onClick={() => { setFilterCharId(null); setPage(1) }} className="text-xs text-blue-400 hover:text-blue-300">
                 Clear filter
@@ -196,8 +196,8 @@ export default function CommunityTeamsPage() {
             )}
           </div>
           <div className="relative w-full max-w-sm">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
-            <Input value={charSearch} onChange={(e) => setCharSearch(e.target.value)} placeholder="Search characters" className="h-8 rounded-full border-gray-600 bg-muted pl-9 text-sm text-foreground placeholder:text-muted-foreground" />
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-gray-400" />
+            <Input value={charSearch} onChange={(e) => setCharSearch(e.target.value)} placeholder="Search characters" className="h-8 rounded-full border-gray-600 bg-gray-700 pl-9 text-sm text-white placeholder:text-gray-400" />
           </div>
           <div className="flex flex-wrap gap-1.5 max-h-40 overflow-y-auto">
             {visibleChars.slice(0, 120).map((c) => {
@@ -218,14 +218,14 @@ export default function CommunityTeamsPage() {
 
         {/* Search */}
         <div className="relative w-full max-w-md">
-          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search by name or author" className="h-10 rounded-full border-gray-600 bg-muted pl-11 text-foreground placeholder:text-muted-foreground" />
+          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+          <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search by name or author" className="h-10 rounded-full border-gray-600 bg-gray-700 pl-11 text-white placeholder:text-gray-400" />
         </div>
 
         {loading ? (
-          <div className="text-muted-foreground py-12 text-center">Loading...</div>
+          <div className="text-gray-400 py-12 text-center">Loading...</div>
         ) : filtered.length === 0 ? (
-          <div className="text-muted-foreground py-12 text-center">No teams found. Be the first to share one from the Team Builder!</div>
+          <div className="text-gray-500 py-12 text-center">No teams found. Be the first to share one from the Team Builder!</div>
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((team) => (
@@ -236,9 +236,9 @@ export default function CommunityTeamsPage() {
 
         {totalPages > 1 && (
           <div className="flex items-center justify-center gap-3 pt-2">
-            <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page === 1} className="px-3 py-1.5 rounded bg-muted text-sm disabled:opacity-40 hover:bg-muted/80">Previous</button>
-            <span className="text-sm text-muted-foreground">{page} / {totalPages}</span>
-            <button onClick={() => setPage((p) => Math.min(totalPages, p + 1))} disabled={page === totalPages} className="px-3 py-1.5 rounded bg-muted text-sm disabled:opacity-40 hover:bg-muted/80">Next</button>
+            <button onClick={() => setPage((p) => Math.max(1, p - 1))} disabled={page === 1} className="px-3 py-1.5 rounded bg-gray-700 text-sm disabled:opacity-40 hover:bg-gray-600">Previous</button>
+            <span className="text-sm text-gray-400">{page} / {totalPages}</span>
+            <button onClick={() => setPage((p) => Math.min(totalPages, p + 1))} disabled={page === totalPages} className="px-3 py-1.5 rounded bg-gray-700 text-sm disabled:opacity-40 hover:bg-gray-600">Next</button>
           </div>
         )}
       </div>

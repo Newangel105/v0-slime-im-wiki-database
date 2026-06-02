@@ -255,7 +255,7 @@ export default function SummonDiagPage() {
 
   if (!mod) {
     return (
-      <main style={{ background: "hsl(var(--background))", color: "hsl(var(--foreground))", padding: 24, minHeight: "100vh" }}>
+      <main style={{ background: "#06070b", color: "#fff", padding: 24, minHeight: "100vh" }}>
         Loading diag…
       </main>
     )
@@ -277,11 +277,11 @@ export default function SummonDiagPage() {
   const Results = D?.ResultsPanelPrefab
 
   return (
-    <main style={{ background: "hsl(var(--background))", color: "hsl(var(--foreground))", padding: 16, minHeight: "100vh", fontFamily: "ui-sans-serif, system-ui" }}>
+    <main style={{ background: "#06070b", color: "#fff", padding: 16, minHeight: "100vh", fontFamily: "ui-sans-serif, system-ui" }}>
       <h1 style={{ marginBottom: 8 }}>Summon reveal — visual parity diagnostic</h1>
       <div style={{ display: "flex", gap: 12, marginBottom: 16, alignItems: "center", flexWrap: "wrap" }}>
         <label>Stage:&nbsp;
-          <select value={stage} onChange={(e) => setStage(e.target.value as typeof stage)} style={{ background: "hsl(var(--card))", color: "hsl(var(--card-foreground))", padding: 4, border: "1px solid hsl(var(--border))", borderRadius: 4 }}>
+          <select value={stage} onChange={(e) => setStage(e.target.value as typeof stage)} style={{ background: "#222", color: "#fff", padding: 4 }}>
             <option value="promotion">UILotteryPromotion (hieroglyph)</option>
             <option value="textAnnounce">UILotteryTextAnnounce (voice line)</option>
             <option value="movie">UILotteryMovie (movie)</option>
@@ -290,7 +290,7 @@ export default function SummonDiagPage() {
           </select>
         </label>
         <label>Rarity:&nbsp;
-          <select value={rarity} onChange={(e) => setRarity(Number(e.target.value))} style={{ background: "hsl(var(--card))", color: "hsl(var(--card-foreground))", padding: 4, border: "1px solid hsl(var(--border))", borderRadius: 4 }}>
+          <select value={rarity} onChange={(e) => setRarity(Number(e.target.value))} style={{ background: "#222", color: "#fff", padding: 4 }}>
             <option value={3}>3★ (R)</option>
             <option value={4}>4★ (SR)</option>
             <option value={5}>5★ (SSR/Ult/UREx)</option>
@@ -298,7 +298,7 @@ export default function SummonDiagPage() {
           </select>
         </label>
         <label>Arousal:&nbsp;
-          <select value={arousal} onChange={(e) => setArousal(Number(e.target.value))} style={{ background: "hsl(var(--card))", color: "hsl(var(--card-foreground))", padding: 4, border: "1px solid hsl(var(--border))", borderRadius: 4 }}>
+          <select value={arousal} onChange={(e) => setArousal(Number(e.target.value))} style={{ background: "#222", color: "#fff", padding: 4 }}>
             <option value={0}>0 (none)</option>
             <option value={1}>1 (Special)</option>
             <option value={2}>2 (SpecialPlus)</option>
@@ -313,14 +313,14 @@ export default function SummonDiagPage() {
             const p = DIAG_PRESETS[u]
             setRarity(p.rarity)
             setArousal(p.arousal)
-          }} style={{ background: "hsl(var(--card))", color: "hsl(var(--card-foreground))", padding: 4, border: "1px solid hsl(var(--border))", borderRadius: 4 }}>
+          }} style={{ background: "#222", color: "#fff", padding: 4 }}>
             {(Object.keys(DIAG_PRESETS) as PresetId[]).map((k) => (
               <option key={k} value={k}>{DIAG_PRESETS[k].label}</option>
             ))}
           </select>
         </label>
         <label>Result mix:&nbsp;
-          <select value={mix} onChange={(e) => setMix(e.target.value as ResultMix)} style={{ background: "hsl(var(--card))", color: "hsl(var(--card-foreground))", padding: 4, border: "1px solid hsl(var(--border))", borderRadius: 4 }}>
+          <select value={mix} onChange={(e) => setMix(e.target.value as ResultMix)} style={{ background: "#222", color: "#fff", padding: 4 }}>
             <option value="chara">All Chara (default)</option>
             <option value="bless">All Bless/Protector</option>
             <option value="mixed">Mixed (5 Chara + 5 Bless)</option>
@@ -397,13 +397,13 @@ export default function SummonDiagPage() {
           )
         })()}
         {!D && (
-          <div style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", color: "hsl(var(--muted-foreground))" }}>
+          <div style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", color: "#888" }}>
             Stage components not exported &mdash; add an <code>__diag</code> export to summon-simulator.tsx
           </div>
         )}
       </div>
 
-      <p style={{ color: "hsl(var(--muted-foreground))", marginTop: 12, fontSize: 13 }}>
+      <p style={{ color: "#aaa", marginTop: 12, fontSize: 13 }}>
         Compare with the recorded real-game frames in <code>D:\video_compare\frames\</code>.
       </p>
     </main>

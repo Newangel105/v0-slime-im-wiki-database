@@ -3,19 +3,18 @@ import { NextRequest, NextResponse } from "next/server"
 export const dynamic = "force-dynamic"
 
 const OFFICIAL_HOST = "api.ten-sura-m.wfs.games"
-const OFFICIAL_US_HOST = "api-us.ten-sura-m.wfs.games"
-const ANNOUNCEMENT_MODAL_BG = "#fff7e8"
+const OFFICIAL_ORIGIN = `https://${OFFICIAL_HOST}`
 
-function injectCssAndBackButtonPatch(html: string, origin: string, proxyOrigin: string) {
+function injectCssAndBackButtonPatch(html: string) {
   const patch = `
-    <base href="${origin}/" />
+    <base href="${OFFICIAL_ORIGIN}/" />
 
     <style id="slime-announcement-fixes">
       html,
       body {
         margin: 0 !important;
         padding: 0 !important;
-        background: ${ANNOUNCEMENT_MODAL_BG} !important;
+        background: #1b1a18 !important;
         overflow-x: hidden !important;
         width: 100% !important;
         min-width: 0 !important;
@@ -27,7 +26,7 @@ function injectCssAndBackButtonPatch(html: string, origin: string, proxyOrigin: 
 
       body::before,
       body::after {
-        background: ${ANNOUNCEMENT_MODAL_BG} !important;
+        background: #1b1a18 !important;
       }
 
       .backBtn,
@@ -52,55 +51,19 @@ function injectCssAndBackButtonPatch(html: string, origin: string, proxyOrigin: 
       }
 
       ::-webkit-scrollbar-track {
-        background: ${ANNOUNCEMENT_MODAL_BG} !important;
+        background: #1b1a18 !important;
       }
 
       ::-webkit-scrollbar-thumb {
-        background: #0f8b9a !important;
+        background: #8f8f8f !important;
         border-radius: 8px;
-        border: 2px solid ${ANNOUNCEMENT_MODAL_BG};
+        border: 2px solid #1b1a18;
       }
     </style>
 
     <script>
       (() => {
         let lockedGutter = null;
-        const proxyOrigin = ${JSON.stringify(proxyOrigin)};
-        const allowedHosts = new Set([${JSON.stringify(OFFICIAL_HOST)}, ${JSON.stringify(OFFICIAL_US_HOST)}]);
-        const modalBg = ${JSON.stringify(ANNOUNCEMENT_MODAL_BG)};
-
-        const applyAnnouncementChrome = () => {
-          document.documentElement.style.setProperty("background", modalBg, "important");
-          if (document.body) {
-            document.body.style.setProperty("background", modalBg, "important");
-          }
-        };
-
-        const rewriteAnnouncementLinks = () => {
-          const links = Array.from(document.querySelectorAll("a[href]"));
-
-          for (const link of links) {
-            const href = link.getAttribute("href");
-            if (!href || href.startsWith(proxyOrigin + "/api/recruit-article")) continue;
-
-            let url;
-
-            try {
-              url = new URL(href, window.location.href);
-            } catch {
-              continue;
-            }
-
-            if (!allowedHosts.has(url.host) || !url.pathname.startsWith("/web/announcement")) continue;
-
-            const proxiedHref = proxyOrigin + "/api/recruit-article?src=" + encodeURIComponent(url.toString());
-            link.href = proxiedHref;
-            link.setAttribute("href", proxiedHref);
-            link.target = "_self";
-            link.setAttribute("target", "_self");
-            link.rel = "";
-          }
-        };
 
         const isElementVisible = (el) => {
           const style = window.getComputedStyle(el);
@@ -195,8 +158,6 @@ function injectCssAndBackButtonPatch(html: string, origin: string, proxyOrigin: 
         };
 
         const patchLeftGutter = () => {
-          applyAnnouncementChrome();
-          rewriteAnnouncementLinks();
           removeBackButton();
 
           const viewportWidth = document.documentElement.clientWidth || window.innerWidth;
@@ -248,15 +209,6 @@ function injectCssAndBackButtonPatch(html: string, origin: string, proxyOrigin: 
         setTimeout(patchLeftGutter, 250);
         setTimeout(patchLeftGutter, 750);
         setTimeout(patchLeftGutter, 1500);
-
-        new MutationObserver(() => {
-          patchLeftGutter();
-        }).observe(document.documentElement, {
-          childList: true,
-          subtree: true,
-          attributes: true,
-          attributeFilter: ["href", "style", "class"],
-        });
       })();
     </script>
   `
@@ -290,9 +242,11 @@ export async function GET(request: NextRequest) {
     return new NextResponse("Invalid src", { status: 400 })
   }
 
-  const isAnnouncementPage = url.pathname === "/web/announcement" || url.pathname.startsWith("/web/announcement/")
-
-  if (url.protocol !== "https:" || ![OFFICIAL_HOST, OFFICIAL_US_HOST].includes(url.host) || !isAnnouncementPage) {
+  if (
+    url.protocol !== "https:" ||
+    url.host !== OFFICIAL_HOST ||
+    !url.pathname.startsWith("/web/announcement/")
+  ) {
     return new NextResponse("Forbidden", { status: 403 })
   }
 
@@ -311,7 +265,7 @@ export async function GET(request: NextRequest) {
   }
 
   const html = await upstream.text()
-  const patchedHtml = injectCssAndBackButtonPatch(html, url.origin, request.nextUrl.origin)
+  const patchedHtml = injectCssAndBackButtonPatch(html)
 
   return new NextResponse(patchedHtml, {
     status: 200,

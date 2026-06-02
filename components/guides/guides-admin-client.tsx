@@ -122,7 +122,7 @@ export function GuidesAdminClient() {
   }, [])
 
   return (
-    <main className="site-page slime-page-guides">
+    <main className="site-page">
       <div className="site-container space-y-6">
         <section className="glass-panel-strong p-6 sm:p-8">
           <div className="flex flex-wrap items-start justify-between gap-4">
@@ -135,7 +135,7 @@ export function GuidesAdminClient() {
               <div className="section-kicker">Guide dashboard</div>
               <h1 className="section-title mt-3">My Articles</h1>
               <div className="accent-rule my-5 max-w-sm" />
-              {profile ? <p className="text-muted-foreground">Signed in as {profile.display_name}</p> : null}
+              {profile ? <p className="text-slate-400">Signed in as {profile.display_name}</p> : null}
             </div>
 
             <div className="flex gap-2">
@@ -151,21 +151,21 @@ export function GuidesAdminClient() {
           </div>
         </section>
 
-        {loading ? <p className="text-muted-foreground">Loading articles...</p> : null}
+        {loading ? <p className="text-slate-400">Loading articles...</p> : null}
         {error ? <div className="glass-panel border-red-500/30 bg-red-500/10 p-4 text-red-200">{error}</div> : null}
 
         {!loading && !error && articles.length === 0 ? (
-          <div className="glass-panel p-8 text-muted-foreground">No articles yet.</div>
+          <div className="glass-panel p-8 text-slate-300">No articles yet.</div>
         ) : null}
 
         <section className="space-y-4">
           {articles.map((article) => (
-            <article key={article.id} className="glass-panel overflow-hidden p-5 transition-all duration-200 hover:border-accent/30">
+            <article key={article.id} className="glass-panel overflow-hidden p-5 transition-all duration-200 hover:border-[#da3e44]/30">
               <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                 <div className="flex min-w-0 flex-1 gap-4">
                   <Link
                     href={`/guides/${article.slug}`}
-                    className="group h-24 w-36 shrink-0 overflow-hidden rounded-xl border border-border bg-muted sm:h-28 sm:w-44"
+                    className="group h-24 w-36 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-[#16171b] sm:h-28 sm:w-44"
                     aria-label={`View ${article.title}`}
                   >
                     {article.thumbnail_url ? (
@@ -175,7 +175,7 @@ export function GuidesAdminClient() {
                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(circle_at_18%_-8%,rgba(52,208,221,0.16),transparent_22rem),linear-gradient(135deg,#143552_0%,#16395a_46%,#1A4466_100%)] px-3 text-center text-[10px] font-bold uppercase tracking-[0.22em] text-foreground/70">
+                      <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(circle_at_18%_-8%,rgba(218,62,68,0.16),transparent_22rem),linear-gradient(135deg,#191a1e_0%,#1f2024_46%,#242529_100%)] px-3 text-center text-[10px] font-bold uppercase tracking-[0.22em] text-white/70">
                         SLIME.WIKI Guide
                       </div>
                     )}
@@ -187,17 +187,17 @@ export function GuidesAdminClient() {
                         {article.status}
                       </span>
                       {isGuideLocked(article) ? (
-                        <span className="inline-flex items-center rounded-full border border-border/[0.22] bg-muted/70 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#cfe0ee]">
+                        <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-300">
                           <Lock className="mr-1 h-3 w-3" /> Locked
                         </span>
                       ) : null}
-                      <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                      <span className="text-xs uppercase tracking-[0.18em] text-slate-500">
                         Updated {formatGuideDate(article.updated_at)}
                       </span>
                     </div>
-                    <h2 className="line-clamp-2 text-xl font-black text-foreground">{article.title}</h2>
-                    <p className="mt-1 truncate text-sm text-muted-foreground">/{article.slug}</p>
-                    {article.summary ? <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground">{article.summary}</p> : null}
+                    <h2 className="line-clamp-2 text-xl font-black text-white">{article.title}</h2>
+                    <p className="mt-1 truncate text-sm text-slate-500">/{article.slug}</p>
+                    {article.summary ? <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-400">{article.summary}</p> : null}
                   </div>
                 </div>
 
@@ -212,7 +212,7 @@ export function GuidesAdminClient() {
                       </Link>
                     </Button>
                   ) : (
-                    <Button disabled className="border border-accent/25 bg-accent/10 text-accent opacity-80">
+                    <Button disabled className="bg-[#2b2c31] text-slate-300 opacity-80">
                       <Lock className="mr-2 h-4 w-4" /> Locked
                     </Button>
                   )}
@@ -221,7 +221,7 @@ export function GuidesAdminClient() {
                     variant="outline"
                     disabled={lockingId === article.id}
                     onClick={() => toggleArticleLock(article)}
-                    className={isGuideLocked(article) ? "border-accent/30 bg-accent/10 text-accent hover:bg-accent/20 hover:text-foreground" : undefined}
+                    className={isGuideLocked(article) ? "border-[#da3e44]/30 bg-[#da3e44]/10 text-[#ff97a3] hover:bg-[#da3e44]/20 hover:text-white" : undefined}
                   >
                     {isGuideLocked(article) ? <Unlock className="mr-2 h-4 w-4" /> : <Lock className="mr-2 h-4 w-4" />}
                     {lockingId === article.id ? "Updating..." : isGuideLocked(article) ? "Unlock" : "Lock"}

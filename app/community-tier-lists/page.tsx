@@ -17,7 +17,7 @@ function CharIcon({ id, chars }: { id: number; chars: ReturnType<typeof getAllCh
   const c = chars.find((x) => x.master_pc_id === id)
   if (!c) return null
   return (
-    <div className="relative w-8 h-8 rounded bg-muted overflow-hidden flex-shrink-0">
+    <div className="relative w-8 h-8 rounded bg-gray-700 overflow-hidden flex-shrink-0">
       <img src={c.images.icon} alt={c.name} title={c.name} className="w-full h-full object-cover object-top" />
     </div>
   )
@@ -70,38 +70,38 @@ export default function CommunityTierListsPage() {
   const totalPages = Math.ceil(total / limit)
 
   return (
-    <main className="site-page px-4 py-8 text-foreground sm:px-6">
+    <main className="site-page px-4 py-8 text-white sm:px-6">
       <div className="mx-auto max-w-6xl flex flex-col gap-6">
         <div>
           <p className="section-kicker">Community</p>
           <h1 className="section-title mt-2">Tier Lists</h1>
-          <p className="mt-2 text-sm text-muted-foreground">Browse tier lists shared by other players. Click to open in the Tier Maker.</p>
+          <p className="mt-2 text-sm text-slate-400">Browse tier lists shared by other players. Click to open in the Tier Maker.</p>
         </div>
 
         <div className="relative w-full max-w-md">
-          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by name or author"
-            className="h-10 rounded-full border-gray-600 bg-muted pl-11 text-foreground placeholder:text-muted-foreground"
+            className="h-10 rounded-full border-gray-600 bg-gray-700 pl-11 text-white placeholder:text-gray-400"
           />
         </div>
 
         {loading ? (
-          <div className="text-muted-foreground py-12 text-center">Loading...</div>
+          <div className="text-gray-400 py-12 text-center">Loading...</div>
         ) : filtered.length === 0 ? (
-          <div className="text-muted-foreground py-12 text-center">No tier lists found yet. Be the first to share one!</div>
+          <div className="text-gray-500 py-12 text-center">No tier lists found yet. Be the first to share one!</div>
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((list) => (
               <div key={list.id} className="glass-panel flex flex-col gap-3 p-4 transition-colors hover:border-cyan-300/40">
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0">
-                    <h2 className="font-semibold text-foreground truncate">{list.name}</h2>
-                    <p className="text-xs text-muted-foreground mt-0.5">by {list.author}</p>
+                    <h2 className="font-semibold text-white truncate">{list.name}</h2>
+                    <p className="text-xs text-gray-400 mt-0.5">by {list.author}</p>
                   </div>
-                  <span className="text-xs text-muted-foreground shrink-0">{new Date(list.created_at).toLocaleDateString()}</span>
+                  <span className="text-xs text-gray-500 shrink-0">{new Date(list.created_at).toLocaleDateString()}</span>
                 </div>
 
                 {list.character_ids?.length > 0 && (
@@ -110,7 +110,7 @@ export default function CommunityTierListsPage() {
                       <CharIcon key={id} id={id} chars={allChars} />
                     ))}
                     {list.character_ids.length > 16 && (
-                      <span className="text-xs text-muted-foreground self-center">+{list.character_ids.length - 16}</span>
+                      <span className="text-xs text-gray-500 self-center">+{list.character_ids.length - 16}</span>
                     )}
                   </div>
                 )}
@@ -131,15 +131,15 @@ export default function CommunityTierListsPage() {
             <button
               onClick={() => setPage((p) => Math.max(1, p - 1))}
               disabled={page === 1}
-              className="px-3 py-1.5 rounded bg-muted text-sm disabled:opacity-40 hover:bg-muted/80"
+              className="px-3 py-1.5 rounded bg-gray-700 text-sm disabled:opacity-40 hover:bg-gray-600"
             >
               Previous
             </button>
-            <span className="text-sm text-muted-foreground">{page} / {totalPages}</span>
+            <span className="text-sm text-gray-400">{page} / {totalPages}</span>
             <button
               onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
               disabled={page === totalPages}
-              className="px-3 py-1.5 rounded bg-muted text-sm disabled:opacity-40 hover:bg-muted/80"
+              className="px-3 py-1.5 rounded bg-gray-700 text-sm disabled:opacity-40 hover:bg-gray-600"
             >
               Next
             </button>

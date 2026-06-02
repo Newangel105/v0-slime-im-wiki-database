@@ -65,36 +65,36 @@ export function GuideDetailClient({ slug }: { slug: string }) {
 
   if (loading) {
     return (
-      <main className="site-page slime-page-guides">
-        <div className="site-container text-muted-foreground">Loading guide...</div>
+      <main className="site-page">
+        <div className="site-container text-slate-300">Loading guide...</div>
       </main>
     )
   }
 
   if (error || !article) {
     return (
-      <main className="site-page slime-page-guides">
+      <main className="site-page">
         <div className="site-container">
           <Button asChild variant="outline" className="mb-6">
             <Link href="/guides">
               <ArrowLeft className="mr-2 h-4 w-4" /> Back to Guides
             </Link>
           </Button>
-          <div className="glass-panel p-8 text-muted-foreground">{error || "Guide not found."}</div>
+          <div className="glass-panel p-8 text-slate-300">{error || "Guide not found."}</div>
         </div>
       </main>
     )
   }
 
   return (
-    <main className="site-page slime-page-guides">
+    <main className="site-page">
       <article className="site-container space-y-8">
         <section className="glass-panel-strong overflow-hidden">
           <div className="relative">
             {article.thumbnail_url ? (
               <div className="relative h-56 w-full overflow-hidden sm:h-72">
                 <img src={getGuideCover(article)} alt={article.title} className="h-full w-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#121319] via-[#121319]/55 to-transparent" />
               </div>
             ) : null}
 
@@ -108,7 +108,7 @@ export function GuideDetailClient({ slug }: { slug: string }) {
               </Button>
 
               <div className="mb-4 flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-accent">
+                <span className="inline-flex items-center rounded-full border border-[#da3e44]/30 bg-[#da3e44]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#ff8a98]">
                   Guide
                 </span>
                 {article.status === "draft" ? (
@@ -117,19 +117,19 @@ export function GuideDetailClient({ slug }: { slug: string }) {
                   </span>
                 ) : null}
                 {isGuideLocked(article) ? (
-                  <span className="inline-flex items-center rounded-full border border-border/[0.22] bg-muted/70 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#cfe0ee]">
+                  <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-300">
                     <Lock className="mr-1 h-3 w-3" /> Locked
                   </span>
                 ) : null}
               </div>
 
-              <h1 className="text-4xl font-black tracking-tight text-foreground sm:text-5xl">{article.title}</h1>
+              <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl">{article.title}</h1>
               <div className="accent-rule my-5" />
-              {article.summary ? <p className="max-w-3xl text-lg leading-8 text-muted-foreground">{article.summary}</p> : null}
+              {article.summary ? <p className="max-w-3xl text-lg leading-8 text-slate-300">{article.summary}</p> : null}
 
-              <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
+              <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-sm text-slate-400">
                 <div>
-                  Written by <span className="font-semibold text-foreground">{article.author_name}</span> · {formatGuideDate(article.published_at || article.created_at)}
+                  Written by <span className="font-semibold text-white">{article.author_name}</span> · {formatGuideDate(article.published_at || article.created_at)}
                 </div>
                 {canEditGuide(profile, article) ? (
                   <Button asChild>

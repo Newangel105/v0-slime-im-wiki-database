@@ -1163,7 +1163,7 @@ export function runCalc(
     steps.push({ label: "Enemy DEF", mult: NaN, note: `${enemyDEF} → ${startDEF.toFixed(0)}` })
   }
 
-  // ── Step 3: Base formula ATKÂ² / (ATK + DEF) × skill_rate ─────────────────────
+  // ── Step 3: Base formula ATK² / (ATK + DEF) × skill_rate ─────────────────────
   const baseDmgRatio  = (effATK * effATK) / (effATK + effDEF)
   const skillMult     = skillRate / 100
   const preMultDamage = baseATK > 0 ? baseDmgRatio * skillMult : null
@@ -1302,13 +1302,13 @@ export function runCalc(
 // ─── Utility: MultBar ─────────────────────────────────────────────────────────
 function MultBar({ mult, max }: { mult: number; max: number }) {
   const pct = Math.min(100, (mult / max) * 100)
-  const color = mult >= 3 ? "bg-yellow-500" : mult >= 2 ? "bg-green-500" : mult >= 1.2 ? "bg-blue-500" : "bg-muted"
+  const color = mult >= 3 ? "bg-yellow-500" : mult >= 2 ? "bg-green-500" : mult >= 1.2 ? "bg-blue-500" : "bg-gray-600"
   return (
     <div className="flex items-center gap-2 min-w-0">
-      <div className="flex-1 h-1.5 bg-muted rounded-full overflow-hidden">
+      <div className="flex-1 h-1.5 bg-gray-700 rounded-full overflow-hidden">
         <div className={`h-full rounded-full ${color}`} style={{ width: `${pct}%` }} />
       </div>
-      <span className="text-xs font-mono text-foreground w-14 text-right">x{mult.toFixed(3)}</span>
+      <span className="text-xs font-mono text-white w-14 text-right">x{mult.toFixed(3)}</span>
     </div>
   )
 }
@@ -1341,34 +1341,34 @@ function CharPicker({
   return (
     <div ref={ref} className="relative">
       <button onClick={() => setOpen(o => !o)}
-        className="w-full flex items-center gap-2 bg-primary/80 border border-border rounded-lg px-2.5 py-1.5 text-sm hover:border-border transition-colors"
+        className="w-full flex items-center gap-2 bg-gray-900/80 border border-gray-700 rounded-lg px-2.5 py-1.5 text-sm hover:border-gray-500 transition-colors"
       >
         {value ? (
           <>
             <img src={toPublicAssetPath(value.images.icon)} alt="" className="w-6 h-6 rounded object-cover shrink-0"
               onError={e => { (e.target as HTMLImageElement).src = "/placeholder.svg" }} />
-            <span className="text-foreground truncate flex-1 text-left text-xs">{value.name}</span>
-            <span className={`text-[10px] ${ELEM_COLOR[value.element] ?? "text-muted-foreground"} shrink-0`}>{value.element}</span>
+            <span className="text-white truncate flex-1 text-left text-xs">{value.name}</span>
+            <span className={`text-[10px] ${ELEM_COLOR[value.element] ?? "text-gray-400"} shrink-0`}>{value.element}</span>
           </>
-        ) : <span className="text-muted-foreground text-xs">{placeholder}</span>}
-        <ChevronDown className="w-3 h-3 text-muted-foreground shrink-0" />
+        ) : <span className="text-gray-500 text-xs">{placeholder}</span>}
+        <ChevronDown className="w-3 h-3 text-gray-500 shrink-0" />
       </button>
       {value && (
         <button onClick={e => { e.stopPropagation(); onChange(null) }}
-          className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-600 hover:text-muted-foreground">
+          className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-600 hover:text-gray-300">
           <X className="w-3 h-3" />
         </button>
       )}
       {open && (
         <div className="fixed inset-0 z-50 flex items-start md:items-center justify-center bg-black/60 px-4 py-8 overflow-auto" onClick={() => setOpen(false)}>
-          <div className="w-full max-w-2xl bg-primary border border-border rounded-2xl shadow-2xl overflow-hidden max-h-[90vh]" onClick={e => e.stopPropagation()}>
-            <div className="flex items-center gap-3 p-4 border-b border-border">
-              <div className="flex-1 flex items-center gap-2 bg-card rounded-lg px-3">
-                <Search className="w-4 h-4 text-muted-foreground" />
+          <div className="w-full max-w-2xl bg-gray-900 border border-gray-600 rounded-2xl shadow-2xl overflow-hidden max-h-[90vh]" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center gap-3 p-4 border-b border-gray-800">
+              <div className="flex-1 flex items-center gap-2 bg-gray-800 rounded-lg px-3">
+                <Search className="w-4 h-4 text-gray-500" />
                 <input value={q} onChange={e => setQ(e.target.value)} placeholder="Name / element..."
-                  className="flex-1 bg-transparent text-sm py-2.5 text-foreground outline-none placeholder-gray-600" autoFocus />
+                  className="flex-1 bg-transparent text-sm py-2.5 text-white outline-none placeholder-gray-600" autoFocus />
               </div>
-              <button onClick={() => setOpen(false)} className="text-muted-foreground hover:text-foreground">
+              <button onClick={() => setOpen(false)} className="text-gray-500 hover:text-white">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -1376,15 +1376,15 @@ function CharPicker({
               {filtered.map(c => (
                 <li key={c.master_pc_id}>
                   <button onClick={() => { onChange(c); setOpen(false); setQ("") }}
-                    className="w-full text-left px-4 py-3 hover:bg-card flex items-center gap-3 text-sm">
+                    className="w-full text-left px-4 py-3 hover:bg-gray-800 flex items-center gap-3 text-sm">
                     <img src={toPublicAssetPath(c.images.icon)} alt="" className="w-10 h-10 rounded-lg object-cover shrink-0"
                       onError={e => { (e.target as HTMLImageElement).src = "/placeholder.svg" }} />
                     <div className="flex-1 min-w-0">
-                      <div className="text-foreground truncate font-semibold">{c.name}</div>
-                      <div className="text-[11px] text-muted-foreground truncate">{c.affiliation_name || c.weapon_type}</div>
+                      <div className="text-white truncate font-semibold">{c.name}</div>
+                      <div className="text-[11px] text-gray-500 truncate">{c.affiliation_name || c.weapon_type}</div>
                     </div>
-                    <span className={`shrink-0 text-xs font-medium ${ELEM_COLOR[c.element] ?? "text-muted-foreground"}`}>{c.element}</span>
-                    <span className="text-muted-foreground shrink-0 text-xs">{c.attack_type}</span>
+                    <span className={`shrink-0 text-xs font-medium ${ELEM_COLOR[c.element] ?? "text-gray-400"}`}>{c.element}</span>
+                    <span className="text-gray-500 shrink-0 text-xs">{c.attack_type}</span>
                   </button>
                 </li>
               ))}
@@ -1422,7 +1422,7 @@ function CharPortrait({
               className="w-full h-full object-cover"
               onError={e => { (e.target as HTMLImageElement).src = "/placeholder.svg" }} />
           ) : (
-            <div className={`w-full h-full flex items-center justify-center ${isProt ? "bg-purple-950/30 border-2 border-dashed border-purple-800" : "bg-card border-2 border-dashed border-border"}`}>
+            <div className={`w-full h-full flex items-center justify-center ${isProt ? "bg-purple-950/30 border-2 border-dashed border-purple-800" : "bg-gray-800 border-2 border-dashed border-gray-700"}`}>
               {isProt ? <Shield className="w-5 h-5 text-purple-700" /> : <Plus className="w-5 h-5 text-gray-600" />}
             </div>
           )}
@@ -1433,18 +1433,18 @@ function CharPortrait({
         {/* Element icon badge */}
         {char && ELEM_ICON[char.element] && (
           <img src={ELEM_ICON[char.element]} alt={char.element}
-            className="absolute -bottom-0.5 -right-0.5 w-4 h-4 object-contain rounded-full bg-primary ring-1 ring-gray-800" />
+            className="absolute -bottom-0.5 -right-0.5 w-4 h-4 object-contain rounded-full bg-gray-900 ring-1 ring-gray-800" />
         )}
         {/* Calc target button */}
         {char && onSetCalcTarget && !isProt && (
           <button onClick={e => { e.stopPropagation(); onSetCalcTarget() }}
             title="Use for damage calculation"
-            className={`absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center transition-colors ${isCalcTarget ? "bg-yellow-500 text-black" : "bg-muted text-muted-foreground opacity-0 group-hover:opacity-100"}`}>
+            className={`absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center transition-colors ${isCalcTarget ? "bg-yellow-500 text-black" : "bg-gray-700 text-gray-400 opacity-0 group-hover:opacity-100"}`}>
             <Swords className="w-2.5 h-2.5" />
           </button>
         )}
       </div>
-      <span className={`text-center leading-tight max-w-[70px] truncate ${isProt ? "text-[9px] text-purple-300" : "text-[9px] text-muted-foreground"}`}>
+      <span className={`text-center leading-tight max-w-[70px] truncate ${isProt ? "text-[9px] text-purple-300" : "text-[9px] text-gray-300"}`}>
         {char ? char.name : (emptyLabel ?? "")}
       </span>
     </div>
@@ -1460,14 +1460,14 @@ function EnemyCard({
 }) {
   if (!enemy) return (
     <button onClick={onChangeEnemy}
-      className="flex flex-col items-center justify-center w-full border-2 border-dashed border-border rounded-xl p-6 hover:border-border transition-colors gap-2">
+      className="flex flex-col items-center justify-center w-full border-2 border-dashed border-gray-700 rounded-xl p-6 hover:border-gray-500 transition-colors gap-2">
       <Search className="w-8 h-8 text-gray-600" />
-      <span className="text-muted-foreground text-sm">Select Enemy</span>
+      <span className="text-gray-500 text-sm">Select Enemy</span>
     </button>
   )
 
-  const elemColor = ELEM_COLOR[enemy.element] ?? "text-muted-foreground"
-  const elemBorder = ELEM_BORDER[enemy.element] ?? "border-border bg-primary/50"
+  const elemColor = ELEM_COLOR[enemy.element] ?? "text-gray-400"
+  const elemBorder = ELEM_BORDER[enemy.element] ?? "border-gray-700 bg-gray-900/50"
 
   // Compute weakness/resist badges: negative value = weak (shown as W), large positive = resist (R)
   const weakPhys = (enemy.resist_attack_physics ?? 0) < 0
@@ -1494,17 +1494,17 @@ function EnemyCard({
           <div className="flex items-center gap-1.5 mb-0.5">
             {ELEM_ICON[enemy.element] && <img src={ELEM_ICON[enemy.element]} alt={enemy.element} className="w-4 h-4 object-contain shrink-0" />}
             <span className={`text-xs font-semibold ${elemColor}`}>{enemy.element} Attribute</span>
-            <span className="text-xs text-muted-foreground ml-1">{enemy.attack_type}</span>
+            <span className="text-xs text-gray-500 ml-1">{enemy.attack_type}</span>
           </div>
-          <div className="font-bold text-foreground text-sm leading-tight truncate">{enemy.name}</div>
-          {enemy.affiliation_name && <div className="text-xs text-muted-foreground truncate">{enemy.affiliation_name}</div>}
+          <div className="font-bold text-white text-sm leading-tight truncate">{enemy.name}</div>
+          {enemy.affiliation_name && <div className="text-xs text-gray-500 truncate">{enemy.affiliation_name}</div>}
           <div className="grid grid-cols-3 gap-1 mt-2 text-xs">
             {([["HP", enemy.infinity_hp ? "Inf" : enemy.hp.toLocaleString()],
               ["ATK", enemy.attack.toLocaleString()],
               ["DEF", enemy.defense.toLocaleString()]] as [string, string][]).map(([label, val]) => (
               <div key={label} className="flex flex-col">
-                <span className="text-muted-foreground text-[10px]">{label}</span>
-                <span className="text-foreground font-mono font-semibold">{val}</span>
+                <span className="text-gray-500 text-[10px]">{label}</span>
+                <span className="text-white font-mono font-semibold">{val}</span>
               </div>
             ))}
           </div>
@@ -1522,7 +1522,7 @@ function EnemyCard({
                 </span>
               )}
               {elemWeaknesses.map(el => (
-                <span key={el} className={`text-[10px] px-1 py-0.5 rounded border font-semibold ${ELEM_BORDER[el] ?? "border-border bg-primary"} ${ELEM_COLOR[el] ?? "text-muted-foreground"}`}>
+                <span key={el} className={`text-[10px] px-1 py-0.5 rounded border font-semibold ${ELEM_BORDER[el] ?? "border-gray-700 bg-gray-900"} ${ELEM_COLOR[el] ?? "text-gray-300"}`}>
                   {ELEM_ICON[el] && <img src={ELEM_ICON[el]} alt={el} className="inline w-3 h-3 mr-0.5" />}
                   {el}
                 </span>
@@ -1531,7 +1531,7 @@ function EnemyCard({
           )}
         </div>
       </div>
-      <button onClick={onChangeEnemy} className="w-full text-center text-[10px] text-gray-600 hover:text-muted-foreground transition-colors">
+      <button onClick={onChangeEnemy} className="w-full text-center text-[10px] text-gray-600 hover:text-gray-400 transition-colors">
         Change enemy
       </button>
     </div>
@@ -1568,14 +1568,14 @@ function EnemyPickerOverlay({
 
   return (
     <div className="fixed inset-0 z-50 flex items-start md:items-center justify-center bg-black/70 py-8 overflow-auto" onClick={onClose}>
-      <div className="bg-primary border border-border rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col mx-4" onClick={e => e.stopPropagation()}>
-        <div className="flex items-center gap-3 p-3 border-b border-border">
-          <div className="flex-1 flex items-center gap-2 bg-card rounded-lg px-3">
-            <Search className="w-4 h-4 text-muted-foreground" />
+      <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col mx-4" onClick={e => e.stopPropagation()}>
+        <div className="flex items-center gap-3 p-3 border-b border-gray-800">
+          <div className="flex-1 flex items-center gap-2 bg-gray-800 rounded-lg px-3">
+            <Search className="w-4 h-4 text-gray-500" />
             <input value={q} onChange={e => setQ(e.target.value)} placeholder="Search enemies..."
-              className="flex-1 bg-transparent text-sm py-2 text-foreground outline-none placeholder-gray-600" autoFocus />
+              className="flex-1 bg-transparent text-sm py-2 text-white outline-none placeholder-gray-600" autoFocus />
           </div>
-          <button onClick={onClose} className="text-muted-foreground hover:text-foreground"><X className="w-5 h-5" /></button>
+          <button onClick={onClose} className="text-gray-500 hover:text-white"><X className="w-5 h-5" /></button>
         </div>
         <div className="flex-1 overflow-y-auto p-3">
           {tierAvatar ? (
@@ -1585,9 +1585,9 @@ function EnemyPickerOverlay({
               </button>
               {tierOptions.map(e => (
                 <button key={e.master_enemy_id} onClick={() => { onSelect(e); onClose() }}
-                  className="w-full text-left p-2 rounded-lg hover:bg-card grid grid-cols-4 gap-2 text-xs items-center">
-                  <span className="text-foreground truncate font-semibold">{e.name}</span>
-                  <span className="text-muted-foreground">HP {e.hp.toLocaleString()}</span>
+                  className="w-full text-left p-2 rounded-lg hover:bg-gray-800 grid grid-cols-4 gap-2 text-xs items-center">
+                  <span className="text-white truncate font-semibold">{e.name}</span>
+                  <span className="text-gray-400">HP {e.hp.toLocaleString()}</span>
                   <span className="text-red-400">ATK {e.attack.toLocaleString()}</span>
                   <span className="text-blue-400">DEF {e.defense.toLocaleString()}</span>
                 </button>
@@ -1602,10 +1602,10 @@ function EnemyPickerOverlay({
                     if (same.length === 1) { onSelect(same[0]); onClose() }
                     else setTierAvatar(e.avatar_name)
                   }}
-                  title={e.name} className="flex flex-col items-center gap-1 rounded-lg p-1.5 hover:bg-card group">
+                  title={e.name} className="flex flex-col items-center gap-1 rounded-lg p-1.5 hover:bg-gray-800 group">
                   {e.thumb ? <img src={e.thumb} alt={e.name} className="w-12 h-12 object-contain rounded" />
-                    : <div className="w-12 h-12 bg-card rounded flex items-center justify-center text-gray-600 text-xs">?</div>}
-                  <span className="text-[9px] text-muted-foreground group-hover:text-foreground text-center leading-tight line-clamp-2 w-full">{e.name}</span>
+                    : <div className="w-12 h-12 bg-gray-800 rounded flex items-center justify-center text-gray-600 text-xs">?</div>}
+                  <span className="text-[9px] text-gray-500 group-hover:text-white text-center leading-tight line-clamp-2 w-full">{e.name}</span>
                 </button>
               ))}
               {filteredAvatars.length === 0 && <div className="col-span-full text-center text-gray-600 py-8">No enemies found</div>}
@@ -1650,7 +1650,7 @@ function SkillBubble({
           className="w-full h-full object-cover"
           onError={e => { (e.target as HTMLImageElement).src = "/placeholder.svg" }} />
         {slotBadge && !isDamageSkill && (
-          <div className="absolute top-0.5 left-0.5 px-1 rounded bg-black/75 text-[8px] font-bold text-foreground border border-border">
+          <div className="absolute top-0.5 left-0.5 px-1 rounded bg-black/75 text-[8px] font-bold text-white border border-gray-700">
             {slotBadge}
           </div>
         )}
@@ -1669,12 +1669,12 @@ function SkillBubble({
           <div className="absolute inset-0 bg-black/35" />
         )}
       </button>
-      <span className={`text-[9px] text-center leading-tight max-w-[64px] ${isDisabled ? "text-gray-700" : isActive || isDamageSelected ? "text-foreground" : "text-muted-foreground"}`}>
+      <span className={`text-[9px] text-center leading-tight max-w-[64px] ${isDisabled ? "text-gray-700" : isActive || isDamageSelected ? "text-gray-200" : "text-gray-500"}`}>
         {skill.name}
       </span>
       {showUseCountInput && !isDamageSkill && (
         <div className="flex items-center gap-1">
-          <span className="text-[8px] text-muted-foreground">x</span>
+          <span className="text-[8px] text-gray-500">x</span>
           <input
             type="number"
             min="0"
@@ -1682,7 +1682,7 @@ function SkillBubble({
             disabled={isDisabled}
             onClick={(event) => event.stopPropagation()}
             onChange={(event) => onUseCountChange?.(normalizeUseCount(Number.parseInt(event.target.value || "0", 10)))}
-            className={`w-10 rounded border px-1 py-0.5 text-center text-[9px] font-mono ${isDisabled ? "border-border bg-primary text-gray-700" : "border-border bg-card text-foreground"}`}
+            className={`w-10 rounded border px-1 py-0.5 text-center text-[9px] font-mono ${isDisabled ? "border-gray-800 bg-gray-900 text-gray-700" : "border-gray-700 bg-gray-800 text-white"}`}
           />
         </div>
       )}
@@ -1697,7 +1697,7 @@ function CharInfoPanel({
   const charBuffs = activeBuffs.filter(b => b.value !== 0 && b.source.startsWith(`${char.name} - `))
   const stats = displayStats ?? getBattleStats(char)
   return (
-    <div className="bg-primary border border-border rounded-xl overflow-hidden flex flex-col h-full">
+    <div className="bg-gray-900 border border-gray-700 rounded-xl overflow-hidden flex flex-col h-full">
       <div className="relative h-20 bg-gradient-to-br from-gray-800 to-gray-900">
         <img src={toPublicAssetPath(char.images.icon)} alt={char.name}
           className="absolute right-2 bottom-0 h-24 object-contain opacity-40"
@@ -1705,33 +1705,33 @@ function CharInfoPanel({
         <div className="absolute inset-0 p-3 flex flex-col justify-end">
           <div className="flex items-center gap-1.5">
             {ELEM_ICON[char.element] && <img src={ELEM_ICON[char.element]} alt="" className="w-5 h-5 object-contain" />}
-            <span className={`text-xs font-semibold ${ELEM_COLOR[char.element] ?? "text-muted-foreground"}`}>{char.element} Attribute</span>
+            <span className={`text-xs font-semibold ${ELEM_COLOR[char.element] ?? "text-gray-300"}`}>{char.element} Attribute</span>
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-foreground font-bold text-lg leading-tight">{char.name}</span>
-            <span className="text-muted-foreground text-xs truncate max-w-[100px]">{char.affiliation_name}</span>
+            <span className="text-white font-bold text-lg leading-tight">{char.name}</span>
+            <span className="text-gray-400 text-xs truncate max-w-[100px]">{char.affiliation_name}</span>
           </div>
         </div>
-        <button onClick={onClose} className="absolute top-2 right-2 text-muted-foreground hover:text-foreground bg-muted rounded-full p-0.5">
+        <button onClick={onClose} className="absolute top-2 right-2 text-gray-500 hover:text-white bg-gray-900/60 rounded-full p-0.5">
           <X className="w-3.5 h-3.5" />
         </button>
       </div>
       <div className="divide-y divide-gray-800 text-sm">
         <div className="grid grid-cols-2 px-3 py-2 gap-y-1.5 text-xs">
-          <div className="text-muted-foreground">Attack Type<span className="ml-2 font-semibold text-foreground">{char.attack_type}</span></div>
-          <div className="text-muted-foreground">Weapon<span className="ml-2 text-muted-foreground">{char.weapon_type}</span></div>
+          <div className="text-gray-400">Attack Type<span className="ml-2 font-semibold text-white">{char.attack_type}</span></div>
+          <div className="text-gray-400">Weapon<span className="ml-2 text-gray-300">{char.weapon_type}</span></div>
         </div>
         {[{ label: "HP", val: (stats?.hp ?? char.stats.hp).toLocaleString() },
           { label: "ATK", val: (stats?.attack ?? char.stats.attack).toLocaleString() },
           { label: "DEF", val: (stats?.defense ?? char.stats.defense).toLocaleString() }].map(({ label, val }) => (
           <div key={label} className="flex items-center px-3 py-1.5 text-xs">
-            <span className="text-muted-foreground flex-1">{label}</span>
-            <span className="font-mono font-semibold text-foreground">{val}</span>
+            <span className="text-gray-400 flex-1">{label}</span>
+            <span className="font-mono font-semibold text-white">{val}</span>
           </div>
         ))}
       </div>
-      <div className="flex-1 overflow-y-auto px-3 py-2 border-t border-border">
-        <div className="text-xs font-semibold text-muted-foreground mb-2">Effect List</div>
+      <div className="flex-1 overflow-y-auto px-3 py-2 border-t border-gray-800">
+        <div className="text-xs font-semibold text-gray-400 mb-2">Effect List</div>
         {charBuffs.length === 0 ? (
           <p className="text-xs text-gray-700 italic">No active effects</p>
         ) : (
@@ -1742,7 +1742,7 @@ function CharInfoPanel({
                   {b.value >= 0 ? "+" : "-"}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <span className={`font-semibold ${b.value >= 0 ? "text-foreground" : "text-red-300"}`}>
+                  <span className={`font-semibold ${b.value >= 0 ? "text-white" : "text-red-300"}`}>
                     {getBuffLabel(b.type)} {b.value >= 0 ? "+" : ""}{(b.value/100).toFixed(1)}%
                   </span>
                   <span className="text-gray-600 text-[10px] ml-1">({b.source})</span>
@@ -1764,7 +1764,7 @@ function EnemyInfoPanel({
   onDefChange: (v: string) => void; onHpChange: (v: string) => void; onAtkChange: (v: string) => void
   activeDebuffs: BuffEntry[]; onClose: () => void
 }) {
-  const elemBorder = ELEM_BORDER[enemy.element] ?? "border-border bg-primary"
+  const elemBorder = ELEM_BORDER[enemy.element] ?? "border-gray-700 bg-gray-900"
   const baseResists = [
     ["Physical", enemy.resist_attack_physics ?? 0],
     ["Magic", enemy.resist_attack_magic ?? 0],
@@ -1778,20 +1778,20 @@ function EnemyInfoPanel({
   ].filter(([, val]) => val !== 0) as [string, number][]
   return (
     <div className={`rounded-xl border ${elemBorder} overflow-hidden flex flex-col h-full`}>
-      <div className="relative bg-primary/80 p-3">
+      <div className="relative bg-gray-900/80 p-3">
         {enemy.thumb && (
           <img src={enemy.thumb} alt="" className="absolute right-2 top-1 h-20 object-contain opacity-30" />
         )}
         <div className="relative">
           <div className="flex items-center gap-1.5 mb-0.5">
             {ELEM_ICON[enemy.element] && <img src={ELEM_ICON[enemy.element]} alt="" className="w-5 h-5 object-contain" />}
-            <span className={`text-xs ${ELEM_COLOR[enemy.element] ?? "text-muted-foreground"}`}>{enemy.element} Attribute</span>
-            <span className="text-muted-foreground text-xs ml-1">{enemy.attack_type}</span>
+            <span className={`text-xs ${ELEM_COLOR[enemy.element] ?? "text-gray-400"}`}>{enemy.element} Attribute</span>
+            <span className="text-gray-500 text-xs ml-1">{enemy.attack_type}</span>
           </div>
-          {enemy.affiliation_name && <div className="text-muted-foreground text-xs italic">{enemy.affiliation_name}</div>}
-          <div className="text-foreground font-bold text-lg leading-tight">{enemy.name}</div>
+          {enemy.affiliation_name && <div className="text-gray-400 text-xs italic">{enemy.affiliation_name}</div>}
+          <div className="text-white font-bold text-lg leading-tight">{enemy.name}</div>
         </div>
-        <button onClick={onClose} className="absolute top-2 right-2 text-muted-foreground hover:text-foreground"><X className="w-3.5 h-3.5" /></button>
+        <button onClick={onClose} className="absolute top-2 right-2 text-gray-500 hover:text-white"><X className="w-3.5 h-3.5" /></button>
       </div>
       <div className="divide-y divide-gray-800 text-xs flex-1 overflow-y-auto">
         {([
@@ -1800,19 +1800,19 @@ function EnemyInfoPanel({
           { label: "DEF", base: enemy.defense, state: defOverride, onChange: onDefChange,  inf: false },
         ]).map(({ label, base, state, onChange, inf }) => (
           <div key={label} className="flex items-center px-3 py-1.5 gap-2">
-            <span className="text-muted-foreground w-8">{label}</span>
+            <span className="text-gray-400 w-8">{label}</span>
             <input type="number" value={state} onChange={e => onChange(e.target.value)}
               placeholder={inf ? "Inf" : base.toLocaleString()}
-              className="w-28 bg-card border border-border rounded px-2 py-0.5 font-mono text-foreground text-xs" />
+              className="w-28 bg-gray-800 border border-gray-700 rounded px-2 py-0.5 font-mono text-white text-xs" />
             {!state && <span className="text-gray-600 text-[10px]">base: {base.toLocaleString()}</span>}
           </div>
         ))}
         {baseResists.length > 0 && (
-          <div className="px-3 py-2 border-t border-border">
-            <div className="text-xs font-semibold text-muted-foreground mb-2">Base Resistances</div>
+          <div className="px-3 py-2 border-t border-gray-800">
+            <div className="text-xs font-semibold text-gray-400 mb-2">Base Resistances</div>
             <div className="flex flex-wrap gap-1.5">
               {baseResists.map(([label, value]) => (
-                <span key={label} className={`text-[10px] px-1.5 py-0.5 rounded border ${value < 0 ? "border-orange-700 bg-orange-900/50 text-orange-300" : "border-border bg-card text-muted-foreground"}`}>
+                <span key={label} className={`text-[10px] px-1.5 py-0.5 rounded border ${value < 0 ? "border-orange-700 bg-orange-900/50 text-orange-300" : "border-gray-700 bg-gray-800 text-gray-300"}`}>
                   {label} {value < 0 ? "Weak" : "Resist"} {Math.abs(value / 100)}%
                 </span>
               ))}
@@ -1820,7 +1820,7 @@ function EnemyInfoPanel({
           </div>
         )}
         <div className="px-3 py-2">
-          <div className="text-xs font-semibold text-muted-foreground mb-2">Effect List</div>
+          <div className="text-xs font-semibold text-gray-400 mb-2">Effect List</div>
           {activeDebuffs.length === 0 ? (
             <p className="text-xs text-gray-700 italic">No active debuffs</p>
           ) : (
@@ -1847,15 +1847,15 @@ function DamageResultPanel({ result, onReroll, onClose }: { result: CalcResult; 
   const max = Math.max(4, ...result.steps.filter(s => !isNaN(s.mult)).map(s => s.mult))
   const { procRolls: r, critRate, penRate, coopRate, aegisRate } = result
   return (
-    <div className="bg-primary border border-border rounded-xl overflow-hidden flex flex-col h-full">
-      <div className="flex items-center justify-between px-3 py-2 border-b border-border">
+    <div className="bg-gray-900 border border-gray-700 rounded-xl overflow-hidden flex flex-col h-full">
+      <div className="flex items-center justify-between px-3 py-2 border-b border-gray-800">
         <span className="text-xs font-bold text-blue-300 uppercase tracking-wide">Damage Result</span>
         <div className="flex items-center gap-1.5">
           <button onClick={onReroll}
-            className="text-[10px] text-muted-foreground hover:text-foreground border border-border hover:border-border rounded px-1.5 py-0.5 transition-colors">
+            className="text-[10px] text-gray-400 hover:text-white border border-gray-700 hover:border-gray-500 rounded px-1.5 py-0.5 transition-colors">
             Re-roll
           </button>
-          <button onClick={onClose} className="text-muted-foreground hover:text-foreground"><X className="w-3.5 h-3.5" /></button>
+          <button onClick={onClose} className="text-gray-500 hover:text-white"><X className="w-3.5 h-3.5" /></button>
         </div>
       </div>
       <div className="flex-1 overflow-y-auto p-3 space-y-3">
@@ -1870,36 +1870,36 @@ function DamageResultPanel({ result, onReroll, onClose }: { result: CalcResult; 
             <div key={label} className={`flex items-center gap-1 px-1.5 py-0.5 rounded ${
               superFired ? "bg-yellow-900/50 border border-yellow-700" :
               fired      ? "bg-blue-900/50  border border-blue-700" :
-                           "bg-card/50  border border-border"
+                           "bg-gray-800/50  border border-gray-700"
             }`}>
-              <span className={superFired ? "text-yellow-300" : fired ? "text-blue-300" : "text-muted-foreground"}>
+              <span className={superFired ? "text-yellow-300" : fired ? "text-blue-300" : "text-gray-500"}>
                 {superFired ? "★" : fired ? "✔" : "×"}
               </span>
-              <span className={fired ? "text-foreground" : "text-gray-600"}>{label}</span>
-              <span className="ml-auto text-muted-foreground">{(rate/100).toFixed(1)}%</span>
+              <span className={fired ? "text-white" : "text-gray-600"}>{label}</span>
+              <span className="ml-auto text-gray-500">{(rate/100).toFixed(1)}%</span>
             </div>
           ))}
         </div>
         {result.rawDamage !== null && (
           <div className="text-center py-2">
             <div className="text-3xl font-bold text-yellow-300 font-mono">{Math.round(result.rawDamage).toLocaleString()}</div>
-            <div className="text-xs text-muted-foreground mt-0.5">estimated damage</div>
+            <div className="text-xs text-gray-500 mt-0.5">estimated damage</div>
           </div>
         )}
         <div className="space-y-2">
           {result.steps.map((step, i) => (
             <div key={i} className="space-y-0.5">
               <div className="flex justify-between text-xs">
-                <span className="text-foreground">{step.label}</span>
-                <span className="text-muted-foreground text-[10px] max-w-[55%] text-right truncate" title={step.note}>{step.note}</span>
+                <span className="text-gray-200">{step.label}</span>
+                <span className="text-gray-500 text-[10px] max-w-[55%] text-right truncate" title={step.note}>{step.note}</span>
               </div>
               {!isNaN(step.mult) && <MultBar mult={step.mult} max={max} />}
             </div>
           ))}
         </div>
-        <div className="flex justify-between text-sm border-t border-border pt-2">
-          <span className="text-muted-foreground">Total multiplier</span>
-          <span className="font-mono text-foreground font-bold">x{result.totalMult.toFixed(4)}</span>
+        <div className="flex justify-between text-sm border-t border-gray-800 pt-2">
+          <span className="text-gray-400">Total multiplier</span>
+          <span className="font-mono text-white font-bold">x{result.totalMult.toFixed(4)}</span>
         </div>
       </div>
     </div>
@@ -1920,7 +1920,7 @@ function StatModal({
   const stats = getSlotBattleStats(slot)
   return (
     <div className="fixed inset-0 z-50 flex items-start md:items-center justify-center bg-black/70 py-8 overflow-auto" onClick={onClose}>
-      <div className="bg-primary border border-border rounded-2xl w-full max-w-2xl p-5 shadow-2xl mx-4 max-h-[90vh] overflow-auto" onClick={e => e.stopPropagation()}>
+      <div className="bg-gray-900 border border-gray-700 rounded-2xl w-full max-w-2xl p-5 shadow-2xl mx-4 max-h-[90vh] overflow-auto" onClick={e => e.stopPropagation()}>
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-2">
             {char && (
@@ -1928,11 +1928,11 @@ function StatModal({
                 onError={e => { (e.target as HTMLImageElement).src = "/placeholder.svg" }} />
             )}
             <div>
-              <div className="text-foreground font-bold text-lg">{char?.name ?? `Attacker ${slotIdx + 1}`}</div>
-              {char && <div className={`text-sm ${ELEM_COLOR[char.element] ?? "text-muted-foreground"}`}>{char.element} Â· {char.attack_type}</div>}
+              <div className="text-white font-bold text-lg">{char?.name ?? `Attacker ${slotIdx + 1}`}</div>
+              {char && <div className={`text-sm ${ELEM_COLOR[char.element] ?? "text-gray-400"}`}>{char.element} · {char.attack_type}</div>}
             </div>
           </div>
-          <button onClick={onClose}><X className="w-4 h-4 text-muted-foreground hover:text-foreground" /></button>
+          <button onClick={onClose}><X className="w-4 h-4 text-gray-400 hover:text-white" /></button>
         </div>
         <div className="space-y-4">
           {([
@@ -1941,20 +1941,20 @@ function StatModal({
             ["DEF Override", "def", stats?.defense ?? char?.stats.defense ?? 0],
           ] as const).map(([label, key, fallback]) => (
             <div key={key} className="flex items-center gap-2">
-              <label className="text-muted-foreground text-sm w-32 font-medium">{label}</label>
+              <label className="text-gray-300 text-sm w-32 font-medium">{label}</label>
               <input
                 type="number"
                 value={statOverrides[key]}
                 onChange={e => onStatOverridesChange({ ...statOverrides, [key]: e.target.value })}
                 placeholder={String(fallback)}
-                className="flex-1 bg-card border border-border rounded-lg px-3 py-2 text-sm text-foreground"
+                className="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white"
               />
               {statOverrides[key] && (
                 <button onClick={() => onStatOverridesChange({ ...statOverrides, [key]: "" })} className="text-gray-600 hover:text-red-400"><X className="w-3 h-3" /></button>
               )}
             </div>
           ))}
-          <div className="border-t border-border pt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="border-t border-gray-800 pt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
             {([
               ["Crit %", "probCritical"],
               ["Super Crit %", "probCriticalSuper"],
@@ -1965,11 +1965,11 @@ function StatModal({
               ["Aegis %", "probDefcritical"],
             ] as [string, keyof BaseRates][]).map(([label, key]) => (
               <div key={key} className="flex items-center gap-2">
-                <label className="text-muted-foreground text-sm w-28">{label}</label>
+                <label className="text-gray-400 text-sm w-28">{label}</label>
                 <input type="number" value={(rates[key] as number) / 100}
                   onChange={e => onRatesChange({ ...rates, [key]: Math.round(parseFloat(e.target.value || "0") * 100) })}
                   placeholder="0"
-                  className="flex-1 bg-card border border-border rounded-lg px-3 py-2 text-sm text-foreground" />
+                  className="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white" />
               </div>
             ))}
           </div>
@@ -1977,9 +1977,9 @@ function StatModal({
             <input type="checkbox" checked={rates.isEnhancedAttacker}
               onChange={e => onRatesChange({ ...rates, isEnhancedAttacker: e.target.checked })}
               className="accent-blue-500" />
-            <span className="text-muted-foreground">Enhanced Element Bonus</span>
+            <span className="text-gray-300">Enhanced Element Bonus</span>
           </label>
-          <p className="text-xs text-muted-foreground -mt-1">
+          <p className="text-xs text-gray-500 -mt-1">
             Applies the extra +10% bonus when the attacker has enhanced elemental advantage.
           </p>
         </div>
@@ -2388,10 +2388,10 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
   }, [mainProtector, subProtector, protectorSkillUses])
 
   return (
-    <div className="site-page text-foreground">
+    <div className="site-page text-white">
       {/* Header bar */}
-      <div className="border-b border-border bg-[#050811]/80 px-4 py-2 flex items-center gap-3 backdrop-blur-xl">
-        <span className="text-muted-foreground text-xs font-bold">Battle Sim WIP</span>
+      <div className="border-b border-white/10 bg-[#050811]/80 px-4 py-2 flex items-center gap-3 backdrop-blur-xl">
+        <span className="text-gray-300 text-xs font-bold">Battle Sim WIP</span>
         <span className="text-amber-300/90 text-xs ml-auto hidden md:block">Work in progress: calculation flow is usable, but there are still bugs and missing edge cases to fix.</span>
       </div>
 
@@ -2402,7 +2402,7 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
         <div className="flex-1 flex flex-col min-w-0">
 
           {/* Enemy section */}
-          <div className="p-4 border-b border-border bg-primary/30">
+          <div className="p-4 border-b border-gray-800 bg-gray-900/30">
             <div className="flex items-start gap-4">
               <div className="flex-1 min-w-0">
                 <EnemyCard
@@ -2419,7 +2419,7 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
                     <div key={label}>
                       <label className="text-gray-600 text-[10px]">Override {label}</label>
                       <input type="number" value={val} onChange={e => setter(e.target.value)} placeholder={String(base)}
-                        className="w-full bg-card border border-border rounded px-2 py-0.5 text-xs text-foreground" />
+                        className="w-full bg-gray-800 border border-gray-700 rounded px-2 py-0.5 text-xs text-white" />
                     </div>
                   ))}
                 </div>
@@ -2460,7 +2460,7 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
                     />
                     {slot.char && (
                       <button onClick={() => setStatModalSlot(i)}
-                        className="text-[10px] font-semibold text-blue-200 bg-blue-950/70 border border-blue-700 rounded-md px-2 py-1 hover:bg-blue-900/70 hover:text-foreground text-center transition-colors shadow-sm">
+                        className="text-[10px] font-semibold text-blue-200 bg-blue-950/70 border border-blue-700 rounded-md px-2 py-1 hover:bg-blue-900/70 hover:text-white text-center transition-colors shadow-sm">
                         Edit Stats
                       </button>
                     )}
@@ -2468,8 +2468,8 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
                 ))}
               </div>
               {/* Protector column */}
-              <div className="border-l border-border pl-3 flex flex-col gap-2">
-                <div className="text-[10px] text-muted-foreground uppercase tracking-wide text-center">Protectors</div>
+              <div className="border-l border-gray-700 pl-3 flex flex-col gap-2">
+                <div className="text-[10px] text-gray-500 uppercase tracking-wide text-center">Protectors</div>
                 {(["main", "sub"] as const).map(side => {
                   const prot = side === "main" ? mainProtector : subProtector
                   return (
@@ -2504,10 +2504,10 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
           </div>
 
           {/* Active effects panel — always visible */}
-          <div className="border-t border-border p-3 bg-primary/40 space-y-2">
+          <div className="border-t border-gray-800 p-3 bg-gray-900/40 space-y-2">
             <div className="flex items-center gap-3 flex-wrap">
               {skillRate > 0 && (
-                <span className="text-[10px] px-1.5 py-0.5 rounded border border-border bg-card text-muted-foreground">
+                <span className="text-[10px] px-1.5 py-0.5 rounded border border-gray-700 bg-gray-800 text-gray-300">
                   Skill Rate {skillRate}%
                 </span>
               )}
@@ -2521,7 +2521,7 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
               ))}
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-[10px] text-muted-foreground uppercase tracking-wide">Ultimate Soul</span>
+              <span className="text-[10px] text-gray-500 uppercase tracking-wide">Ultimate Soul</span>
               {([
                 ["none", "None"],
                 ["soco", "SoCo"],
@@ -2533,7 +2533,7 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
                   <button
                     key={value}
                     onClick={() => setRolls((prev) => ({ ...prev, soco: value }))}
-                    className={`rounded-md border px-2 py-1 text-[10px] transition-colors ${active ? "border-blue-600 bg-blue-900/60 text-blue-200" : "border-border bg-card text-muted-foreground hover:text-foreground"}`}
+                    className={`rounded-md border px-2 py-1 text-[10px] transition-colors ${active ? "border-blue-600 bg-blue-900/60 text-blue-200" : "border-gray-700 bg-gray-800 text-gray-400 hover:text-gray-200"}`}
                   >
                     {label}
                   </button>
@@ -2542,7 +2542,7 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
             </div>
             {enemyConditionOptions.length > 0 && (
               <div className="space-y-1">
-                <div className="text-[10px] text-muted-foreground uppercase tracking-wide">Enemy Conditions</div>
+                <div className="text-[10px] text-gray-500 uppercase tracking-wide">Enemy Conditions</div>
                 <div className="flex flex-wrap gap-1.5">
                   {enemyConditionOptions.map((option) => {
                     const active = enemyConditionToggles[option.name] ?? option.defaultActive
@@ -2553,7 +2553,7 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
                         type="button"
                         title={title || option.name}
                         onClick={() => toggleEnemyCondition(option.name, !active)}
-                        className={`rounded-full border px-2 py-1 text-[10px] transition-colors ${active ? "border-emerald-700 bg-emerald-950/50 text-emerald-300" : "border-border bg-card text-muted-foreground hover:text-foreground"}`}
+                        className={`rounded-full border px-2 py-1 text-[10px] transition-colors ${active ? "border-emerald-700 bg-emerald-950/50 text-emerald-300" : "border-gray-700 bg-gray-800 text-gray-400 hover:text-gray-200"}`}
                       >
                         {option.name}
                       </button>
@@ -2578,7 +2578,7 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
                     <span className={`font-mono w-14 text-right shrink-0 ${buff.value >= 0 ? "text-green-400" : "text-red-400"}`}>
                       {buff.value >= 0 ? "+" : ""}{(buff.value/100).toFixed(1)}%
                     </span>
-                    <span className="text-muted-foreground flex-1 truncate">{getBuffLabel(buff.type)}</span>
+                    <span className="text-gray-300 flex-1 truncate">{getBuffLabel(buff.type)}</span>
                     <span className="text-gray-600 text-[10px] truncate max-w-[8rem]">{buff.source}</span>
                   </div>
                 ))}
@@ -2588,7 +2588,7 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
             )}
           </div>
           {/* Skill bar */}
-          <div className="border-t border-border bg-primary/70 p-3">
+          <div className="border-t border-gray-800 bg-gray-900/70 p-3">
             <div className="flex items-end gap-2 overflow-x-auto overflow-y-visible pt-2 pb-3">
               {/* Protector skills */}
               {protSkillItems.map(({ skill, char, useCount, showUseCountInput }) => {
@@ -2633,12 +2633,12 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
               {/* Roll + Calculate button */}
               <button onClick={() => { rerollProcs(); setInspecting({ kind: "result" }) }}
                 disabled={!calcResult}
-                className="shrink-0 ml-auto flex flex-col items-center justify-center bg-gradient-to-b from-gray-600 to-gray-800 disabled:from-gray-800 disabled:to-gray-900 border border-border disabled:border-border rounded-xl px-4 py-2 gap-1 hover:from-gray-500 hover:to-gray-700 disabled:cursor-not-allowed transition-all min-w-[80px]">
-                <span className="text-[10px] text-muted-foreground">Activate</span>
+                className="shrink-0 ml-auto flex flex-col items-center justify-center bg-gradient-to-b from-gray-600 to-gray-800 disabled:from-gray-800 disabled:to-gray-900 border border-gray-600 disabled:border-gray-800 rounded-xl px-4 py-2 gap-1 hover:from-gray-500 hover:to-gray-700 disabled:cursor-not-allowed transition-all min-w-[80px]">
+                <span className="text-[10px] text-gray-400">Activate</span>
                 {calcResult?.rawDamage != null ? (
                   <span className="text-sm font-bold text-yellow-300 font-mono">{Math.round(calcResult.rawDamage).toLocaleString()}</span>
                 ) : (
-                  <Zap className="w-5 h-5 text-muted-foreground" />
+                  <Zap className="w-5 h-5 text-gray-500" />
                 )}
               </button>
             </div>
@@ -2651,13 +2651,13 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
           const left = Math.min(hoveredSkill.viewportWidth - tooltipWidth / 2 - 16, Math.max(tooltipWidth / 2 + 16, hoveredSkill.rect.left + hoveredSkill.rect.width / 2))
           return (
             <div
-              className="pointer-events-none fixed z-[70] w-72 rounded-xl border border-border bg-background p-3 text-left shadow-[0_20px_50px_rgba(0,0,0,0.7)]"
+              className="pointer-events-none fixed z-[70] w-72 rounded-xl border border-gray-600 bg-[#0b1220] p-3 text-left shadow-[0_20px_50px_rgba(0,0,0,0.7)]"
               style={{ left, top: hoveredSkill.rect.top - 12, transform: "translate(-50%, -100%)" }}
             >
-              <div className="text-sm font-semibold text-foreground leading-tight">{hoveredSkill.skill.name}</div>
-              <div className="mt-1 flex flex-wrap gap-1.5 text-[10px] text-muted-foreground">
-                <span className="rounded border border-border bg-primary px-1.5 py-0.5">{hoveredSkill.skill.slot.replaceAll("_", " ")}</span>
-                {hoveredSkill.skill.cost != null && <span className="rounded border border-border bg-primary px-1.5 py-0.5">Cost {hoveredSkill.skill.cost}</span>}
+              <div className="text-sm font-semibold text-white leading-tight">{hoveredSkill.skill.name}</div>
+              <div className="mt-1 flex flex-wrap gap-1.5 text-[10px] text-gray-400">
+                <span className="rounded border border-gray-700 bg-gray-900 px-1.5 py-0.5">{hoveredSkill.skill.slot.replaceAll("_", " ")}</span>
+                {hoveredSkill.skill.cost != null && <span className="rounded border border-gray-700 bg-gray-900 px-1.5 py-0.5">Cost {hoveredSkill.skill.cost}</span>}
                 {skillMeta.is_skill_change && <span className="rounded border border-blue-700 bg-blue-950/60 px-1.5 py-0.5 text-blue-300">Changed Skill</span>}
               </div>
               {skillMeta.is_skill_change && (
@@ -2668,7 +2668,7 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
               {hoveredSkill.tooltipNote && (
                 <div className="mt-2 text-[11px] text-amber-300">{hoveredSkill.tooltipNote}</div>
               )}
-              <div className="mt-2 whitespace-pre-line text-xs leading-5 text-foreground">
+              <div className="mt-2 whitespace-pre-line text-xs leading-5 text-gray-200">
                 {stripColorTags(hoveredSkill.skill.description_max_level ?? "No description available")}
               </div>
             </div>
@@ -2677,7 +2677,7 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
 
         {/* RIGHT: Info panel */}
         {inspecting && (
-          <div className="xl:w-80 xl:border-l border-t xl:border-t-0 border-border bg-gray-950/60 flex flex-col" style={{ minHeight: 400 }}>
+          <div className="xl:w-80 xl:border-l border-t xl:border-t-0 border-gray-800 bg-gray-950/60 flex flex-col" style={{ minHeight: 400 }}>
             <div className="flex-1 p-3">
               {inspecting.kind === "char" && inspectedChar && (
                 <CharInfoPanel
@@ -2691,7 +2691,7 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
                 <div className="space-y-3 h-full overflow-y-auto">
                   <CharInfoPanel char={inspectedChar} activeBuffs={effectiveBuffs} onClose={() => setInspecting(null)} />
                   <div className="space-y-2">
-                    <div className="text-[10px] text-muted-foreground uppercase tracking-wide px-1">Skill Uses</div>
+                    <div className="text-[10px] text-gray-500 uppercase tracking-wide px-1">Skill Uses</div>
                     {inspectedChar.skills
                       .filter(s => ["leader_skill", "bless_skill", "assist_leader_skill"].includes(s.slot))
                       .map(s => {
@@ -2702,22 +2702,22 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
                         const active = useCount > 0
                         return (
                           <div key={s.label}
-                            className={`flex items-start gap-2 p-2 rounded-lg border text-xs transition-colors ${active ? "border-blue-700 bg-blue-950/30" : "border-border bg-primary/30"}`}>
+                            className={`flex items-start gap-2 p-2 rounded-lg border text-xs transition-colors ${active ? "border-blue-700 bg-blue-950/30" : "border-gray-800 bg-gray-900/30"}`}>
                             {s.icon_path && <img src={toPublicAssetPath(s.icon_path)} alt="" className="w-5 h-5 object-contain rounded shrink-0"
                               onError={e => { (e.target as HTMLImageElement).src = "/placeholder.svg" }} />}
                             <div className="flex-1 min-w-0">
-                              <div className="font-semibold text-foreground">{s.name}</div>
-                              <div className="text-muted-foreground text-[10px] mt-0.5">{stripColorTags(s.description_max_level ?? "").slice(0, 120)}</div>
+                              <div className="font-semibold text-white">{s.name}</div>
+                              <div className="text-gray-500 text-[10px] mt-0.5">{stripColorTags(s.description_max_level ?? "").slice(0, 120)}</div>
                             </div>
                             {isFixed ? (
-                              <div className="shrink-0 rounded border border-border bg-primary px-2 py-1 text-[10px] text-muted-foreground">x1</div>
+                              <div className="shrink-0 rounded border border-gray-700 bg-gray-900 px-2 py-1 text-[10px] text-gray-300">x1</div>
                             ) : (
                               <input
                                 type="number"
                                 min="0"
                                 value={useCount}
                                 onChange={(event) => setProtectorSkillUseCount(inspectedChar.master_pc_id, s.slot, normalizeUseCount(Number.parseInt(event.target.value || "0", 10)))}
-                                className="w-14 shrink-0 rounded border border-border bg-card px-2 py-1 text-[10px] font-mono text-foreground"
+                                className="w-14 shrink-0 rounded border border-gray-700 bg-gray-800 px-2 py-1 text-[10px] font-mono text-white"
                               />
                             )}
                           </div>

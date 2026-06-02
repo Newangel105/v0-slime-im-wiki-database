@@ -1,15 +1,11 @@
 from __future__ import annotations
 
 import argparse
-import concurrent.futures
 import hashlib
 import json
-import os
 import re
 import subprocess
 import sys
-import urllib.error
-import urllib.request
 import warnings
 from collections import defaultdict
 from datetime import datetime, timezone
@@ -32,46 +28,6 @@ DEFAULT_STAGE_ROOT = Path(r"C:\Users\Angel105\Documents\cenas\_work\stage")
 DEFAULT_CACHE_DIR = PROJECT_DIR / "_work" / "summon_textassets"
 DEFAULT_OUTPUT = PROJECT_DIR / "summon.generated.json"
 PC_WIKI_PATH = PROJECT_DIR / "pc_wiki.generated.json"
-
-# Movies live on R2 since the website's Vercel container can't host them.
-# `movie_info` HEAD-checks this base URL to mark a banner movie playable.
-# Override with $R2_MOVIE_CDN. No trailing slash.
-R2_MOVIE_CDN_DEFAULT = "https://pub-2b74b4d871924b6e821fc6800c65f72a.r2.dev"
-R2_MOVIE_CDN = (os.environ.get("R2_MOVIE_CDN") or R2_MOVIE_CDN_DEFAULT).rstrip("/")
-_r2_head_cache: dict[str, bool] = {}
-
-
-def _r2_has(rel_path: str, timeout: float = 5.0) -> bool:
-    """HEAD-check whether <R2_MOVIE_CDN>/<rel_path> exists. Cached per process.
-    Cloudflare's bot shield rejects the default `Python-urllib/...` UA with 403,
-    so we send a generic browser-style UA."""
-    key = rel_path.lstrip("/")
-    if key in _r2_head_cache:
-        return _r2_head_cache[key]
-    url = f"{R2_MOVIE_CDN}/{key}"
-    req = urllib.request.Request(
-        url,
-        method="HEAD",
-        headers={"User-Agent": "Mozilla/5.0 (compatible; SummonRegen/1.0)"},
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            ok = 200 <= resp.status < 300
-    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError):
-        ok = False
-    _r2_head_cache[key] = ok
-    return ok
-
-
-def _r2_prefetch(rel_paths: list[str], max_workers: int = 24) -> None:
-    """Concurrently HEAD-check a batch of paths so subsequent `_r2_has` is O(1).
-    Skips paths already in the cache."""
-    todo = [p.lstrip("/") for p in dict.fromkeys(rel_paths)]
-    todo = [p for p in todo if p and p not in _r2_head_cache]
-    if not todo:
-        return
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as ex:
-        list(ex.map(_r2_has, todo))
 
 sys.path.insert(0, str(EXTRACTOR_DIR))
 from generate_pc_wiki_json import load_selected_records  # noqa: E402
@@ -356,12 +312,19 @@ def movie_info(path: str | None) -> dict[str, Any]:
         }
     playable = re.sub(r"\.usm$", ".mp4", normalized, flags=re.IGNORECASE)
     playable_web = f"/{playable}"
-    available = _r2_has(playable)
+    playable_path = PROJECT_DIR / "public" / playable
+    validation_path = playable_path.with_name(f"{playable_path.name}.validated.json")
+    validated = False
+    if playable_path.exists() and validation_path.exists():
+        try:
+            validated = bool(json.loads(validation_path.read_text(encoding="utf-8")).get("validated"))
+        except (OSError, json.JSONDecodeError):
+            validated = False
     return {
         "path": normalized,
         "cache_key": hashlib.md5(normalized.encode("utf-8")).hexdigest().upper(),
         "sources": [playable_web],
-        "available": available,
+        "available": validated,
     }
 
 
@@ -956,18 +919,6 @@ def build_payload(tables: dict[str, list[dict[str, Any]]], missing: list[str], s
     pc_ui_by_id = build_pc_ui_lookup(tables.get("MasterPc", []), tables.get("MasterPcArousal", []))
 
     shops = tables["MasterOgcLotteryShop"]
-
-    # Warm the R2 HEAD-cache with every banner + lottery-message movie up front
-    # so `movie_info` is O(1) inside the per-banner loop. Sequential HEADs over
-    # ~170 banners would add ~10s on a typical link; this finishes in <2s.
-    _movie_prefetch: list[str] = []
-    for _shop in shops:
-        _mp = clean_asset_path(_shop.get("movie_path"), "")
-        if _mp:
-            _movie_prefetch.append(re.sub(r"\.usm$", ".mp4", _mp, flags=re.IGNORECASE))
-    if _movie_prefetch:
-        print(f"prefetching R2 availability for {len(set(_movie_prefetch))} banner movie(s) at {R2_MOVIE_CDN}")
-        _r2_prefetch(_movie_prefetch)
     lotteries = tables["MasterOgcLottery"]
     rates_by_group = group_by(tables["MasterOgcLotteryRate"], "master_ogc_lottery_rate_group_id")
     rewards_by_group = build_pool_lookup(tables["MasterOgcLotteryReward"])
