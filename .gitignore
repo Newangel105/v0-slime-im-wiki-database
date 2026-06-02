@@ -25,8 +25,6 @@ yarn-error.log*
 # build container disk quota. Upload them to R2 instead.
 /public/Movie/
 /public/Video/
-/public/models/
-/summon.generated.json
 
 # vercel
 .vercel
@@ -37,3 +35,21 @@ next-env.d.ts
 
 /_tools
 /_work
+/public/_visual-lab
+/public/_preview
+/reports
+/_screenshots
+/__pycache__
+# 3D models hosted on R2 (fetched at runtime via NEXT_PUBLIC_MEDIA_CDN)
+/public/models/
+# 55MB summon data hosted on R2 (fetched at runtime)
+/summon.generated.json
+
+# scratch / debug artifacts (never commit)
+.edge-headless/
+__pycache__/
+/debug-*.png
+/rimuru-*.png
+/model-viewer-*.png
+scripts/_one_off_*
+scripts/codex_*

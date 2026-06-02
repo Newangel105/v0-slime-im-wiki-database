@@ -1,0 +1,5 @@
+source_size=1541x898
+left=115
+top=94
+right=115
+bottom=94

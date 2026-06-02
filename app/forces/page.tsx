@@ -1,4 +1,6 @@
 import ForcesClient, { type SlimForceGroup, type SlimForceCharacter } from "@/components/forces-client"
+import { ClassicForcesClient } from "@/components/classic/forces-client"
+import { getDesign } from "@/lib/design"
 import {
   getAllWikiCharacters,
   toPublicAssetPath,
@@ -143,7 +145,8 @@ const specialEffectToBase: Record<string, string> = {
   specialeffectelementenhanceddark: "EnhancedDark",
 }
 
-export default function ForcesPage() {
+export default async function ForcesPage() {
+  const design = await getDesign()
   const allCharacters = getAllWikiCharacters()
 
   const groupsMap = new Map<string, { icon?: string; chars: typeof allCharacters }>()
@@ -245,5 +248,9 @@ export default function ForcesPage() {
       }),
     }))
 
-  return <ForcesClient forceGroups={forceGroups} />
+  return design === "classic" ? (
+    <ClassicForcesClient forceGroups={forceGroups} />
+  ) : (
+    <ForcesClient forceGroups={forceGroups} />
+  )
 }

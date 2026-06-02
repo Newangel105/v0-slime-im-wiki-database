@@ -156,15 +156,15 @@ function BadgeContent({ text }: { text: string }) {
     const usesInRemainder = remainder ? remainder.match(/^(.*?:\s*)(\d+%?)$/) : null
     return (
       <>
-        <span className="px-2 py-0.5 text-gray-800">{turnsMatch[1]} </span>
-        <span className="flex self-stretch items-center bg-gray-900 px-1.5 text-white">{turnsMatch[2]}</span>
+        <span className="px-2 py-0.5 text-secondary-foreground">{turnsMatch[1]} </span>
+        <span className="flex self-stretch items-center bg-primary px-1.5 text-primary-foreground">{turnsMatch[2]}</span>
         {remainder && usesInRemainder ? (
           <>
-            <span className="px-2 py-0.5 text-gray-800">{usesInRemainder[1]}</span>
-            <span className="flex self-stretch items-center bg-gray-900 px-1.5 text-white">{usesInRemainder[2]}</span>
+            <span className="px-2 py-0.5 text-secondary-foreground">{usesInRemainder[1]}</span>
+            <span className="flex self-stretch items-center bg-primary px-1.5 text-primary-foreground">{usesInRemainder[2]}</span>
           </>
         ) : remainder ? (
-          <span className="px-2 py-0.5 text-gray-800">{remainder}</span>
+          <span className="px-2 py-0.5 text-secondary-foreground">{remainder}</span>
         ) : null}
       </>
     )
@@ -173,18 +173,18 @@ function BadgeContent({ text }: { text: string }) {
   if (usesMatch) {
     return (
       <>
-        <span className="px-2 py-0.5 text-gray-800">{usesMatch[1]}</span>
-        <span className="flex self-stretch items-center bg-gray-900 px-1.5 text-white">{usesMatch[2]}</span>
+        <span className="px-2 py-0.5 text-secondary-foreground">{usesMatch[1]}</span>
+        <span className="flex self-stretch items-center bg-primary px-1.5 text-primary-foreground">{usesMatch[2]}</span>
       </>
     )
   }
-  return <span className="px-2 py-0.5 text-gray-800">{text}</span>
+  return <span className="px-2 py-0.5 text-secondary-foreground">{text}</span>
 }
 
 function TraitDescription({ text }: { text: string }) {
   const lines = text.split("\n")
   return (
-    <div className="space-y-1.5 text-sm leading-7 text-gray-300 text-left">
+    <div className="space-y-1.5 text-sm leading-7 text-muted-foreground text-left">
       {lines.map((line, li) => {
         const segs = parseLine(line)
         return (
@@ -192,35 +192,35 @@ function TraitDescription({ text }: { text: string }) {
             {segs.map((seg, i) => {
               switch (seg.type) {
                 case "value":
-                  return <span key={i} className="font-bold text-white">{seg.text}</span>
+                  return <span key={i} className="font-bold text-foreground">{seg.text}</span>
                 case "stat":
                   return (
-                    <span key={i} className="mx-0.5 inline-flex items-center gap-1 rounded-md bg-gray-900 px-2 py-0.5 text-xs font-semibold text-white align-middle shadow-[0_0_6px_rgba(255,255,255,0.15)]">
+                    <span key={i} className="mx-0.5 inline-flex items-center gap-1 rounded-md bg-primary px-2 py-0.5 text-xs font-semibold text-primary-foreground align-middle shadow-[0_0_6px_rgba(255,255,255,0.15)]">
                       <img src={seg.icon} alt={seg.text} className="inline h-4 w-4 object-contain" />{seg.text}
                     </span>
                   )
                 case "atktype":
                   return (
-                    <span key={i} className="mx-0.5 inline-flex items-center gap-1 rounded-md bg-gray-900 px-2 py-0.5 text-xs font-semibold text-white align-middle shadow-[0_0_6px_rgba(255,255,255,0.15)]">
+                    <span key={i} className="mx-0.5 inline-flex items-center gap-1 rounded-md bg-primary px-2 py-0.5 text-xs font-semibold text-primary-foreground align-middle shadow-[0_0_6px_rgba(255,255,255,0.15)]">
                       <img src={seg.prefixIcon} alt={seg.prefix} className="inline h-4 w-4 object-contain" /><span>{seg.prefix}</span>
                       <img src={seg.statIcon} alt={seg.stat} className="inline h-4 w-4 object-contain" /><span>{seg.stat}</span>
                     </span>
                   )
                 case "element":
                   return (
-                    <span key={i} className="mx-0.5 inline-flex items-center gap-1 rounded-md bg-gray-900 px-2 py-0.5 text-xs font-semibold text-white align-middle shadow-[0_0_6px_rgba(255,255,255,0.15)]">
+                    <span key={i} className="mx-0.5 inline-flex items-center gap-1 rounded-md bg-primary px-2 py-0.5 text-xs font-semibold text-primary-foreground align-middle shadow-[0_0_6px_rgba(255,255,255,0.15)]">
                       <img src={seg.icon} alt={seg.element} className="inline h-4 w-4 object-contain" />{seg.element}
                     </span>
                   )
                 case "badge":
                   return (
-                    <span key={i} className="mx-1 inline-flex items-center overflow-hidden rounded-full bg-gray-200 text-xs font-semibold align-middle">
+                    <span key={i} className="mx-1 inline-flex items-center overflow-hidden rounded-full bg-secondary text-xs font-semibold align-middle">
                       <BadgeContent text={seg.text} />
                     </span>
                   )
                 case "note":
                   return (
-                    <span key={i} className="mx-1 inline-flex items-center rounded-md border border-gray-500 px-2 py-0.5 text-xs text-gray-400 align-middle">
+                    <span key={i} className="mx-1 inline-flex items-center rounded-md border border-border px-2 py-0.5 text-xs text-muted-foreground align-middle">
                       {seg.text}
                     </span>
                   )
@@ -243,27 +243,27 @@ function TraitGroupCard({ group }: { group: TraitGroup }) {
 
   return (
     <Card
-      className={`rounded-2xl transition-all ${
+      className={`character-detail-row-card character-detail-trait-card rounded-2xl transition-all ${
         group.members.length > 1 && isMaxLevel
-          ? "border-blue-500/50 bg-gray-700 shadow-[0_0_24px_rgba(59,130,246,0.18)]"
-          : "border-gray-600 bg-gray-700 shadow-none"
+          ? "border-blue-500/50 bg-muted shadow-[0_0_24px_rgba(59,130,246,0.18)]"
+          : "border-border bg-muted shadow-none"
       }`}
     >
-      <CardContent className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 p-5 items-start">
+      <CardContent className="character-detail-combat-card-content grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 p-5 items-start">
         {/* Mobile header: icon + name inline */}
         <div className="flex items-center gap-4 sm:hidden">
-          <img src={toPublicAssetPath(trait.icon_path)} alt={trait.name} className="h-14 w-14 shrink-0 rounded-xl bg-gray-900 p-1.5 object-contain" />
+          <img src={toPublicAssetPath(trait.icon_path)} alt={trait.name} className="character-detail-trait-icon h-14 w-14 shrink-0 rounded-xl bg-primary p-1.5 object-contain" />
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <h3 className="text-base font-bold text-white">{group.baseName}</h3>
+              <h3 className="text-base font-bold text-foreground">{group.baseName}</h3>
               {group.members.length === 1 && (
-                <span className="rounded bg-gray-700 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gray-400">
+                <span className="rounded bg-muted px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
                   {trait.unlock}
                 </span>
               )}
             </div>
             {group.members.length > 1 && (
-              <div className="flex items-center gap-1 rounded-xl bg-gray-900/60 p-1 w-fit mt-2">
+              <div className="flex items-center gap-1 rounded-xl bg-muted p-1 w-fit mt-2">
                 {group.members.map((m, i) => (
                   <button
                     key={m.label}
@@ -271,11 +271,11 @@ function TraitGroupCard({ group }: { group: TraitGroup }) {
                     className={`rounded-lg px-3 py-1 text-xs font-semibold transition-all ${
                       i === selectedIdx
                         ? "bg-blue-500/25 text-blue-300 shadow ring-1 ring-blue-500/40"
-                        : "text-gray-500 hover:text-blue-300"
+                        : "text-muted-foreground hover:text-blue-300"
                     }`}
                   >
                     <span className="flex items-center gap-1.5">
-                      <span className={`h-1.5 w-1.5 rounded-full ${i === selectedIdx ? "bg-blue-400" : "bg-gray-600"}`} />
+                      <span className={`h-1.5 w-1.5 rounded-full ${i === selectedIdx ? "bg-blue-400" : "bg-muted"}`} />
                       {unlockShortLabel(m.unlock)}
                     </span>
                   </button>
@@ -286,20 +286,20 @@ function TraitGroupCard({ group }: { group: TraitGroup }) {
         </div>
 
         {/* Desktop image column */}
-        <img src={toPublicAssetPath(trait.icon_path)} alt={trait.name} className="hidden sm:block h-14 w-14 shrink-0 rounded-xl bg-gray-900 p-1.5 object-contain" />
+        <img src={toPublicAssetPath(trait.icon_path)} alt={trait.name} className="character-detail-trait-icon hidden sm:block h-14 w-14 shrink-0 rounded-xl bg-primary p-1.5 object-contain" />
 
         {/* Desktop content column */}
         <div className="hidden sm:block min-w-0 space-y-2">
           <div className="flex flex-wrap items-center gap-2">
-            <h3 className="text-base font-bold text-white">{group.baseName}</h3>
+            <h3 className="text-base font-bold text-foreground">{group.baseName}</h3>
             {group.members.length === 1 && (
-              <span className="rounded bg-gray-700 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gray-400">
+              <span className="rounded bg-muted px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
                 {trait.unlock}
               </span>
             )}
           </div>
           {group.members.length > 1 && (
-            <div className="flex items-center gap-1 rounded-xl bg-gray-900/60 p-1 w-fit">
+            <div className="flex items-center gap-1 rounded-xl bg-muted p-1 w-fit">
               {group.members.map((m, i) => (
                 <button
                   key={m.label}
@@ -307,11 +307,11 @@ function TraitGroupCard({ group }: { group: TraitGroup }) {
                   className={`rounded-lg px-3 py-1 text-xs font-semibold transition-all ${
                     i === selectedIdx
                       ? "bg-blue-500/25 text-blue-300 shadow ring-1 ring-blue-500/40"
-                      : "text-gray-500 hover:text-blue-300"
+                      : "text-muted-foreground hover:text-blue-300"
                   }`}
                 >
                   <span className="flex items-center gap-1.5">
-                    <span className={`h-1.5 w-1.5 rounded-full ${i === selectedIdx ? "bg-blue-400" : "bg-gray-600"}`} />
+                    <span className={`h-1.5 w-1.5 rounded-full ${i === selectedIdx ? "bg-blue-400" : "bg-muted"}`} />
                     {unlockShortLabel(m.unlock)}
                   </span>
                 </button>
@@ -336,7 +336,7 @@ export function TraitList({ traits }: { traits: WikiTrait[] }) {
   const groups = groupTraits(traits)
 
   return (
-    <div className="space-y-4">
+    <div className="character-detail-trait-list space-y-4">
       {groups.map((group) => (
         <TraitGroupCard key={group.baseName} group={group} />
       ))}

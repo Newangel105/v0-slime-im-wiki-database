@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { Fragment, useState, useMemo } from "react"
 import { META_PRESETS, type MetaPreset } from "@/lib/meta-presets"
 import { getCharacterVisualTier, toPublicAssetPath, type WikiCharacter, type WikiSkill } from "@/lib/pc-wiki"
 
@@ -27,7 +27,7 @@ function RichSkillDesc({ text }: { text: string }) {
   if (!text) return null
   const lines = text.split("\n")
   return (
-    <div className="space-y-1 text-xs leading-relaxed text-gray-300 text-left">
+    <div className="space-y-1 text-xs leading-relaxed text-foreground/65 text-left">
       {lines.map((line, li) => {
         const parts: { colored: boolean; text: string }[] = []
         const colorRe = /<color=[^>]+>(.*?)<\/color>/gi
@@ -42,7 +42,7 @@ function RichSkillDesc({ text }: { text: string }) {
           <p key={li}>
             {parts.map((p, i) =>
               p.colored
-                ? <span key={i} className="font-semibold text-white">{p.text}</span>
+                ? <span key={i} className="font-semibold text-accent">{p.text}</span>
                 : <span key={i}>{p.text}</span>
             )}
           </p>
@@ -79,7 +79,7 @@ function CharIcon({ char, size = 72 }: { char: WikiCharacter; size?: number }) {
 // ── Skill icon ────────────────────────────────────────────────────────────────
 function SkillIcon({ skill, size = 40 }: { skill: WikiSkill; size?: number }) {
   const src = toPublicAssetPath(skill.icon_path)
-  if (!src) return <div className="rounded-full bg-gray-700" style={{ width: size, height: size }} />
+  if (!src) return <div className="rounded-full bg-muted" style={{ width: size, height: size }} />
   return <img src={src} alt={skill.name} className="rounded-full object-cover flex-shrink-0" style={{ width: size, height: size }} />
 }
 
@@ -150,34 +150,32 @@ export default function PresetViewerClient({ characters }: { characters: WikiCha
         <div className="relative w-full max-w-sm">
           <button
             onClick={() => setSelectorOpen(o => !o)}
-            className="w-full flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-sm text-white/80 border border-white/10"
-            style={{ background: "rgba(8,12,22,0.92)" }}
+            className="w-full flex items-center justify-between gap-2 px-4 py-2.5 rounded-full text-sm font-semibold text-foreground border border-border/[0.26] bg-card/85 backdrop-blur-md transition-colors hover:border-accent/55 hover:bg-[rgba(30,77,113,0.95)]"
           >
             <span>{selectedPreset ? selectedPreset.name : "Load Meta Preset..."}</span>
             <span>{selectorOpen ? "▲" : "▼"}</span>
           </button>
           {selectorOpen && (
             <div
-              className="absolute top-full left-0 right-0 z-50 mt-1 rounded-lg overflow-hidden border border-white/10"
-              style={{ background: "rgba(8,12,22,0.97)" }}
+              className="absolute top-full left-0 right-0 z-50 mt-1 rounded-xl overflow-hidden border border-border/[0.26] bg-muted/[0.97] shadow-[0_18px_45px_rgba(8,30,52,0.4)] backdrop-blur-md"
             >
-              <div className="p-2 border-b border-white/10">
+              <div className="p-2 border-b border-border/[0.22]">
                 <input
-                  className="w-full rounded bg-white/5 border border-white/10 px-3 py-1.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-white/30"
+                  className="w-full rounded-md bg-[rgba(40,82,120,0.6)] border border-border/[0.26] px-3 py-1.5 text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/45"
                   placeholder="Search metas..."
                   value={search}
                   onChange={e => setSearch(e.target.value)}
                   autoFocus
                 />
               </div>
-              <div className="overflow-y-auto" style={{ maxHeight: "16rem", scrollbarColor: "rgba(255,255,255,0.2) transparent" }}>
+              <div className="overflow-y-auto" style={{ maxHeight: "16rem", scrollbarColor: "rgba(160,190,215,0.4) transparent" }}>
                 {filteredPresets.map(preset => (
                   <button
                     key={preset.id}
                     className={`w-full text-left px-3 py-2 text-sm transition-colors ${
                       selectedPreset?.id === preset.id
-                        ? "bg-white/15 text-white"
-                        : "text-white/80 hover:bg-white/10"
+                        ? "bg-accent/15 text-foreground ring-1 ring-accent/35"
+                        : "text-foreground/75 hover:bg-[rgba(125,205,225,0.10)] hover:text-foreground"
                     }`}
                     onClick={() => { setSelectedPreset(preset); setSelectorOpen(false) }}
                   >
@@ -196,11 +194,13 @@ export default function PresetViewerClient({ characters }: { characters: WikiCha
           {/* ── Protector table ── */}
           {protectors.length > 0 && (
             <section>
-              <h2 className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3">Divine Protection</h2>
-              <div className="overflow-x-auto rounded-xl border border-gray-700">
+              <div className="mb-3 inline-flex items-center rounded-full border border-border/[0.28] bg-card/[0.88] px-4 py-1.5 shadow-[0_8px_20px_rgba(8,30,52,0.28)] backdrop-blur-md">
+                <h2 className="text-xs font-bold uppercase tracking-widest text-accent">Divine Protection</h2>
+              </div>
+              <div className="overflow-x-auto rounded-2xl border border-border/[0.26] bg-card/85 shadow-[0_14px_36px_rgba(8,30,52,0.3)] backdrop-blur-md">
                 <table className="w-full text-sm border-collapse">
                   <thead>
-                    <tr className="bg-gray-800 text-gray-400 text-xs uppercase tracking-wider">
+                    <tr className="bg-popover text-foreground/65 text-xs uppercase tracking-wider">
                       <th className="px-3 py-3 text-left w-20">Icon</th>
                       <th className="px-3 py-3 text-left min-w-[120px]">Character</th>
                       <th className="px-3 py-3 text-left w-12">Skill</th>
@@ -215,22 +215,22 @@ export default function PresetViewerClient({ characters }: { characters: WikiCha
                       const blessSkill = getSkill(char, "bless_skill")
                       const leaderSkill = getSkill(char, "leader_skill")
                       const assistSkill = getSkill(char, "assist_leader_skill")
-                      const border = ci < protectors.length - 1 ? "border-b-2 border-gray-700" : ""
+                      const border = ci < protectors.length - 1 ? "border-b-2 border-border/[0.22]" : ""
                       return (
-                        <>
+                        <Fragment key={char.master_pc_id}>
                           {/* Row 1: bless_skill + leader_skill */}
-                          <tr key={`${char.master_pc_id}-prot`} className="bg-gray-900 align-top">
+                          <tr key={`${char.master_pc_id}-prot`} className="bg-transparent align-top">
                             <td className="px-3 py-3" rowSpan={assistSkill ? 2 : 1}>
                               <CharIcon char={char} size={68} />
                             </td>
-                            <td className="px-3 py-3 font-semibold text-white" rowSpan={assistSkill ? 2 : 1}>
+                            <td className="px-3 py-3 font-semibold text-foreground" rowSpan={assistSkill ? 2 : 1}>
                               {char.name}
-                              <div className="text-xs text-gray-500 font-normal mt-1">{slotLabel}</div>
+                              <div className="text-xs text-foreground/65 font-normal mt-1">{slotLabel}</div>
                             </td>
                             <td className="px-3 py-3">
                               {blessSkill && <SkillIcon skill={blessSkill} size={38} />}
                             </td>
-                            <td className="px-3 py-3 text-blue-300 font-medium text-xs">Protector</td>
+                            <td className="px-3 py-3 text-accent font-medium text-xs">Protector</td>
                             <td className="px-3 py-3 max-w-xs">
                               {blessSkill && <RichSkillDesc text={blessSkill.description_max_level} />}
                             </td>
@@ -243,18 +243,18 @@ export default function PresetViewerClient({ characters }: { characters: WikiCha
                           </tr>
                           {/* Row 2: assist_leader_skill */}
                           {assistSkill && (
-                            <tr key={`${char.master_pc_id}-support`} className={`bg-gray-900/60 align-top ${border}`}>
+                            <tr key={`${char.master_pc_id}-support`} className={`bg-[rgba(125,205,225,0.06)] align-top ${border}`}>
                               <td className="px-3 py-3">
                                 <SkillIcon skill={assistSkill} size={38} />
                               </td>
-                              <td className="px-3 py-3 text-purple-300 font-medium text-xs">Support</td>
+                              <td className="px-3 py-3 text-[#c4b5fd] font-medium text-xs">Support</td>
                               <td className="px-3 py-3 max-w-xs" colSpan={3}>
                                 <RichSkillDesc text={assistSkill.description_max_level} />
                               </td>
                             </tr>
                           )}
                           {!assistSkill && <tr key={`${char.master_pc_id}-sep`} className={border}><td colSpan={7} /></tr>}
-                        </>
+                        </Fragment>
                       )
                     })}
                   </tbody>
@@ -266,11 +266,13 @@ export default function PresetViewerClient({ characters }: { characters: WikiCha
           {/* ── Skills table ── */}
           {regulars.length > 0 && (
             <section>
-              <h2 className="text-xs font-bold uppercase tracking-widest text-green-400 mb-3">Skills</h2>
-              <div className="overflow-x-auto rounded-xl border border-gray-700">
+              <div className="mb-3 inline-flex items-center rounded-full border border-border/[0.28] bg-card/[0.88] px-4 py-1.5 shadow-[0_8px_20px_rgba(8,30,52,0.28)] backdrop-blur-md">
+                <h2 className="text-xs font-bold uppercase tracking-widest text-[#fbbf24]">Skills</h2>
+              </div>
+              <div className="overflow-x-auto rounded-2xl border border-border/[0.26] bg-card/85 shadow-[0_14px_36px_rgba(8,30,52,0.3)] backdrop-blur-md">
                 <table className="w-full text-sm border-collapse">
                   <thead>
-                    <tr className="bg-gray-800 text-gray-400 text-xs uppercase tracking-wider">
+                    <tr className="bg-popover text-foreground/65 text-xs uppercase tracking-wider">
                       <th className="px-3 py-3 text-left w-20">Icon</th>
                       <th className="px-3 py-3 text-left min-w-[120px]">Character</th>
                       <th className="px-3 py-3 text-left w-12">Skill</th>
@@ -287,7 +289,7 @@ export default function PresetViewerClient({ characters }: { characters: WikiCha
                       const skill2 = getSkill(char, "active_skill_2")
                       const fused1 = getFusedSkill(char, "active_skill_1")
                       const fused2 = getFusedSkill(char, "active_skill_2")
-                      const border = ci < regulars.length - 1 ? "border-b-2 border-gray-700" : ""
+                      const border = ci < regulars.length - 1 ? "border-b-2 border-border/[0.22]" : ""
 
                       const rows: { skill: WikiSkill | undefined; fused: WikiSkill | undefined; label: string }[] = []
                       if (skill1 || skill2) {
@@ -300,27 +302,27 @@ export default function PresetViewerClient({ characters }: { characters: WikiCha
                       return rows.map((row, ri) => (
                         <tr
                           key={`${char.master_pc_id}-${ri}`}
-                          className={`${ri % 2 === 0 ? "bg-gray-900" : "bg-gray-900/60"} align-top ${ri === rows.length - 1 ? border : ""}`}
+                          className={`${ri % 2 === 0 ? "bg-transparent" : "bg-[rgba(125,205,225,0.06)]"} align-top ${ri === rows.length - 1 ? border : ""}`}
                         >
                           {ri === 0 && (
                             <>
                               <td className="px-3 py-3" rowSpan={rows.length}>
                                 <CharIcon char={char} size={68} />
                               </td>
-                              <td className="px-3 py-3 font-semibold text-white" rowSpan={rows.length}>
+                              <td className="px-3 py-3 font-semibold text-foreground" rowSpan={rows.length}>
                                 {char.name}
-                                <div className="text-xs text-gray-500 font-normal mt-1">{slotLabel}</div>
+                                <div className="text-xs text-foreground/65 font-normal mt-1">{slotLabel}</div>
                               </td>
                             </>
                           )}
                           <td className="px-3 py-3">
                             {row.skill && <SkillIcon skill={row.skill} size={38} />}
                           </td>
-                          <td className="px-3 py-3 text-yellow-300 font-medium text-xs">{row.label}</td>
+                          <td className="px-3 py-3 text-[#fbbf24] font-medium text-xs">{row.label}</td>
                           <td className="px-3 py-3 max-w-xs">
                             {row.skill && <RichSkillDesc text={row.skill.description_max_level} />}
                           </td>
-                          <td className="px-3 py-3 text-center text-gray-300 text-xs font-mono">
+                          <td className="px-3 py-3 text-center text-foreground/65 text-xs font-mono">
                             {row.skill?.cost != null ? row.skill.cost : "—"}
                           </td>
                           <td className="px-3 py-3 max-w-xs">
@@ -329,9 +331,9 @@ export default function PresetViewerClient({ characters }: { characters: WikiCha
                                   <SkillIcon skill={row.fused} size={36} />
                                   <RichSkillDesc text={row.fused.description_max_level} />
                                 </div>
-                              : <span className="text-gray-600 text-xs italic">No skill fusion for this skill</span>}
+                              : <span className="text-foreground/45 text-xs italic">No skill fusion for this skill</span>}
                           </td>
-                          <td className="px-3 py-3 text-center text-gray-300 text-xs font-mono">
+                          <td className="px-3 py-3 text-center text-foreground/65 text-xs font-mono">
                             {row.fused?.cost != null ? row.fused.cost : "—"}
                           </td>
                         </tr>

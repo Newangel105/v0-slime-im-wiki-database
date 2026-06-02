@@ -1,10 +1,12 @@
 import PresetViewerClient from "@/components/preset-viewer-client"
+import { ClassicPresetViewerClient } from "@/components/classic/preset-viewer-client"
 import { getAllWikiCharacters } from "@/lib/pc-wiki"
 import { META_PRESETS } from "@/lib/meta-presets"
+import { getDesign } from "@/lib/design"
 
 export const metadata = { title: "Preset Viewer | SLIME-WIKI" }
 
-export default function PresetViewerPage() {
+export default async function PresetViewerPage() {
   const allPresetNames = new Set(
     META_PRESETS.flatMap(p =>
       [p.protector, p.battle1, p.battle2, p.battle3, p.battle4, p.battle5,
@@ -12,15 +14,15 @@ export default function PresetViewerPage() {
     )
   )
   const characters = getAllWikiCharacters().filter(c => allPresetNames.has(c.affiliation_name))
+  const design = await getDesign()
   return (
-    <main className="site-page px-4 py-8 text-white sm:px-6">
+    <main className="site-page slime-page-preset-viewer px-4 py-8 text-foreground sm:px-6">
       <div className="mx-auto w-full max-w-7xl space-y-6">
-        <div>
-          <p className="section-kicker">Meta Archive</p>
-          <h1 className="section-title mt-2">Preset Viewer</h1>
-          <p className="mt-2 text-sm text-slate-400">Select a meta preset to view the full team skill breakdown.</p>
-        </div>
-        <PresetViewerClient characters={characters} />
+        {design === "classic" ? (
+          <ClassicPresetViewerClient characters={characters} />
+        ) : (
+          <PresetViewerClient characters={characters} />
+        )}
       </div>
     </main>
   )

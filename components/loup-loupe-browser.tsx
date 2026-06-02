@@ -3341,8 +3341,8 @@ function getObjectPlacements(tile: LoupLoupeTile): ObjectPlacement[] {
 
 function RewardCard({ reward }: { reward: LoupLoupeReward }) {
   return (
-    <div className="flex min-h-24 items-center gap-3 rounded-md border border-white/10 bg-black/30 p-3 shadow-inner shadow-white/[0.02]">
-      <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.04]">
+    <div className="flex min-h-24 items-center gap-3 rounded-md border border-border bg-muted/55 p-3 shadow-inner shadow-white/[0.02]">
+      <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-md border border-border bg-border/[0.06]">
         {reward.icon_path ? (
           <img
             src={reward.icon_path}
@@ -3350,15 +3350,15 @@ function RewardCard({ reward }: { reward: LoupLoupeReward }) {
             className="h-14 w-14 object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.7)]"
           />
         ) : (
-          <Gem className="h-8 w-8 text-cyan-200" />
+          <Gem className="h-8 w-8 text-accent" />
         )}
       </div>
       <div className="min-w-0 flex-1">
-        <p className="line-clamp-2 text-sm font-black leading-tight text-white">
+        <p className="line-clamp-2 text-sm font-black leading-tight text-foreground">
           {getRewardName(reward)}
         </p>
       </div>
-      <span className="shrink-0 rounded-md border border-white/15 bg-white/10 px-2 py-1 text-sm font-black text-white">
+      <span className="shrink-0 rounded-md border border-border/[0.22] bg-border/[0.12] px-2 py-1 text-sm font-black text-foreground">
         x{formatNumber(reward.quantity)}
       </span>
     </div>
@@ -3368,7 +3368,7 @@ function RewardCard({ reward }: { reward: LoupLoupeReward }) {
 function RewardGrid({ rewards }: { rewards: LoupLoupeReward[] }) {
   if (rewards.length === 0) {
     return (
-      <p className="rounded-md border border-white/10 bg-black/20 p-4 text-sm font-semibold text-slate-300">
+      <p className="rounded-md border border-border bg-background/45 p-4 text-sm font-semibold text-muted-foreground">
         No rewards.
       </p>
     );
@@ -3391,11 +3391,11 @@ function RewardGroups({ groups }: { groups: RewardGroup[] }) {
       {groups.map((group) => (
         <section key={group.key} className="space-y-2">
           <div className="flex items-center justify-between gap-3">
-            <h3 className="text-xs font-black uppercase tracking-[0.18em] text-amber-100">
+            <h3 className="text-xs font-black uppercase tracking-[0.18em] text-[#fbbf24]">
               {group.title}
             </h3>
             {group.subtitle ? (
-              <span className="text-xs font-bold text-slate-400">
+              <span className="text-xs font-bold text-muted-foreground">
                 {group.subtitle}
               </span>
             ) : null}
@@ -3414,7 +3414,7 @@ function ChallengeRewardGroups({
 }) {
   if (rewards.length === 0) {
     return (
-      <p className="rounded-md border border-white/10 bg-black/20 p-4 text-sm font-semibold text-slate-300">
+      <p className="rounded-md border border-border bg-background/45 p-4 text-sm font-semibold text-muted-foreground">
         No challenge rewards.
       </p>
     );
@@ -3427,7 +3427,7 @@ function ChallengeRewardGroups({
           key={reward.master_tower_challenge_reward_id}
           className="space-y-2"
         >
-          <h3 className="text-xs font-black uppercase tracking-[0.18em] text-cyan-100">
+          <h3 className="text-xs font-black uppercase tracking-[0.18em] text-accent">
             Challenge {reward.progress_num}/3
           </h3>
           <RewardGrid rewards={reward.rewards} />
@@ -3445,11 +3445,11 @@ function InfoChip({
   value: string | number | null | undefined;
 }) {
   return (
-    <div className="rounded-md border border-white/10 bg-white/[0.05] px-3 py-2">
-      <p className="text-[10px] font-black uppercase tracking-[0.14em] text-slate-500">
+    <div className="rounded-md border border-border bg-border/[0.08] px-3 py-2">
+      <p className="text-[10px] font-black uppercase tracking-[0.14em] text-muted-foreground">
         {label}
       </p>
-      <p className="mt-1 truncate font-black text-slate-100">
+      <p className="mt-1 truncate font-black text-foreground">
         {value || "None"}
       </p>
     </div>
@@ -3472,9 +3472,9 @@ function QuestPayout({ quest }: { quest: LoupLoupeQuest | null }) {
       {payouts.map((payout) => (
         <div
           key={payout.label}
-          className="flex items-center gap-3 rounded-md border border-white/10 bg-black/30 p-3"
+          className="flex items-center gap-3 rounded-md border border-border bg-muted/55 p-3"
         >
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-white/[0.04]">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-border/[0.06]">
             {payout.icon ? (
               <img
                 src={payout.icon}
@@ -3482,14 +3482,14 @@ function QuestPayout({ quest }: { quest: LoupLoupeQuest | null }) {
                 className="h-10 w-10 object-contain"
               />
             ) : (
-              <Sparkles className="h-6 w-6 text-cyan-100" />
+              <Sparkles className="h-6 w-6 text-accent" />
             )}
           </div>
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.12em] text-slate-400">
+            <p className="text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground">
               {payout.label}
             </p>
-            <p className="text-base font-black text-white">
+            <p className="text-base font-black text-foreground">
               {formatNumber(payout.value)}
             </p>
           </div>
@@ -3514,8 +3514,8 @@ function EnemyPanel({
     "Enemy";
 
   return (
-    <div className="grid gap-4 rounded-md border border-white/10 bg-black/30 p-4 sm:grid-cols-[120px_1fr]">
-      <div className="flex h-28 w-28 items-center justify-center justify-self-center rounded-md border border-white/10 bg-white/[0.04]">
+    <div className="grid gap-4 rounded-md border border-border bg-muted/55 p-4 sm:grid-cols-[120px_1fr]">
+      <div className="flex h-28 w-28 items-center justify-center justify-self-center rounded-md border border-border bg-border/[0.06]">
         {enemy?.thumb ? (
           <img
             src={enemy.thumb}
@@ -3527,9 +3527,9 @@ function EnemyPanel({
         )}
       </div>
       <div className="min-w-0">
-        <p className="truncate text-xl font-black text-white">{title}</p>
+        <p className="truncate text-xl font-black text-foreground">{title}</p>
         {quest?.quest_name && quest.quest_name !== title ? (
-          <p className="mt-1 truncate text-sm font-semibold text-slate-300">
+          <p className="mt-1 truncate text-sm font-semibold text-muted-foreground">
             {quest.quest_name}
           </p>
         ) : null}
@@ -3722,18 +3722,18 @@ function EffectPanel({ effects }: { effects: LoupLoupeEffect[] }) {
         return (
           <div
             key={effect.master_tower_effect_id}
-            className="rounded-md border border-white/10 bg-black/30 p-4"
+            className="rounded-md border border-border bg-muted/55 p-4"
           >
             <div className="flex flex-wrap items-center gap-2">
-              <p className="text-sm font-black text-white">{title}</p>
+              <p className="text-sm font-black text-foreground">{title}</p>
               {targetBadge ? (
-                <span className="rounded-full border border-cyan-100/15 bg-cyan-100/10 px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.12em] text-cyan-100">
+                <span className="rounded-full border border-accent/15 bg-accent/10 px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.12em] text-accent">
                   {targetBadge}
                 </span>
               ) : null}
             </div>
 
-            <p className="mt-2 text-sm font-semibold leading-relaxed text-slate-200">
+            <p className="mt-2 text-sm font-semibold leading-relaxed text-foreground/90">
               {getEffectSummary(effect)}
             </p>
 
@@ -3742,12 +3742,12 @@ function EffectPanel({ effects }: { effects: LoupLoupeEffect[] }) {
                 {rows.map(([label, value]) => (
                   <div
                     key={`${effect.master_tower_effect_id}-${label}`}
-                    className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-2"
+                    className="rounded-md border border-border bg-border/5 px-2.5 py-2"
                   >
-                    <dt className="font-black uppercase tracking-[0.12em] text-slate-500">
+                    <dt className="font-black uppercase tracking-[0.12em] text-muted-foreground">
                       {label}
                     </dt>
-                    <dd className="mt-0.5 font-bold text-cyan-100">{value}</dd>
+                    <dd className="mt-0.5 font-bold text-accent">{value}</dd>
                   </div>
                 ))}
               </dl>
@@ -5352,7 +5352,7 @@ function RouteTileMarker({
       {label ? (
         <Html center position={[0, 0.24, 0]} style={{ pointerEvents: "none" }}>
           <span
-            className="whitespace-nowrap rounded-md border bg-[#050914]/85 px-1.5 py-0.5 text-[10px] font-black uppercase tracking-[0.08em] text-white shadow-lg"
+            className="whitespace-nowrap rounded-md border bg-background/85 px-1.5 py-0.5 text-[10px] font-black uppercase tracking-[0.08em] text-foreground shadow-lg"
             style={{
               borderColor: `${color}99`,
               boxShadow: `0 0 16px ${color}66`,
@@ -5379,7 +5379,7 @@ function RouteTileNoteMarker({
   return (
     <Html center position={[position[0] + 0.28, 0.78, position[2] - 0.24]} style={{ pointerEvents: "none" }}>
       <span
-        className="flex h-7 min-w-7 items-center justify-center rounded-full border-2 bg-[#05101d] px-1 text-[12px] font-black leading-none text-white shadow-2xl"
+        className="flex h-7 min-w-7 items-center justify-center rounded-full border-2 bg-background px-1 text-[12px] font-black leading-none text-foreground shadow-2xl"
         style={{
           borderColor: color,
           boxShadow: `0 0 0 2px rgba(0,0,0,0.75), 0 0 18px ${color}aa`,
@@ -5781,7 +5781,7 @@ function WarpPortalMarker({
       {label ? (
         <Html center position={[0, 0.26, 0]} style={{ pointerEvents: "none" }}>
           <span
-            className="rounded-full border bg-[#050914]/90 px-1.5 py-0.5 text-[10px] font-black uppercase tracking-[0.08em] text-white shadow-lg"
+            className="rounded-full border bg-background/90 px-1.5 py-0.5 text-[10px] font-black uppercase tracking-[0.08em] text-foreground shadow-lg"
             style={{
               borderColor: `${color}aa`,
               boxShadow: `0 0 18px ${color}66`,
@@ -6019,8 +6019,8 @@ function FloorTowerSegment({
         <span
           className={`pointer-events-none absolute inset-0 rounded-[6px] border-y-2 ${
             active
-              ? "border-cyan-200/90 bg-[linear-gradient(180deg,rgba(45,99,142,0.92),rgba(20,33,55,0.95))]"
-              : "border-white/15 bg-[linear-gradient(180deg,rgba(28,38,60,0.85),rgba(14,20,34,0.9))]"
+              ? "border-accent/90 bg-[linear-gradient(180deg,rgba(45,99,142,0.92),rgba(20,33,55,0.95))]"
+              : "border-border/[0.22] bg-[linear-gradient(180deg,rgba(28,38,60,0.85),rgba(14,20,34,0.9))]"
           }`}
         />
       )}
@@ -6042,10 +6042,10 @@ function FloorTowerSegment({
           }}
         />
       ) : null}
-      <span className="relative z-10 text-2xl font-black text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)]">
+      <span className="relative z-10 text-2xl font-black text-foreground drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)]">
         {floor.floor_name}
       </span>
-      <span className="relative z-10 ml-auto flex items-center gap-1 text-xs font-black text-amber-100 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
+      <span className="relative z-10 ml-auto flex items-center gap-1 text-xs font-black text-[#fbbf24] drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
         {treasureIcon ? (
           <AtlasSprite
             sprite={treasureIcon}
@@ -6070,7 +6070,7 @@ function FloorTowerStack({
   onSelectFloor: (floorNumber: number) => void;
 }) {
   return (
-    <div className="image-scroll relative flex h-full flex-col gap-1 overflow-y-auto rounded-md border border-white/10 bg-black/45 p-2 shadow-[inset_0_0_20px_rgba(0,0,0,0.6)]">
+    <div className="image-scroll relative flex h-full flex-col gap-1 overflow-y-auto rounded-md border border-border bg-background/70 p-2 shadow-[inset_0_0_20px_rgba(0,0,0,0.6)]">
       {floors.map((floor) => (
         <FloorTowerSegment
           key={floor.master_tower_floor_id}
@@ -6103,14 +6103,14 @@ function FloorTowerStackHorizontal({
             onClick={() => onSelectFloor(floor.floor_number)}
             className={`relative flex h-14 w-28 shrink-0 items-center gap-2 overflow-hidden rounded-md border px-3 text-left shadow-lg transition ${
               active
-                ? "border-cyan-100 bg-[linear-gradient(90deg,rgba(32,112,170,0.9),rgba(22,30,52,0.92))] ring-2 ring-white/80"
-                : "border-white/10 bg-black/35 hover:border-cyan-100/50 hover:bg-white/10"
+                ? "border-accent bg-[linear-gradient(90deg,rgba(20,72,118,0.97),rgba(18,40,64,0.97))] ring-2 ring-accent/80"
+                : "border-border bg-muted/60 hover:border-accent/50 hover:bg-accent/50"
             }`}
           >
-            <span className="text-2xl font-black leading-none text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.8)]">
+            <span className="text-2xl font-black leading-none text-foreground drop-shadow-[0_2px_3px_rgba(0,0,0,0.8)]">
               {floor.floor_name}
             </span>
-            <span className="ml-auto flex items-center gap-1 rounded bg-black/35 px-1.5 py-1 text-xs font-black text-amber-100">
+            <span className="ml-auto flex items-center gap-1 rounded bg-muted/60 px-1.5 py-1 text-xs font-black text-[#fbbf24]">
               <img
                 src={TREASURE_BAG}
                 alt=""
@@ -6154,9 +6154,9 @@ function TileDialog({
 
   return (
     <Dialog open={Boolean(modal)} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="max-h-[88vh] max-w-3xl overflow-auto border-amber-100/20 bg-[#10131b]/95 text-white shadow-2xl shadow-black/70 image-scroll">
+      <DialogContent className="slime-page-loup-loupe max-h-[88vh] max-w-3xl overflow-auto border-[#fbbf24]/20 bg-popover/95 text-foreground shadow-2xl shadow-black/70 image-scroll">
         <DialogHeader>
-          <DialogTitle className="pr-8 text-2xl font-black uppercase tracking-wide text-white">
+          <DialogTitle className="pr-8 text-2xl font-black uppercase tracking-wide text-foreground">
             {title}
           </DialogTitle>
           <DialogDescription className="sr-only">
@@ -6175,7 +6175,7 @@ function TileDialog({
             {event.quest ? <QuestPayout quest={event.quest} /> : null}
             {event.effects.length > 0 ? (
               <section className="space-y-3">
-                <h3 className="text-xs font-black uppercase tracking-[0.18em] text-cyan-100">
+                <h3 className="text-xs font-black uppercase tracking-[0.18em] text-accent">
                   Field Effect
                 </h3>
                 <EffectPanel effects={event.effects} />
@@ -6199,14 +6199,14 @@ function TileDialog({
             </div>
             {floor.floor_effects.length > 0 ? (
               <section className="space-y-3">
-                <h3 className="text-xs font-black uppercase tracking-[0.18em] text-cyan-100">
+                <h3 className="text-xs font-black uppercase tracking-[0.18em] text-accent">
                   Floor Effect
                 </h3>
                 <EffectPanel effects={floor.floor_effects} />
               </section>
             ) : null}
             <section className="space-y-3">
-              <h3 className="text-xs font-black uppercase tracking-[0.18em] text-amber-100">
+              <h3 className="text-xs font-black uppercase tracking-[0.18em] text-[#fbbf24]">
                 Clear Rewards
               </h3>
               <RewardGrid rewards={floor.clear_rewards} />
@@ -6295,20 +6295,20 @@ function RouteEditorPanel({
     .sort((a, b) => a.tileNumber - b.tileNumber);
 
   return (
-    <aside className="relative z-20 max-h-[calc(100vh-11rem)] w-full overflow-y-auto rounded-lg border border-cyan-100/20 bg-[#07101c]/92 p-4 text-white shadow-2xl shadow-black/60 backdrop-blur image-scroll">
+    <aside className="relative z-20 max-h-[calc(100vh-11rem)] w-full overflow-y-auto rounded-lg border border-accent/20 bg-muted/[0.92] p-4 text-foreground shadow-2xl shadow-black/60 backdrop-blur image-scroll">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-[11px] font-black uppercase tracking-[0.18em] text-cyan-100">Route Editor</p>
-          <p className="mt-1 text-xs font-semibold text-slate-300">
+          <p className="text-[11px] font-black uppercase tracking-[0.18em] text-accent">Route Editor</p>
+          <p className="mt-1 text-xs font-semibold text-muted-foreground">
             Drag across tiles to build a route. Click a routed tile to edit its note.
           </p>
         </div>
-        <span className="rounded-full border border-cyan-100/20 bg-cyan-200/10 px-2 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-cyan-100">
+        <span className="rounded-full border border-accent/20 bg-accent/10 px-2 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-accent">
           {isSavingRoutes ? "Saving" : routeStoreStatus === "ready" ? "Supabase" : routeStoreStatus === "loading" ? "Loading" : "Local"}
         </span>
       </div>
       {routeStoreMessage ? (
-        <p className="mt-3 rounded-md border border-amber-100/20 bg-amber-200/10 p-2 text-[11px] font-semibold text-amber-100">
+        <p className="mt-3 rounded-md border border-[#fbbf24]/20 bg-[#fcd34d]/10 p-2 text-[11px] font-semibold text-[#fbbf24]">
           Route store: {routeStoreMessage}
         </p>
       ) : null}
@@ -6318,13 +6318,13 @@ function RouteEditorPanel({
           value={routeName}
           onChange={(event) => onRouteNameChange(event.target.value)}
           placeholder={`${floor.floor_name} route name`}
-          className="h-10 rounded-md border border-white/15 bg-black/35 px-3 text-sm font-bold text-white outline-none placeholder:text-slate-500 focus:border-cyan-100/50"
+          className="h-10 rounded-md border border-border/[0.22] bg-muted/60 px-3 text-sm font-bold text-foreground outline-none placeholder:text-muted-foreground focus:border-accent/50"
         />
         <input
           type="color"
           value={routeColor}
           onChange={(event) => onRouteColorChange(event.target.value)}
-          className="h-10 w-16 rounded-md border border-white/15 bg-black/35 p-1"
+          className="h-10 w-16 rounded-md border border-border/[0.22] bg-muted/60 p-1"
           aria-label="Route color"
         />
       </div>
@@ -6333,7 +6333,7 @@ function RouteEditorPanel({
         <button
           type="button"
           onClick={onAddRoute}
-          className="inline-flex items-center gap-2 rounded-md border border-cyan-100/20 bg-cyan-200/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-cyan-100 transition hover:border-cyan-100/50 hover:bg-cyan-200/20"
+          className="inline-flex items-center gap-2 rounded-md border border-accent/20 bg-accent/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-accent transition hover:border-accent/50 hover:bg-accent/20"
         >
           <Plus className="h-3.5 w-3.5" />
           Add Route
@@ -6342,7 +6342,7 @@ function RouteEditorPanel({
           type="button"
           disabled={!selectedRoute}
           onClick={onUpdateSelectedRoute}
-          className="inline-flex items-center gap-2 rounded-md border border-white/15 bg-white/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-white transition hover:border-white/40 disabled:cursor-not-allowed disabled:opacity-40"
+          className="inline-flex items-center gap-2 rounded-md border border-border/[0.22] bg-border/[0.12] px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-foreground transition hover:border-accent/40 disabled:cursor-not-allowed disabled:opacity-40"
         >
           <Save className="h-3.5 w-3.5" />
           Save Details
@@ -6352,10 +6352,10 @@ function RouteEditorPanel({
       {floorRoutes.length > 0 ? (
         <div className="mt-3 space-y-2">
           <Select value={selectedRoute?.id ?? NO_ROUTE_SELECT_VALUE} onValueChange={onSelectRoute}>
-            <SelectTrigger className="h-10 border-white/15 bg-[#07101c]/90 text-sm font-black text-white">
+            <SelectTrigger className="h-10 border-border/[0.22] bg-muted/90 text-sm font-black text-foreground">
               <SelectValue placeholder="Select manual route" />
             </SelectTrigger>
-            <SelectContent className="border-white/10 bg-[#10131b] text-white">
+            <SelectContent className="slime-page-loup-loupe border-border bg-popover text-foreground">
               <SelectItem value={NO_ROUTE_SELECT_VALUE}>No route</SelectItem>
               {floorRoutes.map((route) => (
                 <SelectItem key={route.id} value={route.id}>
@@ -6367,10 +6367,10 @@ function RouteEditorPanel({
           {selectedRoute ? (
             <div className="grid gap-2 md:grid-cols-[1fr_auto]">
               <Select value={selectedPath?.id ?? "main"} onValueChange={(value) => onSelectPath(value as RoutePathId)}>
-                <SelectTrigger className="h-9 border-white/15 bg-[#07101c]/90 text-xs font-black text-white">
+                <SelectTrigger className="h-9 border-border/[0.22] bg-muted/90 text-xs font-black text-foreground">
                   <SelectValue placeholder="Path" />
                 </SelectTrigger>
-                <SelectContent className="border-white/10 bg-[#10131b] text-white">
+                <SelectContent className="slime-page-loup-loupe border-border bg-popover text-foreground">
                   {routePaths.map((path) => (
                     <SelectItem key={path.id} value={path.id}>
                       {path.label} - {path.tileNumbers.length} tiles
@@ -6382,22 +6382,22 @@ function RouteEditorPanel({
                 type="button"
                 disabled={!selectedNoteTileNumber || !routeHasTile(selectedRoute, Number(selectedNoteTileNumber))}
                 onClick={() => onForkPath(Number(selectedNoteTileNumber))}
-                className="inline-flex h-9 items-center justify-center gap-2 rounded-md border border-cyan-100/20 bg-cyan-200/10 px-3 text-xs font-black uppercase tracking-[0.14em] text-cyan-100 transition hover:border-cyan-100/50 disabled:cursor-not-allowed disabled:opacity-40"
+                className="inline-flex h-9 items-center justify-center gap-2 rounded-md border border-accent/20 bg-accent/10 px-3 text-xs font-black uppercase tracking-[0.14em] text-accent transition hover:border-accent/50 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 <Plus className="h-3.5 w-3.5" />
                 Fork From Tile {selectedNoteTileNumber || ""}
               </button>
             </div>
           ) : null}
-          <p className="text-xs font-semibold text-slate-300">
-            Selected: <span className="font-black text-white">{selectedRoute?.label ?? "None"}</span>
+          <p className="text-xs font-semibold text-muted-foreground">
+            Selected: <span className="font-black text-foreground">{selectedRoute?.label ?? "None"}</span>
             {selectedPath ? ` - ${selectedPath.label}` : ""} - {tileCount} tile{tileCount === 1 ? "" : "s"}
           </p>
-          <p className="max-h-16 overflow-auto rounded-md border border-white/10 bg-black/25 p-2 text-[11px] font-semibold leading-relaxed text-slate-300 image-scroll">
+          <p className="max-h-16 overflow-auto rounded-md border border-border bg-background/50 p-2 text-[11px] font-semibold leading-relaxed text-muted-foreground image-scroll">
             {selectedPath?.tileNumbers.length ? selectedPath.tileNumbers.join(" -> ") : "Drag across the map to add tiles."}
           </p>
           <label className="block space-y-1">
-            <span className="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.14em] text-cyan-100">
+            <span className="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.14em] text-accent">
               <StickyNote className="h-3.5 w-3.5" />
               Notes for {selectedRoute?.label ?? "selected route"}
             </span>
@@ -6406,15 +6406,15 @@ function RouteEditorPanel({
               disabled={!selectedRoute}
               onChange={(event) => onRouteNotesChange(event.target.value)}
               placeholder="Add route notes, warnings, rewards, or strategy reminders."
-              className="h-20 w-full rounded-md border border-white/10 bg-black/25 p-2 text-xs font-semibold leading-relaxed text-slate-100 outline-none placeholder:text-slate-500 focus:border-cyan-100/50 disabled:cursor-not-allowed disabled:opacity-45 image-scroll"
+              className="h-20 w-full rounded-md border border-border bg-background/50 p-2 text-xs font-semibold leading-relaxed text-foreground outline-none placeholder:text-muted-foreground focus:border-accent/50 disabled:cursor-not-allowed disabled:opacity-45 image-scroll"
             />
           </label>
-          <div className="rounded-md border border-white/10 bg-black/20 p-2">
+          <div className="rounded-md border border-border bg-background/45 p-2">
             <div className="mb-2 flex items-center justify-between gap-2">
-              <span className="text-[11px] font-black uppercase tracking-[0.14em] text-cyan-100">
+              <span className="text-[11px] font-black uppercase tracking-[0.14em] text-accent">
                 Tile note
               </span>
-              <span className="rounded-full border border-cyan-100/15 bg-cyan-100/10 px-2 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-cyan-100">
+              <span className="rounded-full border border-accent/15 bg-accent/10 px-2 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-accent">
                 {selectedNoteTileNumber ? `Tile ${selectedNoteTileNumber}` : "No tile"}
               </span>
             </div>
@@ -6431,8 +6431,8 @@ function RouteEditorPanel({
                       onClick={() => onSelectNoteTile(value)}
                       className={`inline-flex h-7 items-center gap-1 rounded-md border px-2 text-[10px] font-black uppercase tracking-[0.08em] transition ${
                         active
-                          ? "border-cyan-100/60 bg-cyan-100/15 text-cyan-50"
-                          : "border-white/10 bg-white/[0.04] text-slate-300 hover:border-cyan-100/35"
+                          ? "border-accent/60 bg-accent/15 text-accent"
+                          : "border-border bg-border/[0.06] text-muted-foreground hover:border-accent/35"
                       }`}
                     >
                       {hasNote ? <StickyNote className="h-3 w-3" /> : null}
@@ -6447,7 +6447,7 @@ function RouteEditorPanel({
               disabled={!selectedRoute || !selectedNoteTileNumber}
               onChange={(event) => onUpdateTileNote(Number(selectedNoteTileNumber), event.target.value)}
               placeholder="Add a note for this tile."
-              className="h-16 w-full rounded-md border border-white/10 bg-black/25 p-2 text-xs font-semibold leading-relaxed text-slate-100 outline-none placeholder:text-slate-500 focus:border-cyan-100/50 disabled:cursor-not-allowed disabled:opacity-45 image-scroll"
+              className="h-16 w-full rounded-md border border-border bg-background/50 p-2 text-xs font-semibold leading-relaxed text-foreground outline-none placeholder:text-muted-foreground focus:border-accent/50 disabled:cursor-not-allowed disabled:opacity-45 image-scroll"
             />
             {routeTileNotes.length > 0 ? (
               <div className="mt-2 max-h-28 space-y-1 overflow-auto pr-1 image-scroll">
@@ -6456,9 +6456,9 @@ function RouteEditorPanel({
                     key={`note-${tileNumber}`}
                     type="button"
                     onClick={() => onSelectNoteTile(String(tileNumber))}
-                    className="block w-full rounded-md border border-white/10 bg-white/[0.04] px-2 py-1.5 text-left text-[11px] font-semibold leading-snug text-slate-200 transition hover:border-cyan-100/35"
+                    className="block w-full rounded-md border border-border bg-border/[0.06] px-2 py-1.5 text-left text-[11px] font-semibold leading-snug text-foreground/90 transition hover:border-accent/35"
                   >
-                    <span className="mr-1 font-black text-cyan-100">Tile {tileNumber}</span>
+                    <span className="mr-1 font-black text-accent">Tile {tileNumber}</span>
                     {note}
                   </button>
                 ))}
@@ -6470,7 +6470,7 @@ function RouteEditorPanel({
               type="button"
               disabled={!selectedRoute || tileCount === 0}
               onClick={onUndoTile}
-              className="inline-flex items-center gap-2 rounded-md border border-white/15 bg-white/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-white transition hover:border-white/40 disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex items-center gap-2 rounded-md border border-border/[0.22] bg-border/[0.12] px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-foreground transition hover:border-accent/40 disabled:cursor-not-allowed disabled:opacity-40"
             >
               <Undo2 className="h-3.5 w-3.5" />
               Undo Tile
@@ -6479,7 +6479,7 @@ function RouteEditorPanel({
               type="button"
               disabled={!selectedRoute || tileCount === 0}
               onClick={onClearTiles}
-              className="inline-flex items-center gap-2 rounded-md border border-amber-100/20 bg-amber-200/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-amber-100 transition hover:border-amber-100/50 disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex items-center gap-2 rounded-md border border-[#fbbf24]/20 bg-[#fcd34d]/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-[#fbbf24] transition hover:border-[#fbbf24]/50 disabled:cursor-not-allowed disabled:opacity-40"
             >
               <RotateCcw className="h-3.5 w-3.5" />
               Clear Path
@@ -6496,7 +6496,7 @@ function RouteEditorPanel({
           </div>
         </div>
       ) : (
-        <p className="mt-3 rounded-md border border-white/10 bg-black/25 p-3 text-xs font-semibold text-slate-300">
+        <p className="mt-3 rounded-md border border-border bg-background/50 p-3 text-xs font-semibold text-muted-foreground">
           No manual routes on {floor.floor_name} yet. Add one, then drag over tiles.
         </p>
       )}
@@ -6506,7 +6506,7 @@ function RouteEditorPanel({
           type="button"
           onClick={onSaveRoutes}
           disabled={isSavingRoutes || routeStoreStatus === "unconfigured"}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-cyan-100/20 bg-cyan-200/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-cyan-100 transition hover:border-cyan-100/50 hover:bg-cyan-200/20 disabled:cursor-not-allowed disabled:opacity-45"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-accent/20 bg-accent/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-accent transition hover:border-accent/50 hover:bg-accent/20 disabled:cursor-not-allowed disabled:opacity-45"
         >
           <Save className="h-3.5 w-3.5" />
           {isSavingRoutes ? "Saving Route Table" : "Save Route Table"}
@@ -6521,7 +6521,7 @@ function RouteSummaryPanel({ floor, route }: { floor: LoupLoupeFloor; route: Rou
   const tileNotes = getRouteTileNoteDisplays(floor, route);
 
   return (
-    <section className="w-full rounded-lg border border-white/10 bg-black/35 p-4 text-white shadow-xl shadow-black/40 backdrop-blur">
+    <section className="w-full rounded-lg border border-border bg-muted/60 p-4 text-foreground shadow-xl shadow-black/40 backdrop-blur">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-2">
           <span
@@ -6529,20 +6529,20 @@ function RouteSummaryPanel({ floor, route }: { floor: LoupLoupeFloor; route: Rou
             style={{ color: route.color, backgroundColor: route.color }}
           />
           <div className="min-w-0">
-            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-cyan-100">
+            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-accent">
               Route Notes
             </p>
-            <h2 className="truncate text-base font-black text-white">
+            <h2 className="truncate text-base font-black text-foreground">
               {route.label}
             </h2>
           </div>
         </div>
-        <span className="rounded-full border border-white/10 bg-white/[0.05] px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-200">
+        <span className="rounded-full border border-border bg-border/[0.08] px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.12em] text-foreground/90">
           {floor.floor_name}
         </span>
       </div>
       {routeNotes ? (
-        <p className="mt-3 whitespace-pre-line rounded-md border border-cyan-100/15 bg-cyan-100/10 p-3 text-sm font-semibold leading-relaxed text-slate-100">
+        <p className="mt-3 whitespace-pre-line rounded-md border border-accent/15 bg-accent/10 p-3 text-sm font-semibold leading-relaxed text-foreground">
           {routeNotes}
         </p>
       ) : null}
@@ -6551,10 +6551,10 @@ function RouteSummaryPanel({ floor, route }: { floor: LoupLoupeFloor; route: Rou
           {tileNotes.map(({ tileNumber, note, noteIndex }) => (
             <div
               key={`route-summary-note-${route.id}-${tileNumber}`}
-              className="grid grid-cols-[2rem_1fr] gap-3 rounded-md border border-white/10 bg-white/[0.04] p-3 text-sm font-semibold leading-relaxed text-slate-200"
+              className="grid grid-cols-[2rem_1fr] gap-3 rounded-md border border-border bg-border/[0.06] p-3 text-sm font-semibold leading-relaxed text-foreground/90"
             >
               <span
-                className="flex h-7 w-7 items-center justify-center rounded-full border text-xs font-black text-white"
+                className="flex h-7 w-7 items-center justify-center rounded-full border text-xs font-black text-foreground"
                 style={{
                   borderColor: route.color,
                   boxShadow: `0 0 12px ${route.color}66`,
@@ -6563,7 +6563,7 @@ function RouteSummaryPanel({ floor, route }: { floor: LoupLoupeFloor; route: Rou
                 {noteIndex}
               </span>
               <div className="min-w-0">
-                <p className="mb-1 text-[10px] font-black uppercase tracking-[0.14em] text-cyan-100">
+                <p className="mb-1 text-[10px] font-black uppercase tracking-[0.14em] text-accent">
                   Tile {tileNumber}
                 </p>
                 <p className="whitespace-pre-line">{note}</p>
@@ -6869,7 +6869,7 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
 
   if (!floor) {
     return (
-      <div className="rounded-lg border border-white/10 bg-black/30 p-6 text-sm font-semibold text-slate-300">
+      <div className="rounded-lg border border-border bg-muted/55 p-6 text-sm font-semibold text-muted-foreground">
         No Loup Loupe floor data found.
       </div>
     );
@@ -7021,7 +7021,7 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
   };
 
   return (
-    <section className="relative min-h-[calc(100vh-5rem)] overflow-hidden rounded-lg border border-white/10 bg-[#070912] text-white shadow-2xl shadow-black/40">
+    <section className="relative min-h-[calc(100vh-5rem)] overflow-hidden rounded-lg border border-border bg-background text-foreground shadow-2xl shadow-black/40">
       <div
         className="absolute inset-0 bg-cover bg-center opacity-85"
         style={{
@@ -7039,12 +7039,12 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
       />
       <div className="absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-black/85 to-transparent" />
 
-      <header className="relative z-20 flex flex-col gap-3 border-b border-white/10 bg-black/35 px-4 py-3 backdrop-blur md:flex-row md:items-center md:justify-between">
+      <header className="relative z-20 flex flex-col gap-3 border-b border-border bg-muted/60 px-4 py-3 backdrop-blur md:flex-row md:items-center md:justify-between">
         <div className="min-w-0">
-          <p className="text-[11px] font-black uppercase tracking-[0.24em] text-red-300">
+          <p className="text-[11px] font-black uppercase tracking-[0.24em] text-accent">
             Tower Archive
           </p>
-          <h1 className="mt-1 truncate text-3xl font-black uppercase leading-none text-white drop-shadow-[0_3px_0_rgba(0,0,0,0.8)]">
+          <h1 className="mt-1 truncate text-3xl font-black uppercase leading-none text-foreground drop-shadow-[0_3px_0_rgba(0,0,0,0.8)]">
             Loup Loupe
           </h1>
         </div>
@@ -7052,7 +7052,7 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
         <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
-            className="flex h-11 w-11 items-center justify-center rounded-md border border-white/10 bg-black/35 text-white transition hover:border-cyan-100/60 disabled:cursor-not-allowed disabled:opacity-35"
+            className="flex h-11 w-11 items-center justify-center rounded-md border border-border bg-muted/60 text-foreground transition hover:border-accent/60 disabled:cursor-not-allowed disabled:opacity-35"
             disabled={!previousFloor}
             onClick={() =>
               previousFloor &&
@@ -7066,10 +7066,10 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
             value={String(floor.floor_number)}
             onValueChange={(value) => setSelectedFloorNumber(Number(value))}
           >
-            <SelectTrigger className="h-11 w-36 border-white/15 bg-[#07101c]/90 text-base font-black text-white">
+            <SelectTrigger className="h-11 w-36 border-border/[0.22] bg-muted/90 text-base font-black text-foreground">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="max-h-72 border-white/10 bg-[#10131b] text-white">
+            <SelectContent className="slime-page-loup-loupe max-h-72 border-border bg-popover text-foreground">
               {floors.map((candidate) => (
                 <SelectItem
                   key={candidate.master_tower_floor_id}
@@ -7082,7 +7082,7 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
           </Select>
           <button
             type="button"
-            className="flex h-11 w-11 items-center justify-center rounded-md border border-white/10 bg-black/35 text-white transition hover:border-cyan-100/60 disabled:cursor-not-allowed disabled:opacity-35"
+            className="flex h-11 w-11 items-center justify-center rounded-md border border-border bg-muted/60 text-foreground transition hover:border-accent/60 disabled:cursor-not-allowed disabled:opacity-35"
             disabled={!nextFloor}
             onClick={() =>
               nextFloor && setSelectedFloorNumber(nextFloor.floor_number)
@@ -7093,33 +7093,33 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
           </button>
           <button
             type="button"
-            className="flex h-11 items-center gap-2 rounded-md border border-white/15 bg-black/35 px-3 text-sm font-black text-white transition hover:border-pink-200/60"
+            className="flex h-11 items-center gap-2 rounded-md border border-border/[0.22] bg-muted/60 px-3 text-sm font-black text-foreground transition hover:border-accent/60"
             onClick={() => setModal({ kind: "details" })}
           >
-            <MapPinned className="h-4 w-4 text-pink-200" />
+            <MapPinned className="h-4 w-4 text-accent" />
             Floor Details
           </button>
           <button
             type="button"
-            className="flex h-11 items-center gap-2 rounded-md border border-white/15 bg-black/35 px-3 text-sm font-black text-white transition hover:border-amber-100/60"
+            className="flex h-11 items-center gap-2 rounded-md border border-border/[0.22] bg-muted/60 px-3 text-sm font-black text-foreground transition hover:border-[#fbbf24]/60"
             onClick={() => setModal({ kind: "clearRewards" })}
           >
-            <Trophy className="h-4 w-4 text-amber-100" />
+            <Trophy className="h-4 w-4 text-[#fbbf24]" />
             Clear Rewards
           </button>
           <button
             type="button"
-            className="flex h-11 items-center gap-2 rounded-md border border-white/15 bg-black/35 px-3 text-sm font-black text-white transition hover:border-cyan-100/60"
+            className="flex h-11 items-center gap-2 rounded-md border border-border/[0.22] bg-muted/60 px-3 text-sm font-black text-foreground transition hover:border-accent/60"
             onClick={() => setModal({ kind: "challengeRewards" })}
           >
-            <Gem className="h-4 w-4 text-cyan-100" />
+            <Gem className="h-4 w-4 text-accent" />
             Challenge
           </button>
           {ENABLE_ROUTE_EDITOR ? (
             routeEditorEnabled ? (
               <button
                 type="button"
-                className="flex h-11 items-center gap-2 rounded-md border border-cyan-100/20 bg-cyan-200/10 px-3 text-sm font-black text-cyan-100 transition hover:border-cyan-100/60"
+                className="flex h-11 items-center gap-2 rounded-md border border-accent/20 bg-accent/10 px-3 text-sm font-black text-accent transition hover:border-accent/60"
                 onClick={signOutRouteEditor}
                 title={routeAuthorName ? `Signed in as ${routeAuthorName}` : "Signed in"}
               >
@@ -7129,10 +7129,10 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
             ) : (
               <button
                 type="button"
-                className="flex h-11 items-center gap-2 rounded-md border border-white/15 bg-black/35 px-3 text-sm font-black text-white transition hover:border-cyan-100/60"
+                className="flex h-11 items-center gap-2 rounded-md border border-border/[0.22] bg-muted/60 px-3 text-sm font-black text-foreground transition hover:border-accent/60"
                 onClick={() => setShowRouteLogin((value) => !value)}
               >
-                <LogIn className="h-4 w-4 text-cyan-100" />
+                <LogIn className="h-4 w-4 text-accent" />
                 Login
               </button>
             )
@@ -7159,10 +7159,10 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
               }
             }}
             >
-              <SelectTrigger className="h-11 w-44 border-white/15 bg-[#07101c]/90 text-sm font-black text-white">
+              <SelectTrigger className="h-11 w-44 border-border/[0.22] bg-muted/90 text-sm font-black text-foreground">
                 <SelectValue placeholder="Route" />
               </SelectTrigger>
-              <SelectContent className="border-white/10 bg-[#10131b] text-white">
+              <SelectContent className="slime-page-loup-loupe border-border bg-popover text-foreground">
                 <SelectItem value={NO_ROUTE_SELECT_VALUE}>No route</SelectItem>
                 {routes.map((route) => (
                   <SelectItem key={route.id} value={route.id}>
@@ -7176,14 +7176,14 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
       </header>
 
       {showRouteLogin ? (
-        <div className="relative z-20 border-b border-white/10 bg-black/45 px-4 py-3 backdrop-blur">
+        <div className="relative z-20 border-b border-border bg-background/70 px-4 py-3 backdrop-blur">
           <div className="ml-auto grid max-w-2xl gap-2 md:grid-cols-[1fr_1fr_auto]">
             <input
               value={routeLoginEmail}
               onChange={(event) => setRouteLoginEmail(event.target.value)}
               placeholder="Email"
               autoComplete="email"
-              className="h-10 rounded-md border border-white/15 bg-black/35 px-3 text-sm font-bold text-white outline-none placeholder:text-slate-500 focus:border-cyan-100/50"
+              className="h-10 rounded-md border border-border/[0.22] bg-muted/60 px-3 text-sm font-bold text-foreground outline-none placeholder:text-muted-foreground focus:border-accent/50"
             />
             <input
               value={routeLoginPassword}
@@ -7194,13 +7194,13 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
               onKeyDown={(event) => {
                 if (event.key === "Enter") void signInRouteEditor();
               }}
-              className="h-10 rounded-md border border-white/15 bg-black/35 px-3 text-sm font-bold text-white outline-none placeholder:text-slate-500 focus:border-cyan-100/50"
+              className="h-10 rounded-md border border-border/[0.22] bg-muted/60 px-3 text-sm font-bold text-foreground outline-none placeholder:text-muted-foreground focus:border-accent/50"
             />
             <button
               type="button"
               disabled={routeLoginLoading || !routeLoginEmail.trim() || !routeLoginPassword}
               onClick={() => void signInRouteEditor()}
-              className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-cyan-100/20 bg-cyan-200/10 px-4 text-xs font-black uppercase tracking-[0.14em] text-cyan-100 transition hover:border-cyan-100/50 disabled:cursor-not-allowed disabled:opacity-45"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-accent/20 bg-accent/10 px-4 text-xs font-black uppercase tracking-[0.14em] text-accent transition hover:border-accent/50 disabled:cursor-not-allowed disabled:opacity-45"
             >
               <LogIn className="h-3.5 w-3.5" />
               {routeLoginLoading ? "Signing in" : "Login"}
@@ -7214,7 +7214,7 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
         </div>
       ) : null}
 
-      <div className="relative z-20 flex gap-2 overflow-x-auto border-b border-white/10 bg-black/25 px-3 py-2 image-scroll md:hidden">
+      <div className="relative z-20 flex gap-2 overflow-x-auto border-b border-border bg-background/50 px-3 py-2 image-scroll md:hidden">
         <FloorTowerStackHorizontal
           floors={floors}
           selectedFloorNumber={floor.floor_number}

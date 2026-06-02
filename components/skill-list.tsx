@@ -267,7 +267,7 @@ function SecretSkillIcon({
   const rarityIcon = rarity === 6 ? `${BATTLE_ATLAS}/icEpicOff.webp` : `${BATTLE_ATLAS}/icUltimateOff.webp`
 
   return (
-    <div className="relative h-14 w-14 shrink-0">
+    <div className="character-detail-skill-icon relative h-14 w-14 shrink-0">
       {cardFrame ? (
         <>
           {/* Card frame as background */}
@@ -319,7 +319,7 @@ function SkillGroupCard({ group, rarity }: { group: SkillGroup; rarity?: number 
 
   return (
       <Card
-      className={`rounded-2xl transition-all ${
+      className={`character-detail-row-card character-detail-skill-card rounded-2xl transition-all ${
         isSecretTriple
           ? tripleMode === "attack"
             ? "border-orange-500/50 bg-gray-700 shadow-[0_0_24px_rgba(249,115,22,0.18)]"
@@ -335,7 +335,7 @@ function SkillGroupCard({ group, rarity }: { group: SkillGroup; rarity?: number 
             : "border-gray-600 bg-gray-700 shadow-none"
       }`}
     >
-      <CardContent className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 p-5 items-start">
+      <CardContent className="character-detail-combat-card-content grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 p-5 items-start">
         {/* Mobile header: icon + name inline, description below (full width) */}
         <div className="flex items-center gap-4 sm:hidden">
           <SecretSkillIcon skill={skill} tripleMode={isSecretTriple ? tripleMode : null} rarity={rarity} baseSkill={group.base} />
@@ -579,7 +579,7 @@ function SkillGroupCard({ group, rarity }: { group: SkillGroup; rarity?: number 
 export function SkillList({ skills, rarity }: { skills: WikiSkill[]; rarity?: number }) {
   const groups = groupSkills(skills)
   return (
-    <div className="space-y-4">
+    <div className="character-detail-skill-list space-y-4">
       {groups.map((group) => (
         <SkillGroupCard key={group.base.label} group={group} rarity={rarity} />
       ))}
