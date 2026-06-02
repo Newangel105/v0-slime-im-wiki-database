@@ -93,7 +93,7 @@ function AuthorAvatar({
       <img
         src={profile.avatar_url}
         alt={displayName}
-        className={`${sizeClasses} rounded-full border border-white/15 object-cover shadow-lg ring-2 ring-[#da3e44]/20`}
+        className={`${sizeClasses} rounded-full border border-border/[0.22] object-cover shadow-lg ring-2 ring-accent/20`}
         loading="lazy"
       />
     )
@@ -101,7 +101,7 @@ function AuthorAvatar({
 
   return (
     <span
-      className={`${sizeClasses} inline-flex shrink-0 items-center justify-center rounded-full border border-white/15 bg-[#222327] font-extrabold text-white shadow-lg ring-2 ring-[#da3e44]/20`}
+      className={`${sizeClasses} inline-flex shrink-0 items-center justify-center rounded-full border border-border/[0.22] bg-card font-extrabold text-foreground shadow-lg ring-2 ring-accent/20`}
     >
       {initials}
     </span>
@@ -112,9 +112,9 @@ function GuideCard({ article, authorProfile }: { article: GuideArticle; authorPr
   const authorName = authorProfile?.display_name || article.author_name
 
   return (
-    <article className="glass-panel group overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-[#da3e44]/35 hover:shadow-[0_24px_80px_rgba(0,0,0,0.32),0_0_34px_rgba(218,62,68,0.12)]">
+    <article className="glass-panel group overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-accent/35 hover:shadow-[0_24px_80px_rgba(0,0,0,0.32),0_0_34px_rgba(52,208,221,0.12)]">
       <Link href={`/guides/${article.slug}`} className="block">
-        <div className="relative aspect-[16/9] overflow-hidden bg-[#16171b]">
+        <div className="relative aspect-[16/9] overflow-hidden bg-muted">
           {article.thumbnail_url ? (
             <img
               src={getGuideCover(article)}
@@ -122,13 +122,13 @@ function GuideCard({ article, authorProfile }: { article: GuideArticle; authorPr
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.035]"
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(circle_at_18%_-8%,rgba(218,62,68,0.16),transparent_22rem),linear-gradient(135deg,#191a1e_0%,#1f2024_46%,#242529_100%)] px-6 text-center text-sm font-bold uppercase tracking-[0.26em] text-white/60">
+            <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(circle_at_18%_-8%,rgba(52,208,221,0.16),transparent_22rem),linear-gradient(135deg,#143552_0%,#16395a_46%,#1A4466_100%)] px-6 text-center text-sm font-bold uppercase tracking-[0.26em] text-foreground/60">
               SLIME.WIKI Guide
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#121319] via-[#121319]/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-5">
-            <div className="inline-flex items-center rounded-full border border-[#da3e44]/30 bg-black/30 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#ff8a98] backdrop-blur-sm">
+            <div className="inline-flex items-center rounded-full border border-accent/30 bg-black/30 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-accent backdrop-blur-sm">
               Guide
             </div>
           </div>
@@ -139,10 +139,10 @@ function GuideCard({ article, authorProfile }: { article: GuideArticle; authorPr
         <div className="glass-panel-strong flex items-end gap-3 px-4 py-3">
           <AuthorAvatar profile={authorProfile} name={authorName} size="lg" />
           <div className="min-w-0">
-            <p className="truncate text-sm font-bold text-white">{authorName}</p>
-            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500">Contributor</p>
+            <p className="truncate text-sm font-bold text-foreground">{authorName}</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-muted-foreground">Contributor</p>
           </div>
-          <span className="ml-auto shrink-0 text-xs text-slate-400">
+          <span className="ml-auto shrink-0 text-xs text-muted-foreground">
             {formatGuideDate(article.published_at || article.created_at)}
           </span>
         </div>
@@ -150,11 +150,11 @@ function GuideCard({ article, authorProfile }: { article: GuideArticle; authorPr
 
       <div className="px-5 pb-5 pt-4">
         <Link href={`/guides/${article.slug}`} className="block">
-          <h3 className="line-clamp-2 text-xl font-black leading-snug text-white transition-colors duration-200 group-hover:text-[#ff8a98]">
+          <h3 className="line-clamp-2 text-xl font-black leading-snug text-foreground transition-colors duration-200 group-hover:text-accent">
             {article.title}
           </h3>
         </Link>
-        {article.summary ? <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-400">{article.summary}</p> : null}
+        {article.summary ? <p className="mt-3 line-clamp-3 text-sm leading-6 text-muted-foreground">{article.summary}</p> : null}
       </div>
     </article>
   )
@@ -249,7 +249,7 @@ export function GuidesClient() {
   }
 
   return (
-    <main className="site-page">
+    <main className="site-page slime-page-guides">
       <div className="site-container space-y-8">
         <section className="glass-panel-strong p-6 sm:p-8">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -257,7 +257,7 @@ export function GuidesClient() {
               <div className="section-kicker">Community Guides</div>
               <h1 className="section-title mt-3 text-4xl sm:text-5xl">Guides</h1>
               <div className="accent-rule my-5" />
-              <p className="max-w-2xl text-base leading-7 text-slate-300">
+              <p className="max-w-2xl text-base leading-7 text-muted-foreground">
                 Articles, team notes, event tips, and strategy write-ups from trusted contributors.
               </p>
             </div>
@@ -293,7 +293,7 @@ export function GuidesClient() {
         <section className="glass-panel p-5 sm:p-6">
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div className="relative max-w-xl flex-1">
-              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
@@ -307,11 +307,11 @@ export function GuidesClient() {
           </div>
         </section>
 
-        {loading ? <p className="text-slate-400">Loading guides...</p> : null}
+        {loading ? <p className="text-muted-foreground">Loading guides...</p> : null}
         {error ? <p className="glass-panel border-red-500/30 bg-red-500/10 p-4 text-red-200">{error}</p> : null}
 
         {!loading && !error && filteredArticles.length === 0 ? (
-          <div className="glass-panel p-10 text-center text-slate-300">No published guides yet.</div>
+          <div className="glass-panel p-10 text-center text-muted-foreground">No published guides yet.</div>
         ) : null}
 
         <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">

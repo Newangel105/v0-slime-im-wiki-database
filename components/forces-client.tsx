@@ -1,7 +1,6 @@
 "use client"
 import { useState, useMemo } from "react"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent } from "@/components/ui/card"
 import { Search, ChevronDown, ChevronUp } from "lucide-react"
 import Link from "next/link"
 
@@ -52,21 +51,16 @@ export default function ForcesClient({ forceGroups }: { forceGroups: SlimForceGr
   }
 
   return (
-    <div className="site-page text-white">
-      <div className="max-w-7xl mx-auto pl-6 pr-4 sm:pl-8 sm:pr-6 lg:px-8 py-8">
-        <div className="mb-8 text-center">
-          <p className="section-kicker">Team Affinities</p>
-          <h1 className="section-title mt-2">Forces</h1>
-        </div>
-
-        <div className="max-w-md mx-auto mb-8">
+    <main className="site-page slime-page-forces px-4 py-8 text-foreground sm:px-6">
+      <div className="mx-auto w-full max-w-7xl">
+        <div className="mx-auto mb-8 max-w-md">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#aeb6c4]" />
             <Input
-              placeholder="Search..."
+              placeholder="Search forces or characters"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 bg-[#080d18]/80 border-white/10 text-white"
+              className="h-12 rounded-full border-border/30 bg-[rgba(24,62,92,0.92)] pl-11 pr-4 text-foreground placeholder:text-[#aeb6c4]/70 focus-visible:ring-accent/45 backdrop-blur-md"
             />
           </div>
         </div>
@@ -75,104 +69,106 @@ export default function ForcesClient({ forceGroups }: { forceGroups: SlimForceGr
           {filteredGroups.map((group) => {
             const isExpanded = expandedForces.has(group.name)
             return (
-              <Card key={group.name} className="glass-panel overflow-hidden">
-                <CardContent className="p-0">
-                  <button
-                    onClick={() => toggleForce(group.name)}
-                    className="w-full flex items-center justify-between px-6 py-5 hover:bg-white/[0.06] transition-colors"
-                  >
-                    <div className="flex-1 min-w-0 flex items-center gap-3">
-                      {group.forceIcon && (
-                        <img src={group.forceIcon} alt={group.name} className="w-8 h-8 object-contain flex-shrink-0" />
-                      )}
-                      <span className="text-white font-medium text-sm sm:text-base leading-tight text-left block max-w-full whitespace-normal break-words">
-                        {group.name}
-                      </span>
-                    </div>
-                    <div className="flex items-center space-x-3 mt-1">
-                      <span className="text-gray-400 font-medium">{group.characters.length}</span>
-                      <img src="/icons/name.webp" alt="User Icon" className="w-3 h-5" />
-                      {isExpanded ? (
-                        <ChevronUp className="w-5 h-5 text-gray-400" />
-                      ) : (
-                        <ChevronDown className="w-5 h-5 text-gray-400" />
-                      )}
-                    </div>
-                  </button>
+              <div
+                key={group.name}
+                className="overflow-hidden rounded-2xl border border-border/[0.26] bg-[linear-gradient(160deg,rgba(30,77,113,0.96),rgba(22,58,88,0.97))] shadow-[0_16px_40px_rgba(8,30,52,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md"
+              >
+                <button
+                  onClick={() => toggleForce(group.name)}
+                  aria-expanded={isExpanded}
+                  className="flex w-full items-center justify-between rounded-2xl px-6 py-5 transition-colors hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50"
+                >
+                  <div className="flex min-w-0 flex-1 items-center gap-3">
+                    {group.forceIcon && (
+                      <img src={group.forceIcon} alt={group.name} className="h-8 w-8 flex-shrink-0 object-contain" />
+                    )}
+                    <span className="block max-w-full whitespace-normal break-words text-left text-sm font-semibold leading-tight text-[#e8eef6] sm:text-base">
+                      {group.name}
+                    </span>
+                  </div>
+                  <div className="mt-1 flex items-center space-x-3">
+                    <span className="font-semibold tabular-nums text-[#aeb6c4]">{group.characters.length}</span>
+                    <img src="/icons/name.webp" alt="User Icon" className="h-5 w-3" />
+                    {isExpanded ? (
+                      <ChevronUp className="h-5 w-5 text-accent" />
+                    ) : (
+                      <ChevronDown className="h-5 w-5 text-accent" />
+                    )}
+                  </div>
+                </button>
 
-                  {isExpanded && (
-                    <div className="px-4 pt-4 pb-4">
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-y-4 gap-x-2">
-                        {group.characters.map((character) => (
-                          <Link key={character.master_pc_id} href={`/characters/${character.master_pc_id}`} className="min-w-0">
-                            <div className="relative w-full pt-[100%] overflow-hidden rounded cursor-pointer hover:ring-2 hover:ring-white transition-all">
-                              {character.visualTier >= 8 ? (
-                                <div className="absolute inset-[7%]">
-                                  <img
-                                    src={character.baseSrc}
-                                    alt=""
-                                    loading="lazy"
-                                    decoding="async"
-                                    className="w-full h-full object-fill pointer-events-none"
-                                  />
-                                </div>
-                              ) : (
+                {isExpanded && (
+                  <div className="px-4 pb-4 pt-4">
+                    <div className="grid grid-cols-2 gap-x-2 gap-y-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
+                      {group.characters.map((character) => (
+                        <Link key={character.master_pc_id} href={`/characters/${character.master_pc_id}`} className="min-w-0">
+                          <div className="relative w-full cursor-pointer overflow-hidden rounded pt-[100%] transition-all duration-200 hover:-translate-y-0.5 hover:ring-2 hover:ring-[#0a9baa]/70">
+                            {character.visualTier >= 8 ? (
+                              <div className="absolute inset-[7%]">
                                 <img
                                   src={character.baseSrc}
                                   alt=""
                                   loading="lazy"
                                   decoding="async"
-                                  className="absolute inset-0 w-full h-full object-fill pointer-events-none"
-                                />
-                              )}
-                              <div className={`absolute overflow-hidden ${character.visualTier >= 8 ? "inset-[4%] rounded-[6%]" : "inset-[7%] rounded-[10%]"}`}>
-                                <img
-                                  src={character.iconSrc}
-                                  alt={character.name}
-                                  loading="lazy"
-                                  decoding="async"
-                                  className="h-full w-full object-cover object-top"
+                                  className="w-full h-full object-fill pointer-events-none"
                                 />
                               </div>
+                            ) : (
                               <img
-                                src={character.frameSrc}
+                                src={character.baseSrc}
                                 alt=""
                                 loading="lazy"
                                 decoding="async"
                                 className="absolute inset-0 w-full h-full object-fill pointer-events-none"
                               />
-                              <div className="absolute top-1 left-1 bg-black bg-opacity-80 text-white text-[10px] px-1 py-0.5 rounded z-10">
-                                {character.name}
-                              </div>
+                            )}
+                            <div className={`absolute overflow-hidden ${character.visualTier >= 8 ? "inset-[4%] rounded-[6%]" : "inset-[7%] rounded-[10%]"}`}>
                               <img
-                                src={character.starsSrc}
-                                alt=""
-                                className="absolute bottom-1 left-1 h-6 object-contain z-10"
+                                src={character.iconSrc}
+                                alt={character.name}
+                                loading="lazy"
+                                decoding="async"
+                                className="h-full w-full object-cover object-top"
                               />
-                              <div className="absolute top-1 right-1 z-20 flex flex-col items-end gap-1">
-                                {character.firstIcon && (
-                                  <img src={character.firstIcon} alt="" className="w-6 h-6 object-contain" />
-                                )}
-                                {character.secondIcon && (
-                                  <img src={character.secondIcon} alt="" className="w-6 h-6 object-contain" />
-                                )}
-                              </div>
                             </div>
-                          </Link>
-                        ))}
-                      </div>
+                            <img
+                              src={character.frameSrc}
+                              alt=""
+                              loading="lazy"
+                              decoding="async"
+                              className="absolute inset-0 w-full h-full object-fill pointer-events-none"
+                            />
+                            <div className="absolute left-1 top-1 z-10 rounded bg-[#072a51]/85 px-1 py-0.5 text-[10px] text-white">
+                              {character.name}
+                            </div>
+                            <img
+                              src={character.starsSrc}
+                              alt=""
+                              className="absolute bottom-1 left-1 h-6 object-contain z-10"
+                            />
+                            <div className="absolute top-1 right-1 z-20 flex flex-col items-end gap-1">
+                              {character.firstIcon && (
+                                <img src={character.firstIcon} alt="" className="w-6 h-6 object-contain drop-shadow-[0_0_1.5px_rgba(255,255,255,0.9)]" />
+                              )}
+                              {character.secondIcon && (
+                                <img src={character.secondIcon} alt="" className="w-6 h-6 object-contain drop-shadow-[0_0_1.5px_rgba(255,255,255,0.9)]" />
+                              )}
+                            </div>
+                          </div>
+                        </Link>
+                      ))}
                     </div>
-                  )}
-                </CardContent>
-              </Card>
+                  </div>
+                )}
+              </div>
             )
           })}
         </div>
 
         {filteredGroups.length === 0 && (
-          <div className="text-center text-gray-400 py-8">No forces found matching the current search.</div>
+          <div className="py-8 text-center text-[#072a51]">No forces found matching the current search.</div>
         )}
       </div>
-    </div>
+    </main>
   )
 }

@@ -125,14 +125,14 @@ function renderBlock(block: GuideContentBlock) {
 
   if (block.type === "paragraph") {
     if (!block.text || !block.text.trim()) return null
-    return <p className={`${alignClass} max-w-full whitespace-pre-wrap text-base leading-8 text-slate-200`}>{block.text}</p>
+    return <p className={`${alignClass} max-w-full whitespace-pre-wrap text-base leading-8 text-foreground/90`}>{block.text}</p>
   }
 
   if (block.type === "heading") {
     if (!block.text || !block.text.trim()) return null
     const Tag = block.level === 3 ? "h3" : "h2"
     return (
-      <Tag className={`${alignClass} max-w-full ${block.level === 3 ? "text-xl font-black text-white" : "text-3xl font-black text-white"}`}>
+      <Tag className={`${alignClass} max-w-full ${block.level === 3 ? "text-xl font-black text-foreground" : "text-3xl font-black text-foreground"}`}>
         {block.text}
       </Tag>
     )
@@ -149,7 +149,7 @@ function renderBlock(block: GuideContentBlock) {
           alt={block.alt || block.caption || "Guide image"}
           className={`${fixedHeight ? "h-full" : "h-auto"} w-full ${imageFitClass(block)}`}
         />
-        {block.caption ? <figcaption className="mt-2 text-sm text-slate-300">{block.caption}</figcaption> : null}
+        {block.caption ? <figcaption className="mt-2 text-sm text-muted-foreground">{block.caption}</figcaption> : null}
       </figure>
     )
   }
@@ -159,7 +159,7 @@ function renderBlock(block: GuideContentBlock) {
     if (!videoId) return null
     const fixedHeight = Boolean(blockHeightPx(block))
     return (
-      <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/30">
+      <figure className="overflow-hidden rounded-2xl border border-border bg-black/30">
         <div className={`${fixedHeight ? "" : "aspect-video"} w-full`} style={fixedHeight ? mediaBoxStyle(block) : undefined}>
           <iframe
             src={`https://www.youtube-nocookie.com/embed/${videoId}`}
@@ -169,16 +169,16 @@ function renderBlock(block: GuideContentBlock) {
             allowFullScreen
           />
         </div>
-        {block.caption ? <figcaption className="border-t border-white/10 px-4 py-3 text-sm text-slate-300">{block.caption}</figcaption> : null}
+        {block.caption ? <figcaption className="border-t border-border px-4 py-3 text-sm text-muted-foreground">{block.caption}</figcaption> : null}
       </figure>
     )
   }
 
   if (block.type === "quote") {
     return (
-      <blockquote className={`${alignClass} max-w-full rounded-2xl border border-[#da3e44]/25 bg-[#da3e44]/10 px-5 py-5 text-slate-100 shadow-[0_0_24px_rgba(218,62,68,0.08)]`}>
+      <blockquote className={`${alignClass} max-w-full rounded-2xl border border-accent/25 bg-accent/10 px-5 py-5 text-foreground shadow-[0_0_24px_rgba(52,208,221,0.08)]`}>
         <p className="whitespace-pre-wrap text-lg italic leading-8">“{block.text}”</p>
-        {block.cite ? <footer className="mt-3 text-sm font-semibold text-[#ff97a3]">— {block.cite}</footer> : null}
+        {block.cite ? <footer className="mt-3 text-sm font-semibold text-accent">— {block.cite}</footer> : null}
       </blockquote>
     )
   }
@@ -187,7 +187,7 @@ function renderBlock(block: GuideContentBlock) {
     const items = block.items.filter((item) => item.trim())
     if (items.length === 0) return null
     return (
-      <ul className={`${alignClass} ${block.textAlign === "center" || block.textAlign === "right" ? "list-none pl-0" : "list-disc pl-6"} max-w-full space-y-2 text-slate-200`}>
+      <ul className={`${alignClass} ${block.textAlign === "center" || block.textAlign === "right" ? "list-none pl-0" : "list-disc pl-6"} max-w-full space-y-2 text-foreground/90`}>
         {items.map((item, index) => (
           <li key={`${block.id}-${index}`} className="leading-7">
             {item}
@@ -198,7 +198,7 @@ function renderBlock(block: GuideContentBlock) {
   }
 
   if (block.type === "divider") {
-    return <hr className="border-white/10" />
+    return <hr className="border-border" />
   }
 
   return null
@@ -225,7 +225,7 @@ export function GuideRenderer({ content }: GuideRendererProps) {
   const blocks = Array.isArray(content?.blocks) ? content.blocks : []
 
   if (blocks.length === 0) {
-    return <p className="text-slate-400">This guide does not have content yet.</p>
+    return <p className="text-muted-foreground">This guide does not have content yet.</p>
   }
 
   const nodes: React.ReactNode[] = []
@@ -264,5 +264,5 @@ export function GuideRenderer({ content }: GuideRendererProps) {
 
   flushRow()
 
-  return <div className="space-y-6 text-slate-100">{nodes}</div>
+  return <div className="space-y-6 text-foreground">{nodes}</div>
 }

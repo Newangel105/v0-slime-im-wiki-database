@@ -781,7 +781,7 @@ export function PromotionWebGLStage(props: PromotionWebGLStageProps) {
         }}
         className="absolute right-[8.5%] top-[6.5%] z-10 h-[8%] w-[18%] cursor-pointer bg-transparent"
       >
-        <span className="pointer-events-none absolute right-0 top-0 font-serif text-[clamp(12px,1.5vw,28px)] font-bold italic tracking-wider text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">
+        <span className="pointer-events-none absolute right-0 top-0 font-serif text-[clamp(12px,1.5vw,28px)] font-bold italic tracking-wider text-foreground drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">
           SKIP ▶▶
         </span>
       </button>

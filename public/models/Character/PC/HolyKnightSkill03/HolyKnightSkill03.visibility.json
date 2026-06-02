@@ -1,1 +1,0 @@
-{"defaults": {"FaceMesh": true, "SwordMesh": false, "BodyMesh": true}, "tracks": {}, "visibilityPolicy": {"version": 3, "mode": "data-driven-controlled-mesh-opt-in-normal-track-filtered", "exportedClipCount": 0, "controlledMeshes": [], "alwaysVisibleControlledMeshes": [], "equipmentMeshes": ["SwordMesh"], "strippedNormalVisibilityTrackRefs": 0}}

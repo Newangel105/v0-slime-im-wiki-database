@@ -1,36 +1,54 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 import * as cheerio from "cheerio"
 
 type RouteContext = {
   params: Promise<{ id: string }>
 }
 
-export async function GET(request: Request, { params }: RouteContext) {
+export async function GET(request: NextRequest, { params }: RouteContext) {
   const { id } = await params
 
   try {
-    const response = await fetch(
-      `https://api.ten-sura-m.wfs.games/web/announcement/${id}?region=1&language=2&phoneType=1&assetVersion=`,
-      {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-          Accept: "text/html",
-        },
-      },
-    )
+    const requestedLanguage = Number(request.nextUrl.searchParams.get("language") ?? 2)
+    const language = [1, 2, 3, 4].includes(requestedLanguage) ? requestedLanguage : 2
+    const headers = {
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+      Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    }
+    const detailUrls = [
+      `https://api-us.ten-sura-m.wfs.games/web/announcement/${id}?language=${language}`,
+      `https://api.ten-sura-m.wfs.games/web/announcement/${id}?region=1&language=${language}&phoneType=1&assetVersion=`,
+    ]
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
+    let response: Response | null = null
+    for (const detailUrl of detailUrls) {
+      response = await fetch(detailUrl, { headers })
+      if (response.ok) break
+    }
+
+    if (!response?.ok) {
+      throw new Error(`HTTP error! status: ${response?.status ?? "unknown"}`)
     }
 
     const html = await response.text()
     const $ = cheerio.load(html)
+    const baseUrl = new URL(response.url)
 
     const title = $("h1.article-body").first().text().trim()
+    const $detailMain = $(".detail-main")
 
-    // Get the full HTML inside .detail-main exactly as it is
-    const content = $(".detail-main").html() || "<p>Content not available</p>"
+    $detailMain.find("script, style").remove()
+    $detailMain.find("[src]").each((_, element) => {
+      const value = $(element).attr("src")
+      if (value) $(element).attr("src", new URL(value, baseUrl).toString())
+    })
+    $detailMain.find("[href]").each((_, element) => {
+      const value = $(element).attr("href")
+      if (value) $(element).attr("href", new URL(value, baseUrl).toString())
+    })
+
+    const content = $detailMain.html() || "<p>Content not available</p>"
 
     return NextResponse.json({
       code: 200,

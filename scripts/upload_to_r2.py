@@ -46,7 +46,15 @@ except ImportError:
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 PUBLIC = REPO_ROOT / "public"
-UPLOAD_DIRS = ["Movie", "Video"]
+# Directories under public/ to mirror up to the bucket. Add new entries here
+# when you offload more static asset trees to the CDN.
+UPLOAD_DIRS = ["models"]
+# Single files at the repo root (not under public/) that we also want on R2,
+# keyed by the object name they should get inside the bucket. Used for very
+# large generated JSON blobs that the runtime fetches over the wire.
+UPLOAD_ROOT_FILES = {
+    "summon.generated.json": "summon.generated.json",
+}
 CACHE_CONTROL = "public, max-age=31536000, immutable"
 PARALLEL = 12  # concurrent uploads
 
@@ -78,17 +86,28 @@ s3 = boto3.client(
 )
 
 
-def collect_local_files() -> list[Path]:
-    """Walk public/Movie + public/Video and return relative file paths."""
-    files: list[Path] = []
+def collect_local_files() -> list[tuple[Path, str]]:
+    """Walk the configured public/ subdirs + UPLOAD_ROOT_FILES and return
+    (absolute path, R2 object key) pairs. Object keys mirror the on-disk
+    layout under public/ (no leading 'public/' prefix), so requests for
+    `/Movie/X.mp4` resolve cleanly against the CDN base URL."""
+    out: list[tuple[Path, str]] = []
+    # Subdirs of public/
     for d in UPLOAD_DIRS:
         root = PUBLIC / d
         if not root.is_dir():
             continue
         for p in root.rglob("*"):
-            if p.is_file():
-                files.append(p)
-    return files
+            if not p.is_file():
+                continue
+            key = str(p.relative_to(PUBLIC)).replace("\\", "/")
+            out.append((p, key))
+    # Single root-level files (e.g. summon.generated.json)
+    for rel_local, remote_key in UPLOAD_ROOT_FILES.items():
+        p = REPO_ROOT / rel_local
+        if p.is_file():
+            out.append((p, remote_key))
+    return out
 
 
 def list_remote_keys() -> dict[str, int]:
@@ -126,18 +145,16 @@ def upload_one(local: Path, key: str) -> tuple[str, int, str]:
 def main() -> int:
     local_files = collect_local_files()
     if not local_files:
-        print("No files under public/Movie or public/Video. Nothing to upload.")
+        print(f"No files under {UPLOAD_DIRS} or {list(UPLOAD_ROOT_FILES)}. Nothing to upload.")
         return 0
     print(f"Found {len(local_files)} local files. Listing remote bucket...")
     remote = list_remote_keys()
     print(f"  remote already has {len(remote)} objects")
 
-    # Decide what to upload
+    # Decide what to upload — skip files whose remote size matches local
     to_upload: list[tuple[Path, str]] = []
     skipped = 0
-    for local in local_files:
-        # key is relative to public/, e.g. "Movie/SpecialSkill/X.mp4"
-        key = str(local.relative_to(PUBLIC)).replace("\\", "/")
+    for local, key in local_files:
         size = local.stat().st_size
         if remote.get(key) == size:
             skipped += 1

@@ -1186,7 +1186,7 @@ function RuntimeThumbReward({
   // frameImageBless + IcElementBless + IcElementBless2 for Bless vs
   // baseImageChara + rarityChara + icElement + icAttackType for Chara).
   // Today's data only ships Chara (the generator drops MasterRewardType=3
-  // BlessPc rewards at build time — see summon_website_mismatch.md §8.7
+  // BlessPc rewards at build time — see summon_website_mismatch.md Â§8.7
   // and the deliverables blocker list). When `thumb_type === "Bless"`
   // we render an explicitly DISTINCT placeholder so it's clear Protector
   // rendering is not yet wired — per audit rule "do not fake Protector
@@ -1391,7 +1391,7 @@ function DrawButton({
   onClick: () => void
 }) {
   // btnDecisionOnce / btnDecisionContinuous prefab. Normal (gold) gem state;
-  // the pink "paid" state + 有償 label are hidden (only used for paid-currency
+  // the pink "paid" state + æœ‰å„Ÿ label are hidden (only used for paid-currency
   // banners). count = the main "Recruit xN" label; cost = gem amount; icon =
   // the consume-item icon (slotted from real game data).
   const spec = subLabel ? SPECS.mainDecisionContinuous : SPECS.mainDecisionOnce
@@ -1479,7 +1479,7 @@ function OverlayShell({
               aria-label="Close"
               className="absolute right-0 top-1/2 grid h-11 w-11 -translate-y-1/2 rotate-45 place-items-center border-2 border-[#aab6f0]/70 bg-[#121a38]/95 shadow-[0_0_12px_rgba(120,150,240,0.5)] transition hover:bg-[#28335f] sm:h-12 sm:w-12"
             >
-              <span className="-rotate-45 text-2xl font-black leading-none text-white">×</span>
+              <span className="-rotate-45 text-2xl font-black leading-none text-foreground">×</span>
             </button>
           </div>
           <div className="mx-auto mb-3 h-px w-full max-w-6xl bg-gradient-to-r from-transparent via-[#aab6f0]/60 to-transparent" />
@@ -1490,7 +1490,7 @@ function OverlayShell({
           aria-label="Close"
           className="absolute right-4 top-3 z-10 grid h-11 w-11 rotate-45 place-items-center border-2 border-[#aab6f0]/70 bg-[#121a38]/95 shadow-[0_0_12px_rgba(120,150,240,0.5)] transition hover:bg-[#28335f] sm:right-8 sm:h-12 sm:w-12"
         >
-          <span className="-rotate-45 text-2xl font-black leading-none text-white">×</span>
+          <span className="-rotate-45 text-2xl font-black leading-none text-foreground">×</span>
         </button>
       )}
 
@@ -1562,18 +1562,18 @@ function CharacterDetailsPanel({
                   {character.affiliation_name ? (
                     <div className="truncate font-serif text-base font-bold text-[#ffe6a6]">[ {character.affiliation_name} ]</div>
                   ) : null}
-                  <div className="truncate font-serif text-2xl font-black leading-tight text-white drop-shadow-[0_2px_1px_rgba(0,0,0,0.9)] sm:text-[28px]">
+                  <div className="truncate font-serif text-2xl font-black leading-tight text-foreground drop-shadow-[0_2px_1px_rgba(0,0,0,0.9)] sm:text-[28px]">
                     {character.name}
                   </div>
                   <div className="mt-2 flex flex-wrap items-center gap-2 text-[13px] font-bold">
                     {character.element ? (
-                      <span className="flex items-center gap-1.5 rounded-[3px] border border-[#aab6f0]/25 bg-[#11173a]/80 px-2 py-1 text-slate-100">
+                      <span className="flex items-center gap-1.5 rounded-[3px] border border-[#aab6f0]/25 bg-[#11173a]/80 px-2 py-1 text-foreground">
                         <GameImage sources={elementIconSources(character.element)} className="h-5 w-5 object-contain" />
                         {character.element}
                       </span>
                     ) : null}
                     {character.attack_type ? (
-                      <span className="flex items-center gap-1.5 rounded-[3px] border border-[#aab6f0]/25 bg-[#11173a]/80 px-2 py-1 text-slate-100">
+                      <span className="flex items-center gap-1.5 rounded-[3px] border border-[#aab6f0]/25 bg-[#11173a]/80 px-2 py-1 text-foreground">
                         <GameImage sources={attackIconSources(character.attack_type)} className="h-5 w-5 object-contain" />
                         {character.attack_type}
                       </span>
@@ -1588,7 +1588,7 @@ function CharacterDetailsPanel({
                 </div>
                 <a
                   href={`/characters/${character.master_pc_id}`}
-                  className="justify-self-end rounded-[2px] border-2 border-[#87e5dd] bg-[#00816f]/95 px-8 py-3 text-xl font-black text-white shadow-[inset_0_0_12px_rgba(255,255,255,0.22),0_3px_8px_rgba(0,0,0,0.55)] transition hover:brightness-110"
+                  className="justify-self-end rounded-[2px] border-2 border-[#87e5dd] bg-[#00816f]/95 px-8 py-3 text-xl font-black text-foreground shadow-[inset_0_0_12px_rgba(255,255,255,0.22),0_3px_8px_rgba(0,0,0,0.55)] transition hover:brightness-110"
                 >
                   Info
                 </a>
@@ -1769,7 +1769,7 @@ function CharacterDetailsPrefabRow({ character }: { character: SummonCharacter }
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={ATTACK_SPRITE} alt="" className="h-full w-full object-fill" />
           <span
-            className="font-serif font-black leading-none text-white"
+            className="font-serif font-black leading-none text-foreground"
             style={{
               position: "absolute",
               left: "29%",
@@ -1890,7 +1890,7 @@ function BannerEndDate({ banner }: { banner: SummonBanner }) {
       }}
     >
       <span
-        className="block w-full whitespace-nowrap text-center text-[clamp(8px,0.95vw,17px)] font-bold tracking-wide text-white"
+        className="block w-full whitespace-nowrap text-center text-[clamp(8px,0.95vw,17px)] font-bold tracking-wide text-foreground"
         style={{
           fontFamily: '"Times New Roman", Georgia, serif',
           textShadow: "0 2px 4px rgba(0,0,0,1), 0 0 3px rgba(0,0,0,1)",
@@ -2358,7 +2358,7 @@ function ResultsPanel({
           <span className="relative inline-flex items-center gap-2 px-6 py-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={`${SUMMON_UI_BASE}/d72b247029db0fe5.png`} alt="" className="absolute inset-0 h-full w-full" style={{ objectFit: "fill" }} />
-            <span className="relative font-serif text-lg font-bold text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.95)]">
+            <span className="relative font-serif text-lg font-bold text-foreground drop-shadow-[0_2px_3px_rgba(0,0,0,0.95)]">
               Bazaar Pts: {bazaarPoints.toLocaleString()}
             </span>
           </span>
@@ -2366,7 +2366,7 @@ function ResultsPanel({
         <div className="flex items-center gap-6">
           <button
             onClick={onClose}
-            className="relative font-serif text-2xl font-black tracking-wide text-white"
+            className="relative font-serif text-2xl font-black tracking-wide text-foreground"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={`${SUMMON_UI_BASE}/ea3e009e9f47436a.png`} alt="" className="absolute inset-0 h-full w-full" style={{ objectFit: "fill" }} />
@@ -2374,7 +2374,7 @@ function ResultsPanel({
           </button>
           <button
             onClick={onRecruitMore}
-            className="relative font-serif text-2xl font-black tracking-wide text-white transition hover:brightness-110"
+            className="relative font-serif text-2xl font-black tracking-wide text-foreground transition hover:brightness-110"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={`${SUMMON_UI_BASE}/079863ce6e7dace8.png`} alt="" className="absolute inset-0 h-full w-full" style={{ objectFit: "fill" }} />
@@ -2387,7 +2387,7 @@ function ResultsPanel({
 
       <button
         onClick={onClose}
-        className="absolute right-6 top-4 font-serif text-2xl font-bold italic tracking-wide text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] transition hover:text-white/70"
+        className="absolute right-6 top-4 font-serif text-2xl font-bold italic tracking-wide text-foreground drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] transition hover:text-foreground/70"
         aria-label="Close"
       >
         ✕
@@ -2809,7 +2809,7 @@ function selectSummonStepsLegacy(banner: SummonBanner, results: SummonResult[]):
 
   // The reveal (final step) movie encodes the tier, fully data-driven:
   //  *_f_all / c004_f / *_f_*  -> the featured-character premium reveal
-  //  c004_c / *_c_*            -> C tier   ·  c004_b -> B   ·  c004_a -> A
+  //  c004_c / *_c_*            -> C tier   Â·  c004_b -> B   Â·  c004_a -> A
   const revealOf = (t: number) => {
     const a = ag.assets_by_animation_type[String(t)] || []
     return String(a.length ? a[a.length - 1].movie_path : "").toLowerCase()
@@ -3195,7 +3195,7 @@ function SummonCutscene({ steps, onFinish }: { steps: CutsceneStep[]; onFinish: 
         onError={advance}
       />
       {isLoop && (
-        <span className="pointer-events-none absolute bottom-5 right-6 font-serif text-2xl font-bold italic tracking-wide text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] [animation:pulse_1.4s_ease-in-out_infinite]">
+        <span className="pointer-events-none absolute bottom-5 right-6 font-serif text-2xl font-bold italic tracking-wide text-foreground drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] [animation:pulse_1.4s_ease-in-out_infinite]">
           Tap Screen
         </span>
       )}
@@ -3204,7 +3204,7 @@ function SummonCutscene({ steps, onFinish }: { steps: CutsceneStep[]; onFinish: 
           e.stopPropagation()
           onFinish()
         }}
-        className="absolute right-6 top-4 select-none font-serif text-2xl font-bold italic tracking-wide text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] transition hover:text-white/70"
+        className="absolute right-6 top-4 select-none font-serif text-2xl font-bold italic tracking-wide text-foreground drop-shadow-[0_2px_4px_rgba(0,0,0,0.95)] transition hover:text-foreground/70"
       >
         SKIP ▶▶|
       </button>
@@ -4465,7 +4465,7 @@ function PromotionRevealScreen({
   slots["UILotteryPromotion/container/detectRog/frameMsak"] = <PromotionGradientBindingMarker path="UILotteryPromotion/container/detectRog/frameMsak" />
   // SKIP button label override (prefab text is "SKIP" via Localize).
   slots["UILotteryPromotion/container/btnSkip/label"] = (
-    <div className="flex h-full w-full items-center justify-center font-serif italic text-white">SKIP</div>
+    <div className="flex h-full w-full items-center justify-center font-serif italic text-foreground">SKIP</div>
   )
   // Parent the per-rarity glow particles to the real uiparticle_<rarity>
   // rect (instead of canvas-centred). The prefab has these sibling groups:
@@ -4734,7 +4734,7 @@ function AcquisitionMovieReveal({
         // overrides used `font-serif italic` HTML divs that looked
         // inconsistent with the rest of the UI ("weird skip label" +
         // "tap screen font" issues). The prefab default text is the
-        // Japanese "<mspace=1.15em>画面をタップ" for the tap-screen label
+        // Japanese "<mspace=1.15em>ç”»é¢ã‚’ã‚¿ãƒƒãƒ—" for the tap-screen label
         // and English "SKIP" for the skip button — we localise to
         // English "Tap Screen" here (the Localize script in Unity would
         // do this at runtime; we replicate via text prop). PrefabTree
@@ -6115,8 +6115,8 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
 
   if (!banner || !selectedLottery) {
     return (
-      <main className="site-page grid min-h-screen place-items-center p-6 text-white">
-        <div className="rounded-[6px] border border-white/10 bg-[#18191d] p-6">No summon data was generated.</div>
+      <main className="site-page grid min-h-screen place-items-center p-6 text-foreground">
+        <div className="rounded-[6px] border border-border bg-[#18191d] p-6">No summon data was generated.</div>
       </main>
     )
   }
@@ -6181,7 +6181,7 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
   }
 
   return (
-    <main className="site-page min-h-screen p-3 text-white sm:p-6">
+    <main className="site-page min-h-screen p-3 text-foreground sm:p-6">
       <div className="mx-auto max-w-[1760px]">
         <div className="relative overflow-hidden rounded-[2px] border border-[#9098bc]/50 bg-black shadow-[0_24px_80px_rgba(0,0,0,0.55)]">
           <div className="relative aspect-[16/9] min-h-[560px]">
@@ -6224,7 +6224,7 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
                 }}
                 text={{ label: "Char.\nDetails" }}
               />
-              {/* btnChange (表示切替 / Switch Display) — exact UILottery prefab */}
+              {/* btnChange (è¡¨ç¤ºåˆ‡æ›¿ / Switch Display) — exact UILottery prefab */}
               <div
                 className={hasPlayableMovie ? "cursor-pointer transition hover:brightness-110" : "opacity-45"}
                 onClick={() => {

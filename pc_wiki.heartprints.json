@@ -54962,7 +54962,11 @@
       ],
       "facility_source": null,
       "arena_rank_source": null,
-      "event_source": null,
+      "event_source": {
+        "quest_name": "Anime Tie-in Quiz Question 8",
+        "event_id": 10000000110050,
+        "is_missable": true
+      },
       "passive_skill": {
         "passive_skill_id": 210000007000001,
         "target_type": 1,
@@ -58063,6 +58067,59 @@
           "level": 3,
           "active_skill_label": "StillSkill_group_1025_event_labyrinth_dungeon_start_03",
           "skill_description": "Decreases all physical targets' critical resistance by <color=#2BE41D>15%</color> (Turns: 1)",
+          "rare_levelup_item_group_id": 1042
+        }
+      ]
+    },
+    {
+      "heartprint_id": 2500092,
+      "still_type": "rare",
+      "master_still_rare_id": 210000001000024,
+      "tab_type": 140,
+      "order": 990,
+      "picture_path": "Image/SkillStill/2500092/skill_still_2500092_{0}",
+      "release_label": "202606_event_soukai_afterglow_start",
+      "title": "Resort Bliss",
+      "skill_description": "Decreases all magic targets' pierce resistance by <color=#2BE41D>15%</color> (Turns: 1)",
+      "display_character_id": 210000002000008,
+      "effect_type": 3,
+      "rare_level_group_id": 1028,
+      "unlock_conditions": [
+        {
+          "type": 6,
+          "target_count": 2,
+          "quest_id": null,
+          "quest_name": null,
+          "target_season": null,
+          "required_still_id": null,
+          "required_still_title": null,
+          "required_still_season": null
+        }
+      ],
+      "facility_source": null,
+      "arena_rank_source": null,
+      "event_source": {
+        "quest_name": "Seize the Moment",
+        "event_id": 10000000110550,
+        "is_missable": true
+      },
+      "rare_levels": [
+        {
+          "level": 1,
+          "active_skill_label": "StillSkill_group_1028_event_soukai_afterglow_start_01",
+          "skill_description": "Decreases all magic targets' pierce resistance by <color=#2BE41D>5%</color> (Turns: 1)",
+          "rare_levelup_item_group_id": 1041
+        },
+        {
+          "level": 2,
+          "active_skill_label": "StillSkill_group_1028_event_soukai_afterglow_start_02",
+          "skill_description": "Decreases all magic targets' pierce resistance by <color=#2BE41D>10%</color> (Turns: 1)",
+          "rare_levelup_item_group_id": 1042
+        },
+        {
+          "level": 3,
+          "active_skill_label": "StillSkill_group_1028_event_soukai_afterglow_start_03",
+          "skill_description": "Decreases all magic targets' pierce resistance by <color=#2BE41D>15%</color> (Turns: 1)",
           "rare_levelup_item_group_id": 1042
         }
       ]

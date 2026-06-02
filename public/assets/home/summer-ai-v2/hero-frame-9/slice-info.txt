@@ -1,0 +1,6 @@
+source_size=1602x913
+left=240
+top=156
+right=240
+bottom=160
+border_image_slice=156 240 160 240

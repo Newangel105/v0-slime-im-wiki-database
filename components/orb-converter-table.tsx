@@ -29,6 +29,17 @@ const COMBINED_ORB_COLORS: Record<OrbTarget, string> = {
   reset:  "bg-cyan-900 text-cyan-100",
 }
 
+// Beach-theme table tokens (cream surfaces + navy ink). Sticky cells use OPAQUE
+// creams so horizontally/vertically scrolled content does not bleed through.
+const HAIRLINE = "border-border/[0.22]"
+
+// Color-coded orb tabs as glossy gradient chips (To Blue=blue, To Green=green, To Orange=orange).
+const TAB_GRADIENT: Record<string, string> = {
+  blue: "data-[state=active]:bg-[linear-gradient(180deg,#3bb8ff,#0877cf)] data-[state=active]:shadow-[0_4px_10px_rgba(8,119,207,0.30)]",
+  green: "data-[state=active]:bg-[linear-gradient(180deg,#4bd99a,#159c5b)] data-[state=active]:shadow-[0_4px_10px_rgba(21,156,91,0.30)]",
+  orange: "data-[state=active]:bg-[linear-gradient(180deg,#ffa45c,#e2682f)] data-[state=active]:shadow-[0_4px_10px_rgba(226,104,47,0.30)]",
+}
+
 export default function OrbConverterTable() {
   const entries = extractOrbConvertEntries()
 
@@ -41,7 +52,7 @@ export default function OrbConverterTable() {
       title={`${entry.character.name}${entry.character.affiliation_name ? ` — ${entry.character.affiliation_name}` : ""}${entry.isSkillChange ? " (Skill Change)" : ""}\n${entry.conversionLine}`}
       className="block relative"
     >
-      <div className="relative w-9 h-9 sm:w-14 sm:h-14 overflow-hidden hover:brightness-110 hover:ring-1 hover:ring-blue-400 transition-all">
+      <div className="relative w-9 h-9 sm:w-12 sm:h-12 overflow-hidden rounded-md transition-all hover:brightness-110 hover:ring-2 hover:ring-[#0a9baa]/70">
         <Image src={toPublicAssetPath(entry.character.images.icon)} alt={entry.character.name} fill className="object-cover" />
       </div>
       {entry.isSkillChange && (
@@ -61,56 +72,58 @@ export default function OrbConverterTable() {
     ).size
     const rows = getOrbTableRows(entries, toOrb)
     const groups = groupOrbTableRows(rows)
-    if (groups.length === 0) return <p className="text-gray-400 text-sm">No data found.</p>
+    if (groups.length === 0) return <p className="text-sm text-foreground">No data found.</p>
 
     return (
       <div className="flex flex-col gap-4">
-        <p className="text-sm text-gray-300">
-          Showing <span className="font-semibold text-blue-400">{count} entries</span> with orb convert skills.
-        </p>
-        <div className="w-fit max-w-full overflow-x-auto border border-gray-700 rounded-lg bg-[#1f2937]">
-          <table className="text-xs sm:text-sm border-separate border-spacing-0">
-            <thead className="bg-[#111827] border-b border-gray-700 sticky top-0 z-20">
+        <div className={`self-start rounded-full border ${HAIRLINE} bg-card/85 px-4 py-1.5 shadow-[0_8px_20px_rgba(20,54,120,0.10)] backdrop-blur-md`}>
+          <p className="text-sm text-foreground">
+            Showing <span className="font-semibold text-accent">{count} entries</span> with orb convert skills.
+          </p>
+        </div>
+        <div className={`orb-converter-table-shell w-full overflow-x-auto rounded-2xl border ${HAIRLINE} bg-card/[0.88] shadow-[0_14px_36px_rgba(20,54,120,0.13)] backdrop-blur-md`}>
+          <table className="w-full min-w-[860px] border-separate border-spacing-0 text-xs sm:text-sm">
+            <thead className={`sticky top-0 z-20 border-b ${HAIRLINE}`}>
               <tr>
-                <th className="px-2 py-2 text-left font-semibold text-gray-300 whitespace-nowrap sticky left-0 z-30 bg-[#111827] min-w-[110px] sm:min-w-[160px]">From / Type</th>
-                <th className="px-2 py-2 text-center font-semibold text-gray-300 whitespace-nowrap sticky left-[110px] sm:left-[160px] z-30 bg-[#111827] min-w-[56px]">SP Cost</th>
+                <th className={`px-2 py-2 text-left font-bold text-foreground whitespace-nowrap sticky left-0 z-30 bg-popover min-w-[88px] sm:min-w-[124px] border-b ${HAIRLINE}`}>From / Type</th>
+                <th className={`px-2 py-2 text-center font-bold text-foreground whitespace-nowrap sticky left-[110px] sm:left-[124px] z-30 bg-popover min-w-[56px] border-b ${HAIRLINE}`}>SP Cost</th>
                 {ORB_AMOUNTS.map((amt) => (
-                  <th key={amt} className="px-2 py-2 text-center font-semibold text-gray-300 whitespace-nowrap min-w-[150px] sm:min-w-[230px]">{amt}</th>
+                  <th key={amt} className={`px-2 py-2 text-center font-bold text-foreground whitespace-nowrap min-w-[100px] sm:min-w-[160px] bg-popover border-b ${HAIRLINE}`}>{amt}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {groups.map((group, groupIdx) => {
-                const cfg = FROM_TYPE_CONFIG[group.fromType] ?? { label: group.fromType, bgClass: "bg-gray-700 text-white" }
+                const cfg = FROM_TYPE_CONFIG[group.fromType] ?? { label: group.fromType, bgClass: "" }
                 const altGroup = groupIdx % 2 !== 0
                 return group.subRows.map((subRow, subIdx) => {
                   const altSub = subIdx % 2 !== 0
                   const trBg = altGroup
-                    ? (altSub ? "bg-[#253a4a]" : "bg-[#1e2d40]")
-                    : (altSub ? "bg-[#1a2232]" : "")
+                    ? (altSub ? "bg-border/[0.09]" : "bg-border/[0.04]")
+                    : (altSub ? "bg-border/[0.07]" : "")
                   const stickyBg = altGroup
-                    ? (altSub ? "bg-[#1e3042]" : "bg-[#182838]")
-                    : (altSub ? "bg-[#141e2e]" : "bg-[#111827]")
+                    ? (altSub ? "bg-muted" : "bg-popover")
+                    : (altSub ? "bg-popover" : "bg-card")
                   return (
-                  <tr key={`${group.fromType}-${subRow.spCostLabel}`} className={`border-b border-gray-700 hover:bg-[#374151] transition-colors ${trBg}`}>
+                  <tr key={`${group.fromType}-${subRow.spCostLabel}`} className={`border-b ${HAIRLINE} transition-colors hover:bg-[rgba(125,205,225,0.10)] ${trBg}`}>
                     {subIdx === 0 && (
-                      <td rowSpan={group.subRows.length} className={`px-2 py-2 text-left text-xs font-bold leading-tight border-r border-gray-700 sticky left-0 z-10 ${altGroup ? "bg-[#182838]" : "bg-[#111827]"} text-gray-100 min-w-[110px] sm:min-w-[160px] whitespace-normal`}>
+                      <td rowSpan={group.subRows.length} className={`px-2 py-2 text-left text-xs font-bold leading-tight border-r ${HAIRLINE} sticky left-0 z-10 ${altGroup ? "bg-popover" : "bg-card"} text-foreground min-w-[88px] sm:min-w-[124px] whitespace-normal`}>
                         {cfg.label}
                       </td>
                     )}
-                    <td className={`px-2 py-2 text-center text-xs font-semibold text-gray-200 whitespace-nowrap border-r border-gray-700 sticky left-[110px] sm:left-[160px] z-10 ${stickyBg} min-w-[56px]`}>
+                    <td className={`px-2 py-2 text-center text-xs font-semibold text-foreground whitespace-nowrap border-r ${HAIRLINE} sticky left-[110px] sm:left-[124px] z-10 ${stickyBg} min-w-[56px]`}>
                       {subRow.spCostLabel}
                     </td>
                     {(ORB_AMOUNTS as readonly OrbAmount[]).map((amount) => {
                       const cellEntries = getOrbCellEntries(entries, toOrb, group.fromType, subRow.spCostLabel, amount)
                       return (
-                        <td key={amount} className="p-0 border-r border-gray-700 align-top">
+                        <td key={amount} className={`p-0 border-r ${HAIRLINE} align-top`}>
                           {cellEntries.length > 0 ? (
                             <div className="grid grid-cols-4 gap-0.5 p-0.5">
                               {cellEntries.map((entry) => <CharCell key={`${entry.character.master_pc_id}-${entry.skillSlot}-${entry.isSkillChange}`} entry={entry} />)}
                             </div>
                           ) : (
-                            <div className="text-gray-600 text-xs px-2 py-3 text-center">—</div>
+                            <div className="px-2 py-3 text-center text-xs text-foreground/35">—</div>
                           )}
                         </td>
                       )
@@ -138,73 +151,74 @@ export default function OrbConverterTable() {
       return [{ toOrb, groups }]
     })
 
-    if (sections.length === 0) return <p className="text-gray-400 text-sm">No data found.</p>
+    if (sections.length === 0) return <p className="text-sm text-foreground">No data found.</p>
 
     return (
       <div className="flex flex-col gap-4">
-        <p className="text-sm text-gray-300">
-          Showing <span className="font-semibold text-blue-400">{count} entries</span> with orb convert skills.
-        </p>
-        <div className="w-fit max-w-full overflow-x-auto border border-gray-700 rounded-lg bg-[#1f2937]">
-          <table className="text-xs sm:text-sm border-separate border-spacing-0">
-            <thead className="bg-[#111827] border-b border-gray-700 sticky top-0 z-20">
+        <div className={`self-start rounded-full border ${HAIRLINE} bg-card/85 px-4 py-1.5 shadow-[0_8px_20px_rgba(20,54,120,0.10)] backdrop-blur-md`}>
+          <p className="text-sm text-foreground">
+            Showing <span className="font-semibold text-accent">{count} entries</span> with orb convert skills.
+          </p>
+        </div>
+        <div className={`orb-converter-table-shell w-full overflow-x-auto rounded-2xl border ${HAIRLINE} bg-card/[0.88] shadow-[0_14px_36px_rgba(20,54,120,0.13)] backdrop-blur-md`}>
+          <table className="w-full min-w-[1040px] border-separate border-spacing-0 text-xs sm:text-sm">
+            <thead className={`sticky top-0 z-20 border-b ${HAIRLINE}`}>
               <tr>
-                <th className="px-2 py-2 text-center font-semibold text-gray-300 whitespace-nowrap sticky left-0 z-30 bg-[#111827] min-w-[60px] sm:min-w-[80px]">To Orb</th>
-                <th className="px-2 py-2 text-left font-semibold text-gray-300 whitespace-nowrap sticky left-[60px] sm:left-[80px] z-30 bg-[#111827] min-w-[110px] sm:min-w-[160px]">From / Type</th>
-                <th className="px-2 py-2 text-center font-semibold text-gray-300 whitespace-nowrap sticky left-[170px] sm:left-[240px] z-30 bg-[#111827] min-w-[56px]">SP Cost</th>
+                <th className={`px-2 py-2 text-center font-bold text-foreground whitespace-nowrap sticky left-0 z-30 bg-popover min-w-[60px] sm:min-w-[80px] border-b ${HAIRLINE}`}>To Orb</th>
+                <th className={`px-2 py-2 text-left font-bold text-foreground whitespace-nowrap sticky left-[60px] sm:left-[80px] z-30 bg-popover min-w-[88px] sm:min-w-[124px] border-b ${HAIRLINE}`}>From / Type</th>
+                <th className={`px-2 py-2 text-center font-bold text-foreground whitespace-nowrap sticky left-[170px] sm:left-[200px] z-30 bg-popover min-w-[56px] border-b ${HAIRLINE}`}>SP Cost</th>
                 {ORB_AMOUNTS.map((amt) => (
-                  <th key={amt} className="px-2 py-2 text-center font-semibold text-gray-300 whitespace-nowrap min-w-[150px] sm:min-w-[230px]">{amt}</th>
+                  <th key={amt} className={`px-2 py-2 text-center font-bold text-foreground whitespace-nowrap min-w-[100px] sm:min-w-[160px] bg-popover border-b ${HAIRLINE}`}>{amt}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {sections.map(({ toOrb, groups }, sectionIdx) => {
                 const orbCfg = ORB_TARGET_CONFIG[toOrb]
-                const orbColor = COMBINED_ORB_COLORS[toOrb]
                 const totalSubRows = groups.reduce((s, g) => s + g.subRows.length, 0)
                 let orbCellRendered = false
                 const altSection = sectionIdx % 2 !== 0
-                const orbCellBg = altSection ? "bg-[#1e2838]" : "bg-[#111827]"
+                const orbCellBg = altSection ? "bg-popover" : "bg-card"
 
                 return groups.map((group, groupIdx) => {
-                  const cfg = FROM_TYPE_CONFIG[group.fromType] ?? { label: group.fromType, bgClass: "bg-gray-700 text-white" }
+                  const cfg = FROM_TYPE_CONFIG[group.fromType] ?? { label: group.fromType, bgClass: "" }
                   const altGroup = groupIdx % 2 !== 0
                   return group.subRows.map((subRow, subIdx) => {
                     const altSub = subIdx % 2 !== 0
                     const trBg = altGroup
-                      ? (altSub ? "bg-[#253a4a]" : "bg-[#1e2d40]")
-                      : (altSub ? "bg-[#1a2232]" : "")
+                      ? (altSub ? "bg-border/[0.09]" : "bg-border/[0.04]")
+                      : (altSub ? "bg-border/[0.07]" : "")
                     const stickyBg = altGroup
-                      ? (altSub ? "bg-[#1e3042]" : "bg-[#182838]")
-                      : (altSub ? "bg-[#141e2e]" : "bg-[#111827]")
+                      ? (altSub ? "bg-muted" : "bg-popover")
+                      : (altSub ? "bg-popover" : "bg-card")
                     const isFirstOfSection = !orbCellRendered && subIdx === 0
                     if (isFirstOfSection) orbCellRendered = true
-                    const sectionDivider = sectionIdx > 0 && groupIdx === 0 && subIdx === 0 ? "border-t-2 border-t-gray-500" : ""
+                    const sectionDivider = sectionIdx > 0 && groupIdx === 0 && subIdx === 0 ? "border-t-2 border-t-[rgba(10,155,170,0.45)]" : ""
                     return (
-                      <tr key={`${toOrb}-${group.fromType}-${subRow.spCostLabel}`} className={`border-b border-gray-700 hover:bg-[#374151] transition-colors ${trBg} ${sectionDivider}`}>
+                      <tr key={`${toOrb}-${group.fromType}-${subRow.spCostLabel}`} className={`border-b ${HAIRLINE} transition-colors hover:bg-[rgba(125,205,225,0.10)] ${trBg} ${sectionDivider}`}>
                         {isFirstOfSection && (
-                          <td rowSpan={totalSubRows} className={`px-1 py-2 text-center text-xs font-bold leading-tight border-r border-gray-700 sticky left-0 z-10 ${orbCellBg} text-gray-100 min-w-[60px] sm:min-w-[80px] whitespace-normal`}>
+                          <td rowSpan={totalSubRows} className={`px-1 py-2 text-center text-xs font-bold leading-tight border-r ${HAIRLINE} sticky left-0 z-10 ${orbCellBg} text-foreground min-w-[60px] sm:min-w-[80px] whitespace-normal`}>
                             {orbCfg.label}
                           </td>
                         )}
                         {subIdx === 0 && (
-                          <td rowSpan={group.subRows.length} className={`px-2 py-2 text-left text-xs font-bold leading-tight border-r border-gray-700 sticky left-[60px] sm:left-[80px] z-10 ${altGroup ? "bg-[#182838]" : "bg-[#111827]"} text-gray-100 min-w-[110px] sm:min-w-[160px] whitespace-normal`}>
+                          <td rowSpan={group.subRows.length} className={`px-2 py-2 text-left text-xs font-bold leading-tight border-r ${HAIRLINE} sticky left-[60px] sm:left-[80px] z-10 ${altGroup ? "bg-popover" : "bg-card"} text-foreground min-w-[88px] sm:min-w-[124px] whitespace-normal`}>
                             {cfg.label}
                           </td>
                         )}
-                        <td className={`px-2 py-2 text-center text-xs font-semibold text-gray-200 whitespace-nowrap border-r border-gray-700 sticky left-[170px] sm:left-[240px] z-10 ${stickyBg} min-w-[56px]`}>
+                        <td className={`px-2 py-2 text-center text-xs font-semibold text-foreground whitespace-nowrap border-r ${HAIRLINE} sticky left-[170px] sm:left-[200px] z-10 ${stickyBg} min-w-[56px]`}>
                           {subRow.spCostLabel}
                         </td>
                         {(ORB_AMOUNTS as readonly OrbAmount[]).map((amount) => {
                           const cellEntries = getOrbCellEntries(entries, toOrb, group.fromType, subRow.spCostLabel, amount)
                           return (
-                            <td key={amount} className="p-0 border-r border-gray-700 align-top">
+                            <td key={amount} className={`p-0 border-r ${HAIRLINE} align-top`}>
                               {cellEntries.length > 0 ? (
                                 <div className="grid grid-cols-4 gap-0.5 p-0.5">
                                   {cellEntries.map((entry) => <CharCell key={`${entry.character.master_pc_id}-${entry.skillSlot}-${entry.isSkillChange}`} entry={entry} />)}
                                 </div>
                               ) : (
-                                <div className="text-gray-600 text-xs px-2 py-3 text-center">—</div>
+                                <div className="px-2 py-3 text-center text-xs text-foreground/35">—</div>
                               )}
                             </td>
                           )
@@ -223,16 +237,16 @@ export default function OrbConverterTable() {
 
   return (
     <Tabs defaultValue="blue" className="w-full">
-      <TabsList className="flex h-auto flex-wrap gap-1 bg-[#111827] border border-gray-700 p-1 rounded-lg mb-4">
+      <TabsList className={`orb-converter-tabs mb-4 flex h-auto w-full flex-wrap justify-start gap-1.5 rounded-xl border ${HAIRLINE} bg-card/[0.72] p-1.5 backdrop-blur-md`}>
         {SOLO_TABS.map((target) => {
           const cfg = ORB_TARGET_CONFIG[target]
           return (
-            <TabsTrigger key={target} value={target} className={`text-xs sm:text-sm px-3 py-1.5 rounded ${cfg.tabClass}`}>
+            <TabsTrigger key={target} value={target} className={`rounded-md px-3 py-1.5 text-xs font-bold text-foreground data-[state=active]:text-white sm:text-sm ${TAB_GRADIENT[target] ?? ""}`}>
               {cfg.label}
             </TabsTrigger>
           )
         })}
-        <TabsTrigger value="combined" className="text-xs sm:text-sm px-3 py-1.5 rounded data-[state=active]:bg-violet-600 data-[state=active]:text-white">
+        <TabsTrigger value="combined" className="rounded-md px-3 py-1.5 text-xs font-bold text-foreground data-[state=active]:bg-[linear-gradient(180deg,#a78bfa,#7c3aed)] data-[state=active]:text-white data-[state=active]:shadow-[0_4px_10px_rgba(124,58,237,0.30)] sm:text-sm">
           Unity / Steal / Give / Reset
         </TabsTrigger>
       </TabsList>
@@ -248,4 +262,3 @@ export default function OrbConverterTable() {
     </Tabs>
   )
 }
-

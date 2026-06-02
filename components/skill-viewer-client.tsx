@@ -176,7 +176,7 @@ function getFilterGroupKey(value: string): string {
 
 function normalizeSortableText(value: string): string {
   return normalizeLabel(stripColorTags(value))
-    .replace(/[%％]/g, "%")
+    .replace(/[%ï¼…]/g, "%")
     .replace(/[-/]/g, " ")
     .replace(/[^a-z0-9+%.\sx]/g, " ")
     .replace(/\s+/g, " ")
@@ -427,7 +427,7 @@ function CharIcon({ character, size = 72 }: { character: WikiCharacter; size?: n
 function SkillIcon({ skill, size = 40 }: { skill: WikiSkill; size?: number }) {
   const src = toPublicAssetPath(skill.icon_path)
   if (!src) {
-    return <div className="rounded-full bg-gray-700" style={{ width: size, height: size }} />
+    return <div className="rounded-full bg-border/[0.12]" style={{ width: size, height: size }} />
   }
 
   return <img src={src} alt={skill.name} className="rounded-full object-cover flex-shrink-0" style={{ width: size, height: size }} />
@@ -616,7 +616,7 @@ function RichSkillDesc({ text }: { text: string }) {
 
   const lines = text.split("\n")
   return (
-    <div className="space-y-1 text-xs leading-relaxed text-gray-300 text-left">
+    <div className="space-y-1 text-xs leading-relaxed text-foreground/65 text-left">
       {lines.map((line, lineIndex) => {
         const parts: { colored: boolean; text: string }[] = []
         const colorRe = /<color=[^>]+>(.*?)<\/color>/gi
@@ -639,7 +639,7 @@ function RichSkillDesc({ text }: { text: string }) {
           <p key={lineIndex}>
             {parts.map((part, index) =>
               part.colored ? (
-                <span key={index} className="font-semibold text-white">{part.text}</span>
+                <span key={index} className="font-semibold text-accent">{part.text}</span>
               ) : (
                 <span key={index}>{part.text}</span>
               ),
@@ -673,39 +673,39 @@ function GroupedToggleFilter({
   return (
     <Popover onOpenChange={() => setDropdownSearch("")}>
       <PopoverTrigger asChild>
-        <Button variant="outline" className="justify-between gap-2 border-gray-600 bg-gray-700 text-white hover:bg-gray-600">
+        <Button variant="outline" className="justify-between gap-2 border-border/30 bg-card/85 text-foreground hover:border-[#0a9baa]/55 hover:bg-card/95">
           <span>{title}</span>
-          <Badge variant="secondary" className="bg-gray-900 text-white">
+          <Badge variant="secondary" className="border-[#0a9baa]/30 bg-[#0a9baa]/15 text-accent">
             {selectedValues.length}
           </Badge>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-80 border-gray-600 bg-gray-700 p-0 text-white" align="start">
-        <div className="border-b border-gray-600 px-4 py-3">
-          <p className="mb-2 text-sm font-semibold text-white">{title}</p>
+      <PopoverContent className="w-80 border-border/30 bg-card/[0.97] p-0 text-foreground backdrop-blur-md" align="start">
+        <div className="border-b border-border/[0.22] px-4 py-3">
+          <p className="mb-2 text-sm font-semibold text-foreground">{title}</p>
           <div className="relative">
-            <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-gray-400" />
+            <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-foreground/50" />
             <Input
               placeholder="Search..."
               value={dropdownSearch}
               onChange={(event) => setDropdownSearch(event.target.value)}
-              className="h-7 border-gray-600 bg-gray-800 pl-8 text-xs text-white placeholder:text-gray-500"
+              className="h-7 border-border/30 bg-[rgba(40,82,120,0.6)] pl-8 text-xs text-foreground placeholder:text-foreground/45"
             />
           </div>
         </div>
         <ScrollArea className="h-96">
           <div className="p-0">
-            {filteredGroups.length === 0 && <p className="py-4 text-center text-xs text-gray-500">No results</p>}
+            {filteredGroups.length === 0 && <p className="py-4 text-center text-xs text-foreground/65">No results</p>}
             {filteredGroups.map((group) => (
-              <div key={group.key} className="border-b border-gray-600 last:border-b-0">
-                <div className="bg-gray-600/70 px-4 py-2 text-xs font-semibold tracking-[0.18em] text-gray-100">
+              <div key={group.key} className="border-b border-border/[0.22] last:border-b-0">
+                <div className="bg-popover px-4 py-2 text-xs font-semibold tracking-[0.18em] text-foreground">
                   {group.title}
                 </div>
                 <div className="space-y-3 px-4 py-3">
                   {group.options.map((option) => {
                     const checked = selectedValues.includes(option.value)
                     return (
-                      <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-gray-200">
+                      <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-foreground">
                         <Checkbox checked={checked} onCheckedChange={() => onToggle(option.value)} />
                         <span>{option.label}</span>
                       </label>
@@ -723,14 +723,14 @@ function GroupedToggleFilter({
 
 function SkillChangeTypeBadge({ type }: { type: string }) {
   const styles: Record<string, string> = {
-    "Attack Changing": "bg-red-900/40 text-red-300 border border-red-700/50",
-    "Defense Changing": "bg-blue-900/40 text-blue-300 border border-blue-700/50",
-    "Body and Spirit Changing": "bg-green-900/40 text-green-300 border border-green-700/50",
-    "Magic Changing": "bg-yellow-900/40 text-yellow-300 border border-yellow-700/50",
+    "Attack Changing": "bg-[#da3e44]/12 text-[#fca5a5] border border-[#da3e44]/40",
+    "Defense Changing": "bg-[#0f78ca]/12 text-[#93c5fd] border border-[#0f78ca]/40",
+    "Body and Spirit Changing": "bg-[#34d399]/15 text-[#86efac] border border-[#34d399]/45",
+    "Magic Changing": "bg-[#f3bd69]/22 text-[#fbbf24] border border-[#dba348]/50",
   }
 
   return (
-    <span className={`inline-flex items-center rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${styles[type] ?? "bg-gray-800 text-gray-300 border border-gray-600"}`}>
+    <span className={`inline-flex items-center rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${styles[type] ?? "bg-border/[0.08] text-foreground/70 border border-border/30"}`}>
       {type}
     </span>
   )
@@ -742,8 +742,8 @@ function SecretSkillTypeBadge({ type }: { type: string }) {
     <span
       className={`inline-flex items-center rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
         isAttack
-          ? "bg-orange-900/40 text-orange-300 border border-orange-700/50"
-          : "bg-blue-900/40 text-blue-300 border border-blue-700/50"
+          ? "bg-[#e07d2a]/14 text-[#fdba74] border border-[#e07d2a]/40"
+          : "bg-[#0f78ca]/12 text-[#93c5fd] border border-[#0f78ca]/40"
       }`}
     >
       {type}
@@ -766,7 +766,7 @@ function SkillVariantToggle({
 
   const variantLabel = entry.changedLabel ?? "Skill Change"
   const isUltManifest = variantLabel === "Ultimate Manifestation"
-  const toggleContainerClass = "flex w-fit items-center gap-1 rounded-xl bg-gray-700/60 p-1"
+  const toggleContainerClass = "flex w-fit items-center gap-1 rounded-xl border border-border/25 bg-card/70 p-1"
 
   if (entry.isSecretTriple) {
     return (
@@ -775,15 +775,15 @@ function SkillVariantToggle({
           const isSelected = selectedKey === variant.key
           const className = variant.key === "attack"
             ? isSelected
-              ? "bg-orange-500/25 text-orange-300 shadow ring-1 ring-orange-500/40"
-              : "text-gray-500 hover:text-orange-400"
+              ? "bg-[#e07d2a]/18 text-[#fdba74] shadow ring-1 ring-[#e07d2a]/45"
+              : "text-foreground/55 hover:text-[#fdba74]"
             : variant.key === "support"
               ? isSelected
-                ? "bg-blue-500/25 text-blue-300 shadow ring-1 ring-blue-500/40"
-                : "text-gray-500 hover:text-blue-400"
+                ? "bg-[#0f78ca]/15 text-[#93c5fd] shadow ring-1 ring-[#0f78ca]/40"
+                : "text-foreground/55 hover:text-[#93c5fd]"
               : isSelected
-                ? "bg-gray-900/60 text-white shadow"
-                : "text-gray-500 hover:text-gray-300"
+                ? "bg-[#0a9baa]/15 text-accent shadow ring-1 ring-[#0a9baa]/40"
+                : "text-foreground/55 hover:text-foreground"
 
           return (
             <button
@@ -807,11 +807,11 @@ function SkillVariantToggle({
           const isSelected = selectedKey === variant.key
           const className = isBase
             ? isSelected
-              ? "bg-orange-500/25 text-orange-300 shadow ring-1 ring-orange-500/40"
-              : "text-gray-500 hover:text-orange-400"
+              ? "bg-[#e07d2a]/18 text-[#fdba74] shadow ring-1 ring-[#e07d2a]/45"
+              : "text-foreground/55 hover:text-[#fdba74]"
             : isSelected
-              ? "bg-blue-500/25 text-blue-300 shadow ring-1 ring-blue-500/40"
-              : "text-gray-500 hover:text-blue-400"
+              ? "bg-[#0f78ca]/15 text-[#93c5fd] shadow ring-1 ring-[#0f78ca]/40"
+              : "text-foreground/55 hover:text-[#93c5fd]"
 
           return (
             <button
@@ -834,15 +834,15 @@ function SkillVariantToggle({
         const isSelected = selectedKey === variant.key
         const className = isBase
           ? isSelected
-            ? "bg-gray-700 text-white shadow"
-            : "text-gray-500 hover:text-gray-300"
+            ? "bg-[#0a9baa]/15 text-accent shadow ring-1 ring-[#0a9baa]/40"
+            : "text-foreground/55 hover:text-foreground"
           : isSelected
             ? isUltManifest
-              ? "bg-purple-500/25 text-purple-300 shadow ring-1 ring-purple-500/40"
-              : "bg-amber-500/25 text-amber-300 shadow ring-1 ring-amber-500/40"
+              ? "bg-[#8b5cf6]/15 text-[#c4b5fd] shadow ring-1 ring-[#8b5cf6]/40"
+              : "bg-[#f3bd69]/22 text-[#fbbf24] shadow ring-1 ring-[#dba348]/50"
             : isUltManifest
-              ? "text-gray-500 hover:text-purple-400"
-              : "text-gray-500 hover:text-amber-400"
+              ? "text-foreground/55 hover:text-[#c4b5fd]"
+              : "text-foreground/55 hover:text-[#fbbf24]"
 
         return (
           <button
@@ -855,9 +855,9 @@ function SkillVariantToggle({
                 className={`h-1.5 w-1.5 rounded-full ${
                   isSelected
                     ? isUltManifest
-                      ? "bg-purple-400"
-                      : "bg-amber-400"
-                    : "bg-gray-600"
+                      ? "bg-[#8b5cf6]"
+                      : "bg-[#dba348]"
+                    : "bg-[#072a51]/25"
                 }`}
               />
             )}
@@ -893,7 +893,7 @@ function SkillResultRow({
 
   return (
     <tr
-      className={`${entryIndex % 2 === 0 ? "bg-gray-900" : "bg-gray-900/60"} align-top ${entryIndex === groupSize - 1 ? borderClass : ""}`}
+      className={`${entryIndex % 2 === 0 ? "" : "bg-border/5"} align-top ${entryIndex === groupSize - 1 ? borderClass : ""}`}
     >
       {showCharacterCells && (
         <>
@@ -902,11 +902,11 @@ function SkillResultRow({
               <CharIcon character={entry.character} size={68} />
             </Link>
           </td>
-          <td className="px-3 py-3 font-semibold text-white" rowSpan={groupSize}>
-            <Link href={`/characters/${entry.character.master_pc_id}`} className="transition-colors hover:text-cyan-300">
+          <td className="px-3 py-3 font-semibold text-foreground" rowSpan={groupSize}>
+            <Link href={`/characters/${entry.character.master_pc_id}`} className="transition-colors hover:text-[#0a9baa]">
               {entry.character.name}
             </Link>
-            <div className="mt-1 text-xs font-normal text-gray-500">{entry.character.affiliation_name}</div>
+            <div className="mt-1 text-xs font-normal text-foreground/65">{entry.character.affiliation_name}</div>
           </td>
         </>
       )}
@@ -918,17 +918,17 @@ function SkillResultRow({
           rarity={entry.character.rarity}
         />
       </td>
-      <td className="px-3 py-3 text-xs font-medium text-yellow-300">
+      <td className="px-3 py-3 text-xs font-semibold text-[#fbbf24]">
         <div>{selectedVariant.slotLabel}</div>
-        {selectedVariant.variantNote && <div className="mt-1 text-[11px] text-gray-500">{selectedVariant.variantNote}</div>}
+        {selectedVariant.variantNote && <div className="mt-1 text-[11px] text-foreground/65">{selectedVariant.variantNote}</div>}
       </td>
       <td className="max-w-xl px-3 py-3">
         <div className="mb-2 flex flex-wrap items-center gap-2">
-          <span className="font-semibold text-white">{selectedVariant.skill.name}</span>
+          <span className="font-semibold text-foreground">{selectedVariant.skill.name}</span>
           {selectedVariant.skill.special_skill_type && <SecretSkillTypeBadge type={selectedVariant.skill.special_skill_type} />}
           {selectedVariant.skill.skill_change_type && <SkillChangeTypeBadge type={selectedVariant.skill.skill_change_type} />}
           {selectedVariant.skill.is_skill_change && !selectedVariant.skill.skill_change_type && (
-            <span className="inline-flex items-center rounded border border-amber-700/50 bg-amber-900/40 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-300">
+            <span className="inline-flex items-center rounded border border-[#dba348]/50 bg-[#f3bd69]/22 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#fbbf24]">
               Skill Change
             </span>
           )}
@@ -940,7 +940,7 @@ function SkillResultRow({
         )}
         <RichSkillDesc text={selectedVariant.skill.description_max_level ?? ""} />
       </td>
-      <td className="px-3 py-3 text-center font-mono text-xs text-gray-300">
+      <td className="px-3 py-3 text-center font-mono text-xs text-foreground/65">
         {selectedVariant.skill.cost != null ? selectedVariant.skill.cost : "—"}
       </td>
     </tr>
@@ -968,22 +968,22 @@ function SkillResultsTable({
       <button
         type="button"
         onClick={() => setIsCollapsed((collapsed) => !collapsed)}
-        className="mb-3 flex w-full items-center justify-between rounded-lg border border-gray-700 bg-gray-800/70 px-3 py-2 text-left transition-colors hover:border-gray-600 hover:bg-gray-800"
+        className="mb-3 flex w-full items-center justify-between rounded-lg border border-border/30 bg-card/80 px-3 py-2 text-left transition-colors hover:border-[#0a9baa]/45 hover:bg-card/95"
         aria-expanded={!isCollapsed}
       >
         <span className="flex items-center gap-2">
-          {isCollapsed ? <ChevronRight className="h-4 w-4 text-gray-400" /> : <ChevronDown className="h-4 w-4 text-gray-400" />}
+          {isCollapsed ? <ChevronRight className="h-4 w-4 text-foreground/65" /> : <ChevronDown className="h-4 w-4 text-foreground/65" />}
           <span className={`text-xs font-bold uppercase tracking-widest ${accentClass}`}>{title}</span>
         </span>
-        <span className="text-xs font-medium text-gray-400">
+        <span className="text-xs font-medium text-foreground/65">
           {skillCount} {skillCount === 1 ? "skill" : "skills"}
         </span>
       </button>
       {isCollapsed ? null : (
-      <div className="overflow-x-auto rounded-xl border border-gray-700">
+      <div className="overflow-x-auto rounded-2xl border border-border/30 bg-card/85 shadow-[0_14px_36px_rgba(20,54,120,0.13)] backdrop-blur-md">
         <table className="w-full border-collapse text-sm">
           <thead>
-            <tr className="bg-gray-800 text-xs uppercase tracking-wider text-gray-400">
+            <tr className="bg-popover text-xs uppercase tracking-wider text-foreground">
               <th className="w-20 px-3 py-3 text-left">Icon</th>
               <th className="min-w-[150px] px-3 py-3 text-left">Character</th>
               <th className="w-12 px-3 py-3 text-left">Skill</th>
@@ -994,7 +994,7 @@ function SkillResultsTable({
           </thead>
           <tbody>
             {groups.map((group, groupIndex) => {
-              const borderClass = groupIndex < groups.length - 1 ? "border-b-2 border-gray-700" : ""
+              const borderClass = groupIndex < groups.length - 1 ? "border-b-2 border-border/[0.22]" : ""
               return group.entries.map((entry, entryIndex) => (
                 <SkillResultRow
                   key={entry.id}
@@ -1146,16 +1146,16 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
 
   return (
     <div className="space-y-6">
-      <section className="glass-panel-strong">
+      <section className="rounded-2xl border border-border/30 bg-card/85 shadow-[0_14px_36px_rgba(20,54,120,0.13)] backdrop-blur-md">
         <div className="space-y-4 p-5">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <div className="relative w-full max-w-xl">
-              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/65" />
               <Input
                 value={searchText}
                 onChange={(event) => setSearchText(event.target.value)}
                 placeholder="Search characters, skills, or descriptions..."
-                className="pl-10"
+                className="h-11 rounded-md border-border/30 bg-[rgba(40,82,120,0.6)] pl-10 text-foreground placeholder:text-foreground/45 focus-visible:ring-[#0a9baa]/45"
               />
             </div>
             <div className="flex flex-wrap gap-3">
@@ -1165,23 +1165,23 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
                 selectedValues={selectedSkillFilters}
                 onToggle={toggleSkillFilter}
               />
-              <label className="flex items-center gap-2 rounded-md border border-gray-600 bg-gray-700 px-3 py-2 text-sm text-white">
-                <span className="text-xs font-semibold uppercase tracking-wider text-gray-300">Order</span>
+              <label className="flex items-center gap-2 rounded-md border border-border/30 bg-card/85 px-3 py-2 text-sm text-foreground">
+                <span className="text-xs font-semibold uppercase tracking-wider text-foreground/65">Order</span>
                 <select
                   value={valueSortDirection}
                   onChange={(event) => setValueSortDirection(event.target.value as ValueSortDirection)}
                   disabled={!hasSelectedSkillFilters}
-                  className="bg-transparent text-sm text-white outline-none disabled:cursor-not-allowed disabled:text-gray-500"
+                  className="bg-transparent text-sm text-foreground outline-none disabled:cursor-not-allowed disabled:text-foreground/45"
                   aria-label="Order matching skills"
                 >
-                  <option className="bg-gray-800 text-white" value="default">Default</option>
-                  <option className="bg-gray-800 text-white" value="desc">Highest value</option>
-                  <option className="bg-gray-800 text-white" value="asc">Lowest value</option>
+                  <option className="bg-popover text-foreground" value="default">Default</option>
+                  <option className="bg-popover text-foreground" value="desc">Highest value</option>
+                  <option className="bg-popover text-foreground" value="asc">Lowest value</option>
                 </select>
               </label>
               <Button
                 variant="outline"
-                className="text-white"
+                className="border-border/30 bg-card/85 text-foreground hover:border-[#0a9baa]/55 hover:bg-card/95"
                 onClick={clearFilters}
               >
                 Clear
@@ -1189,8 +1189,8 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 rounded-md border border-white/10 bg-[#0c0d12] px-3 py-2">
-            <span className="shrink-0 text-[10px] font-semibold uppercase tracking-wider text-gray-500">SP Cost</span>
+          <div className="flex flex-wrap items-center gap-3 rounded-md border border-border/30 bg-card/[0.68] px-3 py-2">
+            <span className="shrink-0 text-[10px] font-semibold uppercase tracking-wider text-foreground/65">SP Cost</span>
             <div className="flex flex-1 items-center gap-3 min-w-[220px]">
               <RangeSlider
                 min={SKILL_COST_MIN}
@@ -1203,9 +1203,9 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
                 }}
                 className="max-w-[420px]"
               />
-              <span className="shrink-0 text-xs font-semibold tabular-nums text-gray-300">
+              <span className="shrink-0 text-xs font-semibold tabular-nums text-foreground/65">
                 {skillCostMin}
-                <span className="px-1 text-gray-500">–</span>
+                <span className="px-1 text-foreground/65">–</span>
                 {skillCostMax >= SKILL_COST_MAX ? `${SKILL_COST_MAX}+` : skillCostMax}
               </span>
               {skillCostFilterActive && (
@@ -1215,7 +1215,7 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
                     setSkillCostMin(SKILL_COST_MIN)
                     setSkillCostMax(SKILL_COST_MAX)
                   }}
-                  className="shrink-0 rounded-md border border-white/10 bg-[#151515] px-2 py-1 text-[10px] font-semibold text-gray-400 transition hover:border-[#ff2f5f]/45 hover:text-white"
+                  className="shrink-0 rounded-md border border-border/30 bg-card/90 px-2 py-1 text-[10px] font-semibold text-foreground/70 transition hover:border-[#0a9baa]/55 hover:text-foreground"
                 >
                   Clear
                 </button>
@@ -1223,10 +1223,10 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 text-xs text-gray-400">
-            <span>{filteredEntries.length} matching skills</span>
-            <span className="text-gray-600">•</span>
-            <span>{resultCharacterCount} characters</span>
+          <div className="flex flex-wrap items-center gap-2 text-xs text-foreground/65">
+            <span className="tabular-nums">{filteredEntries.length} matching skills</span>
+            <span className="text-foreground/40">•</span>
+            <span className="tabular-nums">{resultCharacterCount} characters</span>
           </div>
 
           {activeFilterLabels.length > 0 && (
@@ -1235,10 +1235,10 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
                 <button
                   key={filter.value}
                   onClick={() => toggleSkillFilter(filter.value)}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-gray-700 px-3 py-1 text-xs text-gray-200 transition-colors hover:border-red-500/40 hover:bg-red-900/40 hover:text-white"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border/30 bg-card/85 px-3 py-1 text-xs text-foreground transition-colors hover:border-[#0a9baa]/55 hover:bg-[#0a9baa]/12 hover:text-foreground"
                 >
                   <span>{filter.label}</span>
-                  <span className="ml-0.5 text-gray-400">×</span>
+                  <span className="ml-0.5 text-foreground/65">×</span>
                 </button>
               ))}
             </div>
@@ -1247,11 +1247,11 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
       </section>
 
       {filteredEntries.length === 0 ? (
-        <section className="rounded-lg border border-dashed border-white/10 bg-white/[0.04] px-6 py-14 text-center">
-          <p className="text-base font-semibold text-white">
+        <section className="rounded-2xl border border-dashed border-border/35 bg-card/60 px-6 py-14 text-center backdrop-blur-md">
+          <p className="text-base font-semibold text-foreground">
             {hasSelectedSkillFilters ? "No matching skills" : "Select at least one skill filter"}
           </p>
-          <p className="mt-2 text-sm text-gray-400">
+          <p className="mt-2 text-sm text-foreground/65">
             {hasSelectedSkillFilters
               ? "Adjust the skill filters or search query to broaden the results."
               : "Choose one or more skill filters to show matching characters and skills."}
@@ -1259,8 +1259,8 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
         </section>
       ) : (
         <div className="space-y-8">
-          <SkillResultsTable title="Divine Protection" accentClass="text-blue-400" groups={groupedResults.protectors} />
-          <SkillResultsTable title="Battle Skills" accentClass="text-green-400" groups={groupedResults.regulars} />
+          <SkillResultsTable title="Divine Protection" accentClass="text-[#0a9baa]" groups={groupedResults.protectors} />
+          <SkillResultsTable title="Battle Skills" accentClass="text-[#fbbf24]" groups={groupedResults.regulars} />
         </div>
       )}
     </div>

@@ -1,10 +1,12 @@
 import { LoupLoupeBrowser } from "@/components/loup-loupe-browser"
+import { ClassicLoupLoupeBrowser } from "@/components/classic/loup-loupe-browser"
 import { getAllEnemies } from "@/lib/enemies"
 import { getLoupLoupeFloors } from "@/lib/loup-loupe"
+import { getDesign } from "@/lib/design"
 
 export const metadata = { title: "Loup Loupe | SLIME-WIKI" }
 
-export default function LoupLoupePage() {
+export default async function LoupLoupePage() {
   const floors = getLoupLoupeFloors()
   const enemyIds = new Set(
     floors.flatMap((floor) =>
@@ -14,11 +16,16 @@ export default function LoupLoupePage() {
     ),
   )
   const enemies = getAllEnemies().filter((enemy) => enemyIds.has(enemy.master_enemy_id))
+  const design = await getDesign()
 
   return (
-    <main className="site-page px-2 py-3 text-white sm:px-4">
+    <main className="site-page slime-page-loup-loupe px-2 py-3 sm:px-4">
       <div className="mx-auto w-full max-w-[96rem]">
-        <LoupLoupeBrowser floors={floors} enemies={enemies} />
+        {design === "classic" ? (
+          <ClassicLoupLoupeBrowser floors={floors} enemies={enemies} />
+        ) : (
+          <LoupLoupeBrowser floors={floors} enemies={enemies} />
+        )}
       </div>
     </main>
   )

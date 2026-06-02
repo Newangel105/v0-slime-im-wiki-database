@@ -15,6 +15,7 @@ import argparse
 import concurrent.futures
 import json
 import re
+import subprocess
 import sys
 import time
 import urllib.request
@@ -67,8 +68,41 @@ def http_get(url: str, dest: Path, timeout: float = 60.0) -> tuple[int, int, str
         return -1, 0, f"Err: {e!r}"[:120]
 
 
+def load_urls(input_json: Path, only_git_added: bool) -> list[str]:
+    payload = json.loads(input_json.read_text(encoding="utf-8"))
+    current_urls = {u for u in (payload.get("bundle_urls") or []) if URL_RE.match(u)}
+    if not only_git_added:
+        return sorted(current_urls)
+
+    try:
+        rel = input_json.resolve().relative_to(PROJECT.resolve())
+    except ValueError:
+        rel = input_json.resolve()
+    rel_spec = str(rel).replace("\\", "/")
+    r = subprocess.run(
+        [
+            "git",
+            "-c", f"safe.directory={PROJECT.resolve().as_posix()}",
+            "-C", str(PROJECT),
+            "show", f"HEAD:{rel_spec}",
+        ],
+        capture_output=True,
+        text=True,
+        timeout=60,
+    )
+    if r.returncode != 0:
+        raise RuntimeError(f"git show HEAD version failed: {(r.stderr or r.stdout).strip()}")
+    previous = json.loads(r.stdout)
+    previous_urls = {u for u in (previous.get("bundle_urls") or []) if URL_RE.match(u)}
+    return sorted(current_urls - previous_urls)
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--input-json", type=Path, default=INPUT_JSON,
+                    help="JSON file containing bundle_urls[]. Defaults to movie_bundle_urls.json.")
+    ap.add_argument("--only-git-added", action="store_true",
+                    help="Only process bundle URLs added in git diff for --input-json.")
     ap.add_argument("--min-size", type=int, default=MIN_BUNDLE_SIZE,
                     help="Skip bundles smaller than N bytes. Default 5 MB (movies are ≥ 10 MB).")
     ap.add_argument("--no-head", action="store_true",
@@ -76,9 +110,14 @@ def main() -> None:
     ap.add_argument("--skip-existing", action="store_true", default=True)
     args = ap.parse_args()
 
-    payload = json.loads(INPUT_JSON.read_text(encoding="utf-8"))
-    urls = sorted({u for u in (payload.get("bundle_urls") or []) if URL_RE.match(u)})
-    print(f"input pool: {len(urls)} URLs", flush=True)
+    urls = load_urls(args.input_json, args.only_git_added)
+    source = f"{args.input_json}"
+    if args.only_git_added:
+        source += " (git-added URLs only)"
+    print(f"input pool: {len(urls)} URLs from {source}", flush=True)
+    if not urls:
+        print("nothing to do")
+        return
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 

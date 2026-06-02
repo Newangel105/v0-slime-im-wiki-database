@@ -1,5 +1,3 @@
-import fs from "node:fs"
-import path from "node:path"
 import { cache } from "react"
 
 // Mirrors `XIUIThumbReward.ThumbType` enum (`dump.cs:517627`). Determines
@@ -260,17 +258,21 @@ export type SummonPayload = {
   banners: SummonBanner[]
 }
 
-// Lazy-loaded so webpack doesn't try to bundle this 55 MB JSON into the
-// build output — that was blowing Vercel's 8 GB build heap. Reading via fs
-// at request time keeps the JSON out of webpack entirely. `React.cache`
-// memoizes per server request, and the file is read once per server
-// process after that (Node caches the parsed result through this closure).
+// Fetched from R2 at request time so webpack never sees the 55 MB blob
+// (importing it directly blew Vercel's 8 GB build heap) and the repo
+// doesn't have to track it. `React.cache` memoizes per server request;
+// the module-scope `cached` holds the parse across requests in the same
+// serverless instance.
 let cached: SummonPayload | null = null
 
-export const getSummonData = cache((): SummonPayload => {
+export const getSummonData = cache(async (): Promise<SummonPayload> => {
   if (cached) return cached
-  const filepath = path.join(process.cwd(), "summon.generated.json")
-  const raw = fs.readFileSync(filepath, "utf-8")
-  cached = JSON.parse(raw) as SummonPayload
+  const cdn = process.env.NEXT_PUBLIC_MEDIA_CDN
+  if (!cdn) throw new Error("NEXT_PUBLIC_MEDIA_CDN not set — summon.generated.json lives on R2")
+  const res = await fetch(`${cdn.replace(/\/+$/, "")}/summon.generated.json`, {
+    next: { revalidate: 3600 },
+  })
+  if (!res.ok) throw new Error(`Failed to fetch summon.generated.json from R2: ${res.status}`)
+  cached = (await res.json()) as SummonPayload
   return cached
 })

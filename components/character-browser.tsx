@@ -927,35 +927,35 @@ function ToggleFilter({
     ? options.filter((o) => o.label.toLowerCase().includes(dropdownSearch.toLowerCase()))
     : options
   return (
-    <Popover onOpenChange={() => setDropdownSearch("")}>      
+    <Popover onOpenChange={() => setDropdownSearch("")}>
       <PopoverTrigger asChild>
-        <Button variant="outline" className="h-10 justify-between gap-3 rounded-md border-white/10 bg-[#101116] px-4 text-white hover:border-[#ff2f5f]/45 hover:bg-[#171821]">
+        <Button variant="outline" className="h-10 justify-between gap-3 rounded-md border-border bg-card px-4 text-foreground hover:border-primary/55 hover:bg-muted">
           <span className="text-sm">{title}</span>
-          <Badge variant="secondary" className="ml-1 shrink-0 border-[#ff2f5f]/25 bg-[#ff2f5f]/10 text-[#ff8aa5]">
+          <Badge variant="secondary" className="ml-1 shrink-0 border-primary/30 bg-primary/15 text-primary">
             {selectedValues.length}
           </Badge>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-72 border-white/10 bg-[#080808] p-0 text-white shadow-2xl shadow-black/60" align="start">
-        <div className="border-b border-white/10 px-4 py-3">
-          <p className="text-sm font-semibold text-white mb-2">{title}</p>
+      <PopoverContent className="character-filter-popover w-72 border-border bg-popover p-0 text-popover-foreground shadow-2xl shadow-black/40" align="start">
+        <div className="border-b border-border px-4 py-3">
+          <p className="text-sm font-semibold text-popover-foreground mb-2">{title}</p>
           <div className="relative">
-            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 w-3.5 h-3.5" />
+            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-foreground w-3.5 h-3.5" />
             <Input
               placeholder="Search..."
               value={dropdownSearch}
               onChange={(e) => setDropdownSearch(e.target.value)}
-              className="h-8 rounded-md border-white/10 bg-[#0c0d12] pl-8 text-xs text-white placeholder:text-slate-500 focus-visible:ring-[#ff2f5f]/45"
+              className="h-8 rounded-md border-border bg-background pl-8 text-xs text-foreground placeholder:text-muted-foreground focus-visible:ring-primary/45"
             />
           </div>
         </div>
-        <ScrollArea className="h-72 px-4 py-3">
+        <ScrollArea className="character-filter-scroll h-72 px-4 py-3">
           <div className="space-y-1">
             {visibleOptions.map((option) => {
               const checked = selectedValues.includes(option.value)
               return (
                 <label key={option.value} className={`flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2 text-sm transition-colors ${
-                  checked ? "bg-[#ff2f5f]/10 text-white ring-1 ring-[#ff2f5f]/25" : "text-gray-300 hover:bg-white/5"
+                  checked ? "bg-primary/15 text-popover-foreground ring-1 ring-primary/30" : "text-popover-foreground/85 hover:bg-accent/25 hover:text-popover-foreground"
                 }`}>
                   <Checkbox checked={checked} onCheckedChange={() => onToggle(option.value)} />
                   {option.icon && <img src={option.icon} alt="" className="h-6 w-auto max-w-[80px] shrink-0 object-contain" />}
@@ -964,7 +964,7 @@ function ToggleFilter({
               )
             })}
             {visibleOptions.length === 0 && (
-              <p className="py-2 text-center text-xs text-gray-500">No results</p>
+              <p className="py-2 text-center text-xs text-muted-foreground">No results</p>
             )}
           </div>
         </ScrollArea>
@@ -992,7 +992,7 @@ function IconToggleBar({
             onClick={() => onToggle(opt.value)}
             title={opt.label}
             className={`flex h-10 w-10 items-center justify-center rounded-xl border transition-all ${
-              isSelected ? "border-white/40 bg-white/10 shadow-[0_0_14px_rgba(255,255,255,0.12)]" : "border-white/5 bg-[#151515] hover:border-white/15 hover:bg-[#1f1f1f]"
+              isSelected ? "border-white/40 bg-white/10 shadow-[0_0_14px_rgba(255,255,255,0.12)]" : "border-white/5 bg-card hover:border-primary/30 hover:bg-muted"
             }`}
           >
             {opt.icon ? (
@@ -1002,7 +1002,7 @@ function IconToggleBar({
                 className={`h-7 w-7 object-contain transition-opacity ${isSelected ? "opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]" : "opacity-70 hover:opacity-100"}`}
               />
             ) : (
-                <span className={`px-1 text-center text-[11px] font-bold leading-tight ${isSelected ? "text-white" : "text-gray-400"}`}>
+                <span className={`px-1 text-center text-[11px] font-bold leading-tight ${isSelected ? "text-foreground" : "text-muted-foreground"}`}>
                 {opt.label}
               </span>
             )}
@@ -1025,7 +1025,7 @@ function RarityToggleBar({
   return (
     <div className="flex flex-wrap items-center gap-2">
       <button
-        className={`h-8 min-w-10 rounded px-2 text-xs transition-colors ${selectedValues.length === 0 ? "bg-[#ff2f5f]/10 text-white ring-1 ring-[#ff2f5f]/35" : "text-gray-400 hover:bg-white/10 hover:text-white"}`}
+        className={`h-8 min-w-10 rounded px-2 text-xs transition-colors ${selectedValues.length === 0 ? "bg-primary/15 text-foreground ring-1 ring-primary/40" : "text-muted-foreground hover:bg-accent/50 hover:text-foreground"}`}
         onClick={onClear}
         aria-label="All rarities"
       >
@@ -1038,7 +1038,7 @@ function RarityToggleBar({
             key={option.value}
             onClick={() => onToggle(option.value)}
             title={option.label}
-            className={`flex h-8 w-8 items-center justify-center rounded p-0 transition-colors ${isSelected ? "bg-[#ff2f5f]/10 ring-1 ring-[#ff2f5f]/35" : "bg-transparent hover:bg-white/10"}`}
+            className={`flex h-8 w-8 items-center justify-center rounded p-0 transition-colors ${isSelected ? "bg-primary/15 ring-1 ring-primary/40" : "bg-transparent hover:bg-accent/50"}`}
           >
             {option.icon && <img src={option.icon} alt={option.label} className="h-5 w-5 object-contain" />}
           </button>
@@ -1184,34 +1184,34 @@ function GroupedToggleFilter({
   return (
     <Popover onOpenChange={() => setDropdownSearch("")}>
       <PopoverTrigger asChild>
-        <Button variant="outline" className="h-10 justify-between gap-3 rounded-md border-white/10 bg-[#101116] px-4 text-white hover:border-[#ff2f5f]/45 hover:bg-[#171821]">
+        <Button variant="outline" className="h-10 justify-between gap-3 rounded-md border-border bg-card px-4 text-foreground hover:border-primary/55 hover:bg-muted">
           <span>{title}</span>
-          <Badge variant="secondary" className="border-[#ff2f5f]/25 bg-[#ff2f5f]/10 text-[#ff8aa5]">
+          <Badge variant="secondary" className="border-primary/30 bg-primary/15 text-primary">
             {selectedValues.length}
           </Badge>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-80 border-white/10 bg-[#080808] p-0 text-white shadow-2xl shadow-black/60" align="start">
-        <div className="border-b border-white/10 px-4 py-3">
-          <p className="text-sm font-semibold text-white mb-2">{title}</p>
+      <PopoverContent className="character-filter-popover w-80 border-border bg-popover p-0 text-popover-foreground shadow-2xl shadow-black/40" align="start">
+        <div className="border-b border-border px-4 py-3">
+          <p className="text-sm font-semibold text-popover-foreground mb-2">{title}</p>
           <div className="relative">
-            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400 w-3.5 h-3.5" />
+            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-foreground w-3.5 h-3.5" />
             <Input
               placeholder="Search..."
               value={dropdownSearch}
               onChange={(e) => setDropdownSearch(e.target.value)}
-              className="h-8 rounded-md border-white/10 bg-[#0c0d12] pl-8 text-xs text-white placeholder:text-slate-500 focus-visible:ring-[#ff2f5f]/45"
+              className="h-8 rounded-md border-border bg-background pl-8 text-xs text-foreground placeholder:text-muted-foreground focus-visible:ring-primary/45"
             />
           </div>
         </div>
-        <ScrollArea className="h-96">
+        <ScrollArea className="character-filter-scroll is-grouped h-96">
           <div className="p-0">
             {filteredGroups.length === 0 && (
-              <p className="py-4 text-center text-xs text-gray-500">No results</p>
+              <p className="py-4 text-center text-xs text-muted-foreground">No results</p>
             )}
             {filteredGroups.map((group) => (
-              <div key={group.key} className="border-b border-white/10 last:border-b-0">
-                <div className="bg-white/[0.045] px-4 py-2 text-xs font-semibold tracking-[0.18em] text-gray-300">
+              <div key={group.key} className="border-b border-border last:border-b-0">
+                <div className="bg-muted/40 px-4 py-2 text-xs font-semibold tracking-[0.18em] text-muted-foreground">
                   {group.title}
                 </div>
                 <div className="space-y-3 px-4 py-3">
@@ -1219,7 +1219,7 @@ function GroupedToggleFilter({
                     const checked = selectedValues.includes(option.value)
 
                     return (
-                      <label key={option.value} className={`flex cursor-pointer items-center gap-3 rounded-md px-2 py-1.5 text-sm transition-colors ${checked ? "bg-[#ff2f5f]/10 text-white" : "text-gray-200 hover:bg-white/5"}`}>
+                      <label key={option.value} className={`flex cursor-pointer items-center gap-3 rounded-md px-2 py-1.5 text-sm transition-colors ${checked ? "bg-primary/15 text-popover-foreground ring-1 ring-primary/30" : "text-popover-foreground hover:bg-accent/25"}`}>
                         <Checkbox checked={checked} onCheckedChange={() => onToggle(option.value)} />
                         <span>{option.label}</span>
                       </label>
@@ -1303,8 +1303,12 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
       setFilterMode(isFilterMode(mode) ? mode : "AND")
       setSearchSkills(sp.get("skills") === "1")
 
-      const cMin = Number(sp.get("cmin"))
-      const cMax = Number(sp.get("cmax"))
+      // NB: Number(null) === 0 (finite), so guard on the raw string — an
+      // absent cmin/cmax must fall back to the full range, not collapse to 0.
+      const cMinRaw = sp.get("cmin")
+      const cMaxRaw = sp.get("cmax")
+      const cMin = cMinRaw == null ? Number.NaN : Number(cMinRaw)
+      const cMax = cMaxRaw == null ? Number.NaN : Number(cMaxRaw)
       setSkillCostMin(Number.isFinite(cMin) ? Math.max(SKILL_COST_MIN, Math.min(SKILL_COST_MAX, cMin)) : SKILL_COST_MIN)
       setSkillCostMax(Number.isFinite(cMax) ? Math.max(SKILL_COST_MIN, Math.min(SKILL_COST_MAX, cMax)) : SKILL_COST_MAX)
     } else if (storedState) {
@@ -1821,15 +1825,15 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     }
     for (const v of selectedTraitNames) {
       const info = traitFilterLabelMap.get(v)
-      chips.push({ key: `tr:${v}`, category: "Trait", label: info ? `${info.groupTitle} · ${info.label}` : v, remove: () => setSelectedTraitNames((prev) => prev.filter((x) => x !== v)) })
+      chips.push({ key: `tr:${v}`, category: "Trait", label: info ? `${info.groupTitle} - ${info.label}` : v, remove: () => setSelectedTraitNames((prev) => prev.filter((x) => x !== v)) })
     }
     for (const v of selectedValorTraitNames) {
       const info = valorTraitFilterLabelMap.get(v)
-      chips.push({ key: `vt:${v}`, category: "Valor Trait", label: info ? `${info.groupTitle} · ${info.label}` : v, remove: () => setSelectedValorTraitNames((prev) => prev.filter((x) => x !== v)) })
+      chips.push({ key: `vt:${v}`, category: "Valor Trait", label: info ? `${info.groupTitle} - ${info.label}` : v, remove: () => setSelectedValorTraitNames((prev) => prev.filter((x) => x !== v)) })
     }
     for (const v of selectedSkillFilters) {
       const info = skillFilterLabelMap.get(v)
-      chips.push({ key: `sk:${v}`, category: "Skills", label: info ? `${info.groupTitle} · ${info.label}` : v, remove: () => setSelectedSkillFilters((prev) => prev.filter((x) => x !== v)) })
+      chips.push({ key: `sk:${v}`, category: "Skills", label: info ? `${info.groupTitle} - ${info.label}` : v, remove: () => setSelectedSkillFilters((prev) => prev.filter((x) => x !== v)) })
     }
     return chips
   }, [selectedAttackerElements, selectedDefenderElements, selectedAttackTypes, selectedWeapons, selectedTactics, selectedRoles, selectedUltimateTypes, selectedRarities, selectedForces, selectedFacilities, selectedTraitNames, selectedValorTraitNames, selectedSkillFilters, options, skillFilterLabelMap, traitFilterLabelMap, valorTraitFilterLabelMap])
@@ -1857,15 +1861,12 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   const MOBILE_GAP = 8
   const GAP = containerWidth && containerWidth < 640 ? MOBILE_GAP : DEFAULT_GAP
   const DESIRED_CARD_WIDTH = 320
-  const DESKTOP_CARD_HEIGHT = 320
-  const MOBILE_CARD_HEIGHT = 320
-  const STATS_HEIGHT = 60 // Height removed when stats are hidden
-  const ADJUSTED_DESKTOP_HEIGHT = showStats ? DESKTOP_CARD_HEIGHT : DESKTOP_CARD_HEIGHT - STATS_HEIGHT
-  const ADJUSTED_MOBILE_HEIGHT = showStats ? MOBILE_CARD_HEIGHT : MOBILE_CARD_HEIGHT - STATS_HEIGHT
-  const CARD_HEIGHT = containerWidth && containerWidth < 640 ? ADJUSTED_MOBILE_HEIGHT : ADJUSTED_DESKTOP_HEIGHT
+  const DETAIL_CARD_ASPECT = 1544 / 1010
+  const GRID_SCROLLBAR_RESERVE = containerWidth && containerWidth < 640 ? 12 : 18
+  const gridContentWidth = containerWidth ? Math.max(0, containerWidth - GRID_SCROLLBAR_RESERVE) : 0
 
   const computedColumnCount = containerWidth
-    ? containerWidth >= 1280
+    ? containerWidth >= 980
       ? 3
       : containerWidth >= 640
       ? 2
@@ -1876,48 +1877,35 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   const IS_MOBILE = !!(containerWidth && containerWidth < 640)
   const columnCount = IS_MOBILE ? 1 : computedColumnCount
 
-  const [isIphone, setIsIphone] = useState(false)
+  const [viewportHeight, setViewportHeight] = useState(720)
   useEffect(() => {
-    if (typeof navigator !== "undefined") {
-      setIsIphone(/iPhone/i.test(navigator.userAgent))
+    function syncViewportHeight() {
+      setViewportHeight(window.innerHeight || 720)
     }
+
+    syncViewportHeight()
+    window.addEventListener("resize", syncViewportHeight)
+    return () => window.removeEventListener("resize", syncViewportHeight)
   }, [])
 
-  const COMPACT_PAGE_SIZE = 48
-  const CARDS_PAGE_SIZE = 12
-  const [visibleCount, setVisibleCount] = useState(COMPACT_PAGE_SIZE)
-  const sentinelRef = useRef<HTMLDivElement>(null)
-
-  // Reset visible count when the filtered list or view changes
-  useEffect(() => {
-    setVisibleCount(viewMode === "compact" ? COMPACT_PAGE_SIZE : CARDS_PAGE_SIZE)
-  }, [filteredCharacters, viewMode])
-
-  // Load more characters as user scrolls toward the bottom
-  useEffect(() => {
-    const sentinel = sentinelRef.current
-    if (!sentinel) return
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting) {
-          setVisibleCount((prev) => prev + (viewMode === "compact" ? COMPACT_PAGE_SIZE : CARDS_PAGE_SIZE))
-        }
-      },
-      { rootMargin: "400px" },
-    )
-    observer.observe(sentinel)
-    return () => observer.disconnect()
-  }, [filteredCharacters, viewMode])
-
-  const MIN_IPHONE_INITIAL_ITEMS = 12
-  const showGridOnIphone = !isIphone || filteredCharacters.length >= MIN_IPHONE_INITIAL_ITEMS
-
-  const columnWidth = containerWidth ? containerWidth / columnCount : DESIRED_CARD_WIDTH + GAP
+  const renderedCharacterCount = filteredCharacters.length
+  const columnWidth = gridContentWidth ? gridContentWidth / columnCount : DESIRED_CARD_WIDTH + GAP
   const cardWidth = Math.max(0, columnWidth - GAP)
-  const rowCount = Math.ceil(filteredCharacters.length / columnCount)
+  const CARD_HEIGHT = Math.max(IS_MOBILE ? 250 : 220, Math.round(cardWidth / DETAIL_CARD_ASPECT))
+  const rowCount = Math.ceil(renderedCharacterCount / columnCount)
   // Add vertical gap to row height so spacing between rows is uniform on mobile
-  const ROW_HEIGHT = IS_MOBILE ? CARD_HEIGHT + GAP : CARD_HEIGHT
-  const gridHeight = Math.min(6, rowCount) * ROW_HEIGHT + 10 // Show up to 6 rows at once
+  const ROW_HEIGHT = CARD_HEIGHT + GAP
+  const gridHeight = rowCount * ROW_HEIGHT + 10
+  const galleryChromeReserve = IS_MOBILE ? 520 : 640
+  const availableGalleryHeight = Math.max(0, viewportHeight - galleryChromeReserve)
+  // Desktop always shows up to 2 card rows in the gallery viewport. Previously
+  // this was height-gated (floor((innerHeight - 640) / rowHeight)), which
+  // collapsed to a single row on 1080p-tall screens even though 2 rows fit the
+  // design intent — a long-standing bug. Mobile keeps the height-gated count.
+  const cardVisibleRows = IS_MOBILE
+    ? Math.max(1, Math.min(2, Math.floor(availableGalleryHeight / ROW_HEIGHT)))
+    : Math.min(2, Math.max(1, rowCount))
+  const cardViewportHeight = Math.min(gridHeight, ROW_HEIGHT * cardVisibleRows)
 
   // For VariableSizeGrid, must provide functions
   const getColumnWidth = () => columnWidth
@@ -1926,16 +1914,21 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   // Compact grid sizing (mirrors the responsive CSS grid breakpoints)
   const COMPACT_GAP = 10
   const compactColumnCount = !containerWidth ? 12
-    : containerWidth >= 1280 ? 12
+    : containerWidth >= 1100 ? 12
     : containerWidth >= 1024 ? 10
     : containerWidth >= 768 ? 8
     : containerWidth >= 640 ? 6
     : 4
-  const compactCellWidth = containerWidth ? containerWidth / compactColumnCount : 80
+  const compactCellWidth = gridContentWidth ? gridContentWidth / compactColumnCount : 80
   const compactCellHeight = compactCellWidth + COMPACT_GAP
-  const compactRowCount = Math.ceil(filteredCharacters.length / compactColumnCount)
-  const compactGridHeight = Math.min(8, compactRowCount) * compactCellHeight + 10
-  const compactTileClass = "group relative w-full overflow-hidden rounded-md pt-[100%] transition-all duration-200"
+  const compactRowCount = Math.ceil(renderedCharacterCount / compactColumnCount)
+  const compactGridHeight = compactRowCount * compactCellHeight + 10
+  const compactVisibleRows = Math.max(
+    IS_MOBILE ? 3 : 3,
+    Math.min(IS_MOBILE ? 4 : 4, Math.floor(availableGalleryHeight / compactCellHeight)),
+  )
+  const compactViewportHeight = Math.min(compactGridHeight, compactCellHeight * compactVisibleRows)
+  const compactTileClass = "character-photo-tile group relative w-full overflow-hidden rounded-md pt-[100%] transition-all duration-200"
 
   function CompactCard({ character, index }: { character: BrowserCharacter; index: number }) {
     const visualTier = getCharacterVisualTier(character)
@@ -1964,14 +1957,14 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
       <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className="min-w-0">
         <div className={compactTileClass}>
           {visualTier >= 8
-            ? <div className="absolute inset-[7%]"><img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="h-full w-full object-fill pointer-events-none" /></div>
-            : <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 h-full w-full object-fill pointer-events-none" />}
-          <div className="absolute inset-[4%] overflow-hidden rounded-[6%]">
+            ? <div className="character-native-base-wrap absolute inset-[7%]"><img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="character-native-base h-full w-full object-fill pointer-events-none" /></div>
+            : <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="character-native-base absolute inset-0 h-full w-full object-fill pointer-events-none" />}
+          <div className="character-native-portrait absolute inset-[4%] overflow-hidden rounded-[6%]">
             <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={index < 3 ? "high" : "low"} className="h-full w-full object-cover object-top" />
           </div>
-          <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-fill pointer-events-none" />
+          <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="character-native-frame absolute inset-0 w-full h-full object-fill pointer-events-none" />
           {/* Name top-left */}
-          <div className="absolute top-1 left-1 z-10 max-w-[72%] rounded border border-white/10 bg-black/80 px-1.5 py-0.5 text-[9px] font-semibold leading-tight text-white backdrop-blur-sm line-clamp-2">
+          <div className="character-card-name-label absolute top-1 left-1 z-10 max-w-[72%] rounded border px-1.5 py-0.5 text-[9px] font-semibold leading-tight backdrop-blur-sm line-clamp-2">
             {character.name}
           </div>
           {/* Stars bottom-left */}
@@ -1990,7 +1983,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
 
   function CompactGridCell({ ariaAttributes, columnIndex, rowIndex, style }: CellComponentProps) {
     const index = rowIndex * compactColumnCount + columnIndex
-    if (index >= filteredCharacters.length) return null
+    if (index >= renderedCharacterCount) return null
     const character = filteredCharacters[index]
     const visualTier = getCharacterVisualTier(character)
     const frameSrc = getCharacterFrame(character)
@@ -2013,9 +2006,8 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     }
     const rawLeft = (style as any).left ?? 0
     const rawWidth = (style as any).width ?? compactCellWidth
-    const isLastColumn = columnIndex === compactColumnCount - 1
     const adjustedLeft = rawLeft + COMPACT_GAP / 2
-    const adjustedWidth = Math.max(0, rawWidth - COMPACT_GAP - (isLastColumn ? 2 : 0))
+    const adjustedWidth = Math.max(0, rawWidth - COMPACT_GAP)
     const adjustedStyle = { ...style, left: adjustedLeft, width: adjustedWidth }
     return (
       <div style={adjustedStyle} aria-colindex={ariaAttributes?.["aria-colindex"]} role={ariaAttributes?.role}>
@@ -2025,14 +2017,14 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
             <div className={compactTileClass}>
               <div className="absolute inset-0">
                 {visualTier >= 8
-                  ? <div className="absolute inset-[7%]"><img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="h-full w-full object-fill pointer-events-none" /></div>
-                  : <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 h-full w-full object-fill pointer-events-none" />}
-                <div className="absolute inset-[4%] overflow-hidden rounded-[6%]">
+                  ? <div className="character-native-base-wrap absolute inset-[7%]"><img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="character-native-base h-full w-full object-fill pointer-events-none" /></div>
+                  : <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="character-native-base absolute inset-0 h-full w-full object-fill pointer-events-none" />}
+                <div className="character-native-portrait absolute inset-[4%] overflow-hidden rounded-[6%]">
                   <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={index < 3 ? "high" : "low"} className="h-full w-full object-cover object-top" />
                 </div>
               </div>
-              <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="absolute inset-0 w-full h-full object-fill pointer-events-none" />
-              <div className="absolute top-1 left-1 z-10 max-w-[72%] rounded border border-white/10 bg-black/80 px-1.5 py-0.5 text-[9px] font-semibold leading-tight text-white backdrop-blur-sm line-clamp-2">
+              <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="character-native-frame absolute inset-0 w-full h-full object-fill pointer-events-none" />
+              <div className="character-card-name-label absolute top-1 left-1 z-10 max-w-[72%] rounded border px-1.5 py-0.5 text-[9px] font-semibold leading-tight backdrop-blur-sm line-clamp-2">
                 {character.name}
               </div>
               <img src={starsSrc} alt="" loading="lazy" decoding="async" className="absolute bottom-1 left-1 h-5 object-contain z-10" />
@@ -2078,7 +2070,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
     return (
       <Link href={`/characters/${character.master_pc_id}`} prefetch={false} className={`block w-full min-w-0 ${fill ? "h-full" : ""}`}>
         <div
-          className={`group relative w-full min-w-0 overflow-hidden rounded-2xl bg-[#16171b] transition-all duration-200 hover:-translate-y-0.5 ${fill ? "h-full" : showStats ? "min-h-[300px]" : "min-h-[230px]"}`}
+          className={`character-list-card character-bio-poster group relative w-full min-w-0 overflow-hidden rounded-2xl bg-card transition-all duration-200 hover:-translate-y-0.5 ${fill ? "h-full" : showStats ? "min-h-[300px]" : "min-h-[230px]"}`}
           style={{
             boxShadow: "0 16px 48px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04)",
             contentVisibility: "auto",
@@ -2087,24 +2079,24 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
         >
           {/* Element accent bar on the left edge */}
           <div
-            className="pointer-events-none absolute inset-y-0 left-0 w-[3px]"
+            className="character-card-element-accent pointer-events-none absolute inset-y-0 left-0 w-[3px]"
             style={{ background: `linear-gradient(180deg, ${elementAccentColor} 0%, ${colorWithAlpha(elementAccentColor, 0.25)} 100%)` }}
           />
           {/* Top accent line revealed on hover */}
           <div
-            className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            className="character-card-hover-line pointer-events-none absolute inset-x-0 top-0 h-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             style={{ background: `linear-gradient(90deg, transparent, ${elementAccentColor}, transparent)` }}
           />
           {/* Subtle ambient glow keyed to element */}
           <div
-            className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full blur-3xl opacity-[0.12] transition-opacity duration-300 group-hover:opacity-25"
+            className="character-card-glow pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full blur-3xl opacity-[0.12] transition-opacity duration-300 group-hover:opacity-25"
             style={{ backgroundColor: elementAccentColor }}
           />
 
           <div className="relative flex h-full flex-col p-4 pl-5 sm:p-5 sm:pl-6">
             {/* Header: portrait + identity (with meta icons inline under the stars) */}
-            <div className="flex items-start gap-4">
-              <div className="relative h-[100px] w-[100px] shrink-0">
+            <div className="character-card-header flex items-start gap-4">
+              <div className="character-card-portrait relative h-[100px] w-[100px] shrink-0">
                 {visualTier >= 8
                   ? <div className="absolute inset-[7%]"><img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="h-full w-full object-fill pointer-events-none" /></div>
                   : <img src={baseSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-contain" />}
@@ -2112,19 +2104,19 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                   <img src={iconSrc} alt={character.name} loading={imageLoading} decoding="async" fetchPriority={isPriorityCard ? "high" : "low"} className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105" />
                 </div>
                 <img src={frameSrc} alt="" loading={imageLoading} decoding="async" className="pointer-events-none absolute inset-0 h-full w-full object-fill" />
+                <img src={starsSrc} alt={rarityLabel} loading={imageLoading} decoding="async" className="character-card-rarity-stars pointer-events-none absolute bottom-1 left-1 z-10 h-5 w-fit object-contain" />
               </div>
 
-              <div className="flex min-w-0 flex-1 flex-col">
-                <h2 className="line-clamp-2 text-[1.55rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-[1.7rem]">
+              <div className="character-card-identity flex min-w-0 flex-1 flex-col">
+                <h2 className="line-clamp-2 text-[1.55rem] font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-[1.7rem]">
                   {character.name}
                 </h2>
-                <p className="mt-1 truncate text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">
+                <p className="mt-1 truncate text-[10px] font-bold uppercase tracking-[0.24em] text-muted-foreground">
                   {character.affiliation_name}
                 </p>
-                <img src={starsSrc} alt={rarityLabel} loading={imageLoading} decoding="async" className="mt-1.5 h-5 w-fit object-contain" />
 
                 {/* Meta strip: tactics pill + element/type/weapon + facilities */}
-                <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                <div className="character-card-meta mt-2 flex flex-wrap items-center gap-1.5">
                   {tacticsIcon && (
                     <img
                       src={tacticsIcon}
@@ -2160,7 +2152,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
 
             {/* Stats: connected bar with dividers */}
             {showStats && (
-              <div className="mt-3 grid grid-cols-4 overflow-hidden rounded-lg border border-white/10 bg-[#0c0d12]">
+              <div className="character-card-stats mt-3 grid grid-cols-4 overflow-hidden rounded-lg border border-border bg-background">
                 <StatPill label="HP" value={character.stats.hp} />
                 <StatPill label="ATK" value={character.stats.attack} accent />
                 <StatPill label="DEF" value={character.stats.defense} />
@@ -2170,23 +2162,23 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
 
             {/* Forces */}
             {forceEntries.length > 0 && (
-              <div className="mt-3">
+              <div className="character-card-forces mt-3">
                 <div className="mb-1.5 flex items-center gap-2">
-                  <span className="text-[9px] font-bold uppercase tracking-[0.28em] text-slate-500">Forces</span>
-                  <span className="h-px flex-1 bg-white/5" />
+                  <span className="text-[9px] font-bold uppercase tracking-[0.28em] text-muted-foreground">Forces</span>
+                  <span className="h-px flex-1 bg-accent/30" />
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {forceEntries.slice(0, 3).map((force) => (
                     <span
                       key={force.name}
-                      className="inline-flex max-w-full items-center gap-1.5 truncate rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-1 text-[11px] text-slate-300"
+                      className="inline-flex max-w-full items-center gap-1.5 truncate rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-1 text-[11px] text-muted-foreground"
                     >
                       {force.icon && <img src={force.icon} alt="" className="h-4 w-4 shrink-0 object-contain" />}
                       <span className="truncate">{force.name}</span>
                     </span>
                   ))}
                   {forceEntries.length > 3 && (
-                    <span className="inline-flex items-center rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-1 text-[11px] text-slate-400">
+                    <span className="inline-flex items-center rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-1 text-[11px] text-muted-foreground">
                       +{forceEntries.length - 3}
                     </span>
                   )}
@@ -2201,18 +2193,9 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
 
   function StatPill({ label, value, accent = false }: { label: string; value: number; accent?: boolean }) {
     return (
-      <div className="border-r border-white/5 px-2 py-2.5 text-center last:border-r-0">
-        <p className={`text-[9px] font-bold uppercase tracking-[0.22em] ${accent ? "text-[#ff8aa5]" : "text-slate-500"}`}>{label}</p>
-        <p className="mt-1 text-[0.95rem] font-black leading-none text-white">{value.toLocaleString()}</p>
-      </div>
-    )
-  }
-
-
-  function MobileCard({ character, index }: { character: BrowserCharacter; index: number }) {
-    return (
-      <div style={{ paddingLeft: GAP / 2, paddingRight: GAP / 2, boxSizing: "border-box" }} key={character.master_pc_id}>
-        <CharacterCardSurface character={character} index={index} />
+      <div className="character-stat-pill border-r border-white/5 px-2 py-2.5 text-center last:border-r-0">
+        <p className={`text-[9px] font-bold uppercase tracking-[0.22em] ${accent ? "text-primary" : "text-muted-foreground"}`}>{label}</p>
+        <p className="mt-1 text-[0.95rem] font-black leading-none text-foreground">{value.toLocaleString()}</p>
       </div>
     )
   }
@@ -2220,14 +2203,12 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   // Grid cell component for react-window `Grid` (typed as CellComponentProps)
   function GridCell({ ariaAttributes, columnIndex, rowIndex, style }: CellComponentProps) {
     const index = rowIndex * columnCount + columnIndex
-    if (index >= filteredCharacters.length) return null
+    if (index >= renderedCharacterCount) return null
     const character = filteredCharacters[index]
     const rawLeft = (style as any).left ?? 0
     const rawWidth = (style as any).width ?? columnWidth
     const adjustedLeft = rawLeft + GAP / 2
-    const isLastColumn = columnIndex === columnCount - 1
-    const EXTRA_LAST_COLUMN_SPACE = 4 // px breathing room to avoid corner clipping at small gaps
-    const adjustedWidth = Math.max(0, rawWidth - GAP - (isLastColumn ? EXTRA_LAST_COLUMN_SPACE : 0))
+    const adjustedWidth = Math.max(0, rawWidth - GAP)
     const adjustedStyle = { ...style, left: adjustedLeft, width: adjustedWidth }
 
     return (
@@ -2238,7 +2219,8 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
             height: "100%",
             boxSizing: "border-box",
             paddingLeft: GAP / 2,
-            paddingRight: isLastColumn ? GAP / 2 + EXTRA_LAST_COLUMN_SPACE : GAP / 2,
+            paddingRight: GAP / 2,
+            paddingBottom: GAP,
           }}
         >
           <CharacterCardSurface character={character} index={index} fill />
@@ -2274,7 +2256,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
   }
 
   return (
-    <main className="min-h-screen bg-[#090a0f] px-4 py-8 text-white sm:px-6">
+    <main className="site-page slime-page-characters characters-beach-scene px-4 py-8 text-foreground sm:px-6">
       <style jsx global>{`
         .hide-scrollbar {
           -ms-overflow-style: none; /* IE and Edge */
@@ -2288,16 +2270,16 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
 
         /* Keep the thin .image-scroll scrollbar visible on small screens */
       `}</style>
-      <div className="mx-auto flex max-w-7xl flex-col gap-7">
-        <section className="rounded-3xl border border-white/10 bg-[#121318] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.3)] sm:p-6">
-          <div className="flex flex-col gap-5">
-            <div>
-              <h1 className="text-4xl font-extrabold tracking-normal text-white sm:text-5xl">Characters</h1>
-            </div>
-            <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-              <div className="relative w-full lg:max-w-xl flex items-center">
-                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-                <Input value={searchText} onChange={(event) => setSearchText(event.target.value)} placeholder="Search names, affiliations, effects, forces, towns" className="h-12 flex-1 rounded-full border-white/10 bg-[#0c0d12] pl-11 pr-16 text-white shadow-inner shadow-white/[0.02] placeholder:text-slate-500 focus-visible:ring-[#ff2f5f]/40 sm:pr-36" />
+      <div className="characters-page-layout mx-auto flex max-w-7xl flex-col gap-7">
+        <div className="characters-header-row">
+          <div className="characters-title-poster">
+            <h1 className="text-4xl font-extrabold italic tracking-normal text-foreground sm:text-5xl">Characters</h1>
+          </div>
+          <div className="characters-search-sort-panel">
+            <div className={`characters-search-row ${filtersOpen ? "is-filtering" : ""} flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between`}>
+              <div className="characters-search-note relative w-full lg:max-w-xl flex items-center">
+                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <Input value={searchText} onChange={(event) => setSearchText(event.target.value)} placeholder="Search characters" className="h-12 flex-1 rounded-full border-border bg-background pl-11 pr-16 text-foreground shadow-inner shadow-white/[0.02] placeholder:text-muted-foreground focus-visible:ring-[#ff2f5f]/40" />
                 {/* Skills toggle embedded at right of search bar */}
                 <button
                   onClick={() => setSearchSkills((prev) => !prev)}
@@ -2317,58 +2299,67 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                       style={{ transform: searchSkills ? "translateX(13px)" : "translateX(2px)" }}
                     />
                   </span>
-                  <span className="hidden sm:inline">Search Skills</span>
+                  <span className="sr-only">Search Skills</span>
                 </button>
               </div>
-              {filtersOpen && (
-              <div className="flex flex-wrap items-center gap-3">
-                <div className="flex items-center gap-2 text-sm text-gray-300">
-                  <button
-                    onClick={() => setSortAsc((prev) => !prev)}
-                    title={sortAsc ? "Ascending" : "Descending"}
-                    className="rounded-md border border-white/10 bg-[#0c0d12] p-2 text-gray-400 transition-colors hover:border-[#ff2f5f]/45 hover:bg-[#171821] hover:text-white"
-                  >
-                    <ArrowDownUp className={`h-4 w-4 transition-transform ${sortAsc ? "rotate-180" : ""}`} />
-                  </button>
-                  <Select value={sortKey} onValueChange={(value) => setSortKey(value as SortKey)}>
-                    <SelectTrigger className="w-[170px] border-white/10 bg-[#0c0d12] text-white focus:ring-[#ff2f5f]/40">
-                      <SelectValue placeholder="Sort by" />
-                    </SelectTrigger>
-                    <SelectContent className="border-white/10 bg-[#080808] text-white">
-                      <SelectItem value="existence">Existence</SelectItem>
-                      <SelectItem value="attack">Attack</SelectItem>
-                      <SelectItem value="hp">Health</SelectItem>
-                      <SelectItem value="defense">Defense</SelectItem>
-                      <SelectItem value="skill_cost">Skill cost</SelectItem>
-                      <SelectItem value="rarity">Rarity</SelectItem>
-                      <SelectItem value="release_date">Release date</SelectItem>
-                      <SelectItem value="name">Name</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <Button variant="outline" onClick={resetFilters} className="border-white/10 bg-[#0c0d12] text-white hover:border-[#ff2f5f]/45 hover:bg-[#171821]">
+            </div>
+            <div className="characters-sort-note flex flex-wrap items-center gap-3">
+              <div className="characters-result-count">
+                <strong>{filteredCharacters.length.toLocaleString()}</strong>
+                <span>Characters Found</span>
+              </div>
+              <div className="characters-sort-controls flex items-center gap-2 text-sm text-muted-foreground">
+                <button
+                  onClick={() => setSortAsc((prev) => !prev)}
+                  title={sortAsc ? "Ascending" : "Descending"}
+                  aria-label={sortAsc ? "Sort ascending" : "Sort descending"}
+                  className="rounded-md border border-border bg-card p-2 text-muted-foreground transition-colors hover:border-primary/55 hover:bg-muted hover:text-foreground"
+                >
+                  <ArrowDownUp className={`h-4 w-4 transition-transform ${sortAsc ? "rotate-180" : ""}`} />
+                </button>
+                <Select value={sortKey} onValueChange={(value) => setSortKey(value as SortKey)}>
+                  <SelectTrigger className="w-[170px] border-border bg-card text-foreground focus:ring-primary/45" aria-label="Sort characters by">
+                    <SelectValue placeholder="Sort by" />
+                  </SelectTrigger>
+                  <SelectContent className="border-border bg-popover text-popover-foreground">
+                    <SelectItem value="existence">Existence</SelectItem>
+                    <SelectItem value="attack">Attack</SelectItem>
+                    <SelectItem value="hp">Health</SelectItem>
+                    <SelectItem value="defense">Defense</SelectItem>
+                    <SelectItem value="skill_cost">Skill cost</SelectItem>
+                    <SelectItem value="rarity">Rarity</SelectItem>
+                    <SelectItem value="release_date">Release date</SelectItem>
+                    <SelectItem value="name">Name</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              {activeFilterCount > 0 && (
+                <Button variant="outline" onClick={resetFilters} className="characters-reset-button border-border bg-card text-foreground hover:border-primary/55 hover:bg-muted">
                   Reset
                 </Button>
-              </div>
               )}
             </div>
-
-            <div className="flex flex-wrap items-center gap-3 text-sm text-gray-300">
+          </div>
+        </div>
+        <section className={`characters-bulletin-board ${filtersOpen ? "is-filtering" : "is-compact"} rounded-3xl border border-border bg-[#121318] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.3)] sm:p-6`}>
+          <div className="characters-board-content flex flex-col gap-5">
+            <div className="characters-control-tags flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
               <button
                 onClick={() => setFiltersOpen((open) => !open)}
-                className="inline-flex items-center rounded-full border border-white/10 bg-[#151515] px-4 py-2 text-xs font-semibold text-gray-300 transition-all hover:border-[#ff2f5f]/45 hover:bg-[#1f1f1f] hover:text-white"
+                aria-expanded={filtersOpen}
+                className="inline-flex items-center rounded-full border border-border bg-card px-4 py-2 text-xs font-semibold text-muted-foreground transition-all hover:border-primary/55 hover:bg-muted hover:text-foreground"
               >
                 {filtersOpen ? "Hide Filters" : "Show Filters"}
               </button>
               {activeFilterCount > 0 && (
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#ff2f5f]/25 bg-[#ff2f5f]/10 px-4 py-2 text-white">
+                <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/15 px-4 py-2 text-foreground">
                   <span>{activeFilterCount} active filters</span>
                 </div>
               )}
               {activeFilterCount > 0 && (
                 <button
                   onClick={() => setFilterMode((prev) => prev === "AND" ? "OR" : "AND")}
-                  title={filterMode === "AND" ? "AND: character must match ALL filters — click for OR" : "OR: character matches ANY filter — click for AND"}
+                  title={filterMode === "AND" ? "AND: character must match ALL filters - click for OR" : "OR: character matches ANY filter - click for AND"}
                   className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold transition-all select-none"
                   style={filterMode === "AND"
                     ? { background: "linear-gradient(135deg,rgba(255,47,95,0.24),rgba(255,47,95,0.1))", color: "#ffffff", boxShadow: "0 0 12px rgba(255,47,95,0.24)", border: "1px solid rgba(255,47,95,0.36)" }
@@ -2384,14 +2375,14 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                       style={{ transform: filterMode === "AND" ? "translateX(18px)" : "translateX(2px)" }}
                     />
                   </span>
-                  <span className="font-bold tracking-widest" style={{ color: filterMode === "AND" ? "#ffffff" : "#6b7280" }}>
+                  <span className="font-bold tracking-widest" style={{ color: filterMode === "AND" ? "#6b7280" : "#6b7280" }}>
                     {filterMode}
                   </span>
                 </button>
               )}
               <button
                 onClick={() => setShowStats(!showStats)}
-                className="inline-flex items-center rounded-full border border-white/10 bg-[#151515] px-4 py-2 text-xs font-semibold text-gray-300 transition-all hover:border-[#ff2f5f]/45 hover:bg-[#1f1f1f] hover:text-white"
+                className="inline-flex items-center rounded-full border border-border bg-card px-4 py-2 text-xs font-semibold text-muted-foreground transition-all hover:border-primary/55 hover:bg-muted hover:text-foreground"
               >
                 {showStats ? "Hide Stats" : "Show Stats"}
               </button>
@@ -2401,25 +2392,26 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                   setViewMode(next)
                 }}
                 title={viewMode === "cards" ? "Switch to compact grid view" : "Switch to card view"}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-[#151515] px-3 py-2 text-xs font-semibold text-gray-300 transition-all hover:border-[#ff2f5f]/45 hover:bg-[#1f1f1f] hover:text-white"
+                aria-label={viewMode === "cards" ? "Switch to compact grid view" : "Switch to card view"}
+                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-2 text-xs font-semibold text-muted-foreground transition-all hover:border-primary/55 hover:bg-muted hover:text-foreground"
               >
                 {viewMode === "cards" ? <LayoutGrid className="h-4 w-4" /> : <List className="h-4 w-4" />}
               </button>
             </div>
 
             {activeFilterChips.length > 0 && (
-              <div className="flex flex-wrap gap-2">
+              <div className="characters-chip-line flex flex-wrap gap-2">
                 {activeFilterChips.map((chip) => (
                   <button
                     key={chip.key}
                     onClick={chip.remove}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-[#151515] px-3 py-1 text-xs text-gray-200 transition-colors hover:border-[#ff2f5f]/45 hover:bg-[#ff2f5f]/10 hover:text-white"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1 text-xs text-foreground transition-colors hover:border-primary/55 hover:bg-primary/15 hover:text-foreground"
                   >
-                    <span className="text-gray-500">{chip.category}</span>
-                    <span className="text-gray-500">·</span>
+                    <span className="text-muted-foreground">{chip.category}</span>
+                    <span className="text-muted-foreground">-</span>
                     {chip.icon && <img src={chip.icon} alt="" className="h-3.5 w-3.5 object-contain" />}
                     <span>{chip.label}</span>
-                    <span className="ml-0.5 text-gray-400">×</span>
+                    <span className="ml-0.5 text-muted-foreground">x</span>
                   </button>
                 ))}
               </div>
@@ -2427,7 +2419,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
 
             {filtersOpen && (
             <>
-            <div className="flex flex-wrap gap-3">
+            <div className="characters-dropdown-posters flex flex-wrap gap-3">
               <ToggleFilter title="Tactics" options={options.tactics} selectedValues={selectedTactics} onToggle={(value) => toggleValue(selectedTactics, setSelectedTactics, value)} />
               <ToggleFilter title="Forces" options={options.forces} selectedValues={selectedForces} onToggle={(value) => toggleValue(selectedForces, setSelectedForces, value)} />
               <GroupedToggleFilter title="Skills" groups={options.skillGroups} selectedValues={selectedSkillFilters} onToggle={(value) => toggleValue(selectedSkillFilters, setSelectedSkillFilters, value)} />
@@ -2437,46 +2429,46 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
             </div>
 
             {/* Icon-bar strip: Element, Weapon, Attack Type, Role, Ultimate */}
-            <div className="flex flex-col gap-3 rounded-xl border border-white/10 bg-[#0c0d12] p-3">
+            <div className="characters-filter-map flex flex-col gap-3 rounded-xl border border-border bg-background p-3">
               <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
                 <div className="flex items-center gap-2">
-                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">Attacker</span>
+                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Attacker</span>
                   <IconToggleBar options={options.attackerElements} selectedValues={selectedAttackerElements} onToggle={(value) => toggleValue(selectedAttackerElements, setSelectedAttackerElements, value)} />
                 </div>
               </div>
               <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
                 <div className="flex items-center gap-2">
-                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">Protector</span>
+                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Protector</span>
                   <IconToggleBar options={options.defenderElements} selectedValues={selectedDefenderElements} onToggle={(value) => toggleValue(selectedDefenderElements, setSelectedDefenderElements, value)} />
                 </div>
               </div>
               <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
                 <div className="flex items-center gap-2">
-                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">Weapon</span>
+                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Weapon</span>
                   <IconToggleBar options={options.weapons} selectedValues={selectedWeapons} onToggle={(value) => toggleValue(selectedWeapons, setSelectedWeapons, value)} />
                 </div>
               </div>
               <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
                 <div className="flex items-center gap-2">
-                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">Type</span>
+                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Type</span>
                   <IconToggleBar options={options.attackTypes} selectedValues={selectedAttackTypes} onToggle={(value) => toggleValue(selectedAttackTypes, setSelectedAttackTypes, value)} />
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">Role</span>
+                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Role</span>
                   <IconToggleBar options={ROLE_OPTIONS} selectedValues={selectedRoles} onToggle={(value) => toggleValue(selectedRoles, setSelectedRoles, value)} />
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">Ulti</span>
+                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Ulti</span>
                   <IconToggleBar options={ULTIMATE_TYPE_OPTIONS} selectedValues={selectedUltimateTypes} onToggle={(value) => toggleValue(selectedUltimateTypes, setSelectedUltimateTypes, value)} />
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">Rarity</span>
+                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Rarity</span>
                   <RarityToggleBar selectedValues={selectedRarities} onToggle={(value) => toggleValue(selectedRarities, setSelectedRarities, value)} onClear={() => setSelectedRarities([])} />
                 </div>
               </div>
               <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
                 <div className="flex flex-1 items-center gap-3 min-w-[260px]">
-                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-gray-500">SP Cost</span>
+                  <span className="w-16 shrink-0 text-right text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">SP Cost</span>
                   <RangeSlider
                     min={SKILL_COST_MIN}
                     max={SKILL_COST_MAX}
@@ -2488,9 +2480,9 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                     }}
                     className="max-w-[420px]"
                   />
-                  <span className="shrink-0 text-xs font-semibold tabular-nums text-gray-300">
+                  <span className="shrink-0 text-xs font-semibold tabular-nums text-muted-foreground">
                     {skillCostMin}
-                    <span className="px-1 text-gray-500">–</span>
+                    <span className="px-1 text-muted-foreground">-</span>
                     {skillCostMax >= SKILL_COST_MAX ? `${SKILL_COST_MAX}+` : skillCostMax}
                   </span>
                   {(skillCostMin > SKILL_COST_MIN || skillCostMax < SKILL_COST_MAX) && (
@@ -2500,7 +2492,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                         setSkillCostMin(SKILL_COST_MIN)
                         setSkillCostMax(SKILL_COST_MAX)
                       }}
-                      className="shrink-0 rounded-md border border-white/10 bg-[#151515] px-2 py-1 text-[10px] font-semibold text-gray-400 transition hover:border-[#ff2f5f]/45 hover:text-white"
+                      className="inline-flex h-10 shrink-0 items-center justify-center whitespace-nowrap rounded-md border border-border bg-card px-6 text-[10px] font-semibold uppercase leading-none tracking-wide text-muted-foreground transition hover:border-primary/55 hover:text-foreground"
                     >
                       Clear
                     </button>
@@ -2513,7 +2505,7 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
           </div>
         </section>
 
-        <section className="min-w-0">
+        <section className="characters-gallery-board min-w-0">
           {Array.isArray(filteredCharacters) && filteredCharacters.length > 0 && (
             <div ref={gridRef} className="w-full">
               {viewMode === "compact" ? (
@@ -2526,46 +2518,32 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
                     rowHeight={compactCellHeight}
                     cellComponent={CompactGridCell}
                     cellProps={{}}
-                    defaultHeight={compactGridHeight}
+                    defaultHeight={compactViewportHeight}
                     defaultWidth={containerWidth}
-                    style={{ height: compactGridHeight, width: containerWidth, overflowX: "hidden" }}
+                    style={{ height: compactViewportHeight, width: containerWidth, overflowX: "hidden" }}
                   />
                 ) : (
                   <div className="grid grid-cols-4 gap-2 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12">
-                    {filteredCharacters.slice(0, COMPACT_PAGE_SIZE).map((character, index) => (
+                    {filteredCharacters.slice(0, 48).map((character, index) => (
                       <CompactCard key={character.master_pc_id} character={character} index={index} />
                     ))}
                   </div>
                 )
-              ) : showGridOnIphone ? (
-                IS_MOBILE ? (
-                  <div className="flex flex-col" style={{ gap: `${GAP}px` }}>
-                    {filteredCharacters.slice(0, visibleCount).map((ch, idx) => (
-                      <MobileCard key={ch.master_pc_id} character={ch} index={idx} />
-                    ))}
-                  </div>
-                ) : (
-                  <VirtualizedGrid
-                    className="image-scroll"
-                    columnCount={columnCount}
-                    columnWidth={columnWidth}
-                    rowCount={rowCount}
-                    rowHeight={ROW_HEIGHT}
-                    cellComponent={GridCell}
-                    cellProps={{}}
-                    defaultHeight={gridHeight}
-                    defaultWidth={containerWidth || columnCount * DESIRED_CARD_WIDTH}
-                    style={{ height: gridHeight, width: containerWidth || columnCount * DESIRED_CARD_WIDTH, overflowX: "hidden" }}
-                  />
-                )
               ) : (
-                <div className="py-20 text-center text-gray-400">Loading characters…</div>
+                <VirtualizedGrid
+                  className="image-scroll"
+                  columnCount={columnCount}
+                  columnWidth={columnWidth}
+                  rowCount={rowCount}
+                  rowHeight={ROW_HEIGHT}
+                  cellComponent={GridCell}
+                  cellProps={{}}
+                  defaultHeight={cardViewportHeight}
+                  defaultWidth={containerWidth || columnCount * DESIRED_CARD_WIDTH}
+                  style={{ height: cardViewportHeight, width: containerWidth || columnCount * DESIRED_CARD_WIDTH, overflowX: "hidden" }}
+                />
               )}
             </div>
-          )}
-          {/* Infinite scroll sentinel — becomes visible when user nears the bottom */}
-          {visibleCount < filteredCharacters.length && (
-            <div ref={sentinelRef} className="h-2" aria-hidden />
           )}
         </section>
       </div>

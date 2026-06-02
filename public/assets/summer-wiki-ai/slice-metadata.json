@@ -1,0 +1,575 @@
+{
+  "generatedFrom": "/assets/summer-wiki-ai/source",
+  "croppedSources": "/assets/summer-wiki-ai/cropped",
+  "assets": [
+    {
+      "asset": "summer-day-beach-bg",
+      "type": "full-page-background",
+      "file": "/assets/summer-wiki-ai/background/summer-day-beach-bg.png",
+      "css": {
+        "backgroundSize": "cover",
+        "backgroundPosition": "center top"
+      }
+    },
+    {
+      "asset": "top-nav-shell",
+      "type": "horizontal-3-slice",
+      "source": "/assets/summer-wiki-ai/cropped/top-nav-shell.png",
+      "pieces": {
+        "left": "/assets/summer-wiki-ai/slices/top-nav-shell/left.png",
+        "mid": "/assets/summer-wiki-ai/slices/top-nav-shell/mid.png",
+        "right": "/assets/summer-wiki-ai/slices/top-nav-shell/right.png"
+      },
+      "size": {
+        "width": 2077,
+        "height": 199
+      },
+      "slice": {
+        "left": 270,
+        "right": 180,
+        "midWidth": 12
+      }
+    },
+    {
+      "asset": "top-nav-shell-slim",
+      "type": "horizontal-3-slice",
+      "source": "/assets/summer-wiki-ai/cropped/top-nav-shell-slim.png",
+      "pieces": {
+        "left": "/assets/summer-wiki-ai/slices/top-nav-shell-slim/left.png",
+        "mid": "/assets/summer-wiki-ai/slices/top-nav-shell-slim/mid.png",
+        "right": "/assets/summer-wiki-ai/slices/top-nav-shell-slim/right.png"
+      },
+      "size": {
+        "width": 2060,
+        "height": 188
+      },
+      "slice": {
+        "left": 230,
+        "right": 230,
+        "midWidth": 12
+      }
+    },
+    {
+      "asset": "search-sort-panel",
+      "type": "9-slice",
+      "source": "/assets/summer-wiki-ai/cropped/search-sort-panel.png",
+      "pieces": {
+        "top-left": "/assets/summer-wiki-ai/slices/search-sort-panel/top-left.png",
+        "top": "/assets/summer-wiki-ai/slices/search-sort-panel/top.png",
+        "top-right": "/assets/summer-wiki-ai/slices/search-sort-panel/top-right.png",
+        "left": "/assets/summer-wiki-ai/slices/search-sort-panel/left.png",
+        "center": "/assets/summer-wiki-ai/slices/search-sort-panel/center.png",
+        "right": "/assets/summer-wiki-ai/slices/search-sort-panel/right.png",
+        "bottom-left": "/assets/summer-wiki-ai/slices/search-sort-panel/bottom-left.png",
+        "bottom": "/assets/summer-wiki-ai/slices/search-sort-panel/bottom.png",
+        "bottom-right": "/assets/summer-wiki-ai/slices/search-sort-panel/bottom-right.png"
+      },
+      "size": {
+        "width": 2058,
+        "height": 352
+      },
+      "slice": {
+        "inset": 120,
+        "strip": 96
+      }
+    },
+    {
+      "asset": "filter-water-panel",
+      "type": "9-slice",
+      "source": "/assets/summer-wiki-ai/cropped/filter-water-panel.png",
+      "pieces": {
+        "top-left": "/assets/summer-wiki-ai/slices/filter-water-panel/top-left.png",
+        "top": "/assets/summer-wiki-ai/slices/filter-water-panel/top.png",
+        "top-right": "/assets/summer-wiki-ai/slices/filter-water-panel/top-right.png",
+        "left": "/assets/summer-wiki-ai/slices/filter-water-panel/left.png",
+        "center": "/assets/summer-wiki-ai/slices/filter-water-panel/center.png",
+        "right": "/assets/summer-wiki-ai/slices/filter-water-panel/right.png",
+        "bottom-left": "/assets/summer-wiki-ai/slices/filter-water-panel/bottom-left.png",
+        "bottom": "/assets/summer-wiki-ai/slices/filter-water-panel/bottom.png",
+        "bottom-right": "/assets/summer-wiki-ai/slices/filter-water-panel/bottom-right.png"
+      },
+      "size": {
+        "width": 1680,
+        "height": 567
+      },
+      "slice": {
+        "inset": 150,
+        "strip": 128
+      }
+    },
+    {
+      "asset": "gallery-desk-panel",
+      "type": "9-slice",
+      "source": "/assets/summer-wiki-ai/cropped/gallery-desk-panel.png",
+      "pieces": {
+        "top-left": "/assets/summer-wiki-ai/slices/gallery-desk-panel/top-left.png",
+        "top": "/assets/summer-wiki-ai/slices/gallery-desk-panel/top.png",
+        "top-right": "/assets/summer-wiki-ai/slices/gallery-desk-panel/top-right.png",
+        "left": "/assets/summer-wiki-ai/slices/gallery-desk-panel/left.png",
+        "center": "/assets/summer-wiki-ai/slices/gallery-desk-panel/center.png",
+        "right": "/assets/summer-wiki-ai/slices/gallery-desk-panel/right.png",
+        "bottom-left": "/assets/summer-wiki-ai/slices/gallery-desk-panel/bottom-left.png",
+        "bottom": "/assets/summer-wiki-ai/slices/gallery-desk-panel/bottom.png",
+        "bottom-right": "/assets/summer-wiki-ai/slices/gallery-desk-panel/bottom-right.png"
+      },
+      "size": {
+        "width": 1490,
+        "height": 856
+      },
+      "slice": {
+        "inset": 190,
+        "strip": 128
+      }
+    },
+    {
+      "asset": "gallery-board-clean",
+      "type": "9-slice",
+      "source": "/assets/summer-wiki-ai/cropped/gallery-board-clean.png",
+      "pieces": {
+        "top-left": "/assets/summer-wiki-ai/slices/gallery-board-clean/top-left.png",
+        "top": "/assets/summer-wiki-ai/slices/gallery-board-clean/top.png",
+        "top-right": "/assets/summer-wiki-ai/slices/gallery-board-clean/top-right.png",
+        "left": "/assets/summer-wiki-ai/slices/gallery-board-clean/left.png",
+        "center": "/assets/summer-wiki-ai/slices/gallery-board-clean/center.png",
+        "right": "/assets/summer-wiki-ai/slices/gallery-board-clean/right.png",
+        "bottom-left": "/assets/summer-wiki-ai/slices/gallery-board-clean/bottom-left.png",
+        "bottom": "/assets/summer-wiki-ai/slices/gallery-board-clean/bottom.png",
+        "bottom-right": "/assets/summer-wiki-ai/slices/gallery-board-clean/bottom-right.png"
+      },
+      "size": {
+        "width": 1589,
+        "height": 835
+      },
+      "slice": {
+        "inset": 92,
+        "strip": 128
+      }
+    },
+    {
+      "asset": "character-detail-dossier-v2",
+      "type": "9-slice",
+      "source": "/assets/summer-wiki-ai/cropped/character-detail-dossier-v2.png",
+      "pieces": {
+        "top-left": "/assets/summer-wiki-ai/slices/character-detail-dossier-v2/top-left.png",
+        "top": "/assets/summer-wiki-ai/slices/character-detail-dossier-v2/top.png",
+        "top-right": "/assets/summer-wiki-ai/slices/character-detail-dossier-v2/top-right.png",
+        "left": "/assets/summer-wiki-ai/slices/character-detail-dossier-v2/left.png",
+        "center": "/assets/summer-wiki-ai/slices/character-detail-dossier-v2/center.png",
+        "right": "/assets/summer-wiki-ai/slices/character-detail-dossier-v2/right.png",
+        "bottom-left": "/assets/summer-wiki-ai/slices/character-detail-dossier-v2/bottom-left.png",
+        "bottom": "/assets/summer-wiki-ai/slices/character-detail-dossier-v2/bottom.png",
+        "bottom-right": "/assets/summer-wiki-ai/slices/character-detail-dossier-v2/bottom-right.png"
+      },
+      "size": {
+        "width": 1717,
+        "height": 916
+      },
+      "slice": {
+        "inset": 138,
+        "strip": 128
+      }
+    },
+    {
+      "asset": "character-detail-row-v2",
+      "type": "9-slice",
+      "source": "/assets/summer-wiki-ai/cropped/character-detail-row-v2.png",
+      "pieces": {
+        "top-left": "/assets/summer-wiki-ai/slices/character-detail-row-v2/top-left.png",
+        "top": "/assets/summer-wiki-ai/slices/character-detail-row-v2/top.png",
+        "top-right": "/assets/summer-wiki-ai/slices/character-detail-row-v2/top-right.png",
+        "left": "/assets/summer-wiki-ai/slices/character-detail-row-v2/left.png",
+        "center": "/assets/summer-wiki-ai/slices/character-detail-row-v2/center.png",
+        "right": "/assets/summer-wiki-ai/slices/character-detail-row-v2/right.png",
+        "bottom-left": "/assets/summer-wiki-ai/slices/character-detail-row-v2/bottom-left.png",
+        "bottom": "/assets/summer-wiki-ai/slices/character-detail-row-v2/bottom.png",
+        "bottom-right": "/assets/summer-wiki-ai/slices/character-detail-row-v2/bottom-right.png"
+      },
+      "size": {
+        "width": 2172,
+        "height": 724
+      },
+      "slice": {
+        "inset": 110,
+        "strip": 128
+      }
+    },
+    {
+      "asset": "character-detail-art-frame-v2",
+      "type": "9-slice",
+      "source": "/assets/summer-wiki-ai/cropped/character-detail-art-frame-v2.png",
+      "pieces": {
+        "top-left": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v2/top-left.png",
+        "top": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v2/top.png",
+        "top-right": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v2/top-right.png",
+        "left": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v2/left.png",
+        "center": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v2/center.png",
+        "right": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v2/right.png",
+        "bottom-left": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v2/bottom-left.png",
+        "bottom": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v2/bottom.png",
+        "bottom-right": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v2/bottom-right.png"
+      },
+      "size": {
+        "width": 1086,
+        "height": 1448
+      },
+      "slice": {
+        "inset": 120,
+        "strip": 128
+      }
+    },
+    {
+      "asset": "character-detail-dossier-v4",
+      "type": "9-slice",
+      "source": "/assets/summer-wiki-ai/cropped/character-detail-dossier-v4.png",
+      "pieces": {
+        "top-left": "/assets/summer-wiki-ai/slices/character-detail-dossier-v4/top-left.png",
+        "top": "/assets/summer-wiki-ai/slices/character-detail-dossier-v4/top.png",
+        "top-right": "/assets/summer-wiki-ai/slices/character-detail-dossier-v4/top-right.png",
+        "left": "/assets/summer-wiki-ai/slices/character-detail-dossier-v4/left.png",
+        "center": "/assets/summer-wiki-ai/slices/character-detail-dossier-v4/center.png",
+        "right": "/assets/summer-wiki-ai/slices/character-detail-dossier-v4/right.png",
+        "bottom-left": "/assets/summer-wiki-ai/slices/character-detail-dossier-v4/bottom-left.png",
+        "bottom": "/assets/summer-wiki-ai/slices/character-detail-dossier-v4/bottom.png",
+        "bottom-right": "/assets/summer-wiki-ai/slices/character-detail-dossier-v4/bottom-right.png"
+      },
+      "size": {
+        "width": 1897,
+        "height": 829
+      },
+      "slice": {
+        "inset": 96,
+        "strip": 128
+      }
+    },
+    {
+      "asset": "character-detail-row-v4",
+      "type": "9-slice",
+      "source": "/assets/summer-wiki-ai/cropped/character-detail-row-v4.png",
+      "pieces": {
+        "top-left": "/assets/summer-wiki-ai/slices/character-detail-row-v4/top-left.png",
+        "top": "/assets/summer-wiki-ai/slices/character-detail-row-v4/top.png",
+        "top-right": "/assets/summer-wiki-ai/slices/character-detail-row-v4/top-right.png",
+        "left": "/assets/summer-wiki-ai/slices/character-detail-row-v4/left.png",
+        "center": "/assets/summer-wiki-ai/slices/character-detail-row-v4/center.png",
+        "right": "/assets/summer-wiki-ai/slices/character-detail-row-v4/right.png",
+        "bottom-left": "/assets/summer-wiki-ai/slices/character-detail-row-v4/bottom-left.png",
+        "bottom": "/assets/summer-wiki-ai/slices/character-detail-row-v4/bottom.png",
+        "bottom-right": "/assets/summer-wiki-ai/slices/character-detail-row-v4/bottom-right.png"
+      },
+      "size": {
+        "width": 1300,
+        "height": 292
+      },
+      "slice": {
+        "inset": 42,
+        "strip": 96
+      }
+    },
+    {
+      "asset": "character-detail-art-frame-v4",
+      "type": "9-slice",
+      "source": "/assets/summer-wiki-ai/cropped/character-detail-art-frame-v4.png",
+      "pieces": {
+        "top-left": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v4/top-left.png",
+        "top": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v4/top.png",
+        "top-right": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v4/top-right.png",
+        "left": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v4/left.png",
+        "center": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v4/center.png",
+        "right": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v4/right.png",
+        "bottom-left": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v4/bottom-left.png",
+        "bottom": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v4/bottom.png",
+        "bottom-right": "/assets/summer-wiki-ai/slices/character-detail-art-frame-v4/bottom-right.png"
+      },
+      "size": {
+        "width": 1086,
+        "height": 1448
+      },
+      "slice": {
+        "inset": 92,
+        "strip": 128
+      }
+    },
+    {
+      "asset": "character-detail-stat-board-v4",
+      "type": "fixed-stat-benchmark-panel",
+      "file": "/assets/summer-wiki-ai/cropped/character-detail-stat-board-v4.png"
+    },
+    {
+      "asset": "gallery-desk-panel",
+      "type": "vertical-3-slice",
+      "source": "/assets/summer-wiki-ai/cropped/gallery-desk-panel.png",
+      "pieces": {
+        "top": "/assets/summer-wiki-ai/slices/gallery-desk-panel-vertical/top.png",
+        "mid": "/assets/summer-wiki-ai/slices/gallery-desk-panel-vertical/mid.png",
+        "bottom": "/assets/summer-wiki-ai/slices/gallery-desk-panel-vertical/bottom.png"
+      },
+      "size": {
+        "width": 1490,
+        "height": 856
+      },
+      "slice": {
+        "top": 176,
+        "bottom": 176,
+        "midHeight": 8,
+        "midY": 424
+      }
+    },
+    {
+      "asset": "gallery-desk-panel",
+      "type": "clean-prop-free-vertical-3-slice",
+      "source": "/assets/summer-wiki-ai/cropped/gallery-desk-panel.png",
+      "pieces": {
+        "top": "/assets/summer-wiki-ai/slices/gallery-desk-panel-clean-vertical/top.png",
+        "mid": "/assets/summer-wiki-ai/slices/gallery-desk-panel-clean-vertical/mid.png",
+        "bottom": "/assets/summer-wiki-ai/slices/gallery-desk-panel-clean-vertical/bottom.png"
+      },
+      "size": {
+        "width": 1490,
+        "height": 856
+      },
+      "slice": {
+        "top": 96,
+        "bottom": 96,
+        "midHeight": 8
+      }
+    },
+    {
+      "asset": "decor-props-sheet",
+      "type": "connected-alpha-prop-crops",
+      "source": "/assets/summer-wiki-ai/cropped/decor-props-sheet.png",
+      "count": 22,
+      "pieces": [
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-01.png",
+          "box": {
+            "left": 0,
+            "top": 0,
+            "right": 401,
+            "bottom": 304
+          },
+          "area": 74196
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-02.png",
+          "box": {
+            "left": 610,
+            "top": 37,
+            "right": 806,
+            "bottom": 236
+          },
+          "area": 12327
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-03.png",
+          "box": {
+            "left": 386,
+            "top": 43,
+            "right": 601,
+            "bottom": 270
+          },
+          "area": 16342
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-04.png",
+          "box": {
+            "left": 811,
+            "top": 67,
+            "right": 983,
+            "bottom": 244
+          },
+          "area": 17978
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-05.png",
+          "box": {
+            "left": 988,
+            "top": 69,
+            "right": 1167,
+            "bottom": 236
+          },
+          "area": 14952
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-06.png",
+          "box": {
+            "left": 1287,
+            "top": 76,
+            "right": 1467,
+            "bottom": 235
+          },
+          "area": 10009
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-07.png",
+          "box": {
+            "left": 1170,
+            "top": 94,
+            "right": 1288,
+            "bottom": 218
+          },
+          "area": 7600
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-08.png",
+          "box": {
+            "left": 1062,
+            "top": 267,
+            "right": 1385,
+            "bottom": 466
+          },
+          "area": 48487
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-09.png",
+          "box": {
+            "left": 663,
+            "top": 293,
+            "right": 1000,
+            "bottom": 463
+          },
+          "area": 28498
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-10.png",
+          "box": {
+            "left": 39,
+            "top": 299,
+            "right": 181,
+            "bottom": 443
+          },
+          "area": 11949
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-11.png",
+          "box": {
+            "left": 220,
+            "top": 327,
+            "right": 315,
+            "bottom": 427
+          },
+          "area": 4616
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-12.png",
+          "box": {
+            "left": 486,
+            "top": 336,
+            "right": 548,
+            "bottom": 402
+          },
+          "area": 1461
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-13.png",
+          "box": {
+            "left": 379,
+            "top": 341,
+            "right": 438,
+            "bottom": 405
+          },
+          "area": 1369
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-14.png",
+          "box": {
+            "left": 12,
+            "top": 459,
+            "right": 255,
+            "bottom": 739
+          },
+          "area": 48168
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-15.png",
+          "box": {
+            "left": 828,
+            "top": 475,
+            "right": 1157,
+            "bottom": 765
+          },
+          "area": 66276
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-16.png",
+          "box": {
+            "left": 255,
+            "top": 484,
+            "right": 491,
+            "bottom": 754
+          },
+          "area": 44684
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-17.png",
+          "box": {
+            "left": 514,
+            "top": 485,
+            "right": 812,
+            "bottom": 747
+          },
+          "area": 46352
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-18.png",
+          "box": {
+            "left": 1184,
+            "top": 507,
+            "right": 1470,
+            "bottom": 762
+          },
+          "area": 43480
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-19.png",
+          "box": {
+            "left": 12,
+            "top": 764,
+            "right": 294,
+            "bottom": 936
+          },
+          "area": 22842
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-20.png",
+          "box": {
+            "left": 1008,
+            "top": 776,
+            "right": 1467,
+            "bottom": 941
+          },
+          "area": 47729
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-21.png",
+          "box": {
+            "left": 320,
+            "top": 790,
+            "right": 628,
+            "bottom": 926
+          },
+          "area": 24578
+        },
+        {
+          "file": "/assets/summer-wiki-ai/props/prop-22.png",
+          "box": {
+            "left": 664,
+            "top": 790,
+            "right": 965,
+            "bottom": 931
+          },
+          "area": 23989
+        }
+      ]
+    },
+    {
+      "asset": "characters-title-sign",
+      "type": "standalone-decorative-title",
+      "file": "/assets/summer-wiki-ai/cropped/characters-title-sign.png"
+    },
+    {
+      "asset": "card-detail",
+      "type": "kept-existing",
+      "file": "/assets/characters-beach/soft-detail-card-cropped.png"
+    }
+  ]
+}

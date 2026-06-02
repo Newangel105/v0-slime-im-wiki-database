@@ -1,1 +1,0 @@
-{"defaults": {"BodyMesh": true, "FaceMesh": true}, "tracks": {}, "visibilityPolicy": {"version": 3, "mode": "data-driven-controlled-mesh-opt-in-normal-track-filtered", "exportedClipCount": 0, "controlledMeshes": [], "alwaysVisibleControlledMeshes": [], "equipmentMeshes": [], "strippedNormalVisibilityTrackRefs": 0}}

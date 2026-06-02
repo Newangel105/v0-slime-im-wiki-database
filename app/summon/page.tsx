@@ -11,6 +11,6 @@ export const metadata = { title: "Summon Simulator | SLIME.WIKI" }
 // cached in module scope for subsequent requests in the same instance.
 export const dynamic = "force-dynamic"
 
-export default function SummonPage() {
-  return <SummonSimulator data={getSummonData()} />
+export default async function SummonPage() {
+  return <SummonSimulator data={await getSummonData()} />
 }
