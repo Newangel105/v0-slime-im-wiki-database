@@ -1303,8 +1303,12 @@ export function ClassicCharacterBrowser({ initialCharacters }: { initialCharacte
       setFilterMode(isFilterMode(mode) ? mode : "AND")
       setSearchSkills(sp.get("skills") === "1")
 
-      const cMin = Number(sp.get("cmin"))
-      const cMax = Number(sp.get("cmax"))
+      // NB: Number(null) === 0 (finite), so guard on the raw string — an
+      // absent cmin/cmax must fall back to the full range, not collapse to 0.
+      const cMinRaw = sp.get("cmin")
+      const cMaxRaw = sp.get("cmax")
+      const cMin = cMinRaw == null ? Number.NaN : Number(cMinRaw)
+      const cMax = cMaxRaw == null ? Number.NaN : Number(cMaxRaw)
       setSkillCostMin(Number.isFinite(cMin) ? Math.max(SKILL_COST_MIN, Math.min(SKILL_COST_MAX, cMin)) : SKILL_COST_MIN)
       setSkillCostMax(Number.isFinite(cMax) ? Math.max(SKILL_COST_MIN, Math.min(SKILL_COST_MAX, cMax)) : SKILL_COST_MAX)
     } else if (storedState) {
