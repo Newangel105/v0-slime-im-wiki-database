@@ -232,9 +232,7 @@ export function buildCharacterEmbed(c: WikiCharacter): DiscordEmbed {
     .filter(Boolean)
     .join(" · ")
   const meta = [
-    c.character_role ? `Role: **${formatWikiLabel(c.character_role)}**` : null,
     c.attack_type ? `Attack: **${formatWikiLabel(c.attack_type)}**` : null,
-    c.ultimate_type ? `Ultimate: **${formatWikiLabel(c.ultimate_type)}**` : null,
     c.release_date ? `📅 **${c.release_date}**` : null,
   ]
     .filter(Boolean)
