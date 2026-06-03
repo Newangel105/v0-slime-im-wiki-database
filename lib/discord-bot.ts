@@ -208,7 +208,22 @@ export function forceAutocomplete(query: string, filters?: { element?: string | 
 // "special_skill" -> "Secret Skill"; "active_skill_1" -> "Active Skill 1".
 function slotLabel(slot: string) {
   if (slot === "special_skill") return "Secret Skill"
+  if (/^active_skill_/.test(slot)) return "" // "Active Skill N" is noise — the changing-type + cost say enough
   return slot.replace(/_/g, " ").replace(/\b\w/g, (ch) => ch.toUpperCase())
+}
+
+// Skill toggles/changes can't be simulated in a static embed, so collapse them:
+// drop the Attack/Support modes of a Secret Skill (keep the base), and for an
+// "awakened" active skill keep only the changed version (drop the base it replaces).
+function displaySkills(skills: WikiCharacter["skills"]) {
+  const replacedSlots = new Set(
+    (skills || []).map((s) => (s as { replaces_slot?: string }).replaces_slot).filter(Boolean)
+  )
+  return (skills || []).filter((s) => {
+    if (s.slot === "special_skill_attack" || s.slot === "special_skill_support") return false
+    if (replacedSlots.has(s.slot) && !(s as { is_skill_change?: boolean }).is_skill_change) return false
+    return true
+  })
 }
 
 // The skill's type tag: secret skills carry special_skill_type ("Support"/"Attack"),
@@ -280,10 +295,13 @@ export function buildCharacterEmbed(c: WikiCharacter): DiscordEmbed {
   const fields: { name: string; value: string }[] = []
 
   // One field per skill so each gets the full 1024-char budget (no "…" cutoff).
-  for (const s of c.skills || []) {
+  // Use the real game skill glyph (Image/Skill/* via emoji) when available; secret
+  // skills use the character card as their icon, so they fall back to ⚔️.
+  for (const s of displaySkills(c.skills || [])) {
     const header = [slotLabel(s.slot), skillTag(s), s.cost != null ? `Cost ${s.cost}` : null].filter(Boolean).join(" · ")
+    const ico = (s.icon_path && emoji(toPublicAssetPath(s.icon_path))) || "⚔️"
     fields.push({
-      name: trunc(`⚔️ ${s.name || s.label}${header ? ` · ${header}` : ""}`, 256),
+      name: trunc(`${ico} ${s.name || s.label}${header ? ` · ${header}` : ""}`, 256),
       value: trunc(clean(s.description_max_level) || "—", FIELD_MAX),
     })
   }

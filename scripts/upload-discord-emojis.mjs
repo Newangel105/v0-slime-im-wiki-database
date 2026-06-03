@@ -45,6 +45,14 @@ for (const c of data.characters) {
   for (const f of c.forces || []) {
     if (f.icon_path) paths.add("/" + String(f.icon_path).replace(/^\//, "") + ".webp")
   }
+  // Skill glyphs (Image/Skill/* — active/leader skills). Secret skills use the
+  // character card as their icon, which we skip. Resolve {1}->3, {0}->L (matches
+  // toPublicAssetPath so the bot's emoji key lines up).
+  for (const sk of c.skills || []) {
+    if (sk.icon_path && sk.icon_path.startsWith("Image/Skill/")) {
+      paths.add("/" + sk.icon_path.replace(/\{1\}/g, "3").replace(/\{0\}/g, "L") + ".webp")
+    }
+  }
 }
 
 // Resolve to files, drop missing, dedupe by basename, stable order (deterministic names).
