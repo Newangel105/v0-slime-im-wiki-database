@@ -5,6 +5,7 @@ import "./globals.css"
 import "./archive-lite.css"
 import { SiteNav } from "@/components/site-nav"
 import { ClassicSiteNav } from "@/components/classic/site-nav"
+import { DesignViewportGuard } from "@/components/design-viewport-guard"
 import { getDesign } from "@/lib/design"
 
 // Inter is the typeface for the classic DARK design; exposed as a CSS var that
@@ -48,6 +49,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body>
+        <DesignViewportGuard />
         {isClassic ? <ClassicSiteNav /> : <SiteNav />}
         {children}
       </body>

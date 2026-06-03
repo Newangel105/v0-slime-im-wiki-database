@@ -4057,3 +4057,13 @@ html.dark body {
 @media (max-width: 1728px) { :root { zoom: 0.72; } }
 @media (max-width: 1536px) { :root { zoom: 0.70; } }
 @media (max-width: 1080px) { :root { zoom: 1; } }
+
+/* The summer (ocean) design is only available on actual desktops (>=1280px with
+   a real mouse/trackpad — see getDesign + DesignViewportGuard). Hide the design
+   toggle everywhere else (phones, touch tablets, narrow windows) so it isn't a
+   dead control. Shown only when (min-width:1280px) AND (pointer:fine); i.e.
+   hidden when the width is below 1280px OR the primary pointer is coarse (touch).
+   !important beats the toggle button's inline display:inline-flex. */
+@media (max-width: 1279px), (pointer: coarse) {
+  .slime-design-toggle { display: none !important; }
+}
