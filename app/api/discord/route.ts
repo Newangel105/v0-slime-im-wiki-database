@@ -5,12 +5,12 @@
 import { verifyKey } from "discord-interactions"
 import {
   buildCharacterEmbed,
+  buildImageEmbed,
   buildVariantComponents,
   characterImageUrl,
   elementLabel,
   filterCharacters,
   forceAutocomplete,
-  imageMessage,
   nameAutocomplete,
   resolveCharacter,
   searchCharacters,
@@ -89,7 +89,7 @@ export async function POST(req: Request) {
         if (wantImage) {
           const url = characterImageUrl(r.char)
           if (!url) return Response.json({ type: CHANNEL_MESSAGE, data: { content: "No image for that character.", flags: EPHEMERAL } })
-          return Response.json({ type: CHANNEL_MESSAGE, data: { content: imageMessage(r.char, url) } })
+          return Response.json({ type: CHANNEL_MESSAGE, data: { embeds: [buildImageEmbed(r.char, url)] } })
         }
         return Response.json({ type: CHANNEL_MESSAGE, data: { embeds: [buildCharacterEmbed(r.char)] } })
       }
@@ -149,11 +149,10 @@ export async function POST(req: Request) {
       }
       if (customId === "img:select") {
         const url = characterImageUrl(r.char)
-        return Response.json(
-          url
-            ? { type: UPDATE_MESSAGE, data: { content: imageMessage(r.char, url), embeds: [], components: [] } }
-            : { type: UPDATE_MESSAGE, data: { content: "", embeds: [buildCharacterEmbed(r.char)], components: [] } }
-        )
+        return Response.json({
+          type: UPDATE_MESSAGE,
+          data: { content: "", embeds: [url ? buildImageEmbed(r.char, url) : buildCharacterEmbed(r.char)], components: [] },
+        })
       }
       return Response.json({ type: UPDATE_MESSAGE, data: { content: "", embeds: [buildCharacterEmbed(r.char)], components: [] } })
     }

@@ -19,7 +19,7 @@ const PAGE_SIZE = 25 // Discord select-menu hard limit
 
 type DiscordEmbed = {
   title: string
-  url: string
+  url?: string
   color: number
   description?: string
   thumbnail?: { url: string }
@@ -363,8 +363,13 @@ export function characterImageUrl(c: WikiCharacter): string | null {
   return path ? imageUrl(path) : null
 }
 
-// Just the image, full size: a bare image URL in the message content auto-embeds
-// at full size (clickable to open), with no wiki link.
-export function imageMessage(c: WikiCharacter, url: string): string {
-  return `**${c.name} — ${c.affiliation_name}**\n${url}`
+// Just the picture: an embed with only the image (no title-link, no URL text),
+// shown large and clickable to open at full resolution.
+export function buildImageEmbed(c: WikiCharacter, url: string): DiscordEmbed {
+  return {
+    title: trunc(`${c.name} — ${c.affiliation_name}`, 256),
+    color: elementColor(c.element),
+    image: { url },
+    footer: { text: `ID ${c.master_pc_id} · slimewiki` },
+  }
 }
