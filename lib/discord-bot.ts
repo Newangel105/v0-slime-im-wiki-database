@@ -61,6 +61,13 @@ function elementColor(el: string | null | undefined) {
   return 0x34d0dd
 }
 
+// In-game two elements are renamed vs the internal data: Air -> Space, Holy ->
+// Light. Apply it to every element label the bot shows so players recognise it
+// (covers "Air+", "Special Air", etc. too).
+export function elementLabel(el: string | null | undefined) {
+  return getDisplayElementLabel(el).replace(/Air/g, "Space").replace(/Holy/g, "Light")
+}
+
 // Match by character name OR variant (affiliation_name), ranked by relevance.
 export function searchCharacters(query: string): WikiCharacter[] {
   const q = norm(query)
@@ -88,7 +95,7 @@ export function autocompleteChoices(query: string) {
   const list = norm(query) ? searchCharacters(query) : getAllWikiCharacters().slice(0, PAGE_SIZE)
   return list.slice(0, 25).map((c) => ({
     name: trunc(
-      `${c.name} — ${c.affiliation_name} · ${stars(c.rarity) || `${c.rarity}★`} ${getDisplayElementLabel(c.element)}`,
+      `${c.name} — ${c.affiliation_name} · ${stars(c.rarity) || `${c.rarity}★`} ${elementLabel(c.element)}`,
       100
     ),
     value: String(c.master_pc_id),
@@ -190,7 +197,7 @@ function dedupeTraits(traits: WikiTrait[]) {
 export function buildCharacterEmbed(c: WikiCharacter): DiscordEmbed {
   const stat = [
     stars(c.rarity),
-    getDisplayElementLabel(c.element),
+    elementLabel(c.element),
     c.weapon_type ? `🗡️ ${formatWikiLabel(c.weapon_type)}` : null,
     c.tactics_type ? `🎯 ${formatWikiLabel(c.tactics_type)}` : null,
   ]
@@ -294,7 +301,7 @@ export function buildVariantComponents(query: string, matches: WikiCharacter[], 
           placeholder: `Pick a variant${pages > 1 ? ` · page ${p + 1}/${pages}` : ""}`,
           options: slice.map((c) => ({
             label: cap(c.affiliation_name || c.name, 100),
-            description: cap(`${c.name} · ${stars(c.rarity) || `${c.rarity}★`} · ${getDisplayElementLabel(c.element)}`, 100),
+            description: cap(`${c.name} · ${stars(c.rarity) || `${c.rarity}★`} · ${elementLabel(c.element)}`, 100),
             value: String(c.master_pc_id),
           })),
         },

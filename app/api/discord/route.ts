@@ -9,6 +9,7 @@ import {
   buildImageEmbed,
   buildVariantComponents,
   characterImageUrl,
+  elementLabel,
   filterCharacters,
   forceAutocomplete,
   resolveCharacter,
@@ -97,7 +98,7 @@ export async function POST(req: Request) {
         return Response.json({ type: CHANNEL_MESSAGE, data: { content: "No characters match those filters.", flags: EPHEMERAL } })
       }
       const desc = [
-        element ? `element **${element}**` : null,
+        element ? `element **${elementLabel(element)}**` : null,
         target ? `**${target === "single" ? "Single" : "AoE"}**` : null,
         force ? `force **${force}**` : null,
       ]

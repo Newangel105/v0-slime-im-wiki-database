@@ -23,7 +23,17 @@ const nameRequired = {
   autocomplete: true,
 }
 const nameOptional = { ...nameRequired, required: false }
-const elementChoices = ["Fire", "Water", "Wind", "Earth", "Holy", "Dark", "Air"].map((e) => ({ name: e, value: e }))
+// Display the in-game element names (Air -> Space, Holy -> Light); the values
+// stay the internal data names so filtering still matches.
+const elementChoices = [
+  { name: "Fire", value: "Fire" },
+  { name: "Water", value: "Water" },
+  { name: "Wind", value: "Wind" },
+  { name: "Earth", value: "Earth" },
+  { name: "Light", value: "Holy" },
+  { name: "Dark", value: "Dark" },
+  { name: "Space", value: "Air" },
+]
 
 const commands = [
   {
