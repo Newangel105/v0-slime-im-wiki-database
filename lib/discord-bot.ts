@@ -5,6 +5,7 @@ import {
   getAllWikiCharacters,
   getWikiCharacterById,
   getCharacterForceNames,
+  getCharacterForceEntries,
   getDisplayElementLabel,
   formatWikiLabel,
   stripColorTags,
@@ -12,10 +13,35 @@ import {
   type WikiCharacter,
   type WikiTrait,
 } from "@/lib/pc-wiki"
+import { getHeaderIcons } from "@/lib/discord-card-icons"
+import emojiMap from "@/lib/discord-emojis.json"
 
 const SITE_URL = (process.env.DISCORD_SITE_URL || "https://slimewiki.vercel.app").replace(/\/+$/, "")
 const FIELD_MAX = 1024
 const PAGE_SIZE = 25 // Discord select-menu hard limit
+
+// Custom game icons via Discord "application emojis". lib/discord-emojis.json maps
+// an icon's basename -> "<:name:id>" and is filled by scripts/upload-discord-emojis.mjs.
+// Until it's populated EMOJIS_READY is false and the bot renders text, so nothing
+// breaks before the one-time upload.
+const EMOJIS = emojiMap as Record<string, string>
+const EMOJIS_READY = Object.keys(EMOJIS).length > 0
+function emoji(path: string | null | undefined) {
+  if (!path) return ""
+  const key = path.split("/").pop()?.replace(/\.webp$/i, "") || ""
+  return EMOJIS[key] || ""
+}
+
+// Tutorial / non-playable units (role "None", no skills, no release date) are
+// hidden from the bot — they aren't surfaced on the wiki either.
+function isVisible(c: WikiCharacter | null | undefined): c is WikiCharacter {
+  return !!c && c.character_role !== "None"
+}
+let cachedVisible: WikiCharacter[] | null = null
+function wikiChars(): WikiCharacter[] {
+  if (!cachedVisible) cachedVisible = getAllWikiCharacters().filter(isVisible)
+  return cachedVisible
+}
 
 type DiscordEmbed = {
   title: string
@@ -73,7 +99,7 @@ export function elementLabel(el: string | null | undefined) {
 export function searchCharacters(query: string): WikiCharacter[] {
   const q = norm(query)
   if (!q) return []
-  const matches = getAllWikiCharacters().filter(
+  const matches = wikiChars().filter(
     (c) => norm(c.name).includes(q) || norm(c.affiliation_name).includes(q)
   )
   matches.sort((a, b) => {
@@ -137,7 +163,7 @@ export function filterCharacters(opts: { element?: string | null; attack?: strin
   const at = opts.attack ? norm(opts.attack) : null
   const tg = opts.target ? norm(opts.target) : null
   const fc = opts.force ? norm(opts.force) : null
-  let list = getAllWikiCharacters()
+  let list = wikiChars()
   if (el) list = list.filter((c) => baseElement(c.element) === el)
   if (at) list = list.filter((c) => norm(c.attack_type) === at)
   if (tg) list = list.filter((c) => characterTargetType(c) === tg)
@@ -154,7 +180,7 @@ let cachedForceNames: string[] | null = null
 function forceNames() {
   if (!cachedForceNames) {
     const s = new Set<string>()
-    for (const c of getAllWikiCharacters()) for (const n of getCharacterForceNames(c)) if (n) s.add(n)
+    for (const c of wikiChars()) for (const n of getCharacterForceNames(c)) if (n) s.add(n)
     cachedForceNames = [...s].sort()
   }
   return cachedForceNames
@@ -223,7 +249,8 @@ function dedupeTraits(traits: WikiTrait[]) {
 }
 
 export function buildCharacterEmbed(c: WikiCharacter): DiscordEmbed {
-  const stat = [
+  // Text header (used as fallback before the icons are uploaded).
+  const textStat = [
     stars(c.rarity),
     elementLabel(c.element),
     c.weapon_type ? `🗡️ ${formatWikiLabel(c.weapon_type)}` : null,
@@ -231,7 +258,19 @@ export function buildCharacterEmbed(c: WikiCharacter): DiscordEmbed {
   ]
     .filter(Boolean)
     .join(" · ")
-  const meta = c.release_date ? `📅 **${c.release_date}**` : ""
+
+  // Icon header: stars · element/attack (1–2) · weapon · tactics — real game icons,
+  // resolved with the exact characters-page card logic.
+  let head = textStat
+  if (EMOJIS_READY) {
+    const h = getHeaderIcons(c)
+    const icons = [emoji(h.star), ...h.elementAttack.map(emoji), emoji(h.weapon), emoji(h.tactics)]
+      .filter(Boolean)
+      .join(" ")
+    if (icons) head = icons
+  }
+  const date = c.release_date ? `📅 **${c.release_date}**` : ""
+  const description = trunc([head, date].filter(Boolean).join(EMOJIS_READY ? "  ·  " : "\n"), 4096)
 
   const fields: { name: string; value: string }[] = []
 
@@ -266,15 +305,20 @@ export function buildCharacterEmbed(c: WikiCharacter): DiscordEmbed {
       ),
     })
 
-  const forceList = getCharacterForceNames(c).filter(Boolean)
-  if (forceList.length) fields.push({ name: "🛡️ Forces", value: trunc(forceList.join(", "), FIELD_MAX) })
+  const forceEntries = getCharacterForceEntries(c).filter((f) => f.name)
+  if (forceEntries.length) {
+    const value = EMOJIS_READY
+      ? forceEntries.map((f) => `${emoji(f.icon) ? `${emoji(f.icon)} ` : ""}${f.name}`).join("  ·  ")
+      : forceEntries.map((f) => f.name).join(", ")
+    fields.push({ name: "🛡️ Forces", value: trunc(value, FIELD_MAX) })
+  }
 
   const icon = imageUrl(c.images?.icon)
   return {
     title: trunc(`${c.name}${c.affiliation_name ? ` — ${c.affiliation_name}` : ""}`, 256),
     url: `${SITE_URL}/characters/${c.master_pc_id}`,
     color: elementColor(c.element),
-    description: trunc([stat, meta].filter(Boolean).join("\n"), 4096),
+    description,
     ...(icon ? { thumbnail: { url: icon } } : {}),
     fields,
     footer: { text: `ID ${c.master_pc_id} · slimewiki` },
@@ -339,7 +383,7 @@ export function buildVariantComponents(query: string, matches: WikiCharacter[], 
 export function resolveCharacter(value: string): { char?: WikiCharacter; matches?: WikiCharacter[]; none?: boolean } {
   if (/^\d+$/.test(value)) {
     const c = getWikiCharacterById(Number(value))
-    if (c) return { char: c }
+    if (isVisible(c)) return { char: c }
   }
   const m = searchCharacters(value)
   if (m.length === 0) return { none: true }

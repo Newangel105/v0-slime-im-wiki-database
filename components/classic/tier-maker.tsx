@@ -76,6 +76,18 @@ function hexToRgb(hex?: string) {
   return { r, g, b }
 }
 
+// Index where a dragged item should land inside a tier, from the cursor position
+// relative to each item (left half = before it, right half = after).
+function computeDropIndex(container: HTMLElement, clientX: number, clientY: number): number {
+  const items = Array.from(container.querySelectorAll<HTMLElement>("[data-item-index]"))
+  for (let i = 0; i < items.length; i++) {
+    const r = items[i].getBoundingClientRect()
+    if (clientY < r.top) return i
+    if (clientY <= r.bottom && clientX < r.left + r.width / 2) return i
+  }
+  return items.length
+}
+
 export function ClassicTierMaker() {
   // Force desktop mode on mobile
   useEffect(() => {
@@ -420,6 +432,8 @@ export function ClassicTierMaker() {
   }
 
   function handleDragStart(e: React.DragEvent, charId: string, fromTierIndex: number) {
+    draggedIdRef.current = charId
+    setIsDragging(true)
     try {
       e.dataTransfer.setData("application/json", JSON.stringify({ charId, fromTierIndex }))
       e.dataTransfer.effectAllowed = "move"
@@ -462,6 +476,77 @@ export function ClassicTierMaker() {
     } catch (err) {}
   }
 
+  // Drop onto a tier: insert at the previewed gap position (or append at the end).
+  function handleTierDrop(e: React.DragEvent, tierIndex: number) {
+    e.preventDefault()
+    try {
+      const raw = e.dataTransfer.getData("application/json") || e.dataTransfer.getData("text/plain")
+      if (raw) {
+        const parsed = JSON.parse(raw)
+        const charId = String(parsed.charId ?? parsed.id ?? parsed)
+        if (charId) {
+          const target = dropPreview && dropPreview.tier === tierIndex ? dropPreview.index : (tiers[tierIndex]?.items.length ?? 0)
+          insertCharAt(charId, tierIndex, target)
+        }
+      }
+    } catch (err) {}
+    setDropPreview(null)
+    setIsDragging(false)
+    draggedIdRef.current = null
+  }
+
+  // Push the item at the previewed gap aside (margin) so a slot visibly opens.
+  function itemDragStyle(tierIndex: number, itemIndex: number, itemsLen: number, id: string): React.CSSProperties {
+    const dp = dropPreview && dropPreview.tier === tierIndex ? dropPreview : null
+    return {
+      touchAction: "none",
+      pointerEvents: isDragging && id !== draggedIdRef.current ? "none" : undefined,
+      marginLeft: dp && dp.index === itemIndex ? "4.5rem" : undefined,
+      marginRight: dp && dp.index === itemsLen && itemIndex === itemsLen - 1 ? "4.5rem" : undefined,
+      transition: "margin 0.18s ease",
+    }
+  }
+
+  // Desktop drag auto-scroll: while an HTML5 drag is active, scroll the page when
+  // the cursor nears the top/bottom edge of the viewport (so you can drag a pin or
+  // a tiered character up/down past what's currently on screen).
+  useEffect(() => {
+    let raf = 0
+    let active = false
+    let pointerY = 0
+    const EDGE = 110
+    const MAX_SPEED = 24
+    function step() {
+      if (!active) return
+      const vh = window.innerHeight
+      let dy = 0
+      if (pointerY < EDGE) dy = -MAX_SPEED * (1 - Math.max(0, pointerY) / EDGE)
+      else if (pointerY > vh - EDGE) dy = MAX_SPEED * (1 - Math.max(0, vh - pointerY) / EDGE)
+      if (dy !== 0) window.scrollBy(0, dy)
+      raf = requestAnimationFrame(step)
+    }
+    function onDragOver(e: DragEvent) {
+      pointerY = e.clientY
+      if (!active) { active = true; raf = requestAnimationFrame(step) }
+    }
+    function stop() {
+      active = false
+      cancelAnimationFrame(raf)
+      setDropPreview(null)
+      setIsDragging(false)
+      draggedIdRef.current = null
+    }
+    window.addEventListener("dragover", onDragOver)
+    window.addEventListener("drop", stop)
+    window.addEventListener("dragend", stop)
+    return () => {
+      window.removeEventListener("dragover", onDragOver)
+      window.removeEventListener("drop", stop)
+      window.removeEventListener("dragend", stop)
+      cancelAnimationFrame(raf)
+    }
+  }, [])
+
   const assigned = useMemo(() => new Set(tiers.flatMap((t) => t.items)), [tiers])
 
   const pins = useMemo(() => {
@@ -476,6 +561,11 @@ export function ClassicTierMaker() {
 
   // Pointer-based mobile drag fallback: store active drag data and handle pointerup
   const touchDragRef = useRef<{ charId: string; fromTierIndex: number } | null>(null)
+  // Desktop (HTML5) drag reorder state: which item is being dragged + the live
+  // gap preview where it would land.
+  const draggedIdRef = useRef<string | null>(null)
+  const [isDragging, setIsDragging] = useState(false)
+  const [dropPreview, setDropPreview] = useState<{ tier: number; index: number } | null>(null)
   const touchDragImageRef = useRef<string | null>(null)
   const touchGhostRef = useRef<HTMLElement | null>(null)
   const touchLastYRef = useRef<number | null>(null)
@@ -1105,7 +1195,7 @@ export function ClassicTierMaker() {
                   </div>
                 </div>
 
-                <div data-tier-index={idx} className="flex-1 min-h-[140px] md:min-h-[5rem] border border-gray-700/50 bg-[#0f1b2a]/80 text-white rounded-md flex items-start justify-between px-3 py-3 pr-35 md:pr-20 relative overflow-hidden" onDragOver={(e) => e.preventDefault()} onDrop={(e) => handleDropOnTier(e as React.DragEvent, idx)}>
+                <div data-tier-index={idx} className="flex-1 min-h-[140px] md:min-h-[5rem] border border-gray-700/50 bg-[#0f1b2a]/80 text-white rounded-md flex items-start justify-between px-3 py-3 pr-35 md:pr-20 relative overflow-hidden" onDragOver={(e) => { e.preventDefault(); const at = computeDropIndex(e.currentTarget as HTMLElement, e.clientX, e.clientY); setDropPreview((p) => (p && p.tier === idx && p.index === at) ? p : { tier: idx, index: at }) }} onDrop={(e) => handleTierDrop(e as React.DragEvent, idx)}>
                   <div className="flex-1 min-w-0 flex flex-wrap gap-1 md:gap-2 items-start max-w-[calc(100vw-7rem)] md:max-w-none">
                     {tier.items.map((id, itemIndex) => {
                       if (mode === "heartprints") {
@@ -1117,7 +1207,6 @@ export function ClassicTierMaker() {
                             draggable
                             onDragStart={(e) => handleDragStart(e as React.DragEvent, id, idx)}
                             onDragOver={(e) => e.preventDefault()}
-                            onDrop={(e) => handleDropOnItem(e as React.DragEvent, idx, itemIndex)}
                             data-tier-index={idx}
                             data-item-index={itemIndex}
                             onPointerDown={(e) => { if ((e as any).pointerType === 'touch') { try { (e as any).preventDefault() } catch (err) {} touchLastYRef.current = (e as any).clientY; touchDragRef.current = { charId: id, fromTierIndex: idx }; touchDragImageRef.current = h.picture_path.replace("{0}", "M") + ".webp"; try { createTouchGhost(h.picture_path.replace("{0}", "M") + ".webp"); moveTouchGhost((e as any).clientX, (e as any).clientY) } catch (err) {} } }}
@@ -1125,7 +1214,7 @@ export function ClassicTierMaker() {
                             onTouchCancel={() => { touchDragRef.current = null; touchDragImageRef.current = null; touchLastYRef.current = null; removeTouchGhost() }}
                             className="relative w-40 h-20 flex-shrink-0"
                             title={h.title}
-                            style={{ touchAction: 'none' }}
+                            style={itemDragStyle(idx, itemIndex, tier.items.length, id)}
                           >
                             <img
                               src={h.picture_path.replace("{0}", "M") + ".webp"}
@@ -1152,7 +1241,6 @@ export function ClassicTierMaker() {
                           draggable
                           onDragStart={(e) => handleDragStart(e as React.DragEvent, id, idx)}
                           onDragOver={(e) => e.preventDefault()}
-                          onDrop={(e) => handleDropOnItem(e as React.DragEvent, idx, itemIndex)}
                           data-tier-index={idx}
                           data-item-index={itemIndex}
                           onPointerDown={(e) => { if ((e as any).pointerType === 'touch') { try { (e as any).preventDefault() } catch (err) {} touchLastYRef.current = (e as any).clientY; touchDragRef.current = { charId: id, fromTierIndex: idx }; touchDragImageRef.current = c.images.icon; try { createTouchGhost(c.images.icon); moveTouchGhost((e as any).clientX, (e as any).clientY) } catch (err) {} } }}
@@ -1160,7 +1248,7 @@ export function ClassicTierMaker() {
                           onTouchCancel={() => { touchDragRef.current = null; touchDragImageRef.current = null; touchLastYRef.current = null; removeTouchGhost() }}
                           className="relative w-20 h-20 flex-shrink-0"
                           title={c.name}
-                          style={{ touchAction: 'none' }}
+                          style={itemDragStyle(idx, itemIndex, tier.items.length, id)}
                         >
                           {visualTier >= 8
                             ? <div className="absolute inset-[7%]"><img src={getMiniBasePath(visualTier, pfx)} alt="" className="pointer-events-none w-full h-full object-fill" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }} /></div>
