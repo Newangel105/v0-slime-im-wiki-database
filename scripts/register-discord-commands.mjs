@@ -15,29 +15,54 @@ if (!appId || !token) {
   process.exit(1)
 }
 
-const command = {
-  name: "character",
-  description: "Look up a SLIME character: skills, traits, EX abilities, forces, element, weapon & more",
-  type: 1, // CHAT_INPUT
-  options: [
-    {
-      name: "name",
-      description: "Character or variant name — start typing for suggestions",
-      type: 3, // STRING
-      required: true,
-      autocomplete: true,
-    },
-  ],
+const nameRequired = {
+  name: "name",
+  description: "Character or variant name — start typing for suggestions",
+  type: 3, // STRING
+  required: true,
+  autocomplete: true,
 }
+const nameOptional = { ...nameRequired, required: false }
+const elementChoices = ["Fire", "Water", "Wind", "Earth", "Holy", "Dark", "Air"].map((e) => ({ name: e, value: e }))
+
+const commands = [
+  {
+    name: "character",
+    description: "Look up a SLIME character, or filter by element / target / force",
+    type: 1, // CHAT_INPUT
+    options: [
+      nameOptional,
+      { name: "element", description: "Filter by element", type: 3, required: false, choices: elementChoices },
+      {
+        name: "target",
+        description: "Filter by AoE or single target",
+        type: 3,
+        required: false,
+        choices: [
+          { name: "AoE", value: "aoe" },
+          { name: "Single", value: "single" },
+        ],
+      },
+      { name: "force", description: "Filter by force name", type: 3, required: false, autocomplete: true },
+    ],
+  },
+  {
+    name: "characterimage",
+    description: "Send a SLIME character's full illustration",
+    type: 1, // CHAT_INPUT
+    options: [nameRequired],
+  },
+]
 
 const url = guildId
   ? `https://discord.com/api/v10/applications/${appId}/guilds/${guildId}/commands`
   : `https://discord.com/api/v10/applications/${appId}/commands`
 
+// PUT bulk-overwrites ALL of the app's commands with this set.
 const res = await fetch(url, {
-  method: "POST",
+  method: "PUT",
   headers: { Authorization: `Bot ${token}`, "Content-Type": "application/json" },
-  body: JSON.stringify(command),
+  body: JSON.stringify(commands),
 })
 const text = await res.text()
 console.log(`HTTP ${res.status}`)
@@ -47,5 +72,6 @@ if (!res.ok) {
   process.exit(1)
 }
 console.log(
-  `\n✔ Registered /character ${guildId ? `to guild ${guildId} (instant)` : "globally (appears within ~1h)"}`
+  `\n✔ Registered ${commands.length} commands (/character, /characterimage) ` +
+    `${guildId ? `to guild ${guildId} (instant)` : "globally (appears within ~1h)"}`
 )

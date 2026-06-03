@@ -9,6 +9,7 @@ import {
   stripColorTags,
   toPublicAssetPath,
   type WikiCharacter,
+  type WikiTrait,
 } from "@/lib/pc-wiki"
 
 const SITE_URL = (process.env.DISCORD_SITE_URL || "https://slimewiki.vercel.app").replace(/\/+$/, "")
@@ -19,9 +20,10 @@ type DiscordEmbed = {
   title: string
   url: string
   color: number
-  description: string
+  description?: string
   thumbnail?: { url: string }
-  fields: { name: string; value: string }[]
+  image?: { url: string }
+  fields?: { name: string; value: string }[]
   footer: { text: string }
 }
 
@@ -93,6 +95,98 @@ export function autocompleteChoices(query: string) {
   }))
 }
 
+// ── Filtering (element / AoE-single / force) ──────────────────────────────────
+
+// Strip the Enhanced / SpecialEffectElement prefix so "EnhancedFire" and
+// "SpecialEffectElementFire" both match the base "fire".
+function baseElement(el: string | null | undefined) {
+  return norm(el).replace(/^specialeffectelement/, "").replace(/^enhanced/, "")
+}
+
+// Mirrors the site's getCharacterUltimateType: target_type 1 = AoE, 0 = single.
+export function characterTargetType(c: WikiCharacter): "aoe" | "single" | null {
+  const hasAoE = c.skills?.some((s) => s.battle_attack_effects?.some((e) => e.target_type === 1))
+  const hasSingle = c.skills?.some((s) => s.battle_attack_effects?.some((e) => e.target_type === 0))
+  if (hasAoE && !hasSingle) return "aoe"
+  if (hasSingle && !hasAoE) return "single"
+  return hasAoE ? "aoe" : hasSingle ? "single" : null
+}
+
+export function filterCharacters(opts: { element?: string | null; target?: string | null; force?: string | null }): WikiCharacter[] {
+  const el = opts.element ? baseElement(opts.element) : null
+  const tg = opts.target ? norm(opts.target) : null
+  const fc = opts.force ? norm(opts.force) : null
+  let list = getAllWikiCharacters()
+  if (el) list = list.filter((c) => baseElement(c.element) === el)
+  if (tg) list = list.filter((c) => characterTargetType(c) === tg)
+  if (fc) list = list.filter((c) => (c.forces || []).some((f) => norm(f.name).includes(fc)))
+  return [...list].sort((a, b) => {
+    const ad = String(a.release_date || "")
+    const bd = String(b.release_date || "")
+    if (ad !== bd) return bd.localeCompare(ad)
+    return (Number(b.rarity) || 0) - (Number(a.rarity) || 0)
+  })
+}
+
+let cachedForceNames: string[] | null = null
+function forceNames() {
+  if (!cachedForceNames) {
+    const s = new Set<string>()
+    for (const c of getAllWikiCharacters()) for (const f of c.forces || []) if (f.name) s.add(f.name)
+    cachedForceNames = [...s].sort()
+  }
+  return cachedForceNames
+}
+
+export function forceAutocomplete(query: string) {
+  const q = norm(query)
+  const list = q ? forceNames().filter((n) => norm(n).includes(q)) : forceNames()
+  return list.slice(0, 25).map((n) => ({ name: n.slice(0, 100), value: n.slice(0, 100) }))
+}
+
+// "special_skill" -> "Secret Skill"; "active_skill_1" -> "Active Skill 1".
+function slotLabel(slot: string) {
+  if (slot === "special_skill") return "Secret Skill"
+  return slot.replace(/_/g, " ").replace(/\b\w/g, (ch) => ch.toUpperCase())
+}
+
+// The skill's type tag: secret skills carry special_skill_type ("Support"/"Attack"),
+// active skills carry skill_change_type ("Attack Changing"/"Magic Changing").
+function skillTag(s: WikiCharacter["skills"][number]) {
+  return s.slot === "special_skill" ? s.special_skill_type : s.skill_change_type
+}
+
+// Traits repeat across awaken levels (same trait, bigger numbers). Rank the unlock
+// so only the strongest copy of each trait is kept. Initial < Awaken 1 < … < Awaken N.
+function unlockRank(u: string | null | undefined) {
+  if (!u) return -1
+  const m = /awaken\s*(\d+)/i.exec(u)
+  if (m) return Number(m[1])
+  if (/initial/i.test(u)) return 0
+  return 1
+}
+
+// Base trait name = the name with the unlock condition stripped off the end
+// (e.g. "Switch - Skill Seal Initial Conditions" -> "Switch - Skill Seal").
+function baseTraitName(t: WikiTrait) {
+  let name = (t.name || t.label || "").trim()
+  if (t.unlock && name.toLowerCase().endsWith(t.unlock.toLowerCase())) {
+    name = name.slice(0, name.length - t.unlock.length).trim()
+  }
+  return name
+}
+
+// Keep only the highest-unlock copy of each trait, in first-seen order.
+function dedupeTraits(traits: WikiTrait[]) {
+  const byBase = new Map<string, WikiTrait>()
+  for (const t of traits) {
+    const base = baseTraitName(t)
+    const cur = byBase.get(base)
+    if (!cur || unlockRank(t.unlock) > unlockRank(cur.unlock)) byBase.set(base, t)
+  }
+  return [...byBase.values()]
+}
+
 export function buildCharacterEmbed(c: WikiCharacter): DiscordEmbed {
   const stat = [
     stars(c.rarity),
@@ -112,29 +206,42 @@ export function buildCharacterEmbed(c: WikiCharacter): DiscordEmbed {
     .join(" · ")
 
   const fields: { name: string; value: string }[] = []
+
   if (c.skills?.length)
     fields.push({
       name: "⚔️ Skills",
       value: fieldFrom(
-        c.skills.map(
-          (s) => `**${s.name || s.label}**${s.cost != null ? ` · Cost ${s.cost}` : ""}\n${trunc(clean(s.description_max_level), 260)}`
-        )
+        c.skills.map((s) => {
+          const header = [slotLabel(s.slot), skillTag(s), s.cost != null ? `Cost ${s.cost}` : null]
+            .filter(Boolean)
+            .join(" · ")
+          return `**${s.name || s.label}** · ${header}\n${trunc(clean(s.description_max_level), 240)}`
+        })
       ),
     })
-  if (c.ex_abilities?.length)
-    fields.push({
-      name: "💠 EX Abilities",
-      value: fieldFrom(c.ex_abilities.map((e) => `**${e.name}**\n${trunc(clean(e.description), 260)}`)),
-    })
+
+  // Traits before EX. Keep only the highest awaken level of each trait, full text.
   if (c.traits?.length)
     fields.push({
       name: "✨ Traits",
       value: fieldFrom(
-        c.traits.map(
-          (t) => `**${t.name || t.label}**${t.unlock ? ` _(${t.unlock})_` : ""}\n${trunc(clean(t.description_max_level), 120)}`
-        )
+        dedupeTraits(c.traits).map((t) => `**${baseTraitName(t)}**\n${trunc(clean(t.description_max_level), 220)}`)
       ),
     })
+
+  // EX abilities: condition line + the actual stat values from effects[].
+  if (c.ex_abilities?.length)
+    fields.push({
+      name: "💠 EX Abilities",
+      value: fieldFrom(
+        c.ex_abilities.map((e) => {
+          const effects = (e.effects || []).map((x) => clean(x)).filter(Boolean)
+          const eff = effects.length ? `\n${effects.map((x) => `• ${x}`).join("\n")}` : ""
+          return `**${e.name}**\n${trunc(clean(e.description), 200)}${eff}`
+        })
+      ),
+    })
+
   if (c.forces?.length) {
     const names = c.forces.map((f) => f.name || f.label).filter(Boolean)
     if (names.length) fields.push({ name: "🛡️ Forces", value: trunc(names.join(", "), FIELD_MAX) })
@@ -169,7 +276,9 @@ function fieldFrom(parts: string[]) {
 
 // Raw Discord component rows (string select + optional pager) for a freeform
 // multi-match. Used only when someone submits text without picking autocomplete.
-export function buildVariantComponents(query: string, matches: WikiCharacter[], page = 0) {
+export function buildVariantComponents(query: string, matches: WikiCharacter[], page = 0, kind: "info" | "image" = "info") {
+  const selectId = kind === "image" ? "img:select" : "char:select"
+  const pagePrefix = kind === "image" ? "img:page" : "char:page"
   const pages = Math.max(1, Math.ceil(matches.length / PAGE_SIZE))
   const p = Math.min(Math.max(0, page), pages - 1)
   const slice = matches.slice(p * PAGE_SIZE, p * PAGE_SIZE + PAGE_SIZE)
@@ -181,7 +290,7 @@ export function buildVariantComponents(query: string, matches: WikiCharacter[], 
       components: [
         {
           type: 3,
-          custom_id: "char:select",
+          custom_id: selectId,
           placeholder: `Pick a variant${pages > 1 ? ` · page ${p + 1}/${pages}` : ""}`,
           options: slice.map((c) => ({
             label: cap(c.affiliation_name || c.name, 100),
@@ -197,8 +306,8 @@ export function buildVariantComponents(query: string, matches: WikiCharacter[], 
     rows.push({
       type: 1,
       components: [
-        { type: 2, style: 2, custom_id: `char:page:${q}:${p - 1}`, label: "◀ Prev", disabled: p === 0 },
-        { type: 2, style: 2, custom_id: `char:page:${q}:${p + 1}`, label: "Next ▶", disabled: p >= pages - 1 },
+        { type: 2, style: 2, custom_id: `${pagePrefix}:${q}:${p - 1}`, label: "◀ Prev", disabled: p === 0 },
+        { type: 2, style: 2, custom_id: `${pagePrefix}:${q}:${p + 1}`, label: "Next ▶", disabled: p >= pages - 1 },
       ],
     })
   }
@@ -214,4 +323,23 @@ export function resolveCharacter(value: string): { char?: WikiCharacter; matches
   if (m.length === 0) return { none: true }
   if (m.length === 1) return { char: m[0] }
   return { matches: m }
+}
+
+// ── Character image (/characterimage) ─────────────────────────────────────────
+
+// images.full is already the correct art for the character's OWN type — CharaInfo
+// for a PC character, BlessInfo for a Bless character — so we just send it as-is.
+export function characterImageUrl(c: WikiCharacter): string | null {
+  const path = c.images?.full || c.images?.icon
+  return path ? imageUrl(path) : null
+}
+
+export function buildImageEmbed(c: WikiCharacter, url: string): DiscordEmbed {
+  return {
+    title: trunc(`${c.name} — ${c.affiliation_name}`, 256),
+    url: `${SITE_URL}/characters/${c.master_pc_id}`,
+    color: elementColor(c.element),
+    image: { url },
+    footer: { text: `ID ${c.master_pc_id} · slimewiki` },
+  }
 }
