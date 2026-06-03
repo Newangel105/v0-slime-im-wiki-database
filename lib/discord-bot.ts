@@ -231,12 +231,7 @@ export function buildCharacterEmbed(c: WikiCharacter): DiscordEmbed {
   ]
     .filter(Boolean)
     .join(" · ")
-  const meta = [
-    c.attack_type ? `Attack: **${formatWikiLabel(c.attack_type)}**` : null,
-    c.release_date ? `📅 **${c.release_date}**` : null,
-  ]
-    .filter(Boolean)
-    .join(" · ")
+  const meta = c.release_date ? `📅 **${c.release_date}**` : ""
 
   const fields: { name: string; value: string }[] = []
 
