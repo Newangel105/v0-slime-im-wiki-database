@@ -4,6 +4,7 @@
 import {
   getAllWikiCharacters,
   getWikiCharacterById,
+  getCharacterForceNames,
   getDisplayElementLabel,
   formatWikiLabel,
   stripColorTags,
@@ -91,13 +92,25 @@ export function searchCharacters(query: string): WikiCharacter[] {
 }
 
 // Up to 25 autocomplete choices (value = master_pc_id as a string).
-export function autocompleteChoices(query: string) {
-  const list = norm(query) ? searchCharacters(query) : getAllWikiCharacters().slice(0, PAGE_SIZE)
+export function nameAutocomplete(
+  query: string,
+  filters: { element?: string | null; attack?: string | null; target?: string | null; force?: string | null } = {}
+) {
+  const q = norm(query)
+  let list = filterCharacters(filters) // narrow by element/attack/target/force first
+  if (q) {
+    list = list.filter((c) => norm(c.name).includes(q) || norm(c.affiliation_name).includes(q))
+    list.sort((a, b) => {
+      const an = norm(a.name)
+      const bn = norm(b.name)
+      const ax = an === q ? 0 : an.startsWith(q) ? 1 : 2
+      const bx = bn === q ? 0 : bn.startsWith(q) ? 1 : 2
+      if (ax !== bx) return ax - bx
+      return an.localeCompare(bn)
+    })
+  }
   return list.slice(0, 25).map((c) => ({
-    name: trunc(
-      `${c.name} — ${c.affiliation_name} · ${stars(c.rarity) || `${c.rarity}★`} ${elementLabel(c.element)}`,
-      100
-    ),
+    name: trunc(`${c.name} — ${c.affiliation_name} · ${stars(c.rarity) || `${c.rarity}★`} ${elementLabel(c.element)}`, 100),
     value: String(c.master_pc_id),
   }))
 }
@@ -119,14 +132,16 @@ export function characterTargetType(c: WikiCharacter): "aoe" | "single" | null {
   return hasAoE ? "aoe" : hasSingle ? "single" : null
 }
 
-export function filterCharacters(opts: { element?: string | null; target?: string | null; force?: string | null }): WikiCharacter[] {
+export function filterCharacters(opts: { element?: string | null; attack?: string | null; target?: string | null; force?: string | null }): WikiCharacter[] {
   const el = opts.element ? baseElement(opts.element) : null
+  const at = opts.attack ? norm(opts.attack) : null
   const tg = opts.target ? norm(opts.target) : null
   const fc = opts.force ? norm(opts.force) : null
   let list = getAllWikiCharacters()
   if (el) list = list.filter((c) => baseElement(c.element) === el)
+  if (at) list = list.filter((c) => norm(c.attack_type) === at)
   if (tg) list = list.filter((c) => characterTargetType(c) === tg)
-  if (fc) list = list.filter((c) => (c.forces || []).some((f) => norm(f.name).includes(fc)))
+  if (fc) list = list.filter((c) => getCharacterForceNames(c).some((n) => norm(n).includes(fc)))
   return [...list].sort((a, b) => {
     const ad = String(a.release_date || "")
     const bd = String(b.release_date || "")
@@ -139,15 +154,28 @@ let cachedForceNames: string[] | null = null
 function forceNames() {
   if (!cachedForceNames) {
     const s = new Set<string>()
-    for (const c of getAllWikiCharacters()) for (const f of c.forces || []) if (f.name) s.add(f.name)
+    for (const c of getAllWikiCharacters()) for (const n of getCharacterForceNames(c)) if (n) s.add(n)
     cachedForceNames = [...s].sort()
   }
   return cachedForceNames
 }
 
-export function forceAutocomplete(query: string) {
+// Force suggestions. If other filters are set, only offer forces that the
+// matching characters actually have (keeps the relevant ones within Discord's
+// 25-suggestion cap); otherwise offer the full list, filtered by what's typed.
+export function forceAutocomplete(query: string, filters?: { element?: string | null; attack?: string | null; target?: string | null }) {
+  let names: string[]
+  if (filters && (filters.element || filters.attack || filters.target)) {
+    const s = new Set<string>()
+    for (const c of filterCharacters({ element: filters.element, attack: filters.attack, target: filters.target })) {
+      for (const n of getCharacterForceNames(c)) if (n) s.add(n)
+    }
+    names = [...s].sort()
+  } else {
+    names = forceNames()
+  }
   const q = norm(query)
-  const list = q ? forceNames().filter((n) => norm(n).includes(q)) : forceNames()
+  const list = q ? names.filter((n) => norm(n).includes(q)) : names
   return list.slice(0, 25).map((n) => ({ name: n.slice(0, 100), value: n.slice(0, 100) }))
 }
 
@@ -214,18 +242,14 @@ export function buildCharacterEmbed(c: WikiCharacter): DiscordEmbed {
 
   const fields: { name: string; value: string }[] = []
 
-  if (c.skills?.length)
+  // One field per skill so each gets the full 1024-char budget (no "…" cutoff).
+  for (const s of c.skills || []) {
+    const header = [slotLabel(s.slot), skillTag(s), s.cost != null ? `Cost ${s.cost}` : null].filter(Boolean).join(" · ")
     fields.push({
-      name: "⚔️ Skills",
-      value: fieldFrom(
-        c.skills.map((s) => {
-          const header = [slotLabel(s.slot), skillTag(s), s.cost != null ? `Cost ${s.cost}` : null]
-            .filter(Boolean)
-            .join(" · ")
-          return `**${s.name || s.label}** · ${header}\n${trunc(clean(s.description_max_level), 240)}`
-        })
-      ),
+      name: trunc(`⚔️ ${s.name || s.label}${header ? ` · ${header}` : ""}`, 256),
+      value: trunc(clean(s.description_max_level) || "—", FIELD_MAX),
     })
+  }
 
   // Traits before EX. Keep only the highest awaken level of each trait, full text.
   if (c.traits?.length)
@@ -249,10 +273,8 @@ export function buildCharacterEmbed(c: WikiCharacter): DiscordEmbed {
       ),
     })
 
-  if (c.forces?.length) {
-    const names = c.forces.map((f) => f.name || f.label).filter(Boolean)
-    if (names.length) fields.push({ name: "🛡️ Forces", value: trunc(names.join(", "), FIELD_MAX) })
-  }
+  const forceList = getCharacterForceNames(c).filter(Boolean)
+  if (forceList.length) fields.push({ name: "🛡️ Forces", value: trunc(forceList.join(", "), FIELD_MAX) })
 
   const icon = imageUrl(c.images?.icon)
   return {
@@ -341,12 +363,8 @@ export function characterImageUrl(c: WikiCharacter): string | null {
   return path ? imageUrl(path) : null
 }
 
-export function buildImageEmbed(c: WikiCharacter, url: string): DiscordEmbed {
-  return {
-    title: trunc(`${c.name} — ${c.affiliation_name}`, 256),
-    url: `${SITE_URL}/characters/${c.master_pc_id}`,
-    color: elementColor(c.element),
-    image: { url },
-    footer: { text: `ID ${c.master_pc_id} · slimewiki` },
-  }
+// Just the image, full size: a bare image URL in the message content auto-embeds
+// at full size (clickable to open), with no wiki link.
+export function imageMessage(c: WikiCharacter, url: string): string {
+  return `**${c.name} — ${c.affiliation_name}**\n${url}`
 }

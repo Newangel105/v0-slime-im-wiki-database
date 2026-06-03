@@ -15,14 +15,6 @@ if (!appId || !token) {
   process.exit(1)
 }
 
-const nameRequired = {
-  name: "name",
-  description: "Character or variant name — start typing for suggestions",
-  type: 3, // STRING
-  required: true,
-  autocomplete: true,
-}
-const nameOptional = { ...nameRequired, required: false }
 // Display the in-game element names (Air -> Space, Holy -> Light); the values
 // stay the internal data names so filtering still matches.
 const elementChoices = [
@@ -35,32 +27,52 @@ const elementChoices = [
   { name: "Space", value: "Air" },
 ]
 
-const commands = [
+// Both commands share the same options: a specific name, or filters that narrow
+// the name suggestions (and can be run on their own to get a picker).
+const sharedOptions = [
   {
-    name: "character",
-    description: "Look up a SLIME character, or filter by element / target / force",
-    type: 1, // CHAT_INPUT
-    options: [
-      nameOptional,
-      { name: "element", description: "Filter by element", type: 3, required: false, choices: elementChoices },
-      {
-        name: "target",
-        description: "Filter by AoE or single target",
-        type: 3,
-        required: false,
-        choices: [
-          { name: "AoE", value: "aoe" },
-          { name: "Single", value: "single" },
-        ],
-      },
-      { name: "force", description: "Filter by force name", type: 3, required: false, autocomplete: true },
+    name: "name",
+    description: "Character or variant name — start typing for suggestions",
+    type: 3, // STRING
+    required: false,
+    autocomplete: true,
+  },
+  { name: "element", description: "Filter by element", type: 3, required: false, choices: elementChoices },
+  {
+    name: "attack",
+    description: "Filter by attack type",
+    type: 3,
+    required: false,
+    choices: [
+      { name: "Magic", value: "Magic" },
+      { name: "Physical", value: "Physical" },
     ],
   },
   {
-    name: "characterimage",
-    description: "Send a SLIME character's full illustration",
+    name: "target",
+    description: "Filter by AoE or single target",
+    type: 3,
+    required: false,
+    choices: [
+      { name: "AoE", value: "aoe" },
+      { name: "Single", value: "single" },
+    ],
+  },
+  { name: "force", description: "Filter by force name", type: 3, required: false, autocomplete: true },
+]
+
+const commands = [
+  {
+    name: "character",
+    description: "Look up a SLIME character, or filter by element / attack / target / force",
     type: 1, // CHAT_INPUT
-    options: [nameRequired],
+    options: sharedOptions,
+  },
+  {
+    name: "characterimage",
+    description: "Send a character's full illustration — by name, or filter to find one",
+    type: 1, // CHAT_INPUT
+    options: sharedOptions,
   },
 ]
 

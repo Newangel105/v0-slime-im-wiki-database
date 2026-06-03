@@ -4,14 +4,14 @@
 // no separate bot host needed.
 import { verifyKey } from "discord-interactions"
 import {
-  autocompleteChoices,
   buildCharacterEmbed,
-  buildImageEmbed,
   buildVariantComponents,
   characterImageUrl,
   elementLabel,
   filterCharacters,
   forceAutocomplete,
+  imageMessage,
+  nameAutocomplete,
   resolveCharacter,
   searchCharacters,
 } from "@/lib/discord-bot"
@@ -49,10 +49,23 @@ export async function POST(req: Request) {
   }
 
   if (body.type === APPLICATION_COMMAND_AUTOCOMPLETE) {
-    const focused = (body.data?.options ?? []).find((o: { focused?: boolean; name?: string }) => o.focused)
-    const value = String(focused?.value ?? "")
-    // `force` option suggests force names; `name` (default) suggests characters.
-    const choices = focused?.name === "force" ? forceAutocomplete(value) : autocompleteChoices(value)
+    const options: Array<{ name: string; value?: unknown; focused?: boolean }> = body.data?.options ?? []
+    const val = (n: string) => {
+      const o = options.find((x) => x.name === n)
+      return o ? String(o.value ?? "") : ""
+    }
+    const element = val("element")
+    const attack = val("attack")
+    const target = val("target")
+    const force = val("force")
+    const focused = options.find((o) => o.focused)
+    const fval = String(focused?.value ?? "")
+    // `force` suggests force names (narrowed by the other filters); `name`
+    // suggests characters (narrowed by every filter already set).
+    const choices =
+      focused?.name === "force"
+        ? forceAutocomplete(fval, { element, attack, target })
+        : nameAutocomplete(fval, { element, attack, target, force })
     return Response.json({ type: AUTOCOMPLETE_RESULT, data: { choices } })
   }
 
@@ -65,6 +78,7 @@ export async function POST(req: Request) {
     }
     const name = optVal("name")
     const element = optVal("element")
+    const attack = optVal("attack")
     const target = optVal("target")
     const force = optVal("force")
 
@@ -75,7 +89,7 @@ export async function POST(req: Request) {
         if (wantImage) {
           const url = characterImageUrl(r.char)
           if (!url) return Response.json({ type: CHANNEL_MESSAGE, data: { content: "No image for that character.", flags: EPHEMERAL } })
-          return Response.json({ type: CHANNEL_MESSAGE, data: { embeds: [buildImageEmbed(r.char, url)] } })
+          return Response.json({ type: CHANNEL_MESSAGE, data: { content: imageMessage(r.char, url) } })
         }
         return Response.json({ type: CHANNEL_MESSAGE, data: { embeds: [buildCharacterEmbed(r.char)] } })
       }
@@ -91,14 +105,15 @@ export async function POST(req: Request) {
       return Response.json({ type: CHANNEL_MESSAGE, data: { content: `No character found for **${name}**.`, flags: EPHEMERAL } })
     }
 
-    // 2) Filter mode (/character only): element / target / force.
-    if (!wantImage && (element || target || force)) {
-      const matches = filterCharacters({ element, target, force })
+    // 2) Filter mode (both commands): element / attack / target / force.
+    if (element || attack || target || force) {
+      const matches = filterCharacters({ element, attack, target, force })
       if (matches.length === 0) {
         return Response.json({ type: CHANNEL_MESSAGE, data: { content: "No characters match those filters.", flags: EPHEMERAL } })
       }
       const desc = [
         element ? `element **${elementLabel(element)}**` : null,
+        attack ? `**${attack}**` : null,
         target ? `**${target === "single" ? "Single" : "AoE"}**` : null,
         force ? `force **${force}**` : null,
       ]
@@ -110,7 +125,7 @@ export async function POST(req: Request) {
         type: CHANNEL_MESSAGE,
         data: {
           content: `**${matches.length}** characters match ${desc}${more} — pick one:`,
-          components: buildVariantComponents("", shown, 0, "info"),
+          components: buildVariantComponents("", shown, 0, wantImage ? "image" : "info"),
         },
       })
     }
@@ -118,9 +133,7 @@ export async function POST(req: Request) {
     return Response.json({
       type: CHANNEL_MESSAGE,
       data: {
-        content: wantImage
-          ? "Pick a character with the **name** option."
-          : "Use **name** to look up a character, or filter by **element** / **target** / **force**.",
+        content: "Use **name** to pick a character, or filter by **element** / **attack** / **target** / **force**.",
         flags: EPHEMERAL,
       },
     })
@@ -136,10 +149,11 @@ export async function POST(req: Request) {
       }
       if (customId === "img:select") {
         const url = characterImageUrl(r.char)
-        return Response.json({
-          type: UPDATE_MESSAGE,
-          data: { content: "", embeds: [url ? buildImageEmbed(r.char, url) : buildCharacterEmbed(r.char)], components: [] },
-        })
+        return Response.json(
+          url
+            ? { type: UPDATE_MESSAGE, data: { content: imageMessage(r.char, url), embeds: [], components: [] } }
+            : { type: UPDATE_MESSAGE, data: { content: "", embeds: [buildCharacterEmbed(r.char)], components: [] } }
+        )
       }
       return Response.json({ type: UPDATE_MESSAGE, data: { content: "", embeds: [buildCharacterEmbed(r.char)], components: [] } })
     }
