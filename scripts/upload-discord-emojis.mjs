@@ -30,6 +30,11 @@ const AUTH = { Authorization: `Bot ${TOKEN}` }
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 const base = (p) => p.split("/").pop().replace(/\.webp$/i, "")
 
+// `--force=<substr>` re-uploads (delete + recreate, so they get the new image) any
+// emoji whose key contains <substr> — e.g. --force=starChara to redo the stars.
+const forceArg = process.argv.find((a) => a.startsWith("--force="))
+const FORCE_SUBSTR = forceArg ? forceArg.slice("--force=".length) : null
+
 // ── Collect every distinct icon path: all header maps + every force badge ──
 const paths = new Set()
 for (const key of Object.keys(maps)) {
@@ -75,7 +80,10 @@ async function listExisting() {
 }
 
 async function uploadOne(name, file) {
-  const png = await sharp(file).resize(128, 128, { fit: "inside" }).png().toBuffer()
+  // Star rows are wide (~1.3:1) and shrink in Discord's square emoji box, so stretch
+  // them to a square — they're a compact "★N" badge, so it just makes them full height.
+  const isStar = /CommonRarityAtlas[\\/]starChara/i.test(file)
+  const png = await sharp(file).resize(128, 128, { fit: isStar ? "fill" : "inside" }).png().toBuffer()
   if (png.length > 256 * 1024) throw new Error("png exceeds 256KB")
   const image = `data:image/png;base64,${png.toString("base64")}`
   for (let attempt = 0; attempt < 6; attempt++) {
@@ -95,6 +103,10 @@ async function uploadOne(name, file) {
   for (const it of list) {
     const name = emojiName(it.key)
     let id = existing.get(name)
+    if (id && FORCE_SUBSTR && it.key.includes(FORCE_SUBSTR)) {
+      await fetch(`${API}/${id}`, { method: "DELETE", headers: AUTH }).catch(() => {})
+      await sleep(300); id = undefined
+    }
     if (id) {
       reused++
     } else {

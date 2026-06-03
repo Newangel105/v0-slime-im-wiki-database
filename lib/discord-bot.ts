@@ -264,10 +264,15 @@ export function buildCharacterEmbed(c: WikiCharacter): DiscordEmbed {
   let head = textStat
   if (EMOJIS_READY) {
     const h = getHeaderIcons(c)
-    const icons = [emoji(h.star), ...h.elementAttack.map(emoji), emoji(h.weapon), emoji(h.tactics)]
+    const iconStr = [emoji(h.star), ...h.elementAttack.map(emoji), emoji(h.weapon)]
       .filter(Boolean)
       .join(" ")
-    if (icons) head = icons
+    if (iconStr) {
+      // Tactics has no square icon — the game asset is a wide "Speed/Charge" text button
+      // that renders ~5px tall in Discord's square emoji box — so show it as text.
+      const tac = c.tactics_type ? `🎯 ${formatWikiLabel(c.tactics_type)}` : ""
+      head = [iconStr, tac].filter(Boolean).join("  ·  ")
+    }
   }
   const date = c.release_date ? `📅 **${c.release_date}**` : ""
   const description = trunc([head, date].filter(Boolean).join(EMOJIS_READY ? "  ·  " : "\n"), 4096)
