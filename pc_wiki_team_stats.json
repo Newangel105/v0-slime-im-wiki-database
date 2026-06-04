@@ -1439,67 +1439,67 @@
   "facility_bonuses": {
     "0": {
       "elem_name": "All",
-      "hp_pct": 6.0,
-      "atk_pct": 30.0,
-      "def_pct": 30.0,
-      "battle_only_atk_pct": 60.0,
-      "battle_only_def_pct": 60.0
+      "hp_pct": 0.0,
+      "atk_pct": 0.0,
+      "def_pct": 0.0,
+      "battle_only_atk_pct": 0.0,
+      "battle_only_def_pct": 0.0
     },
     "1": {
       "elem_name": "Earth",
-      "hp_pct": 6.0,
-      "atk_pct": 60.0,
-      "def_pct": 60.0,
-      "battle_only_atk_pct": 60.0,
-      "battle_only_def_pct": 60.0
+      "hp_pct": 0.0,
+      "atk_pct": 0.0,
+      "def_pct": 0.0,
+      "battle_only_atk_pct": 0.0,
+      "battle_only_def_pct": 0.0
     },
     "2": {
       "elem_name": "Air",
-      "hp_pct": 6.0,
-      "atk_pct": 60.0,
-      "def_pct": 60.0,
-      "battle_only_atk_pct": 60.0,
-      "battle_only_def_pct": 60.0
+      "hp_pct": 0.0,
+      "atk_pct": 0.0,
+      "def_pct": 0.0,
+      "battle_only_atk_pct": 0.0,
+      "battle_only_def_pct": 0.0
     },
     "3": {
       "elem_name": "Wind",
-      "hp_pct": 6.0,
-      "atk_pct": 60.0,
-      "def_pct": 60.0,
-      "battle_only_atk_pct": 60.0,
-      "battle_only_def_pct": 60.0
+      "hp_pct": 0.0,
+      "atk_pct": 0.0,
+      "def_pct": 0.0,
+      "battle_only_atk_pct": 0.0,
+      "battle_only_def_pct": 0.0
     },
     "4": {
       "elem_name": "Water",
-      "hp_pct": 6.0,
-      "atk_pct": 60.0,
-      "def_pct": 60.0,
-      "battle_only_atk_pct": 60.0,
-      "battle_only_def_pct": 60.0
+      "hp_pct": 0.0,
+      "atk_pct": 0.0,
+      "def_pct": 0.0,
+      "battle_only_atk_pct": 0.0,
+      "battle_only_def_pct": 0.0
     },
     "5": {
       "elem_name": "Fire",
-      "hp_pct": 6.0,
-      "atk_pct": 60.0,
-      "def_pct": 60.0,
-      "battle_only_atk_pct": 60.0,
-      "battle_only_def_pct": 60.0
+      "hp_pct": 0.0,
+      "atk_pct": 0.0,
+      "def_pct": 0.0,
+      "battle_only_atk_pct": 0.0,
+      "battle_only_def_pct": 0.0
     },
     "6": {
       "elem_name": "Holy",
-      "hp_pct": 6.0,
-      "atk_pct": 60.0,
-      "def_pct": 60.0,
-      "battle_only_atk_pct": 60.0,
-      "battle_only_def_pct": 60.0
+      "hp_pct": 0.0,
+      "atk_pct": 0.0,
+      "def_pct": 0.0,
+      "battle_only_atk_pct": 0.0,
+      "battle_only_def_pct": 0.0
     },
     "7": {
       "elem_name": "Dark",
-      "hp_pct": 6.0,
-      "atk_pct": 60.0,
-      "def_pct": 60.0,
-      "battle_only_atk_pct": 60.0,
-      "battle_only_def_pct": 60.0
+      "hp_pct": 0.0,
+      "atk_pct": 0.0,
+      "def_pct": 0.0,
+      "battle_only_atk_pct": 0.0,
+      "battle_only_def_pct": 0.0
     }
   },
   "equipment_facility_bonuses": {

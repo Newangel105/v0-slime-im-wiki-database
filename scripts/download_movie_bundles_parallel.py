@@ -74,10 +74,21 @@ def main() -> None:
     ap.add_argument("--no-head", action="store_true",
                     help="Skip HEAD pass; just GET every URL (slower, more bandwidth).")
     ap.add_argument("--skip-existing", action="store_true", default=True)
+    ap.add_argument("--urls-file", default=None,
+                    help="Restrict the pool to URLs from this file (JSON list or one-per-line). The "
+                         "catalog step passes the NEW bundle URLs here so a refresh only HEADs/GETs new "
+                         "content instead of re-scanning the whole catalog.")
     args = ap.parse_args()
 
-    payload = json.loads(INPUT_JSON.read_text(encoding="utf-8"))
-    urls = sorted({u for u in (payload.get("bundle_urls") or []) if URL_RE.match(u)})
+    if args.urls_file:
+        raw = Path(args.urls_file).read_text(encoding="utf-8")
+        try:
+            pool = json.loads(raw)
+        except json.JSONDecodeError:
+            pool = raw.split()
+    else:
+        pool = json.loads(INPUT_JSON.read_text(encoding="utf-8")).get("bundle_urls") or []
+    urls = sorted({u for u in pool if URL_RE.match(u)})
     print(f"input pool: {len(urls)} URLs", flush=True)
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-30T13:00:54Z",
+  "generatedAt": "2026-06-04T10:35:07Z",
   "source": "scripts/build_skill_videos_catalog.py",
   "videos": [
     {
@@ -372,6 +372,13 @@
       "group": "SpecialSkill",
       "scene": "Special Skill",
       "mp4": "/Movie/SpecialSkill/ElmesiaHA2026_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "ErenSwimsuit2026",
+      "kind": "SpecialSkill",
+      "group": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/ErenSwimsuit2026_Battle_SpecialSkill.mp4"
     },
     {
       "variant": "FernDefault",

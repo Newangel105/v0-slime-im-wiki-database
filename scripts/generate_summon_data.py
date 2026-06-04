@@ -643,6 +643,40 @@ def extract_text_asset(bundle_path: Path, table_name: str, cache_dir: Path) -> P
     return None
 
 
+_CONTAINER_INDEX_CACHE: dict[str, Any] = {}
+
+
+def _bundle_for_container(stage_root: Path, container: str) -> Path | None:
+    """Resolve a container path to its bundle file via bundle_container_index.json.
+
+    The pipeline rebuilds that index every run from the current stage, so it
+    reflects the CURRENT bundle layout (relocation-safe) — unlike caching by a
+    previously-known path. This avoids the catastrophic fallback in
+    find_table_bundles(), which (when ripgrep isn't on PATH) brute-forces every
+    bundle file in Python, once per table. Returns the absolute bundle Path, or
+    None if the index is absent / the container isn't listed (caller then falls
+    back to find_table_bundles)."""
+    key = str(stage_root)
+    if key not in _CONTAINER_INDEX_CACHE:
+        idx_path = stage_root / "bundle_container_index.json"
+        by_container = None
+        if idx_path.exists():
+            try:
+                by_container = json.loads(idx_path.read_text(encoding="utf-8")).get("by_container")
+            except Exception as exc:  # noqa: BLE001
+                print(f"[warn] could not read bundle_container_index.json: {exc}", file=sys.stderr)
+        _CONTAINER_INDEX_CACHE[key] = by_container
+    by_container = _CONTAINER_INDEX_CACHE[key]
+    if not by_container:
+        return None
+    entry = by_container.get(container)
+    bundle_rel = entry.get("bundle") if isinstance(entry, dict) else None
+    if not bundle_rel:
+        return None
+    p = stage_root / bundle_rel
+    return p if p.exists() else None
+
+
 def ensure_table_file(stage_root: Path, cache_dir: Path, table_name: str, refresh: bool) -> Path | None:
     cached = cache_dir / f"{table_name}.dat"
     if cached.exists() and not refresh:
@@ -651,6 +685,14 @@ def ensure_table_file(stage_root: Path, cache_dir: Path, table_name: str, refres
     staged = stage_root / "TextAsset" / f"{table_name}.dat"
     if staged.exists():
         return staged
+
+    # Fast path: jump straight to the one bundle holding this table via the
+    # container index, instead of scanning all ~53K bundles (9.5 GB) per table.
+    direct = _bundle_for_container(stage_root, table_asset_container(table_name))
+    if direct is not None:
+        extracted = extract_text_asset(direct, table_name, cache_dir)
+        if extracted and extracted.exists():
+            return extracted
 
     for bundle in find_table_bundles(stage_root, table_name):
         extracted = extract_text_asset(bundle, table_name, cache_dir)
@@ -1220,6 +1262,11 @@ def main() -> None:
     parser.add_argument("--cache-dir", type=Path, default=DEFAULT_CACHE_DIR)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--refresh", action="store_true", help="Re-scan Unity bundles instead of using cached TextAssets.")
+    parser.add_argument("--public-dir", type=Path, action="append",
+                        help="Extra public/ dir(s) to search when pruning banner/asset paths. "
+                             "Banner images accumulate in the WIKI repo's public/, so pass that "
+                             "here; otherwise historical banners get pruned and the file "
+                             "collapses to 0 banners. <output>/public is always appended.")
     args = parser.parse_args()
 
     tables, missing = load_tables(args.stage_root, args.cache_dir, args.refresh)
@@ -1227,27 +1274,36 @@ def main() -> None:
     # Rewrite every asset path to whichever extension actually exists on disk
     # (.webp preferred), drop dead paths, and drop banners with no usable banner
     # or logo. Bakes the post-hoc _work/prune_summon_data_paths.py logic into
-    # the generator so EXE/headless runs produce a ready-to-ship file.
-    public_dir = args.output.parent / "public"
-    _finalize_payload(payload, public_dir)
+    # the generator so EXE/headless runs produce a ready-to-ship file. Search the
+    # passed --public-dir(s) (e.g. the wiki repo's public/) AND the run's own
+    # <output>/public, so neither historical nor freshly-extracted banners drop.
+    public_dirs: list[Path] = list(args.public_dir or [])
+    public_dirs.append(args.output.parent / "public")
+    _finalize_payload(payload, public_dirs)
     args.output.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"wrote {args.output} ({len(payload['banners'])} banners)")
     if missing:
         print("missing tables: " + ", ".join(sorted(set(missing))))
 
 
-def _best_existing_path(rel: str, public_dir: Path) -> str | None:
-    """Return `rel` rewritten to the on-disk extension (.webp preferred)."""
+def _best_existing_path(rel: str, public_dirs) -> str | None:
+    """Return `rel` rewritten to the on-disk extension (.webp preferred),
+    searching each of public_dirs in order. Accepts a single Path or a list:
+    banner/asset images accumulate in the WIKI repo's public/ across runs, while
+    a given run's own public/ only holds what that run extracted — so we check
+    both, else historical banners get pruned and the file collapses to 0."""
+    dirs = public_dirs if isinstance(public_dirs, (list, tuple)) else [public_dirs]
     rel = rel.lstrip("/")
     base = rel
     if base.lower().endswith(".png"):
         base = base[:-4]
     elif base.lower().endswith(".webp"):
         base = base[:-5]
-    if (public_dir / (base + ".webp")).exists():
-        return "/" + base + ".webp"
-    if (public_dir / (base + ".png")).exists():
-        return "/" + base + ".png"
+    for public_dir in dirs:
+        if (public_dir / (base + ".webp")).exists():
+            return "/" + base + ".webp"
+        if (public_dir / (base + ".png")).exists():
+            return "/" + base + ".png"
     return None
 
 
