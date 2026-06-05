@@ -19967,8 +19967,8 @@
     }
   ],
   "meta": {
-    "base_dir": "C:\\TensuraExtraction\\run20260604_1143\\_work\\stage",
-    "text_asset_dir": "C:\\TensuraExtraction\\run20260604_1143\\_work\\stage\\TextAsset",
-    "dump_cs_path": "C:\\TensuraExtraction\\run20260604_1143\\_work\\stage\\dump.cs"
+    "base_dir": "C:\\TensuraExtraction\\cat_full_stage",
+    "text_asset_dir": "C:\\TensuraExtraction\\cat_full_stage\\TextAsset",
+    "dump_cs_path": "D:\\Slime Isekai Memories Game Files\\Slime_Extractor\\dump.cs"
   }
 }

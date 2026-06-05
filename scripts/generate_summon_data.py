@@ -285,6 +285,7 @@ BACKGROUND_OVERRIDES: dict[int, str] = {
     500000518: "shop:500000774",
     500000510: "shop:500000481",
     500000499: "shop:500000886",
+    500000996: "shop:500000993",   # Azure Sea's Afterglow Part 2 -> Part 1's bg (same event)
 }
 
 

@@ -2,12 +2,19 @@ import { NextRequest, NextResponse } from "next/server"
 
 export const dynamic = "force-dynamic"
 
-const OFFICIAL_HOST = "api.ten-sura-m.wfs.games"
-const OFFICIAL_ORIGIN = `https://${OFFICIAL_HOST}`
+// The official announcement feed/articles are served from the regional API hosts.
+// The feed (list) page lives at  <host>/web/announcement?language=N  and an
+// individual article at  <host>/web/announcement/<id>?...  — accept both.
+const OFFICIAL_HOSTS = new Set([
+  "api.ten-sura-m.wfs.games",
+  "api-us.ten-sura-m.wfs.games",
+  "api-eu.ten-sura-m.wfs.games",
+  "api-ap.ten-sura-m.wfs.games",
+])
 
-function injectCssAndBackButtonPatch(html: string) {
+function injectCssAndBackButtonPatch(html: string, origin: string) {
   const patch = `
-    <base href="${OFFICIAL_ORIGIN}/" />
+    <base href="${origin}/" />
 
     <style id="slime-announcement-fixes">
       html,
@@ -244,8 +251,8 @@ export async function GET(request: NextRequest) {
 
   if (
     url.protocol !== "https:" ||
-    url.host !== OFFICIAL_HOST ||
-    !url.pathname.startsWith("/web/announcement/")
+    !OFFICIAL_HOSTS.has(url.host) ||
+    !url.pathname.startsWith("/web/announcement")
   ) {
     return new NextResponse("Forbidden", { status: 403 })
   }
@@ -265,7 +272,7 @@ export async function GET(request: NextRequest) {
   }
 
   const html = await upstream.text()
-  const patchedHtml = injectCssAndBackButtonPatch(html)
+  const patchedHtml = injectCssAndBackButtonPatch(html, url.origin)
 
   return new NextResponse(patchedHtml, {
     status: 200,

@@ -8848,6 +8848,52 @@ html[data-slime-theme="archive"] .poster-official-news-body {
   padding: 0 !important;
 }
 
+/* Individual announcement body: the content is raw in-game HTML whose highlight
+   colours (yellow names, grey footnotes, white body) are authored for the game's
+   dark canvas — they're unreadable on the light beach panel. Render it in a dark
+   reading pane with a light default colour so the game's own colours read as
+   intended (matches the "View all" official-feed iframe, which is also dark). */
+html[data-slime-theme="archive"] .poster-news-detail {
+  margin: 0 !important;
+  padding: 18px 20px 22px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(180deg, #232220, #1b1a18) !important;
+  color: #e9e6df !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  overflow-wrap: anywhere !important;
+}
+
+/* Default colour for text that the game left uncoloured (so it isn't navy-on-dark);
+   elements with their OWN inline colour (yellow highlights, etc.) keep theirs. */
+html[data-slime-theme="archive"] .poster-news-detail :where(p, li, td, th, dd, dt, div, span, h1, h2, h3, h4, h5, h6, strong, b, em, small) {
+  color: inherit;
+}
+
+html[data-slime-theme="archive"] .poster-news-detail a {
+  color: #7fd6ff !important;
+  text-decoration: underline !important;
+}
+
+html[data-slime-theme="archive"] .poster-news-detail img {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 8px !important;
+}
+
+html[data-slime-theme="archive"] .poster-news-detail table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+}
+
+html[data-slime-theme="archive"] .poster-news-detail th,
+html[data-slime-theme="archive"] .poster-news-detail td {
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  padding: 6px 8px !important;
+}
+
 html[data-slime-theme="archive"] .poster-official-news-frame {
   display: block !important;
   width: 100% !important;
