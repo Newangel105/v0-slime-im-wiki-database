@@ -65,7 +65,7 @@ export function GuideDetailClient({ slug }: { slug: string }) {
 
   if (loading) {
     return (
-      <main className="site-page">
+      <main className="site-page slime-page-guides">
         <div className="site-container text-slate-300">Loading guide...</div>
       </main>
     )
@@ -73,7 +73,7 @@ export function GuideDetailClient({ slug }: { slug: string }) {
 
   if (error || !article) {
     return (
-      <main className="site-page">
+      <main className="site-page slime-page-guides">
         <div className="site-container">
           <Button asChild variant="outline" className="mb-6">
             <Link href="/guides">
@@ -87,7 +87,7 @@ export function GuideDetailClient({ slug }: { slug: string }) {
   }
 
   return (
-    <main className="site-page">
+    <main className="site-page slime-page-guides">
       <article className="site-container space-y-8">
         <section className="glass-panel-strong overflow-hidden">
           <div className="relative">
