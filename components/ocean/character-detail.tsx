@@ -1,4 +1,5 @@
-import type { CSSProperties, ReactNode } from "react"
+import type { ReactNode } from "react"
+import { OceanArchText } from "./arch-text"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { CalendarDays } from "lucide-react"
@@ -680,19 +681,13 @@ export async function OceanCharacterDetail({ characterId }: { characterId: strin
   const tacticsKey = normalizeLabel(character.tactics_type || "Normal")
   const tacticsIcon = tacticsIconMap[tacticsKey]
   const cutinImageSrc = getCharacterCutinImageSrc(character)
+  // Chromium fits long names via textLength on the <textPath>; Firefox ignores it and gets a
+  // measured font-size reduction instead (see OceanArchText). Chromium keeps the full 82px.
   const nameplateNameTextLength = getSurfboardTextLength(character.name, 440, 730, 42)
   const nameplateAffiliationTextLength = getSurfboardTextLength(character.affiliation_name, 270, 620, 30)
-  // textLength on a <textPath> is honored by Chrome-on-this-machine but IGNORED by some
-  // browsers/zoom states — there the wordmark renders at full 82px and everything past the
-  // arc ends is dropped ("ELMESIA EL RU THALION" -> "ESIA EL RU THAL"). Shrink the font for
-  // long labels so the NATURAL width fits the arc regardless of textLength support. Fed to
-  // CSS via a var because the base rule uses font-size:...!important.
-  // Shrink long labels so their NATURAL width fits the arch even on browsers that ignore
-  // textLength on a <textPath> AND render the font wider than Chrome. Constant = 82 * fitWidth
-  // / worstCaseUnit (~700 / ~58) — conservative so it fits a wide-rendering fallback font;
-  // common names still land at the full 82px (shrink only kicks in past ~score 12).
-  const nameplateNameFontSize = Math.min(82, Math.max(34, Math.round(1200 / Math.max(1, getSurfboardLabelScore(character.name)))))
-  const nameplateAffiliationFontSize = Math.min(46, Math.max(22, Math.round(880 / Math.max(1, getSurfboardLabelScore(character.affiliation_name)))))
+  // Length-based Firefox fallback used only if the live width measurement can't be read.
+  const nameplateNameFallbackFs = Math.min(82, Math.max(34, Math.round(900 / Math.max(1, getSurfboardLabelScore(character.name)))))
+  const nameplateAffiliationFallbackFs = Math.min(46, Math.max(22, Math.round(760 / Math.max(1, getSurfboardLabelScore(character.affiliation_name)))))
   const rarityLabel = getCharacterRarityLabel(character)
   const maybeLabel = (value: string | null | undefined) => {
     const label = formatWikiLabel(value)
@@ -731,14 +726,18 @@ export async function OceanCharacterDetail({ characterId }: { characterId: strin
                      curves with the surfboard top. Plain text fallback via the
                      adjacent sr-only span keeps it accessible/indexable. */}
                   <h1 className="character-detail-summer-nameplate-name">
-                    <svg className="character-detail-summer-nameplate-arch" viewBox="0 0 900 150" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                      <defs>
-                        <path id={`nameplate-arc-${character.master_pc_id}`} d="M 70,104 Q 450,58 830,104" fill="transparent" />
-                      </defs>
-                      <text textAnchor="middle" className="character-detail-summer-nameplate-arch-text" style={{ "--cds-name-fs": `${nameplateNameFontSize}px` } as CSSProperties}>
-                        <textPath href={`#nameplate-arc-${character.master_pc_id}`} startOffset="50%" textLength={nameplateNameTextLength} lengthAdjust="spacingAndGlyphs">{character.name}</textPath>
-                      </text>
-                    </svg>
+                    <OceanArchText
+                      text={character.name}
+                      pathD="M 70,104 Q 450,58 830,104"
+                      viewBox="0 0 900 150"
+                      svgClassName="character-detail-summer-nameplate-arch"
+                      textClassName="character-detail-summer-nameplate-arch-text"
+                      fontVar="--cds-name-fs"
+                      baseFontSize={82}
+                      maxTextWidth={710}
+                      textLength={nameplateNameTextLength}
+                      fallbackFontSize={nameplateNameFallbackFs}
+                    />
                     <span className="sr-only">{character.name}</span>
                   </h1>
 
@@ -756,14 +755,18 @@ export async function OceanCharacterDetail({ characterId }: { characterId: strin
                      bottom of the surfboard — replaces the previous "chip"
                      above the name. */}
                   <span className="character-detail-summer-nameplate-chip">
-                    <svg className="character-detail-summer-ribbon-arch" viewBox="0 0 900 120" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                      <defs>
-                        <path id={`nameplate-ribbon-arc-${character.master_pc_id}`} d="M 120,72 Q 450,42 780,72" fill="transparent" />
-                      </defs>
-                      <text textAnchor="middle" className="character-detail-summer-ribbon-arch-text" style={{ "--cds-aff-fs": `${nameplateAffiliationFontSize}px` } as CSSProperties}>
-                        <textPath href={`#nameplate-ribbon-arc-${character.master_pc_id}`} startOffset="50%" textLength={nameplateAffiliationTextLength} lengthAdjust="spacingAndGlyphs">{character.affiliation_name}</textPath>
-                      </text>
-                    </svg>
+                    <OceanArchText
+                      text={character.affiliation_name}
+                      pathD="M 120,72 Q 450,42 780,72"
+                      viewBox="0 0 900 120"
+                      svgClassName="character-detail-summer-ribbon-arch"
+                      textClassName="character-detail-summer-ribbon-arch-text"
+                      fontVar="--cds-aff-fs"
+                      baseFontSize={46}
+                      maxTextWidth={600}
+                      textLength={nameplateAffiliationTextLength}
+                      fallbackFontSize={nameplateAffiliationFallbackFs}
+                    />
                     <span className="sr-only">{character.affiliation_name}</span>
                   </span>
                 </div>
