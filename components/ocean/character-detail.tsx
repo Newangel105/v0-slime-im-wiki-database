@@ -685,9 +685,10 @@ export async function OceanCharacterDetail({ characterId }: { characterId: strin
   // measured font-size reduction instead (see OceanArchText). Chromium keeps the full 82px.
   const nameplateNameTextLength = getSurfboardTextLength(character.name, 440, 730, 42)
   const nameplateAffiliationTextLength = getSurfboardTextLength(character.affiliation_name, 270, 620, 30)
-  // Length-based Firefox fallback used only if the live width measurement can't be read.
-  const nameplateNameFallbackFs = Math.min(82, Math.max(34, Math.round(900 / Math.max(1, getSurfboardLabelScore(character.name)))))
-  const nameplateAffiliationFallbackFs = Math.min(46, Math.max(22, Math.round(760 / Math.max(1, getSurfboardLabelScore(character.affiliation_name)))))
+  // Zoom-independent reduced size applied on Firefox/Tor (which ignore textLength) so the
+  // label fits the arc at every resolution. Constant ÷ label-score, capped at full size.
+  const nameplateNameFirefoxFs = Math.min(82, Math.max(40, Math.round(960 / Math.max(1, getSurfboardLabelScore(character.name)))))
+  const nameplateAffiliationFirefoxFs = Math.min(46, Math.max(34, Math.round(820 / Math.max(1, getSurfboardLabelScore(character.affiliation_name)))))
   const rarityLabel = getCharacterRarityLabel(character)
   const maybeLabel = (value: string | null | undefined) => {
     const label = formatWikiLabel(value)
@@ -734,9 +735,8 @@ export async function OceanCharacterDetail({ characterId }: { characterId: strin
                       textClassName="character-detail-summer-nameplate-arch-text"
                       fontVar="--cds-name-fs"
                       baseFontSize={82}
-                      maxTextWidth={710}
                       textLength={nameplateNameTextLength}
-                      fallbackFontSize={nameplateNameFallbackFs}
+                      firefoxFontSize={nameplateNameFirefoxFs}
                     />
                     <span className="sr-only">{character.name}</span>
                   </h1>
@@ -763,9 +763,8 @@ export async function OceanCharacterDetail({ characterId }: { characterId: strin
                       textClassName="character-detail-summer-ribbon-arch-text"
                       fontVar="--cds-aff-fs"
                       baseFontSize={46}
-                      maxTextWidth={600}
                       textLength={nameplateAffiliationTextLength}
-                      fallbackFontSize={nameplateAffiliationFallbackFs}
+                      firefoxFontSize={nameplateAffiliationFirefoxFs}
                     />
                     <span className="sr-only">{character.affiliation_name}</span>
                   </span>
