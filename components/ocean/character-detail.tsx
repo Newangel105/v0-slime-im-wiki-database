@@ -687,11 +687,12 @@ export async function OceanCharacterDetail({ characterId }: { characterId: strin
   // arc ends is dropped ("ELMESIA EL RU THALION" -> "ESIA EL RU THAL"). Shrink the font for
   // long labels so the NATURAL width fits the arc regardless of textLength support. Fed to
   // CSS via a var because the base rule uses font-size:...!important.
-  // 82px * 710 / (score*42): only the genuinely long labels (score*42 > ~710, i.e. wider
-  // than the arch) shrink; common names stay at the full 82px. 42 is the design's natural
-  // width-per-score (same unit as textLength), 710 leaves margin under the ~730 fit width.
-  const nameplateNameFontSize = Math.min(82, Math.max(34, Math.round(1386 / Math.max(1, getSurfboardLabelScore(character.name)))))
-  const nameplateAffiliationFontSize = Math.min(46, Math.max(22, Math.round(920 / Math.max(1, getSurfboardLabelScore(character.affiliation_name)))))
+  // Shrink long labels so their NATURAL width fits the arch even on browsers that ignore
+  // textLength on a <textPath> AND render the font wider than Chrome. Constant = 82 * fitWidth
+  // / worstCaseUnit (~700 / ~58) — conservative so it fits a wide-rendering fallback font;
+  // common names still land at the full 82px (shrink only kicks in past ~score 12).
+  const nameplateNameFontSize = Math.min(82, Math.max(34, Math.round(1200 / Math.max(1, getSurfboardLabelScore(character.name)))))
+  const nameplateAffiliationFontSize = Math.min(46, Math.max(22, Math.round(880 / Math.max(1, getSurfboardLabelScore(character.affiliation_name)))))
   const rarityLabel = getCharacterRarityLabel(character)
   const maybeLabel = (value: string | null | undefined) => {
     const label = formatWikiLabel(value)
