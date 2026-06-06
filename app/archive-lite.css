@@ -6447,7 +6447,9 @@ html[data-slime-theme="archive"] .character-detail-summer-panel .character-detai
 .character-detail-summer-nameplate-arch-text {
   fill: #0b376a !important;
   font-family: inherit !important;
-  font-size: 82px !important;
+  /* var set inline per-character so long names shrink to fit the arc even where
+     textLength on <textPath> is ignored; falls back to 82px. */
+  font-size: var(--cds-name-fs, 82px) !important;
   font-weight: 950 !important;
   letter-spacing: 0 !important;
   paint-order: stroke fill !important;
@@ -6523,7 +6525,7 @@ html[data-slime-theme="archive"] .character-detail-summer-panel .character-detai
 .character-detail-summer-ribbon-arch-text {
   fill: #ffffff !important;
   font-family: inherit !important;
-  font-size: 46px !important;
+  font-size: var(--cds-aff-fs, 46px) !important;
   font-weight: 900 !important;
   letter-spacing: 0 !important;
   paint-order: stroke fill !important;

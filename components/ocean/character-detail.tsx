@@ -1,4 +1,4 @@
-import type { ReactNode } from "react"
+import type { CSSProperties, ReactNode } from "react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { CalendarDays } from "lucide-react"
@@ -682,6 +682,16 @@ export async function OceanCharacterDetail({ characterId }: { characterId: strin
   const cutinImageSrc = getCharacterCutinImageSrc(character)
   const nameplateNameTextLength = getSurfboardTextLength(character.name, 440, 730, 42)
   const nameplateAffiliationTextLength = getSurfboardTextLength(character.affiliation_name, 270, 620, 30)
+  // textLength on a <textPath> is honored by Chrome-on-this-machine but IGNORED by some
+  // browsers/zoom states — there the wordmark renders at full 82px and everything past the
+  // arc ends is dropped ("ELMESIA EL RU THALION" -> "ESIA EL RU THAL"). Shrink the font for
+  // long labels so the NATURAL width fits the arc regardless of textLength support. Fed to
+  // CSS via a var because the base rule uses font-size:...!important.
+  // 82px * 710 / (score*42): only the genuinely long labels (score*42 > ~710, i.e. wider
+  // than the arch) shrink; common names stay at the full 82px. 42 is the design's natural
+  // width-per-score (same unit as textLength), 710 leaves margin under the ~730 fit width.
+  const nameplateNameFontSize = Math.min(82, Math.max(34, Math.round(1386 / Math.max(1, getSurfboardLabelScore(character.name)))))
+  const nameplateAffiliationFontSize = Math.min(46, Math.max(22, Math.round(920 / Math.max(1, getSurfboardLabelScore(character.affiliation_name)))))
   const rarityLabel = getCharacterRarityLabel(character)
   const maybeLabel = (value: string | null | undefined) => {
     const label = formatWikiLabel(value)
@@ -724,7 +734,7 @@ export async function OceanCharacterDetail({ characterId }: { characterId: strin
                       <defs>
                         <path id={`nameplate-arc-${character.master_pc_id}`} d="M 70,104 Q 450,58 830,104" fill="transparent" />
                       </defs>
-                      <text textAnchor="middle" className="character-detail-summer-nameplate-arch-text">
+                      <text textAnchor="middle" className="character-detail-summer-nameplate-arch-text" style={{ "--cds-name-fs": `${nameplateNameFontSize}px` } as CSSProperties}>
                         <textPath href={`#nameplate-arc-${character.master_pc_id}`} startOffset="50%" textLength={nameplateNameTextLength} lengthAdjust="spacingAndGlyphs">{character.name}</textPath>
                       </text>
                     </svg>
@@ -749,7 +759,7 @@ export async function OceanCharacterDetail({ characterId }: { characterId: strin
                       <defs>
                         <path id={`nameplate-ribbon-arc-${character.master_pc_id}`} d="M 120,72 Q 450,42 780,72" fill="transparent" />
                       </defs>
-                      <text textAnchor="middle" className="character-detail-summer-ribbon-arch-text">
+                      <text textAnchor="middle" className="character-detail-summer-ribbon-arch-text" style={{ "--cds-aff-fs": `${nameplateAffiliationFontSize}px` } as CSSProperties}>
                         <textPath href={`#nameplate-ribbon-arc-${character.master_pc_id}`} startOffset="50%" textLength={nameplateAffiliationTextLength} lengthAdjust="spacingAndGlyphs">{character.affiliation_name}</textPath>
                       </text>
                     </svg>
