@@ -9,7 +9,13 @@
 //
 // Behavior:
 //   - If NEXT_PUBLIC_MEDIA_CDN is set (production), absolute paths like
-//     "/Movie/x.mp4" become "<cdn>/Movie/x.mp4".
+//     "/Movie/x.mp4" become "/r2/Movie/x.mp4" — a SAME-ORIGIN path that the
+//     next.config rewrite proxies to the CDN. This matters because mediaUrl is
+//     only ever called from CLIENT components, and some networks can't resolve
+//     the raw "*.r2.dev" host (DNS filters/ad-blockers/regions) — so the model
+//     viewer's .glb fetches failed for them. Going through /r2 means the browser
+//     only talks to our own domain; Vercel forwards to R2 server-side (the same
+//     reason the SSR summon/models-manifest fetches work for everyone).
 //   - If unset (local dev), paths are returned untouched so Next.js serves
 //     them straight from the public/ folder.
 //   - Already-absolute http(s) URLs and data: URIs pass through unchanged.
@@ -32,5 +38,6 @@ export function mediaUrl(path: string | null | undefined): string {
   if (!CDN_BASE) return path
   const matchesPrefix = CDN_PREFIXES.some((p) => path.startsWith(p))
   if (!matchesPrefix) return path
-  return CDN_BASE + path
+  // Same-origin proxy path; next.config rewrites /r2/* -> CDN_BASE/* server-side.
+  return "/r2" + path
 }
