@@ -969,9 +969,9 @@ function RuntimeThumbRewardBless({
     return (
       <div className="relative h-full w-full overflow-hidden" data-thumb-type="Bless" data-blocker="missing-sprite-index" style={{ background: "#7c1d3a", border: "2px dashed #ff8fc4" }}>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-2">
-          <div className="font-serif font-extrabold text-[clamp(8px,1.4vw,16px)]" style={{ color: "#ffe2ef" }}>BLOCKER</div>
-          <div className="mt-1 font-mono text-[clamp(6px,1vw,11px)]" style={{ color: "#ffe2ef" }}>thumbreward_sprite_mappings.json missing rarity index {rarityIndex}</div>
-          <div className="mt-1 font-mono text-[clamp(5px,0.7vw,9px)]" style={{ color: "rgba(255,226,239,0.7)" }}>pcId {character.master_pc_id}</div>
+          <div className="font-serif font-extrabold text-[clamp(8px,1.4cqw,16px)]" style={{ color: "#ffe2ef" }}>BLOCKER</div>
+          <div className="mt-1 font-mono text-[clamp(6px,1cqw,11px)]" style={{ color: "#ffe2ef" }}>thumbreward_sprite_mappings.json missing rarity index {rarityIndex}</div>
+          <div className="mt-1 font-mono text-[clamp(5px,0.7cqw,9px)]" style={{ color: "rgba(255,226,239,0.7)" }}>pcId {character.master_pc_id}</div>
         </div>
       </div>
     )
@@ -1396,7 +1396,7 @@ function DrawButton({
   // the consume-item icon (slotted from real game data).
   const spec = subLabel ? SPECS.mainDecisionContinuous : SPECS.mainDecisionOnce
   return (
-    <div className="relative w-[clamp(220px,17.2vw,370px)]">
+    <div className="summon-draw-button relative w-[clamp(220px,17.2cqw,370px)]">
       <button
         onClick={onClick}
         disabled={disabled}
@@ -1429,7 +1429,7 @@ function DrawButton({
       {subLabel && (
         <PrefabLayer
           spec={SPECS.mainDecisionInfoContinuous}
-          className="pointer-events-none absolute left-0 w-full"
+          className="summon-draw-sublabel pointer-events-none absolute left-0 w-full"
           style={{ top: "15.8%" }}
           hide={["balloon", "textBalloon"]}
           text={{
@@ -1779,7 +1779,7 @@ function CharacterDetailsPrefabRow({ character }: { character: SummonCharacter }
               display: "flex",
               alignItems: "center",
               justifyContent: "flex-start",
-              fontSize: "clamp(9px,0.9vw,16px)",
+              fontSize: "clamp(9px,0.9cqw,16px)",
             }}
           >
             {ultimate}
@@ -1890,7 +1890,7 @@ function BannerEndDate({ banner }: { banner: SummonBanner }) {
       }}
     >
       <span
-        className="block w-full whitespace-nowrap text-center text-[clamp(8px,0.95vw,17px)] font-bold tracking-wide text-white"
+        className="block w-full whitespace-nowrap text-center text-[clamp(8px,0.95cqw,17px)] font-bold tracking-wide text-white"
         style={{
           fontFamily: '"Times New Roman", Georgia, serif',
           textShadow: "0 2px 4px rgba(0,0,0,1), 0 0 3px rgba(0,0,0,1)",
@@ -2287,7 +2287,7 @@ function LotteryResultCard({ result }: { result: SummonResult }) {
           ),
         }}
       />
-      <span className="absolute left-[-2%] top-[-2%] z-20 rounded-[2px] bg-[#f0c14b] px-[6%] py-[2%] font-serif text-[clamp(9px,1.2vw,13px)] font-black italic leading-none text-[#3a2403] shadow-[0_2px_3px_rgba(0,0,0,0.65)]">
+      <span className="absolute left-[-2%] top-[-2%] z-20 rounded-[2px] bg-[#f0c14b] px-[6%] py-[2%] font-serif text-[clamp(9px,1.2cqw,13px)] font-black italic leading-none text-[#3a2403] shadow-[0_2px_3px_rgba(0,0,0,0.65)]">
         NEW
       </span>
     </div>
@@ -2316,7 +2316,7 @@ function ResultsPanel({
       <div className="absolute inset-0 bg-gradient-to-b from-[#040616]/85 via-[#050a1e]/70 to-[#040616]/90" />
 
       <div className="relative mt-[2.5%] text-center">
-        <h2 className="font-serif text-[clamp(28px,4vw,52px)] font-black tracking-[0.15em] text-[#f3ead2] drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">
+        <h2 className="font-serif text-[clamp(28px,4cqw,52px)] font-black tracking-[0.15em] text-[#f3ead2] drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">
           RESULT
         </h2>
         <div className="mx-auto mt-1 h-px w-[70%] bg-gradient-to-r from-transparent via-[#9fb6ff]/60 to-transparent" />
@@ -2328,7 +2328,7 @@ function ResultsPanel({
         {results.map((result) => {
           const rarity = result.bucket?.show_rarity || result.character?.rarity || 3
           return (
-            <div key={result.id} className="relative mx-auto" style={{ width: "min(13vw,150px)" }}>
+            <div key={result.id} className="relative mx-auto" style={{ width: "min(13cqw,150px)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={`${SUMMON_UI_BASE}/${resultGlow(result)}`}
@@ -2682,7 +2682,7 @@ function ResultsPanelPrefab({
           - Recruit x10 More: DrawButton — the EXACT same component the main
             page uses for "Recruit x10" / "Recruit x1" (gem cost + icon). */}
       <div className="pointer-events-none absolute inset-x-0 bottom-[10%] z-[60] flex flex-col items-center gap-[30px]">
-        <div className="pointer-events-auto w-[clamp(240px,22vw,360px)]">
+        <div className="pointer-events-auto w-[clamp(240px,22cqw,360px)]">
           <PrefabLayer
             spec={SPECS.mainExchangePoints}
             className="w-full"
@@ -2697,7 +2697,7 @@ function ResultsPanelPrefab({
             }}
           />
         </div>
-        <div className="pointer-events-auto flex items-end gap-[clamp(6px,0.8vw,16px)]">
+        <div className="pointer-events-auto flex items-end gap-[clamp(6px,0.8cqw,16px)]">
           {/* Return: wrapper locks size to match Recruit (same width clamp
               + aspectRatio 286/130). Inside, PrefabLayer(mainRateBtn) with
               fill=true stretches into the wrapper, AND `slots.btnDetail`
@@ -2709,7 +2709,7 @@ function ResultsPanelPrefab({
               verbatim from the main page call so the pattern fills the
               same proportion of the visible button surface. */}
           <div
-            className="w-[clamp(180px,11vw,260px)] cursor-pointer transition hover:brightness-110"
+            className="w-[clamp(180px,11cqw,260px)] cursor-pointer transition hover:brightness-110"
             style={{ aspectRatio: "286 / 130" }}
             onClick={onClose}
           >
@@ -2728,7 +2728,7 @@ function ResultsPanelPrefab({
               lock; nodes (cost, icon, count) still position by canvas % so
               they scale proportionally into the shorter box. */}
           <div
-            className="w-[clamp(180px,11vw,260px)] cursor-pointer transition hover:brightness-110"
+            className="w-[clamp(180px,11cqw,260px)] cursor-pointer transition hover:brightness-110"
             style={{ aspectRatio: "286 / 130" }}
             onClick={recruitLottery ? onRecruitMore : undefined}
           >
@@ -6038,6 +6038,33 @@ function SummonResultReveal({
 
 export function SummonSimulator({ data }: { data: SummonPayload }) {
   const [selectedIndex, setSelectedIndex] = useState(0)
+  // Mobile: render the 16:9 panel at its 1024px design width (a `container-type` so the panel's
+  // cqw units + px clamps resolve exactly as they do on desktop — cqw is panel-relative, unlike
+  // vw which is viewport-relative and clumps on a narrow phone), then scale-to-fit the smaller
+  // viewport dimension (letterbox). Only affects the panel — the nav/page are untouched.
+  const [phone, setPhone] = useState<{ small: boolean; portrait: boolean; scale: number; navH: number; w: number; h: number }>({ small: false, portrait: false, scale: 1, navH: 0, w: 0, h: 0 })
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth, h = window.innerHeight
+      const small = window.matchMedia("(pointer: coarse)").matches && Math.min(w, h) < 820
+      const portrait = h >= w
+      // Keep the nav visible: the panel fills only the area BELOW it. The panel always renders in
+      // landscape (rotated 90deg when held portrait), so the 1024x576 design fits against the
+      // below-nav area's dims (× 0.99 = a hair of edge margin). Stage dims come from these same
+      // JS values (not CSS dvh/dvw) so the fit and the stage agree exactly → centered, no skew.
+      const navH = (document.querySelector("nav") as HTMLElement | null)?.getBoundingClientRect().height ?? 0
+      const areaW = portrait ? h - navH : w
+      const areaH = portrait ? w : h - navH
+      setPhone({ small, portrait, navH, w, h, scale: small ? Math.min(areaW / 1024, areaH / 576) * 0.99 : 1 })
+    }
+    update()
+    window.addEventListener("resize", update)
+    window.addEventListener("orientationchange", update)
+    return () => {
+      window.removeEventListener("resize", update)
+      window.removeEventListener("orientationchange", update)
+    }
+  }, [])
   const [drawKind, setDrawKind] = useState<DrawKind>("multi")
   const [showRates, setShowRates] = useState(false)
   const [showDetails, setShowDetails] = useState(false)
@@ -6180,12 +6207,29 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
     }
   }
 
+  const mobile = phone.small
+  // Force-landscape on phones: a fixed stage fills the area BELOW the nav (so the nav stays
+  // visible — no overlap), rotated 90deg when the device is held portrait so the 16:9 panel fills
+  // it (turn the phone to view — the real game is landscape-only on phones too). The panel inside
+  // is the 1024px cqw container, contain-scaled.
+  const stageStyle: CSSProperties | undefined = !mobile
+    ? undefined
+    : phone.portrait
+      ? { position: "fixed", top: phone.navH, left: phone.w, width: phone.h - phone.navH, height: phone.w, transform: "rotate(90deg)", transformOrigin: "top left", zIndex: 40 }
+      : { position: "fixed", top: phone.navH, left: 0, width: phone.w, height: phone.h - phone.navH, zIndex: 40 }
   return (
-    <main className="site-page min-h-screen p-3 text-white sm:p-6">
-      <div className="mx-auto max-w-[1760px]">
-        <div className="relative overflow-hidden rounded-[2px] border border-[#9098bc]/50 bg-black shadow-[0_24px_80px_rgba(0,0,0,0.55)]">
-          <div className="relative aspect-[16/9] min-h-[560px]">
-            <GameImage sources={backgroundSources} className="absolute inset-0 h-full w-full object-fill" />
+    <main className={mobile ? "site-page slime-page-summon text-white" : "site-page slime-page-summon min-h-screen p-3 text-white sm:p-6"}>
+      <div
+        className={mobile ? "summon-shell grid place-items-center overflow-hidden bg-black" : "summon-shell mx-auto max-w-[1760px]"}
+        style={stageStyle}
+      >
+        <div
+          className="relative overflow-hidden rounded-[2px] border border-[#9098bc]/50 bg-black shadow-[0_24px_80px_rgba(0,0,0,0.55)]"
+          style={mobile ? { width: "1024px", zoom: phone.scale } : undefined}
+        >
+          <div className="summon-main-stage relative aspect-[16/9] min-h-[560px]">
+            <div className="summon-stage-content absolute inset-0" style={mobile ? { containerType: "inline-size" } : undefined}>
+            <GameImage sources={backgroundSources} className="summon-stage-media absolute inset-0 h-full w-full object-fill" />
             {showMovie ? (
               <video
                 key={movieSources.join("|")}
@@ -6195,29 +6239,29 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
                 loop
                 playsInline
                 onError={() => setMovieFailed(true)}
-                className="absolute inset-0 h-full w-full object-fill"
+                className="summon-stage-media absolute inset-0 h-full w-full object-fill"
               />
             ) : (
-              <GameImage sources={characterLayerSources} className="absolute inset-0 h-full w-full object-fill" />
+              <GameImage sources={characterLayerSources} className="summon-stage-media absolute inset-0 h-full w-full object-fill" />
             )}
             <div className="absolute inset-0 bg-gradient-to-r from-black/12 via-transparent to-black/10" />
             <div className="absolute inset-x-0 bottom-0 h-[15.5%] bg-[#56565d]/72" />
 
-            <div className="absolute right-[10.8%] top-[3.2%]">
+            <div className="summon-rate-button absolute right-[10.8%] top-[3.2%]">
               <PrefabLayer
                 spec={SPECS.mainRateBtn}
-                className="w-[clamp(210px,15vw,280px)] cursor-pointer transition hover:brightness-110"
+                className="w-[clamp(210px,15cqw,280px)] cursor-pointer transition hover:brightness-110"
                 slots={{ btnDetail: <ButtonPatternFill insetX={5.71} insetY={16.67} buttonW={280} buttonH={84} /> }}
                 text={{ label: "Recruit Details/Drop Rates" }}
                 onNodeClick={{ btnDetail: () => setShowRates(true), label: () => setShowRates(true) }}
               />
             </div>
 
-            <div className="absolute left-[6.6%] top-[50%] flex flex-col gap-4">
+            <div className="summon-side-buttons absolute left-[6.6%] top-[50%] flex flex-col gap-4">
               {/* btnCharaDetail — exact UILottery prefab sprite + geometry */}
               <PrefabLayer
                 spec={SPECS.mainCharaDetailBtn}
-                className="w-[88px] cursor-pointer transition hover:brightness-110"
+                className="summon-side-button w-[88px] cursor-pointer transition hover:brightness-110"
                 onNodeClick={{
                   btnCharaDetail: () => setShowDetails(true),
                   label: () => setShowDetails(true),
@@ -6232,14 +6276,14 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
                 }}
                 title={hasPlayableMovie ? "Switch Display" : "Switch-display movie is not available for this banner"}
               >
-                <PrefabLayer spec={SPECS.mainChangeBtn} className="w-[84px]" text={{ label: "Switch\nDisplay" }} />
+                <PrefabLayer spec={SPECS.mainChangeBtn} className="summon-side-button w-[84px]" text={{ label: "Switch\nDisplay" }} />
               </div>
             </div>
 
             {/* logo box width == rendered logo width (natural 2:1), so the
                 Part5 band sits at a fixed %; the end-date strip is aligned to
                 it directly below. */}
-            <div className="absolute left-[13.5%] top-[57%] w-[min(24vw,380px)]">
+            <div className="summon-banner-logo absolute left-[13.5%] top-[57%] w-[min(24cqw,380px)]">
               <GameImage
                 sources={logoSources}
                 className="block w-full drop-shadow-[0_4px_6px_rgba(0,0,0,0.85)]"
@@ -6247,8 +6291,8 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
               <BannerEndDate banner={banner} />
             </div>
 
-            <div className="absolute right-[4.4%] top-[53.9%] flex w-fit flex-col items-stretch gap-[0.05vw]">
-              <div className="relative z-10 flex gap-0">
+            <div className="summon-decision-panel absolute right-[4.4%] top-[53.9%] flex w-fit flex-col items-stretch gap-[0.05cqw]">
+              <div className="summon-draw-row relative z-10 flex gap-0">
                 <DrawButton
                   label={`Recruit x${singleLottery?.reward_count || 1}`}
                   cost={singleCost.value}
@@ -6256,7 +6300,7 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
                   disabled={!singleLottery}
                   onClick={() => draw("single")}
                 />
-                <div style={{ marginLeft: "clamp(-48px, -2.15vw, -32px)" }}>
+                <div className="summon-draw-overlap" style={{ marginLeft: "clamp(-48px, -2.15cqw, -32px)" }}>
                   <DrawButton
                     label={`Recruit x${multiLottery?.reward_count || 10}`}
                     cost={multiCost.value}
@@ -6271,14 +6315,14 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
               {hasBazaar && (
                 <PrefabLayer
                   spec={SPECS.mainExchangePoints}
-                  className="w-[91.7%] transition hover:brightness-110"
+                  className="summon-bazaar w-[91.7%] transition hover:brightness-110"
                   style={{
                     // The prefab sprites overhang the layer box on both sides
                     // (? button on the left, Trade button on the right). Keep
                     // the visual OUTER edges aligned with the Recruit x1/x10
                     // row instead of aligning the prefab's internal dark bar.
                     marginLeft: "4.7%",
-                    marginTop: "clamp(-15px, -1.25vw, -16px)",
+                    marginTop: "clamp(-15px, -1.25cqw, -16px)",
                   }}
                   hide={["badgeEx", "Exclamation"]}
                   nodeStyle={{
@@ -6297,11 +6341,11 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
               )}
             </div>
 
-            <div className="absolute left-[6.8%] right-[5.5%] top-[84.8%] flex items-center gap-4">
-              <button onClick={() => moveBanner(-1)} className="grid h-16 w-12 shrink-0 place-items-center">
+            <div className="summon-banner-carousel absolute left-[6.8%] right-[5.5%] top-[84.8%] flex items-center gap-4">
+              <button onClick={() => moveBanner(-1)} className="summon-carousel-arrow grid h-16 w-12 shrink-0 place-items-center">
                 <GameImage sources={arrowLeftSources} className="h-14 w-14 object-contain drop-shadow-[0_2px_2px_rgba(0,0,0,0.95)]" />
               </button>
-              <div className="grid flex-1 grid-cols-5 items-center gap-[1.1vw]">
+              <div className="summon-banner-grid grid flex-1 grid-cols-5 items-center gap-[1.1cqw]">
                 {visibleBannerIndexes.map((index) => {
                   const item = banners[index]
                   const selected = index === selectedIndex
@@ -6310,7 +6354,7 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
                     <button
                       key={`${item.master_ogc_lottery_shop_id}-${index}`}
                       onClick={() => setSelectedIndex(index)}
-                      className={`relative h-[clamp(70px,6vw,108px)] overflow-hidden rounded-[2px] border bg-black transition ${
+                      className={`summon-banner-tile relative h-[clamp(70px,6cqw,108px)] overflow-hidden rounded-[2px] border bg-black transition ${
                         selected
                           ? "z-10 scale-[1.12] border-[#67f5d4] shadow-[0_0_0_4px_rgba(255,255,255,0.45),0_0_18px_rgba(103,245,212,0.95)]"
                           : "border-black/70 opacity-75 hover:opacity-100"
@@ -6321,7 +6365,7 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
                   )
                 })}
               </div>
-              <button onClick={() => moveBanner(1)} className="grid h-16 w-12 shrink-0 place-items-center">
+              <button onClick={() => moveBanner(1)} className="summon-carousel-arrow grid h-16 w-12 shrink-0 place-items-center">
                 <GameImage sources={arrowRightSources} className="h-14 w-14 object-contain drop-shadow-[0_2px_2px_rgba(0,0,0,0.95)]" />
               </button>
             </div>
@@ -6378,6 +6422,7 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
                 onClose={() => setShowResults(false)}
               />
             )}
+            </div>
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ import { Canvas, useFrame } from "@react-three/fiber"
 import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei"
 import * as THREE from "three"
 import { mediaUrl } from "@/lib/media-cdn"
+import { useIsMobile } from "@/components/ui/use-mobile"
 
 export type ModelEntry = {
   id: string
@@ -176,6 +177,8 @@ export function ClassicModelViewerClient({ models }: { models: ModelEntry[] }) {
   const [videoCatalog, setVideoCatalog] = useState<SkillSceneVideoCatalog | null>(null)
   const [selectedSceneIndex, setSelectedSceneIndex] = useState(0)
   const [assetVersion, setAssetVersion] = useState(() => Date.now())
+  const isMobile = useIsMobile()
+  const [pickerOpen, setPickerOpen] = useState(false)
 
   const selected = models.find(m => m.id === selectedId) ?? models[0]
   const versionAsset = (url?: string) =>
@@ -249,6 +252,146 @@ export function ClassicModelViewerClient({ models }: { models: ModelEntry[] }) {
     return (
       <div className="glass-panel p-8 text-center text-slate-400">
         No models available yet.
+      </div>
+    )
+  }
+
+  // ── Mobile: search-on-top + canvas-dominant + compact bottom controls.
+  // Phones get the classic design, but the desktop grid (300px sidebar) is
+  // cramped on a phone, so render a purpose-built layout here. Desktop path
+  // (below) is unchanged.
+  if (isMobile) {
+    return (
+      <div className="flex flex-col gap-3">
+        {/* Search / model picker on top */}
+        <div className="relative z-30">
+          <button
+            type="button"
+            onClick={() => setPickerOpen(o => !o)}
+            className="flex w-full items-center gap-2 rounded-xl border border-white/10 bg-[#222327] px-3 py-3 text-left text-sm text-white"
+          >
+            <span className="text-slate-400">🔍</span>
+            <span className="min-w-0 flex-1 truncate font-bold">{selected.name}</span>
+            <span className="shrink-0 text-slate-500">{pickerOpen ? "▲" : "▼"}</span>
+          </button>
+          {pickerOpen && (
+            <div className="absolute inset-x-0 top-full z-30 mt-1 rounded-xl border border-white/10 bg-[#1a1a1e] p-2 shadow-2xl">
+              <input
+                type="search"
+                autoFocus
+                value={modelSearch}
+                onChange={e => setModelSearch(e.target.value)}
+                placeholder="Search models..."
+                className="theme-input mb-2 h-10 w-full rounded-md px-3 text-sm"
+              />
+              <ul className="image-scroll max-h-[50vh] space-y-1 overflow-y-auto pr-1">
+                {filteredModels.map(m => (
+                  <li key={m.id}>
+                    <button
+                      type="button"
+                      onClick={() => { setSelectedId(m.id); setPickerOpen(false); setModelSearch("") }}
+                      className={`w-full truncate rounded-lg px-3 py-2.5 text-left text-sm ${m.id === selected.id ? "bg-[#222327] text-white" : "text-slate-300"}`}
+                    >
+                      <span className="font-bold">{m.name}</span>
+                      {m.affiliation_name && <span className="ml-2 text-[11px] text-slate-500">{m.affiliation_name}</span>}
+                    </button>
+                  </li>
+                ))}
+                {filteredModels.length === 0 && (
+                  <li className="px-3 py-6 text-center text-sm text-slate-400">No models found.</li>
+                )}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        {/* Canvas — dominant */}
+        <div
+          className={`relative overflow-hidden rounded-xl border border-white/10 ${activeMode === "skill" ? "aspect-video" : "h-[56vh]"}`}
+          style={{
+            touchAction: "none",
+            background:
+              "radial-gradient(circle at 50% 4%, rgba(218,62,68,0.10), transparent 24rem), linear-gradient(180deg, #1a1a1e 0%, #111216 52%, #0c0d10 100%)",
+          }}
+        >
+          {activeMode === "skill" && activeVideo ? (
+            <SkillSceneVideo entry={activeVideo} />
+          ) : (
+            <Canvas className="relative z-10" camera={{ position: [0, 1.4, 2.6], fov: 38 }} dpr={[1, 2]} gl={{ alpha: true }}>
+              <ambientLight intensity={0.65} />
+              <hemisphereLight intensity={0.35} groundColor={"#1a1a1e"} />
+              <directionalLight position={[3, 5, 2]} intensity={1.15} />
+              <directionalLight position={[-3, 2, -2]} intensity={0.35} />
+              <Suspense fallback={null}>
+                <Model
+                  key={modelUrl}
+                  url={modelUrl}
+                  autoRotate={autoRotate}
+                  scale={scale}
+                  animationName={animationName}
+                  visibility={visibility}
+                  onAnimationsList={setAnimationList}
+                />
+              </Suspense>
+              <OrbitControls
+                makeDefault
+                enableDamping
+                enablePan
+                panSpeed={1.2}
+                zoomSpeed={1.2}
+                minDistance={0.3}
+                maxDistance={20}
+                screenSpacePanning
+                target={[0, 1, 0]}
+              />
+            </Canvas>
+          )}
+        </div>
+
+        {/* Compact controls */}
+        <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-[#1a1a1e]/95 p-3">
+          {hasSkillScene && (
+            <div role="tablist" aria-label="Viewer mode" className="inline-flex h-9 w-full items-center rounded-lg border border-white/10 bg-[#222327] p-1">
+              <button type="button" role="tab" aria-selected={activeMode === "character"} onClick={() => setViewerMode("character")} className={`h-7 flex-1 rounded-md text-[11px] font-bold uppercase tracking-[0.14em] ${activeMode === "character" ? "bg-[#da3e44]/20 text-white" : "text-slate-400"}`}>Model</button>
+              <button type="button" role="tab" aria-selected={activeMode === "skill"} onClick={() => setViewerMode("skill")} className={`h-7 flex-1 rounded-md text-[11px] font-bold uppercase tracking-[0.14em] ${activeMode === "skill" ? "bg-[#da3e44]/20 text-white" : "text-slate-400"}`}>Movie</button>
+            </div>
+          )}
+          {activeMode === "skill" ? (
+            <select
+              value={String(selectedSceneIndex)}
+              onChange={e => setSelectedSceneIndex(Number(e.target.value))}
+              className="h-10 w-full rounded-md border border-white/10 bg-[#222327] px-3 text-sm text-white"
+              disabled={skillSceneOptions.length <= 1}
+            >
+              {skillSceneOptions.length === 0 && <option value={0}>Loading...</option>}
+              {skillSceneOptions.map((scene, i) => <option key={`${scene.id}-${i}`} value={i}>{scene.name}</option>)}
+            </select>
+          ) : (
+            <>
+              <select
+                value={animationName}
+                onChange={e => setAnimationName(e.target.value)}
+                className="h-10 w-full rounded-md border border-white/10 bg-[#222327] px-3 text-sm text-white"
+                disabled={animationList.length === 0}
+              >
+                <option value="">-- rest pose --</option>
+                {animationList.map(n => <option key={n} value={n}>{n}</option>)}
+              </select>
+              <div className="flex items-center gap-2">
+                <label className="flex h-10 flex-1 items-center gap-2 rounded-lg border border-white/10 bg-[#222327] px-3 text-slate-300">
+                  <span className="text-xs font-semibold">Scale</span>
+                  <input type="range" min={0.25} max={3} step={0.05} value={scale} onChange={e => setScale(Number(e.target.value))} className="min-w-0 flex-1 accent-[#da3e44]" />
+                  <span className="w-9 shrink-0 text-right text-xs tabular-nums text-white">{scale.toFixed(2)}</span>
+                </label>
+                <label className="flex h-10 shrink-0 items-center gap-2 rounded-lg border border-white/10 bg-[#222327] px-3 text-slate-300">
+                  <input type="checkbox" checked={autoRotate} onChange={e => setAutoRotate(e.target.checked)} className="accent-[#da3e44]" />
+                  <span className="text-xs font-semibold">Spin</span>
+                </label>
+              </div>
+              <p className="text-center text-[11px] text-slate-500">1-finger rotate · 2-finger pan / pinch-zoom</p>
+            </>
+          )}
+        </div>
       </div>
     )
   }

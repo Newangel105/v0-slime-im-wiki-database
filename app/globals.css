@@ -4058,6 +4058,102 @@ html.dark body {
 @media (max-width: 1536px) { :root { zoom: 0.70; } }
 @media (max-width: 1080px) { :root { zoom: 1; } }
 
+/* Phone "forced desktop viewport" (summon page, see ForceDesktopViewport): the layout viewport
+   is pinned wide so the 16:9 panel scales like a real desktop. Zero the page min-heights while
+   that's active so the page ends at the panel instead of leaving a giant void below it (the
+   main's min-h-screen would otherwise equal the now-huge layout-viewport height). Scoped to the
+   class, so real desktops/tablets are untouched. */
+html.force-desktop-vp,
+html.force-desktop-vp body { min-height: 0 !important; }
+html.force-desktop-vp .site-page { min-height: 0 !important; }
+
+.slime-page-summon .summon-main-stage {
+  container-type: inline-size;
+}
+
+@media (max-width: 640px) {
+
+  .slime-page-loup-loupe .loup-loupe-shell {
+    min-height: 0;
+    border-radius: 0.5rem;
+  }
+
+  .slime-page-loup-loupe .loup-loupe-header {
+    gap: 0.65rem;
+    padding: 0.75rem;
+  }
+
+  .slime-page-loup-loupe .loup-loupe-header h1 {
+    font-size: 2rem;
+    white-space: normal;
+  }
+
+  .slime-page-loup-loupe .loup-loupe-header p {
+    font-size: 0.625rem;
+    letter-spacing: 0.18em;
+  }
+
+  .slime-page-loup-loupe .loup-loupe-controls {
+    gap: 0.45rem;
+  }
+
+  .slime-page-loup-loupe .loup-loupe-controls button,
+  .slime-page-loup-loupe .loup-loupe-controls [role="combobox"] {
+    min-height: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .slime-page-loup-loupe .loup-loupe-controls button:not([aria-label]) {
+    gap: 0.4rem;
+    padding-inline: 0.65rem;
+    font-size: 0.78rem;
+  }
+
+  .slime-page-loup-loupe .loup-loupe-controls [role="combobox"] {
+    font-size: 0.85rem;
+  }
+
+  .slime-page-loup-loupe .loup-loupe-controls svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .slime-page-loup-loupe .loup-mobile-floor-rail {
+    gap: 0.5rem;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .slime-page-loup-loupe .loup-mobile-floor-rail button {
+    width: 6rem;
+    height: 3rem;
+    padding-inline: 0.55rem;
+  }
+
+  .slime-page-loup-loupe .loup-mobile-floor-rail button span:first-of-type {
+    font-size: 1.4rem;
+  }
+
+  .slime-page-loup-loupe .loup-mobile-floor-rail img {
+    width: 1.05rem;
+    height: 1.05rem;
+  }
+
+  .slime-page-loup-loupe .loup-board-region {
+    min-height: 0;
+    overflow: visible;
+    padding: 0.5rem 0.25rem 0.75rem;
+  }
+
+  .slime-page-loup-loupe .loup-board-region > div {
+    gap: 0.75rem;
+  }
+
+  .slime-page-loup-loupe .loup-board-wrap {
+    min-height: 0;
+    height: clamp(20rem, 62vh, 30rem);
+  }
+}
+
 /* The summer (ocean) design is only available on actual desktops (>=1280px with
    a real mouse/trackpad — see getDesign + DesignViewportGuard). Hide the design
    toggle everywhere else (phones, touch tablets, narrow windows) so it isn't a

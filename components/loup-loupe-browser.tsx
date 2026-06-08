@@ -4784,7 +4784,7 @@ function BoardCamera({ floor }: { floor: LoupLoupeFloor }) {
       100: 55,
       144: 46,
     };
-    const mobileScale = size.width < 720 ? 0.58 : 1;
+    const mobileScale = size.width < 720 ? 0.40 : 1;
     camera.position.set(0, 10.5600004, centerZ - 9.1599998);
     camera.lookAt(0, 0, centerZ);
     camera.zoom = (zoomByTileCount[floor.tile_count] ?? 58) * mobileScale;
@@ -5903,7 +5903,7 @@ function TowerBoard({
   onTileClick: (tile: LoupLoupeTile) => void;
 }) {
   return (
-    <div className="relative h-[min(72vh,48rem)] min-h-[30rem] w-full overflow-hidden">
+    <div className="loup-board-wrap relative h-[min(72vh,48rem)] min-h-[30rem] w-full overflow-hidden">
       <Canvas
         orthographic
         dpr={[1, 1.8]}
@@ -7021,7 +7021,7 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
   };
 
   return (
-    <section className="relative min-h-[calc(100vh-5rem)] overflow-hidden rounded-lg border border-border bg-background text-foreground shadow-2xl shadow-black/40">
+    <section className="loup-loupe-shell relative min-h-[calc(100vh-5rem)] overflow-hidden rounded-lg border border-border bg-background text-foreground shadow-2xl shadow-black/40">
       <div
         className="absolute inset-0 bg-cover bg-center opacity-85"
         style={{
@@ -7039,7 +7039,7 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
       />
       <div className="absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-black/85 to-transparent" />
 
-      <header className="relative z-20 flex flex-col gap-3 border-b border-border bg-muted/60 px-4 py-3 backdrop-blur md:flex-row md:items-center md:justify-between">
+      <header className="loup-loupe-header relative z-20 flex flex-col gap-3 border-b border-border bg-muted/60 px-4 py-3 backdrop-blur md:flex-row md:items-center md:justify-between">
         <div className="min-w-0">
           <p className="text-[11px] font-black uppercase tracking-[0.24em] text-accent">
             Tower Archive
@@ -7049,7 +7049,7 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
           </h1>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="loup-loupe-controls flex flex-wrap items-center gap-2">
           <button
             type="button"
             className="flex h-11 w-11 items-center justify-center rounded-md border border-border bg-muted/60 text-foreground transition hover:border-accent/60 disabled:cursor-not-allowed disabled:opacity-35"
@@ -7214,7 +7214,7 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
         </div>
       ) : null}
 
-      <div className="relative z-20 flex gap-2 overflow-x-auto border-b border-border bg-background/50 px-3 py-2 image-scroll md:hidden">
+      <div className="loup-mobile-floor-rail relative z-20 flex gap-2 overflow-x-auto border-b border-border bg-background/50 px-3 py-2 image-scroll md:hidden">
         <FloorTowerStackHorizontal
           floors={floors}
           selectedFloorNumber={floor.floor_number}
@@ -7230,7 +7230,7 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
         />
       </aside>
 
-      <div className="relative z-10 min-h-[calc(100vh-11rem)] overflow-hidden px-2 py-5 md:pl-44 md:pr-4">
+      <div className="loup-board-region relative z-10 min-h-[calc(100vh-11rem)] overflow-hidden px-2 py-5 md:pl-44 md:pr-4">
         <div className="mx-auto flex w-full max-w-[78rem] flex-col items-center gap-4">
           <TowerBoard
             floor={floor}
