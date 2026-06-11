@@ -121,15 +121,15 @@ type AnnouncementArticle = {
 const OFFICIAL_ANNOUNCEMENT_ORIGIN = "https://api.ten-sura-m.wfs.games"
 
 const DEFAULT_UI_ASSETS = {
-  gem_icon: ["/Image/Item/Gem/3000001/gem_3000001_ItemL.png"],
+  gem_icon: ["/Image/Item/Gem/3000001/gem_3000001_ItemL.webp"],
   question_icon: ["/UI/Texture/CommonEtcAtlas/btnQuestionNormal.webp"],
   character_details_icon: [],
   switch_icon: ["/UI/Texture/CharaInfoAtlas/btnChangeNormal.webp"],
-  trade_icon: ["/UI/Texture/CommonAtlas/btnExchangeNormal.png"],
-  close_icon: ["/UI/Texture/OutAtlas/btnMenuCloseNormal.png", "/UI/Texture/CommonAtlas/btnCloseNormal.png"],
-  exchange_item_icon: ["/Image/Item/Exchange/2400013/exchange_item_2400013_ItemL.png"],
-  carousel_arrow_left: ["/UI/Texture/CommonAtlas/btnScrollArrowL.png", "/UI/Texture/OutAtlas/simpleArrowL.png"],
-  carousel_arrow_right: ["/UI/Texture/CommonAtlas/btnScrollArrowR.png", "/UI/Texture/OutAtlas/simpleArrowR.png"],
+  trade_icon: ["/UI/Texture/CommonAtlas/btnExchangeNormal.webp"],
+  close_icon: ["/UI/Texture/OutAtlas/btnMenuCloseNormal.webp", "/UI/Texture/CommonAtlas/btnCloseNormal.webp"],
+  exchange_item_icon: ["/Image/Item/Exchange/2400013/exchange_item_2400013_ItemL.webp"],
+  carousel_arrow_left: ["/UI/Texture/CommonAtlas/btnScrollArrowL.webp", "/UI/Texture/OutAtlas/simpleArrowL.webp"],
+  carousel_arrow_right: ["/UI/Texture/CommonAtlas/btnScrollArrowR.webp", "/UI/Texture/OutAtlas/simpleArrowR.webp"],
 }
 
 const COMMON_RARITY = "/UI/Texture/CommonRarityAtlas"
@@ -138,7 +138,7 @@ const LOTTERY_INFO_ATLAS = "/UI/Texture/CommonLotteryInfoPanelAtlas"
 const GAME_TEXT_IVORY = "#fffaf0"
 const GAME_TEXT_DARK = "#1e1d1b"
 const RECRUIT_TEXT_IVORY = "#efe0bc"
-const BUTTON_PATTERN = `${SUMMON_UI_BASE}/4b134293ed93cc5f.png`
+const BUTTON_PATTERN = `${SUMMON_UI_BASE}/4b134293ed93cc5f.webp`
 
 const MEMBER_RARITY_ASSETS: Record<number, { base: string; frame: string; star: string }> = {
   3: { base: "baseMemberM3", frame: "frameMemberM3", star: "starCharaS3_Alphabet" },
@@ -258,11 +258,11 @@ function characterFullSources(character: SummonCharacter | null) {
 }
 
 function shopAssetSources(shopId: number, name: "LotteryBanner" | "LotteryCharacter" | "LotteryLogo" | "LotteryLoginNotice") {
-  return [`/L10NAssets/En/Image/LotteryInfo/${shopId}/${name}_${shopId}.png`, `/Image/LotteryInfo/${shopId}/${name}_${shopId}.png`]
+  return [`/L10NAssets/En/Image/LotteryInfo/${shopId}/${name}_${shopId}.webp`, `/Image/LotteryInfo/${shopId}/${name}_${shopId}.webp`]
 }
 
 function uniqueBackgroundSources(shopId: number) {
-  return [`/Image/LotteryInfo/LotteryBg/unique/${shopId}/LotteryBgUnique_${shopId}.png`]
+  return [`/Image/LotteryInfo/LotteryBg/unique/${shopId}/LotteryBgUnique_${shopId}.webp`]
 }
 
 function sourcesOr(sources: string[] | null | undefined, fallback: string[]) {
@@ -503,7 +503,7 @@ function blessElementIconSources(element?: string | null) {
 function attackIconSources(attackType?: string | null) {
   if (!attackType) return []
   const name = attackType === "Physical" ? "Physics" : attackType
-  return [`${COMMON_ATLAS}/icAttackType${name}.png`, `${LOTTERY_INFO_ATLAS}/icAttackType${attackType}.webp`]
+  return [`${COMMON_ATLAS}/icAttackType${name}.webp`, `${LOTTERY_INFO_ATLAS}/icAttackType${attackType}.webp`]
 }
 
 function tacticsIconSources(character: SummonCharacter) {
@@ -1707,7 +1707,7 @@ function CharacterDetailsPrefabRow({ character }: { character: SummonCharacter }
   const ultimate = character.ultimate_type || ""
   const [rowW, rowH] = SPECS.charaDetailsRow.canvas
   const THUMB = (rowH / rowW) * 100
-  const ATTACK_SPRITE = `${SUMMON_UI_BASE}/9df7a5929db2ef54.png`
+  const ATTACK_SPRITE = `${SUMMON_UI_BASE}/9df7a5929db2ef54.webp`
 
   function openInfo() {
     window.location.href = `/characters/${character.master_pc_id}`
@@ -1988,7 +1988,7 @@ function RatePanel({ banner, onClose }: { banner: SummonBanner; onClose: () => v
           className="absolute right-[-2.5%] top-[-6%] z-10 w-[7%] max-w-[92px] min-w-[54px] transition hover:brightness-110"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`${SUMMON_UI_BASE}/f4534b60c6bdea02.png`} alt="" className="h-full w-full object-contain" />
+          <img src={`${SUMMON_UI_BASE}/f4534b60c6bdea02.webp`} alt="" className="h-full w-full object-contain" />
         </button>
         <div className="absolute inset-[2%] overflow-hidden bg-[#1b1a18]">
           <OfficialAnnouncement banner={banner} />
@@ -2357,7 +2357,7 @@ function ResultsPanel({
         <div className="flex items-center gap-2">
           <span className="relative inline-flex items-center gap-2 px-6 py-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`${SUMMON_UI_BASE}/d72b247029db0fe5.png`} alt="" className="absolute inset-0 h-full w-full" style={{ objectFit: "fill" }} />
+            <img src={`${SUMMON_UI_BASE}/d72b247029db0fe5.webp`} alt="" className="absolute inset-0 h-full w-full" style={{ objectFit: "fill" }} />
             <span className="relative font-serif text-lg font-bold text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.95)]">
               Bazaar Pts: {bazaarPoints.toLocaleString()}
             </span>
@@ -2369,7 +2369,7 @@ function ResultsPanel({
             className="relative font-serif text-2xl font-black tracking-wide text-white"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`${SUMMON_UI_BASE}/ea3e009e9f47436a.png`} alt="" className="absolute inset-0 h-full w-full" style={{ objectFit: "fill" }} />
+            <img src={`${SUMMON_UI_BASE}/ea3e009e9f47436a.webp`} alt="" className="absolute inset-0 h-full w-full" style={{ objectFit: "fill" }} />
             <span className="relative block px-12 py-3 drop-shadow-[0_2px_3px_rgba(0,0,0,0.95)]">Return</span>
           </button>
           <button
@@ -2377,7 +2377,7 @@ function ResultsPanel({
             className="relative font-serif text-2xl font-black tracking-wide text-white transition hover:brightness-110"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`${SUMMON_UI_BASE}/079863ce6e7dace8.png`} alt="" className="absolute inset-0 h-full w-full" style={{ objectFit: "fill" }} />
+            <img src={`${SUMMON_UI_BASE}/079863ce6e7dace8.webp`} alt="" className="absolute inset-0 h-full w-full" style={{ objectFit: "fill" }} />
             <span className="relative block px-10 py-3 drop-shadow-[0_2px_3px_rgba(0,0,0,0.95)]">
               Recruit x{results.length} More
             </span>
@@ -3223,12 +3223,12 @@ function SummonCutscene({ steps, onFinish }: { steps: CutsceneStep[]; onFinish: 
 // cardGlowUltimate = inEffectsRarity5-6Ultimate
 // cardGlowUltimatePlus = inEffectsRarity5-6UltimatePlus
 const CARD_GLOW_PER_RARITY_KEY: Record<ResultCardRarityKey, string> = {
-  _3: "5f30cfecfee854ef.png",
-  _4: "5f30cfecfee854ef.png",
-  _5: "5f30cfecfee854ef.png",
-  _5_6_Ultimate: "e4d8c08d31e57835.png",
-  _5_6_UltimatePlus: "2af75184c34b968f.png",
-  _6_Epic: "2c7b81397a15314a.png",
+  _3: "5f30cfecfee854ef.webp",
+  _4: "5f30cfecfee854ef.webp",
+  _5: "5f30cfecfee854ef.webp",
+  _5_6_Ultimate: "e4d8c08d31e57835.webp",
+  _5_6_UltimatePlus: "2af75184c34b968f.webp",
+  _6_Epic: "2c7b81397a15314a.webp",
 }
 
 // CharacterAppearViewRarity + per-rarity sprites/star counts/shadow tints come
@@ -3248,7 +3248,7 @@ type CharacterAppearAssets = {
 }
 
 function spriteUrl(name: string) {
-  return `${SUMMON_UI_BASE}/${name}.png`
+  return `${SUMMON_UI_BASE}/${name}.webp`
 }
 
 function characterAppearAssets(rarity: CharacterAppearViewRarity): CharacterAppearAssets {
@@ -3428,7 +3428,7 @@ function opacityKeyframesToWAAPI(keys: [number, number][], stopTime: number, mul
 // RawImage data (UILotteryCharacterAppear.tree.json):
 //   bgPattern    : m_Color = (0.7403, 0.7217, 1.0, animated)   — light-blue
 //   bgPatternAdd : m_Color = (1, 1, 1, 0.4627 baseline)         — white
-const APPEAR_BG_PATTERN_SPRITE = "8e74bff8cfcbb886.png"
+const APPEAR_BG_PATTERN_SPRITE = "8e74bff8cfcbb886.webp"
 const APPEAR_BG_PATTERN_COLOR = { r: 0.7402514815330505, g: 0.7216981053352356, b: 1.0 }
 
 function appearBgPatternMaskStyle(brightness: number): CSSProperties {
@@ -3661,7 +3661,7 @@ function CharacterAppearBgPatternAddLayer({ rarity }: { rarity: CharacterAppearV
 // R/SSR=blue(0.165,0,1,0.8), SR=gold(0.557,0.511,0.365,0.8),
 // SSRUltimate/UREx=magenta(0.96,0.231,1,0.251), URUltimate=white(1,1,1,0.706).
 function CharacterAppearShadow({ rarity }: { rarity: CharacterAppearViewRarity }) {
-  const shadowSprite = `${SUMMON_UI_BASE}/2901538d38c52c3d.png` // sprite name "shadow"
+  const shadowSprite = `${SUMMON_UI_BASE}/2901538d38c52c3d.webp` // sprite name "shadow"
   const c = appearAnimFor(rarity).shadowColor
   const rgba = `rgba(${Math.round(c.r * 255)}, ${Math.round(c.g * 255)}, ${Math.round(c.b * 255)}, ${c.a})`
   // Unity's "shadow" sprite is a RGB-only radial gradient (white centre,
