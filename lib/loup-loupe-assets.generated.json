@@ -225,7 +225,7 @@
       "renderQueue": -1,
       "shader": "Tempest/Tower/Grid",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerIzisMapHexagon_a_m2150865726953449422.png",
+      "texture": "/loup-loupe/textures/TowerIzisMapHexagon_a_m2150865726953449422.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -305,7 +305,7 @@
       "renderQueue": 2999,
       "shader": "Tempest/Tower/GridAdditive",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerIzisMapHexagon_a_m2150865726953449422.png",
+      "texture": "/loup-loupe/textures/TowerIzisMapHexagon_a_m2150865726953449422.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -385,7 +385,7 @@
       "renderQueue": 2998,
       "shader": "Tempest/Tower/Invisible",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerIzisMapHexagon_a_m2150865726953449422.png",
+      "texture": "/loup-loupe/textures/TowerIzisMapHexagon_a_m2150865726953449422.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -465,7 +465,7 @@
       "renderQueue": -1,
       "shader": "Tempest/Tower/Shadow",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerIzisMapHexagon_a_m2150865726953449422.png",
+      "texture": "/loup-loupe/textures/TowerIzisMapHexagon_a_m2150865726953449422.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -545,7 +545,7 @@
       "renderQueue": -1,
       "shader": "Tempest/Tower/Default",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerIzisMapGround_EarlyTempestBOSSFire_m7681296922808484366.png",
+      "texture": "/loup-loupe/textures/TowerIzisMapGround_EarlyTempestBOSSFire_m7681296922808484366.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -625,7 +625,7 @@
       "renderQueue": -1,
       "shader": "Tempest/Tower/Default",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerIzisMapGround_ForestRoadMainRoad_6595889965972506467.png",
+      "texture": "/loup-loupe/textures/TowerIzisMapGround_ForestRoadMainRoad_6595889965972506467.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -705,7 +705,7 @@
       "renderQueue": -1,
       "shader": "Tempest/Tower/Default",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerIzisMapGround_Grassland_m4494972704288563443.png",
+      "texture": "/loup-loupe/textures/TowerIzisMapGround_Grassland_m4494972704288563443.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -785,7 +785,7 @@
       "renderQueue": -1,
       "shader": "Tempest/Tower/Default",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerIzisMapGround_RamirisPassage_6367477160182054432.png",
+      "texture": "/loup-loupe/textures/TowerIzisMapGround_RamirisPassage_6367477160182054432.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -865,7 +865,7 @@
       "renderQueue": -1,
       "shader": "Tempest/Tower/Default",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerIzisMapGround_SealedCave_m3511695809947650141.png",
+      "texture": "/loup-loupe/textures/TowerIzisMapGround_SealedCave_m3511695809947650141.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -945,7 +945,7 @@
       "renderQueue": -1,
       "shader": "Tempest/Tower/Default",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerIzisMapGround_TowerIzis_floor_m539742629951609216.png",
+      "texture": "/loup-loupe/textures/TowerIzisMapGround_TowerIzis_floor_m539742629951609216.webp",
       "textureOffset": [
         1.0,
         1.0
@@ -1061,7 +1061,7 @@
       "renderQueue": -1,
       "shader": "Tempest/Tower/Default",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerIzisMapGround_TrainingGround_3593829286751254256.png",
+      "texture": "/loup-loupe/textures/TowerIzisMapGround_TrainingGround_3593829286751254256.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -1141,7 +1141,7 @@
       "renderQueue": -1,
       "shader": "Tempest/Tower/Default",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerIzisMapGround_WetlandDay_m7393955315520162911.png",
+      "texture": "/loup-loupe/textures/TowerIzisMapGround_WetlandDay_m7393955315520162911.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -1221,7 +1221,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/IzisBossStageDummy_Floor_m651274409907677920.png",
+      "texture": "/loup-loupe/textures/IzisBossStageDummy_Floor_m651274409907677920.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -1295,7 +1295,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/IzisBossStageDummy_Wall_m7713543200529741860.png",
+      "texture": "/loup-loupe/textures/IzisBossStageDummy_Wall_m7713543200529741860.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -1358,7 +1358,7 @@
         1.0
       ],
       "emissionSlot": "_EmissionTexture",
-      "emissionTexture": "/loup-loupe/textures/BarrierDevice_EM_2769914037230702710.png",
+      "emissionTexture": "/loup-loupe/textures/BarrierDevice_EM_2769914037230702710.webp",
       "floats": {
         "_Cull": 2.0,
         "_DstBlend": 0.0,
@@ -1369,7 +1369,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/BarrierDevice_2218817424865712125.png",
+      "texture": "/loup-loupe/textures/BarrierDevice_2218817424865712125.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -1450,7 +1450,7 @@
         1.0
       ],
       "emissionSlot": "_EmissionTexture",
-      "emissionTexture": "/loup-loupe/textures/EnemySymbol_EM_8304458780359317195.png",
+      "emissionTexture": "/loup-loupe/textures/EnemySymbol_EM_8304458780359317195.webp",
       "floats": {
         "_Cull": 2.0,
         "_DstBlend": 0.0,
@@ -1461,7 +1461,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/EnemySymbol_9149298029929729267.png",
+      "texture": "/loup-loupe/textures/EnemySymbol_9149298029929729267.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -1542,7 +1542,7 @@
         1.0
       ],
       "emissionSlot": "_EmissionTexture",
-      "emissionTexture": "/loup-loupe/textures/EnemySymbol_EM_8304458780359317195.png",
+      "emissionTexture": "/loup-loupe/textures/EnemySymbol_EM_8304458780359317195.webp",
       "floats": {
         "_Cull": 2.0,
         "_DstBlend": 0.0,
@@ -1553,7 +1553,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/EnemySymbolBoss_m6346435150032237115.png",
+      "texture": "/loup-loupe/textures/EnemySymbolBoss_m6346435150032237115.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -1634,7 +1634,7 @@
         1.0
       ],
       "emissionSlot": "_EmissionTexture",
-      "emissionTexture": "/loup-loupe/textures/EnemySymbol_EM_8304458780359317195.png",
+      "emissionTexture": "/loup-loupe/textures/EnemySymbol_EM_8304458780359317195.webp",
       "floats": {
         "_Cull": 2.0,
         "_DstBlend": 0.0,
@@ -1645,7 +1645,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/EnemySymbolMiddle_m4326370635996122046.png",
+      "texture": "/loup-loupe/textures/EnemySymbolMiddle_m4326370635996122046.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -1737,7 +1737,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/High_m2380111816233940894.png",
+      "texture": "/loup-loupe/textures/High_m2380111816233940894.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -1817,7 +1817,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/ItemBox_m8129497678861228689.png",
+      "texture": "/loup-loupe/textures/ItemBox_m8129497678861228689.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -1897,7 +1897,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/Low_m5068316128528308682.png",
+      "texture": "/loup-loupe/textures/Low_m5068316128528308682.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -1977,7 +1977,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/MapWarpBase_m8045197693492771980.png",
+      "texture": "/loup-loupe/textures/MapWarpBase_m8045197693492771980.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -2069,7 +2069,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/Middle_m3907798704339081036.png",
+      "texture": "/loup-loupe/textures/Middle_m3907798704339081036.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -2199,7 +2199,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/Player_m5802002131893605377.png",
+      "texture": "/loup-loupe/textures/Player_m5802002131893605377.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -2291,7 +2291,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/Player_m5802002131893605377.png",
+      "texture": "/loup-loupe/textures/Player_m5802002131893605377.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -2433,7 +2433,7 @@
       "renderQueue": -1,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/WarpBaseMagicCircle_m6845802059877850156.png",
+      "texture": "/loup-loupe/textures/WarpBaseMagicCircle_m6845802059877850156.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -2573,7 +2573,7 @@
       "renderQueue": -1,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/WarpBaseMagicCircle_m6845802059877850156.png",
+      "texture": "/loup-loupe/textures/WarpBaseMagicCircle_m6845802059877850156.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -2647,7 +2647,7 @@
       "renderQueue": -1,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/WarpBaseMagicCircle_m6845802059877850156.png",
+      "texture": "/loup-loupe/textures/WarpBaseMagicCircle_m6845802059877850156.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -3636,7 +3636,7 @@
         1.0
       ],
       "alphaMaskSlot": "_AlphaMask",
-      "alphaMaskTexture": "/loup-loupe/textures/T_Barrier_Grow00_AlphaMask.png",
+      "alphaMaskTexture": "/loup-loupe/textures/T_Barrier_Grow00_AlphaMask.webp",
       "baseColor": [
         0.5,
         0.5,
@@ -3677,7 +3677,7 @@
       "renderQueue": -1,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_Barrier_Grow00_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_Barrier_Grow00_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -4129,7 +4129,7 @@
       "renderQueue": -1,
       "shader": "TempestVFX/VFXDistortion",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_CameraDistortion_Distortion_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_CameraDistortion_Distortion_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -4320,7 +4320,7 @@
         1.0
       ],
       "alphaMaskSlot": "_AlphaMask",
-      "alphaMaskTexture": "/loup-loupe/textures/T_CameraDistortion_Prism_AlphaMask.png",
+      "alphaMaskTexture": "/loup-loupe/textures/T_CameraDistortion_Prism_AlphaMask.webp",
       "baseColor": [
         0.5,
         0.5,
@@ -4361,7 +4361,7 @@
       "renderQueue": -1,
       "shader": "TempestVFX/VFXDistortion",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_CameraDistortion_Prism_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_CameraDistortion_Prism_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -4789,7 +4789,7 @@
       "renderQueue": 3100,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_Chip_Barrier_Hex01_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_Chip_Barrier_Hex01_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -4973,7 +4973,7 @@
       "renderQueue": 3100,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/t_c_prism_uv_02_m3052954899082861917.png",
+      "texture": "/loup-loupe/textures/t_c_prism_uv_02_m3052954899082861917.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -5116,7 +5116,7 @@
         1.0
       ],
       "alphaMaskSlot": "_AlphaMask",
-      "alphaMaskTexture": "/loup-loupe/textures/T_Chip_Boss_Cylinder_AlphaMask.png",
+      "alphaMaskTexture": "/loup-loupe/textures/T_Chip_Boss_Cylinder_AlphaMask.webp",
       "baseColor": [
         0.5,
         0.5,
@@ -5157,7 +5157,7 @@
       "renderQueue": 3100,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_Chip_Boss_Cylinder.png",
+      "texture": "/loup-loupe/textures/T_Chip_Boss_Cylinder.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -5341,7 +5341,7 @@
       "renderQueue": 3100,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_Chip_Warp_Glow00_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_Chip_Warp_Glow00_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -5525,7 +5525,7 @@
       "renderQueue": 3100,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_Chip_Warp_MagicCircle00_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_Chip_Warp_MagicCircle00_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -5709,7 +5709,7 @@
       "renderQueue": 3100,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_Chip_Warp_MagicCircle01_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_Chip_Warp_MagicCircle01_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -5893,7 +5893,7 @@
       "renderQueue": -1,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_DemonElement_Smoke_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_DemonElement_Smoke_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -6077,7 +6077,7 @@
       "renderQueue": -1,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_DemonElement_Smoke_Multiple_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_DemonElement_Smoke_Multiple_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -6220,7 +6220,7 @@
         1.0
       ],
       "alphaMaskSlot": "_AlphaMask",
-      "alphaMaskTexture": "/loup-loupe/textures/T_EnemySymbol_Boss_Aura_AlphaMask.png",
+      "alphaMaskTexture": "/loup-loupe/textures/T_EnemySymbol_Boss_Aura_AlphaMask.webp",
       "baseColor": [
         0.5,
         0.5,
@@ -6261,7 +6261,7 @@
       "renderQueue": -1,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_EnemySymbol_Boss_Aura_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_EnemySymbol_Boss_Aura_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -6588,7 +6588,7 @@
         1.0
       ],
       "alphaMaskSlot": "_AlphaMask",
-      "alphaMaskTexture": "/loup-loupe/textures/T_EnemySymbol_Middle_Aura_AlphaMask.png",
+      "alphaMaskTexture": "/loup-loupe/textures/T_EnemySymbol_Middle_Aura_AlphaMask.webp",
       "baseColor": [
         0.5,
         0.5,
@@ -6629,7 +6629,7 @@
       "renderQueue": -1,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_EnemySymbol_Middle_Aura_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_EnemySymbol_Middle_Aura_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -7486,7 +7486,7 @@
         1.0
       ],
       "alphaMaskSlot": "_AlphaMask",
-      "alphaMaskTexture": "/loup-loupe/textures/T_Mirror_Boss_Aura_AlphaMask.png",
+      "alphaMaskTexture": "/loup-loupe/textures/T_Mirror_Boss_Aura_AlphaMask.webp",
       "baseColor": [
         0.5,
         0.5,
@@ -7527,7 +7527,7 @@
       "renderQueue": -1,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_Mirror_Boss_Aura_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_Mirror_Boss_Aura_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -7670,7 +7670,7 @@
         1.0
       ],
       "alphaMaskSlot": "_AlphaMask",
-      "alphaMaskTexture": "/loup-loupe/textures/T_Mirror_Dungeon_Aura_AlphaMask.png",
+      "alphaMaskTexture": "/loup-loupe/textures/T_Mirror_Dungeon_Aura_AlphaMask.webp",
       "baseColor": [
         0.5,
         0.5,
@@ -7711,7 +7711,7 @@
       "renderQueue": 2999,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_Mirror_Dungeon_Aura_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_Mirror_Dungeon_Aura_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -7854,7 +7854,7 @@
         1.0
       ],
       "alphaMaskSlot": "_AlphaMask",
-      "alphaMaskTexture": "/loup-loupe/textures/T_Mirror_Dungeon_Aura_Small_AlphaMask.png",
+      "alphaMaskTexture": "/loup-loupe/textures/T_Mirror_Dungeon_Aura_Small_AlphaMask.webp",
       "baseColor": [
         0.5,
         0.5,
@@ -7895,7 +7895,7 @@
       "renderQueue": 2999,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_Mirror_Dungeon_Aura_Small_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_Mirror_Dungeon_Aura_Small_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -8739,7 +8739,7 @@
       "renderQueue": 3100,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_Mirror_ItemBox_Cylinder_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_Mirror_ItemBox_Cylinder_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -9104,7 +9104,7 @@
       "renderQueue": 3001,
       "shader": "TempestVFX/VFXDistortion",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_Mirror_Vanish_Distosion_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_Mirror_Vanish_Distosion_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -9508,7 +9508,7 @@
       "renderQueue": -1,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_Spirit_Particle.png",
+      "texture": "/loup-loupe/textures/T_Spirit_Particle.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -9692,7 +9692,7 @@
       "renderQueue": 3001,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_Spirit_Particle_Common_Flare_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_Spirit_Particle_Common_Flare_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -9871,7 +9871,7 @@
         1.0
       ],
       "alphaMaskSlot": "_AlphaMask",
-      "alphaMaskTexture": "/loup-loupe/textures/T_Spirit_Particle_Common_Glow_AlphaMask.png",
+      "alphaMaskTexture": "/loup-loupe/textures/T_Spirit_Particle_Common_Glow_AlphaMask.webp",
       "baseColor": [
         0.5,
         0.5,
@@ -9912,7 +9912,7 @@
       "renderQueue": 3001,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_Spirit_Particle_Common_Glow.png",
+      "texture": "/loup-loupe/textures/T_Spirit_Particle_Common_Glow.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -10091,7 +10091,7 @@
         1.0
       ],
       "alphaMaskSlot": "_AlphaMask",
-      "alphaMaskTexture": "/loup-loupe/textures/T_Spirit_Particle_Multiple_Glow_AlphaMask.png",
+      "alphaMaskTexture": "/loup-loupe/textures/T_Spirit_Particle_Multiple_Glow_AlphaMask.webp",
       "baseColor": [
         0.5,
         0.5,
@@ -10132,7 +10132,7 @@
       "renderQueue": 3001,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_Spirit_Particle_Multiple_Glow.png",
+      "texture": "/loup-loupe/textures/T_Spirit_Particle_Multiple_Glow.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -10311,7 +10311,7 @@
         1.0
       ],
       "alphaMaskSlot": "_AlphaMask",
-      "alphaMaskTexture": "/loup-loupe/textures/T_TempestRoadDayTower_Aura_Small_AlphaMask.png",
+      "alphaMaskTexture": "/loup-loupe/textures/T_TempestRoadDayTower_Aura_Small_AlphaMask.webp",
       "baseColor": [
         0.5,
         0.5,
@@ -10352,7 +10352,7 @@
       "renderQueue": -1,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_TempestRoadDayTower_Aura_Small_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_TempestRoadDayTower_Aura_Small_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -10959,7 +10959,7 @@
         1.0
       ],
       "alphaMaskSlot": "_AlphaMask",
-      "alphaMaskTexture": "/loup-loupe/textures/T_TowerIzisMap_Aura_AlphaMask.png",
+      "alphaMaskTexture": "/loup-loupe/textures/T_TowerIzisMap_Aura_AlphaMask.webp",
       "baseColor": [
         0.5,
         0.5,
@@ -11000,7 +11000,7 @@
       "renderQueue": -1,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_TowerIzisMap_Aura_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_TowerIzisMap_Aura_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -11155,7 +11155,7 @@
         1.0
       ],
       "alphaMaskSlot": "_AlphaMask",
-      "alphaMaskTexture": "/loup-loupe/textures/T_TowerIzisMap_Dust_AlphaMask.png",
+      "alphaMaskTexture": "/loup-loupe/textures/T_TowerIzisMap_Dust_AlphaMask.webp",
       "baseColor": [
         0.5,
         0.5,
@@ -11196,7 +11196,7 @@
       "renderQueue": -1,
       "shader": "TempestVFX/VFXDefault",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/T_TowerIzisMap_Dust_AlphaMask.png",
+      "texture": "/loup-loupe/textures/T_TowerIzisMap_Dust_AlphaMask.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -11361,7 +11361,7 @@
         1.0
       ],
       "emissionSlot": "_Emission",
-      "emissionTexture": "/loup-loupe/textures/TowerBarrierDevice_e_m4376875916163038024.png",
+      "emissionTexture": "/loup-loupe/textures/TowerBarrierDevice_e_m4376875916163038024.webp",
       "floats": {
         "_Cull": 2.0,
         "_DstBlend": 0.0,
@@ -11372,7 +11372,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerBarrierDevice_m7578352126773303950.png",
+      "texture": "/loup-loupe/textures/TowerBarrierDevice_m7578352126773303950.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -11441,7 +11441,7 @@
         1.0
       ],
       "emissionSlot": "_Emission",
-      "emissionTexture": "/loup-loupe/textures/TowerBarrierDevice_e_m4376875916163038024.png",
+      "emissionTexture": "/loup-loupe/textures/TowerBarrierDevice_e_m4376875916163038024.webp",
       "floats": {
         "_Cull": 2.0,
         "_DstBlend": 0.0,
@@ -11452,7 +11452,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerBarrierDevice_m7578352126773303950.png",
+      "texture": "/loup-loupe/textures/TowerBarrierDevice_m7578352126773303950.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -11521,7 +11521,7 @@
         1.0
       ],
       "emissionSlot": "_Emission",
-      "emissionTexture": "/loup-loupe/textures/TowerIzisMapBaseFrame_Emission_m6373102928141084128.png",
+      "emissionTexture": "/loup-loupe/textures/TowerIzisMapBaseFrame_Emission_m6373102928141084128.webp",
       "floats": {
         "_Cull": 2.0,
         "_DstBlend": 0.0,
@@ -11532,7 +11532,7 @@
       "renderQueue": -1,
       "shader": "Tempest/Tower/Frame",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerIzisMapBaseFrame_m8134960906106398422.png",
+      "texture": "/loup-loupe/textures/TowerIzisMapBaseFrame_m8134960906106398422.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -11601,7 +11601,7 @@
         1.0
       ],
       "emissionSlot": "_Emission",
-      "emissionTexture": "/loup-loupe/textures/TowerIzisMapHexagon_Emission_m1189985249157200039.png",
+      "emissionTexture": "/loup-loupe/textures/TowerIzisMapHexagon_Emission_m1189985249157200039.webp",
       "floats": {
         "_Cull": 2.0,
         "_DstBlend": 0.0,
@@ -11612,7 +11612,7 @@
       "renderQueue": -1,
       "shader": "Tempest/Tower/Hexagon",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerIzisMapHexagon2_8612333541138327385.png",
+      "texture": "/loup-loupe/textures/TowerIzisMapHexagon2_8612333541138327385.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -11681,7 +11681,7 @@
         1.0
       ],
       "emissionSlot": "_Emission",
-      "emissionTexture": "/loup-loupe/textures/TowerIzisMapHexagon_Emission_m1189985249157200039.png",
+      "emissionTexture": "/loup-loupe/textures/TowerIzisMapHexagon_Emission_m1189985249157200039.webp",
       "floats": {
         "_Cull": 2.0,
         "_DstBlend": 0.0,
@@ -11692,7 +11692,7 @@
       "renderQueue": -1,
       "shader": "Tempest/Tower/Hexagon",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerIzisMapHexagon_m3975670673667910697.png",
+      "texture": "/loup-loupe/textures/TowerIzisMapHexagon_m3975670673667910697.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -11772,7 +11772,7 @@
       "renderQueue": -1,
       "shader": "Tempest/Tower/Invisible",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerIzisMapHexagon_m3975670673667910697.png",
+      "texture": "/loup-loupe/textures/TowerIzisMapHexagon_m3975670673667910697.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -11852,7 +11852,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerMirorNormal_m4359545401024480129.png",
+      "texture": "/loup-loupe/textures/TowerMirorNormal_m4359545401024480129.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -11990,7 +11990,7 @@
         1.0
       ],
       "emissionSlot": "_Emission",
-      "emissionTexture": "/loup-loupe/textures/TowerMirorRed_m2336881913482846900.png",
+      "emissionTexture": "/loup-loupe/textures/TowerMirorRed_m2336881913482846900.webp",
       "floats": {
         "_Cull": 2.0,
         "_DstBlend": 0.0,
@@ -12001,7 +12001,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerMirorRed_m2336881913482846900.png",
+      "texture": "/loup-loupe/textures/TowerMirorRed_m2336881913482846900.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -12070,7 +12070,7 @@
         1.0
       ],
       "emissionSlot": "_Emission",
-      "emissionTexture": "/loup-loupe/textures/TowerMirorLowNormal_Emission_m1584854642343951918.png",
+      "emissionTexture": "/loup-loupe/textures/TowerMirorLowNormal_Emission_m1584854642343951918.webp",
       "floats": {
         "_Cull": 2.0,
         "_DstBlend": 0.0,
@@ -12081,7 +12081,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerMirorLowNormal_m6556683769027362208.png",
+      "texture": "/loup-loupe/textures/TowerMirorLowNormal_m6556683769027362208.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -12150,7 +12150,7 @@
         1.0
       ],
       "emissionSlot": "_Emission",
-      "emissionTexture": "/loup-loupe/textures/TowerMirorNormal_m4359545401024480129.png",
+      "emissionTexture": "/loup-loupe/textures/TowerMirorNormal_m4359545401024480129.webp",
       "floats": {
         "_Cull": 2.0,
         "_DstBlend": 0.0,
@@ -12161,7 +12161,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/TowerMirorNormal_m4359545401024480129.png",
+      "texture": "/loup-loupe/textures/TowerMirorNormal_m4359545401024480129.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -12304,7 +12304,7 @@
         1.0
       ],
       "emissionSlot": "_Emission",
-      "emissionTexture": "/loup-loupe/textures/WarpBaseFloorFlare_2377600370302173080.png",
+      "emissionTexture": "/loup-loupe/textures/WarpBaseFloorFlare_2377600370302173080.webp",
       "floats": {
         "_Cull": 2.0,
         "_DstBlend": 0.0,
@@ -12315,7 +12315,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/WarpBaseFloor_m251726171276783884.png",
+      "texture": "/loup-loupe/textures/WarpBaseFloor_m251726171276783884.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -12431,7 +12431,7 @@
       "renderQueue": -1,
       "shader": "URP/Lit",
       "shaderSource": "name-hint",
-      "texture": "/loup-loupe/textures/WarpBaseFrame_7133727608996143097.png",
+      "texture": "/loup-loupe/textures/WarpBaseFrame_7133727608996143097.webp",
       "textureOffset": [
         0.0,
         0.0
@@ -93849,7 +93849,7 @@
   },
   "spriteAtlases": {
     "TowerAtlas": {
-      "image": "/loup-loupe/textures/sactx-0-1024x2048-ASTC_4x4-TowerAtlas-61b5f651_m2021720863106169562.png",
+      "image": "/loup-loupe/textures/sactx-0-1024x2048-ASTC_4x4-TowerAtlas-61b5f651_m2021720863106169562.webp",
       "imageSize": [
         1024,
         2048
@@ -94552,7 +94552,7 @@
       ]
     },
     "TowerDisplayAtlas": {
-      "image": "/loup-loupe/textures/sactx-0-1024x2048-Crunch-TowerDisplayAtlas-bb896fec_m1468402056393668331.png",
+      "image": "/loup-loupe/textures/sactx-0-1024x2048-Crunch-TowerDisplayAtlas-bb896fec_m1468402056393668331.webp",
       "imageSize": [
         1024,
         2048
