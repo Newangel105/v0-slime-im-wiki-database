@@ -438,11 +438,11 @@ type ObjectPlacement = {
 
 const towerAssets = towerAssetManifest as unknown as TowerAssetManifest;
 const PRISM_TEXTURE =
-  "/Effect/TowerIzis/Common/Texture/t_TowerIzisMap_prism_uv_00.png";
+  "/Effect/TowerIzis/Common/Texture/t_TowerIzisMap_prism_uv_00.webp";
 const TILE_GLOW_TEXTURE =
-  "/Effect/TowerIzis/Common/Texture/t_TowerIzisMap_glow_uv_00.png";
+  "/Effect/TowerIzis/Common/Texture/t_TowerIzisMap_glow_uv_00.webp";
 const TREASURE_BAG = "/UI/Texture/BattleAtlas/dropItem2.webp";
-const GOLD_ICON = "/Image/Item/Gold/3100001/gold_3100001_ItemL.png";
+const GOLD_ICON = "/Image/Item/Gold/3100001/gold_3100001_ItemL.webp";
 const TILE_RADIUS = 0.66;
 const SPIRIT_ORB_GROUND_Y = 0.1;
 const SPIRIT_ORB_CENTER_LIMIT = TILE_RADIUS * 0.28;
@@ -451,9 +451,9 @@ const SPIRIT_ORB_CENTER_LIMIT = TILE_RADIUS * 0.28;
 // The atlas fallback is still a real TowerIzis texture.
 const MATERIAL_TEXTURE_FALLBACKS: Record<string, string> = {
   TowerIzisMapHexagon_InvisibleMT:
-    "/loup-loupe/textures/TowerIzisMapHexagon_m3975670673667910697.png",
+    "/loup-loupe/textures/TowerIzisMapHexagon_m3975670673667910697.webp",
   Chip_InvisibleMT:
-    "/loup-loupe/textures/TowerIzisMapHexagon_m3975670673667910697.png",
+    "/loup-loupe/textures/TowerIzisMapHexagon_m3975670673667910697.webp",
 };
 
 function getMaterialTexture(
@@ -659,7 +659,7 @@ function isTreasureEvent(event: LoupLoupeEvent | null): boolean {
 }
 
 function getFloorBackground(floor: LoupLoupeFloor): string {
-  return floor.background_path ? `/${floor.background_path}.png` : "";
+  return floor.background_path ? `/${floor.background_path}.webp` : "";
 }
 
 function getRewardName(reward: LoupLoupeReward): string {
