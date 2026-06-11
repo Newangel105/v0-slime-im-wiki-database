@@ -217,7 +217,7 @@ const TACTICS_ICON: Record<string, string> = {
   All: "/L10NAssets/En/Image/Tactics/tactics_005.webp",
 }
 
-function withExtension(path?: string | null, extension = "png") {
+function withExtension(path?: string | null, extension = "webp") {
   if (!path) return null
   const normalized = path.replace(/\\/g, "/").replace(/^\/+/, "")
   if (!normalized) return null
@@ -225,7 +225,7 @@ function withExtension(path?: string | null, extension = "png") {
   return normalized
 }
 
-function assetSources(path?: string | null, extension = "png") {
+function assetSources(path?: string | null, extension = "webp") {
   const normalized = withExtension(path, extension)
   if (!normalized) return []
   if (normalized.startsWith("L10NAssets/")) return [`/${normalized}`]
