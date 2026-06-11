@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react"
+import { createContext, useContext, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react"
 import type { SummonBanner, SummonBucket, SummonCharacter, SummonLottery, SummonPayload, SummonPointSelection } from "@/lib/summon-data"
 import { PrefabLayer } from "@/components/prefab-layer"
 import { TenslafontText } from "@/components/tenslafont-text"
@@ -610,6 +610,59 @@ function GameImage({
   )
 }
 
+// Mute state for all summon audio (SE/BGM + sound-bearing movies). Provided by
+// the main simulator and consumed by the module-level audio/video sub-components
+// below, so a single toggle silences every source.
+const SummonMuteContext = createContext(false)
+
+function GearIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+    </svg>
+  )
+}
+
+function SpeakerIcon({ muted }: { muted: boolean }) {
+  return (
+    <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+      {muted ? (
+        <>
+          <line x1="23" y1="9" x2="17" y2="15" />
+          <line x1="17" y1="9" x2="23" y2="15" />
+        </>
+      ) : (
+        <>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+        </>
+      )}
+    </svg>
+  )
+}
+
+function SummonToggle({ label, hint, checked, onChange }: { label: string; hint?: string; checked: boolean; onChange: (v: boolean) => void }) {
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      onClick={() => onChange(!checked)}
+      className="flex w-full items-center justify-between gap-3 rounded-[4px] px-1 py-2 text-left transition hover:bg-white/5"
+    >
+      <span className="flex flex-col">
+        <span className="text-sm font-medium text-white">{label}</span>
+        {hint ? <span className="text-[11px] leading-tight text-white/50">{hint}</span> : null}
+      </span>
+      <span className={`relative inline-flex h-5 w-9 flex-none rounded-full transition ${checked ? "bg-emerald-400/80" : "bg-white/20"}`}>
+        <span className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-all ${checked ? "left-[18px]" : "left-0.5"}`} />
+      </span>
+    </button>
+  )
+}
+
 // Plays a list of SE/BGM clips for a summon cutscene step. Mounts an <audio>
 // element per source and triggers playback on mount. Sources are layered (all
 // play simultaneously) — used so the per-rarity BGM fanfare + appear SE play
@@ -619,19 +672,20 @@ function GameImage({
 function SummonSE({ sources, volume = 0.7 }: { sources: string[]; volume?: number }) {
   const refs = useRef<Array<HTMLAudioElement | null>>([])
   const key = sources.join("|")
+  const muted = useContext(SummonMuteContext)
   useEffect(() => {
     for (const el of refs.current) {
       if (!el) continue
       try {
         el.currentTime = 0
-        el.volume = volume
+        el.volume = muted ? 0 : volume
         const p = el.play()
         if (p && typeof p.catch === "function") p.catch(() => {})
       } catch {
         /* autoplay blocked — ignore; the user gesture should have unlocked it */
       }
     }
-  }, [key, volume])
+  }, [key, volume, muted])
   if (!sources.length) return null
   return (
     <>
@@ -3152,14 +3206,16 @@ function SummonCutscene({ steps, onFinish }: { steps: CutsceneStep[]; onFinish: 
   const [idx, setIdx] = useState(0)
   const videoRef = useRef<HTMLVideoElement>(null)
   const step = steps[idx]
+  const muted = useContext(SummonMuteContext)
 
   useEffect(() => {
     const v = videoRef.current
     if (!v) return
     v.currentTime = 0
+    v.muted = muted
     const p = v.play()
     if (p && typeof p.catch === "function") p.catch(() => {})
-  }, [idx])
+  }, [idx, muted])
 
   if (!step) return null
   const advance = () => {
@@ -4567,6 +4623,7 @@ function TextAnnounceRevealScreen({
   const voiceCandidates = voiceAudioCandidates(message?.voice_path)
   const audioRef = useRef<HTMLAudioElement>(null)
   const [voiceIdx, setVoiceIdx] = useState(0)
+  const muted = useContext(SummonMuteContext)
   // Replay when the candidate index advances (fallback after .ogg 404 → .wav).
   // Without voiceIdx in deps, the first candidate's load-error would advance
   // the index but play() never re-fires on the new src. Verified empirically:
@@ -4577,8 +4634,9 @@ function TextAnnounceRevealScreen({
     const audio = audioRef.current
     if (!audio) return
     audio.currentTime = 0
+    audio.muted = muted
     audio.play().catch(() => {})
-  }, [voiceCandidates, voiceIdx])
+  }, [voiceCandidates, voiceIdx, muted])
   const handleSkip = (e: React.MouseEvent) => {
     e.stopPropagation()
     onSkipMovie?.()
@@ -4656,6 +4714,7 @@ function AcquisitionMovieReveal({
   onSkipAll: () => void
 }) {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const muted = useContext(SummonMuteContext)
   // Try play() on mount AND on every canplay/loadeddata event. The browser
   // can silently reject the first play() when the video hasn't buffered
   // enough (or when the user gesture credit has lapsed since the last
@@ -4669,6 +4728,7 @@ function AcquisitionMovieReveal({
     const video = videoRef.current
     if (!video) return
     if (!video.paused) return
+    video.muted = muted
     const p = video.play()
     if (p && typeof p.catch === "function") p.catch(() => {})
   }
@@ -6085,6 +6145,29 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
   const [displayMode, setDisplayMode] = useState<"banner" | "movie">("banner")
   const [movieFailed, setMovieFailed] = useState(false)
   const [bazaarPoints, setBazaarPoints] = useState(0)
+  // Summon skip/mute preferences (persisted in localStorage) + the one-time
+  // "skip animations?" prompt shown before the very first pull.
+  const [skipAnimations, setSkipAnimations] = useState(false)
+  const [summonMuted, setSummonMuted] = useState(false)
+  const [skipAsked, setSkipAsked] = useState(false)
+  const [showSettings, setShowSettings] = useState(false)
+  const [pendingDraw, setPendingDraw] = useState<DrawKind | null>(null)
+  useEffect(() => {
+    try {
+      setSkipAnimations(localStorage.getItem("summon_skip_anim") === "1")
+      setSummonMuted(localStorage.getItem("summon_mute") === "1")
+      setSkipAsked(localStorage.getItem("summon_skip_asked") === "1")
+    } catch { /* ignore */ }
+  }, [])
+  const setSkipPref = (v: boolean) => { setSkipAnimations(v); try { localStorage.setItem("summon_skip_anim", v ? "1" : "0") } catch { /* ignore */ } }
+  const setMutePref = (v: boolean) => { setSummonMuted(v); try { localStorage.setItem("summon_mute", v ? "1" : "0") } catch { /* ignore */ } }
+  // Record a skip choice AND mark the one-time prompt as answered, so changing
+  // skip in settings before the first pull suppresses the prompt.
+  const chooseSkip = (v: boolean) => {
+    setSkipAsked(true)
+    try { localStorage.setItem("summon_skip_asked", "1") } catch { /* ignore */ }
+    setSkipPref(v)
+  }
 
   const banners = data.banners
   const uiAssets = data.ui_assets ?? DEFAULT_UI_ASSETS
@@ -6177,7 +6260,7 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
     setSelectedIndex((current) => (current + offset + banners.length) % banners.length)
   }
 
-  function draw(kind: DrawKind) {
+  function performDraw(kind: DrawKind, skip: boolean) {
     const lottery = kind === "multi" ? multiLottery : singleLottery
     if (!lottery) return
     const count = kind === "multi" ? Math.min(10, lottery.reward_count) : 1
@@ -6185,6 +6268,12 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
     setDrawKind(kind)
     setResults(rolled)
     if (lottery.point > 0) setBazaarPoints((current) => current + lottery.point * count)
+    if (skip) {
+      // Skip every animation (cutscene / AnalysisCut / per-result reveal) and
+      // jump straight to the result screen.
+      setShowResults(true)
+      return
+    }
     // Play the banner's real summon cutscene first (data-driven). The
     // session-level AnalysisCut runs after the cutscene; result screen opens
     // after AnalysisCut finishes (or is skipped).
@@ -6197,6 +6286,20 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
       // No main lottery movie selected — go straight to AnalysisCut (or skip it).
       proceedAfterCutscene(cutscene.patternAnimationType, cutscene.cloakPerformanceSkip)
     }
+  }
+
+  function draw(kind: DrawKind) {
+    if (!(kind === "multi" ? multiLottery : singleLottery)) return
+    // First pull ever: ask once whether to skip animations, then remember it.
+    if (!skipAsked) { setPendingDraw(kind); return }
+    performDraw(kind, skipAnimations)
+  }
+
+  function resolveSkipPrompt(skip: boolean) {
+    chooseSkip(skip)
+    const kind = pendingDraw
+    setPendingDraw(null)
+    if (kind) performDraw(kind, skip)
   }
 
   function proceedAfterCutscene(patternType: number | null, cloakSkip: boolean) {
@@ -6218,6 +6321,7 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
       ? { position: "fixed", top: phone.navH, left: phone.w, width: phone.h - phone.navH, height: phone.w, transform: "rotate(90deg)", transformOrigin: "top left", zIndex: 40 }
       : { position: "fixed", top: phone.navH, left: 0, width: phone.w, height: phone.h - phone.navH, zIndex: 40 }
   return (
+    <SummonMuteContext.Provider value={summonMuted}>
     <main className={mobile ? "site-page slime-page-summon text-white" : "site-page slime-page-summon min-h-screen p-3 text-white sm:p-6"}>
       <div
         className={mobile ? "summon-shell grid place-items-center overflow-hidden bg-black" : "summon-shell mx-auto max-w-[1760px]"}
@@ -6247,6 +6351,40 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
             <div className="absolute inset-0 bg-gradient-to-r from-black/12 via-transparent to-black/10" />
             <div className="absolute inset-x-0 bottom-0 h-[15.5%] bg-[#56565d]/72" />
 
+            {/* Summon settings: mute toggle + gear popover (skip/mute defaults
+                persist in localStorage). z-30 keeps it below the z-50 reveal
+                overlays, so it only shows on the banner screen. */}
+            <div className="summon-settings absolute right-[1.2%] top-[3.2%] z-30 flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setMutePref(!summonMuted)}
+                aria-label={summonMuted ? "Unmute summon audio" : "Mute summon audio"}
+                aria-pressed={summonMuted}
+                title={summonMuted ? "Unmute" : "Mute"}
+                className="grid h-8 w-8 place-items-center rounded-full border border-white/25 bg-black/45 p-[7px] text-white/90 backdrop-blur transition hover:bg-black/70"
+              >
+                <SpeakerIcon muted={summonMuted} />
+              </button>
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setShowSettings((v) => !v)}
+                  aria-label="Summon settings"
+                  aria-expanded={showSettings}
+                  title="Settings"
+                  className="grid h-8 w-8 place-items-center rounded-full border border-white/25 bg-black/45 p-[7px] text-white/90 backdrop-blur transition hover:bg-black/70"
+                >
+                  <GearIcon />
+                </button>
+                {showSettings && (
+                  <div className="absolute right-0 top-[calc(100%+8px)] z-10 w-60 rounded-[8px] border border-white/15 bg-[#15161b]/95 p-3 shadow-[0_16px_50px_rgba(0,0,0,0.6)] backdrop-blur">
+                    <div className="mb-1 px-1 text-xs font-semibold uppercase tracking-wider text-white/50">Summon Settings</div>
+                    <SummonToggle label="Skip animations" hint="Jump straight to the results" checked={skipAnimations} onChange={chooseSkip} />
+                    <SummonToggle label="Mute" hint="Silence all summon audio" checked={summonMuted} onChange={setMutePref} />
+                  </div>
+                )}
+              </div>
+            </div>
             <div className="summon-rate-button absolute right-[10.8%] top-[3.2%]">
               <PrefabLayer
                 spec={SPECS.mainRateBtn}
@@ -6422,11 +6560,41 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
                 onClose={() => setShowResults(false)}
               />
             )}
+            {/* One-time prompt before the very first pull: choose to watch or
+                skip the animations. The choice persists and is editable in the
+                ⚙ settings popover. */}
+            {pendingDraw !== null && (
+              <div className="absolute inset-0 z-[70] grid place-items-center bg-black/70 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Skip animations prompt">
+                <div className="w-[min(82%,420px)] rounded-[10px] border border-white/15 bg-[#15161b] p-5 text-center text-white shadow-[0_24px_70px_rgba(0,0,0,0.75)]">
+                  <div className="mb-2 text-lg font-semibold">Skip summon animations?</div>
+                  <p className="mb-5 text-sm leading-relaxed text-white/65">
+                    Go straight to the results, skipping the cutscene and reveal. You can change this anytime with the ⚙ button.
+                  </p>
+                  <div className="flex justify-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => resolveSkipPrompt(false)}
+                      className="min-w-[96px] rounded-[6px] border border-white/25 bg-white/5 px-5 py-2 text-sm font-medium text-white transition hover:bg-white/10"
+                    >
+                      Watch
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => resolveSkipPrompt(true)}
+                      className="min-w-[96px] rounded-[6px] border border-amber-300/40 bg-amber-400/20 px-5 py-2 text-sm font-semibold text-amber-100 transition hover:bg-amber-400/30"
+                    >
+                      Skip
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
             </div>
           </div>
         </div>
       </div>
     </main>
+    </SummonMuteContext.Provider>
   )
 }
 
