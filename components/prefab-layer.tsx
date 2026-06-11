@@ -189,7 +189,7 @@ export function PrefabLayer({
 
         let inner: ReactNode = null
         if (n.img && !replaceInner) {
-          const url = `${SUMMON_UI_BASE}/${n.img}`
+          const url = `${SUMMON_UI_BASE}/${n.img.replace(/\.png$/, ".webp")}`
           const bd = n.border
           // Unity sliced sprites often have a zero-width/zero-height source
           // center (for example btnCommonGreen, btnCommonBlack, pointsBase,

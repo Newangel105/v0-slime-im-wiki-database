@@ -247,7 +247,7 @@ function rootAlpha(path: string, start: PromotionViewRarity, fix: PromotionViewR
 }
 
 function spriteUrl(img?: string | null) {
-  return img ? `${SUMMON_UI_BASE}/${img}` : null
+  return img ? `${SUMMON_UI_BASE}/${img.replace(/\.png$/, ".webp")}` : null
 }
 
 function compile(gl: WebGL2RenderingContext, type: number, source: string): WebGLShader {

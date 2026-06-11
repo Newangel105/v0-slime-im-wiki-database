@@ -4266,7 +4266,7 @@ function promotionGlyphFill(panel: PromotionTmpPanel): { color: string; glyphSty
     .find(Boolean)
   const glyphStyle: CSSProperties = shadows.length ? { filter: shadows.join(" ") } : {}
   if (gradientSprite) {
-    glyphStyle.backgroundImage = `url(${SUMMON_UI_BASE}/${gradientSprite})`
+    glyphStyle.backgroundImage = `url(${SUMMON_UI_BASE}/${gradientSprite.replace(/\.png$/, ".webp")})`
     glyphStyle.backgroundRepeat = "repeat"
     glyphStyle.backgroundSize = "128px 128px"
   }
