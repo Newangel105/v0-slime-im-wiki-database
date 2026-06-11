@@ -726,7 +726,7 @@ export function PrefabTree({
     // Host sprite URL — used only when isSpriteClip applies. Pull from
     // image/rawImage component if present; without a host sprite the mask
     // can't be authored, so we fall back to rect-clip behaviour.
-    const hostSprite = (n.comp.image?.img || n.comp.rawImage?.img) ?? null
+    const hostSprite = (n.comp.image?.img || n.comp.rawImage?.img)?.replace(/\.png$/, ".webp") ?? null
     // Sprite mask: applied either because the node has a Unity Mask /
     // SpriteMask component (`isSpriteClip`), OR because one of its
     // children uses a Mask-type material (`baseMask` etc.) which clips
@@ -794,7 +794,7 @@ export function PrefabTree({
       // prefab-default pastel rainbow.
       const swap = swapByPath.get(n.path)
       const swapTextureFile = (swap && swap.attribute === "m_Texture") ? `${swap.target_file_hash}.png` : null
-      const riImg = swapTextureFile ?? ri.img
+      const riImg = (swapTextureFile ?? ri.img)?.replace(/\.png$/, ".webp")
       // Unity RawImage multiplies the texture by m_Color (RGBA). Respect
       // alpha first — many prefab layers (bgPattern, bgPatternAdd, the
       // ColorGradient overlays) ship with alpha=0 and are faded in by
@@ -909,7 +909,7 @@ export function PrefabTree({
     // so e.g. SSRUltimate's base shows baseCharacterAppearBig and not the
     // prefab default.
     const swap = swapByPath.get(n.path)
-    const imgFile = swap && swap.attribute === "m_Sprite" ? `${swap.target_file_hash}.png` : im.img
+    const imgFile = (swap && swap.attribute === "m_Sprite" ? `${swap.target_file_hash}.png` : im.img)?.replace(/\.png$/, ".webp")
     const url = `${SUMMON_UI_BASE}/${imgFile}`
     const bd = im.border as [number, number, number, number]
     const sliced = im.imgType === 1 && bd && bd.some((v) => v > 0)
