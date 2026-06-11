@@ -766,6 +766,13 @@
       "mp4": "/Movie/SpecialSkill/FreySchool2025_Battle_SpecialSkill.mp4"
     },
     {
+      "variant": "FreySwimsuit2026",
+      "group": "SpecialSkill",
+      "kind": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/FreySwimsuit2026_Battle_SpecialSkill.mp4"
+    },
+    {
       "variant": "FreyXmas2025",
       "kind": "SpecialSkill",
       "group": "SpecialSkill",
