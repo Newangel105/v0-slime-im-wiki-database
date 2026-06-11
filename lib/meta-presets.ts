@@ -602,6 +602,7 @@ export const META_PRESETS: MetaPreset[] = [
     battle1: "Midsummer Purple Ogre",
     battle2: "Shoreline Scales",
     battle3: "Sunlit Adventurer",
+    battle4: "Tide's Wings",
     mini1: "Summer's Grace",
   },
 ]
