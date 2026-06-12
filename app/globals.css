@@ -173,7 +173,7 @@ html.dark body {
   .poster-home {
     height: calc(100dvh - 86px);
     background:
-      url("/assets/home/beach-poster-bg.png") center / cover no-repeat,
+      url("/assets/home/beach-poster-bg.webp") center / cover no-repeat,
       #f3e5c8;
   }
 
@@ -601,7 +601,7 @@ html.dark body {
     height: calc(100dvh - 86px);
     background:
       linear-gradient(90deg, rgba(246, 231, 198, 0.32), rgba(246, 231, 198, 0.18)),
-      url("/assets/home/beach-poster-bg.png") center / cover no-repeat,
+      url("/assets/home/beach-poster-bg.webp") center / cover no-repeat,
       #f3e5c8;
   }
 
@@ -773,7 +773,7 @@ html.dark body {
     height: calc(100dvh - 86px);
     background:
       linear-gradient(90deg, rgba(246, 231, 198, 0.32), rgba(246, 231, 198, 0.18)),
-      url("/assets/home/beach-poster-bg.png") center / cover no-repeat,
+      url("/assets/home/beach-poster-bg.webp") center / cover no-repeat,
       #f3e5c8;
   }
 

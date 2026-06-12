@@ -5,7 +5,7 @@ body {
 
 body:has(main.poster-home) {
   background:
-    url("/assets/home/beach-poster-bg.png") center top / cover no-repeat fixed,
+    url("/assets/home/beach-poster-bg.webp") center top / cover no-repeat fixed,
     #f3e5c8;
 }
 
@@ -196,7 +196,7 @@ body .poster-frame-stage {
   border-radius: 9px;
   background:
     linear-gradient(90deg, rgba(5, 18, 43, 0.62), rgba(5, 18, 43, 0.02) 52%, rgba(5, 18, 43, 0.46)),
-    url("/assets/home/frame-wave-bg.png") center / cover no-repeat;
+    url("/assets/home/frame-wave-bg.webp") center / cover no-repeat;
 }
 
 body .poster-frame-border {
@@ -1462,7 +1462,7 @@ body .poster-frame-border {
   height: 100%;
   border-style: solid;
   border-width: var(--poster-frame-border-y) var(--poster-frame-border-x);
-  border-image-source: url("/assets/home/ocean-frame-ai.png");
+  border-image-source: url("/assets/home/ocean-frame-ai.webp");
   border-image-slice: 170 170 170 170 fill;
   border-image-repeat: stretch;
   border-image-width: 1;
@@ -1545,39 +1545,39 @@ body .poster-frame-slice {
 }
 
 body .poster-frame-slice-tl {
-  background-image: url("/assets/home/ocean-frame-ai-9/top-left.png");
+  background-image: url("/assets/home/ocean-frame-ai-9/top-left.webp");
 }
 
 body .poster-frame-slice-t {
-  background-image: url("/assets/home/ocean-frame-ai-9/top.png");
+  background-image: url("/assets/home/ocean-frame-ai-9/top.webp");
 }
 
 body .poster-frame-slice-tr {
-  background-image: url("/assets/home/ocean-frame-ai-9/top-right.png");
+  background-image: url("/assets/home/ocean-frame-ai-9/top-right.webp");
 }
 
 body .poster-frame-slice-l {
-  background-image: url("/assets/home/ocean-frame-ai-9/left.png");
+  background-image: url("/assets/home/ocean-frame-ai-9/left.webp");
 }
 
 body .poster-frame-slice-c {
-  background-image: url("/assets/home/ocean-frame-ai-9/center.png");
+  background-image: url("/assets/home/ocean-frame-ai-9/center.webp");
 }
 
 body .poster-frame-slice-r {
-  background-image: url("/assets/home/ocean-frame-ai-9/right.png");
+  background-image: url("/assets/home/ocean-frame-ai-9/right.webp");
 }
 
 body .poster-frame-slice-bl {
-  background-image: url("/assets/home/ocean-frame-ai-9/bottom-left.png");
+  background-image: url("/assets/home/ocean-frame-ai-9/bottom-left.webp");
 }
 
 body .poster-frame-slice-b {
-  background-image: url("/assets/home/ocean-frame-ai-9/bottom.png");
+  background-image: url("/assets/home/ocean-frame-ai-9/bottom.webp");
 }
 
 body .poster-frame-slice-br {
-  background-image: url("/assets/home/ocean-frame-ai-9/bottom-right.png");
+  background-image: url("/assets/home/ocean-frame-ai-9/bottom-right.webp");
 }
 
 @media (min-width: 1800px) and (min-height: 960px) {
@@ -2173,7 +2173,7 @@ body .poster-frame::before {
   border-radius: clamp(8px, 1.05cqw, 16px);
   background:
     linear-gradient(90deg, rgba(5, 18, 43, 0.62), rgba(5, 18, 43, 0.02) 52%, rgba(5, 18, 43, 0.46)),
-    url("/assets/home/frame-wave-bg.png") center / cover no-repeat;
+    url("/assets/home/frame-wave-bg.webp") center / cover no-repeat;
   box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.34);
   pointer-events: none;
 }
@@ -2317,7 +2317,7 @@ body:not(:has(main.poster-home)) {
   --slime-gold: #d6a045;
   --slime-card: rgba(5, 22, 54, 0.88);
   --slime-card-strong: rgba(7, 29, 71, 0.93);
-  --slime-page-ornament: url("/assets/site/ornament-tools.png");
+  --slime-page-ornament: url("/assets/site/ornament-tools.webp");
   --site-bg: 5 18 43;
   --site-button: 7 29 71;
   --site-button-hover: 10 50 86;
@@ -2326,15 +2326,15 @@ body:not(:has(main.poster-home)) {
 }
 
 body:has(.slime-page-characters) {
-  --slime-page-ornament: url("/assets/site/ornament-characters.png");
+  --slime-page-ornament: url("/assets/site/ornament-characters.webp");
 }
 
 body:has(.slime-page-summon) {
-  --slime-page-ornament: url("/assets/site/ornament-summon.png");
+  --slime-page-ornament: url("/assets/site/ornament-summon.webp");
 }
 
 body:has(.slime-page-guides) {
-  --slime-page-ornament: url("/assets/site/ornament-guides.png");
+  --slime-page-ornament: url("/assets/site/ornament-guides.webp");
 }
 
 body:not(:has(main.poster-home)) .slime-site-nav {
@@ -2403,7 +2403,7 @@ body:not(:has(main.poster-home)) .site-page {
 body:not(:has(main.poster-home)) .site-page::before {
   background:
     linear-gradient(90deg, rgba(246, 231, 198, 0.18), rgba(246, 231, 198, 0.08)),
-    url("/assets/home/beach-poster-bg.png") center top / cover no-repeat;
+    url("/assets/home/beach-poster-bg.webp") center top / cover no-repeat;
 }
 
 body:not(:has(main.poster-home)) .site-page::after {
@@ -3617,7 +3617,7 @@ body:not(:has(main.poster-home)):has(.slime-page-characters) .site-page.slime-pa
      pale aqua    #C7DDE8   → ALL text. */
 :root[data-slime-theme="day"] {
   --slime-page-background:
-    url("/assets/home/beach-poster-bg.png") center top / cover no-repeat fixed,
+    url("/assets/home/beach-poster-bg.webp") center top / cover no-repeat fixed,
     #0e2a4a;
   --slime-page-text: #c7dde8;
   --slime-page-text-strong: #e8f3f9;
@@ -3663,7 +3663,7 @@ body:not(:has(main.poster-home)):has(.slime-page-characters) .site-page.slime-pa
 :root[data-slime-theme="night"] {
   color-scheme: dark;
   --slime-page-background:
-    url("/assets/site/ocean-celestial-night-bg-v2.png") center top / cover no-repeat fixed,
+    url("/assets/site/ocean-celestial-night-bg-v2.webp") center top / cover no-repeat fixed,
     #020814;
   --slime-page-text: #c8e4f0;
   --slime-page-text-strong: #e8f6ff;
@@ -3883,7 +3883,7 @@ html[data-slime-theme] .poster-action-blue {
 html[data-slime-theme="night"] .poster-frame::before {
   background:
     linear-gradient(90deg, rgba(0, 7, 16, 0.42), rgba(0, 12, 25, 0.08) 52%, rgba(0, 7, 16, 0.34)),
-    url("/assets/home/frame-celestial-night-bg.png") center / cover no-repeat !important;
+    url("/assets/home/frame-celestial-night-bg.webp") center / cover no-repeat !important;
   box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.42), inset 0 0 60px rgba(34, 216, 255, 0.12) !important;
 }
 
@@ -4191,7 +4191,7 @@ html[data-slime-theme="night"] .poster-frame {
 
 html[data-slime-theme="night"] .poster-frame-border {
   display: block !important;
-  background: url("/assets/home/ocean-frame-celestial.png") center / 100% 100% no-repeat !important;
+  background: url("/assets/home/ocean-frame-celestial.webp") center / 100% 100% no-repeat !important;
 }
 
 html[data-slime-theme="night"] .poster-frame-slice {
@@ -4235,7 +4235,7 @@ html[data-slime-theme] .poster-stream-preview .poster-stream-copy > span {
 /* Final night pass: full v2 beach art, no darken overlays. */
 :root[data-slime-theme="night"] {
   --slime-page-background:
-    url("/assets/site/ocean-celestial-night-bg-v2.png") center top / cover no-repeat fixed,
+    url("/assets/site/ocean-celestial-night-bg-v2.webp") center top / cover no-repeat fixed,
     #020814;
   --slime-page-panel-strong:
     linear-gradient(135deg, rgba(2, 13, 29, 0.95), rgba(3, 26, 49, 0.88));
@@ -4739,7 +4739,7 @@ html[data-slime-theme] .orb-converter-table-shell img {
   --chart-4: 205 47% 48%;
   --chart-5: 116 22% 53%;
 
-  --archive-bg-image: url("/assets/site/tempest-summer-archive-bg.png");
+  --archive-bg-image: url("/assets/site/tempest-summer-archive-bg.webp");
   --archive-ink: #eadcbc;
   --archive-ink-strong: #f3e7c9;
   --archive-ink-muted: rgba(218, 198, 156, 0.78);
@@ -5643,8 +5643,8 @@ html[data-slime-theme="archive"] .poster-timer-row time {
 /* Physical object pass: wood boards, paper posts, and sea/sand highlights.
    This intentionally sits after the first archive skin. */
 :root[data-slime-theme="archive"] {
-  --archive-wood-image: url("/assets/site/tempest-wood-planks.png");
-  --archive-paper-image: url("/assets/site/tempest-parchment-texture.png");
+  --archive-wood-image: url("/assets/site/tempest-wood-planks.webp");
+  --archive-paper-image: url("/assets/site/tempest-parchment-texture.webp");
   --archive-sand: #d7bd8a;
   --archive-sand-soft: #caa86f;
   --archive-sand-shadow: #8e6b3e;
@@ -6676,13 +6676,13 @@ html[data-slime-theme="archive"] .character-filter-popover label:has([data-state
 
 /* Characters beach asset wiring: use transparent AI assets, not sand-backed UI. */
 :root[data-slime-theme="archive"] {
-  --cb-bg: url("/assets/characters-beach/beach-desk-bg.png");
-  --cb-nav-plank: url("/assets/characters-beach/nav-plank.png");
-  --cb-board: url("/assets/characters-beach/bulletin-board.png");
-  --cb-slip: url("/assets/characters-beach/parchment-slip.png");
-  --cb-filter-map: url("/assets/characters-beach/filter-map.png");
-  --cb-photo-frame: url("/assets/characters-beach/photo-frame-window.png");
-  --cb-bio-card: url("/assets/characters-beach/bio-card.png");
+  --cb-bg: url("/assets/characters-beach/beach-desk-bg.webp");
+  --cb-nav-plank: url("/assets/characters-beach/nav-plank.webp");
+  --cb-board: url("/assets/characters-beach/bulletin-board.webp");
+  --cb-slip: url("/assets/characters-beach/parchment-slip.webp");
+  --cb-filter-map: url("/assets/characters-beach/filter-map.webp");
+  --cb-photo-frame: url("/assets/characters-beach/photo-frame-window.webp");
+  --cb-bio-card: url("/assets/characters-beach/bio-card.webp");
 }
 
 html[data-slime-theme="archive"] .characters-beach-scene::before {

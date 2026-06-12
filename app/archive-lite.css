@@ -1,73 +1,73 @@
 :root[data-slime-theme="archive"] {
   color-scheme: dark;
-  --cb-bg: url("/assets/characters-beach/beach-page-bg.png");
-  --cb-bg-night: url("/assets/characters-beach/generated/night-safe-beach-bg-v1.png");
-  --cb-nav-plank: url("/assets/characters-beach/soft-nav-plank-cropped.png");
-  --cb-nav-note: url("/assets/characters-beach/nav-note-pinned-cropped.png");
-  --cb-brand-note: url("/assets/characters-beach/nav-brand-note-cropped.png");
-  --cb-search-note: url("/assets/characters-beach/nav-search-note-cropped.png");
-  --cb-title-note: url("/assets/characters-beach/characters-title-poster-cropped.png");
-  --cb-search-paper: url("/assets/characters-beach/characters-search-note-cropped.png");
-  --cb-slip: url("/assets/characters-beach/parchment-slip-cropped.png");
-  --cb-button-slip: url("/assets/characters-beach/characters-filter-slip-cropped.png");
-  --cb-controls-plank: url("/assets/characters-beach/simple-controls-plank-cropped.png");
-  --cb-content-plank: url("/assets/characters-beach/simple-content-plank-cropped.png");
-  --cb-filter-board: url("/assets/characters-beach/soft-filter-board-cropped.png");
-  --cb-gallery-board: url("/assets/characters-beach/soft-gallery-board-cropped.png");
-  --cb-gallery-corner-tl: url("/assets/characters-beach/slices/soft-gallery-corner-tl.png");
-  --cb-gallery-corner-tr: url("/assets/characters-beach/slices/soft-gallery-corner-tr.png");
-  --cb-gallery-corner-bl: url("/assets/characters-beach/slices/soft-gallery-corner-bl.png");
-  --cb-gallery-corner-br: url("/assets/characters-beach/slices/soft-gallery-corner-br.png");
-  --cb-gallery-edge-top: url("/assets/characters-beach/slices/soft-gallery-edge-top.png");
-  --cb-gallery-edge-bottom: url("/assets/characters-beach/slices/soft-gallery-edge-bottom.png");
-  --cb-gallery-edge-left: url("/assets/characters-beach/slices/soft-gallery-edge-left.png");
-  --cb-gallery-edge-right: url("/assets/characters-beach/slices/soft-gallery-edge-right.png");
-  --cb-gallery-paper-tile: url("/assets/characters-beach/slices/soft-gallery-paper-tile.png");
-  --cb-gallery-v2-corner-tl: url("/assets/characters-beach/slices/soft-gallery-v2-corner-tl.png");
-  --cb-gallery-v2-corner-tr: url("/assets/characters-beach/slices/soft-gallery-v2-corner-tr.png");
-  --cb-gallery-v2-corner-bl: url("/assets/characters-beach/slices/soft-gallery-v2-corner-bl.png");
-  --cb-gallery-v2-corner-br: url("/assets/characters-beach/slices/soft-gallery-v2-corner-br.png");
-  --cb-gallery-v2-edge-top: url("/assets/characters-beach/slices/soft-gallery-v2-edge-top.png");
-  --cb-gallery-v2-edge-bottom: url("/assets/characters-beach/slices/soft-gallery-v2-edge-bottom.png");
-  --cb-gallery-v2-edge-left: url("/assets/characters-beach/slices/soft-gallery-v2-edge-left.png");
-  --cb-gallery-v2-edge-right: url("/assets/characters-beach/slices/soft-gallery-v2-edge-right.png");
-  --cb-gallery-v2-paper-tile: url("/assets/characters-beach/slices/soft-gallery-v2-paper-tile.png");
-  --cb-gallery-3-top: url("/assets/characters-beach/slices/soft-gallery-3-top.png");
-  --cb-gallery-3-mid: url("/assets/characters-beach/slices/soft-gallery-3-mid.png");
-  --cb-gallery-3-bottom: url("/assets/characters-beach/slices/soft-gallery-3-bottom.png");
-  --cb-gallery-expandable-top: url("/assets/characters-beach/generated/gallery-expandable-3slice-top.png");
-  --cb-gallery-expandable-mid: url("/assets/characters-beach/generated/gallery-expandable-3slice-mid.png");
-  --cb-gallery-expandable-bottom: url("/assets/characters-beach/generated/gallery-expandable-3slice-bottom.png");
-  --cb-filter-expandable-top: url("/assets/characters-beach/generated/filter-expandable-3slice-top.png");
-  --cb-filter-expandable-mid: url("/assets/characters-beach/generated/filter-expandable-3slice-mid.png");
-  --cb-filter-expandable-bottom: url("/assets/characters-beach/generated/filter-expandable-3slice-bottom.png");
-  --cb-night-nav: url("/assets/characters-beach/generated/summer-night-nav.png");
-  --cb-night-title: url("/assets/characters-beach/generated/summer-night-title.png");
-  --cb-night-filter-frame: url("/assets/characters-beach/generated/summer-night-filter-frame.png");
-  --cb-night-gallery-frame: url("/assets/characters-beach/generated/summer-night-gallery-frame.png");
-  --cb-summer-filter-corner-tl: url("/assets/characters-beach/generated/slices/summer-filter-corner-tl.png");
-  --cb-summer-filter-corner-tr: url("/assets/characters-beach/generated/slices/summer-filter-corner-tr.png");
-  --cb-summer-filter-corner-bl: url("/assets/characters-beach/generated/slices/summer-filter-corner-bl.png");
-  --cb-summer-filter-corner-br: url("/assets/characters-beach/generated/slices/summer-filter-corner-br.png");
-  --cb-summer-filter-edge-top: url("/assets/characters-beach/generated/slices/summer-filter-edge-top.png");
-  --cb-summer-filter-edge-bottom: url("/assets/characters-beach/generated/slices/summer-filter-edge-bottom.png");
-  --cb-summer-filter-edge-left: url("/assets/characters-beach/generated/slices/summer-filter-edge-left.png");
-  --cb-summer-filter-edge-right: url("/assets/characters-beach/generated/slices/summer-filter-edge-right.png");
-  --cb-summer-gallery-corner-tl: url("/assets/characters-beach/generated/slices/summer-gallery-corner-tl.png");
-  --cb-summer-gallery-corner-tr: url("/assets/characters-beach/generated/slices/summer-gallery-corner-tr.png");
-  --cb-summer-gallery-corner-bl: url("/assets/characters-beach/generated/slices/summer-gallery-corner-bl.png");
-  --cb-summer-gallery-corner-br: url("/assets/characters-beach/generated/slices/summer-gallery-corner-br.png");
-  --cb-summer-gallery-edge-top: url("/assets/characters-beach/generated/slices/summer-gallery-edge-top.png");
-  --cb-summer-gallery-edge-bottom: url("/assets/characters-beach/generated/slices/summer-gallery-edge-bottom.png");
-  --cb-summer-gallery-edge-left: url("/assets/characters-beach/generated/slices/summer-gallery-edge-left.png");
-  --cb-summer-gallery-edge-right: url("/assets/characters-beach/generated/slices/summer-gallery-edge-right.png");
-  --cb-summer-filter-3-top: url("/assets/characters-beach/generated/slices/summer-filter-3slice-top.png");
-  --cb-summer-filter-3-mid: url("/assets/characters-beach/generated/slices/summer-filter-3slice-mid.png");
-  --cb-summer-filter-3-bottom: url("/assets/characters-beach/generated/slices/summer-filter-3slice-bottom.png");
-  --cb-summer-gallery-3-top: url("/assets/characters-beach/generated/slices/summer-gallery-3slice-top.png");
-  --cb-summer-gallery-3-mid: url("/assets/characters-beach/generated/slices/summer-gallery-3slice-mid.png");
-  --cb-summer-gallery-3-bottom: url("/assets/characters-beach/generated/slices/summer-gallery-3slice-bottom.png");
-  --cb-detail-card: url("/assets/characters-beach/soft-detail-card-cropped.png");
+  --cb-bg: url("/assets/characters-beach/beach-page-bg.webp");
+  --cb-bg-night: url("/assets/characters-beach/generated/night-safe-beach-bg-v1.webp");
+  --cb-nav-plank: url("/assets/characters-beach/soft-nav-plank-cropped.webp");
+  --cb-nav-note: url("/assets/characters-beach/nav-note-pinned-cropped.webp");
+  --cb-brand-note: url("/assets/characters-beach/nav-brand-note-cropped.webp");
+  --cb-search-note: url("/assets/characters-beach/nav-search-note-cropped.webp");
+  --cb-title-note: url("/assets/characters-beach/characters-title-poster-cropped.webp");
+  --cb-search-paper: url("/assets/characters-beach/characters-search-note-cropped.webp");
+  --cb-slip: url("/assets/characters-beach/parchment-slip-cropped.webp");
+  --cb-button-slip: url("/assets/characters-beach/characters-filter-slip-cropped.webp");
+  --cb-controls-plank: url("/assets/characters-beach/simple-controls-plank-cropped.webp");
+  --cb-content-plank: url("/assets/characters-beach/simple-content-plank-cropped.webp");
+  --cb-filter-board: url("/assets/characters-beach/soft-filter-board-cropped.webp");
+  --cb-gallery-board: url("/assets/characters-beach/soft-gallery-board-cropped.webp");
+  --cb-gallery-corner-tl: url("/assets/characters-beach/slices/soft-gallery-corner-tl.webp");
+  --cb-gallery-corner-tr: url("/assets/characters-beach/slices/soft-gallery-corner-tr.webp");
+  --cb-gallery-corner-bl: url("/assets/characters-beach/slices/soft-gallery-corner-bl.webp");
+  --cb-gallery-corner-br: url("/assets/characters-beach/slices/soft-gallery-corner-br.webp");
+  --cb-gallery-edge-top: url("/assets/characters-beach/slices/soft-gallery-edge-top.webp");
+  --cb-gallery-edge-bottom: url("/assets/characters-beach/slices/soft-gallery-edge-bottom.webp");
+  --cb-gallery-edge-left: url("/assets/characters-beach/slices/soft-gallery-edge-left.webp");
+  --cb-gallery-edge-right: url("/assets/characters-beach/slices/soft-gallery-edge-right.webp");
+  --cb-gallery-paper-tile: url("/assets/characters-beach/slices/soft-gallery-paper-tile.webp");
+  --cb-gallery-v2-corner-tl: url("/assets/characters-beach/slices/soft-gallery-v2-corner-tl.webp");
+  --cb-gallery-v2-corner-tr: url("/assets/characters-beach/slices/soft-gallery-v2-corner-tr.webp");
+  --cb-gallery-v2-corner-bl: url("/assets/characters-beach/slices/soft-gallery-v2-corner-bl.webp");
+  --cb-gallery-v2-corner-br: url("/assets/characters-beach/slices/soft-gallery-v2-corner-br.webp");
+  --cb-gallery-v2-edge-top: url("/assets/characters-beach/slices/soft-gallery-v2-edge-top.webp");
+  --cb-gallery-v2-edge-bottom: url("/assets/characters-beach/slices/soft-gallery-v2-edge-bottom.webp");
+  --cb-gallery-v2-edge-left: url("/assets/characters-beach/slices/soft-gallery-v2-edge-left.webp");
+  --cb-gallery-v2-edge-right: url("/assets/characters-beach/slices/soft-gallery-v2-edge-right.webp");
+  --cb-gallery-v2-paper-tile: url("/assets/characters-beach/slices/soft-gallery-v2-paper-tile.webp");
+  --cb-gallery-3-top: url("/assets/characters-beach/slices/soft-gallery-3-top.webp");
+  --cb-gallery-3-mid: url("/assets/characters-beach/slices/soft-gallery-3-mid.webp");
+  --cb-gallery-3-bottom: url("/assets/characters-beach/slices/soft-gallery-3-bottom.webp");
+  --cb-gallery-expandable-top: url("/assets/characters-beach/generated/gallery-expandable-3slice-top.webp");
+  --cb-gallery-expandable-mid: url("/assets/characters-beach/generated/gallery-expandable-3slice-mid.webp");
+  --cb-gallery-expandable-bottom: url("/assets/characters-beach/generated/gallery-expandable-3slice-bottom.webp");
+  --cb-filter-expandable-top: url("/assets/characters-beach/generated/filter-expandable-3slice-top.webp");
+  --cb-filter-expandable-mid: url("/assets/characters-beach/generated/filter-expandable-3slice-mid.webp");
+  --cb-filter-expandable-bottom: url("/assets/characters-beach/generated/filter-expandable-3slice-bottom.webp");
+  --cb-night-nav: url("/assets/characters-beach/generated/summer-night-nav.webp");
+  --cb-night-title: url("/assets/characters-beach/generated/summer-night-title.webp");
+  --cb-night-filter-frame: url("/assets/characters-beach/generated/summer-night-filter-frame.webp");
+  --cb-night-gallery-frame: url("/assets/characters-beach/generated/summer-night-gallery-frame.webp");
+  --cb-summer-filter-corner-tl: url("/assets/characters-beach/generated/slices/summer-filter-corner-tl.webp");
+  --cb-summer-filter-corner-tr: url("/assets/characters-beach/generated/slices/summer-filter-corner-tr.webp");
+  --cb-summer-filter-corner-bl: url("/assets/characters-beach/generated/slices/summer-filter-corner-bl.webp");
+  --cb-summer-filter-corner-br: url("/assets/characters-beach/generated/slices/summer-filter-corner-br.webp");
+  --cb-summer-filter-edge-top: url("/assets/characters-beach/generated/slices/summer-filter-edge-top.webp");
+  --cb-summer-filter-edge-bottom: url("/assets/characters-beach/generated/slices/summer-filter-edge-bottom.webp");
+  --cb-summer-filter-edge-left: url("/assets/characters-beach/generated/slices/summer-filter-edge-left.webp");
+  --cb-summer-filter-edge-right: url("/assets/characters-beach/generated/slices/summer-filter-edge-right.webp");
+  --cb-summer-gallery-corner-tl: url("/assets/characters-beach/generated/slices/summer-gallery-corner-tl.webp");
+  --cb-summer-gallery-corner-tr: url("/assets/characters-beach/generated/slices/summer-gallery-corner-tr.webp");
+  --cb-summer-gallery-corner-bl: url("/assets/characters-beach/generated/slices/summer-gallery-corner-bl.webp");
+  --cb-summer-gallery-corner-br: url("/assets/characters-beach/generated/slices/summer-gallery-corner-br.webp");
+  --cb-summer-gallery-edge-top: url("/assets/characters-beach/generated/slices/summer-gallery-edge-top.webp");
+  --cb-summer-gallery-edge-bottom: url("/assets/characters-beach/generated/slices/summer-gallery-edge-bottom.webp");
+  --cb-summer-gallery-edge-left: url("/assets/characters-beach/generated/slices/summer-gallery-edge-left.webp");
+  --cb-summer-gallery-edge-right: url("/assets/characters-beach/generated/slices/summer-gallery-edge-right.webp");
+  --cb-summer-filter-3-top: url("/assets/characters-beach/generated/slices/summer-filter-3slice-top.webp");
+  --cb-summer-filter-3-mid: url("/assets/characters-beach/generated/slices/summer-filter-3slice-mid.webp");
+  --cb-summer-filter-3-bottom: url("/assets/characters-beach/generated/slices/summer-filter-3slice-bottom.webp");
+  --cb-summer-gallery-3-top: url("/assets/characters-beach/generated/slices/summer-gallery-3slice-top.webp");
+  --cb-summer-gallery-3-mid: url("/assets/characters-beach/generated/slices/summer-gallery-3slice-mid.webp");
+  --cb-summer-gallery-3-bottom: url("/assets/characters-beach/generated/slices/summer-gallery-3slice-bottom.webp");
+  --cb-detail-card: url("/assets/characters-beach/soft-detail-card-cropped.webp");
   --archive-ink: #35220f;
   --archive-muted: rgba(249, 224, 174, 0.72);
   --archive-teal: #31d6d2;
@@ -934,14 +934,14 @@ html[data-slime-theme="archive"] .character-bio-poster .mt-3 {
 
 /* Summer wiki v2: generated blank assets with CSS-placed content. */
 :root[data-slime-theme="archive"] {
-  --summer-page-bg: url("/assets/summer-wiki-ai/background/summer-day-beach-bg.png");
-  --summer-nav-left: url("/assets/summer-wiki-ai/slices/top-nav-shell/left.png");
-  --summer-nav-mid: url("/assets/summer-wiki-ai/slices/top-nav-shell/mid.png");
-  --summer-nav-right: url("/assets/summer-wiki-ai/slices/top-nav-shell/right.png");
-  --summer-title-sign: url("/assets/summer-wiki-ai/cropped/characters-title-sign.png");
-  --summer-search-panel: url("/assets/summer-wiki-ai/cropped/search-sort-panel.png");
-  --summer-filter-panel: url("/assets/summer-wiki-ai/cropped/filter-water-panel.png");
-  --summer-gallery-panel: url("/assets/summer-wiki-ai/cropped/gallery-desk-panel.png");
+  --summer-page-bg: url("/assets/summer-wiki-ai/background/summer-day-beach-bg.webp");
+  --summer-nav-left: url("/assets/summer-wiki-ai/slices/top-nav-shell/left.webp");
+  --summer-nav-mid: url("/assets/summer-wiki-ai/slices/top-nav-shell/mid.webp");
+  --summer-nav-right: url("/assets/summer-wiki-ai/slices/top-nav-shell/right.webp");
+  --summer-title-sign: url("/assets/summer-wiki-ai/cropped/characters-title-sign.webp");
+  --summer-search-panel: url("/assets/summer-wiki-ai/cropped/search-sort-panel.webp");
+  --summer-filter-panel: url("/assets/summer-wiki-ai/cropped/filter-water-panel.webp");
+  --summer-gallery-panel: url("/assets/summer-wiki-ai/cropped/gallery-desk-panel.webp");
   --summer-ui-ink: #14355f;
   --summer-ui-ink-strong: #072a51;
   --summer-ui-muted: rgba(15, 55, 96, 0.72);
@@ -1890,7 +1890,7 @@ html[data-slime-theme="archive"] .character-bio-poster .character-card-forces sp
 html[data-slime-theme="archive"] .slime-site-nav::before {
   width: min(1220px, calc(100vw - 88px)) !important;
   height: 76px !important;
-  background: url("/assets/summer-wiki-ai/cropped/top-nav-shell.png") center / 100% 100% no-repeat !important;
+  background: url("/assets/summer-wiki-ai/cropped/top-nav-shell.webp") center / 100% 100% no-repeat !important;
 }
 
 html[data-slime-theme="archive"] .slime-site-nav-inner {
@@ -1916,7 +1916,7 @@ html[data-slime-theme="archive"] .slime-tools-menu > button {
 html[data-slime-theme="archive"] .characters-gallery-board::before {
   border: 78px solid transparent !important;
   border-image: var(--summer-gallery-panel) 190 / 78px / 0 stretch !important;
-  background: url("/assets/summer-wiki-ai/slices/gallery-desk-panel/center-repeat.png") left top / 256px 256px repeat !important;
+  background: url("/assets/summer-wiki-ai/slices/gallery-desk-panel/center-repeat.webp") left top / 256px 256px repeat !important;
   background-clip: padding-box !important;
 }
 
@@ -1987,7 +1987,7 @@ html[data-slime-theme="archive"] .slime-site-nav::before {
   width: min(1200px, calc(100vw - 96px)) !important;
   height: auto !important;
   aspect-ratio: 2077 / 199 !important;
-  background: url("/assets/summer-wiki-ai/cropped/top-nav-shell.png") center / 100% 100% no-repeat !important;
+  background: url("/assets/summer-wiki-ai/cropped/top-nav-shell.webp") center / 100% 100% no-repeat !important;
   filter: drop-shadow(0 10px 16px rgba(18, 56, 92, 0.24)) !important;
 }
 
@@ -2097,9 +2097,9 @@ html[data-slime-theme="archive"] .characters-gallery-board::before {
   border-image: none !important;
   border-radius: 0 !important;
   background-image:
-    url("/assets/summer-wiki-ai/slices/gallery-desk-panel-clean-vertical/top.png"),
-    url("/assets/summer-wiki-ai/slices/gallery-desk-panel-clean-vertical/bottom.png"),
-    url("/assets/summer-wiki-ai/slices/gallery-desk-panel-clean-vertical/mid.png") !important;
+    url("/assets/summer-wiki-ai/slices/gallery-desk-panel-clean-vertical/top.webp"),
+    url("/assets/summer-wiki-ai/slices/gallery-desk-panel-clean-vertical/bottom.webp"),
+    url("/assets/summer-wiki-ai/slices/gallery-desk-panel-clean-vertical/mid.webp") !important;
   background-position:
     center top,
     center bottom,
@@ -2295,11 +2295,11 @@ html[data-slime-theme="archive"] .character-bio-poster .character-card-forces im
 
 /* Character page repair pass: slim clean assets and internal virtualization viewport. */
 :root[data-slime-theme="archive"] {
-  --summer-nav-slim-left: url("/assets/summer-wiki-ai/slices/top-nav-shell-slim/left.png");
-  --summer-nav-slim-mid: url("/assets/summer-wiki-ai/slices/top-nav-shell-slim/mid.png");
-  --summer-nav-slim-right: url("/assets/summer-wiki-ai/slices/top-nav-shell-slim/right.png");
-  --summer-gallery-clean-panel: url("/assets/summer-wiki-ai/cropped/gallery-board-clean.png");
-  --summer-gallery-clean-center: url("/assets/summer-wiki-ai/slices/gallery-board-clean/center.png");
+  --summer-nav-slim-left: url("/assets/summer-wiki-ai/slices/top-nav-shell-slim/left.webp");
+  --summer-nav-slim-mid: url("/assets/summer-wiki-ai/slices/top-nav-shell-slim/mid.webp");
+  --summer-nav-slim-right: url("/assets/summer-wiki-ai/slices/top-nav-shell-slim/right.webp");
+  --summer-gallery-clean-panel: url("/assets/summer-wiki-ai/cropped/gallery-board-clean.webp");
+  --summer-gallery-clean-center: url("/assets/summer-wiki-ai/slices/gallery-board-clean/center.webp");
 }
 
 html[data-slime-theme="archive"] .slime-site-nav {
@@ -2547,10 +2547,10 @@ html[data-slime-theme="archive"] .character-bio-poster .character-card-meta > sp
 
 /* Character detail page: summer dossier and live stat benchmark board. */
 :root[data-slime-theme="archive"] {
-  --summer-detail-dossier: url("/assets/summer-wiki-ai/cropped/character-detail-dossier-v2.png");
-  --summer-detail-row: url("/assets/summer-wiki-ai/cropped/character-detail-row-v2.png");
-  --summer-detail-art-frame: url("/assets/summer-wiki-ai/cropped/character-detail-art-frame-v2.png");
-  --summer-detail-stat-board: url("/assets/summer-wiki-ai/cropped/character-detail-stat-board-v2.png");
+  --summer-detail-dossier: url("/assets/summer-wiki-ai/cropped/character-detail-dossier-v2.webp");
+  --summer-detail-row: url("/assets/summer-wiki-ai/cropped/character-detail-row-v2.webp");
+  --summer-detail-art-frame: url("/assets/summer-wiki-ai/cropped/character-detail-art-frame-v2.webp");
+  --summer-detail-stat-board: url("/assets/summer-wiki-ai/cropped/character-detail-stat-board-v2.webp");
   --summer-detail-ink: #38210d;
   --summer-detail-muted: rgba(64, 39, 17, 0.72);
 }
@@ -3083,8 +3083,8 @@ html[data-slime-theme="archive"] .character-detail-variant-stars {
 
 /* Character detail data-first pass: keep main-branch structure, skin only the containers. */
 :root[data-slime-theme="archive"] {
-  --summer-detail-board: url("/assets/summer-wiki-ai/cropped/gallery-board-clean.png");
-  --summer-detail-art-frame: url("/assets/summer-wiki-ai/transparent/character-detail-art-frame-v5.png");
+  --summer-detail-board: url("/assets/summer-wiki-ai/cropped/gallery-board-clean.webp");
+  --summer-detail-art-frame: url("/assets/summer-wiki-ai/transparent/character-detail-art-frame-v5.webp");
   --summer-detail-ink: #2d1705;
   --summer-detail-muted: rgba(63, 38, 14, 0.72);
 }
@@ -3379,10 +3379,10 @@ html[data-slime-theme="archive"] .character-detail-page .text-muted-foreground {
 
 /* Character detail asset correction: use regenerated v4 AI-drawn surfaces. */
 :root[data-slime-theme="archive"] {
-  --summer-detail-dossier: url("/assets/summer-wiki-ai/cropped/character-detail-dossier-v4.png");
-  --summer-detail-row: url("/assets/summer-wiki-ai/cropped/character-detail-row-v4.png");
-  --summer-detail-art-frame: url("/assets/summer-wiki-ai/cropped/character-detail-art-frame-v4.png");
-  --summer-detail-stat-board: url("/assets/summer-wiki-ai/cropped/character-detail-stat-board-v4.png");
+  --summer-detail-dossier: url("/assets/summer-wiki-ai/cropped/character-detail-dossier-v4.webp");
+  --summer-detail-row: url("/assets/summer-wiki-ai/cropped/character-detail-row-v4.webp");
+  --summer-detail-art-frame: url("/assets/summer-wiki-ai/cropped/character-detail-art-frame-v4.webp");
+  --summer-detail-stat-board: url("/assets/summer-wiki-ai/cropped/character-detail-stat-board-v4.webp");
 }
 
 html[data-slime-theme="archive"] .character-detail-board::before {
@@ -3482,11 +3482,11 @@ html[data-slime-theme="archive"] .character-detail-art-frame {
 
 /* Character detail clean restart: approved gallery board + validated chroma-key assets. */
 :root[data-slime-theme="archive"] {
-  --summer-detail-board: url("/assets/summer-wiki-ai/cropped/gallery-board-clean.png");
-  --summer-detail-nameplate: url("/assets/summer-wiki-ai/transparent/character-detail-nameplate-v5.png");
-  --summer-detail-row: url("/assets/summer-wiki-ai/transparent/character-detail-row-card-v5.png");
-  --summer-detail-art-frame: url("/assets/summer-wiki-ai/transparent/character-detail-art-frame-v5.png");
-  --summer-detail-stat-board: url("/assets/summer-wiki-ai/transparent/character-detail-stat-console-v5.png");
+  --summer-detail-board: url("/assets/summer-wiki-ai/cropped/gallery-board-clean.webp");
+  --summer-detail-nameplate: url("/assets/summer-wiki-ai/transparent/character-detail-nameplate-v5.webp");
+  --summer-detail-row: url("/assets/summer-wiki-ai/transparent/character-detail-row-card-v5.webp");
+  --summer-detail-art-frame: url("/assets/summer-wiki-ai/transparent/character-detail-art-frame-v5.webp");
+  --summer-detail-stat-board: url("/assets/summer-wiki-ai/transparent/character-detail-stat-console-v5.webp");
   --summer-detail-ink: #2d1705;
   --summer-detail-muted: rgba(58, 33, 10, 0.72);
 }
@@ -3987,8 +3987,8 @@ html[data-slime-theme="archive"] .character-detail-row-card > div {
 
 /* Character detail target vision: aqua-glass page, data-driven internals. */
 :root[data-slime-theme="archive"] {
-  --summer-detail-board: url("/assets/summer-wiki-ai/cropped/filter-water-panel.png");
-  --summer-detail-nameplate: url("/assets/summer-wiki-ai/transparent/character-detail-nameplate-v5.png");
+  --summer-detail-board: url("/assets/summer-wiki-ai/cropped/filter-water-panel.webp");
+  --summer-detail-nameplate: url("/assets/summer-wiki-ai/transparent/character-detail-nameplate-v5.webp");
 }
 
 html[data-slime-theme="archive"] .character-detail-page {
@@ -4281,20 +4281,20 @@ html[data-slime-theme="archive"] .character-detail-row-card > div {
    =========================================================================== */
 
 .character-detail-summer {
-  --cds-outer-shell: url("/assets/summer-wiki-ai/transparent/character-detail-outer-shell-v6.png");
-  --cds-inner-panel: url("/assets/summer-wiki-ai/transparent/character-detail-inner-panel-v6.png");
-  --cds-nameplate: url("/assets/summer-wiki-ai/transparent/character-detail-nameplate-v6.png");
-  --cds-art-frame: url("/assets/summer-wiki-ai/transparent/character-detail-art-frame-v6.png");
-  --cds-section-ribbon: url("/assets/summer-wiki-ai/transparent/character-detail-section-ribbon-v6.png");
-  --cds-prop-flowers: url("/assets/summer-wiki-ai/transparent/character-detail-prop-flowers-v6.png");
-  --cds-prop-shells: url("/assets/summer-wiki-ai/transparent/character-detail-prop-shells-v6.png");
-  --cds-prop-bubbles: url("/assets/summer-wiki-ai/transparent/character-detail-prop-bubbles-v6.png");
+  --cds-outer-shell: url("/assets/summer-wiki-ai/transparent/character-detail-outer-shell-v6.webp");
+  --cds-inner-panel: url("/assets/summer-wiki-ai/transparent/character-detail-inner-panel-v6.webp");
+  --cds-nameplate: url("/assets/summer-wiki-ai/transparent/character-detail-nameplate-v6.webp");
+  --cds-art-frame: url("/assets/summer-wiki-ai/transparent/character-detail-art-frame-v6.webp");
+  --cds-section-ribbon: url("/assets/summer-wiki-ai/transparent/character-detail-section-ribbon-v6.webp");
+  --cds-prop-flowers: url("/assets/summer-wiki-ai/transparent/character-detail-prop-flowers-v6.webp");
+  --cds-prop-shells: url("/assets/summer-wiki-ai/transparent/character-detail-prop-shells-v6.webp");
+  --cds-prop-bubbles: url("/assets/summer-wiki-ai/transparent/character-detail-prop-bubbles-v6.webp");
 
   position: relative;
   min-height: 100vh;
   isolation: isolate;
   background:
-    url("/assets/home/beach-poster-bg.png") center top / cover no-repeat fixed,
+    url("/assets/home/beach-poster-bg.webp") center top / cover no-repeat fixed,
     linear-gradient(180deg, #87ceeb 0%, #5ab4d9 60%, #f4e1b6 100%);
 }
 
@@ -4755,7 +4755,7 @@ html[data-slime-theme="archive"] .character-detail-row-card > div {
    Uses the generated empty frame as an overlay while the real CharaCutin /
    BlessCutin image and optional CSS background remain separate layers. */
 .character-detail-summer {
-  --cds-cutin-frame: url("/assets/summer-wiki-ai/transparent/character-detail-cutin-frame-v1.png");
+  --cds-cutin-frame: url("/assets/summer-wiki-ai/transparent/character-detail-cutin-frame-v1.webp");
   --cds-ink: #08345f;
   --cds-ink-strong: #062748;
   --cds-muted: #416986;
@@ -5506,18 +5506,18 @@ html[data-slime-theme="archive"] .character-detail-row-card > div {
 
 /* Final asset-led summer pass: clean no-icon plank, stronger frame logic, calmer ocean balance. */
 .character-detail-summer {
-  --cds-outer-shell: url("/assets/summer-wiki-ai/transparent/character-detail-outer-shell-v6.png");
-  --cds-nameplate: url("/assets/summer-wiki-ai/transparent/character-detail-nameplate-v7.png");
-  --cds-cutin-frame: url("/assets/summer-wiki-ai/transparent/character-detail-cutin-frame-pearl-v1.png");
-  --cds-cutin-bg: url("/assets/summer-wiki-ai/cropped/character-detail-cutin-bg-v3.png");
-  --cds-shell-top-left: url("/assets/summer-wiki-ai/slices/character-detail-outer-shell-v6-rail/top-left.png");
-  --cds-shell-top-mid: url("/assets/summer-wiki-ai/slices/character-detail-outer-shell-v6-rail/top-mid.png");
-  --cds-shell-top-right: url("/assets/summer-wiki-ai/slices/character-detail-outer-shell-v6-rail/top-right.png");
-  --cds-shell-bottom-left: url("/assets/summer-wiki-ai/slices/character-detail-outer-shell-v6-rail/bottom-left.png");
-  --cds-shell-bottom-mid: url("/assets/summer-wiki-ai/slices/character-detail-outer-shell-v6-rail/bottom-mid.png");
-  --cds-shell-bottom-right: url("/assets/summer-wiki-ai/slices/character-detail-outer-shell-v6-rail/bottom-right.png");
-  --cds-shell-left-mid: url("/assets/summer-wiki-ai/slices/character-detail-outer-shell-v6-rail/left-mid.png");
-  --cds-shell-right-mid: url("/assets/summer-wiki-ai/slices/character-detail-outer-shell-v6-rail/right-mid.png");
+  --cds-outer-shell: url("/assets/summer-wiki-ai/transparent/character-detail-outer-shell-v6.webp");
+  --cds-nameplate: url("/assets/summer-wiki-ai/transparent/character-detail-nameplate-v7.webp");
+  --cds-cutin-frame: url("/assets/summer-wiki-ai/transparent/character-detail-cutin-frame-pearl-v1.webp");
+  --cds-cutin-bg: url("/assets/summer-wiki-ai/cropped/character-detail-cutin-bg-v3.webp");
+  --cds-shell-top-left: url("/assets/summer-wiki-ai/slices/character-detail-outer-shell-v6-rail/top-left.webp");
+  --cds-shell-top-mid: url("/assets/summer-wiki-ai/slices/character-detail-outer-shell-v6-rail/top-mid.webp");
+  --cds-shell-top-right: url("/assets/summer-wiki-ai/slices/character-detail-outer-shell-v6-rail/top-right.webp");
+  --cds-shell-bottom-left: url("/assets/summer-wiki-ai/slices/character-detail-outer-shell-v6-rail/bottom-left.webp");
+  --cds-shell-bottom-mid: url("/assets/summer-wiki-ai/slices/character-detail-outer-shell-v6-rail/bottom-mid.webp");
+  --cds-shell-bottom-right: url("/assets/summer-wiki-ai/slices/character-detail-outer-shell-v6-rail/bottom-right.webp");
+  --cds-shell-left-mid: url("/assets/summer-wiki-ai/slices/character-detail-outer-shell-v6-rail/left-mid.webp");
+  --cds-shell-right-mid: url("/assets/summer-wiki-ai/slices/character-detail-outer-shell-v6-rail/right-mid.webp");
 }
 
 .character-detail-summer-toolbar {
@@ -5728,19 +5728,19 @@ html[data-slime-theme="archive"] .character-detail-row-card > div {
 
 /* Verified character detail mount: vertical 3-slice shell + restored semantic inner UI. */
 .character-detail-summer {
-  --cds-shell-header: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v3-safe/header.png");
-  --cds-shell-middle: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v3-safe/middle.png");
-  --cds-shell-footer: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v3-safe/footer.png");
-  --cds-shell-bg-header: url("/assets/summer-wiki-ai/slices/character-detail-outer-vertical-v2-bg/header-bg.png");
-  --cds-shell-bg-middle: url("/assets/summer-wiki-ai/slices/character-detail-outer-vertical-v2-bg/middle-bg.png");
-  --cds-shell-bg-footer: url("/assets/summer-wiki-ai/slices/character-detail-outer-vertical-v2-bg/footer-bg.png");
+  --cds-shell-header: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v3-safe/header.webp");
+  --cds-shell-middle: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v3-safe/middle.webp");
+  --cds-shell-footer: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v3-safe/footer.webp");
+  --cds-shell-bg-header: url("/assets/summer-wiki-ai/slices/character-detail-outer-vertical-v2-bg/header-bg.webp");
+  --cds-shell-bg-middle: url("/assets/summer-wiki-ai/slices/character-detail-outer-vertical-v2-bg/middle-bg.webp");
+  --cds-shell-bg-footer: url("/assets/summer-wiki-ai/slices/character-detail-outer-vertical-v2-bg/footer-bg.webp");
   --cds-shell-header-height: 340px;
   --cds-shell-footer-height: 340px;
   --cds-shell-middle-height: 96px;
   --cds-shell-overlap: 0px;
   --cds-shell-bg-width: calc(100% - 14.44%);
-  --cds-section-label-combat-data: url("/assets/summer-wiki-ai/transparent/character-detail-section-label-combat-data-v2.png");
-  --cds-section-label-other-versions: url("/assets/summer-wiki-ai/transparent/character-detail-section-label-other-versions-v2.png");
+  --cds-section-label-combat-data: url("/assets/summer-wiki-ai/transparent/character-detail-section-label-combat-data-v2.webp");
+  --cds-section-label-other-versions: url("/assets/summer-wiki-ai/transparent/character-detail-section-label-other-versions-v2.webp");
 }
 
 .character-detail-summer-shell {
@@ -6198,11 +6198,11 @@ html[data-slime-theme="archive"] .character-detail-summer-panel .character-detai
 
 /* Character detail v6 correction: new AI-drawn safe shell, baked title signs, and tightened hero layout. */
 .character-detail-summer {
-  --cds-shell-header: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v6-safe/header.png");
-  --cds-shell-middle: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v6-safe/middle.png");
-  --cds-shell-footer: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v6-safe/footer.png");
-  --cds-section-label-combat-data: url("/assets/summer-wiki-ai/transparent/character-detail-section-label-combat-data-v5.png");
-  --cds-section-label-other-versions: url("/assets/summer-wiki-ai/transparent/character-detail-section-label-other-versions-v5.png");
+  --cds-shell-header: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v6-safe/header.webp");
+  --cds-shell-middle: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v6-safe/middle.webp");
+  --cds-shell-footer: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v6-safe/footer.webp");
+  --cds-section-label-combat-data: url("/assets/summer-wiki-ai/transparent/character-detail-section-label-combat-data-v5.webp");
+  --cds-section-label-other-versions: url("/assets/summer-wiki-ai/transparent/character-detail-section-label-other-versions-v5.webp");
 }
 
 .character-detail-summer-shell {
@@ -6399,9 +6399,9 @@ html[data-slime-theme="archive"] .character-detail-summer-panel .character-detai
 
 /* Character detail v9: clean straight-edged AI outer frame with separate shell background layer. */
 .character-detail-summer {
-  --cds-shell-header: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v9-clean/header.png");
-  --cds-shell-middle: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v9-clean/middle.png");
-  --cds-shell-footer: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v9-clean/footer.png");
+  --cds-shell-header: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v9-clean/header.webp");
+  --cds-shell-middle: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v9-clean/middle.webp");
+  --cds-shell-footer: url("/assets/summer-wiki-ai/slices/character-detail-outer-frame-only-v9-clean/footer.webp");
   --cds-shell-header-height: 340px;
   --cds-shell-footer-height: 340px;
   --cds-shell-middle-height: 96px;
@@ -7780,13 +7780,13 @@ html[data-slime-theme="archive"] .character-detail-summer-panel:has(.character-d
    Home page v2: AI-drawn content chrome, existing archive nav/background kept.
    ============================================================================ */
 :root[data-slime-theme="archive"] {
-  --home-ai-hero-frame: url("/assets/home/summer-ai-v2/hero-stage-bg.png");
-  --home-ai-hero-chrome: url("/assets/home/ocean-frame-ai.png");
-  --home-ai-hero-bg: url("/assets/home/summer-ai-v2/hero-stage-bg.png");
-  --home-ai-quick-rail: url("/assets/home/summer-ai-v2/quick-rail.png");
-  --home-ai-news-panel: url("/assets/home/summer-ai-v2/latest-news-panel-v4.png");
-  --home-ai-timers-panel: url("/assets/home/summer-ai-v2/game-timers-panel-v5.png");
-  --home-ai-stream-panel: url("/assets/home/summer-ai-v2/official-stream-panel-v16-overlay.png");
+  --home-ai-hero-frame: url("/assets/home/summer-ai-v2/hero-stage-bg.webp");
+  --home-ai-hero-chrome: url("/assets/home/ocean-frame-ai.webp");
+  --home-ai-hero-bg: url("/assets/home/summer-ai-v2/hero-stage-bg.webp");
+  --home-ai-quick-rail: url("/assets/home/summer-ai-v2/quick-rail.webp");
+  --home-ai-news-panel: url("/assets/home/summer-ai-v2/latest-news-panel-v4.webp");
+  --home-ai-timers-panel: url("/assets/home/summer-ai-v2/game-timers-panel-v5.webp");
+  --home-ai-stream-panel: url("/assets/home/summer-ai-v2/official-stream-panel-v16-overlay.webp");
 }
 
 html[data-slime-theme="archive"] body main.poster-home {

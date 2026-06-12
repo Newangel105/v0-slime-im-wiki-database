@@ -623,7 +623,7 @@ export function OceanHome() {
       return
     }
 
-    setThumbnailSrc("/assets/home/frame-wave-bg.png")
+    setThumbnailSrc("/assets/home/frame-wave-bg.webp")
   }
 
   return (
