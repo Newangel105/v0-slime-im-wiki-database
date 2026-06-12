@@ -2808,10 +2808,22 @@ function ResultsPanelPrefab({
 
 // --- Summon cutscene (data-driven from the banner's animation_group) -------
 // Movie/Lottery/lottery_x.usm  ->  /Movie/Lottery/lottery_x.mp4 (extracted).
+// IL2CPP movie keys c001_e/c002_e/c004_e are MasterDefineAsset aliases that the
+// game resolves to the shipped E5 files c001_d/c003_04/c004_d (verified against
+// LotteryPatterMovieUtility + the catalog: no *_e bundles exist). The raw keys
+// 404 on R2, so the E5 "enhanced" cutscene silently skipped its steps
+// (<video onError={advance}>). Resolve them here to the real files.
+const LOTTERY_MOVIE_ALIASES: Record<string, string> = {
+  lottery_c001_e: "lottery_c001_d",
+  lottery_c002_e: "lottery_c003_04",
+  lottery_c004_e: "lottery_c004_d",
+}
 function lotteryMovieSrc(moviePath: string | null | undefined): string | null {
   if (!moviePath) return null
   const m = moviePath.match(/Movie\/Lottery\/([^/]+)\.usm$/i)
-  return m ? `/Movie/Lottery/${m[1]}.mp4` : null
+  if (!m) return null
+  const name = LOTTERY_MOVIE_ALIASES[m[1]] ?? m[1]
+  return `/Movie/Lottery/${name}.mp4`
 }
 
 type CutsceneStep = { src: string; role: "intro" | "loop" | "mid" | "result" }
