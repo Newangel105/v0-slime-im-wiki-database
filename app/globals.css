@@ -4058,6 +4058,30 @@ html.dark body {
 @media (max-width: 1536px) { :root { zoom: 0.70; } }
 @media (max-width: 1080px) { :root { zoom: 1; } }
 
+/* Firefox renders CSS `border-image` INCORRECTLY when it is inside a `zoom`ed
+   subtree — the centre `fill` is dropped and the 9-slice splits into
+   disconnected cap pieces with black gaps (e.g. the summon recruit / trade /
+   drop-rate buttons render as black bars in Firefox/Tor while Chromium is
+   fine). `transform: scale()` has no such bug. So ON FIREFOX ONLY we disable
+   the `zoom` tiers above and reproduce the exact same scaling with a transform
+   on <body> (origin top-left + width compensation so it still fills the
+   viewport). Chromium keeps `zoom` (which it renders correctly and which
+   reflows cleanly). `@supports (-moz-appearance:none)` matches Firefox only —
+   Chromium does not recognise `-moz-appearance`. Verified: with this, the
+   summon 9-slice buttons fill identically to Chromium in Firefox. */
+@supports (-moz-appearance: none) {
+  :root { zoom: normal !important; }
+  body { transform-origin: top left; }
+  @media (max-width: 2520px) { body { transform: scale(0.97); width: calc(100% / 0.97); } }
+  @media (max-width: 2400px) { body { transform: scale(0.93); width: calc(100% / 0.93); } }
+  @media (max-width: 2200px) { body { transform: scale(0.86); width: calc(100% / 0.86); } }
+  @media (max-width: 2000px) { body { transform: scale(0.80); width: calc(100% / 0.80); } }
+  @media (max-width: 1920px) { body { transform: scale(0.75); width: calc(100% / 0.75); } }
+  @media (max-width: 1728px) { body { transform: scale(0.72); width: calc(100% / 0.72); } }
+  @media (max-width: 1536px) { body { transform: scale(0.70); width: calc(100% / 0.70); } }
+  @media (max-width: 1080px) { body { transform: none; width: auto; } }
+}
+
 /* Phone "forced desktop viewport" (summon page, see ForceDesktopViewport): the layout viewport
    is pinned wide so the 16:9 panel scales like a real desktop. Zero the page min-heights while
    that's active so the page ends at the panel instead of leaving a giant void below it (the
