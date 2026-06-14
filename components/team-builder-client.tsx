@@ -2708,9 +2708,10 @@ export default function TeamBuilderClient({
         )
       })()}
 
-        {/* Main container - horizontally scrollable on mobile, centered on desktop */}
-        <div className="w-full overflow-x-auto" style={{ WebkitOverflowScrolling: "touch" }}>
-        <div ref={cardsRef} className="flex flex-nowrap gap-1 sm:gap-1.5 items-start pb-4 mx-auto w-fit">
+        {/* Main container - horizontally scrollable on mobile (swipe through the
+            whole 918px team row), centered on desktop where it fits */}
+        <div className="w-full overflow-x-auto overflow-y-hidden" style={{ WebkitOverflowScrolling: "touch" }}>
+        <div ref={cardsRef} className="flex flex-nowrap gap-1 sm:gap-1.5 items-start pb-4 px-3 sm:px-0 mx-auto w-fit">
 
         {/* 4 main character slots */}
         {[0, 1, 2, 3].map((i) => {

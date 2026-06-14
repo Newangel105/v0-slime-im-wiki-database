@@ -97,3 +97,19 @@ html[data-design="nightink"] {
     max-width: none !important;
   }
 }
+
+/* ── Loup-Loupe board height on phones ────────────────────────────────────────
+   /loup-loupe renders force-desktop on phones (the layout viewport is pinned to
+   1024), so its Tailwind `min-h-[calc(100vh-Nrem)]` shell + board region resolve
+   against the HUGE forced layout-viewport height (~1744px) and leave ~800px of dead
+   space below the board — the board appears to "extend too far" and the floor rail
+   runs off-screen. Collapse those min-heights to their content while forced. This
+   class is only present on phones, so real desktops keep the full-height board. */
+html.force-desktop-vp .loup-loupe-shell,
+html.force-desktop-vp .loup-board-region {
+  min-height: 0 !important;
+}
+html.force-desktop-vp .loup-board-region {
+  padding-top: 0.75rem;
+  padding-bottom: 1rem;
+}

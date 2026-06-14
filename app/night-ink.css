@@ -1196,6 +1196,13 @@ html:where([data-design="nightink"]),
   flex: none;
 }
 
+/* On desktop the filter pods are direct grid children of .v2-cluster; the
+   .v2-drawer-body wrapper (added so the mobile sheet can scroll its middle between
+   a fixed head + foot) must therefore be layout-transparent here. */
+.v2-drawer-body {
+  display: contents;
+}
+
 .v2-icons .ichip {
   border-radius: 12px 12px 12px 4px;
   padding: 5px;
@@ -1796,6 +1803,539 @@ body.filters-collapsed .v2-search-pod {
 
   .v2-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ── /characters PHONE layout ───────────────────────────────────────────────
+   /characters is the ONLY responsive .board.v2 page — every other tool/data page
+   is forced to a 1024 desktop viewport (GlobalDesktopForce), so these rules reach
+   nothing else. The night-ink pod CONNECTORS (.v2-bridge / .v2-stem / .nf-ring)
+   are absolutely positioned for the desktop side-by-side layout and snap when the
+   pods stack on a phone, so strip them and tidy the header + feature card. */
+@media (max-width: 640px) {
+  .v2-bridge,
+  .v2-stem,
+  .nf-ring {
+    display: none !important;
+  }
+
+  /* headline that actually fits a ~360px board (the 860px rule's 72px floor clips) */
+  .v2-h1 {
+    font-size: clamp(40px, 12vw, 72px);
+  }
+
+  .v2-head {
+    padding: 22px 20px 24px;
+  }
+
+  /* featured "new this banner": kill the desktop 380px sidebar reserve and let the
+     name/title truncate instead of colliding off-screen */
+  .v2-feature {
+    margin-right: 0 !important;
+    max-width: 100%;
+    gap: 12px;
+  }
+  .v2-feature .nm {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* filter rail + character grid: full width, single column, no reserved gap */
+  .v2-cluster,
+  .v2-pod {
+    max-width: 100% !important;
+    min-width: 0;
+  }
+
+  /* ── dense 3-up character grid ─────────────────────────────────────────────
+     the 860px rule drops to 1 col (a giant scroll-wall on a phone). On a real
+     phone we want an app-like 3-across portrait grid. Cards become vertical:
+     icon on top, name/title below, the side meta + go-affordance hidden. */
+  .v2-grid#characterGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 10px;
+  }
+
+  .v2-grid#characterGrid .v2-card,
+  .v2-grid#characterGrid .v2-card:nth-child(4n + 2),
+  .v2-grid#characterGrid .v2-card:nth-child(4n + 3) {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-height: 0;
+    padding: 9px 7px 10px;
+    border-radius: 14px;
+    text-align: center;
+  }
+
+  .v2-grid#characterGrid .gicon {
+    width: 64px !important;
+    height: 64px !important;
+  }
+
+  .v2-grid#characterGrid .v2-card .info {
+    width: 100%;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .v2-grid#characterGrid .v2-card .nm {
+    width: 100%;
+    font-size: 11px;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  .v2-grid#characterGrid .v2-card .tt {
+    width: 100%;
+    font-size: 10px;
+    text-align: center;
+  }
+
+  /* the weapon/facility meta strip + the corner arrow don't read at 3-up — hide
+     them so the portrait + name carry the card (full data is on the detail page) */
+  .v2-grid#characterGrid .v2-card .meta,
+  .v2-grid#characterGrid .v2-card .go {
+    display: none;
+  }
+
+  /* the "NEW" dashed ring overflows the tight gutter — keep just the ring color */
+  .v2-grid#characterGrid .v2-card.is-hot::after {
+    inset: -3px;
+  }
+
+  /* ── sticky mobile filter bar (Filters button + search) ────────────────────
+     sits at the top of the results so the grid is the primary view and the
+     filters are one thumb-tap away rather than a scroll-wall above the grid. */
+  .v2-mobile-bar {
+    position: sticky;
+    top: 6px;
+    z-index: 40;
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+    margin: 4px 0 14px;
+  }
+
+  .v2-mobile-filters-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    flex: none;
+    padding: 0 16px;
+    height: 44px;
+    border-radius: 14px;
+    border: 1px solid var(--line-strong);
+    background: var(--night2);
+    color: var(--cream);
+    font: 700 12px/1 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 4px 14px rgba(3, 6, 11, 0.5);
+  }
+
+  .v2-mobile-filters-btn .mfb-ico {
+    font-size: 13px;
+    color: var(--cream-dim);
+  }
+
+  .v2-mobile-filters-btn.has-active {
+    border-color: rgba(210, 69, 58, 0.55);
+    color: var(--cream);
+  }
+
+  .v2-mobile-filters-btn.has-active .mfb-ico {
+    color: var(--red-bright);
+  }
+
+  .v2-mobile-filters-btn .mfb-badge {
+    display: inline-grid;
+    place-items: center;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: var(--red);
+    color: var(--cream);
+    font: 700 11px/1 var(--sans);
+    letter-spacing: 0;
+  }
+
+  .v2-mobile-search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+    padding: 0 14px;
+    height: 44px;
+    border-radius: 14px;
+    border: 1px solid var(--line-strong);
+    background: var(--night1);
+  }
+
+  .v2-mobile-search .mfs-ico {
+    color: var(--cream-faint);
+    font-size: 17px;
+  }
+
+  .v2-mobile-search input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--cream);
+    font: 400 14px/1 var(--sans);
+  }
+
+  .v2-mobile-search input::placeholder {
+    color: var(--cream-faint);
+  }
+
+  /* ── filter DRAWER: the whole .v2-cluster becomes a right-side sheet ────────
+     reusing the existing search pod / tower / element / tray markup verbatim so
+     the same chips & dropdowns drive the same React state. Default CLOSED. */
+  .v2-mobile-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    border: 0;
+    padding: 0;
+    background: rgba(3, 6, 11, 0.62);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.22s ease, visibility 0.22s ease;
+  }
+
+  .v2-mobile-backdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .v2-cluster.is-mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    z-index: 1001;
+    width: min(92vw, 440px);
+    max-width: none !important;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    background: var(--night1);
+    border-left: 1px solid var(--line-strong);
+    border-radius: 18px 0 0 18px;
+    box-shadow: -16px 0 46px rgba(3, 6, 11, 0.7);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.26s cubic-bezier(0.22, 0.61, 0.36, 1), visibility 0.26s;
+    overflow: hidden;
+  }
+
+  .v2-cluster.is-mobile-drawer.is-open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  /* the drawer is nested in .v2-inner (z-1), so the global masthead (z-60) renders
+     over it; hide the masthead entirely while the filter sheet is open */
+  body.chars-filters-open .nk-mast {
+    visibility: hidden;
+  }
+
+  /* drawer header (title + close) */
+  .v2-cluster.is-mobile-drawer .v2-drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: none;
+    padding: 16px 18px 14px;
+    border-bottom: 1px solid var(--line);
+    background: var(--night2);
+  }
+
+  .v2-cluster.is-mobile-drawer .v2-drawer-title {
+    font: 400 26px/1 var(--serif);
+    color: var(--cream);
+  }
+
+  .v2-cluster.is-mobile-drawer .v2-drawer-close {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    border: 1px solid var(--line-strong);
+    background: rgba(236, 228, 212, 0.05);
+    color: var(--cream);
+    font-size: 16px;
+  }
+
+  /* the existing filter pods stack & scroll inside the sheet. Strip the desktop
+     pod chrome (offset shadow / reserved widths / grid placement) so they read
+     as a clean vertical stack. The same controls; just re-housed. */
+  .v2-cluster.is-mobile-drawer .v2-search-pod,
+  .v2-cluster.is-mobile-drawer .v2-tower,
+  .v2-cluster.is-mobile-drawer .v2-elements,
+  .v2-cluster.is-mobile-drawer .v2-tray {
+    width: 100% !important;
+    margin: 0 0 14px !important;
+    box-shadow: none !important;
+    border-radius: 16px;
+  }
+
+  .v2-cluster.is-mobile-drawer .v2-pod::before {
+    inset: -1px;
+    border-color: var(--line);
+  }
+
+  /* pod stacking order inside the sheet (head 0 → search 1 → … → foot 5) */
+  .v2-cluster.is-mobile-drawer .v2-search-pod {
+    order: 1;
+  }
+  .v2-cluster.is-mobile-drawer .v2-elements {
+    order: 2;
+  }
+  .v2-cluster.is-mobile-drawer .v2-tray {
+    order: 3;
+  }
+  .v2-cluster.is-mobile-drawer .v2-tower {
+    order: 4;
+  }
+
+  /* the head is order:0, foot is order:5; the middle scrolls */
+  .v2-cluster.is-mobile-drawer .v2-drawer-head {
+    order: 0;
+  }
+  .v2-cluster.is-mobile-drawer .v2-drawer-foot {
+    order: 5;
+  }
+
+  /* True 3-part flex drawer: the SHELL never scrolls, the head + foot are in-flow
+     flex items (flex:none) pinned to the top/bottom by flexbox, and ONLY the middle
+     .v2-drawer-body scrolls. This is the only layout that keeps the foot glued to
+     the bottom — both position:absolute AND position:fixed anchored to the drawer's
+     scroll content instead (the drawer's transform made it the containing block),
+     which parked "Clear all / Show results" mid-list over the Weapon row. */
+  .v2-cluster.is-mobile-drawer {
+    overflow: hidden;
+  }
+  .v2-cluster.is-mobile-drawer .v2-drawer-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 0 16px;
+  }
+  .v2-cluster.is-mobile-drawer .v2-drawer-head {
+    flex: none;
+    z-index: 5;
+  }
+  .v2-cluster.is-mobile-drawer .v2-drawer-foot {
+    flex: none;
+    position: static;
+    z-index: 6;
+  }
+  /* the desktop "Show / Hide filters" collapse toggle is meaningless inside the
+     sheet (everything is already shown, and ✕ closes it) — drop it. */
+  .v2-cluster.is-mobile-drawer #hideFiltersToggle {
+    display: none;
+  }
+
+  /* the pods get a little side padding inside the sheet */
+  .v2-cluster.is-mobile-drawer .v2-search-pod,
+  .v2-cluster.is-mobile-drawer .v2-elements,
+  .v2-cluster.is-mobile-drawer .v2-tray,
+  .v2-cluster.is-mobile-drawer .v2-tower {
+    margin-left: 14px !important;
+    margin-right: 14px !important;
+    width: calc(100% - 28px) !important;
+  }
+  .v2-cluster.is-mobile-drawer .v2-search-pod {
+    margin-top: 14px !important;
+  }
+
+  /* search pod: stack the search row + toggles so they don't overflow the sheet */
+  .v2-cluster.is-mobile-drawer .v2-search-pod {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 16px 16px 16px;
+    border-radius: 16px;
+  }
+  .v2-cluster.is-mobile-drawer .v2-searchbox {
+    flex: 1 1 100%;
+    min-width: 0;
+    font-size: 15px;
+    padding: 12px 16px;
+  }
+
+  /* tower drawers (Tactics/Forces/Skills…) full width inside the sheet */
+  .v2-cluster.is-mobile-drawer .v2-tower {
+    position: static;
+    height: auto !important;
+    min-height: 0;
+  }
+  .v2-cluster.is-mobile-drawer .v2-tower-scroll {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  /* element + tray sections stack vertically inside the narrow sheet: the section
+     "tab" becomes a left-aligned heading, each minicap (Type / Role / Ulti) becomes
+     a full-width sub-header above its OWN icon row, and the vertical separators are
+     dropped. The desktop horizontal row crammed Weapon · Type · Role · Ulti onto
+     one line, slivering each group — this gives every group a clean wrapping grid. */
+  .v2-cluster.is-mobile-drawer .v2-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 18px 16px;
+  }
+  .v2-cluster.is-mobile-drawer .v2-tab {
+    align-self: flex-start;
+    width: auto;
+    min-width: 92px;
+    margin: 0 0 2px;
+    padding: 9px 18px;
+  }
+  .v2-cluster.is-mobile-drawer .v2-subsep {
+    display: none;
+  }
+  .v2-cluster.is-mobile-drawer .v2-minicap {
+    display: block;
+    width: 100%;
+    margin: 8px 0 0;
+    align-self: stretch;
+  }
+  .v2-cluster.is-mobile-drawer .v2-inline-icons {
+    width: 100%;
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+  }
+  .v2-cluster.is-mobile-drawer .v2-slider {
+    width: 100%;
+    min-width: 0;
+    flex-wrap: wrap;
+  }
+
+  /* the desktop "Hide filters" collapse must NOT empty the mobile sheet: always
+     show every pod inside the drawer regardless of the body.filters-collapsed flag */
+  body.filters-collapsed .v2-cluster.is-mobile-drawer .v2-tower,
+  body.filters-collapsed .v2-cluster.is-mobile-drawer .v2-elements,
+  body.filters-collapsed .v2-cluster.is-mobile-drawer .v2-tray {
+    display: block;
+  }
+
+  /* sticky drawer footer: Clear all + Show N results */
+  .v2-drawer-foot {
+    display: flex;
+    gap: 10px;
+    flex: none;
+    padding: 12px 14px calc(12px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--line);
+    background: var(--night2);
+  }
+
+  .v2-drawer-clear {
+    flex: none;
+    padding: 0 18px;
+    height: 46px;
+    border-radius: 13px;
+    border: 1px solid var(--line-strong);
+    background: rgba(236, 228, 212, 0.05);
+    color: var(--cream-dim);
+    font: 700 12px/1 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .v2-drawer-apply {
+    flex: 1;
+    height: 46px;
+    border-radius: 13px;
+    border: 1px solid var(--red-bright);
+    background: var(--red);
+    color: var(--cream);
+    font: 700 13px/1 var(--sans);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ── active-filter chips stay ON the page (under the header) so the user can
+     see / clear active filters without opening the drawer. Let the legend wrap
+     full-width and breathe. ──────────────────────────────────────────────── */
+  .v2-gridhead {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .v2-gridhead .legend {
+    margin-left: 0;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .active-filter-chip .chip-label {
+    max-width: 120px;
+  }
+
+  /* ── pagination dockbar: a stable 3-row stack so Next never orphans ──────────── */
+  /* row 1: Prev ⟷ Next (spread to the edges)  |  row 2: page pills (centered)
+     row 3: Per-page  |  row 4: count — each later group is forced to its own line */
+  .v2-dockbar {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px 8px;
+    padding: 14px 16px;
+    border-radius: 8px 8px 22px 22px;
+  }
+  .v2-dockbar #prevPage {
+    order: 1;
+    flex: 0 0 auto;
+  }
+  .v2-dockbar #nextPage {
+    order: 2;
+    flex: 0 0 auto;
+  }
+  .v2-dockbar .page-pills {
+    order: 3;
+    flex: 1 0 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+  .v2-dockbar .page-size {
+    order: 4;
+    flex: 1 0 100%;
+    justify-content: center;
+    margin: 2px 0 0;
+  }
+  .v2-dockbar .upp {
+    order: 5;
+    flex: 1 0 100%;
+    text-align: center;
+  }
+  .page-btn,
+  .page-pill,
+  .page-size select {
+    height: 40px;
+    min-height: 40px;
+  }
+  .page-btn {
+    min-width: 96px;
+  }
+  .page-pill {
+    min-width: 40px;
   }
 }
 
@@ -3266,6 +3806,13 @@ body.motion .sc-core {
     font-size: clamp(64px, 17vw, 108px);
   }
 
+  /* the hero copy column must never push past the card; the desktop
+     max-width: 640px would otherwise overflow narrow boards */
+  .home-copy,
+  .home-sub {
+    max-width: 100%;
+  }
+
   .sc-stage {
     transform: scale(0.6);
     margin: -110px 0;
@@ -3300,6 +3847,96 @@ body.motion .sc-core {
   .home-news-view-all {
     right: 16px;
     top: -18px;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   PHONE (<=560px): the home prototype is built around fixed pixel widths
+   (.home-h1 ~600px intrinsic, .home-copy 640px, .sc-stage 600px, .home-news
+   ~705px). On a 390px board those boxes shoot past the viewport and clip.
+   Clamp the headline to the board width, force every home block to fluid
+   width, and shrink the 3D altar to a real (layout) square so its absolutely
+   positioned canvas follows. Night-ink look unchanged — sizing only.
+   ---------------------------------------------------------------------------- */
+@media (max-width: 560px) {
+  /* headline: shrink so the longest line ("ARCHIVE") fits ~340px of board
+     instead of forcing a 600px text box */
+  .home-h1 {
+    font-size: clamp(44px, 14.5vw, 72px);
+    text-shadow:
+      3px 3px 0 rgba(181, 53, 43, 0.78),
+      6px 5px 16px rgba(3, 6, 11, 0.65);
+  }
+
+  /* every hero text element + all home pods: never exceed the board */
+  .home-copy,
+  .home-sub,
+  .home-ctas,
+  .home-statrow,
+  .home-stats,
+  .home-row2,
+  .home-news,
+  .home-timers,
+  .home-gates,
+  .home-latest,
+  .hl-strip {
+    width: auto;
+    max-width: 100%;
+  }
+
+  /* news/latest pods carry big asymmetric corners + left padding that ate the
+     content; tighten so the body fits the phone board */
+  .home-news,
+  .home-timers,
+  .home-latest {
+    padding-left: 22px;
+    padding-right: 20px;
+    border-radius: 28px 14px 14px 14px;
+  }
+
+  .home-latest {
+    border-radius: 14px 28px 28px 14px;
+  }
+
+  /* the 3D altar: give it a real fluid square so the absolutely-positioned
+     .od3-canvas (inset relative to .sc-stage) scales down with it instead of
+     a transform that leaves a 600px layout box behind */
+  .sc-stage {
+    width: min(100%, 320px);
+    height: min(86vw, 320px);
+    transform: none;
+    margin: -24px auto -8px;
+  }
+
+  .od3-canvas {
+    inset: -18px -18px 36px -18px;
+  }
+
+  /* stats: single column reads cleaner than a cramped 2-up at this width */
+  .home-stats {
+    grid-template-columns: 1fr;
+  }
+
+  /* CSS grid `1fr` is `minmax(auto,1fr)`: the single-column .home-row2 / .home-latest
+     were sized to their widest child's MIN-CONTENT (~629px from the no-wrap region
+     pills and long news titles), so the news + timers pods spilled past the phone
+     board. Let the pods and their inner rows shrink below content width, and wrap the
+     region pills. (The news-row title already ellipsis-truncates once the row can shrink.) */
+  .home-news,
+  .home-timers,
+  .home-latest {
+    min-width: 0;
+  }
+  .home-news-list,
+  .home-news-row,
+  .home-timer-list,
+  .home-timer-row,
+  .home-region-tabs {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .home-region-tabs {
+    flex-wrap: wrap;
   }
 }
 

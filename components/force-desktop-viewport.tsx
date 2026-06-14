@@ -18,18 +18,47 @@ import { useEffect } from "react"
 export function ForceDesktopViewport({ width = 1024 }: { width?: number }) {
   useEffect(() => {
     const coarse = window.matchMedia("(pointer: coarse)").matches
-    const small = Math.min(window.innerWidth, window.innerHeight) < 820
+    // Decide "is this a phone?" from the PHYSICAL screen, not innerWidth/innerHeight —
+    // the instant we set the meta to `width=<width>` the layout viewport (and thus
+    // window.innerWidth) becomes that width, which would make a re-check read "not a
+    // phone". screen.width is the fixed device width (≈390) and never changes.
+    const sw = window.screen?.width ?? window.innerWidth
+    const sh = window.screen?.height ?? window.innerHeight
+    const small = Math.min(sw, sh) < 820
     if (!coarse || !small) return
-    const meta = document.querySelector('meta[name="viewport"]') as HTMLMetaElement | null
-    if (!meta) return
-    const prev = meta.getAttribute("content") ?? "width=device-width, initial-scale=1"
-    meta.setAttribute("content", `width=${width}`)
+
+    const desktop = `width=${width}`
+    const original =
+      (document.querySelector('meta[name="viewport"]') as HTMLMetaElement | null)?.getAttribute("content") ??
+      "width=device-width, initial-scale=1"
+
+    const apply = () => {
+      const m = document.querySelector('meta[name="viewport"]') as HTMLMetaElement | null
+      if (m && m.getAttribute("content") !== desktop) m.setAttribute("content", desktop)
+    }
+    apply()
     // Tag <html> so globals.css can zero the page min-height while forced — otherwise the
-    // main's min-h-screen (= the now-huge layout viewport height) leaves a giant void below
-    // the 16:9 panel. Scoped to this class so real desktops/tablets are unaffected.
+    // main's min-h-screen (= the now-huge layout viewport height) leaves a giant void.
     document.documentElement.classList.add("force-desktop-vp")
+
+    // CRITICAL: Next.js owns this <meta> via the root `viewport` export and rewrites it
+    // back to width=device-width every time it reconciles <head> — which fires when the
+    // page's streaming / Suspense boundaries resolve (the 3D altar finishing its load is
+    // the "after everything loads" moment), snapping the page to the mobile layout. A
+    // one-shot setAttribute loses that race. Re-assert our width on every <head> mutation
+    // (covers both an attribute rewrite and a full re-render of the tag) so it sticks.
+    const obs = new MutationObserver(apply)
+    obs.observe(document.head, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["content"],
+    })
+
     return () => {
-      meta.setAttribute("content", prev)
+      obs.disconnect()
+      const m = document.querySelector('meta[name="viewport"]') as HTMLMetaElement | null
+      if (m) m.setAttribute("content", original)
       document.documentElement.classList.remove("force-desktop-vp")
     }
   }, [width])

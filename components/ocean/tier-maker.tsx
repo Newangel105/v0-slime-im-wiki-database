@@ -91,20 +91,36 @@ function computeDropIndex(container: HTMLElement, clientX: number, clientY: numb
 }
 
 export function OceanTierMaker() {
-  // Force desktop mode on mobile
+  // On tablet/desktop force a fixed 1024px viewport so the global "feel like 2K"
+  // zoom can't shift the drag-and-drop hit-testing coordinates. On phones (<=760px)
+  // we must NOT do this: a 1024px viewport squeezed into a ~390px screen renders
+  // the whole tool at ~38% scale (tiny, unreadable, untappable). Phones use the
+  // natural responsive viewport instead and rely on the touch-drag fallback, which
+  // hit-tests with live client coordinates (elementFromPoint) and is zoom-agnostic.
   useEffect(() => {
+    // Use the PHYSICAL screen width, not innerWidth/matchMedia: those read the
+    // CSS layout viewport, which is racy on first paint (briefly reports a wide
+    // value before the layout's width=device-width meta settles) and would let a
+    // phone fall into the desktop branch and force the 1024px viewport on itself.
+    // screen.width is the stable device width and is unaffected by the meta below.
+    const screenW = typeof window !== 'undefined'
+      ? Math.min(window.screen?.width ?? 9999, window.screen?.height ?? 9999, window.innerWidth || 9999)
+      : 9999
+    const isPhone = screenW <= 760
     const meta = document.querySelector('meta[name="viewport"]')
     const prevViewport = meta?.getAttribute('content') ?? null
-    if (meta) {
+    if (meta && !isPhone) {
       meta.setAttribute('content', 'width=1024, user-scalable=no')
     }
     // Force 100% so the drag-and-drop hit-testing coordinates stay stable.
+    // (On night-ink pages the global responsive zoom is already neutralized to
+    // `normal`, so this is a no-op there, but keep it for the ocean/classic skins.)
     document.documentElement.style.zoom = '100%'
     return () => {
       // Restore on unmount — otherwise this forced zoom leaks onto every other
       // page and overrides the global responsive zoom until a full reload.
       document.documentElement.style.zoom = ''
-      if (meta && prevViewport != null) meta.setAttribute('content', prevViewport)
+      if (meta && !isPhone && prevViewport != null) meta.setAttribute('content', prevViewport)
     }
   }, [])
 
@@ -1138,7 +1154,7 @@ export function OceanTierMaker() {
 
   return (
     <main className="site-page slime-page-tier-maker text-foreground">
-      <div className="max-w-7xl mx-auto pl-6 pr-4 sm:pl-8 sm:pr-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-2 sm:pl-8 sm:pr-6 lg:px-8 py-6 sm:py-8">
         {/* Mode selector */}
         <div className="mb-4 flex gap-2 border-b border-border pb-3">
           <button

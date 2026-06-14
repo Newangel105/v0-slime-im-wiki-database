@@ -20,6 +20,8 @@
 import Link from "next/link"
 import { useState, type CSSProperties } from "react"
 import "./character-detail.nightink.css"
+// element display names (air→Space, holy→Light, enhanced→"X+") — one source of truth
+import { getDisplayElementLabel } from "@/lib/pc-wiki"
 
 /* ======================================================================
    payload types (built by components/nightink/character-detail.tsx)
@@ -374,7 +376,7 @@ function visualTierFor(character: DetailCharacter): number {
 function displayElement(value: string): string {
   const normalized = normalizeLabel(value)
   if (!normalized || normalized === "none") return "None"
-  return formatWikiLabel(normalized.replace(/^specialeffectelement/, ""))
+  return getDisplayElementLabel(normalized.replace(/^specialeffectelement/, ""))
 }
 
 function elementIcon(value: string): string {

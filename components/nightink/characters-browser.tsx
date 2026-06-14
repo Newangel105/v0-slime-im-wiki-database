@@ -27,6 +27,8 @@ import { useRouter } from "next/navigation"
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
 
 import type { IndexCharacter } from "./characters-browser-data"
+// element display names (air→Space, holy→Light, enhanced→"X+") live in ONE place
+import { getDisplayElementLabel } from "@/lib/pc-wiki"
 
 const PUBLIC_ROOT = "/"
 const SKILL_COST_MIN = 0
@@ -324,7 +326,9 @@ function publicAsset(path: string): string {
 function displayElement(value: unknown): string {
   const normalized = normalizeLabel(value)
   if (!normalized || normalized === "none" || normalized === "specialeffectelementnone") return "None"
-  return formatWikiLabel(normalized.replace(/^specialeffectelement/, ""))
+  // strip the specialeffect prefix (this page shows the bare element name), then
+  // resolve via the shared map so air→Space / holy→Light / enhanced→"X+" apply
+  return getDisplayElementLabel(normalized.replace(/^specialeffectelement/, ""))
 }
 
 function isBlessCharacter(character: IndexCharacter): boolean {
@@ -835,6 +839,23 @@ function compactPages(current: number, total: number): (number | "gap-left" | "g
 // toggle), so it stays hidden/shown across reloads and page closes
 const FILTERS_COLLAPSED_KEY = "nk-chars-filters-collapsed"
 
+// matchMedia(≤640px) gate. /characters is the ONLY responsive .board.v2 page
+// (every other route is force-desktop), so this is the same breakpoint the
+// phone CSS in app/night-ink.css keys off. Desktop never trips it, so all the
+// mobile-only chrome (filter drawer + sticky bar) stays out of the desktop tree.
+function useIsMobile(): boolean {
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return
+    const mql = window.matchMedia("(max-width: 640px)")
+    const apply = () => setIsMobile(mql.matches)
+    apply()
+    mql.addEventListener("change", apply)
+    return () => mql.removeEventListener("change", apply)
+  }, [])
+  return isMobile
+}
+
 export function NightInkCharactersBrowser({ characters }: { characters: IndexCharacter[] }) {
   const router = useRouter()
 
@@ -843,6 +864,8 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
   const [pageSize, setPageSize] = useState(50)
   const [filtersCollapsed, setFiltersCollapsed] = useState(false)
   const [openDrawer, setOpenDrawer] = useState<string | null>(null)
+  const isMobile = useIsMobile()
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const [drawerSearch, setDrawerSearch] = useState<Record<string, string>>({})
   const [hydrated, setHydrated] = useState(false)
   const clusterRef = useRef<HTMLElement>(null)
@@ -1064,11 +1087,15 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
       const attackerElement = normalizeLabel(getCharacterElementValue(character))
       const defenderElements = getDefenderElementValues(character)
       const elementSelected = state.attackerElement.length || state.protectorElement.length
+      // A protector only matches when a PROTECTOR element is actually selected, and an
+      // attacker only when an ATTACKER element is selected. (Without the length check,
+      // an empty protector filter matched ALL protectors — so attacker-element filters
+      // were wrongly showing every protector too.)
       const elementOk = !elementSelected
         ? true
         : isBlessCharacter(character)
-          ? matchesByFilterMode(state.protectorElement, defenderElements)
-          : state.attackerElement.includes(attackerElement)
+          ? state.protectorElement.length > 0 && matchesByFilterMode(state.protectorElement, defenderElements)
+          : state.attackerElement.length > 0 && state.attackerElement.includes(attackerElement)
 
       const basicFields = [
         character.name,
@@ -1337,6 +1364,26 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
     setOpenDrawer((prev) => (prev === key ? null : key))
   }
 
+  // mobile filter sheet: lock the page behind it while open, and force it shut
+  // if the viewport grows back to desktop (so the fixed panel can't strand).
+  useEffect(() => {
+    if (!isMobile && mobileFiltersOpen) setMobileFiltersOpen(false)
+  }, [isMobile, mobileFiltersOpen])
+
+  useEffect(() => {
+    if (!(isMobile && mobileFiltersOpen)) return
+    const previous = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    // the drawer is nested inside .v2-inner (a z-index:1 stacking context), so the
+    // global masthead (z-60 at the body level) renders OVER it; hide the masthead
+    // while the sheet is open so its ☰ toggle doesn't poke through the drawer header
+    document.body.classList.add("chars-filters-open")
+    return () => {
+      document.body.style.overflow = previous
+      document.body.classList.remove("chars-filters-open")
+    }
+  }, [isMobile, mobileFiltersOpen])
+
   /* ============================================================
      RENDER HELPERS
      ============================================================ */
@@ -1493,7 +1540,38 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
           <i className="br" />
         </div>
 
-        <section className="v2-cluster" id="filters" aria-label="Character filters" ref={clusterRef}>
+        {isMobile ? (
+          <button
+            type="button"
+            className={`v2-mobile-backdrop${mobileFiltersOpen ? " is-open" : ""}`}
+            aria-hidden={!mobileFiltersOpen}
+            tabIndex={-1}
+            onClick={() => setMobileFiltersOpen(false)}
+          />
+        ) : null}
+
+        <section
+          className={`v2-cluster${isMobile ? " is-mobile-drawer" : ""}${isMobile && mobileFiltersOpen ? " is-open" : ""}`}
+          id="filters"
+          aria-label="Character filters"
+          aria-hidden={isMobile && !mobileFiltersOpen}
+          ref={clusterRef}
+        >
+          {isMobile ? (
+            <div className="v2-drawer-head">
+              <span className="v2-drawer-title">Filters</span>
+              <button
+                type="button"
+                className="v2-drawer-close"
+                aria-label="Close filters"
+                onClick={() => setMobileFiltersOpen(false)}
+              >
+                ✕
+              </button>
+            </div>
+          ) : null}
+
+          <div className="v2-drawer-body">
           <div className="v2-pod v2-search-pod" ref={searchRef}>
             <label className="v2-searchbox" htmlFor="characterSearch">
               <input
@@ -1702,7 +1780,51 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
               </div>
             </div>
           </div>
+          </div>
+
+          {isMobile ? (
+            <div className="v2-drawer-foot">
+              <button type="button" className="v2-drawer-clear" onClick={clearFilters}>
+                Clear all
+              </button>
+              <button type="button" className="v2-drawer-apply" onClick={() => setMobileFiltersOpen(false)}>
+                Show {visible.length.toLocaleString()} result{visible.length === 1 ? "" : "s"}
+              </button>
+            </div>
+          ) : null}
         </section>
+
+        {isMobile ? (
+          <div className="v2-mobile-bar">
+            <button
+              type="button"
+              className={`v2-mobile-filters-btn${activeFilterCount ? " has-active" : ""}`}
+              onClick={() => setMobileFiltersOpen(true)}
+            >
+              <span className="mfb-ico" aria-hidden="true">
+                ⚑
+              </span>
+              Filters
+              {activeFilterCount ? <span className="mfb-badge">{activeFilterCount}</span> : null}
+            </button>
+            <label className="v2-mobile-search" htmlFor="characterSearchMobile">
+              <span className="mfs-ico" aria-hidden="true">
+                ⌕
+              </span>
+              <input
+                id="characterSearchMobile"
+                type="search"
+                autoComplete="off"
+                placeholder="Search characters..."
+                value={state.query}
+                onChange={(event) => {
+                  setPage(1)
+                  setState((prev) => ({ ...prev, query: event.target.value }))
+                }}
+              />
+            </label>
+          </div>
+        ) : null}
 
         <section className="v2-gridshell" aria-label="Character results">
           <div className="v2-bridge v" style={{ top: -46, height: 47, right: 170, width: 90 }} aria-hidden="true">

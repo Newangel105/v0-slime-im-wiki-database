@@ -24,6 +24,8 @@ import {
   Trash2,
   Trophy,
   Undo2,
+  ZoomIn,
+  ZoomOut,
 } from "lucide-react";
 import { Html } from "@react-three/drei";
 import * as THREE from "three";
@@ -4771,7 +4773,7 @@ function SpotLightWithTarget({
   );
 }
 
-function BoardCamera({ floor }: { floor: LoupLoupeFloor }) {
+function BoardCamera({ floor, zoom = 1 }: { floor: LoupLoupeFloor; zoom?: number }) {
   const { camera, size } = useThree();
 
   useEffect(() => {
@@ -4787,11 +4789,12 @@ function BoardCamera({ floor }: { floor: LoupLoupeFloor }) {
     const mobileScale = size.width < 720 ? 0.40 : 1;
     camera.position.set(0, 10.5600004, centerZ - 9.1599998);
     camera.lookAt(0, 0, centerZ);
-    camera.zoom = (zoomByTileCount[floor.tile_count] ?? 58) * mobileScale;
+    // base framing (by tile count) × phone shrink × the user's zoom control
+    camera.zoom = (zoomByTileCount[floor.tile_count] ?? 58) * mobileScale * zoom;
     camera.near = 0.1;
     camera.far = 100;
     camera.updateProjectionMatrix();
-  }, [camera, floor.map_side, floor.tile_count, size.width]);
+  }, [camera, floor.map_side, floor.tile_count, size.width, zoom]);
 
   return null;
 }
@@ -5838,6 +5841,7 @@ function TowerBoardScene({
   warpSourceTile,
   warpDestinations,
   routeEditor,
+  zoom = 1,
 }: {
   floor: LoupLoupeFloor;
   selectedTileId: number | null;
@@ -5846,6 +5850,7 @@ function TowerBoardScene({
   warpSourceTile: LoupLoupeTile | null;
   warpDestinations: LoupLoupeTile[];
   routeEditor: RouteEditorPointerHandlers | null;
+  zoom?: number;
 }) {
   const sizeKey = String(floor.tile_count);
   const sizeTypeKey = String(floor.map_size_type);
@@ -5861,7 +5866,7 @@ function TowerBoardScene({
 
   return (
     <>
-      <BoardCamera floor={floor} />
+      <BoardCamera floor={floor} zoom={zoom} />
       <SceneLightingFromGame floor={floor} />
       <group>
         {groundPrefabKey ? (
@@ -5902,8 +5907,39 @@ function TowerBoard({
   routeEditor: RouteEditorPointerHandlers | null;
   onTileClick: (tile: LoupLoupeTile) => void;
 }) {
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const [zoom, setZoom] = useState(1);
+
+  const ZOOM_MIN = 0.5;
+  const ZOOM_MAX = 4;
+  const clampZoom = (value: number) =>
+    Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, Number(value.toFixed(3))));
+  const zoomIn = () => setZoom((z) => clampZoom(z * 1.25));
+  const zoomOut = () => setZoom((z) => clampZoom(z / 1.25));
+  const zoomReset = () => setZoom(1);
+
+  // Desktop: scroll-wheel over the board zooms (and we swallow the page scroll so
+  // the board behaves like a map). Touch devices have no wheel — the +/- buttons
+  // cover phones. A non-passive listener is required to call preventDefault.
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const onWheel = (event: WheelEvent) => {
+      event.preventDefault();
+      setZoom((z) => clampZoom(z * (event.deltaY < 0 ? 1.12 : 1 / 1.12)));
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, []);
+
+  const zoomButton =
+    "flex h-11 w-11 items-center justify-center rounded-md border border-border bg-background/80 text-foreground shadow-lg backdrop-blur-sm transition hover:border-accent/60 hover:bg-accent/30 disabled:cursor-not-allowed disabled:opacity-35";
+
   return (
-    <div className="loup-board-wrap relative h-[min(72vh,48rem)] min-h-[30rem] w-full overflow-hidden">
+    <div
+      ref={wrapRef}
+      className="loup-board-wrap relative h-[min(72vh,48rem)] min-h-[30rem] w-full overflow-hidden"
+    >
       <Canvas
         orthographic
         dpr={[1, 1.8]}
@@ -5921,10 +5957,44 @@ function TowerBoard({
             warpDestinations={warpDestinations}
             routeEditor={routeEditor}
             onTileClick={onTileClick}
+            zoom={zoom}
           />
         </Suspense>
       </Canvas>
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/35 to-transparent" />
+
+      <div className="loup-zoom-controls absolute bottom-4 right-4 z-30 flex flex-col gap-1.5">
+        <button
+          type="button"
+          className={zoomButton}
+          onClick={zoomIn}
+          disabled={zoom >= ZOOM_MAX}
+          aria-label="Zoom in"
+          title="Zoom in"
+        >
+          <ZoomIn className="h-5 w-5" />
+        </button>
+        <button
+          type="button"
+          className={zoomButton}
+          onClick={zoomOut}
+          disabled={zoom <= ZOOM_MIN}
+          aria-label="Zoom out"
+          title="Zoom out"
+        >
+          <ZoomOut className="h-5 w-5" />
+        </button>
+        <button
+          type="button"
+          className={zoomButton}
+          onClick={zoomReset}
+          disabled={zoom === 1}
+          aria-label="Reset zoom"
+          title="Reset zoom"
+        >
+          <RotateCcw className="h-4 w-4" />
+        </button>
+      </div>
     </div>
   );
 }

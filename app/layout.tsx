@@ -11,6 +11,7 @@ import { SiteNav } from "@/components/site-nav"
 import { ClassicSiteNav } from "@/components/classic/site-nav"
 import { NightInkSiteNav } from "@/components/nightink/site-nav"
 import { DesignViewportGuard } from "@/components/design-viewport-guard"
+import { GlobalDesktopForce } from "@/components/global-desktop-force"
 import { getDesign } from "@/lib/design"
 
 // Inter is the typeface for the classic DARK design; exposed as a CSS var that
@@ -71,6 +72,7 @@ export default async function RootLayout({
             for the ocean rollback design */}
         {!isNightInk && <DesignViewportGuard />}
         {isNightInk ? <NightInkSiteNav /> : isClassic ? <ClassicSiteNav /> : <SiteNav />}
+        {isNightInk && <GlobalDesktopForce />}
         {children}
       </body>
     </html>

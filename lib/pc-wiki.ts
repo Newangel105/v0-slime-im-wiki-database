@@ -178,30 +178,36 @@ const WEBSITE_RELEASE_DATE_OVERRIDES: Record<string, string> = {
 }
 const CONDITION_TEXT_MAGNIFICATION_RE = /increases(?:\s+(?:own|applied))?\s+(enhancement|weakening)\s+effects?\s*(?:by\s*)?x?(\d+(?:\.\d+)?)\s*(?:times?)?/i
 
+// Display labels for element keys. NOTE the two game-data corrections: the key
+// "air" is really the Space element, and "holy" is really Light — so those (and
+// their enhanced/special variants) are relabelled Space / Light here. Enhanced
+// elements read as "<element>+" (the corrected base name + "+").
 const elementLabelMap: Record<string, string> = {
   all: "All",
-  enhancedair: "Air+",
+  air: "Space",
+  holy: "Light",
+  enhancedair: "Space+",
   enhanceddark: "Dark+",
   enhancedearth: "Earth+",
   enhancedfire: "Fire+",
-  enhancedholy: "Holy+",
+  enhancedholy: "Light+",
   enhancedwater: "Water+",
   enhancedwind: "Wind+",
   magic: "Magic",
   physics: "Physical",
   special: "Special",
-  specialeffectelementair: "Special Air",
+  specialeffectelementair: "Special Space",
   specialeffectelementdark: "Special Dark",
   specialeffectelementearth: "Special Earth",
-  specialeffectelementenhancedair: "Special Air+",
+  specialeffectelementenhancedair: "Special Space+",
   specialeffectelementenhanceddark: "Special Dark+",
   specialeffectelementenhancedearth: "Special Earth+",
   specialeffectelementenhancedfire: "Special Fire+",
-  specialeffectelementenhancedholy: "Special Holy+",
+  specialeffectelementenhancedholy: "Special Light+",
   specialeffectelementenhancedwater: "Special Water+",
   specialeffectelementenhancedwind: "Special Wind+",
   specialeffectelementfire: "Special Fire",
-  specialeffectelementholy: "Special Holy",
+  specialeffectelementholy: "Special Light",
   specialeffectelementnone: "Special",
   specialeffectelementwater: "Special Water",
   specialeffectelementwind: "Special Wind",

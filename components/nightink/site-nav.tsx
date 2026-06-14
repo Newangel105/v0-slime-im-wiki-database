@@ -23,7 +23,7 @@ const primaryLinks = [
 const toolLinks = [
   { href: "/model-viewer", label: "Model Viewer" },
   { href: "/preset-viewer", label: "Preset Viewer" },
-  { href: "/gauge-builder", label: "Gauge Builder" },
+  { href: "/gauge-builder", label: "Trait Chart" },
   { href: "/orb-converter", label: "Orb Converter" },
   { href: "/tier-maker", label: "Tier Maker" },
   { href: "/forces", label: "Forces" },

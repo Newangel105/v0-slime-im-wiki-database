@@ -388,3 +388,16 @@ body.motion .od-dial {
   color: var(--cream-faint);
   font: 500 14px/1 var(--sans);
 }
+
+/* phone: the 8-thumbnail record tray is ~437px at its desktop 46px size, which
+   overflows a 390px board. Shrink the chips + gaps so all 8 fit the screen. */
+@media (max-width: 560px) {
+  .od-tray {
+    gap: 5px;
+    padding: 6px 7px;
+  }
+  .od-tray-item {
+    width: 40px;
+    height: 40px;
+  }
+}
