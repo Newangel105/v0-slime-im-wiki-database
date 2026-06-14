@@ -303,14 +303,14 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
                   onClick={() => setSelectedId(m.id)}
                   className={`group w-full rounded-xl border px-3 py-2.5 text-left text-sm transition-all ${
                     active
-                      ? "border-accent/40 bg-card text-foreground shadow-[0_0_24px_rgba(52,208,221,0.12)]"
+                      ? "border-accent/40 bg-card text-foreground shadow-[0_0_24px_rgba(210,69,58,0.12)]"
                       : "border-transparent text-muted-foreground hover:border-border hover:bg-card/70 hover:text-foreground"
                   }`}
                 >
                   <div className="flex items-center gap-2">
                     <span
                       className={`h-2 w-2 shrink-0 rounded-full ${
-                        active ? "bg-accent shadow-[0_0_14px_rgba(52,208,221,0.65)]" : "bg-[#5b8db0] group-hover:bg-[#7fb0cf]"
+                        active ? "bg-accent shadow-[0_0_14px_rgba(210,69,58,0.6)]" : "bg-[#3a4862] group-hover:bg-[#55657f]"
                       }`}
                     />
                     <div className="min-w-0 flex-1">
@@ -359,7 +359,7 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
                   onClick={() => setViewerMode("character")}
                   className={`h-8 whitespace-nowrap rounded-lg px-2.5 text-[10px] font-bold uppercase tracking-[0.14em] transition ${
                     activeMode === "character"
-                      ? "bg-accent/20 text-foreground shadow-[0_0_0_1px_rgba(52,208,221,0.45)]"
+                      ? "bg-accent/20 text-foreground shadow-[0_0_0_1px_rgba(210,69,58,0.45)]"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
@@ -372,7 +372,7 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
                   onClick={() => setViewerMode("skill")}
                   className={`h-8 whitespace-nowrap rounded-lg px-2.5 text-[10px] font-bold uppercase tracking-[0.14em] transition ${
                     activeMode === "skill"
-                      ? "bg-accent/20 text-foreground shadow-[0_0_0_1px_rgba(52,208,221,0.45)]"
+                      ? "bg-accent/20 text-foreground shadow-[0_0_0_1px_rgba(210,69,58,0.45)]"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
@@ -381,22 +381,22 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
               </div>
             )}
             {activeMode === "skill" ? (
-              <label className="flex items-center gap-2 text-muted-foreground">
-                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">Scene</span>
-                <select
-                  value={String(selectedSceneIndex)}
-                  onChange={e => setSelectedSceneIndex(Number(e.target.value))}
-                  className="h-10 max-w-[260px] rounded-md border border-border bg-card px-3 text-sm text-foreground outline-none focus:border-accent/40 focus:ring-2 focus:ring-accent/30"
-                  disabled={skillSceneOptions.length <= 1}
-                >
-                  {skillSceneOptions.length === 0 && (
-                    <option value={0}>Loading...</option>
-                  )}
-                  {skillSceneOptions.map((scene, i) => (
-                    <option key={`${scene.id}-${i}`} value={i}>{scene.name}</option>
-                  ))}
-                </select>
-              </label>
+              // the Movie tab is just the video; only offer a Scene picker when
+              // there's actually more than one movie to choose between
+              skillSceneOptions.length > 1 ? (
+                <label className="flex items-center gap-2 text-muted-foreground">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">Scene</span>
+                  <select
+                    value={String(selectedSceneIndex)}
+                    onChange={e => setSelectedSceneIndex(Number(e.target.value))}
+                    className="h-10 max-w-[260px] rounded-md border border-border bg-card px-3 text-sm text-foreground outline-none focus:border-accent/40 focus:ring-2 focus:ring-accent/30"
+                  >
+                    {skillSceneOptions.map((scene, i) => (
+                      <option key={`${scene.id}-${i}`} value={i}>{scene.name}</option>
+                    ))}
+                  </select>
+                </label>
+              ) : null
             ) : (
               <label className="flex items-center gap-2 text-muted-foreground">
                 <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">Animation</span>
@@ -414,31 +414,34 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
               </label>
             )}
 
-            <label className="flex h-10 items-center gap-2 rounded-xl border border-border bg-card px-3 text-muted-foreground">
-              <input
-                type="checkbox"
-                checked={autoRotate}
-                onChange={e => setAutoRotate(e.target.checked)}
-                disabled={activeMode === "skill"}
-                className="accent-[#34d0dd]"
-              />
-              <span className="text-sm font-semibold">Auto-rotate</span>
-            </label>
+            {/* Auto-rotate + Scale are model-only controls — hidden on the Movie tab */}
+            {activeMode !== "skill" && (
+              <>
+                <label className="flex h-10 items-center gap-2 rounded-xl border border-border bg-card px-3 text-muted-foreground">
+                  <input
+                    type="checkbox"
+                    checked={autoRotate}
+                    onChange={e => setAutoRotate(e.target.checked)}
+                    className="accent-[#d2453a]"
+                  />
+                  <span className="text-sm font-semibold">Auto-rotate</span>
+                </label>
 
-            <label className="flex h-10 items-center gap-2 rounded-xl border border-border bg-card px-3 text-muted-foreground">
-              <span className="text-sm font-semibold">Scale</span>
-              <input
-                type="range"
-                min={0.25}
-                max={3}
-                step={0.05}
-                value={scale}
-                onChange={e => setScale(Number(e.target.value))}
-                disabled={activeMode === "skill"}
-                className="w-28 accent-[#34d0dd]"
-              />
-              <span className="w-9 text-right text-sm tabular-nums text-foreground">{(activeMode === "skill" ? 1 : scale).toFixed(2)}</span>
-            </label>
+                <label className="flex h-10 items-center gap-2 rounded-xl border border-border bg-card px-3 text-muted-foreground">
+                  <span className="text-sm font-semibold">Scale</span>
+                  <input
+                    type="range"
+                    min={0.25}
+                    max={3}
+                    step={0.05}
+                    value={scale}
+                    onChange={e => setScale(Number(e.target.value))}
+                    className="w-28 accent-[#d2453a]"
+                  />
+                  <span className="w-9 text-right text-sm tabular-nums text-foreground">{scale.toFixed(2)}</span>
+                </label>
+              </>
+            )}
           </div>
         </div>
 
@@ -459,10 +462,10 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
           }`}
           style={{
             background:
-              "radial-gradient(circle at 50% 4%, rgba(52,208,221,0.10), transparent 24rem), linear-gradient(180deg, #16395a 0%, #0f2c45 52%, #091f33 100%)",
+              "radial-gradient(circle at 50% 4%, rgba(210,69,58,0.09), transparent 24rem), linear-gradient(180deg, #101a2b 0%, #0b1421 52%, #080d15 100%)",
           }}
         >
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(110,175,205,0.04)_1px,transparent_1px),linear-gradient(180deg,rgba(110,175,205,0.03)_1px,transparent_1px)] bg-[size:52px_52px] opacity-40" />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(236,228,212,0.035)_1px,transparent_1px),linear-gradient(180deg,rgba(236,228,212,0.025)_1px,transparent_1px)] bg-[size:52px_52px] opacity-40" />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/70 to-transparent" />
 
           {activeMode === "skill" && activeVideo ? (

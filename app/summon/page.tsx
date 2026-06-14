@@ -1,5 +1,7 @@
 import { SummonSimulator } from "@/components/summon-simulator"
 import { getSummonData } from "@/lib/summon-data"
+import { getDesign } from "@/lib/design"
+import { ArchiveBackground } from "@/components/nightink/archive-background"
 
 export const metadata = { title: "Summon Simulator | SLIME.WIKI" }
 
@@ -12,5 +14,20 @@ export const metadata = { title: "Summon Simulator | SLIME.WIKI" }
 export const dynamic = "force-dynamic"
 
 export default async function SummonPage() {
-  return <SummonSimulator data={await getSummonData()} />
+  const data = await getSummonData()
+  const design = await getDesign()
+
+  // nightink: the immersive gacha panel keeps its intentional in-game art/colours
+  // (rarity golds, banner plates); we only swap the beach backdrop for the dark
+  // night-ink board canvas so the page sits consistently in the site design.
+  if (design === "nightink") {
+    return (
+      <div className="board v2 grain summon-nightink">
+        <ArchiveBackground />
+        <SummonSimulator data={data} />
+      </div>
+    )
+  }
+
+  return <SummonSimulator data={data} />
 }

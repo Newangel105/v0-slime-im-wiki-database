@@ -1,5 +1,6 @@
 import PresetViewerClient from "@/components/preset-viewer-client"
 import { ClassicPresetViewerClient } from "@/components/classic/preset-viewer-client"
+import NightInkPresetViewerClient from "@/components/nightink/preset-viewer-client"
 import { getAllWikiCharacters } from "@/lib/pc-wiki"
 import { META_PRESETS } from "@/lib/meta-presets"
 import { getDesign } from "@/lib/design"
@@ -15,6 +16,9 @@ export default async function PresetViewerPage() {
   )
   const characters = getAllWikiCharacters().filter(c => allPresetNames.has(c.affiliation_name))
   const design = await getDesign()
+
+  if (design === "nightink") return <NightInkPresetViewerClient characters={characters} />
+
   return (
     <main className="site-page slime-page-preset-viewer px-4 py-8 text-foreground sm:px-6">
       <div className="mx-auto w-full max-w-7xl space-y-6">

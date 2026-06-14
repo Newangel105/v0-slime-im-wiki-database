@@ -1,0 +1,16 @@
+node:fs:2741
+      const stats = binding.lstat(baseLong, true, undefined, true /* throwIfNoEntry */);
+                            ^
+
+Error: EPERM: operation not permitted, lstat 'C:\Users\Angel105'
+    at Object.realpathSync (node:fs:2741:29)
+    at toRealPath (node:internal/modules/helpers:58:13)
+    at Module._findPath (node:internal/modules/cjs/loader:740:22)
+    at resolveMainPath (node:internal/modules/run_main:34:23)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:156:24)
+    at node:internal/main/run_main_module:28:49 {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'lstat',
+  path: 'C:\\Users\\Angel105'
+}

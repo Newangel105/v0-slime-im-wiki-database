@@ -3,6 +3,7 @@ import { ClassicLoupLoupeBrowser } from "@/components/classic/loup-loupe-browser
 import { getAllEnemies } from "@/lib/enemies"
 import { getLoupLoupeFloors } from "@/lib/loup-loupe"
 import { getDesign } from "@/lib/design"
+import { NkBoard, NkHeaderPod } from "@/components/nightink/pod-kit"
 
 export const metadata = { title: "Loup Loupe | SLIME-WIKI" }
 
@@ -17,6 +18,22 @@ export default async function LoupLoupePage() {
   )
   const enemies = getAllEnemies().filter((enemy) => enemyIds.has(enemy.master_enemy_id))
   const design = await getDesign()
+
+  if (design === "nightink") {
+    return (
+      <NkBoard>
+        <NkHeaderPod
+          kicker="Labyrinth Map"
+          title="Loup "
+          accent="Loupe"
+          sub="Explore the Loup-Loupe labyrinth — every floor, tile, reward and enemy encounter."
+        />
+        <div className="nk-toolskin" style={{ marginTop: 28 }}>
+          <LoupLoupeBrowser floors={floors} enemies={enemies} />
+        </div>
+      </NkBoard>
+    )
+  }
 
   return (
     <main className="site-page slime-page-loup-loupe px-2 py-3 sm:px-4">

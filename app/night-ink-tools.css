@@ -1,0 +1,863 @@
+/* ============================================================================
+   night-ink-tools.css — reusable night-ink primitives for the TOOL pages
+   (orb-converter, skill-viewer, forces, heartprints, gauge-builder, …).
+   Everything is scoped under .board.v2 so it only paints migrated night-ink
+   pages and never leaks onto the ocean rollback fallback routes. Palette +
+   shadow language match app/night-ink.css (pods, hard offset shadow, ink-blob
+   radii, cream ink, red/blue accents). Loaded after night-ink-fixes.css.
+   ============================================================================ */
+
+/* even out the masthead territory on every page: a subtle uniform top darken so
+   the grain's corner-glow / top-radial never reads as a coloured band behind the
+   nav (home hides it behind the hero; tool pages have an empty nav strip). */
+.board.v2::after {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 132px;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(8, 13, 21, 0.62), rgba(8, 13, 21, 0.28) 52%, transparent 100%);
+}
+
+/* ---- page intro / header sub-actions ------------------------------------ */
+.board.v2 .nk-head-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+/* a self-contained content pod's inner padding (NkPod children) */
+.board.v2 .nk-pod {
+  border-radius: 26px 26px 20px 40px;
+  padding: 26px 28px;
+}
+.board.v2 .nk-pod.tight {
+  padding: 18px 20px;
+}
+.board.v2 .nk-pod-title {
+  margin: 0 0 16px;
+  font: 700 12px/1 var(--sans);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+/* ---- count / status chip ------------------------------------------------- */
+.board.v2 .nk-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 13px 13px 13px 4px;
+  background: var(--night2);
+  font: 600 12.5px/1 var(--sans);
+  color: var(--cream-dim);
+}
+.board.v2 .nk-count b {
+  color: var(--cream);
+  font-weight: 800;
+}
+/* in a vertical stack the count sits content-width at the left; in a row it
+   inherits the row's center alignment (don't pin it to the top) */
+.board.v2 .nk-stack > .nk-count {
+  align-self: flex-start;
+}
+
+/* ---- pill tabs ----------------------------------------------------------- */
+.board.v2 .nk-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 0 0 22px;
+}
+.board.v2 .nk-tab-btn {
+  display: grid;
+  place-items: center;
+  height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--line);
+  border-radius: 15px 15px 15px 4px;
+  background: var(--night2);
+  font: 700 11px/1 var(--sans);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  cursor: pointer;
+  transition: color 0.16s, border-color 0.16s, background 0.16s, transform 0.16s;
+}
+.board.v2 .nk-tab-btn:hover {
+  color: var(--cream);
+  border-color: var(--line-strong);
+  transform: translateY(-1px);
+}
+.board.v2 .nk-tab-btn.is-active {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(180deg, var(--red-bright), var(--red));
+  box-shadow: 0 6px 16px rgba(178, 45, 39, 0.32);
+}
+/* colour-coded active variants (orb targets etc.) */
+.board.v2 .nk-tab-btn.is-active.t-blue {
+  background: linear-gradient(180deg, #3b8fe0, #1f5da0);
+  box-shadow: 0 6px 16px rgba(31, 93, 160, 0.36);
+}
+.board.v2 .nk-tab-btn.is-active.t-green {
+  background: linear-gradient(180deg, #3fb985, #1c8b58);
+  box-shadow: 0 6px 16px rgba(28, 139, 88, 0.34);
+}
+.board.v2 .nk-tab-btn.is-active.t-orange {
+  background: linear-gradient(180deg, #e6914a, #c4622a);
+  box-shadow: 0 6px 16px rgba(196, 98, 42, 0.34);
+}
+.board.v2 .nk-tab-btn.is-active.t-violet {
+  background: linear-gradient(180deg, #8f6fd6, #6a44c0);
+  box-shadow: 0 6px 16px rgba(106, 68, 192, 0.34);
+}
+
+/* ---- data table ---------------------------------------------------------- */
+.board.v2 .nk-table-shell {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--night0);
+}
+.board.v2 .nk-table-shell::-webkit-scrollbar {
+  height: 11px;
+}
+.board.v2 .nk-table-shell::-webkit-scrollbar-thumb {
+  background: var(--night3);
+  border-radius: 8px;
+}
+.board.v2 .nk-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font: 500 13px/1.3 var(--sans);
+  color: var(--cream);
+}
+.board.v2 .nk-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 11px 10px;
+  background: var(--night2);
+  font: 800 11px/1.1 var(--sans);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cream);
+  white-space: nowrap;
+  border-bottom: 1px solid var(--line-strong);
+}
+.board.v2 .nk-table tbody td {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(236, 228, 212, 0.08);
+  border-right: 1px solid rgba(236, 228, 212, 0.06);
+  vertical-align: top;
+}
+.board.v2 .nk-table tbody tr:hover {
+  background: rgba(68, 113, 159, 0.12);
+}
+/* sticky row-label columns */
+.board.v2 .nk-table .nk-sticky {
+  position: sticky;
+  z-index: 10;
+  background: var(--night1);
+  font-weight: 700;
+  color: var(--cream);
+  white-space: nowrap;
+}
+.board.v2 .nk-table thead .nk-sticky {
+  z-index: 30;
+  background: var(--night2);
+}
+.board.v2 .nk-table .nk-rowlabel {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: normal;
+  color: var(--cream);
+}
+/* zebra: alt groups/subrows get a faint cream wash */
+.board.v2 .nk-table tr.is-alt > td {
+  background: rgba(236, 228, 212, 0.022);
+}
+.board.v2 .nk-table tr.is-alt2 > td {
+  background: rgba(236, 228, 212, 0.04);
+}
+.board.v2 .nk-table tr.is-alt .nk-sticky,
+.board.v2 .nk-table tr.is-alt2 .nk-sticky {
+  background: var(--night2);
+}
+.board.v2 .nk-table .nk-section-top > td {
+  border-top: 2px solid rgba(210, 69, 58, 0.5);
+}
+.board.v2 .nk-table .nk-empty {
+  text-align: center;
+  color: var(--cream-faint);
+  font-size: 12px;
+  padding: 12px 8px;
+}
+
+/* character icon cells */
+.board.v2 .nk-cell-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 3px;
+  padding: 3px;
+}
+.board.v2 .nk-ico {
+  position: relative;
+  display: block;
+  width: 44px;
+  height: 44px;
+  border-radius: 9px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  transition: border-color 0.14s, transform 0.14s, box-shadow 0.14s;
+}
+.board.v2 .nk-ico:hover {
+  border-color: var(--red-bright);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  z-index: 2;
+}
+.board.v2 .nk-ico img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.board.v2 .nk-ico .nk-ico-badge {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 18px;
+  height: 18px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ---- generic controls (buttons / selects / inputs) ---------------------- */
+.board.v2 .nk-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px 12px 12px 4px;
+  background: var(--night2);
+  font: 700 11px/1 var(--sans);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  cursor: pointer;
+  transition: color 0.16s, border-color 0.16s, transform 0.16s;
+}
+.board.v2 .nk-btn:hover {
+  color: var(--cream);
+  border-color: var(--line-strong);
+  transform: translateY(-1px);
+}
+.board.v2 .nk-btn.is-active,
+.board.v2 .nk-btn.red {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(180deg, var(--red-bright), var(--red));
+}
+.board.v2 .nk-select,
+.board.v2 .nk-input {
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--night2);
+  color: var(--cream);
+  font: 600 13px/1 var(--sans);
+}
+.board.v2 .nk-select:focus,
+.board.v2 .nk-input:focus {
+  outline: none;
+  border-color: var(--blue-soft);
+}
+.board.v2 .nk-input::placeholder {
+  color: var(--cream-faint);
+}
+.board.v2 .nk-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.board.v2 .nk-field > .nk-field-label {
+  font: 700 10.5px/1 var(--sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cream-faint);
+}
+
+/* ---- generic card grid (for viewers / lists) ---------------------------- */
+.board.v2 .nk-grid {
+  display: grid;
+  gap: 18px;
+}
+.board.v2 .nk-card {
+  position: relative;
+  background: var(--night2);
+  border: 1px solid var(--line);
+  border-radius: 18px 18px 14px 26px;
+  padding: 16px;
+  transition: border-color 0.16s, transform 0.16s;
+}
+.board.v2 .nk-card:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-2px);
+}
+
+/* ---- search bar (in a pod) ---------------------------------------------- */
+.board.v2 .nk-searchbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.board.v2 .nk-searchbar svg,
+.board.v2 .nk-searchbar .nk-search-ic {
+  position: absolute;
+  left: 16px;
+  width: 17px;
+  height: 17px;
+  color: var(--cream-faint);
+  pointer-events: none;
+}
+.board.v2 .nk-searchbar input {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px 0 44px;
+  border: 1px solid var(--line);
+  border-radius: 15px 15px 15px 5px;
+  background: var(--night2);
+  color: var(--cream);
+  font: 600 14px/1 var(--sans);
+}
+.board.v2 .nk-searchbar input::placeholder {
+  color: var(--cream-faint);
+}
+.board.v2 .nk-searchbar input:focus {
+  outline: none;
+  border-color: var(--blue-soft);
+}
+
+/* ---- accordion / collapsible list (forces, community, …) ---------------- */
+.board.v2 .nk-acc {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 22px 22px 16px 30px;
+}
+.board.v2 .nk-acc-head {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 26px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.16s;
+}
+.board.v2 .nk-acc-head:hover {
+  background: rgba(236, 228, 212, 0.04);
+}
+.board.v2 .nk-acc-head-left {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  gap: 13px;
+}
+.board.v2 .nk-acc-icon {
+  width: 32px;
+  height: 32px;
+  flex: none;
+  object-fit: contain;
+}
+.board.v2 .nk-acc-title {
+  font: 700 15px/1.2 var(--sans);
+  color: var(--cream);
+  word-break: break-word;
+}
+.board.v2 .nk-acc-meta {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex: none;
+}
+.board.v2 .nk-acc-count {
+  font: 800 14px/1 var(--sans);
+  font-variant-numeric: tabular-nums;
+  color: var(--cream-dim);
+}
+.board.v2 .nk-acc-chev {
+  font-size: 13px;
+  color: var(--red-bright);
+}
+.board.v2 .nk-acc-body {
+  padding: 8px 22px 24px;
+}
+
+/* ---- composited unit-card grid (rarity base/frame/icon/stars) ----------- */
+.board.v2 .nk-unitgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
+  gap: 14px 10px;
+}
+.board.v2 .nk-unit-link {
+  display: block;
+  min-width: 0;
+}
+.board.v2 .nk-unit {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.board.v2 .nk-unit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+.board.v2 .nk-unit img {
+  pointer-events: none;
+}
+.board.v2 .nk-unit .nk-unit-base,
+.board.v2 .nk-unit .nk-unit-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+.board.v2 .nk-unit .nk-unit-portrait {
+  position: absolute;
+  inset: 7%;
+  border-radius: 10%;
+  overflow: hidden;
+}
+.board.v2 .nk-unit .nk-unit-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.board.v2 .nk-unit.epic .nk-unit-portrait {
+  inset: 4%;
+  border-radius: 6%;
+}
+.board.v2 .nk-unit .nk-unit-name {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  z-index: 10;
+  max-width: calc(100% - 8px);
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(8, 13, 21, 0.85);
+  font: 600 10px/1.25 var(--sans);
+  color: var(--cream);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.board.v2 .nk-unit .nk-unit-stars {
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  height: 22px;
+  z-index: 10;
+  object-fit: contain;
+}
+.board.v2 .nk-unit .nk-unit-tags {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+.board.v2 .nk-unit .nk-unit-tags img {
+  width: 23px;
+  height: 23px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 1.5px rgba(255, 255, 255, 0.85));
+}
+
+/* ---- inline-coloured highlight inside descriptions ---------------------- */
+.board.v2 .nk-hl {
+  color: #ffffff;
+  font-weight: 700;
+}
+.board.v2 .nk-desc {
+  font: 500 12.5px/1.5 var(--sans);
+  color: var(--cream-dim);
+  text-align: left;
+}
+.board.v2 .nk-desc p {
+  margin: 0 0 3px;
+}
+
+/* small uppercase section-label pill (table captions etc.) */
+.board.v2 .nk-seclabel {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px 12px 12px 4px;
+  background: var(--night2);
+  font: 800 11px/1 var(--sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+.board.v2 .nk-seclabel.gold {
+  color: #ece4d4;
+}
+.board.v2 .nk-seclabel.violet {
+  color: #b39ae6;
+}
+
+/* ---- dropdown / combobox (preset pickers, selectors) -------------------- */
+.board.v2 .nk-dropdown {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+}
+.board.v2 .nk-dropdown-toggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  height: 40px;
+  padding: 0 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px 14px 14px 4px;
+  background: var(--night2);
+  font: 700 13px/1 var(--sans);
+  color: var(--cream);
+  cursor: pointer;
+  transition: border-color 0.16s;
+}
+.board.v2 .nk-dropdown-toggle:hover {
+  border-color: var(--line-strong);
+}
+.board.v2 .nk-dropdown-toggle .nk-dd-caret {
+  color: var(--cream);
+  font-size: 11px;
+}
+.board.v2 .nk-dropdown-panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  background: var(--night2);
+  box-shadow: 0 18px 45px rgba(3, 6, 11, 0.6);
+}
+.board.v2 .nk-dropdown-search {
+  padding: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.board.v2 .nk-dropdown-search input {
+  width: 100%;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--night1);
+  color: var(--cream);
+  font: 500 13px/1 var(--sans);
+}
+.board.v2 .nk-dropdown-search input:focus {
+  outline: none;
+  border-color: var(--blue-soft);
+}
+.board.v2 .nk-dropdown-list {
+  max-height: 16rem;
+  overflow-y: auto;
+}
+.board.v2 .nk-dropdown-list::-webkit-scrollbar {
+  width: 9px;
+}
+.board.v2 .nk-dropdown-list::-webkit-scrollbar-thumb {
+  background: var(--night3);
+  border-radius: 8px;
+}
+.board.v2 .nk-dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 9px 14px;
+  text-align: left;
+  font: 500 13px/1.3 var(--sans);
+  color: var(--cream-dim);
+  cursor: pointer;
+  transition: background 0.14s, color 0.14s;
+}
+.board.v2 .nk-dropdown-item:hover {
+  background: rgba(68, 113, 159, 0.16);
+  color: var(--cream);
+}
+.board.v2 .nk-dropdown-item.is-active {
+  background: rgba(210, 69, 58, 0.16);
+  color: var(--cream);
+  box-shadow: inset 0 0 0 1px rgba(210, 69, 58, 0.4);
+}
+
+/* ---- heartprint cards --------------------------------------------------- */
+.board.v2 .nk-hp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 14px;
+}
+.board.v2 .nk-hp-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: 14px 14px 12px 20px;
+  background: var(--night2);
+  cursor: pointer;
+  transition: transform 0.18s, border-color 0.18s;
+}
+.board.v2 .nk-hp-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--line-strong);
+}
+.board.v2 .nk-hp-card-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #0a1828;
+}
+.board.v2 .nk-hp-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.board.v2 .nk-hp-card:hover .nk-hp-card-img img {
+  transform: scale(1.05);
+}
+.board.v2 .nk-hp-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 11px 12px;
+  flex: 1;
+}
+.board.v2 .nk-hp-card-title {
+  margin: 0;
+  font: 700 13px/1.25 var(--sans);
+  color: var(--cream);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.board.v2 .nk-hp-card-desc {
+  margin: 0;
+  font: 500 11.5px/1.4 var(--sans);
+  color: var(--cream-dim);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.board.v2 .nk-hp-rowend > td {
+  border-bottom: 2px solid rgba(210, 69, 58, 0.4);
+}
+
+/* ---- modal (reusable: heartprints, skill viewer, …) --------------------- */
+.board.v2 .nk-modal-scrim,
+.nk-modal-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(4, 8, 14, 0.72);
+  backdrop-filter: blur(4px);
+}
+.nk-modal {
+  position: relative;
+  width: 100%;
+  max-width: 32rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: 20px;
+  background: var(--night1);
+  box-shadow: 0 24px 70px rgba(3, 6, 11, 0.7);
+  color: var(--cream);
+  font-family: var(--sans);
+}
+.nk-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(8, 13, 21, 0.7);
+  color: var(--cream);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.16s;
+}
+.nk-modal-close:hover {
+  background: rgba(181, 53, 43, 0.8);
+}
+
+/* ---- guide cards -------------------------------------------------------- */
+.board.v2 .nk-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 22px;
+}
+.board.v2 .nk-guide-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 20px 20px 14px 30px;
+  background: var(--night1);
+  box-shadow: 14px 16px 0 rgba(3, 6, 11, 0.6);
+  transition: transform 0.22s, border-color 0.22s;
+}
+.board.v2 .nk-guide-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--line-strong);
+}
+.board.v2 .nk-guide-cover {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--night3);
+}
+.board.v2 .nk-guide-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+.board.v2 .nk-guide-card:hover .nk-guide-cover img {
+  transform: scale(1.035);
+}
+.board.v2 .nk-guide-cover-fallback {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 24px;
+  text-align: center;
+  background: linear-gradient(135deg, #101a2b, #15233a);
+  font: 800 13px/1.4 var(--sans);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+.board.v2 .nk-guide-badge {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  padding: 4px 12px;
+  border: 1px solid rgba(210, 69, 58, 0.45);
+  border-radius: 999px;
+  background: rgba(8, 13, 21, 0.6);
+  font: 800 10px/1 var(--sans);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--red-bright);
+}
+.board.v2 .nk-guide-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: -22px 16px 0;
+  padding: 10px 14px;
+  position: relative;
+  z-index: 2;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--night2);
+}
+.board.v2 .nk-guide-title {
+  margin: 0;
+  font: 800 19px/1.3 var(--serif);
+  color: var(--cream);
+  transition: color 0.18s;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.board.v2 .nk-guide-card:hover .nk-guide-title {
+  color: var(--red-bright);
+}
+.board.v2 .nk-guide-summary {
+  margin: 10px 0 0;
+  font: 500 13px/1.55 var(--sans);
+  color: var(--cream-dim);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---- summon: dark night-ink backdrop behind the immersive gacha panel --- */
+.board.v2.summon-nightink {
+  position: relative;
+  min-height: 100vh;
+  overflow: visible; /* don't clip the panel's dropdowns / carousel arrows */
+}
+.board.v2.summon-nightink > .site-page {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+/* ---- pod stack spacing for stacked content pods ------------------------- */
+.board.v2 .nk-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.board.v2 .nk-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.board.v2 .nk-muted {
+  color: var(--cream-dim);
+  font-size: 13px;
+  line-height: 1.55;
+}

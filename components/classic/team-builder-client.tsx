@@ -410,20 +410,6 @@ export function ClassicTeamBuilderClient({
   const searchParams = useSearchParams()
   const [shareLinkCopied, setShareLinkCopied] = useState(false)
 
-  // Load team from community page (sessionStorage handoff)
-  useEffect(() => {
-    try {
-      const raw = sessionStorage.getItem("communityTeamLoad")
-      if (!raw) return
-      sessionStorage.removeItem("communityTeamLoad")
-      const slots = JSON.parse(raw)
-      if (slots.mainSlots) setMainSlots(slots.mainSlots.map((v: any) => (v == null ? null : Number(v))))
-      if (slots.subSlots) setSubSlots(slots.subSlots.map((v: any) => (v == null ? null : Number(v))))
-      if (slots.sideSlots) setSideSlots(slots.sideSlots.map((v: any) => (v == null ? null : Number(v))))
-      if (slots.sideSubSlots) setSideSubSlots(slots.sideSubSlots.map((v: any) => (v == null ? null : Number(v))))
-    } catch {}
-  }, [])
-
   // Load team from URL share params (m/s/sl/ssl)
   useEffect(() => {
     const decode = (param: string | null, len: number): (number | null)[] | null => {

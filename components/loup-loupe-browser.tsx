@@ -6308,7 +6308,7 @@ function RouteEditorPanel({
         </span>
       </div>
       {routeStoreMessage ? (
-        <p className="mt-3 rounded-md border border-[#fbbf24]/20 bg-[#fcd34d]/10 p-2 text-[11px] font-semibold text-[#fbbf24]">
+        <p className="mt-3 rounded-md border border-[#fbbf24]/20 bg-[#fbbf24]/10 p-2 text-[11px] font-semibold text-[#fbbf24]">
           Route store: {routeStoreMessage}
         </p>
       ) : null}
@@ -6479,7 +6479,7 @@ function RouteEditorPanel({
               type="button"
               disabled={!selectedRoute || tileCount === 0}
               onClick={onClearTiles}
-              className="inline-flex items-center gap-2 rounded-md border border-[#fbbf24]/20 bg-[#fcd34d]/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-[#fbbf24] transition hover:border-[#fbbf24]/50 disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex items-center gap-2 rounded-md border border-[#fbbf24]/20 bg-[#fbbf24]/10 px-3 py-2 text-xs font-black uppercase tracking-[0.14em] text-[#fbbf24] transition hover:border-[#fbbf24]/50 disabled:cursor-not-allowed disabled:opacity-40"
             >
               <RotateCcw className="h-3.5 w-3.5" />
               Clear Path
@@ -7096,7 +7096,7 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
             className="flex h-11 items-center gap-2 rounded-md border border-border/[0.22] bg-muted/60 px-3 text-sm font-black text-foreground transition hover:border-accent/60"
             onClick={() => setModal({ kind: "details" })}
           >
-            <MapPinned className="h-4 w-4 text-accent" />
+            <MapPinned className="h-4 w-4 text-[#7cd7ff]" />
             Floor Details
           </button>
           <button
@@ -7112,14 +7112,14 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
             className="flex h-11 items-center gap-2 rounded-md border border-border/[0.22] bg-muted/60 px-3 text-sm font-black text-foreground transition hover:border-accent/60"
             onClick={() => setModal({ kind: "challengeRewards" })}
           >
-            <Gem className="h-4 w-4 text-accent" />
+            <Gem className="h-4 w-4 text-[#7cd7ff]" />
             Challenge
           </button>
           {ENABLE_ROUTE_EDITOR ? (
             routeEditorEnabled ? (
               <button
                 type="button"
-                className="flex h-11 items-center gap-2 rounded-md border border-accent/20 bg-accent/10 px-3 text-sm font-black text-accent transition hover:border-accent/60"
+                className="flex h-11 items-center gap-2 rounded-md border border-border/[0.22] bg-muted/60 px-3 text-sm font-black text-foreground transition hover:border-accent/60"
                 onClick={signOutRouteEditor}
                 title={routeAuthorName ? `Signed in as ${routeAuthorName}` : "Signed in"}
               >
@@ -7132,7 +7132,7 @@ export function LoupLoupeBrowser({ floors, enemies }: LoupLoupeBrowserProps) {
                 className="flex h-11 items-center gap-2 rounded-md border border-border/[0.22] bg-muted/60 px-3 text-sm font-black text-foreground transition hover:border-accent/60"
                 onClick={() => setShowRouteLogin((value) => !value)}
               >
-                <LogIn className="h-4 w-4 text-accent" />
+                <LogIn className="h-4 w-4 text-foreground" />
                 Login
               </button>
             )

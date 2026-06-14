@@ -1,0 +1,99 @@
+/* ============================================================================
+   night-ink-toolskin.css — re-theme a heavy interactive tool to the night-ink
+   palette WITHOUT touching its markup. The tools are built on shadcn/Tailwind
+   semantic tokens (bg-card / text-foreground / border-border / text-accent …),
+   so redefining those HSL token triples on a wrapper cascades night-ink colours
+   to the entire subtree. Wrap a tool in <div class="nk-toolskin"> (inside an
+   NkBoard + NkHeaderPod) and it renders night-ink. Loaded after the other
+   night-ink sheets. (Values mirror app/night-ink.css: night0/1/2/3, cream,
+   red, blue.)
+   ============================================================================ */
+/* GLOBAL under the nightink design so portaled UI (shadcn Select/Popover/Dropdown
+   render at <body>, OUTSIDE .nk-toolskin) also picks up the night-ink tokens. */
+html[data-design="nightink"] {
+  --background: 213 45% 6%;       /* night0 #080d15 */
+  --foreground: 40 38% 88%;       /* cream  #ece4d4 */
+  --card: 216 34% 13%;            /* lifted off the night0 board so cards/buttons read */
+  --card-foreground: 40 38% 88%;
+  --popover: 216 32% 17%;         /* a touch lighter than cards for layered popovers */
+  --popover-foreground: 40 38% 88%;
+  --primary: 4 62% 47%;           /* red    #b5352b */
+  --primary-foreground: 40 40% 94%;
+  --secondary: 216 30% 18%;
+  --secondary-foreground: 40 38% 88%;
+  --muted: 216 28% 20%;
+  --muted-foreground: 40 24% 70%; /* cream-dim, brighter for readability */
+  --accent: 4 64% 54%;            /* red-bright #d2453a */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 4 62% 45%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 214 17% 34%;          /* visible outlines on dark surfaces */
+  --input: 217 28% 22%;
+  --ring: 210 40% 50%;            /* blue-soft */
+}
+.nk-toolskin {
+  color: hsl(var(--foreground));
+}
+
+/* the tool's own page shell shouldn't paint its own (beach) background or add a
+   second full-screen min-height inside the board */
+.nk-toolskin > .site-page,
+.nk-toolskin .site-page {
+  background: transparent !important;
+  min-height: 0 !important;
+}
+
+/* custom (non-token) helper classes a few tools use directly */
+.nk-toolskin .glass-panel,
+.nk-toolskin .glass-panel-strong {
+  background: #0e1622 !important;
+  border: 1px solid rgba(236, 228, 212, 0.14) !important;
+  box-shadow: 12px 14px 0 rgba(3, 6, 11, 0.5) !important;
+  backdrop-filter: none !important;
+}
+.nk-toolskin .neon-button {
+  background: linear-gradient(180deg, #d2453a, #b5352b) !important;
+  color: #fff !important;
+  border: 0 !important;
+  box-shadow: 0 6px 16px rgba(178, 45, 39, 0.3) !important;
+}
+.nk-toolskin .section-kicker {
+  color: rgba(236, 228, 212, 0.5) !important;
+}
+.nk-toolskin .section-title {
+  color: #ece4d4 !important;
+}
+.nk-toolskin .accent-rule {
+  background: linear-gradient(90deg, #d2453a, transparent) !important;
+}
+.nk-toolskin .theme-input,
+.nk-toolskin input,
+.nk-toolskin select,
+.nk-toolskin textarea {
+  color: #ece4d4;
+}
+.nk-toolskin .theme-input {
+  background: #141e2e !important;
+  border: 1px solid rgba(236, 228, 212, 0.14) !important;
+}
+/* native dropdown option lists (OS popup defaults to light) */
+.nk-toolskin select option {
+  background-color: #0e1622;
+  color: #ece4d4;
+}
+
+/* nav alignment: the masthead is min(1600px, 100vw-42px) wide with 72px padding,
+   matching .v2-inner. Make page components that use their own width share it so
+   their right edge lines up with the nav. The guide reader's .site-container is
+   narrower; the summon panel is wider. */
+.nk-toolskin .site-container {
+  max-width: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+@media (min-width: 821px) {
+  .board.v2.summon-nightink .summon-shell {
+    width: min(1456px, calc(100vw - 186px)) !important;
+    max-width: none !important;
+  }
+}

@@ -1,0 +1,144 @@
+/* ============================================================
+   night-ink-pages.css — reskins the CLASSIC (dark, var-driven)
+   route components into the night-ink palette and wraps them in
+   night-ink page chrome. Loaded after globals.css + night-ink.css.
+
+   Strategy: the classic components are shadcn/Tailwind, coloured by
+   HSL CSS variables (--background, --card, --primary, --border, …).
+   Under html[data-design="nightink"].dark we re-point those vars at
+   the night-ink palette, so every classic widget becomes navy / cream
+   / red automatically. A thin chrome layer adds the board grain, a
+   page shell and pod-style cards so the tool pages read as the same
+   organism as the home + character pages (which paint their own
+   self-contained .board.v2 canvas and are unaffected by this file).
+   ============================================================ */
+
+/* ---- night-ink palette mapped onto the classic theme variables ---- */
+html[data-design="nightink"] {
+  --background: 213 46% 6%; /* night0 #080d15 */
+  --foreground: 41 35% 88%; /* cream #ece4d4 */
+  --card: 216 41% 10%; /* night1 #0e1622 */
+  --card-foreground: 41 35% 88%;
+  --popover: 216 43% 9%;
+  --popover-foreground: 41 35% 88%;
+  --primary: 5 63% 53%; /* red-bright #d2453a */
+  --primary-foreground: 41 42% 92%;
+  --secondary: 217 39% 14%; /* night2 #141e2e */
+  --secondary-foreground: 41 33% 85%;
+  --muted: 216 36% 15%;
+  --muted-foreground: 41 16% 66%;
+  --accent: 5 60% 50%; /* red #b5352b */
+  --accent-foreground: 41 42% 92%;
+  --destructive: 5 63% 53%;
+  --destructive-foreground: 41 42% 92%;
+  --border: 213 22% 24%;
+  --input: 213 24% 18%;
+  --ring: 5 63% 53%;
+  --radius: 0.75rem;
+}
+
+/* the night-ink home + character pages paint their own .board.v2 canvas;
+   this page chrome is only for the migrated tool/list routes, which render
+   directly in <body>. Give that body the night-ink canvas + grain. */
+html[data-design="nightink"] body {
+  background:
+    radial-gradient(1100px 560px at 14% 0%, #101a2b 0%, #080d15 64%),
+    #080d15;
+}
+
+/* a faint dot-raster + grain over tool pages, matching the board texture */
+html[data-design="nightink"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(236, 228, 212, 0.04) 1px, transparent 1.4px);
+  background-size: 26px 26px;
+  opacity: 0.5;
+}
+
+/* the .board.v2 home/character pages cover the body, so hide that grain
+   under them to avoid double texture */
+html[data-design="nightink"] body:has(.board.v2)::before {
+  display: none;
+}
+
+/* keep the shared page shell above the grain */
+html[data-design="nightink"] .site-page {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- night-ink identity on the classic widgets ---- */
+/* cards become night-ink pods: ink-blob radius + hard offset shadow + the
+   cream double-outline feel via a soft ring */
+html[data-design="nightink"] .site-page :is([class*="rounded-lg"], [class*="rounded-xl"]).border {
+  border-radius: 18px 18px 18px 6px;
+}
+
+/* primary/accent buttons get the red ink-tab look */
+html[data-design="nightink"] .site-page button:is([class*="bg-primary"], [class*="bg-accent"]) {
+  border-radius: 13px 13px 4px 13px;
+}
+
+/* serif display for the big page headings (h1/h2) to match the poster type */
+html[data-design="nightink"] .site-page :is(h1, h2).text-3xl,
+html[data-design="nightink"] .site-page :is(h1, h2).text-4xl,
+html[data-design="nightink"] .site-page :is(h1, h2).text-5xl,
+html[data-design="nightink"] .nk-page-title {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 0.01em;
+}
+
+/* ---- the night-ink page header pod (added by the page wrappers) ---- */
+.nk-page-shell {
+  position: relative;
+  z-index: 1;
+  width: min(1600px, calc(100vw - 42px));
+  margin: 0 auto;
+  padding: 30px 24px 64px;
+}
+
+.nk-page-head {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+  padding: 26px 32px 28px;
+  background: #0e1622;
+  border-radius: 30px 30px 10px 56px;
+  box-shadow:
+    14px 16px 0 rgba(3, 6, 11, 0.85),
+    0 0 64px rgba(210, 69, 58, 0.08);
+}
+
+.nk-page-head::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border: 1px solid rgba(236, 228, 212, 0.12);
+  border-radius: 36px 36px 14px 64px;
+  pointer-events: none;
+}
+
+.nk-page-title {
+  margin: 0;
+  font: 400 clamp(40px, 6vw, 72px) / 0.92 Georgia, serif;
+  color: #ece4d4;
+  text-transform: none;
+}
+
+.nk-page-title em {
+  font-style: italic;
+  color: #d2453a;
+}
+
+.nk-page-sub {
+  margin: 0;
+  max-width: 620px;
+  font: 400 14.5px/1.55 "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  color: rgba(236, 228, 212, 0.6);
+  text-wrap: pretty;
+}

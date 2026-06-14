@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useCallback, useDeferredValue, useMemo, useRef, useState, useEffect } from "react"
+import { createPortal } from "react-dom"
 import { useSearchParams } from "next/navigation"
 import type { Heartprint, Equipment, Charm } from "@/lib/pc-wiki"
 import type { TeamBuilderCharacter } from "@/lib/team-builder-character-data"
@@ -409,20 +410,6 @@ export default function TeamBuilderClient({
 
   const searchParams = useSearchParams()
   const [shareLinkCopied, setShareLinkCopied] = useState(false)
-
-  // Load team from community page (sessionStorage handoff)
-  useEffect(() => {
-    try {
-      const raw = sessionStorage.getItem("communityTeamLoad")
-      if (!raw) return
-      sessionStorage.removeItem("communityTeamLoad")
-      const slots = JSON.parse(raw)
-      if (slots.mainSlots) setMainSlots(slots.mainSlots.map((v: any) => (v == null ? null : Number(v))))
-      if (slots.subSlots) setSubSlots(slots.subSlots.map((v: any) => (v == null ? null : Number(v))))
-      if (slots.sideSlots) setSideSlots(slots.sideSlots.map((v: any) => (v == null ? null : Number(v))))
-      if (slots.sideSubSlots) setSideSubSlots(slots.sideSubSlots.map((v: any) => (v == null ? null : Number(v))))
-    } catch {}
-  }, [])
 
   // Load team from URL share params (m/s/sl/ssl)
   useEffect(() => {
@@ -1518,7 +1505,7 @@ export default function TeamBuilderClient({
       >
         {!char && (
           <div className="absolute inset-0 flex items-center justify-center"
-            style={{ background: "rgba(26,68,102,0.85)", borderRadius: "4px" }}>
+            style={{ background: "hsl(var(--card) / 0.82)", borderRadius: "4px" }}>
             <div className="relative" style={{ width: "55%", aspectRatio: "1" }}>
               <div style={{
                 width: "100%", height: "100%",
@@ -1573,8 +1560,8 @@ export default function TeamBuilderClient({
                 width: "46%", aspectRatio: "1",
                 bottom: "4%", left: "27%",
                 borderRadius: "4px",
-                border: sideSubChar ? "none" : "1.5px solid rgba(110,175,205,0.35)",
-                background: sideSubChar ? "transparent" : "rgba(20,53,82,0.8)",
+                border: sideSubChar ? "none" : "1.5px solid rgba(236,228,212,0.35)",
+                background: sideSubChar ? "transparent" : "rgba(20,30,46,0.8)",
               }}
             >
               {sideSubChar ? (
@@ -1643,11 +1630,11 @@ export default function TeamBuilderClient({
       setFilterEnhancement("all"); setFilterProtSkill("all"); setFilterSkillCost(0)
     }
 
-    return (
-      <div className="fixed inset-0 z-50 flex" role="dialog" aria-modal="true">
+    return createPortal(
+      <div className="fixed inset-0 z-[200] flex" role="dialog" aria-modal="true">
         <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={closePicker} />
         <div className="relative z-50 m-auto flex flex-col max-h-[95vh] w-[95vw] max-w-6xl rounded-xl overflow-hidden shadow-2xl"
-          style={{ background: "linear-gradient(180deg, #16395a 0%, #1A4466 100%)" }}>
+          style={{ background: "linear-gradient(180deg, #101a2b 0%, #0b1421 100%)" }}>
 
           {isHP ? (
             /* ── HEARTPRINT PICKER: top bar + left preview + right grid ── */
@@ -1656,7 +1643,7 @@ export default function TeamBuilderClient({
                 <Input autoFocus value={query} onChange={e => setQuery(e.target.value)}
                   placeholder="Search by name..." className="h-8 flex-1 border-border bg-card/80 text-foreground text-sm" />
                 <div className="text-xs text-amber-300/60 px-1 shrink-0">HeartPrint — {heartprintItems.length}</div>
-                <button onClick={closePicker} className="w-8 h-8 flex items-center justify-center rounded bg-accent/30 hover:bg-accent/50 text-muted-foreground shrink-0">✕</button>
+                <button onClick={closePicker} className="w-8 h-8 flex items-center justify-center rounded bg-white/[0.07] hover:bg-white/[0.14] text-muted-foreground shrink-0">✕</button>
               </div>
               <div className="flex flex-1 min-h-0 overflow-hidden">
                 {/* Left: preview panel */}
@@ -1702,7 +1689,7 @@ export default function TeamBuilderClient({
                 {/* Right: thumbnail grid — overscroll-contain prevents page scroll */}
                 <div className="flex-1 overflow-y-auto overscroll-contain p-2">
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                    <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-border p-2 hover:bg-accent/30 transition-colors"
+                    <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-border p-2 hover:bg-white/[0.07] transition-colors"
                       style={{ aspectRatio: "245 / 146" }} onClick={() => { setHeartPrintId(null); closePicker() }}>
                       <span className="text-muted-foreground text-xl">×</span>
                       <span className="text-[10px] text-muted-foreground">Remove</span>
@@ -1712,7 +1699,7 @@ export default function TeamBuilderClient({
                       const frameImg = isRare ? "/Image/StillFrame/StillFrame3_s.webp" : "/Image/StillFrame/StillFrame1_s.webp"
                       return (
                         <div key={hp.heartprint_id}
-                          className="flex flex-col items-center gap-1 rounded hover:bg-accent/30 cursor-pointer transition-colors"
+                          className="flex flex-col items-center gap-1 rounded hover:bg-white/[0.07] cursor-pointer transition-colors"
                           onTouchEnd={(e) => { try { e.preventDefault(); e.stopPropagation() } catch (err) {} ; setPreviewHp(hp); lastTouchRef.current = Date.now() }}
                           onClick={(e) => {
                             // ignore synthetic click fired after touch
@@ -1733,7 +1720,7 @@ export default function TeamBuilderClient({
                                   className="w-3 h-3 object-contain drop-shadow" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />)}
                               </div>
                             )}
-                            {(heartPrintId === hp.heartprint_id || (isTouchDevice && previewHp?.heartprint_id === hp.heartprint_id)) && <div className="absolute inset-0 ring-2 ring-amber-400 ring-inset rounded" />}
+                            {(heartPrintId === hp.heartprint_id || (isTouchDevice && previewHp?.heartprint_id === hp.heartprint_id)) && <div className="absolute inset-0 ring-2 ring-[#7ab0e0] ring-inset rounded" />}
                           </div>
                           <span className="text-[9px] text-muted-foreground leading-none text-center line-clamp-1 w-full px-1">{hp.title}</span>
                         </div>
@@ -1752,7 +1739,7 @@ export default function TeamBuilderClient({
               {mobileLeftOpen && <div className="absolute inset-0 z-40 bg-black/60 sm:hidden" onClick={() => setMobileLeftOpen(false)} />}
               <div className={`${mobileLeftOpen ? 'absolute inset-4 z-50 rounded-xl overflow-hidden flex' : 'hidden sm:flex'} sm:w-[18%] min-w-0 sm:min-w-[140px] max-w-[200px] sm:shrink-0 flex-col items-center sm:border-r sm:border-border bg-background min-h-0 p-3 gap-2 overflow-y-auto`}>
                 {mobileLeftOpen && (
-                  <button className="sm:hidden absolute top-3 right-3 z-50 px-2 py-1 rounded bg-accent/30 text-sm text-foreground" onClick={() => setMobileLeftOpen(false)}>✕</button>
+                  <button className="sm:hidden absolute top-3 right-3 z-50 px-2 py-1 rounded bg-white/[0.07] text-sm text-foreground" onClick={() => setMobileLeftOpen(false)}>✕</button>
                 )}
                 {/* Main card with sub-slot overlaid on it */}
                 <div
@@ -1762,8 +1749,8 @@ export default function TeamBuilderClient({
                 >
                   <div
                     className={`absolute inset-0 rounded-lg overflow-hidden transition-all
-                      ${isEditingMain ? "ring-2 ring-teal-400/70 shadow-lg shadow-teal-900/30" : "ring-1 ring-white/10 hover:ring-white/20"}`}
-                    style={{ background: "rgba(26,68,102,0.85)" }}
+                      ${isEditingMain ? "ring-2 ring-[#7ab0e0]/70 shadow-lg shadow-black/40" : "ring-1 ring-white/10 hover:ring-white/20"}`}
+                    style={{ background: "rgba(26,38,56,0.85)" }}
                   >
                     {slotMainChar ? (() => {
                       const t = getCharacterVisualTier(slotMainChar)
@@ -1807,18 +1794,18 @@ export default function TeamBuilderClient({
                       </div>
                     )}
                     {isEditingMain && (
-                      <div className="absolute top-1 left-1 bg-teal-500/80 text-foreground text-[7px] font-bold px-1 rounded z-20">EDIT</div>
+                      <div className="absolute top-1 left-1 bg-[#44719f]/80 text-foreground text-[7px] font-bold px-1 rounded z-20">EDIT</div>
                     )}
                   </div>
                   {/* Sub-slot overlaid on main card — bottom center */}
                   <button
                     onClick={(e) => { e.stopPropagation(); setPickerMode(isSideMode ? "sidesub" : "sub") }}
                     className={`absolute z-20 overflow-hidden rounded cursor-pointer transition-all
-                      ${!isEditingMain ? "ring-2 ring-teal-400/70 shadow-lg shadow-teal-900/30" : "ring-1.5 ring-white/20 hover:ring-white/30"}`}
+                      ${!isEditingMain ? "ring-2 ring-[#7ab0e0]/70 shadow-lg shadow-black/40" : "ring-1.5 ring-white/20 hover:ring-white/30"}`}
                     style={{
                       width: "42%", aspectRatio: "1",
                       bottom: "5%", left: "29%",
-                      background: slotSubChar ? "transparent" : "rgba(20,53,82,0.85)",
+                      background: slotSubChar ? "transparent" : "rgba(20,30,46,0.85)",
                     }}
                   >
                     {slotSubChar ? (
@@ -1849,7 +1836,7 @@ export default function TeamBuilderClient({
                       <span className="absolute inset-0 flex items-center justify-center text-foreground/35 font-light text-lg">+</span>
                     )}
                     {!isEditingMain && (
-                      <div className="absolute top-0.5 left-0.5 bg-teal-500/80 text-foreground text-[6px] font-bold px-0.5 rounded">EDIT</div>
+                      <div className="absolute top-0.5 left-0.5 bg-[#44719f]/80 text-foreground text-[6px] font-bold px-0.5 rounded">EDIT</div>
                     )}
                   </button>
                 </div>
@@ -1860,21 +1847,21 @@ export default function TeamBuilderClient({
               <div className="flex-1 flex flex-col min-w-0 relative overflow-visible sm:overflow-hidden">
                 {/* Top bar */}
                 <div className="flex items-center gap-2 px-3 py-2 border-b border-border/10 shrink-0">
-                  <button className="sm:hidden px-2 py-1 rounded bg-accent/30 text-[12px] text-foreground font-semibold" onClick={() => setMobileLeftOpen(v => !v)} aria-expanded={mobileLeftOpen} aria-label="Toggle preview">{mobileLeftOpen ? "Close" : "Edit"}</button>
+                  <button className="sm:hidden px-2 py-1 rounded bg-white/[0.07] text-[12px] text-foreground font-semibold" onClick={() => setMobileLeftOpen(v => !v)} aria-expanded={mobileLeftOpen} aria-label="Toggle preview">{mobileLeftOpen ? "Close" : "Edit"}</button>
                   <Input autoFocus value={query} onChange={e => setQuery(e.target.value)}
                     placeholder="Search by name..." className="h-8 flex-1 border-border bg-card/80 text-foreground text-sm" />
                   <button onClick={() => setShowFilterModal(true)}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs transition-all shrink-0 ${activeFilterCount > 0 ? "bg-teal-800/50 text-teal-300 ring-1 ring-teal-400/30" : "bg-accent/30 text-muted-foreground hover:bg-accent/50"}`}>
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs transition-all shrink-0 ${activeFilterCount > 0 ? "bg-[#2c517c]/45 text-[#a9d2ff] ring-1 ring-[#7ab0e0]/30" : "bg-white/[0.07] text-muted-foreground hover:bg-white/[0.14]"}`}>
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" /></svg>
                     Filter{activeFilterCount > 0 ? ` (${activeFilterCount})` : ""}
                   </button>
-                  <button onClick={closePicker} className="w-8 h-8 flex items-center justify-center rounded bg-accent/30 hover:bg-accent/50 text-muted-foreground shrink-0">✕</button>
+                  <button onClick={closePicker} className="w-8 h-8 flex items-center justify-center rounded bg-white/[0.07] hover:bg-white/[0.14] text-muted-foreground shrink-0">✕</button>
                 </div>
 
                 {/* Character grid */}
                 <div className="flex-1 sm:overflow-y-auto overscroll-contain p-2">
                   <div className="grid gap-1.5 grid-cols-5 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8">
-                    <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-border p-1.5 hover:bg-accent/30 transition-colors aspect-square"
+                    <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-border p-1.5 hover:bg-white/[0.07] transition-colors aspect-square"
                       onClick={() => {
                         if (pickerMode === "sub") setSubSlots(s => { const c = [...s]; c[pickerOpenFor] = null; return c })
                         else if (pickerMode === "side") setSideSlots(s => { const c = [...s]; c[pickerOpenFor] = null; return c })
@@ -1894,7 +1881,7 @@ export default function TeamBuilderClient({
                       const [ci1, ci2] = getMiniCardIcons(c)
                       const imageLoading = index < 24 ? "eager" : "lazy"
                       return (
-                        <div key={c.master_pc_id} className="flex flex-col items-center gap-0.5 p-1 rounded hover:bg-accent/30 cursor-pointer transition-colors"
+                        <div key={c.master_pc_id} className="flex flex-col items-center gap-0.5 p-1 rounded hover:bg-white/[0.07] cursor-pointer transition-colors"
                           style={{ contentVisibility: "auto", containIntrinsicSize: "72px" }}
                           onClick={() => selectChar(pickerOpenFor, c.master_pc_id)}>
                           <div className="relative w-full overflow-hidden rounded-md" style={{ aspectRatio: "1" }}>
@@ -1925,7 +1912,7 @@ export default function TeamBuilderClient({
                 {showFilterModal && (
                   <div className="fixed z-[60] flex flex-col overflow-hidden rounded-lg shadow-2xl border border-border"
                     style={{
-                      background: "rgba(22,57,90,0.97)",
+                      background: "rgba(22,32,50,0.97)",
                       backdropFilter: "blur(12px)",
                       top: `calc(50% + ${filterDragOffset.y}px)`,
                       right: `calc(10% - ${filterDragOffset.x}px)`,
@@ -1995,7 +1982,7 @@ export default function TeamBuilderClient({
                             <div className="flex flex-col gap-1 shrink-0">
                               {PROT_SUPPORT_TYPES.map(t => (
                                 <button key={t.key} onClick={() => setFilterProtType(filterProtType === t.key ? null : (t.key as any))}
-                                  className={`w-9 h-9 flex items-center justify-center rounded transition-all ${filterProtType === t.key ? "ring-2 ring-white bg-white/20" : "bg-accent/30 hover:bg-accent/50"}`}
+                                  className={`w-9 h-9 flex items-center justify-center rounded transition-all ${filterProtType === t.key ? "ring-2 ring-white bg-white/20" : "bg-white/[0.07] hover:bg-white/[0.14]"}`}
                                   title={t.label}>
                                   <img src={t.icon} alt={t.label} className={`w-6 h-6 object-contain ${filterProtType === t.key ? "opacity-100" : "opacity-50"}`}
                                     onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
@@ -2044,9 +2031,9 @@ export default function TeamBuilderClient({
                               .sort((a, b) => a.localeCompare(b))
                               .map(key => (
                                 <button key={key} onClick={() => setFilterWeapon(filterWeapon === key ? null : key)} title={formatWikiLabel(key)}
-                                  className={`w-7 h-7 flex items-center justify-center rounded transition-all relative overflow-hidden ${filterWeapon === key ? "bg-white/20 ring-1 ring-white/50" : "bg-accent/30 hover:bg-accent/50"}`}>
+                                  className={`w-7 h-7 flex items-center justify-center rounded transition-all relative overflow-hidden ${filterWeapon === key ? "bg-white/20 ring-1 ring-white/50" : "bg-white/[0.07] hover:bg-white/[0.14]"}`}>
                                   <div
-                                    className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-sm border border-border/[0.28] bg-accent/30 pointer-events-none"
+                                    className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-sm border border-border/[0.28] bg-white/[0.07] pointer-events-none"
                                   />
                                   <img src={weaponIconMap[key]} alt={formatWikiLabel(key)} className={`relative w-4 h-4 object-contain ${filterWeapon === key ? "opacity-100" : "opacity-50"}`}
                                     onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
@@ -2063,7 +2050,7 @@ export default function TeamBuilderClient({
                           <div className="flex flex-wrap gap-1">
                             {([ ["all","ALL"],["secret","Secret Skills"],["protection","Protection"],["skill","Skill"] ] as const).map(([k, l]) => (
                               <button key={k} onClick={() => setFilterProtSkill(k as any)}
-                                className={`px-2 py-1 rounded text-[11px] transition-all ${filterProtSkill === k ? "bg-white/20 text-foreground ring-1 ring-white/40" : "bg-accent/30 text-muted-foreground hover:bg-accent/50"}`}>
+                                className={`px-2 py-1 rounded text-[11px] transition-all ${filterProtSkill === k ? "bg-white/20 text-foreground ring-1 ring-white/40" : "bg-white/[0.07] text-muted-foreground hover:bg-white/[0.14]"}`}>
                                 {l}
                               </button>
                             ))}
@@ -2078,7 +2065,7 @@ export default function TeamBuilderClient({
                           <FilterBtn active={filterTactics === null} onClick={() => setFilterTactics(null)}>ALL</FilterBtn>
                           {TACTICS_TYPES.map(t => (
                             <button key={t.key} onClick={() => setFilterTactics(filterTactics === t.key ? null : t.key)}
-                              className={`flex items-center gap-1 px-2 py-1 rounded text-[11px] transition-all ${filterTactics === t.key ? "bg-white/20 text-foreground ring-1 ring-white/40" : "bg-accent/30 text-muted-foreground hover:bg-accent/50"}`}>
+                              className={`flex items-center gap-1 px-2 py-1 rounded text-[11px] transition-all ${filterTactics === t.key ? "bg-white/20 text-foreground ring-1 ring-white/40" : "bg-white/[0.07] text-muted-foreground hover:bg-white/[0.14]"}`}>
                               <img src={t.icon} alt="" className={`w-4 h-4 object-contain ${filterTactics === t.key ? "opacity-100" : "opacity-50"}`} />{t.label}
                             </button>
                           ))}
@@ -2092,7 +2079,7 @@ export default function TeamBuilderClient({
                           <div className="flex flex-wrap gap-1">
                             {(["all","attack","support"] as const).map(k => (
                               <button key={k} onClick={() => { setFilterUltimateType(k) }}
-                                className={`px-2 py-1 rounded text-[11px] transition-all ${filterUltimateType === k ? "bg-white/20 text-foreground ring-1 ring-white/40" : "bg-accent/30 text-muted-foreground hover:bg-accent/50"}`}>
+                                className={`px-2 py-1 rounded text-[11px] transition-all ${filterUltimateType === k ? "bg-white/20 text-foreground ring-1 ring-white/40" : "bg-white/[0.07] text-muted-foreground hover:bg-white/[0.14]"}`}>
                                 {k === "all" ? "ALL" : k === "attack" ? "Attack" : "Support"}
                               </button>
                             ))}
@@ -2107,7 +2094,7 @@ export default function TeamBuilderClient({
                           <FilterBtn active={filterRarity === null} onClick={() => setFilterRarity(null)}>ALL</FilterBtn>
                           {[3,4,5,6,7,8].map(tier => (
                             <button key={tier} onClick={() => setFilterRarity(filterRarity === tier ? null : tier)}
-                              className={`h-7 px-1.5 flex items-center justify-center rounded transition-all ${filterRarity === tier ? "ring-2 ring-white/60 bg-white/20" : "bg-accent/30 hover:bg-accent/50"}`}>
+                              className={`h-7 px-1.5 flex items-center justify-center rounded transition-all ${filterRarity === tier ? "ring-2 ring-white/60 bg-white/20" : "bg-white/[0.07] hover:bg-white/[0.14]"}`}>
                               <img src={STAR_ASSETS[tier]} alt={`L${tier}`} className={`h-4 object-contain ${filterRarity === tier ? "opacity-100" : "opacity-55"}`} />
                             </button>
                           ))}
@@ -2121,7 +2108,7 @@ export default function TeamBuilderClient({
                           <FilterBtn active={filterCharacterType === null} onClick={() => setFilterCharacterType(null)}>ALL</FilterBtn>
                           {masterCharacterTacticsOptions.map(type => (
                             <button key={type} onClick={() => setFilterCharacterType(filterCharacterType === type ? null : type)}
-                              className={`px-2 py-1 rounded text-[11px] transition-all ${filterCharacterType === type ? "bg-white/20 text-foreground ring-1 ring-white/40" : "bg-accent/30 text-muted-foreground hover:bg-accent/50"}`}>
+                              className={`px-2 py-1 rounded text-[11px] transition-all ${filterCharacterType === type ? "bg-white/20 text-foreground ring-1 ring-white/40" : "bg-white/[0.07] text-muted-foreground hover:bg-white/[0.14]"}`}>
                               {CHAR_TYPE_DISPLAY[type] ?? type}
                             </button>
                           ))}
@@ -2134,7 +2121,7 @@ export default function TeamBuilderClient({
                         <div className="flex flex-wrap gap-1">
                           {([["all","ALL"],["ex","EX Enhancement"],["unbound","Attribute Unbound"]] as const).map(([k, l]) => (
                             <button key={k} onClick={() => setFilterEnhancement(k as any)}
-                              className={`px-2 py-1 rounded text-[11px] transition-all ${filterEnhancement === k ? "bg-white/20 text-foreground ring-1 ring-white/40" : "bg-accent/30 text-muted-foreground hover:bg-accent/50"}`}>
+                              className={`px-2 py-1 rounded text-[11px] transition-all ${filterEnhancement === k ? "bg-white/20 text-foreground ring-1 ring-white/40" : "bg-white/[0.07] text-muted-foreground hover:bg-white/[0.14]"}`}>
                               {l}
                             </button>
                           ))}
@@ -2146,7 +2133,7 @@ export default function TeamBuilderClient({
                         <div className="text-[11px] font-semibold text-foreground/80 bg-border/[0.07] rounded px-2 py-1.5 mb-2 uppercase tracking-wider flex items-center justify-between">
                           <span>Forces</span>
                           {filterForces.length > 0 && (
-                            <button onClick={() => setFilterForces([])} className="text-[10px] text-teal-400 hover:text-teal-300 normal-case underline">
+                            <button onClick={() => setFilterForces([])} className="text-[10px] text-[#7ab0e0] hover:text-[#a9d2ff] normal-case underline">
                               Clear ({filterForces.length})
                             </button>
                           )}
@@ -2160,7 +2147,7 @@ export default function TeamBuilderClient({
                                 return (
                                   <button key={f.name}
                                     onClick={() => setFilterForces(prev => active ? prev.filter(x => x !== f.name) : [...prev, f.name])}
-                                    className={`flex items-center gap-1.5 px-2 py-1.5 rounded text-[10px] border transition-all text-left ${active ? "bg-teal-600/20 border-teal-400/60 text-foreground" : "bg-border/[0.06] border-border/[0.12] text-muted-foreground hover:bg-border/[0.12]"}`}>
+                                    className={`flex items-center gap-1.5 px-2 py-1.5 rounded text-[10px] border transition-all text-left ${active ? "bg-[#2c517c]/30 border-[#7ab0e0]/70 text-foreground" : "bg-white/[0.04] border-[rgba(236,228,212,0.2)] text-muted-foreground hover:bg-white/[0.09] hover:border-[rgba(236,228,212,0.34)]"}`}>
                                     {f.icon && <img src={f.icon} alt="" className="w-4 h-4 object-contain shrink-0 rounded-full"
                                       onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />}
                                     <span className="leading-tight truncate">{f.name}</span>
@@ -2193,7 +2180,7 @@ export default function TeamBuilderClient({
                             <span className="text-[10px] text-muted-foreground w-6">85+</span>
                           </div>
                           {filterSkillCost > 0 && (
-                            <button onClick={() => setFilterSkillCost(0)} className="text-[10px] text-teal-400 hover:text-teal-300 underline mt-1">Reset</button>
+                            <button onClick={() => setFilterSkillCost(0)} className="text-[10px] text-[#7ab0e0] hover:text-[#a9d2ff] underline mt-1">Reset</button>
                           )}
                         </div>
                         )}
@@ -2207,8 +2194,8 @@ export default function TeamBuilderClient({
                               : [["all","ALL"],["secret","Secret Skills"],["battle","Battle Skills"],["trait","Trait"],["valor","Valor Trait"]] as const
                             ).map(([k, l]) => (
                               <button key={k} onClick={() => { setFilterSkillType(k as any); if (k !== "all" && k !== "battle") setFilterSkillCost(0) }}
-                                className={`px-2.5 py-1.5 rounded text-[11px] border flex items-center gap-1.5 transition-all ${filterSkillType === k ? "bg-teal-600/30 border-teal-400/70 text-foreground" : "bg-accent/30 border-border/[0.22] text-muted-foreground hover:bg-accent/50"}`}>
-                                {filterSkillType === k && <span className="text-teal-400 text-[10px]">✓</span>}
+                                className={`px-2.5 py-1.5 rounded text-[11px] border flex items-center gap-1.5 transition-all ${filterSkillType === k ? "bg-[#2c517c]/30 border-[#7ab0e0]/70 text-foreground" : "bg-white/[0.07] border-border/[0.22] text-muted-foreground hover:bg-white/[0.14]"}`}>
+                                {filterSkillType === k && <span className="text-[#7ab0e0] text-[10px]">✓</span>}
                                 <span>{l}</span>
                               </button>
                             ))}
@@ -2231,8 +2218,8 @@ export default function TeamBuilderClient({
                                   setFilterSkillOtherSelected(false)
                                   setExpandedSkillCats([])
                                 }}
-                                className={`px-2 py-2 rounded text-[11px] border font-semibold transition-all flex items-center justify-center gap-1.5 ${filterSkillAllMode ? "bg-teal-600/30 border-teal-400/70 text-foreground" : "bg-accent/30 border-border/[0.22] text-muted-foreground hover:bg-accent/50"}`}>
-                                {filterSkillAllMode && <span className="text-teal-400 text-[10px]">✓</span>}ALL
+                                className={`px-2 py-2 rounded text-[11px] border font-semibold transition-all flex items-center justify-center gap-1.5 ${filterSkillAllMode ? "bg-[#2c517c]/30 border-[#7ab0e0]/70 text-foreground" : "bg-white/[0.07] border-border/[0.22] text-muted-foreground hover:bg-white/[0.14]"}`}>
+                                {filterSkillAllMode && <span className="text-[#7ab0e0] text-[10px]">✓</span>}ALL
                               </button>
                               {orderedSkillFilterCats.map(([cat, subMap]) => {
                                 const catLabel = SKILL_CAT_LABELS[cat] ?? cat
@@ -2250,7 +2237,7 @@ export default function TeamBuilderClient({
                                       setFilterSkillOtherSelected(false)
                                       setExpandedSkillCats(prev => prev.includes(cat) ? prev : [...prev, cat])
                                     }}
-                                    className={`px-2 py-2 rounded text-[10px] border font-medium transition-all text-center ${allSelected ? "bg-teal-600/30 border-teal-400/70 text-foreground" : someSelected ? "bg-teal-600/15 border-teal-400/40 text-teal-300" : "bg-accent/30 border-border/[0.22] text-muted-foreground hover:bg-accent/50"}`}>
+                                    className={`px-2 py-2 rounded text-[10px] border font-medium transition-all text-center ${allSelected ? "bg-[#2c517c]/30 border-[#7ab0e0]/70 text-foreground" : someSelected ? "bg-[#2c517c]/15 border-[#7ab0e0]/40 text-[#a9d2ff]" : "bg-white/[0.07] border-border/[0.22] text-muted-foreground hover:bg-white/[0.14]"}`}>
                                     <div className="flex flex-col items-center leading-tight">
                                       <span>{catLabel}</span>
                                     </div>
@@ -2272,7 +2259,7 @@ export default function TeamBuilderClient({
                                   }
                                   setFilterSkillOtherSelected(prev => !prev)
                                 }}
-                                className={`px-2 py-2 rounded text-[10px] border font-medium transition-all text-center ${!filterSkillAllMode && filterSkillOtherSelected ? "bg-teal-600/30 border-teal-400/70 text-foreground" : "bg-accent/30 border-border/[0.22] text-muted-foreground hover:bg-accent/50"}`}>
+                                className={`px-2 py-2 rounded text-[10px] border font-medium transition-all text-center ${!filterSkillAllMode && filterSkillOtherSelected ? "bg-[#2c517c]/30 border-[#7ab0e0]/70 text-foreground" : "bg-white/[0.07] border-border/[0.22] text-muted-foreground hover:bg-white/[0.14]"}`}>
                                 {SKILL_CAT_LABELS.Other}
                               </button>
                             </div>
@@ -2303,7 +2290,7 @@ export default function TeamBuilderClient({
                                   className={`w-full flex items-center justify-between px-3 py-2 rounded text-[11px] font-semibold transition-all hover:bg-border/[0.14] ${someSelected ? "bg-border/10 text-foreground" : "bg-border/[0.06] text-muted-foreground"}`}>
                                   <span>{catLabel}</span>
                                   <div className="flex items-center gap-2">
-                                    {someSelected && <span className="text-teal-400 text-[10px]">{catGroupIds.filter(id => selectedSet.has(id)).length} selected</span>}
+                                    {someSelected && <span className="text-[#7ab0e0] text-[10px]">{catGroupIds.filter(id => selectedSet.has(id)).length} selected</span>}
                                     <button
                                       onClick={(e) => {
                                         e.stopPropagation()
@@ -2319,7 +2306,7 @@ export default function TeamBuilderClient({
                                           setFilterSkillGroups(prev => [...new Set([...prev, ...catGroupIds])])
                                         }
                                       }}
-                                      className={`px-2 py-0.5 rounded text-[9px] border font-semibold transition-all ${allSelected ? "bg-teal-600/40 border-teal-400/70 text-teal-200 hover:bg-teal-600/60" : "bg-border/[0.14] border-border/[0.28] text-muted-foreground hover:bg-white/20"}`}>
+                                      className={`px-2 py-0.5 rounded text-[9px] border font-semibold transition-all ${allSelected ? "bg-[#2c517c]/40 border-[#7ab0e0]/70 text-[#c5ddf2] hover:bg-[#2c517c]/60" : "bg-border/[0.14] border-border/[0.28] text-muted-foreground hover:bg-white/20"}`}>
                                       {allSelected ? "Deselect All" : "Select All"}
                                     </button>
                                     <span className="text-muted-foreground text-[10px] leading-none px-1">{isExpanded ? "▲" : "▼"}</span>
@@ -2342,8 +2329,8 @@ export default function TeamBuilderClient({
                                               setFilterSkillGroups(prev => active ? prev.filter(id => id !== groupId) : [...prev, groupId])
                                             }
                                           }}
-                                          className={`px-2 py-1.5 rounded text-[10px] border text-left transition-all flex items-center gap-1 ${active ? "bg-teal-500/20 border-teal-400/50 text-teal-200" : "bg-accent/30 border-border text-muted-foreground hover:bg-accent/50"}`}>
-                                          {active && <span className="text-teal-400 text-[9px] shrink-0">✓</span>}
+                                          className={`px-2 py-1.5 rounded text-[10px] border text-left transition-all flex items-center gap-1 ${active ? "bg-[#44719f]/20 border-[#7ab0e0]/50 text-[#c5ddf2]" : "bg-white/[0.07] border-border text-muted-foreground hover:bg-white/[0.14]"}`}>
+                                          {active && <span className="text-[#7ab0e0] text-[9px] shrink-0">✓</span>}
                                           <span className="truncate" dangerouslySetInnerHTML={{ __html: label }} />
                                         </button>
                                       )
@@ -2353,7 +2340,7 @@ export default function TeamBuilderClient({
                               </div>
                             )
                           })}
-                          <div className="text-[10px] text-teal-400 mt-2">
+                          <div className="text-[10px] text-[#7ab0e0] mt-2">
                             {selectedSkillEffectCount} filter{selectedSkillEffectCount !== 1 ? "s" : ""} selected total
                           </div>
                         </div>
@@ -2365,7 +2352,7 @@ export default function TeamBuilderClient({
                     <div className="shrink-0 px-4 py-2.5 border-t border-border flex justify-between items-center">
                       <button onClick={clearAllFilters} className="text-[11px] text-muted-foreground hover:text-foreground underline">Clear all</button>
                       <button onClick={() => setShowFilterModal(false)}
-                        className="px-5 py-1.5 bg-teal-600 hover:bg-teal-500 text-foreground text-[11px] rounded transition-all font-semibold">
+                        className="px-5 py-1.5 bg-[#2c517c] hover:bg-[#44719f] text-foreground text-[11px] rounded transition-all font-semibold">
                         Apply{activeFilterCount > 0 ? ` (${activeFilterCount})` : ""}
                       </button>
                     </div>
@@ -2394,7 +2381,8 @@ export default function TeamBuilderClient({
           )}
 
         </div>
-      </div>
+      </div>,
+      document.body,
     )
   }
 
@@ -2402,14 +2390,14 @@ export default function TeamBuilderClient({
   function FilterBtn({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
     return (
       <button onClick={onClick}
-        className={`px-2 py-1 rounded text-[11px] font-medium transition-all ${active ? "bg-white/20 text-foreground ring-1 ring-white/30" : "bg-accent/30 text-muted-foreground hover:bg-accent/50"}`}
+        className={`px-2 py-1 rounded text-[11px] font-medium transition-all ${active ? "bg-white/20 text-foreground ring-1 ring-white/30" : "bg-white/[0.07] text-muted-foreground hover:bg-white/[0.14]"}`}
       >{children}</button>
     )
   }
   function FilterIcon({ active, icon, label, onClick }: { active: boolean; icon: string; label: string; onClick: () => void }) {
     return (
       <button onClick={onClick} title={label}
-        className={`w-8 h-8 flex items-center justify-center rounded transition-all ${active ? "ring-2 ring-white bg-white/20" : "bg-accent/30 hover:bg-accent/50"}`}>
+        className={`w-8 h-8 flex items-center justify-center rounded transition-all ${active ? "ring-2 ring-white bg-white/20" : "bg-white/[0.07] hover:bg-white/[0.14]"}`}>
         <img src={icon} alt={label} className={`w-5 h-5 object-contain ${active ? "opacity-100" : "opacity-50"}`} />
       </button>
     )
@@ -2491,10 +2479,10 @@ export default function TeamBuilderClient({
     if (attackerGroups.length === 0) return null
 
     return (
-      <div className="mb-2 rounded-lg overflow-hidden text-xs" style={{ width: `calc(4 * (clamp(110px, 12vw, 155px) * ${SIZE_SCALE}) + 2 * (clamp(78px, 8.5vw, 109px) * ${SIZE_SCALE}) + 32px)`, maxWidth: "100%", background: "rgba(20,53,82,0.92)", border: "1px solid rgba(110,175,205,0.16)" }}>
+      <div className="mb-2 rounded-lg overflow-hidden text-xs" style={{ width: `calc(4 * (clamp(110px, 12vw, 155px) * ${SIZE_SCALE}) + 2 * (clamp(78px, 8.5vw, 109px) * ${SIZE_SCALE}) + 32px)`, maxWidth: "100%", background: "rgba(20,30,46,0.92)", border: "1px solid rgba(236,228,212,0.16)" }}>
         <button
           onClick={onToggleExpand}
-          className="w-full flex items-center gap-2 px-3 py-2 hover:bg-accent/30 transition-colors text-left"
+          className="w-full flex items-center gap-2 px-3 py-2 hover:bg-white/[0.07] transition-colors text-left"
         >
           <span className="text-foreground/60 font-semibold text-[10px] uppercase tracking-wide flex-1">Battle Skills</span>
           <span className="text-foreground/40">{isExpanded ? "▲" : "▼"}</span>
@@ -2504,7 +2492,7 @@ export default function TeamBuilderClient({
             {attackerGroups.map(({ slotIdx, type, atkChar, baseSkills, changesBySlot }, groupIdx) => (
               <div key={`${type}-${slotIdx}`}>
                 {/* Character name sub-header */}
-                <div className="px-3 py-1.5 text-[9px] font-semibold uppercase tracking-widest text-foreground/35" style={{ background: "rgba(110,175,205,0.06)", borderBottom: "1px solid rgba(110,175,205,0.12)", borderTop: groupIdx > 0 ? "1px solid rgba(110,175,205,0.12)" : undefined }}>
+                <div className="px-3 py-1.5 text-[9px] font-semibold uppercase tracking-widest text-foreground/35" style={{ background: "rgba(236,228,212,0.06)", borderBottom: "1px solid rgba(236,228,212,0.12)", borderTop: groupIdx > 0 ? "1px solid rgba(236,228,212,0.12)" : undefined }}>
                   {atkChar.name}
                 </div>
                 {baseSkills.map((skill, idx) => {
@@ -2514,7 +2502,7 @@ export default function TeamBuilderClient({
                   const displayed = viewingChanged ? changed : skill
                   const isLast = idx === baseSkills.length - 1
                   return (
-                    <div key={skill.slot} style={{ borderBottom: !isLast ? "1px solid rgba(110,175,205,0.12)" : undefined }}>
+                    <div key={skill.slot} style={{ borderBottom: !isLast ? "1px solid rgba(236,228,212,0.12)" : undefined }}>
                       <div className="flex items-start gap-2 px-3 py-2">
                         {displayed.icon_path && (
                           <img src={`/${transformIconPath(displayed.icon_path)}.webp`} alt=""
@@ -2607,29 +2595,29 @@ export default function TeamBuilderClient({
           <button
             onClick={() => setMetaPresetOpen(o => !o)}
             className="w-full flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-sm text-foreground/80 border border-border"
-            style={{ background: "rgba(20,53,82,0.92)" }}
+            style={{ background: "rgba(20,30,46,0.92)" }}
           >
             <span>Load Meta Preset...</span>
             <span>{metaPresetOpen ? "▲" : "▼"}</span>
           </button>
           {metaPresetOpen && (
             <div className="absolute top-full left-0 right-0 z-50 mt-1 rounded-lg overflow-hidden border border-border"
-              style={{ background: "rgba(22,57,90,0.97)" }}>
+              style={{ background: "rgba(22,32,50,0.97)" }}>
               <div className="p-2 border-b border-border">
                 <Input
                   value={metaPresetSearch}
                   onChange={e => setMetaPresetSearch(e.target.value)}
                   placeholder="Search metas..."
-                  className="h-8 text-sm bg-accent/30 border-border text-foreground placeholder:text-foreground/30"
+                  className="h-8 text-sm bg-white/[0.07] border-border text-foreground placeholder:text-foreground/30"
                   autoFocus
                 />
               </div>
-              <div className="overflow-y-auto" style={{ maxHeight: "16rem", scrollbarColor: "rgba(20,53,82,0.55) transparent" }}>
+              <div className="overflow-y-auto" style={{ maxHeight: "16rem", scrollbarColor: "rgba(20,30,46,0.55) transparent" }}>
                 {[...META_PRESETS].reverse()
                   .filter(p => p.name.toLowerCase().includes(metaPresetSearch.toLowerCase()))
                   .map(preset => (
                     <button key={preset.id}
-                      className="w-full text-left px-3 py-2 text-sm text-foreground/80 hover:bg-accent/50 transition-colors"
+                      className="w-full text-left px-3 py-2 text-sm text-foreground/80 hover:bg-white/[0.14] transition-colors"
                       onClick={() => loadPreset(preset)}
                     >
                       {preset.name}
@@ -2650,12 +2638,12 @@ export default function TeamBuilderClient({
           style={{
             width: `calc(4 * (clamp(110px, 12vw, 155px) * ${SIZE_SCALE}) + 2 * (clamp(78px, 8.5vw, 109px) * ${SIZE_SCALE}) + 32px)`,
             maxWidth: "100%",
-            background: "rgba(20,53,82,0.92)", border: "1px solid rgba(110,175,205,0.16)"
+            background: "rgba(20,30,46,0.92)", border: "1px solid rgba(236,228,212,0.16)"
           }}>
           {/* Leader skill row */}
           {leaderSkill && (
             <div className="flex items-start gap-2 px-3 py-2"
-              style={{ borderBottom: assistSkill ? "1px solid rgba(110,175,205,0.12)" : undefined }}>
+              style={{ borderBottom: assistSkill ? "1px solid rgba(236,228,212,0.12)" : undefined }}>
               {leaderSkill.icon_path && (
                 <img src={`/${transformIconPath(leaderSkill.icon_path)}.webp`} alt=""
                   className="w-8 h-8 flex-shrink-0 object-contain rounded"
@@ -2760,8 +2748,8 @@ export default function TeamBuilderClient({
             style={{
               minHeight: "60px",
               borderRadius: "6px",
-              border: "2px solid rgba(110,175,205,0.3)",
-              background: "rgba(26,68,102,0.85)",
+              border: "2px solid rgba(236,228,212,0.18)",
+              background: "hsl(var(--card) / 0.82)",
             }}
           >
             {heartPrintId ? (
@@ -2853,11 +2841,11 @@ export default function TeamBuilderClient({
       {PickerModal()}
 
       {/* ── EQUIPMENT MODAL ── */}
-      {showEquipModal && (
-        <div className="fixed inset-0 z-50 flex" role="dialog" aria-modal="true">
+      {showEquipModal && typeof document !== "undefined" && createPortal(
+        <div className="fixed inset-0 z-[200] flex" role="dialog" aria-modal="true">
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setShowEquipModal(false)} />
           <div className="relative z-50 isolate m-auto flex flex-col max-h-[95vh] w-[98vw] sm:w-[95vw] max-w-5xl rounded-xl overflow-hidden shadow-2xl"
-            style={{ background: "linear-gradient(180deg, #16395a 0%, #1A4466 100%)" }}>
+            style={{ background: "linear-gradient(180deg, #101a2b 0%, #0b1421 100%)" }}>
             {/* Header */}
             <div className="relative z-50 flex items-center gap-2 px-4 py-2.5 border-b border-border shrink-0">
               <img src="/UI/Texture/CommonEtcAtlas/icArmor.webp" alt="" className="w-5 h-5 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
@@ -2870,7 +2858,7 @@ export default function TeamBuilderClient({
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 Auto Equip
               </button>
-              <button onClick={() => setShowEquipModal(false)} className="w-8 h-8 flex items-center justify-center rounded bg-accent/30 hover:bg-accent/50 text-muted-foreground shrink-0">✕</button>
+              <button onClick={() => setShowEquipModal(false)} className="w-8 h-8 flex items-center justify-center rounded bg-white/[0.07] hover:bg-white/[0.14] text-muted-foreground shrink-0">✕</button>
             </div>
 
             <div className="flex flex-col sm:flex-row flex-1 min-h-0 overflow-hidden">
@@ -2911,7 +2899,7 @@ export default function TeamBuilderClient({
                             <img src={toPublicAssetPath(ch.images.icon)} alt={ch.name} className="absolute inset-0 w-full h-full object-cover object-top" />
                           </div>
                           <div className="min-w-0 flex-1">
-                            <div className={`font-semibold truncate ${isSub ? "text-[9px]" : "text-[10px]"} ${isProtChar ? "text-purple-300" : "text-cyan-300"}`}>{ch.name}</div>
+                            <div className={`font-semibold truncate ${isSub ? "text-[9px]" : "text-[10px]"} ${isProtChar ? "text-purple-300" : "text-[#a9d2ff]"}`}>{ch.name}</div>
                             {ch.weapon_type && !isProtChar && (
                               <div className="flex items-center gap-1 mt-0.5">
                                 {weaponIconMap[normalizeWeaponType(ch.weapon_type)] && (
@@ -2948,7 +2936,7 @@ export default function TeamBuilderClient({
                                 <div key={eqType} className="flex flex-col items-center gap-0.5">
                                   <button
                                     onClick={() => { setActiveEquipSlot({ slotKey: entry.slotKey, type: eqType }); setEquipQuery(""); setEquipFilterRarity(null); setEquipHoveredId(null) }}
-                                    className={`w-14 h-14 rounded border flex items-center justify-center transition-all overflow-hidden ${isActive ? "border-sky-400 ring-1 ring-sky-400/50 bg-sky-900/20" : "border-border bg-border/[0.06] hover:bg-border/[0.12]"}`}
+                                    className={`w-14 h-14 rounded border flex items-center justify-center transition-all overflow-hidden ${isActive ? "border-[#7ab0e0] ring-1 ring-sky-400/50 bg-sky-900/20" : "border-border bg-border/[0.06] hover:bg-border/[0.12]"}`}
                                     title={eqType}>
                                     {eq?.image ? (
                                       <img src={eq.image} alt={eq.name} className="w-12 h-12 object-contain" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
@@ -2983,8 +2971,8 @@ export default function TeamBuilderClient({
                       )}
                       {battleGroups.length > 0 && (
                         <>
-                          <div className="px-3 py-1.5 bg-sky-950/30 border-b border-sky-400/10 sm:sticky top-0 z-20 mt-0">
-                            <span className="text-[9px] font-bold text-sky-300/70 uppercase tracking-widest">Battle Characters</span>
+                          <div className="px-3 py-1.5 bg-sky-950/30 border-b border-[#7ab0e0]/10 sm:sticky top-0 z-20 mt-0">
+                            <span className="text-[9px] font-bold text-[#a9d2ff]/70 uppercase tracking-widest">Battle Characters</span>
                           </div>
                           {battleGroups.map(g => (
                             <div key={g.mainEntry?.slotKey ?? g.subEntry?.slotKey}>
@@ -3055,7 +3043,7 @@ export default function TeamBuilderClient({
                           className="h-7 flex-1 rounded border border-border bg-card/80 text-foreground text-[11px] px-2 outline-none focus:border-sky-500" />
                         {(activeEquipSlot.type === "charm" ? [3, 2, 1] : [6, 3, 2, 1]).map(r => (
                           <button key={r} onClick={() => setEquipFilterRarity(equipFilterRarity === r ? null : r)}
-                            className={`w-6 h-6 rounded text-[9px] font-bold transition-all ${equipFilterRarity === r ? "bg-amber-500 text-black" : "bg-accent/30 text-muted-foreground hover:bg-accent/50"}`}>
+                            className={`w-6 h-6 rounded text-[9px] font-bold transition-all ${equipFilterRarity === r ? "bg-amber-500 text-black" : "bg-white/[0.07] text-muted-foreground hover:bg-white/[0.14]"}`}>
                             {r}★
                           </button>
                         ))}
@@ -3066,7 +3054,7 @@ export default function TeamBuilderClient({
                     <div className="flex-1 sm:overflow-y-auto overscroll-contain p-2">
                       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
                         {/* Remove button */}
-                        <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-border p-2 hover:bg-accent/30 transition-colors"
+                        <div className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-border p-2 hover:bg-white/[0.07] transition-colors"
                           style={{ aspectRatio: "1" }}
                           onClick={() => {
                             if (activeEquipSlot.type === "charm") {
@@ -3087,7 +3075,7 @@ export default function TeamBuilderClient({
                             const img = match ? `/Image/Equip/Accessory/${match[1]}/Accessory_${match[1]}_AccessoryM.webp` : null
                             return (
                               <div key={fc.skill_id}
-                                className={`flex flex-col items-center gap-1 rounded cursor-pointer transition-colors p-1 ${equipHoveredId === fc.skill_id ? "bg-border/[0.14]" : "hover:bg-accent/30"}`}
+                                className={`flex flex-col items-center gap-1 rounded cursor-pointer transition-colors p-1 ${equipHoveredId === fc.skill_id ? "bg-border/[0.14]" : "hover:bg-white/[0.07]"}`}
                                 onPointerEnter={() => setEquipHoveredId(fc.skill_id)}
                                 onPointerLeave={() => setEquipHoveredId(prev => prev === fc.skill_id ? null : prev)}
                                 onClick={() => setCharmSlots(prev => ({ ...prev, [activeEquipSlot.slotKey]: fc.skill_id }))}>
@@ -3115,7 +3103,7 @@ export default function TeamBuilderClient({
                             const isSelected = getEquipRecord(activeEquipSlot.slotKey)[activeEquipSlot.type] === eq.id
                             return (
                               <div key={eq.id}
-                                className={`flex flex-col items-center gap-1 rounded cursor-pointer transition-colors p-1 ${equipHoveredId === eq.id ? "bg-border/[0.14]" : "hover:bg-accent/30"}`}
+                                className={`flex flex-col items-center gap-1 rounded cursor-pointer transition-colors p-1 ${equipHoveredId === eq.id ? "bg-border/[0.14]" : "hover:bg-white/[0.07]"}`}
                                 onPointerEnter={() => setEquipHoveredId(eq.id)}
                                 onPointerLeave={() => setEquipHoveredId(prev => prev === eq.id ? null : prev)}
                                 onClick={() => setEquipForSlot(activeEquipSlot.slotKey, activeEquipSlot.type, eq.id)}>
@@ -3128,10 +3116,10 @@ export default function TeamBuilderClient({
                                       <img key={i} src="/UI/Texture/CharaInfoAtlas/awakeEvolutionRarityStarAdd.webp" alt="★" className="w-3.5 h-3.5 object-contain -mr-0.5" />
                                     ))}
                                   </div>
-                                  <div className="absolute top-0.5 right-0.5 text-[8px] font-bold text-sky-300 bg-black/60 px-1 rounded">
+                                  <div className="absolute top-0.5 right-0.5 text-[8px] font-bold text-[#a9d2ff] bg-black/60 px-1 rounded">
                                     {eq.type === "weapon" ? `ATK ${eq.max_atk}` : eq.type === "armor" ? `DEF ${eq.max_def}` : `HP ${eq.max_hp}`}
                                   </div>
-                                  {isSelected && <div className="absolute inset-0 ring-2 ring-amber-400 ring-inset rounded" />}
+                                  {isSelected && <div className="absolute inset-0 ring-2 ring-[#7ab0e0] ring-inset rounded" />}
                                 </div>
                                 <span className="text-[9px] text-muted-foreground leading-none text-center line-clamp-1 w-full px-0.5">{eq.name || `#${eq.id}`}</span>
                               </div>
@@ -3146,7 +3134,8 @@ export default function TeamBuilderClient({
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </div>
   )

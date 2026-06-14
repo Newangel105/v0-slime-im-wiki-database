@@ -1,6 +1,7 @@
 import ModelViewerClient, { type ModelEntry } from "@/components/model-viewer-client"
 import { ClassicModelViewerClient } from "@/components/classic/model-viewer-client"
 import { getDesign } from "@/lib/design"
+import { NkBoard, NkHeaderPod } from "@/components/nightink/pod-kit"
 
 export const metadata = { title: "Model Viewer | SLIME-WIKI" }
 
@@ -24,6 +25,23 @@ async function getModelsManifest(): Promise<ModelsManifest> {
 export default async function ModelViewerPage() {
   const { models } = await getModelsManifest()
   const design = await getDesign()
+
+  if (design === "nightink") {
+    return (
+      <NkBoard>
+        <NkHeaderPod
+          kicker="3D Models"
+          title="Model "
+          accent="Viewer"
+          sub="Spin, zoom and inspect every character's actual 3D battle model, with idle animation."
+        />
+        <div className="nk-toolskin" style={{ marginTop: 28 }}>
+          <ModelViewerClient models={models} />
+        </div>
+      </NkBoard>
+    )
+  }
+
   return (
     <main className="site-page slime-page-model-viewer px-4 py-8 sm:px-6">
       <div className="mx-auto w-full max-w-7xl">

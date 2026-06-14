@@ -639,7 +639,7 @@ function RichSkillDesc({ text }: { text: string }) {
           <p key={lineIndex}>
             {parts.map((part, index) =>
               part.colored ? (
-                <span key={index} className="font-semibold text-accent">{part.text}</span>
+                <span key={index} className="font-semibold text-white">{part.text}</span>
               ) : (
                 <span key={index}>{part.text}</span>
               ),
@@ -673,9 +673,9 @@ function GroupedToggleFilter({
   return (
     <Popover onOpenChange={() => setDropdownSearch("")}>
       <PopoverTrigger asChild>
-        <Button variant="outline" className="justify-between gap-2 border-border/30 bg-card/85 text-foreground hover:border-[#0a9baa]/55 hover:bg-card/95">
+        <Button variant="outline" className="justify-between gap-2">
           <span>{title}</span>
-          <Badge variant="secondary" className="border-[#0a9baa]/30 bg-[#0a9baa]/15 text-accent">
+          <Badge variant="secondary" className="border-[#d2453a]/30 bg-[#d2453a]/15 text-accent">
             {selectedValues.length}
           </Badge>
         </Button>
@@ -689,7 +689,7 @@ function GroupedToggleFilter({
               placeholder="Search..."
               value={dropdownSearch}
               onChange={(event) => setDropdownSearch(event.target.value)}
-              className="h-7 border-border/30 bg-[rgba(40,82,120,0.6)] pl-8 text-xs text-foreground placeholder:text-foreground/45"
+              className="h-7 border-border/30 bg-[#141e2e] pl-8 text-xs text-foreground placeholder:text-foreground/45"
             />
           </div>
         </div>
@@ -705,7 +705,7 @@ function GroupedToggleFilter({
                   {group.options.map((option) => {
                     const checked = selectedValues.includes(option.value)
                     return (
-                      <label key={option.value} className="flex cursor-pointer items-center gap-3 text-sm text-foreground">
+                      <label key={option.value} className="-mx-2 flex cursor-pointer items-center gap-3 rounded-md px-2 py-1.5 text-sm text-foreground transition-colors hover:bg-white/[0.07]">
                         <Checkbox checked={checked} onCheckedChange={() => onToggle(option.value)} />
                         <span>{option.label}</span>
                       </label>
@@ -723,10 +723,10 @@ function GroupedToggleFilter({
 
 function SkillChangeTypeBadge({ type }: { type: string }) {
   const styles: Record<string, string> = {
-    "Attack Changing": "bg-[#da3e44]/12 text-[#fca5a5] border border-[#da3e44]/40",
-    "Defense Changing": "bg-[#0f78ca]/12 text-[#93c5fd] border border-[#0f78ca]/40",
-    "Body and Spirit Changing": "bg-[#34d399]/15 text-[#86efac] border border-[#34d399]/45",
-    "Magic Changing": "bg-[#f3bd69]/22 text-[#fbbf24] border border-[#dba348]/50",
+    "Attack Changing": "bg-[#d2453a]/12 text-[#f0a8a0] border border-[#d2453a]/40",
+    "Defense Changing": "bg-[#2c517c]/12 text-[#a9d2ff] border border-[#2c517c]/40",
+    "Body and Spirit Changing": "bg-[#3a9d78]/15 text-[#8fe0bd] border border-[#3a9d78]/45",
+    "Magic Changing": "bg-[#8b5cf6]/22 text-[#ece4d4] border border-[#8b5cf6]/50",
   }
 
   return (
@@ -742,8 +742,8 @@ function SecretSkillTypeBadge({ type }: { type: string }) {
     <span
       className={`inline-flex items-center rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
         isAttack
-          ? "bg-[#e07d2a]/14 text-[#fdba74] border border-[#e07d2a]/40"
-          : "bg-[#0f78ca]/12 text-[#93c5fd] border border-[#0f78ca]/40"
+          ? "bg-[#d2453a]/14 text-[#f0a8a0] border border-[#d2453a]/40"
+          : "bg-[#2c517c]/12 text-[#a9d2ff] border border-[#2c517c]/40"
       }`}
     >
       {type}
@@ -766,7 +766,7 @@ function SkillVariantToggle({
 
   const variantLabel = entry.changedLabel ?? "Skill Change"
   const isUltManifest = variantLabel === "Ultimate Manifestation"
-  const toggleContainerClass = "flex w-fit items-center gap-1 rounded-xl border border-border/25 bg-card/70 p-1"
+  const toggleContainerClass = "flex w-fit items-center gap-1 rounded-xl border border-border/60 bg-[#1a2638] p-1 shadow-[0_2px_10px_rgba(0,0,0,0.35)]"
 
   if (entry.isSecretTriple) {
     return (
@@ -775,14 +775,14 @@ function SkillVariantToggle({
           const isSelected = selectedKey === variant.key
           const className = variant.key === "attack"
             ? isSelected
-              ? "bg-[#e07d2a]/18 text-[#fdba74] shadow ring-1 ring-[#e07d2a]/45"
-              : "text-foreground/55 hover:text-[#fdba74]"
+              ? "bg-[#d2453a]/18 text-[#f0a8a0] shadow ring-1 ring-[#d2453a]/45"
+              : "text-foreground/55 hover:text-[#f0a8a0]"
             : variant.key === "support"
               ? isSelected
-                ? "bg-[#0f78ca]/15 text-[#93c5fd] shadow ring-1 ring-[#0f78ca]/40"
-                : "text-foreground/55 hover:text-[#93c5fd]"
+                ? "bg-[#2c517c]/15 text-[#a9d2ff] shadow ring-1 ring-[#2c517c]/40"
+                : "text-foreground/55 hover:text-[#a9d2ff]"
               : isSelected
-                ? "bg-[#0a9baa]/15 text-accent shadow ring-1 ring-[#0a9baa]/40"
+                ? "bg-[#d2453a]/15 text-accent shadow ring-1 ring-[#d2453a]/40"
                 : "text-foreground/55 hover:text-foreground"
 
           return (
@@ -807,11 +807,11 @@ function SkillVariantToggle({
           const isSelected = selectedKey === variant.key
           const className = isBase
             ? isSelected
-              ? "bg-[#e07d2a]/18 text-[#fdba74] shadow ring-1 ring-[#e07d2a]/45"
-              : "text-foreground/55 hover:text-[#fdba74]"
+              ? "bg-accent/15 text-foreground shadow ring-1 ring-accent/40"
+              : "text-foreground/55 hover:text-foreground"
             : isSelected
-              ? "bg-[#0f78ca]/15 text-[#93c5fd] shadow ring-1 ring-[#0f78ca]/40"
-              : "text-foreground/55 hover:text-[#93c5fd]"
+              ? "bg-[#2c517c]/30 text-[#a9d2ff] shadow ring-1 ring-[#44719f]/45"
+              : "text-foreground/55 hover:text-[#a9d2ff]"
 
           return (
             <button
@@ -834,15 +834,15 @@ function SkillVariantToggle({
         const isSelected = selectedKey === variant.key
         const className = isBase
           ? isSelected
-            ? "bg-[#0a9baa]/15 text-accent shadow ring-1 ring-[#0a9baa]/40"
+            ? "bg-accent/15 text-foreground shadow ring-1 ring-accent/40"
             : "text-foreground/55 hover:text-foreground"
           : isSelected
             ? isUltManifest
               ? "bg-[#8b5cf6]/15 text-[#c4b5fd] shadow ring-1 ring-[#8b5cf6]/40"
-              : "bg-[#f3bd69]/22 text-[#fbbf24] shadow ring-1 ring-[#dba348]/50"
+              : "bg-accent/15 text-foreground shadow ring-1 ring-accent/40"
             : isUltManifest
               ? "text-foreground/55 hover:text-[#c4b5fd]"
-              : "text-foreground/55 hover:text-[#fbbf24]"
+              : "text-foreground/55 hover:text-foreground"
 
         return (
           <button
@@ -852,12 +852,12 @@ function SkillVariantToggle({
           >
             {!isBase && (
               <span
-                className={`h-1.5 w-1.5 rounded-full ${
+                className={`h-2 w-2 rounded-full ${
                   isSelected
                     ? isUltManifest
                       ? "bg-[#8b5cf6]"
-                      : "bg-[#dba348]"
-                    : "bg-[#072a51]/25"
+                      : "bg-[#d2453a]"
+                    : "bg-foreground/50"
                 }`}
               />
             )}
@@ -903,7 +903,7 @@ function SkillResultRow({
             </Link>
           </td>
           <td className="px-3 py-3 font-semibold text-foreground" rowSpan={groupSize}>
-            <Link href={`/characters/${entry.character.master_pc_id}`} className="transition-colors hover:text-[#0a9baa]">
+            <Link href={`/characters/${entry.character.master_pc_id}`} className="transition-colors hover:text-[#d2453a]">
               {entry.character.name}
             </Link>
             <div className="mt-1 text-xs font-normal text-foreground/65">{entry.character.affiliation_name}</div>
@@ -918,7 +918,7 @@ function SkillResultRow({
           rarity={entry.character.rarity}
         />
       </td>
-      <td className="px-3 py-3 text-xs font-semibold text-[#fbbf24]">
+      <td className="px-3 py-3 text-xs font-semibold text-[#ece4d4]">
         <div>{selectedVariant.slotLabel}</div>
         {selectedVariant.variantNote && <div className="mt-1 text-[11px] text-foreground/65">{selectedVariant.variantNote}</div>}
       </td>
@@ -928,7 +928,7 @@ function SkillResultRow({
           {selectedVariant.skill.special_skill_type && <SecretSkillTypeBadge type={selectedVariant.skill.special_skill_type} />}
           {selectedVariant.skill.skill_change_type && <SkillChangeTypeBadge type={selectedVariant.skill.skill_change_type} />}
           {selectedVariant.skill.is_skill_change && !selectedVariant.skill.skill_change_type && (
-            <span className="inline-flex items-center rounded border border-[#dba348]/50 bg-[#f3bd69]/22 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#fbbf24]">
+            <span className="inline-flex items-center rounded border border-[#8b5cf6]/50 bg-[#8b5cf6]/22 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#ece4d4]">
               Skill Change
             </span>
           )}
@@ -968,7 +968,7 @@ function SkillResultsTable({
       <button
         type="button"
         onClick={() => setIsCollapsed((collapsed) => !collapsed)}
-        className="mb-3 flex w-full items-center justify-between rounded-lg border border-border/30 bg-card/80 px-3 py-2 text-left transition-colors hover:border-[#0a9baa]/45 hover:bg-card/95"
+        className="mb-3 flex w-full items-center justify-between rounded-lg border border-border bg-card px-3 py-2 text-left transition-colors hover:border-[#d2453a]/45 hover:bg-card/95"
         aria-expanded={!isCollapsed}
       >
         <span className="flex items-center gap-2">
@@ -980,7 +980,7 @@ function SkillResultsTable({
         </span>
       </button>
       {isCollapsed ? null : (
-      <div className="overflow-x-auto rounded-2xl border border-border/30 bg-card/85 shadow-[0_14px_36px_rgba(20,54,120,0.13)] backdrop-blur-md">
+      <div className="overflow-x-auto rounded-2xl border border-border bg-card shadow-[0_14px_36px_rgba(20,54,120,0.13)] backdrop-blur-md">
         <table className="w-full border-collapse text-sm">
           <thead>
             <tr className="bg-popover text-xs uppercase tracking-wider text-foreground">
@@ -1146,7 +1146,7 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
 
   return (
     <div className="space-y-6">
-      <section className="rounded-2xl border border-border/30 bg-card/85 shadow-[0_14px_36px_rgba(20,54,120,0.13)] backdrop-blur-md">
+      <section className="rounded-2xl border border-border bg-card shadow-[0_14px_36px_rgba(20,54,120,0.13)] backdrop-blur-md">
         <div className="space-y-4 p-5">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <div className="relative w-full max-w-xl">
@@ -1155,7 +1155,7 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
                 value={searchText}
                 onChange={(event) => setSearchText(event.target.value)}
                 placeholder="Search characters, skills, or descriptions..."
-                className="h-11 rounded-md border-border/30 bg-[rgba(40,82,120,0.6)] pl-10 text-foreground placeholder:text-foreground/45 focus-visible:ring-[#0a9baa]/45"
+                className="h-11 rounded-md border-border/30 bg-[#141e2e] pl-10 text-foreground placeholder:text-foreground/45 focus-visible:ring-[#d2453a]/45"
               />
             </div>
             <div className="flex flex-wrap gap-3">
@@ -1165,7 +1165,7 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
                 selectedValues={selectedSkillFilters}
                 onToggle={toggleSkillFilter}
               />
-              <label className="flex items-center gap-2 rounded-md border border-border/30 bg-card/85 px-3 py-2 text-sm text-foreground">
+              <label className="flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground">
                 <span className="text-xs font-semibold uppercase tracking-wider text-foreground/65">Order</span>
                 <select
                   value={valueSortDirection}
@@ -1179,11 +1179,7 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
                   <option className="bg-popover text-foreground" value="asc">Lowest value</option>
                 </select>
               </label>
-              <Button
-                variant="outline"
-                className="border-border/30 bg-card/85 text-foreground hover:border-[#0a9baa]/55 hover:bg-card/95"
-                onClick={clearFilters}
-              >
+              <Button variant="outline" onClick={clearFilters}>
                 Clear
               </Button>
             </div>
@@ -1215,7 +1211,7 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
                     setSkillCostMin(SKILL_COST_MIN)
                     setSkillCostMax(SKILL_COST_MAX)
                   }}
-                  className="shrink-0 rounded-md border border-border/30 bg-card/90 px-2 py-1 text-[10px] font-semibold text-foreground/70 transition hover:border-[#0a9baa]/55 hover:text-foreground"
+                  className="shrink-0 rounded-md border border-border bg-card px-2 py-1 text-[10px] font-semibold text-foreground/70 transition hover:border-[#d2453a]/55 hover:text-foreground"
                 >
                   Clear
                 </button>
@@ -1235,7 +1231,7 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
                 <button
                   key={filter.value}
                   onClick={() => toggleSkillFilter(filter.value)}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-border/30 bg-card/85 px-3 py-1 text-xs text-foreground transition-colors hover:border-[#0a9baa]/55 hover:bg-[#0a9baa]/12 hover:text-foreground"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1 text-xs text-foreground transition-colors hover:border-[#d2453a]/55 hover:bg-[#d2453a]/12 hover:text-foreground"
                 >
                   <span>{filter.label}</span>
                   <span className="ml-0.5 text-foreground/65">×</span>
@@ -1259,8 +1255,8 @@ export default function SkillViewerClient({ characters }: { characters: WikiChar
         </section>
       ) : (
         <div className="space-y-8">
-          <SkillResultsTable title="Divine Protection" accentClass="text-[#0a9baa]" groups={groupedResults.protectors} />
-          <SkillResultsTable title="Battle Skills" accentClass="text-[#fbbf24]" groups={groupedResults.regulars} />
+          <SkillResultsTable title="Divine Protection" accentClass="text-[#d2453a]" groups={groupedResults.protectors} />
+          <SkillResultsTable title="Battle Skills" accentClass="text-[#ece4d4]" groups={groupedResults.regulars} />
         </div>
       )}
     </div>

@@ -52,7 +52,7 @@ export default function OrbConverterTable() {
       title={`${entry.character.name}${entry.character.affiliation_name ? ` — ${entry.character.affiliation_name}` : ""}${entry.isSkillChange ? " (Skill Change)" : ""}\n${entry.conversionLine}`}
       className="block relative"
     >
-      <div className="relative w-9 h-9 sm:w-12 sm:h-12 overflow-hidden rounded-md transition-all hover:brightness-110 hover:ring-2 hover:ring-[#0a9baa]/70">
+      <div className="relative w-9 h-9 sm:w-12 sm:h-12 overflow-hidden rounded-md transition-all hover:brightness-110 hover:ring-2 hover:ring-[#d2453a]/70">
         <Image src={toPublicAssetPath(entry.character.images.icon)} alt={entry.character.name} fill className="object-cover" />
       </div>
       {entry.isSkillChange && (
@@ -105,7 +105,7 @@ export default function OrbConverterTable() {
                     ? (altSub ? "bg-muted" : "bg-popover")
                     : (altSub ? "bg-popover" : "bg-card")
                   return (
-                  <tr key={`${group.fromType}-${subRow.spCostLabel}`} className={`border-b ${HAIRLINE} transition-colors hover:bg-[rgba(125,205,225,0.10)] ${trBg}`}>
+                  <tr key={`${group.fromType}-${subRow.spCostLabel}`} className={`border-b ${HAIRLINE} transition-colors hover:bg-[rgba(210,69,58,0.10)] ${trBg}`}>
                     {subIdx === 0 && (
                       <td rowSpan={group.subRows.length} className={`px-2 py-2 text-left text-xs font-bold leading-tight border-r ${HAIRLINE} sticky left-0 z-10 ${altGroup ? "bg-popover" : "bg-card"} text-foreground min-w-[88px] sm:min-w-[124px] whitespace-normal`}>
                         {cfg.label}
@@ -193,9 +193,9 @@ export default function OrbConverterTable() {
                       : (altSub ? "bg-popover" : "bg-card")
                     const isFirstOfSection = !orbCellRendered && subIdx === 0
                     if (isFirstOfSection) orbCellRendered = true
-                    const sectionDivider = sectionIdx > 0 && groupIdx === 0 && subIdx === 0 ? "border-t-2 border-t-[rgba(10,155,170,0.45)]" : ""
+                    const sectionDivider = sectionIdx > 0 && groupIdx === 0 && subIdx === 0 ? "border-t-2 border-t-[rgba(210,69,58,0.45)]" : ""
                     return (
-                      <tr key={`${toOrb}-${group.fromType}-${subRow.spCostLabel}`} className={`border-b ${HAIRLINE} transition-colors hover:bg-[rgba(125,205,225,0.10)] ${trBg} ${sectionDivider}`}>
+                      <tr key={`${toOrb}-${group.fromType}-${subRow.spCostLabel}`} className={`border-b ${HAIRLINE} transition-colors hover:bg-[rgba(210,69,58,0.10)] ${trBg} ${sectionDivider}`}>
                         {isFirstOfSection && (
                           <td rowSpan={totalSubRows} className={`px-1 py-2 text-center text-xs font-bold leading-tight border-r ${HAIRLINE} sticky left-0 z-10 ${orbCellBg} text-foreground min-w-[60px] sm:min-w-[80px] whitespace-normal`}>
                             {orbCfg.label}

@@ -1,5 +1,6 @@
 import ForcesClient, { type SlimForceGroup, type SlimForceCharacter } from "@/components/forces-client"
 import { ClassicForcesClient } from "@/components/classic/forces-client"
+import NightInkForcesClient from "@/components/nightink/forces-client"
 import { getDesign } from "@/lib/design"
 import {
   getAllWikiCharacters,
@@ -247,6 +248,8 @@ export default async function ForcesPage() {
         return { master_pc_id: character.master_pc_id, name: character.name, visualTier, baseSrc, frameSrc, starsSrc, iconSrc, firstIcon, secondIcon }
       }),
     }))
+
+  if (design === "nightink") return <NightInkForcesClient forceGroups={forceGroups} />
 
   return design === "classic" ? (
     <ClassicForcesClient forceGroups={forceGroups} />

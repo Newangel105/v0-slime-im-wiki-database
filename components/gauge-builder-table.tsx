@@ -20,9 +20,9 @@ const HAIRLINE = "border-border/[0.22]"
 // Color-coded gauge tabs (Protection=blue, Skill Points=green, Secret Skills=orange),
 // rendered as glossy gradient chips with white text so they read on the cream track.
 const TAB_BASE = "rounded-md font-bold text-foreground data-[state=active]:text-white"
-const TAB_BLUE = "data-[state=active]:bg-[linear-gradient(180deg,#3bb8ff,#0877cf)] data-[state=active]:shadow-[0_4px_10px_rgba(8,119,207,0.30)]"
-const TAB_GREEN = "data-[state=active]:bg-[linear-gradient(180deg,#4bd99a,#159c5b)] data-[state=active]:shadow-[0_4px_10px_rgba(21,156,91,0.30)]"
-const TAB_ORANGE = "data-[state=active]:bg-[linear-gradient(180deg,#ffa45c,#e2682f)] data-[state=active]:shadow-[0_4px_10px_rgba(226,104,47,0.30)]"
+const TAB_BLUE = "data-[state=active]:bg-[linear-gradient(180deg,#3b8fe0,#1f5da0)] data-[state=active]:shadow-[0_4px_10px_rgba(8,119,207,0.30)]"
+const TAB_GREEN = "data-[state=active]:bg-[linear-gradient(180deg,#3fb985,#1c8b58)] data-[state=active]:shadow-[0_4px_10px_rgba(21,156,91,0.30)]"
+const TAB_ORANGE = "data-[state=active]:bg-[linear-gradient(180deg,#e6914a,#c4622a)] data-[state=active]:shadow-[0_4px_10px_rgba(226,104,47,0.30)]"
 
 export default function GaugeBuilderTable() {
   const gaugeEntries = extractGaugeEntries()
@@ -65,7 +65,7 @@ export default function GaugeBuilderTable() {
             </thead>
             <tbody>
               {rows.map((row) => (
-                <tr key={row} className={`border-b ${HAIRLINE} transition-colors hover:bg-[rgba(125,205,225,0.10)]`}>
+                <tr key={row} className={`border-b ${HAIRLINE} transition-colors hover:bg-[rgba(210,69,58,0.10)]`}>
                   <td className={`px-1 sm:px-3 py-2 sm:py-3 text-left font-bold text-foreground bg-popover sticky left-0 z-10 w-16 sm:w-32 whitespace-nowrap text-xs sm:text-sm leading-tight border-r ${HAIRLINE}`}>
                     {row}
                   </td>
@@ -93,7 +93,7 @@ export default function GaugeBuilderTable() {
                                 title={`${character.name}${character.affiliation_name ? ` — ${character.affiliation_name}` : ""}`}
                                 className="block"
                               >
-                                <div className="relative w-9 h-9 sm:w-12 sm:h-12 overflow-hidden rounded-md transition-all hover:brightness-110 hover:ring-2 hover:ring-[#0a9baa]/70 cursor-pointer">
+                                <div className="relative w-9 h-9 sm:w-12 sm:h-12 overflow-hidden rounded-md transition-all hover:brightness-110 hover:ring-2 hover:ring-[#d2453a]/70 cursor-pointer">
                                   <Image
                                     src={toPublicAssetPath(character.images.icon)}
                                     alt={character.name}

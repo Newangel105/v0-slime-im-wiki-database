@@ -1,11 +1,21 @@
 import { CharacterBrowser } from "@/components/character-browser"
 import { ClassicCharacterBrowser } from "@/components/classic/character-browser"
+import { NightInkCharactersBrowser } from "@/components/nightink/characters-browser"
+import { getCharacterIndexData } from "@/components/nightink/characters-browser-data"
 import { getAllCharacterBrowserData } from "@/lib/character-browser-data"
 import { getDesign } from "@/lib/design"
 
 export default async function CharactersPage() {
-  const characters = getAllCharacterBrowserData()
   const design = await getDesign()
+
+  // nightink is THE design: a faithful port of the ecosystem-live prototype,
+  // reading the SAME character dataset as the other branches (lib/pc-wiki) via
+  // a thin server adapter. ocean/classic stay wired for the rollback cookie.
+  if (design === "nightink") {
+    return <NightInkCharactersBrowser characters={getCharacterIndexData()} />
+  }
+
+  const characters = getAllCharacterBrowserData()
   return (
     <>
       {/* Preload the top 3 portraits by default release_date sort (Guy, Velzard, Dodomeki) */}

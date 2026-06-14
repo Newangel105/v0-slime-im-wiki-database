@@ -1,0 +1,82 @@
+/* ============================================================
+   night-ink-fixes.css — small global corrections for the night-ink
+   design, loaded after night-ink.css. (Kept separate from the
+   generated night-ink.css so build_night_ink.py never clobbers it.)
+   ============================================================ */
+
+/* The night-ink <button> reset (`button { border: 0 }`) is UNLAYERED, so it
+   beats Tailwind's layered `.border` utility — every shadcn outline/secondary
+   Button collapses to border-width:0 / style:none and looks borderless (a plain
+   <label> with the same classes keeps its border). Restore a real border on any
+   button that opted into `.border`. High specificity + unlayered so it wins. */
+html[data-design="nightink"] button.border {
+  border-width: 1px;
+  border-style: solid;
+}
+
+/* masthead settings gear (home only) — opens the altar's "choose a hero" picker.
+   Styled to match the nav chips and sit just right of them. */
+.nk-mast .nk-mast-gear {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  flex: none;
+  margin-left: 9px;
+  border: 1px solid rgba(236, 228, 212, 0.14);
+  border-radius: 15px 15px 15px 4px;
+  background: #141e2e;
+  color: rgba(236, 228, 212, 0.6);
+  cursor: pointer;
+  transition: color 0.16s, border-color 0.16s, background 0.16s, transform 0.16s;
+}
+.nk-mast .nk-mast-gear:hover {
+  color: #ece4d4;
+  border-color: #d2453a;
+  background: #1a2638;
+  transform: translateY(-1px);
+}
+.nk-mast .nk-mast-gear svg {
+  width: 19px;
+  height: 19px;
+}
+
+/* native <select> dropdowns render their option list with the OS popup, which
+   defaulted to light text on white — unreadable. Force the night-ink palette
+   on every option (the per-page select + the sort/filter selects). */
+html[data-design="nightink"] select option,
+html[data-design="nightink"] .page-size select option,
+html[data-design="nightink"] .v2-sort select option {
+  background-color: #0e1622;
+  color: #ece4d4;
+}
+
+html[data-design="nightink"] select option:checked,
+html[data-design="nightink"] select option:hover {
+  background-color: #b5352b;
+  color: #ece4d4;
+}
+
+/* "← Archive" back link in the masthead's left slot on character pages —
+   sits on the same row as the nav chips (no second row) */
+.nk-mast .nk-mast-back {
+  display: grid;
+  place-items: center;
+  height: 46px;
+  padding: 0 18px;
+  border: 1px solid rgba(236, 228, 212, 0.14);
+  border-radius: 15px 15px 15px 4px;
+  background: #141e2e;
+  color: rgba(236, 228, 212, 0.6);
+  font: 600 11px/1 "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.16s, border-color 0.16s, transform 0.16s;
+}
+
+.nk-mast .nk-mast-back:hover {
+  color: #ece4d4;
+  border-color: rgba(236, 228, 212, 0.3);
+  transform: translateY(-1px);
+}

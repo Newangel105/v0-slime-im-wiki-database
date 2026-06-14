@@ -369,9 +369,9 @@ export function OceanTierMaker() {
     return (
       <Dialog>
         <DialogTrigger asChild>
-          <button className="text-xs bg-card/55 text-foreground hover:text-foreground hover:bg-[rgba(46,92,132,0.92)] border border-border/[0.22] px-2 py-1 rounded">Edit</button>
+          <button className="text-xs bg-[#26384F] hover:bg-[#334A66] text-[#ece4d4] border border-[rgba(236,228,212,0.16)] px-2 py-1 rounded">Edit</button>
         </DialogTrigger>
-        <DialogContent className="w-80 bg-muted text-foreground border border-border/[0.22]">
+        <DialogContent className="w-80 bg-muted text-foreground border border-border">
           <DialogHeader>
             <DialogTitle>Edit tier</DialogTitle>
             <DialogDescription>Change the tier name and color</DialogDescription>
@@ -383,7 +383,7 @@ export function OceanTierMaker() {
               <Input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="h-10 rounded-md border border-border/[0.22] bg-card/55 px-3 text-foreground placeholder:text-foreground/65"
+                className="h-10 rounded-md border border-border bg-card px-3 text-foreground placeholder:text-foreground/65"
               />
             </div>
 
@@ -406,14 +406,14 @@ export function OceanTierMaker() {
                     style={{ backgroundColor: isValidHex(color) ? color : "transparent" }}
                   />
                 </div>
-                <Input value={color} onChange={(e) => setColor(e.target.value)} className="h-9 rounded-md border-border/[0.22] bg-card/55 px-2 text-foreground w-28 text-sm placeholder:text-foreground/65" />
+                <Input value={color} onChange={(e) => setColor(e.target.value)} className="h-9 rounded-md border-border bg-card px-2 text-foreground w-28 text-sm placeholder:text-foreground/65" />
               </div>
             </div>
           </div>
 
           <DialogFooter>
             <DialogClose asChild>
-              <button onClick={handleSave} className="px-3 py-1 bg-card/55 text-foreground rounded">Save</button>
+              <button onClick={handleSave} className="px-3 py-1 bg-card text-foreground rounded">Save</button>
             </DialogClose>
           </DialogFooter>
         </DialogContent>
@@ -1140,16 +1140,16 @@ export function OceanTierMaker() {
     <main className="site-page slime-page-tier-maker text-foreground">
       <div className="max-w-7xl mx-auto pl-6 pr-4 sm:pl-8 sm:pr-6 lg:px-8 py-8">
         {/* Mode selector */}
-        <div className="mb-4 flex gap-2 border-b border-border/[0.22] pb-3">
+        <div className="mb-4 flex gap-2 border-b border-border pb-3">
           <button
             onClick={() => switchMode("characters")}
-            className={`px-4 py-1.5 rounded text-sm font-medium border transition-colors ${mode === "characters" ? "bg-[rgba(46,92,132,0.92)] text-foreground border-accent/50" : "bg-card/55 text-foreground/65 border-border/[0.22] hover:text-foreground hover:bg-[rgba(46,92,132,0.92)]"}`}
+            className={`px-4 py-1.5 rounded text-sm font-medium border transition-colors ${mode === "characters" ? "bg-[#3F6FA8] hover:bg-[#4B7FBD] text-white border-[#3F6FA8]" : "bg-[#1b2738] text-[#9AA8B8] border-[rgba(236,228,212,0.16)] hover:text-foreground hover:bg-[#26384F]"}`}
           >
             Characters
           </button>
           <button
             onClick={() => switchMode("heartprints")}
-            className={`px-4 py-1.5 rounded text-sm font-medium border transition-colors ${mode === "heartprints" ? "bg-[rgba(46,92,132,0.92)] text-foreground border-accent/50" : "bg-card/55 text-foreground/65 border-border/[0.22] hover:text-foreground hover:bg-[rgba(46,92,132,0.92)]"}`}
+            className={`px-4 py-1.5 rounded text-sm font-medium border transition-colors ${mode === "heartprints" ? "bg-[#3F6FA8] hover:bg-[#4B7FBD] text-white border-[#3F6FA8]" : "bg-[#1b2738] text-[#9AA8B8] border-[rgba(236,228,212,0.16)] hover:text-foreground hover:bg-[#26384F]"}`}
           >
             Heartprints
           </button>
@@ -1162,7 +1162,7 @@ export function OceanTierMaker() {
               key={i}
               onClick={() => setActiveListIndex(i)}
               onDoubleClick={() => renameTierList(i)}
-              className={`group flex items-center gap-1.5 px-3 py-1.5 rounded text-sm border whitespace-nowrap transition-colors ${i === activeListIndex ? 'bg-[rgba(46,92,132,0.92)] text-foreground border-accent/50' : 'bg-card/55 text-foreground/65 border-border/[0.22] hover:text-foreground hover:bg-[rgba(46,92,132,0.92)]'}`}
+              className={`group flex items-center gap-1.5 px-3 py-1.5 rounded text-sm border whitespace-nowrap transition-colors ${i === activeListIndex ? 'bg-[#3F6FA8] hover:bg-[#4B7FBD] text-white border-[#3F6FA8]' : 'bg-[#1b2738] text-[#9AA8B8] border-[rgba(236,228,212,0.16)] hover:text-foreground hover:bg-[#26384F]'}`}
               title="Double-click to rename"
             >
               <span className="truncate max-w-[120px]">{tl.name}</span>
@@ -1176,20 +1176,20 @@ export function OceanTierMaker() {
               )}
             </button>
           ))}
-          <button onClick={addTierList} className="px-2 py-1.5 rounded bg-card/55 text-foreground/65 hover:text-foreground border border-border/[0.22] text-sm" title="Add new tier list">+</button>
+          <button onClick={addTierList} className="px-2 py-1.5 rounded bg-[#26384F] hover:bg-[#334A66] text-[#ece4d4] border border-[rgba(236,228,212,0.16)] text-sm" title="Add new tier list">+</button>
         </div>
 
         <div className="mb-4 flex flex-wrap gap-2 items-center">
-          <button className="px-3 py-1 rounded bg-card/55 text-foreground hover:text-foreground hover:bg-[rgba(46,92,132,0.92)] border border-border/[0.22] text-sm" onClick={() => addTier(null)}>Add Tier</button>
-          <button className="px-3 py-1 rounded bg-card/55 text-foreground hover:text-foreground hover:bg-[rgba(46,92,132,0.92)] border border-border/[0.22] text-sm" onClick={copyShareLink}>Copy Share Link</button>
-          <button className="px-3 py-1 rounded bg-card/55 text-foreground hover:text-foreground hover:bg-[rgba(46,92,132,0.92)] border border-border/[0.22] text-sm" onClick={exportJson}>Export</button>
-          <button className="px-3 py-1 rounded bg-card/55 text-foreground hover:text-foreground hover:bg-[rgba(46,92,132,0.92)] border border-border/[0.22] text-sm" onClick={exportAllJson}>Export All</button>
-          <label className="px-3 py-1 rounded bg-card/55 text-foreground hover:text-foreground hover:bg-[rgba(46,92,132,0.92)] border border-border/[0.22] text-sm cursor-pointer">
+          <button className="px-3 py-1 rounded bg-[#26384F] hover:bg-[#334A66] text-[#ece4d4] border border-[rgba(236,228,212,0.16)] text-sm" onClick={() => addTier(null)}>Add Tier</button>
+          <button className="px-3 py-1 rounded bg-[#3F6FA8] hover:bg-[#4B7FBD] text-white text-sm" onClick={copyShareLink}>Copy Share Link</button>
+          <button className="px-3 py-1 rounded bg-[#26384F] hover:bg-[#334A66] text-[#ece4d4] border border-[rgba(236,228,212,0.16)] text-sm" onClick={exportJson}>Export</button>
+          <button className="px-3 py-1 rounded bg-[#26384F] hover:bg-[#334A66] text-[#ece4d4] border border-[rgba(236,228,212,0.16)] text-sm" onClick={exportAllJson}>Export All</button>
+          <label className="px-3 py-1 rounded bg-[#26384F] hover:bg-[#334A66] text-[#ece4d4] border border-[rgba(236,228,212,0.16)] text-sm cursor-pointer">
             Import
             <input type="file" accept="application/json" className="hidden" onChange={(e) => importJson(e.target.files?.[0] ?? null)} />
           </label>
-          <button className="px-3 py-1 rounded bg-card/55 text-foreground hover:text-foreground hover:bg-[rgba(46,92,132,0.92)] border border-border/[0.22] text-sm" onClick={resetAll}>Reset</button>
-          <button className="px-3 py-1 rounded bg-card/55 text-foreground hover:text-foreground hover:bg-[rgba(46,92,132,0.92)] border border-border/[0.22] text-sm" onClick={async () => { await exportAsImage(); }}>Export Image</button>
+          <button className="px-3 py-1 rounded bg-[#6D4A2A] hover:bg-[#84603A] text-[#ece4d4] text-sm" onClick={resetAll}>Reset</button>
+          <button className="px-3 py-1 rounded bg-[#3F6FA8] hover:bg-[#4B7FBD] text-white text-sm" onClick={async () => { await exportAsImage(); }}>Export Image</button>
           <div className="ml-auto inline-flex items-center rounded-md border border-border/[0.28] bg-card/85 px-3 py-1 text-xs font-semibold text-foreground backdrop-blur-md">{tiers.length} tiers</div>
         </div>
 
@@ -1226,7 +1226,7 @@ export function OceanTierMaker() {
                   </div>
                 </div>
 
-                <div data-tier-index={idx} className="flex-1 min-h-[140px] md:min-h-[5rem] border border-border/[0.22]/50 bg-muted/80 text-foreground rounded-md flex items-start justify-between px-3 py-3 pr-35 md:pr-20 relative overflow-hidden" onDragOver={(e) => { e.preventDefault(); const at = computeDropIndex(e.currentTarget as HTMLElement, e.clientX, e.clientY); setDropPreview((p) => (p && p.tier === idx && p.index === at) ? p : { tier: idx, index: at }) }} onDrop={(e) => handleTierDrop(e as React.DragEvent, idx)}>
+                <div data-tier-index={idx} className="flex-1 min-h-[140px] md:min-h-[5rem] border border-border/50 bg-muted/80 text-foreground rounded-md flex items-start justify-between px-3 py-3 pr-35 md:pr-20 relative overflow-hidden" onDragOver={(e) => { e.preventDefault(); const at = computeDropIndex(e.currentTarget as HTMLElement, e.clientX, e.clientY); setDropPreview((p) => (p && p.tier === idx && p.index === at) ? p : { tier: idx, index: at }) }} onDrop={(e) => handleTierDrop(e as React.DragEvent, idx)}>
                   <div ref={animateRef} className="flex-1 min-w-0 flex flex-wrap gap-1 md:gap-2 items-start max-w-[calc(100vw-7rem)] md:max-w-none">
                     {tier.items.map((id, itemIndex) => {
                       if (mode === "heartprints") {
@@ -1299,11 +1299,11 @@ export function OceanTierMaker() {
 
                   <div className="absolute bottom-2 right-2 md:top-3 md:bottom-auto md:top-3 md:bottom-auto flex flex-col md:flex-row gap-2 items-end md:items-start z-20">
                     <div className="flex flex-col gap-1">
-                      <button className="text-xs bg-card/55 text-foreground hover:text-foreground hover:bg-[rgba(46,92,132,0.92)] border border-border/[0.22] px-2 py-1 rounded" onClick={() => moveTierLeft(idx)} aria-label="Move tier up">▲</button>
-                      <button className="text-xs bg-card/55 text-foreground hover:text-foreground hover:bg-[rgba(46,92,132,0.92)] border border-border/[0.22] px-2 py-1 rounded" onClick={() => moveTierRight(idx)} aria-label="Move tier down">▼</button>
+                      <button className="text-xs bg-[#26384F] hover:bg-[#334A66] text-[#ece4d4] border border-[rgba(236,228,212,0.16)] px-2 py-1 rounded" onClick={() => moveTierLeft(idx)} aria-label="Move tier up">▲</button>
+                      <button className="text-xs bg-[#26384F] hover:bg-[#334A66] text-[#ece4d4] border border-[rgba(236,228,212,0.16)] px-2 py-1 rounded" onClick={() => moveTierRight(idx)} aria-label="Move tier down">▼</button>
                     </div>
                     <div className="flex flex-col gap-1">
-                      <button className="text-xs bg-card/55 text-foreground hover:text-foreground hover:bg-[rgba(46,92,132,0.92)] border border-border/[0.22] px-2 py-1 rounded" onClick={() => deleteTier(idx)}>Del</button>
+                      <button className="text-xs bg-[#8F3438] hover:bg-[#B84448] text-white px-2 py-1 rounded" onClick={() => deleteTier(idx)}>Del</button>
                       <div className="pt-0">
                         <TierEditDialog tier={tier} idx={idx} />
                       </div>
@@ -1321,7 +1321,7 @@ export function OceanTierMaker() {
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-4">
                 <div className="relative w-64 lg:w-80 ml-auto">
                   <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/65" />
-                  <Input value={imageSearch} onChange={(e) => setImageSearch(e.target.value)} placeholder="Search heartprints" className="h-9 w-full border-border/[0.22] bg-card/55 pl-10 text-foreground placeholder:text-foreground/65" />
+                  <Input value={imageSearch} onChange={(e) => setImageSearch(e.target.value)} placeholder="Search heartprints" className="h-9 w-full border-border bg-card pl-10 text-foreground placeholder:text-foreground/65" />
                 </div>
               </div>
               <div data-pins="true" className="grid grid-cols-6 gap-2 max-h-full lg:overflow-auto image-scroll lg:max-h-[40vh]" onDragOver={(e) => e.preventDefault()} onDrop={(e) => handleDropOnPins(e as React.DragEvent)}>
@@ -1354,19 +1354,19 @@ export function OceanTierMaker() {
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-4">
                 <div className="flex flex-col gap-3">
                   <div className="flex flex-row items-center gap-2">
-                    <span className="inline-flex items-center rounded-md border border-border/[0.28] bg-card/85 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-foreground whitespace-nowrap backdrop-blur-md">ROLE</span>
+                    <span className="inline-flex items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#9AA8B8] whitespace-nowrap bg-transparent">ROLE</span>
                     <div className="flex items-center gap-2 overflow-x-auto">
-                      <button className={`h-8 w-8 rounded flex items-center justify-center text-xs transition-colors flex-shrink-0 ${roleFilter === "all" ? "bg-[rgba(46,92,132,0.92)] text-foreground" : "text-foreground/65 hover:bg-[rgba(46,92,132,0.7)] hover:text-foreground"}`} onClick={() => setRoleFilter("all")} aria-label="All roles"><span className="select-none">All</span></button>
-                      <button className={`h-8 w-8 rounded flex items-center justify-center text-sm transition-colors flex-shrink-0 ${roleFilter === "protector" ? "bg-[rgba(46,92,132,0.92)] text-foreground" : "text-foreground/65 hover:bg-[rgba(46,92,132,0.7)] hover:text-foreground"}`} onClick={() => setRoleFilter("protector")} aria-label="Protector"><img src="/UI/Texture/CommonLotteryInfoPanelAtlas/icCharaTypeBless.webp" alt="" className="w-5 h-5 object-contain" /></button>
-                      <button className={`h-8 w-8 rounded flex items-center justify-center text-sm transition-colors flex-shrink-0 ${roleFilter === "attacker" ? "bg-[rgba(46,92,132,0.92)] text-foreground" : "text-foreground/65 hover:bg-[rgba(46,92,132,0.7)] hover:text-foreground"}`} onClick={() => setRoleFilter("attacker")} aria-label="Attacker"><img src="/UI/Texture/CommonLotteryInfoPanelAtlas/icCharaTypePc.webp" alt="" className="w-5 h-5 object-contain" /></button>
+                      <button className={`h-8 w-8 rounded flex items-center justify-center text-xs transition-colors flex-shrink-0 border ${roleFilter === "all" ? "bg-[#3F6FA8] text-[#ece4d4] border-[#3F6FA8]" : "bg-white/[0.04] text-[#9AA8B8] border-[rgba(236,228,212,0.14)] hover:bg-[#26384F]"}`} onClick={() => setRoleFilter("all")} aria-label="All roles"><span className="select-none">All</span></button>
+                      <button className={`h-8 w-8 rounded flex items-center justify-center text-sm transition-colors flex-shrink-0 ${roleFilter === "protector" ? "bg-white/10 ring-1 ring-[#7ab0e0]/60" : "bg-transparent hover:bg-white/[0.06]"}`} onClick={() => setRoleFilter("protector")} aria-label="Protector"><img src="/UI/Texture/CommonLotteryInfoPanelAtlas/icCharaTypeBless.webp" alt="" className="w-5 h-5 object-contain" /></button>
+                      <button className={`h-8 w-8 rounded flex items-center justify-center text-sm transition-colors flex-shrink-0 ${roleFilter === "attacker" ? "bg-white/10 ring-1 ring-[#7ab0e0]/60" : "bg-transparent hover:bg-white/[0.06]"}`} onClick={() => setRoleFilter("attacker")} aria-label="Attacker"><img src="/UI/Texture/CommonLotteryInfoPanelAtlas/icCharaTypePc.webp" alt="" className="w-5 h-5 object-contain" /></button>
                     </div>
                   </div>
                   <div className="flex flex-row items-center gap-2">
-                    <span className="inline-flex items-center rounded-md border border-border/[0.28] bg-card/85 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-foreground whitespace-nowrap backdrop-blur-md">RARITY</span>
+                    <span className="inline-flex items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#9AA8B8] whitespace-nowrap bg-transparent">RARITY</span>
                     <div className="flex items-center gap-2 overflow-x-auto">
-                      <button className={`h-8 w-8 rounded flex items-center justify-center text-xs transition-colors flex-shrink-0 ${rarityFilter === null ? "bg-[rgba(46,92,132,0.92)] text-foreground" : "text-foreground/65 hover:bg-[rgba(46,92,132,0.7)] hover:text-foreground"}`} onClick={() => setRarityFilter(null)} aria-label="All rarities"><span className="select-none">All</span></button>
+                      <button className={`h-8 w-8 rounded flex items-center justify-center text-xs transition-colors flex-shrink-0 border ${rarityFilter === null ? "bg-[#3F6FA8] text-[#ece4d4] border-[#3F6FA8]" : "bg-white/[0.04] text-[#9AA8B8] border-[rgba(236,228,212,0.14)] hover:bg-[#26384F]"}`} onClick={() => setRarityFilter(null)} aria-label="All rarities"><span className="select-none">All</span></button>
                       {[3, 4, 5, 6, 7, 8].map((r) => (
-                        <button key={r} onClick={() => setRarityFilter(r)} title={`${r}★`} className={`w-8 h-8 rounded p-0 flex items-center justify-center transition-colors flex-shrink-0 ${rarityFilter === r ? "bg-[rgba(46,92,132,0.92)]" : "bg-transparent hover:bg-[rgba(46,92,132,0.7)]"}`}>
+                        <button key={r} onClick={() => setRarityFilter(r)} title={`${r}★`} className={`w-8 h-8 rounded p-0 flex items-center justify-center transition-colors flex-shrink-0 ${rarityFilter === r ? "ring-1 ring-[#7ab0e0]/55 bg-white/[0.08]" : "bg-white/[0.04] hover:bg-[#26384F]"}`}>
                           <img src={RARITY_ASSETS[r]} alt={`star-${r}`} className="w-5 h-5 object-contain" />
                         </button>
                       ))}
@@ -1375,7 +1375,7 @@ export function OceanTierMaker() {
                 </div>
                 <div className="relative w-64 lg:w-80 ml-auto">
                   <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/65" />
-                  <Input value={imageSearch} onChange={(e) => setImageSearch(e.target.value)} placeholder="Search images" className="h-9 w-full border-border/[0.22] bg-card/55 pl-10 text-foreground placeholder:text-foreground/65" />
+                  <Input value={imageSearch} onChange={(e) => setImageSearch(e.target.value)} placeholder="Search images" className="h-9 w-full border-border bg-card pl-10 text-foreground placeholder:text-foreground/65" />
                 </div>
               </div>
               <div data-pins="true" className="grid grid-cols-12 gap-2 max-h-full lg:overflow-auto image-scroll lg:max-h-[40vh]" onDragOver={(e) => e.preventDefault()} onDrop={(e) => handleDropOnPins(e as React.DragEvent)}>

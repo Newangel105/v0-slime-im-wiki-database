@@ -4,6 +4,7 @@ import { ClassicTeamBuilderClient } from "@/components/classic/team-builder-clie
 import { getAllTeamBuilderCharacters } from "@/lib/team-builder-character-data"
 import { getAllHeartprints, getAllEquipment, getAllCharms } from "@/lib/pc-wiki"
 import { getDesign } from "@/lib/design"
+import { NkBoard, NkHeaderPod } from "@/components/nightink/pod-kit"
 
 export default async function TeamBuilderPage() {
   const characters = getAllTeamBuilderCharacters()
@@ -11,6 +12,25 @@ export default async function TeamBuilderPage() {
   const equipment = getAllEquipment()
   const charms = getAllCharms()
   const design = await getDesign()
+
+  if (design === "nightink") {
+    return (
+      <NkBoard>
+        <NkHeaderPod
+          kicker="Composition Tool"
+          title="Team "
+          accent="Builder"
+          sub="Assemble a full battle team — protectors, attackers, minis — with skills, heartprints, equipment and charms, then share it."
+        />
+        <div className="nk-toolskin" style={{ marginTop: 28 }}>
+          <Suspense>
+            <TeamBuilderClient characters={characters} heartprints={heartprints} equipment={equipment} charms={charms} />
+          </Suspense>
+        </div>
+      </NkBoard>
+    )
+  }
+
   return (
     <main className="site-page slime-page-team-builder px-4 py-8 text-foreground sm:px-6">
       <div className="mx-auto w-full flex flex-col gap-8">
