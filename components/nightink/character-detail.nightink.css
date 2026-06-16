@@ -963,8 +963,25 @@
   color: #1f2937;
 }
 
-.rich-badge .badge-rest .rich-color,
-.rich-badge .badge-rest .rich-value {
+/* Numeric values that sit inside a badge but not in their own value segment — the
+   Turns "rest" (e.g. "; Damage Scaling: Soul 50%"), a revive "100%" mid-sentence, a
+   "Max: 120%" that wasn't split — render as the same dark value pill as the Turns
+   count, instead of cream text that disappears on the badge's light background. */
+.rich-badge .rich-value {
+  display: inline-grid;
+  place-items: center;
+  min-width: 18px;
+  padding: 2px 6px;
+  margin: 0 2px;
+  border-radius: 6px;
+  background: #111827;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+/* colored phrases inside a badge stay readable as dark text on the light pill */
+.rich-badge .badge-label .rich-color,
+.rich-badge .badge-rest .rich-color {
   color: #1f2937;
 }
 

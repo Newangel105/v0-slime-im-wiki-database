@@ -559,6 +559,16 @@ function renderBadge(text: string): string {
     )}</span><span class="badge-value">${escapeHtml(usesMatch[2])}</span></span>`
   }
 
+  // Generic "Label: value" badge (e.g. "Max: 120%") -> label segment + dark value
+  // pill, exactly like the Turns count, instead of a cream value that vanishes on
+  // the badge's light background.
+  const labelValueMatch = clean.match(/^(.+?:)\s*(x\d+(?:\.\d+)?|-?\d+(?:\.\d+)?%?)$/i)
+  if (labelValueMatch) {
+    return `<span class="rich-badge"><span class="badge-label">${escapeHtml(
+      labelValueMatch[1],
+    )}</span><span class="badge-value">${escapeHtml(labelValueMatch[2])}</span></span>`
+  }
+
   return `<span class="rich-badge"><span class="badge-label">${renderRichInline(clean)}</span></span>`
 }
 
