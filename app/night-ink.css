@@ -3859,6 +3859,14 @@ body.motion .sc-core {
    positioned canvas follows. Night-ink look unchanged — sizing only.
    ---------------------------------------------------------------------------- */
 @media (max-width: 560px) {
+  /* symmetric, tighter hero padding so the altar + its tray/card centre on the
+     viewport (the desktop 52px-left / 40px-right padding pushed them off-centre and
+     the tray overflowed the right edge) */
+  .home-hero {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
   /* headline: shrink so the longest line ("ARCHIVE") fits ~340px of board
      instead of forcing a 600px text box */
   .home-h1 {
@@ -3905,16 +3913,19 @@ body.motion .sc-core {
     width: min(100%, 320px);
     height: min(86vw, 320px);
     transform: none;
-    margin: -24px auto -8px;
+    /* extra bottom room so the record card (moved below the altar on phones) clears
+       the next hero section */
+    margin: -24px auto 104px;
   }
 
   .od3-canvas {
     inset: -18px -18px 36px -18px;
   }
 
-  /* stats: single column reads cleaner than a cramped 2-up at this width */
+  /* stats: 2x2 grid keeps the four counters compact instead of a tall single column */
   .home-stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
   /* CSS grid `1fr` is `minmax(auto,1fr)`: the single-column .home-row2 / .home-latest

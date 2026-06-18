@@ -23,7 +23,6 @@
 //   writeback so shared/Back-button filter links keep working.
 
 import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
 
 import type { IndexCharacter } from "./characters-browser-data"
@@ -714,7 +713,7 @@ function readStateFromUrl(base: FilterState): FilterState {
   if (params.has("q")) next.query = params.get("q") || ""
   if (params.has("tag")) next.query = params.get("tag") || ""
   if (params.has("searchSkills")) next.searchSkills = params.get("searchSkills") === "1"
-  if (params.has("skills")) next.searchSkills = params.get("skills") === "1" && !params.has("skill")
+  if (params.has("skills")) next.searchSkills = params.get("skills") === "1"
 
   const mode = params.get("mode")?.toUpperCase()
   if (mode === "AND" || mode === "OR") next.filterMode = mode
@@ -857,8 +856,6 @@ function useIsMobile(): boolean {
 }
 
 export function NightInkCharactersBrowser({ characters }: { characters: IndexCharacter[] }) {
-  const router = useRouter()
-
   const [state, setState] = useState<FilterState>(defaultState)
   const [page, setPage] = useState(1)
   const [pageSize, setPageSize] = useState(50)
@@ -921,10 +918,14 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
     if (state.skillCostMin > SKILL_COST_MIN) params.set("cmin", String(state.skillCostMin))
     if (state.skillCostMax < SKILL_COST_MAX) params.set("cmax", String(state.skillCostMax))
     if (state.filterMode !== "AND") params.set("mode", state.filterMode.toLowerCase())
-    if (state.query && state.searchSkills) params.set("skills", "1")
+    if (state.searchSkills) params.set("skills", "1")
     const qs = params.toString()
-    router.replace(qs ? `/characters?${qs}` : "/characters", { scroll: false })
-  }, [hydrated, router, state])
+    // Sync the shareable URL WITHOUT a Next.js navigation. router.replace() does a
+    // soft re-render of the route on every keystroke / filter change, which blurs the
+    // focused search box — that's the "caret resets every time I change an option"
+    // bug. history.replaceState updates the address bar with zero re-render.
+    window.history.replaceState(null, "", qs ? `/characters?${qs}` : "/characters")
+  }, [hydrated, state])
 
   /* ---- filter option lists (setupFilters) ---- */
   const options = useMemo(() => {
@@ -1082,6 +1083,11 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
 
   const visible = useMemo(() => {
     const query = state.query.trim().toLowerCase()
+    // Match the query only at WORD BOUNDARIES (start of the string or after a
+    // non-alphanumeric char), so "eren" hits "Eren" but NOT "friEREN" or "sERENe".
+    const queryRe = query
+      ? new RegExp(`(?:^|[^a-z0-9])${query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`, "i")
+      : null
     const matched = characters.filter((character) => {
       const weapon = character.weapon || ""
       const attackerElement = normalizeLabel(getCharacterElementValue(character))
@@ -1097,30 +1103,17 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
           ? state.protectorElement.length > 0 && matchesByFilterMode(state.protectorElement, defenderElements)
           : state.attackerElement.length > 0 && state.attackerElement.includes(attackerElement)
 
-      const basicFields = [
-        character.name,
-        character.title,
-        character.element,
-        displayElement(character.element),
-        character.role,
-        character.type,
-        weapon,
-        character.tactics,
-        character.ultimate,
-        character.release,
-        ...(character.forces || []).map((force) => force.name),
-        ...(character.facilities || []),
-      ]
-
-      const skillFields = [
-        ...(character.skills || []).map((skill) => `${skill.name} ${skill.desc} ${(skill.filters || []).join(" ")}`),
-        ...(character.traits || []).map((trait) => `${trait.name} ${trait.desc}`),
-        ...(character.skillFilters || []),
-        ...(character.traitFilters || []),
-        ...(character.traits || []).map((trait) => trait.name),
-      ]
-
-      const queryFields = state.searchSkills ? [...basicFields, ...skillFields] : basicFields
+      // Query corpus per spec: name + affiliation (title). The "Search Skills"
+      // toggle additionally searches the ACTIVE skills' descriptions only
+      // (active_skill_1/2/3), with markup stripped so only visible effect text counts.
+      const queryCorpus = [character.name, character.title]
+      if (state.searchSkills) {
+        for (const skill of character.skills || []) {
+          if ((skill.slot || "").startsWith("active_skill")) {
+            queryCorpus.push((skill.desc || "").replace(/<[^>]*>/g, " "))
+          }
+        }
+      }
 
       return (
         matchesAny(state.role, [character.role]) &&
@@ -1135,7 +1128,7 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
         matchesEffectFilters(state.traits, character.traitFilters || []) &&
         matchesByFilterMode(state.valorTraits, (character.traits || []).map((trait) => trait.name)) &&
         matchesByFilterMode(state.facilities, character.facilities || []) &&
-        (!query || queryFields.join(" ").toLowerCase().includes(query))
+        (!queryRe || queryRe.test(queryCorpus.join("  ")))
       )
     })
 

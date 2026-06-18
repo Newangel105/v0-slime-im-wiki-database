@@ -392,12 +392,65 @@ body.motion .od-dial {
 /* phone: the 8-thumbnail record tray is ~437px at its desktop 46px size, which
    overflows a 390px board. Shrink the chips + gaps so all 8 fit the screen. */
 @media (max-width: 560px) {
+  /* the carousel: the 8 record thumbnails are wider than a phone — keep it within
+     the screen and let it scroll horizontally instead of overflowing the right edge */
   .od-tray {
     gap: 5px;
     padding: 6px 7px;
+    max-width: calc(100vw - 26px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    justify-content: flex-start;
+    scrollbar-width: none;
+  }
+  .od-tray::-webkit-scrollbar {
+    display: none;
   }
   .od-tray-item {
     width: 40px;
     height: 40px;
+    flex: 0 0 auto;
+  }
+
+  /* drop the desktop instruction line on phones: it was nowrap (overflowed the
+     screen) and collided with the record card now placed below the altar */
+  .od-hint {
+    display: none;
+  }
+
+  /* On phones the altar is a narrow square, so the desktop top-right record card
+     sat ON TOP of the 3D model (you couldn't see it). Move the card BELOW the altar
+     as a centered caption, and drop the duplicate nameplate (the card shows the name). */
+  .od-record {
+    top: auto;
+    right: auto;
+    left: 50%;
+    bottom: -86px;
+    /* Centre on the altar's centre POINT. !important beats the inline transform the
+       entrance anime() sets (translateY), so it can't clobber the centering; and
+       point-centering keeps the card centred even when it's WIDER than the 320px
+       altar box — long names (e.g. "Sunlit Adventurer") spilled off the right edge
+       with margin:auto because the card was wider than the box it centred in. */
+    transform: translateX(-50%) !important;
+    align-items: center;
+    /* a fixed, contained box — NOT max-content (which sized the whole card to the
+       wide links row and shoved it off-screen). Name, affiliation and the links all
+       stack and stay inside this box. */
+    width: min(92vw, 300px);
+    text-align: center;
+    border-radius: 14px;
+    padding: 9px 16px 11px;
+  }
+  .od-record strong,
+  .od-record em {
+    max-width: 100%;
+  }
+  .od-record-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 6px;
+  }
+  .od-plate {
+    display: none;
   }
 }

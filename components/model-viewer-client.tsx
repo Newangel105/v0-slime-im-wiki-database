@@ -254,7 +254,7 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
 
   return (
     <div className="grid gap-5 lg:grid-cols-[300px_minmax(0,1fr)]">
-      <aside className="glass-panel flex max-h-[78vh] min-h-[520px] flex-col overflow-hidden p-4">
+      <aside className="glass-panel order-last flex max-h-[55vh] min-h-0 flex-col overflow-hidden p-4 lg:order-none lg:max-h-[78vh] lg:min-h-[520px]">
         <div className="mb-4">
           <div className="section-kicker">Model Library</div>
           <h2 className="mt-2 text-2xl font-black tracking-tight text-foreground">Archive</h2>
@@ -333,7 +333,7 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
         </ul>
       </aside>
 
-      <section className="glass-panel-strong overflow-hidden">
+      <section className="glass-panel-strong order-first overflow-hidden lg:order-none">
         <div className="flex flex-col gap-3 border-b border-border bg-card/95 px-4 py-4">
           <div className="min-w-0">
             <div className="section-kicker">Active Model</div>
@@ -446,7 +446,7 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
         </div>
 
         {activeMode !== "skill" && (
-          <div className="flex items-center gap-2 border-b border-border bg-background/80 px-4 py-2 text-xs text-muted-foreground">
+          <div className="hidden items-center gap-2 border-b border-border bg-background/80 px-4 py-2 text-xs text-muted-foreground lg:flex">
             <Mouse className="h-3.5 w-3.5 shrink-0 text-muted-foreground" aria-hidden />
             <span>Left-drag <span className="font-semibold text-foreground/90">rotate</span></span>
             <span className="text-foreground/40">·</span>
@@ -458,7 +458,7 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
 
         <div
           className={`relative overflow-hidden ${
-            activeMode === "skill" ? "aspect-video" : "h-[78vh]"
+            activeMode === "skill" ? "aspect-video" : "h-[58vh] lg:h-[78vh]"
           }`}
           style={{
             background:
