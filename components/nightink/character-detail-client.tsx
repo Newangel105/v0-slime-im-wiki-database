@@ -62,6 +62,7 @@ export type DetailCharacter = {
 }
 export type StatMaxes = { hp: number; attack: number; defense: number; existence: number }
 export type DockLink = { id: number; name: string; title: string }
+export type DetailVariant = { id: number; name: string; title: string; thumb: string; rarity: number }
 
 type Props = {
   character: DetailCharacter
@@ -70,6 +71,7 @@ type Props = {
   next: DockLink | null
   recordIndex: number
   recordTotal: number
+  variants: DetailVariant[]
 }
 
 /* ======================================================================
@@ -931,6 +933,7 @@ export function NightInkCharacterDetailClient({
   next,
   recordIndex,
   recordTotal,
+  variants,
 }: Props) {
   const [combatTab, setCombatTab] = useState<"skills" | "traits" | "ex">("skills")
 
@@ -1151,6 +1154,50 @@ export function NightInkCharacterDetailClient({
             )}
           </div>
         </section>
+
+        {variants.length > 0 && (
+          <section className="v2-pod chr-variants" aria-label={`Other records of ${character.name}`}>
+            <div
+              className="v2-bridge v"
+              style={{ top: -27, height: 28, left: 110, width: 84 }}
+              aria-hidden="true"
+            >
+              <i className="tl" />
+              <i className="tr" />
+              <i className="bl" />
+              <i className="br" />
+            </div>
+            <span className="v2-tab alt">Variants</span>
+            <div className="chr-combat-head">
+              <span className="cap">
+                Other records of {character.name} &middot; {variants.length}
+              </span>
+            </div>
+            <div className="chr-variants-grid">
+              {variants.map((v) => (
+                <Link
+                  key={v.id}
+                  href={`/characters/${v.id}`}
+                  className="chr-variant-card"
+                  title={`${v.name} · ${v.title}`}
+                >
+                  <span className="chr-variant-thumb">
+                    <img
+                      src={publicAsset(v.thumb)}
+                      alt={v.title || v.name}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </span>
+                  <span className="chr-variant-meta">
+                    <span className="chr-variant-title">{v.title || v.name}</span>
+                    <span className="chr-variant-rarity">{v.rarity}&#9733;</span>
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         <div className="v2-dockbar chr-dock">
           {prev ? (

@@ -27,6 +27,7 @@ import {
   type DetailTrait,
   type DetailExAbility,
   type DetailForce,
+  type DetailVariant,
   type DockLink,
   type StatMaxes,
 } from "./character-detail-client"
@@ -149,6 +150,18 @@ export function NightInkCharacterDetail({ characterId }: { characterId: string }
   const toDock = (c: WikiCharacter | undefined): DockLink | null =>
     c ? { id: c.master_pc_id, name: c.name, title: c.affiliation_name ?? "" } : null
 
+  // Variants: the OTHER records that share this character's name (e.g. every
+  // "Rimuru Tempest"), newest first (ordered is release-desc), excluding self.
+  const variants: DetailVariant[] = ordered
+    .filter((c) => c.name === resolved.name && c.master_pc_id !== resolved.master_pc_id)
+    .map((c) => ({
+      id: c.master_pc_id,
+      name: c.name,
+      title: c.affiliation_name ?? "",
+      thumb: toPartyThumb(toPublicAssetPath(c.images.icon)),
+      rarity: c.rarity,
+    }))
+
   return (
     <NightInkCharacterDetailClient
       character={toDetailCharacter(resolved)}
@@ -157,6 +170,7 @@ export function NightInkCharacterDetail({ characterId }: { characterId: string }
       next={toDock(next)}
       recordIndex={index + 1}
       recordTotal={ordered.length}
+      variants={variants}
     />
   )
 }

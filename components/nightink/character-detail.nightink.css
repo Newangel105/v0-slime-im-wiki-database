@@ -303,7 +303,8 @@
 .chr-forces > .v2-tab,
 .chr-skills > .v2-tab,
 .chr-traits > .v2-tab,
-.chr-combat > .v2-tab {
+.chr-combat > .v2-tab,
+.chr-variants > .v2-tab {
   position: absolute;
   top: 26px;
   left: -48px;
@@ -327,11 +328,13 @@
   z-index: 4;
 }
 
-.chr-combat > .v2-tab {
+.chr-combat > .v2-tab,
+.chr-variants > .v2-tab {
   top: 6px;
 }
 
-.chr-combat > .v2-bridge.v {
+.chr-combat > .v2-bridge.v,
+.chr-variants > .v2-bridge.v {
   top: -27px !important;
   left: 110px !important;
   width: 84px !important;
@@ -508,7 +511,8 @@
 }
 
 .chr-skills,
-.chr-combat {
+.chr-combat,
+.chr-variants {
   border-radius: 22px 70px 16px 16px;
   box-shadow:
     14px 16px 0 rgba(3, 6, 11, 0.85),
@@ -1016,6 +1020,94 @@
   width: 15px;
   height: 15px;
   object-fit: contain;
+}
+
+/* variants pod — other records that share this character's name. Styled to MATCH
+   the combat pod above it (same corners/shadow/padding + connector bridge + tab). */
+.chr-variants {
+  position: relative;
+  margin-top: 26px;
+  padding: 36px 40px 30px 44px;
+}
+
+.chr-variants-grid {
+  /* auto-fill columns (min 150px) + 1fr: a FULL row stretches its cards to fill the
+     width edge-to-edge (no leftover gap), while a handful of variants just fills the
+     first few columns and sits at the left — it does NOT spread/centre to occupy the
+     whole width. Columns are left-aligned (default justify-content). */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.chr-variant-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 14px 14px 14px 5px;
+  background: rgba(236, 228, 212, 0.04);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.chr-variant-card:hover {
+  border-color: var(--red-bright);
+  transform: translateY(-3px);
+  box-shadow: 6px 8px 0 rgba(3, 6, 11, 0.6);
+}
+
+.chr-variant-thumb {
+  display: block;
+  aspect-ratio: 1 / 1;
+  background: var(--night2);
+  overflow: hidden;
+}
+
+.chr-variant-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.chr-variant-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 8px 10px 10px;
+  min-width: 0;
+}
+
+.chr-variant-title {
+  font: 700 12px/1.25 var(--sans);
+  color: var(--cream);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.chr-variant-rarity {
+  font: 800 10px/1 var(--sans);
+  letter-spacing: 0.08em;
+  color: var(--red-bright);
+}
+
+@media (max-width: 560px) {
+  .chr-variants-grid {
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 9px;
+  }
+  .chr-variant-meta {
+    padding: 6px 8px 8px;
+  }
+  .chr-variant-title {
+    font-size: 11px;
+  }
 }
 
 /* dock */

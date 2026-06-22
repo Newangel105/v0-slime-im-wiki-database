@@ -254,7 +254,7 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
 
   return (
     <div className="grid gap-5 lg:grid-cols-[300px_minmax(0,1fr)]">
-      <aside className="glass-panel order-last flex max-h-[55vh] min-h-0 flex-col overflow-hidden p-4 lg:order-none lg:max-h-[78vh] lg:min-h-[520px]">
+      <aside className="glass-panel flex max-h-[48vh] min-h-0 flex-col overflow-hidden p-4 lg:max-h-[78vh] lg:min-h-[520px]">
         <div className="mb-4">
           <div className="section-kicker">Model Library</div>
           <h2 className="mt-2 text-2xl font-black tracking-tight text-foreground">Archive</h2>
@@ -333,7 +333,7 @@ export default function ModelViewerClient({ models }: { models: ModelEntry[] }) 
         </ul>
       </aside>
 
-      <section className="glass-panel-strong order-first overflow-hidden lg:order-none">
+      <section className="glass-panel-strong overflow-hidden">
         <div className="flex flex-col gap-3 border-b border-border bg-card/95 px-4 py-4">
           <div className="min-w-0">
             <div className="section-kicker">Active Model</div>
