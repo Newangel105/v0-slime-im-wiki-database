@@ -402,9 +402,11 @@ function facilityIconFor(value: string): string {
 function cutinArtFor(character: DetailCharacter): string {
   const artPath = character?.art || ""
   if (!artPath) return ""
-  return /CharaInfo$/i.test(artPath)
-    ? artPath.replace(/CharaInfo$/i, "CharaCutin")
-    : artPath.replace(/CharaInfo\.webp$/i, "CharaCutin.webp")
+  // The banner art is always the cutin: Pc characters use CharaInfo -> CharaCutin,
+  // Bless characters use BlessInfo -> BlessCutin. (With or without the .webp suffix.)
+  return artPath
+    .replace(/CharaInfo(\.webp)?$/i, "CharaCutin$1")
+    .replace(/BlessInfo(\.webp)?$/i, "BlessCutin$1")
 }
 
 function tagTone(label: string): string {
@@ -1008,14 +1010,19 @@ export function NightInkCharacterDetailClient({
             character pages (see NightInkSiteNav) so it shares the nav row */}
         <section className="chr-banner" aria-label="Character identity">
           <span className="nf-ring nf-ring-banner" aria-hidden="true" />
-          <div className="chr-blueprint" aria-hidden="true">
-            <i className="bp-circle" />
-            <i className="bp-cross bp-cross-a" />
-            <i className="bp-cross bp-cross-b" />
+          {/* clip layer: keeps the art + paint inside the banner's rounded shape (some
+              cutins — e.g. swimsuit scenes — fill the frame and poke out the 68px
+              overhang). The outer outline (::before / nf-ring) stays outside it. */}
+          <div className="chr-banner-clip">
+            <div className="chr-blueprint" aria-hidden="true">
+              <i className="bp-circle" />
+              <i className="bp-cross bp-cross-a" />
+              <i className="bp-cross bp-cross-b" />
+            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="chr-banner-splat m-a" src="/nightink/splatter/explosion-red.png" alt="" aria-hidden="true" />
+            <HeroArt character={character} />
           </div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="chr-banner-splat m-a" src="/nightink/splatter/explosion-red.png" alt="" aria-hidden="true" />
-          <HeroArt character={character} />
           <div className="chr-copy">
             <span className="cap chr-kicker">Playable character archive &middot; № {character.id}</span>
             <h1 className="chr-name" style={{ "--chr-name-size": `${nameSize}px` } as CSSProperties}>

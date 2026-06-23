@@ -148,6 +148,18 @@
 
 /* the opened character — CharaInfo art, bottom-anchored on the
    wave, head allowed to break the banner's top edge */
+/* clips the cutin + paint to the banner's rounded shape so wide cutins (e.g. swimsuit
+   scenes) and the splatter can't spill outside. Sits below .chr-copy (z3); the outer
+   ::before / nf-ring outline lives outside this layer so it's not clipped. */
+.chr-banner-clip {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 34px 34px 10px 72px;
+  pointer-events: none;
+}
+
 .chr-art {
   position: absolute;
   right: -68px;
@@ -1162,8 +1174,9 @@
   }
 
   .chr-art {
-    opacity: 0.4;
-    max-width: 70%;
+    /* prominent on mobile (was faded to 0.4, which read as "behind everything") */
+    opacity: 1;
+    max-width: 72%;
   }
 
   .chr-statgrid {
@@ -1173,7 +1186,8 @@
   .chr-stats > .v2-tab,
   .chr-skills > .v2-tab,
   .chr-traits > .v2-tab,
-  .chr-combat > .v2-tab {
+  .chr-combat > .v2-tab,
+  .chr-variants > .v2-tab {
     left: 16px;
     top: -18px;
   }
@@ -1186,9 +1200,16 @@
   .chr-forces,
   .chr-skills,
   .chr-traits,
-  .chr-combat {
+  .chr-combat,
+  .chr-variants {
     padding-left: 22px;
     padding-right: 22px;
+  }
+
+  /* banner title: the desktop size (up to 118px via --chr-name-size) overflows a
+     phone; clamp it so it fits the board. */
+  .chr-name {
+    font-size: clamp(44px, 14vw, 82px);
   }
 
   .chr-rowitem {

@@ -20,7 +20,7 @@ export function GlobalDesktopForce() {
   const pathname = usePathname()
   const responsive =
     pathname === "/" ||
-    pathname === "/characters" ||
+    pathname.startsWith("/characters") ||
     pathname === "/model-viewer" ||
     pathname === "/summon" ||
     pathname.startsWith("/summon/")
