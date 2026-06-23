@@ -389,9 +389,234 @@ body.motion .od-dial {
   font: 500 14px/1 var(--sans);
 }
 
+/* ── stage view toggle: Altar (3D) ↔ Stream (YouTube) ───────────────────────
+   A small segmented control floating at the top-left of the stage, clear of the
+   centred figure (model mode) and the record card (top-right). The choice is
+   persisted in localStorage so the home reopens on whichever view you left it —
+   and Stream never mounts the heavy 3D altar. */
+.sc-toggle {
+  position: absolute;
+  top: 8px;
+  left: 6px;
+  z-index: 7;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: rgba(8, 13, 21, 0.74);
+  border: 1px solid var(--line);
+  border-radius: 14px 14px 14px 5px;
+  backdrop-filter: blur(6px);
+}
+.sc-toggle button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 10px 10px 10px 3px;
+  background: transparent;
+  color: var(--cream-faint);
+  font: 700 10.5px/1 var(--sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.16s, background 0.16s, box-shadow 0.16s;
+}
+.sc-toggle button svg {
+  width: 14px;
+  height: 14px;
+}
+.sc-toggle button:hover {
+  color: var(--cream);
+}
+.sc-toggle button.is-active {
+  color: var(--cream);
+  background: var(--red);
+  box-shadow:
+    0 0 0 1px var(--red-bright),
+    0 0 14px rgba(210, 69, 58, 0.34);
+}
+
+/* In stream mode the stage stops being a 600px square AND the hero drops its
+   640px min-height floor, so the stage collapses to the video's own 16:9 box and
+   there's no dead space above/below the player (the altar keeps the full square). */
+.sc-stage.is-stream {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  /* the altar reserves vertical room below it (the record card + tray) via a big
+     bottom margin on mobile; the stream has neither, so zero it out — otherwise
+     that reserved space becomes dead air under the video */
+  margin: 0;
+}
+.home-hero.is-stream-hero {
+  min-height: 0;
+}
+
+/* ── "upcoming stream" card — sits where the altar would be, but shaped like the
+   video it is: a real 16:9 rectangle (full stage width) filling the now-16:9
+   stage, NOT a forced square that crops the thumbnail. Thumbnail shows instantly;
+   pressing play swaps in the YouTube iframe at the same 16:9. ───────────────── */
+.od-stream {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  aspect-ratio: 16 / 9;
+  z-index: 5;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: 18px 18px 18px 6px;
+  background: var(--night0);
+  box-shadow: 8px 10px 0 rgba(3, 6, 11, 0.7);
+}
+.od-stream-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+/* legibility veil over the thumbnail so the badge + play button read cleanly */
+.od-stream:not(.is-playing)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 9, 16, 0.36) 0%,
+    rgba(5, 9, 16, 0.06) 34%,
+    rgba(5, 9, 16, 0.64) 100%
+  );
+  pointer-events: none;
+}
+.od-stream-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  background: rgba(8, 13, 21, 0.82);
+  border: 1px solid var(--line-strong);
+  border-radius: 11px 11px 11px 4px;
+  color: var(--cream);
+  font: 700 10.5px/1 var(--sans);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.od-stream-badge svg {
+  width: 14px;
+  height: 14px;
+  color: var(--red-bright);
+}
+.od-stream-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.od-stream-play {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(181, 53, 43, 0.9);
+  border: 1px solid var(--red-bright);
+  box-shadow: 0 0 20px rgba(210, 69, 58, 0.42);
+  color: var(--cream);
+  transition: transform 0.16s, background 0.16s;
+}
+.od-stream-cover:hover .od-stream-play,
+.od-stream-cover:focus-visible .od-stream-play {
+  transform: scale(1.08);
+  background: var(--red-bright);
+}
+.od-stream-play svg {
+  width: 20px;
+  height: 20px;
+  margin-left: 2px; /* optically centre the play triangle */
+  fill: currentColor;
+}
+.od-stream-yt {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 2;
+  padding: 7px 12px;
+  background: rgba(8, 13, 21, 0.82);
+  border: 1px solid var(--line);
+  border-radius: 10px 10px 10px 3px;
+  color: var(--cream-dim);
+  font: 700 9.5px/1 var(--sans);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.16s, border-color 0.16s;
+}
+.od-stream-yt:hover {
+  color: var(--cream);
+  border-color: var(--red-bright);
+}
+.od-stream.is-playing {
+  background: #000;
+}
+.od-stream-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 /* phone: the 8-thumbnail record tray is ~437px at its desktop 46px size, which
    overflows a 390px board. Shrink the chips + gaps so all 8 fit the screen. */
 @media (max-width: 560px) {
+  /* compact the stage view toggle so both labels fit a phone-width stage */
+  .sc-toggle {
+    top: 6px;
+    left: 4px;
+    padding: 3px;
+    gap: 3px;
+  }
+  .sc-toggle button {
+    padding: 6px 9px;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+  }
+  .sc-toggle button svg {
+    width: 13px;
+    height: 13px;
+  }
+  /* keep the 16:9 stream card (centred via the desktop rule) within the narrow
+     square + shrink the play button — DON'T set inset here or it overrides the
+     aspect-ratio sizing and squares the video again */
+  .od-stream {
+    left: 2px;
+    right: 2px;
+    border-radius: 14px;
+  }
+  .od-stream-play {
+    width: 58px;
+    height: 58px;
+  }
+  .od-stream-play svg {
+    width: 23px;
+    height: 23px;
+  }
+  .od-stream-badge,
+  .od-stream-yt {
+    padding: 6px 10px;
+    font-size: 9px;
+  }
+
   /* the carousel: the 8 record thumbnails are wider than a phone — keep it within
      the screen and let it scroll horizontally instead of overflowing the right edge */
   .od-tray {

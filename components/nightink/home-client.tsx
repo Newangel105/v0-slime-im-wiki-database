@@ -12,12 +12,29 @@
 //   cross-origin; the payload shape (data.list) is identical.
 // - Internal links use next/link.
 import anime from "animejs"
+import dynamic from "next/dynamic"
 import Link from "next/link"
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react"
 import { createPortal } from "react-dom"
-import { X } from "lucide-react"
+import { Box, MonitorPlay, Play, X } from "lucide-react"
 import { ArchiveBackground } from "./archive-background"
-import { ArchiveDial } from "./archive-dial"
+
+// The 3D Archive Altar is a heavy three.js / R3F scene. Load it as its own
+// client-only chunk so the "Stream" view never downloads OR mounts it — the
+// home stays snappy when you're parked on the stream, and the page bundle stays
+// light until the altar is actually shown.
+const ArchiveDial = dynamic(() => import("./archive-dial").then((m) => m.ArchiveDial), {
+  ssr: false,
+  loading: () => <div className="od-loading">Materializing</div>,
+})
+
+// The home stage shows either the 3D altar or an embedded "upcoming stream".
+// To feature a different stream, paste its YouTube id here (the part after
+// youtube.com/live/ or watch?v=).
+const STAGE_MODE_KEY = "nk-home-stage-mode"
+const UPCOMING_STREAM = { videoId: "2--_6yLs7wY", label: "Upcoming Stream" }
+
+type StageMode = "model" | "stream"
 
 export type HomeLatestCharacter = {
   id: number
@@ -212,6 +229,64 @@ function NewsListModal({ open, onClose }: { open: boolean; onClose: () => void }
   )
 }
 
+// The "upcoming stream" stage view: a click-to-play YouTube card that fills the
+// same square the altar occupies. The thumbnail shows instantly; the heavy
+// iframe player only mounts after the user presses play, so merely toggling to
+// Stream stays cheap. Falls back from the maxres to the hq thumbnail if maxres
+// isn't available for this video.
+function StageStream({ videoId, label }: { videoId: string; label: string }) {
+  const [playing, setPlaying] = useState(false)
+  const [thumb, setThumb] = useState(`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`)
+
+  if (playing) {
+    return (
+      <div className="od-stream is-playing">
+        <iframe
+          className="od-stream-frame"
+          src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`}
+          title={label}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      </div>
+    )
+  }
+
+  return (
+    <div className="od-stream">
+      {/* eslint-disable-next-line @next/next/no-img-element — external YT thumbnail, no next/image loader */}
+      <img
+        className="od-stream-thumb"
+        src={thumb}
+        alt=""
+        onError={() => setThumb(`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`)}
+      />
+      <span className="od-stream-badge">
+        <MonitorPlay aria-hidden="true" />
+        {label}
+      </span>
+      <button
+        type="button"
+        className="od-stream-cover"
+        onClick={() => setPlaying(true)}
+        aria-label={`Play ${label}`}
+      >
+        <span className="od-stream-play" aria-hidden="true">
+          <Play />
+        </span>
+      </button>
+      <a
+        className="od-stream-yt"
+        href={`https://www.youtube.com/watch?v=${videoId}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Watch on YouTube
+      </a>
+    </div>
+  )
+}
+
 export function NightInkHomeClient({ latest, dialItems, allModelItems, stats, recordCount, lastSync }: Props) {
   const boardRef = useRef<HTMLElement>(null)
 
@@ -264,6 +339,30 @@ export function NightInkHomeClient({ latest, dialItems, allModelItems, stats, re
   // null until mounted — countdowns/schedules are client-local, so SSR renders
   // placeholders to avoid hydration mismatches (same pattern as ocean home)
   const [nowTick, setNowTick] = useState<number | null>(null)
+
+  // Which view the home stage shows. null until we've read the saved choice on
+  // the client: SSR + first paint render neither the altar nor the stream, so
+  // there's no hydration mismatch AND — the point of it — the heavy 3D altar
+  // never mounts when the saved choice is "stream". Persisted so the home
+  // reopens on whichever view you left it.
+  const [stageMode, setStageMode] = useState<StageMode | null>(null)
+  useEffect(() => {
+    let saved: string | null = null
+    try {
+      saved = window.localStorage.getItem(STAGE_MODE_KEY)
+    } catch {
+      /* storage blocked — fall through to the default */
+    }
+    setStageMode(saved === "stream" ? "stream" : "model")
+  }, [])
+  const selectStage = (mode: StageMode) => {
+    setStageMode(mode)
+    try {
+      window.localStorage.setItem(STAGE_MODE_KEY, mode)
+    } catch {
+      /* storage blocked — the choice just won't persist */
+    }
+  }
 
   /* §5b NEWS — official announcements via the site's /api/events proxy */
   useEffect(() => {
@@ -475,7 +574,10 @@ export function NightInkHomeClient({ latest, dialItems, allModelItems, stats, re
         }}
       />
       <div className="v2-inner">
-        <section className="home-hero" aria-label="Tempest Archive">
+        <section
+          className={`home-hero${stageMode === "stream" ? " is-stream-hero" : ""}`}
+          aria-label="Tempest Archive"
+        >
           <span className="nf-ring nf-ring-hero" aria-hidden="true" />
           <div className="home-hero-field" aria-hidden="true">
             {Array.from({ length: 28 }, (_, index) => (
@@ -518,8 +620,34 @@ export function NightInkHomeClient({ latest, dialItems, allModelItems, stats, re
             </div>
           </div>
 
-          <div className="sc-stage" aria-label="Archive projector — the newest records">
-            <ArchiveDial items={dialItems} allItems={allModelItems} />
+          <div
+            className={`sc-stage${stageMode === "stream" ? " is-stream" : ""}`}
+            aria-label="Archive projector — the newest records"
+          >
+            <div className="sc-toggle" role="group" aria-label="Stage view">
+              <button
+                type="button"
+                className={stageMode !== "stream" ? "is-active" : undefined}
+                aria-pressed={stageMode !== "stream"}
+                onClick={() => selectStage("model")}
+              >
+                <Box aria-hidden="true" />
+                <span>Altar</span>
+              </button>
+              <button
+                type="button"
+                className={stageMode === "stream" ? "is-active" : undefined}
+                aria-pressed={stageMode === "stream"}
+                onClick={() => selectStage("stream")}
+              >
+                <MonitorPlay aria-hidden="true" />
+                <span>Stream</span>
+              </button>
+            </div>
+            {stageMode === "model" && <ArchiveDial items={dialItems} allItems={allModelItems} />}
+            {stageMode === "stream" && (
+              <StageStream videoId={UPCOMING_STREAM.videoId} label={UPCOMING_STREAM.label} />
+            )}
           </div>
         </section>
 
