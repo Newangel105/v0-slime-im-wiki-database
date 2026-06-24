@@ -148,9 +148,6 @@ html:where([data-design="nightink"]),
     no-repeat,
     no-repeat;
   opacity: 0.92;
-  transform: translate3d(0, 0, 0) scale(1.02);
-  transform-origin: center;
-  will-change: transform;
 }
 
 .archive-bg-canvas {
@@ -162,9 +159,6 @@ html:where([data-design="nightink"]),
   height: calc(100vh + 32vmax);
   pointer-events: none;
   opacity: 0.82;
-  transform: translate3d(0, 0, 0) scale(1.02);
-  transform-origin: center;
-  will-change: transform;
 }
 
 .splat {
@@ -180,9 +174,7 @@ html:where([data-design="nightink"]),
 }
 
 .v2 {
-  background:
-    radial-gradient(rgba(236, 228, 212, 0.045) 1px, transparent 1.4px) 0 0 / 26px 26px,
-    radial-gradient(1000px 540px at 14% 0%, #101a2b 0%, var(--night0) 64%);
+  background: var(--night0);
 }
 
 .v2-inner {
@@ -1466,8 +1458,14 @@ html:where([data-design="nightink"]),
   transition:
     transform 0.15s,
     background 0.15s,
-    border-color 0.15s,
-    box-shadow 0.15s;
+    border-color 0.15s;
+}
+
+@media (min-width: 641px) {
+  .v2-grid#characterGrid .v2-card {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 124px;
+  }
 }
 
 .v2-grid .v2-card:nth-child(4n + 2) {
@@ -2373,38 +2371,6 @@ html[data-design="nightink"] {
   --night3: #2b3a4c;
 }
 
-html[data-design="nightink"] body:has(.board.v2)::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  pointer-events: none;
-  background-image:
-    repeating-linear-gradient(177deg, rgba(236, 228, 212, 0.018) 0 1px, transparent 1px 7px),
-    repeating-linear-gradient(84deg, rgba(5, 9, 16, 0.045) 0 1px, transparent 1px 9px);
-  opacity: 0.82;
-  transform: translateZ(0);
-}
-
-.board.v2::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    /* ember bloom bleeding from the right of the header zone */
-    radial-gradient(520px 340px at 99% 235px, rgba(255, 138, 92, 0.10), transparent 70%),
-    radial-gradient(1150px 740px at 97% 300px, rgba(210, 69, 58, 0.125), rgba(210, 69, 58, 0.042) 45%, transparent 72%),
-    /* faint ember spill continuing down the right gutter */
-    radial-gradient(380px 640px at 100% 860px, rgba(181, 53, 43, 0.045), transparent 75%),
-    /* cool blue-steel leak, lower-left along the gridshell */
-    radial-gradient(560px 420px at 0% calc(100% - 980px), rgba(120, 170, 220, 0.075), transparent 70%),
-    radial-gradient(1350px 1080px at 1% calc(100% - 760px), rgba(68, 113, 159, 0.125), rgba(68, 113, 159, 0.04) 48%, transparent 74%),
-    /* warm footlight under the dockbar */
-    radial-gradient(640px 260px at 52% calc(100% + 70px), rgba(210, 69, 58, 0.06), transparent 72%);
-}
-
 /* ---------------------------------------------------------
    2. RIM / UNDER-GLOW — pods as silhouettes against the light.
    Full stacks restated: original hard offset FIRST.
@@ -2413,60 +2379,37 @@ html[data-design="nightink"] body:has(.board.v2)::before {
    (search, elements, gridshell), faint neutral warmth on tray.
    --------------------------------------------------------- */
 .v2-head {
-  box-shadow:
-    14px 16px 0 rgba(3, 6, 11, 0.85),
-    0 0 64px rgba(210, 69, 58, 0.11),
-    0 0 170px 24px rgba(210, 69, 58, 0.05);
+  box-shadow: 14px 16px 0 rgba(3, 6, 11, 0.85);
 }
 
 .v2-search-pod {
-  box-shadow:
-    14px 16px 0 rgba(3, 6, 11, 0.85),
-    0 0 52px rgba(68, 113, 159, 0.11);
+  box-shadow: 14px 16px 0 rgba(3, 6, 11, 0.85);
 }
 
 .v2-tower {
-  box-shadow:
-    14px 16px 0 rgba(3, 6, 11, 0.85),
-    0 0 58px rgba(210, 69, 58, 0.085),
-    0 0 130px 16px rgba(210, 69, 58, 0.04);
+  box-shadow: 14px 16px 0 rgba(3, 6, 11, 0.85);
 }
 
 .v2-elements {
-  box-shadow:
-    14px 16px 0 rgba(3, 6, 11, 0.85),
-    0 0 50px rgba(68, 113, 159, 0.10);
+  box-shadow: 14px 16px 0 rgba(3, 6, 11, 0.85);
 }
 
 .v2-tray {
-  box-shadow:
-    14px 16px 0 rgba(3, 6, 11, 0.85),
-    0 0 46px rgba(181, 53, 43, 0.065);
-}
-
-.v2-gridshell {
-  box-shadow:
-    14px 16px 0 rgba(3, 6, 11, 0.85),
-    0 0 80px rgba(68, 113, 159, 0.085),
-    0 0 190px 24px rgba(68, 113, 159, 0.04);
+  box-shadow: 14px 16px 0 rgba(3, 6, 11, 0.85);
 }
 
 .v2-dockbar {
-  box-shadow:
-    10px 12px 0 rgba(3, 6, 11, 0.85),
-    0 0 38px rgba(210, 69, 58, 0.14);
+  box-shadow: 10px 12px 0 rgba(3, 6, 11, 0.85);
 }
 
 /* featured chip has no base shadow — a faint ember halo only */
 .v2-feature {
-  box-shadow: 0 0 30px rgba(210, 69, 58, 0.10);
+  box-shadow: none;
 }
 
 /* result chip on the gridshell shoulder (restate 8px 10px) */
 .v2-resultpod {
-  box-shadow:
-    8px 10px 0 rgba(3, 6, 11, 0.85),
-    0 0 20px rgba(210, 69, 58, 0.16);
+  box-shadow: 8px 10px 0 rgba(3, 6, 11, 0.85);
 }
 
 /* ---------------------------------------------------------
@@ -2551,9 +2494,7 @@ html[data-design="nightink"] body:has(.board.v2)::before {
   background: #3a2731;
   background-image: none;
   border-color: rgba(255, 69, 82, 0.78);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 69, 82, 0.42),
-    0 0 18px rgba(255, 47, 72, 0.26);
+  box-shadow: inset 0 0 0 1px rgba(255, 69, 82, 0.42);
 }
 
 .v2-card:hover .go,
@@ -2778,42 +2719,6 @@ html[data-design="nightink"] body:has(.board.v2)::before {
    5. MOTION — all of it lives behind reduced-motion.
    --------------------------------------------------------- */
 @media (prefers-reduced-motion: no-preference) {
-  /* the filament drifts around the outline, slow as a watch hand */
-  .nf-ring::before {
-    animation: nf-spin 22s linear infinite;
-  }
-
-  @keyframes nf-spin {
-    to {
-      transform: rotate(1turn);
-    }
-  }
-
-  .grain::before {
-    animation: archive-bg-drift 58s ease-in-out infinite alternate;
-  }
-
-  .archive-bg-canvas {
-    animation: archive-canvas-drift 42s ease-in-out infinite alternate;
-  }
-
-  @keyframes archive-bg-drift {
-    from {
-      transform: translate3d(-2.2vw, -1.4vh, 0) scale(1.05);
-    }
-    to {
-      transform: translate3d(2.2vw, 1.6vh, 0) scale(1.05);
-    }
-  }
-
-  @keyframes archive-canvas-drift {
-    from {
-      transform: translate3d(2.8vw, -2vh, 0) scale(1.04);
-    }
-    to {
-      transform: translate3d(-2.8vw, 2.2vh, 0) scale(1.04);
-    }
-  }
 }
 
 /* ============================================================================
@@ -3422,11 +3327,7 @@ body.motion .sc-core {
   display: grid;
   place-items: center;
   padding: 34px;
-  background:
-    radial-gradient(900px 620px at 78% 18%, rgba(210, 69, 58, 0.14), transparent 70%),
-    radial-gradient(840px 620px at 18% 84%, rgba(68, 113, 159, 0.16), transparent 70%),
-    rgba(3, 6, 11, 0.78);
-  backdrop-filter: blur(16px);
+  background: rgba(8, 13, 21, 0.96);
 }
 
 .home-news-modal-panel {

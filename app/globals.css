@@ -234,8 +234,7 @@ html.dark body {
   @media (max-width: 1080px) {
     .slime-site-nav {
       position: sticky;
-      background: rgba(246, 231, 198, 0.88);
-      backdrop-filter: blur(12px);
+      background: rgb(246, 231, 198);
     }
 
     .slime-site-nav-inner {
@@ -652,8 +651,7 @@ html.dark body {
   @media (max-width: 1080px) {
     body .slime-site-nav {
       position: sticky;
-      background: rgba(246, 231, 198, 0.88);
-      backdrop-filter: blur(12px);
+      background: rgb(246, 231, 198);
     }
 
     body .slime-site-nav-inner {
@@ -824,8 +822,7 @@ html.dark body {
   @media (max-width: 1080px) {
     body .slime-site-nav {
       position: sticky;
-      background: rgba(246, 231, 198, 0.88);
-      backdrop-filter: blur(12px);
+      background: rgb(246, 231, 198);
     }
 
     body .slime-site-nav-inner {
@@ -2289,12 +2286,12 @@ html.dark body {
   }
 
   .glass-panel {
-    @apply rounded-lg border border-white/10 shadow-2xl shadow-black/25 backdrop-blur-xl;
+    @apply rounded-lg border border-white/10 shadow-2xl shadow-black/25;
     background-color: rgba(var(--site-button), 0.8);
   }
 
   .glass-panel-strong {
-    @apply rounded-lg border border-white/10 shadow-2xl shadow-black/30 backdrop-blur-xl;
+    @apply rounded-lg border border-white/10 shadow-2xl shadow-black/30;
     background-color: rgba(var(--site-button), 0.92);
   }
 
@@ -2478,11 +2475,8 @@ html.dark body {
     top: 0;
     z-index: 100;
     border-bottom: 1px solid rgba(103, 168, 255, 0.16);
-    background:
-      linear-gradient(180deg, rgba(2, 9, 30, 0.96), rgba(1, 7, 24, 0.9)),
-      rgba(2, 8, 23, 0.96);
+    background: #020817;
     box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
-    backdrop-filter: blur(18px);
   }
 
   .slime-site-nav-inner {
@@ -2594,9 +2588,8 @@ html.dark body {
     overflow: hidden;
     border: 1px solid rgba(102, 166, 255, 0.22);
     border-radius: 8px;
-    background: rgba(3, 15, 43, 0.96);
+    background: #030f2b;
     box-shadow: 0 22px 50px rgba(0, 0, 0, 0.42);
-    backdrop-filter: blur(18px);
   }
 
   .slime-tools-popover a {

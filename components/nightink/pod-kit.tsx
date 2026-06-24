@@ -7,15 +7,14 @@
 // NightInkSiteNav from app/layout.tsx — no global theme switch required.
 import Link from "next/link"
 import type { CSSProperties, ReactNode } from "react"
-import { ArchiveBackground } from "./archive-background"
 
-/* the full-viewport night-ink board canvas + inner column. ArchiveBackground is
-   the generative streak/halftone canvas the home page uses — rendered here too
-   so every night-ink page shares the EXACT same background as home. */
+/* the full-viewport night-ink board + inner column. Flattened for performance:
+   the generative <ArchiveBackground/> canvas and the "grain" noise overlay were
+   removed (they were a full-viewport composited layer + a forever-drifting
+   animation on every page), leaving a solid theme-colored board. */
 export function NkBoard({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <main className={`board v2 grain ${className}`}>
-      <ArchiveBackground />
+    <main className={`board v2 ${className}`}>
       <div className="v2-inner">{children}</div>
     </main>
   )

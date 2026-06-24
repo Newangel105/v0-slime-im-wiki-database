@@ -1004,7 +1004,7 @@ export function NightInkCharacterDetailClient({
       .join("") || '<p class="cap">No forces recorded</p>'
 
   return (
-    <main className="board v2 grain chr-board">
+    <main className="board v2 chr-board">
       <div className="v2-inner">
         {/* the "← Archive" back link lives in the global nav's left slot on
             character pages (see NightInkSiteNav) so it shares the nav row */}

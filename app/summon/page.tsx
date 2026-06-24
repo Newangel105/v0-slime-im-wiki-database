@@ -1,7 +1,6 @@
 import { SummonSimulator } from "@/components/summon-simulator"
 import { getSummonData } from "@/lib/summon-data"
 import { getDesign } from "@/lib/design"
-import { ArchiveBackground } from "@/components/nightink/archive-background"
 
 export const metadata = { title: "Summon Simulator | SLIME.WIKI" }
 
@@ -22,8 +21,7 @@ export default async function SummonPage() {
   // night-ink board canvas so the page sits consistently in the site design.
   if (design === "nightink") {
     return (
-      <div className="board v2 grain summon-nightink">
-        <ArchiveBackground />
+      <div className="board v2 summon-nightink">
         <SummonSimulator data={data} />
       </div>
     )

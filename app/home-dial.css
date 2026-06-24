@@ -59,10 +59,9 @@ body.motion .od-dial {
   display: flex;
   gap: 7px;
   padding: 7px 9px;
-  background: rgba(8, 13, 21, 0.6);
+  background: rgba(8, 13, 21, 0.9);
   border: 1px solid var(--line);
   border-radius: 16px 16px 16px 6px;
-  backdrop-filter: blur(6px);
   z-index: 4;
 }
 
@@ -261,8 +260,7 @@ body.motion .od-dial {
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: rgba(4, 8, 14, 0.74);
-  backdrop-filter: blur(5px);
+  background: rgba(4, 8, 14, 0.85);
 }
 .od-picker {
   display: flex;
@@ -402,10 +400,9 @@ body.motion .od-dial {
   display: flex;
   gap: 4px;
   padding: 4px;
-  background: rgba(8, 13, 21, 0.74);
+  background: rgba(8, 13, 21, 0.92);
   border: 1px solid var(--line);
   border-radius: 14px 14px 14px 5px;
-  backdrop-filter: blur(6px);
 }
 .sc-toggle button {
   display: inline-flex;

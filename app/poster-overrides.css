@@ -2134,11 +2134,10 @@ body .poster-timer-list {
   border: 1px solid rgba(0, 125, 145, 0.18);
   background:
     linear-gradient(135deg, rgba(255, 250, 239, 0.12), rgba(255, 255, 255, 0.03) 48%, rgba(0, 151, 169, 0.1)),
-    linear-gradient(135deg, rgba(0, 103, 128, 0.78), rgba(5, 69, 100, 0.76));
+    linear-gradient(135deg, rgba(0, 103, 128, 0.92), rgba(5, 69, 100, 0.92));
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.22),
     inset 0 -18px 36px rgba(255, 250, 239, 0.06);
-  backdrop-filter: blur(8px);
 }
 
 body .poster-timer-row {
@@ -2564,7 +2563,7 @@ body:not(:has(main.poster-home)) .slime-site-nav {
   box-shadow:
     0 18px 40px rgba(6, 22, 48, 0.42),
     0 0 0 1px rgba(91, 193, 229, 0.08) inset;
-  backdrop-filter: blur(14px);
+  background: #0d2642;
   overflow: hidden;
 }
 
@@ -3731,7 +3730,6 @@ html[data-slime-theme] .slime-site-nav {
   border-bottom: 1px solid var(--slime-nav-border) !important;
   background: var(--slime-nav-bg) !important;
   box-shadow: none !important;
-  backdrop-filter: blur(8px);
 }
 
 html[data-slime-theme] .slime-site-brand,
@@ -3975,14 +3973,6 @@ html[data-slime-theme="night"] .character-list-card {
     inset 0 1px 0 rgba(255, 255, 255, 0.04),
     0 16px 42px rgba(0, 0, 0, 0.45),
     0 0 24px rgba(34, 216, 255, 0.08) !important;
-}
-
-html[data-slime-theme="night"] .poster-card,
-html[data-slime-theme="night"] .poster-midbar,
-html[data-slime-theme="night"] .poster-picker-panel,
-html[data-slime-theme="night"] .poster-news-modal-panel,
-html[data-slime-theme="night"] body:has(.slime-page-characters) .site-page.slime-page-characters > div > section:first-of-type {
-  backdrop-filter: blur(12px) saturate(1.08);
 }
 
 html[data-slime-theme] .slime-mobile-toggle {
@@ -4246,7 +4236,7 @@ html[data-slime-theme] .poster-stream-preview .poster-stream-copy > span {
   --slime-page-border-strong: rgba(66, 219, 255, 0.34);
   --slime-page-warm: #d29a46;
   --slime-page-shadow: 0 18px 44px rgba(0, 0, 0, 0.34), 0 0 28px rgba(34, 216, 255, 0.055);
-  --slime-nav-bg: linear-gradient(180deg, rgba(1, 8, 19, 0.56), rgba(1, 8, 19, 0.1));
+  --slime-nav-bg: linear-gradient(180deg, rgba(1, 8, 19, 0.97), rgba(1, 8, 19, 0.97));
   --slime-nav-border: transparent;
 }
 
@@ -4479,7 +4469,7 @@ html[data-slime-theme="day"] body:not(:has(main.poster-home)) [class*="bg-card"]
   --slime-page-accent-2: #16b7c6;
   --slime-page-accent-contrast: #041b2d;
   --slime-nav-bg:
-    linear-gradient(180deg, rgba(255, 241, 205, 0.68), rgba(255, 241, 205, 0.18));
+    linear-gradient(180deg, rgba(255, 241, 205, 0.97), rgba(255, 241, 205, 0.97));
   --slime-nav-border: rgba(10, 68, 98, 0.2);
   --slime-nav-search-bg: rgba(8, 30, 56, 0.78);
   --slime-table-head: rgba(7, 28, 52, 0.96);
@@ -4853,9 +4843,8 @@ html[data-slime-theme="archive"] body:not(:has(main.poster-home)) .slime-site-na
   border-radius: 0 !important;
   background:
     linear-gradient(90deg, rgba(43, 33, 26, 0.88), rgba(8, 30, 36, 0.94) 42%, rgba(43, 33, 26, 0.9)),
-    rgba(7, 24, 28, 0.96) !important;
+    rgba(7, 24, 28, 1) !important;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.34), inset 0 -1px 0 rgba(104, 194, 197, 0.14) !important;
-  backdrop-filter: blur(16px) saturate(1.08) !important;
 }
 
 html[data-slime-theme="archive"] .slime-site-nav::before {
@@ -5009,7 +4998,6 @@ html[data-slime-theme="archive"] .slime-mobile-menu {
     linear-gradient(135deg, rgba(12, 42, 49, 0.98), rgba(43, 33, 26, 0.98)) !important;
   color: var(--archive-ink) !important;
   box-shadow: var(--archive-shadow) !important;
-  backdrop-filter: blur(18px) saturate(1.08) !important;
 }
 
 html[data-slime-theme="archive"] .slime-tools-popover {

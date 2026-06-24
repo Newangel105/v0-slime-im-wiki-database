@@ -1507,7 +1507,7 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
   const pages = compactPages(currentPage, totalPages)
 
   return (
-    <main className="board v2 grain">
+    <main className="board v2">
       <div className="v2-inner">
         <section className="v2-head" aria-label="Character archive overview">
           <span className="nf-ring nf-ring-head" aria-hidden="true" />

@@ -1,7 +1,7 @@
 "use client"
 
 import { Suspense, useEffect, useMemo, useRef, useState } from "react"
-import { Canvas, useFrame } from "@react-three/fiber"
+import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei"
 import * as THREE from "three"
 import { mediaUrl } from "@/lib/media-cdn"
@@ -165,6 +165,25 @@ function SkillSceneVideo({ entry }: { entry: SkillSceneVideoEntry }) {
   )
 }
 
+// OrbitControls wrapper that re-renders the (demand-driven) canvas on drag.
+function Controls() {
+  const invalidate = useThree(s => s.invalidate)
+  return (
+    <OrbitControls
+      makeDefault
+      enableDamping
+      enablePan
+      panSpeed={1.2}
+      zoomSpeed={1.2}
+      minDistance={0.3}
+      maxDistance={20}
+      screenSpacePanning
+      target={[0, 1, 0]}
+      onChange={() => invalidate()}
+    />
+  )
+}
+
 export function ClassicModelViewerClient({ models }: { models: ModelEntry[] }) {
   const [selectedId, setSelectedId] = useState(models[0]?.id ?? "")
   const [modelSearch, setModelSearch] = useState("")
@@ -317,7 +336,13 @@ export function ClassicModelViewerClient({ models }: { models: ModelEntry[] }) {
           {activeMode === "skill" && activeVideo ? (
             <SkillSceneVideo entry={activeVideo} />
           ) : (
-            <Canvas className="relative z-10" camera={{ position: [0, 1.4, 2.6], fov: 38 }} dpr={[1, 2]} gl={{ alpha: true }}>
+            <Canvas
+              className="relative z-10"
+              camera={{ position: [0, 1.4, 2.6], fov: 38 }}
+              dpr={[1, 2]}
+              gl={{ alpha: true }}
+              frameloop={autoRotate || !!animationName ? "always" : "demand"}
+            >
               <ambientLight intensity={0.65} />
               <hemisphereLight intensity={0.35} groundColor={"#1a1a1e"} />
               <directionalLight position={[3, 5, 2]} intensity={1.15} />
@@ -333,17 +358,7 @@ export function ClassicModelViewerClient({ models }: { models: ModelEntry[] }) {
                   onAnimationsList={setAnimationList}
                 />
               </Suspense>
-              <OrbitControls
-                makeDefault
-                enableDamping
-                enablePan
-                panSpeed={1.2}
-                zoomSpeed={1.2}
-                minDistance={0.3}
-                maxDistance={20}
-                screenSpacePanning
-                target={[0, 1, 0]}
-              />
+              <Controls />
             </Canvas>
           )}
         </div>
@@ -612,7 +627,13 @@ export function ClassicModelViewerClient({ models }: { models: ModelEntry[] }) {
           {activeMode === "skill" && activeVideo ? (
             <SkillSceneVideo entry={activeVideo} />
           ) : (
-            <Canvas className="relative z-10" camera={{ position: [0, 1.4, 2.6], fov: 38 }} dpr={[1, 2]} gl={{ alpha: true }}>
+            <Canvas
+              className="relative z-10"
+              camera={{ position: [0, 1.4, 2.6], fov: 38 }}
+              dpr={[1, 2]}
+              gl={{ alpha: true }}
+              frameloop={autoRotate || !!animationName ? "always" : "demand"}
+            >
               <ambientLight intensity={0.65} />
               <hemisphereLight intensity={0.35} groundColor={"#1a1a1e"} />
               <directionalLight position={[3, 5, 2]} intensity={1.15} />
@@ -628,17 +649,7 @@ export function ClassicModelViewerClient({ models }: { models: ModelEntry[] }) {
                   onAnimationsList={setAnimationList}
                 />
               </Suspense>
-              <OrbitControls
-                makeDefault
-                enableDamping
-                enablePan
-                panSpeed={1.2}
-                zoomSpeed={1.2}
-                minDistance={0.3}
-                maxDistance={20}
-                screenSpacePanning
-                target={[0, 1, 0]}
-              />
+              <Controls />
             </Canvas>
           )}
         </div>

@@ -1,7 +1,7 @@
 "use client"
 
 import { Suspense, useCallback, useEffect, useMemo, useRef, useState, type MutableRefObject, type ReactNode } from "react"
-import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber"
+import { Canvas, invalidate, useFrame, useLoader, useThree } from "@react-three/fiber"
 import { OrbitControls, useAnimations, useGLTF } from "@react-three/drei"
 import { Camera, Pause, Play, RotateCcw, Sparkles } from "lucide-react"
 import * as THREE from "three"
@@ -1201,6 +1201,7 @@ type ParticleEmitterProps = {
   emitter: CinematicParticleEmitter
   clips: TimelineClip[]
   playbackRef: MutableRefObject<PlaybackInfo>
+  playingRef: MutableRefObject<boolean>
   textureUrl?: string
   distortionUrl?: string
   alphaMaskUrl?: string
@@ -1327,7 +1328,7 @@ type ParticleMeshEmitterProps = ParticleEmitterProps & {
   meshUrl: string
 }
 
-function ParticleMeshEmitter({ emitter, clips, playbackRef, textureUrl: mapUrl, distortionUrl, alphaMaskUrl, meshUrl, useLocalTransform }: ParticleMeshEmitterProps) {
+function ParticleMeshEmitter({ emitter, clips, playbackRef, playingRef, textureUrl: mapUrl, distortionUrl, alphaMaskUrl, meshUrl, useLocalTransform }: ParticleMeshEmitterProps) {
   const loadedObject = useLoader(OBJLoader, meshUrl)
   const loadedTexture = mapUrl ? useLoader(THREE.TextureLoader, mapUrl) : null
   const loadedDistortionTexture = distortionUrl ? useLoader(THREE.TextureLoader, distortionUrl) : null
@@ -1385,6 +1386,7 @@ function ParticleMeshEmitter({ emitter, clips, playbackRef, textureUrl: mapUrl, 
   }, [alphaTexture, colorAttribute, distortionTexture, emitter.renderer?.sortingOrder, geometry, material, texture])
 
   useFrame(() => {
+    if (!playingRef.current) return
     const mesh = meshRef.current
     if (!mesh || !seeds.length) return
     const active = particleActiveLocalTime(emitter, clips, playbackRef.current.time)
@@ -1446,7 +1448,7 @@ function ParticleMeshEmitter({ emitter, clips, playbackRef, textureUrl: mapUrl, 
   return <instancedMesh ref={meshRef} args={[geometry, material, maxInstances]} />
 }
 
-function ParticleBillboardEmitter({ emitter, clips, playbackRef, textureUrl: mapUrl, distortionUrl, alphaMaskUrl, useLocalTransform }: ParticleEmitterProps) {
+function ParticleBillboardEmitter({ emitter, clips, playbackRef, playingRef, textureUrl: mapUrl, distortionUrl, alphaMaskUrl, useLocalTransform }: ParticleEmitterProps) {
   const loadedTexture = mapUrl ? useLoader(THREE.TextureLoader, mapUrl) : null
   const loadedDistortionTexture = distortionUrl ? useLoader(THREE.TextureLoader, distortionUrl) : null
   const loadedAlphaTexture = alphaMaskUrl ? useLoader(THREE.TextureLoader, alphaMaskUrl) : null
@@ -1500,6 +1502,7 @@ function ParticleBillboardEmitter({ emitter, clips, playbackRef, textureUrl: map
   }, [colorAttribute, emitter.renderer?.sortingOrder])
 
   useFrame(() => {
+    if (!playingRef.current) return
     const mesh = meshRef.current
     if (!mesh || !seeds.length) return
     const active = particleActiveLocalTime(emitter, clips, playbackRef.current.time)
@@ -1599,12 +1602,14 @@ function ParticleGroupTransform({
   groupName,
   clips,
   playbackRef,
+  playingRef,
   children,
 }: {
   cinematic: CinematicManifest
   groupName: string
   clips: TimelineClip[]
   playbackRef: MutableRefObject<PlaybackInfo>
+  playingRef: MutableRefObject<boolean>
   children: ReactNode
 }) {
   const ref = useRef<THREE.Group>(null)
@@ -1616,6 +1621,7 @@ function ParticleGroupTransform({
   const fallbackScale = useMemo(() => new THREE.Vector3(1, 1, 1), [])
 
   useFrame(() => {
+    if (!playingRef.current) return
     const group = ref.current
     if (!group) return
     const timelineTime = playbackRef.current.time
@@ -1643,10 +1649,12 @@ function CinematicParticles({
   cinematic,
   baseUrl,
   playbackRef,
+  playingRef,
 }: {
   cinematic: CinematicManifest
   baseUrl: string
   playbackRef: MutableRefObject<PlaybackInfo>
+  playingRef: MutableRefObject<boolean>
 }) {
   const clipMap = useMemo(() => buildParticleClipMap(cinematic), [cinematic])
   const groups = cinematic.particleGroups ?? {}
@@ -1664,6 +1672,7 @@ function CinematicParticles({
             groupName={groupName}
             clips={clips}
             playbackRef={playbackRef}
+            playingRef={playingRef}
           >
             {emitters.map((emitter, index) => {
               const alphaOnlyPrimary = isAlphaOnlyPrimaryTexture(emitter)
@@ -1689,6 +1698,7 @@ function CinematicParticles({
                   emitter={emitter}
                   clips={clips}
                   playbackRef={playbackRef}
+                  playingRef={playingRef}
                   textureUrl={mapUrl || undefined}
                   distortionUrl={distortionUrl || undefined}
                   alphaMaskUrl={alphaMaskUrl || undefined}
@@ -1818,9 +1828,11 @@ function makePostShader() {
 function CinematicPostProcess({
   cinematic,
   playbackRef,
+  playingRef,
 }: {
   cinematic: CinematicManifest
   playbackRef: MutableRefObject<PlaybackInfo>
+  playingRef: MutableRefObject<boolean>
 }) {
   const { gl, scene, camera, size } = useThree()
   const composer = useMemo(() => {
@@ -1867,6 +1879,13 @@ function CinematicPostProcess({
       gl.render(scene, camera)
       return
     }
+    // When paused we still must render (demand-mode invalidate frames from
+    // OrbitControls drive this), but the per-frame post uniforms are static —
+    // reuse the last computed values and just composite.
+    if (!playingRef.current) {
+      composer.render()
+      return
+    }
     const time = playbackRef.current.time
     shaderPass.uniforms.bloomStrength.value = trackWeight(cinematic, /Bloom/i, time) * 0.38
     shaderPass.uniforms.radialBlurStrength.value = trackWeight(cinematic, /RadialBlur/i, time) * 0.32
@@ -1904,6 +1923,10 @@ export default function SkillSceneThreePlayer({
   const [restartToken, setRestartToken] = useState(0)
   const [playback, setPlayback] = useState<PlaybackInfo>({ time: 0, total: 1, clip: scene.clips[0] ?? "" })
   const playbackRef = useRef<PlaybackInfo>(playback)
+  // Mirror `playing` into a ref so the in-Canvas useFrame loops can cheaply
+  // early-return while paused without re-subscribing on every play/pause.
+  const playingRef = useRef(playing)
+  playingRef.current = playing
   const cinematicBaseUrl = assets.cinematic ? dirname(assets.cinematic) : dirname(assets.glb)
   const skillGlbUrl = versionedUrl(assets.glb, assetVersion)
   const fieldLayers = useMemo(() => {
@@ -1987,6 +2010,7 @@ export default function SkillSceneThreePlayer({
       <Canvas
         key={`${skillGlbUrl}:${scene.id}`}
         className="relative z-10"
+        frameloop={playing ? "always" : "demand"}
         camera={{ position: [0, 1.4, 5.5], fov: 35, near: 0.03, far: 140 }}
         dpr={[1, 1.5]}
         gl={{ alpha: false, antialias: true }}
@@ -2022,7 +2046,7 @@ export default function SkillSceneThreePlayer({
             onPlaybackUpdate={handlePlaybackUpdate}
           />
           {fxEnabled && cinematic ? (
-            <CinematicParticles cinematic={cinematic} baseUrl={cinematicBaseUrl} playbackRef={playbackRef} />
+            <CinematicParticles cinematic={cinematic} baseUrl={cinematicBaseUrl} playbackRef={playbackRef} playingRef={playingRef} />
           ) : null}
         </Suspense>
         {!cameraLocked ? (
@@ -2035,10 +2059,11 @@ export default function SkillSceneThreePlayer({
             minDistance={0.4}
             maxDistance={24}
             target={[0, 1, 0]}
+            onChange={() => invalidate()}
           />
         ) : null}
         {fxEnabled && cinematic ? (
-          <CinematicPostProcess cinematic={cinematic} playbackRef={playbackRef} />
+          <CinematicPostProcess cinematic={cinematic} playbackRef={playbackRef} playingRef={playingRef} />
         ) : null}
       </Canvas>
 

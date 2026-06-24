@@ -5909,6 +5909,34 @@ function TowerBoard({
 }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [zoom, setZoom] = useState(1);
+  // The board's particles/animators run perpetual useFrame loops, so demand
+  // mode is wrong here. Instead, freeze the render loop ('never') whenever the
+  // board is scrolled off-screen or the tab is hidden, and resume ('always')
+  // only while it is both on-screen and the tab is visible.
+  const [frameloop, setFrameloop] = useState<"always" | "never">("always");
+
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    let onScreen = true;
+    const apply = () => {
+      const visible = onScreen && document.visibilityState !== "hidden";
+      setFrameloop(visible ? "always" : "never");
+    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        onScreen = entries[0]?.isIntersecting ?? true;
+        apply();
+      },
+      { threshold: 0 },
+    );
+    observer.observe(el);
+    document.addEventListener("visibilitychange", apply);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", apply);
+    };
+  }, []);
 
   const ZOOM_MIN = 0.5;
   const ZOOM_MAX = 4;
@@ -5942,6 +5970,7 @@ function TowerBoard({
     >
       <Canvas
         orthographic
+        frameloop={frameloop}
         dpr={[1, 1.8]}
         gl={{ alpha: true, antialias: true }}
         onCreated={({ gl }) => {

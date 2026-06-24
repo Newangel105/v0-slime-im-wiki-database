@@ -541,6 +541,16 @@ export function LotteryParticles({
       let total = 0
       for (const arr of particles) total += arr.length
 
+      // Self-terminate the rAF loop when there's nothing left to do: emission
+      // has stopped (we're past stopEmissionAt) AND every particle has decayed.
+      // Restarting requires a fresh effect run (deps change) or a
+      // visibility/intersection resume, which reschedules from scratch — so we
+      // simply stop spinning the loop while idle instead of burning CPU.
+      if (typeof stopEmissionAt === "number" && elapsed > stopEmissionAt && total === 0) {
+        running = false
+        return
+      }
+
       active.forEach((s, si) => {
         const sysDur = s.duration ?? 5
         const looping = s.looping === true || s.looping === 1
@@ -948,11 +958,58 @@ export function LotteryParticles({
     // Touch the helper so TS doesn't tree-shake the unused-fn-warning path.
     void radToDeg
 
+    // Resume the rAF loop after a pause (tab hidden / canvas scrolled away).
+    // Reset `last` to now so the first dt after resume isn't a giant catch-up
+    // step, and only schedule if not already running.
+    function resume() {
+      if (running) return
+      running = true
+      last = performance.now()
+      raf = requestAnimationFrame(frame)
+    }
+    function pause() {
+      running = false
+      cancelAnimationFrame(raf)
+    }
+
+    // Tracks the canvas's on-screen state for the IntersectionObserver below,
+    // declared before the visibility handler that reads it.
+    let isIntersecting = true
+
+    // Pause the loop while the tab is hidden; resume (if on-screen) when visible.
+    function onVisibilityChange() {
+      if (document.hidden) {
+        pause()
+      } else if (isIntersecting) {
+        resume()
+      }
+    }
+    document.addEventListener("visibilitychange", onVisibilityChange)
+
+    // Pause the loop while the canvas is scrolled off-screen; resume when it
+    // re-enters the viewport and the tab is visible.
+    const io = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0]
+        if (!entry) return
+        isIntersecting = entry.isIntersecting
+        if (isIntersecting && !document.hidden) {
+          resume()
+        } else {
+          pause()
+        }
+      },
+      { threshold: 0 },
+    )
+    io.observe(canvas)
+
     raf = requestAnimationFrame(frame)
     return () => {
       running = false
       cancelAnimationFrame(raf)
       ro.disconnect()
+      io.disconnect()
+      document.removeEventListener("visibilitychange", onVisibilityChange)
     }
   }, [systems, unitPx, maxTotal, materials, transforms, particleFull, designSize, designOffset])
 

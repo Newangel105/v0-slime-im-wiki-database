@@ -12,21 +12,12 @@
 //   cross-origin; the payload shape (data.list) is identical.
 // - Internal links use next/link.
 import anime from "animejs"
-import dynamic from "next/dynamic"
 import Link from "next/link"
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react"
 import { createPortal } from "react-dom"
-import { Box, MonitorPlay, Play, X } from "lucide-react"
-import { ArchiveBackground } from "./archive-background"
-
-// The 3D Archive Altar is a heavy three.js / R3F scene. Load it as its own
-// client-only chunk so the "Stream" view never downloads OR mounts it — the
-// home stays snappy when you're parked on the stream, and the page bundle stays
-// light until the altar is actually shown.
-const ArchiveDial = dynamic(() => import("./archive-dial").then((m) => m.ArchiveDial), {
-  ssr: false,
-  loading: () => <div className="od-loading">Materializing</div>,
-})
+import { MonitorPlay, Play, X } from "lucide-react"
+// (Altar removed) — the 3D ArchiveDial (three.js/R3F) and the ArchiveBackground
+// canvas are no longer imported, so neither ships in the home bundle.
 
 // The home stage shows either the 3D altar or an embedded "upcoming stream".
 // To feature a different stream, paste its YouTube id here (the part after
@@ -508,9 +499,9 @@ export function NightInkHomeClient({ latest, dialItems, allModelItems, stats, re
       scrollFrame = window.requestAnimationFrame(syncHeroDepth)
     }
 
-    requestHeroDepth()
-    window.addEventListener("scroll", requestHeroDepth, { passive: true })
-    window.addEventListener("resize", requestHeroDepth, { passive: true })
+    // (removed) the scroll/resize parallax that wrote --hero-depth/--scope-*/--field-y
+    // on every scroll frame — that was the home's scroll-jank source. The hero now
+    // stays at its static default depth, so scrolling does zero per-frame work.
 
     const intro = anime.timeline({
       easing: "easeInOutSine",
@@ -525,18 +516,9 @@ export function NightInkHomeClient({ latest, dialItems, allModelItems, stats, re
       easing: "easeOutElastic(1, 0.62)",
     })
 
-    anime({
-      targets: q(".home-field-mark"),
-      translateX: () => anime.random(-34, 34),
-      translateY: () => anime.random(-22, 22),
-      scaleX: () => anime.random(80, 128) / 100,
-      opacity: [0.12, 0.72],
-      duration: () => anime.random(3600, 7600),
-      delay: anime.stagger(95),
-      direction: "alternate",
-      easing: "easeInOutSine",
-      loop: true,
-    })
+    // (removed) the infinite anime.js loop on .home-field-mark — it animated the
+    // background marks every frame forever (constant CPU + repaint even when idle).
+    // The field marks now stay static.
 
     return () => {
       // stop everything this effect started (dev StrictMode re-runs included)
@@ -562,8 +544,11 @@ export function NightInkHomeClient({ latest, dialItems, allModelItems, stats, re
   }, [])
 
   return (
-    <main className="board v2 grain home-board" ref={boardRef}>
-      <ArchiveBackground />
+    <main className="board v2 home-board" ref={boardRef}>
+      {/* Background flattened to the solid theme color (var(--night0), already on
+          .board). Removed: the <ArchiveBackground/> full-viewport canvas (heavy
+          decorative scene + a fixed compositing layer re-composited on scroll)
+          and the "grain" noise overlay. */}
       {/* prototype-equivalent pre-hydration hide: home-live.js adds
           body.motion synchronously before first paint so the ritual's
           targets start invisible; run the same check inline. */}
@@ -575,7 +560,7 @@ export function NightInkHomeClient({ latest, dialItems, allModelItems, stats, re
       />
       <div className="v2-inner">
         <section
-          className={`home-hero${stageMode === "stream" ? " is-stream-hero" : ""}`}
+          className="home-hero is-stream-hero"
           aria-label="Tempest Archive"
         >
           <span className="nf-ring nf-ring-hero" aria-hidden="true" />
@@ -620,34 +605,11 @@ export function NightInkHomeClient({ latest, dialItems, allModelItems, stats, re
             </div>
           </div>
 
-          <div
-            className={`sc-stage${stageMode === "stream" ? " is-stream" : ""}`}
-            aria-label="Archive projector — the newest records"
-          >
-            <div className="sc-toggle" role="group" aria-label="Stage view">
-              <button
-                type="button"
-                className={stageMode !== "stream" ? "is-active" : undefined}
-                aria-pressed={stageMode !== "stream"}
-                onClick={() => selectStage("model")}
-              >
-                <Box aria-hidden="true" />
-                <span>Altar</span>
-              </button>
-              <button
-                type="button"
-                className={stageMode === "stream" ? "is-active" : undefined}
-                aria-pressed={stageMode === "stream"}
-                onClick={() => selectStage("stream")}
-              >
-                <MonitorPlay aria-hidden="true" />
-                <span>Stream</span>
-              </button>
-            </div>
-            {stageMode === "model" && <ArchiveDial items={dialItems} allItems={allModelItems} />}
-            {stageMode === "stream" && (
-              <StageStream videoId={UPCOMING_STREAM.videoId} label={UPCOMING_STREAM.label} />
-            )}
+          {/* Altar removed: the 3D R3F/three.js scene was the home's biggest GPU
+              cost (a canvas rendering every frame). The stage is now just the
+              lightweight upcoming-stream card (thumbnail until you press play). */}
+          <div className="sc-stage is-stream" aria-label="Upcoming stream">
+            <StageStream videoId={UPCOMING_STREAM.videoId} label={UPCOMING_STREAM.label} />
           </div>
         </section>
 
