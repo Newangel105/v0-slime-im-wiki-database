@@ -1290,11 +1290,13 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
     const search = searchRef.current
     if (!cluster || !tower || !elements || !search) return
 
-    // Collapsing these heights to re-measure momentarily removes the overflow on the
-    // inner rail (.v2-tower-scroll) and shrinks the page, which snaps BOTH the rail's
-    // own scrollTop and the window scroll back to the top. This effect re-runs on
-    // every visible.length change — i.e. every filter toggle — so without restoring
-    // the scroll, selecting a filter yanks you to the top. Capture + restore both.
+    // This effect re-runs on every visible.length change — i.e. every filter toggle.
+    // The inner rail (.v2-tower-scroll) overflows the tower's fixed height, so clearing
+    // `tower.style.height` collapses the rail and snaps its scrollTop back to 0; the
+    // elements/cluster minHeight reset likewise shrinks the page and bumps the window
+    // scroll. baseTowerHeight below is measured from an OFF-SCREEN CLONE, so the real
+    // tower never needs collapsing on desktop — leave its height alone so the rail keeps
+    // its scroll position. Still snapshot + restore the window scroll as a safety net.
     const rail = tower.querySelector<HTMLElement>(".v2-tower-scroll")
     const savedRail = rail ? rail.scrollTop : 0
     const savedWin = window.scrollY
@@ -1303,11 +1305,12 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
       if (window.scrollY !== savedWin) window.scrollTo(0, savedWin)
     }
 
-    tower.style.height = ""
     elements.style.minHeight = ""
     cluster.style.minHeight = ""
 
     if (window.matchMedia("(max-width: 1340px)").matches) {
+      // narrow/mobile uses natural flow — undo any desktop-synced tower height
+      tower.style.height = ""
       restoreScroll()
       return
     }
