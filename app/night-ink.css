@@ -1060,6 +1060,13 @@ html:where([data-design="nightink"]),
     color 0.15s;
 }
 
+/* the dropdown search marks non-matching options with the `hidden` attribute, but
+   `.drop-item { display: flex }` (an author rule) overrides the UA `[hidden]`
+   display:none — so without this the search filtered nothing. */
+.drop-item[hidden] {
+  display: none !important;
+}
+
 .drop-item:hover {
   color: var(--cream);
   background: rgba(236, 228, 212, 0.065);
@@ -3926,6 +3933,24 @@ body.motion .sc-core {
   .home-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
+  }
+
+  /* on a 2-col phone grid the cards are ~140-260px wide; the fixed 42px number
+     ("1,258") and the wide-tracked label ("CHARACTERS") overflowed the box. Shrink
+     the number fluidly + tighten the label + trim padding so both stay inside. */
+  .home-stat {
+    padding: 15px 14px 12px;
+    container-type: inline-size;
+  }
+  .home-stat .v {
+    /* size the number to the CARD width (cqw), not the viewport — at 320px the
+       cards get as narrow as ~83px and a vw-based clamp still overflowed */
+    font-size: clamp(18px, 22cqw, 40px);
+  }
+  .home-stat .k {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    overflow-wrap: break-word;
   }
 
   /* CSS grid `1fr` is `minmax(auto,1fr)`: the single-column .home-row2 / .home-latest

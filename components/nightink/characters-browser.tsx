@@ -1290,11 +1290,27 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
     const search = searchRef.current
     if (!cluster || !tower || !elements || !search) return
 
+    // Collapsing these heights to re-measure momentarily removes the overflow on the
+    // inner rail (.v2-tower-scroll) and shrinks the page, which snaps BOTH the rail's
+    // own scrollTop and the window scroll back to the top. This effect re-runs on
+    // every visible.length change — i.e. every filter toggle — so without restoring
+    // the scroll, selecting a filter yanks you to the top. Capture + restore both.
+    const rail = tower.querySelector<HTMLElement>(".v2-tower-scroll")
+    const savedRail = rail ? rail.scrollTop : 0
+    const savedWin = window.scrollY
+    const restoreScroll = () => {
+      if (rail) rail.scrollTop = savedRail
+      if (window.scrollY !== savedWin) window.scrollTo(0, savedWin)
+    }
+
     tower.style.height = ""
     elements.style.minHeight = ""
     cluster.style.minHeight = ""
 
-    if (window.matchMedia("(max-width: 1340px)").matches) return
+    if (window.matchMedia("(max-width: 1340px)").matches) {
+      restoreScroll()
+      return
+    }
 
     const towerWidth = tower.getBoundingClientRect().width
     const clone = tower.cloneNode(true) as HTMLElement
@@ -1320,6 +1336,7 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
     const elementsMinHeight = Math.max(elements.getBoundingClientRect().height, baseTowerHeight - searchHeight - gap)
     tower.style.height = `${baseTowerHeight}px`
     elements.style.minHeight = `${Math.ceil(elementsMinHeight)}px`
+    restoreScroll()
   }, [])
 
   useEffect(() => {

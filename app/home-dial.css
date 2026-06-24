@@ -611,10 +611,16 @@ body.motion .od-dial {
     width: 23px;
     height: 23px;
   }
-  .od-stream-badge,
   .od-stream-yt {
     padding: 6px 10px;
     font-size: 9px;
+  }
+  /* the "upcoming stream" badge and the stage toggle both sit along the top edge
+     and collide on phone-width cards (toggle ~152px + badge ~145px ≈ the whole
+     ~300px card). Drop the decorative badge on mobile so the interactive toggle
+     gets the row to itself — the thumbnail's own art already reads as upcoming. */
+  .od-stream-badge {
+    display: none;
   }
 
   /* the carousel: the 8 record thumbnails are wider than a phone — keep it within
