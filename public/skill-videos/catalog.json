@@ -199,6 +199,13 @@
       "mp4": "/Movie/BlessSkill/MilimSwimsuitPolkaDots_Battle_BlessSkill.mp4"
     },
     {
+      "variant": "MiseryElemental",
+      "group": "BlessSkill",
+      "kind": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/MiseryElemental_Battle_BlessSkill.mp4"
+    },
+    {
       "variant": "MjurranWedding2023",
       "group": "BlessSkill",
       "kind": "BlessSkill",
@@ -1275,6 +1282,13 @@
       "kind": "SpecialSkill",
       "scene": "Special Skill",
       "mp4": "/Movie/SpecialSkill/RainDefault_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "RainElemental",
+      "group": "SpecialSkill",
+      "kind": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RainElemental_Battle_SpecialSkill.mp4"
     },
     {
       "variant": "RainHighDemon",

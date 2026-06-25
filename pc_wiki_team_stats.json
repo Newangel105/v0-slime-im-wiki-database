@@ -1576,7 +1576,7 @@
     "ep.ranking.eu.population.limit": 70000,
     "battle.condition.effect.divinepunishment.threshold.medium.lower": 4000,
     "battle.condition.effect.divinepunishment.threshold.large.lower": 6000,
-    "battle.condition.effect.divinepunishment.limit.damage.upper": -64771072,
+    "battle.condition.effect.divinepunishment.limit.damage.upper": 1215752192,
     "battle.rate.epic.add.weak.damage": 14000,
     "bless_equipment.equipment.rarity.max": 3,
     "bless_equipment.refine.consume.max": 5,

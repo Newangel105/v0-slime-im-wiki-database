@@ -170,6 +170,23 @@
     "effect2": null
   },
   {
+    "id": 1111110021,
+    "type": "weapon",
+    "name": "Elite Odachi",
+    "rarity": 8,
+    "base_rarity": 3,
+    "weapon_type": "Katana",
+    "image": "/Image/Equip/Weapon/110021/Weapon_110021_WeaponM.webp",
+    "max_level": 80,
+    "max_atk": 928,
+    "max_def": 0,
+    "max_hp": 0,
+    "level_group_id": 43,
+    "release_label": "202606_event_kurobei_start",
+    "effect1": "ATK +<color=#2BE41D>3</color>%. A weapon that truly unlocks its potential when it undergoes enchantment.",
+    "effect2": null
+  },
+  {
     "id": 1111110026,
     "type": "weapon",
     "name": "Purple Ogre General's Katana",
@@ -680,6 +697,23 @@
     "effect2": null
   },
   {
+    "id": 1111120048,
+    "type": "weapon",
+    "name": "Elite Chokken",
+    "rarity": 8,
+    "base_rarity": 3,
+    "weapon_type": "Sword",
+    "image": "/Image/Equip/Weapon/120048/Weapon_120048_WeaponM.webp",
+    "max_level": 80,
+    "max_atk": 928,
+    "max_def": 0,
+    "max_hp": 0,
+    "level_group_id": 43,
+    "release_label": "202606_event_kurobei_start",
+    "effect1": "ATK +<color=#2BE41D>3</color>%. A weapon that truly unlocks its potential when it undergoes enchantment.",
+    "effect2": null
+  },
+  {
     "id": 1111121002,
     "type": "weapon",
     "name": "Chokken of Valor",
@@ -867,6 +901,23 @@
     "effect2": null
   },
   {
+    "id": 1111130017,
+    "type": "weapon",
+    "name": "Elite Greatsword",
+    "rarity": 8,
+    "base_rarity": 3,
+    "weapon_type": "Greatsword",
+    "image": "/Image/Equip/Weapon/130017/Weapon_130017_WeaponM.webp",
+    "max_level": 80,
+    "max_atk": 928,
+    "max_def": 0,
+    "max_hp": 0,
+    "level_group_id": 43,
+    "release_label": "202606_event_kurobei_start",
+    "effect1": "ATK +<color=#2BE41D>3</color>%. A weapon that truly unlocks its potential when it undergoes enchantment.",
+    "effect2": null
+  },
+  {
     "id": 1111131002,
     "type": "weapon",
     "name": "Greatsword of Valor",
@@ -1034,6 +1085,23 @@
     "level_group_id": 43,
     "release_label": "202511_event_catastrophe_start",
     "effect1": "When equipped by Trishula, the Trishula, increases ATK by <color=#2BE41D>20</color>%",
+    "effect2": null
+  },
+  {
+    "id": 1111140021,
+    "type": "weapon",
+    "name": "Elite Hoko",
+    "rarity": 8,
+    "base_rarity": 3,
+    "weapon_type": "Lance",
+    "image": "/Image/Equip/Weapon/140021/Weapon_140021_WeaponM.webp",
+    "max_level": 80,
+    "max_atk": 928,
+    "max_def": 0,
+    "max_hp": 0,
+    "level_group_id": 43,
+    "release_label": "202606_event_kurobei_start",
+    "effect1": "ATK +<color=#2BE41D>3</color>%. A weapon that truly unlocks its potential when it undergoes enchantment.",
     "effect2": null
   },
   {
@@ -1513,6 +1581,23 @@
     "effect2": null
   },
   {
+    "id": 1111150042,
+    "type": "weapon",
+    "name": "Elite Battlehammer",
+    "rarity": 8,
+    "base_rarity": 3,
+    "weapon_type": "Hammer",
+    "image": "/Image/Equip/Weapon/150042/Weapon_150042_WeaponM.webp",
+    "max_level": 80,
+    "max_atk": 928,
+    "max_def": 0,
+    "max_hp": 0,
+    "level_group_id": 43,
+    "release_label": "202606_event_kurobei_start",
+    "effect1": "ATK +<color=#2BE41D>3</color>%. A weapon that truly unlocks its potential when it undergoes enchantment.",
+    "effect2": null
+  },
+  {
     "id": 1111151002,
     "type": "weapon",
     "name": "Battlehammer of Valor",
@@ -1938,6 +2023,40 @@
     "effect2": null
   },
   {
+    "id": 1111160032,
+    "type": "weapon",
+    "name": "Elite Claws",
+    "rarity": 8,
+    "base_rarity": 3,
+    "weapon_type": "Fist",
+    "image": "/Image/Equip/Weapon/160032/Weapon_160032_WeaponM.webp",
+    "max_level": 80,
+    "max_atk": 928,
+    "max_def": 0,
+    "max_hp": 0,
+    "level_group_id": 43,
+    "release_label": "202606_event_kurobei_start",
+    "effect1": "ATK +<color=#2BE41D>3</color>%. A weapon that truly unlocks its potential when it undergoes enchantment.",
+    "effect2": null
+  },
+  {
+    "id": 1111160033,
+    "type": "weapon",
+    "name": "Dragon Offshoot's Doll",
+    "rarity": 8,
+    "base_rarity": 3,
+    "weapon_type": "Fist",
+    "image": "/Image/Equip/Weapon/160033/Weapon_160033_WeaponM.webp",
+    "max_level": 80,
+    "max_atk": 928,
+    "max_def": 0,
+    "max_hp": 0,
+    "level_group_id": 43,
+    "release_label": "202607_event_double_petals_start",
+    "effect1": "When equipped by Gaia, the Dragon Offshoot, increases ATK by <color=#2BE41D>20</color>%",
+    "effect2": null
+  },
+  {
     "id": 1111160041,
     "type": "weapon",
     "name": "Sorcerous Secretary's Bracelet",
@@ -2241,6 +2360,23 @@
     "level_group_id": 73,
     "release_label": "202301_exchange_octagram_start",
     "effect1": "When equipped by Luminus Valentine, the Elegant Blood, increases ATK by <color=#2BE41D>12</color>%",
+    "effect2": null
+  },
+  {
+    "id": 1111270024,
+    "type": "weapon",
+    "name": "Elite Tome",
+    "rarity": 8,
+    "base_rarity": 3,
+    "weapon_type": "Magic Tome",
+    "image": "/Image/Equip/Weapon/270024/Weapon_270024_WeaponM.webp",
+    "max_level": 80,
+    "max_atk": 928,
+    "max_def": 0,
+    "max_hp": 0,
+    "level_group_id": 43,
+    "release_label": "202606_event_kurobei_start",
+    "effect1": "ATK +<color=#2BE41D>3</color>%. A weapon that truly unlocks its potential when it undergoes enchantment.",
     "effect2": null
   },
   {
@@ -4199,6 +4335,23 @@
     "effect2": null
   },
   {
+    "id": 1121310106,
+    "type": "armor",
+    "name": "Dragon Offshoot's Eggshell",
+    "rarity": 8,
+    "base_rarity": 3,
+    "weapon_type": null,
+    "image": "/Image/Equip/Armor/310106/Armor_310106_ArmorM.webp",
+    "max_level": 80,
+    "max_atk": 0,
+    "max_def": 2158,
+    "max_hp": 0,
+    "level_group_id": 53,
+    "release_label": "202607_event_double_petals_start",
+    "effect1": "When equipped by Gaia, the Dragon Offshoot, increases DEF by <color=#2BE41D>20</color>%",
+    "effect2": null
+  },
+  {
     "id": 1121311001,
     "type": "armor",
     "name": "Armor of Valor",
@@ -4996,6 +5149,23 @@
     "release_label": "202603_event_hassei_monsyou_no_gi_rimuru_start",
     "effect1": "Increases Water, Wind, and Space ATK by <color=#2BE41D>3</color>%",
     "effect2": "Increases synergy power by <color=#2BE41D>20</color>%"
+  },
+  {
+    "id": 1131440015,
+    "type": "accessory",
+    "name": "Memorin",
+    "rarity": 8,
+    "base_rarity": 3,
+    "weapon_type": null,
+    "image": "/Image/Equip/Accessory/440015/Accessory_440015_AccessoryM.webp",
+    "max_level": 80,
+    "max_atk": 0,
+    "max_def": 0,
+    "max_hp": 5373,
+    "level_group_id": 63,
+    "release_label": "202603_event_beatdown_add_start",
+    "effect1": "When equipped by Gobta or Tears of the Azure Sea Force characters, increases ATK by <color=#2BE41D>5</color>%UP%",
+    "effect2": null
   },
   {
     "id": 1131451001,
