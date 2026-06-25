@@ -595,7 +595,7 @@ export const META_PRESETS: MetaPreset[] = [
     battle5: "Viridian Shade",
     battle1: "Celestial Sovereign",
   },
-    {
+  {
     id: "tears2",
     name: "Tears of the Azure Sea 2.0",
     protector: "Paradise Princess",
@@ -605,4 +605,13 @@ export const META_PRESETS: MetaPreset[] = [
     battle4: "Tide's Wings",
     mini1: "Summer's Grace",
   },
+  {
+    id: "ps2",
+    name: "Pretty sparkle 2.0",
+    protector: "Bramble Green Demon",
+    battle1: "Bramble Green Demon",
+    battle2: "Carefree Azure Demon",
+    battle3: "Dragon Offshoot",
+    mini1: "Head Priest"
+  }
 ]
