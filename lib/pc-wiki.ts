@@ -176,6 +176,14 @@ const WEBSITE_EXCLUDED_CHARACTER_IDS = new Set([100001, 100002, 100003, 180001, 
 const WEBSITE_RELEASE_DATE_OVERRIDES: Record<string, string> = {
   "2019/12/31": "2023/02/28",
 }
+// Name corrections keyed by master_pc_id. The generated data occasionally mislabels
+// a character; because getCharacterVariants() groups on an exact name match, a wrong
+// name both renames the banner AND drags the character into another character's
+// variant group. 150587 is the Tales of Arise collab "Shionne" (Curse of Thorns) —
+// the game data calls her "Shion", which was folding her into the real Shion's variants.
+const WEBSITE_NAME_OVERRIDES: Record<number, string> = {
+  150587: "Shionne",
+}
 const CONDITION_TEXT_MAGNIFICATION_RE = /increases(?:\s+(?:own|applied))?\s+(enhancement|weakening)\s+effects?\s*(?:by\s*)?x?(\d+(?:\.\d+)?)\s*(?:times?)?/i
 
 // Display labels for element keys. NOTE the two game-data corrections: the key
@@ -231,6 +239,7 @@ function getWebsiteReleaseDate(value: string | null): string | null {
 function toWebsiteCharacter(character: WikiCharacter): WikiCharacter {
   return {
     ...character,
+    name: WEBSITE_NAME_OVERRIDES[character.master_pc_id] ?? character.name,
     release_date: getWebsiteReleaseDate(character.release_date),
   }
 }
