@@ -6248,15 +6248,22 @@ export function SummonSimulator({ data }: { data: SummonPayload }) {
   // the character art when no background is configured at all. Within each
   // group we prefer non-L10N (no English text overlay) but we never let a
   // character image jump ahead of an existing background because of locale.
-  const backgroundSources = [
-    ...preferNonLocalizedFallback(sourcesOr(banner.assets?.background, uniqueBackgroundSources(shopId))),
-    ...preferNonLocalizedFallback(sourcesOr(banner.assets?.character, shopAssetSources(shopId, "LotteryCharacter"))),
-  ]
+  const dedicatedBackground = preferNonLocalizedFallback(sourcesOr(banner.assets?.background, uniqueBackgroundSources(shopId)))
+  const characterArt = preferNonLocalizedFallback(sourcesOr(banner.assets?.character, shopAssetSources(shopId, "LotteryCharacter")))
+  // GameImage renders the FIRST available source. The LotteryCharacter is only the backdrop
+  // when a banner has no dedicated LotteryBgUnique; when a background IS present the character
+  // belongs ON TOP of it (as in-game) — otherwise the opaque background hides it entirely.
+  // So keep [background, character] here (background wins as the backdrop) and promote the
+  // character into the foreground layer below whenever a real background exists.
+  const backgroundSources = [...dedicatedBackground, ...characterArt]
   const logoSources = sourcesOr(banner.assets?.logo, shopAssetSources(shopId, "LotteryLogo"))
-  const characterLayerSources = sourcesOr(
-    banner.assets?.top_panel,
-    assetSources(banner.top_images.find((image) => image.image_type === 1)?.image_path),
-  )
+  const characterLayerSources = [
+    ...sourcesOr(
+      banner.assets?.top_panel,
+      assetSources(banner.top_images.find((image) => image.image_type === 1)?.image_path),
+    ),
+    ...(dedicatedBackground.length ? characterArt : []),
+  ]
   const movieSources = banner.movie?.sources ?? []
   const hasPlayableMovie = Boolean(banner.movie?.available && movieSources.length)
   const showMovie = displayMode === "movie" && hasPlayableMovie && !movieFailed

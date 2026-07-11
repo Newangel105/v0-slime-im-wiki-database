@@ -1221,6 +1221,14 @@ export function OceanTierMaker() {
                       data-tid="tier-name"
                       contentEditable
                       suppressContentEditableWarning
+                      ref={(el) => {
+                        // Uncontrolled content: only seed/repair the text when it differs from
+                        // what's already in the DOM. Rendering {tier.name} as a React child reset
+                        // the caret to position 0 on every keystroke (React re-writes the node),
+                        // so each typed character landed at the front — text appeared to write
+                        // right-to-left. Managing it via the ref leaves the caret alone.
+                        if (el && el.innerText !== (tier.name ?? "")) el.innerText = tier.name ?? ""
+                      }}
                       onInput={(e) => {
                         const name = (e.target as HTMLElement).innerText
                         setTiers((prev) => prev.map((t, i) => (i === idx ? { ...t, name } : t)))
@@ -1236,9 +1244,7 @@ export function OceanTierMaker() {
                         wordBreak: 'break-word',
                         whiteSpace: 'pre-wrap'
                       }}
-                    >
-                      {tier.name}
-                    </div>
+                    />
                   </div>
                 </div>
 

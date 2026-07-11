@@ -58,6 +58,11 @@ if existing is None:
 by_key = {(v["variant"], v["kind"]): v for v in (existing.get("videos") or [])}
 print(f"existing catalog: {len(by_key)} videos")
 
+# The game suffixes some model asset names with "PC" (player character) while the wiki uses
+# the clean id (e.g. RimuruMaidCostumePC -> RimuruMaidCostume, consolidated in models/index.json).
+# Map the movie variant to the clean id so the tab matches (and survives a rebuild).
+VARIANT_ALIASES = {"RimuruMaidCostumePC": "RimuruMaidCostume"}
+
 added = 0
 for source in SOURCES:
     if not source["dir"].exists():
@@ -67,6 +72,7 @@ for source in SOURCES:
     print(f"{source['dir'].name}: {len(files)} mp4 files")
     for fname in files:
         variant = fname[: -len(source["suffix"])]
+        variant = VARIANT_ALIASES.get(variant, variant)
         if known_ids is not None and variant not in known_ids:
             print(f"  skip (unknown model id): {variant}")
             continue

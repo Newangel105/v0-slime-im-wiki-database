@@ -1459,6 +1459,13 @@
       "mp4": "/Movie/SpecialSkill/RimuruMagician_Battle_SpecialSkill.mp4"
     },
     {
+      "variant": "RimuruMaidCostume",
+      "group": "SpecialSkill",
+      "kind": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/RimuruMaidCostumePC_Battle_SpecialSkill.mp4"
+    },
+    {
       "variant": "RimuruMaidCostume2021Christmas",
       "group": "SpecialSkill",
       "kind": "SpecialSkill",

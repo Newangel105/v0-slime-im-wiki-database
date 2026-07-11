@@ -1325,6 +1325,10 @@ def _prune_array(arr: list[str] | None, public_dir: Path) -> list[str]:
 
 def _finalize_payload(payload: dict, public_dir: Path) -> None:
     banners = payload.get("banners") or []
+    # Newest release month(s): a brand-new banner here may not have its art in
+    # public/ yet (the banners stage runs AFTER summon in the pipeline), so keep
+    # it instead of pruning it out of the file entirely.
+    latest_months = {str(m) for m in (payload.get("meta") or {}).get("latest_release_months") or []}
     kept: list = []
     for b in banners:
         # Skip _close meta-banners (Japanese-only closing dialog entries).
@@ -1349,9 +1353,19 @@ def _finalize_payload(payload: dict, public_dir: Path) -> None:
                     item["icon_sources"] = _prune_array(item["icon_sources"], public_dir)
 
         # Drop banners with neither banner nor logo image on disk — they can't
-        # render in the strip.
+        # render in the strip. EXCEPTION: a brand-new banner from the current
+        # release whose art hasn't been extracted into public/ yet still carries a
+        # catalog banner_path — keep it with its web source so it survives into the
+        # file and renders once the art lands, instead of being pruned out (fixes
+        # the "new banner pruned" circular-dependency bug: summon runs before the
+        # banner-art fetch).
         if not (assets.get("banner") or assets.get("logo")):
-            continue
+            if b.get("banner_path") and str(b.get("release_month")) in latest_months:
+                assets["banner"] = web_sources_for_asset(b.get("banner_path"))
+                if b.get("logo_path"):
+                    assets["logo"] = web_sources_for_asset(b.get("logo_path"))
+            else:
+                continue
         kept.append(b)
     payload["banners"] = kept
 

@@ -20162,8 +20162,8 @@
     }
   ],
   "meta": {
-    "base_dir": "C:\\TensuraExtraction\\update",
-    "text_asset_dir": "C:\\TensuraExtraction\\update\\TextAsset",
+    "base_dir": "D:\\TensuraExtraction\\update",
+    "text_asset_dir": "D:\\TensuraExtraction\\update\\TextAsset",
     "dump_cs_path": "D:\\Slime Isekai Memories Game Files\\Slime_Extractor\\dump.cs"
   }
 }

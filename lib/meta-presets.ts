@@ -611,6 +611,7 @@ export const META_PRESETS: MetaPreset[] = [
     protector: "Bramble Green Demon",
     battle1: "Carefree Azure Demon",
     battle2: "Dragon Offshoot",
+    battle3: "Attendant Chancellor",
     mini1: "Head Priest"
   }
 ]
