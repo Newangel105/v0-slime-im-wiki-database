@@ -609,9 +609,10 @@ export const META_PRESETS: MetaPreset[] = [
     id: "ps2",
     name: "Pretty sparkle 2.0",
     protector: "Bramble Green Demon",
-    battle1: "Carefree Azure Demon",
-    battle2: "Dragon Offshoot",
+    battle1: "Blood Banquet Princess",
+    battle2: "Carefree Azure Demon",
     battle3: "Attendant Chancellor",
+    battle4: "Dragon Offshoot",
     mini1: "Head Priest"
   }
 ]
