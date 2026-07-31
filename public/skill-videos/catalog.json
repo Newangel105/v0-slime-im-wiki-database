@@ -80,6 +80,13 @@
       "mp4": "/Movie/BlessSkill/ElmesiaDevil_Battle_BlessSkill.mp4"
     },
     {
+      "variant": "EspritDefault",
+      "group": "BlessSkill",
+      "kind": "BlessSkill",
+      "scene": "Bless Skill",
+      "mp4": "/Movie/BlessSkill/EspritDefault_Battle_BlessSkill.mp4"
+    },
+    {
       "variant": "FreyAmusementPark",
       "kind": "BlessSkill",
       "group": "BlessSkill",
@@ -967,6 +974,13 @@
       "group": "SpecialSkill",
       "scene": "Special Skill",
       "mp4": "/Movie/SpecialSkill/JauneMovie2_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "JauneNamedOutfit",
+      "group": "SpecialSkill",
+      "kind": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/JauneNamedOutfit_Battle_SpecialSkill.mp4"
     },
     {
       "variant": "JauneSwimsuit2025",
