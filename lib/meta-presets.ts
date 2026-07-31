@@ -614,5 +614,13 @@ export const META_PRESETS: MetaPreset[] = [
     battle3: "Attendant Chancellor",
     battle4: "Dragon Offshoot",
     mini1: "Head Priest"
-  }
+  },
+  {
+    id: "pd2",
+    name: "Primal Demon 2.0",
+    protector: "Yellow Realm Adjutant",
+    battle1: "Condemning Yellow Demon",
+    battle2: "Elegant White Retainer",
+    mini1: "Dark Violet Butler",
+  },
 ]
