@@ -22,6 +22,8 @@ import {
   getAllWikiCharacters,
   getCharMaxStats,
   toPublicAssetPath,
+  getDerivedProtectorForceNames,
+  getForceIconLookup,
   type WikiCharacter,
   type WikiSkill,
   type WikiTrait,
@@ -153,6 +155,21 @@ function toIndexCharacter(character: WikiCharacter): IndexCharacter {
   const traits = character.traits.map(toIndexTrait)
   const thumb = toPartyThumb(toPublicAssetPath(character.images.icon))
 
+  const forceIconLookup = getForceIconLookup()
+
+  const forces =
+    character.forces.length > 0
+      ? character.forces.map((force) => ({
+          name: force.name,
+          group: force.group,
+          icon: force.icon_path ? toPublicAssetPath(force.icon_path) : "",
+        }))
+      : getDerivedProtectorForceNames(character).map((name) => ({
+          name,
+          group: "force",
+          icon: forceIconLookup.get(name) ?? "",
+        }))
+
   return {
     id: character.master_pc_id,
     name: character.name,
@@ -172,11 +189,7 @@ function toIndexCharacter(character: WikiCharacter): IndexCharacter {
     stats: getCharMaxStats(character.master_pc_id) ?? character.stats,
     thumb,
     art: toFullArt(thumb),
-    forces: character.forces.map((force) => ({
-      name: force.name,
-      group: force.group,
-      icon: force.icon_path ? toPublicAssetPath(force.icon_path) : "",
-    })),
+    forces,
     facilities: character.facilities ?? [],
     skillFilters: uniqueStrings(skills.flatMap((skill) => skill.filters)),
     traitFilters: uniqueStrings(traits.flatMap((trait) => trait.filters)),
