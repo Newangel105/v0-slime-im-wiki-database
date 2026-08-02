@@ -899,7 +899,7 @@ html:where([data-design="nightink"]),
   border: 1px solid var(--line);
   border-radius: 14px 14px 14px 4px;
   font: 600 12px/1 var(--sans);
-  letter-spacing: 0.08em;
+  /* letter-spacing: 0.08em; */
   color: var(--cream-dim);
   background: var(--night2);
 }
