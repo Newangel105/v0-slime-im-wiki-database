@@ -302,6 +302,24 @@ function normalizeLabel(value: unknown): string {
     .trim()
 }
 
+// Some characters go by different names depending on localization/version
+// (e.g. Jaune ⇄ Carrera). Searching for one should also surface the other.
+const NAME_ALIAS_GROUPS: string[][] = [
+  ["jaune", "carrera"],
+  ["ultimata", "violet"],
+  ["testarossa", "blanc"],
+]
+
+function expandSearchQuery(query: string): string[] {
+  const variants = new Set<string>([query])
+  for (const group of NAME_ALIAS_GROUPS) {
+    if (group.some((alias) => query.includes(alias) || alias.includes(query))) {
+      for (const alias of group) variants.add(alias)
+    }
+  }
+  return [...variants]
+}
+
 function formatWikiLabel(value: unknown): string {
   return String(value || "")
     .replace(/^specialeffectelement/i, "")
@@ -1082,12 +1100,26 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
   )
 
   const visible = useMemo(() => {
-    const query = state.query.trim().toLowerCase()
-    // Match the query only at WORD BOUNDARIES (start of the string or after a
-    // non-alphanumeric char), so "eren" hits "Eren" but NOT "friEREN" or "sERENe".
-    const queryRe = query
-      ? new RegExp(`(?:^|[^a-z0-9])${query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`, "i")
-      : null
+    const query = normalizeLabel(state.query)
+
+    // Expand aliases:
+    // jaune -> jaune + carrera
+    // carrera -> jaune + carrera
+    const queryVariants = query ? expandSearchQuery(query) : []
+
+    const normalizedQuery = normalizeLabel(query)
+
+    const hasExactNameMatch = characters.some(
+      (c) => normalizeLabel(c.name) === normalizedQuery,
+    )
+
+    // const queryRes = queryVariants.map(
+    //   (variant) =>
+    //     new RegExp(
+    //       `(?:^|[^a-z0-9])${variant.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?!'s\\b)`,
+    //       "i",
+    //     ),
+    // )
     const matched = characters.filter((character) => {
       const weapon = character.weapon || ""
       const attackerElement = normalizeLabel(getCharacterElementValue(character))
@@ -1106,7 +1138,18 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
       // Query corpus per spec: name + affiliation (title). The "Search Skills"
       // toggle additionally searches the ACTIVE skills' descriptions only
       // (active_skill_1/2/3), with markup stripped so only visible effect text counts.
-      const queryCorpus = [character.name, character.title]
+      const normalizedName = normalizeLabel(character.name)
+      const hasExactName =
+        query.length > 0 &&
+        characters.some(
+          (c) => normalizeLabel(c.name) === query,
+        )
+
+      const nameMatch = hasExactNameMatch
+        ? queryVariants.some((alias) => normalizedName === alias)
+        : queryVariants.some((alias) => normalizedName.includes(alias))
+
+      const queryCorpus = [character.title, (character as any).affiliation_name]
       if (state.searchSkills) {
         for (const skill of character.skills || []) {
           if ((skill.slot || "").startsWith("active_skill")) {
@@ -1114,6 +1157,13 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
           }
         }
       }
+
+      const extraMatch =
+        !hasExactNameMatch &&
+        query.length > 0 &&
+        queryCorpus.some((text) =>
+          normalizeLabel(text).includes(query),
+  )
 
       return (
         matchesAny(state.role, [character.role]) &&
@@ -1128,7 +1178,7 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
         matchesEffectFilters(state.traits, character.traitFilters || []) &&
         matchesByFilterMode(state.valorTraits, (character.traits || []).map((trait) => trait.name)) &&
         matchesByFilterMode(state.facilities, character.facilities || []) &&
-        (!queryRe || queryRe.test(queryCorpus.join("  ")))
+        (!query.length || nameMatch || extraMatch)
       )
     })
 

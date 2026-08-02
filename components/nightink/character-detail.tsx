@@ -18,6 +18,8 @@ import {
   getCharMaxStats,
   toPublicAssetPath,
   getWikiCharacterById,
+  getDerivedProtectorForceNames,
+  getForceIconLookup,
   type WikiCharacter,
 } from "@/lib/pc-wiki"
 import {
@@ -87,6 +89,23 @@ function toDetailForce(force: WikiCharacter["forces"][number]): DetailForce {
   }
 }
 
+/* Protectors don't carry a populated `forces` array in the raw data — their
+   forces are only expressed as "<color>Name</color> Force characters" text
+   inside a skill's description_max_level. Fall back to the same regex-based
+   derivation used by the team builder and character browser so protector
+   pages show their forces instead of nothing. */
+function getCharacterForces(c: WikiCharacter): DetailForce[] {
+  if (c.forces && c.forces.length > 0) {
+    return c.forces.map(toDetailForce)
+  }
+  const forceIconLookup = getForceIconLookup()
+  return getDerivedProtectorForceNames(c).map((name) => ({
+    name,
+    group: "force",
+    icon: forceIconLookup.get(name) ?? "",
+  }))
+}
+
 function toDetailCharacter(c: WikiCharacter): DetailCharacter {
   const stats = getCharMaxStats(c.master_pc_id) ?? c.stats
   return {
@@ -109,7 +128,7 @@ function toDetailCharacter(c: WikiCharacter): DetailCharacter {
     },
     thumb: toPartyThumb(toPublicAssetPath(c.images.icon)),
     art: toInfoArt(c.images.full),
-    forces: (c.forces ?? []).map(toDetailForce),
+    forces: getCharacterForces(c),
     facilities: c.facilities ?? [],
     traits: (c.traits ?? []).map(toDetailTrait),
     exAbilities: (c.ex_abilities ?? []).map(toDetailExAbility),
