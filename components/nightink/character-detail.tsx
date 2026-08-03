@@ -34,6 +34,12 @@ import {
   type StatMaxes,
 } from "./character-detail-client"
 
+const NAME_ALIAS_GROUPS: string[][] = [
+  ["jaune", "carrera"],
+  ["ultimata", "violet"],
+  ["testarossa", "blanc"],
+]
+
 /* Same PartyL -> PartyM normalization the home/ocean ports apply to images.icon. */
 function toPartyThumb(icon: string): string {
   return icon
@@ -169,10 +175,31 @@ export function NightInkCharacterDetail({ characterId }: { characterId: string }
   const toDock = (c: WikiCharacter | undefined): DockLink | null =>
     c ? { id: c.master_pc_id, name: c.name, title: c.affiliation_name ?? "" } : null
 
+  function stripHtml(value: unknown): string {
+    return String(value ?? "").replace(/<[^>]*>/g, " ")
+  }
+
+  function normalizeLabel(value: unknown): string {
+    return stripHtml(value)
+      .toLowerCase()
+      .replace(/&nbsp;/g, " ")
+      .replace(/[^a-z0-9]+/g, "")
+      .trim()
+  }
+
   // Variants: the OTHER records that share this character's name (e.g. every
   // "Rimuru Tempest"), newest first (ordered is release-desc), excluding self.
+  const variantNames =
+    NAME_ALIAS_GROUPS.find((group) =>
+      group.includes(normalizeLabel(resolved.name)),
+    ) ?? [normalizeLabel(resolved.name)]
+
   const variants: DetailVariant[] = ordered
-    .filter((c) => c.name === resolved.name && c.master_pc_id !== resolved.master_pc_id)
+    .filter((c) => {
+      if (c.master_pc_id === resolved.master_pc_id) return false
+
+      return variantNames.includes(normalizeLabel(c.name))
+    })
     .map((c) => ({
       id: c.master_pc_id,
       name: c.name,
