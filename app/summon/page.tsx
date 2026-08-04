@@ -1,17 +1,15 @@
 import { SummonSimulatorShell } from "@/components/summon-simulator-shell"
-import { getSummonData } from "@/lib/summon-data"
 import { getDesign } from "@/lib/design"
 
 export const metadata = { title: "Summon Simulator | SLIME.WIKI" }
 
-// The summon payload is large, so we keep it cached for one hour rather than
-// re-rendering this page on every request. That avoids repeated server work while
-// still letting the data refresh periodically.
-export const revalidate = 3600
-
 export default async function SummonPage() {
-  const data = await getSummonData()
   const design = await getDesign()
+
+  // The summon payload (~55 MB) is fetched client-side by SummonSimulatorShell
+  // instead of here: passing it as a prop from this Server Component would
+  // serialize the whole thing into the page's RSC payload even though the
+  // simulator itself is ssr:false, which blew Vercel's 19 MB ISR snapshot limit.
 
   // nightink: the immersive gacha panel keeps its intentional in-game art/colours
   // (rarity golds, banner plates); we only swap the beach backdrop for the dark
@@ -19,10 +17,10 @@ export default async function SummonPage() {
   if (design === "nightink") {
     return (
       <div className="board v2 summon-nightink">
-        <SummonSimulatorShell data={data} />
+        <SummonSimulatorShell />
       </div>
     )
   }
 
-  return <SummonSimulatorShell data={data} />
+  return <SummonSimulatorShell />
 }
