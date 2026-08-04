@@ -58,7 +58,7 @@
     "input-otp": "1.4.1",
     "lucide-react": "^1.17.0",
     "lz-string": "^1.5.0",
-    "next": "^15.2.6",
+    "next": "^16.3.0",
     "next-themes": "^0.4.4",
     "pako": "^2.1.0",
     "papaparse": "^5.4.1",
@@ -90,6 +90,13 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.17",
     "typescript": "^5",
-    "wrangler": "^4.118.0"
+    "wrangler": "^4.35.0"
+  },
+  "allowScripts": {
+    "esbuild@0.25.4": true,
+    "ffmpeg-static@5.3.0": true,
+    "workerd@1.20250906.0": true,
+    "sharp@0.33.5": true,
+    "sharp@0.35.3": true
   }
 }

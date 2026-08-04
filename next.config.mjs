@@ -10,9 +10,6 @@ const nextConfig = {
   // directory (an unrelated experiment), which mis-routes serverless file
   // tracing.
   outputFileTracingRoot: __dirname,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
