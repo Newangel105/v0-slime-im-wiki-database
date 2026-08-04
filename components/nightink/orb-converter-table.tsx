@@ -5,7 +5,6 @@ import Image from "next/image"
 import { useState } from "react"
 import { toPublicAssetPath } from "@/lib/pc-wiki"
 import {
-  extractOrbConvertEntries,
   getOrbCellEntries,
   getOrbTableRows,
   groupOrbTableRows,
@@ -14,6 +13,7 @@ import {
   ORB_AMOUNTS,
   type OrbTarget,
   type OrbAmount,
+  type OrbConvertEntry,
 } from "@/lib/orb-converter-parser"
 import { NkBoard, NkHeaderPod, NkPod } from "./pod-kit"
 
@@ -24,7 +24,7 @@ const SOLO_TABS: OrbTarget[] = ["blue", "green", "orange"]
 const COMBINED_TARGETS: OrbTarget[] = ["unity", "steal", "give", "reset"]
 const TAB_TONE: Record<string, string> = { blue: "t-blue", green: "t-green", orange: "t-orange" }
 
-type Entry = ReturnType<typeof extractOrbConvertEntries>[number]
+type Entry = OrbConvertEntry
 
 function CharCell({ entry }: { entry: Entry }) {
   return (
@@ -59,8 +59,7 @@ function CellGroup({ entries }: { entries: Entry[] }) {
   )
 }
 
-export default function NightInkOrbConverterTable() {
-  const entries = extractOrbConvertEntries()
+export default function NightInkOrbConverterTable({ entries }: { entries: Entry[] }) {
   const [tab, setTab] = useState<string>("blue")
 
   const OrbTable = ({ toOrb }: { toOrb: OrbTarget }) => {

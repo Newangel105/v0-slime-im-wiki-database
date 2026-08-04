@@ -181,7 +181,7 @@ function toBrowserCharacter(character: WikiCharacter, forceIconLookup: Map<strin
     tactics_type: character.tactics_type,
     character_role: character.character_role,
     release_date: character.release_date,
-    stats: getCharMaxStats(character.master_pc_id) ?? character.stats,
+    stats: getCharMaxStats(character.master_pc_id, character) ?? character.stats,
     images: {
       icon: toPublicAssetPath(character.images.icon),
     },
@@ -222,11 +222,22 @@ function toBrowserCharacter(character: WikiCharacter, forceIconLookup: Map<strin
   }
 }
 
-const allWikiCharacters = getAllWikiCharacters()
-primeCharacterEffectFilterHeuristics(allWikiCharacters.flatMap((character) => [...character.skills, ...character.traits]))
-const forceIconLookup = buildForceIconLookup(allWikiCharacters)
-const browserCharacters = allWikiCharacters.map((character) => toBrowserCharacter(character, forceIconLookup))
+export type CharacterBrowserData = {
+  browserCharacters: BrowserCharacter[]
+  // Full WikiCharacter list, needed client-side for filter logic that reaches
+  // fields (skill cost, skill_filter_groups) the reduced BrowserCharacter
+  // shape intentionally drops.
+  wikiCharacters: WikiCharacter[]
+}
 
-export function getAllCharacterBrowserData(): BrowserCharacter[] {
-  return browserCharacters
+let cached: CharacterBrowserData | null = null
+
+export async function getAllCharacterBrowserData(): Promise<CharacterBrowserData> {
+  if (cached) return cached
+  const allWikiCharacters = await getAllWikiCharacters()
+  primeCharacterEffectFilterHeuristics(allWikiCharacters.flatMap((character) => [...character.skills, ...character.traits]))
+  const forceIconLookup = buildForceIconLookup(allWikiCharacters)
+  const browserCharacters = allWikiCharacters.map((character) => toBrowserCharacter(character, forceIconLookup))
+  cached = { browserCharacters, wikiCharacters: allWikiCharacters }
+  return cached
 }

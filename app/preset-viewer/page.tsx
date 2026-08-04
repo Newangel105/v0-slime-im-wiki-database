@@ -14,7 +14,8 @@ export default async function PresetViewerPage() {
        p.mini1, p.mini2, p.mini3, p.mini4].filter(Boolean) as string[]
     )
   )
-  const characters = getAllWikiCharacters().filter(c => allPresetNames.has(c.affiliation_name))
+  const allCharacters = await getAllWikiCharacters()
+  const characters = allCharacters.filter(c => allPresetNames.has(c.affiliation_name))
   const design = await getDesign()
 
   if (design === "nightink") return <NightInkPresetViewerClient characters={characters} />

@@ -4,7 +4,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { toPublicAssetPath } from "@/lib/pc-wiki"
 import {
-  extractOrbConvertEntries,
   getOrbCellEntries,
   getOrbTableRows,
   groupOrbTableRows,
@@ -13,6 +12,7 @@ import {
   ORB_AMOUNTS,
   type OrbTarget,
   type OrbAmount,
+  type OrbConvertEntry,
 } from "@/lib/orb-converter-parser"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
@@ -29,10 +29,8 @@ const COMBINED_ORB_COLORS: Record<OrbTarget, string> = {
   reset:  "bg-cyan-900 text-cyan-100",
 }
 
-export function ClassicOrbConverterTable() {
-  const entries = extractOrbConvertEntries()
-
-  const CharCell = ({ entry }: { entry: ReturnType<typeof extractOrbConvertEntries>[number] }) => (
+export function ClassicOrbConverterTable({ entries }: { entries: OrbConvertEntry[] }) {
+  const CharCell = ({ entry }: { entry: OrbConvertEntry }) => (
     <Link
       key={`${entry.character.master_pc_id}-${entry.skillSlot}-${entry.isSkillChange}`}
       href={`/characters/${entry.character.master_pc_id}`}

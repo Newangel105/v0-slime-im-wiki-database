@@ -2,7 +2,11 @@ import { GuideDetailClient } from "@/components/guides/guide-detail-client"
 import { getDesign } from "@/lib/design"
 import { NkBoard } from "@/components/nightink/pod-kit"
 
-export const dynamic = "force-dynamic"
+export const revalidate = 3600
+
+export async function generateStaticParams() {
+  return [{ slug: "1" }]
+}
 
 export default async function GuideArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params

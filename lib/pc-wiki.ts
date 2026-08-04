@@ -1,4 +1,4 @@
-import wikiData from "../pc_wiki.generated.json"
+import { cache } from "react"
 import heartprintData from "../pc_wiki.heartprints.json"
 import equipmentData from "../pc_wiki.equipment.json"
 import fallbackEquipmentData from "../pc_wiki.equipment.json"
@@ -6,6 +6,7 @@ import charmData from "../pc_wiki.charms.json"
 import fallbackCharmData from "../pc_wiki.charms.json"
 import charStatsRaw from "../pc_wiki_char_stats.json"
 import teamStatsRaw from "../pc_wiki_team_stats.json"
+import conditionEffectMetadataData from "../pc_wiki.condition_effect_metadata.json"
 
 export type WikiForce = {
   label: string
@@ -171,7 +172,6 @@ type WikiPayload = {
   meta?: Record<string, unknown>
 }
 
-const payload = wikiData as WikiPayload
 const WEBSITE_EXCLUDED_CHARACTER_IDS = new Set([100001, 100002, 100003, 180001, 180002, 180003, 180004])
 const WEBSITE_RELEASE_DATE_OVERRIDES: Record<string, string> = {
   "2019/12/31": "2023/02/28",
@@ -244,13 +244,6 @@ function toWebsiteCharacter(character: WikiCharacter): WikiCharacter {
   }
 }
 
-const websiteCharacters = payload.characters
-  .filter((character) => !WEBSITE_EXCLUDED_CHARACTER_IDS.has(character.master_pc_id))
-  .map(toWebsiteCharacter)
-
-const websiteCharacterById = new Map(websiteCharacters.map((character) => [character.master_pc_id, character]))
-const rawConditionEffectMetadata = payload.condition_effect_metadata ?? {}
-
 function stripBattleTextMarkup(text: string | null | undefined): string {
   if (!text) {
     return ""
@@ -259,10 +252,12 @@ function stripBattleTextMarkup(text: string | null | undefined): string {
   return text.replace(/<color=[^>]+>/gi, "").replace(/<\/color>/gi, "")
 }
 
-const inferredConditionTextMagnification = (() => {
+type InferredConditionTextMagnification = Map<number, { polarity: "enhancement" | "weakening"; rate: number }>
+
+function deriveInferredConditionTextMagnification(characters: WikiCharacter[]): InferredConditionTextMagnification {
   const candidates = new Map<number, Array<{ polarity: "enhancement" | "weakening"; rate: number }>>()
 
-  for (const character of websiteCharacters) {
+  for (const character of characters) {
     for (const skill of character.skills) {
       const conditionTypes = Array.from(
         new Set(
@@ -294,7 +289,7 @@ const inferredConditionTextMagnification = (() => {
     }
   }
 
-  const resolved = new Map<number, { polarity: "enhancement" | "weakening"; rate: number }>()
+  const resolved: InferredConditionTextMagnification = new Map()
   for (const [conditionType, entries] of candidates.entries()) {
     if (entries.length === 0) {
       continue
@@ -306,15 +301,63 @@ const inferredConditionTextMagnification = (() => {
     }
   }
   return resolved
-})()
-
-export function getAllWikiCharacters(): WikiCharacter[] {
-  return websiteCharacters
 }
 
-export function getConditionEffectMetadata(conditionEffectType: number): WikiConditionEffectMetadata | null {
+// Fetched from R2 at request time so the bundler never sees the ~7 MB blob
+// (a static import inlines it into every bundle that reaches this module,
+// including the deployed Worker script). React.cache memoizes per request;
+// the module-scope `wikiCache` holds the parse across requests in the same
+// server instance. Mirrors lib/summon-data.ts's getSummonData.
+type WikiDerived = {
+  websiteCharacters: WikiCharacter[]
+  websiteCharacterById: Map<number, WikiCharacter>
+  inferredConditionTextMagnification: InferredConditionTextMagnification
+}
+
+let wikiCache: WikiDerived | null = null
+
+const loadWikiData = cache(async (): Promise<WikiDerived> => {
+  if (wikiCache) return wikiCache
+  const cdn = process.env.NEXT_PUBLIC_MEDIA_CDN
+  if (!cdn) throw new Error("NEXT_PUBLIC_MEDIA_CDN not set — pc_wiki.generated.json lives on R2")
+  const res = await fetch(`${cdn.replace(/\/+$/, "")}/pc_wiki.generated.json`, {
+    next: { revalidate: 3600 },
+  })
+  if (!res.ok) throw new Error(`Failed to fetch pc_wiki.generated.json from R2: ${res.status}`)
+  const payload = (await res.json()) as WikiPayload
+  const websiteCharacters = payload.characters
+    .filter((character) => !WEBSITE_EXCLUDED_CHARACTER_IDS.has(character.master_pc_id))
+    .map(toWebsiteCharacter)
+  const websiteCharacterById = new Map(websiteCharacters.map((character) => [character.master_pc_id, character]))
+  const inferredConditionTextMagnification = deriveInferredConditionTextMagnification(websiteCharacters)
+  wikiCache = { websiteCharacters, websiteCharacterById, inferredConditionTextMagnification }
+  return wikiCache
+})
+
+export const getAllWikiCharacters = cache(async (): Promise<WikiCharacter[]> => {
+  const data = await loadWikiData()
+  return data.websiteCharacters
+})
+
+// condition_effect_metadata is a tiny (~9 KB) lookup table extracted from
+// pc_wiki.generated.json at generation time — kept as a normal bundled import
+// so callers that need it (battle-sim, a client component) don't have to wait
+// on the multi-MB character payload. Pass the already-loaded `characters`
+// list in (battle-sim already has it as a prop) to resolve the inferred
+// text-magnification half without touching loadWikiData().
+const rawConditionEffectMetadata = conditionEffectMetadataData as Record<string, WikiConditionEffectMetadata>
+let inferredMagnificationCache: { forCharacters: WikiCharacter[]; map: InferredConditionTextMagnification } | null = null
+
+export function getConditionEffectMetadata(
+  conditionEffectType: number,
+  characters: WikiCharacter[],
+): WikiConditionEffectMetadata | null {
+  if (inferredMagnificationCache?.forCharacters !== characters) {
+    inferredMagnificationCache = { forCharacters: characters, map: deriveInferredConditionTextMagnification(characters) }
+  }
+
   const base = rawConditionEffectMetadata[String(conditionEffectType)] ?? null
-  const inferred = inferredConditionTextMagnification.get(conditionEffectType)
+  const inferred = inferredMagnificationCache.map.get(conditionEffectType)
 
   if (!base && !inferred) {
     return null
@@ -484,9 +527,10 @@ export function getAllHeartprints(): Heartprint[] {
   return hpPayload.heartprints
 }
 
-export function getWikiCharacterById(characterId: number): WikiCharacter | undefined {
-  return websiteCharacterById.get(characterId)
-}
+export const getWikiCharacterById = cache(async (characterId: number): Promise<WikiCharacter | undefined> => {
+  const data = await loadWikiData()
+  return data.websiteCharacterById.get(characterId)
+})
 
 // ---------------------------------------------------------------------------
 // Max-level stats (base stats + level growth to character max level)
@@ -521,7 +565,10 @@ const levelMaxAddMap = teamStatsPayload.level_max_add
 const statusboardTotalsMap = teamStatsPayload.statusboard_totals ?? {}
 const enhancedStatusboardTotalsMap = teamStatsPayload.enhanced_statusboard_totals ?? {}
 
-export function getCharMaxStats(characterId: number): { hp: number; attack: number; defense: number; existence: number } | null {
+export function getCharMaxStats(
+  characterId: number,
+  character?: WikiCharacter | null,
+): { hp: number; attack: number; defense: number; existence: number } | null {
   const entry = charStatsMap[String(characterId)]
   if (entry) {
     const baseWithBoardHp = entry.max_hp + (entry.sb_hp ?? 0) + (entry.esb_hp ?? 0)
@@ -532,8 +579,9 @@ export function getCharMaxStats(characterId: number): { hp: number; attack: numb
     const defense = Math.floor(baseWithBoardDef)
     return { hp, attack, defense, existence: hp + attack + defense }
   }
-  // Fallback: compute from base stats + level_max_add for characters missing from char_stats
-  const character = websiteCharacterById.get(characterId)
+  // Fallback: compute from base stats + level_max_add for characters missing from char_stats.
+  // Callers pass the already-resolved character (they always have it in scope) instead of this
+  // looking it up itself — keeps this function synchronous and independent of the async wikiData load.
   if (!character?.master_pc_level_group_id) return null
   const add = levelMaxAddMap[String(character.master_pc_level_group_id)]
   if (!add) return null
@@ -690,38 +738,50 @@ export type GlobalStatMaxes = {
   existence: number
 }
 
-let cachedStatMaxes: GlobalStatMaxes | null = null
-
-export function getGlobalStatMaxes(): GlobalStatMaxes {
-  if (cachedStatMaxes) return cachedStatMaxes
-
-  const characters = getAllWikiCharacters()
-  const resolved = characters.map((c) => getCharMaxStats(c.master_pc_id) ?? c.stats)
-  cachedStatMaxes = {
+// Pure sync variants that take the already-loaded character list explicitly.
+// Used by client-only views (loaded via next/dynamic ssr:false, e.g. the
+// character detail pages) that receive `characters` as a prop from their
+// server-rendered ancestor instead of being able to await the module's own
+// async loader themselves.
+export function getGlobalStatMaxesOf(characters: WikiCharacter[]): GlobalStatMaxes {
+  const resolved = characters.map((c) => getCharMaxStats(c.master_pc_id, c) ?? c.stats)
+  return {
     hp: Math.max(...resolved.map((s) => s.hp)),
     attack: Math.max(...resolved.map((s) => s.attack)),
     defense: Math.max(...resolved.map((s) => s.defense)),
     existence: Math.max(...resolved.map((s) => s.existence)),
   }
-  return cachedStatMaxes
 }
 
-let cachedForceIconLookup: Map<string, string> | null = null
-
-export function getForceIconLookup(): Map<string, string> {
-  if (cachedForceIconLookup) return cachedForceIconLookup
-
-  const characters = getAllWikiCharacters()
-  cachedForceIconLookup = new Map<string, string>()
+export function getForceIconLookupOf(characters: WikiCharacter[]): Map<string, string> {
+  const lookup = new Map<string, string>()
   for (const char of characters) {
     for (const force of char.forces) {
-      if (!cachedForceIconLookup.has(force.name)) {
-        cachedForceIconLookup.set(force.name, force.icon_path)
+      if (!lookup.has(force.name)) {
+        lookup.set(force.name, force.icon_path)
       }
     }
   }
-  return cachedForceIconLookup
+  return lookup
 }
+
+let cachedStatMaxes: GlobalStatMaxes | null = null
+
+export const getGlobalStatMaxes = cache(async (): Promise<GlobalStatMaxes> => {
+  if (cachedStatMaxes) return cachedStatMaxes
+  const characters = await getAllWikiCharacters()
+  cachedStatMaxes = getGlobalStatMaxesOf(characters)
+  return cachedStatMaxes
+})
+
+let cachedForceIconLookup: Map<string, string> | null = null
+
+export const getForceIconLookup = cache(async (): Promise<Map<string, string>> => {
+  if (cachedForceIconLookup) return cachedForceIconLookup
+  const characters = await getAllWikiCharacters()
+  cachedForceIconLookup = getForceIconLookupOf(characters)
+  return cachedForceIconLookup
+})
 
 export type CharacterVariant = {
   master_pc_id: number
@@ -734,8 +794,7 @@ export type CharacterVariant = {
   visual_tier: number
 }
 
-export function getCharacterVariants(character: WikiCharacter): CharacterVariant[] {
-  const allCharacters = getAllWikiCharacters()
+export function getCharacterVariantsOf(character: WikiCharacter, allCharacters: WikiCharacter[]): CharacterVariant[] {
   return allCharacters
     .filter((c) => c.name === character.name && c.master_pc_id !== character.master_pc_id)
     .map((c) => ({
@@ -750,11 +809,14 @@ export function getCharacterVariants(character: WikiCharacter): CharacterVariant
     }))
 }
 
+export async function getCharacterVariants(character: WikiCharacter): Promise<CharacterVariant[]> {
+  const allCharacters = await getAllWikiCharacters()
+  return getCharacterVariantsOf(character, allCharacters)
+}
+
 export type ForceEntry = { name: string; icon?: string }
 
-export function getCharacterForceEntries(character: WikiCharacter): ForceEntry[] {
-  const forceIconLookup = getForceIconLookup()
-
+export function getCharacterForceEntriesOf(character: WikiCharacter, forceIconLookup: Map<string, string>): ForceEntry[] {
   if (character.forces.length > 0) {
     return character.forces.map((force) => ({
       name: force.name,
@@ -766,4 +828,13 @@ export function getCharacterForceEntries(character: WikiCharacter): ForceEntry[]
     name,
     icon: forceIconLookup.get(name) ? toPublicAssetPath(forceIconLookup.get(name)) : undefined,
   }))
+}
+
+export async function getCharacterForceEntries(character: WikiCharacter): Promise<ForceEntry[]> {
+  if (character.forces.length > 0) {
+    return getCharacterForceEntriesOf(character, new Map())
+  }
+
+  const forceIconLookup = await getForceIconLookup()
+  return getCharacterForceEntriesOf(character, forceIconLookup)
 }

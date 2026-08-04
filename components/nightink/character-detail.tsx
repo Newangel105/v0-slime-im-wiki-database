@@ -14,12 +14,10 @@
 // - Internal links use the real app routes (/characters?... and /characters/{id}).
 import { notFound } from "next/navigation"
 import {
-  getAllWikiCharacters,
   getCharMaxStats,
   toPublicAssetPath,
-  getWikiCharacterById,
   getDerivedProtectorForceNames,
-  getForceIconLookup,
+  getForceIconLookupOf,
   type WikiCharacter,
 } from "@/lib/pc-wiki"
 import {
@@ -100,11 +98,11 @@ function toDetailForce(force: WikiCharacter["forces"][number]): DetailForce {
    inside a skill's description_max_level. Fall back to the same regex-based
    derivation used by the team builder and character browser so protector
    pages show their forces instead of nothing. */
-function getCharacterForces(c: WikiCharacter): DetailForce[] {
+function getCharacterForces(c: WikiCharacter, characters: WikiCharacter[]): DetailForce[] {
   if (c.forces && c.forces.length > 0) {
     return c.forces.map(toDetailForce)
   }
-  const forceIconLookup = getForceIconLookup()
+  const forceIconLookup = getForceIconLookupOf(characters)
   return getDerivedProtectorForceNames(c).map((name) => ({
     name,
     group: "force",
@@ -112,8 +110,8 @@ function getCharacterForces(c: WikiCharacter): DetailForce[] {
   }))
 }
 
-function toDetailCharacter(c: WikiCharacter): DetailCharacter {
-  const stats = getCharMaxStats(c.master_pc_id) ?? c.stats
+function toDetailCharacter(c: WikiCharacter, characters: WikiCharacter[]): DetailCharacter {
+  const stats = getCharMaxStats(c.master_pc_id, c) ?? c.stats
   return {
     id: c.master_pc_id,
     name: c.name,
@@ -134,7 +132,7 @@ function toDetailCharacter(c: WikiCharacter): DetailCharacter {
     },
     thumb: toPartyThumb(toPublicAssetPath(c.images.icon)),
     art: toInfoArt(c.images.full),
-    forces: getCharacterForces(c),
+    forces: getCharacterForces(c, characters),
     facilities: c.facilities ?? [],
     traits: (c.traits ?? []).map(toDetailTrait),
     exAbilities: (c.ex_abilities ?? []).map(toDetailExAbility),
@@ -142,17 +140,15 @@ function toDetailCharacter(c: WikiCharacter): DetailCharacter {
   }
 }
 
-export function NightInkCharacterDetail({ characterId }: { characterId: string }) {
-  const resolved = getWikiCharacterById(Number(characterId))
+export function NightInkCharacterDetail({ characterId, characters }: { characterId: string; characters: WikiCharacter[] }) {
+  const resolved = characters.find((c) => c.master_pc_id === Number(characterId))
   if (!resolved) {
     notFound()
     return null
   }
 
-  const all = getAllWikiCharacters()
-
   // newest first — release date desc, then id desc (prototype character-live.js §pick)
-  const ordered = [...all].sort((a, b) => {
+  const ordered = [...characters].sort((a, b) => {
     const byRelease = String(b.release_date ?? "").localeCompare(String(a.release_date ?? ""))
     return byRelease !== 0 ? byRelease : b.master_pc_id - a.master_pc_id
   })
@@ -164,7 +160,7 @@ export function NightInkCharacterDetail({ characterId }: { characterId: string }
   const next = ordered[index + 1]
 
   // Global stat maxes computed over the same (max-level) stats the bars use.
-  const statsList = ordered.map((c) => getCharMaxStats(c.master_pc_id) ?? c.stats)
+  const statsList = ordered.map((c) => getCharMaxStats(c.master_pc_id, c) ?? c.stats)
   const statMaxes: StatMaxes = {
     hp: Math.max(...statsList.map((s) => Number(s.hp) || 0), 1),
     attack: Math.max(...statsList.map((s) => Number(s.attack) || 0), 1),
@@ -210,7 +206,7 @@ export function NightInkCharacterDetail({ characterId }: { characterId: string }
 
   return (
     <NightInkCharacterDetailClient
-      character={toDetailCharacter(resolved)}
+      character={toDetailCharacter(resolved, characters)}
       statMaxes={statMaxes}
       prev={toDock(prev)}
       next={toDock(next)}

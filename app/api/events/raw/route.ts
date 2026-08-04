@@ -1,9 +1,25 @@
 import { NextRequest, NextResponse } from "next/server"
 
+const CACHE_TTL_MS = 30 * 60 * 1000
+const responseCache = new Map<string, { expiresAt: number; html: string }>()
+
+export const revalidate = 1800
+
 export async function GET(request: NextRequest) {
   try {
-    const requestedLanguage = Number(request.nextUrl.searchParams.get("language") ?? 2)
+    const requestedLanguage = 2
     const language = [1, 2, 3, 4].includes(requestedLanguage) ? requestedLanguage : 2
+    const cacheKey = `events-raw:${language}`
+    const cached = responseCache.get(cacheKey)
+    if (cached && Date.now() < cached.expiresAt) {
+      return new NextResponse(cached.html, {
+        headers: {
+          "Content-Type": "text/html; charset=utf-8",
+          "Cache-Control": "public, max-age=1800, stale-while-revalidate=86400",
+        },
+      })
+    }
+
     const headers = {
       "User-Agent":
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
@@ -38,10 +54,12 @@ export async function GET(request: NextRequest) {
       ? html.replace(/<head([^>]*)>/i, `<head$1>${frameStyle}`)
       : `${frameStyle}${html}`
 
+    responseCache.set(cacheKey, { expiresAt: Date.now() + CACHE_TTL_MS, html })
+
     return new NextResponse(html, {
       headers: {
         "Content-Type": "text/html; charset=utf-8",
-        "Cache-Control": "no-store",
+        "Cache-Control": "public, max-age=1800, stale-while-revalidate=86400",
       },
     })
   } catch (error) {

@@ -301,8 +301,8 @@ function classifyLine(line: string, cost: number | null): Array<{
 
 // ── Main extraction ───────────────────────────────────────────────────────────
 
-export function extractOrbConvertEntries(): OrbConvertEntry[] {
-  const characters = getAllWikiCharacters()
+export async function extractOrbConvertEntries(): Promise<OrbConvertEntry[]> {
+  const characters = await getAllWikiCharacters()
   const entries: OrbConvertEntry[] = []
 
   for (const character of characters) {

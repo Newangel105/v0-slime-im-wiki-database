@@ -71,7 +71,7 @@ export async function fetchAnnouncements(): Promise<AnnouncementArticle[]> {
   if (inFlight) return inFlight
   inFlight = (async () => {
     try {
-      const res = await fetch("/api/events", { cache: "no-store" })
+      const res = await fetch("/api/announcements/list", { cache: "default" })
       if (!res.ok) return []
       const payload = await res.json()
       const articles = ((payload?.data?.list ?? []) as AnnouncementArticle[]) || []

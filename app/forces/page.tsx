@@ -6,9 +6,11 @@ import {
   getAllWikiCharacters,
   toPublicAssetPath,
   getCharacterVisualTier,
-  getCharacterForceEntries,
+  getCharacterForceEntriesOf,
+  getForceIconLookupOf,
   normalizeLabel,
   isExUnboundCharacter,
+  type WikiCharacter,
 } from "@/lib/pc-wiki"
 
 const rarityFrameMap: Record<number, string> = {
@@ -98,17 +100,17 @@ const protTypeMap: Record<string, string> = {
   magic: "/type_dmg/prot_magic.webp",
 }
 
-function isProtectorChar(c: ReturnType<typeof getAllWikiCharacters>[number]) {
+function isProtectorChar(c: WikiCharacter) {
   return c.character_role === "Supporter" && !c.skills.some((s) => s.slot === "special_skill" && s.kind === "special")
 }
-function isAttackerChar(c: ReturnType<typeof getAllWikiCharacters>[number]) {
+function isAttackerChar(c: WikiCharacter) {
   if (c.character_role === "Attacker") return true
   return c.skills.some((s) => s.slot === "special_skill" && s.kind === "special")
 }
 const baseElementKeys = new Set(["air","dark","earth","fire","holy","water","wind"])
 const hiddenElementKeys = new Set(["none","specialeffectelementnone"])
 
-function getDefenderElementValues(c: ReturnType<typeof getAllWikiCharacters>[number]): string[] {
+function getDefenderElementValues(c: WikiCharacter): string[] {
   if (!isProtectorChar(c)) return [normalizeLabel(c.element)]
   const normalized = normalizeLabel(c.element)
   const values: string[] = []
@@ -148,11 +150,12 @@ const specialEffectToBase: Record<string, string> = {
 
 export default async function ForcesPage() {
   const design = await getDesign()
-  const allCharacters = getAllWikiCharacters()
+  const allCharacters = await getAllWikiCharacters()
+  const forceIconLookup = getForceIconLookupOf(allCharacters)
 
   const groupsMap = new Map<string, { icon?: string; chars: typeof allCharacters }>()
   for (const character of allCharacters) {
-    const entries = getCharacterForceEntries(character)
+    const entries = getCharacterForceEntriesOf(character, forceIconLookup)
     for (const entry of entries) {
       if (!groupsMap.has(entry.name)) {
         groupsMap.set(entry.name, { icon: entry.icon, chars: [] })
@@ -200,7 +203,7 @@ export default async function ForcesPage() {
           }
           secondIcon = attackTypeIconMap[normalizeLabel(character.attack_type)]
         } else if (isProtector) {
-          const forceEntries = getCharacterForceEntries(character)
+          const forceEntries = getCharacterForceEntriesOf(character, forceIconLookup)
           const defenderValues = getDefenderElementValues(character)
           if (forceEntries.length > 0) {
             if (forceEntries[0].icon) firstIcon = forceEntries[0].icon

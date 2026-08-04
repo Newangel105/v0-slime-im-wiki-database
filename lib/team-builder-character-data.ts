@@ -170,10 +170,12 @@ function toTeamBuilderCharacter(character: WikiCharacter, forceIconLookup: Map<s
   }
 }
 
-const wikiCharacters = getAllWikiCharacters()
-const forceIconLookup = buildForceIconLookup(wikiCharacters)
-const teamBuilderCharacters = wikiCharacters.map((character) => toTeamBuilderCharacter(character, forceIconLookup))
+let cached: TeamBuilderCharacter[] | null = null
 
-export function getAllTeamBuilderCharacters(): TeamBuilderCharacter[] {
-  return teamBuilderCharacters
+export async function getAllTeamBuilderCharacters(): Promise<TeamBuilderCharacter[]> {
+  if (cached) return cached
+  const wikiCharacters = await getAllWikiCharacters()
+  const forceIconLookup = buildForceIconLookup(wikiCharacters)
+  cached = wikiCharacters.map((character) => toTeamBuilderCharacter(character, forceIconLookup))
+  return cached
 }

@@ -38,8 +38,11 @@ function isVisible(c: WikiCharacter | null | undefined): c is WikiCharacter {
   return !!c && c.character_role !== "None"
 }
 let cachedVisible: WikiCharacter[] | null = null
-function wikiChars(): WikiCharacter[] {
-  if (!cachedVisible) cachedVisible = getAllWikiCharacters().filter(isVisible)
+async function wikiChars(): Promise<WikiCharacter[]> {
+  if (!cachedVisible) {
+    const characters = await getAllWikiCharacters()
+    cachedVisible = characters.filter(isVisible)
+  }
   return cachedVisible
 }
 
@@ -96,10 +99,10 @@ export function elementLabel(el: string | null | undefined) {
 }
 
 // Match by character name OR variant (affiliation_name), ranked by relevance.
-export function searchCharacters(query: string): WikiCharacter[] {
+export async function searchCharacters(query: string): Promise<WikiCharacter[]> {
   const q = norm(query)
   if (!q) return []
-  const matches = wikiChars().filter(
+  const matches = (await wikiChars()).filter(
     (c) => norm(c.name).includes(q) || norm(c.affiliation_name).includes(q)
   )
   matches.sort((a, b) => {
@@ -118,12 +121,12 @@ export function searchCharacters(query: string): WikiCharacter[] {
 }
 
 // Up to 25 autocomplete choices (value = master_pc_id as a string).
-export function nameAutocomplete(
+export async function nameAutocomplete(
   query: string,
   filters: { element?: string | null; attack?: string | null; target?: string | null; force?: string | null } = {}
 ) {
   const q = norm(query)
-  let list = filterCharacters(filters) // narrow by element/attack/target/force first
+  let list = await filterCharacters(filters) // narrow by element/attack/target/force first
   if (q) {
     list = list.filter((c) => norm(c.name).includes(q) || norm(c.affiliation_name).includes(q))
     list.sort((a, b) => {
@@ -158,12 +161,12 @@ export function characterTargetType(c: WikiCharacter): "aoe" | "single" | null {
   return hasAoE ? "aoe" : hasSingle ? "single" : null
 }
 
-export function filterCharacters(opts: { element?: string | null; attack?: string | null; target?: string | null; force?: string | null }): WikiCharacter[] {
+export async function filterCharacters(opts: { element?: string | null; attack?: string | null; target?: string | null; force?: string | null }): Promise<WikiCharacter[]> {
   const el = opts.element ? baseElement(opts.element) : null
   const at = opts.attack ? norm(opts.attack) : null
   const tg = opts.target ? norm(opts.target) : null
   const fc = opts.force ? norm(opts.force) : null
-  let list = wikiChars()
+  let list = await wikiChars()
   if (el) list = list.filter((c) => baseElement(c.element) === el)
   if (at) list = list.filter((c) => norm(c.attack_type) === at)
   if (tg) list = list.filter((c) => characterTargetType(c) === tg)
@@ -177,10 +180,10 @@ export function filterCharacters(opts: { element?: string | null; attack?: strin
 }
 
 let cachedForceNames: string[] | null = null
-function forceNames() {
+async function forceNames(): Promise<string[]> {
   if (!cachedForceNames) {
     const s = new Set<string>()
-    for (const c of wikiChars()) for (const n of getCharacterForceNames(c)) if (n) s.add(n)
+    for (const c of await wikiChars()) for (const n of getCharacterForceNames(c)) if (n) s.add(n)
     cachedForceNames = [...s].sort()
   }
   return cachedForceNames
@@ -189,16 +192,16 @@ function forceNames() {
 // Force suggestions. If other filters are set, only offer forces that the
 // matching characters actually have (keeps the relevant ones within Discord's
 // 25-suggestion cap); otherwise offer the full list, filtered by what's typed.
-export function forceAutocomplete(query: string, filters?: { element?: string | null; attack?: string | null; target?: string | null }) {
+export async function forceAutocomplete(query: string, filters?: { element?: string | null; attack?: string | null; target?: string | null }) {
   let names: string[]
   if (filters && (filters.element || filters.attack || filters.target)) {
     const s = new Set<string>()
-    for (const c of filterCharacters({ element: filters.element, attack: filters.attack, target: filters.target })) {
+    for (const c of await filterCharacters({ element: filters.element, attack: filters.attack, target: filters.target })) {
       for (const n of getCharacterForceNames(c)) if (n) s.add(n)
     }
     names = [...s].sort()
   } else {
-    names = forceNames()
+    names = await forceNames()
   }
   const q = norm(query)
   const list = q ? names.filter((n) => norm(n).includes(q)) : names
@@ -263,7 +266,7 @@ function dedupeTraits(traits: WikiTrait[]) {
   return [...byBase.values()]
 }
 
-export function buildCharacterEmbed(c: WikiCharacter): DiscordEmbed {
+export async function buildCharacterEmbed(c: WikiCharacter): Promise<DiscordEmbed> {
   // Text header (used as fallback before the icons are uploaded).
   const textStat = [
     stars(c.rarity),
@@ -328,7 +331,7 @@ export function buildCharacterEmbed(c: WikiCharacter): DiscordEmbed {
       ),
     })
 
-  const forceEntries = getCharacterForceEntries(c).filter((f) => f.name)
+  const forceEntries = (await getCharacterForceEntries(c)).filter((f) => f.name)
   if (forceEntries.length) {
     const value = EMOJIS_READY
       ? forceEntries.map((f) => `${emoji(f.icon) ? `${emoji(f.icon)} ` : ""}${f.name}`).join("  ·  ")
@@ -403,12 +406,12 @@ export function buildVariantComponents(query: string, matches: WikiCharacter[], 
   return rows
 }
 
-export function resolveCharacter(value: string): { char?: WikiCharacter; matches?: WikiCharacter[]; none?: boolean } {
+export async function resolveCharacter(value: string): Promise<{ char?: WikiCharacter; matches?: WikiCharacter[]; none?: boolean }> {
   if (/^\d+$/.test(value)) {
-    const c = getWikiCharacterById(Number(value))
+    const c = await getWikiCharacterById(Number(value))
     if (isVisible(c)) return { char: c }
   }
-  const m = searchCharacters(value)
+  const m = await searchCharacters(value)
   if (m.length === 0) return { none: true }
   if (m.length === 1) return { char: m[0] }
   return { matches: m }

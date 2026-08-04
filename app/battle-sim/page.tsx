@@ -9,8 +9,8 @@ export const metadata = { title: "Battle Sim WIP | Slime.Wiki" }
 // Hidden from the nav (work in progress) but kept reachable by URL; still painted
 // in the night-ink design so it survives the removal of the old designs.
 export default async function BattleSimPage() {
-  const characters = getAllWikiCharacters()
-  const enemies = getAllEnemies()
+  const characters = await getAllWikiCharacters()
+  const enemies = await getAllEnemies()
   const design = await getDesign()
 
   if (design === "nightink") {

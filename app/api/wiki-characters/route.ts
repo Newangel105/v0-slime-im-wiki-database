@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server"
 import { getAllWikiCharacters } from "@/lib/pc-wiki"
 
-export const dynamic = "force-static"
+export const revalidate = 3600
 
-export function GET() {
+export async function GET() {
   // Strip fields unused by preset-viewer and battle-sim to reduce payload size
-  const slim = getAllWikiCharacters().map(c => ({
+  const characters = await getAllWikiCharacters()
+  const slim = characters.map(c => ({
     master_pc_id: c.master_pc_id,
     name: c.name,
     affiliation_name: c.affiliation_name,

@@ -4,7 +4,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { toPublicAssetPath } from "@/lib/pc-wiki"
 import {
-  extractGaugeEntries,
   getCharactersForCell,
   GAUGE_ROWS,
   GAUGE_COLUMNS,
@@ -12,11 +11,11 @@ import {
   SKILL_POINT_GAUGE_COLUMNS,
   SECRET_SKILL_GAUGE_ROWS,
   SECRET_SKILL_GAUGE_COLUMNS,
+  type GaugeEntry,
 } from "@/lib/gauge-parser"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-export function ClassicGaugeBuilderTable() {
-  const gaugeEntries = extractGaugeEntries()
+export function ClassicGaugeBuilderTable({ gaugeEntries }: { gaugeEntries: GaugeEntry[] }) {
 
   const GaugeTable = ({ gaugeType }: { gaugeType: "protection" | "skillPoint" | "secretSkill" }) => {
     const gaugeLabel = {

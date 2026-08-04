@@ -23,7 +23,7 @@ import {
   getCharMaxStats,
   toPublicAssetPath,
   getDerivedProtectorForceNames,
-  getForceIconLookup,
+  getForceIconLookupOf,
   type WikiCharacter,
   type WikiSkill,
   type WikiTrait,
@@ -150,12 +150,10 @@ function toIndexTrait(trait: WikiTrait): IndexCharacterTrait {
   }
 }
 
-function toIndexCharacter(character: WikiCharacter): IndexCharacter {
+function toIndexCharacter(character: WikiCharacter, forceIconLookup: Map<string, string>): IndexCharacter {
   const skills = character.skills.map(toIndexSkill)
   const traits = character.traits.map(toIndexTrait)
   const thumb = toPartyThumb(toPublicAssetPath(character.images.icon))
-
-  const forceIconLookup = getForceIconLookup()
 
   const forces =
     character.forces.length > 0
@@ -186,7 +184,7 @@ function toIndexCharacter(character: WikiCharacter): IndexCharacter {
     tactics: character.tactics_type,
     ultimate: character.ultimate_type ?? "",
     release: character.release_date ?? "",
-    stats: getCharMaxStats(character.master_pc_id) ?? character.stats,
+    stats: getCharMaxStats(character.master_pc_id, character) ?? character.stats,
     thumb,
     art: toFullArt(thumb),
     forces,
@@ -203,6 +201,8 @@ function toIndexCharacter(character: WikiCharacter): IndexCharacter {
   }
 }
 
-export function getCharacterIndexData(): IndexCharacter[] {
-  return getAllWikiCharacters().map(toIndexCharacter)
+export async function getCharacterIndexData(): Promise<IndexCharacter[]> {
+  const characters = await getAllWikiCharacters()
+  const forceIconLookup = getForceIconLookupOf(characters)
+  return characters.map((character) => toIndexCharacter(character, forceIconLookup))
 }

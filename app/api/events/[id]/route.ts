@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server"
 import * as cheerio from "cheerio"
 
+export const revalidate = 1800
+
+export async function generateStaticParams() {
+  return [{ id: "1" }]
+}
+
 type RouteContext = {
   params: Promise<{ id: string }>
 }

@@ -28,7 +28,7 @@ import {
   isExUnboundCharacter,
   normalizeLabel,
   stripColorTags,
-  getAllWikiCharacters,
+  type WikiCharacter,
 } from "@/lib/pc-wiki"
 
 type SortKey = "name" | "release_date" | "rarity" | "attack" | "hp" | "defense" | "existence" | "skill_cost"
@@ -755,7 +755,7 @@ function colorWithAlpha(hex: string, alpha: number): string {
   return `rgba(${red}, ${green}, ${blue}, ${alpha})`
 }
 
-function buildAllOptions(characters: BrowserCharacter[]) {
+function buildAllOptions(characters: BrowserCharacter[], wikiCharacters: WikiCharacter[]) {
     return {
     attackerElements: buildElementOptions(characters, "attacker"),
     defenderElements: buildElementOptions(characters, "defender"),
@@ -763,7 +763,7 @@ function buildAllOptions(characters: BrowserCharacter[]) {
     weapons: buildWeaponOptions(characters.map((c) => c.weapon_type)),
     tactics: buildTacticsOptions(characters.map((c) => c.tactics_type)),
     forces: buildForcesOptions(characters),
-    skillGroups: getSkillEffectFilterGroups(getAllWikiCharacters().flatMap((character) => character.skills)),
+    skillGroups: getSkillEffectFilterGroups(wikiCharacters.flatMap((character) => character.skills)),
     traitGroups: getSkillEffectFilterGroups(characters.flatMap((character) => character.traits.filter((trait) => !isValorTrait(trait)))),
     valorTraitGroups: buildValorTraitGroups(characters),
     facilities: buildOptions(characters.flatMap((c) => c.facilities)),
@@ -1235,9 +1235,15 @@ function GroupedToggleFilter({
   )
 }
 
-export function CharacterBrowser({ initialCharacters }: { initialCharacters: BrowserCharacter[] }) {
+export function CharacterBrowser({
+  initialCharacters,
+  wikiCharacters,
+}: {
+  initialCharacters: BrowserCharacter[]
+  wikiCharacters: WikiCharacter[]
+}) {
   const characters = initialCharacters
-  const wikiById = useMemo(() => new Map(getAllWikiCharacters().map((c) => [c.master_pc_id, c])), [])
+  const wikiById = useMemo(() => new Map(wikiCharacters.map((c) => [c.master_pc_id, c])), [wikiCharacters])
 
   const router = useRouter()
   const [searchText, setSearchText] = useState("")
@@ -1421,9 +1427,9 @@ export function CharacterBrowser({ initialCharacters }: { initialCharacters: Bro
 
   const [options, setOptions] = useState<CharacterBrowserOptions>(EMPTY_OPTIONS)
   useEffect(() => {
-    const id = setTimeout(() => setOptions(buildAllOptions(characters)), 0)
+    const id = setTimeout(() => setOptions(buildAllOptions(characters, wikiCharacters)), 0)
     return () => clearTimeout(id)
-  }, [characters])
+  }, [characters, wikiCharacters])
 
   const filteredCharacters = useMemo(() => {
     if (!Array.isArray(characters)) return []

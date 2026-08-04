@@ -206,8 +206,8 @@ export function getGaugeRange(
   return bestMatch.range
 }
 
-export function extractGaugeEntries(): GaugeEntry[] {
-  const characters = getAllWikiCharacters()
+export async function extractGaugeEntries(): Promise<GaugeEntry[]> {
+  const characters = await getAllWikiCharacters()
   const entries: GaugeEntry[] = []
 
   for (const character of characters) {

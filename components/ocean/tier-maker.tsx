@@ -1,8 +1,8 @@
 "use client"
 
 import React, { useEffect, useMemo, useState, useRef, useCallback } from "react"
-import { getAllCharacterBrowserData } from "@/lib/character-browser-data"
-import { getAllWikiCharacters, getCharacterVisualTier, getAllHeartprints } from "@/lib/pc-wiki"
+import { type BrowserCharacter } from "@/lib/character-browser-data"
+import { getCharacterVisualTier, getAllHeartprints, type WikiCharacter } from "@/lib/pc-wiki"
 import { Input } from "@/components/ui/input"
 import autoAnimate from "@formkit/auto-animate"
 import {
@@ -90,7 +90,13 @@ function computeDropIndex(container: HTMLElement, clientX: number, clientY: numb
   return items.length
 }
 
-export function OceanTierMaker() {
+export function OceanTierMaker({
+  characters: propCharacters,
+  wikiCharacters: propWikiCharacters,
+}: {
+  characters: BrowserCharacter[]
+  wikiCharacters: WikiCharacter[]
+}) {
   // On tablet/desktop force a fixed 1024px viewport so the global "feel like 2K"
   // zoom can't shift the drag-and-drop hit-testing coordinates. On phones (<=760px)
   // we must NOT do this: a 1024px viewport squeezed into a ~390px screen renders
@@ -124,8 +130,8 @@ export function OceanTierMaker() {
     }
   }, [])
 
-  const allChars = useMemo(() => getAllCharacterBrowserData(), [])
-  const wikiChars = useMemo(() => getAllWikiCharacters(), [])
+  const allChars = propCharacters
+  const wikiChars = propWikiCharacters
   const allHearts = useMemo(() => getAllHeartprints(), [])
 
   const skillChangeIds = useMemo(() => {

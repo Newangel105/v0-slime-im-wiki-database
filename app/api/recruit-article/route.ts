@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server"
 
-export const dynamic = "force-dynamic"
+const CACHE_TTL_MS = 30 * 60 * 1000
+const responseCache = new Map<string, { expiresAt: number; html: string }>()
+
+export const revalidate = 1800
 
 // The official announcement feed/articles are served from the regional API hosts.
 // The feed (list) page lives at  <host>/web/announcement?language=N  and an
@@ -235,7 +238,7 @@ function injectCssAndBackButtonPatch(html: string, origin: string) {
 }
 
 export async function GET(request: NextRequest) {
-  const src = request.nextUrl.searchParams.get("src")
+  const src = "https://api.ten-sura-m.wfs.games/web/announcement/1?region=1&language=2&phoneType=1&assetVersion="
 
   if (!src) {
     return new NextResponse("Missing src", { status: 400 })
@@ -257,8 +260,21 @@ export async function GET(request: NextRequest) {
     return new NextResponse("Forbidden", { status: 403 })
   }
 
+  const cacheKey = url.toString()
+  const cached = responseCache.get(cacheKey)
+  if (cached && Date.now() < cached.expiresAt) {
+    return new NextResponse(cached.html, {
+      status: 200,
+      headers: {
+        "content-type": "text/html; charset=utf-8",
+        "cache-control": "public, max-age=1800, stale-while-revalidate=86400",
+        "x-robots-tag": "noindex",
+      },
+    })
+  }
+
   const upstream = await fetch(url.toString(), {
-    cache: "no-store",
+    cache: "default",
     headers: {
       "user-agent": "Mozilla/5.0",
       accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -273,12 +289,13 @@ export async function GET(request: NextRequest) {
 
   const html = await upstream.text()
   const patchedHtml = injectCssAndBackButtonPatch(html, url.origin)
+  responseCache.set(cacheKey, { expiresAt: Date.now() + CACHE_TTL_MS, html: patchedHtml })
 
   return new NextResponse(patchedHtml, {
     status: 200,
     headers: {
       "content-type": "text/html; charset=utf-8",
-      "cache-control": "no-store",
+      "cache-control": "public, max-age=1800, stale-while-revalidate=86400",
       "x-robots-tag": "noindex",
     },
   })

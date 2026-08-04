@@ -490,7 +490,7 @@ export function OceanHome() {
     async function loadAnnouncements() {
       setLoadingNews(true)
       try {
-        const response = await fetch(`/api/events?language=${selectedLanguage.language}`, { cache: "no-store" })
+        const response = await fetch(`/api/announcements/list?language=${selectedLanguage.language}`, { cache: "no-store" })
         if (!response.ok) return
         const payload = await response.json()
         const list = (payload?.data?.list ?? []) as Announcement[]
@@ -538,7 +538,7 @@ export function OceanHome() {
       setLoadingNewsDetail(true)
       setNewsDetail(null)
       try {
-        const response = await fetch(`/api/events/${newsToLoad.id}?language=${selectedLanguage.language}`, {
+        const response = await fetch(`/api/announcements/${newsToLoad.id}?language=${selectedLanguage.language}`, {
           cache: "no-store",
         })
         if (!response.ok) throw new Error("Announcement detail request failed")

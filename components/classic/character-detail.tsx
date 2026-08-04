@@ -13,16 +13,15 @@ import {
   type WikiCharacter,
   type CharacterVariant,
   formatWikiLabel,
-  getCharacterForceEntries,
+  getCharacterForceEntriesOf,
   getCharacterRarityLabel,
-  getCharacterVariants,
+  getCharacterVariantsOf,
   getCharacterVisualTier,
   getCharMaxStats,
   getDisplayElementLabel,
   getDisplayReleaseDate,
-  getForceIconLookup,
-  getGlobalStatMaxes,
-  getWikiCharacterById,
+  getForceIconLookupOf,
+  getGlobalStatMaxesOf,
   isExUnboundCharacter,
   normalizeLabel,
   stripColorTags,
@@ -360,8 +359,8 @@ type DescSegment =
   | { type: "note"; text: string }
 
 /** Build a force icon lookup once per render */
-function getForceIconMap(): Map<string, string> {
-  const lookup = getForceIconLookup()
+function getForceIconMap(characters: WikiCharacter[]): Map<string, string> {
+  const lookup = getForceIconLookupOf(characters)
   const result = new Map<string, string>()
   for (const [name, iconPath] of lookup) {
     result.set(name, toPublicAssetPath(iconPath))
@@ -369,10 +368,14 @@ function getForceIconMap(): Map<string, string> {
   return result
 }
 
+// Primed once per render by ClassicCharacterDetail before any of the
+// description-parsing helpers below (called deep inside JSX) run.
 let cachedForceIcons: Map<string, string> | null = null
+function primeForceIcons(characters: WikiCharacter[]): void {
+  cachedForceIcons = getForceIconMap(characters)
+}
 function forceIcons(): Map<string, string> {
-  if (!cachedForceIcons) cachedForceIcons = getForceIconMap()
-  return cachedForceIcons
+  return cachedForceIcons ?? new Map()
 }
 
 /** Parse plain text for stat terms (P-ATK, M-ATK, ATK, DEF, HP) and element names */
@@ -612,23 +615,26 @@ function RichDescription({ text }: { text: string }) {
   )
 }
 
-export async function ClassicCharacterDetail({ characterId }: { characterId: string }) {
-  const resolvedCharacter = getWikiCharacterById(Number(characterId))
+export function ClassicCharacterDetail({ characterId, characters }: { characterId: string; characters: WikiCharacter[] }) {
+  const resolvedCharacter = characters.find((c) => c.master_pc_id === Number(characterId))
 
   if (!resolvedCharacter) {
     notFound()
     return null
   }
 
+  primeForceIcons(characters)
+
   const character = resolvedCharacter
   const releaseDateLabel = getDisplayReleaseDate(character.release_date)
-  const statMaxes = getGlobalStatMaxes()
-  const displayStats = getCharMaxStats(character.master_pc_id) ?? character.stats
-  const forceEntries = getCharacterForceEntries(character)
+  const statMaxes = getGlobalStatMaxesOf(characters)
+  const displayStats = getCharMaxStats(character.master_pc_id, character) ?? character.stats
+  const forceIconLookup = getForceIconLookupOf(characters)
+  const forceEntries = getCharacterForceEntriesOf(character, forceIconLookup)
   const isProtector = isProtectorCharacter(character)
   const hasExAbilities = character.ex_abilities.length > 0
   const tabCount = isProtector && !hasExAbilities ? 2 : 3
-  const variants = getCharacterVariants(character)
+  const variants = getCharacterVariantsOf(character, characters)
 
   // Build the correct icon tags based on role
   const elementTags = isProtector ? getProtectorIconTags(character) : getAttackerIconTags(character)

@@ -2,7 +2,7 @@ import { GuidesAdminClient } from "@/components/guides/guides-admin-client"
 import { getDesign } from "@/lib/design"
 import { NkBoard, NkHeaderPod } from "@/components/nightink/pod-kit"
 
-export const dynamic = "force-dynamic"
+export const revalidate = 3600
 
 export default async function GuidesAdminPage() {
   const design = await getDesign()

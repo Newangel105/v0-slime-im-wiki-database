@@ -1,16 +1,13 @@
-import { SummonSimulator } from "@/components/summon-simulator"
+import { SummonSimulatorShell } from "@/components/summon-simulator-shell"
 import { getSummonData } from "@/lib/summon-data"
 import { getDesign } from "@/lib/design"
 
 export const metadata = { title: "Summon Simulator | SLIME.WIKI" }
 
-// Render at request time, not build time. summon.generated.json is 55 MB;
-// pre-rendering this page at build forced webpack/Next to parse the whole
-// blob in a single build worker, which OOMs Vercel's 8 GB Hobby container.
-// At request time the data is read via fs in the serverless function
-// (Vercel functions get 1 GB which handles the parse comfortably), then
-// cached in module scope for subsequent requests in the same instance.
-export const dynamic = "force-dynamic"
+// The summon payload is large, so we keep it cached for one hour rather than
+// re-rendering this page on every request. That avoids repeated server work while
+// still letting the data refresh periodically.
+export const revalidate = 3600
 
 export default async function SummonPage() {
   const data = await getSummonData()
@@ -22,10 +19,10 @@ export default async function SummonPage() {
   if (design === "nightink") {
     return (
       <div className="board v2 summon-nightink">
-        <SummonSimulator data={data} />
+        <SummonSimulatorShell data={data} />
       </div>
     )
   }
 
-  return <SummonSimulator data={data} />
+  return <SummonSimulatorShell data={data} />
 }

@@ -1,5 +1,4 @@
-import { LoupLoupeBrowser } from "@/components/loup-loupe-browser"
-import { ClassicLoupLoupeBrowser } from "@/components/classic/loup-loupe-browser"
+import { LoupLoupeShell } from "@/components/loup-loupe-shell"
 import { getAllEnemies } from "@/lib/enemies"
 import { getLoupLoupeFloors } from "@/lib/loup-loupe"
 import { getDesign } from "@/lib/design"
@@ -8,7 +7,7 @@ import { NkBoard, NkHeaderPod } from "@/components/nightink/pod-kit"
 export const metadata = { title: "Loup Loupe | SLIME-WIKI" }
 
 export default async function LoupLoupePage() {
-  const floors = getLoupLoupeFloors()
+  const floors = await getLoupLoupeFloors()
   const enemyIds = new Set(
     floors.flatMap((floor) =>
       floor.tiles
@@ -16,7 +15,8 @@ export default async function LoupLoupePage() {
         .filter((enemyId) => enemyId > 0),
     ),
   )
-  const enemies = getAllEnemies().filter((enemy) => enemyIds.has(enemy.master_enemy_id))
+  const allEnemies = await getAllEnemies()
+  const enemies = allEnemies.filter((enemy) => enemyIds.has(enemy.master_enemy_id))
   const design = await getDesign()
 
   if (design === "nightink") {
@@ -29,7 +29,7 @@ export default async function LoupLoupePage() {
           sub="Explore the Loup-Loupe labyrinth — every floor, tile, reward and enemy encounter."
         />
         <div className="nk-toolskin" style={{ marginTop: 28 }}>
-          <LoupLoupeBrowser floors={floors} enemies={enemies} />
+          <LoupLoupeShell floors={floors} enemies={enemies} />
         </div>
       </NkBoard>
     )
@@ -38,11 +38,7 @@ export default async function LoupLoupePage() {
   return (
     <main className="site-page slime-page-loup-loupe px-2 py-3 sm:px-4">
       <div className="mx-auto w-full max-w-[96rem]">
-        {design === "classic" ? (
-          <ClassicLoupLoupeBrowser floors={floors} enemies={enemies} />
-        ) : (
-          <LoupLoupeBrowser floors={floors} enemies={enemies} />
-        )}
+        <LoupLoupeShell floors={floors} enemies={enemies} classic={design === "classic"} />
       </div>
     </main>
   )

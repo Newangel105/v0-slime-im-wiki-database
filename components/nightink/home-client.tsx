@@ -358,7 +358,7 @@ export function NightInkHomeClient({ latest, dialItems, allModelItems, stats, re
   /* §5b NEWS — official announcements via the site's /api/events proxy */
   useEffect(() => {
     let cancelled = false
-    fetch("/api/events?language=2", { cache: "no-store" })
+    fetch("/api/announcements/list?language=2", { cache: "no-store" })
       .then((response) => (response.ok ? response.json() : Promise.reject(new Error("bad response"))))
       .then((payload) => {
         const list = (payload?.data?.list ?? []) as Announcement[]
@@ -414,7 +414,7 @@ export function NightInkHomeClient({ latest, dialItems, allModelItems, stats, re
       setLoadingNewsDetail(true)
       setNewsDetail(null)
       try {
-        const response = await fetch(`/api/events/${newsToLoad.id}?language=2`, { cache: "no-store" })
+        const response = await fetch(`/api/announcements/${newsToLoad.id}?language=2`, { cache: "no-store" })
         if (!response.ok) throw new Error("Announcement detail request failed")
         const payload = await response.json()
         const detail = payload?.data as AnnouncementDetail | undefined

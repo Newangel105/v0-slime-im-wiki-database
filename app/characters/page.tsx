@@ -12,10 +12,10 @@ export default async function CharactersPage() {
   // reading the SAME character dataset as the other branches (lib/pc-wiki) via
   // a thin server adapter. ocean/classic stay wired for the rollback cookie.
   if (design === "nightink") {
-    return <NightInkCharactersBrowser characters={getCharacterIndexData()} />
+    return <NightInkCharactersBrowser characters={await getCharacterIndexData()} />
   }
 
-  const characters = getAllCharacterBrowserData()
+  const { browserCharacters, wikiCharacters } = await getAllCharacterBrowserData()
   return (
     <>
       {/* Preload the top 3 portraits by default release_date sort (Guy, Velzard, Dodomeki) */}
@@ -23,9 +23,9 @@ export default async function CharactersPage() {
       <link rel="preload" as="image" href="/Image/Character/Bless/WerzardBlackHero/7/WerzardBlackHero_7_BlessPartyM.webp" fetchPriority="high" />
       <link rel="preload" as="image" href="/Image/Character/PC/ShionBeforeAnotherPC/7/ShionBeforeAnotherPC_7_CharaPartyM.webp" fetchPriority="high" />
       {design === "classic" ? (
-        <ClassicCharacterBrowser initialCharacters={characters} />
+        <ClassicCharacterBrowser initialCharacters={browserCharacters} wikiCharacters={wikiCharacters} />
       ) : (
-        <CharacterBrowser initialCharacters={characters} />
+        <CharacterBrowser initialCharacters={browserCharacters} wikiCharacters={wikiCharacters} />
       )}
     </>
   )

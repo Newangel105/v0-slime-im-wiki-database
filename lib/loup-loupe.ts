@@ -1,4 +1,4 @@
-import loupLoupeData from "../loup_loupe.generated.json"
+import { cache } from "react"
 
 export type LoupLoupeReward = {
   master_reward_id: number
@@ -251,12 +251,31 @@ export type LoupLoupePayload = {
   floors: LoupLoupeFloor[]
 }
 
-const payload = loupLoupeData as unknown as LoupLoupePayload
+// Fetched from R2 at request time so the bundler never sees the ~13 MB blob
+// (a static import inlines it into every bundle that reaches this module,
+// including the deployed Worker script). React.cache memoizes per request;
+// the module-scope `cached` holds the parse across requests in the same
+// server instance. Mirrors lib/summon-data.ts's getSummonData.
+let cached: LoupLoupePayload | null = null
 
-export function getLoupLoupeFloors(): LoupLoupeFloor[] {
+const loadLoupLoupePayload = cache(async (): Promise<LoupLoupePayload> => {
+  if (cached) return cached
+  const cdn = process.env.NEXT_PUBLIC_MEDIA_CDN
+  if (!cdn) throw new Error("NEXT_PUBLIC_MEDIA_CDN not set — loup_loupe.generated.json lives on R2")
+  const res = await fetch(`${cdn.replace(/\/+$/, "")}/loup_loupe.generated.json`, {
+    next: { revalidate: 3600 },
+  })
+  if (!res.ok) throw new Error(`Failed to fetch loup_loupe.generated.json from R2: ${res.status}`)
+  cached = (await res.json()) as unknown as LoupLoupePayload
+  return cached
+})
+
+export async function getLoupLoupeFloors(): Promise<LoupLoupeFloor[]> {
+  const payload = await loadLoupLoupePayload()
   return payload.floors
 }
 
-export function getLoupLoupeMeta(): LoupLoupePayload["meta"] {
+export async function getLoupLoupeMeta(): Promise<LoupLoupePayload["meta"]> {
+  const payload = await loadLoupLoupePayload()
   return payload.meta
 }

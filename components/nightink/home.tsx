@@ -49,7 +49,7 @@ function uniqueCount(characters: WikiCharacter[], extract: (c: WikiCharacter) =>
 }
 
 export async function NightInkHome() {
-  const characters = getAllWikiCharacters()
+  const characters = await getAllWikiCharacters()
   const modelEntries = await getModelEntries()
 
   // newest first — release date desc, then id desc (prototype home-live.js §0)

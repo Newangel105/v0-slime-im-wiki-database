@@ -2,7 +2,7 @@ import { GuideEditor } from "@/components/guides/guide-editor"
 import { getDesign } from "@/lib/design"
 import { NkBoard, NkHeaderPod } from "@/components/nightink/pod-kit"
 
-export const dynamic = "force-dynamic"
+export const revalidate = 3600
 
 export default async function NewGuidePage() {
   const design = await getDesign()

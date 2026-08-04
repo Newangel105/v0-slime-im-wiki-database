@@ -208,7 +208,7 @@ function sumBuff(buffs: BuffEntry[], type: BuffType) {
 
 function getBattleStats(char: WikiCharacter | null | undefined) {
   if (!char) return null
-  return getCharMaxStats(char.master_pc_id) ?? {
+  return getCharMaxStats(char.master_pc_id, char) ?? {
     hp: char.stats.hp,
     attack: char.stats.attack,
     defense: char.stats.defense,
@@ -646,11 +646,11 @@ function applyConditionMagnificationRate(value: number, magnificationRate: numbe
   return Math.trunc((value * (B + magnificationRate)) / B)
 }
 
-function getConditionMagnificationRate(conditionName: string, polarity: "enhancement" | "weakening") {
+function getConditionMagnificationRate(conditionName: string, polarity: "enhancement" | "weakening", characters: WikiCharacter[]) {
   const conditionEffectType = CONDITION_EFFECT_TYPE_BY_NAME[conditionName]
   if (conditionEffectType == null) return 0
 
-  const metadata = getConditionEffectMetadata(conditionEffectType)
+  const metadata = getConditionEffectMetadata(conditionEffectType, characters)
   if (!metadata) return 0
 
   // Positive condition states such as Drago/Ariel store ally-side enhancement scaling here.
@@ -670,13 +670,14 @@ function resolveEffectiveBuffs(
   buffs: BuffEntry[],
   activePartyConditions: string[],
   activeEnemyConditions: string[],
+  characters: WikiCharacter[],
 ) {
   const enhancementRate = activePartyConditions.reduce(
-    (sum, conditionName) => sum + getConditionMagnificationRate(conditionName, "enhancement"),
+    (sum, conditionName) => sum + getConditionMagnificationRate(conditionName, "enhancement", characters),
     0,
   )
   const weakeningRate = activeEnemyConditions.reduce(
-    (sum, conditionName) => sum + getConditionMagnificationRate(conditionName, "weakening"),
+    (sum, conditionName) => sum + getConditionMagnificationRate(conditionName, "weakening", characters),
     0,
   )
 
@@ -2170,8 +2171,8 @@ export function BattleSim({ characters, enemies }: { characters: WikiCharacter[]
   )
 
   const effectiveBuffs = useMemo(
-    () => resolveEffectiveBuffs(allBuffs, activePartyConditions, activeEnemyConditions),
-    [allBuffs, activePartyConditions, activeEnemyConditions],
+    () => resolveEffectiveBuffs(allBuffs, activePartyConditions, activeEnemyConditions, characters),
+    [allBuffs, activePartyConditions, activeEnemyConditions, characters],
   )
 
   const effectiveBuffSummary = useMemo(() => {

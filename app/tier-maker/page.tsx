@@ -2,9 +2,11 @@ import { getDesign } from "@/lib/design"
 import { OceanTierMaker } from "@/components/ocean/tier-maker"
 import { ClassicTierMaker } from "@/components/classic/tier-maker"
 import { NkBoard, NkHeaderPod, NkPod } from "@/components/nightink/pod-kit"
+import { getAllCharacterBrowserData } from "@/lib/character-browser-data"
 
 export default async function TierMakerPage() {
   const design = await getDesign()
+  const { browserCharacters, wikiCharacters } = await getAllCharacterBrowserData()
 
   if (design === "nightink") {
     return (
@@ -17,12 +19,16 @@ export default async function TierMakerPage() {
         />
         <NkPod style={{ marginTop: 28 }}>
           <div className="nk-toolskin">
-            <OceanTierMaker />
+            <OceanTierMaker characters={browserCharacters} wikiCharacters={wikiCharacters} />
           </div>
         </NkPod>
       </NkBoard>
     )
   }
 
-  return design === "classic" ? <ClassicTierMaker /> : <OceanTierMaker />
+  return design === "classic" ? (
+    <ClassicTierMaker characters={browserCharacters} wikiCharacters={wikiCharacters} />
+  ) : (
+    <OceanTierMaker characters={browserCharacters} wikiCharacters={wikiCharacters} />
+  )
 }

@@ -1,4 +1,4 @@
-import enemyData from "../pc_wiki.enemies.json"
+import { cache } from "react"
 
 export type WikiEnemy = {
   master_enemy_id: number
@@ -35,15 +35,32 @@ export type WikiEnemy = {
 
 type EnemyPayload = { enemies: WikiEnemy[] }
 
-export function getAllEnemies(): WikiEnemy[] {
-  return (enemyData as EnemyPayload).enemies
-}
+// Fetched from R2 at request time so the bundler never sees the ~5 MB blob
+// (a static import inlines it into every bundle that reaches this module,
+// including the deployed Worker script). React.cache memoizes per request;
+// the module-scope `cached` holds the parse across requests in the same
+// server instance. Mirrors lib/summon-data.ts's getSummonData.
+let cached: WikiEnemy[] | null = null
+
+export const getAllEnemies = cache(async (): Promise<WikiEnemy[]> => {
+  if (cached) return cached
+  const cdn = process.env.NEXT_PUBLIC_MEDIA_CDN
+  if (!cdn) throw new Error("NEXT_PUBLIC_MEDIA_CDN not set — pc_wiki.enemies.json lives on R2")
+  const res = await fetch(`${cdn.replace(/\/+$/, "")}/pc_wiki.enemies.json`, {
+    next: { revalidate: 3600 },
+  })
+  if (!res.ok) throw new Error(`Failed to fetch pc_wiki.enemies.json from R2: ${res.status}`)
+  const payload = (await res.json()) as EnemyPayload
+  cached = payload.enemies
+  return cached
+})
 
 /** Return one representative enemy per unique avatar_name (for display/selection grids). */
-export function getUniqueEnemyAvatars(): WikiEnemy[] {
+export async function getUniqueEnemyAvatars(): Promise<WikiEnemy[]> {
+  const enemies = await getAllEnemies()
   const seen = new Set<string>()
   const result: WikiEnemy[] = []
-  for (const e of (enemyData as EnemyPayload).enemies) {
+  for (const e of enemies) {
     if (!e.avatar_name || seen.has(e.avatar_name)) continue
     seen.add(e.avatar_name)
     result.push(e)

@@ -4,7 +4,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { toPublicAssetPath } from "@/lib/pc-wiki"
 import {
-  extractGaugeEntries,
   getCharactersForCell,
   GAUGE_ROWS,
   GAUGE_COLUMNS,
@@ -12,6 +11,7 @@ import {
   SKILL_POINT_GAUGE_COLUMNS,
   SECRET_SKILL_GAUGE_ROWS,
   SECRET_SKILL_GAUGE_COLUMNS,
+  type GaugeEntry,
 } from "@/lib/gauge-parser"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
@@ -24,8 +24,7 @@ const TAB_BLUE = "data-[state=active]:bg-[linear-gradient(180deg,#3b8fe0,#1f5da0
 const TAB_GREEN = "data-[state=active]:bg-[linear-gradient(180deg,#3fb985,#1c8b58)] data-[state=active]:shadow-[0_4px_10px_rgba(21,156,91,0.30)]"
 const TAB_ORANGE = "data-[state=active]:bg-[linear-gradient(180deg,#e6914a,#c4622a)] data-[state=active]:shadow-[0_4px_10px_rgba(226,104,47,0.30)]"
 
-export default function GaugeBuilderTable() {
-  const gaugeEntries = extractGaugeEntries()
+export default function GaugeBuilderTable({ gaugeEntries }: { gaugeEntries: GaugeEntry[] }) {
 
   const GaugeTable = ({ gaugeType }: { gaugeType: "protection" | "skillPoint" | "secretSkill" }) => {
     const count = new Set(

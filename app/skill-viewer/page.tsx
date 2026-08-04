@@ -7,7 +7,7 @@ import { NkBoard, NkHeaderPod } from "@/components/nightink/pod-kit"
 export const metadata = { title: "Skill Viewer | SLIME-WIKI" }
 
 export default async function SkillViewerPage() {
-  const characters = getAllWikiCharacters()
+  const characters = await getAllWikiCharacters()
   const design = await getDesign()
 
   if (design === "nightink") {

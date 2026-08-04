@@ -1,8 +1,8 @@
 "use client"
 
 import React, { useEffect, useMemo, useState, useRef, useCallback } from "react"
-import { getAllCharacterBrowserData } from "@/lib/character-browser-data"
-import { getAllWikiCharacters, getCharacterVisualTier, getAllHeartprints } from "@/lib/pc-wiki"
+import { type BrowserCharacter } from "@/lib/character-browser-data"
+import { getCharacterVisualTier, getAllHeartprints, type WikiCharacter } from "@/lib/pc-wiki"
 import { Input } from "@/components/ui/input"
 import {
   Dialog,
@@ -88,7 +88,13 @@ function computeDropIndex(container: HTMLElement, clientX: number, clientY: numb
   return items.length
 }
 
-export function ClassicTierMaker() {
+export function ClassicTierMaker({
+  characters: propCharacters,
+  wikiCharacters: propWikiCharacters,
+}: {
+  characters: BrowserCharacter[]
+  wikiCharacters: WikiCharacter[]
+}) {
   // Force desktop mode on mobile
   useEffect(() => {
     const meta = document.querySelector('meta[name="viewport"]')
@@ -98,8 +104,8 @@ export function ClassicTierMaker() {
     document.documentElement.style.zoom = window.innerWidth < 1024 ? '100%' : '100%'
   }, [])
 
-  const allChars = useMemo(() => getAllCharacterBrowserData(), [])
-  const wikiChars = useMemo(() => getAllWikiCharacters(), [])
+  const allChars = propCharacters
+  const wikiChars = propWikiCharacters
   const allHearts = useMemo(() => getAllHeartprints(), [])
 
   const skillChangeIds = useMemo(() => {

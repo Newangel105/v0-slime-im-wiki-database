@@ -7,7 +7,7 @@ import { getDesign } from "@/lib/design"
 import { NkBoard, NkHeaderPod } from "@/components/nightink/pod-kit"
 
 export default async function TeamBuilderPage() {
-  const characters = getAllTeamBuilderCharacters()
+  const characters = await getAllTeamBuilderCharacters()
   const heartprints = getAllHeartprints()
   const equipment = getAllEquipment()
   const charms = getAllCharms()

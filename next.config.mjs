@@ -5,6 +5,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  trailingSlash: true,
   // Pin the workspace root to this project. Without this, Next.js auto-detects
   // by finding the nearest lockfile and accidentally picks one in the parent
   // directory (an unrelated experiment), which mis-routes serverless file

@@ -17,7 +17,6 @@ import {
 } from "@/lib/discord-bot"
 
 export const runtime = "nodejs"
-export const dynamic = "force-dynamic"
 
 const PUBLIC_KEY = process.env.DISCORD_PUBLIC_KEY || ""
 const EPHEMERAL = 64
@@ -64,8 +63,8 @@ export async function POST(req: Request) {
     // suggests characters (narrowed by every filter already set).
     const choices =
       focused?.name === "force"
-        ? forceAutocomplete(fval, { element, attack, target })
-        : nameAutocomplete(fval, { element, attack, target, force })
+        ? await forceAutocomplete(fval, { element, attack, target })
+        : await nameAutocomplete(fval, { element, attack, target, force })
     return Response.json({ type: AUTOCOMPLETE_RESULT, data: { choices } })
   }
 
@@ -84,14 +83,14 @@ export async function POST(req: Request) {
 
     // 1) Specific character (typed name or autocomplete pick).
     if (name) {
-      const r = resolveCharacter(name)
+      const r = await resolveCharacter(name)
       if (r.char) {
         if (wantImage) {
           const url = characterImageUrl(r.char)
           if (!url) return Response.json({ type: CHANNEL_MESSAGE, data: { content: "No image for that character.", flags: EPHEMERAL } })
           return Response.json({ type: CHANNEL_MESSAGE, data: { embeds: [buildImageEmbed(r.char, url)] } })
         }
-        return Response.json({ type: CHANNEL_MESSAGE, data: { embeds: [buildCharacterEmbed(r.char)] } })
+        return Response.json({ type: CHANNEL_MESSAGE, data: { embeds: [await buildCharacterEmbed(r.char)] } })
       }
       if (r.matches) {
         return Response.json({
@@ -107,7 +106,7 @@ export async function POST(req: Request) {
 
     // 2) Filter mode (both commands): element / attack / target / force.
     if (element || attack || target || force) {
-      const matches = filterCharacters({ element, attack, target, force })
+      const matches = await filterCharacters({ element, attack, target, force })
       if (matches.length === 0) {
         return Response.json({ type: CHANNEL_MESSAGE, data: { content: "No characters match those filters.", flags: EPHEMERAL } })
       }
@@ -143,7 +142,7 @@ export async function POST(req: Request) {
     const customId: string = body.data?.custom_id ?? ""
     if (customId === "char:select" || customId === "img:select") {
       const id = (body.data?.values ?? [])[0]
-      const r = resolveCharacter(String(id ?? ""))
+      const r = await resolveCharacter(String(id ?? ""))
       if (!r.char) {
         return Response.json({ type: UPDATE_MESSAGE, data: { content: "That character isn't available.", components: [] } })
       }
@@ -151,10 +150,10 @@ export async function POST(req: Request) {
         const url = characterImageUrl(r.char)
         return Response.json({
           type: UPDATE_MESSAGE,
-          data: { content: "", embeds: [url ? buildImageEmbed(r.char, url) : buildCharacterEmbed(r.char)], components: [] },
+          data: { content: "", embeds: [url ? buildImageEmbed(r.char, url) : await buildCharacterEmbed(r.char)], components: [] },
         })
       }
-      return Response.json({ type: UPDATE_MESSAGE, data: { content: "", embeds: [buildCharacterEmbed(r.char)], components: [] } })
+      return Response.json({ type: UPDATE_MESSAGE, data: { content: "", embeds: [await buildCharacterEmbed(r.char)], components: [] } })
     }
     if (customId.startsWith("char:page:") || customId.startsWith("img:page:")) {
       const isImg = customId.startsWith("img:page:")
@@ -163,7 +162,7 @@ export async function POST(req: Request) {
       const page = Number.parseInt(parts[3], 10) || 0
       return Response.json({
         type: UPDATE_MESSAGE,
-        data: { components: buildVariantComponents(query, searchCharacters(query), page, isImg ? "image" : "info") },
+        data: { components: buildVariantComponents(query, await searchCharacters(query), page, isImg ? "image" : "info") },
       })
     }
   }
