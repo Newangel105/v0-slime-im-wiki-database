@@ -248,12 +248,12 @@ const facilityIconMap: Record<string, string> = {
 }
 
 const rarityIcons: Record<number, string> = {
-  3: "UI/Texture/CommonRarityAtlas/starCharaL3",
-  4: "UI/Texture/CommonRarityAtlas/starCharaL4",
-  5: "UI/Texture/CommonRarityAtlas/starCharaL5",
-  6: "UI/Texture/CommonRarityAtlas/starCharaL6",
-  7: "UI/Texture/CommonRarityAtlas/starCharaL6_SpecialPlus",
-  8: "UI/Texture/CommonRarityAtlas/starCharaL7_Epic",
+  3: "/UI/Texture/CommonRarityAtlas/starCharaL3",
+  4: "/UI/Texture/CommonRarityAtlas/starCharaL4",
+  5: "/UI/Texture/CommonRarityAtlas/starCharaL5",
+  6: "/UI/Texture/CommonRarityAtlas/starCharaL6",
+  7: "/UI/Texture/CommonRarityAtlas/starCharaL6_SpecialPlus",
+  8: "/UI/Texture/CommonRarityAtlas/starCharaL7_Epic",
 }
 
 const statIcons: Record<string, string> = {

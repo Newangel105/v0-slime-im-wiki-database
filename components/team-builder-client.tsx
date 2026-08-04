@@ -160,15 +160,15 @@ function getMiniFramePaths(tier: number, role: "member" | "bless") {
   const t = Math.min(Math.max(tier, 3), 8)
   const pfx = role === "bless" ? "Bless" : "Member"
   if (t === 8) {
-    return { base: `UI/Texture/CommonRarityAtlas/base${pfx}M7_Epic.webp`, frame: `UI/Texture/CommonRarityAtlas/frame${pfx}M7_Epic.webp` }
+    return { base: `/UI/Texture/CommonRarityAtlas/base${pfx}M7_Epic.webp`, frame: `/UI/Texture/CommonRarityAtlas/frame${pfx}M7_Epic.webp` }
   }
   if (t === 7) {
-    return { base: `UI/Texture/CommonRarityAtlas/base${pfx}M6_SpecialPlus.webp`, frame: `UI/Texture/CommonRarityAtlas/frame${pfx}M6_SpecialPlus.webp` }
+    return { base: `/UI/Texture/CommonRarityAtlas/base${pfx}M6_SpecialPlus.webp`, frame: `/UI/Texture/CommonRarityAtlas/frame${pfx}M6_SpecialPlus.webp` }
   }
   if (t === 6) {
-    return { base: `UI/Texture/CommonRarityAtlas/base${pfx}M6_Special.webp`, frame: `UI/Texture/CommonRarityAtlas/frame${pfx}M6_Special.webp` }
+    return { base: `/UI/Texture/CommonRarityAtlas/base${pfx}M6_Special.webp`, frame: `/UI/Texture/CommonRarityAtlas/frame${pfx}M6_Special.webp` }
   }
-  return { base: `UI/Texture/CommonRarityAtlas/base${pfx}M${t}.webp`, frame: `UI/Texture/CommonRarityAtlas/frame${pfx}M${t}.webp` }
+  return { base: `/UI/Texture/CommonRarityAtlas/base${pfx}M${t}.webp`, frame: `/UI/Texture/CommonRarityAtlas/frame${pfx}M${t}.webp` }
 }
 
 function elementMatches(charEl: string, filterKey: string): boolean {
@@ -3081,7 +3081,7 @@ export default function TeamBuilderClient({
                                 onPointerLeave={() => setEquipHoveredId(prev => prev === fc.skill_id ? null : prev)}
                                 onClick={() => setCharmSlots(prev => ({ ...prev, [activeEquipSlot.slotKey]: fc.skill_id }))}>
                                 <div className="relative w-full overflow-hidden rounded" style={{ aspectRatio: "1" }}>
-                                  <img src={`UI/Texture/CommonRarityAtlas/itemRrarity${Math.min(fc.rarity + 1, 4)}.webp`} alt=""
+                                  <img src={`/UI/Texture/CommonRarityAtlas/itemRrarity${Math.min(fc.rarity + 1, 4)}.webp`} alt=""
                                     className="absolute inset-0 w-full h-full object-fill pointer-events-none" />
                                   {img ? (
                                     <img src={img} alt="" className="absolute inset-0 w-full h-full object-contain p-1.5 z-10" onError={e => { (e.target as HTMLImageElement).style.display = "none" }} />
@@ -3090,7 +3090,7 @@ export default function TeamBuilderClient({
                                   )}
                                   <div className="absolute bottom-0.5 left-1/2 -translate-x-1/2 flex gap-px">
                                     {Array.from({ length: fc.rarity }, (_, i) => (
-                                      <img key={i} src="UI/Texture/CommonRarityAtlas/starOn.webp" alt="★" className="w-3 h-3 object-contain" />
+                                      <img key={i} src="/UI/Texture/CommonRarityAtlas/starOn.webp" alt="★" className="w-3 h-3 object-contain" />
                                     ))}
                                   </div>
                                   {isSelected && <div className="absolute inset-0 ring-2 ring-purple-400 ring-inset rounded" />}

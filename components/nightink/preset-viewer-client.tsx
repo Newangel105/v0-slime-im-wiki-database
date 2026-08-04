@@ -12,9 +12,9 @@ import { NkBoard, NkHeaderPod, NkPod } from "./pod-kit"
 function getMiniFramePaths(tier: number, role: "member" | "bless") {
   const t = Math.min(Math.max(tier, 3), 8)
   const pfx = role === "bless" ? "Bless" : "Member"
-  if (t === 8) return { base: `UI/Texture/CommonRarityAtlas/base${pfx}M7_Epic.webp`, frame: `UI/Texture/CommonRarityAtlas/frame${pfx}M7_Epic.webp` }
-  if (t === 7) return { base: `UI/Texture/CommonRarityAtlas/base${pfx}M6_SpecialPlus.webp`, frame: `UI/Texture/CommonRarityAtlas/frame${pfx}M6_SpecialPlus.webp` }
-  return { base: `UI/Texture/CommonRarityAtlas/base${pfx}M${t}.webp`, frame: `UI/Texture/CommonRarityAtlas/frame${pfx}M${t}.webp` }
+  if (t === 8) return { base: `/UI/Texture/CommonRarityAtlas/base${pfx}M7_Epic.webp`, frame: `/UI/Texture/CommonRarityAtlas/frame${pfx}M7_Epic.webp` }
+  if (t === 7) return { base: `/UI/Texture/CommonRarityAtlas/base${pfx}M6_SpecialPlus.webp`, frame: `/UI/Texture/CommonRarityAtlas/frame${pfx}M6_SpecialPlus.webp` }
+  return { base: `/UI/Texture/CommonRarityAtlas/base${pfx}M${t}.webp`, frame: `/UI/Texture/CommonRarityAtlas/frame${pfx}M${t}.webp` }
 }
 
 const STAR_ASSETS: Record<number, string> = {

@@ -128,9 +128,9 @@ const SLOT_ORDER: Record<string, number> = {
 function getMiniFramePaths(tier: number, role: "member" | "bless") {
   const safeTier = Math.min(Math.max(tier, 3), 8)
   const prefix = role === "bless" ? "Bless" : "Member"
-  if (safeTier === 8) return { base: `UI/Texture/CommonRarityAtlas/base${prefix}M7_Epic.webp`, frame: `UI/Texture/CommonRarityAtlas/frame${prefix}M7_Epic.webp` }
-  if (safeTier === 7) return { base: `UI/Texture/CommonRarityAtlas/base${prefix}M6_SpecialPlus.webp`, frame: `UI/Texture/CommonRarityAtlas/frame${prefix}M6_SpecialPlus.webp` }
-  return { base: `UI/Texture/CommonRarityAtlas/base${prefix}M${safeTier}.webp`, frame: `UI/Texture/CommonRarityAtlas/frame${prefix}M${safeTier}.webp` }
+  if (safeTier === 8) return { base: `/UI/Texture/CommonRarityAtlas/base${prefix}M7_Epic.webp`, frame: `/UI/Texture/CommonRarityAtlas/frame${prefix}M7_Epic.webp` }
+  if (safeTier === 7) return { base: `/UI/Texture/CommonRarityAtlas/base${prefix}M6_SpecialPlus.webp`, frame: `/UI/Texture/CommonRarityAtlas/frame${prefix}M6_SpecialPlus.webp` }
+  return { base: `/UI/Texture/CommonRarityAtlas/base${prefix}M${safeTier}.webp`, frame: `/UI/Texture/CommonRarityAtlas/frame${prefix}M${safeTier}.webp` }
 }
 
 function isProtectorCharacter(character: WikiCharacter): boolean {

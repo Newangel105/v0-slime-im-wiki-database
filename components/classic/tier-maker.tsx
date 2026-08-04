@@ -39,19 +39,19 @@ const RARITY_ASSETS: Record<number, string> = {
 }
 
 function getMiniFramePath(tier: number, pfx: string) {
-  if (tier === 8) return `UI/Texture/CommonRarityAtlas/frame${pfx}M7_Epic.webp`
-  if (tier === 7) return `UI/Texture/CommonRarityAtlas/frame${pfx}M6_SpecialPlus.webp`
-  if (tier === 6) return `UI/Texture/CommonRarityAtlas/frame${pfx}M6_Special.webp`
+  if (tier === 8) return `/UI/Texture/CommonRarityAtlas/frame${pfx}M7_Epic.webp`
+  if (tier === 7) return `/UI/Texture/CommonRarityAtlas/frame${pfx}M6_SpecialPlus.webp`
+  if (tier === 6) return `/UI/Texture/CommonRarityAtlas/frame${pfx}M6_Special.webp`
   const t = Math.min(Math.max(tier, 3), 5)
-  return `UI/Texture/CommonRarityAtlas/frame${pfx}M${t}.webp`
+  return `/UI/Texture/CommonRarityAtlas/frame${pfx}M${t}.webp`
 }
 
 function getMiniBasePath(tier: number, pfx: string) {
-  if (tier === 8) return `UI/Texture/CommonRarityAtlas/base${pfx}M7_Epic.webp`
-  if (tier === 7) return `UI/Texture/CommonRarityAtlas/base${pfx}M6_SpecialPlus.webp`
-  if (tier === 6) return `UI/Texture/CommonRarityAtlas/base${pfx}M6_Special.webp`
+  if (tier === 8) return `/UI/Texture/CommonRarityAtlas/base${pfx}M7_Epic.webp`
+  if (tier === 7) return `/UI/Texture/CommonRarityAtlas/base${pfx}M6_SpecialPlus.webp`
+  if (tier === 6) return `/UI/Texture/CommonRarityAtlas/base${pfx}M6_Special.webp`
   const t = Math.min(Math.max(tier, 3), 5)
-  return `UI/Texture/CommonRarityAtlas/base${pfx}M${t}.webp`
+  return `/UI/Texture/CommonRarityAtlas/base${pfx}M${t}.webp`
 }
 
 function getContrastColor(hex?: string) {

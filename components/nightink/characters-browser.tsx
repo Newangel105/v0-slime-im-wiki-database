@@ -242,48 +242,48 @@ const facilityIconMap: Record<string, string> = {
 }
 
 const rarityIcons: Record<number, string> = {
-  3: "UI/Texture/CommonRarityAtlas/starCharaL3",
-  4: "UI/Texture/CommonRarityAtlas/starCharaL4",
-  5: "UI/Texture/CommonRarityAtlas/starCharaL5",
-  6: "UI/Texture/CommonRarityAtlas/starCharaL6",
-  7: "UI/Texture/CommonRarityAtlas/starCharaL6_SpecialPlus",
-  8: "UI/Texture/CommonRarityAtlas/starCharaL7_Epic",
+  3: "/UI/Texture/CommonRarityAtlas/starCharaL3",
+  4: "/UI/Texture/CommonRarityAtlas/starCharaL4",
+  5: "/UI/Texture/CommonRarityAtlas/starCharaL5",
+  6: "/UI/Texture/CommonRarityAtlas/starCharaL6",
+  7: "/UI/Texture/CommonRarityAtlas/starCharaL6_SpecialPlus",
+  8: "/UI/Texture/CommonRarityAtlas/starCharaL7_Epic",
 }
 
 const memberFrameIcons: Record<number, string> = {
-  3: "UI/Texture/CommonRarityAtlas/frameMemberM3",
-  4: "UI/Texture/CommonRarityAtlas/frameMemberM4",
-  5: "UI/Texture/CommonRarityAtlas/frameMemberM5",
-  6: "UI/Texture/CommonRarityAtlas/frameMemberM6_Special",
-  7: "UI/Texture/CommonRarityAtlas/frameMemberM6_SpecialPlus",
-  8: "UI/Texture/CommonRarityAtlas/frameMemberM7_Epic",
+  3: "/UI/Texture/CommonRarityAtlas/frameMemberM3",
+  4: "/UI/Texture/CommonRarityAtlas/frameMemberM4",
+  5: "/UI/Texture/CommonRarityAtlas/frameMemberM5",
+  6: "/UI/Texture/CommonRarityAtlas/frameMemberM6_Special",
+  7: "/UI/Texture/CommonRarityAtlas/frameMemberM6_SpecialPlus",
+  8: "/UI/Texture/CommonRarityAtlas/frameMemberM7_Epic",
 }
 
 const blessFrameIcons: Record<number, string> = {
-  3: "UI/Texture/CommonRarityAtlas/frameBlessM3",
-  4: "UI/Texture/CommonRarityAtlas/frameBlessM4",
-  5: "UI/Texture/CommonRarityAtlas/frameBlessM5",
-  6: "UI/Texture/CommonRarityAtlas/frameBlessM6_Special",
-  7: "UI/Texture/CommonRarityAtlas/frameBlessM6_SpecialPlus",
-  8: "UI/Texture/CommonRarityAtlas/frameBlessM7_Epic",
+  3: "/UI/Texture/CommonRarityAtlas/frameBlessM3",
+  4: "/UI/Texture/CommonRarityAtlas/frameBlessM4",
+  5: "/UI/Texture/CommonRarityAtlas/frameBlessM5",
+  6: "/UI/Texture/CommonRarityAtlas/frameBlessM6_Special",
+  7: "/UI/Texture/CommonRarityAtlas/frameBlessM6_SpecialPlus",
+  8: "/UI/Texture/CommonRarityAtlas/frameBlessM7_Epic",
 }
 
 const memberBaseIcons: Record<number, string> = {
-  3: "UI/Texture/CommonRarityAtlas/baseMemberM3",
-  4: "UI/Texture/CommonRarityAtlas/baseMemberM4",
-  5: "UI/Texture/CommonRarityAtlas/baseMemberM5",
-  6: "UI/Texture/CommonRarityAtlas/baseMemberM6_Special",
-  7: "UI/Texture/CommonRarityAtlas/baseMemberM6_SpecialPlus",
-  8: "UI/Texture/CommonRarityAtlas/baseMemberM7_Epic",
+  3: "/UI/Texture/CommonRarityAtlas/baseMemberM3",
+  4: "/UI/Texture/CommonRarityAtlas/baseMemberM4",
+  5: "/UI/Texture/CommonRarityAtlas/baseMemberM5",
+  6: "/UI/Texture/CommonRarityAtlas/baseMemberM6_Special",
+  7: "/UI/Texture/CommonRarityAtlas/baseMemberM6_SpecialPlus",
+  8: "/UI/Texture/CommonRarityAtlas/baseMemberM7_Epic",
 }
 
 const blessBaseIcons: Record<number, string> = {
-  3: "UI/Texture/CommonRarityAtlas/baseBlessM3",
-  4: "UI/Texture/CommonRarityAtlas/baseBlessM4",
-  5: "UI/Texture/CommonRarityAtlas/baseBlessM5",
-  6: "UI/Texture/CommonRarityAtlas/baseBlessM6_Special",
-  7: "UI/Texture/CommonRarityAtlas/baseBlessM6_SpecialPlus",
-  8: "UI/Texture/CommonRarityAtlas/baseBlessM7_Epic",
+  3: "/UI/Texture/CommonRarityAtlas/baseBlessM3",
+  4: "/UI/Texture/CommonRarityAtlas/baseBlessM4",
+  5: "/UI/Texture/CommonRarityAtlas/baseBlessM5",
+  6: "/UI/Texture/CommonRarityAtlas/baseBlessM6_Special",
+  7: "/UI/Texture/CommonRarityAtlas/baseBlessM6_SpecialPlus",
+  8: "/UI/Texture/CommonRarityAtlas/baseBlessM7_Epic",
 }
 
 /* ============================================================
