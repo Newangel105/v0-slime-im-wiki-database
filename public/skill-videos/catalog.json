@@ -1494,13 +1494,6 @@
       "mp4": "/Movie/SpecialSkill/RimuruMaidCostume2021Christmas_Battle_SpecialSkill.mp4"
     },
     {
-      "variant": "RimuruMaidCostumePC",
-      "group": "SpecialSkill",
-      "kind": "SpecialSkill",
-      "scene": "Special Skill",
-      "mp4": "/Movie/SpecialSkill/RimuruMaidCostumePC_Battle_SpecialSkill.mp4"
-    },
-    {
       "variant": "RimuruMovie2",
       "group": "SpecialSkill",
       "kind": "SpecialSkill",
@@ -1835,6 +1828,13 @@
       "kind": "SpecialSkill",
       "scene": "Special Skill",
       "mp4": "/Movie/SpecialSkill/VioletMovieRevival_Battle_SpecialSkill.mp4"
+    },
+    {
+      "variant": "VioletNamedOutfit",
+      "group": "SpecialSkill",
+      "kind": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/VioletNamedOutfit_Battle_SpecialSkill.mp4"
     },
     {
       "variant": "VioletSwimsuit2025",

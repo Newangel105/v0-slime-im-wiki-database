@@ -306,7 +306,7 @@ function normalizeLabel(value: unknown): string {
 // (e.g. Jaune ⇄ Carrera). Searching for one should also surface the other.
 const NAME_ALIAS_GROUPS: string[][] = [
   ["jaune", "carrera"],
-  ["ultimata", "violet"],
+  ["ultima", "violet"],
   ["testarossa", "blanc"],
 ]
 

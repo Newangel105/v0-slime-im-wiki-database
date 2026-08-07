@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev --turbopack",
+    "dev": "next dev --webpack",
+    "dev:turbo": "next dev --turbopack",
     "start": "next start",
     "lint": "next lint",
     "sync:assets": "node scripts/sync_pc_wiki_assets.mjs",
