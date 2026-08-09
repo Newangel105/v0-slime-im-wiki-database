@@ -34,7 +34,7 @@ import {
 
 const NAME_ALIAS_GROUPS: string[][] = [
   ["jaune", "carrera"],
-  ["ultimata", "violet"],
+  ["ultima", "violet"],
   ["testarossa", "blanc"],
 ]
 
