@@ -1,0 +1,60 @@
+{
+    // The website project lives on the slow D: drive and carries a large public/
+    // asset tree (Image, L10NAssets, Voice, Sound, UI, Effect — the extracted game
+    // art), plus node_modules and the .next / .open-next / .wrangler build output.
+    // VS Code was watching AND search-indexing all of it, so every save had to churn
+    // through 100k+ files on a slow disk — that is the "minutes to save / analysing
+    // dependencies" stall.
+    //
+    // Excluding a folder from the WATCHER/SEARCH does NOT hide or lock it: you can
+    // still open, edit and save anything inside (e.g. public/models/index.json) —
+    // VS Code just stops monitoring the whole tree for external changes. public/models
+    // + the small icon dirs (brand, icons, skills, stats, weapons, nightink) stay
+    // watched so the files you actually edit remain in Ctrl+P and reload live.
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "**/.next/**": true,
+        "**/.open-next/**": true,
+        "**/.wrangler/**": true,
+        "**/.vercel/**": true,
+        "**/.turbo/**": true,
+        "**/public/Image/**": true,
+        "**/public/L10NAssets/**": true,
+        "**/public/Voice/**": true,
+        "**/public/Sound/**": true,
+        "**/public/UI/**": true,
+        "**/public/Effect/**": true,
+        "**/public/skill-videos/**": true,
+        "**/public/skill-icons/**": true,
+        "**/public/assets/**": true,
+        "**/public/loup-loupe/**": true
+    },
+
+    // Same big trees kept out of search/quick-open so Ctrl+P and find-in-files stay fast.
+    "search.exclude": {
+        "**/node_modules/**": true,
+        "**/.next/**": true,
+        "**/.open-next/**": true,
+        "**/.wrangler/**": true,
+        "**/.vercel/**": true,
+        "**/.turbo/**": true,
+        "**/public/Image/**": true,
+        "**/public/L10NAssets/**": true,
+        "**/public/Voice/**": true,
+        "**/public/Sound/**": true,
+        "**/public/UI/**": true,
+        "**/public/Effect/**": true,
+        "**/public/skill-videos/**": true,
+        "**/public/skill-icons/**": true,
+        "**/public/assets/**": true,
+        "**/public/loup-loupe/**": true
+    },
+
+    // Don't crawl node_modules to auto-download @types, and don't scan the tree for
+    // npm scripts — both add disk work on every project change.
+    "typescript.disableAutomaticTypeAcquisition": true,
+    "npm.autoDetect": "off",
+    "git.ignoreLimitWarning": true
+}
