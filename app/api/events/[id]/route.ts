@@ -4,7 +4,10 @@ import * as cheerio from "cheerio"
 export const revalidate = 1800
 
 export async function generateStaticParams() {
-  return [{ id: "1" }]
+  // No build-time pre-render: the old placeholder id "1" made the build fetch a
+  // non-existent announcement (404, noisy log). Real ids are rendered on demand at
+  // request time (ISR via `revalidate`); fetch failures fall back to the 502 below.
+  return []
 }
 
 type RouteContext = {
