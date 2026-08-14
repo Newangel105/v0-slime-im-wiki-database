@@ -43,7 +43,9 @@ async function wikiChars(): Promise<WikiCharacter[]> {
     // pulling the raw ~9.4MB pc_wiki straight from R2 on every cold interaction.
     // That cold cross-network fetch blew Discord's 3s limit and broke autocomplete
     // ("loading options failed").
-    const res = await fetch(`${SITE_URL}/api/wiki-characters`)
+    // Trailing slash matters: next.config has trailingSlash:true, so the bare URL
+    // 308-redirects to /api/wiki-characters/ — hit it directly to skip the hop.
+    const res = await fetch(`${SITE_URL}/api/wiki-characters/`)
     if (!res.ok) throw new Error(`wiki-characters fetch failed: ${res.status}`)
     const characters = (await res.json()) as WikiCharacter[]
     cachedVisible = characters.filter(isVisible)
