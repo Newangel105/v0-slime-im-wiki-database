@@ -5321,6 +5321,23 @@
     "effect2": "When equipped by Carrera (Jaune), increases ATK by <color=#2BE41D>5</color>%"
   },
   {
+    "id": 1131440017,
+    "type": "accessory",
+    "name": "Testarossa's Brooch",
+    "rarity": 8,
+    "base_rarity": 3,
+    "weapon_type": null,
+    "image": "/Image/Equip/Accessory/440017/Accessory_440017_AccessoryM.webp",
+    "max_level": 80,
+    "max_atk": 0,
+    "max_def": 0,
+    "max_hp": 5373,
+    "level_group_id": 63,
+    "release_label": "202608_event_ep_zohuku_add2_start",
+    "effect1": "When equipped by Testarossa (Blanc), increases HP by <color=#2BE41D>5</color>%",
+    "effect2": "When equipped by Testarossa (Blanc), increases ATK by <color=#2BE41D>5</color>%"
+  },
+  {
     "id": 1131440018,
     "type": "accessory",
     "name": "Ultima's Ribbon",

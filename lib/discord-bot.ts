@@ -2,8 +2,6 @@
 // Reuses the wiki's own data + label functions so the bot always matches the site
 // and updates automatically with each deploy.
 import {
-  getAllWikiCharacters,
-  getWikiCharacterById,
   getCharacterForceNames,
   getCharacterForceEntries,
   getDisplayElementLabel,
@@ -40,7 +38,14 @@ function isVisible(c: WikiCharacter | null | undefined): c is WikiCharacter {
 let cachedVisible: WikiCharacter[] | null = null
 async function wikiChars(): Promise<WikiCharacter[]> {
   if (!cachedVisible) {
-    const characters = await getAllWikiCharacters()
+    // Fetch the pre-transformed list from our own edge-cached /api/wiki-characters
+    // route (served as a static asset from the CDN — same-region + fast) instead of
+    // pulling the raw ~9.4MB pc_wiki straight from R2 on every cold interaction.
+    // That cold cross-network fetch blew Discord's 3s limit and broke autocomplete
+    // ("loading options failed").
+    const res = await fetch(`${SITE_URL}/api/wiki-characters`)
+    if (!res.ok) throw new Error(`wiki-characters fetch failed: ${res.status}`)
+    const characters = (await res.json()) as WikiCharacter[]
     cachedVisible = characters.filter(isVisible)
   }
   return cachedVisible
@@ -408,7 +413,9 @@ export function buildVariantComponents(query: string, matches: WikiCharacter[], 
 
 export async function resolveCharacter(value: string): Promise<{ char?: WikiCharacter; matches?: WikiCharacter[]; none?: boolean }> {
   if (/^\d+$/.test(value)) {
-    const c = await getWikiCharacterById(Number(value))
+    // Resolve from the already-loaded (edge-cached) list rather than a second cold
+    // getWikiCharacterById() R2 fetch — same 3s-timeout reason as wikiChars() above.
+    const c = (await wikiChars()).find((x) => x.master_pc_id === Number(value))
     if (isVisible(c)) return { char: c }
   }
   const m = await searchCharacters(value)

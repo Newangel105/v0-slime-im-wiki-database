@@ -598,6 +598,13 @@
       "mp4": "/Movie/SpecialSkill/BuranMilitary_Battle_SpecialSkill.mp4"
     },
     {
+      "variant": "BuranNamedOutfit",
+      "group": "SpecialSkill",
+      "kind": "SpecialSkill",
+      "scene": "Special Skill",
+      "mp4": "/Movie/SpecialSkill/BuranNamedOutfit_Battle_SpecialSkill.mp4"
+    },
+    {
       "variant": "BuranSwimsuit2025",
       "kind": "SpecialSkill",
       "group": "SpecialSkill",
