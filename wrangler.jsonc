@@ -18,5 +18,13 @@
 			"binding": "WORKER_SELF_REFERENCE",
 			"service": "v0-slime-im-wiki-database"
 		}
+	],
+	"kv_namespaces": [
+		{
+			// OpenNext incremental cache for ISR/`revalidate` routes — without a cache
+			// backend the Worker throws (error 1101) on every revalidate route.
+			"binding": "NEXT_INC_CACHE_KV",
+			"id": "025162a4b1b44b0787ab5af0e69c2b11"
+		}
 	]
 }
