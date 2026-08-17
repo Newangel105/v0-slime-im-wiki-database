@@ -310,6 +310,53 @@ const NAME_ALIAS_GROUPS: string[][] = [
   ["testarossa", "blanc"],
 ]
 
+// Force shorthands for the search box: typing the shorthand filters to that force
+// (e.g. "WoF" -> World of Fantasy). Only forces with an established meta get one
+// (that's why several forces have none — e.g. Wholehearted Devotion, Valentine).
+// Numbered variants (WoF1/WoF2, OP1/OP2, Adv1/Adv2 …) are community aliases for the
+// same single force. Keys are the normalizeLabel() form (lowercase, alnum-only) of
+// the shorthand; values are the exact force name (compared via normalizeLabel).
+const FORCE_SHORTHANDS: Record<string, string> = {
+  // Tribe
+  op: "Ogre's Pride", op1: "Ogre's Pride", op2: "Ogre's Pride",
+  pd: "Primal Demon", pd1: "Primal Demon", pd2: "Primal Demon",
+  dh: "Dragon Haki",
+  // Skill / Personality
+  hoah: "Heart of a Hero",
+  wom: "Wielder of Magic",
+  c: "Commander",
+  sos: "Stern of Spirit",
+  s: "Schemer",
+  spm: "Spirit Master",
+  // Organisation
+  te: "Tempest Elite",
+  odl: "Octagram Demon Lord",
+  ant: "Antagonist",
+  adv: "Adventurer", adv1: "Adventurer", adv2: "Adventurer",
+  // Event / Theme
+  fm: "Festive Memories", fm1: "Festive Memories", fm2: "Festive Memories",
+  nyb: "New Year's Blessing",
+  god: "Goddess of Destiny",
+  sm: "Summer Memories", sm1: "Summer Memories", sm2: "Summer Memories",
+  ol: "Otherworld Legend",
+  fow: "Fount of Wisdom",
+  wof: "World of Fantasy", wof1: "World of Fantasy", wof2: "World of Fantasy",
+  wm: "Warrior's Mind", wm1: "Warrior's Mind", wm2: "Warrior's Mind",
+  voc: "Visions of Coleus",
+  fbe: "Flashback Beatdown Emissary",
+  ps: "Pretty Sparkle",
+  ec: "Exalted Champions",
+  dtp: "Determination to Prosper",
+  pop: "Protector of Peace",
+  dg: "Divine General",
+  ts: "Tournament Stalwart",
+  soy: "Sparkle of Youth",
+  dc: "Dungeon Crawler", dc1: "Dungeon Crawler", dc2: "Dungeon Crawler",
+  sw: "Scourge Wielder",
+  at: "Assault Team",
+  tears: "Tears of the Azure Sea", tears1: "Tears of the Azure Sea", tears2: "Tears of the Azure Sea",
+}
+
 function expandSearchQuery(query: string): string[] {
   const variants = new Set<string>([query])
   for (const group of NAME_ALIAS_GROUPS) {
@@ -1113,6 +1160,11 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
       (c) => normalizeLabel(c.name) === normalizedQuery,
     )
 
+    // Force shorthand: typing e.g. "WoF" / "OP1" filters to that force (World of
+    // Fantasy / Ogre's Pride). Resolved once per query; null when not a shorthand.
+    const shorthandForceLabel = FORCE_SHORTHANDS[query] ?? null
+    const shorthandForce = shorthandForceLabel ? normalizeLabel(shorthandForceLabel) : null
+
     // const queryRes = queryVariants.map(
     //   (variant) =>
     //     new RegExp(
@@ -1178,7 +1230,12 @@ export function NightInkCharactersBrowser({ characters }: { characters: IndexCha
         matchesEffectFilters(state.traits, character.traitFilters || []) &&
         matchesByFilterMode(state.valorTraits, (character.traits || []).map((trait) => trait.name)) &&
         matchesByFilterMode(state.facilities, character.facilities || []) &&
-        (!query.length || nameMatch || extraMatch)
+        (!query.length ||
+          // A recognised force shorthand filters to that force ONLY; otherwise the
+          // query falls back to name / affiliation matching.
+          (shorthandForce
+            ? (character.forces || []).some((force) => normalizeLabel(force.name) === shorthandForce)
+            : nameMatch || extraMatch))
       )
     })
 
